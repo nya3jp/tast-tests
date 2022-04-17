@@ -18,20 +18,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	// expectedBrightness indicates the default screen brightness.
-	expectedBrightness = 80.00
-	// expectedVolumePercent indicates the percentage of maximum volume.
-	expectedVolumePercent = 10
-)
+// expectedVolumePercent indicates the percentage of maximum volume.
+const expectedVolumePercent = 10
 
 // InitializeSetting sets all initial settings to DUT before performing CUJ testing.
 func InitializeSetting(ctx context.Context, tconn *chrome.TestConn) (action.Action, error) {
-	setBrightnessNormal, err := SetScreenBrightness(ctx, expectedBrightness)
-	if err != nil {
-		return nil, err
-	}
-
 	setVolumeNormal, err := SetAudioVolume(ctx, expectedVolumePercent)
 	if err != nil {
 		return nil, err
@@ -50,15 +41,7 @@ func InitializeSetting(ctx context.Context, tconn *chrome.TestConn) (action.Acti
 	}
 
 	return func(ctx context.Context) error {
-		setBrightnessErr := setBrightnessNormal(ctx)
-		setVolumeErr := setVolumeNormal(ctx)
-		if setBrightnessErr != nil && setVolumeErr != nil {
-			return errors.Errorf("failed to reset initial settings: failed to reset brightness setting - %v; failed to reset volume setting - %v", setBrightnessErr, setVolumeErr)
-		}
-		if setBrightnessErr != nil {
-			return errors.Wrap(setBrightnessErr, "failed to reset brightness setting")
-		}
-		if setVolumeErr != nil {
+		if setVolumeErr := setVolumeNormal(ctx); setVolumeErr != nil {
 			return errors.Wrap(setVolumeErr, "failed to reset volume setting")
 		}
 		return nil
