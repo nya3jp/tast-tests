@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/wallpaper"
 	"chromiumos/tast/testing"
 )
 
@@ -29,7 +28,7 @@ func init() {
 }
 
 func Change(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
+	cr, err := chrome.New(ctx, chrome.EnablePersonalizationHub(true))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -40,14 +39,4 @@ func Change(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	if err := wallpaper.OpenWallpaperDeprecated(ctx, tconn); err != nil {
-		s.Fatal("Failed to open the wallpaper picker: ", err)
-	}
-
-	category := s.RequiredVar("wallpaper.category")
-	name := s.RequiredVar("wallpaper.name")
-	if err := wallpaper.ChangeWallpaperDeprecated(ctx, tconn, category, name); err != nil {
-		s.Fatalf("Failed to change the wallpaper to %s %s: %v", category, name, err)
-	}
 }
