@@ -196,7 +196,7 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 	if err := ashwallpaper.SelectImage(ui, "White")(ctx); err != nil {
 		s.Fatal("Failed to select image: ", err)
 	}
-	if err := ashwallpaper.CloseWallpaperPicker()(ctx); err != nil {
+	if err := ashwallpaper.ClosePersonalizationHub()(ctx); err != nil {
 		s.Fatal("Failed to close wallpaper picker: ", err)
 	}
 
