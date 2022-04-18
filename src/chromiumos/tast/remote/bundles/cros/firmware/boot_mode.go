@@ -139,6 +139,17 @@ func init() {
 			},
 			ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
 			Timeout:   60 * time.Minute,
+		}, {
+			// Verifies that we can go from normal -> dev -> normal without GBB flags.
+			Name:    "normal_dev",
+			Fixture: fixture.NormalMode,
+			Val: bootModeTestParams{
+				bootToMode:     fwCommon.BootModeDev,
+				allowGBBForce:  false,
+				resetAfterBoot: false,
+			},
+			ExtraAttr: []string{"firmware_bios", "firmware_level2"},
+			Timeout:   15 * time.Minute,
 		}},
 	})
 }
