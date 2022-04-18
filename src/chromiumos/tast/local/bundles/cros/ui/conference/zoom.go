@@ -38,8 +38,8 @@ type ZoomConference struct {
 
 // Zoom has two versions of ui that need to be captured.
 const (
-	startVideoRegexCapture = "(Start Video|start sending my video)"
-	stopVideoRegexCapture  = "(Stop Video|stop sending my video)"
+	startVideoRegexCapture = "(Start Video|start sending my video|start my video)"
+	stopVideoRegexCapture  = "(Stop Video|stop sending my video|stop my video)"
 	muteRegexCapture       = "(Mute|mute).*"
 	unmuteRegexCapture     = "(Unmute|unmute).*"
 	audioRegexCapture      = "(" + muteRegexCapture + "|" + unmuteRegexCapture + ")"
