@@ -59,6 +59,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 	const (
 		youtubeApp              = "Youtube App"
 		youtubeAct              = "com.google.android.apps.youtube.app.WatchWhileActivity"
+		closeDescription        = "Close"
 		youtubeLogoDescription  = "YouTube Premium"
 		accountImageDescription = "Account"
 		noThanksText            = "NO THANKS"
@@ -81,6 +82,11 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 	skipTrial := y.d.Object(androidui.ID(dismissID), androidui.Text(skipTrialText))
 	if err := cuj.ClickIfExist(skipTrial, 5*time.Second)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click 'SKIP TRIAL' to skip premium trial")
+	}
+
+	closeButton := y.d.Object(androidui.Description(closeDescription))
+	if err := cuj.ClickIfExist(closeButton, 5*time.Second)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click 'Close' to the close premium trial prompt")
 	}
 
 	accountImage := y.d.Object(androidui.ID(accountImageID), androidui.DescriptionContains(accountImageDescription))
@@ -314,7 +320,7 @@ func (y *YtApp) EnterFullscreen(ctx context.Context) error {
 		}
 
 		fsBtn := y.d.Object(androidui.Description(fullscreenDesc))
-		if err := cuj.FindAndClick(fsBtn, uiWaitTime)(ctx); err != nil {
+		if err := cuj.FindAndClick(fsBtn, 5*time.Second)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find/click the fullscreen button")
 		}
 
