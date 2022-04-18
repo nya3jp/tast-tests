@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3aa1e47_b3a72d3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-18T16:01:18Z",
+      "side": 1,
+      "message": "Sorry I may have given you bad advice here. What you `defer` is executed in reverse order, and I suspect you may get a more helpful UI tree dump if `faillog.DumpUITreeOnError` is called before `da.Close`. Maybe this was actually a good place for this after all.",
+      "parentUuid": "5f3b7ade_d495cee0",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 75
+      },
+      "revId": "481ab1067e6fdf129bffdb6b94150d2da454ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e1a6b3e_28261a5c",
         "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
         "patchSetId": 2
