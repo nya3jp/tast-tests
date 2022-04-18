@@ -149,19 +149,22 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return retry("launch Play Store", err)
 		}
 
-		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+		waitForPackagesCtx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 		defer cancel()
+		if err := waitForPackages(waitForPackagesCtx, a, packages); err != nil {
+			dumpBugReport(ctx, a, filepath.Join(s.OutDir(), "bugreport.zip"))
+			return exit("wait for packages", err)
+		}
+
 		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
-			dumpBugReport(cleanupCtx, a, filepath.Join(s.OutDir(), "bugreport.zip"))
-			return exit("verify packages", err)
+			return exit("verify packages are uninstallable", err)
 		}
 
 		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
 			return exit("launch asset browser", err)
 		}
 
-		cleanupCtx = ctx
+		cleanupCtx := ctx
 		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
 		defer cancel()
 		if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
@@ -181,6 +184,9 @@ func dumpBugReport(ctx context.Context, a *arc.ARC, filePath string) {
 	}
 }
 
+// waitForPackages ensure that Android packages are force-installed by ARC policy.
+// Note: if the user policy for the user is changed, the packages listed in
+// credentials files must be updated.
 func waitForPackages(ctx context.Context, a *arc.ARC, packages []string) error {
 	// waitForPackages waits indefinitely and we're installing only 2 packages
 	// so it is not necessary to wait more than 4 minutes.
@@ -195,13 +201,6 @@ func waitForPackages(ctx context.Context, a *arc.ARC, packages []string) error {
 
 // ensurePackagesUninstallable verifies that force-installed packages can't be uninstalled
 func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packages []string) error {
-	// Ensure that Android packages are force-installed by ARC policy.
-	// Note: if the user policy for the user is changed, the packages listed in
-	// credentials files must be updated.
-	if err := waitForPackages(ctx, a, packages); err != nil {
-		return errors.Wrap(err, "failed to force install packages")
-	}
-
 	// Ensure that Andriod packages are set as not-uninstallable by ARC policy.
 	testing.ContextLog(ctx, "Waiting for packages being marked as not uninstallable")
 	if err := waitForBlockUninstall(ctx, cr, a, packages); err != nil {
