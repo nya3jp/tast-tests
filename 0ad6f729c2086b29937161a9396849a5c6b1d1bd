@@ -159,6 +159,24 @@
       "parentUuid": "564a9cba_7a4394d9",
       "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a593a1b9_5f3d5338",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-18T15:08:16Z",
+      "side": 1,
+      "message": "Ok, so the failure is actually happening in our product.\nCould you file a bug for it, maybe with symbolizing the traces?\n\nAlso, for short term mitigation, could you check if chrome crash (maybe with certain error) is happening as a condition of the retry, instead?",
+      "parentUuid": "682adfb1_57e0c7eb",
+      "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
