@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37daa4ce_e16568d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-18T15:58:02Z",
+      "side": 1,
+      "message": "LGTM. I just want Shuhei to take a look first.",
+      "revId": "3c7744b93bc16cf3890c5aab85f2af1d2847186f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
