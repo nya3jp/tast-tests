@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package wallpaper supports interaction with ChromeOS wallpaper app.
+// Package wallpaper supports interaction with ChromeOS personalization hub
+// wallpaper subpage.
 package wallpaper
 
 import (
@@ -20,17 +21,21 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
+	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
-// OpenWallpaperPicker returns an action to open the wallpaper app.
+// GetWindowNode returns the first window node with a given name.
+func GetWindowNode(windowName string) *nodewith.Finder {
+	return nodewith.NameContaining(windowName).Role(role.Window).First()
+}
+
+// OpenWallpaperPicker returns an action to open the personalization hub.
 func OpenWallpaperPicker(ui *uiauto.Context) uiauto.Action {
-	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
-	return ui.RetryUntil(uiauto.Combine("open wallpaper picker",
-		ui.RightClick(nodewith.HasClass("WallpaperView")),
-		ui.WithInterval(300*time.Millisecond).LeftClickUntil(setWallpaperMenu, ui.Gone(setWallpaperMenu))),
-		ui.Exists(nodewith.NameContaining("Wallpaper").Role(role.Window).First()))
+	return uiauto.Combine("open wallpaper picker from personalization hub",
+		personalization.OpenPersonalizationHub(ui),
+		personalization.OpenWallpaperSubpage(ui))
 }
 
 // SelectCollection returns an action to select the collection with the given collection name.
@@ -56,23 +61,21 @@ func SelectImage(ui *uiauto.Context, image string) uiauto.Action {
 		ui.LeftClick(imageNode))
 }
 
-// Back presses the back button in the wallpaper app. Used to navigate from an individual collection to the collections list.
-func Back(ui *uiauto.Context) uiauto.Action {
-	back := nodewith.Role(role.Button).Name("Back to Wallpaper").HasClass("icon-arrow-back")
-	return uiauto.Combine("click wallpaper app back button",
-		ui.WaitUntilExists(back),
-		ui.LeftClick(back))
+// BackToWallpaper presses the wallpaper tag from the breadcrumb.
+// Used to navigate from an individual collection to the collections list.
+func BackToWallpaper(ui *uiauto.Context) uiauto.Action {
+	return personalization.NavigateBreadcrumb("Wallpaper", ui)
 }
 
-// MinimizeWallpaperPicker returns an action to minimize the wallpaper picker.
+// MinimizeWallpaperPicker returns an action to minimize the personalization hub.
 func MinimizeWallpaperPicker(ui *uiauto.Context) uiauto.Action {
-	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
+	windowNode := GetWindowNode("Personalization")
 	minimizeBtn := nodewith.Name("Minimize").Role(role.Button).Ancestor(windowNode)
 	// Minimize window to get the view of wallpaper image.
 	return ui.LeftClickUntil(minimizeBtn, ui.Gone(minimizeBtn))
 }
 
-// CloseWallpaperPicker returns an action to close the wallpaper picker via the Ctrl+W shortcut.
+// CloseWallpaperPicker returns an action to close the personalization hub via the Ctrl+W shortcut.
 func CloseWallpaperPicker() uiauto.Action {
 	return func(ctx context.Context) error {
 		kb, err := input.VirtualKeyboard(ctx)
@@ -84,17 +87,17 @@ func CloseWallpaperPicker() uiauto.Action {
 	}
 }
 
-// WaitForWallpaperWithName checks that a text node exists inside the wallpaper app with the given name.
-// Requires the wallpaper app to be open.
+// WaitForWallpaperWithName checks that a text node exists inside the personalization hub with the given name.
+// Requires the personalization hub to be open.
 func WaitForWallpaperWithName(ui *uiauto.Context, name string) uiauto.Action {
-	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
+	windowNode := GetWindowNode("Personalization")
 	wallpaperNameNode := nodewith.Name(fmt.Sprintf("Currently set %v", name)).Role(role.Heading).Ancestor(windowNode)
 	return ui.WaitUntilExists(wallpaperNameNode)
 }
 
 // ConfirmFullscreenPreview presses the "Set as wallpaper" button while in fullscreen preview mode.
 func ConfirmFullscreenPreview(ui *uiauto.Context) uiauto.Action {
-	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
+	windowNode := GetWindowNode("Personalization")
 	selectButton := nodewith.Name("Set as wallpaper").Ancestor(windowNode).Role(role.Button)
 	return uiauto.Combine("Confirm full screen preview",
 		ui.WaitUntilExists(selectButton),
@@ -104,7 +107,7 @@ func ConfirmFullscreenPreview(ui *uiauto.Context) uiauto.Action {
 
 // CancelFullscreenPreview presses the "Exit wallpaper preview" button while in fullscreen preview mode.
 func CancelFullscreenPreview(ui *uiauto.Context) uiauto.Action {
-	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
+	windowNode := GetWindowNode("Personalization")
 	cancelButton := nodewith.Name("Exit wallpaper preview").Ancestor(windowNode).Role(role.Button)
 	return uiauto.Combine("Cancel full screen preview",
 		ui.WaitUntilExists(cancelButton),
