@@ -8,14 +8,15 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -73,69 +74,6 @@ func init() {
 	})
 }
 
-// dragToSnapFirstOverviewWindow finds the first window in overview, and drags
-// to snap it. This function assumes that overview is already active.
-func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, tew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, targetX input.TouchCoord) error {
-	info, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get the primary display info")
-	}
-	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
-
-	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
-	if err != nil {
-		// If you see this error on the second window snap (to the right), check if
-		// b/143499564 has been reintroduced.
-		return errors.Wrap(err, "failed to find window in overview grid")
-	}
-
-	centerX, centerY := tcc.ConvertLocation(w.OverviewInfo.Bounds.CenterPoint())
-	if err := stw.LongPressAt(ctx, centerX, centerY); err != nil {
-		return errors.Wrap(err, "failed to long-press to start dragging window")
-	}
-
-	// Validity check to ensure there is one dragging item.
-	if _, err := ash.DraggedWindowInOverview(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to get dragged overview item")
-	}
-
-	if err := stw.Swipe(ctx, centerX, centerY, targetX, tew.Height()/2, time.Second); err != nil {
-		return errors.Wrap(err, "failed to swipe for snapping window")
-	}
-	if err := stw.End(); err != nil {
-		return errors.Wrap(err, "failed to end swipe")
-	}
-
-	return nil
-}
-
-type windowStateExpectations []struct {
-	act      *arc.Activity
-	ashState ash.WindowStateType
-	arcState arc.WindowState
-}
-
-// waitForWindowStates waits for specified ARC apps to reach specified window
-// states on both the Ash side and the ARC side.
-func waitForWindowStates(ctx context.Context, tconn *chrome.TestConn, expectations windowStateExpectations) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		for _, test := range expectations {
-			if actual, err := ash.GetARCAppWindowState(ctx, tconn, test.act.PackageName()); err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
-			} else if actual != test.ashState {
-				return errors.Errorf("Ash window state was %v but should be %v", actual, test.ashState)
-			}
-
-			if actual, err := test.act.GetWindowState(ctx); err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to get ARC window state"))
-			} else if actual != test.arcState {
-				return errors.Errorf("ARC window state was %v but should be %v", actual, test.arcState)
-			}
-		}
-		return nil
-	}, nil)
-}
-
 // showActivityForSplitViewTest starts an activity and waits for it to be idle.
 func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkgName, activityName string) (*arc.Activity, error) {
 	act, err := arc.NewActivity(a, pkgName, activityName)
@@ -147,23 +85,6 @@ func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a
 		return nil, errors.Wrap(err, "failed to start the activity")
 	}
 	return act, nil
-}
-
-// waitForArcAppWindowAnimation waits for an ARC app window's animation.
-func waitForArcAppWindowAnimation(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, pkgName string) error {
-	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for Android to be idle")
-	}
-
-	window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
-	if err != nil {
-		return errors.Wrap(err, "failed to get window info")
-	}
-
-	if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
-		return errors.Wrap(err, "failed to wait for the window animation")
-	}
-	return nil
 }
 
 func SplitView(ctx context.Context, s *testing.State) {
@@ -184,12 +105,6 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	tew, err := input.Touchscreen(ctx)
-	if err != nil {
-		s.Fatal("Failed to access to the touch screen: ", err)
-	}
-	defer tew.Close()
-
 	// Ensure landscape orientation so this test can assume that windows snap on
 	// the left and right. Windows snap on the top and bottom in portrait-oriented
 	// tablet mode. They snap on the left and right in portrait-oriented clamshell
@@ -198,7 +113,6 @@ func SplitView(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain the orientation info: ", err)
 	}
-	rotation := -orientation.Angle
 	if orientation.Type == display.OrientationPortraitPrimary {
 		info, err := display.GetPrimaryInfo(ctx, tconn)
 		if err != nil {
@@ -208,9 +122,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to rotate display: ", err)
 		}
 		defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
-		rotation += 90
 	}
-	tew.SetRotation(rotation)
 
 	// Show two activities. As the content of the activities doesn't matter,
 	// use two activities available by default.
@@ -235,29 +147,39 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for idle: ", err)
 	}
 
-	stw, err := tew.NewSingleTouchWriter()
+	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to create a single touch writer: ", err)
+		s.Fatal("Failed to check whether tablet mode is active: ", err)
 	}
-	defer stw.Close()
+
+	pc, err := pointer.NewTouch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to set up the touch context: ", err)
+	}
+	defer pc.Close()
 
 	if s.Param().(bool) { // arc.SplitView.tablet_home_launcher or arc.SplitView.tablet_home_launcher_vm
+		tew, _, err := touch.NewTouchscreenAndConverter(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to access to the touchscreen: ", err)
+		}
+		defer tew.Close()
+
+		stw, err := tew.NewSingleTouchWriter()
+		if err != nil {
+			s.Fatal("Failed to create the single touch writer: ", err)
+		}
+
 		if err := ash.DragToShowHomescreen(ctx, tew.Width(), tew.Height(), stw, tconn); err != nil {
 			s.Fatal("Failed to drag to show home launcher: ", err)
 		}
-		if err := waitForWindowStates(ctx, tconn,
-			windowStateExpectations{
-				{leftAct, ash.WindowStateMinimized, arc.WindowStateMinimized},
-				{rightAct, ash.WindowStateMinimized, arc.WindowStateMinimized},
-			}); err != nil {
+		if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, leftAct, arc.WindowStateMinimized); err != nil {
 			// If you see this error, check if https://crbug.com/1109250 has been reintroduced.
 			s.Fatal("Failed to wait until window state change: ", err)
 		}
-		if err := waitForArcAppWindowAnimation(ctx, tconn, d, leftAct.PackageName()); err != nil {
-			s.Fatal("Failed to wait for the left snapped window animation: ", err)
-		}
-		if err := waitForArcAppWindowAnimation(ctx, tconn, d, rightAct.PackageName()); err != nil {
-			s.Fatal("Failed to wait for the right snapped window animation: ", err)
+		if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateMinimized); err != nil {
+			// If you see this error, check if https://crbug.com/1109250 has been reintroduced.
+			s.Fatal("Failed to wait until window state change: ", err)
 		}
 	}
 
@@ -267,30 +189,19 @@ func SplitView(ctx context.Context, s *testing.State) {
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	// Snap activity to left.
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, 0); err != nil {
+	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, true /* primary */); err != nil {
 		s.Fatal("Failed to drag window from overview and snap left: ", err)
 	}
-	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{leftAct, ash.WindowStateLeftSnapped, arc.WindowStatePrimarySnapped}}); err != nil {
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, leftAct, arc.WindowStatePrimarySnapped); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
-	}
-	if err := waitForArcAppWindowAnimation(ctx, tconn, d, leftAct.PackageName()); err != nil {
-		s.Fatal("Failed to wait for the left snapped window animation: ", err)
 	}
 
 	// Snap activity to right.
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, tew.Width()-1); err != nil {
+	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, false /* primary */); err != nil {
 		s.Fatal("Failed to drag window from overview and snap right: ", err)
 	}
-	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{rightAct, ash.WindowStateRightSnapped, arc.WindowStateSecondarySnapped}}); err != nil {
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateSecondarySnapped); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
-	}
-	if err := waitForArcAppWindowAnimation(ctx, tconn, d, rightAct.PackageName()); err != nil {
-		s.Fatal("Failed to wait for the right snapped window animation: ", err)
-	}
-
-	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to check whether tablet mode is active: ", err)
 	}
 
 	if tabletMode {
@@ -299,11 +210,10 @@ func SplitView(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to swap windows in split view: ", err)
 		}
 		leftAct, rightAct = rightAct, leftAct
-		if err := waitForWindowStates(ctx, tconn,
-			windowStateExpectations{
-				{leftAct, ash.WindowStateLeftSnapped, arc.WindowStatePrimarySnapped},
-				{rightAct, ash.WindowStateRightSnapped, arc.WindowStateSecondarySnapped},
-			}); err != nil {
+		if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, leftAct, arc.WindowStatePrimarySnapped); err != nil {
+			s.Fatal("Failed to wait until window state change: ", err)
+		}
+		if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateSecondarySnapped); err != nil {
 			s.Fatal("Failed to wait until window state change: ", err)
 		}
 	}
