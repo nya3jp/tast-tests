@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8cc369_58a897c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-18T10:18:16Z",
+      "side": 1,
+      "message": "Somehow the commit message seems to be rolled back to the old one (maybe due to your local git log).",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "452b474f2453cab4fa96452a651edba8fc3aefb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "215728b0_e6dc0843",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-18T10:18:16Z",
+      "side": 1,
+      "message": "Thanks a lot! LGTM with a minor comment about the commit message.",
+      "revId": "452b474f2453cab4fa96452a651edba8fc3aefb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
