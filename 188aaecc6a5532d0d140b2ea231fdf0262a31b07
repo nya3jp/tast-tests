@@ -16,6 +16,47 @@
       "message": "+jbettis, kmshelton for the domain review (please pull in any folks who can help with this)\n+hidehiko for the lacros tast review\n\ncc dhaddock, jonfan in case there is any comment on the cros grpc services.",
       "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabda177_01153c54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-18T18:29:32Z",
+      "side": 1,
+      "message": "cc dhaddock, jonfan in case there is any comment on the shared object which is new to me.",
+      "parentUuid": "26ee846e_78425aa1",
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e265d98_a219d5c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_verify_vk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-18T18:29:32Z",
+      "side": 1,
+      "message": "Q for hidehiko@:\nWhat do you think about having browser.Type somewhere both local and remote tests can reference it? Currently it\u0027s `chromiumos/tast/local/chrome/browser` that can\u0027t be directly imported to the remote tests. Any suggestion?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
