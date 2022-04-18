@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3cbbff_7795c1a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-04-18T07:01:50Z",
+      "side": 1,
+      "message": "Remove this code. The latest version has default options for lacros that we can use directly.",
+      "parentUuid": "9cfc0927_05e6fa3d",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 88
+      },
+      "revId": "e83d9d5686d342115bbddc459fac9823d5f5dfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "370f1e6e_8b0ce570",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-15T18:57:40Z",
       "side": 1,
       "message": "This no longer exist in R102 code. Can you check all the arguments and see which one is needed in R102?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 73
+      },
+      "revId": "e83d9d5686d342115bbddc459fac9823d5f5dfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06a7b50_a8f3d3ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-04-18T07:01:50Z",
+      "side": 1,
+      "message": "Thank you for your reminder.\nI find the latest version has default options for lacros that we can use directly.\nWe don\u0027t need to set arguments ourselves.",
+      "parentUuid": "370f1e6e_8b0ce570",
       "range": {
         "startLine": 112,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a85d8a2_fff7f35f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-04-18T07:01:50Z",
+      "side": 1,
+      "message": "Add the new cl which rename newChrome to newConferenceChrome and add comments.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3590183",
+      "parentUuid": "fb06f117_e550bf63",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 14
+      },
+      "revId": "e83d9d5686d342115bbddc459fac9823d5f5dfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "896a32dc_bc35efda",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-15T18:57:40Z",
       "side": 1,
       "message": "this logic is also changed in lacrosfixt setup.",
+      "range": {
+        "startLine": 163,
+        "startChar": 40,
+        "endLine": 163,
+        "endChar": 41
+      },
+      "revId": "e83d9d5686d342115bbddc459fac9823d5f5dfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c3d673_853d40e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-04-18T07:01:50Z",
+      "side": 1,
+      "message": "ditto. Remove from the latest version.",
+      "parentUuid": "896a32dc_bc35efda",
       "range": {
         "startLine": 163,
         "startChar": 40,
