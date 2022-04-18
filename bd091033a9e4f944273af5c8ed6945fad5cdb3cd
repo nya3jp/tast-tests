@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f8117f_27ea0208",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-18T21:13:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc94658a_d5a9c974",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "bd091033a9e4f944273af5c8ed6945fad5cdb3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ed506f2_3031de99",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-18T20:58:20Z",
       "side": 1,
       "message": "nit: `GPU`",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "bd091033a9e4f944273af5c8ed6945fad5cdb3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caedca4e_d9e8faf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-18T21:13:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ed506f2_3031de99",
       "range": {
         "startLine": 9,
         "startChar": 15,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "030967b9_35ae2629",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-18T21:13:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db86765_6cb3e682",
+      "range": {
+        "startLine": 327,
+        "startChar": 6,
+        "endLine": 327,
+        "endChar": 13
+      },
+      "revId": "bd091033a9e4f944273af5c8ed6945fad5cdb3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7299872_8545f0ec",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-04-18T20:58:20Z",
       "side": 1,
       "message": "nit: I think it would be clearer this way:\n  if tsk.counters !\u003d nil {\n    counters \u003d tsk.counters\n    megaPeriods \u003d tsk.megaPeriods\n    break\n  }",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 3
+      },
+      "revId": "bd091033a9e4f944273af5c8ed6945fad5cdb3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8c590d_d0712af3",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-18T21:13:45Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "c7299872_8545f0ec",
       "range": {
         "startLine": 358,
         "startChar": 0,
