@@ -1102,7 +1102,11 @@ func (cl *ClamshellActionHandler) MinimizeAllWindow() action.Action {
 				)(ctx); err != nil {
 					return errors.Wrap(err, "failed to minimize window")
 				}
-
+				if err := ash.WaitForCondition(ctx, cl.tconn, func(window *ash.Window) bool {
+					return w.ID == window.ID && window.State == ash.WindowStateMinimized && !window.IsAnimating
+				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+					return errors.Wrap(err, "failed to wait for window to become minimized")
+				}
 				minimized++
 				testing.ContextLogf(ctx, "Window: %q is minimized", w.Title)
 				break
