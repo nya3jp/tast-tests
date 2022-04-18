@@ -16,6 +16,24 @@
       "message": "Is this change intended? If so, it\u0027d be good to split changes or describe in this change\u0027s commit message.",
       "revId": "d949ce130328685b822b7d1806eecfc583204049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "602d458a_7dbeb507",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-18T09:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "199488f0_2220455d",
+      "revId": "d949ce130328685b822b7d1806eecfc583204049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
