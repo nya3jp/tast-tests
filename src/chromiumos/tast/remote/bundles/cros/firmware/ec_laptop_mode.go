@@ -54,7 +54,7 @@ func init() {
 			},
 		}, {
 			Name:              "detachable",
-			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable), hwdep.Keyboard()),
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable), hwdep.Keyboard(), hwdep.Touchpad()),
 			Val: &testArgs{
 				formFactor:    "detachable",
 				setLaptopMode: "basestate attach",
@@ -104,13 +104,25 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 	}
 
 	args := s.Param().(*testArgs)
+	if args.formFactor == "detachable" {
+		// When base detached, a detachable would likely be stuck in tablet mode.
+		// Check whether base is attached/detached for debugging purposes.
+		// The hardware dependencies should have eliminated detachables with
+		// detached base at start. But, just in case that some DUTs get left
+		// out, explicitly log base-pogo pin's gpio value.
+		possibleNames := []firmware.GpioName{firmware.ENBASE, firmware.ENPP3300POGO}
+		cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+		if _, err := cmd.FindBaseGpio(ctx, possibleNames); err != nil {
+			s.Logf("While looking for %q: %v", possibleNames, err)
+		}
+	}
 	if args.formFactor != "clamshell" {
 		s.Log("Checking initial state of laptop mode")
 		if inTabletMode, err := checkLaptopMode(ctx); err != nil {
 			s.Fatal("Unable to check DUT in laptop mode before powering off: ", err)
 		} else if inTabletMode {
 			s.Log("DUT is in tablet mode at start. Attempting to turn tablet mode off")
-			if err := checkAndSetLaptopMode(ctx, s, h, args.setLaptopMode); err != nil {
+			if err := checkAndSetLaptopMode(ctx, h, args.setLaptopMode); err != nil {
 				s.Fatalf("Failed to set laptop mode using command %s, and got: %v", args.setLaptopMode, err)
 			}
 		}
@@ -304,7 +316,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to check the power menu")
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 3 * time.Second, Interval: 10 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 3 * time.Second}); err != nil {
 			s.Fatal("Power menu was absent following a 1 second press on the power button: ", err)
 		}
 
@@ -385,6 +397,13 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		repeatedSteps(testCase)
 	}
 
+	defer func() {
+		// To prevent leaving DUT in G3 at the end of test, perform a cold reset.
+		s.Log("Cold resetting DUT at the end of test")
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			s.Fatal("Failed to cold reset DUT at the end of test: ", err)
+		}
+	}()
 	s.Log("Setting power off")
 	if err := ms.PowerOff(ctx); err != nil {
 		s.Fatal("Failed to power off DUT: ", err)
@@ -408,16 +427,10 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get powerstate: ", err)
 	}
 	s.Logf("Power state: %s", powerState)
-
-	// While DUT is powered off, the test would be pending until timeout.
-	// We are restoring DUT's power state to on here to finish the test.
-	if powerState == "G3" {
-		h.Servo.SetPowerState(ctx, servo.PowerStateOn)
-	}
 }
 
 // checkAndSetLaptopMode first checks if the passed EC command exists, and uses it to turn off tablet mode.
-func checkAndSetLaptopMode(ctx context.Context, s *testing.State, h *firmware.Helper, action string) error {
+func checkAndSetLaptopMode(ctx context.Context, h *firmware.Helper, action string) error {
 	// regular expressions.
 	var (
 		tabletmodeNotFound = `Command 'tabletmode' not found or ambiguous`
@@ -427,7 +440,7 @@ func checkAndSetLaptopMode(ctx context.Context, s *testing.State, h *firmware.He
 		checkLaptopMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound + `|` + basestateStatus + `)`
 	)
 	// Run EC command to turn on/off tablet mode.
-	s.Logf("Check command %q exists", action)
+	testing.ContextLogf(ctx, "Check command %q exists", action)
 	out, err := h.Servo.RunECCommandGetOutput(ctx, action, []string{checkLaptopMode})
 	if err != nil {
 		return errors.Wrapf(err, "failed to run command %q", action)
@@ -438,6 +451,6 @@ func checkAndSetLaptopMode(ctx context.Context, s *testing.State, h *firmware.He
 			return errors.Errorf("device does not support tablet mode: %q", match)
 		}
 	}
-	s.Logf("Current tabletmode status: %q", out[0][1])
+	testing.ContextLogf(ctx, "Current tabletmode status: %q", out[0][1])
 	return nil
 }
