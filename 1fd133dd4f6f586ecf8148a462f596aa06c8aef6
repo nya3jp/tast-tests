@@ -34,6 +34,29 @@
       "parentUuid": "072cd63d_629a73b0",
       "revId": "1fd133dd4f6f586ecf8148a462f596aa06c8aef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03fdcb7_8148fb9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_on_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-04-18T03:36:22Z",
+      "side": 1,
+      "message": "Looks like this test is measuring the mount time, not the pkcs11_init time...\nThe pkcs11_init time should be the time between the mount finished and pkcs11 init finished.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 37
+      },
+      "revId": "1fd133dd4f6f586ecf8148a462f596aa06c8aef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
