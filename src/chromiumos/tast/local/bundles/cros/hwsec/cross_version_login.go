@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
@@ -31,6 +32,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "tpm2_simulator"},
 		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "",
 			// These data are generated on betty but could be used on both betty and
