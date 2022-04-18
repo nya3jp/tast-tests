@@ -112,7 +112,7 @@ func addModulefoodAndroidFixtures() {
 			crosVisibility:             nearbycommon.VisibilitySelectedContacts,
 			androidDataUsage:           nearbysnippet.DataUsageOffline,
 			androidVisibility:          nearbysnippet.VisibilityAllContacts,
-			crosSelectAndroidAsContact: false,
+			crosSelectAndroidAsContact: true,
 		}),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -137,7 +137,7 @@ func addModulefoodAndroidFixtures() {
 			crosVisibility:             nearbycommon.VisibilitySelectedContacts,
 			androidDataUsage:           nearbysnippet.DataUsageOnline,
 			androidVisibility:          nearbysnippet.VisibilityAllContacts,
-			crosSelectAndroidAsContact: false,
+			crosSelectAndroidAsContact: true,
 		}),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
