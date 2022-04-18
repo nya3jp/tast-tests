@@ -22,6 +22,30 @@
       },
       "revId": "aea375aa557149fcafc4c0dd4762be3e13df2c60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa26fbbb_9dfd925e",
+        "filename": "src/chromiumos/tast/services/cros/camera/cca_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-18T10:26:11Z",
+      "side": 1,
+      "message": "If we are importing the \"chromiumos/tast/services/cros/ui\" in the script to use the functions from chrome_service, I see below message while running the tast linters.\n\nImport should be grouped into standard packages, third-party packages and chromiumos packages in this order separated by empty lines\nRefer the following documents for details:\n   https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#import",
+      "parentUuid": "09bddccb_bade79b4",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 76
+      },
+      "revId": "aea375aa557149fcafc4c0dd4762be3e13df2c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
