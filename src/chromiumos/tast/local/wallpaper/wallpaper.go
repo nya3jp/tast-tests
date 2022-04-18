@@ -20,17 +20,16 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
+	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
 // OpenWallpaperPicker returns an action to open the wallpaper app.
 func OpenWallpaperPicker(ui *uiauto.Context) uiauto.Action {
-	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
-	return ui.RetryUntil(uiauto.Combine("open wallpaper picker",
-		ui.RightClick(nodewith.HasClass("WallpaperView")),
-		ui.WithInterval(300*time.Millisecond).LeftClickUntil(setWallpaperMenu, ui.Gone(setWallpaperMenu))),
-		ui.Exists(nodewith.NameContaining("Wallpaper").Role(role.Window).First()))
+	return uiauto.Combine("open wallpaper picker from personalization hub",
+		personalization.OpenPersonalizationHub(ui),
+		personalization.OpenWallpaperSubpage(ui))
 }
 
 // SelectCollection returns an action to select the collection with the given collection name.
@@ -64,15 +63,15 @@ func Back(ui *uiauto.Context) uiauto.Action {
 		ui.LeftClick(back))
 }
 
-// MinimizeWallpaperPicker returns an action to minimize the wallpaper picker.
+// MinimizeWallpaperPicker returns an action to minimize the personalization hub.
 func MinimizeWallpaperPicker(ui *uiauto.Context) uiauto.Action {
-	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
+	windowNode := nodewith.NameContaining("Personalization").Role(role.Window).First()
 	minimizeBtn := nodewith.Name("Minimize").Role(role.Button).Ancestor(windowNode)
 	// Minimize window to get the view of wallpaper image.
 	return ui.LeftClickUntil(minimizeBtn, ui.Gone(minimizeBtn))
 }
 
-// CloseWallpaperPicker returns an action to close the wallpaper picker via the Ctrl+W shortcut.
+// CloseWallpaperPicker returns an action to close the personalization hub via the Ctrl+W shortcut.
 func CloseWallpaperPicker() uiauto.Action {
 	return func(ctx context.Context) error {
 		kb, err := input.VirtualKeyboard(ctx)

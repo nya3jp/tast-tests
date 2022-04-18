@@ -29,7 +29,7 @@ func init() {
 }
 
 func Change(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
+	cr, err := chrome.New(ctx, chrome.EnablePersonalizationHub(true))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
