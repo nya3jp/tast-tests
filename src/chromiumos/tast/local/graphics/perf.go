@@ -16,6 +16,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -322,22 +323,42 @@ func parseAndReportCounter(ctx context.Context, counters map[string]time.Duratio
 // MeasureGPUCounters measures GPU usage for a period of time t into p.
 func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) error {
 	testing.ContextLog(ctx, "Measuring GPU usage for ", t)
-	counters, megaPeriods, err := collectGPUPerformanceCounters(ctx, t)
-	if err != nil {
-		return errors.Wrap(err, "error collecting graphics performance counters")
+
+	type GPUTask struct {
+		name        string
+		counters    map[string]time.Duration
+		megaPeriods int64
+		err         error
+		f           func(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, megaPeriods int64, err error)
 	}
-	if counters == nil {
-		// Give a chance to AMD-specific counter readings.
-		counters, megaPeriods, err = collectAMDBusyCounter(ctx, t)
-		if err != nil {
-			return errors.Wrap(err, "error collecting AMD performance counter")
+
+	tasks := []GPUTask{
+		{name: "GPU", f: collectGPUPerformanceCounters},
+		{name: "AMD", f: collectAMDBusyCounter},
+		{name: "Mali", f: collectMaliPerformanceCounters},
+	}
+
+	var wg sync.WaitGroup
+	for i := range tasks {
+		wg.Add(1)
+		go func(tsk *GPUTask) {
+			defer wg.Done()
+			// Store returned values of measurement function into the tasks slice.
+			tsk.counters, tsk.megaPeriods, tsk.err = tsk.f(ctx, t)
+		}(&tasks[i])
+	}
+	wg.Wait()
+	var counters map[string]time.Duration
+	var megaPeriods int64
+	for _, tsk := range tasks {
+		if tsk.err != nil {
+			// Return at the first error.
+			return errors.Wrapf(tsk.err, "error collecting %s performance counters", tsk.name)
 		}
-	}
-	if counters == nil {
-		// Give a chance to Mali-specific counters.
-		counters, megaPeriods, err = collectMaliPerformanceCounters(ctx, t)
-		if err != nil {
-			return errors.Wrap(err, "error collecting Mali performance counter")
+		counters = tsk.counters
+		megaPeriods = tsk.megaPeriods
+		if tsk.counters != nil {
+			break
 		}
 	}
 	if counters == nil {
