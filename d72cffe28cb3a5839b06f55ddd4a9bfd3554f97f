@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d8a580_3c4a312f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-18T23:39:38Z",
+      "side": 1,
+      "message": "SG.",
+      "parentUuid": "364f6381_0a265beb",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "d72cffe28cb3a5839b06f55ddd4a9bfd3554f97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb455064_db11f434",
