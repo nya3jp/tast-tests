@@ -104,6 +104,30 @@
       },
       "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9b3968_74bc1b96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_verify_vk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-18T18:34:53Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "81918fd7_440bcd38",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
