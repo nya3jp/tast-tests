@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2a8e0c2_74715555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-18T07:31:05Z",
+      "side": 1,
+      "message": "No, these fixtures do not reboot the Chrome session. Surprisingly, these tests seem to work fine with these fixtures on my local DUT, but I need to verify this on some other boards.",
+      "parentUuid": "087eab27_698e0841",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "d72cffe28cb3a5839b06f55ddd4a9bfd3554f97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb455064_db11f434",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-15T08:34:58Z",
       "side": 1,
       "message": "cr, tconn, uc are mostly used. It would be nice to shorten this block as below:\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003dfixture.go\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n(fixture.FixtData fixtData) Data() (*chrome.Chrome, *chrome.TestConn, *useractions.UserContext){\n    return fixtData.Chrome, fixtData.TestAPIConn, fixtData.UserContext\n}\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003dfixture.go\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003dtest.go\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\ncr, tconn, uc :\u003d s.FixtValue().(fixture.FixtData).Data();\n\nMoreover, Chrome, TestAPIConn, UserContext can be renamed to private attributes.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "d72cffe28cb3a5839b06f55ddd4a9bfd3554f97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0253703_2252e1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-18T07:31:05Z",
+      "side": 1,
+      "message": "That\u0027s probably not a good idea. The major issue is that it is not easy to extend for future changes. For example, assume `Data()` that returned `cr` and `tconn` by `cr, tconn :\u003d ...Data()` before you introduced `uc`. Then when `uc` is introduced, you need to either: 1, add `uc` to `Data()`, then every test script will be affected from changing `cr, tconn :\u003d ...Data()` to `cr, tconn, _ :\u003d ...Data()` to keep backward-compatibility; or 2, introduce another method `DataWithUC()` that returns `cr, tconn, uc`, which adds more complexity. \n\nIMHO, I don\u0027t think it is worthy to create one getter function of multiple fields, just to simplify the code like this.",
+      "parentUuid": "eb455064_db11f434",
       "range": {
         "startLine": 66,
         "startChar": 1,
