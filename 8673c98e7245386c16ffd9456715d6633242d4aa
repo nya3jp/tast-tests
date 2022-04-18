@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db18552_8305909a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-18T22:51:28Z",
+      "side": 1,
+      "message": "nit: `Add`\nSee https://chris.beams.io/posts/git-commit/",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91648bd1_060b8263",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-18T22:51:28Z",
+      "side": 1,
+      "message": "nit: no `.`\nSee https://chris.beams.io/posts/git-commit/",
+      "range": {
+        "startLine": 7,
+        "startChar": 48,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02131081_fa7e5a86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-18T22:51:28Z",
+      "side": 1,
+      "message": "nit: `TEST\u003dtast run \u003cDUT\u003e cellular.AssertCellularData`",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0db2dfaf_0a58a2ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-18T22:51:28Z",
+      "side": 1,
+      "message": "Please put this closer to where it is used.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ddc3888_1ab9f815",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-18T22:51:28Z",
+      "side": 1,
+      "message": "nit: `time.Second * 10`",
+      "range": {
+        "startLine": 102,
+        "startChar": 20,
+        "endLine": 102,
+        "endChar": 44
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083fb9ee_18fe0da0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-18T22:51:28Z",
+      "side": 1,
+      "message": "return dutConn.CommandContext(ctx,\n\t\t\t\"mmcli\", \"-m\", \"any\", \"--set-primary-sim-slot\u003d2\",\n\t\t).Run(exec.DumpLogOnError)",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74ef861_94050532",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-18T22:51:28Z",
+      "side": 1,
+      "message": "return err",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 12
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
