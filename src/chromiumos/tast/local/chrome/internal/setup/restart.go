@@ -215,13 +215,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		args = append(args, "--disable-features=FilesSWA")
 	}
 
-	// TODO(b/197963464) Remove this override once Wallpaper SWA is fully launched.
-	if cfg.EnableWallpaperSWA() {
-		args = append(args, "--enable-features=WallpaperWebUI,WallpaperFullScreenPreview")
-	} else {
-		args = append(args, "--disable-features=WallpaperWebUI,WallpaperFullScreenPreview")
-	}
-
 	args = append(args, cfg.ExtraArgs()...)
 	var envVars []string
 	if cfg.BreakpadTestMode() {
