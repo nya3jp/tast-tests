@@ -24,7 +24,6 @@ func init() {
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"vaapi"},
-		Timeout:      10 * time.Minute,
 		// TODO(b/191801955): Reenable on grunt when it stops hanging forever.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt")),
 	})
