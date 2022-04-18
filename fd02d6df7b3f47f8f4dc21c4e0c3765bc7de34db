@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe83876a_1fbc0760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-18T03:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7af9df8d_fb80b404",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "fd02d6df7b3f47f8f4dc21c4e0c3765bc7de34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86ab4d8c_c08924d6",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-18T03:28:52Z",
       "side": 1,
       "message": "after pressing and releasing the key",
+      "range": {
+        "startLine": 63,
+        "startChar": 57,
+        "endLine": 63,
+        "endChar": 80
+      },
+      "revId": "fd02d6df7b3f47f8f4dc21c4e0c3765bc7de34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a15ece_092d0d53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-18T03:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86ab4d8c_c08924d6",
       "range": {
         "startLine": 63,
         "startChar": 57,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8133907b_777fb6bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-18T03:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e388344_71d1a9ee",
+      "range": {
+        "startLine": 75,
+        "startChar": 52,
+        "endLine": 75,
+        "endChar": 73
+      },
+      "revId": "fd02d6df7b3f47f8f4dc21c4e0c3765bc7de34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4bb64b3_1f565d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-18T03:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eb19c59_30363f52",
+      "range": {
+        "startLine": 75,
+        "startChar": 33,
+        "endLine": 75,
+        "endChar": 40
+      },
+      "revId": "fd02d6df7b3f47f8f4dc21c4e0c3765bc7de34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "956fa193_dbe80f8e",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-04-18T03:28:52Z",
       "side": 1,
       "message": "is in\n\nsame below",
+      "range": {
+        "startLine": 30,
+        "startChar": 44,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "fd02d6df7b3f47f8f4dc21c4e0c3765bc7de34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87364436_431b7fc0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-18T03:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956fa193_dbe80f8e",
       "range": {
         "startLine": 30,
         "startChar": 44,
