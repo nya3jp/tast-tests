@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e22751_152f55e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-18T20:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96893ef3_a58e635d",
+      "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c203a6c4_47f39ae5",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-15T22:01:16Z",
       "side": 1,
       "message": "is opening the files enough to get them to show up during tests, or will we have to modify them?",
+      "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37860ac5_ae8edbde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-18T20:00:06Z",
+      "side": 1,
+      "message": "It is enough to open them to make them show",
+      "parentUuid": "c203a6c4_47f39ae5",
       "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2214a046_edb35e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-18T20:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "441eb96b_548537c0",
+      "range": {
+        "startLine": 144,
+        "startChar": 15,
+        "endLine": 144,
+        "endChar": 25
+      },
+      "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2556cf59_ddd43f78",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-04-15T22:01:16Z",
       "side": 1,
       "message": "let\u0027s also try to launch the file.",
+      "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7912af28_8e80d677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-18T20:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2556cf59_ddd43f78",
       "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
