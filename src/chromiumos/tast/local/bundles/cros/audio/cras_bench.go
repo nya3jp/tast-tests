@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // crasBenchParameters contains all the data needed to run a single test iteration.
@@ -48,6 +49,14 @@ func init() {
 				Val: crasBenchParameters{
 					BenchmarkFilter: "BM_CrasMixerOps",
 					MetricFps:       false,
+				},
+			},
+			{
+				Name:              "alsa",
+				ExtraHardwareDeps: hwdep.D(hwdep.Speaker()),
+				Val: crasBenchParameters{
+					BenchmarkFilter: "BM_Alsa",
+					MetricFps:       true,
 				},
 			},
 		},
