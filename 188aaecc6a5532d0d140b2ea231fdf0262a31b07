@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61608e6d_f3cffbd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-18T21:55:01Z",
+      "side": 1,
+      "message": "(I\u0027m not an owner of either this test and the services called in it, so please chime in if anyone has anything to comment)\nAck. That could be an alternative. Btw, I\u0027ll leave it up to the author of CheckVirtualKeyboardService that is the one managing the chrome instance for the UtilsService to use. Sounds like ChromeService, CheckVirtualKeyboardService and UtilsService should be thought out together when needed in the future. Thanks for the suggestion!",
+      "parentUuid": "e0c45bb2_c5b6e63a",
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e265d98_a219d5c6",
