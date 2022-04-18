@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bec52e_bffa4169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-04-18T18:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b90c597e_66ccbb55",
+      "revId": "6ed1c11a09f6b0fcd545ab352514e0adabb57d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcdaa0e1_e96e4909",
@@ -82,6 +100,24 @@
       "writtenOn": "2022-04-13T11:21:35Z",
       "side": 1,
       "message": "nit: This is true for all tests, I\u0027d skip the comment.",
+      "revId": "6ed1c11a09f6b0fcd545ab352514e0adabb57d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a141fa8_afcc3a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-04-18T18:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcdaa0e1_e96e4909",
       "revId": "6ed1c11a09f6b0fcd545ab352514e0adabb57d93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +145,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8679382f_90e008db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-04-18T18:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b6a798f_0ae83c18",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "6ed1c11a09f6b0fcd545ab352514e0adabb57d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2819d0_6473c49e",
@@ -122,6 +182,30 @@
       "writtenOn": "2022-04-13T11:21:35Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "6ed1c11a09f6b0fcd545ab352514e0adabb57d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd68c099_7ce38a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-04-18T18:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2819d0_6473c49e",
       "range": {
         "startLine": 94,
         "startChar": 4,
