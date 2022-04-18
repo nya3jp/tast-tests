@@ -281,12 +281,7 @@ func (t *TabletActionHandler) NewChromeTab(ctx context.Context, br *browser.Brow
 		// There may be multiple browser windows under tablet mode, with one active and others invisible.
 		// The UI layout of different windows are the same and with the same coordinates. So tap the first
 		// found button will trigger the tap on the same button of the active window.
-		newTabFinder := nodewith.Name("New tab").Role(role.Button).ClassName("WebUINewTabButton").First()
-		lacrosNewTabFinder := nodewith.Name("New tab").Role(role.Button).ClassName("ToolbarButton").First()
-		if err := t.ui.Exists(lacrosNewTabFinder)(ctx); err == nil {
-			// Lacros-Chrome - use the lacros New Tab finder.
-			newTabFinder = lacrosNewTabFinder
-		}
+		newTabFinder := nodewith.Name("New tab").Role(role.Button).ClassName("ToolbarButton").First()
 		if err := t.tc.Tap(newTabFinder)(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to tap new tab button")
 		}
