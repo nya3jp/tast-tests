@@ -5,6 +5,7 @@
 package arc
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -160,7 +161,7 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
-	systemSdkVersion, err := checkSdkVersionsInPackagesXML(ctx, username)
+	systemSdkVersion, err := checkSdkVersionsInPackagesXML(ctx, a, username)
 	if err != nil {
 		s.Fatal("Failed to check SDK version in packages.xml: ", err)
 	}
@@ -230,7 +231,7 @@ func mountVaultWithArchivedHomeData(ctx context.Context, homeDataPath, username,
 
 // checkSdkVersionsInPackagesXML checks if system SDK version is higher than data SDK version and
 // returns system SDK version.
-func checkSdkVersionsInPackagesXML(ctx context.Context, username string) (int, error) {
+func checkSdkVersionsInPackagesXML(ctx context.Context, a *arc.ARC, username string) (int, error) {
 	const (
 		packagesXMLPath = "/data/system/packages.xml"
 	)
@@ -254,6 +255,16 @@ func checkSdkVersionsInPackagesXML(ctx context.Context, username string) (int, e
 	b, err := ioutil.ReadFile(filepath.Join(rootCryptDir, "android-data", packagesXMLPath))
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to open packages.xml")
+	}
+	if !bytes.HasPrefix(b, []byte("<?xml ")) {
+		// This file is a binary XML. Convert it to a text XML using abx2xml.
+		// Read from stdin ("-") and write to stdout ("-").
+		cmd := a.Command(ctx, "abx2xml", "-", "-")
+		cmd.Stdin = bytes.NewBuffer(b)
+		b, err = cmd.Output(testexec.DumpLogOnError)
+		if err != nil {
+			return 0, errors.Wrap(err, "abx2xml failed")
+		}
 	}
 
 	for _, l := range strings.Split(string(b), "\n") {
