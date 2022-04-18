@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b2ba0f_9946fd9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-04-18T13:53:50Z",
+      "side": 1,
+      "message": "Can this use chrome.LoginTimeout?",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 117
+      },
+      "revId": "4fdb973f508e9e36a5c089be62a4fd6c10407b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
