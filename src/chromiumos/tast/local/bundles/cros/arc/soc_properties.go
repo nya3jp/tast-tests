@@ -31,6 +31,7 @@ func init() {
 			"bob",
 			"kevin",
 			"scarlet",
+			"ultima",
 		)),
 
 		SoftwareDeps: []string{"arc", "chrome"},
