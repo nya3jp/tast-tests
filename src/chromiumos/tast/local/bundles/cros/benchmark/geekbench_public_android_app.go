@@ -19,6 +19,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/benchmark/setup"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -26,6 +29,7 @@ import (
 
 const (
 	benchMarkTesting = 30 * time.Minute
+	shortUITimeout   = 5 * time.Second
 	geekbenchPkgName = "com.primatelabs.geekbench5"
 	activityName     = "com.primatelabs.geekbench.HomeActivity"
 )
@@ -200,6 +204,13 @@ func openGeekbench(ctx context.Context, tconn *chrome.TestConn, device *androidu
 
 	if err = act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to start Geekbench")
+	}
+
+	ui := uiauto.New(tconn)
+	btnGotIt := nodewith.Name("Got it").Role(role.Button)
+	// Click the "Got it" button if it shows up.
+	if err := ui.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(btnGotIt), ui.LeftClick(btnGotIt))(ctx); err != nil {
+		return errors.Wrap(err, "failed to find button Got it and click it")
 	}
 
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
