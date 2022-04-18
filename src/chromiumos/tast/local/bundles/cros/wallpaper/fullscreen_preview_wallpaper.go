@@ -81,7 +81,7 @@ func FullscreenPreviewWallpaper(ctx context.Context, s *testing.State) {
 	}
 
 	if err := uiauto.Combine("preview and cancel local wallpaper",
-		wallpaper.Back(ui),
+		wallpaper.BackToWallpaper(ui),
 		previewLocalWallpaper(ui, cr),
 		wallpaper.CancelFullscreenPreview(ui),
 		// Should revert to online wallpaper.
@@ -93,7 +93,7 @@ func FullscreenPreviewWallpaper(ctx context.Context, s *testing.State) {
 	localWallpaperFilenameWithoutExtension := strings.TrimSuffix(constants.LocalWallpaperFilename, filepath.Ext(constants.LocalWallpaperFilename))
 
 	if err := uiauto.Combine("preview and confirm local wallpaper",
-		wallpaper.Back(ui),
+		wallpaper.BackToWallpaper(ui),
 		previewLocalWallpaper(ui, cr),
 		wallpaper.ConfirmFullscreenPreview(ui),
 		wallpaper.WaitForWallpaperWithName(ui, localWallpaperFilenameWithoutExtension),
@@ -102,7 +102,7 @@ func FullscreenPreviewWallpaper(ctx context.Context, s *testing.State) {
 	}
 
 	if err := uiauto.Combine("preview and cancel online wallpaper",
-		wallpaper.Back(ui),
+		wallpaper.BackToWallpaper(ui),
 		previewOnlineWallpaper(ui, cr),
 		wallpaper.CancelFullscreenPreview(ui),
 		// Should revert to local wallpaper.
