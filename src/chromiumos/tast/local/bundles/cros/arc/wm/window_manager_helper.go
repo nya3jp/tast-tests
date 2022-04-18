@@ -751,3 +751,41 @@ func CheckHorizontalTabletSplit(ctx context.Context, tconn *chrome.TestConn) err
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond})
 }
+
+// WaitForArcAndAshWindowState waits for an ARC app window to reach the given window state both on ARC-side and ash-side.
+func WaitForArcAndAshWindowState(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, act *arc.Activity, arcWindowState arc.WindowState) error {
+	ashWindowState, err := arcWindowState.ToAshWindowState()
+	if err != nil {
+		return errors.Wrap(err, "failed to convert arc window state to ash window state")
+	}
+
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for Android to be idle")
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ashWindowState); err != nil {
+		return errors.Wrapf(err, "failed to wait for ash-side window state: want %v", ashWindowState)
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		actualArcWindowState, err := act.GetWindowState(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not get ARC window state"))
+		}
+		if actualArcWindowState != arcWindowState {
+			return errors.Errorf("unexpected ARC window state: got %v; want %v", actualArcWindowState, arcWindowState)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "timed out waiting for ARC window state transition")
+	}
+
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	if err != nil {
+		return errors.Wrap(err, "failed to get window info")
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+		return errors.Wrap(err, "failed to wait for the window animation")
+	}
+
+	return nil
+}
