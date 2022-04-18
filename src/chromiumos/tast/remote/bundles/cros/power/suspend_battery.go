@@ -67,15 +67,23 @@ func init() {
 				"eve",
 
 				// dedede
+				"boten",
+				"metaknight",
 				"storo360",
 
 				// grunt
+				"aleena",
 				"careena",
 				"barla",
 				"liara",
 				"kasumi",
 				"kasumi360",
 				"treeya",
+
+				// hatch
+				"helios",
+				"jinlon",
+				"nightfury",
 
 				// jacuzzi
 				"damu",
@@ -89,12 +97,20 @@ func init() {
 				"kodama",
 
 				// octopus
+				"apel",
+				"grabbiter",
 				"laser14",
+				"orbatrix",
+
+				// scarlet
+				"dumo",
+				"druwl",
 
 				// trogdor
 				"lazor",
 
 				// volteer
+				"chronicler",
 				"eldrid",
 				"elemi",
 
@@ -102,6 +118,7 @@ func init() {
 				"dirinboz",
 				"ezkinil",
 				"vilboz",
+				"vilboz360",
 			)),
 		}, {
 			Name: "s3",
