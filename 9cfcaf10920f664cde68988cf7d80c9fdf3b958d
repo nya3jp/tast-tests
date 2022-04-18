@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba287609_0249a9f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-18T18:00:53Z",
+      "side": 1,
+      "message": "It seems like hwdep.FormFactor(hwdep.Detachable) should have been enough. Is that not detecting the form factor correctly?",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 57,
+        "endChar": 65
+      },
+      "revId": "9cfcaf10920f664cde68988cf7d80c9fdf3b958d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
