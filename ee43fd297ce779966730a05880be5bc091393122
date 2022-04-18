@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9405572e_34a3a23e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-18T04:46:39Z",
+      "side": 1,
+      "message": "There are other files referencing to /home/chronos/user/Downloads in platform/tast-tests/: https://source.corp.google.com/search?q\u003d%2Fhome%2Fchronos%2Fuser%2FDownloads%20file:%2Fplatform%2Ftast-tests%2F\u0026sq\u003dpackage:chromeos\nCould you mention that this CL is specific to ARC? Maybe you can just replace the tag \"tast-tests\" in the title with \"arc\", and \"tast-tests\" in the body with \"ARC Tast tests\" or something.\n\nI think we do not need to touch other files in this CL because 1) they are not owned by us, and 2) it does not seem super-trivial to replace the references with the \u003chash\u003e paths (although it should not be so difficult).",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "ee43fd297ce779966730a05880be5bc091393122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1df0df58_be07766e",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-04-18T04:28:46Z",
       "side": 1,
       "message": "Please take a look.",
+      "revId": "ee43fd297ce779966730a05880be5bc091393122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64e0902_5688fa6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-18T04:46:39Z",
+      "side": 1,
+      "message": "Thank you!",
       "revId": "ee43fd297ce779966730a05880be5bc091393122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
