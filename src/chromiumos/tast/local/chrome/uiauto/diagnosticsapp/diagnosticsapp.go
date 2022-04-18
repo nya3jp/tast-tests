@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
 )
 
 // KeyState defines keyboard tester's key state.
@@ -121,4 +123,17 @@ func Close(ctx context.Context, tconn *chrome.TestConn) error {
 // KeyNodeFinder creates a Finder with a name containing the key name and key state.
 func KeyNodeFinder(key string, state KeyState) *nodewith.Finder {
 	return nodewith.Name(fmt.Sprintf("%s %s", key, state)).Role(role.GenericContainer)
+}
+
+// CheckGlyphsbyRegion verifies several regional keys for a certain region.
+func CheckGlyphsbyRegion(ui *uiauto.Context, regionCode string) action.Action {
+	return func(ctx context.Context) error {
+		for _, keyName := range regionalKeys[regionCode] {
+			if err := ui.WaitUntilExists(nodewith.NameContaining(keyName).First())(ctx); err != nil {
+				return errors.Wrapf(err, "failed to find regional key %v in region code %v", keyName, regionCode)
+			}
+			testing.ContextLogf(ctx, "Region %v regional key %v found", regionCode, keyName)
+		}
+		return nil
+	}
 }
