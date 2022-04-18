@@ -50,6 +50,13 @@ func init() {
 					MetricFps:       false,
 				},
 			},
+			{
+				Name: "alsa",
+				Val: crasBenchParameters{
+					BenchmarkFilter: "BM_Alsa",
+					MetricFps:       true,
+				},
+			},
 		},
 	})
 }
