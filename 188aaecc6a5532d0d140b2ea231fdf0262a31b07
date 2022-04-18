@@ -57,6 +57,29 @@
       },
       "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9be13f9_5ac8822c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_verify_vk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-18T18:31:28Z",
+      "side": 1,
+      "message": "Do we need detachable-lacros and chromeslate-lacros also?",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
