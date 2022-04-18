@@ -82,3 +82,11 @@ func NavigateHome(ui *uiauto.Context) uiauto.Action {
 		ui.LeftClick(homeButton),
 		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()))
 }
+
+// NavigateBreadcrumb returns an action to navigate to a desired page using breadcrumb
+func NavigateBreadcrumb(breadcrumb string, ui *uiauto.Context) uiauto.Action {
+	breadcrumbButton := nodewith.Role(role.Button).Name(breadcrumb).HasClass("breadcrumb")
+	return uiauto.Combine(fmt.Sprintf("click breadcrumb button - %s", breadcrumb),
+		ui.WaitUntilExists(breadcrumbButton),
+		ui.LeftClick(breadcrumbButton))
+}
