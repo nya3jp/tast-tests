@@ -104,6 +104,30 @@
       },
       "revId": "c85ec9d0ea557cb1be86c9290c9177231c790c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d7285b2_024888d0",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-18T05:44:40Z",
+      "side": 1,
+      "message": "Working on another CL is fine, but could you prioritize it than this CL, then?\nMoving this out from bundles/ mean that anyone else can start using this, so it\u0027ll make the situation worse than now.\n\n# This is something like what I talked you that we\u0027d need to be careful as other teams start to depending on the shared libraries, which makes maintenance more difficult.",
+      "parentUuid": "8d7d7a6a_82657822",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 113
+      },
+      "revId": "c85ec9d0ea557cb1be86c9290c9177231c790c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
