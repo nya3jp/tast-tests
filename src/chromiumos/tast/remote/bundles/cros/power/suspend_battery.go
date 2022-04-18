@@ -32,8 +32,8 @@ const (
 	suspendDelaySeconds    = 3
 	chargeCheckInterval    = time.Minute
 	chargeCheckTimeout     = time.Hour
-	servoCommTimeout       = 5 * time.Second
-	servoCommInterval      = time.Second
+	batteryLevelTimeout    = 20 * time.Second // default servo comm timeout is 10s, battery check requires two
+	batteryLevelInterval   = time.Second
 
 	varCycles = "cycles"
 )
@@ -376,7 +376,7 @@ func getBatteryPercent(ctx context.Context, h *firmware.Helper) (int, error) {
 
 		return nil
 
-	}, &testing.PollOptions{Timeout: servoCommTimeout, Interval: servoCommInterval})
+	}, &testing.PollOptions{Timeout: batteryLevelTimeout, Interval: batteryLevelInterval})
 
 	if err != nil {
 		return -1, err
