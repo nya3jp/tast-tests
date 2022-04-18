@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af8a225_cc7995fa",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-18T05:02:06Z",
+      "side": 1,
+      "message": "optional: I\u0027d recommend to keep the first error.\n\nif sessErr \u003d\u003d nil {\n  sessErr \u003d err\n}",
+      "revId": "876d8893e268e11ec2e6e6df2b85218937613639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
