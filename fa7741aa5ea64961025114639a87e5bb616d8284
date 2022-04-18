@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46c578fd_270914f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-18T06:03:53Z",
+      "side": 1,
+      "message": "before entring detailed code review, I have a fundamental question.\n\nAlso, could you update commit message with more background, and add a link to BUG entry explaining the actual issues you\u0027re seeing?",
+      "revId": "fa7741aa5ea64961025114639a87e5bb616d8284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b322e2e_4c119f9f",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-18T06:03:53Z",
+      "side": 1,
+      "message": "can showLinkFull version be used always, instead?",
+      "revId": "fa7741aa5ea64961025114639a87e5bb616d8284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
