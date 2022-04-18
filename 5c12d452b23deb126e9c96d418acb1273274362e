@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0d9cbd_1f831aa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-04-18T09:37:19Z",
+      "side": 1,
+      "message": "Should we add any extra hw/sw dependency here? Since we need to run on board with\n- speaker\n- headphone\n(e.g. chromebox does not have speaker)\n\nand maybe we should separate them into 2 separated tests (by filter) spekaer and headphone with different hw/sw dependency",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "5c12d452b23deb126e9c96d418acb1273274362e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
