@@ -16,6 +16,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -322,22 +323,42 @@ func parseAndReportCounter(ctx context.Context, counters map[string]time.Duratio
 // MeasureGPUCounters measures GPU usage for a period of time t into p.
 func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) error {
 	testing.ContextLog(ctx, "Measuring GPU usage for ", t)
-	counters, megaPeriods, err := collectGPUPerformanceCounters(ctx, t)
-	if err != nil {
-		return errors.Wrap(err, "error collecting graphics performance counters")
+
+	type gpuTask struct {
+		name        string
+		counters    map[string]time.Duration
+		megaPeriods int64
+		err         error
+		run         func(ctx context.Context, interval time.Duration) (map[string]time.Duration, int64, error)
 	}
-	if counters == nil {
-		// Give a chance to AMD-specific counter readings.
-		counters, megaPeriods, err = collectAMDBusyCounter(ctx, t)
-		if err != nil {
-			return errors.Wrap(err, "error collecting AMD performance counter")
+
+	tasks := []gpuTask{
+		{name: "GPU", run: collectGPUPerformanceCounters},
+		{name: "AMD", run: collectAMDBusyCounter},
+		{name: "Mali", run: collectMaliPerformanceCounters},
+	}
+
+	var wg sync.WaitGroup
+	for i := range tasks {
+		wg.Add(1)
+		go func(task *gpuTask) {
+			defer wg.Done()
+			// Store returned values of measurement function into the tasks slice.
+			task.counters, task.megaPeriods, task.err = task.run(ctx, t)
+		}(&tasks[i])
+	}
+	wg.Wait()
+	var counters map[string]time.Duration
+	var megaPeriods int64
+	for _, task := range tasks {
+		if task.err != nil {
+			// Return at the first error.
+			return errors.Wrapf(task.err, "error collecting %s performance counters", task.name)
 		}
-	}
-	if counters == nil {
-		// Give a chance to Mali-specific counters.
-		counters, megaPeriods, err = collectMaliPerformanceCounters(ctx, t)
-		if err != nil {
-			return errors.Wrap(err, "error collecting Mali performance counter")
+		if task.counters != nil {
+			counters = task.counters
+			megaPeriods = task.megaPeriods
+			break
 		}
 	}
 	if counters == nil {
