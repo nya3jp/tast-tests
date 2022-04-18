@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2190c0db_a515285e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_vaapi_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-18T06:04:47Z",
+      "side": 1,
+      "message": "This package is not imported.",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "d49af93947df8848dc0846585db3b5e4f94b0d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
