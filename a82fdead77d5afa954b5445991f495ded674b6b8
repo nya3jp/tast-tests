@@ -33,6 +33,24 @@
       "message": "1. Please run tast unit tests: fast_build.sh -T\n   Then add following line to comment message.\n   TEST\u003dtast unit tests passed.\n   \n2. Also, please post the link that show the tests have been stable for 20 builds.\n   I looked at the test result for StandardizedKeyboardKeys.tablet_mode\n   https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dStandardizedKeyboardKeys.tablet_mode\u0026dep\u003d\\\n   I don\u0027t think it is qualified for critical because it was not run most of the time.\n   \n   https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra\n   \n   Do you have other evidence the tests have passed the criteria? Please post links in the commit log.\n   \n   \nThanks\n \n   \n",
       "revId": "a82fdead77d5afa954b5445991f495ded674b6b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28644922_6e211a8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-18T23:32:35Z",
+      "side": 1,
+      "message": "1. Done\n2. \n\nStandardizedMouseHover.vm (no known failures): https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dStandardizedMouseHover.vm\u0026dep\u003d\n\nStandardizedMouseLeftClick.vm (no known failures): https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dStandardizedMouseLeftClick.vm\u0026dep\u003d \n\nStandardizedKeyboardKeys.tablet_mode(no known failures): https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dStandardizedKeyboardKeys.tablet_mode\u0026dep\u003d\n\nStandardizedMouseScroll.vm(1 failure but due to SSH connection lost which is a tast framework failure): https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dStandardizedMouseScroll.vm\u0026dep\u003d\n\nAdditionally, when querying the stainless data, you can see that each of these tests has a \u003e\u003d99% passing rate:\n\nhttps://dashboards.corp.google.com/_6e189d5f_0ae1_4d9d_aac2_7ad6579a7fc6?fh\u003deJzFkc0KgzAQhN9lzzkUoVZ9g549ihR_Vg1NosSNbSx9dw0tSA9CLUKPkzDzzTLJA3gJERD2BAyKVhipFk22w1n1KLBwuswoizsszs6jch361rmaTJN7SkA2-p4jpAykEcTjlzEibXBO4yRcHDzZG1uPo6kP62CuOrMjl4FG2Q44W9zPUiMfG-7_vYaDXrytM4jbUKvrZw8eKj-wX89QtUdPBhvv_527dn9VnYTdOsN-NdIJ5Cf-9A..\u0026fb\u003dtest:in:StandardizedMouseHover.vm,tast.arc.StandardizedMouseLeftClick.vm,tast.arc.StandardizedKeyboardKeys.tablet_mode\u0026fb\u003dtest_2:in:tast.arc.StandardizedMouseHover.vm,tast.arc.StandardizedMouseLeftClick.vm,tast.arc.StandardizedKeyboardKeys.tablet_mode,tast.arc.StandardizedMouseScroll.vm#i9n68y",
+      "parentUuid": "a3549af4_18cf8d97",
+      "revId": "a82fdead77d5afa954b5445991f495ded674b6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
