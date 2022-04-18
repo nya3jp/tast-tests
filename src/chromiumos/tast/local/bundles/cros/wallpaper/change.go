@@ -29,7 +29,7 @@ func init() {
 }
 
 func Change(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.EnableWallpaperSWA(false))
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
