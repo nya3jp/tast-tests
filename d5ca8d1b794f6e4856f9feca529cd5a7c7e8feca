@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e78d439b_a685a4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-18T05:44:56Z",
+      "side": 1,
+      "message": "So sorry for adding comments one by one 😞, but it seems that `cr.NormalizedUser()` seems to be the one to use here: crrev.com/c/2748210.\n\nCould you use it here and elsewhere, and also fix arc.DownloadManager?\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/download_manager.go;l\u003d101;drc\u003d14caad2428faa63f150f507f52acb44287d5e7a2",
+      "range": {
+        "startLine": 50,
+        "startChar": 53,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "d5ca8d1b794f6e4856f9feca529cd5a7c7e8feca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
