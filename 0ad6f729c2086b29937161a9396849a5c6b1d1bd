@@ -141,6 +141,24 @@
       "message": "Thanks. Looking forward your result. (Removing attention set from myself. When you are ready for the next iteration, please feel free to add me back so i can be aware).",
       "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "682adfb1_57e0c7eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-18T07:39:14Z",
+      "side": 1,
+      "message": "All the package listing failures (with different error codes) on tastboard are due to a crash in chrome (due to SEGV).\n\nhttps://paste.googleplex.com/4924474123091968",
+      "parentUuid": "564a9cba_7a4394d9",
+      "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
