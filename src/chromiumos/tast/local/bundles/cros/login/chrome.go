@@ -27,12 +27,12 @@ func init() {
 		Params: []testing.Param{{
 			Val:       1,
 			ExtraAttr: []string{"group:mainline"},
-			Timeout:   chrome.LoginTimeout + 30*time.Second,
+			Timeout:   chrome.LoginTimeout + 45*time.Second,
 		}, {
 			Name:      "stress",
 			Val:       50,
 			ExtraAttr: []string{"group:stress"},
-			Timeout:   50*chrome.LoginTimeout + 30*time.Second,
+			Timeout:   50*chrome.LoginTimeout + 45*time.Second,
 		}, {
 			Name:    "forever",
 			Val:     1000000,
