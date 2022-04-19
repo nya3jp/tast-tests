@@ -40,3 +40,8 @@ func (r *Reporter) DoAllPathsExist(ctx context.Context, paths []string) (bool, e
 func (r *Reporter) BootID(ctx context.Context) (string, error) {
 	return r.CatFile(ctx, "/proc/sys/kernel/random/boot_id")
 }
+
+// BatteryStatus reports the device's battery status.
+func (r *Reporter) BatteryStatus(ctx context.Context) (string, error) {
+	return r.CatFile(ctx, "/sys/class/power_supply/BAT0/status")
+}
