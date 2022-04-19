@@ -16,6 +16,23 @@
       "message": "LGTM. Thank you for adding this, Oleh!",
       "revId": "5e45d691a68db64ae343cd308bc4c9f2034d9815",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e2b44a_498aca2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-19T16:04:41Z",
+      "side": 1,
+      "message": "Thanks all!",
+      "revId": "5e45d691a68db64ae343cd308bc4c9f2034d9815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
