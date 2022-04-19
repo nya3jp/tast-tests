@@ -28,20 +28,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Populates an object that matches the shape of NodeInfo.
-const (
-	NodeInfoJS = `{
-				checked: node.checked,
-				className: node.className,
-				htmlAttributes: node.htmlAttributes,
-				location: node.location,
-				name: node.name,
-				restriction: node.restriction,
-				role: node.role,
-				state: node.state,
-				value: node.value,
-			}`
-)
+// NodeInfoJSFunc is a string of JavaScript code defining a function getNodeInfo.
+// getNodeInfo returns an object in the shape of NodeInfo.
+const NodeInfoJSFunc = `var getNodeInfo = function(node) {
+	var info = {
+		checked: node.checked,
+		className: node.className,
+		htmlAttributes: node.htmlAttributes,
+		location: node.location,
+		name: node.name,
+		restriction: node.restriction,
+		role: node.role,
+		state: node.state,
+		value: node.value,
+	}
+	if (node.nextSibling) {
+		info.nextSibling = getNodeInfo(node.nextSibling);
+	}
+	return info;
+}`
 
 // Context is the context used when interacting with chrome.automation.
 // Each individual UI interaction is limited by the pollOpts such that it will return an error when the pollOpts timeout.
@@ -155,6 +160,7 @@ type NodeInfo struct {
 	HTMLAttributes map[string]string       `json:"htmlAttributes,omitempty"`
 	Location       coords.Rect             `json:"location,omitempty"`
 	Name           string                  `json:"name,omitempty"`
+	NextSibling    *NodeInfo               `json:"nextSibling,omitempty"`
 	Restriction    restriction.Restriction `json:"restriction,omitempty"`
 	Role           role.Role               `json:"role,omitempty"`
 	State          map[state.State]bool    `json:"state,omitempty"`
@@ -170,9 +176,10 @@ func (ac *Context) Info(ctx context.Context, finder *nodewith.Finder) (*NodeInfo
 	query := fmt.Sprintf(`
 		(async () => {
 			%s
-			return %s;
+			%s
+			return getNodeInfo(node);
 		})()
-	`, q, NodeInfoJS)
+	`, q, NodeInfoJSFunc)
 	var out NodeInfo
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		return ac.tconn.Eval(ctx, query, &out)
@@ -190,13 +197,14 @@ func (ac *Context) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]No
 	query := fmt.Sprintf(`
 		(async () => {
 			%s
+			%s
 			var result = [];
 			nodes.forEach(function(node) {
-				result.push(%s);
+				result.push(getNodeInfo(node));
 			});
 			return result
 		})()
-	`, q, NodeInfoJS)
+	`, q, NodeInfoJSFunc)
 	var out []NodeInfo
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		return ac.tconn.Eval(ctx, query, &out)
