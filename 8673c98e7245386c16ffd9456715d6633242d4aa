@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8123c873_cc8681e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-04-19T23:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab45b609_ce00ca43",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e74ef861_94050532",
@@ -368,6 +392,30 @@
       "side": 1,
       "message": "The idea is that there is no need for an `if` statement. `err` will be an appropriate return value regardless of whether it is `nil`. Line 145 will provide enough context around the error.",
       "parentUuid": "7f789b0c_73c2c1a6",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 12
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "743a343e_92a6ecde",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-04-19T23:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b434a2_28c6c48a",
       "range": {
         "startLine": 140,
         "startChar": 0,
