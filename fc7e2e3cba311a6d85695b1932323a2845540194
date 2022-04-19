@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe5cacb_5483a85b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T01:50:16Z",
+      "side": 1,
+      "message": "I\u0027ll read left part later.",
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaaf820e_9495c1e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T01:50:16Z",
+      "side": 1,
+      "message": "Please insert a black line between each struct definition.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69473484_0987e407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T01:50:16Z",
+      "side": 1,
+      "message": "This is optional in mojo interface. Do we guarantee that it\u0027ll be filled with value (at least empty instead of null) for all models?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
