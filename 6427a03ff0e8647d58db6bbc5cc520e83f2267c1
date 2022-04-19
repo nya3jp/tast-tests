@@ -22,6 +22,30 @@
       },
       "revId": "6427a03ff0e8647d58db6bbc5cc520e83f2267c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6ac717_ac36331d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-19T00:41:13Z",
+      "side": 1,
+      "message": "The original convention is ctconn for ash and ltconn for lacros, and tconn for browser (either). I agree we should document it in the Tast docs and rename all the usages. What about:\n\nlacros: ltconn\nash: ctconn (or maybe atconn? but it looks like at conn so it\u0027s confusing)\neither: btconn\n\nIf people are gonna claim it should be bTconn, then they better also claim that tconn should be tConn, and bTconn should be bTConn lol (since it\u0027s TestConn not Testconn)\n\nhidehiko@, wdyt?",
+      "parentUuid": "f125972c_5e72ef25",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 36
+      },
+      "revId": "6427a03ff0e8647d58db6bbc5cc520e83f2267c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
