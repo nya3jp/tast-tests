@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65907b6f_2ab6fc80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-19T21:28:53Z",
+      "side": 1,
+      "message": "That is still behind a flag, I think it would be easier to just sort it.",
+      "parentUuid": "1d169e33_ed12af28",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 12
+      },
+      "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6411a42_96992979",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "generally, you have to pass \"syncable\" flag when registering the pref - the pref that controls privacy notice does not appear to be syncable, so we should be good here",
       "parentUuid": "63b16b76_fc4f1cd1",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be73973c_25896de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-19T21:28:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a0885e5d_314b9f6e",
       "range": {
         "startLine": 171,
         "startChar": 4,
