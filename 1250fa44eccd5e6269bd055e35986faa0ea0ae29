@@ -334,6 +334,24 @@
       "parentUuid": "e193e490_f78d0f41",
       "revId": "1250fa44eccd5e6269bd055e35986faa0ea0ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93ff870c_695092c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-19T10:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52d13bcd_bafc3acb",
+      "revId": "1250fa44eccd5e6269bd055e35986faa0ea0ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "nit: add an empty Attr with a comment that this is not called automatically.",
       "revId": "585bf21759a5fdcb852457e216182f480869f13a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc72795f_da7c8d29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-19T10:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa224aa6_437ced2c",
+      "revId": "585bf21759a5fdcb852457e216182f480869f13a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
