@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a9c18fb_dadc28e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2022-04-19T03:32:48Z",
+      "side": 1,
+      "message": "Remove the space.",
+      "range": {
+        "startLine": 21,
+        "startChar": 67,
+        "endLine": 21,
+        "endChar": 68
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c84192a4_5e931758",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
         "patchSetId": 2
@@ -19,6 +42,121 @@
         "startChar": 40,
         "endLine": 23,
         "endChar": 53
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f43121ba_2cb913d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2022-04-19T03:32:48Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91e3dd1_08236a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2022-04-19T03:32:48Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71882f88_6a93de49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2022-04-19T03:32:48Z",
+      "side": 1,
+      "message": "Is this comment necessary?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a37f9d1c_5aae72d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2022-04-19T03:32:48Z",
+      "side": 1,
+      "message": "Is this comment necessary?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694df6ed_31b2884f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2022-04-19T03:32:48Z",
+      "side": 1,
+      "message": "Follow the comment format.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 25
       },
       "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
