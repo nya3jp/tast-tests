@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2022 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<!-- This is a fake app which pretends it as a YouTube app. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package ="com.google.android.youtube">
+    <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="29" />
+    <application>
+        <activity android:name=".MainActivity" android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

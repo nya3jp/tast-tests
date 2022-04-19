@@ -4,6 +4,7 @@
 
 group("all") {
   deps = [
+  "AssistantAndroidAppTest:AssistantAndroidAppTest",
     "ArcAccessibilityTest:ArcAccessibilityTest",
     "ArcAnimationPerformanceTest:ArcAnimationPerformanceTest",
     "ArcStandardizedInputTest:ArcStandardizedInputTest",
