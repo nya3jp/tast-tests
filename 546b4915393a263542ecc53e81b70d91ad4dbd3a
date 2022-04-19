@@ -16,6 +16,46 @@
       "message": "Hi everyone, PTAL when able. I\u0027m open to suggestions if you believe table-driven tests should be used instead of fully parameterized, but this approach does make the actual test code a bit cleaner.",
       "revId": "546b4915393a263542ecc53e81b70d91ad4dbd3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f04c8ac_a44f389f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-19T08:35:49Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "546b4915393a263542ecc53e81b70d91ad4dbd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3d5194_1bfa6bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-19T08:35:49Z",
+      "side": 1,
+      "message": "nit: tconn, /*windowIndex\u003d*/ 0",
+      "range": {
+        "startLine": 345,
+        "startChar": 54,
+        "endLine": 345,
+        "endChar": 79
+      },
+      "revId": "546b4915393a263542ecc53e81b70d91ad4dbd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
