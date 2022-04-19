@@ -181,6 +181,16 @@ func CheckARCToggleStatus(ctx context.Context, tconn *chrome.TestConn, brType br
 	return nil
 }
 
+// CheckARCToggleStatusAction returns an action that runs accountmanager.CheckARCToggleStatus.
+func CheckARCToggleStatusAction(tconn *chrome.TestConn, brType browser.Type, expectedVal bool) action.Action {
+	return func(ctx context.Context) error {
+		if err := CheckARCToggleStatus(ctx, tconn, brType, expectedVal); err != nil {
+			return errors.Wrap(err, "failed to check ARC toggle status")
+		}
+		return nil
+	}
+}
+
 // CheckOneGoogleBar opens OGB and checks that provided condition is true.
 func CheckOneGoogleBar(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser, condition uiauto.Action) error {
 	if err := OpenOneGoogleBar(ctx, tconn, br); err != nil {
