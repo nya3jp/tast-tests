@@ -177,6 +177,24 @@
       "parentUuid": "682adfb1_57e0c7eb",
       "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0340dbe2_5e8c56a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-19T22:19:33Z",
+      "side": 1,
+      "message": "Filled http://b/229745779 for crash in the Chrome extension code. I\u0027ll update this CL to do retries on Chrome crash in the test rather than inside this helper method since we\u0027d need to restart the entire flow.",
+      "parentUuid": "a593a1b9_5f3d5338",
+      "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
