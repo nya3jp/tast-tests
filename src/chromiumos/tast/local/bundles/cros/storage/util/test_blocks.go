@@ -284,8 +284,29 @@ func trimTestBlockImpl(ctx context.Context, s *testing.State, trimPath string, r
 		s.Fatal("Fail to verify untrimmed data")
 	}
 
-	if trimVerifyZero < trimVerifyCount {
+	expectTrimZero := false
+	expectTrimOne := false
+	if IsEMMC(trimPath) {
+		testing.ContextLog(ctx, "Device is eMMC, trim behavior not specified")
+	}
+	if IsNVME(trimPath) {
+		var dlfeat string
+		dlfeat, err = GetNVMEIdNSFeature(ctx, trimPath, "dlfeat")
+		if err != nil {
+			testing.ContextLog(ctx, "Expected values for trimmed data not reported")
+		} else if dlfeat == "1" {
+			expectTrimZero = true
+		} else if dlfeat == "2" {
+			expectTrimOne = true
+		} else {
+			testing.ContextLog(ctx, "Expected values for trimmed data not specified")
+		}
+	}
+
+	if expectTrimZero && trimVerifyZero < trimVerifyCount {
 		s.Fatal("Trimmed data is not zeroed")
+	} else if expectTrimOne && trimVerifyOne < trimVerifyCount {
+		s.Fatal("Trimmed data is not set to one")
 	}
 }
 
