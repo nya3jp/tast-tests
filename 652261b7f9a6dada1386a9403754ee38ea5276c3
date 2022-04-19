@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f06ecee_5fded1df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-19T21:15:38Z",
+      "side": 1,
+      "message": "Sorry I have never seen tast code before, and I am very much a n00b at go...",
+      "revId": "652261b7f9a6dada1386a9403754ee38ea5276c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac0bec09_70d36003",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-19T21:15:38Z",
+      "side": 1,
+      "message": "You\u0027ve basically made a state machine out of these right? maybe maybe it more explicit with an enum-like construct in golang??",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 267,
+        "endChar": 23
+      },
+      "revId": "652261b7f9a6dada1386a9403754ee38ea5276c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
