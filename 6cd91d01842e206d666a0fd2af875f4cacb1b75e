@@ -56,6 +56,30 @@
       },
       "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b320c7a_e7e370a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-19T22:49:46Z",
+      "side": 1,
+      "message": "Yes, they do have the timestamp Now.\nTHanks!",
+      "parentUuid": "5fc50d43_860ddb60",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 38
+      },
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
