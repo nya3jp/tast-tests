@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed3e93a_e1753f74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T03:41:50Z",
+      "side": 1,
+      "message": "why are we using different sort method? can we just sort alphabetically",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 12
+      },
+      "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6411a42_96992979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T03:41:50Z",
+      "side": 1,
+      "message": "is this syncable pref? can you make sure the test fixture logs in with sync disabled?",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5032d652_e49f5169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T03:41:50Z",
+      "side": 1,
+      "message": "can we verify there\u0027s a node with the contents of text file (and maybe make the text so something like (\"Test file %d\", index)",
+      "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be8232a_e2a783cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T03:41:50Z",
+      "side": 1,
+      "message": "why are we opening launcher here?",
+      "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
