@@ -132,7 +132,8 @@ func init() {
 				chrome.ExtraArgs("--disable-lacros-keep-alive"),
 				chrome.EnableFeatures("LacrosPrimary"),
 				chrome.KeepState(),
-				chrome.EnableFeatures("WebUITabStrip"), // Enable TabStrip UI for tablet.
+				chrome.EnableFeatures("WebUITabStrip"),                    // Enable TabStrip UI for tablet.
+				chrome.LacrosExtraArgs("--enable-features=WebUITabStrip"), // Enable TabStrip UI for lacros.
 			}, nil
 		}),
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
