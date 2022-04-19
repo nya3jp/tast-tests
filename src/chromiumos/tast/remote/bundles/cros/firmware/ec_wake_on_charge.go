@@ -147,7 +147,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				var opts []firmware.WaitConnectOption
 				opts = append(opts, firmware.FromHibernation)
 				if err := h.WaitConnect(waitConnectCtx, opts...); err != nil {
-					return &retriableErr{E: errors.New("failed to reconnect to DUT")}
+					return &retriableErr{E: errors.Wrap(err, "failed to reconnect to DUT")}
 				}
 				// Cr50 goes to sleep during hibernation, and when DUT wakes, CCD state might be locked.
 				// Open CCD after waking DUT and before talking to the EC.
@@ -236,6 +236,13 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// To prevent leaving DUT in an offline state, perform a cold reset at the end of test.
+	defer func() {
+		s.Log("Cold resetting DUT at the end of test")
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			s.Fatal("Failed to cold reset DUT at the end of test: ", err)
+		}
+	}()
 	args := s.Param().(*testArgsForECWakeOnCharge)
 	for _, tc := range []struct {
 		lidOpen string
@@ -382,10 +389,23 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		if err := setPowerSupply(ctx, true, deviceHasHibernated); err != nil {
 			if _, ok := err.(*retriableErr); ok {
 				s.Log("Retriable error: ", err.(*retriableErr))
-				retryCtx, cancelRetry := context.WithTimeout(ctx, 1*time.Minute)
-				defer cancelRetry()
-				if err := bootDUTIntoS0(retryCtx, h); err != nil {
-					s.Fatal("Unable to reconnect to DUT: ", err)
+				switch tc.lidOpen {
+				case "yes":
+					// Power button is another wake up pin to wake DUT from hibernation.
+					// If re-connecting charger fails in waking up DUT, try with a press
+					// on power.
+					retryCtx, cancelRetry := context.WithTimeout(ctx, 1*time.Minute)
+					defer cancelRetry()
+					if err := bootDUTIntoS0(retryCtx, h); err != nil {
+						s.Fatal("Unable to reconnect to DUT: ", err)
+					}
+				case "no":
+					// According to Stainless, when lid is closed, DUTs remain in G3
+					// after waking up from hibernation with charger reconnected.
+					s.Log("Checking if power state in G3 or S5")
+					if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3", "S5"); err != nil {
+						s.Fatal("Unable to get power state at G3 or S5: ", err)
+					}
 				}
 				// Delay for some time to ensure that DUT has fully settled down.
 				s.Log("Sleeping for 30 seconds")
@@ -464,8 +484,8 @@ func bootDUTIntoS0(ctx context.Context, h *firmware.Helper) error {
 	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3", "S5"); err != nil {
 		return errors.Wrap(err, "unable to get power state at G3 or S5. DUT disconnected due to other reasons")
 	}
-	testing.ContextLog(ctx, "Pressing power button to wake DUT into S0 from G3 or S5")
-	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+	testing.ContextLogf(ctx, "Pressing power button for %s to wake DUT into S0 from G3 or S5", h.Config.HoldPwrButtonPowerOn)
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOn)); err != nil {
 		return errors.Wrap(err, "failed to press power button")
 	}
 	testing.ContextLog(ctx, "Waiting for power state S0")
