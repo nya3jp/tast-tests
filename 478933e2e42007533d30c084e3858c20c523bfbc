@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0885e5d_314b9f6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T21:22:22Z",
+      "side": 1,
+      "message": "generally, you have to pass \"syncable\" flag when registering the pref - the pref that controls privacy notice does not appear to be syncable, so we should be good here",
+      "parentUuid": "63b16b76_fc4f1cd1",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5032d652_e49f5169",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
         "patchSetId": 2
@@ -185,6 +209,24 @@
       "side": 1,
       "message": "I thought that we would avoid one node search by just opening the launcher for the next iteration, but maybe it is more readable with the condition.",
       "parentUuid": "4be8232a_e2a783cb",
+      "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd06217e_9012c586",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T21:22:22Z",
+      "side": 1,
+      "message": "I\u0027d keep setup for the next iteration in the next iteration :)",
+      "parentUuid": "6c337757_00c4ebf3",
       "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
