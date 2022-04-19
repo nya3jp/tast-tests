@@ -51,6 +51,24 @@
       "parentUuid": "0701d728_b0a83149",
       "revId": "2f23a177e3d429da20b61e8598d771fc775fca1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d96b54c_60257543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-19T05:06:24Z",
+      "side": 1,
+      "message": "The code was already calling setup.PowerTest before this change, though. I don\u0027t see anything in this change that adds support for enabling the backlight - if I\u0027m missing it, please point me to the file/line in this CL that introduces the backlight control (and update the commit message to state why we\u0027re doing this cleanup in addition to adding new parameters to NewRecorder). Otherwise, can you split this cleanup into a seperate CL?",
+      "parentUuid": "4953e179_2eb2d85d",
+      "revId": "2f23a177e3d429da20b61e8598d771fc775fca1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
