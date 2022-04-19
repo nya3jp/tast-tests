@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -15,8 +16,12 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/touch"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -29,8 +34,6 @@ func init() {
 		Desc:         "Tests split view works properly with ARC apps",
 		Contacts:     []string{"toshikikikuchi@chromium.org", "amusbach@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		// TODO(b/188754062): Add support for mouse input and remove the internal display deps
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{
@@ -48,24 +51,28 @@ func init() {
 			},
 			{
 				Name:              "tablet_mode",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "arcBootedInTabletMode",
 				Val:               false,
 			},
 			{
 				Name:              "tablet_mode_vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "arcBootedInTabletMode",
 				Val:               false,
 			},
 			{
 				Name:              "tablet_home_launcher",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "arcBootedInTabletMode",
 				Val:               true,
 			},
 			{
 				Name:              "tablet_home_launcher_vm",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "arcBootedInTabletMode",
 				Val:               true,
@@ -87,6 +94,72 @@ func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a
 	return act, nil
 }
 
+func testResize(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, ui *uiauto.Context, pc pointer.Context, tabletMode bool, leftActPackageName, rightActPackageName string) error {
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the primary display info")
+	}
+
+	center := info.Bounds.CenterPoint()
+	target := coords.NewPoint(info.Bounds.Width/4, center.Y)
+	if tabletMode {
+		if err := pc.Drag(center, pc.DragTo(target, time.Second))(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag to resize")
+		}
+	} else {
+		// In clamshell mode, we need to use "multi-window resizer" to resize two windows simultaneously.
+		if err := uiauto.Combine(
+			"hover mouse where windows meet",
+			mouse.Move(tconn, center.Sub(coords.NewPoint(10, 10)), 0),
+			mouse.Move(tconn, center, time.Second),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move mouse to summon multi-window resizer")
+		}
+
+		resizerBounds, err := ui.Location(ctx, nodewith.Role("window").ClassName("MultiWindowResizeController"))
+		if err != nil {
+			return errors.Wrap(err, "failed to get the multi-window resizer location")
+		}
+
+		if err := pc.Drag(resizerBounds.CenterPoint(), pc.DragTo(target, time.Second))(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag to resize")
+		}
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		leftWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, leftActPackageName)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if leftWindow.BoundsInRoot.Left != 0 {
+			return errors.New("split resizing is not completed")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait until split resizing is completed")
+	}
+
+	widthMargin := 50
+
+	leftWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, leftActPackageName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get left window info")
+	}
+	if leftWindow.BoundsInRoot.Top != 0 || leftWindow.BoundsInRoot.Width >= info.Bounds.Width/2-widthMargin {
+		return errors.Wrapf(err, "failed to verify the resized left snapped window bounds (got %v)", leftWindow.BoundsInRoot)
+	}
+
+	rightWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, rightActPackageName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get right window info")
+	}
+	if rightWindow.BoundsInRoot.Top != 0 || rightWindow.BoundsInRoot.Right() != info.Bounds.Right() || rightWindow.BoundsInRoot.Width <= info.Bounds.Width/2+widthMargin {
+		return errors.Wrapf(err, "failed to verify the resized right snapped window bounds (got %v)", rightWindow.BoundsInRoot)
+	}
+
+	return nil
+}
+
 func SplitView(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*10)
@@ -104,6 +177,8 @@ func SplitView(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
+
+	ui := uiauto.New(tconn).WithTimeout(5 * time.Second)
 
 	// Ensure landscape orientation so this test can assume that windows snap on
 	// the left and right. Windows snap on the top and bottom in portrait-oriented
@@ -152,9 +227,14 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check whether tablet mode is active: ", err)
 	}
 
-	pc, err := pointer.NewTouch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to set up the touch context: ", err)
+	var pc pointer.Context
+	if tabletMode {
+		pc, err = pointer.NewTouch(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to set up the touch context: ", err)
+		}
+	} else {
+		pc = pointer.NewMouse(tconn)
 	}
 	defer pc.Close()
 
@@ -202,6 +282,11 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateSecondarySnapped); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
+	}
+
+	// Resize snapped windows.
+	if err := testResize(ctx, tconn, d, ui, pc, tabletMode, leftAct.PackageName(), rightAct.PackageName()); err != nil {
+		s.Fatal("Failed to resize the snapped windows: ", err)
 	}
 
 	if tabletMode {
