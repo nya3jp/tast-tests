@@ -98,6 +98,12 @@ func init() {
 			// Trogdor doesn't have enough hardware contexts to pass this test.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor")),
 		}, {
+			Name:              "vp9_hw_multi_vp9_3x3",
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP9", 3, "tulip2-320x180.vp9.webm"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
+			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
+			Fixture:           "chromeVideoWithFakeWebcam",
+		}, {
 			Name:              "vp8_hw_multi_vp9_3x3_global_vaapi_lock_disabled",
 			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 3, "tulip2-320x180.vp9.webm"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWDecodeVP8, caps.HWEncodeVP8, "thread_safe_libva_backend"},
@@ -107,6 +113,12 @@ func init() {
 			Name:              "vp8_hw_multi_vp9_4x4_global_vaapi_lock_disabled",
 			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 4, "tulip2-320x180.vp9.webm"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWDecodeVP8, caps.HWEncodeVP8, "thread_safe_libva_backend"},
+			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
+			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
+		}, {
+			Name:              "vp9_hw_multi_vp9_3x3_global_vaapi_lock_disabled",
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP9", 3, "tulip2-320x180.vp9.webm"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9, "thread_safe_libva_backend"},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
 		}},
