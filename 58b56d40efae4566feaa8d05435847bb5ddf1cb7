@@ -16,6 +16,24 @@
       "message": "If a user calls `NewTapeClient` are they expected to call `Deprovision` when they are done or is this for something else?",
       "revId": "58b56d40efae4566feaa8d05435847bb5ddf1cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "137e2f9f_de576bbe",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-19T16:18:49Z",
+      "side": 1,
+      "message": "No that\u0027s unrelated.\n\nDeprovision is just a feature I\u0027m currently working on which also required the changes I made for NewTapeClient.",
+      "parentUuid": "da7feb8c_c91423d8",
+      "revId": "58b56d40efae4566feaa8d05435847bb5ddf1cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
