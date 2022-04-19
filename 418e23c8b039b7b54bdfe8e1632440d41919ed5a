@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d5c4e1_127f3c05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-19T05:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a9c18fb_dadc28e9",
+      "range": {
+        "startLine": 21,
+        "startChar": 67,
+        "endLine": 21,
+        "endChar": 68
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c84192a4_5e931758",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-19T03:15:49Z",
       "side": 1,
       "message": "If we really want CQ to run this test, this should probably be \u0027critical\u0027.",
+      "range": {
+        "startLine": 23,
+        "startChar": 40,
+        "endLine": 23,
+        "endChar": 53
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbfa8f8b_a1eb766b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-19T05:09:39Z",
+      "side": 1,
+      "message": "Currently test display char through daily build, wait for tablet to be more stable and then change to critical",
+      "parentUuid": "c84192a4_5e931758",
       "range": {
         "startLine": 23,
         "startChar": 40,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c1233b_b30618c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-19T05:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f43121ba_2cb913d6",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a91e3dd1_08236a46",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-19T03:32:48Z",
       "side": 1,
       "message": "Remove.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65e766d_580ed328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-19T05:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a91e3dd1_08236a46",
       "range": {
         "startLine": 32,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9e9ac7_4181d722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-19T05:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71882f88_6a93de49",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a37f9d1c_5aae72d8",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a30beb2_3ade9d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-19T05:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a37f9d1c_5aae72d8",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "694df6ed_31b2884f",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-04-19T03:32:48Z",
       "side": 1,
       "message": "Follow the comment format.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "418e23c8b039b7b54bdfe8e1632440d41919ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5241b4a4_e230d47f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-19T05:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "694df6ed_31b2884f",
       "range": {
         "startLine": 56,
         "startChar": 1,
