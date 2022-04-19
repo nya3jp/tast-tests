@@ -41,6 +41,7 @@ const (
 	Watchdog              StringControl = "watchdog"
 	WatchdogAdd           StringControl = "watchdog_add"
 	WatchdogRemove        StringControl = "watchdog_remove"
+	PDCommunication       StringControl = "servo_pd_comm"
 
 	// DUTConnectionType was previously known as V4Type ("servo_v4_type")
 	DUTConnectionType StringControl = "root.dut_connection_type"
@@ -940,6 +941,15 @@ func (s *Servo) GetServoType(ctx context.Context) (string, error) {
 	s.hasC2D2 = hasC2D2
 	s.isDualV4 = isDualV4
 	return s.servoType, nil
+}
+
+// GetPDCommunication returns the current value from servo_v4_PD_comm.
+func (s *Servo) GetPDCommunication(ctx context.Context) (string, error) {
+	pdComm, err := s.GetString(ctx, PDCommunication)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get PD communication status")
+	}
+	return pdComm, nil
 }
 
 // RequireCCD verifies that the servo has a CCD connection, and switches to it for dual v4 servos.
