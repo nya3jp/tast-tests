@@ -22,6 +22,30 @@
       },
       "revId": "5e73939ad11ba4520258ca5cfef23dcd0195f051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10464447_2caa1800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-19T04:28:07Z",
+      "side": 1,
+      "message": "Here, we are checking whether tab is switched after clicking the install confirm button. If confirm button is not found which means another tab is opened, only then we are activating main tab.",
+      "parentUuid": "4dab935b_21725669",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 55
+      },
+      "revId": "5e73939ad11ba4520258ca5cfef23dcd0195f051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
