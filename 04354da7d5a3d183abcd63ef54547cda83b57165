@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9609d780_9551a7f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-04-19T17:16:33Z",
+      "side": 1,
+      "message": "yes but first we need to update https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md",
+      "parentUuid": "f9373a40_ce867216",
+      "revId": "04354da7d5a3d183abcd63ef54547cda83b57165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67b8af90_eec9ee4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
         "patchSetId": 1
