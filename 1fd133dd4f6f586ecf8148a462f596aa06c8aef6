@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "442dda3e_3bf6b4b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_on_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-04-19T07:50:48Z",
+      "side": 1,
+      "message": "Remove ownership checking code after discussed with others. Only check if the directory exist or not.",
+      "parentUuid": "b774a3bb_da12c70d",
+      "revId": "1fd133dd4f6f586ecf8148a462f596aa06c8aef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e03fdcb7_8148fb9a",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_on_login.go",
         "patchSetId": 3
@@ -49,6 +67,30 @@
       "writtenOn": "2022-04-18T03:36:22Z",
       "side": 1,
       "message": "Looks like this test is measuring the mount time, not the pkcs11_init time...\nThe pkcs11_init time should be the time between the mount finished and pkcs11 init finished.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 37
+      },
+      "revId": "1fd133dd4f6f586ecf8148a462f596aa06c8aef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264688b2_ad522acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_on_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-04-19T07:50:48Z",
+      "side": 1,
+      "message": "Update the code to check \u0027cryptohome --action\u003dpkcs11_is_user_token_ok\u0027 instead",
+      "parentUuid": "e03fdcb7_8148fb9a",
       "range": {
         "startLine": 72,
         "startChar": 0,
