@@ -239,7 +239,7 @@ func (t *TabletActionHandler) LaunchChrome(ctx context.Context) (time.Time, erro
 }
 
 func (t *TabletActionHandler) clickChromeOnHotseat(ctx context.Context) (time.Time, error) {
-	return LaunchAppFromHotseat(ctx, t.tconn, "Chrome", "Chromium")
+	return LaunchAppFromHotseat(ctx, t.tconn, "Chrome", "Chromium", "Lacros")
 }
 
 // showTabList shows the tab list by clicking a button on the Chrome tool bar.
@@ -263,15 +263,33 @@ func (t *TabletActionHandler) NewChromeTab(ctx context.Context, br *browser.Brow
 	defer cancel()
 
 	if newWindow {
-		return br.NewConn(ctx, url, browser.WithNewWindow())
-	}
-
-	// There may be multiple browser windows under tablet mode, with one active and others invisible.
-	// The UI layout of different windows are the same and with the same coordinates. So tap the first
-	// found button will trigger the tap on the same button of the active window.
-	newTabFinder := nodewith.Name("New tab").Role(role.Button).ClassName("WebUINewTabButton").First()
-	if err := t.tc.Tap(newTabFinder)(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to tap new tab button")
+		// The function is called with the assumption that all existing tabs are navigated to a certain URL.
+		// New tab (chrome://newtab/) should exist only for lacros-Chrome when it is initially launched.
+		// Find this initial lacros-Chrome new tab.
+		targets, err := br.FindTargets(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to find new tab targets")
+		}
+		if len(targets) > 1 {
+			return nil, errors.New("more than one new tabs already exist")
+		}
+		if len(targets) == 0 {
+			// No new tab. Create a new window and return.
+			return br.NewConn(ctx, url, browser.WithNewWindow())
+		}
+	} else {
+		// There may be multiple browser windows under tablet mode, with one active and others invisible.
+		// The UI layout of different windows are the same and with the same coordinates. So tap the first
+		// found button will trigger the tap on the same button of the active window.
+		newTabFinder := nodewith.Name("New tab").Role(role.Button).ClassName("WebUINewTabButton").First()
+		lacrosNewTabFinder := nodewith.Name("New tab").Role(role.Button).ClassName("ToolbarButton").First()
+		if err := t.ui.Exists(lacrosNewTabFinder)(ctx); err == nil {
+			// Lacros-Chrome - use the lacros New Tab finder.
+			newTabFinder = lacrosNewTabFinder
+		}
+		if err := t.tc.Tap(newTabFinder)(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to tap new tab button")
+		}
 	}
 
 	c, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
