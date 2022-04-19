@@ -87,6 +87,9 @@ var (
 
 	// DxVirtualKeyboardHeading export is used to find the virtual keyboard heading on the input page.
 	DxVirtualKeyboardHeading = nodewith.NameContaining("Tast virtual keyboard").Role(role.StaticText)
+
+	// DxDefocusingMsg export is used to find the pop up message when input page isn't focused.
+	DxDefocusingMsg = nodewith.Name("Keys aren't tested when you're using another window").Role(role.StaticText)
 )
 
 // DiagnosticsRootNode returns the root ui node of Diagnotsics app.
