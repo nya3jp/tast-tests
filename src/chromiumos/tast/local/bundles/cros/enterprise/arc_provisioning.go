@@ -253,6 +253,10 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 
 // launchAssetBrowserActivity starts the activity that displays the available apps.
 func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
+	if err := optin.ClosePlayStore(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close Play Store")
+	}
+
 	testing.ContextLog(ctx, "Starting Asset Browser activity")
 	act, err := arc.NewActivity(a, "com.android.vending", "com.android.vending.AssetBrowserActivity")
 	if err != nil {
