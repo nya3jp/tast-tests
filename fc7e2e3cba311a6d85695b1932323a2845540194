@@ -62,6 +62,213 @@
       },
       "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8f091c_45f7e5c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T08:14:18Z",
+      "side": 1,
+      "message": "The whole block is similar to \"SVM\", is it possible to create a function to reduce the code size?",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 50
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f43ef62_8e66fef9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T08:14:18Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 20
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd021f5c_6546d885",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T08:14:18Z",
+      "side": 1,
+      "message": "Please add more parentheses. Otherwise I have to look up the priority order for `\u0026` and `\u003c\u003c`.",
+      "range": {
+        "startLine": 142,
+        "startChar": 20,
+        "endLine": 142,
+        "endChar": 33
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57651c06_3bb2a1ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T08:14:18Z",
+      "side": 1,
+      "message": "Add a reference for this.",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 36
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b9fa64_5a42859e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T08:14:18Z",
+      "side": 1,
+      "message": "It can be nil according to [1], you may need to check if the device support this info or not first.\n\n[1]: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3552141/23/diagnostics/cros_health_tool/telem/telem.cc#648",
+      "range": {
+        "startLine": 222,
+        "startChar": 28,
+        "endLine": 222,
+        "endChar": 42
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55878792_9ecaa39f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T08:14:18Z",
+      "side": 1,
+      "message": "Maybe printing what we get in the log is better. Like:\n```\ngot %v, want: %v\n```",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 63
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab13bc1_8c359ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T08:14:18Z",
+      "side": 1,
+      "message": "Usually we use a `map` for mapping table. You can check other code for example.",
+      "range": {
+        "startLine": 255,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 2
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb4dfdc_365ddaef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T08:14:18Z",
+      "side": 1,
+      "message": "I think this can be combined with the following part. Like:\n\n```\nif smtControlContent, err :\u003d ioutil.ReadFile(...); err !\u003d nil {\n    return error\n} else {\n    // Use map mapTmp.\n    if mapped_value, ok :\u003d mapTmp(smtControlContent); ok !\u003d nil {\n        return error\n    } else {\n        // check virtualization.SmtControl.\n    }\n}\n```",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 22
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4213d9_4d367548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-19T08:14:18Z",
+      "side": 1,
+      "message": "Use `map` as well.",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 2
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
