@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d50ff53_e63bc17d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-19T13:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae2c2d2d_c6e7f531",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37ec2d71_afdf367b",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "272deda4_3e0c8afb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-19T13:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ec2d71_afdf367b",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6106201a_266be675",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-19T13:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9189b077_f1aca4af",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5034456_de259b1e",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-04-14T04:38:56Z",
       "side": 1,
       "message": "Invalid user ID should not be signed in",
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8449b1_55cae90e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-19T13:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5034456_de259b1e",
       "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e2afd3c_386affa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-19T13:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b356ae1_82fee1ad",
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6674068b_c8664995",
@@ -117,6 +225,24 @@
       "writtenOn": "2022-04-14T04:38:56Z",
       "side": 1,
       "message": "// Expected email to be added. If unspecified, use \"email\" field.",
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ebd4fd_e8b85eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-19T13:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6674068b_c8664995",
       "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac817867_ccde470e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-19T13:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bef66918_d6712c9c",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36799bd8_53997c27",
@@ -157,6 +307,24 @@
       "writtenOn": "2022-04-14T04:38:56Z",
       "side": 1,
       "message": "Shall we check if the addButton is active to tell apart the case that the email is invalid (so Add cannot be clicked; should return false, nil) from the case that there\u0027s something wrong adding the user (should return false, err).",
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38c113de_6d379654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-19T13:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36799bd8_53997c27",
       "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
