@@ -15,15 +15,18 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 type extendedDisplayCUJParam struct {
-	tier cuj.Tier
-	app  string
+	tier        cuj.Tier
+	app         string
+	browserType browser.Type
 }
 
 func init() {
@@ -34,7 +37,6 @@ func init() {
 		Contacts:     []string{"vlin@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
 			"ui.cuj_mode",               // Optional. Use "tablet" to force the tablet mode. Other values will be be taken as "clamshell".
 			"ui.chameleon_addr",         // Only needed when using chameleon board as extended display.
@@ -44,9 +46,21 @@ func init() {
 			{
 				Name:    "plus_video_youtube_web",
 				Timeout: 10 * time.Minute,
+				Fixture: "loggedInAndKeepState",
 				Val: extendedDisplayCUJParam{
 					tier: cuj.Basic, // Extended display plus tier test uses basic tier test of video CUJ.
 					app:  videocuj.YoutubeWeb,
+				},
+			}, {
+				Name:              "plus_lacros_video_youtube_web",
+				Timeout:           10 * time.Minute,
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				ExtraSoftwareDeps: []string{"lacros"},
+
+				Val: extendedDisplayCUJParam{
+					tier:        cuj.Basic, // Extended display plus tier test uses basic tier test of video CUJ.
+					app:         videocuj.YoutubeWeb,
+					browserType: browser.TypeLacros,
 				},
 			},
 		},
@@ -151,15 +165,20 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer uiHandler.Close()
 
+	param := s.Param().(extendedDisplayCUJParam)
+	var lacrosFixtValue lacrosfixt.FixtValue
+	if param.browserType == browser.TypeLacros {
+		lacrosFixtValue = s.FixtValue().(cuj.FixtureData).LacrosFixt
+	}
+
 	testResources := videocuj.TestResources{
 		Cr:        cr,
 		Tconn:     tconn,
+		LFixtVal:  lacrosFixtValue,
 		A:         a,
 		Kb:        kb,
 		UIHandler: uiHandler,
 	}
-
-	param := s.Param().(extendedDisplayCUJParam)
 	testParams := videocuj.TestParams{
 		Tier:            param.tier,
 		App:             param.app,
