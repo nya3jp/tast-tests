@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5681c2_6ed2e987",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-04-19T15:21:22Z",
+      "side": 1,
+      "message": "No problem, done.",
+      "parentUuid": "fde25fb6_ac677963",
+      "range": {
+        "startLine": 191,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 22
+      },
+      "revId": "3c7744b93bc16cf3890c5aab85f2af1d2847186f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7245d2f1_96c12ff5",
@@ -95,6 +119,30 @@
       "writtenOn": "2022-04-19T01:09:57Z",
       "side": 1,
       "message": "nit: Can you use .000000 instead? I prefer the number of digits to be stable.",
+      "range": {
+        "startLine": 193,
+        "startChar": 49,
+        "endLine": 193,
+        "endChar": 55
+      },
+      "revId": "3c7744b93bc16cf3890c5aab85f2af1d2847186f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de366b3d_dc5ee647",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-04-19T15:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7245d2f1_96c12ff5",
       "range": {
         "startLine": 193,
         "startChar": 49,
