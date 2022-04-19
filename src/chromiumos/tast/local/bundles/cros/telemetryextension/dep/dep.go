@@ -17,6 +17,9 @@ import (
 var targetModelList = []string{
 	// HP devices:
 
+	// "brya" board:
+	"redrix",
+
 	// "dedede" board:
 	"drawcia",
 	"drawlat",
@@ -74,6 +77,9 @@ var targetModelList = []string{
 // https://plx.corp.google.com/scripts2/script_61._62eca9_0000_2e5b_930b_30fd38187cc4
 var allAllowlistedOEMModels = []string{
 	// HP devices:
+
+	// "brya" board:
+	"redrix",
 
 	// "chell" board:
 	"chell",
