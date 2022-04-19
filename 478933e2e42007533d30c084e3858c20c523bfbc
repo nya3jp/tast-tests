@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d169e33_ed12af28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T21:15:36Z",
+      "side": 1,
+      "message": "yeah, I\u0027d do that.. or just dismiss it instead of sorting (Matt\u0027s been working on adding dismiss button to the toast).",
+      "parentUuid": "c62bb679_4e36d699",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 12
+      },
+      "revId": "478933e2e42007533d30c084e3858c20c523bfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6411a42_96992979",
