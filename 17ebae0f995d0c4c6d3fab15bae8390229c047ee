@@ -50,6 +50,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "360b6f35_433fd4da",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-19T04:42:26Z",
+      "side": 1,
+      "message": "Add a comment:\n// Runs the three performance counters in parallel; however, uses the first valid result based on the sequence here.",
+      "revId": "17ebae0f995d0c4c6d3fab15bae8390229c047ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2553aa7_369dead6",
         "filename": "src/chromiumos/tast/local/graphics/perf.go",
         "patchSetId": 2
@@ -126,6 +143,24 @@
       "side": 1,
       "message": "Because we have a \"break\" at line 361, the result from a successful task will always be kept.",
       "parentUuid": "1957008b_1b29a1d9",
+      "revId": "17ebae0f995d0c4c6d3fab15bae8390229c047ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9d5434_0ff83890",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-19T04:42:26Z",
+      "side": 1,
+      "message": "I see. The original logic is to try the performance counters in sequence and stops if one successfully collects the result. Let\u0027s have a comment in \"tasks\" definition above.",
+      "parentUuid": "7828327c_d1089351",
       "revId": "17ebae0f995d0c4c6d3fab15bae8390229c047ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
