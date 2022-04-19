@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f557864_0eb02ae2",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-19T02:27:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6862444_86ad7d6e",
+      "range": {
+        "startLine": 332,
+        "startChar": 3,
+        "endLine": 332,
+        "endChar": 14
+      },
+      "revId": "17ebae0f995d0c4c6d3fab15bae8390229c047ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2553aa7_369dead6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c575339_11e0a364",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-19T02:27:45Z",
+      "side": 1,
+      "message": "Not it\u0027s not reserved. I changed to use \"task\" because \"t\" is used in the MeasureGPUCounters function argument.",
+      "parentUuid": "c2553aa7_369dead6",
+      "range": {
+        "startLine": 344,
+        "startChar": 10,
+        "endLine": 344,
+        "endChar": 13
+      },
+      "revId": "17ebae0f995d0c4c6d3fab15bae8390229c047ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1957008b_1b29a1d9",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-04-19T02:15:27Z",
       "side": 1,
       "message": "Is this correct? The current task result will override the previous result.",
+      "revId": "17ebae0f995d0c4c6d3fab15bae8390229c047ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7828327c_d1089351",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-19T02:27:45Z",
+      "side": 1,
+      "message": "Because we have a \"break\" at line 361, the result from a successful task will always be kept.",
+      "parentUuid": "1957008b_1b29a1d9",
       "revId": "17ebae0f995d0c4c6d3fab15bae8390229c047ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
