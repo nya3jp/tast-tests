@@ -334,6 +334,11 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 				if err := moveGmailWindow(ctx, tconn, resources); err != nil {
 					return errors.Wrap(err, "failed to move Gmail window between main display and extended display")
 				}
+				if appName == YoutubeWeb {
+					if err := moveYTWebWindow(ctx, tconn, resources); err != nil {
+						return errors.Wrap(err, "failed to move YT Web window to internal display")
+					}
+				}
 			}
 
 			// Before recording the metrics, check if there is any tab crashed.
@@ -403,8 +408,17 @@ func getWindowID(ctx context.Context, tconn *chrome.TestConn) (int, error) {
 func moveGmailWindow(ctx context.Context, tconn *chrome.TestConn, testRes TestResources) error {
 	return uiauto.Combine("switch to gmail and move it between two displays",
 		testRes.UIHandler.SwitchWindow(),
-		cuj.SwitchWindowToDisplay(ctx, tconn, testRes.Kb, true),  // To external display.
-		cuj.SwitchWindowToDisplay(ctx, tconn, testRes.Kb, false), // To internal display.
+		cuj.SwitchWindowToDisplay(ctx, tconn, testRes.Kb, true),  // Move to external display.
+		uiauto.Sleep(2*time.Second),                              // Keep the window in external display for 2 second.
+		cuj.SwitchWindowToDisplay(ctx, tconn, testRes.Kb, false), // Move to internal display.
+	)(ctx)
+}
+
+// moveYTWebWindow switches Youtube Web to the internal display.
+func moveYTWebWindow(ctx context.Context, tconn *chrome.TestConn, testRes TestResources) error {
+	return uiauto.Combine("switch to YT Web and move it to internal display",
+		testRes.UIHandler.SwitchWindow(),
+		cuj.SwitchWindowToDisplay(ctx, tconn, testRes.Kb, false), // Move to internal display.
 	)(ctx)
 }
 

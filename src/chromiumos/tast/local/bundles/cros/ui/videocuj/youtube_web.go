@@ -113,6 +113,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	}
 
 	switchQuality := func(resolution string) error {
+		testing.ContextLog(ctx, "Switch audio quality to ", resolution)
 		settings := nodewith.Name("Settings").Role(role.PopUpButton).Ancestor(videoPlayer)
 		quality := nodewith.NameStartingWith("Quality").Role(role.MenuItem).Ancestor(videoPlayer)
 
@@ -133,7 +134,11 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 				return errors.Wrap(err, "failed to click 'Skip Ad' button")
 			}
 
-			if err := y.uiHdl.ClickUntil(settings, y.ui.WithTimeout(10*time.Second).WaitUntilExists(quality))(ctx); err != nil {
+			// Use DoDefault to avoid fauilure on lacros (see bug b/229003599).
+			if err := y.ui.DoDefault(settings)(ctx); err != nil {
+				return errors.Wrap(err, "failed to call DoDefault on settings button")
+			}
+			if err := y.ui.WithTimeout(10 * time.Second).WaitUntilExists(quality)(ctx); err != nil {
 				if y.extendedDisplay {
 					return errors.Wrap(err, "failed to show the setting panel and click it on extended display")
 				}
@@ -146,12 +151,13 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 			return errors.Wrap(err, "failed to click setting panel")
 		}
 
-		if err := y.uiHdl.Click(quality)(ctx); err != nil {
+		// Use DoDefault to avoid fauilure on lacros (see bug b/229003599).
+		if err := y.ui.DoDefault(quality)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click 'Quality'")
 		}
 
 		resolutionFinder := nodewith.NameStartingWith(resolution).Role(role.MenuItemRadio).Ancestor(videoPlayer)
-		if err := y.uiHdl.Click(resolutionFinder)(ctx); err != nil {
+		if err := y.ui.DoDefault(resolutionFinder)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to click %q", resolution)
 		}
 
@@ -199,7 +205,7 @@ func (y *YtWeb) EnterFullscreen(ctx context.Context) error {
 	clearNotificationPrompts(ctx, y.ui, y.uiHdl, prompts...)
 
 	fullscreenBtn := nodewith.Name("Full screen (f)").Role(role.Button)
-	if err := y.uiHdl.Click(fullscreenBtn)(ctx); err != nil {
+	if err := y.ui.DoDefault(fullscreenBtn)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click fullscreen button")
 	}
 
