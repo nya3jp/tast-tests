@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a27db22_378b6ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15012,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-04-19T08:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5c9dc55_3838ba60",
+      "range": {
+        "startLine": 15012,
+        "startChar": 15,
+        "endLine": 15012,
+        "endChar": 16
+      },
+      "revId": "60f659c094b90e749089fd049a0e164f0017feda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "827085c1_0fd69506",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1dd342_63627ae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15013,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-04-19T08:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "827085c1_0fd69506",
+      "range": {
+        "startLine": 15013,
+        "startChar": 3,
+        "endLine": 15013,
+        "endChar": 7
+      },
+      "revId": "60f659c094b90e749089fd049a0e164f0017feda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ef06895_d5b6cbf8",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-04-16T09:30:29Z",
       "side": 1,
       "message": "failure",
+      "range": {
+        "startLine": 15014,
+        "startChar": 16,
+        "endLine": 15014,
+        "endChar": 29
+      },
+      "revId": "60f659c094b90e749089fd049a0e164f0017feda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "834a5673_4cb03178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15014,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-04-19T08:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ef06895_d5b6cbf8",
       "range": {
         "startLine": 15014,
         "startChar": 16,
