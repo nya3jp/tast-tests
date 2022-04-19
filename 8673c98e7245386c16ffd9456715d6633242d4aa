@@ -285,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab45b609_ce00ca43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-19T16:56:22Z",
+      "side": 1,
+      "message": "The idea is that there is no need for any `if` statement, no need for any `err` variable, and no need to group parameters into a `[]string`. Just return the function call. Line 113 will provide enough context around the error.",
+      "parentUuid": "987f8d8a_1d3c77d7",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e74ef861_94050532",
         "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
         "patchSetId": 8
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "e74ef861_94050532",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 12
+      },
+      "revId": "8673c98e7245386c16ffd9456715d6633242d4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b434a2_28c6c48a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-19T16:56:22Z",
+      "side": 1,
+      "message": "The idea is that there is no need for an `if` statement. `err` will be an appropriate return value regardless of whether it is `nil`. Line 145 will provide enough context around the error.",
+      "parentUuid": "7f789b0c_73c2c1a6",
       "range": {
         "startLine": 140,
         "startChar": 0,
