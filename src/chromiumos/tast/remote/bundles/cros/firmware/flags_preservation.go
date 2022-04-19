@@ -81,7 +81,7 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 	defer func() {
 		s.Log("Restoring crossystem values to the original settings")
 		if err := setTargetCsVals(ctx, s, h, originalCrossystemMap); err != nil {
-			s.Fatal("Failed to restore crossystem values to the original settings")
+			s.Fatal("Failed to restore crossystem values to the original settings: ", err)
 		}
 	}()
 
@@ -142,9 +142,65 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to perform a tap on the power button: ", err)
 			}
 		case "powerCycleByRemovingBattery":
+			// Explicitly log servo type and dut connection type for debugging purposes.
+			s.Log("Logging servo type and dut connection type")
+			var validInfo = []string{"servoType", "dutConnectionType"}
+			for _, info := range validInfo {
+				if result, err := logInformation(ctx, h, info); err != nil {
+					s.Logf("Unable to find information on %s: %v", info, err)
+				} else {
+					s.Logf("%s: %s", info, result)
+				}
+			}
+
 			s.Log("Power-cycling DUT by disconnecting AC and removing battery")
 			if err := h.SetDUTPower(ctx, false); err != nil {
-				s.Fatal("Failed to remove charger")
+				s.Fatal("Failed to remove charger: ", err)
+			}
+
+			// When power is cut, there's a temporary drop in connection with the DUT.
+			// Wait for DUT to reconnect before proceeding to the next step.
+			waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 15*time.Second)
+			defer cancelWaitConnect()
+			if err := s.DUT().WaitConnect(waitConnectCtx); err != nil {
+				s.Fatal("Failed to reconnect to DUT: ", err)
+			}
+
+			// Log information on PD communication status after disconnecting charger.
+			if pdStatus, err := logInformation(ctx, h, "pdCommunication"); err != nil {
+				s.Log("Unable to check PD communication status: ", err)
+			} else {
+				s.Logf("PD communication status: %s", pdStatus)
+			}
+
+			// Check that charger was removed.
+			getChargerPollOptions := testing.PollOptions{
+				Timeout:  20 * time.Second,
+				Interval: 1 * time.Second,
+			}
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if attached, err := h.Servo.GetChargerAttached(ctx); err != nil {
+					return err
+				} else if attached {
+					return errors.New("charger is still attached - use Servo V4 Type-C or supply RPM vars")
+				}
+				return nil
+			}, &getChargerPollOptions); err != nil {
+				s.Logf("Check for charger failed: %v. Attempting to check DUT's battery status", err)
+				status, err := h.Reporter.BatteryStatus(ctx)
+				if err != nil {
+					s.Fatal("Check for battery status failed: ", err)
+				} else if status != "Discharging" {
+					s.Fatalf("Unexpected battery status after removing charger: %s", status)
+				}
+				s.Logf("Battery Status: %s", status)
+			}
+
+			// Between removing charger, and sending battery cutoff,
+			// waiting for some delay seems to help prevent servo exit.
+			s.Log("Sleeping for 30 seconds")
+			if err := testing.Sleep(ctx, 30*time.Second); err != nil {
+				s.Fatal("Failed to sleep: ", err)
 			}
 
 			if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
@@ -172,7 +228,7 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
 		defer cancelWaitConnect()
 
-		if h.WaitConnect(waitConnectCtx); err != nil {
+		if err := h.WaitConnect(waitConnectCtx); err != nil {
 			s.Fatal("Failed to reconnect to DUT: ", err)
 		}
 
@@ -268,4 +324,28 @@ func equal(ctx context.Context, mapBefore, mapAfter map[string]string) (bool, er
 		}
 	}
 	return true, nil
+}
+
+// logInformation logs some information for debugging purposes.
+func logInformation(ctx context.Context, h *firmware.Helper, information string) (string, error) {
+	var (
+		err           error
+		dutConnection servo.DUTConnTypeValue
+		result        string
+	)
+	switch information {
+	case "servoType":
+		result, err = h.Servo.GetServoType(ctx)
+	case "dutConnectionType":
+		dutConnection, err = h.Servo.GetDUTConnectionType(ctx)
+		result = string(dutConnection)
+	case "pdCommunication":
+		result, err = h.Servo.GetPDCommunication(ctx)
+	default:
+		result = "Unknown information"
+	}
+	if err != nil {
+		return "", err
+	}
+	return result, nil
 }
