@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca1d10a4_8c376698",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-19T06:22:21Z",
+      "side": 1,
+      "message": "Updated script as per repo changes.",
+      "revId": "0df7c17129366da8a97f1289697e08ce7f8b438c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
