@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+var modelsNotProducing = []string{"asuka", "bob", "banon", "caroline", "dru", "dumo", "edgar", "kefka", "kevin", "lars", "reks", "relm", "sentry", "terra", "ultima", "wizpig"}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HWIDDatabase,
@@ -23,8 +25,9 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      2 * time.Minute,
 		Fixture:      fixture.EnsureToolkit,
-		// Skip "nyan_kitty" due to slow reboot speed.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
+		HardwareDeps: hwdep.D(
+			hwdep.SkipOnModel(modelsNotProducing...),
+		),
 		SoftwareDeps: append([]string{"factory_flow"}, fixture.EnsureToolkitSoftwareDeps...),
 	})
 }
