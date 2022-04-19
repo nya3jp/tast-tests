@@ -9,8 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/optin"
-	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -51,16 +49,12 @@ func AndroidAndWeb(ctx context.Context, s *testing.State) {
 		WebYtTitle             = "Chrome - YouTube"
 		YtPackageName          = "com.google.android.youtube"
 		PlayStoreLaunchTimeout = time.Minute
+		ApkName                = "AssistantAndroidAppTest.apk"
 	)
 
 	predata := s.PreValue().(arc.PreData)
 	cr := predata.Chrome
 	a := predata.ARC
-
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed to create UIDevice: ", err)
-	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -91,16 +85,12 @@ func AndroidAndWeb(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close all windows: ", err)
 	}
 
-	if err := optin.LaunchAndWaitForPlayStore(ctx, tconn, cr, PlayStoreLaunchTimeout); err != nil {
-		s.Fatal("Failed to launch Play Store: ", err)
+	if err := a.Install(ctx, arc.APKPath(ApkName)); err != nil {
+		s.Fatal("Failed to install a test app: ", err)
 	}
 
-	if err := playstore.InstallApp(ctx, a, d, YtPackageName, &playstore.Options{}); err != nil {
-		s.Fatal("Failed to install YouTube app: ", err)
-	}
-
-	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
-		s.Fatal("Failed to close all windows: ", err)
+	if err := pollForArcPackageAvailable(ctx, s, tconn, YtPackageName); err != nil {
+		s.Fatal("Failed to wait arc package becomes available: ", err)
 	}
 
 	if _, err := assistant.SendTextQuery(ctx, tconn, QueryOpenYt); err != nil {
@@ -113,4 +103,22 @@ func AndroidAndWeb(ctx context.Context, s *testing.State) {
 	if err := ash.WaitForCondition(ctx, tconn, predYtApp, &testing.PollOptions{}); err != nil {
 		s.Fatal("Failed to confirm that YouTube app gets opened: ", err)
 	}
+}
+
+type arcPackageDict struct {
+	PackageName         string  `json:"packageName"`
+	PackageVersion      int64   `json:"packageVersion"`
+	LastBackupAndroidID string  `json:"lastBackupAndroidId"`
+	LastBackupTime      float64 `json:"lastBackupTime"`
+	ShouldSync          bool    `json:"shouldSync"`
+	System              bool    `json:"system"`
+	VpnProvider         bool    `json:"vpnProvider"`
+}
+
+func pollForArcPackageAvailable(ctx context.Context, s *testing.State, tconn *chrome.TestConn, packageName string) error {
+	f := func(ctx context.Context) error {
+		var packageDict arcPackageDict
+		return tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getArcPackage.bind(this,"`+packageName+`"))()`, &packageDict)
+	}
+	return testing.Poll(ctx, f, &testing.PollOptions{})
 }

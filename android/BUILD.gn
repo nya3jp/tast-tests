@@ -63,5 +63,6 @@ group("all") {
     "ArcWMTestApp:ArcWMTestApp_24_InMaximizedList",
     "ArcWMTestApp:ArcWMTestApp_24_InPhoneSizeList",
     "ArcWMTestApp:ArcWMTestApp_24_InTabletSizeList",
+    "AssistantAndroidAppTest:AssistantAndroidAppTest",
   ]
 }
