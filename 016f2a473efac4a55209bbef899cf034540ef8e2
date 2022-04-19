@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "814fb020_271ef99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T17:01:50Z",
+      "side": 1,
+      "message": "looking at the setup where you have\n\nif (test 1) {\n\n} else {\n\n}\n\ncreate keyboard\n\nif (test 1) {\n\n}\n\nwait for search results.\n\nit does feel like splitting this into two separate tests, and maybe moving parts of searchAndVerify to launcher.go would make it easier to follow flow of each of these tests",
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "140d7831_b32d0467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T17:01:50Z",
+      "side": 1,
+      "message": "isn\u0027t this more or less launcher.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 0
+      },
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405c2b40_16daae9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T17:01:50Z",
+      "side": 1,
+      "message": "can we use launcher.SearchAndLaunchWithQuery for this?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f769d3b_72e5ff8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T17:01:50Z",
+      "side": 1,
+      "message": "afaik, this should be done by test framework\n\nalso, can we move \"verify\" part out of the polling function to make it clearer what we have to wait for.\n(my understanding is that we have to poll because it takes some time for launcher search to start returning drive files, and we wouldn\u0027t necessarily expect for clicking the result to fail once the result shows up)",
+      "range": {
+        "startLine": 179,
+        "startChar": 7,
+        "endLine": 179,
+        "endChar": 22
+      },
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba65480_23b4488c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T17:01:50Z",
+      "side": 1,
+      "message": "we only need this wait for drive search, correct?",
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
