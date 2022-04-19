@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335ee1b4_201e483b",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-19T21:49:53Z",
+      "side": 1,
+      "message": "Ths is used in multiple places. I think it will be better to use const.",
+      "range": {
+        "startLine": 88,
+        "startChar": 40,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "31b5b28cfd928569c06491a72e5660a733dd790e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
