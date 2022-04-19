@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "375350af_df843d45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-04-19T10:57:18Z",
+      "side": 1,
+      "message": "Thanks for taking a look!",
+      "revId": "546b4915393a263542ecc53e81b70d91ad4dbd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac3d5194_1bfa6bb1",
@@ -48,6 +65,30 @@
       "writtenOn": "2022-04-19T08:35:49Z",
       "side": 1,
       "message": "nit: tconn, /*windowIndex\u003d*/ 0",
+      "range": {
+        "startLine": 345,
+        "startChar": 54,
+        "endLine": 345,
+        "endChar": 79
+      },
+      "revId": "546b4915393a263542ecc53e81b70d91ad4dbd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c326e2e1_3233a5c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-04-19T10:57:18Z",
+      "side": 1,
+      "message": "It\u0027s bugging me too, it\u0027s an issue with gofmt unfortunately. I\u0027ll create a bug for it if there isn\u0027t one already.",
+      "parentUuid": "ac3d5194_1bfa6bb1",
       "range": {
         "startLine": 345,
         "startChar": 54,
