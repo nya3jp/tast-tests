@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0155bdb8_05a6b185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-19T16:24:26Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "fbfe2f5669e80fb3a56809a581687abaec6f35c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fcdea91_3de81176",
+        "filename": "src/chromiumos/tast/common/tape/fixtures.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-19T16:24:26Z",
+      "side": 1,
+      "message": "Read the var tape.service_account1 here, check if the file exists and if not read use instead tape.service_account2.\nThen pass the service_account filename as additional parameter to NewTapeClient (see: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3593680/2/src/chromiumos/tast/common/tape/tape.go#91)",
+      "revId": "fbfe2f5669e80fb3a56809a581687abaec6f35c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5befb52c_2ddee781",
+        "filename": "src/chromiumos/tast/common/tape/fixtures.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-19T16:24:26Z",
+      "side": 1,
+      "message": "Add here the vars containing the location of the service account files:\t\t\nVars: []string{\"tape.service_account1\", \"tape.service_account2\"},",
+      "revId": "fbfe2f5669e80fb3a56809a581687abaec6f35c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
