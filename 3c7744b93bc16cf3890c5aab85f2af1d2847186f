@@ -16,6 +16,69 @@
       "message": "LGTM. I just want Shuhei to take a look first.",
       "revId": "3c7744b93bc16cf3890c5aab85f2af1d2847186f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8192682_90aea1e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-19T01:09:57Z",
+      "side": 1,
+      "message": "Some minor comments...",
+      "revId": "3c7744b93bc16cf3890c5aab85f2af1d2847186f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aac2943_edb5d163",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-19T01:09:57Z",
+      "side": 1,
+      "message": "Rather than making it conditional, how about always adding timestamps? It\u0027s more predictable behavior.",
+      "range": {
+        "startLine": 191,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 22
+      },
+      "revId": "3c7744b93bc16cf3890c5aab85f2af1d2847186f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7245d2f1_96c12ff5",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-19T01:09:57Z",
+      "side": 1,
+      "message": "nit: Can you use .000000 instead? I prefer the number of digits to be stable.",
+      "range": {
+        "startLine": 193,
+        "startChar": 49,
+        "endLine": 193,
+        "endChar": 55
+      },
+      "revId": "3c7744b93bc16cf3890c5aab85f2af1d2847186f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
