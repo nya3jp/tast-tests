@@ -109,9 +109,9 @@ func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn
 
 	var info uiauto.NodeInfo
 	script := fmt.Sprintf(`(() => {
-		const node = ChromeVoxState.instance.getCurrentRange().start.node;
-		return %s;
-	})()`, uiauto.NodeInfoJS)
+		%s
+		return getNodeInfo(ChromeVoxState.instance.getCurrentRange().start.node);
+	})()`, uiauto.NodeInfoJSFunc)
 
 	if err := cv.Eval(ctx, script, &info); err != nil {
 		return nil, errors.Wrap(err, "failed to retrieve the currently focused ChromeVox node")
