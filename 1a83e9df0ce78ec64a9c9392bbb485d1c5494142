@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b98f8d0b_29c0881c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_android_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-04-19T02:37:19Z",
+      "side": 1,
+      "message": "I uploaded a workaround at https://crrev.com/c/3592257. Once the CL lands, I will delete/archive this CL.",
+      "parentUuid": "fe67515f_6566f6bc",
+      "revId": "1a83e9df0ce78ec64a9c9392bbb485d1c5494142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec2c862f_f49d0a30",
