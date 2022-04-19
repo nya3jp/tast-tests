@@ -115,7 +115,6 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -136,6 +135,8 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 					s.Fatalf("Failed to close the window(%s): %v", activeWindow.Name, err)
 				}
 			}(ctx)
+
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.searchTerm)
 
 			ui := uiauto.New(tconn)
 			searchResultView := nodewith.ClassName("SearchResultPageView")
