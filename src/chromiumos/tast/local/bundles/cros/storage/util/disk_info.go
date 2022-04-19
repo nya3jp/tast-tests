@@ -110,6 +110,34 @@ func (d DiskInfo) SizeInGB() (int, error) {
 	return int(math.Round(float64(device.Size) / 1e9)), nil
 }
 
+// IsEMMC returns whether the device is an eMMC device.
+func IsEMMC(testPath string) bool {
+	if strings.Contains(testPath, "mmcblk") {
+		return true
+	}
+	return false
+}
+
+// IsNVME returns whether the device is an NVMe device.
+func IsNVME(testPath string) bool {
+	if strings.Contains(testPath, "nvme") {
+		return true
+	}
+	return false
+}
+
+// GetNVMEIdNSFeature returns the feature value for the NVMe disk using
+// nvme id-ns.
+func GetNVMEIdNSFeature(ctx context.Context, diskPath, feature string) (string, error) {
+	cmd := "nvme id-ns -n 1 " + diskPath + " | grep " + feature
+	out, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "0", errors.Wrap(err, "failed to read NVMe id-ns feature")
+	}
+	value := string(out)
+	return strings.TrimSpace(strings.Split(strings.TrimSpace(value), ":")[1]), nil
+}
+
 // PartitionSize return size (in bytes) of given disk partition.
 func PartitionSize(ctx context.Context, partition string) (uint64, error) {
 	devNames := strings.Split(partition, "/")
