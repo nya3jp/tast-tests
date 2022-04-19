@@ -7,6 +7,7 @@ package diagnosticsapp
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -16,6 +17,24 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+)
+
+// KeyState defines keyboard tester's key state.
+type KeyState string
+
+const (
+	// These strings come from IDS_KEYBOARD_DIAGRAM_ARIA_LABEL_NOT_PRESSED,
+	// IDS_KEYBOARD_DIAGRAM_ARIA_LABEL_PRESSED
+	// and IDS_KEYBOARD_DIAGRAM_ARIA_LABEL_TESTED in chromeos/chromeos_strings.grd.
+
+	// KeyNotPressed is used to verify the key is in the not pressed state.
+	KeyNotPressed KeyState = "key not pressed"
+
+	// KeyPressed is used to verify the key is in the pressed state.
+	KeyPressed KeyState = "key pressed"
+
+	// KeyTested is used to verify the key is in the tested state.
+	KeyTested KeyState = "key tested"
 )
 
 var (
@@ -58,6 +77,9 @@ var (
 	// DxInput export is used to find the Input navigation item.
 	DxInput = nodewith.Name("Input").Role(role.GenericContainer)
 
+	// DxInternalKeyboardTestButton used to find the internal keyboard test button on the input page.
+	DxInternalKeyboardTestButton = nodewith.Name("Test").Role(role.Button).First()
+
 	// DxKeyboardHeading export is used to find the keyboard heading on the input page.
 	DxKeyboardHeading = nodewith.Name("Keyboard").Role(role.StaticText)
 
@@ -94,4 +116,9 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, erro
 // Close closes the diagnostics app.
 func Close(ctx context.Context, tconn *chrome.TestConn) error {
 	return apps.Close(ctx, tconn, apps.Diagnostics.ID)
+}
+
+// KeyNodeFinder creates a Finder with a name containing the key name and key state.
+func KeyNodeFinder(key string, state KeyState) *nodewith.Finder {
+	return nodewith.Name(fmt.Sprintf("%s %s", key, state)).Role(role.GenericContainer)
 }
