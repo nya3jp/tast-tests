@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a3bd9c_92b1b1da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-19T01:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3aa1e47_b3a72d3f",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 75
+      },
+      "revId": "481ab1067e6fdf129bffdb6b94150d2da454ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e1a6b3e_28261a5c",
