@@ -1359,7 +1359,7 @@ func TestOpenclCtsParamsAreGenerated(t *testing.T) {
 	addTest("profiling", "copy_array_to_image", "", "pass", "", 1, nil)
 	addTest("profiling", "copy_image", "", "pass", "", 1, nil)
 	addTest("profiling", "copy_partial_array", "", "pass", "", 1, nil)
-	addTest("profiling", "execute", "", "fail", "b/227136136", 1, nil)
+	addTest("profiling", "execute", "", "fail", "b/227133185", 1, nil)
 	addTest("profiling", "read_array_char", "", "pass", "", 1, nil)
 	addTest("profiling", "read_array_float", "", "pass", "", 1, nil)
 	addTest("profiling", "read_array_int", "", "pass", "", 1, nil)
