@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ea8cbd_41cd3a62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-04-19T00:15:21Z",
+      "side": 1,
+      "message": "This b/ doesn\u0027t say why its not possible yet\n\n\ntime.sleep is like a guaranteed way to ensure this test will flake, and cause people headaches.\n\nCan you define (in words as a reply to this, not as code) what we are waiting on, and what will happen if we wait too little time?",
+      "range": {
+        "startLine": 101,
+        "startChar": 48,
+        "endLine": 101,
+        "endChar": 82
+      },
+      "revId": "5d4b75eb28a60a5793e96c2766a00e0ee3f805e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
