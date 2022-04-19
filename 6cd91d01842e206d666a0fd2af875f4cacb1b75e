@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5b1e7b_1bb1b949",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T23:15:20Z",
+      "side": 1,
+      "message": "let\u0027s file a bug for this",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d61eeb69_5c38fa44",
@@ -31,6 +48,46 @@
       "writtenOn": "2022-04-19T22:41:08Z",
       "side": 1,
       "message": "Hi Ana, thanks for making these tests! LGTM, with the caveat that I\u0027m not very familiar with Go / Tast.",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0fc8dd_20539d7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T23:15:20Z",
+      "side": 1,
+      "message": "maybe move to a helper method",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb714f46_f81dec0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T23:15:20Z",
+      "side": 1,
+      "message": "probably don\u0027t need else here given call to Fatal",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 7
+      },
       "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -78,6 +135,57 @@
         "endLine": 115,
         "endChar": 38
       },
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a828f5ff_e387c91c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T23:15:20Z",
+      "side": 1,
+      "message": "this deserves a comment (assuming you\u0027re opening files to make sure they get picked up as recently used files)",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8ca957_f6597f98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T23:15:20Z",
+      "side": 1,
+      "message": "I wonder if we should explicitly create chrome session (instead of using fixtures to log in) so we avoid reusing user sessions, and so we can verify the privacy notice gets shown.",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7330d410_2cc78437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-19T23:15:20Z",
+      "side": 1,
+      "message": "move this section into its own function",
       "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
