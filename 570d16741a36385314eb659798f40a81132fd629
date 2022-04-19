@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "84a2c134_9530995f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-19T21:46:11Z",
+      "side": 1,
+      "message": "This CL is tested by the example usage in that child CL.",
+      "parentUuid": "015e116d_9be1aaea",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 88
+      },
+      "revId": "570d16741a36385314eb659798f40a81132fd629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "27c58ff8_a7772a97",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
