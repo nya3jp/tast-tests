@@ -606,6 +606,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbefc87c_d6572b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-19T20:20:49Z",
+      "side": 1,
+      "message": "eliot@, I\u0027m following a bit the refactoring and changes you\u0027re doing recently e.g https://crrev.com/c/3585268. Very interesting! With those merged in, is the CloseResources fn suggestion you mentioned before here valid still? I could go ahead and submit a CL with that if that\u0027s okay by you.\n\nhidehiko@, I understood we\u0027re waiting for your opinion here. Can you PTAL?\n\nThank you very much, again!",
+      "parentUuid": "35f7fbee_079de487",
+      "range": {
+        "startLine": 191,
+        "startChar": 28,
+        "endLine": 192,
+        "endChar": 57
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e508caf_d2cdc5d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
         "patchSetId": 21
