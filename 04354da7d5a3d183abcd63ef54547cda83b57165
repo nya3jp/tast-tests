@@ -51,6 +51,24 @@
       "message": "Did you run this test locally? I expect this line will fail now with this change",
       "revId": "04354da7d5a3d183abcd63ef54547cda83b57165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b20a9ec6_c927c5e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-19T17:20:17Z",
+      "side": 1,
+      "message": "It\u0027s removed in https://crrev.com/c/3590909",
+      "parentUuid": "67b8af90_eec9ee4a",
+      "revId": "04354da7d5a3d183abcd63ef54547cda83b57165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
