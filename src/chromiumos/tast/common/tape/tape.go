@@ -46,14 +46,35 @@ type Account struct {
 // TokenString creates a json string from an oauth.Token generated for a serviceAccount
 // which can be used for http connections to the TAPE GCP.
 func TokenString(ctx context.Context, serviceAccountFile string) (string, error) {
+
+	ts, err := CreateTokenSource(ctx, serviceAccountFile)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create token")
+	}
+
+	token, err := ts.Token()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get Token")
+	}
+
+	tsJSON, err := json.Marshal(token)
+	if err != nil {
+		return "", errors.Wrap(err, "failed create JSON from token")
+	}
+
+	return string(tsJSON), nil
+}
+
+// CreateTokenSource an oauth2.TokenSource from a service account key file.
+func CreateTokenSource(ctx context.Context, serviceAccountFile string) (oauth2.TokenSource, error) {
 	data, err := ioutil.ReadFile(serviceAccountFile)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to read credential json")
+		return nil, errors.Wrap(err, "failed to read credential json")
 	}
 
 	config, err := google.JWTConfigFromJSON(data)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to generate JWT config")
+		return nil, errors.Wrap(err, "failed to generate JWT config")
 	}
 	customClaims := make(map[string]interface{})
 	customClaims["target_audience"] = tapeAudience
@@ -61,17 +82,19 @@ func TokenString(ctx context.Context, serviceAccountFile string) (string, error)
 	config.PrivateClaims = customClaims
 	config.UseIDToken = true
 
-	ts := config.TokenSource(ctx)
-	token, err := ts.Token()
+	return config.TokenSource(ctx), nil
+}
+
+// NewTapeClient creates a http client which provides the necessary token to connect to the TAPE
+// GCP from a service account key file. This function can only be called remotely as the DuT does
+// not have service account key files. All functions in the tape package should be passed this http client.
+func NewTapeClient(ctx context.Context, serviceAccountFile string) (*http.Client, error) {
+	ts, err := CreateTokenSource(ctx, serviceAccountFile)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to get Token")
-	}
-	tsJSON, err := json.Marshal(token)
-	if err != nil {
-		return "", errors.Wrap(err, "failed create JSON from token")
+		return nil, errors.Wrap(err, "failed to create token")
 	}
 
-	return string(tsJSON), nil
+	return oauth2.NewClient(ctx, ts), nil
 }
 
 // tapeTokensource is a Tokensource which returns an access token to authenticate against the TAPE GCP.
@@ -95,9 +118,10 @@ func (ts tapeTokensource) Token() (*oauth2.Token, error) {
 	return ts.AccessToken, nil
 }
 
-// NewTapeClient creates a http client which provides the necessary token to connect to the TAPE
-// GCP from a token string. All functions in the tape package should be passed this http client.
-func NewTapeClient(ctx context.Context) (*http.Client, error) {
+// NewTapeClientLocal creates a http client which provides the necessary token to connect to the TAPE
+// GCP from a token string. This function can be used locally on a DuT and requires an oauth token to
+// be present at TokenDir/TokenFile. All functions in the tape package should be passed this http client.
+func NewTapeClientLocal(ctx context.Context) (*http.Client, error) {
 	ts := tapeTokensource{AccessToken: nil}
 	token, err := ts.Token()
 	if err != nil {
@@ -241,6 +265,27 @@ func (acc *Account) SetPolicy(ctx context.Context, policySchema PolicySchema, cl
 	}
 	payload := bytes.NewReader(payloadBytes)
 	response, err := sendRequestWithTimeout(ctx, "POST", "setPolicy", 30*time.Second, payload, client)
+	if err != nil {
+		return errors.Wrap(err, "failed to make REST call")
+	}
+	defer response.Body.Close()
+	return nil
+}
+
+// DeprovisionRequest is a struct containing the necessary data to deprovision a device.
+type DeprovisionRequest struct {
+	DeviceID   string `json:"deviceid"`
+	CustomerID string `json:"customerid"`
+}
+
+// Deprovision calls TAPE to deprovision a device in DPanel.
+func Deprovision(ctx context.Context, request DeprovisionRequest, client *http.Client) error {
+	payloadBytes, err := json.Marshal(request)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal data")
+	}
+	payload := bytes.NewReader(payloadBytes)
+	response, err := sendRequestWithTimeout(ctx, "POST", "deprovision", 30*time.Second, payload, client)
 	if err != nil {
 		return errors.Wrap(err, "failed to make REST call")
 	}
