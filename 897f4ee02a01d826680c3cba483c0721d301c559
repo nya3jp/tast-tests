@@ -16,6 +16,23 @@
       "message": "PTAL. Thank you!",
       "revId": "897f4ee02a01d826680c3cba483c0721d301c559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b5b36e_d01cb4cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-19T23:49:59Z",
+      "side": 1,
+      "message": "Please run tast unit test: fast_build.sh -T\nThen, add this line to the commit log:\n\nTEST\u003dtast unit test passed.\n\nThanks.\n",
+      "revId": "897f4ee02a01d826680c3cba483c0721d301c559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
