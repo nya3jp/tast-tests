@@ -71,8 +71,8 @@ func FindPhysicalKeyboard(ctx context.Context) (bool, string, error) {
 	return false, "", nil
 }
 
-// VirtualKeyboard creates a virtual keyboard device and returns an EventWriter that injects events into it.
-func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
+// virtualKeyboard creates a virtual keyboard device and returns an EventWriter that injects events into it.
+func virtualKeyboard(ctx context.Context, busType uint16) (*KeyboardEventWriter, error) {
 	kw := &KeyboardEventWriter{}
 
 	// Include our PID in the device name to be extra careful in case an old bundle process hasn't exited.
@@ -81,11 +81,8 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	testing.ContextLogf(ctx, "Creating virtual keyboard device %q", name)
 
 	// These values are copied from the "AT Translated Set 2 keyboard" device on an amd64-generic VM.
-	// The one exception is the bus, which we hardcode as USB, as 0x11 (BUS_I8042) doesn't work on some hardware.
-	// See https://crrev.com/c/1407138 for more discussion.
-	const usbBus = 0x3 // BUS_USB from input.h
 	var err error
-	if kw.dev, kw.virt, err = createVirtual(name, devID{usbBus, 0x1, 0x1, 0xab41}, 0, 0x120013,
+	if kw.dev, kw.virt, err = createVirtual(name, devID{busType, 0x1, 0x1, 0xab41}, 0, 0x120013,
 		map[EventType]*big.Int{
 			EV_KEY: makeBigInt([]uint64{0x402000000, 0x3803078f800d001, 0xfeffffdfffefffff, 0xfffffffffffffffe}),
 			EV_MSC: big.NewInt(1 << MSC_SCAN),
@@ -110,6 +107,18 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	}
 
 	return kw, nil
+}
+
+// VirtualKeyboard creates a virtual keyboard device and returns an EventWriter that injects events into it.
+func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
+	// Hardcode as USB, as 0x11 (BUS_I8042) doesn't work on some hardware.
+	// See https://crrev.com/c/1407138 for more discussion.
+	return virtualKeyboard(ctx, 0x3) // BUS_USB = 0x3 as an usb keyboard from input.h
+}
+
+// VirtualKeyboardWithBusType creates a virtual keyboard device with specific bus type and returns an EventWriter that injects events into it.
+func VirtualKeyboardWithBusType(ctx context.Context, busType uint16) (*KeyboardEventWriter, error) {
+	return virtualKeyboard(ctx, busType)
 }
 
 // Close closes the keyboard device.
