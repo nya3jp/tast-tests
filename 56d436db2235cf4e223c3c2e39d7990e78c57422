@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1bd0bd4_5c3675a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-19T07:52:21Z",
+      "side": 1,
+      "message": "nit: add prefix \"tast-tests:\" or even better \"arc:\".",
+      "revId": "56d436db2235cf4e223c3c2e39d7990e78c57422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5c4f0d0b_3b87ee55",
@@ -48,6 +65,63 @@
       "writtenOn": "2022-04-11T04:48:58Z",
       "side": 1,
       "message": "tast-owners@: Please take a look!",
+      "revId": "56d436db2235cf4e223c3c2e39d7990e78c57422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53dc5d27_128fe2c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-19T07:52:21Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "56d436db2235cf4e223c3c2e39d7990e78c57422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc43e7d_595f3df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-19T07:52:21Z",
+      "side": 1,
+      "message": "nit: end sentence with dot.",
+      "revId": "56d436db2235cf4e223c3c2e39d7990e78c57422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7545957e_6be51a3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-19T07:52:21Z",
+      "side": 1,
+      "message": "👍 tap on the shoulder from whoever will be working with this code.",
+      "range": {
+        "startLine": 576,
+        "startChar": 70,
+        "endLine": 576,
+        "endChar": 89
+      },
       "revId": "56d436db2235cf4e223c3c2e39d7990e78c57422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
