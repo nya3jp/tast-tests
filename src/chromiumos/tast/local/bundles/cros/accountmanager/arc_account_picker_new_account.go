@@ -9,13 +9,9 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/action"
-	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/accountmanager"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -26,9 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ARCAccountPicker,
+		Func:         ARCAccountPickerNewAccount,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Verify ARC account picker behavior",
+		Desc:         "Verify new account addition from ARC account picker",
 		Contacts:     []string{"anastasiian@chromium.org", "team-dent@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
@@ -40,14 +36,21 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "loggedInToChromeAndArcWithLacros",
 		}},
-		VarDeps: []string{"accountmanager.username2", "accountmanager.password2"},
+		VarDeps: []string{
+			"accountmanager.username1",
+			"accountmanager.password1",
+			"accountmanager.username2",
+			"accountmanager.password2",
+		},
 		Timeout: 6 * time.Minute,
 	})
 }
 
-func ARCAccountPicker(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("accountmanager.username2")
-	password := s.RequiredVar("accountmanager.password2")
+func ARCAccountPickerNewAccount(ctx context.Context, s *testing.State) {
+	username1 := s.RequiredVar("accountmanager.username1")
+	password1 := s.RequiredVar("accountmanager.password1")
+	username2 := s.RequiredVar("accountmanager.username2")
+	password2 := s.RequiredVar("accountmanager.password2")
 
 	// Reserve one minute for various cleanup.
 	cleanupCtx := ctx
@@ -82,7 +85,6 @@ func ARCAccountPicker(ctx context.Context, s *testing.State) {
 	defer d.Close(ctx)
 
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
-	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
 	addAccountDialog := accountmanager.AddAccountDialog()
 	arcToggle := nodewith.NameStartingWith("Use this account with Android apps").Role(role.ToggleButton).Ancestor(addAccountDialog)
 
@@ -97,40 +99,42 @@ func ARCAccountPicker(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Adding a secondary Account")
-	if err := accountmanager.AddAccount(ctx, tconn, username, password); err != nil {
+	if err := accountmanager.AddAccount(ctx, tconn, username1, password1); err != nil {
 		s.Fatal("Failed to add a secondary Account: ", err)
 	}
 
+	moreActionsButton := nodewith.Name("More actions, " + username1).Role(role.Button)
 	if err := uiauto.Combine("confirm account addition",
 		// Make sure that the settings page is focused again.
 		ui.WaitUntilExists(addAccountButton),
 		// Find "More actions, <email>" button to make sure that account was added.
 		ui.WaitUntilExists(moreActionsButton),
 		// Check that account is not present in ARC.
-		accountmanager.CheckIsAccountPresentInARCAction(tconn, d, username, false),
+		accountmanager.CheckIsAccountPresentInARCAction(tconn, d, username1, false),
 	)(ctx); err != nil {
 		s.Fatal("Failed to confirm account addition: ", err)
 	}
 
-	accountPickerItem := nodewith.NameContaining(username).Role(role.Button).Focusable().Ancestor(addAccountDialog)
+	if err := arc.ClickAddAccountInSettings(ctx, d, tconn); err != nil {
+		s.Fatal("Failed to open Add account dialog from ARC")
+	}
+
+	addAccountItem := nodewith.Name("Add Google Account").Role(role.Button).Focusable().Ancestor(addAccountDialog)
 	if err := uiauto.Combine("add account to ARC from account picker",
-		openAddAccountDialogFromARCAction(d, tconn),
-		ui.WaitUntilExists(accountPickerItem),
-		// Click on account to add it to ARC.
-		ui.LeftClick(accountPickerItem),
-		// Check that account is present in ARC.
-		accountmanager.CheckIsAccountPresentInARCAction(tconn, d, username, true),
+		ui.WaitUntilExists(addAccountItem),
+		ui.LeftClick(addAccountItem),
 	)(ctx); err != nil {
 		s.Fatal("Failed to add account to ARC from account picker: ", err)
 	}
-}
 
-// openAddAccountDialogFromARCAction returns an action that clicks 'Add account' button in ARC settings.
-func openAddAccountDialogFromARCAction(d *androidui.Device, tconn *chrome.TestConn) action.Action {
-	return func(ctx context.Context) error {
-		if err := arc.ClickAddAccountInSettings(ctx, d, tconn); err != nil {
-			return errors.Wrap(err, "failed to open Add account dialog from ARC")
-		}
-		return nil
+	s.Log("Adding a secondary Account")
+	if err := accountmanager.AddAccount(ctx, tconn, username2, password2); err != nil {
+		s.Fatal("Failed to add a secondary Account: ", err)
+	}
+
+	// Check that account is present in ARC.
+	s.Log("Verifying that account is present in ARC")
+	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, d, username2, true /*expectedPresentInArc*/)(ctx); err != nil {
+		s.Fatal("Failed to check that account is present in ARC: ", err)
 	}
 }
