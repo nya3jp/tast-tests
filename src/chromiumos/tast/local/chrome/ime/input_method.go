@@ -135,11 +135,47 @@ var JapaneseWithUSKeyboard = InputMethod{
 	VoiceLanguage:       LanguageJa,
 }
 
+// ChineseArray represents the input method of Chinese Array.
+var ChineseArray = InputMethod{
+	Name:                "Chinese Array",
+	ID:                  "zh-hant-t-i0-array-1992",
+	ShortLabel:          "行列",
+	HandwritingLanguage: LanguageZhHant,
+	VoiceLanguage:       LanguageZhHant,
+}
+
+// ChineseDayi represents the input method of Chinese Dayi.
+var ChineseDayi = InputMethod{
+	Name:                "Chinese Dayi",
+	ID:                  "zh-hant-t-i0-dayi-1988",
+	ShortLabel:          "大易",
+	HandwritingLanguage: LanguageZhHant,
+	VoiceLanguage:       LanguageZhHant,
+}
+
 // ChinesePinyin represents the input method of Chinese Pinyin.
 var ChinesePinyin = InputMethod{
 	Name:                "Chinese Pinyin",
 	ID:                  "zh-t-i0-pinyin",
 	ShortLabel:          "拼",
+	HandwritingLanguage: LanguageZhHans,
+	VoiceLanguage:       LanguageZhHans,
+}
+
+// ChineseQuick represents the input method of Chinese Quick.
+var ChineseQuick = InputMethod{
+	Name:                "Chinese Quick",
+	ID:                  "zh-hant-t-i0-cangjie-1987-x-m0-simplified",
+	ShortLabel:          "速",
+	HandwritingLanguage: LanguageZhHant,
+	VoiceLanguage:       LanguageZhHant,
+}
+
+// ChineseWubi represents the input method of Chinese Wubi.
+var ChineseWubi = InputMethod{
+	Name:                "Chinese Wubi",
+	ID:                  "zh-t-i0-wubi-1986",
+	ShortLabel:          "五",
 	HandwritingLanguage: LanguageZhHans,
 	VoiceLanguage:       LanguageZhHans,
 }
