@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1119422_2072950c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-20T05:05:43Z",
+      "side": 1,
+      "message": "Done. Updated `codelab_3.md`: https://crrev.com/c/3595055. Deleted `change.go` from https://crrev.com/c/3590909.",
+      "parentUuid": "9609d780_9551a7f1",
+      "revId": "04354da7d5a3d183abcd63ef54547cda83b57165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67b8af90_eec9ee4a",
