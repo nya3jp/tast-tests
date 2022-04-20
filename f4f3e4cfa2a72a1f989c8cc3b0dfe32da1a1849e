@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886d767c_95ad0641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-20T04:52:40Z",
+      "side": 0,
+      "message": "The default behavior of the recorder changes from disabling wifi to leaving it as is. Was that on purpose?",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 42
+      },
+      "revId": "f4f3e4cfa2a72a1f989c8cc3b0dfe32da1a1849e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025b37fa_0852665b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-20T04:52:40Z",
+      "side": 0,
+      "message": "This setting is deleted by this change. Is it no longer necessary to control the nightlight?",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 38
+      },
+      "revId": "f4f3e4cfa2a72a1f989c8cc3b0dfe32da1a1849e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

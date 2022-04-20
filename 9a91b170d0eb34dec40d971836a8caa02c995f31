@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf067a2_dd313d5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-20T04:52:40Z",
+      "side": 1,
+      "message": "This API doesn\u0027t seem to quite match the underlying setup.PowerTest. If a *Enabled flag is set, the setup.PowerTest API doesn\u0027t enable the setting, it leaves the setting in its current state. Is it guaranteed that all of these settings will be enabled before instantiating a Recorder?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 22
+      },
+      "revId": "9a91b170d0eb34dec40d971836a8caa02c995f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca755c47_60b26e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-20T04:52:40Z",
+      "side": 1,
+      "message": "RecorderOptins.BluetoothEnabled is false by default, so this comment isn\u0027t true. Should RecorderOptins.BluetoothEnabled default to true?",
+      "range": {
+        "startLine": 267,
+        "startChar": 5,
+        "endLine": 267,
+        "endChar": 99
+      },
+      "revId": "9a91b170d0eb34dec40d971836a8caa02c995f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ec8154_e02b1c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-20T04:52:40Z",
+      "side": 1,
+      "message": "nit: golang doesn\u0027t have line length requirements, but it\u0027s still recommended to aim for \u003c80 characters for comments. Can you reflow these two comment lines so they are \u003c80 characters?",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 66
+      },
+      "revId": "9a91b170d0eb34dec40d971836a8caa02c995f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
