@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aaf4c42d_d0ae81ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-20T04:25:58Z",
+      "side": 1,
+      "message": "Why you need to make map optional? cros_healthd always return a valid map even it is empty.",
+      "parentUuid": "a7cc3432_f3f095d5",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e8f091c_45f7e5c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
         "patchSetId": 1
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "I feel like its a little hard to reduce it more, since vmx uses two separate flags for enabled, whereas svm only uses one. \n\nI\u0027ve changed it a little bit to reuse the final comparison check. I don\u0027t think the code can be reduced much more.",
       "parentUuid": "5e8f091c_45f7e5c4",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 50
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c537510_40ee16df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-20T04:25:58Z",
+      "side": 1,
+      "message": "I think you should at least create a function for CPUVirtualization or it is too long for verifyPhysicalCPU",
+      "parentUuid": "84ad8354_c3c01051",
       "range": {
         "startLine": 133,
         "startChar": 2,
