@@ -18,8 +18,8 @@ service BiosService {
   rpc ClearAndSetGBBFlags (GBBFlagsState) returns (google.protobuf.Empty) {}
   // EnableAPSoftwareWriteProtect enables the AP software write protect.
   rpc EnableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
-  // CorruptECSection writes garbage bytes to the entire EC section specified.
-  rpc CorruptECSection (CorruptSection) returns (google.protobuf.Empty) {}
+  // CorruptFWSection writes garbage bytes to the entire section specified.
+  rpc CorruptFWSection (CorruptSection) returns (google.protobuf.Empty) {}
   // BackupImageSection backs up the current fw region locally and returns its path.
   rpc BackupImageSection (FWBackUpSection) returns (FWBackUpInfo) {}
   // RestoreImageSection restores the fw region from path.
@@ -84,4 +84,5 @@ message FWBackUpSection {
 // CorruptSection selects the section to corrupt.
 message CorruptSection {
   ImageSection Section = 1;
+  Programmer Programmer = 2;
 }

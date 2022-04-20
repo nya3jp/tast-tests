@@ -100,16 +100,16 @@ func (bs *BiosService) EnableAPSoftwareWriteProtect(ctx context.Context, req *em
 	return &empty.Empty{}, nil
 }
 
-// CorruptECSection writes garbage over part of the specified firmware section.
-func (bs *BiosService) CorruptECSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
-	img, err := bios.NewImage(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), bios.ECProgrammer)
+// CorruptFWSection writes garbage over part of the specified firmware section.
+func (bs *BiosService) CorrupFWCSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
+	img, err := bios.NewImage(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), req.Programmer)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not read firmware")
 	}
 	for i, v := range img.Data {
 		img.Data[i] = (v + 1) & 0xff
 	}
-	err = img.WriteFlashrom(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), bios.ECProgrammer)
+	err = img.WriteFlashrom(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), req.Programmer)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not write firmware")
 	}
