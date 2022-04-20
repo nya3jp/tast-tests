@@ -31,7 +31,7 @@ func init() {
 		VarDeps: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 		},
-		Timeout: 5*chrome.LoginTimeout + 25*time.Second,
+		Timeout: 5*chrome.LoginTimeout + 25*time.Second + userutil.TakingOwnershipTimeout,
 	})
 }
 
@@ -55,7 +55,7 @@ func RemoveExistingUser(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer cancel()
 
-	if err := userutil.CreateUser(ctx, user1, password); err != nil {
+	if err := userutil.CreateDeviceOwner(ctx, user1, password); err != nil {
 		s.Fatal("Failed to create new user1: ", err)
 	}
 	if err := userutil.CreateUser(ctx, user2, password, chrome.KeepState()); err != nil {
