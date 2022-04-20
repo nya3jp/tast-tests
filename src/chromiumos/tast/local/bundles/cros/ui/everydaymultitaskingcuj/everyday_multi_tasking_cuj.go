@@ -53,11 +53,12 @@ type RunParams struct {
 	appName        string
 	account        string // account is the one used by Spotify APP to do login.
 	tabletMode     bool
+	enableBT       bool
 }
 
 // NewRunParams constructs a RunParams struct and returns the pointer to it.
-func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) *RunParams {
-	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode}
+func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode, enableBT bool) *RunParams {
+	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode, enableBT: enableBT}
 }
 
 type runResources struct {
@@ -144,15 +145,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 
-	// Set up the cuj.Recorder: this test will measure the combinations of
-	// animation smoothness for window-cycles (alt-tab selection), launcher,
-	// and overview.
-	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs()...)
-	if err != nil {
-		return errors.Wrap(err, "failed to create a recorder")
-	}
-	defer recorder.Close(cleanupCtx)
-
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid
@@ -176,6 +168,21 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		faillog.DumpUITreeOnError(ctx, params.outDir, func() bool { return retErr != nil }, tconn)
 		cuj.CloseChrome(ctx, tconn)
 	}(faillogCtx)
+
+	// Set up the cuj.Recorder: this test will measure the combinations of
+	// animation smoothness for window-cycles (alt-tab selection), launcher,
+	// and overview.
+	// Shorten the context to cleanup recorder.
+	cleanUpRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	options := cuj.NewPerformanceCUJOptions()
+	recorder, err := cuj.NewRecorder(ctx, cr, a, options, cuj.MetricConfigs()...)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a recorder")
+	}
+	defer recorder.Close(cleanUpRecorderCtx)
 
 	var appStartTime int64
 	switch params.appName {
