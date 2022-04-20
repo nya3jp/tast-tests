@@ -29,6 +29,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
 			"banon",
 			"bob",
+			"edgar",
 			"kevin",
 			"scarlet",
 			"ultima",
