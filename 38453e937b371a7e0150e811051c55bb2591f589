@@ -39,6 +39,30 @@
       },
       "revId": "38453e937b371a7e0150e811051c55bb2591f589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08bbf09e_a5d89ee4",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-04-20T22:14:46Z",
+      "side": 1,
+      "message": "If this test does fail, can you initialize it with PersonalizationHub feature off?",
+      "parentUuid": "da8ebae2_aa30075e",
+      "range": {
+        "startLine": 363,
+        "startChar": 36,
+        "endLine": 363,
+        "endChar": 40
+      },
+      "revId": "38453e937b371a7e0150e811051c55bb2591f589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
