@@ -78,7 +78,8 @@ func init() {
 	})
 
 	// arcBootedRestricted is a fixture similar to arcBootedWithDisableSyncFlags. The only difference
-	// from arcBootedWithDisableSyncFlags is that CGroups is used to limit the CPU time of ARC.
+	// from arcBootedWithDisableSyncFlags is that CGroups is used to limit the CPU time of ARC, and
+	// that Chrome will not check for firmware updates.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedRestricted",
 		Desc: "ARC is booted in idle state",
@@ -91,6 +92,7 @@ func init() {
 				chrome.ARCEnabled(),
 				chrome.RestrictARCCPU(),
 				chrome.ExtraArgs(DisableSyncFlags()...),
+				chrome.ExtraArgs("--disable-features=FirmwareUpdaterApp"),
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,

@@ -31,7 +31,7 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
-		Fixture:      "arcBootedWithDisableSyncFlags",
+		Fixture:      "arcBootedRestricted",
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 			ExtraSoftwareDeps: []string{"android_p"},
