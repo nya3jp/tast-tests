@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4851c5_4b28d040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T17:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc79b3f9_b11626ef",
+      "revId": "8abcea122c2b5dafb7f72c238c7b87d93ddc0865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77d9768a_6e4ecd68",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89ed0749_53c3c76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T17:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77d9768a_6e4ecd68",
+      "revId": "8abcea122c2b5dafb7f72c238c7b87d93ddc0865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e5895fa_d45b9239",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-04-20T17:10:50Z",
       "side": 1,
       "message": "nit: testFileName?",
+      "revId": "8abcea122c2b5dafb7f72c238c7b87d93ddc0865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb635a9_ba4fda81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T17:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5895fa_d45b9239",
       "revId": "8abcea122c2b5dafb7f72c238c7b87d93ddc0865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
