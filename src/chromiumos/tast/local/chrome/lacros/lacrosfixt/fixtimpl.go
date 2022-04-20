@@ -80,10 +80,8 @@ func init() {
 		Name:     "lacrosForceComposition",
 		Desc:     "Lacros Chrome from a pre-built image with composition forced on",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.LacrosExtraArgs("--no-first-run")}, nil
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfigFromState(s, ChromeOptions(chrome.ExtraArgs("--enable-hardware-overlays=\"\""))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -97,10 +95,10 @@ func init() {
 		Name:     "lacrosForceDelegated",
 		Desc:     "Lacros Chrome from a pre-built image with delegated compositing forced on",
 		Contacts: []string{"petermcneeley@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
-				chrome.LacrosExtraArgs("--no-first-run"),
-				chrome.LacrosEnableFeatures("DelegatedCompositing")}, nil
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfigFromState(s, ChromeOptions(
+				chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
+				chrome.LacrosEnableFeatures("DelegatedCompositing"))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
