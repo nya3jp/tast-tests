@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a94f55a_78f4d39f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-04-20T22:19:39Z",
+      "side": 1,
+      "message": "Don\u0027t we have to download google photos album metadata to show the UI? In my experience the test devices can get hung up on network requests and pause for ~10 sec.",
+      "parentUuid": "81441c21_26898a07",
+      "revId": "21e46f19b43f305b4ca84533248c0e66f58745a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b80ef43_cf88309d",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
         "patchSetId": 1
