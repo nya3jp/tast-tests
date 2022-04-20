@@ -26,12 +26,12 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Params: []testing.Param{{
-			Fixture:           "lacrosUI",
+			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros_stable"},
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable",
-			Fixture:           "lacrosUI",
+			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
 		}, {
