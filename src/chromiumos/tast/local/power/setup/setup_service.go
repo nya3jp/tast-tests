@@ -33,7 +33,11 @@ func DisableService(ctx context.Context, name string) (CleanupCallback, error) {
 
 	return func(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Restarting service %q", name)
-		return upstart.StartJob(ctx, name)
+		err := upstart.StartJob(ctx, name)
+		if err != nil && name == "powerd" {
+			return errors.Wrap(err, "failed to restart powerd, makes sure Chrome Feature FirmwareUpdaterApp is disabled")
+		}
+		return err
 	}, nil
 }
 
