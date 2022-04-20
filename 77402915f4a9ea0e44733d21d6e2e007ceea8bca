@@ -16,6 +16,98 @@
       "message": "LGTM, but I have no idea if the Chinese output makes sense",
       "revId": "77402915f4a9ea0e44733d21d6e2e007ceea8bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b088ac_c51f8e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_shape_based_chinese_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-20T12:13:17Z",
+      "side": 1,
+      "message": "Pls use fixture as commented in the other cl.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "77402915f4a9ea0e44733d21d6e2e007ceea8bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38e381d_431fced7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_shape_based_chinese_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-20T12:13:17Z",
+      "side": 1,
+      "message": "IIUC, these IMEs have consistent output and would not be fragile due to ML, etc..",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "77402915f4a9ea0e44733d21d6e2e007ceea8bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9696c281_bbc46002",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-20T12:13:17Z",
+      "side": 1,
+      "message": "Please also add the new input methods to the list.",
+      "range": {
+        "startLine": 341,
+        "startChar": 21,
+        "endLine": 341,
+        "endChar": 32
+      },
+      "revId": "77402915f4a9ea0e44733d21d6e2e007ceea8bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0520f4f_bf6deb48",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-20T12:13:17Z",
+      "side": 1,
+      "message": "The inputMethods array is used here. It looks weird and might not be a good practice. Any suggestions here are also appreciated.",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 1
+      },
+      "revId": "77402915f4a9ea0e44733d21d6e2e007ceea8bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
