@@ -24,22 +24,12 @@ import (
 
 // testParameters contains all the data needed to run a single test iteration.
 type testParameters struct {
-	batteryMode       setup.BatteryDischargeMode
 	binaryTranslation bool
 }
 
 var (
 	// arcAppLoadingBooted is a precondition similar to arc.Booted() with no opt-in and disables some heavy Android activities that use system resources.
 	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
-
-	// arcAppLoadingRtVcpuVMBooted adds feature to boot ARC with realtime vcpu is enabled.
-	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore")...)
-
-	// arcAppLoadingODirectVMBooted enables O_DIRECT for crosvm.
-	arcAppLoadingODirectVMBooted = arc.NewPrecondition("arcapploading_odirect_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, true /* O_DIRECT */, append(arc.DisableSyncFlags())...)
-
-	// arcAppLoadingDalvikMemoryProfileVMBooted enables ArcUseDalvikMemoryProfile chrome feature.
-	arcAppLoadingDalvikMemoryProfileVMBooted = arc.NewPrecondition("arcapploading_dalvik_memory_profile_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcUseDalvikMemoryProfile")...)
 
 	// arcAppLoadingVirtioBlkVMBooted adds feature to boot ARC with virtio-blk /data is enabled.
 	arcAppLoadingVirtioBlkVMBooted = arc.NewPrecondition("arcapploading_virtio_blk_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcEnableVirtioBlkForData")...)
@@ -61,108 +51,37 @@ func init() {
 		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingBooted,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingBooted,
 		}, {
-			Name:              "rt_vcpu_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingRtVcpuVMBooted,
-		}, {
-			Name:              "o_direct_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingODirectVMBooted,
-		}, {
-			Name:              "dalvik_memory_profile_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingDalvikMemoryProfileVMBooted,
-		}, {
 			Name:              "virtio_blk_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingVirtioBlkVMBooted,
 		}, {
 			Name:              "binarytranslation",
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.X86()),
+			ExtraHardwareDeps: hwdep.D(hwdep.X86()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: true,
 			},
 			Pre: arcAppLoadingBooted,
 		}, {
 			Name:              "vm_binarytranslation",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.X86()),
+			ExtraHardwareDeps: hwdep.D(hwdep.X86()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
-				binaryTranslation: true,
-			},
-			Pre: arcAppLoadingBooted,
-		}, {
-			Name:              "nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.NoBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingBooted,
-		}, {
-			Name:              "vm_nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.NoBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingBooted,
-		}, {
-			Name:              "binarytranslation_nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge(), hwdep.X86()),
-			Val: testParameters{
-				batteryMode:       setup.NoBatteryDischarge,
-				binaryTranslation: true,
-			},
-			Pre: arcAppLoadingBooted,
-		}, {
-			Name:              "vm_binarytranslation_nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge(), hwdep.X86()),
-			Val: testParameters{
-				batteryMode:       setup.NoBatteryDischarge,
 				binaryTranslation: true,
 			},
 			Pre: arcAppLoadingBooted,
@@ -279,10 +198,9 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		PerfValues: finalPerfValues,
 		// Don't disable Wifi for network test since ethernet connection in lab is not guaranteed.
 		// Otherwise tc-tbf settings will not be applied since it would have been disabled and reset.
-		WifiInterfacesMode:   setup.DoNotChangeWifiInterfaces,
-		BatteryDischargeMode: param.batteryMode,
-		ApkPath:              s.DataPath(apkName),
-		OutDir:               s.OutDir(),
+		WifiInterfacesMode: setup.DoNotChangeWifiInterfaces,
+		ApkPath:            s.DataPath(apkName),
+		OutDir:             s.OutDir(),
 	}
 
 	// Many apps / games run with binary translation (b/169623350#comment8)
