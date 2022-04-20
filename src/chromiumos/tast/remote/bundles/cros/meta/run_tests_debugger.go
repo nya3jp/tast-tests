@@ -26,11 +26,11 @@ import (
 )
 
 func init() {
+	// This test needs -build=true to run and hence cannot run in CI. Can only be run manually as needed.
 	testing.AddTest(&testing.Test{
 		Func:     RunTestsDebugger,
 		Desc:     "Verifies that Tast can run with a debugger attached",
 		Contacts: []string{"msta@google.com", "tast-owners@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
 		// Though the debugger should work on all x86 boards, testing it with a VM
 		// and a single board should be sufficient, since it's not a hardware
 		// dependent feature.
