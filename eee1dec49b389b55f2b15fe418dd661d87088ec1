@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f039d2_576c3dda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-20T22:26:37Z",
+      "side": 1,
+      "message": "Curtis, WDYT about using this to block sequence breakage before we have a custom test binary?",
+      "revId": "eee1dec49b389b55f2b15fe418dd661d87088ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
