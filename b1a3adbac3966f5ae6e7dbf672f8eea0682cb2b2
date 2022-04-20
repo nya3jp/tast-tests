@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e60d00b9_5590e44e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-20T02:28:44Z",
+      "side": 1,
+      "message": "It needs to run before da.Close to capture the error dump.",
+      "parentUuid": "e1672803_be6b9961",
+      "revId": "b1a3adbac3966f5ae6e7dbf672f8eea0682cb2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d10af147_6bc284be",
         "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-20T02:15:32Z",
       "side": 1,
       "message": "I expect this will be quite flaky, you may want to put this in a testing.Poll to try it a few times.",
+      "revId": "b1a3adbac3966f5ae6e7dbf672f8eea0682cb2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46289b7a_ad27664c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-20T02:28:44Z",
+      "side": 1,
+      "message": "I tested on multiple models and it\u0027s stable. \nEven it fails somewhere in this combination, retry probably won\u0027t helps.",
+      "parentUuid": "d10af147_6bc284be",
       "revId": "b1a3adbac3966f5ae6e7dbf672f8eea0682cb2b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
