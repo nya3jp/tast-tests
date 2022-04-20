@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac7352d_dac9a938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-04-20T01:31:05Z",
+      "side": 1,
+      "message": "FYI when I search \"definition of agriculture\" on my test device, the pronunciation that comes up is different. may be an AUS/US locale difference. Do you know if this would affect the Tast tests?",
+      "range": {
+        "startLine": 84,
+        "startChar": 106,
+        "endLine": 84,
+        "endChar": 119
+      },
+      "revId": "983a44d17f03f8b2d5448ee4550f7702872d7f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
