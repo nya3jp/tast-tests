@@ -54,6 +54,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b89bbf5a_c7621cc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-04-20T12:04:40Z",
+      "side": 1,
+      "message": "not needed, can be removed.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "546b4915393a263542ecc53e81b70d91ad4dbd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a987a898_a8c7ed39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-04-20T12:04:40Z",
+      "side": 1,
+      "message": "Add WaitForQuiescence here and after every NewConn",
+      "revId": "546b4915393a263542ecc53e81b70d91ad4dbd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac3d5194_1bfa6bb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
         "patchSetId": 1
