@@ -22,6 +22,30 @@
       },
       "revId": "5c12d452b23deb126e9c96d418acb1273274362e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9863c25_98cb4279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_bench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-04-20T08:28:21Z",
+      "side": 1,
+      "message": "Added `HardwareDeps: hwdep.D(hwdep.Speaker()),`\n\nThe test for headphone can be ran even the headphone is not inserted.",
+      "parentUuid": "2e0d9cbd_1f831aa2",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "5c12d452b23deb126e9c96d418acb1273274362e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
