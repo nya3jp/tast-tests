@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "201b8bde_8106b21f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-20T17:32:23Z",
+      "side": 1,
+      "message": "CQ error\n\n```\ntast-remote-tests-cros-0.0.2-r10342: # chromiumos/tast/local/bundles/cros/firmware\ntast-remote-tests-cros-0.0.2-r10342: src/chromiumos/tast/local/bundles/cros/firmware/bios_service.go:22:38: cannot use \u0026BiosService{...} (type *BiosService) as type \"chromiumos/tast/services/cros/firmware\".BiosServiceServer in argument to \"chromiumos/tast/services/cros/firmware\".RegisterBiosServiceServer:\ntast-remote-tests-cros-0.0.2-r10342: \t*BiosService does not implement \"chromiumos/tast/services/cros/firmware\".BiosServiceServer (missing CorruptECSection method)\ntast-remote-tests-cros-0.0.2-r10342: src/chromiumos/tast/local/bundles/cros/firmware/bios_service.go:47:2: undefined: \"chromiumos/tast/services/cros/firmware\".ImageSection_RECOVERYMRCCACHEImageSection\ntast-remote-tests-cros-0.0.2-r10342: src/chromiumos/tast/local/bundles/cros/firmware/bios_service.go:47:48: undefined: bios.RECOVERYMRCCACHEImageSection\ntast-remote-tests-cros-0.0.2-r10342: src/chromiumos/tast/local/bundles/cros/firmware/bios_service.go:109:117: req.Programmer undefined (type *\"chromiumos/tast/services/cros/firmware\".CorruptSection has no field or method Programmer)\n```",
+      "revId": "1487fa01d864cbbf52a3d1f50c4781ee8e80d246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
