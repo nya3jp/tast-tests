@@ -44,13 +44,12 @@ func init() {
 		Name:     "lacrosAudio",
 		Desc:     "Lacros Chrome from a pre-built image with camera/microphone permissions",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfigFromState(s, ChromeOptions(
+				chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
 				chrome.ExtraArgs("--autoplay-policy=no-user-gesture-required"), // Allow media autoplay.
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.LacrosExtraArgs("--no-first-run"),
 				chrome.LacrosExtraArgs("--use-fake-ui-for-media-stream"),
-				chrome.LacrosExtraArgs("--autoplay-policy=no-user-gesture-required")}, nil
+				chrome.LacrosExtraArgs("--autoplay-policy=no-user-gesture-required"))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
