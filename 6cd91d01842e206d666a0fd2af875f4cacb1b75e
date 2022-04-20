@@ -271,6 +271,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "caa4deb0_ce1ab9e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-20T02:21:31Z",
+      "side": 1,
+      "message": "I meant something like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go;l\u003d63\n\n(which should make the tests not share the user session when you run them)",
+      "parentUuid": "e8c26f06_a02818a3",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7330d410_2cc78437",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
         "patchSetId": 3
