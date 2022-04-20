@@ -12,8 +12,8 @@ import (
 
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -45,16 +45,21 @@ func AudioPinnedStream(ctx context.Context, s *testing.State) {
 	}
 	defer unload(ctx)
 
-	lc, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn())
+	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	l, err := lacros.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
-	defer lc.Close(ctx)
+	defer l.Close(ctx)
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	conn, err := lc.NewConn(ctx, server.URL+"/audio_playback_test.html")
+	conn, err := l.NewConn(ctx, server.URL+"/audio_playback_test.html")
 	if err != nil {
 		s.Fatal(err, "failed to open new tab")
 	}
