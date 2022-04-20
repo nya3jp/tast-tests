@@ -630,6 +630,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1c4e542_76849682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-20T00:06:48Z",
+      "side": 1,
+      "message": "I think I still need to discuss with hidehiko@ about what to do w.r.t lacros Close/ResetState. The change you linked I think doesn\u0027t change anything for this CL. Personally I\u0027m happy with leaking it (with a TODO) but yeah",
+      "parentUuid": "fbefc87c_d6572b7b",
+      "range": {
+        "startLine": 191,
+        "startChar": 28,
+        "endLine": 192,
+        "endChar": 57
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e508caf_d2cdc5d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
         "patchSetId": 21
