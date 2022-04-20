@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd94062a_5e10713e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_corrupt_recovery_cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-20T11:30:55Z",
+      "side": 1,
+      "message": "Is such a long timeout really required by this test?",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "f58de36e8bf30b54433a52659376477ef816481b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6b33fb_57020ab4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_corrupt_recovery_cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-20T11:30:55Z",
+      "side": 1,
+      "message": "Please add ldap and ideally a ticket here for tracking.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "f58de36e8bf30b54433a52659376477ef816481b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7100cb3b_02cf1a95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_corrupt_recovery_cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-20T11:30:55Z",
+      "side": 1,
+      "message": "End the comment with . (dot)",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "f58de36e8bf30b54433a52659376477ef816481b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
