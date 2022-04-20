@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755b74dd_c6e54e5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_on_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-20T13:27:06Z",
+      "side": 1,
+      "message": "Might just want to say it\u0027s not accessible. Presumably the `err` will say it doesn\u0027t exist (or a different error if there is one)",
+      "range": {
+        "startLine": 115,
+        "startChar": 11,
+        "endLine": 115,
+        "endChar": 45
+      },
+      "revId": "3632327606e1a76d13dbb3141cc259b7c67b373a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9339c11_46605425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_on_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-20T13:27:06Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 54
+      },
+      "revId": "3632327606e1a76d13dbb3141cc259b7c67b373a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
