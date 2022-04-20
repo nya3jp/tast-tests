@@ -81,19 +81,6 @@ func init() {
 	})
 }
 
-// showActivityForSplitViewTest starts an activity and waits for it to be idle.
-func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkgName, activityName string) (*arc.Activity, error) {
-	act, err := arc.NewActivity(a, pkgName, activityName)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create a new activity")
-	}
-	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
-		act.Close()
-		return nil, errors.Wrap(err, "failed to start the activity")
-	}
-	return act, nil
-}
-
 func testResize(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, ui *uiauto.Context, pc pointer.Context, tabletMode bool, leftActPackageName, rightActPackageName string) error {
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
@@ -201,25 +188,32 @@ func SplitView(ctx context.Context, s *testing.State) {
 
 	// Show two activities. As the content of the activities doesn't matter,
 	// use two activities available by default.
-	rightAct, err := showActivityForSplitViewTest(
-		ctx, tconn, a, "com.android.storagemanager", ".deletionhelper.DeletionHelperActivity")
-	if err != nil {
-		s.Fatal("Failed to show an activity: ", err)
-	}
-	defer rightAct.Close()
-	defer rightAct.Stop(cleanupCtx, tconn)
-	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle: ", err)
-	}
+	var rightAct, leftAct *arc.Activity
+	for _, app := range []struct {
+		act          **arc.Activity
+		pkgName      string
+		activityName string
+	}{
+		{&rightAct, "com.android.storagemanager", ".deletionhelper.DeletionHelperActivity"},
+		{&leftAct, "com.android.settings", ".Settings"},
+	} {
+		act, err := arc.NewActivity(a, app.pkgName, app.activityName)
+		if err != nil {
+			s.Fatalf("Failed to create a new activity (%s): %v", app.pkgName, err)
+		}
+		defer act.Close()
+		if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+			s.Fatalf("Failed to start the activity (%s): %v", app.pkgName, err)
+		}
+		defer act.Stop(cleanupCtx, tconn)
+		if err := ash.WaitForVisible(ctx, tconn, app.pkgName); err != nil {
+			s.Fatalf("Failed to wait for visible app (%s): %v", app.pkgName, err)
+		}
 
-	leftAct, err := showActivityForSplitViewTest(ctx, tconn, a, "com.android.settings", ".Settings")
-	if err != nil {
-		s.Fatal("Failed to show an activity: ", err)
-	}
-	defer leftAct.Close()
-	defer leftAct.Stop(cleanupCtx, tconn)
-	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle: ", err)
+		*app.act = act
+		if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+			s.Fatal("Failed to wait for idle: ", err)
+		}
 	}
 
 	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
