@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e985dff_d19f7d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2022-04-20T05:05:19Z",
+      "side": 1,
+      "message": "LGTM, but I have no idea if the Chinese output makes sense",
+      "revId": "77402915f4a9ea0e44733d21d6e2e007ceea8bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
