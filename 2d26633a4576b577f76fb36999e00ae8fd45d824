@@ -16,6 +16,23 @@
       "message": "PTAL when you get a chance.\n\nRegarding the Tricium spelling comments, I think the suggestions are good, but the readme.txt files are copied from the ITU-T conformance file archives, so I didn\u0027t proof-read them. LMK if you\u0027d like me to fix the spelling mistakes!",
       "revId": "2d26633a4576b577f76fb36999e00ae8fd45d824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f99eea4_0d0fe530",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-20T23:54:10Z",
+      "side": 1,
+      "message": "LGTM from tast owner perspective.",
+      "revId": "2d26633a4576b577f76fb36999e00ae8fd45d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
