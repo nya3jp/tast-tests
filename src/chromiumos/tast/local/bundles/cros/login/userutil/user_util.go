@@ -17,6 +17,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// TakingOwnershipTimeout is the maximum amount of time for taking ownership of the device after login.
+	TakingOwnershipTimeout = 20 * time.Second
+)
+
 // CreateUser creates a new session with a given name and password, considering extra options. It immediately
 // closes the session, so it should be used only for creating new users, not logging in.
 func CreateUser(ctx context.Context, username, password string, extraOpts ...chrome.Option) error {
@@ -84,7 +89,7 @@ func GetKnownEmailsFromLocalState() (map[string]bool, error) {
 	return knownEmails, nil
 }
 
-// WaitForOwnership waits for up to 20 seconds for the current user to become device owner.
+// WaitForOwnership waits for up to TakingOwnershipTimeout seconds for the current user to become device owner.
 // Normally this should take less then a few seconds.
 func WaitForOwnership(ctx context.Context, cr *chrome.Chrome) error {
 	tconn, err := cr.TestAPIConn(ctx)
@@ -94,7 +99,7 @@ func WaitForOwnership(ctx context.Context, cr *chrome.Chrome) error {
 
 	testing.ContextLog(ctx, "Waiting for the user to become device owner")
 
-	var pollOpts = &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second}
+	var pollOpts = &testing.PollOptions{Interval: 1 * time.Second, Timeout: TakingOwnershipTimeout}
 	var status struct {
 		IsOwner bool
 	}
