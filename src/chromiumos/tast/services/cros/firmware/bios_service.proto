@@ -60,6 +60,7 @@ enum ImageSection {
   EmptyImageSection = 5;
   ROVPDImageSection = 6;
   RWVPDImageSection = 7;
+  RECOVERYMRCCACHEImageSection = 8;
 }
 
 // GBBFlagsState represents the a known state of GBB flags.  Set flags have precedence over cleared ones.
