@@ -63,9 +63,8 @@ func init() {
 		Name:     "lacrosWith100FakeApps",
 		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.LacrosExtraArgs("--no-first-run")}, nil
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfigFromState(s).Opts()
 		}),
 		Parent:          "install100Apps",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
