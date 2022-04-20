@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee38e77_284d7696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T16:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d66f84e5_c1d73932",
+      "revId": "48e593ed69b31a82dc14feebf2775ed208da30f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a80e9e36_0b746e56",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-20T14:12:33Z",
       "side": 1,
       "message": "comments should end with . at the end.",
+      "revId": "48e593ed69b31a82dc14feebf2775ed208da30f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9afdfb7f_ad3d25a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T16:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a80e9e36_0b746e56",
       "revId": "48e593ed69b31a82dc14feebf2775ed208da30f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a02048e9_4d7e8995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T16:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d322368c_08e667f3",
+      "revId": "48e593ed69b31a82dc14feebf2775ed208da30f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00c5efbb_f456d774",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51cb6667_bba2ebcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T16:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c5efbb_f456d774",
+      "revId": "48e593ed69b31a82dc14feebf2775ed208da30f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a301cb72_157b19f8",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-04-20T14:12:33Z",
       "side": 1,
       "message": "comments should end with . at the end.",
+      "revId": "48e593ed69b31a82dc14feebf2775ed208da30f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6f65a1_84067496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T16:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a301cb72_157b19f8",
       "revId": "48e593ed69b31a82dc14feebf2775ed208da30f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

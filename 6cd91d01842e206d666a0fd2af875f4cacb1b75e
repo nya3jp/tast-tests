@@ -287,6 +287,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a994ea_5d005c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T16:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caa4deb0_ce1ab9e8",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7330d410_2cc78437",
