@@ -147,7 +147,7 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 			s.Fatalf("EC active copy incorrect, got %q want RW", activeCopy)
 		}
 	}(cleanupContext)
-	if _, err = bs.CorruptECSection(ctx, &pb.CorruptSection{Section: ecSection}); err != nil {
+	if _, err = bs.CorruptFWSection(ctx, &pb.CorruptSection{Section: ecSection, Programmer: pb.Programmer_ECProgrammer}); err != nil {
 		s.Fatal("Failed to corrupt EC: ", err)
 	}
 
