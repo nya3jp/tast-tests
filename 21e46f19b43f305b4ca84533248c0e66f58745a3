@@ -16,6 +16,63 @@
       "message": "PTAL, thank you!",
       "revId": "21e46f19b43f305b4ca84533248c0e66f58745a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b9b99b_c9fb9ae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-04-20T21:12:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem needed if we are testing for screensaver.",
+      "revId": "21e46f19b43f305b4ca84533248c0e66f58745a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81441c21_26898a07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-04-20T21:12:13Z",
+      "side": 1,
+      "message": "timeout doesn\u0027t seem needed either.",
+      "revId": "21e46f19b43f305b4ca84533248c0e66f58745a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b80ef43_cf88309d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-04-20T21:12:13Z",
+      "side": 1,
+      "message": "can we use ui.RetryUntil to keep retrying clicking? That will make the logic cleaner.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "21e46f19b43f305b4ca84533248c0e66f58745a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
