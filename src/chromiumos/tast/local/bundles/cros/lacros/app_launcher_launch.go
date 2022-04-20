@@ -9,8 +9,8 @@ import (
 	"os"
 
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	applauncher "chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -24,7 +24,7 @@ func init() {
 		Contacts:     []string{"liaoyuke@chromium.org", "lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Fixture:      "lacrosUI",
+		Fixture:      "lacros",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"lacros_stable"},
 		}, {
@@ -36,8 +36,7 @@ func init() {
 }
 
 func AppLauncherLaunch(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(lacrosfixt.FixtValue)
-	tconn, err := f.Chrome().TestAPIConn(ctx)
+	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}

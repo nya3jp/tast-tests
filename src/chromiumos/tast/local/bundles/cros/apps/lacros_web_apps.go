@@ -33,12 +33,12 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Params: []testing.Param{
 			{
-				Fixture:           "lacrosUIKeepAlive",
+				Fixture:           "lacrosKeepAlive",
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 			},
 			{
 				Name:              "unstable",
-				Fixture:           "lacrosUIKeepAlive",
+				Fixture:           "lacrosKeepAlive",
 				ExtraSoftwareDeps: []string{"lacros_unstable"},
 			},
 		},
