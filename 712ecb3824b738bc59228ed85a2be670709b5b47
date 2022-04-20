@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85af0c6c_211f7b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-20T01:51:21Z",
+      "side": 1,
+      "message": "Yes, IsUFS will be more complicated than this. IsEMMC could be catching some sd cards, but considering we do not run the trim workload during the removable test, it shouldn\u0027t be a problem at the moment. I will need to add some logic for properly detecting UFS and its trim behavior. I can add logic to check if the device is the fixed drive, which will solve the issue of USB and sd cards, but SATA vs UFS will need more.",
+      "parentUuid": "39adf085_c7a3cfb1",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 4
+      },
+      "revId": "712ecb3824b738bc59228ed85a2be670709b5b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "001aaac5_a0c1341d",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-19T22:30:09Z",
       "side": 1,
       "message": "return strings.Contains(testPath, \"mmcblk\")",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 13
+      },
+      "revId": "712ecb3824b738bc59228ed85a2be670709b5b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6202f9b3_532d36c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-20T01:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "001aaac5_a0c1341d",
       "range": {
         "startLine": 115,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e144f04_3cb9ebce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-20T01:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ec87d97_3d1afe93",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "712ecb3824b738bc59228ed85a2be670709b5b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "118faf1a_d0da7bc3",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "023c4525_4ced7dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_blocks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-20T01:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "118faf1a_d0da7bc3",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "712ecb3824b738bc59228ed85a2be670709b5b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11200c42_63893dd2",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-04-19T22:30:09Z",
       "side": 1,
       "message": "if expectTrimZero \u0026\u0026 trimVerifyZero \u003c trimVerifyCount {...}\nif expectTrimOne \u0026\u0026 trimVerifyOne \u003c trimVerifyCount {...}",
+      "range": {
+        "startLine": 308,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 2
+      },
+      "revId": "712ecb3824b738bc59228ed85a2be670709b5b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17308adc_491517bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_blocks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-20T01:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11200c42_63893dd2",
       "range": {
         "startLine": 308,
         "startChar": 1,
