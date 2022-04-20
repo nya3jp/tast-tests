@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19033629_ea353811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-04-20T22:21:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a94f55a_78f4d39f",
+      "revId": "21e46f19b43f305b4ca84533248c0e66f58745a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b80ef43_cf88309d",
