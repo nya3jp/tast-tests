@@ -8,6 +8,11 @@ package netconfig
 // network_types.mojom to be used in tests. The JSON marshalling comments are
 // required for passing structs to javascript.
 
+// There are fields that should not be included in the json object at all (not
+// even as an empty object). Setting the optional fields that are of the type
+// struct as a pointer allows them to be nullable and to not appear in the json
+// object if not provided.
+
 // TODO(b:223867178) Add a function to convert constants to strings to use in logging.
 
 // Types from ip_address.mojom
@@ -263,20 +268,28 @@ type ManagedEAPProperties struct {
 // ManagedWiFiProperties contain managed properties of a wifi connection.
 type ManagedWiFiProperties struct {
 	// Passphrase is only used for PSK networks and Eap is only used for EAP.
-	// These fields should not be included in the json object at all otherwise
-	// (not even as an empty object). Setting the optional field as a pointer
-	// allows it to be nullable and to not appear in the json object if not
-	// provided.
 	Eap        *ManagedEAPProperties `json:"eap,omitempty"`
 	Passphrase *ManagedString        `json:"passphrase,omitempty"`
 	Ssid       ManagedString         `json:"ssid"`
 	Security   SecurityType          `json:"security"`
 }
 
+// ManagedEthernetProperties contains managed properties of an ethernet
+// connection.
+type ManagedEthernetProperties struct {
+	// Authentication represents the configured authentication type for an
+	// Ethernet network.
+	Authentication *ManagedString        `json:"authentication,omitempty"`
+	Eap            *ManagedEAPProperties `json:"eap,omitempty"`
+}
+
 // NetworkTypeManagedProperties contains managed properties for one of the
-// network types. Only WiFi is implemented so far.
+// network types. Its type is an union, so only one of the fields should be set
+// simultaneously.
+// Currently only Ethernet and Wifi are implemented.
 type NetworkTypeManagedProperties struct {
-	Wifi ManagedWiFiProperties `json:"wifi"`
+	Ethernet *ManagedEthernetProperties `json:"ethernet,omitempty"`
+	Wifi     *ManagedWiFiProperties     `json:"wifi,omitempty"`
 }
 
 // ManagedProperties are provided by GetManagedProperties, see onc_spec.md for
@@ -322,10 +335,7 @@ type EAPConfigProperties struct {
 // WiFiConfigProperties is used to create new configurations or augment
 // existing ones.
 type WiFiConfigProperties struct {
-	// Eap configuration is only used if the wifi security is WpaEap and it should
-	// not be included in the json object at all otherwise (not even as an empty
-	// object). Setting the field Eap as a pointer allows it to be nullable and
-	// to not appear in the json object if not provided.
+	// Eap configuration is only used if the wifi security is WpaEap.
 	Eap        *EAPConfigProperties `json:"eap,omitempty"`
 	Passphrase string               `json:"passphrase,omitempty"`
 	Ssid       string               `json:"ssid,omitempty"`
@@ -333,10 +343,19 @@ type WiFiConfigProperties struct {
 	HiddenSsid HiddenSsidMode       `json:"hiddenSsid"`
 }
 
-// NetworkTypeConfigProperties contains properties for one type of network.
-// Currently only WiFi is supported.
+// EthernetConfigProperties is used to create ethernet configurations.
+type EthernetConfigProperties struct {
+	// Eap configuration is only used if the ethernet authentication is 8021X.
+	Authentication string               `json:"authentication,omitempty"`
+	Eap            *EAPConfigProperties `json:"eap,omitempty"`
+}
+
+// NetworkTypeConfigProperties contains properties for one type of network. Its
+// type is an union, so only one of the fields should be set simultaneously.
+// Currently only Ethernet and Wifi are supported.
 type NetworkTypeConfigProperties struct {
-	Wifi WiFiConfigProperties `json:"wifi"`
+	Ethernet *EthernetConfigProperties `json:"ethernet,omitempty"`
+	Wifi     *WiFiConfigProperties     `json:"wifi,omitempty"`
 }
 
 // ConfigProperties is passed to SetProperties or ConfigureNetwork to configure
