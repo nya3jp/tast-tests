@@ -186,7 +186,65 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	}
 	defer uiActionHandler.Close()
 
+<<<<<<< HEAD   (cc4f4d Create one account per RF box.)
 	var browserStartTime, totalElapsed time.Duration
+=======
+	// Launch browser and track the elapsed time.
+	// Browser is launched out side of recorder to get test API conns to set up metrics.
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, lFixtVal != nil)
+	if err != nil {
+		s.Fatal("Failed to launch Chrome: ", err)
+	}
+	if l != nil {
+		defer l.Close(ctx)
+	}
+	br := cr.Browser()
+	tconns := []*chrome.TestConn{tconn}
+	if lFixtVal != nil {
+		br = l.Browser()
+		bTconn, err := l.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to get lacros test API conn: ", err)
+		}
+		tconns = append(tconns, bTconn)
+	}
+
+	if pauseMode == Lock {
+		// Lock the screen before recording the test.
+		if err := LockScreen(ctx, tconn); err != nil {
+			s.Fatal("Failed to lock screen: ", err)
+		}
+
+		defer func(ctx context.Context) {
+			// Ensure that screen is unlocked even if the test fails.
+			st, err := lockscreen.GetState(ctx, tconn)
+			if err != nil {
+				s.Error("Failed to get lockscreen state: ", err)
+				return
+			}
+			if !st.Locked {
+				return
+			}
+			if err := UnlockScreen(ctx, tconn, password); err != nil {
+				s.Error("Failed unlock screen: ", err)
+			}
+		}(ctx)
+	}
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_dump")
+
+	// Shorten the context to cleanup recorder.
+	cleanupRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	options := cuj.NewPerformanceCUJOptions()
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs(tconns)...)
+	if err != nil {
+		s.Fatal("Failed to create a CUJ recorder: ", err)
+	}
+	defer recorder.Close(cleanupRecorderCtx)
+	var totalElapsed time.Duration
+>>>>>>> CHANGE (4bdea6 tast-tests: Define variable values for test cases using NewR)
 	if err = recorder.Run(ctx, func(ctx context.Context) error {
 		startTime := time.Now()
 

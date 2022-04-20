@@ -53,11 +53,12 @@ type RunParams struct {
 	appName        string
 	account        string // account is the one used by Spotify APP to do login.
 	tabletMode     bool
+	enableBT       bool
 }
 
 // NewRunParams constructs a RunParams struct and returns the pointer to it.
-func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) *RunParams {
-	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode}
+func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode, enableBT bool) *RunParams {
+	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode, enableBT: enableBT}
 }
 
 type runResources struct {
@@ -177,6 +178,24 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		cuj.CloseChrome(ctx, tconn)
 	}(faillogCtx)
 
+<<<<<<< HEAD   (cc4f4d Create one account per RF box.)
+=======
+	// Set up the cuj.Recorder: this test will measure the combinations of
+	// animation smoothness for window-cycles (alt-tab selection), launcher,
+	// and overview.
+	// Shorten the context to cleanup recorder.
+	cleanUpRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	options := cuj.NewPerformanceCUJOptions()
+	recorder, err := cuj.NewRecorder(ctx, cr, a, options, cuj.MetricConfigs(tconns)...)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a recorder")
+	}
+	defer recorder.Close(cleanUpRecorderCtx)
+
+>>>>>>> CHANGE (4bdea6 tast-tests: Define variable values for test cases using NewR)
 	var appStartTime int64
 	switch params.appName {
 	case HelloWorldAppName:

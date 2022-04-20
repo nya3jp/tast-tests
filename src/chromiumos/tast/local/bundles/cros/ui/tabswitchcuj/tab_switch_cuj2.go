@@ -496,6 +496,21 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 		Direction: perf.SmallerIsBetter,
 	}, float64(timeElapsed.Milliseconds()))
 
+<<<<<<< HEAD   (cc4f4d Create one account per RF box.)
+=======
+	// Shorten the context to cleanup recorder.
+	cleanUpRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	options := cuj.NewPerformanceCUJOptions()
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs(tconns)...)
+	if err != nil {
+		s.Fatal("Failed to create a recorder, error: ", err)
+	}
+	defer recorder.Close(cleanUpRecorderCtx)
+
+>>>>>>> CHANGE (4bdea6 tast-tests: Define variable values for test cases using NewR)
 	// Shorten context a bit to allow for cleanup if Run fails.
 	shorterCtx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()

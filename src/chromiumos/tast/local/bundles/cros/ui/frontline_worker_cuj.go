@@ -185,7 +185,12 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+<<<<<<< HEAD   (cc4f4d Create one account per RF box.)
 	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs()...)
+=======
+	options := cuj.NewPerformanceCUJOptions()
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+>>>>>>> CHANGE (4bdea6 tast-tests: Define variable values for test cases using NewR)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

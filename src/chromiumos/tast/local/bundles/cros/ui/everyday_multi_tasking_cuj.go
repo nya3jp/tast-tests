@@ -255,8 +255,13 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
+<<<<<<< HEAD   (cc4f4d Create one account per RF box.)
 	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode)
 	if err := et.Run(ctx, cr, a, testRunParams); err != nil {
+=======
+	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode, enableBT)
+	if err := et.Run(ctx, cr, lacrosFixtValue, a, testRunParams); err != nil {
+>>>>>>> CHANGE (4bdea6 tast-tests: Define variable values for test cases using NewR)
 		s.Fatal("Failed to run everyday multi-tasking cuj test: ", err)
 	}
 }

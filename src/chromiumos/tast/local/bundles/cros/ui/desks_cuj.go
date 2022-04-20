@@ -118,8 +118,13 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wake display: ", err)
 	}
 
+<<<<<<< HEAD   (cc4f4d Create one account per RF box.)
 	recorder, err := cuj.NewRecorder(ctx, cr, nil, append(
 		cuj.MetricConfigs(),
+=======
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.RecorderOptions{}, append(
+		cuj.MetricConfigs([]*chrome.TestConn{tconn}),
+>>>>>>> CHANGE (4bdea6 tast-tests: Define variable values for test cases using NewR)
 		cuj.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter, []int64{500, 2000}),
 		cuj.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
 	)...)

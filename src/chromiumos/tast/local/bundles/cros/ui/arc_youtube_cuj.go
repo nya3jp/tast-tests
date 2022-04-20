@@ -74,7 +74,11 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
+<<<<<<< HEAD   (cc4f4d Create one account per RF box.)
 	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs()...)
+=======
+	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.RecorderOptions{}, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+>>>>>>> CHANGE (4bdea6 tast-tests: Define variable values for test cases using NewR)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
