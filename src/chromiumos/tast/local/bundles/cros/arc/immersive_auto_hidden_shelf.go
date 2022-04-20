@@ -101,6 +101,10 @@ func ImmersiveAutoHiddenShelf(ctx context.Context, s *testing.State) {
 	}
 	defer act.Stop(ctx, tconn)
 
+	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMaximized); err != nil {
+		s.Fatal("Failed to make activity fullscreen: ", err)
+	}
+
 	// Click on the "immersive" button in the activity.
 	if err := wm.UIClickImmersive(ctx, act, d); err != nil {
 		s.Fatal("Failed to click the immersive button: ", err)
