@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ec92656_afb7cd59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-04-20T20:19:54Z",
+      "side": 1,
+      "message": "PTAL when you get a chance.\n\nRegarding the Tricium spelling comments, I think the suggestions are good, but the readme.txt files are copied from the ITU-T conformance file archives, so I didn\u0027t proof-read them. LMK if you\u0027d like me to fix the spelling mistakes!",
+      "revId": "2d26633a4576b577f76fb36999e00ae8fd45d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
