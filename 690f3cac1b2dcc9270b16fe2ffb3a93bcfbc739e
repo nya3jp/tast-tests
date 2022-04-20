@@ -16,6 +16,24 @@
       "message": "Same as you did in line 50: \n```\nclearUpCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, n*time.Second)\ndefer cancel()\ndefer func(...){...}(clearUpCtx, s, tconn)\ndefer ...(clearUpCtx, ...)\n// use ctx for non-defer part.\n```",
       "revId": "690f3cac1b2dcc9270b16fe2ffb3a93bcfbc739e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283a9192_abe270a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-20T09:05:38Z",
+      "side": 1,
+      "message": "This would shorten the context for every test case, I think. This may lead to `ctx` becoming too small? Or should I just increase `Timeout` in this case?",
+      "parentUuid": "fc4ca7bc_6b1baba2",
+      "revId": "690f3cac1b2dcc9270b16fe2ffb3a93bcfbc739e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
