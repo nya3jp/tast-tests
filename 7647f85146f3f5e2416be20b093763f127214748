@@ -88,6 +88,24 @@
       "parentUuid": "de9f1c63_b1c9f72c",
       "revId": "7647f85146f3f5e2416be20b093763f127214748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f03e9ecb_4d0dc357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-20T08:43:24Z",
+      "side": 1,
+      "message": "Uhm... I can\u0027t reproduce that anymore.\n\nNow without --disable-login-lacros-opening it\u0027s failing for basically the original reason: the automatic startup brings us to state RUNNING when the NewWindow request comes in. I\u0027ve added a comment referencing the bug I filed. Let\u0027s land this CL so that we get test coverage of migration again.",
+      "parentUuid": "3569ed26_84eb6596",
+      "revId": "7647f85146f3f5e2416be20b093763f127214748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
