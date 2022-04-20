@@ -120,23 +120,6 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosUI is similar to lacros but should be used
-	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
-	// of by command line.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosUI",
-		Desc:     "Lacros Chrome from a pre-built image using the UI",
-		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.LacrosExtraArgs("--no-first-run")}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
-	})
-
 	// lacrosOmaha is a fixture to enable Lacros by feature flag in Chrome.
 	// This does not require downloading a binary from Google Storage before the test.
 	// It will use the currently available fishfood release of Lacros from Omaha.
@@ -167,12 +150,12 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosUIKeepAlive is similar to lacros but should be used
+	// lacrosKeepAlive is similar to lacros but should be used
 	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
 	// of by command line, and this test assuming that Lacros will be keep alive
 	// in the background even if the browser is turned off.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosUIKeepAlive",
+		Name:     "lacrosKeepAlive",
 		Desc:     "Lacros Chrome from a pre-built image using the UI and the Lacros chrome will stay alive even when the browser terminated",
 		Contacts: []string{"mxcai@chromium.org", "hidehiko@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
