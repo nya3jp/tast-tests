@@ -35,6 +35,17 @@ func init() {
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Fixture:      fixture.ClamshellNonVK,
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name: "simplified",
+				Val:  ime.ChinesePinyin,
+			},
+			{
+				Name:      "traditional",
+				Val:       ime.ChineseTraditionalPinyin,
+				ExtraAttr: []string{"informational"},
+			},
+		},
 	})
 }
 
@@ -50,7 +61,7 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	im := ime.ChinesePinyin
+	im := s.Param().(ime.InputMethod)
 
 	s.Log("Set current input method to: ", im)
 	if err := im.InstallAndActivate(tconn)(ctx); err != nil {
