@@ -46,6 +46,30 @@
       },
       "revId": "5e73939ad11ba4520258ca5cfef23dcd0195f051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2a3d09_9a77117d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-20T12:57:55Z",
+      "side": 1,
+      "message": "So, if the switching delays for some reasons, this check passes, but soon after the tab is switching to the new tab? That sounds like a source of flakiness?\n\nAlso, which is the expected scenario? The tab switching should happen? Or should not?\nCould you avoid ambiguous story (covering both) here, unless there\u0027s no special reasons?",
+      "parentUuid": "10464447_2caa1800",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 55
+      },
+      "revId": "5e73939ad11ba4520258ca5cfef23dcd0195f051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
