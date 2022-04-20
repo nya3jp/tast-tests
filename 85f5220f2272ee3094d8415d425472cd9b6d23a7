@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cce3bf5_0e484a24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-20T23:40:22Z",
+      "side": 1,
+      "message": "LGTM from tast owner perspective.",
+      "revId": "85f5220f2272ee3094d8415d425472cd9b6d23a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e4f8b8e_76b0436d",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-04-20T20:24:04Z",
       "side": 1,
       "message": "No test is using the other profiles (main_10, 3d_hevc, mv_hevc, rext, shvc). Maybe I should split this into two commits, one adding the hevcFiles object, and another adding the v4l2_hevc_main test case? LMK what you think. Thanks!",
+      "revId": "85f5220f2272ee3094d8415d425472cd9b6d23a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ccfa7a9_cb8ce1fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-20T23:40:22Z",
+      "side": 1,
+      "message": "I am not familiar with these unit tests. Will leave this question to your team reviewer.",
+      "parentUuid": "3e4f8b8e_76b0436d",
       "revId": "85f5220f2272ee3094d8415d425472cd9b6d23a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
