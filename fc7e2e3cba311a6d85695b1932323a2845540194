@@ -421,6 +421,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8a82edf_757671e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-20T05:02:30Z",
+      "side": 1,
+      "message": "By interface it could be null, but it is for backward compatibility.\n\nI think we won\u0027t return nil for this, and we should make it a required field of json so it raise error if the json doesn\u0027t contain this.",
+      "parentUuid": "19cad3a3_f59751f5",
+      "range": {
+        "startLine": 222,
+        "startChar": 28,
+        "endLine": 222,
+        "endChar": 42
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55878792_9ecaa39f",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
         "patchSetId": 1
