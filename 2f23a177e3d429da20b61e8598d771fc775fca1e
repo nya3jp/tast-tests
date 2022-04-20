@@ -69,6 +69,24 @@
       "parentUuid": "4953e179_2eb2d85d",
       "revId": "2f23a177e3d429da20b61e8598d771fc775fca1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add8870b_66f3c53f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-20T04:26:40Z",
+      "side": 1,
+      "message": "The [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3583626) has the enum \"SetBacklight\" as default in setup.PowerTest to control the backlight. b/228689048 #comment9 #comment10 shows that setup.PowerTest can replace the action SetScreenBrightness in \"ui/cuj/setup.go\". So I wrap these changes together in this CL.\nBut I think a separate CL would be a better idea, I just upload another [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3593732). Thanks.",
+      "parentUuid": "8d96b54c_60257543",
+      "revId": "2f23a177e3d429da20b61e8598d771fc775fca1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
