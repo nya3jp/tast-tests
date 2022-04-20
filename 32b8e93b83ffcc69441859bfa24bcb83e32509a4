@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fd239a_9102cff0",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2022-04-20T23:04:51Z",
+      "side": 1,
+      "message": "nit: reword this since people not familiar with the project may not understand what \"consent flow\" means.\n\nMaybe: TurnOnCameraRollFeature enables the recent photos feature through the phone side set up dialog.",
+      "range": {
+        "startLine": 246,
+        "startChar": 27,
+        "endLine": 246,
+        "endChar": 78
+      },
+      "revId": "32b8e93b83ffcc69441859bfa24bcb83e32509a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21036c02_17f551bb",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2022-04-20T23:04:51Z",
+      "side": 1,
+      "message": "s/CameraRoll/RecentPhotos/g\n\nWe\u0027ve been using the product name \"Recent Photos\" instead of Camera Roll in the test code.",
+      "range": {
+        "startLine": 246,
+        "startChar": 9,
+        "endLine": 246,
+        "endChar": 19
+      },
+      "revId": "32b8e93b83ffcc69441859bfa24bcb83e32509a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c486a7_1da44255",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2022-04-20T23:04:51Z",
+      "side": 1,
+      "message": "nit: setup dialog did not appear",
+      "range": {
+        "startLine": 256,
+        "startChar": 27,
+        "endLine": 256,
+        "endChar": 57
+      },
+      "revId": "32b8e93b83ffcc69441859bfa24bcb83e32509a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8707d7b2_94b3347a",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2022-04-20T23:04:51Z",
+      "side": 1,
+      "message": "setupDialogConn?",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 13
+      },
+      "revId": "32b8e93b83ffcc69441859bfa24bcb83e32509a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f6bbce_10c22975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/download_recent_photo.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2022-04-20T23:04:51Z",
+      "side": 0,
+      "message": "note: this is removed because we no longer show the opt-in view in the Phone Hub bubble when the user turns off the feature on the phone.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "87411d279685fdcebea3e05e8351ba6d658091d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
