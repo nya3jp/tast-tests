@@ -16,6 +16,24 @@
       "message": "nit: git commit message bodies should be wrapped at 72 characters",
       "revId": "c33046d8257e4385f91c2fade5e8e0eb52e5ee32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5844ee92_31252ce3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-20T05:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90b4be6d_f27e55cb",
+      "revId": "c33046d8257e4385f91c2fade5e8e0eb52e5ee32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
