@@ -52,8 +52,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 	cleanUpRecorderCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+
 	testing.ContextLog(ctx, "Start recording actions")
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+	options := cuj.NewPerformanceCUJOptions()
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the recorder")
 	}

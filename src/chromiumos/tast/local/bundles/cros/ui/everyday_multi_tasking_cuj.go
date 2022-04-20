@@ -337,7 +337,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
-	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode)
+	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode, enableBT)
 	if err := et.Run(ctx, cr, lacrosFixtValue, a, testRunParams); err != nil {
 		s.Fatal("Failed to run everyday multi-tasking cuj test: ", err)
 	}
