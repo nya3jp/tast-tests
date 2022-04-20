@@ -16,6 +16,29 @@
       "message": "LGTM. Please have a domain expert to give you a CR+2.",
       "revId": "38453e937b371a7e0150e811051c55bb2591f589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8ebae2_aa30075e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-04-20T21:44:09Z",
+      "side": 1,
+      "message": "just confirming: this CL will update all tast tests that don\u0027t explicitly disable personalization hub, to run with personalization hub on?\n\nCan you run this test and check if it succeeds?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go;l\u003d1?q\u003dlock_screen_idle\u0026sq\u003d",
+      "range": {
+        "startLine": 363,
+        "startChar": 36,
+        "endLine": 363,
+        "endChar": 40
+      },
+      "revId": "38453e937b371a7e0150e811051c55bb2591f589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
