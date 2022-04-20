@@ -166,7 +166,7 @@ func CreateFakeUserProfile(ctx context.Context, m *shill.Manager, name string) (
 	return path, nil
 }
 
-// RemoveFakeUserProfile removes the fake test user profile created for test purpose.
+// RemoveFakeUserProfile removes the fake Shill user profile created for test purpose.
 func RemoveFakeUserProfile(ctx context.Context, m *shill.Manager, name string) error {
 	profileName := fmt.Sprintf("~%s/shill", name)
 	profilePath := filepath.Join(fakeProfilesDir, name)
