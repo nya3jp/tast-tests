@@ -203,6 +203,20 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		return conn, nil
 	}
 
+<<<<<<< HEAD   (cc4f4d Create one account per RF box.)
+=======
+	// Give 5 seconds to cleanup recorder.
+	cleanupRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.RecorderOptions{}, cuj.MetricConfigs(tconns)...)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a recorder")
+	}
+	defer recorder.Close(cleanupRecorderCtx)
+
+>>>>>>> CHANGE (4bdea6 tast-tests: Define variable values for test cases using NewR)
 	for _, videoSource := range videoSources {
 		// Repeat the run for different video source.
 		if err = recorder.Run(ctx, func(ctx context.Context) (retErr error) {
