@@ -99,6 +99,30 @@
       },
       "revId": "1fd133dd4f6f586ecf8148a462f596aa06c8aef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b27a23_85bb0c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_on_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-04-20T06:18:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "264688b2_ad522acf",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 37
+      },
+      "revId": "1fd133dd4f6f586ecf8148a462f596aa06c8aef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
