@@ -46,6 +46,30 @@
       },
       "revId": "31b5b28cfd928569c06491a72e5660a733dd790e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb5da43_45f3a1a1",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-20T15:48:37Z",
+      "side": 1,
+      "message": "Sorry, I was not clear. When I said const, I meant this:\n\n```\nconst (\n     Personalization \u003d \"Personalization\"\n)\n\n...\nfunc WaitForWallpaperWithName(ui *uiauto.Context, name string) uiauto.Action {\n\twindowNode :\u003d nodewith.NameContaining(Personalization).Role(role.Window).First()\n\twallpaperNameNode :\u003d nodewith.Name(fmt.Sprintf(\"Currently set %v\", name)).Role(role.Heading).Ancestor(windowNode)\n\treturn ui.WaitUntilExists(wallpaperNameNode)\n}\n```\n\nThe advantage is to prevent issues such misspelling. \n\nYour current code is still using same literal string multiple times.\n\nAlso, I don\u0027t think your new one-line function GetWindowNode provide any additional value. I think you don\u0027t need that.",
+      "parentUuid": "11e8169a_a2053fcb",
+      "range": {
+        "startLine": 88,
+        "startChar": 40,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "31b5b28cfd928569c06491a72e5660a733dd790e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
