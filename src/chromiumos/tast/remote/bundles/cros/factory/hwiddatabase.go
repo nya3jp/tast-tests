@@ -14,6 +14,12 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// *-kernelnext, *-arc-r are not used in factory and fails this test
+var platformsNotUsedInFactoryAndCanNotPass = []string{"atlas-kernelnext", "jacuzzi-kernelnext", "kukui-kernelnext", "nocturne-kernelnext", "jacuzzi-kernelnext", "strongbad-kernelnext", "trogdor-kernelnext", "zork-arc-r"}
+
+// models using storage bridge + storage assembly probes no storage
+var modelsAllowNoStorage = []string{"nipperkin", "lillipup", "dewatt", "anahera", "chronicler", "coachz"}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HWIDDatabase,
@@ -23,15 +29,43 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      2 * time.Minute,
 		Fixture:      fixture.EnsureToolkit,
-		// Skip "nyan_kitty" due to slow reboot speed.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(platformsNotUsedInFactoryAndCanNotPass...)),
 		SoftwareDeps: append([]string{"factory_flow"}, fixture.EnsureToolkitSoftwareDeps...),
+		Params: []testing.Param{
+			{
+				Name: "default_settings",
+				Val:  hwidParams{},
+				ExtraHardwareDeps: hwdep.D(
+					hwdep.SkipOnModel(modelsAllowNoStorage...),
+				),
+			},
+			{
+				Name: "allow_no_storage",
+				ExtraHardwareDeps: hwdep.D(
+					hwdep.Model(modelsAllowNoStorage...),
+				),
+				Val: hwidParams{
+					declineStoragePrompt: true,
+				},
+			},
+		},
 	})
+}
+
+type hwidParams struct {
+	declineStoragePrompt bool
 }
 
 func HWIDDatabase(ctx context.Context, s *testing.State) {
 	conn := s.DUT().Conn()
-	buildDatabaseCmd := conn.CommandContext(ctx, "hwid", "build-database")
+
+	params := s.Param().(hwidParams)
+	buildArgs := []string{"build-database"}
+	if params.declineStoragePrompt {
+		buildArgs = append(buildArgs, "--auto-decline-essential-prompt", "storage")
+	}
+
+	buildDatabaseCmd := conn.CommandContext(ctx, "hwid", buildArgs...)
 	if err := buildDatabaseCmd.Run(ssh.DumpLogOnError); err != nil {
 		s.Fatal("Failed to build the HWID database: ", err)
 	}
