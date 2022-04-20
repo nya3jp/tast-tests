@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -33,6 +34,8 @@ func init() {
 			"ui.gaiaPoolDefault",
 		},
 		Timeout: 2*chrome.GAIALoginTimeout + time.Minute,
+		// TODO(crbug.com/1317006): Skip on reven due to CQ failures.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("reven")),
 	})
 }
 
