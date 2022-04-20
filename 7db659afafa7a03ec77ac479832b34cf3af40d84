@@ -16,6 +16,47 @@
       "message": "PTAL, Hyung, too?",
       "revId": "7db659afafa7a03ec77ac479832b34cf3af40d84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7849b8dc_e4bc4ed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-20T18:16:23Z",
+      "side": 1,
+      "message": "Thanks for adding me in. LGTM!\nGoing off a bit, is there any pointers that help me understand better about how the profile migration design is designed and what are all the possible paths it may go through for migration?\nI would like to take a look at how to examine those paths and automate testing.",
+      "parentUuid": "7f0b3c1a_8716815a",
+      "revId": "7db659afafa7a03ec77ac479832b34cf3af40d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370e5e98_eb575338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-20T18:16:23Z",
+      "side": 1,
+      "message": "nit: adding lacros-team@google.com as well like many other lacros.*? It would help also track which team to own.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "7db659afafa7a03ec77ac479832b34cf3af40d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
