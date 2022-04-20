@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8761b5c5_c65498e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T00:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd5b1e7b_1bb1b949",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d61eeb69_5c38fa44",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03d973a7_6788b248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T00:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab0fc8dd_20539d7d",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb714f46_f81dec0c",
@@ -82,6 +118,30 @@
       "writtenOn": "2022-04-19T23:15:20Z",
       "side": 1,
       "message": "probably don\u0027t need else here given call to Fatal",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 7
+      },
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "678fa981_c3c84bd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T00:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb714f46_f81dec0c",
       "range": {
         "startLine": 93,
         "startChar": 3,
@@ -156,6 +216,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2331d883_af632ee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T00:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a828f5ff_e387c91c",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f8ca957_f6597f98",
@@ -175,6 +253,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8c26f06_a02818a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T00:14:36Z",
+      "side": 1,
+      "message": "What do you mean by create chrome session?\nI removed the Gaia part of the fixture and it seems to work the same. \nStill, if both tests are run together, the privacy_notice will not show the second time.",
+      "parentUuid": "9f8ca957_f6597f98",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7330d410_2cc78437",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
         "patchSetId": 3
@@ -186,6 +282,24 @@
       "writtenOn": "2022-04-19T23:15:20Z",
       "side": 1,
       "message": "move this section into its own function",
+      "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1e9c94_edd80f12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-20T00:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7330d410_2cc78437",
       "revId": "6cd91d01842e206d666a0fd2af875f4cacb1b75e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
