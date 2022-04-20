@@ -22,6 +22,30 @@
       },
       "revId": "3c0ddcf84e9d57d69161cf3b69a8198e51fdead5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b01841f_f742cb3b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-20T13:29:24Z",
+      "side": 0,
+      "message": "ah, no. it\u0027s covered by Config.",
+      "parentUuid": "ef316942_eab75e6b",
+      "range": {
+        "startLine": 152,
+        "startChar": 27,
+        "endLine": 152,
+        "endChar": 43
+      },
+      "revId": "3c0ddcf84e9d57d69161cf3b69a8198e51fdead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
