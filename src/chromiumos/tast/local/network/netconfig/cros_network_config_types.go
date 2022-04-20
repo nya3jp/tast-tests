@@ -273,10 +273,25 @@ type ManagedWiFiProperties struct {
 	Security   SecurityType          `json:"security"`
 }
 
+// ManagedEthernetProperties contains managed properties of an ethernet
+// connection.
+type ManagedEthernetProperties struct {
+	// Setting the optional fields as a pointer allows them to be nullable and to
+	// not appear in the json object if not provided.
+	Eap *ManagedEAPProperties `json:"eap,omitempty"`
+	// Authentication represents the configured authentication type for an
+	// Ethernet network.
+	Authentication *ManagedString `json:"authentication,omitempty"`
+}
+
 // NetworkTypeManagedProperties contains managed properties for one of the
-// network types. Only WiFi is implemented so far.
+// network types. Its type is an union, so only one of the fields should be set
+// simultaneously. The fields are pointers to allow this behaviour and to not
+// appear in the json object when they are not set.
+// Currently only WiFi and Ethernet are implemented.
 type NetworkTypeManagedProperties struct {
-	Wifi ManagedWiFiProperties `json:"wifi"`
+	Wifi     *ManagedWiFiProperties     `json:"wifi,omitempty"`
+	Ethernet *ManagedEthernetProperties `json:"ethernet,omitempty"`
 }
 
 // ManagedProperties are provided by GetManagedProperties, see onc_spec.md for
@@ -333,10 +348,24 @@ type WiFiConfigProperties struct {
 	HiddenSsid HiddenSsidMode       `json:"hiddenSsid"`
 }
 
-// NetworkTypeConfigProperties contains properties for one type of network.
-// Currently only WiFi is supported.
+// EthernetConfigProperties is used to create ethernet configurations.
+type EthernetConfigProperties struct {
+	// Eap configuration is only used if the ethernet authentication is 8021X and
+	// it should not be included in the json object at all otherwise (not even as
+	// an empty object). Setting the field Eap as a pointer allows it to be
+	// nullable and to not appear in the json object if not provided.
+	Eap            *EAPConfigProperties `json:"eap,omitempty"`
+	Authentication string               `json:"authentication,omitempty"`
+}
+
+// NetworkTypeConfigProperties contains properties for one type of network. Its
+// type is an union, so only one of the fields should be set simultaneously. The
+// fields are pointers to allow this behaviour and to not appear in the json
+// object when they are not set.
+// Currently only WiFi and Ethernet are supported.
 type NetworkTypeConfigProperties struct {
-	Wifi WiFiConfigProperties `json:"wifi"`
+	Wifi     *WiFiConfigProperties     `json:"wifi,omitempty"`
+	Ethernet *EthernetConfigProperties `json:"ethernet,omitempty"`
 }
 
 // ConfigProperties is passed to SetProperties or ConfigureNetwork to configure
