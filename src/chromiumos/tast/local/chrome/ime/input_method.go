@@ -162,6 +162,15 @@ var ChinesePinyin = InputMethod{
 	VoiceLanguage:       LanguageZhHans,
 }
 
+// ChineseTraditionalPinyin represents the input method of Chinese (Traditional) Pinyin.
+var ChineseTraditionalPinyin = InputMethod{
+	Name:                "Chinese Traditional Pinyin",
+	ID:                  "zh-hant-t-i0-pinyin",
+	ShortLabel:          "拼",
+	HandwritingLanguage: LanguageZhHant,
+	VoiceLanguage:       LanguageZhHant,
+}
+
 // ChineseQuick represents the input method of Chinese Quick.
 var ChineseQuick = InputMethod{
 	Name:                "Chinese Quick",
@@ -356,6 +365,7 @@ var inputMethods = []InputMethod{
 	ChineseDayi,
 	ChinesePinyin,
 	ChineseQuick,
+	ChineseTraditionalPinyin,
 	ChineseWubi,
 	Korean,
 	Arabic,
