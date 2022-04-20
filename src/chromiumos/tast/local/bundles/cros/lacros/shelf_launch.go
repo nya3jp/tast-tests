@@ -9,10 +9,10 @@ import (
 	"os"
 
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -54,8 +54,7 @@ func init() {
 }
 
 func ShelfLaunch(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(lacrosfixt.FixtValue)
-	tconn, err := f.Chrome().TestAPIConn(ctx)
+	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
