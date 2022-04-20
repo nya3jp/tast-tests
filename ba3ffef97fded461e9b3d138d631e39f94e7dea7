@@ -16,6 +16,24 @@
       "message": "There are a lot of line changes. My browser is having trouble with is CL. Anyway, I I do have a question on src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go \n\nI don\u0027t think you need the \n\nbuganizer: \"\" \n\nchange because \"\" is the default.\n",
       "revId": "ba3ffef97fded461e9b3d138d631e39f94e7dea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de69470e_9d68ceb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-04-20T15:20:57Z",
+      "side": 1,
+      "message": "I was not aware of that, I have modified it to avoid having this unnecessary line.",
+      "parentUuid": "24d39e58_18d7fe54",
+      "revId": "ba3ffef97fded461e9b3d138d631e39f94e7dea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
