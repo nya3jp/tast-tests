@@ -73,6 +73,80 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3464f7b_824d5eea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-20T12:52:08Z",
+      "side": 1,
+      "message": "need a lock?",
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a3fe120_3025621a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_virtual_keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-20T12:52:08Z",
+      "side": 1,
+      "message": "who has the responsibility to clean up cr, br, closeBrowser on error?",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51150ca_cfc4ddea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_virtual_keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-20T12:52:08Z",
+      "side": 1,
+      "message": "need a lock?",
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c21dd6_c9b248fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_virtual_keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-20T12:52:08Z",
+      "side": 1,
+      "message": "nit: saveLogsIfError?",
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e265d98_a219d5c6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_verify_vk.go",
         "patchSetId": 2
@@ -84,6 +158,30 @@
       "writtenOn": "2022-04-18T18:29:32Z",
       "side": 1,
       "message": "Q for hidehiko@:\nWhat do you think about having browser.Type somewhere both local and remote tests can reference it? Currently it\u0027s `chromiumos/tast/local/chrome/browser` that can\u0027t be directly imported to the remote tests. Any suggestion?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad9db87_37a88199",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_verify_vk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-20T12:52:08Z",
+      "side": 1,
+      "message": "If enum-like only, chromiumos/tast/common/browser or chromiumos/tast/common/chrome/browser maybe?",
+      "parentUuid": "3e265d98_a219d5c6",
       "range": {
         "startLine": 24,
         "startChar": 0,
