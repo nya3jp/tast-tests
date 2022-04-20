@@ -18,8 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -70,11 +68,11 @@ func LockScreenIdle(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := testLockScreenIdle(ctx, cr, tconn, ui); err != nil {
+	if err := ambient.TestLockScreenIdle(ctx, cr, tconn, ui); err != nil {
 		s.Fatal("Failed to start ambient mode: ", err)
 	}
 
-	if err := unlockScreen(ctx, s.RequiredVar("ambient.password")); err != nil {
+	if err := ambient.UnlockScreen(ctx, s.RequiredVar("ambient.password")); err != nil {
 		s.Fatal("Failed to unlock screen")
 	}
 }
@@ -168,20 +166,6 @@ func prepareAmbientMode(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.
 	return nil
 }
 
-func unlockScreen(ctx context.Context, password string) error {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to open keyboard device")
-	}
-	defer ew.Close()
-
-	if err := ew.Type(ctx, password+"\n"); err != nil {
-		return errors.Wrap(err, "failed to type password")
-	}
-
-	return nil
-}
-
 func cleanupAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := ambient.SetTimeouts(
 		ctx,
@@ -200,76 +184,4 @@ func cleanupAmbientMode(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return nil
-}
-
-func testLockScreenIdle(
-	ctx context.Context,
-	cr *chrome.Chrome,
-	tconn *chrome.TestConn,
-	ui *uiauto.Context,
-) error {
-	sm, err := session.NewSessionManager(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get session manager")
-	}
-	return uiauto.Combine("start, hide, and restart ambient mode",
-		sm.LockScreen,
-		waitForAmbientStart(tconn, ui),
-		hideAmbientMode(tconn, sm, ui),
-		waitForAmbientStart(tconn, ui),
-	)(ctx)
-}
-
-func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context) uiauto.Action {
-	return func(ctx context.Context) error {
-		if err := ambient.WaitForPhotoTransitions(
-			ctx,
-			tconn,
-			2,
-			8*time.Second,
-		); err != nil {
-			return errors.Wrap(err, "failed to wait for photo transitions")
-		}
-
-		return ui.Exists(nodewith.ClassName("LockScreenAmbientModeContainer").Role(role.Window))(ctx)
-	}
-}
-
-func hideAmbientMode(
-	tconn *chrome.TestConn,
-	sm *session.SessionManager,
-	ui *uiauto.Context,
-) uiauto.Action {
-	return func(ctx context.Context) error {
-		container := nodewith.ClassName("LockScreenAmbientModeContainer").Role(role.Window)
-		if err := ui.Exists(container)(ctx); err != nil {
-			return errors.Wrap(err, "failed to find lock screen ambient mode container")
-		}
-
-		// Move the mouse a small amount. Ambient mode should turn off. Session
-		// should still be locked.
-		mouse, err := input.Mouse(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get mouse")
-		}
-		defer mouse.Close()
-
-		if err := mouse.Move(10, 10); err != nil {
-			return errors.Wrap(err, "failed to move mouse")
-		}
-
-		// Ambient mode container should not exist.
-		if err := ui.WaitUntilGone(container)(ctx); err != nil {
-			return errors.Wrap(err, "failed to ensure ambient container dismissed")
-		}
-
-		// Session should be locked.
-		if isLocked, err := sm.IsScreenLocked(ctx); err != nil {
-			return errors.Wrap(err, "failed to get screen lock state")
-		} else if !isLocked {
-			return errors.New("expected screen to be locked")
-		}
-
-		return nil
-	}
 }

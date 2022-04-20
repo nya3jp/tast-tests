@@ -74,6 +74,19 @@ func toggleThemeButton(themeButton string, ui *uiauto.Context) uiauto.Action {
 		ui.LeftClick(toggleThemeButton))
 }
 
+// EnableAmbientMode returns an action to enable ambient mode.
+func EnableAmbientMode(ui *uiauto.Context) uiauto.Action {
+	return toggleAmbientMode("Off", ui)
+}
+
+// toggleAmbientMode returns an action to toggle ambient mode.
+func toggleAmbientMode(currentMode string, ui *uiauto.Context) uiauto.Action {
+	toggleAmbientButton := nodewith.Role(role.ToggleButton).Name(currentMode)
+	return uiauto.Combine(fmt.Sprintf("toggle ambient mode - %s", currentMode),
+		ui.WaitUntilExists(toggleAmbientButton),
+		ui.LeftClick(toggleAmbientButton))
+}
+
 // NavigateHome returns an action to navigate Personalization Hub Main page.
 func NavigateHome(ui *uiauto.Context) uiauto.Action {
 	homeButton := nodewith.Role(role.Button).Name("Home")
