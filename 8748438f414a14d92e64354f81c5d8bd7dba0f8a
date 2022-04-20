@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01de0294_3311a7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop_mixed_type_browsers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-04-20T14:53:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cd28222_240ff2b4",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 4
+      },
+      "revId": "8748438f414a14d92e64354f81c5d8bd7dba0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd3bfd5b_000ae32f",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-13T19:04:30Z",
       "side": 1,
       "message": "Same as above. Make it method for readability and reuse.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 4
+      },
+      "revId": "8748438f414a14d92e64354f81c5d8bd7dba0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "895d9c26_e3b9186d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop_mixed_type_browsers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-04-20T14:53:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd3bfd5b_000ae32f",
       "range": {
         "startLine": 179,
         "startChar": 0,
