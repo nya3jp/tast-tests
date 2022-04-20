@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f7b7a8_f3004cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-20T19:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3464f7b_824d5eea",
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a3fe120_3025621a",
@@ -101,6 +119,30 @@
       "writtenOn": "2022-04-20T12:52:08Z",
       "side": 1,
       "message": "who has the responsibility to clean up cr, br, closeBrowser on error?",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b77a5b63_a3d9447d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_virtual_keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-20T19:09:52Z",
+      "side": 1,
+      "message": "It\u0027ll be a remote test `firmware/ec_verify_vk.go` which is the only user of this service that should be responsible of handling its lifecycle. Looking at the test it has some deferred cleanups in place. so, I think we\u0027re good.",
+      "parentUuid": "0a3fe120_3025621a",
       "range": {
         "startLine": 73,
         "startChar": 2,
@@ -128,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ffb093_15c63dac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_virtual_keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-20T19:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51150ca_cfc4ddea",
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5c21dd6_c9b248fa",
@@ -141,6 +201,24 @@
       "writtenOn": "2022-04-20T12:52:08Z",
       "side": 1,
       "message": "nit: saveLogsIfError?",
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90868d48_ce5cc50c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_virtual_keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-20T19:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5c21dd6_c9b248fa",
       "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -182,6 +260,30 @@
       "side": 1,
       "message": "If enum-like only, chromiumos/tast/common/browser or chromiumos/tast/common/chrome/browser maybe?",
       "parentUuid": "3e265d98_a219d5c6",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "188aaecc6a5532d0d140b2ea231fdf0262a31b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0342934f_de5034c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_verify_vk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-20T19:09:52Z",
+      "side": 1,
+      "message": "Sounds good. `chromiumos/tast/common/chrome/browser` seems to match existing code structure where it is now. is it okay to make this change in a follow up (to avoid adding new files and carrying over all +2\u0027s again)?",
+      "parentUuid": "cad9db87_37a88199",
       "range": {
         "startLine": 24,
         "startChar": 0,
