@@ -39,13 +39,13 @@ func init() {
 			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
-			Fixture:           "lacrosUI",
+			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
 			ExtraAttr:         []string{"informational"},
 			Val:               browser.TypeLacros,
 		}, {
 			Name:              "lacros_unstable",
-			Fixture:           "lacrosUI",
+			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
 			Val:               browser.TypeLacros,
