@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76225b24_3575284f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-20T16:39:10Z",
+      "side": 1,
+      "message": "1. Please create a buganizer and fill in BUG\u003d\n2. Please take a look at my comment\n3. Please run tast unit test: fast_build.sh -T\n   Then add following line to your commit log\nTEST\u003dtast unit test passed.\n",
+      "revId": "c2c6d0431e6ec531a564c6799ef70a49fbb2081a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da00fe8_b2c11c2e",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-20T16:39:10Z",
+      "side": 1,
+      "message": "Please swap the order to maintain proto compatibility.",
+      "revId": "c2c6d0431e6ec531a564c6799ef70a49fbb2081a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
