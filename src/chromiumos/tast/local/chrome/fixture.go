@@ -189,6 +189,18 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithProductivityLauncher",
+		Desc:     "Logged into a user session with productivity launcher enabled",
+		Contacts: []string{"yulunwu@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{EnableFeatures("ProductivityLauncher")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedWithGaia",
 		Desc:     "Logged into a session with Gaia user",
 		Contacts: []string{"jinrongwu@google.com"},
