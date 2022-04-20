@@ -52,9 +52,9 @@ type TestingState interface {
 	Var(string) (string, bool)
 }
 
-// NewConfigFromState creates a new LacrosConfig instance.
-// TestingState allows both testing.FixtState and testing.State to be passed in.
-func NewConfigFromState(s TestingState, ops ...Option) *Config {
+// NewConfig creates a new lacrosfixt.Config instance with the default config that uses the lacros-chrome in the rootfs partition.
+// It is useful when the caller doesn't need to care about the lacros-chrome deployed from Chromium CI with the var LacrosDeployedBinary.
+func NewConfig(ops ...Option) *Config {
 	// TODO(crbug.com/1260037): Make lacros.LacrosPrimary the default.
 	cfg := &Config{
 		selection: lacros.Rootfs,
@@ -65,6 +65,14 @@ func NewConfigFromState(s TestingState, ops ...Option) *Config {
 	for _, op := range ops {
 		op(cfg)
 	}
+
+	return cfg
+}
+
+// NewConfigFromState creates a new lacrosfixt.Config instance.
+// TestingState allows both testing.FixtState and testing.State to be passed in.
+func NewConfigFromState(s TestingState, ops ...Option) *Config {
+	cfg := NewConfig(ops...)
 
 	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
 	// lacros-chrome instead of always downloading from a gcs location.
