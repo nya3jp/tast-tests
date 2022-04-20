@@ -159,10 +159,8 @@ func init() {
 		Name:     "lacrosPrimary",
 		Desc:     "Lacros Chrome from rootfs as a primary browser",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
-		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.LacrosExtraArgs("--no-first-run")}, nil
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfigFromState(s, Mode(lacros.LacrosPrimary)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
