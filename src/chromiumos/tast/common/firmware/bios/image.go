@@ -55,6 +55,9 @@ const (
 	// RWVPDImageSection is the named section for writable VPD data
 	RWVPDImageSection ImageSection = "RW_VPD"
 
+	// RECOVERYMRCCACHEImageSection is the named section for recovery MRC cache data
+	RECOVERYMRCCACHEImageSection ImageSection = "RECOVERY_MRC_CACHE"
+
 	// EmptyImageSection is the empty string which will result in the whole AP/EC fw backup.
 	EmptyImageSection ImageSection = ""
 
