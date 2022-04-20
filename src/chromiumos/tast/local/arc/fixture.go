@@ -91,6 +91,7 @@ func init() {
 				chrome.ARCEnabled(),
 				chrome.RestrictARCCPU(),
 				chrome.ExtraArgs(DisableSyncFlags()...),
+				chrome.ExtraArgs("--disable-features=FirmwareUpdaterApp"),
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
