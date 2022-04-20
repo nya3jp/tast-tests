@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "687b1bea_3af30969",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-20T02:58:50Z",
+      "side": 1,
+      "message": "As long as checking is done only in this particular test case, and with the possible additions to BiosService in the future, I\u0027m removing that TODO for now.",
+      "parentUuid": "058fce29_99601866",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 47
+      },
+      "revId": "400c178e06953a629b01d69c1f9d880fc812e98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fa6b799_c984469c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b2b24eb_a0754813",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-20T02:58:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fa6b799_c984469c",
+      "range": {
+        "startLine": 190,
+        "startChar": 60,
+        "endLine": 190,
+        "endChar": 62
+      },
+      "revId": "400c178e06953a629b01d69c1f9d880fc812e98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a50dfbae_869b9e38",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-18T10:08:09Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 201,
+        "startChar": 59,
+        "endLine": 201,
+        "endChar": 61
+      },
+      "revId": "400c178e06953a629b01d69c1f9d880fc812e98c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa1d6a0_785c9322",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-20T02:58:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a50dfbae_869b9e38",
       "range": {
         "startLine": 201,
         "startChar": 59,
