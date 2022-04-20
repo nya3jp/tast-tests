@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b50ec0e_53894513",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-20T19:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "563d6229_4cd2c0ae",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "8ddd6f9f8634316ee9c7c7df49efb8c5aff1cd2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40fb89b3_9c4ff36b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-20T16:28:46Z",
       "side": 1,
       "message": "This should document what you do for the Verified +1 vote. It takes a long time to run all these tests. I suggest ui.MeetCUJ.16p and maybe ui.MeetCUJ.lacros_4p, but not all of ui.MeetCUJ.*.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "8ddd6f9f8634316ee9c7c7df49efb8c5aff1cd2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f736bd2f_876aa077",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-20T19:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40fb89b3_9c4ff36b",
       "range": {
         "startLine": 13,
         "startChar": 0,
