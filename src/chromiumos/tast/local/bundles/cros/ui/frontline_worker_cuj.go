@@ -185,7 +185,8 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+	options := cuj.NewPerformanceCUJOptions()
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
