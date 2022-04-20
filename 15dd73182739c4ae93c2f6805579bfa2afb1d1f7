@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a3acdf_0318088d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-20T06:28:58Z",
+      "side": 1,
+      "message": "LGTM on current patch. Feel free to add Tast owners for review.",
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
