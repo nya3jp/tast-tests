@@ -130,23 +130,12 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 
 	ui := uiauto.New(tconn)
 
-	// Give 5 seconds to cleanup recorder.
-	cleanupRecorderCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs()...)
-	if err != nil {
-		return errors.Wrap(err, "failed to create a recorder")
-	}
-	defer recorder.Close(cleanupRecorderCtx)
-
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid
 	// other cleanup functions executed earlier to use up the context time.
 	cleanupSettingsCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+        ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	cleanupSetting, err := cuj.InitializeSetting(ctx, tconn)
@@ -168,7 +157,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 
 	// Give 5 seconds to clean up device objects connected to UI Automator server resources.
 	cleanupDeviceCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+        ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	d, err := a.NewUIDevice(ctx)
@@ -202,6 +191,18 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		)
 		return conn, nil
 	}
+
+        // Give 5 seconds to cleanup recorder.
+	cleanupRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	options := cuj.NewPerformanceCUJOptions()
+	recorder, err := cuj.NewRecorder(ctx, cr, a, options, cuj.MetricConfigs()...)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a recorder")
+	}
+	defer recorder.Close(cleanupRecorderCtx)
 
 	for _, videoSource := range videoSources {
 		// Repeat the run for different video source.
