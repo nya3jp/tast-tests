@@ -203,6 +203,13 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		return conn, nil
 	}
 
+        options := cuj.NewPerformanceCUJOptions()
+	recorder, err := cuj.NewRecorder(ctx, cr, a, options, cuj.MetricConfigs()...)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a recorder")
+	}
+	defer recorder.Close(cleanupRecorderCtx)
+
 	for _, videoSource := range videoSources {
 		// Repeat the run for different video source.
 		if err = recorder.Run(ctx, func(ctx context.Context) (retErr error) {
