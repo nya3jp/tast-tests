@@ -17,23 +17,31 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Definition,
+		Func:         DefinitionWithSimpleWord,
 		LacrosStatus: testing.LacrosVariantNeeded,
-		Desc:         "Test Quick Answers definition feature",
+		Desc:         "Test Quick Answers always trigger for single word feature",
 		Contacts: []string{
 			"updowndota@google.com",
+			"angelaxiao@google.com",
 			"croissant-eng@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
 	})
 }
 
-// Definition tests Quick Answers definition feature.
-func Definition(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+// DefinitionWithSimpleWord tests Quick Answers always trigger for single word feature.
+func DefinitionWithSimpleWord(ctx context.Context, s *testing.State) {
+	// Setup chrome session with the Quick Answers always trigger for single word feature flag enabled.
+	cr, err := chrome.New(
+		ctx,
+		chrome.EnableFeatures("QuickAnswersAlwaysTriggerForSingleWord"),
+	)
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -46,8 +54,8 @@ func Definition(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable Quick Answers: ", err)
 	}
 
-	// Open page with the query word on it.
-	const queryWord = "icosahedron"
+	// Open page with the simple query word on it.
+	const queryWord = "dog"
 	conn, err := cr.NewConn(ctx, "https://google.com/search?q="+queryWord)
 	if err != nil {
 		s.Fatal("Failed to create new Chrome connection: ", err)
@@ -64,13 +72,13 @@ func Definition(ctx context.Context, s *testing.State) {
 	// Select the word and setup watcher to wait for text selection event.
 	if err := ui.WaitForEvent(nodewith.Root(),
 		event.TextSelectionChanged,
-		ui.Select(query, 0 /*startOffset*/, query, 2 /*endOffset*/))(ctx); err != nil {
+		ui.Select(query, 0 /*startOffset*/, query, 3 /*endOffset*/))(ctx); err != nil {
 		s.Fatal("Failed to select query: ", err)
 	}
 
 	// Right click the selected word and ensure the Quick Answers UI shows up with the definition result.
 	quickAnswers := nodewith.ClassName("QuickAnswersView")
-	definitionResult := nodewith.NameContaining("twenty plane faces").ClassName("QuickAnswersTextLabel")
+	definitionResult := nodewith.NameContaining("domesticated carnivorous mammal").ClassName("QuickAnswersTextLabel")
 	if err := uiauto.Combine("Show context menu",
 		ui.RightClick(query),
 		ui.WaitUntilExists(quickAnswers),
