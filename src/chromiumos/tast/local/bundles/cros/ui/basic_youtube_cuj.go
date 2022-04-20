@@ -99,7 +99,7 @@ func BasicYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer uiHandler.Close()
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.NewSmoothnessMetricConfig(
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.RecorderOptions{}, cuj.NewSmoothnessMetricConfig(
 		"Ash.WindowCycleView.AnimationSmoothness.Container"))
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)

@@ -224,10 +224,30 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 	return count
 }
 
+// RecorderOptions indicates whether the services should not be changed.
+// The following options are allowed the status of which is determined based on the test.
+type RecorderOptions struct {
+	DoNotChangeWifi      bool
+	DoNotChangePowerd    bool
+	DoNotChangeDPTF      bool
+	DoNotChangeAudio     bool
+	DoNotChangeBluetooth bool
+}
+
+// NewPerformanceCUJOptions indicates the power test settings for performance CUJs run by partners.
+func NewPerformanceCUJOptions() RecorderOptions {
+	return RecorderOptions{
+		DoNotChangeWifi:   true,
+		DoNotChangePowerd: true,
+		DoNotChangeDPTF:   true,
+		DoNotChangeAudio:  true,
+	}
+}
+
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...MetricConfig) (*Recorder, error) {
+func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options RecorderOptions, configs ...MetricConfig) (*Recorder, error) {
 	r := &Recorder{cr: cr}
 
 	var err error
@@ -237,11 +257,34 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 	}
 
 	var batteryDischargeErr error
-	r.powerSetupCleanup, err = setup.PowerTest(ctx, r.tconn, setup.PowerTestOptions{
-		Wifi:       setup.DisableWifiInterfaces,
+	powerTestOptions := setup.PowerTestOptions{
+		// The default for the following options is to disable these setting.
 		Battery:    setup.TryBatteryDischarge(&batteryDischargeErr),
+		Wifi:       setup.DisableWifiInterfaces,
 		NightLight: setup.DisableNightLight,
-	})
+		Powerd:     setup.DisablePowerd,
+		DPTF:       setup.DisableDPTF,
+		Audio:      setup.Mute,
+		Bluetooth:  setup.DisableBluetoothInterfaces,
+	}
+	// Check recorder options and don't change them when required.
+	if options.DoNotChangeWifi {
+		powerTestOptions.Wifi = setup.DoNotChangeWifiInterfaces
+	}
+	if options.DoNotChangePowerd {
+		powerTestOptions.Powerd = setup.DoNotChangePowerd
+	}
+	if options.DoNotChangeDPTF {
+		powerTestOptions.DPTF = setup.DoNotChangeDPTF
+	}
+	if options.DoNotChangeAudio {
+		powerTestOptions.Audio = setup.DoNotChangeAudio
+	}
+	if options.DoNotChangeBluetooth {
+		powerTestOptions.Bluetooth = setup.DoNotChangeBluetooth
+	}
+
+	r.powerSetupCleanup, err = setup.PowerTest(ctx, r.tconn, powerTestOptions)
 	if batteryDischargeErr != nil {
 		testing.ContextLog(ctx, "Failed to induce battery discharge: ", batteryDischargeErr)
 	} else {
