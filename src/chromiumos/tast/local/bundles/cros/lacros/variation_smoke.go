@@ -15,10 +15,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/variations"
 	"chromiumos/tast/testing"
@@ -90,11 +90,9 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 	if err := json.Unmarshal(b, &testSeed); err != nil {
 		s.Fatal("Failed to unmarshal test seed: ", err)
 	}
-	f := s.FixtValue().(lacrosfixt.FixtValue)
-	cr := f.Chrome()
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to the test API connection: ", err)
+		s.Fatal("Failed to connect to test API: ", err)
 	}
 	func() {
 		l, err := lacros.Launch(ctx, tconn)

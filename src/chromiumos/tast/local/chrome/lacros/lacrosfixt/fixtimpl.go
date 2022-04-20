@@ -196,12 +196,10 @@ func init() {
 		Name:     "lacrosVariationEnabled",
 		Desc:     "Lacros with variation service enabled",
 		Contacts: []string{"yjt@google.com", "lacros-team@google.com"},
-		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
-				chrome.ExtraArgs("--disable-lacros-keep-alive",
-					"--disable-login-lacros-opening"),
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfigFromState(s, Mode(lacros.LacrosPrimary), ChromeOptions(
 				chrome.LacrosExtraArgs("--fake-variations-channel=beta"),
-				chrome.LacrosExtraArgs("--variations-server-url=https://clients4.google.com/chrome-variations/seed")}, nil
+				chrome.LacrosExtraArgs("--variations-server-url=https://clients4.google.com/chrome-variations/seed"))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
