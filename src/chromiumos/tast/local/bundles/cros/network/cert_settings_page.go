@@ -64,7 +64,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Fixture:      "lacrosUI",
+		Fixture:      "lacros",
 		Timeout:      5 * time.Minute,
 		Data: []string{clientCertFileName, rootCertFileName,
 			websiteCertFileName, websiteKeyFileName},
