@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20424253_1a812157",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-04-20T05:42:39Z",
+      "side": 1,
+      "message": "Sorry I confused the idea of nil with empty. Since we return an empty map, it would be an empty json object as such:\n\n```\nvulnerabilities: {}\n```\n\nand so the value won\u0027t be nil. The current code should already process empty maps.",
+      "parentUuid": "aaf4c42d_d0ae81ec",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e8f091c_45f7e5c4",
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "I think you should at least create a function for CPUVirtualization or it is too long for verifyPhysicalCPU",
       "parentUuid": "84ad8354_c3c01051",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 50
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05516d91_c2782a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-04-20T05:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c537510_40ee16df",
       "range": {
         "startLine": 133,
         "startChar": 2,
@@ -433,6 +481,30 @@
       "side": 1,
       "message": "By interface it could be null, but it is for backward compatibility.\n\nI think we won\u0027t return nil for this, and we should make it a required field of json so it raise error if the json doesn\u0027t contain this.",
       "parentUuid": "19cad3a3_f59751f5",
+      "range": {
+        "startLine": 222,
+        "startChar": 28,
+        "endLine": 222,
+        "endChar": 42
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c5b0a4_7c8944a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-04-20T05:42:39Z",
+      "side": 1,
+      "message": "Yes, I just checked and it makes more sense if we treat nil as an error, as this field should always be reported.",
+      "parentUuid": "b8a82edf_757671e3",
       "range": {
         "startLine": 222,
         "startChar": 28,
