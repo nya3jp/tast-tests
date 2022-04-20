@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0dcdbf0_297186fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-20T21:24:48Z",
+      "side": 1,
+      "message": "Eliot, can you take a look at this? This is necessary for those tests that don\u0027t care about the deployed lacros-chrome with the var. See an example: firmware.* (https://crrev.com/c/3589131)",
+      "revId": "229861d4dc51cde35d6b497bf855795d23872404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
