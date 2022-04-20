@@ -55,11 +55,12 @@ type RunParams struct {
 	appName        string
 	account        string // account is the one used by Spotify APP to do login.
 	tabletMode     bool
+	enableBT       bool
 }
 
 // NewRunParams constructs a RunParams struct and returns the pointer to it.
-func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) *RunParams {
-	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode}
+func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode, enableBT bool) *RunParams {
+	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode, enableBT: enableBT}
 }
 
 type runResources struct {
@@ -190,7 +191,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, lFixtVal lacrosfixt.FixtValue, 
 	cleanUpRecorderCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs(tconns)...)
+
+	options := cuj.NewPerformanceCUJOptions()
+	options.BluetoothEnabled = params.enableBT
+	recorder, err := cuj.NewRecorder(ctx, cr, a, options, cuj.MetricConfigs(tconns)...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}

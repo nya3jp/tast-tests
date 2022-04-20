@@ -116,7 +116,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 			perf.SmallerIsBetter, []int64{4000, 5000}),
 		cuj.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
 			perf.SmallerIsBetter, []int64{4000, 5000})}
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.RecorderOptions{}, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
