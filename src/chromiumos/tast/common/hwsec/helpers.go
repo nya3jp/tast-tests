@@ -334,6 +334,11 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 				// TODO(b/173189029): Ignore errors on failure. This is a workaround to prevent Permission denied when removing a fscrypt directory.
 				testing.ContextLog(ctx, "Failed to remove files to clear ownership: ", err, string(out))
 			}
+
+			// Run tmpfiles to restore the removed folders and permissions.
+			if out, err := h.cmdRunner.Run(ctx, "/bin/systemd-tmpfiles", "--create", "--remove", "--boot", "--prefix", "/home", "--prefix", "/var/lib"); err != nil {
+				testing.ContextLog(ctx, "Failed to run tmpfiles: ", err, string(out))
+			}
 		}
 
 		if err := h.tpmClearer.PostClearTPM(ctx); err != nil {
