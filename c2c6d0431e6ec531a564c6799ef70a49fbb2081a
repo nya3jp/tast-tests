@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61bbe7f7_66b5b8db",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-20T16:52:20Z",
+      "side": 1,
+      "message": "Don\u0027t renumber existing entries. Once a number is used it is taken forever.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "c2c6d0431e6ec531a564c6799ef70a49fbb2081a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0da00fe8_b2c11c2e",
         "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
         "patchSetId": 3
