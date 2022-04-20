@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2324b11_85f6da2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-04-20T16:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ac7352d_dac9a938",
+      "range": {
+        "startLine": 84,
+        "startChar": 106,
+        "endLine": 84,
+        "endChar": 119
+      },
+      "revId": "983a44d17f03f8b2d5448ee4550f7702872d7f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e5a4308_f3f06655",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-20T01:33:51Z",
       "side": 1,
       "message": "If definition is difficult, translate results could also be a good candidate:\nquery \"hello in spanish\"\nshould have the answer \"Hola (Spanish)\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 4
+      },
+      "revId": "983a44d17f03f8b2d5448ee4550f7702872d7f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "270ca945_b876dd10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-04-20T16:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e5a4308_f3f06655",
       "range": {
         "startLine": 89,
         "startChar": 0,
