@@ -100,7 +100,7 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get VM size after installing Gedit: ", err)
 	}
-	if err := assertSizeUnchanged(ctx, sizeBytesBeforeGedit, sizeBytesAfterGedit); err != nil {
+	if err := assertGBSizeUnchanged(ctx, sizeBytesBeforeGedit, sizeBytesAfterGedit); err != nil {
 		s.Fatal("VM size has changed unexpectedly after installing gedit: ", err)
 	}
 
@@ -145,7 +145,7 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get VM size after removing Gedit: ", err)
 	}
-	if err := assertSizeUnchanged(ctx, sizeBytesBeforeGedit, sizeBytesAfterGeditRemoved); err != nil {
+	if err := assertGBSizeUnchanged(ctx, sizeBytesBeforeGedit, sizeBytesAfterGeditRemoved); err != nil {
 		s.Fatal("VM size has changed unexpectedly after removing gedit: ", err)
 	}
 
@@ -162,7 +162,7 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 	}
 }
 
-func getVMSizeInBytes(ctx context.Context) (int, error) {
+func getVMSizeInBytes(ctx context.Context) (int64, error) {
 	hash, err := vmc.UserIDHash(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to get CROS_USER_ID_HASH")
@@ -188,10 +188,10 @@ func getVMSizeInBytes(ctx context.Context) (int, error) {
 		return 0, errors.Errorf("expected termina VM sizes to match, but got two values - %s and %s", matches[0], matches[2])
 	}
 
-	return strconv.Atoi(matches[0])
+	return strconv.ParseInt(matches[0], 10, 64)
 }
 
-func assertSizeUnchanged(ctx context.Context, before, after int) error {
+func assertGBSizeUnchanged(ctx context.Context, before, after int64) error {
 	// Convert to GB and floating point.
 	beforeSizeGB := float64(before / settings.SizeGB)
 	afterSizeGB := float64(after / settings.SizeGB)
