@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17c217b_57557c40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-20T23:16:31Z",
+      "side": 1,
+      "message": "Made couple of changes because of the build failure. Please verify! Thanks!",
+      "revId": "1fed0f1a80a8b5d42fd789a1cef9fab975b2fc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a669c4be_f92617de",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-20T23:16:31Z",
+      "side": 1,
+      "message": "This variable has been used by bundle crostini (in Google internal repo?) and changing this caused the build failure. Change it back.",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 23
+      },
+      "revId": "1fed0f1a80a8b5d42fd789a1cef9fab975b2fc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b12691dd_76f8a089",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-20T23:16:31Z",
+      "side": 1,
+      "message": "This function has been used by crostini bundle and caused build failure. Change it back.",
+      "range": {
+        "startLine": 307,
+        "startChar": 9,
+        "endLine": 307,
+        "endChar": 25
+      },
+      "revId": "1fed0f1a80a8b5d42fd789a1cef9fab975b2fc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
