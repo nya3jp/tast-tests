@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MemoryPressureModerate,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Measure tab switching performance under moderate memory pressure",
 		Contacts:     []string{"vovoy@chromium.org", "chromeos-memory@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_memory_nightly"},

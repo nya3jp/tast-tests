@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MempressureUser,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Tests video loading times after creating memory pressure",
 		Contacts:     []string{"asavery@chromium.org", "chromeos-storage@google.com"},
 		// TODO(http://b/172074282): Test is disabled until it can be fixed
