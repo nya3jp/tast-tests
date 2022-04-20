@@ -397,6 +397,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19cad3a3_f59751f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-20T04:53:09Z",
+      "side": 1,
+      "message": "We have to check this by other method, if it doesn\u0027t support, then make sure cros_healthd reports nil.\n\nOtherwise, if cros_healthd has bug and report nil, then you won\u0027t catch it.",
+      "parentUuid": "5e43ccf7_a4989aa5",
+      "range": {
+        "startLine": 222,
+        "startChar": 28,
+        "endLine": 222,
+        "endChar": 42
+      },
+      "revId": "fc7e2e3cba311a6d85695b1932323a2845540194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55878792_9ecaa39f",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
         "patchSetId": 1
