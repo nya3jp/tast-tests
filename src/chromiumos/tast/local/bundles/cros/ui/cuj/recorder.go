@@ -173,6 +173,9 @@ type Recorder struct {
 	// duration is the total running time of the recorder.
 	duration time.Duration
 
+	// Total number of times that the test has been successfully run.
+	testCyclesCount int64
+
 	// Time when recording was started.
 	// Defined only for the running recorder.
 	startedAtTm time.Time
@@ -576,9 +579,13 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (
 			testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
 		}
 	}(ctx, runCtx)
+
 	if err := f(runCtx); err != nil {
 		return err
 	}
+
+	r.testCyclesCount++
+
 	return nil
 }
 
@@ -590,7 +597,13 @@ func (r *Recorder) RunFor(ctx context.Context, f func(ctx context.Context) error
 			if err := f(ctx); err != nil {
 				return err
 			}
+			r.testCyclesCount++
 		}
+
+		// Decrement test cycles to prevent double counting, since
+		// Run() increments cycles count independently
+		r.testCyclesCount--
+
 		return nil
 	})
 }
@@ -708,6 +721,19 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		Unit:      "unitless",
 		Direction: perf.BiggerIsBetter,
 	}, batteryDischargeReport)
+
+	pv.Set(perf.Metric{
+		Name:      "TestMetrics.TestCyclesCount",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}, float64(r.testCyclesCount))
+
+	pv.Set(perf.Metric{
+		Name: "TestMetrics.TotalTestRunTime",
+		Unit: "s",
+		// Longer runtime correlates to better performance data, so bigger is better
+		Direction: perf.BiggerIsBetter,
+	}, r.duration.Seconds())
 
 	displayInfo.Record(pv)
 	r.frameDataTracker.Record(pv)
