@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f604fd_a681d85c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-04-20T21:24:22Z",
+      "side": 1,
+      "message": "lgtm with nit",
+      "revId": "c8a4b8e9bd4e2fb7b5966d855885bca2185c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3ed028_945db7a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickanswers/always_trigger_feature.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-04-20T21:24:22Z",
+      "side": 1,
+      "message": "nit: rename the test with something like `DefinitionForSimpleWord` instead of name with the feature",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "c8a4b8e9bd4e2fb7b5966d855885bca2185c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
