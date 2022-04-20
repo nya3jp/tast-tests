@@ -173,6 +173,9 @@ type Recorder struct {
 	// duration is the total running time of the recorder.
 	duration time.Duration
 
+	// Total number of times that the test has been successfully run.
+	testCyclesCount int64
+
 	// Time when recording was started.
 	// Defined only for the running recorder.
 	startedAtTm time.Time
@@ -475,6 +478,9 @@ func (r *Recorder) StartRecording(ctx context.Context) (runCtx context.Context, 
 	// Remember when recording started.
 	r.startedAtTm = time.Now()
 
+	// Set initial test cycles to 1, to account for the tests that use Run() and not RunFor()
+	r.testCyclesCount = 1
+
 	return runCtx, nil
 }
 
@@ -586,7 +592,12 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (
 // duration. It may exceed that duration to complete the last call to f.
 func (r *Recorder) RunFor(ctx context.Context, f func(ctx context.Context) error, minimumDuration time.Duration) error {
 	return r.Run(ctx, func(ctx context.Context) error {
+		// Initialize total cycles to 0, because StartRecording
+		// separately sets the value to 1 for tests that use Run
+		// and not RunFor()
+		r.testCyclesCount = 0
 		for end := time.Now().Add(minimumDuration); time.Now().Before(end); {
+			r.testCyclesCount++
 			if err := f(ctx); err != nil {
 				return err
 			}
@@ -708,6 +719,18 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		Unit:      "unitless",
 		Direction: perf.BiggerIsBetter,
 	}, batteryDischargeReport)
+
+	pv.Set(perf.Metric{
+		Name:      "TestMetrics.TestCyclesCount",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}, float64(r.testCyclesCount))
+
+	pv.Set(perf.Metric{
+		Name:      "TestMetrics.TotalTestRunTime",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+	}, r.duration.Seconds())
 
 	displayInfo.Record(pv)
 	r.frameDataTracker.Record(pv)
