@@ -30,14 +30,13 @@ import (
 
 // TestConfig defines input params for apploading.RunTest function.
 type TestConfig struct {
-	ClassName            string
-	Prefix               string
-	Subtest              string
-	PerfValues           *perf.Values
-	WifiInterfacesMode   setup.WifiInterfacesMode
-	BatteryDischargeMode setup.BatteryDischargeMode
-	ApkPath              string
-	OutDir               string
+	ClassName          string
+	Prefix             string
+	Subtest            string
+	PerfValues         *perf.Values
+	WifiInterfacesMode setup.WifiInterfacesMode
+	ApkPath            string
+	OutDir             string
 }
 
 const (
@@ -69,7 +68,7 @@ var keyInfo = []struct {
 func ApkNameForArch(ctx context.Context, a *arc.ARC) (string, error) {
 	out, err := a.Command(ctx, "getprop", "ro.product.cpu.abi").Output(testexec.DumpLogOnError)
 	if err != nil {
-		return "", errors.Wrapf(err, "failed to get abi: %v", err)
+		return "", errors.Wrap(err, "failed to get abi")
 	}
 
 	if strings.HasPrefix(string(out), "x86") {
@@ -124,7 +123,7 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 
 	// Add the default power test configuration.
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: config.WifiInterfacesMode, Battery: config.BatteryDischargeMode, NightLight: setup.DisableNightLight}))
+		Wifi: config.WifiInterfacesMode, NightLight: setup.DisableNightLight}))
 	if err := sup.Check(ctx); err != nil {
 		return 0, errors.Wrap(err, "failed to setup power test")
 	}
