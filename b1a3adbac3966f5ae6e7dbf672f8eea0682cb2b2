@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "582cd268_b5bb5377",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-20T02:15:32Z",
+      "side": 1,
+      "message": "Please get a team member review",
+      "revId": "b1a3adbac3966f5ae6e7dbf672f8eea0682cb2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1672803_be6b9961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-20T02:15:32Z",
+      "side": 1,
+      "message": "Should this be before the da.Launch?",
+      "revId": "b1a3adbac3966f5ae6e7dbf672f8eea0682cb2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10af147_6bc284be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_defocusing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-20T02:15:32Z",
+      "side": 1,
+      "message": "I expect this will be quite flaky, you may want to put this in a testing.Poll to try it a few times.",
+      "revId": "b1a3adbac3966f5ae6e7dbf672f8eea0682cb2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
