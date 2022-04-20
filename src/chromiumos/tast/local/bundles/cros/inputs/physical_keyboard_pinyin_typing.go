@@ -29,12 +29,23 @@ func init() {
 		Func:         PhysicalKeyboardPinyinTyping,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that Pinyin physical keyboard works",
-		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com", "group:input-tools-upstream"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Fixture:      fixture.ClamshellNonVK,
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name: "simplified",
+				Val:  ime.ChinesePinyin,
+			},
+			{
+				Name:      "traditional",
+				Val:       ime.ChineseTraditionalPinyin,
+				ExtraAttr: []string{"informational"},
+			},
+		},
 	})
 }
 
@@ -50,7 +61,7 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	im := ime.ChinesePinyin
+	im := s.Param().(ime.InputMethod)
 
 	s.Log("Set current input method to: ", im)
 	if err := im.InstallAndActivate(tconn)(ctx); err != nil {
