@@ -16,6 +16,14 @@ import (
 // Option is the function signature used to specify options of Config.
 type Option func(*Config)
 
+// ChromeOptions returns an Option which appends the given chrome.Options
+// to lacros.Config. The options will be returned in lacros.Config.Opts.
+func ChromeOptions(opts ...chrome.Option) Option {
+	return func(c *Config) {
+		c.chromeOpts = append(c.chromeOpts, opts...)
+	}
+}
+
 // Selection returns an Option which sets the selection on the lacros config.
 func Selection(selection lacros.Selection) Option {
 	return func(c *Config) {
@@ -42,6 +50,7 @@ type Config struct {
 	selection    lacros.Selection
 	mode         lacros.Mode
 	keepAlive    bool
+	chromeOpts   []chrome.Option
 	deployed     bool
 	deployedPath string // dirpath to lacros executable file
 }
@@ -149,6 +158,14 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 		return nil, errors.New("options for LacrosOnly not implemented")
 	}
 
+	if !cfg.keepAlive {
+		opts = append(opts, chrome.ExtraArgs("--disable-lacros-keep-alive"))
+	}
+
+	// Let cfg.chromeOpts override any other options, except for lacrosDeployedBinary.
+	// Keep this last, but before the lacrosDeployedBinary code.
+	opts = append(opts, cfg.chromeOpts...)
+
 	// Throw an error if lacros has been deployed, but the var lacrosDeployedBinary is unset.
 	if !cfg.deployed && (cfg.selection == lacros.Omaha || cfg.selection == lacros.Rootfs) {
 		config, err := ioutil.ReadFile("/etc/chrome_dev.conf")
@@ -164,10 +181,6 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 				}
 			}
 		}
-	}
-
-	if !cfg.keepAlive {
-		opts = append(opts, chrome.ExtraArgs("--disable-lacros-keep-alive"))
 	}
 
 	return opts, nil
