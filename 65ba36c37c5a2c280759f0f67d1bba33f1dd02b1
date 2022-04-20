@@ -16,6 +16,23 @@
       "message": "Meta tests should not hard-code -build\u003dfalse/true. It is determined by how the test is started.\n\nPlease see my comment at https://b.corp.google.com/issues/228861258#comment7\n",
       "revId": "65ba36c37c5a2c280759f0f67d1bba33f1dd02b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab4140b7_4569a7a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1533808
+      },
+      "writtenOn": "2022-04-20T00:32:04Z",
+      "side": 1,
+      "message": "abandoning this change. will send out a new cl for diasbling the test instead",
+      "revId": "65ba36c37c5a2c280759f0f67d1bba33f1dd02b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
