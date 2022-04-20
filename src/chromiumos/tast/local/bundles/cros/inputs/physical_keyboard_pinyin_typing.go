@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
+	//"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -32,12 +32,24 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshell,
-		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Timeout:      5 * time.Minute,
+		//HardwareDeps: hwdep.D(pre.InputsStableModels),
+		Timeout: 5 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name: "simplified",
+				Val:  ime.ChinesePinyin,
+			},
+			{
+				Name: "traditional",
+				Val:  ime.ChineseTraditionalPinyin,
+			},
+		},
 	})
 }
 
 func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
+	im := s.Param().(ime.InputMethod)
+
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 	uc := s.PreValue().(pre.PreData).UserContext
@@ -47,8 +59,6 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	im := ime.ChinesePinyin
 
 	s.Log("Set current input method to: ", im)
 	if err := im.InstallAndActivate(tconn)(ctx); err != nil {
