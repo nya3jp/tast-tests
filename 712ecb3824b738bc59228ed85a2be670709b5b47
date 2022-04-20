@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bbe79bd_edcca494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-04-20T23:15:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "85af0c6c_211f7b80",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 4
+      },
+      "revId": "712ecb3824b738bc59228ed85a2be670709b5b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "001aaac5_a0c1341d",
