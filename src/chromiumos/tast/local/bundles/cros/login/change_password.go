@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/local/bundles/cros/login/userutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	hwseclocal "chromiumos/tast/local/hwsec"
@@ -75,6 +76,10 @@ func ChangePassword(ctx context.Context, s *testing.State) {
 		normalizedUser = cr.NormalizedUser()
 		if err := hwsec.WriteUserTestContent(ctx, cryptohome, cmdRunner, normalizedUser, testFile, testData); err != nil {
 			s.Fatal("Failed to write a user test file: ", err)
+		}
+		// This is needed for reven tests, as login flow there relies on the existence of a device setting.
+		if err := userutil.WaitForOwnership(ctx, cr); err != nil {
+			s.Fatal("User did not become device owner: ", err)
 		}
 	}()
 

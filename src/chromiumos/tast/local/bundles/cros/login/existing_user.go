@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/login/userutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -49,6 +50,10 @@ func ExistingUser(ctx context.Context, s *testing.State) {
 		defer cr.Close(ctx)
 		creds = cr.Creds()
 
+		// This is needed for reven tests, as login flow there relies on the existence of a device setting.
+		if err := userutil.WaitForOwnership(ctx, cr); err != nil {
+			s.Fatal("User did not become device owner: ", err)
+		}
 		if err := upstart.RestartJob(ctx, "ui"); err != nil {
 			s.Fatal("Failed to restart ui: ", err)
 		}
