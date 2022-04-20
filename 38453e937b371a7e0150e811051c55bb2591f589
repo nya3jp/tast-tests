@@ -63,6 +63,30 @@
       },
       "revId": "38453e937b371a7e0150e811051c55bb2591f589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dfdd7f5_1c844df8",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-20T22:51:30Z",
+      "side": 1,
+      "message": "Done. https://crrev.com/c/3590909/8/src/chromiumos/tast/local/bundles/cros/ambient/lock_screen_idle.go temporarily fixes the issue. I created a bug for tracking: b/229899887.",
+      "parentUuid": "08bbf09e_a5d89ee4",
+      "range": {
+        "startLine": 363,
+        "startChar": 36,
+        "endLine": 363,
+        "endChar": 40
+      },
+      "revId": "38453e937b371a7e0150e811051c55bb2591f589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
