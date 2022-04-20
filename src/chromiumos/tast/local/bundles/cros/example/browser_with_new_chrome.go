@@ -43,7 +43,7 @@ func BrowserWithNewChrome(ctx context.Context, s *testing.State) {
 		cfg *lacrosfixt.Config
 	}{
 		{browser.TypeAsh, nil},
-		{browser.TypeAsh, lacrosfixt.NewConfigFromState(s)},    // LacrosConfig is a no-op for ash-chrome.
+		{browser.TypeAsh, lacrosfixt.NewConfig()},              // LacrosConfig is a no-op for ash-chrome.
 		{browser.TypeLacros, lacrosfixt.NewConfigFromState(s)}, // default config with the var --lacrosDeployedBinary specified
 		{browser.TypeLacros, lacrosfixt.NewConfigFromState(
 			s, lacrosfixt.Selection(lacros.Rootfs), lacrosfixt.Mode(lacros.LacrosSideBySide))}, // custom config
