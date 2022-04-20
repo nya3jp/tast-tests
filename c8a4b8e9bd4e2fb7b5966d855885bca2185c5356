@@ -39,6 +39,29 @@
       },
       "revId": "c8a4b8e9bd4e2fb7b5966d855885bca2185c5356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb56c0a_31bd09d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickanswers/always_trigger_feature.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-20T23:32:14Z",
+      "side": 1,
+      "message": "LaCroS is going to launch first stable version soon. Would you like to implement LaCrOS coverage as well?",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "c8a4b8e9bd4e2fb7b5966d855885bca2185c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
