@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f0b451_b896a5c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_cantonese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-20T12:04:38Z",
+      "side": 1,
+      "message": "We are WIP to migrate tests from Precondition to Fixture. Since this is a new test, can you use Fixture straightaway? For reference: https://crrev.com/c/3585281/2/src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go#50",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "a606c369e3b861464a3b06787508ab46d10651aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
