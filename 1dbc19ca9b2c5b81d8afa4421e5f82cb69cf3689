@@ -63,6 +63,30 @@
       },
       "revId": "1dbc19ca9b2c5b81d8afa4421e5f82cb69cf3689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d62f82_9e5d059d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-21T00:33:32Z",
+      "side": 1,
+      "message": "LGTM! I\u0027ve just seen how it\u0027s used in the follow-up CLs.",
+      "parentUuid": "a6c61828_e48b9f1e",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "1dbc19ca9b2c5b81d8afa4421e5f82cb69cf3689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
