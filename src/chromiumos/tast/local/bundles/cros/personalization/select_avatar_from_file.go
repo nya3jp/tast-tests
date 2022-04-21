@@ -1,0 +1,97 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package personalization
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/personalization"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         SelectAvatarFromFile,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Test setting avatar from local files",
+		Contacts: []string{
+			"pzliu@google.com",
+			"chromeos-sw-engprod@google.com",
+			"assistive-eng@google.com",
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		VarDeps:      []string{"ambient.username", "ambient.password"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      chrome.GAIALoginTimeout + time.Minute,
+	})
+}
+
+func SelectAvatarFromFile(ctx context.Context, s *testing.State) {
+	const (
+		chooseFromFileButtonName = "Choose a file"
+		googleDrive              = "Google Drive"
+		newAvatarFileName        = "chromium.png"
+		googleProfilePhoto       = "Google profile photo"
+	)
+
+	cr, err := chrome.New(
+		ctx,
+		chrome.EnableFeatures("PersonalizationHub"),
+		chrome.GAIALogin(chrome.Creds{
+			User: s.RequiredVar("ambient.username"),
+			Pass: s.RequiredVar("ambient.password"),
+		}),
+	)
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
+
+	// Open avatar subpage
+	if err := uiauto.Combine("open avatar subpage",
+		personalization.OpenPersonalizationHub(ui),
+		personalization.OpenAvatarSubpage(ui),
+	)(ctx); err != nil {
+		s.Fatal("Failed to open avatar subpage: ", err)
+	}
+
+	// Click the choose-from-file icon
+	chooseFromFileButton := nodewith.Role(role.ListBoxOption).Name(chooseFromFileButtonName).HasClass("avatar-button-container")
+	googleDriveText := nodewith.Role(role.StaticText).Name(googleDrive)
+	newAvatarIcon := nodewith.Role(role.StaticText).Name(newAvatarFileName)
+	OpenButton := nodewith.Role(role.Button).NameContaining("Open").HasClass("ok primary")
+	if err := uiauto.Combine("choose file from Google Drive",
+		ui.LeftClick(chooseFromFileButton),
+		ui.LeftClick(googleDriveText),
+		ui.LeftClick(newAvatarIcon),
+		ui.LeftClick(OpenButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to choose file from Google Drive: ", err)
+	}
+
+	// TODO verify avatar is changed
+
+	// Change the avatar back to Google profile photo
+	googleProfilePhotoIcon := nodewith.Role(role.ListBoxOption).Name(googleProfilePhoto).HasClass("image-container")
+	if err := uiauto.Combine("change avatar back to Google profile photo",
+		ui.LeftClick(googleProfilePhotoIcon),
+	)(ctx); err != nil {
+		s.Fatal("Failed to change the avatar back: ", err)
+	}
+}
