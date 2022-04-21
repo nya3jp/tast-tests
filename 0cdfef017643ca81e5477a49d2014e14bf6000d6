@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "990ea99f_2e220919",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-04-21T22:34:10Z",
+      "side": 1,
+      "message": "Sharing this WIP CL fyi.\n\nAutotest somehow runs `lsusb` command even when servo is off, however, we cannot do that in TAST test since lab DUT is connected to the network through servo and turning servo off disconnects DUT from network. So I am experimenting with a workaround to detect USD device connect/disconnect.",
+      "revId": "0cdfef017643ca81e5477a49d2014e14bf6000d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
