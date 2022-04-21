@@ -52,6 +52,29 @@
       "parentUuid": "9954cecd_ef8f1789",
       "revId": "7fae4e20cbb4c3355b175320f78bc9495387ab1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37af4cad_ba0550e4",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-21T13:08:01Z",
+      "side": 1,
+      "message": "can we call this EnableWebAppInstall to be consistent chrome\u0027s option?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "7fae4e20cbb4c3355b175320f78bc9495387ab1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
