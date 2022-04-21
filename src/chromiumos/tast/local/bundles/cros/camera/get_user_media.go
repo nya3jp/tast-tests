@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/testing"
@@ -75,17 +74,21 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 		duration = 10 * time.Second
 	}
 
-	var cr getusermedia.ChromeInterface
+	var ci getusermedia.ChromeInterface
 	if s.Param().(browser.Type) == browser.TypeLacros {
-		var err error
-		cr, err = lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn())
+		tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to test API: ", err)
+		}
+
+		ci, err = lacros.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
-		defer cr.Close(ctx)
+		defer ci.Close(ctx)
 	} else {
-		cr = s.PreValue().(*chrome.Chrome)
+		ci = s.PreValue().(*chrome.Chrome)
 	}
 	// Run tests for 480p and 720p.
-	getusermedia.RunGetUserMedia(ctx, s, cr, duration, getusermedia.VerboseLogging)
+	getusermedia.RunGetUserMedia(ctx, s, ci, duration, getusermedia.VerboseLogging)
 }
