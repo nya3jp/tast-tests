@@ -61,7 +61,7 @@ func init() {
 
 func SSHFSMount(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
-	cr := pre.ParentFixtV.Chrome()
+	cr := pre.Chrome
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 
 	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())

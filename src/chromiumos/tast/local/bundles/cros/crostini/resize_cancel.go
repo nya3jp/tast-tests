@@ -59,7 +59,7 @@ func init() {
 func ResizeCancel(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 	tconn := pre.Tconn
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
 	// Open the Linux settings.
 	st, err := settings.OpenLinuxSettings(ctx, tconn, cr)

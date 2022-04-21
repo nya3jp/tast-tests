@@ -76,7 +76,7 @@ func Restart(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 	cont := pre.Cont
 	tconn := pre.Tconn
-	cr := pre.ParentFixtV.Chrome()
+	cr := pre.Chrome
 	keyboard := pre.KB
 
 	numRestarts := varInt(s, "crostini.Restart.numRestarts", 2)

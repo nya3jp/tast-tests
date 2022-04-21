@@ -59,7 +59,7 @@ func init() {
 
 func PackageInstallUninstall(ctx context.Context, s *testing.State) {
 	cont := s.FixtValue().(crostini.FixtureData).Cont
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	filePath := fmt.Sprintf("/home/%s/package.deb", strings.Split(cr.NormalizedUser(), "@")[0])
 
 	if err := crostini.TransferToContainer(ctx, cont, s.DataPath("package.deb"), filePath); err != nil {

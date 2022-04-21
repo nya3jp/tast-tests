@@ -63,7 +63,7 @@ func init() {
 func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
 	cont := s.FixtValue().(crostini.FixtureData).Cont
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)

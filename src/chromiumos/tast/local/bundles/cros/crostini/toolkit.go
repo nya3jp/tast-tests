@@ -262,7 +262,7 @@ func init() {
 func Toolkit(ctx context.Context, s *testing.State) {
 	conf := s.Param().(toolkitConfig)
 	pre := s.FixtValue().(crostini.FixtureData)
-	cr := pre.ParentFixtV.Chrome()
+	cr := pre.Chrome
 	tconn := pre.Tconn
 	cont := pre.Cont
 
