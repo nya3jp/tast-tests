@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d954d7df_d37037ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-21T10:15:14Z",
+      "side": 1,
+      "message": "I remember there is what use flag `factory_flow` want to handle. Not sure if we make sense to use the similar way to maintain this list? i.e. mark above boards as no `factory_flow`.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 220
+      },
+      "revId": "2c6d685270d610997ec9071cdb7ff0068692e47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2872da_6cb21bfc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-21T10:15:14Z",
+      "side": 1,
+      "message": "Just curious, in what cases that we will probes as no storage? Can we still know there is a storage bridge? \n\nI\u0027ve heard that we just introduce a eMMC-NVMe bridge. Is that the same cases?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 105
+      },
+      "revId": "2c6d685270d610997ec9071cdb7ff0068692e47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
