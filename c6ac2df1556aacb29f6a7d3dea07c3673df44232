@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a86c5bc9_805b3e1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-21T10:50:56Z",
+      "side": 1,
+      "message": "Just curious, will this test is going to be promoted to CQ or it is just for you to monitor the compliance?\n\nIIRC, you are going to consume `cros_healthd` as your data provider and most of data listed here will get from `cros_healthd` Mojo API, right? We have a tast library to fetch the data from Mojo API. It will be the same as what you can get from `cros_healthd` Mojo. I recommended you to use that and you will no need to implement the same logic here and it might be hard to maintain the logics in the future.\n\nSee our tests as example: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_system_info_v2.go",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
