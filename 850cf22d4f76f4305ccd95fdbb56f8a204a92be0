@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71630503_1b39981e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_corrupt_recovery_cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-21T12:36:22Z",
+      "side": 1,
+      "message": "nit: End comments with .",
+      "revId": "850cf22d4f76f4305ccd95fdbb56f8a204a92be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
