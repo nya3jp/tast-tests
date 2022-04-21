@@ -20,7 +20,7 @@ func init() {
 		Func:     ModemmanagerSARInterfaceVerification,
 		Desc:     "Verifies that modemmanager SAR interface enable, disable succeeds",
 		Contacts: []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
-		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Attr:     []string{"group:cellular", "cellular_sim_active"},
 		Fixture:  "cellular",
 		Timeout:  5 * time.Minute,
 	})
