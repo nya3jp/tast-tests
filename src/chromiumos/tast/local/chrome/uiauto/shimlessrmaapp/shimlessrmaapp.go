@@ -64,6 +64,10 @@ func CreateStateFile(state string) error {
 	if err != nil {
 		return err
 	}
+
+	// Deletes the state file, if it exists.
+	RemoveStateFile()
+
 	f, err := os.Create(stateFile)
 	if err != nil {
 		return err
@@ -163,6 +167,13 @@ func (r *RMAApp) LeftClickButton(label string) uiauto.Action {
 // WaitUntilButtonEnabled returns a function that waits |timeout| for a button to be enabled.
 func (r *RMAApp) WaitUntilButtonEnabled(label string, timeout time.Duration) uiauto.Action {
 	return r.waitUntilEnabled(nodewith.Name(label).Role(role.Button).Visible(), timeout)
+}
+
+// LeftClickRadioButton returns a function that clicks a radio button.
+func (r *RMAApp) LeftClickRadioButton(label string) uiauto.Action {
+	// TODO(b/230692945): Can we add RadioButton as role?
+	radioGroup := nodewith.Role(role.RadioGroup)
+	return r.ui.LeftClick(nodewith.Name(label).Ancestor(radioGroup).First())
 }
 
 func getRmadUID() (int, error) {
