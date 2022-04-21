@@ -9,7 +9,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	enterprise "chromiumos/tast/services/cros/enterprise"
@@ -33,6 +36,8 @@ func init() {
 			"enterprise.ArcSnapshot.user",
 			"enterprise.ArcSnapshot.pass",
 			"enterprise.ArcSnapshot.packages",
+			"tape.service_account_key",
+			"tape.managedchrome_id",
 		},
 	})
 }
@@ -64,6 +69,26 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 	if _, err = service.Enroll(ctx, &enterprise.EnrollRequest{User: enrollUser, Pass: enrollPass}); err != nil {
 		s.Fatal("Remote call Enroll() failed: ", err)
 	}
+
+	// Get the device id of the DUT to deprovision it at the end of the test.
+	res, err := service.GetDeviceID(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed to get the deviceID: ", err)
+	}
+
+	// Deprovision the DUT at the end of the test.
+	defer func(ctx context.Context) {
+		var request tape.DeprovisionRequest
+		request.DeviceID = res.DeviceId
+		request.CustomerID = s.RequiredVar("tape.managedchrome_id")
+		tapeClient, err := tape.NewTapeClient(ctx, tape.WithCredsJSON([]byte(s.RequiredVar("tape.service_account_key"))))
+		if err != nil {
+			s.Fatal("Failed to create tape client: ", err)
+		}
+		if err = tape.Deprovision(ctx, request, tapeClient); err != nil {
+			s.Fatalf("Failed to deprovision device %s: %v", request.DeviceID, err)
+		}
+	}(ctx)
 
 	user := ""
 	perfValues := perf.NewValues()
