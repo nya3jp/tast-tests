@@ -16,7 +16,6 @@ import (
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -44,8 +43,6 @@ func init() {
 			"ui.signinProfileTestExtensionManifestKey",
 		},
 		Timeout: chrome.GAIALoginTimeout + 2*chrome.LoginTimeout + time.Minute,
-		// TODO(crbug.com/1317006): Skip on reven due to CQ failures.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("reven")),
 	})
 }
 
