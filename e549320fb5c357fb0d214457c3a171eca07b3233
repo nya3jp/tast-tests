@@ -88,6 +88,24 @@
       "parentUuid": "106c548b_cf5fdfdc",
       "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e07e69_ba6aa8d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-21T23:58:19Z",
+      "side": 1,
+      "message": "Discussion seems split between here and https://crrev.com/c/3598170 - let\u0027s discuss the lacros Tast API change here: https://crrev.com/c/3598170. It may be true that this test doesn\u0027t need to run in an environment which needs LacrosDeployedBinary. But, I want to make sure we get the API for this correct (before other tests start using whatever API we add incorrectly). Just because this remote test doesn\u0027t need this var doesn\u0027t mean no remote tests will need them, so we\u0027ll likely need a mechanism to send the appropriate vars over via IPC anyway.",
+      "parentUuid": "e8752a67_410e8078",
+      "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
