@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
@@ -161,7 +160,7 @@ func runCrosSpeedometerTest(ctx context.Context, cr *chrome.Chrome, t testType) 
 }
 
 func Speedometer(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(lacrosfixt.FixtValue).Chrome()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
