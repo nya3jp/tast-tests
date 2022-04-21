@@ -19,7 +19,6 @@ import (
 type oclctsTest struct {
 	executable   string // The test executable name.
 	args         string // The list of args for the executable.
-	logFileName  string // The log file name for the test.
 	expectedPass bool   // Whether the test is expected to pass or to fail
 	buganizer    string // Buganizer issues tracking the test.
 }
@@ -42,7 +41,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "multiple 1 buffer_non_blocking",
-					logFileName:  "allocations-multiple_1_buffer_non_blocking.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -52,7 +50,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "multiple 1 buffer",
-					logFileName:  "allocations-multiple_1_buffer.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -62,7 +59,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "multiple 1 image2d_read_non_blocking",
-					logFileName:  "allocations-multiple_1_image2d_read_non_blocking.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -72,7 +68,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "multiple 1 image2d_read",
-					logFileName:  "allocations-multiple_1_image2d_read.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -82,7 +77,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "multiple 1 image2d_write_non_blocking",
-					logFileName:  "allocations-multiple_1_image2d_write_non_blocking.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -92,7 +86,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "multiple 1 image2d_write",
-					logFileName:  "allocations-multiple_1_image2d_write.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -102,7 +95,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "single 1 buffer_non_blocking",
-					logFileName:  "allocations-single_1_buffer_non_blocking.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -112,7 +104,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "single 1 buffer",
-					logFileName:  "allocations-single_1_buffer.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -122,7 +113,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "single 1 image2d_read_non_blocking",
-					logFileName:  "allocations-single_1_image2d_read_non_blocking.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -132,7 +122,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "single 1 image2d_read",
-					logFileName:  "allocations-single_1_image2d_read.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -142,7 +131,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "single 1 image2d_write_non_blocking",
-					logFileName:  "allocations-single_1_image2d_write_non_blocking.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -152,7 +140,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_allocations",
 					args:         "single 1 image2d_write",
-					logFileName:  "allocations-single_1_image2d_write.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -162,7 +149,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "binary_create",
-					logFileName:  "api-binary_create.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -173,7 +159,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "binary_get",
-					logFileName:  "api-binary_get.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -184,7 +169,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "bool_type",
-					logFileName:  "api-bool_type.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -195,7 +179,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "buffer_properties_queries",
-					logFileName:  "api-buffer_properties_queries.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -206,7 +189,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "clone_kernel",
-					logFileName:  "api-clone_kernel.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -217,7 +199,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_2d_image_from_buffer",
-					logFileName:  "api-consistency_2d_image_from_buffer.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -228,7 +209,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_3d_image_writes",
-					logFileName:  "api-consistency_3d_image_writes.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -239,7 +219,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_depth_images",
-					logFileName:  "api-consistency_depth_images.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -250,7 +229,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_device_and_host_timer",
-					logFileName:  "api-consistency_device_and_host_timer.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -261,7 +239,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_device_enqueue",
-					logFileName:  "api-consistency_device_enqueue.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -272,7 +249,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_il_programs",
-					logFileName:  "api-consistency_il_programs.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -283,7 +259,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_memory_model",
-					logFileName:  "api-consistency_memory_model.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -294,7 +269,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_non_uniform_work_group",
-					logFileName:  "api-consistency_non_uniform_work_group.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -305,7 +279,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_pipes",
-					logFileName:  "api-consistency_pipes.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -316,7 +289,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_prog_ctor_dtor",
-					logFileName:  "api-consistency_prog_ctor_dtor.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -327,7 +299,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_progvar",
-					logFileName:  "api-consistency_progvar.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -338,7 +309,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_read_write_images",
-					logFileName:  "api-consistency_read_write_images.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -349,7 +319,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_subgroups",
-					logFileName:  "api-consistency_subgroups.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -360,7 +329,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "consistency_svm",
-					logFileName:  "api-consistency_svm.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -371,7 +339,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "context_destructor_callback",
-					logFileName:  "api-context_destructor_callback.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -382,7 +349,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "create_context_from_type",
-					logFileName:  "api-create_context_from_type.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -393,7 +359,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "create_kernels_in_program",
-					logFileName:  "api-create_kernels_in_program.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -404,7 +369,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "enqueue_task",
-					logFileName:  "api-enqueue_task.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -415,7 +379,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "execute_kernel_local_sizes",
-					logFileName:  "api-execute_kernel_local_sizes.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -426,7 +389,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_buffer_info",
-					logFileName:  "api-get_buffer_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -437,7 +399,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_command_queue_info_compatibility",
-					logFileName:  "api-get_command_queue_info_compatibility.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -448,7 +409,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_command_queue_info",
-					logFileName:  "api-get_command_queue_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -459,7 +419,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_context_info",
-					logFileName:  "api-get_context_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -470,7 +429,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_device_info",
-					logFileName:  "api-get_device_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -481,7 +439,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_image1d_array_info",
-					logFileName:  "api-get_image1d_array_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -492,7 +449,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_image1d_info",
-					logFileName:  "api-get_image1d_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -503,7 +459,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_image2d_array_info",
-					logFileName:  "api-get_image2d_array_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -514,7 +469,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_image2d_info",
-					logFileName:  "api-get_image2d_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -525,7 +479,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_image3d_info",
-					logFileName:  "api-get_image3d_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -536,7 +489,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_kernel_arg_info_compatibility",
-					logFileName:  "api-get_kernel_arg_info_compatibility.txt",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
@@ -547,7 +499,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_kernel_arg_info",
-					logFileName:  "api-get_kernel_arg_info.txt",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
@@ -558,7 +509,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_kernel_info",
-					logFileName:  "api-get_kernel_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -569,7 +519,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_platform_ids",
-					logFileName:  "api-get_platform_ids.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -580,7 +529,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_platform_info",
-					logFileName:  "api-get_platform_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -591,7 +539,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_program_info_kernel_names",
-					logFileName:  "api-get_program_info_kernel_names.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -602,7 +549,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_sampler_info_compatibility",
-					logFileName:  "api-get_sampler_info_compatibility.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -613,7 +559,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "get_sampler_info",
-					logFileName:  "api-get_sampler_info.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -624,7 +569,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "image_properties_queries",
-					logFileName:  "api-image_properties_queries.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -635,7 +579,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "kernel_arg_changes",
-					logFileName:  "api-kernel_arg_changes.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -646,7 +589,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "kernel_arg_multi_setup_random",
-					logFileName:  "api-kernel_arg_multi_setup_random.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -657,7 +599,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "kernel_global_constant",
-					logFileName:  "api-kernel_global_constant.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -668,7 +609,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "kernel_private_memory_size",
-					logFileName:  "api-kernel_private_memory_size.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -679,7 +619,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "kernel_required_group_size",
-					logFileName:  "api-kernel_required_group_size.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -690,7 +629,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "load_single_kernel",
-					logFileName:  "api-load_single_kernel.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -701,7 +639,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "load_two_kernels_in_one",
-					logFileName:  "api-load_two_kernels_in_one.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -712,7 +649,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "load_two_kernels_manually",
-					logFileName:  "api-load_two_kernels_manually.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -723,7 +659,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "load_two_kernels",
-					logFileName:  "api-load_two_kernels.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -734,7 +669,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "mem_object_destructor_callback",
-					logFileName:  "api-mem_object_destructor_callback.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -745,7 +679,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_data_type_align_size_alignment",
-					logFileName:  "api-min_data_type_align_size_alignment.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -756,7 +689,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_image_formats",
-					logFileName:  "api-min_image_formats.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -767,7 +699,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_address_bits",
-					logFileName:  "api-min_max_address_bits.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -778,7 +709,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_compute_units",
-					logFileName:  "api-min_max_compute_units.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -789,7 +719,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_constant_args",
-					logFileName:  "api-min_max_constant_args.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -800,7 +729,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_constant_buffer_size",
-					logFileName:  "api-min_max_constant_buffer_size.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -811,7 +739,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_device_version",
-					logFileName:  "api-min_max_device_version.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -822,7 +749,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_double_fp_config",
-					logFileName:  "api-min_max_double_fp_config.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -833,7 +759,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_execution_capabilities",
-					logFileName:  "api-min_max_execution_capabilities.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -844,7 +769,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_image_2d_height",
-					logFileName:  "api-min_max_image_2d_height.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -855,7 +779,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_image_2d_width",
-					logFileName:  "api-min_max_image_2d_width.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -866,7 +789,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_image_3d_depth",
-					logFileName:  "api-min_max_image_3d_depth.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -877,7 +799,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_image_3d_height",
-					logFileName:  "api-min_max_image_3d_height.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -888,7 +809,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_image_3d_width",
-					logFileName:  "api-min_max_image_3d_width.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -899,7 +819,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_image_array_size",
-					logFileName:  "api-min_max_image_array_size.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -910,7 +829,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_image_buffer_size",
-					logFileName:  "api-min_max_image_buffer_size.txt",
 					expectedPass: false,
 					buganizer:    "b/227133131",
 				},
@@ -921,7 +839,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_kernel_preferred_work_group_size_multiple",
-					logFileName:  "api-min_max_kernel_preferred_work_group_size_multiple.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -932,7 +849,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_language_version",
-					logFileName:  "api-min_max_language_version.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -943,7 +859,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_local_mem_size",
-					logFileName:  "api-min_max_local_mem_size.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -954,7 +869,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_mem_alloc_size",
-					logFileName:  "api-min_max_mem_alloc_size.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -965,7 +879,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_parameter_size",
-					logFileName:  "api-min_max_parameter_size.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -976,7 +889,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_queue_properties",
-					logFileName:  "api-min_max_queue_properties.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -987,7 +899,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_read_image_args",
-					logFileName:  "api-min_max_read_image_args.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -998,7 +909,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_samplers",
-					logFileName:  "api-min_max_samplers.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1009,7 +919,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_single_fp_config",
-					logFileName:  "api-min_max_single_fp_config.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1020,7 +929,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_thread_dimensions",
-					logFileName:  "api-min_max_thread_dimensions.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1031,7 +939,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_work_group_size",
-					logFileName:  "api-min_max_work_group_size.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1042,7 +949,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_work_items_sizes",
-					logFileName:  "api-min_max_work_items_sizes.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1053,7 +959,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "min_max_write_image_args",
-					logFileName:  "api-min_max_write_image_args.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1064,7 +969,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "native_kernel",
-					logFileName:  "api-native_kernel.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1075,7 +979,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "null_buffer_arg",
-					logFileName:  "api-null_buffer_arg.txt",
 					expectedPass: false,
 					buganizer:    "b/27134903",
 				},
@@ -1086,7 +989,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "pipe_properties_queries",
-					logFileName:  "api-pipe_properties_queries.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1097,7 +999,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "platform_extensions",
-					logFileName:  "api-platform_extensions.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1108,7 +1009,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "queue_flush_on_release",
-					logFileName:  "api-queue_flush_on_release.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1119,7 +1019,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "queue_hint",
-					logFileName:  "api-queue_hint.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1130,7 +1029,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "queue_properties",
-					logFileName:  "api-queue_properties.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1141,7 +1039,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "queue_properties_queries",
-					logFileName:  "api-queue_properties_queries.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1152,7 +1049,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "release_during_execute",
-					logFileName:  "api-release_during_execute.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1163,7 +1059,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "release_kernel_order",
-					logFileName:  "api-release_kernel_order.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1174,7 +1069,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "repeated_setup_cleanup",
-					logFileName:  "api-repeated_setup_cleanup.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1185,7 +1079,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "retain_mem_object_multiple",
-					logFileName:  "api-retain_mem_object_multiple.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1196,7 +1089,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "retain_mem_object_set_kernel_arg",
-					logFileName:  "api-retain_mem_object_set_kernel_arg.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1207,7 +1099,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "retain_mem_object_single",
-					logFileName:  "api-retain_mem_object_single.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1218,7 +1109,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "retain_queue_multiple",
-					logFileName:  "api-retain_queue_multiple.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1229,7 +1119,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "retain_queue_single",
-					logFileName:  "api-retain_queue_single.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1240,7 +1129,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "set_kernel_arg_by_index",
-					logFileName:  "api-set_kernel_arg_by_index.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1251,7 +1139,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "set_kernel_arg_constant",
-					logFileName:  "api-set_kernel_arg_constant.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1262,7 +1149,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "set_kernel_arg_struct_array",
-					logFileName:  "api-set_kernel_arg_struct_array.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1273,7 +1159,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "sub_group_dispatch",
-					logFileName:  "api-sub_group_dispatch.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1284,7 +1169,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_api",
 					args:         "zero_sized_enqueue",
-					logFileName:  "api-zero_sized_enqueue.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1295,7 +1179,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_add_index_bin",
-					logFileName:  "atomics-atomic_add_index_bin.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1305,7 +1188,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_add_index",
-					logFileName:  "atomics-atomic_add_index.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1315,7 +1197,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_add",
-					logFileName:  "atomics-atomic_add.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1325,7 +1206,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_and",
-					logFileName:  "atomics-atomic_and.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1335,7 +1215,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_cmpxchg",
-					logFileName:  "atomics-atomic_cmpxchg.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1345,7 +1224,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_dec",
-					logFileName:  "atomics-atomic_dec.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1355,7 +1233,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_inc",
-					logFileName:  "atomics-atomic_inc.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1365,7 +1242,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_max",
-					logFileName:  "atomics-atomic_max.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1375,7 +1251,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_min",
-					logFileName:  "atomics-atomic_min.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1385,7 +1260,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_or",
-					logFileName:  "atomics-atomic_or.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1395,7 +1269,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_sub",
-					logFileName:  "atomics-atomic_sub.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1405,7 +1278,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_xchg",
-					logFileName:  "atomics-atomic_xchg.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1415,7 +1287,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_atomics",
 					args:         "atomic_xor",
-					logFileName:  "atomics-atomic_xor.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1425,7 +1296,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "arraycopy",
-					logFileName:  "basic-arraycopy.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1436,7 +1306,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "arrayimagecopy3d",
-					logFileName:  "basic-arrayimagecopy3d.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1446,7 +1315,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "arrayimagecopy",
-					logFileName:  "basic-arrayimagecopy.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1456,7 +1324,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "arrayreadwrite",
-					logFileName:  "basic-arrayreadwrite.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1467,7 +1334,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "astype",
-					logFileName:  "basic-astype.txt",
 					expectedPass: false,
 					buganizer:    "b/27134903",
 				},
@@ -1478,7 +1344,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "async_copy_global_to_local",
-					logFileName:  "basic-async_copy_global_to_local.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1489,7 +1354,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "async_copy_local_to_global",
-					logFileName:  "basic-async_copy_local_to_global.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1500,7 +1364,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "async_strided_copy_global_to_local",
-					logFileName:  "basic-async_strided_copy_global_to_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -1510,7 +1373,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "async_strided_copy_local_to_global",
-					logFileName:  "basic-async_strided_copy_local_to_global.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -1520,7 +1382,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "barrier",
-					logFileName:  "basic-barrier.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1531,7 +1392,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "bufferreadwriterect",
-					logFileName:  "basic-bufferreadwriterect.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1542,7 +1402,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "constant",
-					logFileName:  "basic-constant.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1553,7 +1412,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "constant_source",
-					logFileName:  "basic-constant_source.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1564,7 +1422,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "createkernelsinprogram",
-					logFileName:  "basic-createkernelsinprogram.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1575,7 +1432,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "enqueued_local_size",
-					logFileName:  "basic-enqueued_local_size.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1586,7 +1442,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "enqueue_map_buffer",
-					logFileName:  "basic-enqueue_map_buffer.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1597,7 +1452,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "enqueue_map_image",
-					logFileName:  "basic-enqueue_map_image.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1608,7 +1462,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_char",
-					logFileName:  "basic-explicit_s2v_char.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1619,7 +1472,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_double",
-					logFileName:  "basic-explicit_s2v_double.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1630,7 +1482,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_float",
-					logFileName:  "basic-explicit_s2v_float.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1641,7 +1492,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_int",
-					logFileName:  "basic-explicit_s2v_int.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1652,7 +1502,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_long",
-					logFileName:  "basic-explicit_s2v_long.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1663,7 +1512,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_short",
-					logFileName:  "basic-explicit_s2v_short.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1674,7 +1522,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_uchar",
-					logFileName:  "basic-explicit_s2v_uchar.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1685,7 +1532,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_uint",
-					logFileName:  "basic-explicit_s2v_uint.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1696,7 +1542,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_ulong",
-					logFileName:  "basic-explicit_s2v_ulong.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1707,7 +1552,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "explicit_s2v_ushort",
-					logFileName:  "basic-explicit_s2v_ushort.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1718,7 +1562,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "float2int",
-					logFileName:  "basic-float2int.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1729,7 +1572,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "fpmath_float2",
-					logFileName:  "basic-fpmath_float2.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1740,7 +1582,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "fpmath_float4",
-					logFileName:  "basic-fpmath_float4.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1751,7 +1592,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "fpmath_float",
-					logFileName:  "basic-fpmath_float.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1762,7 +1602,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "get_global_offset",
-					logFileName:  "basic-get_global_offset.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1773,7 +1612,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "get_linear_ids",
-					logFileName:  "basic-get_linear_ids.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1784,7 +1622,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "global_linear_id",
-					logFileName:  "basic-global_linear_id.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1795,7 +1632,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "global_work_offsets",
-					logFileName:  "basic-global_work_offsets.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1806,7 +1642,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "hiloeo",
-					logFileName:  "basic-hiloeo.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -1816,7 +1651,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "host_numeric_constants",
-					logFileName:  "basic-host_numeric_constants.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1827,7 +1661,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "hostptr",
-					logFileName:  "basic-hostptr.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1838,7 +1671,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "if",
-					logFileName:  "basic-if.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1849,7 +1681,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagearraycopy3d",
-					logFileName:  "basic-imagearraycopy3d.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1859,7 +1690,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagearraycopy",
-					logFileName:  "basic-imagearraycopy.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -1869,7 +1699,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagecopy3d",
-					logFileName:  "basic-imagecopy3d.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1880,7 +1709,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagecopy",
-					logFileName:  "basic-imagecopy.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1891,7 +1719,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagedim_non_pow2",
-					logFileName:  "basic-imagedim_non_pow2.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1902,7 +1729,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagedim_pow2",
-					logFileName:  "basic-imagedim_pow2.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1913,7 +1739,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "image_multipass_float_coord",
-					logFileName:  "basic-image_multipass_float_coord.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1924,7 +1749,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "image_multipass_integer_coord",
-					logFileName:  "basic-image_multipass_integer_coord.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1935,7 +1759,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagenpot",
-					logFileName:  "basic-imagenpot.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1946,7 +1769,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "image_param",
-					logFileName:  "basic-image_param.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1957,7 +1779,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "image_r8",
-					logFileName:  "basic-image_r8.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1968,7 +1789,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagerandomcopy",
-					logFileName:  "basic-imagerandomcopy.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1979,7 +1799,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagereadwrite3d",
-					logFileName:  "basic-imagereadwrite3d.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -1990,7 +1809,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "imagereadwrite",
-					logFileName:  "basic-imagereadwrite.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2001,7 +1819,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "int2float",
-					logFileName:  "basic-int2float.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2012,7 +1829,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "intmath_int2",
-					logFileName:  "basic-intmath_int2.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2023,7 +1839,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "intmath_int4",
-					logFileName:  "basic-intmath_int4.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2034,7 +1849,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "intmath_int",
-					logFileName:  "basic-intmath_int.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2045,7 +1859,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "intmath_long2",
-					logFileName:  "basic-intmath_long2.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2056,7 +1869,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "intmath_long4",
-					logFileName:  "basic-intmath_long4.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2067,7 +1879,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "intmath_long",
-					logFileName:  "basic-intmath_long.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2078,7 +1889,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "kernel_call_kernel_function",
-					logFileName:  "basic-kernel_call_kernel_function.txt",
 					expectedPass: false,
 					buganizer: "b/	227134178",
 				},
@@ -2089,7 +1899,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "kernel_limit_constants",
-					logFileName:  "basic-kernel_limit_constants.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2100,7 +1909,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "kernel_memory_alignment_constant",
-					logFileName:  "basic-kernel_memory_alignment_constant.txt",
 					expectedPass: false,
 					buganizer:    "b/27134903",
 				},
@@ -2111,7 +1919,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "kernel_memory_alignment_global",
-					logFileName:  "basic-kernel_memory_alignment_global.txt",
 					expectedPass: false,
 					buganizer:    "b/27134903",
 				},
@@ -2122,7 +1929,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "kernel_memory_alignment_local",
-					logFileName:  "basic-kernel_memory_alignment_local.txt",
 					expectedPass: false,
 					buganizer:    "b/27134903",
 				},
@@ -2133,7 +1939,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "kernel_memory_alignment_private",
-					logFileName:  "basic-kernel_memory_alignment_private.txt",
 					expectedPass: false,
 					buganizer:    "b/27134903",
 				},
@@ -2144,7 +1949,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "kernel_numeric_constants",
-					logFileName:  "basic-kernel_numeric_constants.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2155,7 +1959,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "kernel_preprocessor_macros",
-					logFileName:  "basic-kernel_preprocessor_macros.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2166,7 +1969,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "local_arg_def",
-					logFileName:  "basic-local_arg_def.txt",
 					expectedPass: false,
 					buganizer:    "b/227133185",
 				},
@@ -2177,7 +1979,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "local_kernel_def",
-					logFileName:  "basic-local_kernel_def.txt",
 					expectedPass: false,
 					buganizer:    "b/227133185",
 				},
@@ -2188,7 +1989,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "local_kernel_scope",
-					logFileName:  "basic-local_kernel_scope.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2199,7 +1999,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "local_linear_id",
-					logFileName:  "basic-local_linear_id.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2210,7 +2009,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "loop",
-					logFileName:  "basic-loop.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2221,7 +2019,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "mri_multiple",
-					logFileName:  "basic-mri_multiple.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2232,7 +2029,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "mri_one",
-					logFileName:  "basic-mri_one.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2243,7 +2039,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "parameter_types",
-					logFileName:  "basic-parameter_types.txt",
 					expectedPass: false,
 					buganizer:    "b/227134906",
 				},
@@ -2254,7 +2049,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "pointer_cast",
-					logFileName:  "basic-pointer_cast.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2265,7 +2059,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "prefetch",
-					logFileName:  "basic-prefetch.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2276,7 +2069,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "progvar_func_scope",
-					logFileName:  "basic-progvar_func_scope.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2287,7 +2079,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "progvar_prog_scope_init",
-					logFileName:  "basic-progvar_prog_scope_init.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2298,7 +2089,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "progvar_prog_scope_misc",
-					logFileName:  "basic-progvar_prog_scope_misc.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2309,7 +2099,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "progvar_prog_scope_uninit",
-					logFileName:  "basic-progvar_prog_scope_uninit.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2320,7 +2109,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "readimage3d_fp32",
-					logFileName:  "basic-readimage3d_fp32.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2331,7 +2119,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "readimage3d_int16",
-					logFileName:  "basic-readimage3d_int16.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2342,7 +2129,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "readimage3d",
-					logFileName:  "basic-readimage3d.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2353,7 +2139,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "readimage_fp32",
-					logFileName:  "basic-readimage_fp32.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2364,7 +2149,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "readimage_int16",
-					logFileName:  "basic-readimage_int16.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2375,7 +2159,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "readimage",
-					logFileName:  "basic-readimage.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2386,7 +2169,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "rw_image_access_qualifier",
-					logFileName:  "basic-rw_image_access_qualifier.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2397,7 +2179,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "simple_read_image_pitch",
-					logFileName:  "basic-simple_read_image_pitch.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2408,7 +2189,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "simple_write_image_pitch",
-					logFileName:  "basic-simple_write_image_pitch.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2419,7 +2199,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "sizeof",
-					logFileName:  "basic-sizeof.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2430,7 +2209,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vector_creation",
-					logFileName:  "basic-vector_creation.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2441,7 +2219,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vector_swizzle",
-					logFileName:  "basic-vector_swizzle.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -2451,7 +2228,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vec_type_hint",
-					logFileName:  "basic-vec_type_hint.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2462,7 +2238,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vload_constant",
-					logFileName:  "basic-vload_constant.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2473,7 +2248,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vload_global",
-					logFileName:  "basic-vload_global.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2484,7 +2258,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vload_local",
-					logFileName:  "basic-vload_local.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2495,7 +2268,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vload_private",
-					logFileName:  "basic-vload_private.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2506,7 +2278,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vstore_global",
-					logFileName:  "basic-vstore_global.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2517,7 +2288,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vstore_local",
-					logFileName:  "basic-vstore_local.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2528,7 +2298,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "vstore_private",
-					logFileName:  "basic-vstore_private.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2539,7 +2308,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "wg_barrier",
-					logFileName:  "basic-wg_barrier.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2550,7 +2318,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "work_item_functions",
-					logFileName:  "basic-work_item_functions.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2561,7 +2328,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "writeimage_fp32",
-					logFileName:  "basic-writeimage_fp32.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2572,7 +2338,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "writeimage_int16",
-					logFileName:  "basic-writeimage_int16.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2583,7 +2348,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "writeimage",
-					logFileName:  "basic-writeimage.txt",
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
@@ -2594,7 +2358,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "acosh -w -1",
-					logFileName:  "bruteforce-acosh.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2605,7 +2368,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "acospi -w -1",
-					logFileName:  "bruteforce-acospi.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2616,7 +2378,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "acos -w -1",
-					logFileName:  "bruteforce-acos.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2627,7 +2388,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "add -w -1",
-					logFileName:  "bruteforce-add.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2637,7 +2397,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "asinh -w -1",
-					logFileName:  "bruteforce-asinh.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2647,7 +2406,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "asinpi -w -1",
-					logFileName:  "bruteforce-asinpi.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2658,7 +2416,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "asin -w -1",
-					logFileName:  "bruteforce-asin.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2669,7 +2426,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "assignment -w -1",
-					logFileName:  "bruteforce-assignment.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2679,7 +2435,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "atan2pi -w -1",
-					logFileName:  "bruteforce-atan2pi.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2689,7 +2444,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "atan2 -w -1",
-					logFileName:  "bruteforce-atan2.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2699,7 +2453,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "atanh -w -1",
-					logFileName:  "bruteforce-atanh.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2709,7 +2462,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "atanpi -w -1",
-					logFileName:  "bruteforce-atanpi.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2719,7 +2471,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "atan -w -1",
-					logFileName:  "bruteforce-atan.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2729,7 +2480,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "cbrt -w -1",
-					logFileName:  "bruteforce-cbrt.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2739,7 +2489,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "ceil -w -1",
-					logFileName:  "bruteforce-ceil.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2749,7 +2498,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "copysign -w -1",
-					logFileName:  "bruteforce-copysign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2759,7 +2507,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "cosh -w -1",
-					logFileName:  "bruteforce-cosh.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2770,7 +2517,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "cospi -w -1",
-					logFileName:  "bruteforce-cospi.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2781,7 +2527,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "cos -w -1",
-					logFileName:  "bruteforce-cos.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2792,7 +2537,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "divide_cr -w -1",
-					logFileName:  "bruteforce-divide_cr.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2802,7 +2546,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "divide -w -1",
-					logFileName:  "bruteforce-divide.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2813,7 +2556,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "exp10 -w -1",
-					logFileName:  "bruteforce-exp10.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2824,7 +2566,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "exp2 -w -1",
-					logFileName:  "bruteforce-exp2.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2834,7 +2575,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "expm1 -w -1",
-					logFileName:  "bruteforce-expm1.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2845,7 +2585,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "exp -w -1",
-					logFileName:  "bruteforce-exp.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2856,7 +2595,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "fabs -w -1",
-					logFileName:  "bruteforce-fabs.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2866,7 +2604,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "fdim -w -1",
-					logFileName:  "bruteforce-fdim.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2876,7 +2613,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "floor -w -1",
-					logFileName:  "bruteforce-floor.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2886,7 +2622,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "fma -w -1",
-					logFileName:  "bruteforce-fma.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2896,7 +2631,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "fmax -w -1",
-					logFileName:  "bruteforce-fmax.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2906,7 +2640,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "fmin -w -1",
-					logFileName:  "bruteforce-fmin.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2916,7 +2649,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "fmod -w -1",
-					logFileName:  "bruteforce-fmod.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2926,7 +2658,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "fract -w -1",
-					logFileName:  "bruteforce-fract.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2936,7 +2667,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "frexp -w -1",
-					logFileName:  "bruteforce-frexp.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2946,7 +2676,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_cos -w -1",
-					logFileName:  "bruteforce-half_cos.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2957,7 +2686,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_divide -w -1",
-					logFileName:  "bruteforce-half_divide.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -2968,7 +2696,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_exp10 -w -1",
-					logFileName:  "bruteforce-half_exp10.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2978,7 +2705,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_exp2 -w -1",
-					logFileName:  "bruteforce-half_exp2.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2988,7 +2714,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_exp -w -1",
-					logFileName:  "bruteforce-half_exp.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -2998,7 +2723,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_log10 -w -1",
-					logFileName:  "bruteforce-half_log10.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3008,7 +2732,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_log2 -w -1",
-					logFileName:  "bruteforce-half_log2.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3018,7 +2741,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_log -w -1",
-					logFileName:  "bruteforce-half_log.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3028,7 +2750,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_powr -w -1",
-					logFileName:  "bruteforce-half_powr.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3038,7 +2759,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_recip -w -1",
-					logFileName:  "bruteforce-half_recip.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3048,7 +2768,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_rsqrt -w -1",
-					logFileName:  "bruteforce-half_rsqrt.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3058,7 +2777,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_sin -w -1",
-					logFileName:  "bruteforce-half_sin.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3069,7 +2787,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_sqrt -w -1",
-					logFileName:  "bruteforce-half_sqrt.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3079,7 +2796,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "half_tan -w -1",
-					logFileName:  "bruteforce-half_tan.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3090,7 +2806,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "hypot -w -1",
-					logFileName:  "bruteforce-hypot.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3100,7 +2815,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "ilogb -w -1",
-					logFileName:  "bruteforce-ilogb.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3110,7 +2824,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isequal -w -1",
-					logFileName:  "bruteforce-isequal.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3120,7 +2833,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isfinite -w -1",
-					logFileName:  "bruteforce-isfinite.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3130,7 +2842,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isgreaterequal -w -1",
-					logFileName:  "bruteforce-isgreaterequal.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3140,7 +2851,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isgreater -w -1",
-					logFileName:  "bruteforce-isgreater.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3150,7 +2860,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isinf -w -1",
-					logFileName:  "bruteforce-isinf.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3160,7 +2869,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "islessequal -w -1",
-					logFileName:  "bruteforce-islessequal.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3170,7 +2878,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "islessgreater -w -1",
-					logFileName:  "bruteforce-islessgreater.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3180,7 +2887,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isless -w -1",
-					logFileName:  "bruteforce-isless.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3190,7 +2896,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isnan -w -1",
-					logFileName:  "bruteforce-isnan.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3200,7 +2905,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isnormal -w -1",
-					logFileName:  "bruteforce-isnormal.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3210,7 +2914,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isnotequal -w -1",
-					logFileName:  "bruteforce-isnotequal.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3220,7 +2923,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isordered -w -1",
-					logFileName:  "bruteforce-isordered.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3230,7 +2932,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "isunordered -w -1",
-					logFileName:  "bruteforce-isunordered.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3240,7 +2941,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "ldexp -w -1",
-					logFileName:  "bruteforce-ldexp.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3250,7 +2950,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "lgamma_r -w -1",
-					logFileName:  "bruteforce-lgamma_r.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3261,7 +2960,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "lgamma -w -1",
-					logFileName:  "bruteforce-lgamma.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3272,7 +2970,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "log10 -w -1",
-					logFileName:  "bruteforce-log10.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3283,7 +2980,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "log1p -w -1",
-					logFileName:  "bruteforce-log1p.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3294,7 +2990,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "log2 -w -1",
-					logFileName:  "bruteforce-log2.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3305,7 +3000,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "logb -w -1",
-					logFileName:  "bruteforce-logb.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3315,7 +3009,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "log -w -1",
-					logFileName:  "bruteforce-log.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3326,7 +3019,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "mad -w -1",
-					logFileName:  "bruteforce-mad.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3336,7 +3028,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "maxmag -w -1",
-					logFileName:  "bruteforce-maxmag.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3346,7 +3037,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "minmag -w -1",
-					logFileName:  "bruteforce-minmag.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3356,7 +3046,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "modf -w -1",
-					logFileName:  "bruteforce-modf.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3366,7 +3055,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "multiply -w -1",
-					logFileName:  "bruteforce-multiply.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3376,7 +3064,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "nan -w -1",
-					logFileName:  "bruteforce-nan.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3386,7 +3073,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "nextafter -w -1",
-					logFileName:  "bruteforce-nextafter.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3396,7 +3082,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "not -w -1",
-					logFileName:  "bruteforce-not.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3406,7 +3091,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "pown -w -1",
-					logFileName:  "bruteforce-pown.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3417,7 +3101,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "powr -w -1",
-					logFileName:  "bruteforce-powr.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3428,7 +3111,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "pow -w -1",
-					logFileName:  "bruteforce-pow.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3439,7 +3121,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "remainder -w -1",
-					logFileName:  "bruteforce-remainder.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3449,7 +3130,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "remquo -w -1",
-					logFileName:  "bruteforce-remquo.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3459,7 +3139,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "rint -w -1",
-					logFileName:  "bruteforce-rint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3469,7 +3148,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "rootn -w -1",
-					logFileName:  "bruteforce-rootn.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3479,7 +3157,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "round -w -1",
-					logFileName:  "bruteforce-round.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3489,7 +3166,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "rsqrt -w -1",
-					logFileName:  "bruteforce-rsqrt.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3499,7 +3175,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "signbit -w -1",
-					logFileName:  "bruteforce-signbit.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3509,7 +3184,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "sincos -w -1",
-					logFileName:  "bruteforce-sincos.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3520,7 +3194,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "sinh -w -1",
-					logFileName:  "bruteforce-sinh.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3531,7 +3204,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "sinpi -w -1",
-					logFileName:  "bruteforce-sinpi.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3542,7 +3214,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "sin -w -1",
-					logFileName:  "bruteforce-sin.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3553,7 +3224,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "sqrt_cr -w -1",
-					logFileName:  "bruteforce-sqrt_cr.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3563,7 +3233,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "sqrt -w -1",
-					logFileName:  "bruteforce-sqrt.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3573,7 +3242,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "subtract -w -1",
-					logFileName:  "bruteforce-subtract.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3583,7 +3251,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "tanh -w -1",
-					logFileName:  "bruteforce-tanh.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3593,7 +3260,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "tanpi -w -1",
-					logFileName:  "bruteforce-tanpi.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3604,7 +3270,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "tan -w -1",
-					logFileName:  "bruteforce-tan.txt",
 					expectedPass: false,
 					buganizer:    "b/227133190",
 				},
@@ -3615,7 +3280,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_bruteforce",
 					args:         "trunc -w -1",
-					logFileName:  "bruteforce-trunc.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3625,7 +3289,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "array_info_size",
-					logFileName:  "buffers-array_info_size.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3635,7 +3298,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_copy",
-					logFileName:  "buffers-buffer_copy.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3645,7 +3307,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_char",
-					logFileName:  "buffers-buffer_fill_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3655,7 +3316,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_float",
-					logFileName:  "buffers-buffer_fill_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3665,7 +3325,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_int",
-					logFileName:  "buffers-buffer_fill_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3675,7 +3334,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_long",
-					logFileName:  "buffers-buffer_fill_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3685,7 +3343,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_short",
-					logFileName:  "buffers-buffer_fill_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3695,7 +3352,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_struct",
-					logFileName:  "buffers-buffer_fill_struct.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3705,7 +3361,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_uchar",
-					logFileName:  "buffers-buffer_fill_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3715,7 +3370,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_uint",
-					logFileName:  "buffers-buffer_fill_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3725,7 +3379,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_ulong",
-					logFileName:  "buffers-buffer_fill_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3735,7 +3388,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_fill_ushort",
-					logFileName:  "buffers-buffer_fill_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3745,7 +3397,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_char",
-					logFileName:  "buffers-buffer_map_read_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3755,7 +3406,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_float",
-					logFileName:  "buffers-buffer_map_read_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3765,7 +3415,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_int",
-					logFileName:  "buffers-buffer_map_read_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3775,7 +3424,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_long",
-					logFileName:  "buffers-buffer_map_read_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3785,7 +3433,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_short",
-					logFileName:  "buffers-buffer_map_read_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3795,7 +3442,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_struct",
-					logFileName:  "buffers-buffer_map_read_struct.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3805,7 +3451,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_uchar",
-					logFileName:  "buffers-buffer_map_read_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3815,7 +3460,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_uint",
-					logFileName:  "buffers-buffer_map_read_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3825,7 +3469,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_ulong",
-					logFileName:  "buffers-buffer_map_read_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3835,7 +3478,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_read_ushort",
-					logFileName:  "buffers-buffer_map_read_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3845,7 +3487,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_char",
-					logFileName:  "buffers-buffer_map_write_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3855,7 +3496,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_float",
-					logFileName:  "buffers-buffer_map_write_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3865,7 +3505,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_int",
-					logFileName:  "buffers-buffer_map_write_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3875,7 +3514,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_long",
-					logFileName:  "buffers-buffer_map_write_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3885,7 +3523,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_short",
-					logFileName:  "buffers-buffer_map_write_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3895,7 +3532,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_struct",
-					logFileName:  "buffers-buffer_map_write_struct.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3905,7 +3541,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_uchar",
-					logFileName:  "buffers-buffer_map_write_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3915,7 +3550,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_uint",
-					logFileName:  "buffers-buffer_map_write_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3925,7 +3559,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_ulong",
-					logFileName:  "buffers-buffer_map_write_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3935,7 +3568,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_map_write_ushort",
-					logFileName:  "buffers-buffer_map_write_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3945,7 +3577,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_migrate",
-					logFileName:  "buffers-buffer_migrate.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3955,7 +3586,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_partial_copy",
-					logFileName:  "buffers-buffer_partial_copy.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3965,7 +3595,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_char",
-					logFileName:  "buffers-buffer_read_array_barrier_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3975,7 +3604,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_float",
-					logFileName:  "buffers-buffer_read_array_barrier_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3985,7 +3613,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_int",
-					logFileName:  "buffers-buffer_read_array_barrier_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -3995,7 +3622,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_long",
-					logFileName:  "buffers-buffer_read_array_barrier_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4005,7 +3631,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_short",
-					logFileName:  "buffers-buffer_read_array_barrier_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4015,7 +3640,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_uchar",
-					logFileName:  "buffers-buffer_read_array_barrier_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4025,7 +3649,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_uint",
-					logFileName:  "buffers-buffer_read_array_barrier_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4035,7 +3658,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_ulong",
-					logFileName:  "buffers-buffer_read_array_barrier_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4045,7 +3667,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_array_barrier_ushort",
-					logFileName:  "buffers-buffer_read_array_barrier_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4055,7 +3676,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_async_char",
-					logFileName:  "buffers-buffer_read_async_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4065,7 +3685,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_async_float",
-					logFileName:  "buffers-buffer_read_async_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4075,7 +3694,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_async_int",
-					logFileName:  "buffers-buffer_read_async_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4085,7 +3703,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_async_long",
-					logFileName:  "buffers-buffer_read_async_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4095,7 +3712,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_async_short",
-					logFileName:  "buffers-buffer_read_async_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4105,7 +3721,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_async_uchar",
-					logFileName:  "buffers-buffer_read_async_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4115,7 +3730,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_async_uint",
-					logFileName:  "buffers-buffer_read_async_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4125,7 +3739,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_async_ulong",
-					logFileName:  "buffers-buffer_read_async_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4135,7 +3748,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_async_ushort",
-					logFileName:  "buffers-buffer_read_async_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4145,7 +3757,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_char",
-					logFileName:  "buffers-buffer_read_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4155,7 +3766,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_float",
-					logFileName:  "buffers-buffer_read_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4165,7 +3775,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_half",
-					logFileName:  "buffers-buffer_read_half.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4175,7 +3784,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_int",
-					logFileName:  "buffers-buffer_read_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4185,7 +3793,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_long",
-					logFileName:  "buffers-buffer_read_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4195,7 +3802,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_random_size",
-					logFileName:  "buffers-buffer_read_random_size.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4205,7 +3811,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_short",
-					logFileName:  "buffers-buffer_read_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4215,7 +3820,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_struct",
-					logFileName:  "buffers-buffer_read_struct.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4225,7 +3829,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_uchar",
-					logFileName:  "buffers-buffer_read_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4235,7 +3838,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_uint",
-					logFileName:  "buffers-buffer_read_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4245,7 +3847,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_ulong",
-					logFileName:  "buffers-buffer_read_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4255,7 +3856,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_read_ushort",
-					logFileName:  "buffers-buffer_read_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4265,7 +3865,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_async_char",
-					logFileName:  "buffers-buffer_write_async_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -4275,7 +3874,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_async_float",
-					logFileName:  "buffers-buffer_write_async_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -4285,7 +3883,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_async_int",
-					logFileName:  "buffers-buffer_write_async_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -4295,7 +3892,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_async_long",
-					logFileName:  "buffers-buffer_write_async_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -4305,7 +3901,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_async_short",
-					logFileName:  "buffers-buffer_write_async_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -4315,7 +3910,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_async_uchar",
-					logFileName:  "buffers-buffer_write_async_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -4325,7 +3919,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_async_uint",
-					logFileName:  "buffers-buffer_write_async_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -4335,7 +3928,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_async_ulong",
-					logFileName:  "buffers-buffer_write_async_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -4345,7 +3937,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_async_ushort",
-					logFileName:  "buffers-buffer_write_async_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -4355,7 +3946,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_char",
-					logFileName:  "buffers-buffer_write_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4365,7 +3955,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_float",
-					logFileName:  "buffers-buffer_write_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4375,7 +3964,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_half",
-					logFileName:  "buffers-buffer_write_half.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4385,7 +3973,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_int",
-					logFileName:  "buffers-buffer_write_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4395,7 +3982,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_long",
-					logFileName:  "buffers-buffer_write_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4405,7 +3991,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_short",
-					logFileName:  "buffers-buffer_write_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4415,7 +4000,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_struct",
-					logFileName:  "buffers-buffer_write_struct.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4425,7 +4009,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_uchar",
-					logFileName:  "buffers-buffer_write_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4435,7 +4018,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_uint",
-					logFileName:  "buffers-buffer_write_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4445,7 +4027,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_ulong",
-					logFileName:  "buffers-buffer_write_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4455,7 +4036,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "buffer_write_ushort",
-					logFileName:  "buffers-buffer_write_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4465,7 +4045,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "image_migrate",
-					logFileName:  "buffers-image_migrate.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4475,7 +4054,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "mem_alloc_ref_flags",
-					logFileName:  "buffers-mem_alloc_ref_flags.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4485,7 +4063,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "mem_copy_host_flags",
-					logFileName:  "buffers-mem_copy_host_flags.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4495,7 +4072,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "mem_read_only_flags",
-					logFileName:  "buffers-mem_read_only_flags.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4505,7 +4081,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "mem_read_write_flags",
-					logFileName:  "buffers-mem_read_write_flags.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4515,7 +4090,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "mem_write_only_flags",
-					logFileName:  "buffers-mem_write_only_flags.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4525,7 +4099,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "sub_buffers_overlapping",
-					logFileName:  "buffers-sub_buffers_overlapping.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4535,7 +4108,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "sub_buffers_read_write_dual_devices",
-					logFileName:  "buffers-sub_buffers_read_write_dual_devices.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4545,7 +4117,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_buffers",
 					args:         "sub_buffers_read_write",
-					logFileName:  "buffers-sub_buffers_read_write.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4555,7 +4126,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_FLOAT",
-					logFileName:  "cl_copy_images-1Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4565,7 +4135,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-1Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4575,7 +4144,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-1Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4585,7 +4153,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-1Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4595,7 +4162,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-1Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4605,7 +4171,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-1Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4615,7 +4180,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-1Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4625,7 +4189,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-1Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4635,7 +4198,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-1Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4645,7 +4207,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-1Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4655,7 +4216,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-1Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4665,7 +4225,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-1Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4675,7 +4234,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-1Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4685,7 +4243,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-1Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4695,7 +4252,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-1Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4705,7 +4261,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_FLOAT",
-					logFileName:  "cl_copy_images-1D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4715,7 +4270,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-1D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4725,7 +4279,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-1D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4735,7 +4288,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-1D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4745,7 +4297,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-1D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4755,7 +4306,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-1D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4765,7 +4315,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-1D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4775,7 +4324,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-1D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4785,7 +4333,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-1D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4795,7 +4342,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-1D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4805,7 +4351,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-1D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4815,7 +4360,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-1D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4825,7 +4369,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-1D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4835,7 +4378,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-1D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4845,7 +4387,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "1D CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-1D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4855,7 +4396,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_FLOAT",
-					logFileName:  "cl_copy_images-2Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4865,7 +4405,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4875,7 +4414,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4885,7 +4423,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4895,7 +4432,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4905,7 +4441,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-2Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4915,7 +4450,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-2Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4925,7 +4459,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-2Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4935,7 +4468,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-2Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4945,7 +4477,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-2Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4955,7 +4486,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-2Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4965,7 +4495,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-2Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4975,7 +4504,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4985,7 +4513,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -4995,7 +4522,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5005,7 +4531,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_FLOAT",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5015,7 +4540,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5025,7 +4549,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5035,7 +4558,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5045,7 +4567,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5055,7 +4576,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5065,7 +4585,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5075,7 +4594,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5085,7 +4603,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5095,7 +4612,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5105,7 +4621,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5115,7 +4630,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5125,7 +4639,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5135,7 +4648,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5145,7 +4657,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto2D CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-2Darrayto2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5155,7 +4666,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_FLOAT",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5165,7 +4675,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5175,7 +4684,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5185,7 +4693,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5195,7 +4702,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5205,7 +4711,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5215,7 +4720,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5225,7 +4729,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5235,7 +4738,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5245,7 +4747,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5255,7 +4756,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5265,7 +4765,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5275,7 +4774,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5285,7 +4783,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5295,7 +4792,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Darrayto3D CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-2Darrayto3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5305,7 +4801,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_FLOAT",
-					logFileName:  "cl_copy_images-2D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5315,7 +4810,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-2D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5325,7 +4819,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-2D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5335,7 +4828,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-2D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5345,7 +4837,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-2D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5355,7 +4846,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-2D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5365,7 +4855,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-2D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5375,7 +4864,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-2D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5385,7 +4873,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-2D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5395,7 +4882,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-2D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5405,7 +4891,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-2D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5415,7 +4900,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-2D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5425,7 +4909,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5435,7 +4918,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5445,7 +4927,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2D CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5455,7 +4936,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_FLOAT",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5465,7 +4945,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5475,7 +4954,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5485,7 +4963,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5495,7 +4972,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5505,7 +4981,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5515,7 +4990,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5525,7 +4999,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5535,7 +5008,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5545,7 +5017,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5555,7 +5026,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5565,7 +5035,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5575,7 +5044,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5585,7 +5053,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5595,7 +5062,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto2Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-2Dto2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5605,7 +5071,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_FLOAT",
-					logFileName:  "cl_copy_images-2Dto3D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5615,7 +5080,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-2Dto3D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5625,7 +5089,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-2Dto3D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5635,7 +5098,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-2Dto3D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5645,7 +5107,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-2Dto3D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5655,7 +5116,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-2Dto3D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5665,7 +5125,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-2Dto3D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5675,7 +5134,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-2Dto3D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5685,7 +5143,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-2Dto3D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5695,7 +5152,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-2Dto3D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5705,7 +5161,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-2Dto3D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5715,7 +5170,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-2Dto3D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5725,7 +5179,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-2Dto3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5735,7 +5188,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-2Dto3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5745,7 +5197,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "2Dto3D CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-2Dto3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5755,7 +5206,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_FLOAT",
-					logFileName:  "cl_copy_images-3D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5765,7 +5215,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-3D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5775,7 +5224,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-3D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5785,7 +5233,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-3D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5795,7 +5242,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-3D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5805,7 +5251,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-3D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5815,7 +5260,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-3D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5825,7 +5269,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-3D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5835,7 +5278,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-3D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5845,7 +5287,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-3D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5855,7 +5296,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-3D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5865,7 +5305,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-3D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5875,7 +5314,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5885,7 +5323,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5895,7 +5332,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3D CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5905,7 +5341,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_FLOAT",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5915,7 +5350,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5925,7 +5359,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5935,7 +5368,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5945,7 +5377,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5955,7 +5386,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5965,7 +5395,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5975,7 +5404,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5985,7 +5413,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -5995,7 +5422,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6005,7 +5431,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6015,7 +5440,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6025,7 +5449,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6035,7 +5458,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6045,7 +5467,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-3Dto2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6055,7 +5476,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_FLOAT",
-					logFileName:  "cl_copy_images-3Dto2D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6065,7 +5485,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_HALF_FLOAT",
-					logFileName:  "cl_copy_images-3Dto2D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6075,7 +5494,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_SIGNED_INT16",
-					logFileName:  "cl_copy_images-3Dto2D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6085,7 +5503,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_SIGNED_INT32",
-					logFileName:  "cl_copy_images-3Dto2D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6095,7 +5512,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_SIGNED_INT8",
-					logFileName:  "cl_copy_images-3Dto2D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6105,7 +5521,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_SNORM_INT16",
-					logFileName:  "cl_copy_images-3Dto2D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6115,7 +5530,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_SNORM_INT8",
-					logFileName:  "cl_copy_images-3Dto2D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6125,7 +5539,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_UNORM_INT_101010",
-					logFileName:  "cl_copy_images-3Dto2D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6135,7 +5548,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_UNORM_INT16",
-					logFileName:  "cl_copy_images-3Dto2D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6145,7 +5557,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_UNORM_INT8",
-					logFileName:  "cl_copy_images-3Dto2D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6155,7 +5566,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_UNORM_SHORT_555",
-					logFileName:  "cl_copy_images-3Dto2D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6165,7 +5575,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_UNORM_SHORT_565",
-					logFileName:  "cl_copy_images-3Dto2D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6175,7 +5584,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_UNSIGNED_INT16",
-					logFileName:  "cl_copy_images-3Dto2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6185,7 +5593,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_UNSIGNED_INT32",
-					logFileName:  "cl_copy_images-3Dto2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6195,7 +5602,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_copy_images",
 					args:         "3Dto2D CL_UNSIGNED_INT8",
-					logFileName:  "cl_copy_images-3Dto2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6205,7 +5611,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_FLOAT",
-					logFileName:  "cl_fill_images-1Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6215,7 +5620,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_HALF_FLOAT",
-					logFileName:  "cl_fill_images-1Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6225,7 +5629,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_SIGNED_INT16",
-					logFileName:  "cl_fill_images-1Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6235,7 +5638,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_SIGNED_INT32",
-					logFileName:  "cl_fill_images-1Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6245,7 +5647,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_SIGNED_INT8",
-					logFileName:  "cl_fill_images-1Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6255,7 +5656,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_SNORM_INT16",
-					logFileName:  "cl_fill_images-1Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6265,7 +5665,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_SNORM_INT8",
-					logFileName:  "cl_fill_images-1Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6275,7 +5674,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_fill_images-1Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6285,7 +5683,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_UNORM_INT16",
-					logFileName:  "cl_fill_images-1Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6295,7 +5692,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_UNORM_INT8",
-					logFileName:  "cl_fill_images-1Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6305,7 +5701,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_fill_images-1Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6315,7 +5710,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_fill_images-1Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6325,7 +5719,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_fill_images-1Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6335,7 +5728,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_fill_images-1Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6345,7 +5737,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_fill_images-1Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6355,7 +5746,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_FLOAT",
-					logFileName:  "cl_fill_images-1D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6365,7 +5755,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_HALF_FLOAT",
-					logFileName:  "cl_fill_images-1D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6375,7 +5764,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_SIGNED_INT16",
-					logFileName:  "cl_fill_images-1D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6385,7 +5773,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_SIGNED_INT32",
-					logFileName:  "cl_fill_images-1D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6395,7 +5782,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_SIGNED_INT8",
-					logFileName:  "cl_fill_images-1D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6405,7 +5791,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_SNORM_INT16",
-					logFileName:  "cl_fill_images-1D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6415,7 +5800,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_SNORM_INT8",
-					logFileName:  "cl_fill_images-1D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6425,7 +5809,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_UNORM_INT_101010",
-					logFileName:  "cl_fill_images-1D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6435,7 +5818,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_UNORM_INT16",
-					logFileName:  "cl_fill_images-1D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6445,7 +5827,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_UNORM_INT8",
-					logFileName:  "cl_fill_images-1D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6455,7 +5836,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_UNORM_SHORT_555",
-					logFileName:  "cl_fill_images-1D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6465,7 +5845,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_UNORM_SHORT_565",
-					logFileName:  "cl_fill_images-1D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6475,7 +5854,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_UNSIGNED_INT16",
-					logFileName:  "cl_fill_images-1D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6485,7 +5863,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_UNSIGNED_INT32",
-					logFileName:  "cl_fill_images-1D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6495,7 +5872,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "1D CL_UNSIGNED_INT8",
-					logFileName:  "cl_fill_images-1D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6505,7 +5881,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_FLOAT",
-					logFileName:  "cl_fill_images-2Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6515,7 +5890,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_HALF_FLOAT",
-					logFileName:  "cl_fill_images-2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6525,7 +5899,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_SIGNED_INT16",
-					logFileName:  "cl_fill_images-2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6535,7 +5908,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_SIGNED_INT32",
-					logFileName:  "cl_fill_images-2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6545,7 +5917,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_SIGNED_INT8",
-					logFileName:  "cl_fill_images-2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6555,7 +5926,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_SNORM_INT16",
-					logFileName:  "cl_fill_images-2Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6565,7 +5935,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_SNORM_INT8",
-					logFileName:  "cl_fill_images-2Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6575,7 +5944,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_fill_images-2Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6585,7 +5953,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_UNORM_INT16",
-					logFileName:  "cl_fill_images-2Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6595,7 +5962,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_UNORM_INT8",
-					logFileName:  "cl_fill_images-2Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6605,7 +5971,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_fill_images-2Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6615,7 +5980,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_fill_images-2Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6625,7 +5989,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_fill_images-2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6635,7 +5998,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_fill_images-2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6645,7 +6007,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_fill_images-2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6655,7 +6016,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_FLOAT",
-					logFileName:  "cl_fill_images-2D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6665,7 +6025,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_HALF_FLOAT",
-					logFileName:  "cl_fill_images-2D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6675,7 +6034,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_SIGNED_INT16",
-					logFileName:  "cl_fill_images-2D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6685,7 +6043,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_SIGNED_INT32",
-					logFileName:  "cl_fill_images-2D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6695,7 +6052,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_SIGNED_INT8",
-					logFileName:  "cl_fill_images-2D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6705,7 +6061,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_SNORM_INT16",
-					logFileName:  "cl_fill_images-2D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6715,7 +6070,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_SNORM_INT8",
-					logFileName:  "cl_fill_images-2D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6725,7 +6079,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_UNORM_INT_101010",
-					logFileName:  "cl_fill_images-2D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6735,7 +6088,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_UNORM_INT16",
-					logFileName:  "cl_fill_images-2D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6745,7 +6097,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_UNORM_INT8",
-					logFileName:  "cl_fill_images-2D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6755,7 +6106,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_UNORM_SHORT_555",
-					logFileName:  "cl_fill_images-2D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6765,7 +6115,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_UNORM_SHORT_565",
-					logFileName:  "cl_fill_images-2D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6775,7 +6124,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_UNSIGNED_INT16",
-					logFileName:  "cl_fill_images-2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6785,7 +6133,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_UNSIGNED_INT32",
-					logFileName:  "cl_fill_images-2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6795,7 +6142,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "2D CL_UNSIGNED_INT8",
-					logFileName:  "cl_fill_images-2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6805,7 +6151,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_FLOAT",
-					logFileName:  "cl_fill_images-3D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6815,7 +6160,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_HALF_FLOAT",
-					logFileName:  "cl_fill_images-3D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6825,7 +6169,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_SIGNED_INT16",
-					logFileName:  "cl_fill_images-3D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6835,7 +6178,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_SIGNED_INT32",
-					logFileName:  "cl_fill_images-3D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6845,7 +6187,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_SIGNED_INT8",
-					logFileName:  "cl_fill_images-3D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6855,7 +6196,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_SNORM_INT16",
-					logFileName:  "cl_fill_images-3D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6865,7 +6205,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_SNORM_INT8",
-					logFileName:  "cl_fill_images-3D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6875,7 +6214,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_UNORM_INT_101010",
-					logFileName:  "cl_fill_images-3D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6885,7 +6223,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_UNORM_INT16",
-					logFileName:  "cl_fill_images-3D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6895,7 +6232,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_UNORM_INT8",
-					logFileName:  "cl_fill_images-3D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6905,7 +6241,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_UNORM_SHORT_555",
-					logFileName:  "cl_fill_images-3D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6915,7 +6250,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_UNORM_SHORT_565",
-					logFileName:  "cl_fill_images-3D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6925,7 +6259,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_UNSIGNED_INT16",
-					logFileName:  "cl_fill_images-3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6935,7 +6268,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_UNSIGNED_INT32",
-					logFileName:  "cl_fill_images-3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6945,7 +6277,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_fill_images",
 					args:         "3D CL_UNSIGNED_INT8",
-					logFileName:  "cl_fill_images-3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6955,7 +6286,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_FLOAT",
-					logFileName:  "cl_get_info-1Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6965,7 +6295,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_HALF_FLOAT",
-					logFileName:  "cl_get_info-1Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6975,7 +6304,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_SIGNED_INT16",
-					logFileName:  "cl_get_info-1Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6985,7 +6313,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_SIGNED_INT32",
-					logFileName:  "cl_get_info-1Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -6995,7 +6322,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_SIGNED_INT8",
-					logFileName:  "cl_get_info-1Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7005,7 +6331,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_SNORM_INT16",
-					logFileName:  "cl_get_info-1Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7015,7 +6340,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_SNORM_INT8",
-					logFileName:  "cl_get_info-1Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7025,7 +6349,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_get_info-1Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7035,7 +6358,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_UNORM_INT16",
-					logFileName:  "cl_get_info-1Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7045,7 +6367,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_UNORM_INT8",
-					logFileName:  "cl_get_info-1Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7055,7 +6376,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_get_info-1Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7065,7 +6385,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_get_info-1Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7075,7 +6394,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_get_info-1Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7085,7 +6403,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_get_info-1Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7095,7 +6412,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_get_info-1Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7105,7 +6421,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_FLOAT",
-					logFileName:  "cl_get_info-1D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7115,7 +6430,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_HALF_FLOAT",
-					logFileName:  "cl_get_info-1D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7125,7 +6439,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_SIGNED_INT16",
-					logFileName:  "cl_get_info-1D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7135,7 +6448,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_SIGNED_INT32",
-					logFileName:  "cl_get_info-1D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7145,7 +6457,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_SIGNED_INT8",
-					logFileName:  "cl_get_info-1D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7155,7 +6466,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_SNORM_INT16",
-					logFileName:  "cl_get_info-1D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7165,7 +6475,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_SNORM_INT8",
-					logFileName:  "cl_get_info-1D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7175,7 +6484,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_UNORM_INT_101010",
-					logFileName:  "cl_get_info-1D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7185,7 +6493,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_UNORM_INT16",
-					logFileName:  "cl_get_info-1D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7195,7 +6502,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_UNORM_INT8",
-					logFileName:  "cl_get_info-1D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7205,7 +6511,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_UNORM_SHORT_555",
-					logFileName:  "cl_get_info-1D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7215,7 +6520,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_UNORM_SHORT_565",
-					logFileName:  "cl_get_info-1D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7225,7 +6529,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_UNSIGNED_INT16",
-					logFileName:  "cl_get_info-1D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7235,7 +6538,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_UNSIGNED_INT32",
-					logFileName:  "cl_get_info-1D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7245,7 +6547,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "1D CL_UNSIGNED_INT8",
-					logFileName:  "cl_get_info-1D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7255,7 +6556,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_FLOAT",
-					logFileName:  "cl_get_info-2Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7265,7 +6565,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_HALF_FLOAT",
-					logFileName:  "cl_get_info-2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7275,7 +6574,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_SIGNED_INT16",
-					logFileName:  "cl_get_info-2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7285,7 +6583,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_SIGNED_INT32",
-					logFileName:  "cl_get_info-2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7295,7 +6592,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_SIGNED_INT8",
-					logFileName:  "cl_get_info-2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7305,7 +6601,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_SNORM_INT16",
-					logFileName:  "cl_get_info-2Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7315,7 +6610,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_SNORM_INT8",
-					logFileName:  "cl_get_info-2Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7325,7 +6619,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_get_info-2Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7335,7 +6628,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_UNORM_INT16",
-					logFileName:  "cl_get_info-2Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7345,7 +6637,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_UNORM_INT8",
-					logFileName:  "cl_get_info-2Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7355,7 +6646,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_get_info-2Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7365,7 +6655,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_get_info-2Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7375,7 +6664,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_get_info-2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7385,7 +6673,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_get_info-2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7395,7 +6682,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_get_info-2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7405,7 +6691,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_FLOAT",
-					logFileName:  "cl_get_info-2D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7415,7 +6700,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_HALF_FLOAT",
-					logFileName:  "cl_get_info-2D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7425,7 +6709,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_SIGNED_INT16",
-					logFileName:  "cl_get_info-2D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7435,7 +6718,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_SIGNED_INT32",
-					logFileName:  "cl_get_info-2D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7445,7 +6727,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_SIGNED_INT8",
-					logFileName:  "cl_get_info-2D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7455,7 +6736,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_SNORM_INT16",
-					logFileName:  "cl_get_info-2D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7465,7 +6745,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_SNORM_INT8",
-					logFileName:  "cl_get_info-2D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7475,7 +6754,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_UNORM_INT_101010",
-					logFileName:  "cl_get_info-2D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7485,7 +6763,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_UNORM_INT16",
-					logFileName:  "cl_get_info-2D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7495,7 +6772,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_UNORM_INT8",
-					logFileName:  "cl_get_info-2D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7505,7 +6781,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_UNORM_SHORT_555",
-					logFileName:  "cl_get_info-2D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7515,7 +6790,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_UNORM_SHORT_565",
-					logFileName:  "cl_get_info-2D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7525,7 +6799,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_UNSIGNED_INT16",
-					logFileName:  "cl_get_info-2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7535,7 +6808,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_UNSIGNED_INT32",
-					logFileName:  "cl_get_info-2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7545,7 +6817,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "2D CL_UNSIGNED_INT8",
-					logFileName:  "cl_get_info-2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7555,7 +6826,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_FLOAT",
-					logFileName:  "cl_get_info-3D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7565,7 +6835,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_HALF_FLOAT",
-					logFileName:  "cl_get_info-3D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7575,7 +6844,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_SIGNED_INT16",
-					logFileName:  "cl_get_info-3D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7585,7 +6853,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_SIGNED_INT32",
-					logFileName:  "cl_get_info-3D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7595,7 +6862,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_SIGNED_INT8",
-					logFileName:  "cl_get_info-3D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7605,7 +6871,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_SNORM_INT16",
-					logFileName:  "cl_get_info-3D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7615,7 +6880,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_SNORM_INT8",
-					logFileName:  "cl_get_info-3D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7625,7 +6889,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_UNORM_INT_101010",
-					logFileName:  "cl_get_info-3D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7635,7 +6898,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_UNORM_INT16",
-					logFileName:  "cl_get_info-3D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7645,7 +6907,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_UNORM_INT8",
-					logFileName:  "cl_get_info-3D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7655,7 +6916,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_UNORM_SHORT_555",
-					logFileName:  "cl_get_info-3D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7665,7 +6925,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_UNORM_SHORT_565",
-					logFileName:  "cl_get_info-3D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7675,7 +6934,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_UNSIGNED_INT16",
-					logFileName:  "cl_get_info-3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7685,7 +6943,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_UNSIGNED_INT32",
-					logFileName:  "cl_get_info-3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7695,7 +6952,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_get_info",
 					args:         "3D CL_UNSIGNED_INT8",
-					logFileName:  "cl_get_info-3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7705,7 +6961,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_FLOAT",
-					logFileName:  "cl_read_write_images-1Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7715,7 +6970,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_HALF_FLOAT",
-					logFileName:  "cl_read_write_images-1Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7725,7 +6979,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_SIGNED_INT16",
-					logFileName:  "cl_read_write_images-1Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7735,7 +6988,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_SIGNED_INT32",
-					logFileName:  "cl_read_write_images-1Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7745,7 +6997,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_SIGNED_INT8",
-					logFileName:  "cl_read_write_images-1Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7755,7 +7006,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_SNORM_INT16",
-					logFileName:  "cl_read_write_images-1Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7765,7 +7015,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_SNORM_INT8",
-					logFileName:  "cl_read_write_images-1Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7775,7 +7024,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_read_write_images-1Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7785,7 +7033,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_UNORM_INT16",
-					logFileName:  "cl_read_write_images-1Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7795,7 +7042,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_UNORM_INT8",
-					logFileName:  "cl_read_write_images-1Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7805,7 +7051,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_read_write_images-1Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7815,7 +7060,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_read_write_images-1Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7825,7 +7069,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_read_write_images-1Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7835,7 +7078,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_read_write_images-1Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7845,7 +7087,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_read_write_images-1Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7855,7 +7096,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_FLOAT",
-					logFileName:  "cl_read_write_images-1D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7865,7 +7105,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_HALF_FLOAT",
-					logFileName:  "cl_read_write_images-1D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7875,7 +7114,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_SIGNED_INT16",
-					logFileName:  "cl_read_write_images-1D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7885,7 +7123,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_SIGNED_INT32",
-					logFileName:  "cl_read_write_images-1D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7895,7 +7132,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_SIGNED_INT8",
-					logFileName:  "cl_read_write_images-1D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7905,7 +7141,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_SNORM_INT16",
-					logFileName:  "cl_read_write_images-1D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7915,7 +7150,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_SNORM_INT8",
-					logFileName:  "cl_read_write_images-1D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7925,7 +7159,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_UNORM_INT_101010",
-					logFileName:  "cl_read_write_images-1D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7935,7 +7168,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_UNORM_INT16",
-					logFileName:  "cl_read_write_images-1D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7945,7 +7177,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_UNORM_INT8",
-					logFileName:  "cl_read_write_images-1D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7955,7 +7186,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_UNORM_SHORT_555",
-					logFileName:  "cl_read_write_images-1D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7965,7 +7195,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_UNORM_SHORT_565",
-					logFileName:  "cl_read_write_images-1D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7975,7 +7204,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_UNSIGNED_INT16",
-					logFileName:  "cl_read_write_images-1D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7985,7 +7213,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_UNSIGNED_INT32",
-					logFileName:  "cl_read_write_images-1D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -7995,7 +7222,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "1D CL_UNSIGNED_INT8",
-					logFileName:  "cl_read_write_images-1D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8005,7 +7231,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_FLOAT",
-					logFileName:  "cl_read_write_images-2Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8015,7 +7240,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_HALF_FLOAT",
-					logFileName:  "cl_read_write_images-2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8025,7 +7249,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_SIGNED_INT16",
-					logFileName:  "cl_read_write_images-2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8035,7 +7258,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_SIGNED_INT32",
-					logFileName:  "cl_read_write_images-2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8045,7 +7267,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_SIGNED_INT8",
-					logFileName:  "cl_read_write_images-2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8055,7 +7276,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_SNORM_INT16",
-					logFileName:  "cl_read_write_images-2Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8065,7 +7285,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_SNORM_INT8",
-					logFileName:  "cl_read_write_images-2Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8075,7 +7294,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_UNORM_INT_101010",
-					logFileName:  "cl_read_write_images-2Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8085,7 +7303,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_UNORM_INT16",
-					logFileName:  "cl_read_write_images-2Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8095,7 +7312,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_UNORM_INT8",
-					logFileName:  "cl_read_write_images-2Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8105,7 +7321,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_UNORM_SHORT_555",
-					logFileName:  "cl_read_write_images-2Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8115,7 +7330,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_UNORM_SHORT_565",
-					logFileName:  "cl_read_write_images-2Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8125,7 +7339,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_UNSIGNED_INT16",
-					logFileName:  "cl_read_write_images-2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8135,7 +7348,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_UNSIGNED_INT32",
-					logFileName:  "cl_read_write_images-2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8145,7 +7357,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2Darray CL_UNSIGNED_INT8",
-					logFileName:  "cl_read_write_images-2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8155,7 +7366,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_FLOAT",
-					logFileName:  "cl_read_write_images-2D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8165,7 +7375,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_HALF_FLOAT",
-					logFileName:  "cl_read_write_images-2D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8175,7 +7384,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_SIGNED_INT16",
-					logFileName:  "cl_read_write_images-2D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8185,7 +7393,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_SIGNED_INT32",
-					logFileName:  "cl_read_write_images-2D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8195,7 +7402,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_SIGNED_INT8",
-					logFileName:  "cl_read_write_images-2D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8205,7 +7411,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_SNORM_INT16",
-					logFileName:  "cl_read_write_images-2D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8215,7 +7420,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_SNORM_INT8",
-					logFileName:  "cl_read_write_images-2D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8225,7 +7429,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_UNORM_INT_101010",
-					logFileName:  "cl_read_write_images-2D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8235,7 +7438,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_UNORM_INT16",
-					logFileName:  "cl_read_write_images-2D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8245,7 +7447,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_UNORM_INT8",
-					logFileName:  "cl_read_write_images-2D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8255,7 +7456,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_UNORM_SHORT_555",
-					logFileName:  "cl_read_write_images-2D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8265,7 +7465,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_UNORM_SHORT_565",
-					logFileName:  "cl_read_write_images-2D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8275,7 +7474,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_UNSIGNED_INT16",
-					logFileName:  "cl_read_write_images-2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8285,7 +7483,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_UNSIGNED_INT32",
-					logFileName:  "cl_read_write_images-2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8295,7 +7492,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "2D CL_UNSIGNED_INT8",
-					logFileName:  "cl_read_write_images-2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8305,7 +7501,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_FLOAT",
-					logFileName:  "cl_read_write_images-3D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8315,7 +7510,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_HALF_FLOAT",
-					logFileName:  "cl_read_write_images-3D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8325,7 +7519,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_SIGNED_INT16",
-					logFileName:  "cl_read_write_images-3D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8335,7 +7528,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_SIGNED_INT32",
-					logFileName:  "cl_read_write_images-3D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8345,7 +7537,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_SIGNED_INT8",
-					logFileName:  "cl_read_write_images-3D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8355,7 +7546,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_SNORM_INT16",
-					logFileName:  "cl_read_write_images-3D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8365,7 +7555,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_SNORM_INT8",
-					logFileName:  "cl_read_write_images-3D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8375,7 +7564,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_UNORM_INT_101010",
-					logFileName:  "cl_read_write_images-3D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8385,7 +7573,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_UNORM_INT16",
-					logFileName:  "cl_read_write_images-3D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8395,7 +7582,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_UNORM_INT8",
-					logFileName:  "cl_read_write_images-3D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8405,7 +7591,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_UNORM_SHORT_555",
-					logFileName:  "cl_read_write_images-3D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8415,7 +7600,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_UNORM_SHORT_565",
-					logFileName:  "cl_read_write_images-3D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8425,7 +7609,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_UNSIGNED_INT16",
-					logFileName:  "cl_read_write_images-3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8435,7 +7618,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_UNSIGNED_INT32",
-					logFileName:  "cl_read_write_images-3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8445,7 +7627,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_cl_read_write_images",
 					args:         "3D CL_UNSIGNED_INT8",
-					logFileName:  "cl_read_write_images-3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8455,7 +7636,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "clamp",
-					logFileName:  "commonfns-clamp.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8465,7 +7645,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "degrees",
-					logFileName:  "commonfns-degrees.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8475,7 +7654,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "fmaxf",
-					logFileName:  "commonfns-fmaxf.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8485,7 +7663,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "fmax",
-					logFileName:  "commonfns-fmax.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8495,7 +7672,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "fminf",
-					logFileName:  "commonfns-fminf.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8505,7 +7681,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "fmin",
-					logFileName:  "commonfns-fmin.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8515,7 +7690,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "maxf",
-					logFileName:  "commonfns-maxf.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8525,7 +7699,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "max",
-					logFileName:  "commonfns-max.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8535,7 +7708,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "minf",
-					logFileName:  "commonfns-minf.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8545,7 +7717,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "min",
-					logFileName:  "commonfns-min.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8555,7 +7726,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "mix",
-					logFileName:  "commonfns-mix.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8565,7 +7735,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "radians",
-					logFileName:  "commonfns-radians.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8575,7 +7744,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "sign",
-					logFileName:  "commonfns-sign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8585,7 +7753,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "smoothstepf",
-					logFileName:  "commonfns-smoothstepf.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8595,7 +7762,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "smoothstep",
-					logFileName:  "commonfns-smoothstep.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8605,7 +7771,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "stepf",
-					logFileName:  "commonfns-stepf.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8615,7 +7780,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_commonfns",
 					args:         "step",
-					logFileName:  "commonfns-step.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8625,7 +7789,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "async_build",
-					logFileName:  "compiler-async_build.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8635,7 +7798,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "compile_and_link_status_options_log",
-					logFileName:  "compiler-compile_and_link_status_options_log.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8646,7 +7808,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "compiler_defines_for_extensions",
-					logFileName:  "compiler-compiler_defines_for_extensions.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8656,7 +7817,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_embedded_header_link",
-					logFileName:  "compiler-execute_after_embedded_header_link.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8667,7 +7827,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_included_header_link",
-					logFileName:  "compiler-execute_after_included_header_link.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8678,7 +7837,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_serialize_reload_library",
-					logFileName:  "compiler-execute_after_serialize_reload_library.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8689,7 +7847,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_serialize_reload_object",
-					logFileName:  "compiler-execute_after_serialize_reload_object.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8700,7 +7857,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_simple_compile_and_link_no_device_info",
-					logFileName:  "compiler-execute_after_simple_compile_and_link_no_device_info.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8710,7 +7866,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_simple_compile_and_link",
-					logFileName:  "compiler-execute_after_simple_compile_and_link.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8720,7 +7875,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_simple_compile_and_link_with_callbacks",
-					logFileName:  "compiler-execute_after_simple_compile_and_link_with_callbacks.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8730,7 +7884,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_simple_compile_and_link_with_defines",
-					logFileName:  "compiler-execute_after_simple_compile_and_link_with_defines.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8740,7 +7893,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_simple_library_with_link",
-					logFileName:  "compiler-execute_after_simple_library_with_link.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8751,7 +7903,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "execute_after_two_file_link",
-					logFileName:  "compiler-execute_after_two_file_link.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8762,7 +7913,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "features_macro",
-					logFileName:  "compiler-features_macro.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8772,7 +7922,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "get_program_build_info",
-					logFileName:  "compiler-get_program_build_info.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8782,7 +7931,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "get_program_info",
-					logFileName:  "compiler-get_program_info.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8792,7 +7940,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "get_program_source",
-					logFileName:  "compiler-get_program_source.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8802,7 +7949,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "image_macro",
-					logFileName:  "compiler-image_macro.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8812,7 +7958,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "large_compile",
-					logFileName:  "compiler-large_compile.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8822,7 +7967,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "load_discreet_length_source",
-					logFileName:  "compiler-load_discreet_length_source.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8832,7 +7976,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "load_multistring_source",
-					logFileName:  "compiler-load_multistring_source.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8842,7 +7985,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "load_null_terminated_multi_line_source",
-					logFileName:  "compiler-load_null_terminated_multi_line_source.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8852,7 +7994,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "load_null_terminated_partial_multi_line_source",
-					logFileName:  "compiler-load_null_terminated_partial_multi_line_source.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8862,7 +8003,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "load_null_terminated_source",
-					logFileName:  "compiler-load_null_terminated_source.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8872,7 +8012,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "load_program_source",
-					logFileName:  "compiler-load_program_source.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8882,7 +8021,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "load_two_kernel_source",
-					logFileName:  "compiler-load_two_kernel_source.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8892,7 +8030,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "multi_file_libraries",
-					logFileName:  "compiler-multi_file_libraries.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8903,7 +8040,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "multiple_embedded_headers",
-					logFileName:  "compiler-multiple_embedded_headers.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8914,7 +8050,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "multiple_files",
-					logFileName:  "compiler-multiple_files.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8925,7 +8060,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "multiple_files_multiple_libraries",
-					logFileName:  "compiler-multiple_files_multiple_libraries.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8936,7 +8070,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "multiple_libraries",
-					logFileName:  "compiler-multiple_libraries.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -8947,7 +8080,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "opencl_c_versions",
-					logFileName:  "compiler-opencl_c_versions.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8957,7 +8089,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "options_build_macro_existence",
-					logFileName:  "compiler-options_build_macro_existence.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8967,7 +8098,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "options_build_macro",
-					logFileName:  "compiler-options_build_macro.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8977,7 +8107,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "options_build_optimizations",
-					logFileName:  "compiler-options_build_optimizations.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8987,7 +8116,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "options_denorm_cache",
-					logFileName:  "compiler-options_denorm_cache.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -8997,7 +8125,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "options_include_directory",
-					logFileName:  "compiler-options_include_directory.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -9008,7 +8135,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "pragma_unroll",
-					logFileName:  "compiler-pragma_unroll.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9018,7 +8144,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "preprocessor_define_udef",
-					logFileName:  "compiler-preprocessor_define_udef.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9028,7 +8153,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "preprocessor_include",
-					logFileName:  "compiler-preprocessor_include.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -9039,7 +8163,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "preprocessor_line_error",
-					logFileName:  "compiler-preprocessor_line_error.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9049,7 +8172,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "preprocessor_pragma",
-					logFileName:  "compiler-preprocessor_pragma.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9059,7 +8181,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "program_binary_type",
-					logFileName:  "compiler-program_binary_type.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -9070,7 +8191,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_compile_only",
-					logFileName:  "compiler-simple_compile_only.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9080,7 +8200,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_compile_with_callback",
-					logFileName:  "compiler-simple_compile_with_callback.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9090,7 +8209,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_embedded_header_compile",
-					logFileName:  "compiler-simple_embedded_header_compile.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -9101,7 +8219,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_embedded_header_link",
-					logFileName:  "compiler-simple_embedded_header_link.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -9112,7 +8229,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_extern_compile_only",
-					logFileName:  "compiler-simple_extern_compile_only.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9122,7 +8238,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_library_only",
-					logFileName:  "compiler-simple_library_only.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9132,7 +8247,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_library_with_callback",
-					logFileName:  "compiler-simple_library_with_callback.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9142,7 +8256,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_library_with_link",
-					logFileName:  "compiler-simple_library_with_link.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -9153,7 +8266,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_link_only",
-					logFileName:  "compiler-simple_link_only.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9163,7 +8275,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_link_with_callback",
-					logFileName:  "compiler-simple_link_with_callback.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9173,7 +8284,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "simple_static_compile_only",
-					logFileName:  "compiler-simple_static_compile_only.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9183,7 +8293,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "two_file_link",
-					logFileName:  "compiler-two_file_link.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -9194,7 +8303,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "two_file_regular_function_access",
-					logFileName:  "compiler-two_file_regular_function_access.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9204,7 +8312,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "two_file_regular_struct_access",
-					logFileName:  "compiler-two_file_regular_struct_access.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9214,7 +8321,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "two_file_regular_variable_access",
-					logFileName:  "compiler-two_file_regular_variable_access.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9224,7 +8330,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "unload_build_info",
-					logFileName:  "compiler-unload_build_info.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9234,7 +8339,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "unload_build_threaded",
-					logFileName:  "compiler-unload_build_threaded.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9244,7 +8348,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "unload_build_unload_create_kernel",
-					logFileName:  "compiler-unload_build_unload_create_kernel.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9254,7 +8357,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "unload_compile_unload_link",
-					logFileName:  "compiler-unload_compile_unload_link.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9264,7 +8366,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "unload_link_different",
-					logFileName:  "compiler-unload_link_different.txt",
 					expectedPass: false,
 					buganizer:    "b/227136133",
 				},
@@ -9275,7 +8376,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "unload_program_binaries",
-					logFileName:  "compiler-unload_program_binaries.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9285,7 +8385,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "unload_repeated",
-					logFileName:  "compiler-unload_repeated.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9295,7 +8394,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_compiler",
 					args:         "unload_valid",
-					logFileName:  "compiler-unload_valid.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9305,7 +8403,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_computeinfo",
 					args:         "computeinfo",
-					logFileName:  "computeinfo-computeinfo.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9315,7 +8412,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_computeinfo",
 					args:         "conformance_version",
-					logFileName:  "computeinfo-conformance_version.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9325,7 +8421,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_computeinfo",
 					args:         "device_uuid",
-					logFileName:  "computeinfo-device_uuid.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9335,7 +8430,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_computeinfo",
 					args:         "extended_versioning",
-					logFileName:  "computeinfo-extended_versioning.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9345,7 +8439,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_double_0",
-					logFileName:  "contractions-contractions_double_0.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9355,7 +8448,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_double_1",
-					logFileName:  "contractions-contractions_double_1.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9365,7 +8457,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_double_2",
-					logFileName:  "contractions-contractions_double_2.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9375,7 +8466,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_double_3",
-					logFileName:  "contractions-contractions_double_3.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9385,7 +8475,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_double_4",
-					logFileName:  "contractions-contractions_double_4.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9395,7 +8484,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_double_5",
-					logFileName:  "contractions-contractions_double_5.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9405,7 +8493,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_double_6",
-					logFileName:  "contractions-contractions_double_6.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9415,7 +8502,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_double_7",
-					logFileName:  "contractions-contractions_double_7.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9425,7 +8511,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_0",
-					logFileName:  "contractions-contractions_float_0.txt",
 					expectedPass: false,
 					buganizer:    "b/227134187",
 				},
@@ -9436,7 +8521,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_1",
-					logFileName:  "contractions-contractions_float_1.txt",
 					expectedPass: false,
 					buganizer:    "b/227134187",
 				},
@@ -9447,7 +8531,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_2",
-					logFileName:  "contractions-contractions_float_2.txt",
 					expectedPass: false,
 					buganizer:    "b/227134187",
 				},
@@ -9458,7 +8541,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_3",
-					logFileName:  "contractions-contractions_float_3.txt",
 					expectedPass: false,
 					buganizer:    "b/227134187",
 				},
@@ -9469,7 +8551,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_4",
-					logFileName:  "contractions-contractions_float_4.txt",
 					expectedPass: false,
 					buganizer:    "b/227134187",
 				},
@@ -9480,7 +8561,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_5",
-					logFileName:  "contractions-contractions_float_5.txt",
 					expectedPass: false,
 					buganizer:    "b/227134187",
 				},
@@ -9491,7 +8571,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_6",
-					logFileName:  "contractions-contractions_float_6.txt",
 					expectedPass: false,
 					buganizer:    "b/227134187",
 				},
@@ -9502,7 +8581,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_7",
-					logFileName:  "contractions-contractions_float_7.txt",
 					expectedPass: false,
 					buganizer:    "b/227134187",
 				},
@@ -9513,7 +8591,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "char_char -w -1",
-					logFileName:  "conversions-char_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9523,7 +8600,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "char_float -w -1",
-					logFileName:  "conversions-char_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9533,7 +8609,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "char_int -w -1",
-					logFileName:  "conversions-char_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9543,7 +8618,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "char_long -w -1",
-					logFileName:  "conversions-char_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9553,7 +8627,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "char_short -w -1",
-					logFileName:  "conversions-char_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9563,7 +8636,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "char_uchar -w -1",
-					logFileName:  "conversions-char_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9573,7 +8645,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "char_uint -w -1",
-					logFileName:  "conversions-char_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9583,7 +8654,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "char_ulong -w -1",
-					logFileName:  "conversions-char_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9593,7 +8663,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "char_ushort -w -1",
-					logFileName:  "conversions-char_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9603,7 +8672,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "float_char -w -1",
-					logFileName:  "conversions-float_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9613,7 +8681,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "float_float -w -1",
-					logFileName:  "conversions-float_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9623,7 +8690,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "float_int -w -1",
-					logFileName:  "conversions-float_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9633,7 +8699,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "float_long -w -1",
-					logFileName:  "conversions-float_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9643,7 +8708,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "float_short -w -1",
-					logFileName:  "conversions-float_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9653,7 +8717,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "float_uchar -w -1",
-					logFileName:  "conversions-float_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9663,7 +8726,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "float_uint -w -1",
-					logFileName:  "conversions-float_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9673,7 +8735,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "float_ulong -w -1",
-					logFileName:  "conversions-float_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9683,7 +8744,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "float_ushort -w -1",
-					logFileName:  "conversions-float_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9693,7 +8753,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "int_char -w -1",
-					logFileName:  "conversions-int_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9703,7 +8762,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "int_float -w -1",
-					logFileName:  "conversions-int_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9713,7 +8771,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "int_int -w -1",
-					logFileName:  "conversions-int_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9723,7 +8780,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "int_long -w -1",
-					logFileName:  "conversions-int_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9733,7 +8789,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "int_short -w -1",
-					logFileName:  "conversions-int_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9743,7 +8798,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "int_uchar -w -1",
-					logFileName:  "conversions-int_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9753,7 +8807,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "int_uint -w -1",
-					logFileName:  "conversions-int_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9763,7 +8816,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "int_ulong -w -1",
-					logFileName:  "conversions-int_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9773,7 +8825,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "int_ushort -w -1",
-					logFileName:  "conversions-int_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9783,7 +8834,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "long_char -w -1",
-					logFileName:  "conversions-long_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9793,7 +8843,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "long_float -w -1",
-					logFileName:  "conversions-long_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9803,7 +8852,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "long_int -w -1",
-					logFileName:  "conversions-long_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9813,7 +8861,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "long_long -w -1",
-					logFileName:  "conversions-long_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9823,7 +8870,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "long_short -w -1",
-					logFileName:  "conversions-long_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9833,7 +8879,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "long_uchar -w -1",
-					logFileName:  "conversions-long_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9843,7 +8888,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "long_uint -w -1",
-					logFileName:  "conversions-long_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9853,7 +8897,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "long_ulong -w -1",
-					logFileName:  "conversions-long_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9863,7 +8906,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "long_ushort -w -1",
-					logFileName:  "conversions-long_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9873,7 +8915,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "short_char -w -1",
-					logFileName:  "conversions-short_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9883,7 +8924,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "short_float -w -1",
-					logFileName:  "conversions-short_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9893,7 +8933,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "short_int -w -1",
-					logFileName:  "conversions-short_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9903,7 +8942,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "short_long -w -1",
-					logFileName:  "conversions-short_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9913,7 +8951,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "short_short -w -1",
-					logFileName:  "conversions-short_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9923,7 +8960,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "short_uchar -w -1",
-					logFileName:  "conversions-short_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9933,7 +8969,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "short_uint -w -1",
-					logFileName:  "conversions-short_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9943,7 +8978,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "short_ulong -w -1",
-					logFileName:  "conversions-short_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9953,7 +8987,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "short_ushort -w -1",
-					logFileName:  "conversions-short_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9963,7 +8996,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uchar_char -w -1",
-					logFileName:  "conversions-uchar_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9973,7 +9005,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uchar_float -w -1",
-					logFileName:  "conversions-uchar_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9983,7 +9014,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uchar_int -w -1",
-					logFileName:  "conversions-uchar_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -9993,7 +9023,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uchar_long -w -1",
-					logFileName:  "conversions-uchar_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10003,7 +9032,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uchar_short -w -1",
-					logFileName:  "conversions-uchar_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10013,7 +9041,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uchar_uchar -w -1",
-					logFileName:  "conversions-uchar_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10023,7 +9050,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uchar_uint -w -1",
-					logFileName:  "conversions-uchar_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10033,7 +9059,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uchar_ulong -w -1",
-					logFileName:  "conversions-uchar_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10043,7 +9068,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uchar_ushort -w -1",
-					logFileName:  "conversions-uchar_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10053,7 +9077,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uint_char -w -1",
-					logFileName:  "conversions-uint_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10063,7 +9086,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uint_float -w -1",
-					logFileName:  "conversions-uint_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10073,7 +9095,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uint_int -w -1",
-					logFileName:  "conversions-uint_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10083,7 +9104,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uint_long -w -1",
-					logFileName:  "conversions-uint_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10093,7 +9113,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uint_short -w -1",
-					logFileName:  "conversions-uint_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10103,7 +9122,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uint_uchar -w -1",
-					logFileName:  "conversions-uint_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10113,7 +9131,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uint_uint -w -1",
-					logFileName:  "conversions-uint_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10123,7 +9140,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uint_ulong -w -1",
-					logFileName:  "conversions-uint_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10133,7 +9149,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "uint_ushort -w -1",
-					logFileName:  "conversions-uint_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10143,7 +9158,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ulong_char -w -1",
-					logFileName:  "conversions-ulong_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10153,7 +9167,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ulong_float -w -1",
-					logFileName:  "conversions-ulong_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10163,7 +9176,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ulong_int -w -1",
-					logFileName:  "conversions-ulong_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10173,7 +9185,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ulong_long -w -1",
-					logFileName:  "conversions-ulong_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10183,7 +9194,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ulong_short -w -1",
-					logFileName:  "conversions-ulong_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10193,7 +9203,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ulong_uchar -w -1",
-					logFileName:  "conversions-ulong_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10203,7 +9212,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ulong_uint -w -1",
-					logFileName:  "conversions-ulong_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10213,7 +9221,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ulong_ulong -w -1",
-					logFileName:  "conversions-ulong_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10223,7 +9230,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ulong_ushort -w -1",
-					logFileName:  "conversions-ulong_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10233,7 +9239,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ushort_char -w -1",
-					logFileName:  "conversions-ushort_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10243,7 +9248,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ushort_float -w -1",
-					logFileName:  "conversions-ushort_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10253,7 +9257,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ushort_int -w -1",
-					logFileName:  "conversions-ushort_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10263,7 +9266,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ushort_long -w -1",
-					logFileName:  "conversions-ushort_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10273,7 +9275,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ushort_short -w -1",
-					logFileName:  "conversions-ushort_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10283,7 +9284,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ushort_uchar -w -1",
-					logFileName:  "conversions-ushort_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10293,7 +9293,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ushort_uint -w -1",
-					logFileName:  "conversions-ushort_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10303,7 +9302,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ushort_ulong -w -1",
-					logFileName:  "conversions-ushort_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10313,7 +9311,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_conversions",
 					args:         "ushort_ushort -w -1",
-					logFileName:  "conversions-ushort_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10323,7 +9320,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "callbacks",
-					logFileName:  "events-callbacks.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10333,7 +9329,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "callbacks_simultaneous",
-					logFileName:  "events-callbacks_simultaneous.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10343,7 +9338,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_enqueue_barrier_with_event_list",
-					logFileName:  "events-event_enqueue_barrier_with_event_list.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10353,7 +9347,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_enqueue_marker",
-					logFileName:  "events-event_enqueue_marker.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10363,7 +9356,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_enqueue_marker_with_event_list",
-					logFileName:  "events-event_enqueue_marker_with_event_list.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10373,7 +9365,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_finish_array",
-					logFileName:  "events-event_finish_array.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10383,7 +9374,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_finish_execute",
-					logFileName:  "events-event_finish_execute.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10393,7 +9383,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_flush",
-					logFileName:  "events-event_flush.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10403,7 +9392,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_get_execute_status",
-					logFileName:  "events-event_get_execute_status.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10413,7 +9401,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_get_info",
-					logFileName:  "events-event_get_info.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10423,7 +9410,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_get_read_array_status",
-					logFileName:  "events-event_get_read_array_status.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10433,7 +9419,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_get_write_array_status",
-					logFileName:  "events-event_get_write_array_status.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10443,7 +9428,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_release_before_done",
-					logFileName:  "events-event_release_before_done.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10453,7 +9437,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_wait_for_array",
-					logFileName:  "events-event_wait_for_array.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10463,7 +9446,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "event_wait_for_execute",
-					logFileName:  "events-event_wait_for_execute.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10473,7 +9455,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_enqueue_barrier_single_queue",
-					logFileName:  "events-out_of_order_event_enqueue_barrier_single_queue.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10483,7 +9464,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_enqueue_marker_multi_queue_multi_device",
-					logFileName:  "events-out_of_order_event_enqueue_marker_multi_queue_multi_device.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10493,7 +9473,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_enqueue_marker_multi_queue",
-					logFileName:  "events-out_of_order_event_enqueue_marker_multi_queue.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10503,7 +9482,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_enqueue_marker_single_queue",
-					logFileName:  "events-out_of_order_event_enqueue_marker_single_queue.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10513,7 +9491,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_enqueue_wait_for_events_multi_queue_multi_device",
-					logFileName:  "events-out_of_order_event_enqueue_wait_for_events_multi_queue_multi_device.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10523,7 +9500,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_enqueue_wait_for_events_multi_queue",
-					logFileName:  "events-out_of_order_event_enqueue_wait_for_events_multi_queue.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10533,7 +9509,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_enqueue_wait_for_events_single_queue",
-					logFileName:  "events-out_of_order_event_enqueue_wait_for_events_single_queue.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10543,7 +9518,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_waitlist_multi_queue_multi_device",
-					logFileName:  "events-out_of_order_event_waitlist_multi_queue_multi_device.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10553,7 +9527,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_waitlist_multi_queue",
-					logFileName:  "events-out_of_order_event_waitlist_multi_queue.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10563,7 +9536,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "out_of_order_event_waitlist_single_queue",
-					logFileName:  "events-out_of_order_event_waitlist_single_queue.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10573,7 +9545,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "userevents_multithreaded",
-					logFileName:  "events-userevents_multithreaded.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10583,7 +9554,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "userevents",
-					logFileName:  "events-userevents.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10593,7 +9563,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_events",
 					args:         "waitlists",
-					logFileName:  "events-waitlists.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10603,7 +9572,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_geometrics",
 					args:         "geom_cross",
-					logFileName:  "geometrics-geom_cross.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10613,7 +9581,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_geometrics",
 					args:         "geom_distance",
-					logFileName:  "geometrics-geom_distance.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10623,7 +9590,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_geometrics",
 					args:         "geom_dot",
-					logFileName:  "geometrics-geom_dot.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10633,7 +9599,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_geometrics",
 					args:         "geom_fast_distance",
-					logFileName:  "geometrics-geom_fast_distance.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10643,7 +9608,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_geometrics",
 					args:         "geom_fast_length",
-					logFileName:  "geometrics-geom_fast_length.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10653,7 +9617,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_geometrics",
 					args:         "geom_fast_normalize",
-					logFileName:  "geometrics-geom_fast_normalize.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10663,7 +9626,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_geometrics",
 					args:         "geom_length",
-					logFileName:  "geometrics-geom_length.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10673,7 +9635,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_geometrics",
 					args:         "geom_normalize",
-					logFileName:  "geometrics-geom_normalize.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10683,7 +9644,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "roundTrip -w",
-					logFileName:  "half-roundTrip.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10694,7 +9654,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vloada_half -w",
-					logFileName:  "half-vloada_half.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10705,7 +9664,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vload_half -w",
-					logFileName:  "half-vload_half.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10716,7 +9674,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstorea_half_rte -w",
-					logFileName:  "half-vstorea_half_rte.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10727,7 +9684,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstorea_half_rtn -w",
-					logFileName:  "half-vstorea_half_rtn.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10738,7 +9694,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstorea_half_rtp -w",
-					logFileName:  "half-vstorea_half_rtp.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10749,7 +9704,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstorea_half_rtz -w",
-					logFileName:  "half-vstorea_half_rtz.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10760,7 +9714,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstorea_half -w",
-					logFileName:  "half-vstorea_half.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10771,7 +9724,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstore_half_rte -w",
-					logFileName:  "half-vstore_half_rte.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10782,7 +9734,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstore_half_rtn -w",
-					logFileName:  "half-vstore_half_rtn.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10793,7 +9744,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstore_half_rtp -w",
-					logFileName:  "half-vstore_half_rtp.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10804,7 +9754,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstore_half_rtz -w",
-					logFileName:  "half-vstore_half_rtz.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10815,7 +9764,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstore_half -w",
-					logFileName:  "half-vstore_half.txt",
 					expectedPass: false,
 					buganizer:    "b/227136713",
 				},
@@ -10826,7 +9774,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_FLOAT",
-					logFileName:  "image_streams-1Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -10836,7 +9783,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_HALF_FLOAT",
-					logFileName:  "image_streams-1Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -10846,7 +9792,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_SIGNED_INT16",
-					logFileName:  "image_streams-1Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10856,7 +9801,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_SIGNED_INT32",
-					logFileName:  "image_streams-1Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10866,7 +9810,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_SIGNED_INT8",
-					logFileName:  "image_streams-1Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10876,7 +9819,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_SNORM_INT16",
-					logFileName:  "image_streams-1Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -10886,7 +9828,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_SNORM_INT8",
-					logFileName:  "image_streams-1Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -10896,7 +9837,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_UNORM_INT_101010",
-					logFileName:  "image_streams-1Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10906,7 +9846,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_UNORM_INT16",
-					logFileName:  "image_streams-1Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -10916,7 +9855,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_UNORM_INT8",
-					logFileName:  "image_streams-1Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -10926,7 +9864,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_UNORM_SHORT_555",
-					logFileName:  "image_streams-1Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10936,7 +9873,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_UNORM_SHORT_565",
-					logFileName:  "image_streams-1Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10946,7 +9882,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_UNSIGNED_INT16",
-					logFileName:  "image_streams-1Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10956,7 +9891,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_UNSIGNED_INT32",
-					logFileName:  "image_streams-1Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10966,7 +9900,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1Darray CL_UNSIGNED_INT8",
-					logFileName:  "image_streams-1Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -10976,7 +9909,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_FLOAT",
-					logFileName:  "image_streams-1D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -10986,7 +9918,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_HALF_FLOAT",
-					logFileName:  "image_streams-1D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -10996,7 +9927,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_SIGNED_INT16",
-					logFileName:  "image_streams-1D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11006,7 +9936,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_SIGNED_INT32",
-					logFileName:  "image_streams-1D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11016,7 +9945,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_SIGNED_INT8",
-					logFileName:  "image_streams-1D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11026,7 +9954,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_SNORM_INT16",
-					logFileName:  "image_streams-1D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11036,7 +9963,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_SNORM_INT8",
-					logFileName:  "image_streams-1D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11046,7 +9972,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_UNORM_INT_101010",
-					logFileName:  "image_streams-1D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11056,7 +9981,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_UNORM_INT16",
-					logFileName:  "image_streams-1D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11066,7 +9990,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_UNORM_INT8",
-					logFileName:  "image_streams-1D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11076,7 +9999,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_UNORM_SHORT_555",
-					logFileName:  "image_streams-1D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11086,7 +10008,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_UNORM_SHORT_565",
-					logFileName:  "image_streams-1D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11096,7 +10017,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_UNSIGNED_INT16",
-					logFileName:  "image_streams-1D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11106,7 +10026,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_UNSIGNED_INT32",
-					logFileName:  "image_streams-1D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11116,7 +10035,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "1D CL_UNSIGNED_INT8",
-					logFileName:  "image_streams-1D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11126,7 +10044,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_FLOAT",
-					logFileName:  "image_streams-2Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11136,7 +10053,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_HALF_FLOAT",
-					logFileName:  "image_streams-2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11146,7 +10062,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_SIGNED_INT16",
-					logFileName:  "image_streams-2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11156,7 +10071,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_SIGNED_INT32",
-					logFileName:  "image_streams-2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11166,7 +10080,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_SIGNED_INT8",
-					logFileName:  "image_streams-2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11176,7 +10089,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_SNORM_INT16",
-					logFileName:  "image_streams-2Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11186,7 +10098,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_SNORM_INT8",
-					logFileName:  "image_streams-2Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11196,7 +10107,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_UNORM_INT_101010",
-					logFileName:  "image_streams-2Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11206,7 +10116,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_UNORM_INT16",
-					logFileName:  "image_streams-2Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11216,7 +10125,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_UNORM_INT8",
-					logFileName:  "image_streams-2Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11226,7 +10134,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_UNORM_SHORT_555",
-					logFileName:  "image_streams-2Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11236,7 +10143,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_UNORM_SHORT_565",
-					logFileName:  "image_streams-2Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11246,7 +10152,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_UNSIGNED_INT16",
-					logFileName:  "image_streams-2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11256,7 +10161,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_UNSIGNED_INT32",
-					logFileName:  "image_streams-2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11266,7 +10170,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2Darray CL_UNSIGNED_INT8",
-					logFileName:  "image_streams-2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11276,7 +10179,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_FLOAT",
-					logFileName:  "image_streams-2D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11286,7 +10188,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_HALF_FLOAT",
-					logFileName:  "image_streams-2D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11296,7 +10197,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_SIGNED_INT16",
-					logFileName:  "image_streams-2D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11306,7 +10206,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_SIGNED_INT32",
-					logFileName:  "image_streams-2D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11316,7 +10215,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_SIGNED_INT8",
-					logFileName:  "image_streams-2D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11326,7 +10224,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_SNORM_INT16",
-					logFileName:  "image_streams-2D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11336,7 +10233,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_SNORM_INT8",
-					logFileName:  "image_streams-2D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11346,7 +10242,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_UNORM_INT_101010",
-					logFileName:  "image_streams-2D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11356,7 +10251,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_UNORM_INT16",
-					logFileName:  "image_streams-2D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11366,7 +10260,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_UNORM_INT8",
-					logFileName:  "image_streams-2D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11376,7 +10269,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_UNORM_SHORT_555",
-					logFileName:  "image_streams-2D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11386,7 +10278,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_UNORM_SHORT_565",
-					logFileName:  "image_streams-2D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11396,7 +10287,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_UNSIGNED_INT16",
-					logFileName:  "image_streams-2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11406,7 +10296,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_UNSIGNED_INT32",
-					logFileName:  "image_streams-2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11416,7 +10305,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "2D CL_UNSIGNED_INT8",
-					logFileName:  "image_streams-2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11426,7 +10314,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_FLOAT",
-					logFileName:  "image_streams-3D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11436,7 +10323,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_HALF_FLOAT",
-					logFileName:  "image_streams-3D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11446,7 +10332,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_SIGNED_INT16",
-					logFileName:  "image_streams-3D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11456,7 +10341,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_SIGNED_INT32",
-					logFileName:  "image_streams-3D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11466,7 +10350,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_SIGNED_INT8",
-					logFileName:  "image_streams-3D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11476,7 +10359,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_SNORM_INT16",
-					logFileName:  "image_streams-3D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11486,7 +10368,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_SNORM_INT8",
-					logFileName:  "image_streams-3D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11496,7 +10377,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_UNORM_INT_101010",
-					logFileName:  "image_streams-3D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11506,7 +10386,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_UNORM_INT16",
-					logFileName:  "image_streams-3D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11516,7 +10395,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_UNORM_INT8",
-					logFileName:  "image_streams-3D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11526,7 +10404,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_UNORM_SHORT_555",
-					logFileName:  "image_streams-3D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11536,7 +10413,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_UNORM_SHORT_565",
-					logFileName:  "image_streams-3D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11546,7 +10422,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_UNSIGNED_INT16",
-					logFileName:  "image_streams-3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11556,7 +10431,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_UNSIGNED_INT32",
-					logFileName:  "image_streams-3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11566,7 +10440,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_image_streams",
 					args:         "3D CL_UNSIGNED_INT8",
-					logFileName:  "image_streams-3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -11576,7 +10449,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "char_compare",
-					logFileName:  "integer_ops-char_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11586,7 +10458,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "char_logic",
-					logFileName:  "integer_ops-char_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11596,7 +10467,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "char_math",
-					logFileName:  "integer_ops-char_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11606,7 +10476,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "char_shift",
-					logFileName:  "integer_ops-char_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11616,7 +10485,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "int_compare",
-					logFileName:  "integer_ops-int_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11626,7 +10494,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_abs",
-					logFileName:  "integer_ops-integer_abs.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11636,7 +10503,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_abs_diff",
-					logFileName:  "integer_ops-integer_abs_diff.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11646,7 +10512,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_addAssign",
-					logFileName:  "integer_ops-integer_addAssign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11656,7 +10521,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_add_sat",
-					logFileName:  "integer_ops-integer_add_sat.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11666,7 +10530,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_andAssign",
-					logFileName:  "integer_ops-integer_andAssign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11676,7 +10539,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_clamp",
-					logFileName:  "integer_ops-integer_clamp.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11686,7 +10548,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_clz",
-					logFileName:  "integer_ops-integer_clz.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11696,7 +10557,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_ctz",
-					logFileName:  "integer_ops-integer_ctz.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11706,7 +10566,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_divideAssign",
-					logFileName:  "integer_ops-integer_divideAssign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11716,7 +10575,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_exclusiveOrAssign",
-					logFileName:  "integer_ops-integer_exclusiveOrAssign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11726,7 +10584,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_hadd",
-					logFileName:  "integer_ops-integer_hadd.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11736,7 +10593,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_mad24",
-					logFileName:  "integer_ops-integer_mad24.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11746,7 +10602,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_mad_hi",
-					logFileName:  "integer_ops-integer_mad_hi.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11756,7 +10611,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_mad_sat",
-					logFileName:  "integer_ops-integer_mad_sat.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11766,7 +10620,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_max",
-					logFileName:  "integer_ops-integer_max.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11776,7 +10629,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_min",
-					logFileName:  "integer_ops-integer_min.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11786,7 +10638,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_moduloAssign",
-					logFileName:  "integer_ops-integer_moduloAssign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11796,7 +10647,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_mul24",
-					logFileName:  "integer_ops-integer_mul24.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11806,7 +10656,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_mul_hi",
-					logFileName:  "integer_ops-integer_mul_hi.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11816,7 +10665,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_multiplyAssign",
-					logFileName:  "integer_ops-integer_multiplyAssign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11826,7 +10674,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_orAssign",
-					logFileName:  "integer_ops-integer_orAssign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11836,7 +10683,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_rhadd",
-					logFileName:  "integer_ops-integer_rhadd.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11846,7 +10692,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_rotate",
-					logFileName:  "integer_ops-integer_rotate.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11856,7 +10701,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_sub_sat",
-					logFileName:  "integer_ops-integer_sub_sat.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -11867,7 +10711,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_subtractAssign",
-					logFileName:  "integer_ops-integer_subtractAssign.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11877,7 +10720,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_upsample",
-					logFileName:  "integer_ops-integer_upsample.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11887,7 +10729,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "int_logic",
-					logFileName:  "integer_ops-int_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11897,7 +10738,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "int_math",
-					logFileName:  "integer_ops-int_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11907,7 +10747,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "int_shift",
-					logFileName:  "integer_ops-int_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11917,7 +10756,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "long_compare",
-					logFileName:  "integer_ops-long_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11927,7 +10765,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "long_logic",
-					logFileName:  "integer_ops-long_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11937,7 +10774,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "long_math",
-					logFileName:  "integer_ops-long_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11947,7 +10783,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "long_shift",
-					logFileName:  "integer_ops-long_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -11957,7 +10792,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "popcount",
-					logFileName:  "integer_ops-popcount.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11967,7 +10801,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_char_compare",
-					logFileName:  "integer_ops-quick_char_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11977,7 +10810,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_char_logic",
-					logFileName:  "integer_ops-quick_char_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11987,7 +10819,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_char_math",
-					logFileName:  "integer_ops-quick_char_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -11997,7 +10828,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_char_shift",
-					logFileName:  "integer_ops-quick_char_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12007,7 +10837,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_int_compare",
-					logFileName:  "integer_ops-quick_int_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12017,7 +10846,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_int_logic",
-					logFileName:  "integer_ops-quick_int_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12027,7 +10855,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_int_math",
-					logFileName:  "integer_ops-quick_int_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12037,7 +10864,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_int_shift",
-					logFileName:  "integer_ops-quick_int_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12047,7 +10873,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_long_compare",
-					logFileName:  "integer_ops-quick_long_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12057,7 +10882,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_long_logic",
-					logFileName:  "integer_ops-quick_long_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12067,7 +10891,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_long_math",
-					logFileName:  "integer_ops-quick_long_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12077,7 +10900,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_long_shift",
-					logFileName:  "integer_ops-quick_long_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12087,7 +10909,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_short_compare",
-					logFileName:  "integer_ops-quick_short_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12097,7 +10918,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_short_logic",
-					logFileName:  "integer_ops-quick_short_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12107,7 +10927,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_short_math",
-					logFileName:  "integer_ops-quick_short_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12117,7 +10936,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_short_shift",
-					logFileName:  "integer_ops-quick_short_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12127,7 +10945,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_uchar_compare",
-					logFileName:  "integer_ops-quick_uchar_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12137,7 +10954,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_uchar_logic",
-					logFileName:  "integer_ops-quick_uchar_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12147,7 +10963,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_uchar_math",
-					logFileName:  "integer_ops-quick_uchar_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12157,7 +10972,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_uchar_shift",
-					logFileName:  "integer_ops-quick_uchar_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12167,7 +10981,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_uint_compare",
-					logFileName:  "integer_ops-quick_uint_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12177,7 +10990,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_uint_logic",
-					logFileName:  "integer_ops-quick_uint_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12187,7 +10999,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_uint_math",
-					logFileName:  "integer_ops-quick_uint_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12197,7 +11008,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_uint_shift",
-					logFileName:  "integer_ops-quick_uint_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12207,7 +11017,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_ulong_compare",
-					logFileName:  "integer_ops-quick_ulong_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12217,7 +11026,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_ulong_logic",
-					logFileName:  "integer_ops-quick_ulong_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12227,7 +11035,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_ulong_math",
-					logFileName:  "integer_ops-quick_ulong_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12237,7 +11044,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_ulong_shift",
-					logFileName:  "integer_ops-quick_ulong_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12247,7 +11053,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_ushort_compare",
-					logFileName:  "integer_ops-quick_ushort_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12257,7 +11062,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_ushort_logic",
-					logFileName:  "integer_ops-quick_ushort_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12267,7 +11071,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_ushort_math",
-					logFileName:  "integer_ops-quick_ushort_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12277,7 +11080,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "quick_ushort_shift",
-					logFileName:  "integer_ops-quick_ushort_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12287,7 +11089,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "short_compare",
-					logFileName:  "integer_ops-short_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12297,7 +11098,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "short_logic",
-					logFileName:  "integer_ops-short_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12307,7 +11107,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "short_math",
-					logFileName:  "integer_ops-short_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12317,7 +11116,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "short_shift",
-					logFileName:  "integer_ops-short_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12327,7 +11125,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "uchar_compare",
-					logFileName:  "integer_ops-uchar_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12337,7 +11134,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "uchar_logic",
-					logFileName:  "integer_ops-uchar_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12347,7 +11143,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "uchar_math",
-					logFileName:  "integer_ops-uchar_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12357,7 +11152,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "uchar_shift",
-					logFileName:  "integer_ops-uchar_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12367,7 +11161,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "uint_compare",
-					logFileName:  "integer_ops-uint_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12377,7 +11170,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "uint_logic",
-					logFileName:  "integer_ops-uint_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12387,7 +11179,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "uint_math",
-					logFileName:  "integer_ops-uint_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12397,7 +11188,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "uint_shift",
-					logFileName:  "integer_ops-uint_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12407,7 +11197,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "ulong_compare",
-					logFileName:  "integer_ops-ulong_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12417,7 +11206,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "ulong_logic",
-					logFileName:  "integer_ops-ulong_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12427,7 +11215,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "ulong_math",
-					logFileName:  "integer_ops-ulong_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12437,7 +11224,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "ulong_shift",
-					logFileName:  "integer_ops-ulong_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12447,7 +11233,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "unary_ops_decrement",
-					logFileName:  "integer_ops-unary_ops_decrement.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12457,7 +11242,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "unary_ops_full",
-					logFileName:  "integer_ops-unary_ops_full.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12467,7 +11251,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "unary_ops_increment",
-					logFileName:  "integer_ops-unary_ops_increment.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12477,7 +11260,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "ushort_compare",
-					logFileName:  "integer_ops-ushort_compare.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12487,7 +11269,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "ushort_logic",
-					logFileName:  "integer_ops-ushort_logic.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12497,7 +11278,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "ushort_math",
-					logFileName:  "integer_ops-ushort_math.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12507,7 +11287,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "ushort_shift",
-					logFileName:  "integer_ops-ushort_shift.txt",
 					expectedPass: true,
 				},
 				Timeout: 5 * time.Minute,
@@ -12517,7 +11296,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "vector_scalar",
-					logFileName:  "integer_ops-vector_scalar.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -12527,7 +11305,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_FLOAT",
-					logFileName:  "kernel_image_methods-1Darray_CL_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12538,7 +11315,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_HALF_FLOAT",
-					logFileName:  "kernel_image_methods-1Darray_CL_HALF_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12549,7 +11325,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SIGNED_INT16",
-					logFileName:  "kernel_image_methods-1Darray_CL_SIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12560,7 +11335,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SIGNED_INT32",
-					logFileName:  "kernel_image_methods-1Darray_CL_SIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12571,7 +11345,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SIGNED_INT8",
-					logFileName:  "kernel_image_methods-1Darray_CL_SIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12582,7 +11355,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SNORM_INT16",
-					logFileName:  "kernel_image_methods-1Darray_CL_SNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12593,7 +11365,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_SNORM_INT8",
-					logFileName:  "kernel_image_methods-1Darray_CL_SNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12604,7 +11375,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNORM_INT_101010",
-					logFileName:  "kernel_image_methods-1Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12614,7 +11384,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNORM_INT16",
-					logFileName:  "kernel_image_methods-1Darray_CL_UNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12625,7 +11394,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNORM_INT8",
-					logFileName:  "kernel_image_methods-1Darray_CL_UNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12636,7 +11404,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNORM_SHORT_555",
-					logFileName:  "kernel_image_methods-1Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12646,7 +11413,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNORM_SHORT_565",
-					logFileName:  "kernel_image_methods-1Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12657,7 +11423,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNSIGNED_INT16",
-					logFileName:  "kernel_image_methods-1Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12668,7 +11433,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNSIGNED_INT32",
-					logFileName:  "kernel_image_methods-1Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12679,7 +11443,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1Darray CL_UNSIGNED_INT8",
-					logFileName:  "kernel_image_methods-1Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12690,7 +11453,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_FLOAT",
-					logFileName:  "kernel_image_methods-1D_CL_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12701,7 +11463,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_HALF_FLOAT",
-					logFileName:  "kernel_image_methods-1D_CL_HALF_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12712,7 +11473,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SIGNED_INT16",
-					logFileName:  "kernel_image_methods-1D_CL_SIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12723,7 +11483,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SIGNED_INT32",
-					logFileName:  "kernel_image_methods-1D_CL_SIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12734,7 +11493,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SIGNED_INT8",
-					logFileName:  "kernel_image_methods-1D_CL_SIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12745,7 +11503,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SNORM_INT16",
-					logFileName:  "kernel_image_methods-1D_CL_SNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12756,7 +11513,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_SNORM_INT8",
-					logFileName:  "kernel_image_methods-1D_CL_SNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12767,7 +11523,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNORM_INT_101010",
-					logFileName:  "kernel_image_methods-1D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12777,7 +11532,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNORM_INT16",
-					logFileName:  "kernel_image_methods-1D_CL_UNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12788,7 +11542,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNORM_INT8",
-					logFileName:  "kernel_image_methods-1D_CL_UNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12799,7 +11552,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNORM_SHORT_555",
-					logFileName:  "kernel_image_methods-1D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12809,7 +11561,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNORM_SHORT_565",
-					logFileName:  "kernel_image_methods-1D_CL_UNORM_SHORT_565.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12820,7 +11571,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNSIGNED_INT16",
-					logFileName:  "kernel_image_methods-1D_CL_UNSIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12831,7 +11581,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNSIGNED_INT32",
-					logFileName:  "kernel_image_methods-1D_CL_UNSIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12842,7 +11591,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "1D CL_UNSIGNED_INT8",
-					logFileName:  "kernel_image_methods-1D_CL_UNSIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12853,7 +11601,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_FLOAT",
-					logFileName:  "kernel_image_methods-2Darray_CL_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12864,7 +11611,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_HALF_FLOAT",
-					logFileName:  "kernel_image_methods-2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12875,7 +11621,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SIGNED_INT16",
-					logFileName:  "kernel_image_methods-2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12886,7 +11631,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SIGNED_INT32",
-					logFileName:  "kernel_image_methods-2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12897,7 +11641,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SIGNED_INT8",
-					logFileName:  "kernel_image_methods-2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12908,7 +11651,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SNORM_INT16",
-					logFileName:  "kernel_image_methods-2Darray_CL_SNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12919,7 +11661,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_SNORM_INT8",
-					logFileName:  "kernel_image_methods-2Darray_CL_SNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12930,7 +11671,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNORM_INT_101010",
-					logFileName:  "kernel_image_methods-2Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12940,7 +11680,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNORM_INT16",
-					logFileName:  "kernel_image_methods-2Darray_CL_UNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12951,7 +11690,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNORM_INT8",
-					logFileName:  "kernel_image_methods-2Darray_CL_UNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12962,7 +11700,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNORM_SHORT_555",
-					logFileName:  "kernel_image_methods-2Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -12972,7 +11709,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNORM_SHORT_565",
-					logFileName:  "kernel_image_methods-2Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12983,7 +11719,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNSIGNED_INT16",
-					logFileName:  "kernel_image_methods-2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -12994,7 +11729,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNSIGNED_INT32",
-					logFileName:  "kernel_image_methods-2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13005,7 +11739,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2Darray CL_UNSIGNED_INT8",
-					logFileName:  "kernel_image_methods-2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13016,7 +11749,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_FLOAT",
-					logFileName:  "kernel_image_methods-2D_CL_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13027,7 +11759,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_HALF_FLOAT",
-					logFileName:  "kernel_image_methods-2D_CL_HALF_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13038,7 +11769,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SIGNED_INT16",
-					logFileName:  "kernel_image_methods-2D_CL_SIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13049,7 +11779,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SIGNED_INT32",
-					logFileName:  "kernel_image_methods-2D_CL_SIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13060,7 +11789,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SIGNED_INT8",
-					logFileName:  "kernel_image_methods-2D_CL_SIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13071,7 +11799,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SNORM_INT16",
-					logFileName:  "kernel_image_methods-2D_CL_SNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13082,7 +11809,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_SNORM_INT8",
-					logFileName:  "kernel_image_methods-2D_CL_SNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13093,7 +11819,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNORM_INT_101010",
-					logFileName:  "kernel_image_methods-2D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13103,7 +11828,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNORM_INT16",
-					logFileName:  "kernel_image_methods-2D_CL_UNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13114,7 +11838,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNORM_INT8",
-					logFileName:  "kernel_image_methods-2D_CL_UNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13125,7 +11848,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNORM_SHORT_555",
-					logFileName:  "kernel_image_methods-2D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13135,7 +11857,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNORM_SHORT_565",
-					logFileName:  "kernel_image_methods-2D_CL_UNORM_SHORT_565.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13146,7 +11867,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNSIGNED_INT16",
-					logFileName:  "kernel_image_methods-2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13157,7 +11877,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNSIGNED_INT32",
-					logFileName:  "kernel_image_methods-2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13168,7 +11887,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "2D CL_UNSIGNED_INT8",
-					logFileName:  "kernel_image_methods-2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13179,7 +11897,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_FLOAT",
-					logFileName:  "kernel_image_methods-3D_CL_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13190,7 +11907,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_HALF_FLOAT",
-					logFileName:  "kernel_image_methods-3D_CL_HALF_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13201,7 +11917,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SIGNED_INT16",
-					logFileName:  "kernel_image_methods-3D_CL_SIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13212,7 +11927,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SIGNED_INT32",
-					logFileName:  "kernel_image_methods-3D_CL_SIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13223,7 +11937,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SIGNED_INT8",
-					logFileName:  "kernel_image_methods-3D_CL_SIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13234,7 +11947,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SNORM_INT16",
-					logFileName:  "kernel_image_methods-3D_CL_SNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13245,7 +11957,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_SNORM_INT8",
-					logFileName:  "kernel_image_methods-3D_CL_SNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13256,7 +11967,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNORM_INT_101010",
-					logFileName:  "kernel_image_methods-3D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13266,7 +11976,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNORM_INT16",
-					logFileName:  "kernel_image_methods-3D_CL_UNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13277,7 +11986,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNORM_INT8",
-					logFileName:  "kernel_image_methods-3D_CL_UNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13288,7 +11996,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNORM_SHORT_555",
-					logFileName:  "kernel_image_methods-3D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13298,7 +12005,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNORM_SHORT_565",
-					logFileName:  "kernel_image_methods-3D_CL_UNORM_SHORT_565.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13309,7 +12015,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNSIGNED_INT16",
-					logFileName:  "kernel_image_methods-3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13320,7 +12025,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNSIGNED_INT32",
-					logFileName:  "kernel_image_methods-3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13331,7 +12035,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_kernel_image_methods",
 					args:         "3D CL_UNSIGNED_INT8",
-					logFileName:  "kernel_image_methods-3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136800",
 				},
@@ -13342,7 +12045,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_no_access_buffer",
-					logFileName:  "mem_host_flags-mem_host_no_access_buffer.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13352,7 +12054,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_no_access_image",
-					logFileName:  "mem_host_flags-mem_host_no_access_image.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13362,7 +12063,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_no_access_subbuffer",
-					logFileName:  "mem_host_flags-mem_host_no_access_subbuffer.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13372,7 +12072,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_read_only_buffer",
-					logFileName:  "mem_host_flags-mem_host_read_only_buffer.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13382,7 +12081,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_read_only_image",
-					logFileName:  "mem_host_flags-mem_host_read_only_image.txt",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
@@ -13393,7 +12091,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_read_only_subbuffer",
-					logFileName:  "mem_host_flags-mem_host_read_only_subbuffer.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13403,7 +12100,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_write_only_buffer",
-					logFileName:  "mem_host_flags-mem_host_write_only_buffer.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13413,7 +12109,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_write_only_image",
-					logFileName:  "mem_host_flags-mem_host_write_only_image.txt",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
@@ -13424,7 +12119,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_mem_host_flags",
 					args:         "mem_host_write_only_subbuffer",
-					logFileName:  "mem_host_flags-mem_host_write_only_subbuffer.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13434,7 +12128,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_multiples",
 					args:         "context_four_contexts_same_device",
-					logFileName:  "multiples-context_four_contexts_same_device.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13444,7 +12137,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_multiples",
 					args:         "context_multiple_contexts_same_device",
-					logFileName:  "multiples-context_multiple_contexts_same_device.txt",
 					expectedPass: true,
 				},
 				Timeout: 20 * time.Minute,
@@ -13454,7 +12146,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_multiples",
 					args:         "context_three_contexts_same_device",
-					logFileName:  "multiples-context_three_contexts_same_device.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13464,7 +12155,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_multiples",
 					args:         "context_two_contexts_same_device",
-					logFileName:  "multiples-context_two_contexts_same_device.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13474,7 +12164,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_multiples",
 					args:         "hundred_queues",
-					logFileName:  "multiples-hundred_queues.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13484,7 +12173,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_multiples",
 					args:         "max_devices",
-					logFileName:  "multiples-max_devices.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13494,7 +12182,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_multiples",
 					args:         "two_devices",
-					logFileName:  "multiples-two_devices.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13504,7 +12191,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "copy_array",
-					logFileName:  "profiling-copy_array.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13514,7 +12200,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "copy_array_to_image",
-					logFileName:  "profiling-copy_array_to_image.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13524,7 +12209,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "copy_image",
-					logFileName:  "profiling-copy_image.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13534,7 +12218,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "copy_partial_array",
-					logFileName:  "profiling-copy_partial_array.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13544,7 +12227,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "execute",
-					logFileName:  "profiling-execute.txt",
 					expectedPass: false,
 					buganizer:    "b/227133185",
 				},
@@ -13555,7 +12237,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_char",
-					logFileName:  "profiling-read_array_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13565,7 +12246,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_float",
-					logFileName:  "profiling-read_array_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13575,7 +12255,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_int",
-					logFileName:  "profiling-read_array_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13585,7 +12264,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_long",
-					logFileName:  "profiling-read_array_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13595,7 +12273,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_short",
-					logFileName:  "profiling-read_array_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13605,7 +12282,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_struct",
-					logFileName:  "profiling-read_array_struct.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13615,7 +12291,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_uchar",
-					logFileName:  "profiling-read_array_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13625,7 +12300,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_uint",
-					logFileName:  "profiling-read_array_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13635,7 +12309,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_ulong",
-					logFileName:  "profiling-read_array_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13645,7 +12318,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_array_ushort",
-					logFileName:  "profiling-read_array_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13655,7 +12327,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_image_char",
-					logFileName:  "profiling-read_image_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13665,7 +12336,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_image_float",
-					logFileName:  "profiling-read_image_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13675,7 +12345,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "read_image_uchar",
-					logFileName:  "profiling-read_image_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13685,7 +12354,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_char",
-					logFileName:  "profiling-write_array_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13695,7 +12363,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_float",
-					logFileName:  "profiling-write_array_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13705,7 +12372,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_int",
-					logFileName:  "profiling-write_array_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13715,7 +12381,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_long",
-					logFileName:  "profiling-write_array_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13725,7 +12390,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_short",
-					logFileName:  "profiling-write_array_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13735,7 +12399,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_struct",
-					logFileName:  "profiling-write_array_struct.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13745,7 +12408,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_uchar",
-					logFileName:  "profiling-write_array_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13755,7 +12417,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_uint",
-					logFileName:  "profiling-write_array_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13765,7 +12426,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_ulong",
-					logFileName:  "profiling-write_array_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13775,7 +12435,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_array_ushort",
-					logFileName:  "profiling-write_array_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13785,7 +12444,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_image_char",
-					logFileName:  "profiling-write_image_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13795,7 +12453,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_image_float",
-					logFileName:  "profiling-write_image_float.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13805,7 +12462,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_profiling",
 					args:         "write_image_uchar",
-					logFileName:  "profiling-write_image_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13815,7 +12471,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_all",
-					logFileName:  "relationals-relational_all.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13825,7 +12480,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_any",
-					logFileName:  "relationals-relational_any.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13835,7 +12489,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_bitselect",
-					logFileName:  "relationals-relational_bitselect.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13845,7 +12498,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_isequal",
-					logFileName:  "relationals-relational_isequal.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13855,7 +12507,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_isgreaterequal",
-					logFileName:  "relationals-relational_isgreaterequal.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13865,7 +12516,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_isgreater",
-					logFileName:  "relationals-relational_isgreater.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13875,7 +12525,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_islessequal",
-					logFileName:  "relationals-relational_islessequal.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13885,7 +12534,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_islessgreater",
-					logFileName:  "relationals-relational_islessgreater.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13895,7 +12543,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_isless",
-					logFileName:  "relationals-relational_isless.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13905,7 +12552,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_isnotequal",
-					logFileName:  "relationals-relational_isnotequal.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13915,7 +12561,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_select_signed",
-					logFileName:  "relationals-relational_select_signed.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13925,7 +12570,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "relational_select_unsigned",
-					logFileName:  "relationals-relational_select_unsigned.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13935,7 +12579,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "shuffle_array_cast",
-					logFileName:  "relationals-shuffle_array_cast.txt",
 					expectedPass: false,
 					buganizer:    "b/227136136",
 				},
@@ -13946,7 +12589,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "shuffle_built_in_dual_input",
-					logFileName:  "relationals-shuffle_built_in_dual_input.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -13956,7 +12598,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "shuffle_built_in",
-					logFileName:  "relationals-shuffle_built_in.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -13966,7 +12607,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "shuffle_copy",
-					logFileName:  "relationals-shuffle_copy.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -13976,7 +12616,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "shuffle_function_call",
-					logFileName:  "relationals-shuffle_function_call.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -13986,7 +12625,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_FLOAT",
-					logFileName:  "samplerless_reads-1Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -13996,7 +12634,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_HALF_FLOAT",
-					logFileName:  "samplerless_reads-1Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14006,7 +12643,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_SIGNED_INT16",
-					logFileName:  "samplerless_reads-1Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14016,7 +12652,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_SIGNED_INT32",
-					logFileName:  "samplerless_reads-1Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14026,7 +12661,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_SIGNED_INT8",
-					logFileName:  "samplerless_reads-1Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14036,7 +12670,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_SNORM_INT16",
-					logFileName:  "samplerless_reads-1Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14046,7 +12679,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_SNORM_INT8",
-					logFileName:  "samplerless_reads-1Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14056,7 +12688,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_UNORM_INT_101010",
-					logFileName:  "samplerless_reads-1Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14066,7 +12697,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_UNORM_INT16",
-					logFileName:  "samplerless_reads-1Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14076,7 +12706,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_UNORM_INT8",
-					logFileName:  "samplerless_reads-1Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14086,7 +12715,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_UNORM_SHORT_555",
-					logFileName:  "samplerless_reads-1Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14096,7 +12724,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_UNORM_SHORT_565",
-					logFileName:  "samplerless_reads-1Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14106,7 +12733,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_UNSIGNED_INT16",
-					logFileName:  "samplerless_reads-1Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14116,7 +12742,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_UNSIGNED_INT32",
-					logFileName:  "samplerless_reads-1Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14126,7 +12751,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1Darray CL_UNSIGNED_INT8",
-					logFileName:  "samplerless_reads-1Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14136,7 +12760,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_FLOAT",
-					logFileName:  "samplerless_reads-1D_CL_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14147,7 +12770,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_HALF_FLOAT",
-					logFileName:  "samplerless_reads-1D_CL_HALF_FLOAT.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14158,7 +12780,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SIGNED_INT16",
-					logFileName:  "samplerless_reads-1D_CL_SIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14169,7 +12790,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SIGNED_INT32",
-					logFileName:  "samplerless_reads-1D_CL_SIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14180,7 +12800,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SIGNED_INT8",
-					logFileName:  "samplerless_reads-1D_CL_SIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14191,7 +12810,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SNORM_INT16",
-					logFileName:  "samplerless_reads-1D_CL_SNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14202,7 +12820,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_SNORM_INT8",
-					logFileName:  "samplerless_reads-1D_CL_SNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14213,7 +12830,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNORM_INT_101010",
-					logFileName:  "samplerless_reads-1D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14223,7 +12839,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNORM_INT16",
-					logFileName:  "samplerless_reads-1D_CL_UNORM_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14234,7 +12849,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNORM_INT8",
-					logFileName:  "samplerless_reads-1D_CL_UNORM_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14245,7 +12859,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNORM_SHORT_555",
-					logFileName:  "samplerless_reads-1D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 					buganizer:    "b/227136137",
 				},
@@ -14256,7 +12869,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNORM_SHORT_565",
-					logFileName:  "samplerless_reads-1D_CL_UNORM_SHORT_565.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14267,7 +12879,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNSIGNED_INT16",
-					logFileName:  "samplerless_reads-1D_CL_UNSIGNED_INT16.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14278,7 +12889,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNSIGNED_INT32",
-					logFileName:  "samplerless_reads-1D_CL_UNSIGNED_INT32.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14289,7 +12899,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "1D CL_UNSIGNED_INT8",
-					logFileName:  "samplerless_reads-1D_CL_UNSIGNED_INT8.txt",
 					expectedPass: false,
 					buganizer:    "b/227136137",
 				},
@@ -14300,7 +12909,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_FLOAT",
-					logFileName:  "samplerless_reads-2Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14310,7 +12918,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_HALF_FLOAT",
-					logFileName:  "samplerless_reads-2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14320,7 +12927,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_SIGNED_INT16",
-					logFileName:  "samplerless_reads-2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14330,7 +12936,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_SIGNED_INT32",
-					logFileName:  "samplerless_reads-2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14340,7 +12945,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_SIGNED_INT8",
-					logFileName:  "samplerless_reads-2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14350,7 +12954,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_SNORM_INT16",
-					logFileName:  "samplerless_reads-2Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14360,7 +12963,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_SNORM_INT8",
-					logFileName:  "samplerless_reads-2Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14370,7 +12972,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_UNORM_INT_101010",
-					logFileName:  "samplerless_reads-2Darray_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14380,7 +12981,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_UNORM_INT16",
-					logFileName:  "samplerless_reads-2Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14390,7 +12990,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_UNORM_INT8",
-					logFileName:  "samplerless_reads-2Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14400,7 +12999,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_UNORM_SHORT_555",
-					logFileName:  "samplerless_reads-2Darray_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14410,7 +13008,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_UNORM_SHORT_565",
-					logFileName:  "samplerless_reads-2Darray_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14420,7 +13017,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_UNSIGNED_INT16",
-					logFileName:  "samplerless_reads-2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14430,7 +13026,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_UNSIGNED_INT32",
-					logFileName:  "samplerless_reads-2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14440,7 +13035,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2Darray CL_UNSIGNED_INT8",
-					logFileName:  "samplerless_reads-2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14450,7 +13044,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_FLOAT",
-					logFileName:  "samplerless_reads-2D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14460,7 +13053,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_HALF_FLOAT",
-					logFileName:  "samplerless_reads-2D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14470,7 +13062,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_SIGNED_INT16",
-					logFileName:  "samplerless_reads-2D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14480,7 +13071,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_SIGNED_INT32",
-					logFileName:  "samplerless_reads-2D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14490,7 +13080,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_SIGNED_INT8",
-					logFileName:  "samplerless_reads-2D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14500,7 +13089,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_SNORM_INT16",
-					logFileName:  "samplerless_reads-2D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14510,7 +13098,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_SNORM_INT8",
-					logFileName:  "samplerless_reads-2D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14520,7 +13107,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_UNORM_INT_101010",
-					logFileName:  "samplerless_reads-2D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14530,7 +13116,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_UNORM_INT16",
-					logFileName:  "samplerless_reads-2D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14540,7 +13125,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_UNORM_INT8",
-					logFileName:  "samplerless_reads-2D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14550,7 +13134,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_UNORM_SHORT_555",
-					logFileName:  "samplerless_reads-2D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14560,7 +13143,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_UNORM_SHORT_565",
-					logFileName:  "samplerless_reads-2D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14570,7 +13152,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_UNSIGNED_INT16",
-					logFileName:  "samplerless_reads-2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14580,7 +13161,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_UNSIGNED_INT32",
-					logFileName:  "samplerless_reads-2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14590,7 +13170,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "2D CL_UNSIGNED_INT8",
-					logFileName:  "samplerless_reads-2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14600,7 +13179,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_FLOAT",
-					logFileName:  "samplerless_reads-3D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14610,7 +13188,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_HALF_FLOAT",
-					logFileName:  "samplerless_reads-3D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14620,7 +13197,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_SIGNED_INT16",
-					logFileName:  "samplerless_reads-3D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14630,7 +13206,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_SIGNED_INT32",
-					logFileName:  "samplerless_reads-3D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14640,7 +13215,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_SIGNED_INT8",
-					logFileName:  "samplerless_reads-3D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14650,7 +13224,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_SNORM_INT16",
-					logFileName:  "samplerless_reads-3D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14660,7 +13233,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_SNORM_INT8",
-					logFileName:  "samplerless_reads-3D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14670,7 +13242,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_UNORM_INT_101010",
-					logFileName:  "samplerless_reads-3D_CL_UNORM_INT_101010.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14680,7 +13251,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_UNORM_INT16",
-					logFileName:  "samplerless_reads-3D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14690,7 +13260,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_UNORM_INT8",
-					logFileName:  "samplerless_reads-3D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14700,7 +13269,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_UNORM_SHORT_555",
-					logFileName:  "samplerless_reads-3D_CL_UNORM_SHORT_555.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14710,7 +13278,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_UNORM_SHORT_565",
-					logFileName:  "samplerless_reads-3D_CL_UNORM_SHORT_565.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14720,7 +13287,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_UNSIGNED_INT16",
-					logFileName:  "samplerless_reads-3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14730,7 +13296,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_UNSIGNED_INT32",
-					logFileName:  "samplerless_reads-3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14740,7 +13305,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_samplerless_reads",
 					args:         "3D CL_UNSIGNED_INT8",
-					logFileName:  "samplerless_reads-3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14750,7 +13314,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_char_char -w",
-					logFileName:  "select-select_char_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14760,7 +13323,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_char_uchar -w",
-					logFileName:  "select-select_char_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14770,7 +13332,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_double_long -w",
-					logFileName:  "select-select_double_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14780,7 +13341,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_double_ulong -w",
-					logFileName:  "select-select_double_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14790,7 +13350,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_float_int -w",
-					logFileName:  "select-select_float_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14800,7 +13359,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_float_uint -w",
-					logFileName:  "select-select_float_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14810,7 +13368,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_int_int -w",
-					logFileName:  "select-select_int_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14820,7 +13377,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_int_uint -w",
-					logFileName:  "select-select_int_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14830,7 +13386,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_long_long -w",
-					logFileName:  "select-select_long_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14840,7 +13395,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_long_ulong -w",
-					logFileName:  "select-select_long_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14850,7 +13404,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_short_short -w",
-					logFileName:  "select-select_short_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14860,7 +13413,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_short_ushort -w",
-					logFileName:  "select-select_short_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14870,7 +13422,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_uchar_char -w",
-					logFileName:  "select-select_uchar_char.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14880,7 +13431,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_uchar_uchar -w",
-					logFileName:  "select-select_uchar_uchar.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14890,7 +13440,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_uint_int -w",
-					logFileName:  "select-select_uint_int.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14900,7 +13449,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_uint_uint -w",
-					logFileName:  "select-select_uint_uint.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14910,7 +13458,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_ulong_long -w",
-					logFileName:  "select-select_ulong_long.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14920,7 +13467,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_ulong_ulong -w",
-					logFileName:  "select-select_ulong_ulong.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14930,7 +13476,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_ushort_short -w",
-					logFileName:  "select-select_ushort_short.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14940,7 +13485,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_select",
 					args:         "select_ushort_ushort -w",
-					logFileName:  "select-select_ushort_ushort.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14950,7 +13494,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "full_1d_explicit_local",
-					logFileName:  "thread_dimensions-full_1d_explicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14960,7 +13503,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "full_1d_implicit_local",
-					logFileName:  "thread_dimensions-full_1d_implicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -14970,7 +13512,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "full_2d_explicit_local",
-					logFileName:  "thread_dimensions-full_2d_explicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -14980,7 +13521,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "full_2d_implicit_local",
-					logFileName:  "thread_dimensions-full_2d_implicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -14990,7 +13530,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "full_3d_explicit_local",
-					logFileName:  "thread_dimensions-full_3d_explicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 20 * time.Minute,
@@ -15000,7 +13539,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "full_3d_implicit_local",
-					logFileName:  "thread_dimensions-full_3d_implicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 10 * time.Minute,
@@ -15010,7 +13548,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "quick_1d_explicit_local",
-					logFileName:  "thread_dimensions-quick_1d_explicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15020,7 +13557,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "quick_1d_implicit_local",
-					logFileName:  "thread_dimensions-quick_1d_implicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15030,7 +13566,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "quick_2d_explicit_local",
-					logFileName:  "thread_dimensions-quick_2d_explicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15040,7 +13575,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "quick_2d_implicit_local",
-					logFileName:  "thread_dimensions-quick_2d_implicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15050,7 +13584,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "quick_3d_explicit_local",
-					logFileName:  "thread_dimensions-quick_3d_explicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15060,7 +13593,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_thread_dimensions",
 					args:         "quick_3d_implicit_local",
-					logFileName:  "thread_dimensions-quick_3d_implicit_local.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15070,7 +13602,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "step_typedef_type",
-					logFileName:  "vectors-step_typedef_type.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15080,7 +13611,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "step_typedef_var",
-					logFileName:  "vectors-step_typedef_var.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15090,7 +13620,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "step_type",
-					logFileName:  "vectors-step_type.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15100,7 +13629,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "step_var",
-					logFileName:  "vectors-step_var.txt",
 					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
@@ -15110,7 +13638,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "vec_align_array",
-					logFileName:  "vectors-vec_align_array.txt",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
@@ -15121,7 +13648,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "vec_align_packed_struct_arr",
-					logFileName:  "vectors-vec_align_packed_struct_arr.txt",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
@@ -15132,7 +13658,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "vec_align_packed_struct",
-					logFileName:  "vectors-vec_align_packed_struct.txt",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
@@ -15143,7 +13668,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "vec_align_struct_arr",
-					logFileName:  "vectors-vec_align_struct_arr.txt",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
@@ -15154,7 +13678,6 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_vectors",
 					args:         "vec_align_struct",
-					logFileName:  "vectors-vec_align_struct.txt",
 					expectedPass: false,
 					buganizer:    "b/227134903",
 				},
@@ -15169,7 +13692,7 @@ func OpenclCts(ctx context.Context, s *testing.State) {
 	test := s.Param().(oclctsTest)
 
 	const testPath = "/usr/local/opencl"
-	logFile := filepath.Join(s.OutDir(), filepath.Base(test.logFileName))
+	logFile := filepath.Join(s.OutDir(), filepath.Base(s.TestName())+".txt")
 	f, err := os.Create(logFile)
 	if err != nil {
 		s.Fatalf("Failed to create a log file: %s", err)
