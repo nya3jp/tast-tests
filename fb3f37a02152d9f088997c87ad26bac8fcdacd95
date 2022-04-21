@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5603b0e_92c1e081",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-04-21T23:04:43Z",
+      "side": 1,
+      "message": "btw: on chromiumos +1 votes get reset after every code change. Reapproving with +1 but waiting for seewaifu@ to also review",
+      "revId": "fb3f37a02152d9f088997c87ad26bac8fcdacd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
