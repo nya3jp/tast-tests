@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c89de6_1faffeda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-04-21T08:18:56Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "45b2337a05c9a89367c4cc1e823cd492760c6cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ff7a25_f44f2002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-04-21T08:18:56Z",
+      "side": 1,
+      "message": "nit: why testing.ContextLog here with a Failed message? should this be `s.Fatal`?",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 20
+      },
+      "revId": "45b2337a05c9a89367c4cc1e823cd492760c6cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
