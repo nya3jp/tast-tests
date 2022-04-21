@@ -94,7 +94,26 @@ func init() {
 			"ui.MeetCUJ.bond_credentials",
 		},
 		Params: []testing.Param{{
-			// Base case. Note this runs a 30 min meet call.
+			// Base case
+			Name:    "1p",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:    1,
+				layout: meetLayoutTiled,
+				cam:    true,
+			},
+			Fixture: "loggedInToCUJUser",
+		}, {
+			Name:    "lacros_1p",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:    1,
+				layout: meetLayoutTiled,
+				cam:    true,
+			},
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
 			Name:    "4p",
 			Timeout: defaultTestTimeout + 30*time.Minute,
 			Val: meetTest{
