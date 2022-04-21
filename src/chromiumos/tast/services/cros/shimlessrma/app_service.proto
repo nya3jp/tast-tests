@@ -20,8 +20,48 @@ service AppService {
 
   // Tests welcome page is loaded and then cancel it.
   rpc TestWelcomeAndCancel (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Waits for page to load.
+  rpc WaitForPageToLoad (WaitForPageToLoadRequest) returns (google.protobuf.Empty) {}
+
+  // Left clicks a button.
+  rpc LeftClickButton (LeftClickButtonRequest) returns (google.protobuf.Empty) {}
+
+  // Waits until a button enabled.
+  rpc WaitUntilButtonEnabled (WaitUntilButtonEnabledRequest) returns (google.protobuf.Empty) {}
+
+  // Left clicks a Radion button
+  rpc LeftClickRadioButton (LeftClickRadioButtonRequest) returns (google.protobuf.Empty) {}
 }
 
 message NewShimlessRMARequest {
+  // Provides manifestKey for testing extension.
   string manifestKey = 1;
+  // Indicates whether it is a re-connect.
+  // If yes, then we avoid some operations, like creating empty state file.
+  bool reconnect = 2;
+}
+
+message WaitForPageToLoadRequest {
+  // Provides title of a page.
+  string title = 1;
+  // Provides the waiting periods in seconds.
+  int32 durationInSecond = 2;
+}
+
+message LeftClickButtonRequest {
+  // Provides the label of button.
+  string label = 1;
+}
+
+message WaitUntilButtonEnabledRequest {
+  // Provides the label of button.
+  string label = 1;
+  // Provides the waiting periods in seconds.
+  int32 durationInSecond = 2;
+}
+
+message LeftClickRadioButtonRequest {
+  // Provides the label of radio button.
+  string label = 1;
 }

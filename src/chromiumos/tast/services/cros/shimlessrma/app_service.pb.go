@@ -34,7 +34,11 @@ type NewShimlessRMARequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Provides manifestKey for testing extension.
 	ManifestKey string `protobuf:"bytes,1,opt,name=manifestKey,proto3" json:"manifestKey,omitempty"`
+	// Indicates whether it is a re-connect.
+	// If yes, then we avoid some operations, like creating empty state file.
+	Reconnect bool `protobuf:"varint,2,opt,name=reconnect,proto3" json:"reconnect,omitempty"`
 }
 
 func (x *NewShimlessRMARequest) Reset() {
@@ -76,6 +80,223 @@ func (x *NewShimlessRMARequest) GetManifestKey() string {
 	return ""
 }
 
+func (x *NewShimlessRMARequest) GetReconnect() bool {
+	if x != nil {
+		return x.Reconnect
+	}
+	return false
+}
+
+type WaitForPageToLoadRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Provides title of a page.
+	Title string `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	// Provides the waiting periods in seconds.
+	DurationInSecond int32 `protobuf:"varint,2,opt,name=durationInSecond,proto3" json:"durationInSecond,omitempty"`
+}
+
+func (x *WaitForPageToLoadRequest) Reset() {
+	*x = WaitForPageToLoadRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_app_service_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *WaitForPageToLoadRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WaitForPageToLoadRequest) ProtoMessage() {}
+
+func (x *WaitForPageToLoadRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_app_service_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WaitForPageToLoadRequest.ProtoReflect.Descriptor instead.
+func (*WaitForPageToLoadRequest) Descriptor() ([]byte, []int) {
+	return file_app_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *WaitForPageToLoadRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *WaitForPageToLoadRequest) GetDurationInSecond() int32 {
+	if x != nil {
+		return x.DurationInSecond
+	}
+	return 0
+}
+
+type LeftClickButtonRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Provides the label of button.
+	Label string `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+}
+
+func (x *LeftClickButtonRequest) Reset() {
+	*x = LeftClickButtonRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_app_service_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LeftClickButtonRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LeftClickButtonRequest) ProtoMessage() {}
+
+func (x *LeftClickButtonRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_app_service_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LeftClickButtonRequest.ProtoReflect.Descriptor instead.
+func (*LeftClickButtonRequest) Descriptor() ([]byte, []int) {
+	return file_app_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *LeftClickButtonRequest) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+type WaitUntilButtonEnabledRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Provides the label of button.
+	Label string `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+	// Provides the waiting periods in seconds.
+	DurationInSecond int32 `protobuf:"varint,2,opt,name=durationInSecond,proto3" json:"durationInSecond,omitempty"`
+}
+
+func (x *WaitUntilButtonEnabledRequest) Reset() {
+	*x = WaitUntilButtonEnabledRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_app_service_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *WaitUntilButtonEnabledRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WaitUntilButtonEnabledRequest) ProtoMessage() {}
+
+func (x *WaitUntilButtonEnabledRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_app_service_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WaitUntilButtonEnabledRequest.ProtoReflect.Descriptor instead.
+func (*WaitUntilButtonEnabledRequest) Descriptor() ([]byte, []int) {
+	return file_app_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *WaitUntilButtonEnabledRequest) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *WaitUntilButtonEnabledRequest) GetDurationInSecond() int32 {
+	if x != nil {
+		return x.DurationInSecond
+	}
+	return 0
+}
+
+type LeftClickRadioButtonRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Provides the label of radio button.
+	Label string `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+}
+
+func (x *LeftClickRadioButtonRequest) Reset() {
+	*x = LeftClickRadioButtonRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_app_service_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LeftClickRadioButtonRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LeftClickRadioButtonRequest) ProtoMessage() {}
+
+func (x *LeftClickRadioButtonRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_app_service_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LeftClickRadioButtonRequest.ProtoReflect.Descriptor instead.
+func (*LeftClickRadioButtonRequest) Descriptor() ([]byte, []int) {
+	return file_app_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *LeftClickRadioButtonRequest) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
 var File_app_service_proto protoreflect.FileDescriptor
 
 var file_app_service_proto_rawDesc = []byte{
@@ -83,25 +304,70 @@ var file_app_service_proto_rawDesc = []byte{
 	0x6f, 0x74, 0x6f, 0x12, 0x15, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x73,
 	0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x72, 0x6d, 0x61, 0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67,
 	0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74,
-	0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x39, 0x0a, 0x15, 0x4e, 0x65, 0x77, 0x53, 0x68,
+	0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x57, 0x0a, 0x15, 0x4e, 0x65, 0x77, 0x53, 0x68,
 	0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x52, 0x4d, 0x41, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x12, 0x20, 0x0a, 0x0b, 0x6d, 0x61, 0x6e, 0x69, 0x66, 0x65, 0x73, 0x74, 0x4b, 0x65, 0x79, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6d, 0x61, 0x6e, 0x69, 0x66, 0x65, 0x73, 0x74, 0x4b,
-	0x65, 0x79, 0x32, 0xf6, 0x01, 0x0a, 0x0a, 0x41, 0x70, 0x70, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x12, 0x58, 0x0a, 0x0e, 0x4e, 0x65, 0x77, 0x53, 0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73,
-	0x52, 0x4d, 0x41, 0x12, 0x2c, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e,
-	0x73, 0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x72, 0x6d, 0x61, 0x2e, 0x4e, 0x65, 0x77, 0x53,
-	0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x52, 0x4d, 0x41, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x65, 0x79, 0x12, 0x1c, 0x0a, 0x09, 0x72, 0x65, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x72, 0x65, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74,
+	0x22, 0x5c, 0x0a, 0x18, 0x57, 0x61, 0x69, 0x74, 0x46, 0x6f, 0x72, 0x50, 0x61, 0x67, 0x65, 0x54,
+	0x6f, 0x4c, 0x6f, 0x61, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05,
+	0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74,
+	0x6c, 0x65, 0x12, 0x2a, 0x0a, 0x10, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e,
+	0x53, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x10, 0x64, 0x75,
+	0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x53, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x22, 0x2e,
+	0x0a, 0x16, 0x4c, 0x65, 0x66, 0x74, 0x43, 0x6c, 0x69, 0x63, 0x6b, 0x42, 0x75, 0x74, 0x74, 0x6f,
+	0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x6c, 0x61, 0x62, 0x65,
+	0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x22, 0x61,
+	0x0a, 0x1d, 0x57, 0x61, 0x69, 0x74, 0x55, 0x6e, 0x74, 0x69, 0x6c, 0x42, 0x75, 0x74, 0x74, 0x6f,
+	0x6e, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x14, 0x0a, 0x05, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
+	0x6c, 0x61, 0x62, 0x65, 0x6c, 0x12, 0x2a, 0x0a, 0x10, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x49, 0x6e, 0x53, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x10, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x53, 0x65, 0x63, 0x6f, 0x6e,
+	0x64, 0x22, 0x33, 0x0a, 0x1b, 0x4c, 0x65, 0x66, 0x74, 0x43, 0x6c, 0x69, 0x63, 0x6b, 0x52, 0x61,
+	0x64, 0x69, 0x6f, 0x42, 0x75, 0x74, 0x74, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x14, 0x0a, 0x05, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x05, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x32, 0x82, 0x05, 0x0a, 0x0a, 0x41, 0x70, 0x70, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x58, 0x0a, 0x0e, 0x4e, 0x65, 0x77, 0x53, 0x68, 0x69, 0x6d,
+	0x6c, 0x65, 0x73, 0x73, 0x52, 0x4d, 0x41, 0x12, 0x2c, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63,
+	0x72, 0x6f, 0x73, 0x2e, 0x73, 0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x72, 0x6d, 0x61, 0x2e,
+	0x4e, 0x65, 0x77, 0x53, 0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x52, 0x4d, 0x41, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12,
+	0x44, 0x0a, 0x10, 0x43, 0x6c, 0x6f, 0x73, 0x65, 0x53, 0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73,
+	0x52, 0x4d, 0x41, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d,
+	0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x48, 0x0a, 0x14, 0x54, 0x65, 0x73, 0x74, 0x57, 0x65, 0x6c,
+	0x63, 0x6f, 0x6d, 0x65, 0x41, 0x6e, 0x64, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x12, 0x16, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
+	0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12,
+	0x5e, 0x0a, 0x11, 0x57, 0x61, 0x69, 0x74, 0x46, 0x6f, 0x72, 0x50, 0x61, 0x67, 0x65, 0x54, 0x6f,
+	0x4c, 0x6f, 0x61, 0x64, 0x12, 0x2f, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73,
+	0x2e, 0x73, 0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x72, 0x6d, 0x61, 0x2e, 0x57, 0x61, 0x69,
+	0x74, 0x46, 0x6f, 0x72, 0x50, 0x61, 0x67, 0x65, 0x54, 0x6f, 0x4c, 0x6f, 0x61, 0x64, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12,
+	0x5a, 0x0a, 0x0f, 0x4c, 0x65, 0x66, 0x74, 0x43, 0x6c, 0x69, 0x63, 0x6b, 0x42, 0x75, 0x74, 0x74,
+	0x6f, 0x6e, 0x12, 0x2d, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x73,
+	0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x72, 0x6d, 0x61, 0x2e, 0x4c, 0x65, 0x66, 0x74, 0x43,
+	0x6c, 0x69, 0x63, 0x6b, 0x42, 0x75, 0x74, 0x74, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x44, 0x0a, 0x10, 0x43,
-	0x6c, 0x6f, 0x73, 0x65, 0x53, 0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x52, 0x4d, 0x41, 0x12,
-	0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
-	0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22,
-	0x00, 0x12, 0x48, 0x0a, 0x14, 0x54, 0x65, 0x73, 0x74, 0x57, 0x65, 0x6c, 0x63, 0x6f, 0x6d, 0x65,
-	0x41, 0x6e, 0x64, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74,
-	0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x68, 0x0a, 0x16, 0x57,
+	0x61, 0x69, 0x74, 0x55, 0x6e, 0x74, 0x69, 0x6c, 0x42, 0x75, 0x74, 0x74, 0x6f, 0x6e, 0x45, 0x6e,
+	0x61, 0x62, 0x6c, 0x65, 0x64, 0x12, 0x34, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f,
+	0x73, 0x2e, 0x73, 0x68, 0x69, 0x6d, 0x6c, 0x65, 0x73, 0x73, 0x72, 0x6d, 0x61, 0x2e, 0x57, 0x61,
+	0x69, 0x74, 0x55, 0x6e, 0x74, 0x69, 0x6c, 0x42, 0x75, 0x74, 0x74, 0x6f, 0x6e, 0x45, 0x6e, 0x61,
+	0x62, 0x6c, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d,
+	0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x64, 0x0a, 0x14, 0x4c, 0x65, 0x66, 0x74, 0x43, 0x6c, 0x69,
+	0x63, 0x6b, 0x52, 0x61, 0x64, 0x69, 0x6f, 0x42, 0x75, 0x74, 0x74, 0x6f, 0x6e, 0x12, 0x32, 0x2e,
+	0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x73, 0x68, 0x69, 0x6d, 0x6c, 0x65,
+	0x73, 0x73, 0x72, 0x6d, 0x61, 0x2e, 0x4c, 0x65, 0x66, 0x74, 0x43, 0x6c, 0x69, 0x63, 0x6b, 0x52,
+	0x61, 0x64, 0x69, 0x6f, 0x42, 0x75, 0x74, 0x74, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x42, 0x2b, 0x5a, 0x29, 0x63,
 	0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61, 0x73, 0x74, 0x2f, 0x73,
 	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73, 0x2f, 0x73, 0x68, 0x69,
@@ -120,20 +386,32 @@ func file_app_service_proto_rawDescGZIP() []byte {
 	return file_app_service_proto_rawDescData
 }
 
-var file_app_service_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_app_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_app_service_proto_goTypes = []interface{}{
-	(*NewShimlessRMARequest)(nil), // 0: tast.cros.shimlessrma.NewShimlessRMARequest
-	(*empty.Empty)(nil),           // 1: google.protobuf.Empty
+	(*NewShimlessRMARequest)(nil),         // 0: tast.cros.shimlessrma.NewShimlessRMARequest
+	(*WaitForPageToLoadRequest)(nil),      // 1: tast.cros.shimlessrma.WaitForPageToLoadRequest
+	(*LeftClickButtonRequest)(nil),        // 2: tast.cros.shimlessrma.LeftClickButtonRequest
+	(*WaitUntilButtonEnabledRequest)(nil), // 3: tast.cros.shimlessrma.WaitUntilButtonEnabledRequest
+	(*LeftClickRadioButtonRequest)(nil),   // 4: tast.cros.shimlessrma.LeftClickRadioButtonRequest
+	(*empty.Empty)(nil),                   // 5: google.protobuf.Empty
 }
 var file_app_service_proto_depIdxs = []int32{
 	0, // 0: tast.cros.shimlessrma.AppService.NewShimlessRMA:input_type -> tast.cros.shimlessrma.NewShimlessRMARequest
-	1, // 1: tast.cros.shimlessrma.AppService.CloseShimlessRMA:input_type -> google.protobuf.Empty
-	1, // 2: tast.cros.shimlessrma.AppService.TestWelcomeAndCancel:input_type -> google.protobuf.Empty
-	1, // 3: tast.cros.shimlessrma.AppService.NewShimlessRMA:output_type -> google.protobuf.Empty
-	1, // 4: tast.cros.shimlessrma.AppService.CloseShimlessRMA:output_type -> google.protobuf.Empty
-	1, // 5: tast.cros.shimlessrma.AppService.TestWelcomeAndCancel:output_type -> google.protobuf.Empty
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	5, // 1: tast.cros.shimlessrma.AppService.CloseShimlessRMA:input_type -> google.protobuf.Empty
+	5, // 2: tast.cros.shimlessrma.AppService.TestWelcomeAndCancel:input_type -> google.protobuf.Empty
+	1, // 3: tast.cros.shimlessrma.AppService.WaitForPageToLoad:input_type -> tast.cros.shimlessrma.WaitForPageToLoadRequest
+	2, // 4: tast.cros.shimlessrma.AppService.LeftClickButton:input_type -> tast.cros.shimlessrma.LeftClickButtonRequest
+	3, // 5: tast.cros.shimlessrma.AppService.WaitUntilButtonEnabled:input_type -> tast.cros.shimlessrma.WaitUntilButtonEnabledRequest
+	4, // 6: tast.cros.shimlessrma.AppService.LeftClickRadioButton:input_type -> tast.cros.shimlessrma.LeftClickRadioButtonRequest
+	5, // 7: tast.cros.shimlessrma.AppService.NewShimlessRMA:output_type -> google.protobuf.Empty
+	5, // 8: tast.cros.shimlessrma.AppService.CloseShimlessRMA:output_type -> google.protobuf.Empty
+	5, // 9: tast.cros.shimlessrma.AppService.TestWelcomeAndCancel:output_type -> google.protobuf.Empty
+	5, // 10: tast.cros.shimlessrma.AppService.WaitForPageToLoad:output_type -> google.protobuf.Empty
+	5, // 11: tast.cros.shimlessrma.AppService.LeftClickButton:output_type -> google.protobuf.Empty
+	5, // 12: tast.cros.shimlessrma.AppService.WaitUntilButtonEnabled:output_type -> google.protobuf.Empty
+	5, // 13: tast.cros.shimlessrma.AppService.LeftClickRadioButton:output_type -> google.protobuf.Empty
+	7, // [7:14] is the sub-list for method output_type
+	0, // [0:7] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -157,6 +435,54 @@ func file_app_service_proto_init() {
 				return nil
 			}
 		}
+		file_app_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*WaitForPageToLoadRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_app_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LeftClickButtonRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_app_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*WaitUntilButtonEnabledRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_app_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LeftClickRadioButtonRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -164,7 +490,7 @@ func file_app_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_app_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -196,6 +522,14 @@ type AppServiceClient interface {
 	CloseShimlessRMA(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Tests welcome page is loaded and then cancel it.
 	TestWelcomeAndCancel(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Waits for page to load.
+	WaitForPageToLoad(ctx context.Context, in *WaitForPageToLoadRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Left clicks a button.
+	LeftClickButton(ctx context.Context, in *LeftClickButtonRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Waits until a button enabled.
+	WaitUntilButtonEnabled(ctx context.Context, in *WaitUntilButtonEnabledRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Left clicks a Radion button
+	LeftClickRadioButton(ctx context.Context, in *LeftClickRadioButtonRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type appServiceClient struct {
@@ -233,6 +567,42 @@ func (c *appServiceClient) TestWelcomeAndCancel(ctx context.Context, in *empty.E
 	return out, nil
 }
 
+func (c *appServiceClient) WaitForPageToLoad(ctx context.Context, in *WaitForPageToLoadRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.shimlessrma.AppService/WaitForPageToLoad", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *appServiceClient) LeftClickButton(ctx context.Context, in *LeftClickButtonRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.shimlessrma.AppService/LeftClickButton", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *appServiceClient) WaitUntilButtonEnabled(ctx context.Context, in *WaitUntilButtonEnabledRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.shimlessrma.AppService/WaitUntilButtonEnabled", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *appServiceClient) LeftClickRadioButton(ctx context.Context, in *LeftClickRadioButtonRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.shimlessrma.AppService/LeftClickRadioButton", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AppServiceServer is the server API for AppService service.
 type AppServiceServer interface {
 	// Creates ShimlessRMA.
@@ -241,6 +611,14 @@ type AppServiceServer interface {
 	CloseShimlessRMA(context.Context, *empty.Empty) (*empty.Empty, error)
 	// Tests welcome page is loaded and then cancel it.
 	TestWelcomeAndCancel(context.Context, *empty.Empty) (*empty.Empty, error)
+	// Waits for page to load.
+	WaitForPageToLoad(context.Context, *WaitForPageToLoadRequest) (*empty.Empty, error)
+	// Left clicks a button.
+	LeftClickButton(context.Context, *LeftClickButtonRequest) (*empty.Empty, error)
+	// Waits until a button enabled.
+	WaitUntilButtonEnabled(context.Context, *WaitUntilButtonEnabledRequest) (*empty.Empty, error)
+	// Left clicks a Radion button
+	LeftClickRadioButton(context.Context, *LeftClickRadioButtonRequest) (*empty.Empty, error)
 }
 
 // UnimplementedAppServiceServer can be embedded to have forward compatible implementations.
@@ -255,6 +633,18 @@ func (*UnimplementedAppServiceServer) CloseShimlessRMA(context.Context, *empty.E
 }
 func (*UnimplementedAppServiceServer) TestWelcomeAndCancel(context.Context, *empty.Empty) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TestWelcomeAndCancel not implemented")
+}
+func (*UnimplementedAppServiceServer) WaitForPageToLoad(context.Context, *WaitForPageToLoadRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WaitForPageToLoad not implemented")
+}
+func (*UnimplementedAppServiceServer) LeftClickButton(context.Context, *LeftClickButtonRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LeftClickButton not implemented")
+}
+func (*UnimplementedAppServiceServer) WaitUntilButtonEnabled(context.Context, *WaitUntilButtonEnabledRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WaitUntilButtonEnabled not implemented")
+}
+func (*UnimplementedAppServiceServer) LeftClickRadioButton(context.Context, *LeftClickRadioButtonRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LeftClickRadioButton not implemented")
 }
 
 func RegisterAppServiceServer(s *grpc.Server, srv AppServiceServer) {
@@ -315,6 +705,78 @@ func _AppService_TestWelcomeAndCancel_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AppService_WaitForPageToLoad_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WaitForPageToLoadRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppServiceServer).WaitForPageToLoad(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.shimlessrma.AppService/WaitForPageToLoad",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppServiceServer).WaitForPageToLoad(ctx, req.(*WaitForPageToLoadRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AppService_LeftClickButton_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LeftClickButtonRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppServiceServer).LeftClickButton(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.shimlessrma.AppService/LeftClickButton",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppServiceServer).LeftClickButton(ctx, req.(*LeftClickButtonRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AppService_WaitUntilButtonEnabled_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WaitUntilButtonEnabledRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppServiceServer).WaitUntilButtonEnabled(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.shimlessrma.AppService/WaitUntilButtonEnabled",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppServiceServer).WaitUntilButtonEnabled(ctx, req.(*WaitUntilButtonEnabledRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AppService_LeftClickRadioButton_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LeftClickRadioButtonRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppServiceServer).LeftClickRadioButton(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.shimlessrma.AppService/LeftClickRadioButton",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppServiceServer).LeftClickRadioButton(ctx, req.(*LeftClickRadioButtonRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _AppService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.shimlessrma.AppService",
 	HandlerType: (*AppServiceServer)(nil),
@@ -330,6 +792,22 @@ var _AppService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TestWelcomeAndCancel",
 			Handler:    _AppService_TestWelcomeAndCancel_Handler,
+		},
+		{
+			MethodName: "WaitForPageToLoad",
+			Handler:    _AppService_WaitForPageToLoad_Handler,
+		},
+		{
+			MethodName: "LeftClickButton",
+			Handler:    _AppService_LeftClickButton_Handler,
+		},
+		{
+			MethodName: "WaitUntilButtonEnabled",
+			Handler:    _AppService_WaitUntilButtonEnabled_Handler,
+		},
+		{
+			MethodName: "LeftClickRadioButton",
+			Handler:    _AppService_LeftClickRadioButton_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
