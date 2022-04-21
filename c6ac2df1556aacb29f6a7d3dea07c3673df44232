@@ -22,6 +22,30 @@
       },
       "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29aac05e_dfb0d377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-21T11:29:55Z",
+      "side": 1,
+      "message": "Yes, we are planning to promote this test to the CQ.\n\nCurrent test implementation supports old and new way of getting OEM name, similar to the browser implementation. Old way is not supported by cros_healthd.\n\nOnce we abandon old implementation, we might use chromiumos/tast/local/bundles/cros/health/utils library to fetch OEM name.\n\nHowever, current implementation is short and it will double check cros_healthd implementation, so we will see in the future what to use in this test.\n\nThansk!",
+      "parentUuid": "a86c5bc9_805b3e1f",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
