@@ -37,7 +37,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 			"group:paper-io",
 			"paper-io_scanning",
 		},
