@@ -37,13 +37,21 @@ func KeepAlive(on bool) Option {
 	}
 }
 
+// InstallWebApp returns whether to automatically install essential web apps on Lacros.
+func InstallWebApp() Option {
+	return func(c *Config) {
+		c.installWebApp = true
+	}
+}
+
 // Config holds runtime vars or other variables needed to set up Lacros.
 type Config struct {
-	selection    lacros.Selection
-	mode         lacros.Mode
-	keepAlive    bool
-	deployed     bool
-	deployedPath string // dirpath to lacros executable file
+	selection     lacros.Selection
+	mode          lacros.Mode
+	keepAlive     bool
+	installWebApp bool
+	deployed      bool
+	deployedPath  string // dirpath to lacros executable file
 }
 
 // TestingState is a mixin interface that allows both testing.FixtState and
@@ -57,9 +65,10 @@ type TestingState interface {
 func NewConfigFromState(s TestingState, ops ...Option) *Config {
 	// TODO(crbug.com/1260037): Make lacros.LacrosPrimary the default.
 	cfg := &Config{
-		selection: lacros.Rootfs,
-		mode:      lacros.NotSpecified,
-		keepAlive: false,
+		selection:     lacros.Rootfs,
+		mode:          lacros.NotSpecified,
+		keepAlive:     false,
+		installWebApp: false,
 	}
 
 	for _, op := range ops {
@@ -147,6 +156,10 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 		opts = append(opts, chrome.EnableFeatures("LacrosPrimary"))
 	case lacros.LacrosOnly:
 		return nil, errors.New("options for LacrosOnly not implemented")
+	}
+
+	if !cfg.installWebApp {
+		opts = append(opts, chrome.LacrosDisableFeatures("DefaultWebAppInstallation"))
 	}
 
 	// Throw an error if lacros has been deployed, but the var lacrosDeployedBinary is unset.
