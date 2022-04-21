@@ -142,6 +142,30 @@
       },
       "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f37a084_d8e4cc88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-04-21T17:32:32Z",
+      "side": 1,
+      "message": "\u003e Got it. Just curious, is this already activity in used? like already launched?\n\nYes, this is launched. For example, the green devices in the following test depend on the sysfs approach: https://cros-health-prod.googleplex.com/test/telemetryextension.APIAvailableRoutines.target_models.\n\n\u003e I am just a little bit worry and want to remind that keeping using this might cause issues in future. I know this is not the priority to migrate it. This is a just small reminder to check if this is already in your radar.\n\nI understand and we are actively working on that. The test (src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/telemetryextension/cros_config_has_oem_name.go) is about monitoring on which devices have the oem_name populated in cros_config. Once we have cros_config  correctly configured for the devices we are supporting, we are going to remove the dependency on the sysfs (step 2 above).",
+      "parentUuid": "9515befc_46b472c9",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
