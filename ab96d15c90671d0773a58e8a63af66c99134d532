@@ -16,6 +16,23 @@
       "message": "Hidehiko and Eliot, thank you for your comments. PTAL.",
       "revId": "ab96d15c90671d0773a58e8a63af66c99134d532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93b1e45_833ee114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-21T12:56:29Z",
+      "side": 1,
+      "message": "could you add TODO not to ignore the close closure?\ngreat to have detailed reasons why it is ok to do so as a short term workaround.",
+      "revId": "ab96d15c90671d0773a58e8a63af66c99134d532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
