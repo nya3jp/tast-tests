@@ -62,6 +62,30 @@
       },
       "revId": "c8a4b8e9bd4e2fb7b5966d855885bca2185c5356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3d6c01_76ccb846",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickanswers/always_trigger_feature.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-04-21T00:08:36Z",
+      "side": 1,
+      "message": "hyungtaekim@ is working on porting other tests of quickanswers package (b/224591710) and I think we should follow their handlings of quickanswers.Definition in a follow up change later.",
+      "parentUuid": "4cb56c0a_31bd09d9",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "c8a4b8e9bd4e2fb7b5966d855885bca2185c5356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
