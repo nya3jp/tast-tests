@@ -82,7 +82,10 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
+<<<<<<< HEAD   (a80a51 Fix Camera Roll E2E test on Pixel devices)
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
+=======
+>>>>>>> CHANGE (97447b tast-tests: Stop MeetCUJ.49p and MeetCUJ.49p_vp8 from runnin)
 		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
 		Vars: []string{
 			"mute",
@@ -95,8 +98,9 @@ func init() {
 		},
 		Params: []testing.Param{{
 			// Base case. Note this runs a 30 min meet call.
-			Name:    "4p",
-			Timeout: defaultTestTimeout + 30*time.Minute,
+			Name:      "4p",
+			Timeout:   defaultTestTimeout + 30*time.Minute,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:      4,
 				layout:   meetLayoutTiled,
@@ -106,8 +110,9 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Small meeting.
-			Name:    "4p_present_notes_split",
-			Timeout: defaultTestTimeout,
+			Name:      "4p_present_notes_split",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:     4,
 				layout:  meetLayoutTiled,
@@ -119,8 +124,9 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Big meeting.
-			Name:    "16p",
-			Timeout: defaultTestTimeout,
+			Name:      "16p",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:    16,
 				layout: meetLayoutTiled,
@@ -139,8 +145,9 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Big meeting with tracing.
-			Name:    "16p_trace",
-			Timeout: defaultTestTimeout + 10*time.Minute,
+			Name:      "16p_trace",
+			Timeout:   defaultTestTimeout + 10*time.Minute,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:     16,
 				layout:  meetLayoutTiled,
@@ -150,8 +157,9 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Validation test for big meeting.
-			Name:    "16p_validation",
-			Timeout: defaultTestTimeout + 10*time.Minute,
+			Name:      "16p_validation",
+			Timeout:   defaultTestTimeout + 10*time.Minute,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:        16,
 				layout:     meetLayoutTiled,
@@ -161,8 +169,9 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Big meeting with notes.
-			Name:    "16p_notes",
-			Timeout: defaultTestTimeout,
+			Name:      "16p_notes",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:    16,
 				layout: meetLayoutTiled,
@@ -173,8 +182,9 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// 16p with jamboard test.
-			Name:    "16p_jamboard",
-			Timeout: defaultTestTimeout,
+			Name:      "16p_jamboard",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:      16,
 				layout:   meetLayoutTiled,
@@ -185,8 +195,9 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Lacros 4p
-			Name:    "lacros_4p",
-			Timeout: defaultTestTimeout,
+			Name:      "lacros_4p",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:       4,
 				layout:    meetLayoutTiled,
