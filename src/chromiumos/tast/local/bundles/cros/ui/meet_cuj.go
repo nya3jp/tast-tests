@@ -206,6 +206,18 @@ func init() {
 				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
 			},
 			Fixture: "loggedInToCUJUser",
+		}, {
+			// Big meeting.
+			Name:    "lacros_16p",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:       16,
+				layout:    meetLayoutTiled,
+				cam:       true,
+				useLacros: true,
+			},
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
 }
