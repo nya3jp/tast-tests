@@ -16,6 +16,40 @@
       "message": "1. Where is the code that actually do the \"Create logfilename when running the test \"? The file has more than 10k lines. I have been try to scroll to bottom to see the code for 5 minutes, but I still could not get to see it. Please copy and paste to the code (probably 1 line) to the response to this comment. Thanks.\n\n2. Please run tast unit test: fast_build.sh -T\n\nThen, add the following line to the commit log\nTEST\u003dtast unit test passed. \n\nThanks.\n",
       "revId": "4d0b2fb320167e6410d61f3336c845eb2d539b6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12087dad_d468da4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-04-21T21:51:13Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "4d0b2fb320167e6410d61f3336c845eb2d539b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a597e40_94631a15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13695,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-04-21T21:51:13Z",
+      "side": 1,
+      "message": "Ok. I find the line. This file is very lengthy.",
+      "revId": "4d0b2fb320167e6410d61f3336c845eb2d539b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
