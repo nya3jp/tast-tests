@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtvals"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -124,22 +123,11 @@ func init() {
 }
 
 func CreateFixture(policyParams fixtvals.PolicyParams, user, pw string) testing.FixtureImpl {
-	return lacrosfixt.NewComposedFixture(
-		lacros.Rootfs,
-		func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
-			return &fixtvals.FixtValue{
-				PolicyParams: policyParams,
-				FixtValue:    v,
-			}
-		},
-		func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			username := s.RequiredVar(user)
-			password := s.RequiredVar(pw)
-			return []chrome.Option{
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
-				chrome.ProdPolicy(),
-			}, nil
-		},
-	)
+	return chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		username := s.RequiredVar(user)
+		password := s.RequiredVar(pw)
+		return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
+			chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+			chrome.ProdPolicy())).Opts()
+	})
 }
