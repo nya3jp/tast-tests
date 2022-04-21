@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c80ee66_29498e1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_corrupt_recovery_cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-21T10:51:28Z",
+      "side": 1,
+      "message": "Since there\u0027s an image backup/restore + reboot into recovery mode and on some machines it can be quite long, let\u0027s keep that as is for now, generally it\u0027s in the same ballpark as the rest of firmware tests.",
+      "parentUuid": "bd94062a_5e10713e",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "f58de36e8bf30b54433a52659376477ef816481b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b6b33fb_57020ab4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64cef8a7_a438ef86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_corrupt_recovery_cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-21T10:51:28Z",
+      "side": 1,
+      "message": "After last meeting of firmware Tast team, there\u0027s a plan to globally implement that in other tests, but since there\u0027s no ticket yet so I\u0027m removing this for now.",
+      "parentUuid": "2b6b33fb_57020ab4",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "f58de36e8bf30b54433a52659376477ef816481b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7100cb3b_02cf1a95",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-20T11:30:55Z",
       "side": 1,
       "message": "End the comment with . (dot)",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "f58de36e8bf30b54433a52659376477ef816481b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1106b2a4_4d195e80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_corrupt_recovery_cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-21T10:51:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7100cb3b_02cf1a95",
       "range": {
         "startLine": 50,
         "startChar": 1,
