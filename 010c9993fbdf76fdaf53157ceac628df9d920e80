@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "010c9993fbdf76fdaf53157ceac628df9d920e80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c385f4d_b0a08cf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verify_app_wayland.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-21T12:34:45Z",
+      "side": 1,
+      "message": "optional: can be just \"cr\"?",
+      "range": {
+        "startLine": 76,
+        "startChar": 43,
+        "endLine": 76,
+        "endChar": 86
+      },
+      "revId": "010c9993fbdf76fdaf53157ceac628df9d920e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fcb3dc_30c55855",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-21T12:34:45Z",
+      "side": 1,
+      "message": "unintended change?",
+      "revId": "010c9993fbdf76fdaf53157ceac628df9d920e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
