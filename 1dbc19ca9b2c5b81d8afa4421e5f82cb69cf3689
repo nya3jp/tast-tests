@@ -39,6 +39,30 @@
       },
       "revId": "1dbc19ca9b2c5b81d8afa4421e5f82cb69cf3689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c61828_e48b9f1e",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-21T00:26:14Z",
+      "side": 1,
+      "message": "This is not the same thing as chrome.LacrosExtraArgs. It\u0027s just adding your custom lacros specific chrome options to a lacros config",
+      "parentUuid": "173b7546_2f2923ac",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "1dbc19ca9b2c5b81d8afa4421e5f82cb69cf3689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
