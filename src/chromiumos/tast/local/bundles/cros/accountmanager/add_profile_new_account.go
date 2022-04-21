@@ -29,7 +29,7 @@ func init() {
 		Contacts:     []string{"anastasiian@chromium.org", "team-dent@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Fixture:      "loggedInToLacros",
+		Fixture:      "lacros",
 		VarDeps:      []string{"accountmanager.username1", "accountmanager.password1"},
 		Timeout:      6 * time.Minute,
 	})
