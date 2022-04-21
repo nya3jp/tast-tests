@@ -70,6 +70,24 @@
       "parentUuid": "6b803e33_fa65d07d",
       "revId": "092a0555c126bf24322de7fb08357e098058b911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0886f617_93af2248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-21T19:49:21Z",
+      "side": 1,
+      "message": "I don\u0027t remember if that\u0027s how it works... to my memory, when Params are being processed, each is treated like an individual test using the Attrs for the whole test plus the ExtraAttrs for the Param being concatenated together.\n\nI think we probably need HwDeps for this.",
+      "parentUuid": "dcf8db5e_fff1b94d",
+      "revId": "092a0555c126bf24322de7fb08357e098058b911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
