@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -148,7 +149,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+data.zipBaseName)
 			zipFile := data.zipBaseName + ".zip"
 
-			duration := testMountingZipFile(ctx, s, files, zipFile)
+			duration := testMountingZipFile(ctx, tconn, s, files, zipFile)
 
 			if data.zipBaseName == "100000_files_in_one_folder" {
 				// Mounting a file is an operation that is much faster than zipping and extracting.
@@ -188,7 +189,17 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 	}
 }
 
-func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFile string) float64 {
+func testMountingZipFile(ctx context.Context, tconn *chrome.TestConn, s *testing.State, files *filesapp.FilesApp, zipFile string) float64 {
+	const (
+		histogramName     = "FileBrowser.ZipMountTime.MyFiles"
+		histogramWaitTime = 10 * time.Second
+	)
+
+	h1, err := metrics.GetHistogram(ctx, tconn, histogramName)
+	if err != nil {
+		s.Fatal("Failed to get ZIP mount time histogram: ", err)
+	}
+
 	if err := uiauto.Combine("open downloads and mount ZIP file",
 		// Open the Downloads folder.
 		files.OpenDownloads(),
@@ -200,14 +211,27 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 		s.Fatal("Failed to test mounting the ZIP file: ", err)
 	}
 
-	// Start timer for zip file mounting operation.
-	startTime := time.Now()
-
+	// Wait until the mounted file location has been opened.
 	if err := files.WithTimeout(zipOperationTimeout).WaitUntilExists(nodewith.Name("Files - " + zipFile).Role(role.RootWebArea))(ctx); err != nil {
 		s.Fatal("Failed to find mounted ZIP file: ", err)
 	}
 
-	return float64(time.Since(startTime).Milliseconds())
+	h2, err := metrics.WaitForHistogramUpdate(ctx, tconn, histogramName, h1, histogramWaitTime)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get ZIP mount time histogram update: ", err)
+	}
+
+	// Check that only one sample has been recorded.
+	if len(h2.Buckets) > 1 {
+		s.Error("Unexpected ZIP mount time histogram update: ", h2)
+	} else if len(h2.Buckets) == 0 {
+		s.Fatal("No ZIP mount time histogram update observed")
+	} else if h2.Buckets[0].Count != 1 {
+		s.Error("Unexpected ZIP mount time sample count: ", h2)
+	}
+
+	// Return duration.
+	return float64(h2.Sum)
 }
 
 func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName, selectionLabel, copyLabel string) float64 {
@@ -265,6 +289,16 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 }
 
 func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, zipBaseName, zipLabel string) float64 {
+	const (
+		histogramName     = "FileBrowser.ZipTask.Time"
+		histogramWaitTime = 10 * time.Second
+	)
+
+	h1, err := metrics.GetHistogram(ctx, tconn, histogramName)
+	if err != nil {
+		s.Fatal("Failed to get zip time histogram: ", err)
+	}
+
 	if err := uiauto.Combine("select Zip selection on all files",
 		// Move the focus to the Files app listBox.
 		files.FocusAndWait(nodewith.Role(role.ListBox)),
@@ -278,26 +312,19 @@ func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.St
 		s.Fatal("Failed to start zipping files: ", err)
 	}
 
-	// Start timer for zipping operation.
-	startTime := time.Now()
-
-	// Find "Complete" within the zipping notification panel, to wait for the zipping operation to finish.
-	zippingNotification := nodewith.NameStartingWith(zipLabel).Role(role.GenericContainer)
-	completeNotification := nodewith.Name(zipPerfCompleteLabel).Role(role.StaticText).Ancestor(zippingNotification)
-	if err := files.WithTimeout(zipPerfUITimeout).WaitUntilExists(completeNotification)(ctx); err != nil {
-		s.Fatal("Failed to wait for end of copy operation: ", err)
+	h2, err := metrics.WaitForHistogramUpdate(ctx, tconn, histogramName, h1, histogramWaitTime)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get zip time histogram update: ", err)
 	}
 
-	duration := float64(time.Since(startTime).Milliseconds())
-
-	dismissButton := nodewith.Name(zipPerfDismissButtonLabel).Role(role.Button).Ancestor(zippingNotification)
-	if err := uiauto.Combine("Dismiss zipping notification",
-		files.LeftClick(dismissButton),
-		files.WaitUntilGone(dismissButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to dismiss zipping notification: ", err)
+	if len(h2.Buckets) > 1 {
+		s.Error("Unexpected zip time histogram update: ", h2)
+	} else if len(h2.Buckets) == 0 {
+		s.Fatal("No zip time histogram update observed")
+	} else if h2.Buckets[0].Count != 1 {
+		s.Error("Unexpected zip time sample count: ", h2)
 	}
 
 	// Return duration.
-	return duration
+	return float64(h2.Sum)
 }
