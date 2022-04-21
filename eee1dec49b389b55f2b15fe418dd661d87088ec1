@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b973cf42_3fbdaed2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-21T17:36:08Z",
+      "side": 1,
+      "message": "I mean this test\u0027s gonna have some overlap with the simple ALSA lib binary discussed in go/robust-ucm-changes. But maybe we can enable this test first to block off simple breakage from UCM CLs.",
+      "parentUuid": "2485f90a_dd357259",
+      "revId": "eee1dec49b389b55f2b15fe418dd661d87088ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1d302a4_c141409a",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
         "patchSetId": 4
@@ -49,6 +67,24 @@
       "writtenOn": "2022-04-21T16:37:58Z",
       "side": 1,
       "message": "can you also check modifiers?",
+      "revId": "eee1dec49b389b55f2b15fe418dd661d87088ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7490dd34_b527514e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-21T17:36:08Z",
+      "side": 1,
+      "message": "Are there perquisites for running a modifier, or should all SectionModifiers listed in HiFi.conf be runnable?",
+      "parentUuid": "d1d302a4_c141409a",
       "revId": "eee1dec49b389b55f2b15fe418dd661d87088ec1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
