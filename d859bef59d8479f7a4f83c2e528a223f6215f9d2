@@ -16,6 +16,24 @@
       "message": "This is fine, but could we figure out the programer from the ImageSection?",
       "revId": "d859bef59d8479f7a4f83c2e528a223f6215f9d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92ec68e8_f94156bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-21T10:40:02Z",
+      "side": 1,
+      "message": "Very likely, but it will require moving the current section definitions to map or struct. Which is fine, but I\u0027ll hold on that for now as we were talking about retrieving list of sections/programmers dynamically to reduce future influx of manual definition each time you want to add a testcase for any new image section.",
+      "parentUuid": "fa117b9f_2f1fa248",
+      "revId": "d859bef59d8479f7a4f83c2e528a223f6215f9d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
