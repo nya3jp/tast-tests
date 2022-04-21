@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -61,6 +62,7 @@ type meetTest struct {
 	useLacros   bool                 // Whether to use lacros browser.
 	tracing     bool                 // Whether to turn on tracing.
 	validation  bool                 // Whether to add extra cpu loads before collecting metrics.
+	quickWebRTC bool                 // Whether to skip reporting details of individual video streams from chrome://webrtc-internals.
 	botsOptions []bond.AddBotsOption // Customizes the meeting participant bots.
 }
 
@@ -74,7 +76,7 @@ const (
 	vp9 videoCodecReport = 1
 )
 
-const defaultTestTimeout = 20 * time.Minute
+const defaultTestTimeout = 25 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -134,9 +136,10 @@ func init() {
 			Name:    "49p",
 			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:    49,
-				layout: meetLayoutTiled,
-				cam:    true,
+				num:         49,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				quickWebRTC: true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -210,6 +213,7 @@ func init() {
 				num:         49,
 				layout:      meetLayoutTiled,
 				cam:         true,
+				quickWebRTC: true,
 				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
 			},
 			Fixture: "loggedInToCUJUser",
@@ -238,13 +242,11 @@ func init() {
 //   - Record and save metrics.
 func MeetCUJ(ctx context.Context, s *testing.State) {
 	const (
-		timeout                 = 10 * time.Second
-		defaultDocsURL          = "https://docs.new/"
-		jamboardURL             = "https://jamboard.google.com"
-		notes                   = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-		newTabTitle             = "New Tab"
-		decodingCodecMetricName = "meetcuj_decoding_codec"
-		encodingCodecMetricName = "meetcuj_encoding_codec"
+		timeout        = 10 * time.Second
+		defaultDocsURL = "https://docs.new/"
+		jamboardURL    = "https://jamboard.google.com"
+		notes          = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		newTabTitle    = "New Tab"
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -319,8 +321,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	sctx, cancel := context.WithTimeout(ctx, 90*time.Second)
 	defer cancel()
-	// Add 15 minutes to the bot duration, to ensure that the bots stay long enough
-	// for the test to detect the video codecs used for encoding and decoding.
 	if !codeOk {
 		defer func(ctx context.Context) {
 			s.Log("Removing all bots from the call")
@@ -330,7 +330,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}(closeCtx)
 		addBotsCount := meet.num
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+15*time.Minute, meet.botsOptions...)
+			// Add 20 minutes to the bot duration, to ensure that the bots stay long
+			// enough for the test to read info from chrome://webrtc-internals.
+			botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+20*time.Minute, meet.botsOptions...)
 			if err != nil {
 				return testing.PollBreak(errors.Wrapf(err, "failed to create %d bots", addBotsCount))
 			}
@@ -822,17 +824,26 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer webrtcInternals.Close()
 
-	// Report what video codecs were used for decoding and encoding.
 	webRTCReportWaiter := ui.WithTimeout(10 * time.Minute)
 	videoStream := nodewith.NameContaining("VideoStream").First()
 	if err := webRTCReportWaiter.WaitUntilExists(videoStream)(ctx); err != nil {
 		s.Error("Failed to wait for video stream info to appear: ", err)
 	}
-	if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
-		s.Errorf("Failed to report %s: %v", decodingCodecMetricName, err)
+
+	reportedCount, err := reportVideoStreams(ctx, webRTCReportWaiter, pv, meet.quickWebRTC, "decoding", "inbound", "framesReceived")
+	if err != nil {
+		s.Error("Failed to report on video stream decoding: ", err)
 	}
-	if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
-		s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
+	if !meet.quickWebRTC && reportedCount != meet.num {
+		s.Errorf("Unexpected number of active inbound video streams: got %d; expected %d", reportedCount, meet.num)
+	}
+
+	reportedCount, err = reportVideoStreams(ctx, webRTCReportWaiter, pv, meet.quickWebRTC, "encoding", "outbound", "framesSent")
+	if err != nil {
+		s.Error("Failed to report on video stream encoding: ", err)
+	}
+	if !meet.quickWebRTC && reportedCount == 0 {
+		s.Error("Found no active outbound video streams")
 	}
 
 	// Report WebRTC metrics for the sent video stream.
@@ -957,39 +968,183 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 }
 
-// reportCodec looks for node names containing given descriptions of a vp8 video stream
-// and a vp9 video stream, and reports the detected video codec to a performance metric.
-func reportCodec(ctx context.Context, ui *uiauto.Context, pv *perf.Values, metricName, vp8Description, vp9Description string) error {
-	foundVP8, err := ui.IsNodeFound(ctx, nodewith.NameContaining(vp8Description).First())
+// reportVideoStreams reads video stream info from chrome://webrtc-internals and reports to
+// performance metrics. This function assumes that chrome://webrtc-internals is already shown.
+// Returns the number of video streams successfully reported. Even when this function returns
+// an error, it still returns a valid number of video streams successfully reported.
+func reportVideoStreams(ctx context.Context, ui *uiauto.Context, pv *perf.Values, quick bool,
+	metricPrefix, rtpPrefix, framesTransmittedLabel string,
+) (int, error) {
+	vp8Finder := nodewith.NameContaining(fmt.Sprintf("(%s-rtp, VP8)", rtpPrefix))
+	foundVP8, err := ui.IsNodeFound(ctx, vp8Finder.First())
 	if err != nil {
-		return errors.Wrap(err, "failed to check for vp8 video stream")
+		return 0, errors.Wrap(err, "failed to check for vp8 video stream")
 	}
 
-	foundVP9, err := ui.IsNodeFound(ctx, nodewith.NameContaining(vp9Description).First())
+	vp9Finder := nodewith.NameContaining(fmt.Sprintf("(%s-rtp, VP9)", rtpPrefix))
+	foundVP9, err := ui.IsNodeFound(ctx, vp9Finder.First())
 	if err != nil {
-		return errors.Wrap(err, "failed to check for vp9 video stream")
+		return 0, errors.Wrap(err, "failed to check for vp9 video stream")
 	}
 
 	if !foundVP8 && !foundVP9 {
-		return errors.New("found neither a vp8 video stream nor a vp9 video stream")
+		return 0, errors.New("found neither a vp8 video stream nor a vp9 video stream")
 	}
 
 	if foundVP8 && foundVP9 {
-		return errors.New("found both a vp8 video stream and a vp9 video stream")
+		return 0, errors.New("found both a vp8 video stream and a vp9 video stream")
 	}
 
 	var codec videoCodecReport
+	var streamFinder *nodewith.Finder
 	if foundVP8 {
 		codec = vp8
+		streamFinder = vp8Finder
 	} else if foundVP9 {
 		codec = vp9
+		streamFinder = vp9Finder
 	}
 
 	pv.Set(perf.Metric{
-		Name:      metricName,
+		Name:      fmt.Sprintf("meetcuj_%s_codec", metricPrefix),
 		Unit:      "unitless",
 		Direction: perf.BiggerIsBetter,
 	}, float64(codec))
 
-	return nil
+	if quick {
+		return 0, nil
+	}
+
+	collapsed := streamFinder.Collapsed()
+	expanded := streamFinder.Expanded()
+	reportedCount := 0
+	for n := 0; ; n++ {
+		startTime := time.Now()
+
+		nthCollapsed := collapsed.Nth(n)
+		foundNthCollapsed, err := ui.IsNodeFound(ctx, nthCollapsed)
+		if err != nil {
+			return reportedCount, errors.Wrapf(err, "failed to check for collapsed info on %dth (in numbering starting from 0) %s video stream", n, rtpPrefix)
+		}
+
+		if !foundNthCollapsed {
+			break
+		}
+
+		if reported, err := reportVideoStream(ctx, ui, pv, metricPrefix, framesTransmittedLabel, nthCollapsed, expanded); reported {
+			reportedCount++
+			if err != nil {
+				return reportedCount, errors.Wrapf(err, "failed to collapse info on %dth (in numbering starting from 0) %s video stream (after successfully reporting on it)", n, rtpPrefix)
+			}
+		} else {
+			if err != nil {
+				return reportedCount, errors.Wrapf(err, "failed to report on %dth (in numbering starting from 0) %s video stream", n, rtpPrefix)
+			}
+		}
+
+		testing.ContextLogf(ctx, "Reported on %dth (in numbering starting from 0) %s video stream in %s", n, rtpPrefix, time.Since(startTime))
+	}
+
+	return reportedCount, nil
+}
+
+// reportVideoStream is used by reportVideoStreams, for each video stream.
+// Returns true if the video stream is active and was successfully reported.
+// If the video stream is inactive, this function returns false but does not
+// return an error, because inactive video streams are valid in a simulcast.
+// If the video stream is active and was successfully reported but then this
+// function failed to collapse the info, it returns true and an error.
+func reportVideoStream(ctx context.Context, ui *uiauto.Context, pv *perf.Values,
+	metricPrefix, framesTransmittedLabel string,
+	collapsed, expanded *nodewith.Finder,
+) (reported bool, returnedError error) {
+	if err := uiauto.Combine("expand video stream info",
+		ui.DoDefault(collapsed),
+		ui.WaitUntilExists(expanded),
+	)(ctx); err != nil {
+		return false, err
+	}
+	defer func() {
+		if err := uiauto.Combine("collapse video stream info",
+			ui.DoDefault(expanded),
+			ui.WaitUntilGone(expanded),
+		)(ctx); returnedError == nil {
+			returnedError = err
+		}
+	}()
+
+	framesTransmitted, err := lookUpUnsignedLong(ctx, ui, framesTransmittedLabel)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to look up %s", framesTransmittedLabel)
+	}
+	if framesTransmitted == 0 {
+		return false, nil
+	}
+
+	frameWidth, err := lookUpUnsignedLong(ctx, ui, "frameWidth")
+	if err != nil {
+		return false, errors.Wrap(err, "failed to look up frameWidth")
+	}
+	frameHeight, err := lookUpUnsignedLong(ctx, ui, "frameHeight")
+	if err != nil {
+		return false, errors.Wrap(err, "failed to look up frameHeight")
+	}
+	framesPerSecond, err := lookUpDouble(ctx, ui, "framesPerSecond")
+	if err != nil {
+		return false, errors.Wrap(err, "failed to look up framesPerSecond")
+	}
+
+	pv.Append(perf.Metric{
+		Name:      fmt.Sprintf("meetcuj_%s_frame_width", metricPrefix),
+		Unit:      "px",
+		Direction: perf.BiggerIsBetter,
+		Multiple:  true,
+	}, float64(frameWidth))
+	pv.Append(perf.Metric{
+		Name:      fmt.Sprintf("meetcuj_%s_frame_height", metricPrefix),
+		Unit:      "px",
+		Direction: perf.BiggerIsBetter,
+		Multiple:  true,
+	}, float64(frameHeight))
+	pv.Append(perf.Metric{
+		Name:      fmt.Sprintf("meetcuj_%s_frames_per_second", metricPrefix),
+		Unit:      "fps",
+		Direction: perf.BiggerIsBetter,
+		Multiple:  true,
+	}, framesPerSecond)
+
+	return true, nil
+}
+
+// lookUpUnsignedLong is for values documented as "unsigned long" here:
+// https://www.w3.org/TR/webrtc-stats/
+func lookUpUnsignedLong(ctx context.Context, ui *uiauto.Context, label string) (uint64, error) {
+	s, err := lookUp(ctx, ui, label)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read from table")
+	}
+	return strconv.ParseUint(s, 10, 64)
+}
+
+// lookUpDouble is for values documented as "double" here:
+// https://www.w3.org/TR/webrtc-stats/
+func lookUpDouble(ctx context.Context, ui *uiauto.Context, label string) (float64, error) {
+	s, err := lookUp(ctx, ui, label)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read from table")
+	}
+	return strconv.ParseFloat(s, 64)
+}
+
+// lookUp looks up a value in a table, and returns a string which can
+// be parsed into other data types.
+func lookUp(ctx context.Context, ui *uiauto.Context, label string) (string, error) {
+	info, err := ui.Info(ctx, nodewith.Name(label).First())
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get node info on label")
+	}
+	if info.NextSibling == nil {
+		return "", errors.New("found no next sibling of label")
+	}
+	return info.NextSibling.Name, nil
 }
