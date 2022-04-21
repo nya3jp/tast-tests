@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
@@ -53,21 +52,25 @@ func init() {
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
 func GetUserMediaPerf(ctx context.Context, s *testing.State) {
-	var cr getusermedia.ChromeInterface
+	var ci getusermedia.ChromeInterface
 	runLacros := s.Param().(browser.Type) == browser.TypeLacros
 	if runLacros {
-		var err error
-		cr, err = lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn())
+		tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to test API: ", err)
+		}
+
+		ci, err = lacros.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
-		defer cr.Close(ctx)
+		defer ci.Close(ctx)
 	} else {
-		cr = s.PreValue().(*chrome.Chrome)
+		ci = s.PreValue().(*chrome.Chrome)
 	}
 
 	// Run tests for 20 seconds per resolution.
-	results := getusermedia.RunGetUserMedia(ctx, s, cr, 20*time.Second, getusermedia.NoVerboseLogging)
+	results := getusermedia.RunGetUserMedia(ctx, s, ci, 20*time.Second, getusermedia.NoVerboseLogging)
 
 	if !s.HasError() {
 		// Set and upload frame statistics below.
