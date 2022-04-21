@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
@@ -63,8 +62,8 @@ func init() {
 		Desc:     "Logged into a user session for graphics testing (lacros)",
 		Contacts: []string{"lacros-team@google.com"},
 		Parent:   "gpuWatchDog",
-		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfigFromState(s).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
