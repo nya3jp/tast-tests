@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6777da01_597d609c",
+        "filename": "src/chromiumos/tast/common/tape/fixtures.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-21T17:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fcdea91_3de81176",
+      "revId": "fbfe2f5669e80fb3a56809a581687abaec6f35c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5befb52c_2ddee781",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-19T16:24:26Z",
       "side": 1,
       "message": "Add here the vars containing the location of the service account files:\t\t\nVars: []string{\"tape.service_account1\", \"tape.service_account2\"},",
+      "revId": "fbfe2f5669e80fb3a56809a581687abaec6f35c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10874fb4_8c4eaa50",
+        "filename": "src/chromiumos/tast/common/tape/fixtures.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-21T17:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5befb52c_2ddee781",
       "revId": "fbfe2f5669e80fb3a56809a581687abaec6f35c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
