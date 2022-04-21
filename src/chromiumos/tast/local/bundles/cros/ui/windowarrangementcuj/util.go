@@ -121,7 +121,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		}
 	} else {
 		var err error
-		connection.Chrome, l, connection.Source, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, browser.TypeLacros)
+		connection.Chrome, l, connection.Source, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).Chrome, browser.TypeLacros)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to setup lacros")
 		}

@@ -105,23 +105,6 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosWithArcEnabled is the same as lacros but with ARC enabled.
-	// See also lacrosWithArcBooted in src/chromiumos/tast/local/arc/fixture.go.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosWithArcEnabled",
-		Desc:     "Lacros Chrome from a pre-built image with ARC enabled",
-		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
-		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ARCEnabled(),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.LacrosExtraArgs("--no-first-run")}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
-	})
-
 	// lacrosOmaha is a fixture to enable Lacros by feature flag in Chrome.
 	// This does not require downloading a binary from Google Storage before the test.
 	// It will use the currently available fishfood release of Lacros from Omaha.

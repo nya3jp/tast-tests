@@ -252,13 +252,17 @@ func init() {
 
 	// lacrosWithArcBooted is a fixture that combines the functionality of arcBooted and lacros.
 	testing.AddFixture(&testing.Fixture{
-		Name:            "lacrosWithArcBooted",
-		Desc:            "Lacros Chrome from a pre-built image with ARC booted",
-		Contacts:        []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
-		Impl:            NewArcBootedWithParentChromeFixture(),
-		Parent:          "lacrosWithArcEnabled",
-		SetUpTimeout:    BootTimeout + ui.StartTimeout,
+		Name:     "lacrosWithArcBooted",
+		Desc:     "Lacros Chrome from a pre-built image with ARC booted",
+		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(chrome.ARCEnabled())).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    resetTimeout,
 		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	// arcBootedInClamshellMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in clamshell mode with Touch Mode Mouse compat features enabled in this fixture.
@@ -421,28 +425,20 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 		}
 	}
 
-	var cr *chrome.Chrome
-	var lacrosFixt lacrosfixt.FixtValue
-
-	if f.useParentChrome {
-		lacrosFixt = s.ParentValue().(lacrosfixt.FixtValue)
-		cr = lacrosFixt.Chrome()
-	} else {
-		opts, err := f.fOpt(ctx, s)
-		if err != nil {
-			s.Fatal("Failed to obtain fixture options: ", err)
-		}
-
-		cr, err = chrome.New(ctx, opts...)
-		if err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
-		}
-		defer func() {
-			if !success {
-				cr.Close(ctx)
-			}
-		}()
+	opts, err := f.fOpt(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to obtain fixture options: ", err)
 	}
+
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer func() {
+		if !success {
+			cr.Close(ctx)
+		}
+	}()
 
 	if f.playStoreOptin {
 		s.Log("Performing Play Store Optin")
@@ -504,10 +500,9 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 	f.init = init
 	success = true
 	return &PreData{
-		Chrome:     cr,
-		ARC:        arc,
-		UIDevice:   d,
-		LacrosFixt: lacrosFixt,
+		Chrome:   cr,
+		ARC:      arc,
+		UIDevice: d,
 	}
 }
 
