@@ -16,6 +16,218 @@
       "message": "LGTM on current patch. Feel free to add Tast owners for review.",
       "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d290fcf4_68911b07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "IIUC, you can use `virtualizationInfo` instead of `*virtualizationInfo` so the json parser will raise error when the field is not found. If so, you don\u0027t need to check it manually.",
+      "range": {
+        "startLine": 74,
+        "startChar": 21,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36c9fa57_24986206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "I think we should create a subtest and set it to informational to prevent it break the CQ.\nSee CL:3583814 for example.",
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f7d491_f6cde305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "This should be an uint64.\n\nHere should use\n```\n*(*uint64)(unsafe.Pointer(\u0026bytes[0]))\n```\n\nto align with the implementation of readmsr tool.",
+      "range": {
+        "startLine": 96,
+        "startChar": 29,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd66724_8d4db5d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "Use constants so the reader know what these are.",
+      "range": {
+        "startLine": 129,
+        "startChar": 28,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d17a37_514e9527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "Also check the nil situation. It should be like checking both VMX and SVM is not supported.",
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f1b68af_fa1700c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "I think this is not safe. If a flag are a substring of another (or even string in other fields), this could be an issue.",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 45
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84348731_c24b12a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "Create a function to get cpu flags.",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d25ef41_b07b37ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "I think this function is not clear. Maybe you should just write a function which returns a expected virtualizationInfo and compare them.",
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f3d2d3_bc0aca91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "Just return err. The same goes to others.",
+      "range": {
+        "startLine": 268,
+        "startChar": 8,
+        "endLine": 268,
+        "endChar": 32
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b025b5e_3bac7638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-21T03:49:20Z",
+      "side": 1,
+      "message": "How about changing the cros-health-tool so you don\u0027t need to do the convertion here.",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 294,
+        "endChar": 2
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
