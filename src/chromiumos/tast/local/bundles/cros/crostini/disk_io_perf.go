@@ -233,7 +233,7 @@ func DiskIOPerf(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
 	kb := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
 	settingsApp, err := settings.OpenLinuxSettings(ctx, tconn, cr)
 	if err != nil {

@@ -64,7 +64,7 @@ func init() {
 func HomeDirectoryRenameFile(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
 	cont := s.FixtValue().(crostini.FixtureData).Cont
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	kb := s.FixtValue().(crostini.FixtureData).KB
 
 	// Open Files app.

@@ -64,7 +64,7 @@ func init() {
 
 func NoAccessToDownloads(ctx context.Context, s *testing.State) {
 	cont := s.FixtValue().(crostini.FixtureData).Cont
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
 
 	if err := checkHomeDirInContainerEmpty(ctx, cont); err != nil {

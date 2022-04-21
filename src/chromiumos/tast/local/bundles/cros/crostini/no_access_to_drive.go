@@ -61,7 +61,7 @@ func init() {
 
 func NoAccessToDrive(ctx context.Context, s *testing.State) {
 	cont := s.FixtValue().(crostini.FixtureData).Cont
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
 	if err := cont.CheckFileDoesNotExistInDir(ctx, sharedfolders.MountPath, sharedfolders.MountFolderGoogleDrive); err != nil {
 		s.Fatalf("GoogleDrive is unexpectedly listed in %s in the container: %s", sharedfolders.MountPath, err)

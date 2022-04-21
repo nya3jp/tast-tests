@@ -59,7 +59,7 @@ func init() {
 
 func LaunchTerminal(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
-	cr := pre.ParentFixtV.Chrome()
+	cr := pre.Chrome
 	cont := pre.Cont
 
 	const terminalURLContains = ".html?command=vmshell"

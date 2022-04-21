@@ -81,17 +81,17 @@ func init() {
 		Name:     "chromeLoggedInForCrostiniWithLacros",
 		Desc:     "Logged into a session and enable Lacros",
 		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			opts := generateChromeOpts(s)
 			if arc.Supported() {
-				opts = append(opts, chrome.ARCEnabled())
+				opts = append(opts, chrome.ARCSupported())
 				opts = append(opts, chrome.ExtraArgs(arc.DisableSyncFlags()...))
+
 			} else {
 				opts = append(opts, chrome.ARCDisabled())
 			}
-			opts = append(opts, chrome.EnableFeatures("LacrosPrimary"),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"))
-			return opts, nil
+			return lacrosfixt.NewConfigFromState(s, lacrosfixt.Mode(lacros.LacrosPrimary),
+				lacrosfixt.ChromeOptions(opts...)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -207,11 +207,11 @@ type crostiniFixture struct {
 
 // FixtureData is the data returned by SetUp and passed to tests.
 type FixtureData struct {
-	ParentFixtV chrome.HasChrome
-	Tconn       *chrome.TestConn
-	Cont        *vm.Container
-	KB          *input.KeyboardEventWriter
-	PostData    *PostTestData
+	Chrome   *chrome.Chrome
+	Tconn    *chrome.TestConn
+	Cont     *vm.Container
+	KB       *input.KeyboardEventWriter
+	PostData *PostTestData
 }
 
 var preTestDataBuster = &preTestData{
@@ -251,12 +251,8 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 
 	var err error
-	if lv, ok := s.ParentValue().(lacrosfixt.FixtValue); ok {
-		f.tconn = lv.TestAPIConn()
-	} else {
-		if f.tconn, err = f.cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to create test API connection: ", err)
-		}
+	if f.tconn, err = f.cr.TestAPIConn(ctx); err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, f.tconn)
 
@@ -295,7 +291,7 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 
-	return FixtureData{s.ParentValue().(chrome.HasChrome), f.tconn, f.cont, f.kb, f.postData}
+	return FixtureData{f.cr, f.tconn, f.cont, f.kb, f.postData}
 }
 
 func (f *crostiniFixture) TearDown(ctx context.Context, s *testing.FixtState) {

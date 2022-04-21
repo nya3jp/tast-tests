@@ -72,7 +72,7 @@ func init() {
 func ShareDrive(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
 	cont := s.FixtValue().(crostini.FixtureData).Cont
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx

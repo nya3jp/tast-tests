@@ -56,7 +56,7 @@ func init() {
 func NoSharedFolder(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
 	cont := s.FixtValue().(crostini.FixtureData).Cont
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
 	// Check list of shared folders in Settings app.
 	sharedFolders := sharedfolders.NewSharedFolders(tconn)

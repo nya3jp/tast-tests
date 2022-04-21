@@ -273,7 +273,7 @@ func forceClipboard(ctx context.Context, tconn *chrome.TestConn, data string) er
 func SecureCopyPaste(ctx context.Context, s *testing.State) {
 	conf := s.Param().(secureCopyPasteConfig)
 	pre := s.FixtValue().(crostini.FixtureData)
-	cr := pre.ParentFixtV.Chrome()
+	cr := pre.Chrome
 	tconn := pre.Tconn
 	cont := pre.Cont
 
