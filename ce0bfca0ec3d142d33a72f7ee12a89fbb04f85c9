@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0cf5e68_9305d566",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-21T22:02:27Z",
+      "side": 1,
+      "message": "I was looking into if it would make sense to use a hwdep for this, but from what I can see there is no precedent for using external hardware devices as hwdeps. Since this is dependent on a usb with smart support being plugged into the device at the time of the testing, and not consistent hardware that is always part of the DUT, I don\u0027t know if a hwdep makes sense. I understand that there is no TestNA result, so I was hoping we could better control when these tests are being run, maybe with a suite or a software dep of some kind? Do you have any suggestions about how to better handle this to avoid hitting the NA case?",
+      "parentUuid": "04e2f864_6e555b7a",
+      "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd386fc8_0c348301",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/usb_util.go",
         "patchSetId": 4
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "smart data, especially raw value, are defined by the vendor.\nthe wear out you are doing on one device will tell what to look for.\nhttps://www.smartmontools.org/ have gather some data to help decipher the data.",
       "parentUuid": "eed72bd9_af0b7c26",
+      "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ae0e19_a0c5d80f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/usb_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-21T22:02:27Z",
+      "side": 1,
+      "message": "After running additional tests on the drive, it looks like the RAW_VALUE is changing and the Percentage Used Endurance Indicator is updating as well. Considering the RAW_VALUE vs VALUE issue, it seems like a better idea to use the Percentage Used indicator, or the GiB Written data as that also is consistently updating.",
+      "parentUuid": "80dda43e_f01b5689",
       "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
