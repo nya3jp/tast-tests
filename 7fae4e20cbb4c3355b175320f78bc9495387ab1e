@@ -16,6 +16,24 @@
       "message": "On a more general note, we had a plan to case by case decide which chrome.Option flags would be propagated to lacros by chrome.Chrome, maybe this is one of these cases? idk\n\nhidehiko@, wdyt?",
       "revId": "7fae4e20cbb4c3355b175320f78bc9495387ab1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9954cecd_ef8f1789",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-21T06:53:33Z",
+      "side": 1,
+      "message": "I think it\u0027s inherently a browser level feature that needs to be handled for the apps hosted by each browser independently. Please let me know how this could be addressed.",
+      "parentUuid": "21728a3c_a2dbef83",
+      "revId": "7fae4e20cbb4c3355b175320f78bc9495387ab1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
