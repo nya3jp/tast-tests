@@ -13,18 +13,24 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtvals"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
-func init() {
+// policyParams entail parameters describing the set policy for a user.
+type policyParams struct {
+	AllowsImmediateDelivery bool // specifies whether immediate delivery of files is allowed
+	AllowsUnscannableFiles  bool // specifies whether unscannable files (large or encrypted) are allowed
+	ScansEnabledForDownload bool // specifies whether malware and dlp scans are enabled for download
+	ScansEnabledForUpload   bool // specifies whether malware and dlp scans are enabled for upload
+}
 
+func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TestDownload,
 		LacrosStatus: testing.LacrosVariantExists,
@@ -47,18 +53,42 @@ func init() {
 			{
 				Name:    "scan_enabled_allows_immediate_and_unscannable",
 				Fixture: "lacrosGaiaSignedInProdPolicyWPDownloadAllowExtra",
+				Val: policyParams{
+					AllowsImmediateDelivery: true,
+					AllowsUnscannableFiles:  true,
+					ScansEnabledForDownload: true,
+					ScansEnabledForUpload:   false,
+				},
 			},
 			{
 				Name:    "scan_enabled_blocks_immediate_and_unscannable",
 				Fixture: "lacrosGaiaSignedInProdPolicyWPDownloadBlockExtra",
+				Val: policyParams{
+					AllowsImmediateDelivery: false,
+					AllowsUnscannableFiles:  false,
+					ScansEnabledForDownload: true,
+					ScansEnabledForUpload:   false,
+				},
 			},
 			{
 				Name:    "scan_disabled_allows_immediate_and_unscannable",
 				Fixture: "lacrosGaiaSignedInProdPolicyWPUploadAllowExtra",
+				Val: policyParams{
+					AllowsImmediateDelivery: true,
+					AllowsUnscannableFiles:  true,
+					ScansEnabledForDownload: false,
+					ScansEnabledForUpload:   true,
+				},
 			},
 			{
 				Name:    "scan_disabled_blocks_immediate_and_unscannable",
 				Fixture: "lacrosGaiaSignedInProdPolicyWPUploadBlockExtra",
+				Val: policyParams{
+					AllowsImmediateDelivery: false,
+					AllowsUnscannableFiles:  false,
+					ScansEnabledForDownload: false,
+					ScansEnabledForUpload:   true,
+				},
 			},
 		},
 	})
@@ -78,13 +108,16 @@ func TestDownload(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify policy
-	tconn := s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn()
+	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
 	devicePolicies, err := policyutil.PoliciesFromDUT(ctx, tconn)
 	if err != nil {
 		s.Fatal("Could not get device policies: ", err)
 	}
 	_, ok := devicePolicies.Chrome["OnFileDownloadedEnterpriseConnector"]
-	policyParams := s.FixtValue().(*fixtvals.FixtValue).PolicyParams
+	policyParams := s.Param().(policyParams)
 	if !ok && policyParams.ScansEnabledForDownload {
 		s.Fatal("Policy isn't set, but should be")
 	}
@@ -99,7 +132,10 @@ func TestDownload(ctx context.Context, s *testing.State) {
 func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType browser.Type) {
 	URL := "https://bce-testingsite.appspot.com/"
 
-	tconn := s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn()
+	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -160,7 +196,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 	} {
 		s.Run(ctx, param.testName, func(ctx context.Context, s *testing.State) {
 			dlFileName := param.dlFileName
-			policyParams := s.FixtValue().(*fixtvals.FixtValue).PolicyParams
+			policyParams := s.Param().(policyParams)
 			shouldBlockDownload := false
 			if policyParams.ScansEnabledForDownload {
 				if param.dlIsUnscannable {
@@ -239,7 +275,10 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 }
 
 func checkDMTokenRegistered(ctx context.Context, s *testing.State, br *browser.Browser) error {
-	tconn := s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn()
+	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
 
 	// Close all prior notifications
 	if err := ash.CloseNotifications(ctx, tconn); err != nil {

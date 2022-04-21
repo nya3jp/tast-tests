@@ -8,9 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtvals"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -25,12 +23,6 @@ func init() {
 			"webprotect-eng@google.com",
 		},
 		Impl: CreateFixture(
-			fixtvals.PolicyParams{
-				AllowsImmediateDelivery: true,
-				AllowsUnscannableFiles:  true,
-				ScansEnabledForDownload: true,
-				ScansEnabledForUpload:   false,
-			},
 			"enterpriseconnectors.username1",
 			"enterpriseconnectors.password1",
 		),
@@ -51,12 +43,6 @@ func init() {
 			"webprotect-eng@google.com",
 		},
 		Impl: CreateFixture(
-			fixtvals.PolicyParams{
-				AllowsImmediateDelivery: false,
-				AllowsUnscannableFiles:  false,
-				ScansEnabledForDownload: true,
-				ScansEnabledForUpload:   false,
-			},
 			"enterpriseconnectors.username2",
 			"enterpriseconnectors.password2",
 		),
@@ -77,12 +63,6 @@ func init() {
 			"webprotect-eng@google.com",
 		},
 		Impl: CreateFixture(
-			fixtvals.PolicyParams{
-				AllowsImmediateDelivery: true,
-				AllowsUnscannableFiles:  true,
-				ScansEnabledForDownload: false,
-				ScansEnabledForUpload:   true,
-			},
 			"enterpriseconnectors.username3",
 			"enterpriseconnectors.password3",
 		),
@@ -103,12 +83,6 @@ func init() {
 			"webprotect-eng@google.com",
 		},
 		Impl: CreateFixture(
-			fixtvals.PolicyParams{
-				AllowsImmediateDelivery: false,
-				AllowsUnscannableFiles:  false,
-				ScansEnabledForDownload: false,
-				ScansEnabledForUpload:   true,
-			},
 			"enterpriseconnectors.username4",
 			"enterpriseconnectors.password4",
 		),
@@ -123,23 +97,12 @@ func init() {
 	})
 }
 
-func CreateFixture(policyParams fixtvals.PolicyParams, user, pw string) testing.FixtureImpl {
-	return lacrosfixt.NewComposedFixture(
-		lacros.Rootfs,
-		func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
-			return &fixtvals.FixtValue{
-				PolicyParams: policyParams,
-				FixtValue:    v,
-			}
-		},
-		func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			username := s.RequiredVar(user)
-			password := s.RequiredVar(pw)
-			return []chrome.Option{
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
-				chrome.ProdPolicy(),
-			}, nil
-		},
-	)
+func CreateFixture(user, pw string) testing.FixtureImpl {
+	return chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		username := s.RequiredVar(user)
+		password := s.RequiredVar(pw)
+		return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
+			chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+			chrome.ProdPolicy())).Opts()
+	})
 }
