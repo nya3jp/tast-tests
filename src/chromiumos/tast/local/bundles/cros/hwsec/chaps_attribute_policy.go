@@ -28,8 +28,7 @@ func init() {
 			"zuan@chromium.org",
 			"cros-hwsec@chromium.org",
 		},
-		SoftwareDeps: []string{"chrome"},
-		Timeout:      3 * time.Minute,
+		Timeout: 3 * time.Minute,
 	})
 }
 

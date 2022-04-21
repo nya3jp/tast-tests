@@ -29,7 +29,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "tpm2"},
+		SoftwareDeps: []string{"tpm2"},
 		Timeout:      4 * time.Minute,
 	})
 }
