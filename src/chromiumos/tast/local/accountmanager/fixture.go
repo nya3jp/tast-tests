@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -40,14 +39,12 @@ func init() {
 		Contacts: []string{
 			"anastasiian@chromium.org", "team-dent@google.com",
 		},
-		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 				chrome.EnableFeatures("ArcAccountRestrictions"),
 				chrome.ARCSupported(),
-				chrome.ExtraArgs(arc.DisableSyncFlags()...),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-			}, nil
+				chrome.ExtraArgs(arc.DisableSyncFlags()...))).Opts()
 		}),
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -60,70 +57,54 @@ func init() {
 		Contacts: []string{
 			"anastasiian@chromium.org", "team-dent@google.com",
 		},
-		Impl:            &accountManagerTestFixture{},
-		Parent:          "loggedInToLacros",
+		Impl:            &accountManagerTestFixture{isLacros: true},
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars: []string{
-			"ui.gaiaPoolDefault",
-		},
+		Vars:            []string{"ui.gaiaPoolDefault"},
 	})
 }
 
-// Verify that *FixtureData implements lacrosfixt.FixtValue interface.
-var _ lacrosfixt.FixtValue = (*FixtureData)(nil)
-
 // FixtureData is the struct returned by the preconditions.
 type FixtureData struct {
-	cr         *chrome.Chrome
-	ARC        *arc.ARC
-	LacrosFixt lacrosfixt.FixtValue
+	cr  *chrome.Chrome
+	ARC *arc.ARC
 }
 
 // Chrome gets the CrOS-chrome instance.
-// Implement chrome.HasChrome and lacrosfixt.FixtValue interface.
+// Implements the chrome.HasChrome interface.
 func (f FixtureData) Chrome() *chrome.Chrome {
 	return f.cr
 }
 
-// TestAPIConn gets the CrOS-chrome test connection.
-// Implement lacrosfixt.FixtValue interface.
-func (f FixtureData) TestAPIConn() *chrome.TestConn {
-	return f.LacrosFixt.TestAPIConn()
-}
-
 type accountManagerTestFixture struct {
-	cr  *chrome.Chrome
-	arc *arc.ARC
-	// Whether chrome is created by parent fixture.
-	useParentChrome bool
+	cr       *chrome.Chrome
+	arc      *arc.ARC
+	isLacros bool
 }
 
 func (f *accountManagerTestFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	var cr *chrome.Chrome
-	var lacrosFixt lacrosfixt.FixtValue
+	chromeLoginCtx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
+	defer cancel()
 
-	if s.ParentValue() != nil {
-		lacrosFixt = s.ParentValue().(lacrosfixt.FixtValue)
-		cr = lacrosFixt.Chrome()
-		f.useParentChrome = true
-	} else {
-		chromeLoginCtx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
-		defer cancel()
+	opts := []chrome.Option{
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.EnableFeatures("ArcAccountRestrictions"),
+		chrome.ARCSupported(),
+		chrome.ExtraArgs(arc.DisableSyncFlags()...),
+	}
 
-		opts := []chrome.Option{
-			chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-			chrome.EnableFeatures("ArcAccountRestrictions"),
-			chrome.ARCSupported(),
-			chrome.ExtraArgs(arc.DisableSyncFlags()...),
-		}
-
+	if f.isLacros {
 		var err error
-		cr, err = chrome.New(chromeLoginCtx, opts...)
+		opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
 		if err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
+			s.Fatal("Failed to get lacros options: ", err)
 		}
+	}
+
+	cr, err := chrome.New(chromeLoginCtx, opts...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
 	}
 
 	const playStorePackageName = "com.android.vending"
@@ -146,14 +127,11 @@ func (f *accountManagerTestFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to start ARC: ", err)
 	}
 
-	if !f.useParentChrome {
-		chrome.Lock()
-	}
-
+	chrome.Lock()
 	f.cr = cr
 	f.arc = a
 	cr = nil
-	return FixtureData{cr: f.cr, ARC: f.arc, LacrosFixt: lacrosFixt}
+	return FixtureData{cr: f.cr, ARC: f.arc}
 }
 
 func (f *accountManagerTestFixture) TearDown(ctx context.Context, s *testing.FixtState) {
@@ -161,20 +139,17 @@ func (f *accountManagerTestFixture) TearDown(ctx context.Context, s *testing.Fix
 		testing.ContextLog(ctx, "Failed to close ARC connection: ", err)
 	}
 
-	if !f.useParentChrome {
-		chrome.Unlock()
-		if err := f.cr.Close(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to close Chrome connection: ", err)
-		}
+	chrome.Unlock()
+	if err := f.cr.Close(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to close Chrome connection: ", err)
 	}
 }
 
 func (f *accountManagerTestFixture) Reset(ctx context.Context) error {
-	if !f.useParentChrome {
-		if err := f.cr.ResetState(ctx); err != nil {
-			return errors.Wrap(err, "failed to reset chrome")
-		}
+	if err := f.cr.ResetState(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset chrome")
 	}
+
 	return nil
 }
 
