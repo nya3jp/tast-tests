@@ -132,7 +132,7 @@ func testPhotoResolution(ctx context.Context, app *cca.App) error {
 		if err := app.SwitchMode(ctx, cca.Photo); err != nil {
 			return errors.Wrap(err, "failed to switch to photo mode")
 		}
-		return iterateResolutions(ctx, app, cca.PhotoResolution, facing, func(r cca.Resolution) error {
+		return app.IterateResolutions(ctx, cca.PhotoResolution, facing, func(r cca.Resolution) error {
 			or, err := getOrientedResolution(ctx, app, r)
 			if err != nil {
 				return err
@@ -254,7 +254,7 @@ func testVideoResolution(ctx context.Context, app *cca.App) error {
 		if err := app.SwitchMode(ctx, cca.Video); err != nil {
 			return errors.Wrap(err, "failed to switch to video mode")
 		}
-		return iterateResolutions(ctx, app, cca.VideoResolution, facing, func(r cca.Resolution) error {
+		return app.IterateResolutions(ctx, cca.VideoResolution, facing, func(r cca.Resolution) error {
 			or, err := getOrientedResolution(ctx, app, r)
 			if err != nil {
 				return err
@@ -278,120 +278,6 @@ func testVideoResolution(ctx context.Context, app *cca.App) error {
 			return nil
 		})
 	})
-}
-
-// withInnerResolutionSetting opens inner |rt| type resolution menu for |facing| camera, calls |onOpened()| and closes the menu.
-func withInnerResolutionSetting(ctx context.Context, app *cca.App, rt cca.ResolutionType, facing cca.Facing, onOpened func() error) error {
-	if err := cca.MainMenu.Open(ctx, app); err != nil {
-		return err
-	}
-	defer cca.MainMenu.Close(ctx, app)
-
-	if err := cca.ResolutionMenu.Open(ctx, app); err != nil {
-		return err
-	}
-	defer cca.ResolutionMenu.Close(ctx, app)
-
-	innerMenu, err := app.InnerResolutionSetting(ctx, facing, rt)
-	if err != nil {
-		return err
-	}
-	if err := innerMenu.Open(ctx, app); err != nil {
-		return err
-	}
-	defer innerMenu.Close(ctx, app)
-
-	return onOpened()
-}
-
-// iterateResolutions toggles through all |rt| resolutions in camera |facing| setting menu and calls |onSwitched| with the toggled resolution.
-func iterateResolutions(ctx context.Context, app *cca.App, rt cca.ResolutionType, facing cca.Facing, onSwitched func(r cca.Resolution) error) error {
-	optionUI := cca.PhotoResolutionOption
-	if rt == cca.VideoResolution {
-		optionUI = cca.VideoResolutionOption
-	}
-
-	var numOptions int
-	if err := withInnerResolutionSetting(ctx, app, rt, facing, func() error {
-		count, err := app.CountUI(ctx, optionUI)
-		if err != nil {
-			return err
-		}
-		numOptions = count
-		return nil
-	}); err != nil {
-		return err
-	}
-
-	toggleOption := func(index int) (cca.Resolution, error) {
-		var r cca.Resolution
-		err := withInnerResolutionSetting(ctx, app, rt, facing, func() error {
-			width, err := attributeValueOfOption(ctx, app, optionUI, index, "data-width")
-			if err != nil {
-				return err
-			}
-			height, err := attributeValueOfOption(ctx, app, optionUI, index, "data-height")
-			if err != nil {
-				return err
-			}
-			if err := clickOptionAndWaitConfiguration(ctx, app, optionUI, index); err != nil {
-				return errors.Wrap(err, "failed to click option and wait configration done")
-			}
-			r.Width = width
-			r.Height = height
-			return nil
-		})
-		return r, err
-	}
-
-	for index := 0; index < numOptions; index++ {
-		r, err := toggleOption(index)
-		if err != nil {
-			return err
-		}
-		if err := onSwitched(r); err != nil {
-			return err
-		}
-	}
-
-	return nil
-}
-
-func clickOptionAndWaitConfiguration(ctx context.Context, app *cca.App, optionUI cca.UIComponent, index int) error {
-	testing.ContextLogf(ctx, "Switch to #%v of %v", index, optionUI.Name)
-	checked, err := app.IsCheckedWithIndex(ctx, optionUI, index)
-	if err != nil {
-		return err
-	}
-	if checked {
-		testing.ContextLogf(ctx, "#%d resolution option is already checked", index)
-	} else {
-		if err := app.TriggerConfiguration(ctx, func() error {
-			testing.ContextLogf(ctx, "Checking with #%d resolution option", index)
-			if err := app.ClickWithIndex(ctx, optionUI, index); err != nil {
-				return errors.Wrap(err, "failed to click on resolution item")
-			}
-			return nil
-		}); err != nil {
-			return errors.Wrap(err, "camera configuration failed after switching resolution")
-		}
-	}
-
-	return nil
-}
-
-// attributeValueOfOption returns the attribute value of |index| th of
-// |optionsUI| given by the name of the attribute. The value will be in integer.
-func attributeValueOfOption(ctx context.Context, app *cca.App, optionsUI cca.UIComponent, index int, attribute string) (int, error) {
-	stringValue, err := app.AttributeWithIndex(ctx, optionsUI, index, attribute)
-	if err != nil {
-		return -1, err
-	}
-	intValue, err := strconv.Atoi(stringValue)
-	if err != nil {
-		return -1, errors.Wrapf(err, "failed to convert the value (%v) of the attribute (%v) to int", stringValue, attribute)
-	}
-	return intValue, nil
 }
 
 // getOrientedAspectRatio gets aspect ratio with respect to screen orientation.
@@ -444,7 +330,7 @@ func testPhotoResolutionAndAspectRatio(ctx context.Context, app *cca.App) error 
 		// Checks that when changing the aspect ratio preference of current
 		// running camera, the camera stream will be reconfigured.
 		for index := 0; index < numOptions; index++ {
-			if err := clickOptionAndWaitConfiguration(ctx, app, aspectRatioOptions, index); err != nil {
+			if err := app.ClickOptionAndWaitConfiguration(ctx, aspectRatioOptions, index); err != nil {
 				return errors.Wrap(err, "failed to click the aspect ratio option and wait for the configration done")
 			}
 
@@ -505,7 +391,7 @@ func clickThroughAllPhotoResolutionOptions(ctx context.Context, app *cca.App, fa
 	}
 
 	for index := 0; index < numOptions; index++ {
-		if err := clickOptionAndWaitConfiguration(ctx, app, photoResolotionOptions, index); err != nil {
+		if err := app.ClickOptionAndWaitConfiguration(ctx, photoResolotionOptions, index); err != nil {
 			return errors.Wrap(err, "failed to click the aspect ratio option and wait for the configration done")
 		}
 
@@ -563,15 +449,15 @@ func testVideoResolutionAndFPS(ctx context.Context, app *cca.App) error {
 		}
 
 		for index := 0; index < numOptions; index++ {
-			if err := clickOptionAndWaitConfiguration(ctx, app, videoResolutionOptions, index); err != nil {
+			if err := app.ClickOptionAndWaitConfiguration(ctx, videoResolutionOptions, index); err != nil {
 				return errors.Wrap(err, "failed to click the aspect ratio option and wait for the configration done")
 			}
 
-			width, err := attributeValueOfOption(ctx, app, videoResolutionOptions, index, "data-width")
+			width, err := app.AttributeWithIndexAsInt(ctx, videoResolutionOptions, index, "data-width")
 			if err != nil {
 				return err
 			}
-			height, err := attributeValueOfOption(ctx, app, videoResolutionOptions, index, "data-height")
+			height, err := app.AttributeWithIndexAsInt(ctx, videoResolutionOptions, index, "data-height")
 			if err != nil {
 				return err
 			}

@@ -1684,3 +1684,105 @@ func (a *App) CheckCameraFacing(ctx context.Context, facing Facing) error {
 		return nil
 	})
 }
+
+// withInnerResolutionSetting opens inner |rt| type resolution menu for |facing| camera, calls |onOpened()| and closes the menu.
+func (a *App) withInnerResolutionSetting(ctx context.Context, rt ResolutionType, facing Facing, onOpened func() error) error {
+	if err := MainMenu.Open(ctx, a); err != nil {
+		return err
+	}
+	defer MainMenu.Close(ctx, a)
+
+	if err := ResolutionMenu.Open(ctx, a); err != nil {
+		return err
+	}
+	defer ResolutionMenu.Close(ctx, a)
+
+	innerMenu, err := a.InnerResolutionSetting(ctx, facing, rt)
+	if err != nil {
+		return err
+	}
+	if err := innerMenu.Open(ctx, a); err != nil {
+		return err
+	}
+	defer innerMenu.Close(ctx, a)
+
+	return onOpened()
+}
+
+// ClickOptionAndWaitConfiguration clicks on the option specified by |index| and
+// waits for the new camera settings to be configured.
+func (a *App) ClickOptionAndWaitConfiguration(ctx context.Context, optionUI UIComponent, index int) error {
+	testing.ContextLogf(ctx, "Switch to #%v of %v", index, optionUI.Name)
+	checked, err := a.IsCheckedWithIndex(ctx, optionUI, index)
+	if err != nil {
+		return err
+	}
+	if checked {
+		testing.ContextLogf(ctx, "#%d resolution option is already checked", index)
+	} else {
+		if err := a.TriggerConfiguration(ctx, func() error {
+			testing.ContextLogf(ctx, "Checking with #%d resolution option", index)
+			if err := a.ClickWithIndex(ctx, optionUI, index); err != nil {
+				return errors.Wrap(err, "failed to click on resolution item")
+			}
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "camera configuration failed after switching resolution")
+		}
+	}
+
+	return nil
+}
+
+// IterateResolutions toggles through all |rt| resolutions in camera |facing| setting menu and calls |onSwitched| with the toggled resolution.
+func (a *App) IterateResolutions(ctx context.Context, rt ResolutionType, facing Facing, onSwitched func(r Resolution) error) error {
+	optionUI := PhotoResolutionOption
+	if rt == VideoResolution {
+		optionUI = VideoResolutionOption
+	}
+
+	var numOptions int
+	if err := a.withInnerResolutionSetting(ctx, rt, facing, func() error {
+		count, err := a.CountUI(ctx, optionUI)
+		if err != nil {
+			return err
+		}
+		numOptions = count
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	toggleOption := func(index int) (Resolution, error) {
+		var r Resolution
+		err := a.withInnerResolutionSetting(ctx, rt, facing, func() error {
+			width, err := a.AttributeWithIndexAsInt(ctx, optionUI, index, "data-width")
+			if err != nil {
+				return err
+			}
+			height, err := a.AttributeWithIndexAsInt(ctx, optionUI, index, "data-height")
+			if err != nil {
+				return err
+			}
+			if err := a.ClickOptionAndWaitConfiguration(ctx, optionUI, index); err != nil {
+				return errors.Wrap(err, "failed to click option and wait configration done")
+			}
+			r.Width = width
+			r.Height = height
+			return nil
+		})
+		return r, err
+	}
+
+	for index := 0; index < numOptions; index++ {
+		r, err := toggleOption(index)
+		if err != nil {
+			return err
+		}
+		if err := onSwitched(r); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}

@@ -8,6 +8,7 @@ package cca
 import (
 	"context"
 	"fmt"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -371,7 +372,7 @@ func (a *App) CountUI(ctx context.Context, ui UIComponent) (int, error) {
 	return number, nil
 }
 
-// AttributeWithIndex returns the attr attribute of the index th ui.
+// AttributeWithIndex returns the attr attribute of the |index|'th |ui|.
 func (a *App) AttributeWithIndex(ctx context.Context, ui UIComponent, index int, attr string) (string, error) {
 	wrapError := func(err error) error {
 		return errors.Wrapf(err, "failed to get %v attribute of %v th %v", attr, index, ui.Name)
@@ -388,6 +389,20 @@ func (a *App) AttributeWithIndex(ctx context.Context, ui UIComponent, index int,
 		return "", wrapError(err)
 	}
 	return value, nil
+}
+
+// AttributeWithIndexAsInt returns the attribute value of |index|'th |ui| and
+// return the value as integer. Returns -1 on error.
+func (a *App) AttributeWithIndexAsInt(ctx context.Context, ui UIComponent, index int, attr string) (int, error) {
+	stringValue, err := a.AttributeWithIndex(ctx, ui, index, attr)
+	if err != nil {
+		return -1, err
+	}
+	intValue, err := strconv.Atoi(stringValue)
+	if err != nil {
+		return -1, errors.Wrapf(err, "failed to convert the value (%v) of the attribute (%v) to int", stringValue, attr)
+	}
+	return intValue, nil
 }
 
 // ScreenXYWithIndex returns the screen coordinates of the left-top corner of the |index|'th |ui|.
