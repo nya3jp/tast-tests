@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9d6873_d0b15393",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-21T17:55:02Z",
+      "side": 1,
+      "message": "1. Where is the code that actually do the \"Create logfilename when running the test \"? The file has more than 10k lines. I have been try to scroll to bottom to see the code for 5 minutes, but I still could not get to see it. Please copy and paste to the code (probably 1 line) to the response to this comment. Thanks.\n\n2. Please run tast unit test: fast_build.sh -T\n\nThen, add the following line to the commit log\nTEST\u003dtast unit test passed. \n\nThanks.\n",
+      "revId": "4d0b2fb320167e6410d61f3336c845eb2d539b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
