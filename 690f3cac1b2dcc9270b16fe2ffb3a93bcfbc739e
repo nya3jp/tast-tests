@@ -52,6 +52,24 @@
       "parentUuid": "283a9192_abe270a0",
       "revId": "690f3cac1b2dcc9270b16fe2ffb3a93bcfbc739e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2817706c_4e5f8e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-21T13:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5701d334_ff4b21a5",
+      "revId": "690f3cac1b2dcc9270b16fe2ffb3a93bcfbc739e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
