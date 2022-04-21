@@ -94,13 +94,13 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 			htmlFieldID: "city",
 		},
 		{
-			fieldName:   "ZIP code",
+			fieldName:   "Postal code",
 			fieldValue:  "11111",
 			htmlFieldID: "postal-code",
 		},
 		{
 			fieldName:   "Phone",
-			fieldValue:  "010123123",
+			fieldValue:  "0441231234",
 			htmlFieldID: "phone",
 		},
 		{
@@ -157,7 +157,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 
 			if err := policyutil.SettingsPage(ctx, cr, br, "addresses").
 				SelectNode(ctx, nodewith.
-					Name("Addresses and more").
+					Name("Save and fill addresses").
 					Role(role.ToggleButton)).
 				Restriction(param.wantRestriction).
 				Checked(param.wantChecked).
@@ -168,14 +168,11 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 			if param.wantChecked == checked.True {
 				ui := uiauto.New(tconn)
 
-				// Click the button to add a new address.
-				if err := ui.LeftClick(nodewith.Name("Add").Role(role.Button))(ctx); err != nil {
-					s.Fatal("Failed to click the Add button: ", err)
-				}
-
-				// Find the Save button node, meaning the form is open.
-				if err := ui.WaitUntilExists(nodewith.Name("Save").Role(role.Button))(ctx); err != nil {
-					s.Fatal("Failed to find the Save button: ", err)
+				if err := uiauto.Combine("open the add address dialog",
+					ui.LeftClick(nodewith.Name("Add address").Role(role.Button)),
+					ui.WaitUntilExists(nodewith.Name("Save").Role(role.Button)),
+				)(ctx); err != nil {
+					s.Fatal("Failed to open the add address dialog: ", err)
 				}
 
 				kb, err := input.Keyboard(ctx)
@@ -187,10 +184,10 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				// Fill in the address input fields and click on the save button.
 				for _, address := range addressValues {
 					addressField := nodewith.Role(role.TextField).Name(address.fieldName)
-					if err := ui.MakeVisible(addressField)(ctx); err != nil {
-						s.Fatal("Failed to make visible: ", err)
-					}
-					if err := ui.LeftClick(addressField)(ctx); err != nil {
+					if err := uiauto.Combine("fill in address text field",
+						ui.MakeVisible(addressField),
+						ui.LeftClick(addressField),
+					)(ctx); err != nil {
 						s.Fatal("Failed to click the text field: ", err)
 					}
 					if err := kb.Type(ctx, address.fieldValue); err != nil {
