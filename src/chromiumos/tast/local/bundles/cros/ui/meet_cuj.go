@@ -74,7 +74,7 @@ const (
 	vp9 videoCodecReport = 1
 )
 
-const defaultTestTimeout = 20 * time.Minute
+const defaultTestTimeout = 25 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -94,14 +94,12 @@ func init() {
 			"ui.MeetCUJ.bond_credentials",
 		},
 		Params: []testing.Param{{
-			// Base case. Note this runs a 30 min meet call.
 			Name:    "4p",
-			Timeout: defaultTestTimeout + 30*time.Minute,
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:      4,
-				layout:   meetLayoutTiled,
-				cam:      true,
-				duration: 30 * time.Minute,
+				num:    4,
+				layout: meetLayoutTiled,
+				cam:    true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -248,8 +246,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Determines the meet call duration. Use the meet duration specified in
-	// test param if there is one. Otherwise, default to 5 minutes.
-	meetTimeout := 5 * time.Minute
+	// test param if there is one. Otherwise, default to 10 minutes.
+	meetTimeout := 10 * time.Minute
 	if meet.duration != 0 {
 		meetTimeout = meet.duration
 	}
