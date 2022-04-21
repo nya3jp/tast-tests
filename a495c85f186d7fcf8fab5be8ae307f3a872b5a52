@@ -34,6 +34,24 @@
       "parentUuid": "9ef07e22_89442001",
       "revId": "a495c85f186d7fcf8fab5be8ae307f3a872b5a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627932c7_d34cdb8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-21T23:52:02Z",
+      "side": 1,
+      "message": "Please provide a counterargument to my concerns in #1 or #2 if we want to merge this.\n\nTo expand on #1. the idea here is that we want to take into account the vars. It\u0027s kind of an implementation detail that it happens to be only lacros deployed binary. So, I don\u0027t think it makes sense to avoid passing in the testing state just because it\u0027s more convenient, or the tests don\u0027t need it.  \n\nhidehiko@, wdyt?",
+      "parentUuid": "a90d21cf_994645a9",
+      "revId": "a495c85f186d7fcf8fab5be8ae307f3a872b5a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
