@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a69023f7_5d3d8330",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-21T00:11:01Z",
+      "side": 1,
+      "message": "go/profile-migration-official\ngo/profile-migration-tast-testing\ngo/profile-migration-manual-testing\n\nThere may be more.",
+      "parentUuid": "7849b8dc_e4bc4ed6",
+      "revId": "7db659afafa7a03ec77ac479832b34cf3af40d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "370e5e98_eb575338",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-04-20T18:16:23Z",
       "side": 1,
       "message": "nit: adding lacros-team@google.com as well like many other lacros.*? It would help also track which team to own.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "7db659afafa7a03ec77ac479832b34cf3af40d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f1884c_cd77d2a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-21T00:11:01Z",
+      "side": 1,
+      "message": "Sure, will do in a separate CL.",
+      "parentUuid": "370e5e98_eb575338",
       "range": {
         "startLine": 30,
         "startChar": 2,
