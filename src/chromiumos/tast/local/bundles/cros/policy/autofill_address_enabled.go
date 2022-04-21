@@ -169,8 +169,8 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				ui := uiauto.New(tconn)
 
 				// Click the button to add a new address.
-				if err := ui.LeftClick(nodewith.Name("Add").Role(role.Button))(ctx); err != nil {
-					s.Fatal("Failed to click the Add button: ", err)
+				if err := ui.LeftClick(nodewith.Name("Add address").Role(role.Button))(ctx); err != nil {
+					s.Fatal("Failed to click the Add address button: ", err)
 				}
 
 				// Find the Save button node, meaning the form is open.
