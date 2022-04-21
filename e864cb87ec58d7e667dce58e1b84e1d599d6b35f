@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb1cc1c_dcf14989",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-21T06:41:35Z",
+      "side": 1,
+      "message": "This will also be addressing https://crbug.com/1311125 (defaults apps being added after logging in even with --disable-sync)",
+      "revId": "e864cb87ec58d7e667dce58e1b84e1d599d6b35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
