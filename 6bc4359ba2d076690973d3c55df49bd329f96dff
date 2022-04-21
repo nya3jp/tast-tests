@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0f3236_cd234735",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-04-21T16:58:22Z",
+      "side": 1,
+      "message": "Let focusing on cl  3583398 first.",
+      "revId": "6bc4359ba2d076690973d3c55df49bd329f96dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
