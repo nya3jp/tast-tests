@@ -57,5 +57,5 @@ func init() {
 func VerifyAppX11(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 
-	verifyapp.RunTest(ctx, s, pre.ParentFixtV.Chrome(), pre.Cont, crostini.X11DemoConfig())
+	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Cont, crostini.X11DemoConfig())
 }

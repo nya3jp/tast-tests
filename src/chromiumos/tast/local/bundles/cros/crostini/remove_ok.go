@@ -57,7 +57,7 @@ func init() {
 
 func RemoveOk(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
 	// Open the Linux settings.
 	st, err := settings.OpenLinuxSettings(ctx, tconn, cr)

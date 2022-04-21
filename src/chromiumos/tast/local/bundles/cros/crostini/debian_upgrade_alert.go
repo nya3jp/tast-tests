@@ -74,7 +74,7 @@ BUG_REPORT_URL="https://bugs.debian.org/"
 func DebianUpgradeAlert(ctx context.Context, s *testing.State) {
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)

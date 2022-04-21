@@ -60,7 +60,7 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 	)
 
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 

@@ -60,7 +60,7 @@ func init() {
 
 func Webserver(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
-	cr := pre.ParentFixtV.Chrome()
+	cr := pre.Chrome
 	cont := pre.Cont
 
 	const expectedWebContent = "nothing but the web"
