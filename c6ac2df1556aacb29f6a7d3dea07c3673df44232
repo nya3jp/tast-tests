@@ -46,6 +46,30 @@
       },
       "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "996e14f3_835954e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-21T11:55:20Z",
+      "side": 1,
+      "message": "Got it. Thanks for sharing your plan.\n\nMy two sents for OEM names. Just would like to remind that the old implementation (which use sysfs) is not reliable and might give wrong OEM data since some OEM didn\u0027t fill and check the value in the past. Probably we could try to abandon old sysfs approach and move everything (implementation+tast) to new approach if the effort is acceptable. There is a risk that it silently fall back to the old one and get the wrong value while scaling up to more devices/OEMs.",
+      "parentUuid": "29aac05e_dfb0d377",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
