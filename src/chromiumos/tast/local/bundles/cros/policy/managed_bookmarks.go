@@ -29,7 +29,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of ManagedBookmarks policy",
 		Contacts: []string{
-			"ayaelattar@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
