@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -20,6 +21,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash/ashproc"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/session"
@@ -192,6 +195,44 @@ func (service *ArcSnapshotService) WaitForSnapshot(ctx context.Context, req *pb.
 		}, &testing.PollOptions{Interval: time.Second})
 	}
 	return &empty.Empty{}, nil
+}
+
+// GetDeviceID retrieves the device id from the chrome://policy site.
+func (service *ArcSnapshotService) GetDeviceID(ctx context.Context, _ *empty.Empty) (resp *pb.GetDeviceIDResponse, retErr error) {
+	if service.cr == nil {
+		return nil, errors.New("the DUT is not set up")
+	}
+
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return nil, errors.New("failed to get outDir")
+	}
+
+	// Ensure that ARC is launched.
+	a, err := arc.New(ctx, outDir)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start ARC by user policy")
+	}
+	defer a.Close(ctx)
+
+	conn, err := service.cr.NewConn(ctx, "chrome://policy")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open chrome://policy")
+	}
+	defer conn.Close()
+
+	tconn, err := service.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to test api")
+	}
+
+	ui := uiauto.New(tconn)
+	ui.WaitUntilExists(nodewith.Name("Directory API ID"))
+	var deviceID string
+	if err := conn.Eval(ctx, `document.querySelector("#status-box-container > fieldset:nth-child(1) > div:nth-child(13) div.directory-api-id").innerText`, &deviceID); err != nil {
+		return nil, errors.Wrap(err, "could not read the device id")
+	}
+	return &pb.GetDeviceIDResponse{DeviceId: strings.TrimSpace(deviceID)}, nil
 }
 
 // waitForCryptohome waits for a system path for the user is mounted.
