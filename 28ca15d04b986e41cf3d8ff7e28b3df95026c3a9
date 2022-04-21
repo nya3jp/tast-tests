@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914ae2e4_4221f9da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_purge_dlcs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-21T20:44:54Z",
+      "side": 1,
+      "message": "just use testing.Poll here to handle cases where modemfwd gets caught doing something else, or so that if we crank down this value in the future, this test will automatically run faster",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 80
+      },
+      "revId": "28ca15d04b986e41cf3d8ff7e28b3df95026c3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
