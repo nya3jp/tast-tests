@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fcd676_bd816578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2022-04-21T17:18:29Z",
+      "side": 1,
+      "message": "Hi Madhav, I think the issue before was that this test was running on non-cellular devices and failing. Do we know how to resolve this scheduling issue?",
+      "revId": "092a0555c126bf24322de7fb08357e098058b911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
