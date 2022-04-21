@@ -59,7 +59,7 @@ func init() {
 
 func ResizeRestart(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
-	cr := pre.ParentFixtV.Chrome()
+	cr := pre.Chrome
 	tconn := pre.Tconn
 	keyboard := pre.KB
 	cont := pre.Cont
