@@ -97,7 +97,9 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	// operations that require finding the current active window (i.e., SwitchWindowToDisplay)
 	// will not succeed.
 	prompts := []string{"Allow", "Never", "NO THANKS"}
-	clearNotificationPrompts(ctx, y.ui, y.uiHdl, prompts...)
+	if err := clearNotificationPrompts(ctx, y.ui, y.uiHdl, prompts...); err != nil {
+		return errors.Wrap(err, "failed to clear notification prompts")
+	}
 
 	// Default expected display is main display.
 	if err := cuj.SwitchWindowToDisplay(ctx, y.tconn, y.kb, y.extendedDisplay)(ctx); err != nil {
@@ -445,17 +447,18 @@ func (y *YtWeb) getCurrentTime(ctx context.Context) (int, error) {
 }
 
 // clearNotificationPrompts finds and clears some youtube web prompts.
-// No error is returned because failing to clear the notification doesn't impact the test.
-func clearNotificationPrompts(ctx context.Context, ui *uiauto.Context, uiHdl cuj.UIActionHandler, prompts ...string) {
+func clearNotificationPrompts(ctx context.Context, ui *uiauto.Context, uiHdl cuj.UIActionHandler, prompts ...string) error {
 	for _, name := range prompts {
 		tartgetPrompt := nodewith.Name(name).Role(role.Button)
 		if err := uiauto.IfSuccessThen(
-			ui.WithTimeout(shortUITimeout).WaitUntilExists(tartgetPrompt),
-			uiHdl.ClickUntil(tartgetPrompt, ui.WithTimeout(2*time.Second).WaitUntilGone(tartgetPrompt)),
+			ui.WaitUntilExists(tartgetPrompt),
+			uiHdl.ClickUntil(tartgetPrompt, ui.WithTimeout(shortUITimeout).WaitUntilGone(tartgetPrompt)),
 		)(ctx); err != nil {
 			testing.ContextLogf(ctx, "Failed to clear prompt %q", name)
+			return err
 		}
 	}
+	return nil
 }
 
 // PerformFrameDropsTest checks for dropped frames percent and checks if it is below the threshold.
