@@ -21,9 +21,8 @@ func init() {
 		Name: "crosHealthdRunning",
 		Desc: "The croshealthd daemon is available and running",
 		Contacts: []string{
-			"kerker@google.com", // Fixture maintainer
-			"pmoy@google.com",
-			"cros-tdm@google.com",         // team mailing list
+			"kerker@google.com",           // Fixture maintainer
+			"menghuan@google.com",         // Fixture maintainer
 			"cros-tdm-tpe-eng@google.com", // team mailing list
 		},
 		SetUpTimeout:    30 * time.Second,
@@ -31,51 +30,24 @@ func init() {
 		PreTestTimeout:  5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
 		TearDownTimeout: 5 * time.Second,
-		Impl:            newCrosHealthdFixture(true),
+		Impl:            newCrosHealthdFixture(),
 	})
 }
 
 // crosHealthdFixture implements testing.FixtureImpl.
 type crosHealthdFixture struct {
-	run bool
-	pid int
+	// pid of cros_healthd, for check if it crashed or restarted within a single test.
+	pid        int
+	forceReset bool
 }
 
-func newCrosHealthdFixture(run bool) testing.FixtureImpl {
-	return &crosHealthdFixture{
-		run: run,
-	}
+func newCrosHealthdFixture() testing.FixtureImpl {
+	return &crosHealthdFixture{}
 }
 
 func (f *crosHealthdFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	if err := f.Reset(ctx); err != nil {
-		s.Fatal("Unable to reset fixture: ", err)
-	}
-
-	// Restart the "ui" job to ensure that Chrome is running and wait Chrome to
-	// bootstrap the cros_healthd mojo services.
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Unable to ensure 'ui' upstart service is running: ", err)
-	}
-	if err := waitForMojoBootstrap(ctx); err != nil {
-		s.Fatal("Unable to wait for mojo bootstrap: ", err)
-	}
-	return nil
-}
-
-func (f *crosHealthdFixture) Reset(ctx context.Context) error {
-	if f.run {
-		// Starts the cros_healthd daemon if it is not running. If it is already
-		// running, this is a no-op.
-		if err := upstart.EnsureJobRunning(ctx, crosHealthdJobName); err != nil {
-			return errors.Wrapf(err, "failed to start %s daemon", crosHealthdJobName)
-		}
-	} else {
-		// Stops the cros_healthd daemon if it is running. If it is already
-		// stopped, this is a no-op.
-		if err := upstart.StopJob(ctx, crosHealthdJobName); err != nil {
-			return errors.Wrapf(err, "failed to stop %s daemon", crosHealthdJobName)
-		}
+	if err := f.RestartHealthdService(ctx); err != nil {
+		s.Fatal("Fail to setup crosHealthdFixture: ", err)
 	}
 	return nil
 }
@@ -87,6 +59,7 @@ func (f *crosHealthdFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 	}
 
 	f.pid = pid
+	f.forceReset = false
 }
 
 func (f *crosHealthdFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -95,17 +68,47 @@ func (f *crosHealthdFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 		s.Fatalf("Unable to get %s PID: %s", crosHealthdJobName, err)
 	}
 
-	// If the daemon has already been started, make sure it has not crashed or
-	// restarted.
-	if f.run && pid != f.pid {
+	// Make sure it has not crashed or restarted.
+	if pid != f.pid {
+		f.forceReset = true
 		s.Fatalf("%s PID changed: want %v, got %v", crosHealthdJobName, f.pid, pid)
 	}
+}
+
+func (f *crosHealthdFixture) Reset(ctx context.Context) error {
+	if f.forceReset {
+		f.forceReset = false
+
+		if err := f.RestartHealthdService(ctx); err != nil {
+			return errors.Wrap(err, "Fail to reset crosHealthdFixture")
+		}
+	}
+	return nil
 }
 
 func (f *crosHealthdFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	// cros_healthd should be running be default on all systems. Ensure it is
 	// left running.
-	if err := upstart.EnsureJobRunning(ctx, crosHealthdJobName); err != nil {
-		s.Fatalf("Failed to start %s daemon: %s", crosHealthdJobName, err)
+	if err := f.RestartHealthdService(ctx); err != nil {
+		s.Fatalf("Fail to reset cros_healthd enivronment: %s", err)
 	}
+}
+
+func (f *crosHealthdFixture) RestartHealthdService(ctx context.Context) error {
+	// Stop "cros_healthd" to ensure "ui" is not using it.
+	if err := upstart.StopJob(ctx, "cros_healthd"); err != nil {
+		return errors.Wrapf(err, "unable to stop %q upstart service", crosHealthdJobName)
+	}
+	// Restart the "ui" job to ensure that Chrome is running. Chrome internally will wait "cros_healthd" to be up.
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		return errors.Wrap(err, "unable to ensure 'ui' upstart service is running")
+	}
+	// Ensure cros_healthd is up and wait until Mojo bootstrap flow is done.
+	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
+		return errors.Wrap(err, "failed to start cros_healthd")
+	}
+	if err := waitForMojoBootstrap(ctx); err != nil {
+		return errors.Wrap(err, "unable to wait for mojo bootstrap")
+	}
+	return nil
 }
