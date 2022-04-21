@@ -70,6 +70,24 @@
       "parentUuid": "970a9f4a_3cd96685",
       "revId": "013531188c092211ca21236f13b67f4a057ac2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff06ea4_4b0ce9bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-21T23:53:55Z",
+      "side": 1,
+      "message": "Since this is a cherry-pick of a [change that has already been merged](https://crrev.com/c/3563098), I think we should go ahead and merge it as-is. As Patryk mentioned, there are other tests that do this. If we have a policy that we shouldn\u0027t be doing it, let\u0027s file a bug to document the policy in the Tast docs as well as migrate the all the tests that are doing this over to the private repo.",
+      "parentUuid": "17fdbb22_ac40269a",
+      "revId": "013531188c092211ca21236f13b67f4a057ac2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
