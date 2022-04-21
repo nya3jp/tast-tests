@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "535fe45d_b6819cf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-21T02:15:28Z",
+      "side": 0,
+      "message": "No, I think we should set disable wifi as default.",
+      "parentUuid": "886d767c_95ad0641",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 42
+      },
+      "revId": "f4f3e4cfa2a72a1f989c8cc3b0dfe32da1a1849e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "025b37fa_0852665b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-20T04:52:40Z",
       "side": 0,
       "message": "This setting is deleted by this change. Is it no longer necessary to control the nightlight?",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 38
+      },
+      "revId": "f4f3e4cfa2a72a1f989c8cc3b0dfe32da1a1849e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "540ddd6a_e1f39ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-21T02:15:28Z",
+      "side": 0,
+      "message": "Since all test cases would like to disable the night light setting, the default setting (defined in \"power/setup.go\") is also \"DisableNightLight\". That\u0027s why we just removed it, but I\u0027ll keep the logic.",
+      "parentUuid": "025b37fa_0852665b",
       "range": {
         "startLine": 243,
         "startChar": 0,

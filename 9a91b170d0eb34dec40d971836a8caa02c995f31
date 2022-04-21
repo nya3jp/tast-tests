@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5063317_9dffd0b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-21T02:15:28Z",
+      "side": 1,
+      "message": "Since we\u0027re not actually enabling the service, but leaving it in its current state. I just changed the naming convention.",
+      "parentUuid": "acf067a2_dd313d5e",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 22
+      },
+      "revId": "9a91b170d0eb34dec40d971836a8caa02c995f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca755c47_60b26e15",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "018f0593_889f407b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-21T02:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca755c47_60b26e15",
+      "range": {
+        "startLine": 267,
+        "startChar": 5,
+        "endLine": 267,
+        "endChar": 99
+      },
+      "revId": "9a91b170d0eb34dec40d971836a8caa02c995f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70ec8154_e02b1c36",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-20T04:52:40Z",
       "side": 1,
       "message": "nit: golang doesn\u0027t have line length requirements, but it\u0027s still recommended to aim for \u003c80 characters for comments. Can you reflow these two comment lines so they are \u003c80 characters?",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 66
+      },
+      "revId": "9a91b170d0eb34dec40d971836a8caa02c995f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f6d86b_be9a722e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-21T02:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70ec8154_e02b1c36",
       "range": {
         "startLine": 267,
         "startChar": 0,
