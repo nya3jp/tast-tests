@@ -88,6 +88,24 @@
       "parentUuid": "dcf8db5e_fff1b94d",
       "revId": "092a0555c126bf24322de7fb08357e098058b911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdfbacd_50c701e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-21T20:50:25Z",
+      "side": 1,
+      "message": "Since \"group:crosbolt\" is of type Attr, and adding it to the Init() Attr led to the test being schedules on non-cellular devices, I moved it to the ExtraAttr, so that the tests are only schedules on group:cellular and then when the test is actually run we append \"group:cellular\". Does this make sense?",
+      "parentUuid": "0886f617_93af2248",
+      "revId": "092a0555c126bf24322de7fb08357e098058b911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
