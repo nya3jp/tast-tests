@@ -171,7 +171,7 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 			// Ensure saving payment methods toggle is accordingly enabled/disabled.
 			if err := policyutil.SettingsPage(ctx, cr, br, "payments").
 				SelectNode(ctx, nodewith.
-					Name("Payment methods").
+					Name("Save and fill payment methods").
 					Role(role.ToggleButton)).
 				Restriction(param.wantRestriction).
 				Checked(param.wantChecked).
@@ -254,6 +254,7 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 				if err := uiauto.Combine("clicking the Name on card field and choosing the suggested credit card",
 					ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Name on card")),
 					ui.LeftClick(nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView")),
+					ui.WaitUntilExists(nodewith.Role(role.InlineTextBox).Name(creditCardFields[0].fieldValue)),
 				)(ctx); err != nil {
 					s.Fatal("Failed to trigger and use credit card autofill: ", err)
 				}
