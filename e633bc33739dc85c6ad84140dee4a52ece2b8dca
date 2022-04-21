@@ -16,6 +16,23 @@
       "message": "Hey tast-owners@ \nShould this test be changed to be critical to not be able to break the test with UI changes? ",
       "revId": "e633bc33739dc85c6ad84140dee4a52ece2b8dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dbea21a_8b977173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-21T13:36:39Z",
+      "side": 1,
+      "message": "LGTM\n\nRegarding promotion of the test we\u0027d need to see how stable it runs after the changes. The rule of thumb is usually 20 consecutive runs without failures on tastboard.",
+      "revId": "e633bc33739dc85c6ad84140dee4a52ece2b8dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
