@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3d93cc_8e5e0b81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "nit: A user\u0027s local repository does not necessarily have to be at `~/chromiumos`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "60a662ea_fa96e90f",
@@ -14,6 +37,259 @@
       "writtenOn": "2022-04-21T16:40:34Z",
       "side": 1,
       "message": "Looks good, but I don\u0027t know go so you will have to have someone else review for language purposes.",
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "565023c6_532e11c1",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "There probably should be a comment documenting `cardRegexp`. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b11f3a_b3700012",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "There should be a comment documenting `parseSoundCards`. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d407dcc6_6d770d8a",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "This goes against the guidance at\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 55
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76b0bdfa_a7099da9",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "It will be a little strange when the error message says something like \"...should find 3.5 cards instead.\" This also makes it difficult to follow the guidance at [1], because `float64(cards) !\u003d float64(lines)/2` would be a bit of a problematic condition to check. I suggest a separate error `unexpected parity of number of lines: got odd; expected even` before the `matches :\u003d` line. Having verified that the number of lines is even, you will be able to compute the expected number of cards as simply `lines/2` (no need for any floating point number) and follow the guidance at [1].\n\n[1] https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3061a90_3987fad6",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "I think this would be clearer this way:\n\t\t\tID:        strings.TrimSpace(m[1]),\n\t\t\tDriver:    m[2],\n\t\t\tShortName: m[3],\n\t\t\tLongName:  m[4],",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd968798_30ee1bdd",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "This goes against the guidance at\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3592b30c_f27a3c57",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "`return nil, err`",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 8
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67456cf9_cabe8e4a",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "There should be a comment documenting `TestParseSoundCards`. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f412473_055a3105",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "I suggest the following, because I do not think you need to check `cards` when `err !\u003d nil`:\n\t\t\tif cards, err :\u003d parseSoundCards(item.input); err !\u003d nil {\n\t\t\t\tt.Errorf(\"unexpected error: %v\", err)\n\t\t\t} else if diff :\u003d cmp.Diff(item.output, cards); diff !\u003d \"\" {\n\t\t\t\tt.Errorf(\"parsed cards differ (-want; +got)\\n%s\", diff)\n\t\t\t}",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5398724e_a3381769",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "There should be a comment documenting `TestParseSoundCardsError`. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4346e701_06786164",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-21T23:58:29Z",
+      "side": 1,
+      "message": "Can you test more ways in which the regular expression could fail to match the expected number of cards?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
       "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
