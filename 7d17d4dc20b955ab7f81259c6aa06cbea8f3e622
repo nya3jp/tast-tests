@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d3af01a_2d67d1b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-21T17:53:42Z",
+      "side": 1,
+      "message": "I may not think the field `ProductivityLauncher` is useful here. Maybe we can just set the boolean value in `Val`?",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 76
+      },
+      "revId": "7d17d4dc20b955ab7f81259c6aa06cbea8f3e622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44ee6415_8d943bc8",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
         "patchSetId": 3
