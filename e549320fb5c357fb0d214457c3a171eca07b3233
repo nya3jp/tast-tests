@@ -70,6 +70,24 @@
       "parentUuid": "cef4e683_85248fe7",
       "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8752a67_410e8078",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-04-21T17:31:44Z",
+      "side": 1,
+      "message": "+1 to your analysis that \"this firmware test is primarily to verify EC over the tablet mode by using the VK, but not specifically to verify interactions between VK/browser itself\"",
+      "parentUuid": "106c548b_cf5fdfdc",
+      "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
