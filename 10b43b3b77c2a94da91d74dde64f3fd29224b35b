@@ -16,6 +16,23 @@
       "message": "1. Please create a buganizer and fill in BUG\u003d\n2. Please run tast unit test: fast_build.sh -T. Then add following line to your commit log\nTEST\u003dtast unit test passed.",
       "revId": "10b43b3b77c2a94da91d74dde64f3fd29224b35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9db180b_54312cfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-21T17:45:06Z",
+      "side": 1,
+      "message": "BTW, Jakub, you probably should not give CR+1 yourselves. Thanks.",
+      "revId": "10b43b3b77c2a94da91d74dde64f3fd29224b35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
