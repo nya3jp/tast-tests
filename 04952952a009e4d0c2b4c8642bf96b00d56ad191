@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b831fca_3d5a4d44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-21T18:34:36Z",
+      "side": 1,
+      "message": "cc\u0027ing Jun, Judy in case you\u0027d need to enable web app installation for the lacros apps testing.",
+      "revId": "04952952a009e4d0c2b4c8642bf96b00d56ad191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
