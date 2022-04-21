@@ -33,6 +33,40 @@
       "message": "an",
       "revId": "7d17d4dc20b955ab7f81259c6aa06cbea8f3e622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e07e53c_40e78e22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-21T17:49:55Z",
+      "side": 1,
+      "message": "do we need fake apps here?",
+      "revId": "7d17d4dc20b955ab7f81259c6aa06cbea8f3e622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44ee6415_8d943bc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-21T17:49:55Z",
+      "side": 1,
+      "message": "Can you check if defer methods are called in FILO order (in which case we may want to move this after call to ensure tablet mode, so we get UI state before transition; and screenshot would probably be useful)\n\nP.S. do we even need this given that you dump UI tree and screenshot in subtests?",
+      "revId": "7d17d4dc20b955ab7f81259c6aa06cbea8f3e622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
