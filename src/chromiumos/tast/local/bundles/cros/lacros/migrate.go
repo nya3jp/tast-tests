@@ -31,6 +31,7 @@ func init() {
 			"neis@google.com", // Test author
 			"ythjkt@google.com",
 			"hidehiko@google.com",
+			"lacros-team@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
