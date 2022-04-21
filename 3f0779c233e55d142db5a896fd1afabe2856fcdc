@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba443b86_e43d8604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-21T12:33:50Z",
+      "side": 1,
+      "message": "yeah maybe, it was a bit unclear to me why this test wanted \"loggedInToLacros\", which sounds the same as \"lacros\" to me.\n\nMaybe Anastasiia can advise?",
+      "parentUuid": "5039b20f_b2352034",
+      "revId": "3f0779c233e55d142db5a896fd1afabe2856fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a76efeb_ce5a7f1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
         "patchSetId": 1
