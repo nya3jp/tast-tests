@@ -16,6 +16,52 @@
       "message": "PTAL\n\nI added the deprovisioning of the DUT as a clean up step.",
       "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4358857f_60116c94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-04-21T09:57:54Z",
+      "side": 1,
+      "message": "Before the change WaitForPackagesInMgs() was invoked right after Enroll().\nBut currently there is also GetDeviceID() that is running inside MGS and subtracts its runtime from the following WaitForPackesInMgs()\u0027s perf metrics.\n\nDo you have some estimates on how long does it take to run GetDeviceID()?\n\nIf it\u0027s more than a few seconds, I would add startTime to ArcSnapshotService struct and save startTime in GetDeviceID() for the first WaitForPackagesInMgs() call.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e4ae91_f32179a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-04-21T09:57:54Z",
+      "side": 1,
+      "message": "Is it a fake value? Where is it coming from?",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
