@@ -23,8 +23,13 @@ func init() {
 		Desc:     "Verifies that Shill can enable, disable, connect, and disconnect to a Cellular Service",
 		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
 		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
-		Timeout:  10 * time.Minute,
 		Fixture:  "cellular",
+		Params: []testing.Param{{
+			Name:      "",
+			Val:       3,
+			ExtraAttr: []string{"group:crosbolt", "crosbolt_perbuild"},
+			Timeout:   10 * time.Minute,
+		}},
 	})
 }
 
@@ -54,10 +59,11 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 
 	perfValues := perf.NewValues()
 
+	loopCount := s.Param().(int)
 	// Test Disable / Enable / Connect / Disconnect.
 	// Run the test a second time to test Disable after Connect/Disconnect.
 	// Run the test a third time to help test against flakiness.
-	for i := 0; i < 3; i++ {
+	for i := 0; i < loopCount; i++ {
 		s.Logf("Disable %d", i)
 		disableTime, err := helper.Disable(ctx)
 		if err != nil {
