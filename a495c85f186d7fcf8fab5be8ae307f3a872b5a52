@@ -16,6 +16,24 @@
       "message": "We should not do this IMO.\n\n1. We should provide the minimum api surface to get stuff done. I don\u0027t think these use cases for avoiding lacros deployed binary var make sense or are good.\n\n2. If we have an api (particularly one that looks more like the default one you should use) that allows avoiding lacros deployed binary var, then we will get a bunch of tests added that don\u0027t respect the var. That\u0027s going to eventually cause failures on chromium infra eventually, which will be hard to debug\n\n",
       "revId": "a495c85f186d7fcf8fab5be8ae307f3a872b5a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90d21cf_994645a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-21T18:24:05Z",
+      "side": 1,
+      "message": "Let\u0027s have a default config for those tests that don\u0027t need to be run at the ToT of lacros-chrome in Chromium, but are just okay to be run in OS.\nIt is nice to support this scenario depending on what tests are verifying and where test owners want them to be run.\nPlease give another thought on this.\n\ncontext: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3589131/comments/ff6659f1_e7036525",
+      "parentUuid": "9ef07e22_89442001",
+      "revId": "a495c85f186d7fcf8fab5be8ae307f3a872b5a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
