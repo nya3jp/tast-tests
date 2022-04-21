@@ -48,14 +48,15 @@ func newCrosHealthdFixture(run bool) testing.FixtureImpl {
 }
 
 func (f *crosHealthdFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	if err := f.Reset(ctx); err != nil {
-		s.Fatal("Unable to reset fixture: ", err)
-	}
-
 	// Restart the "ui" job to ensure that Chrome is running and wait Chrome to
 	// bootstrap the cros_healthd mojo services.
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Unable to ensure 'ui' upstart service is running: ", err)
+	}
+	// Restart "ui" might cause "cros_healthd" down forever. Reset() to ensure
+	// cros_healthd back.
+	if err := f.Reset(ctx); err != nil {
+		s.Fatal("Unable to reset fixture: ", err)
 	}
 	if err := waitForMojoBootstrap(ctx); err != nil {
 		s.Fatal("Unable to wait for mojo bootstrap: ", err)
