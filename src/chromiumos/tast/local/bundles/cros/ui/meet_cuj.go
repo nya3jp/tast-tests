@@ -231,6 +231,32 @@ func init() {
 				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
 			},
 			Fixture: "loggedInToCUJUser",
+		}, {
+			// Lacros variation of 16p test
+			Name:      "lacros_16p",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
+			Val: meetTest{
+				num:       16,
+				layout:    meetLayoutTiled,
+				cam:       true,
+				useLacros: true,
+			},
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			// Lacros variation of 16p trace test
+			Name:    "lacros_16p_trace",
+			Timeout: defaultTestTimeout + 10*time.Minute,
+			Val: meetTest{
+				num:       16,
+				layout:    meetLayoutTiled,
+				cam:       true,
+				useLacros: true,
+				tracing:   true,
+			},
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
 }
