@@ -16,6 +16,23 @@
       "message": "Hi Tast Owners,\n\nPTAL, thank you!",
       "revId": "958b9dcd04d19948354e0404e83920b212547bdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10d9e287_5b495c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_daily_refresh_dl_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-21T03:24:40Z",
+      "side": 1,
+      "message": "As the function has defer call for clean-up, you need to reserve some time for defer call to run.\n\n```\nclearUpCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, n*time.Second)\ndefer cancel()\n// use ctx for non-defer part.\ncr, err :\u003d chrome.New(ctx...)\n...\ndefer cr.Close(clearUpCtx)\n```",
+      "revId": "958b9dcd04d19948354e0404e83920b212547bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
