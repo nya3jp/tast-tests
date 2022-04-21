@@ -22,8 +22,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
@@ -100,23 +100,19 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	params := s.Param().(arcPIPEnergyAndPowerTestParams)
-	var cr *chrome.Chrome
-	var cs ash.ConnSource
+	cr := s.FixtValue().(*arc.PreData).Chrome
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, params.browserType)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	var browserWindowType ash.WindowType
 	switch params.browserType {
 	case browser.TypeAsh:
-		cr = s.FixtValue().(*arc.PreData).Chrome
-		cs = cr
 		browserWindowType = ash.WindowTypeBrowser
 	case browser.TypeLacros:
-		var l *lacros.Lacros
-		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, browser.TypeLacros)
-		if err != nil {
-			s.Fatal("Failed to initialize test: ", err)
-		}
-		defer lacros.CloseLacros(cleanupCtx, l)
-
 		browserWindowType = ash.WindowTypeLacros
 	}
 
@@ -252,7 +248,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	conn, err := cs.NewConn(ctx, "chrome://settings")
+	conn, err := br.NewConn(ctx, "chrome://settings")
 	if err != nil {
 		s.Fatal("Failed to load chrome://settings: ", err)
 	}
@@ -268,12 +264,12 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send Tab: ", err)
 	}
 
-	br, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == browserWindowType })
+	brw, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == browserWindowType })
 	if err != nil {
 		s.Fatal("Failed to get browser window: ", err)
 	}
 
-	if err := ash.SetWindowStateAndWait(ctx, tconn, br.ID, ash.WindowStateMaximized); err != nil {
+	if err := ash.SetWindowStateAndWait(ctx, tconn, brw.ID, ash.WindowStateMaximized); err != nil {
 		s.Fatal("Failed to maximize browser window: ", err)
 	}
 
