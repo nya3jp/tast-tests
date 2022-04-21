@@ -52,6 +52,24 @@
       "parentUuid": "f26f6124_f780b294",
       "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "106c548b_cf5fdfdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-21T16:20:36Z",
+      "side": 1,
+      "message": "Technically, as Hidehiko said, it is possible for remote tests to pass the var value (a string of `s.Var(LacrosDeployedBinary)` and a bool of `deployed`) over gRPC, instead of testing.State. and it may need a new lacrosfixt.NewConfigXXX method to accept them in local service.\n\nHowever, a fundamental question is\nDoes the OS firmware test really need to be run against ToT browser builds in the *Browser infra* or is it just okay to run against the pre-qualified rootfs-lacros in the *OS infra*?\nIf yes to the former, I can go with passing the vars over gRPC to support that.\nIf yes to the latter, I can go with https://crrev.com/c/3598170.\n\nI assume the latter is the case because this firmware test is primarily to verify EC over the tablet mode by using the VK, but not specifically to verify interactions between VK/browser itself (which I think should be a separate test in the input or browser package to prevent a bad change in VK or browser at the ToT of browser).\n\n+Jeremy, +Kevin, can you share your views into this from the test owner\u0027s perspective? Thanks,",
+      "parentUuid": "cef4e683_85248fe7",
+      "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
