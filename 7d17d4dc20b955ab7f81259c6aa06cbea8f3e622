@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b904dd55_572f8fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-04-21T20:39:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e07e53c_40e78e22",
+      "revId": "7d17d4dc20b955ab7f81259c6aa06cbea8f3e622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d3af01a_2d67d1b8",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1019a4_647bae36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-04-21T20:39:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d3af01a_2d67d1b8",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 76
+      },
+      "revId": "7d17d4dc20b955ab7f81259c6aa06cbea8f3e622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44ee6415_8d943bc8",
@@ -88,6 +130,24 @@
       "writtenOn": "2022-04-21T17:49:55Z",
       "side": 1,
       "message": "Can you check if defer methods are called in FILO order (in which case we may want to move this after call to ensure tablet mode, so we get UI state before transition; and screenshot would probably be useful)\n\nP.S. do we even need this given that you dump UI tree and screenshot in subtests?",
+      "revId": "7d17d4dc20b955ab7f81259c6aa06cbea8f3e622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8658503_34a5887c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-04-21T20:39:57Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "44ee6415_8d943bc8",
       "revId": "7d17d4dc20b955ab7f81259c6aa06cbea8f3e622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
