@@ -94,6 +94,30 @@
       },
       "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f702b9_bdbd0e16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-04-21T12:49:26Z",
+      "side": 1,
+      "message": "Just to clarify, the current approach to determine the OEM name is:\n1. Fetch oem_name from cros_healthd (through Mojo API), if no or empty result is returned then,\n2. Fall back to the sysfs.\n\nStep 2) is important to continue supporting the devices that correctly had the oem_name in the sysfs.",
+      "parentUuid": "1b9d0705_5e6849fd",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
