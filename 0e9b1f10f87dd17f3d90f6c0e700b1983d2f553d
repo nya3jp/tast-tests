@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1de5e2d_a354becb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-21T01:30:10Z",
+      "side": 1,
+      "message": "Maybe not relevant to this cl. But highly recommended to move this function to vkb lib, wrapping a function named vkbCtx.SwitchToSymbolNumberLayout(), so that it hides the details of the VK implementation.\n\nRefer to http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go?l\u003d513",
+      "range": {
+        "startLine": 666,
+        "startChar": 1,
+        "endLine": 666,
+        "endChar": 64
+      },
+      "revId": "0e9b1f10f87dd17f3d90f6c0e700b1983d2f553d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
