@@ -18,7 +18,6 @@ import (
 
 type paramData struct {
 	Name         string   // The test name.
-	LogFileName  string   // The log file name for the test.
 	Executable   string   // The test executable name.
 	Args         string   // The list of args for the executable.
 	ExpectedPass bool     // Whether the test is expected to pass or to fail.
@@ -40,7 +39,6 @@ func addTest(suite, args, additionalArgs, status, bug string, timeout int, extra
 	oclCtsParams = append(oclCtsParams,
 		paramData{
 			Name:         name,
-			LogFileName:  suite + "-" + argsAggregate + ".txt",
 			Executable:   "test_" + suite,
 			Args:         strings.Trim(strings.Join([]string{args, additionalArgs}, " "), " "),
 			ExpectedPass: expectedPass,
@@ -1533,7 +1531,6 @@ func TestOpenclCtsParamsAreGenerated(t *testing.T) {
         Val: oclctsTest{
             executable: "{{ .Executable }}",
             args: "{{ .Args }}",
-            logFileName: "{{ .LogFileName }}",
             expectedPass: {{ .ExpectedPass }},
             {{ if .Buganizer }}
             buganizer: "{{ .Buganizer }}",
