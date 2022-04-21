@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc33e12b_1cd5aa02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_fallback_to_rootfs_failed_to_install_dlc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-21T20:41:26Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "d5e1158e0edd0b6b1b22e6d13df0a8983080b102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e0f95f_54de1371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_fallback_to_rootfs_failed_to_install_dlc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-21T20:41:26Z",
+      "side": 1,
+      "message": "nit: add blank line before this",
+      "revId": "d5e1158e0edd0b6b1b22e6d13df0a8983080b102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ce5a3e_d7b6e777",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-21T20:41:26Z",
+      "side": 1,
+      "message": "nit: DlcId",
+      "range": {
+        "startLine": 112,
+        "startChar": 57,
+        "endLine": 112,
+        "endChar": 62
+      },
+      "revId": "d5e1158e0edd0b6b1b22e6d13df0a8983080b102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
