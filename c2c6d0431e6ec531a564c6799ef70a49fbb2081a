@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af37258_56d2e269",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-21T11:41:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61bbe7f7_66b5b8db",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "c2c6d0431e6ec531a564c6799ef70a49fbb2081a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0da00fe8_b2c11c2e",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-04-20T16:39:10Z",
       "side": 1,
       "message": "Please swap the order to maintain proto compatibility.",
+      "revId": "c2c6d0431e6ec531a564c6799ef70a49fbb2081a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aceb221e_7dbf0b23",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-21T11:41:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da00fe8_b2c11c2e",
       "revId": "c2c6d0431e6ec531a564c6799ef70a49fbb2081a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
