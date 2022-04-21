@@ -70,6 +70,30 @@
       },
       "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9d0705_5e6849fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-21T12:40:45Z",
+      "side": 1,
+      "message": "Yeap, we want to abandon the old approach. For that I created a new test to track what models support new approach: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3587148",
+      "parentUuid": "996e14f3_835954e8",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
