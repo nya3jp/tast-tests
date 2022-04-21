@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b16a97b8_d6c7fc59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308772
+      },
+      "writtenOn": "2022-04-21T18:00:40Z",
+      "side": 1,
+      "message": "Sounds good to me",
+      "parentUuid": "b973cf42_3fbdaed2",
+      "revId": "eee1dec49b389b55f2b15fe418dd661d87088ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1d302a4_c141409a",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
         "patchSetId": 4
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Are there perquisites for running a modifier, or should all SectionModifiers listed in HiFi.conf be runnable?",
       "parentUuid": "d1d302a4_c141409a",
+      "revId": "eee1dec49b389b55f2b15fe418dd661d87088ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24ab126_bc2af2b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308772
+      },
+      "writtenOn": "2022-04-21T18:00:40Z",
+      "side": 1,
+      "message": "Not likely for the purposes of this test. The controls should not fail because of the PCM state.",
+      "parentUuid": "7490dd34_b527514e",
       "revId": "eee1dec49b389b55f2b15fe418dd661d87088ec1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
