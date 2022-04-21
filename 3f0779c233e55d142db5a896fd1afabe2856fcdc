@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf9950cc_b899b367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-21T23:47:14Z",
+      "side": 1,
+      "message": "Okay thanks, so this test is fine with using the \"lacros\" fixture, which is just chromeLoggedIn with lacros support turned on then?",
+      "parentUuid": "a3cb0b01_456108f2",
+      "revId": "3f0779c233e55d142db5a896fd1afabe2856fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a76efeb_ce5a7f1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
         "patchSetId": 1
