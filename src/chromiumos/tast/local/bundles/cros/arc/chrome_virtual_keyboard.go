@@ -663,7 +663,7 @@ func chromeVirtualKeyboardNumberInputTest(
 	}
 
 	s.Log("Switching to the symbol/number keyboard")
-	if err := vkbCtx.TapKeyJS(`"switch to symbols"`)(ctx); err != nil {
+	if err := vkbCtx.SwitchToSymbolNumberLayout()(ctx); err != nil {
 		s.Fatal("Failed to tap 'switch to symbols': ", err)
 	}
 	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {

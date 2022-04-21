@@ -509,6 +509,11 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToHandwriting(ctx context.Context) (
 	return vkbCtx.NewHandwritingContext(ctx)
 }
 
+// SwitchToSymbolNumberLayout returns an action changing to symbol number layout.
+func (vkbCtx *VirtualKeyboardContext) SwitchToSymbolNumberLayout() uiauto.Action {
+	return vkbCtx.TapKey("switch to symbols")
+}
+
 // SwitchToMultipaste returns an action changing to multipaste layout.
 func (vkbCtx *VirtualKeyboardContext) SwitchToMultipaste() uiauto.Action {
 	return uiauto.Combine("switch to multipaste keyboard",
