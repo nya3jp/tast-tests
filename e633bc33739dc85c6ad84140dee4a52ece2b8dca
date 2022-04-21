@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c56c25_910994d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-04-21T08:31:23Z",
+      "side": 1,
+      "message": "Hey tast-owners@ \nShould this test be changed to be critical to not be able to break the test with UI changes? ",
+      "revId": "e633bc33739dc85c6ad84140dee4a52ece2b8dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
