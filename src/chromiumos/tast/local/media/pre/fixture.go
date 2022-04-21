@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -36,14 +35,12 @@ func init() {
 		Name:     "chromeVideoLacros",
 		Desc:     "Logged into a user session with logging enabled (lacros)",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
-				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-			}, nil
+				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...))).Opts()
 		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -56,14 +53,12 @@ func init() {
 		Name:     "chromeCameraPerfLacros",
 		Desc:     "Logged into a user session on Lacros without verbose logging that can affect the performance",
 		Contacts: []string{"chromeos-camera-eng@google.com"},
-		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
-				chrome.LacrosExtraArgs(chromeSuppressNotificationsArgs...),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-			}, nil
+				chrome.LacrosExtraArgs(chromeSuppressNotificationsArgs...))).Opts()
 		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -142,13 +137,11 @@ func init() {
 		Name:     "chromeAshCompositedVideoLacros",
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in ash-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
-				chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-			}, nil
+				chrome.ExtraArgs("--enable-hardware-overlays=\"\""))).Opts()
 		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -161,13 +154,11 @@ func init() {
 		Name:     "chromeLacrosCompositedVideoLacros",
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in lacros-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
-				chrome.LacrosExtraArgs("--enable-hardware-overlays=\"\""),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-			}, nil
+				chrome.LacrosExtraArgs("--enable-hardware-overlays=\"\""))).Opts()
 		}),
 		Parent:          "gpuWatchDog",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
