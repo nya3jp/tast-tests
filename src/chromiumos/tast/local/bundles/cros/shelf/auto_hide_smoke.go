@@ -32,13 +32,11 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
-			Name:      "clamshell_mode",
-			Val:       false,
-			ExtraAttr: []string{"informational"},
+			Name: "clamshell_mode",
+			Val:  false,
 		}, {
 			Name:              "tablet_mode",
 			Val:               true,
-			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		},
 		},
