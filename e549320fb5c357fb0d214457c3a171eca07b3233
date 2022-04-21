@@ -16,6 +16,24 @@
       "message": "hidehiko@: Quick question: How do remote tests interact with vars? e.g. we probably want to support lacrosDeployedBinary here somehow",
       "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f26f6124_f780b294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-21T01:06:54Z",
+      "side": 1,
+      "message": "Opening for comments..\n\nContext: build is failing as DefaultLacrosConfig has recently been removed. I wanted to have a CL like https://crrev.com/c/3598170 in to unblock this migration assuming that this firmware test doesn\u0027t really need the deployed lacros from Chromium CI to verify the OS.",
+      "parentUuid": "ff6659f1_e7036525",
+      "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
