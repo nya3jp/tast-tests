@@ -69,11 +69,11 @@ func init() {
 }
 
 func VerifyAppWayland(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 
 	// Run Lacros (if specified) as non-focused browser, so that the tested Wayland apps work in this situation.
-	_, cleanup, err := browserfixt.SetUp(ctx, s.FixtValue().(crostini.FixtureData).ParentFixtV, s.Param().(browser.Type))
+	_, cleanup, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to set up browser: ", err)
 	}
