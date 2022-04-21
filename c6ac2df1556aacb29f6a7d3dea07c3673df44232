@@ -118,6 +118,30 @@
       },
       "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9515befc_46b472c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-21T17:04:52Z",
+      "side": 1,
+      "message": "Thanks for explains!\n\n\u003e Step 2) is important to continue supporting the devices that correctly had the oem_name in the sysfs.\n\nGot it. Just curious, is this already activity in used? like already launched?\n\nI am just a little bit worry and want to remind that keeping using this might cause issues in future. I know this is not the priority to migrate it. This is a just small reminder to check if this is already in your radar.",
+      "parentUuid": "85f702b9_bdbd0e16",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "c6ac2df1556aacb29f6a7d3dea07c3673df44232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
