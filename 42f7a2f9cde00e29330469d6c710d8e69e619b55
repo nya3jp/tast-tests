@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "243d0e6f_93127b19",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-21T20:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e61455cb_63895430",
+      "range": {
+        "startLine": 34,
+        "startChar": 53,
+        "endLine": 34,
+        "endChar": 72
+      },
+      "revId": "42f7a2f9cde00e29330469d6c710d8e69e619b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d61f567d_8880b958",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-21T19:52:23Z",
       "side": 1,
       "message": "should rename this to ClosePersonalizationHub",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "42f7a2f9cde00e29330469d6c710d8e69e619b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5be077b6_7c55cb6b",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-21T20:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61f567d_8880b958",
       "range": {
         "startLine": 79,
         "startChar": 5,
