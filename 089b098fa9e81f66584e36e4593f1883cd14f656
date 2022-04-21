@@ -106,6 +106,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73e1bab7_f6eb64ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-21T10:07:56Z",
+      "side": 1,
+      "message": "Or maybe:\nfieldSelector :\u003d \"#status-box-container \u003e fieldset:nth-child(1) .directory-api-id\"\n\nvalue :\u003d fmt.Sprintf(\"document.querySelector(\\\"%s\\\").innerText\", fielSelector)\n\nconn.Eval(ctx, value, ...)",
+      "parentUuid": "0910c34a_93d813ce",
+      "range": {
+        "startLine": 232,
+        "startChar": 26,
+        "endLine": 232,
+        "endChar": 150
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7e4ae91_f32179a9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
         "patchSetId": 2
