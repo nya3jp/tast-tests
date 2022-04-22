@@ -256,9 +256,16 @@ func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string,
 		opts = append(opts, chrome.Option(chrome.ExtraArgs(opt)))
 	}
 
-	// Update test specific options.
-	// Enable Lacros.
-	opts = append(opts, chrome.EnableFeatures("LacrosSupport"))
+	// Enable Lacros with default options.
+	// Do not specify which lacros to select between Rootfs and Stateful in which mode as this test is to verify the selection logic itself.
+	lacrosOpts, err := lacrosfixt.NewConfig(
+		lacrosfixt.Selection(lacros.NotSelected),
+		lacrosfixt.Mode(lacros.NotSpecified)).Opts()
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to get default options")
+	}
+	opts = append(opts, lacrosOpts...)
+
 	// Select Lacros channel.
 	var channel string
 	switch component {
@@ -279,22 +286,6 @@ func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string,
 	// Block Component Updater.
 	opts = append(opts, chrome.ExtraArgs("--component-updater=url-source="+lacroscommon.BogusComponentUpdaterURL))
 
-	// TODO(hyungtaekim): Move common options to somewhere both local/remote tests can share to use them.
-	// Common options.
-	// Disable keep-alive for testing. See crbug.com/1268743.
-	opts = append(opts, chrome.ExtraArgs("--disable-lacros-keep-alive"))
-	// Suppress experimental Lacros infobar and possible others as well.
-	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
-	// Disable whats-new page. See crbug.com/1271436.
-	opts = append(opts, chrome.LacrosDisableFeatures("ChromeWhatsNewUI"))
-
-	// We reuse the custom extension from the chrome package for exposing private interfaces.
-	extDirs, err := chrome.DeprecatedPrepareExtensions()
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to prepare extensions")
-	}
-	extList := strings.Join(extDirs, ",")
-	opts = append(opts, chrome.LacrosExtraArgs(lacrosfixt.ExtensionArgs(chrome.TestExtensionID, extList)...))
 	// KeepState should be enabled to retain user data including provisioned Lacros image
 	// after restarting ui to make new Chrome options take effect.
 	opts = append(opts, chrome.KeepState())
