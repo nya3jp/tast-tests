@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "182fc2c3_132dd19f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T17:01:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec3f6035_54cfde41",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "60a662ea_fa96e90f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -441,6 +465,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c04320_ce8bf8b6",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T17:01:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df993464_ceca7006",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f412473_055a3105",
@@ -488,6 +536,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63799c0_1b9fcba0",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T17:01:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6171ca9_b1da8b1d",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5398724e_a3381769",
@@ -501,6 +573,30 @@
       "writtenOn": "2022-04-21T23:58:29Z",
       "side": 1,
       "message": "There should be a comment documenting `TestParseSoundCardsError`. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c4ecc3_5d4c3bb8",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T17:01:45Z",
+      "side": 1,
+      "message": "Never mind.",
+      "parentUuid": "5398724e_a3381769",
       "range": {
         "startLine": 58,
         "startChar": 0,
@@ -548,6 +644,30 @@
       "side": 1,
       "message": "Updated to have a test for each error branch. I think more tests can be added if the parsing fails on a DUT.",
       "parentUuid": "4346e701_06786164",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "392a635f_1560b253",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T17:01:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d8095638_d440f813",
       "range": {
         "startLine": 58,
         "startChar": 0,
