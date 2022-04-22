@@ -51,6 +51,24 @@
       "parentUuid": "5b1c10fb_fc7f9585",
       "revId": "e8cd3fdae1c7a2b9b6c7d3b3c6876c23fe67ba4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aaf9210_f1df14a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-22T21:16:58Z",
+      "side": 1,
+      "message": "I took a look at the trace file, and as suspected, we\u0027re only getting trace data for ash-chrome: https://screenshot.googleplex.com/5K4MhbEXGb5hGE6\n\nYou can go to ui.perfetto.dev to load the trace file, and I think we should get a second browser process under lacros.\n\nCould you please upload the unzipped file to drive, and link it in the CL comment. Also link the screenshot link.",
+      "parentUuid": "8f661493_6211bfe1",
+      "revId": "e8cd3fdae1c7a2b9b6c7d3b3c6876c23fe67ba4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
