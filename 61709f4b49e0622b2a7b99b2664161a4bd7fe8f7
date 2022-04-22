@@ -67,6 +67,23 @@
       "message": "Hi,\nCould you make it clear that this is a (semi) manual test, with a comment and probably adding \u0027manual\u0027 to the name.",
       "revId": "61709f4b49e0622b2a7b99b2664161a4bd7fe8f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4654fd_362bdff3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_switch_onboard_speaker_to_bt_speaker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000337
+      },
+      "writtenOn": "2022-04-22T10:56:45Z",
+      "side": 1,
+      "message": "Why do you want to call DisconnectAllDevices() here after paring the bluetooth device? Maybe call DisconnectAllDevices() before pairing?",
+      "revId": "61709f4b49e0622b2a7b99b2664161a4bd7fe8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
