@@ -16,6 +16,29 @@
       "message": "JFYI I haven\u0027t been able to test this properly yet because the test fails for me before making any changes:\n\n[Fixture failure] enrolled: Failed to reset TPM: failed to reset system: failed to get ownership ID: failed \"hwsec-ownership-id\" command with error code 1: Process exited with status 1\n",
       "revId": "51e77e03af88fb292bb60eadfabe5b008ef1ebbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99818a73_41eb889a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-22T13:29:43Z",
+      "side": 1,
+      "message": "this needs to be called on s.Fatal()s between L106-L122.\n\nI\u0027d recommend to wrap L104-L123 by a anonymous function, and use defer.",
+      "range": {
+        "startLine": 104,
+        "startChar": 10,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "51e77e03af88fb292bb60eadfabe5b008ef1ebbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
