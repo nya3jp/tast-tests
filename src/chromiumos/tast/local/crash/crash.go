@@ -110,6 +110,12 @@ const (
 	// FilterInIgnoreAllCrashes is a value to put in the filter-in file if
 	// you wish to ignore all crashes that happen during a test.
 	FilterInIgnoreAllCrashes = "none"
+
+	// KernelDevCDDir is a directory registered by kernel module devcoredump to track ongoing devcd instances
+	KernelDevCDDir = "/sys/class/devcoredump"
+
+	// kernelDevCDName is the pattern for the names of devcoredump instances
+	kernelDevCDName = `devcd\d+`
 )
 
 var (
@@ -567,5 +573,62 @@ func MarkTestDone(ctx context.Context) error {
 	if err := os.Remove(testInProgressPath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to remove in-progress test name")
 	}
+	return nil
+}
+
+// CleanupDevcoredump removes the devcoredump file and directory, if any exists,
+// by writing "0" to /sys/class/devcoredump/devcd%d/data, with up to 30s waiting.
+// The existence of this file indicates that a devcoredump was created
+// shortly before. devcoredumps are typically created by kernel and cleared automatically
+// by crash_reporter, but during some crash tests, we set up a filter that causes
+// crash_reporter to ignore devcoredumps, so they are not automatically cleaned up.
+func CleanupDevcoredump(ctx context.Context) {
+	// The error is used for unit testing only. The caller tests can instead rely on
+	// context logs to tell what's going on during a failing test
+	_ = cleanupDevcoredump(ctx, 30*time.Second, KernelDevCDDir, kernelDevCDName)
+}
+
+func cleanupDevcoredump(ctx context.Context, wait time.Duration, dirname, filename string) error {
+	files, err := os.ReadDir(dirname)
+	if err != nil {
+		// the /sys/class/devcoredump is unregistered due to unexpected kernel error
+		// Intel FW dumping requires the devcoredump kernel module.
+		testing.ContextLog(ctx, "devcoredump directory does not exist on DUT, indicating kernel errors. Aborting the cleanup")
+		return nil
+	}
+
+	re := regexp.MustCompile(filename)
+	// The existence of these files indicates that devcoredump was invoked shortly before.
+	// devcoredumps are typically created by kernel and cleared automatically by crash_reporter,
+	// but during some crash tests, we set up a filter that causes crash_reporter to ignore
+	// devcoredumps, so they are not automatically cleaned up. See b/228462848#comment7
+	for _, file := range files {
+		if re.MatchString(file.Name()) {
+			testing.ContextLogf(ctx, "Found existing core dump %s, waiting up to 30 seconds for crash_reporter to finish", file.Name())
+			fullPath := filepath.Join(dirname, file.Name(), "data")
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if _, err := os.Stat(fullPath); err != nil {
+					testing.ContextLogf(ctx, "File %s has already been cleaned up, exit waiting", fullPath)
+					return nil
+				}
+				return errors.New("Waiting crash_reporter to finish")
+			}, &testing.PollOptions{Timeout: wait, Interval: time.Second}); err != nil {
+				// 30s deadline exceeded, this is expected for most of cases
+				testing.ContextLogf(ctx, "File %s is still there, proceeding the cleaning up", fullPath)
+			} else {
+				// poll ends without errors, which means the devcoredump data directory was
+				// unregistered during the waiting, skipping writing to it.
+				continue
+			}
+
+			testing.ContextLog(ctx, "Cleaning up the footprints left by crash_reporter")
+			if err := os.WriteFile(fullPath, []byte("0"), 0); err != nil {
+				// it's okay to fail to write devcoredump data file
+				testing.ContextLogf(ctx, "Didn't write devcoredump data file %s: %s. It's expected for a rare case "+
+					"that crash_reporter unregistered the file just before the writing", fullPath, err)
+			}
+		}
+	}
+
 	return nil
 }

@@ -6,7 +6,6 @@ package wifi
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
@@ -56,6 +55,16 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
 	}
 
+	if _, err := os.ReadDir(crash.KernelDevCDDir); err != nil {
+		// the /sys/class/devcoredump is unregistered due to unexpected kernel errors
+		// Intel FW dumping requires the devcoredump kernel module.
+		s.Fatal("devcoredump directory does not exist on DUT, indicating kernel errors. Failing the test")
+	}
+
+	// Check the existence of file filter created by crash_reporter.
+	// Clean it up if so.
+	crash.CleanupDevcoredump(ctx)
+
 	// This test uses crash.DevImage because it is designed to test device
 	// coredump handling on developer images.  Without it, no .devcore.gz
 	// files would be created.
@@ -90,7 +99,7 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Triggering a devcoredump")
-	if err := ioutil.WriteFile(fwDbgCollect, []byte("1"), 0); err != nil {
+	if err := os.WriteFile(fwDbgCollect, []byte("1"), 0); err != nil {
 		s.Fatal("Failed to trigger a devcoredump: ", err)
 	}
 
