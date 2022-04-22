@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
@@ -196,6 +197,11 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 
 // CheckMaximizeToFullscreenToggle checks window's bounds transitioning from max to fullscreen.
 func CheckMaximizeToFullscreenToggle(ctx context.Context, tconn *chrome.TestConn, maxWindowCoords coords.Rect, pkgName string) error {
+	// We need to move the cursor, otherwise the caption keeps visible even in fullscreen if the cursor is on the top edge of the screen.
+	if err := mouse.Move(tconn, maxWindowCoords.CenterPoint(), time.Second)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move mouse to the center")
+	}
+
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		fullscreenWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 		if err != nil {
