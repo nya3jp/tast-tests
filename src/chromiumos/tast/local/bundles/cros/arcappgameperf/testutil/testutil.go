@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
+	perf2 "chromiumos/tast/local/perf"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -32,8 +33,10 @@ type TestParams struct {
 	Device            *ui.Device
 	AppPkgName        string
 	AppActivityName   string
+	SurfaceName       string
 	Activity          *arc.Activity
 	ActivityStartTime time.Time
+	FrameStats        *perf2.SurfaceFlingerMetrics
 }
 
 // coolDownConfig returns the config to wait for the machine to cooldown for game performance tests.
@@ -46,6 +49,12 @@ func coolDownConfig() cpu.CoolDownConfig {
 	return cdConfig
 }
 
+type appTracingResults struct {
+	FPS             float64 `json:"fps"`
+	CommitDeviation float64 `json:"commitDeviation"`
+	RenderQuality   float64 `json:"renderQuality"`
+}
+
 // BenchmarkResults stores results for the calls to benchmarking.
 type BenchmarkResults struct {
 	// FPS is a metric that shows average FPS during the sampled period.
@@ -56,6 +65,13 @@ type BenchmarkResults struct {
 	// RenderQuality is a metric in range 0%..100% that shows quality of the render during the
 	// sampled period. 100% is ideal quality when frames are produced on time according to FPS.
 	RenderQuality float64 `json:"renderQuality"`
+	// SurfaceFlinger_FPS is a metric that shows average FPS during the sampled
+	// period, calculated via SurfaceFlinger.
+	SurfaceFlingerFPS float64
+	// SurfaceFlinger_Latency is a metric that shows average latency during the
+	// sampled period, calculated via SurfaceFlinger, by taking the average elapsed
+	// time between all submission and draw timestamps.
+	SurfaceFlingerLatency float64
 }
 
 // PerformTestFunc allows callers to run their desired test after a provided activity has been launched.
@@ -173,8 +189,12 @@ func GetCoords(ctx context.Context, tconn *chrome.TestConn, activityBounds coord
 }
 
 // StartBenchmarking begins the benchmarking process.
-func StartBenchmarking(ctx context.Context, params TestParams) error {
+func StartBenchmarking(ctx context.Context, params *TestParams) error {
 	// Leave the mini-game running for while recording metrics.
+	params.FrameStats = perf2.NewSurfaceFlingerMetrics(params.SurfaceName, params.Arc)
+	if err := params.FrameStats.Start(ctx); err != nil {
+		return errors.Wrap(err, "failed to start SurfaceFlinger")
+	}
 	if err := params.TestConn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.arcAppTracingStart)`); err != nil {
 		return errors.Wrap(err, "failed to start benchmarking")
 	}
@@ -183,11 +203,20 @@ func StartBenchmarking(ctx context.Context, params TestParams) error {
 }
 
 // StopBenchmarking stops the benchmarking process and returns the parsed results.
-func StopBenchmarking(ctx context.Context, params TestParams) (results BenchmarkResults, err error) {
+func StopBenchmarking(ctx context.Context, params *TestParams) (results BenchmarkResults, err error) {
+	var a appTracingResults
 	var r BenchmarkResults
-	if err := params.TestConn.Call(ctx, &r, `tast.promisify(chrome.autotestPrivate.arcAppTracingStopAndAnalyze)`); err != nil {
+	r.SurfaceFlingerFPS, r.SurfaceFlingerLatency, err = params.FrameStats.Stop(ctx)
+	if err != nil {
+		return r, errors.Wrap(err, "failed to stop SurfaceFlinger")
+	}
+	if err := params.TestConn.Call(ctx, &a, `tast.promisify(chrome.autotestPrivate.arcAppTracingStopAndAnalyze)`); err != nil {
 		return r, errors.Wrap(err, "failed to stop benchmarking")
 	}
+
+	r.FPS = a.FPS
+	r.CommitDeviation = a.CommitDeviation
+	r.RenderQuality = a.RenderQuality
 
 	return r, nil
 }
@@ -243,6 +272,24 @@ func RenderQualityPerfMetric() perf.Metric {
 		Name:      "renderQuality",
 		Unit:      "percents",
 		Direction: perf.BiggerIsBetter,
+	}
+}
+
+// SurfaceFlingerFpsPerfMetric returns a standard metric that FPS measured through SurfaceFlinger can be saved in.
+func SurfaceFlingerFpsPerfMetric() perf.Metric {
+	return perf.Metric{
+		Name:      "surfaceFlingerFps",
+		Unit:      "fps",
+		Direction: perf.BiggerIsBetter,
+	}
+}
+
+// SurfaceFlingerLatencyPerfMetric returns a standard metric that latency measured through SurfaceFlinger can be saved in.
+func SurfaceFlingerLatencyPerfMetric() perf.Metric {
+	return perf.Metric{
+		Name:      "surfaceFlingerLatency",
+		Unit:      "seconds",
+		Direction: perf.SmallerIsBetter,
 	}
 }
 
