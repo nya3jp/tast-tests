@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf36272_36efad1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T00:26:12Z",
+      "side": 1,
+      "message": "Please review 16p MeetCUJ changes! I added 1p changes in a separate CL. ",
+      "revId": "e9aa613a71c4d418db6fc0d812331dc5f9b39098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
