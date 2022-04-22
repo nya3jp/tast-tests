@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7798875_b7620a2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T21:26:18Z",
+      "side": 1,
+      "message": "nit: No `.`\nSee https://cbea.ms/git-commit/",
+      "range": {
+        "startLine": 7,
+        "startChar": 51,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "fc1327c0eee1c5863f19be15388a6d25373c5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2bd451e1_af5fed03",
@@ -31,6 +54,46 @@
       "writtenOn": "2022-04-22T20:42:19Z",
       "side": 1,
       "message": "Please review!",
+      "revId": "fc1327c0eee1c5863f19be15388a6d25373c5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f81d3c8_83d19f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T21:26:18Z",
+      "side": 1,
+      "message": "Tests should be able to make multiple calls to `Run` and multiple calls to `RunFor`, all intermixed. There may not be any actual tests that do it, but I think we should still support it. You can initialize `testCyclesCount` to `0` in `StartRecording`, increment it in `Run`, and make another adjustment in `RunFor`.",
+      "revId": "fc1327c0eee1c5863f19be15388a6d25373c5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "736e644d_3d41dede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T21:26:18Z",
+      "side": 1,
+      "message": "nit: `perf.BiggerIsBetter` because longer runtime correlates to better performance data.",
+      "range": {
+        "startLine": 732,
+        "startChar": 13,
+        "endLine": 732,
+        "endChar": 33
+      },
       "revId": "fc1327c0eee1c5863f19be15388a6d25373c5289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
