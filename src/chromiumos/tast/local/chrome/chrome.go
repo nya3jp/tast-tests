@@ -107,6 +107,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/chrome/nearbyshare/nearbyfixture",
 	"chromiumos/tast/local/chrome/familylink",
 	"chromiumos/tast/local/chrome/mtp",
+	"chromiumos/tast/local/chrome/projector",
 	"chromiumos/tast/local/accountmanager",
 	"chromiumos/tast/local/crostini",
 	"chromiumos/tast/local/drivefs",
