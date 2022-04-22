@@ -39,6 +39,30 @@
       },
       "revId": "5ab05698613c7361dc742c2284ea667232fd604f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23763044_5b939147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-22T09:06:50Z",
+      "side": 1,
+      "message": "nvm.",
+      "parentUuid": "b1844a41_54e9b406",
+      "range": {
+        "startLine": 115,
+        "startChar": 14,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "5ab05698613c7361dc742c2284ea667232fd604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
