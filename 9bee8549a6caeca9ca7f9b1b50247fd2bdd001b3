@@ -16,6 +16,29 @@
       "message": "Please review setting MeetCUJ duration to 10 mins. Thank you!",
       "revId": "9bee8549a6caeca9ca7f9b1b50247fd2bdd001b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bf5855_f1b141d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-22T01:28:28Z",
+      "side": 1,
+      "message": "It looks like this is unused now, should it be removed?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 95
+      },
+      "revId": "9bee8549a6caeca9ca7f9b1b50247fd2bdd001b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
