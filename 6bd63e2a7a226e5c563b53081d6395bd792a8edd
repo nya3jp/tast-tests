@@ -16,6 +16,29 @@
       "message": "wifi_matfunc is running. The 3 tests has been added to wifi_matfunc according to logs. So far so good. I will Verified+1 once wifi_matfunc succeeds.",
       "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "384e76ca_f34a9e02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hostap_hwsim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-04-22T23:02:36Z",
+      "side": 1,
+      "message": "my understanding is that this test is going to be skipped for \"real\" devices that typically run wifi_matfunc since it\u0027s only enabled for amd64-generic and its derivatives http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/README.hostap_hwsim.md\n\nSo maybe we shouldn\u0027t add it to matfunc?",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 75
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
