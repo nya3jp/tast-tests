@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea583f05_8d7973c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-22T12:31:39Z",
+      "side": 1,
+      "message": "It\u0027s only a few seconds, but I\u0027ve added startTime to the struct as suggested just to be sure.",
+      "parentUuid": "4358857f_60116c94",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05a9bb1c_68d82c75",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
         "patchSetId": 2
@@ -142,6 +166,30 @@
       "side": 1,
       "message": "Or maybe:\nfieldSelector :\u003d \"#status-box-container \u003e fieldset:nth-child(1) .directory-api-id\"\n\nvalue :\u003d fmt.Sprintf(\"document.querySelector(\\\"%s\\\").innerText\", fielSelector)\n\nconn.Eval(ctx, value, ...)",
       "parentUuid": "0910c34a_93d813ce",
+      "range": {
+        "startLine": 232,
+        "startChar": 26,
+        "endLine": 232,
+        "endChar": 150
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "957573d2_569adf03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-22T12:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73e1bab7_f6eb64ee",
       "range": {
         "startLine": 232,
         "startChar": 26,
@@ -316,6 +364,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "360b1dfa_e8db619e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-22T12:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1adb24ac_59799fd0",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 40
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58a15f0f_9ae66f8f",
@@ -329,6 +401,30 @@
       "writtenOn": "2022-04-21T10:03:40Z",
       "side": 1,
       "message": "Which details could we log here to provide more info for forensics?",
+      "range": {
+        "startLine": 100,
+        "startChar": 12,
+        "endLine": 100,
+        "endChar": 42
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a011e507_9ffc1428",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-22T12:31:39Z",
+      "side": 1,
+      "message": "I\u0027ve added the deviceId there isn\u0027t much more to log, but that should be enough to at least check the admin console for the device.",
+      "parentUuid": "58a15f0f_9ae66f8f",
       "range": {
         "startLine": 100,
         "startChar": 12,
