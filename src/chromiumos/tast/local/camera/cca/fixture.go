@@ -20,6 +20,9 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
@@ -90,6 +93,18 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyLacros",
+		Desc:            "Set up test bridge for CCA",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            &fixture{lacros: true},
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+		Vars:            []string{"lacrosDeployedBinary"},
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "ccaTestBridgeReadyWithFakeCamera",
 		Desc: `Set up test bridge for CCA with fake camera. Any tests using this
 		       fixture should switch the camera scene before opening camera`,
@@ -99,6 +114,19 @@ func init() {
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "ccaTestBridgeReadyWithFakeCameraLacros",
+		Desc: `Set up test bridge for CCA with fake camera. Any tests using this
+		       fixture should switch the camera scene before opening camera`,
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            &fixture{fakeCamera: true, fakeScene: true, lacros: true},
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+		Vars:            []string{"lacrosDeployedBinary"},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -168,9 +196,10 @@ type TestWithAppFunc func(context.Context, *App) error
 
 // FixtureData is the struct exposed to tests.
 type FixtureData struct {
-	Chrome     *chrome.Chrome
-	ARC        *arc.ARC
-	TestBridge func() *testutil.TestBridge
+	Chrome      *chrome.Chrome
+	BrowserType browser.Type
+	ARC         *arc.ARC
+	TestBridge  func() *testutil.TestBridge
 	// App returns the CCA instance which lives through the test.
 	App func() *App
 	// ResetChrome resets chrome used by this fixture.
@@ -204,6 +233,7 @@ type fixture struct {
 	chart       *chart.Chart
 	cameraScene string
 
+	lacros           bool
 	scriptPaths      []string
 	fakeCamera       bool
 	fakeScene        bool
@@ -262,6 +292,16 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	// assistant is disabled by default, this should not affect other tests.
 	chromeOpts = append(chromeOpts, assistant.VerboseLogging())
 
+	browserType := browser.TypeAsh
+	if f.lacros {
+		browserType = browser.TypeLacros
+		var err error
+		chromeOpts, err = lacrosfixt.NewConfigFromState(s, lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(chromeOpts...)).Opts()
+		if err != nil {
+			s.Fatal("Failed to compute Chrome options: ", err)
+		}
+	}
+
 	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -296,7 +336,10 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	f.scriptPaths = []string{s.DataPath("cca_ui.js")}
 
 	success = true
-	return FixtureData{Chrome: f.cr, ARC: f.arc,
+	return FixtureData{
+		Chrome:          f.cr,
+		BrowserType:     browserType,
+		ARC:             f.arc,
 		TestBridge:      f.testBridge,
 		App:             f.cca,
 		ResetChrome:     f.resetChrome,
@@ -306,7 +349,8 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		SwitchScene:     f.switchScene,
 		RunTestWithApp:  f.runTestWithApp,
 		PrepareChart:    f.prepareChart,
-		SetDebugParams:  f.setDebugParams}
+		SetDebugParams:  f.setDebugParams,
+	}
 }
 
 func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {

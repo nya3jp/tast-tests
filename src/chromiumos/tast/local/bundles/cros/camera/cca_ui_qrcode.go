@@ -11,6 +11,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -26,18 +28,25 @@ type qrcodeTestParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIQRCode,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks QR code detection in CCA",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "chrome_internal"},
 		Data:         []string{"qrcode_1280x960.mjpeg", "qrcode_text_1280x960.mjpeg"},
-		Fixture:      "ccaTestBridgeReadyWithFakeCamera",
+		Params: []testing.Param{{
+			Fixture: "ccaTestBridgeReadyWithFakeCamera",
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "ccaTestBridgeReadyWithFakeCameraLacros",
+		}},
 	})
 }
 
 func CCAUIQRCode(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cca.FixtureData).Chrome
+	bt := s.FixtValue().(cca.FixtureData).BrowserType
 	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 	switchScene := s.FixtValue().(cca.FixtureData).SwitchScene
 
@@ -73,7 +82,7 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to setup QRCode scene: ", err)
 			}
 			if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
-				return runQRCodeTest(ctx, cr, app, tst.testParams)
+				return runQRCodeTest(ctx, cr, bt, app, tst.testParams)
 			}, cca.TestWithAppParams{}); err != nil {
 				s.Errorf("Failed to pass %v subtest: %v", tst.name, err)
 			}
@@ -82,7 +91,7 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 	}
 }
 
-func runQRCodeTest(ctx context.Context, cr *chrome.Chrome, app *cca.App, testParams qrcodeTestParams) error {
+func runQRCodeTest(ctx context.Context, cr *chrome.Chrome, bt browser.Type, app *cca.App, testParams qrcodeTestParams) error {
 	if err := app.EnableQRCodeDetection(ctx); err != nil {
 		return errors.Wrap(err, "failed to enable QR code detection")
 	}
@@ -123,7 +132,11 @@ func runQRCodeTest(ctx context.Context, cr *chrome.Chrome, app *cca.App, testPar
 		}
 
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			ok, err := cr.IsTargetAvailable(ctx, chrome.MatchTargetURL(testParams.expected))
+			br, err := browserfixt.Connect(ctx, cr, bt)
+			if err != nil {
+				return err
+			}
+			ok, err := br.IsTargetAvailable(ctx, chrome.MatchTargetURL(testParams.expected))
 			if err != nil {
 				return testing.PollBreak(err)
 			}
