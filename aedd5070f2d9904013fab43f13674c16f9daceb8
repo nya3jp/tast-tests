@@ -34,6 +34,24 @@
       "parentUuid": "d9efd51b_673132ef",
       "revId": "aedd5070f2d9904013fab43f13674c16f9daceb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d115544c_14745da6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-04-22T07:01:30Z",
+      "side": 1,
+      "message": "Please update this commit message line to describe either:\n- the reason why the change matches the test purpose (maybe, the intended target device known to be USB 3.0?, so narrowing the condition?)\n- or the purpose of the change (had the passed even when you had a wrong device?)\n\nAs a nitpick, I think it is \"USB 3.0\" or USB {3.1/3.2} Gen 1, because Gen 2 are 10GB/s.",
+      "parentUuid": "4a9da570_a4cd4348",
+      "revId": "aedd5070f2d9904013fab43f13674c16f9daceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
