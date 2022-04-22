@@ -16,29 +16,38 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUISettings,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Opens CCA and verifies the settings menu behavior",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Fixture:      "ccaTestBridgeReady",
+		Params: []testing.Param{{
+			Fixture: "ccaTestBridgeReady",
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "ccaTestBridgeReadyLacros",
+		}},
 	})
 }
 
 func CCAUISettings(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cca.FixtureData).Chrome
+	bt := s.FixtValue().(cca.FixtureData).BrowserType
 	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
 		name     string
-		testFunc func(context.Context, *chrome.Chrome, *cca.App) error
+		testFunc func(context.Context, *chrome.Chrome, browser.Type, *cca.App) error
 	}{{
 		"testFeedback",
 		testFeedback,
@@ -64,7 +73,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 				}
 				defer cca.MainMenu.Close(cleanupCtx, app)
 
-				return tst.testFunc(ctx, cr, app)
+				return tst.testFunc(ctx, cr, bt, app)
 			}, cca.TestWithAppParams{}); err != nil {
 				s.Errorf("Failed to pass %v subtest: %v", tst.name, err)
 			}
@@ -74,7 +83,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 }
 
 // testFeedback checks feedback button functionality.
-func testFeedback(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
+func testFeedback(ctx context.Context, cr *chrome.Chrome, bt browser.Type, app *cca.App) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -99,7 +108,7 @@ func testFeedback(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 }
 
 // testHelp checks help button functionality.
-func testHelp(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
+func testHelp(ctx context.Context, cr *chrome.Chrome, bt browser.Type, app *cca.App) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -107,10 +116,14 @@ func testHelp(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	if err := app.Click(ctx, cca.HelpButton); err != nil {
 		return errors.Wrap(err, "failed to click help button")
 	}
+	br, err := browserfixt.Connect(ctx, cr, bt)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to browser")
+	}
 	matcher := func(t *target.Info) bool {
 		return strings.Contains(t.URL, "support.google.com") && t.Type == "page"
 	}
-	hConn, err := cr.NewConnForTarget(ctx, matcher)
+	hConn, err := br.NewConnForTarget(ctx, matcher)
 	if err != nil {
 		return errors.Wrap(err, "failed to open help app")
 	}
@@ -124,7 +137,7 @@ func testHelp(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 }
 
 // testGrid checks that changing grid type in settings is effective.
-func testGrid(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
+func testGrid(ctx context.Context, cr *chrome.Chrome, bt browser.Type, app *cca.App) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -154,7 +167,7 @@ func testGrid(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 }
 
 // testTimer checks that changing timer duration in settings is effective.
-func testTimer(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
+func testTimer(ctx context.Context, cr *chrome.Chrome, bt browser.Type, app *cca.App) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()

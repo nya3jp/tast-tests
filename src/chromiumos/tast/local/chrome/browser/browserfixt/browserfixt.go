@@ -143,3 +143,23 @@ func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Co
 		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
 	}
 }
+
+// Connect connects.
+func Connect(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Browser, error) {
+	switch bt {
+	case browser.TypeAsh:
+		return cr.Browser(), nil
+	case browser.TypeLacros:
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to connect to ash-chrome test API")
+		}
+		l, err := lacros.Connect(ctx, tconn)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to connect to lacros-chrome")
+		}
+		return l.Browser(), nil
+	default:
+		return nil, errors.Errorf("unrecognized Chrome type %s", string(bt))
+	}
+}
