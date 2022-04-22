@@ -329,21 +329,16 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}(closeCtx)
 		addBotsCount := meet.num
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
+		for i := 0; i < 3; i++ {
 			botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+15*time.Minute, meet.botsOptions...)
 			if err != nil {
-				return testing.PollBreak(errors.Wrapf(err, "failed to create %d bots", addBotsCount))
+				s.Fatalf("Failed to create %d bots: ", addBotsCount)
 			}
 			s.Logf("%d bots started, %d bots failed", len(botList), numFailures)
-			// If there are fewer bots created than requested, send another request for more bots.
-			if len(botList) < addBotsCount {
-				err := errors.Errorf("failed to create bots; wanted %d bots, got %d", addBotsCount, len(botList))
-				addBotsCount -= len(botList)
-				return err
+			if numFailures == 0 {
+				break
 			}
-			return nil
-		}, nil); err != nil {
-			s.Fatalf("Failed to ensure %d bots in the meet call: %v", meet.num, err)
+			addBotsCount -= len(botList)
 		}
 	}
 
