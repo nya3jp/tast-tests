@@ -123,6 +123,24 @@
       "parentUuid": "7490dd34_b527514e",
       "revId": "eee1dec49b389b55f2b15fe418dd661d87088ec1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cde1047_658535d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T06:54:03Z",
+      "side": 1,
+      "message": "Done, it\u0027s a bit messy though...",
+      "parentUuid": "e24ab126_bc2af2b1",
+      "revId": "eee1dec49b389b55f2b15fe418dd661d87088ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
