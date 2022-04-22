@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1d1dfeab_814f6621",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T16:25:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "942542c5_4ee9c15d",
+      "range": {
+        "startLine": 7,
+        "startChar": 50,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "9bee8549a6caeca9ca7f9b1b50247fd2bdd001b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b2aeeb_f00dc383",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T16:25:42Z",
+      "side": 1,
+      "message": "Addressed (changed to \"test variant\")",
+      "parentUuid": "a33566d5_8503349a",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "9bee8549a6caeca9ca7f9b1b50247fd2bdd001b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e20b36a1_49da0a6b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2c19cb7_d83d3e1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T16:25:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aaaf632_597c84cb",
+      "range": {
+        "startLine": 77,
+        "startChar": 27,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "9bee8549a6caeca9ca7f9b1b50247fd2bdd001b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3854fc33_0fae2abe",
@@ -123,6 +195,30 @@
       "writtenOn": "2022-04-22T16:11:25Z",
       "side": 1,
       "message": "This comment should be removed because its purpose is to point out a unique duration.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 51
+      },
+      "revId": "9bee8549a6caeca9ca7f9b1b50247fd2bdd001b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fa8072_0c49db67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T16:25:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3854fc33_0fae2abe",
       "range": {
         "startLine": 97,
         "startChar": 0,
