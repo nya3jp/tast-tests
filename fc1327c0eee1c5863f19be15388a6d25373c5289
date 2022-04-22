@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1984f89f_7a338f72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T21:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7798875_b7620a2e",
+      "range": {
+        "startLine": 7,
+        "startChar": 51,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "fc1327c0eee1c5863f19be15388a6d25373c5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2bd451e1_af5fed03",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -77,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2cb8d2a_6b643184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T21:51:25Z",
+      "side": 1,
+      "message": "If a test was calling Run / RunFor separately, wouldn\u0027t there be independent calls to Start and stop recording for each Run/RunFor call? My understanding of cycles was how many times the test was called in between start and stop, but maybe that idea itself is flawed.",
+      "parentUuid": "2f81d3c8_83d19f49",
+      "revId": "fc1327c0eee1c5863f19be15388a6d25373c5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "736e644d_3d41dede",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 2
@@ -88,6 +130,30 @@
       "writtenOn": "2022-04-22T21:26:18Z",
       "side": 1,
       "message": "nit: `perf.BiggerIsBetter` because longer runtime correlates to better performance data.",
+      "range": {
+        "startLine": 732,
+        "startChar": 13,
+        "endLine": 732,
+        "endChar": 33
+      },
+      "revId": "fc1327c0eee1c5863f19be15388a6d25373c5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a85e94b_d2ebbb7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T21:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "736e644d_3d41dede",
       "range": {
         "startLine": 732,
         "startChar": 13,
