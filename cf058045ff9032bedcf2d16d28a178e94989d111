@@ -33,6 +33,41 @@
       "message": "Looks good! But just curious, are you aware why the test regressed recently?",
       "revId": "cf058045ff9032bedcf2d16d28a178e94989d111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d3aade_13b33aa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-22T05:18:31Z",
+      "side": 1,
+      "message": "My findings: \narc.WMResizableClamshell stably passes on my DUT *if* I run only this test. But it starts failing if the test runs with arc.WMNonresizable_Tablet_ (I guess this is just one example).\nSo, my guess is that the result depends on the order of the tast-tests runs, and  one (or over) of the other tests started leaving the mouse cursor at the top recently. And that might cause the regression.\n\nThis is just my guess based on some assumptions, so TBH no clear answer for now...\nBut let me see how it goes after landing this CL 😊",
+      "parentUuid": "867bccef_0e93b5dc",
+      "revId": "cf058045ff9032bedcf2d16d28a178e94989d111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716f6407_ecc49349",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-22T05:18:31Z",
+      "side": 1,
+      "message": "tast-owners@: Please take a look.",
+      "revId": "cf058045ff9032bedcf2d16d28a178e94989d111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
