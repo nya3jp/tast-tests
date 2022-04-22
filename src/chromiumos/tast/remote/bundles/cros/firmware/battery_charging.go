@@ -41,23 +41,33 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create config: ", err)
 	}
 
-	// checkBatteryInfo returns information relevant to the battery.
-	checkBatteryInfo := func(ctx context.Context) (string, error) {
-		regex := `state:(\s+\w+\s?\w+)`
-		expMatch := regexp.MustCompile(regex)
+	// For debugging purposes, log servo and dut connection type.
+	servoType, err := h.Servo.GetServoType(ctx)
+	if err != nil {
+		s.Fatal("Failed to find servo type: ", err)
+	}
+	s.Logf("Servo type: %s", servoType)
 
+	dutConnType, err := h.Servo.GetDUTConnectionType(ctx)
+	if err != nil {
+		s.Fatal("Failed to find dut connection type: ", err)
+	}
+	s.Logf("DUT connection type: %s", dutConnType)
+
+	// checkBatteryInfo runs the host command 'power_supply_info',
+	// and returns information relevant to the battery.
+	checkBatteryInfo := func(ctx context.Context, pattern string) (string, error) {
+		expMatch := regexp.MustCompile(pattern)
 		out, err := h.DUT.Conn().CommandContext(ctx, "power_supply_info").Output()
 		if err != nil {
 			return "", errors.Wrap(err, "failed to retrieve power supply info from DUT")
 		}
-
 		matches := expMatch.FindStringSubmatch(string(out))
 		if len(matches) < 2 {
 			return "", errors.Errorf("failed to match regex %q in %q", expMatch, string(out))
 		}
-
-		batteryStatus := strings.TrimSpace(matches[1])
-		return batteryStatus, nil
+		batteryInfo := strings.TrimSpace(matches[1])
+		return batteryInfo, nil
 	}
 
 	// checkACInfo returns information relevant to the AC. This is temporary, and may be
@@ -98,6 +108,14 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 		hasPluggedAC := tc.plugAC
 
+		// When charger disconnects/reconnects, there's a temporary drop in connection with the DUT.
+		// Wait for DUT to reconnect before proceeding to the next step.
+		waitConnectShortCtx, cancelWaitConnectShort := context.WithTimeout(ctx, 15*time.Second)
+		defer cancelWaitConnectShort()
+		if err := s.DUT().WaitConnect(waitConnectShortCtx); err != nil {
+			s.Fatal("Failed to reconnect to DUT: ", err)
+		}
+
 		// Verify that DUT's charger was plugged/unplugged as expected.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			currentCharger, err := h.Servo.GetChargerAttached(ctx)
@@ -115,6 +133,11 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend")
 		if err := cmd.Start(); err != nil {
 			s.Fatal("Failed to suspend DUT: ", err)
+		}
+
+		// Delay for some time to ensure DUT has fully suspended.
+		if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
 		}
 
 		s.Log("Checking for DUT in S0ix or S3 powerstates")
@@ -184,21 +207,43 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Checking battery information")
-		battery, err := checkBatteryInfo(ctx)
+		var (
+			reBatteryState      string = `state:(\s+\w+\s?\w+)`
+			reBatteryDevicePath string = `Device: (Battery\n.*path:\s*\S*)`
+		)
+
+		batteryDevicePath, err := checkBatteryInfo(ctx, reBatteryDevicePath)
+		if err != nil {
+			s.Fatal("Unable to find battery device path: ", err)
+		}
+
+		// Report battery status from the base file that 'power_supply_info' depends on.
+		str := strings.Split(strings.TrimSpace(batteryDevicePath), "\n")
+		baseFilePath := strings.TrimLeft(strings.ReplaceAll(str[len(str)-1], " ", ""), "path:")
+		statusPath := fmt.Sprintf("%s/%s", baseFilePath, "status")
+
+		batteryBaseFile, err := h.Reporter.CatFile(ctx, statusPath)
+		if err != nil {
+			s.Fatal("Could not determine battery status: ", err)
+		}
+		s.Logf("Battery state from base file: %s", batteryBaseFile)
+
+		battery, err := checkBatteryInfo(ctx, reBatteryState)
 		if err != nil {
 			s.Fatal("While verifying battery information: ", err)
 		}
+		s.Logf("Battery state: %s", battery)
 
 		switch hasPluggedAC {
 		case true:
-			if battery != "Fully charged" && battery != "Charging" {
-				s.Fatalf("Found unexpected battery state when AC plugged: %s", battery)
+			if battery != "Fully charged" && battery != "Charging" &&
+				batteryBaseFile != "Full" && batteryBaseFile != "Charging" {
+				s.Fatalf("Found unexpected battery state when AC plugged. Status: %s, Status from base file: %s", battery, batteryBaseFile)
 			}
 		case false:
-			if battery != "Discharging" {
-				s.Fatalf("Found unexpected battery state when AC unplugged: %s", battery)
+			if battery != "Discharging" && batteryBaseFile != "Discharging" {
+				s.Fatalf("Found unexpected battery state when AC unplugged. Status: %s, Status from base file: %s", battery, batteryBaseFile)
 			}
 		}
-		s.Logf("Battery state: %q", battery)
 	}
 }
