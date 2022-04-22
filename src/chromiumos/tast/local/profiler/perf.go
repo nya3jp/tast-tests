@@ -19,6 +19,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/shutil"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/local/arc"
 )
 
 // perf represents the perf profiler.
@@ -46,10 +48,13 @@ const (
 	// perfSched runs "perf sched record" on the DUT.
 	perfSched
 
+	perfSimplePerf
+
 	perfRecordFileName     = "perf_record.data"
 	perfStatRecordFileName = "perf_stat_record.data"
 	perfStatFileName       = "perf_stat.data"
 	perfSchedFileName      = "perf_sched.data"
+	perfSimplePerfFileName = "perf_simple_perf.data"
 
 	// Used in perfStat to get CPU cycle count on all processes.
 	PerfAllProcs = 0
@@ -113,6 +118,10 @@ func PerfStatRecordOpts() *PerfOpts {
 // PerfSchedOpts creates a PerfOpts for running "perf sched record" on the DUT.
 func PerfSchedOpts(out *PerfSchedOutput, procName string) *PerfOpts {
 	return &PerfOpts{perfType: perfSched, procName: procName, perfSchedOutput: out}
+}
+
+func PerfSimplePerfOpts() *PerfOpts {
+	return &PerfOpts{perfType: perfSimplePerf}
 }
 
 // Perf creates a Profiler instance that constructs the profiler.
@@ -183,6 +192,16 @@ func getCmd(ctx context.Context, outDir string, opts *PerfOpts) (*testexec.Cmd, 
 	case perfSched:
 		outputPath := filepath.Join(outDir, perfSchedFileName)
 		return testexec.CommandContext(ctx, "perf", "sched", "record", "--output", outputPath), nil
+	case perfSimplePerf:
+		outputPath := filepath.Join(outDir, perfSimplePerfFileName)
+		// Must start arc container to use this profiler
+		arcconn, err := arc.New(ctx, outDir)
+		if err != nil {
+			errors.Wrap(err, "failed to start arc for simpleperf")
+		}
+	
+		testing.ContextLog(ctx, "MINE BEFORE CMD")
+		return arcconn.Command(ctx, "simpleperf", "record", "-g", "-a", "-o", outputPath, "--", "sleep", "5"), nil
 	default:
 		return nil, errors.Errorf("invalid perf type: %v", opts.perfType)
 	}

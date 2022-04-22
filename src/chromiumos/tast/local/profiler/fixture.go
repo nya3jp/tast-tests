@@ -24,7 +24,7 @@ func init() {
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		TearDownTimeout: 10 * time.Second,
-		PreTestTimeout:  10 * time.Second,
+		PreTestTimeout:  100 * time.Second,
 		PostTestTimeout: 10 * time.Second,
 	})
 }
@@ -36,6 +36,7 @@ const (
 	modeSched      mode = "sched"
 	modeStatRecord mode = "statrecord"
 	modeRecord     mode = "record"
+	modeSimplePerf mode = "simpleperf"
 )
 
 type profilerFixture struct {
@@ -74,6 +75,9 @@ func (f *profilerFixture) newProfilers() ([]Profiler, error) {
 		case modeStatRecord:
 			f.modes = append(f.modes, modeStatRecord)
 			profs = append(profs, Perf(PerfStatRecordOpts()))
+		case modeSimplePerf:
+			f.modes = append(f.modes, modeSimplePerf)
+			profs = append(profs, Perf(PerfSimplePerfOpts()))
 		default:
 			return nil, errors.Errorf("Unidentified profiler: %s not recognized, cannot start profiler", string(arg))
 		}
@@ -94,6 +98,8 @@ func (f *profilerFixture) filePaths(outDir string) []string {
 			paths = append(paths, filepath.Join(outDir, perfRecordFileName))
 		case modeStatRecord:
 			paths = append(paths, filepath.Join(outDir, perfStatRecordFileName))
+		case modeSimplePerf:
+			paths = append(paths, filepath.Join(outDir, perfSimplePerfFileName))
 		}
 	}
 	return paths
