@@ -277,6 +277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b16fec_85025b55",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T17:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e13e335f_d3d1bd41",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3061a90_3987fad6",
