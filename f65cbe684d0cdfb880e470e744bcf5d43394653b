@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a94cf7c3_075a63ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-04-22T10:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55c9fbec_eac78914",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "f65cbe684d0cdfb880e470e744bcf5d43394653b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25fb1722_ec0f11cc",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3874c10e_4645f1c5",
+        "filename": "src/chromiumos/tast/services/cros/arc/suspend_service.pb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-04-22T10:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25fb1722_ec0f11cc",
+      "range": {
+        "startLine": 404,
+        "startChar": 1,
+        "endLine": 404,
+        "endChar": 32
+      },
+      "revId": "f65cbe684d0cdfb880e470e744bcf5d43394653b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0db3e2ae_a7632b88",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-22T08:55:56Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "f65cbe684d0cdfb880e470e744bcf5d43394653b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad2364b_e06d97ae",
+        "filename": "src/chromiumos/tast/services/cros/arc/suspend_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-04-22T10:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0db3e2ae_a7632b88",
       "range": {
         "startLine": 36,
         "startChar": 2,
