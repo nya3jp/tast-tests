@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a59c01_31d9a392",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "Maybe since these tests share a large portion of their code we can factor this out somehow... especially if we want to do more connectivity tests. Perhaps we can factor out the setup into a function where you pass in another function which is the body (where we run the ping calls, etc.)?\n\nWe can think about this later, but if we want more connectivity smoke tests I don\u0027t think we want to be copying and pasting these a bunch of times.\n\n(One other thing: should we have IPv6 versions of these tests? They\u0027ll fail, but if we use Params we can keep those in unstable until all the issues with plumbing IPv6 into containers/VMs are resolved.)",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99630411_ebec4fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "It\u0027s fine to inline this into the Poll options.",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ade9ee5_ca304881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "feels like we should be able to factor this out since we also use it in the other test, but since most of it is deferring functions, that\u0027s difficult.\n\nMaybe we can loop over the technologies and just have this block once?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a8b3ca_64996cb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "would it make sense to check this above the block that disables everything so we can fail quickly if there\u0027s no service at all? YMMV",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f71745_2a8b9b66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "you should just be able to do:\n\n```\nfunc() {\n  // ...\n  defer cr.Close(ctx)\n  // ...\n}()\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 11
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89549f21_86618489",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "nit: remove this trailing space",
+      "range": {
+        "startLine": 102,
+        "startChar": 27,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b179dafd_9dc89df8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "nit: remove this blank line",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a10b6a_6393039f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/crostini_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "ditto re: inlining this into the poll options",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c119734_3ca1a185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/crostini_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "ditto re: tightening this up a bit",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b3b340_4e3aee07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/crostini_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "ditto re: possibly doing this before disable",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8b7309_beb51104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/crostini_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T19:03:21Z",
+      "side": 1,
+      "message": "nit: remove this trailing space",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 28
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
