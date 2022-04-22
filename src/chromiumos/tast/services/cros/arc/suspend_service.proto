@@ -32,4 +32,7 @@ service SuspendService {
 
   // GetPerfValues signs in to DUT and measures Android boot performance metrics.
   rpc GetClockValues (SuspendServiceParams) returns (GetClockValuesResponse) {}
+
+  // Finalize does some clean-ups
+  rpc Finalize (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }

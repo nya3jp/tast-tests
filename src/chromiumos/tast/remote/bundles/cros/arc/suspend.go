@@ -163,6 +163,12 @@ func Suspend(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("SuspendService.Prepare returned an error: ", err)
 	}
+	defer func() {
+		_, err = service.Finalize(ctx, &empty.Empty{})
+		if err != nil {
+			s.Fatal("SuspendService.Finalize returned an error: ", err)
+		}
+	}()
 
 	for i := 0; i < args.numTrials; i++ {
 		s.Logf("Trial %d/%d", i+1, args.numTrials)

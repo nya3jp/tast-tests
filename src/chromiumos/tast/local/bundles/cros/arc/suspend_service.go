@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/network"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/testing"
 )
@@ -25,7 +26,10 @@ import (
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
-			arcpb.RegisterSuspendServiceServer(srv, &SuspendService{s: s})
+			arcpb.RegisterSuspendServiceServer(srv, &SuspendService{
+				s:                      s,
+				unlockCheckNetworkHook: nil,
+			})
 		},
 	})
 }
@@ -33,6 +37,8 @@ func init() {
 // SuspendService implements tast.cros.arc.SuspendService
 type SuspendService struct {
 	s *testing.ServiceState
+	// Call unlockCheckNetworkHook after the test is finished.
+	unlockCheckNetworkHook *func()
 }
 
 type readclocksOutput struct {
@@ -82,6 +88,15 @@ func (c *SuspendService) Prepare(ctx context.Context, req *empty.Empty) (*arcpb.
 
 	res := &arcpb.SuspendServiceParams{}
 	res.ReadClocksPathInArc = readclocksPath
+
+	// Keep check_ethernet.hook away to avoid networking related issues.
+	unlock, err := network.LockCheckNetworkHook(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to lock the check network hook")
+	}
+	c.unlockCheckNetworkHook = &unlock
+	testing.ContextLog(ctx, "CheckNetworkHook is locked")
+
 	return res, nil
 }
 
@@ -146,4 +161,11 @@ func (c *SuspendService) GetClockValues(ctx context.Context, params *arcpb.Suspe
 	res.Arc = clock
 
 	return res, nil
+}
+
+// Finalize does some clean-ups
+func (c *SuspendService) Finalize(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	(*c.unlockCheckNetworkHook)()
+	testing.ContextLog(ctx, "CheckNetworkHook is unlocked")
+	return &empty.Empty{}, nil
 }
