@@ -300,6 +300,13 @@ var VMWare = App{
 	Name: "VMware Horizon",
 }
 
+// Projector has details about the Screencast app.
+var Projector = App{
+	ID: "fgnpbdobngpkonkajbmelfhjkemaddhp",
+	// TODO(b/229631476): Update app name to Screencast after rebranding.
+	Name: "Projector",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	_, err := getInstalledAppID(ctx, tconn, func(app *ash.ChromeApp) bool { return app.AppID == appID }, nil)
