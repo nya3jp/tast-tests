@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08789df2_b3229de4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_under_errors.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-04-22T05:16:55Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s a good idea to hard code this in the test. If this path is referenced more frequently (more than once or twice) in our tests, then I think we need to make it a utility function.\n\nThis path had changed before, but the owner of the change left Chrome OS.",
+      "revId": "c281d44ddc102d8413f33d8298f7b376113e8898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
