@@ -6,9 +6,9 @@ package wifi
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -49,11 +49,53 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 		metaDumpName     = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.meta`
 		logDumpName      = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.log`
 		fwDbgCollectPath = "/iwlmvm/fw_dbg_collect"
+		kernelDevCDDir   = "/sys/class/devcoredump"
+		kernelDevCDName  = `devcd\d+`
 	)
 
 	// Verify that DUT has Intel WiFi.
 	if _, err := os.Stat(iwlwifiDir); os.IsNotExist(err) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
+	}
+
+	files, err := os.ReadDir(kernelDevCDDir)
+	if err != nil {
+		// the /sys/class/devcoredump is unregistered due to unexpected kernel errors
+		// Intel FW dumping requires the devcoredump kernel module.
+		s.Fatal("devcoredump directory does not exist on DUT, indicating kernel errors. Failing the test")
+	}
+
+	re := regexp.MustCompile(kernelDevCDName)
+	// The existence of these files indicates that devcoredump was invoked shortly before which are not cleaned up
+	// devcoredump is invoked by crash_reporter during crash collection and testing, by which
+	// a file filter is created to ignore Intel WiFi FW dumps. See b/228462848#comment7
+	for _, file := range files {
+		if re.MatchString(file.Name()) {
+			s.Logf("Found existing core dump %s, waiting up to 30 seconds for crash_reporter to finish", file.Name())
+			fullPath := filepath.Join(kernelDevCDDir, file.Name(), "data")
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if _, err := os.Stat(fullPath); err != nil {
+					testing.ContextLogf(ctx, "File %s has already been cleaned up, exit waiting", fullPath)
+					return nil
+				}
+				return errors.New("Waiting crash_reporter to finish")
+			}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
+				// 30s deadline exceeded, this is expected for most of cases
+				s.Logf("File %s is still there, proceeding the cleaning up", fullPath)
+			} else {
+				// poll ends without errors, which means the devcoredump data directory was
+				// unregistered during the waiting, skipping writing to it.
+				continue
+			}
+
+			s.Log("Cleaning up the footprints left by crash_reporter")
+			if err := os.WriteFile(fullPath, []byte("0"), 0); err != nil {
+				// it's okay to fail to write devcoredump date file
+				s.Logf("Didn't write devcoredump data file %s: %s. It's expected for a rare case "+
+					"that crash_reporter unregistered the file just before the writing. "+
+					"Continue testing", fullPath, err)
+			}
+		}
 	}
 
 	// This test uses crash.DevImage because it is designed to test device
@@ -90,7 +132,7 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Triggering a devcoredump")
-	if err := ioutil.WriteFile(fwDbgCollect, []byte("1"), 0); err != nil {
+	if err := os.WriteFile(fwDbgCollect, []byte("1"), 0); err != nil {
 		s.Fatal("Failed to trigger a devcoredump: ", err)
 	}
 

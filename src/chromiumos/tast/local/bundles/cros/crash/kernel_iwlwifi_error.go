@@ -6,13 +6,14 @@ package crash
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/network/iface"
 	"chromiumos/tast/local/shill"
@@ -21,12 +22,14 @@ import (
 )
 
 const (
-	iwlwifiPath   = "/sys/kernel/debug/iwlwifi"
-	fwnmiPath     = "/iwlmvm/fw_nmi"
-	funcName      = `(NMI_INTERRUPT_UNKNOWN|ADVANCED_SYSASSERT)`
-	crashBaseName = `kernel_iwlwifi_error_` + funcName + `\.\d{8}\.\d{6}\.\d+\.0`
-	messagesFile  = "/var/log/messages"
-	logName       = "filesystem_and_disk_status.txt"
+	iwlwifiPath     = "/sys/kernel/debug/iwlwifi"
+	fwnmiPath       = "/iwlmvm/fw_nmi"
+	funcName        = `(NMI_INTERRUPT_UNKNOWN|ADVANCED_SYSASSERT)`
+	crashBaseName   = `kernel_iwlwifi_error_` + funcName + `\.\d{8}\.\d{6}\.\d+\.0`
+	messagesFile    = "/var/log/messages"
+	logName         = "filesystem_and_disk_status.txt"
+	kernelDevCDDir  = "/sys/class/devcoredump"
+	kernelDevCDName = `devcd\d+`
 )
 
 var (
@@ -49,6 +52,49 @@ func init() {
 	})
 }
 
+func cleanupDevcoredump(ctx context.Context) {
+
+	files, err := os.ReadDir(kernelDevCDDir)
+	if err != nil {
+		// the /sys/class/devcoredump is unregistered due to unexpected kernel error
+		// Intel FW dumping requires the devcoredump kernel module.
+		testing.ContextLog(ctx, "devcoredump directory does not exist on DUT, indicating kernel errors. Aborting the cleanup")
+		return
+	}
+
+	re := regexp.MustCompile(kernelDevCDName)
+	// The existence of these files indicates that devcoredump was invoked shortly before.
+	// devcoredump is invoked by crash_reporter during crash collection and testing, by which
+	// a file filter is created to ignore Intel WiFi FW dumps. See b/228462848#comment7
+	for _, file := range files {
+		if re.MatchString(file.Name()) {
+			testing.ContextLogf(ctx, "Found existing core dump %s, waiting up to 30 seconds for crash_reporter to finish", file.Name())
+			fullPath := filepath.Join(kernelDevCDDir, file.Name(), "data")
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if _, err := os.Stat(fullPath); err != nil {
+					testing.ContextLogf(ctx, "File %s has already been cleaned up, exit waiting", fullPath)
+					return nil
+				}
+				return errors.New("Waiting crash_reporter to finish")
+			}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
+				// 30s deadline exceeded, this is expected for most of cases
+				testing.ContextLogf(ctx, "File %s is still there, proceeding the cleaning up", fullPath)
+			} else {
+				// poll ends without errors, which means the devcoredump data directory was
+				// unregistered during the waiting, skipping writing to it.
+				continue
+			}
+
+			testing.ContextLog(ctx, "Cleaning up the footprints left by crash_reporter")
+			if err := os.WriteFile(fullPath, []byte("0"), 0); err != nil {
+				// it's okay to fail to write devcoredump date file
+				testing.ContextLogf(ctx, "Didn't write devcoredump data file %s: %s. It's expected for a rare case "+
+					"that crash_reporter unregistered the file just before the writing", fullPath, err)
+			}
+		}
+	}
+}
+
 func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 	// TODO(b:193677828) Remove the filesystem and disk checks below when the issue with
 	// /var/log/messages being broken sometimes is fixed.
@@ -69,7 +115,7 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 		s.Error("Failed to get OutDir")
 	}
 
-	if err := ioutil.WriteFile(filepath.Join(dir, logName),
+	if err := os.WriteFile(filepath.Join(dir, logName),
 		[]byte(content), 0644); err != nil {
 		s.Error("Failed to write filesystem/disks info outputs: ", err)
 	}
@@ -87,6 +133,8 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 	if _, err := os.Stat(iwlwifiPath); os.IsNotExist(err) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
 	}
+
+	defer cleanupDevcoredump(ctx)
 
 	opt := crash.WithMockConsent()
 
@@ -124,7 +172,7 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Inducing artificial iwlwifi error")
-	if err := ioutil.WriteFile(fwnmi, []byte("1"), 0); err != nil {
+	if err := os.WriteFile(fwnmi, []byte("1"), 0); err != nil {
 		s.Fatal("Failed to induce iwlwifi error in fw_nmi: ", err)
 	}
 
@@ -154,7 +202,7 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 		return
 	}
 	metaFile := files[metaName][0]
-	contents, err := ioutil.ReadFile(metaFile)
+	contents, err := os.ReadFile(metaFile)
 	if err != nil {
 		s.Fatalf("Couldn't read meta file %s contents: %v", metaFile, err)
 	}
