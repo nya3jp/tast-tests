@@ -161,7 +161,7 @@ func init() {
 func DecodeAccelVDPerf(ctx context.Context, s *testing.State) {
 	param := s.Param().(videoDecodeAccelVdPerfTestParam)
 
-	if err := decoding.RunAccelVideoPerfTest(ctx, s.OutDir(), s.DataPath(param.dataPath), decoding.TestParams{DecoderType: decoding.VD, DisableGlobalVaapiLock: param.disableGlobalVaapiLock}); err != nil {
+	if err := decoding.RunAccelVideoPerfTest(ctx, s.OutDir(), s.DataPath(param.dataPath), decoding.TestParams{DecoderType: decoding.VD, DisableGlobalVaapiLock: param.disableGlobalVaapiLock, TestCases: decoding.Capped | decoding.Uncapped}); err != nil {
 		s.Fatal("test failed: ", err)
 	}
 }
