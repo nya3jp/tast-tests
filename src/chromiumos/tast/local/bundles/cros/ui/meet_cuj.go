@@ -213,6 +213,18 @@ func init() {
 				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
 			},
 			Fixture: "loggedInToCUJUser",
+		}, {
+			// Long meeting to catch slow performance degradation.
+			Name:      "1p_30m",
+			Timeout:   defaultTestTimeout + 30*time.Minute,
+			ExtraAttr: []string{"group:cuj"},
+			Val: meetTest{
+				num:      1,
+				layout:   meetLayoutTiled,
+				cam:      true,
+				duration: 30 * time.Minute,
+			},
+			Fixture: "loggedInToCUJUser",
 		}},
 	})
 }
