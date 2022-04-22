@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "98fc1be2_f255ac98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-22T07:34:48Z",
+      "side": 1,
+      "message": "It looks like this patch does multiple things. I initial thought this is pure method move/extraction, but there are some differences other than that as I commented below.\nI recommend to split this patch, and make this patch an obvious refactoring for http://go/small-cls .",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "33d268adeaeb4f198b9bcd63be461d5640738ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "11c7476d_8cf32e3e",
@@ -31,6 +54,29 @@
       "writtenOn": "2022-04-22T06:47:54Z",
       "side": 1,
       "message": "tast-owners@: Please take a look.",
+      "revId": "33d268adeaeb4f198b9bcd63be461d5640738ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e979eeb8_e30ea109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-22T07:34:48Z",
+      "side": 1,
+      "message": "Why the methods are reordered here?\nMaybe it\u0027s good to move the method without changing it\u0027s content in this patch, so that this patch become a pure refactoring.",
+      "range": {
+        "startLine": 780,
+        "startChar": 2,
+        "endLine": 788,
+        "endChar": 2
+      },
       "revId": "33d268adeaeb4f198b9bcd63be461d5640738ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
