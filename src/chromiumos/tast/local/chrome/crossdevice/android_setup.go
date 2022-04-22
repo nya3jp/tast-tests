@@ -23,8 +23,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var phoneIP = testing.RegisterVarString(
-	"crossdevice.phoneIP",
+// PhoneIP is the address of the adb-over-wifi device to use in Cross device tests.
+var PhoneIP = testing.RegisterVarString(
+	"crossdevice.PhoneIP",
 	"",
 	"IP address of an Android Phone that has enabled adb-over-tcp",
 )
@@ -49,8 +50,8 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 	}
 	var adbDevice *adb.Device
 
-	if phoneIP.Value() != "" {
-		testing.ContextLogf(ctx, "Android phone IP is: %s", phoneIP.Value())
+	if PhoneIP.Value() != "" {
+		testing.ContextLogf(ctx, "Android phone IP is: %s", PhoneIP.Value())
 
 		// Ensure CrOS device is on the correct Wifi network
 		out, err := testexec.CommandContext(ctx, "/usr/local/autotest/cros/scripts/wifi", "connect", "nearbysharing_1", "password").CombinedOutput(testexec.DumpLogOnError)
@@ -63,7 +64,7 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 		}
 
 		// Connect to the adb-over-tcp Phone that was setup previously (e.g manually or via autotest control file).
-		adbDevice, err = adb.Connect(ctx, phoneIP.Value(), 30*time.Second)
+		adbDevice, err = adb.Connect(ctx, PhoneIP.Value(), 30*time.Second)
 		if err != nil {
 			return nil, false, errors.Wrap(err, "failed to connect to adb over wifi")
 		}
