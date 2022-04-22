@@ -23,24 +23,11 @@ func init() {
 		Name:     fixture.LacrosPolicyLoggedIn,
 		Desc:     "Fixture for a running FakeDMS with lacros",
 		Contacts: []string{"mohamedaomar@google.com", "wtlee@chromium.org", "chromeos-commercial-remote-management@google.com"},
-		Impl: lacrosfixt.NewComposedFixture(lacros.Rootfs, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
-			return &struct {
-				fakedms.HasFakeDMS
-				lacrosfixt.FixtValue
-			}{
-				pv.(fakedms.HasFakeDMS),
-				v,
-			}
-		}, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
-			if !ok {
-				return nil, errors.New("parent is not a FakeDMS fixture")
-			}
-			opts := []chrome.Option{chrome.DMSPolicy(fdms.URL),
-				chrome.FakeLogin(chrome.Creds{User: "tast-user@managedchrome.com", Pass: "test0000"}),
-				chrome.ExtraArgs("--disable-lacros-keep-alive")}
-			return opts, nil
-		}),
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return lacrosfixt.NewConfigFromState(s).Opts()
+			},
+		},
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
