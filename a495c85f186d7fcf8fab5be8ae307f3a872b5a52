@@ -52,6 +52,24 @@
       "parentUuid": "a90d21cf_994645a9",
       "revId": "a495c85f186d7fcf8fab5be8ae307f3a872b5a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9784fe99_fde98998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-22T15:33:12Z",
+      "side": 1,
+      "message": "https://crrev.com/c/3589131 is an example of tests that happen to use browser but are designed to be run in the OS only (OS firmware test). This could be an answer to 1. \n2 could probably be addressed by tast-owners\u0027 review rather than an enforcement at the api level. Aside, browser/OS will anyway need to take a separate process in place to review automation coverage between browser/OS on a regular basis, which is also helpful here.\n\nKeeping it open for hidehiko\u0027s feedback.",
+      "parentUuid": "627932c7_d34cdb8a",
+      "revId": "a495c85f186d7fcf8fab5be8ae307f3a872b5a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
