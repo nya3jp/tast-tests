@@ -22,6 +22,30 @@
       },
       "revId": "bc80c1cfb9044ae4b62a7874b665678da76d226e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83fe6414_1d476b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-22T00:51:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fabe841_394419b8",
+      "range": {
+        "startLine": 196,
+        "startChar": 9,
+        "endLine": 196,
+        "endChar": 25
+      },
+      "revId": "bc80c1cfb9044ae4b62a7874b665678da76d226e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
