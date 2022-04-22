@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91192b77_9ba7ba22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T18:46:59Z",
+      "side": 1,
+      "message": "Ok I will keep the duration field, and in a separate CL I\u0027ll add the long meet call which will use the duration field.",
+      "parentUuid": "f9cb8515_5073fffb",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 95
+      },
+      "revId": "9bee8549a6caeca9ca7f9b1b50247fd2bdd001b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aaaf632_597c84cb",
