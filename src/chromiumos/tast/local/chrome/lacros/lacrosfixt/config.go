@@ -186,6 +186,8 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 		opts = append(opts, chrome.ExtraArgs("--lacros-selection=rootfs"))
 	case lacros.Omaha:
 		opts = append(opts, chrome.ExtraArgs("--lacros-selection=stateful"))
+	case lacros.NotSelected:
+		// ash-chrome will choose between rootfs and stateful.
 	}
 	if cfg.deployed {
 		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+cfg.deployedPath))

@@ -32,6 +32,8 @@ const (
 	Rootfs Selection = "Rootfs"
 	// Omaha is used to get the lacros binary.
 	Omaha Selection = "Omaha"
+	// NotSelected is used for tests that don't need to specify what lacros to select. eg, AutoUpdate that verifies the selection logic itself.
+	NotSelected Selection = "NotSelected"
 )
 
 // Mode describes whether Lacros is enabled as a primary browser or else.
