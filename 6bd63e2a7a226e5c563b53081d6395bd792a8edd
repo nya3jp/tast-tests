@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2fad9f_64b7dd6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-22T21:46:41Z",
+      "side": 1,
+      "message": "wifi_matfunc is running. The 3 tests has been added to wifi_matfunc according to logs. So far so good. I will Verified+1 once wifi_matfunc succeeds.",
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
