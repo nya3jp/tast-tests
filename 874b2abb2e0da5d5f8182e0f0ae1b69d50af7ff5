@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1229fa6_9f991267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-22T06:57:23Z",
+      "side": 1,
+      "message": "We can\u0027t unset the wallpaper by design... If a user hasn\u0027t set a wallpaper (i.e. initial state), ash uses a random-ish wallpaper so I don\u0027t think we must \"unset\" it to keep following tests\u0027 assumptions.",
+      "parentUuid": "3fd5195e_d648ed6e",
+      "revId": "874b2abb2e0da5d5f8182e0f0ae1b69d50af7ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59eed525_8bc7c63c",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-08T02:24:40Z",
       "side": 1,
       "message": "I\u0027m fine with it, but not sure if a function to pick a white wallpaper is too specific to put into this package. Please ask the owner of this package for review.",
+      "revId": "874b2abb2e0da5d5f8182e0f0ae1b69d50af7ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7758d7_6b3d617a",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-22T06:57:23Z",
+      "side": 1,
+      "message": "Good point! Moved to resize_lock_helper.go.",
+      "parentUuid": "59eed525_8bc7c63c",
       "revId": "874b2abb2e0da5d5f8182e0f0ae1b69d50af7ff5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
