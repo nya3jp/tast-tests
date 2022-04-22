@@ -254,7 +254,7 @@ func Search(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, query string)
 	return func(ctx context.Context) error {
 		// Click the search box.
 		ui := uiauto.New(tconn)
-		if err := ui.LeftClick(nodewith.ClassName("SearchBoxView").First())(ctx); err != nil {
+		if err := ui.LeftClick(nodewith.ClassName("SearchBoxView").Visible().First())(ctx); err != nil {
 			return errors.Wrap(err, "failed to click launcher searchbox")
 		}
 
