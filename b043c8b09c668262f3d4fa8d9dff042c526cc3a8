@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7dbfb0_6fb0b378",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-22T02:53:26Z",
+      "side": 1,
+      "message": "We are only mounting cryptohome in those tests. With tests that we need to login Chrome we have chrome dependency. I\u0027m removing those that don\u0027t.",
+      "parentUuid": "f1e8a2d8_6ece4142",
+      "revId": "b043c8b09c668262f3d4fa8d9dff042c526cc3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "37f7f120_0c38394a",
