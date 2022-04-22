@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e0d04d6_41cae907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-22T09:36:53Z",
+      "side": 1,
+      "message": "I also thought about it, but the problem is that it will depend on the test how it works as we need the chrome instance we got here from the enrollment to connect to chrome://policy.\nAlso the way we sign in will be differently, in this test we just start an ARC instance, others might sign in just normally or are just signed in for the whole test.\n\nSo this function here is too specific for this test and unfortunately I don\u0027t see a way to make it more general right now.",
+      "parentUuid": "05a9bb1c_68d82c75",
+      "range": {
+        "startLine": 201,
+        "startChar": 35,
+        "endLine": 201,
+        "endChar": 46
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0910c34a_93d813ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
         "patchSetId": 2
@@ -174,6 +198,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe39d8b_a1610c2b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-22T09:36:53Z",
+      "side": 1,
+      "message": "This is the customerID of the managedchrome.com domain. It is needed by the Directory API to identify the customer for which the device should be deprovisioned.\nMaybe it\u0027s better to move that to VarDeps instead.",
+      "parentUuid": "d7e4ae91_f32179a9",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8639985_ab4ffe77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-22T09:36:53Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "43aaf558_9ccdceda",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ab8c004_d3eb38d1",
@@ -187,6 +259,30 @@
       "writtenOn": "2022-04-21T10:03:40Z",
       "side": 1,
       "message": "Why do we need to use two accounts and check the first and then the second one?",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f64c35_5f74888a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-22T09:36:53Z",
+      "side": 1,
+      "message": "Which service account is present depends on whether the test is being run on a DUT or in a VM as those are started from different hosts.",
+      "parentUuid": "7ab8c004_d3eb38d1",
       "range": {
         "startLine": 84,
         "startChar": 2,
