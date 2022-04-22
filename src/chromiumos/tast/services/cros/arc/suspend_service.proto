@@ -27,9 +27,12 @@ message SuspendServiceParams {
 
 // PerfBootService provides RPC methods to be used by PerfBoot remote test.
 service SuspendService {
-  // Prepare to prepare the device for reading clocks and suspend
+  // Prepare to prepare the device for reading clocks and suspend.
   rpc Prepare (google.protobuf.Empty) returns (SuspendServiceParams) {}
 
   // GetPerfValues signs in to DUT and measures Android boot performance metrics.
   rpc GetClockValues (SuspendServiceParams) returns (GetClockValuesResponse) {}
+
+  // Finalize does some clean-ups.
+  rpc Finalize (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }

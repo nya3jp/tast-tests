@@ -218,7 +218,7 @@ var file_suspend_service_proto_rawDesc = []byte{
 	0x64, 0x5f, 0x63, 0x6c, 0x6f, 0x63, 0x6b, 0x73, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x5f, 0x69, 0x6e,
 	0x5f, 0x61, 0x72, 0x63, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x13, 0x72, 0x65, 0x61, 0x64,
 	0x43, 0x6c, 0x6f, 0x63, 0x6b, 0x73, 0x50, 0x61, 0x74, 0x68, 0x49, 0x6e, 0x41, 0x72, 0x63, 0x32,
-	0xba, 0x01, 0x0a, 0x0e, 0x53, 0x75, 0x73, 0x70, 0x65, 0x6e, 0x64, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0xf8, 0x01, 0x0a, 0x0e, 0x53, 0x75, 0x73, 0x70, 0x65, 0x6e, 0x64, 0x53, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x12, 0x48, 0x0a, 0x07, 0x50, 0x72, 0x65, 0x70, 0x61, 0x72, 0x65, 0x12, 0x16, 0x2e,
 	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
 	0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x23, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f,
@@ -229,10 +229,14 @@ var file_suspend_service_proto_rawDesc = []byte{
 	0x75, 0x73, 0x70, 0x65, 0x6e, 0x64, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x50, 0x61, 0x72,
 	0x61, 0x6d, 0x73, 0x1a, 0x25, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e,
 	0x61, 0x72, 0x63, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6c, 0x6f, 0x63, 0x6b, 0x56, 0x61, 0x6c, 0x75,
-	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x23, 0x5a, 0x21,
-	0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61, 0x73, 0x74, 0x2f,
-	0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73, 0x2f, 0x61, 0x72,
-	0x63, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x3c, 0x0a, 0x08,
+	0x46, 0x69, 0x6e, 0x61, 0x6c, 0x69, 0x7a, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
+	0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
+	0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x42, 0x23, 0x5a, 0x21, 0x63, 0x68,
+	0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61, 0x73, 0x74, 0x2f, 0x73, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73, 0x2f, 0x61, 0x72, 0x63, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -262,10 +266,12 @@ var file_suspend_service_proto_depIdxs = []int32{
 	0, // 3: tast.cros.arc.GetClockValuesResponse.arc:type_name -> tast.cros.arc.ClockValues
 	4, // 4: tast.cros.arc.SuspendService.Prepare:input_type -> google.protobuf.Empty
 	2, // 5: tast.cros.arc.SuspendService.GetClockValues:input_type -> tast.cros.arc.SuspendServiceParams
-	2, // 6: tast.cros.arc.SuspendService.Prepare:output_type -> tast.cros.arc.SuspendServiceParams
-	1, // 7: tast.cros.arc.SuspendService.GetClockValues:output_type -> tast.cros.arc.GetClockValuesResponse
-	6, // [6:8] is the sub-list for method output_type
-	4, // [4:6] is the sub-list for method input_type
+	4, // 6: tast.cros.arc.SuspendService.Finalize:input_type -> google.protobuf.Empty
+	2, // 7: tast.cros.arc.SuspendService.Prepare:output_type -> tast.cros.arc.SuspendServiceParams
+	1, // 8: tast.cros.arc.SuspendService.GetClockValues:output_type -> tast.cros.arc.GetClockValuesResponse
+	4, // 9: tast.cros.arc.SuspendService.Finalize:output_type -> google.protobuf.Empty
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
 	4, // [4:4] is the sub-list for extension extendee
 	0, // [0:4] is the sub-list for field type_name
@@ -346,10 +352,12 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SuspendServiceClient interface {
-	// Prepare to prepare the device for reading clocks and suspend
+	// Prepare to prepare the device for reading clocks and suspend.
 	Prepare(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*SuspendServiceParams, error)
 	// GetPerfValues signs in to DUT and measures Android boot performance metrics.
 	GetClockValues(ctx context.Context, in *SuspendServiceParams, opts ...grpc.CallOption) (*GetClockValuesResponse, error)
+	// Finalize does some clean-ups.
+	Finalize(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type suspendServiceClient struct {
@@ -378,12 +386,23 @@ func (c *suspendServiceClient) GetClockValues(ctx context.Context, in *SuspendSe
 	return out, nil
 }
 
+func (c *suspendServiceClient) Finalize(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.arc.SuspendService/Finalize", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SuspendServiceServer is the server API for SuspendService service.
 type SuspendServiceServer interface {
-	// Prepare to prepare the device for reading clocks and suspend
+	// Prepare to prepare the device for reading clocks and suspend.
 	Prepare(context.Context, *empty.Empty) (*SuspendServiceParams, error)
 	// GetPerfValues signs in to DUT and measures Android boot performance metrics.
 	GetClockValues(context.Context, *SuspendServiceParams) (*GetClockValuesResponse, error)
+	// Finalize does some clean-ups.
+	Finalize(context.Context, *empty.Empty) (*empty.Empty, error)
 }
 
 // UnimplementedSuspendServiceServer can be embedded to have forward compatible implementations.
@@ -395,6 +414,9 @@ func (*UnimplementedSuspendServiceServer) Prepare(context.Context, *empty.Empty)
 }
 func (*UnimplementedSuspendServiceServer) GetClockValues(context.Context, *SuspendServiceParams) (*GetClockValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetClockValues not implemented")
+}
+func (*UnimplementedSuspendServiceServer) Finalize(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Finalize not implemented")
 }
 
 func RegisterSuspendServiceServer(s *grpc.Server, srv SuspendServiceServer) {
@@ -437,6 +459,24 @@ func _SuspendService_GetClockValues_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SuspendService_Finalize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SuspendServiceServer).Finalize(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.arc.SuspendService/Finalize",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SuspendServiceServer).Finalize(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _SuspendService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.arc.SuspendService",
 	HandlerType: (*SuspendServiceServer)(nil),
@@ -448,6 +488,10 @@ var _SuspendService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetClockValues",
 			Handler:    _SuspendService_GetClockValues_Handler,
+		},
+		{
+			MethodName: "Finalize",
+			Handler:    _SuspendService_Finalize_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
