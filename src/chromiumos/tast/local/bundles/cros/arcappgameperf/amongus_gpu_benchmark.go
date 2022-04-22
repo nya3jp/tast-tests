@@ -149,15 +149,15 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 		}
 
 		// Leave the mini-game running for while recording metrics.
-		if err := testutil.StartBenchmarking(ctx, params); err != nil {
+		params.SurfaceName = "SurfaceView - com.innersloth.spacemafia/com.innersloth.spacemafia.EosUnityPlayerActivity#0"
+		if err := testutil.StartBenchmarking(ctx, &params); err != nil {
 			return errors.Wrap(err, "failed to start benchmarking")
 		}
-
 		if err := testing.Sleep(ctx, gameBenchmarkTime); err != nil {
 			return errors.Wrap(err, "failed sleep for sample")
 		}
 
-		r, err := testutil.StopBenchmarking(ctx, params)
+		r, err := testutil.StopBenchmarking(ctx, &params)
 		if err != nil {
 			return errors.Wrap(err, "failed to stop benchmarking")
 		}
@@ -170,6 +170,8 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 		perfValues.Set(testutil.FpsPerfMetric(), r.FPS)
 		perfValues.Set(testutil.CommitDeviationPerfMetric(), r.CommitDeviation)
 		perfValues.Set(testutil.RenderQualityPerfMetric(), r.RenderQuality*100.0)
+		perfValues.Set(testutil.SurfaceFlingerFpsPerfMetric(), r.SurfaceFlingerFPS)
+		perfValues.Set(testutil.SurfaceFlingerLatencyPerfMetric(), r.SurfaceFlingerLatency)
 		if err := perfValues.Save(s.OutDir()); err != nil {
 			s.Fatal("Failed saving perf data: ", err)
 		}
