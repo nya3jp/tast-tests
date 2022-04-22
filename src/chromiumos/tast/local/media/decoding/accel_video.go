@@ -57,15 +57,15 @@ const (
 type TestCaseBitmask int
 
 const (
-	// CappedFlag identifies the case when a single decoder instance decodes a
+	// CappedFlag represents the case when a single decoder instance decodes a
 	// video sequence from start to finish at its actual frame rate. Rendering is
 	// simulated and late frames are dropped.
 	CappedFlag TestCaseBitmask = 1 << iota
-	// UncappedFlag identifies the case when a single decoder instance decodes a
+	// UncappedFlag represents the case when a single decoder instance decodes a
 	// video sequence as fast as possible. This provides an estimate of the
 	// decoder's max performance (e.g. the maximum FPS).
 	UncappedFlag
-	// UncappedConcurrentFlag identifies the case when the specified test video is
+	// UncappedConcurrentFlag represents the case when the specified test video is
 	// decoded by multiple concurrent decoders as fast as possible.
 	UncappedConcurrentFlag
 )
