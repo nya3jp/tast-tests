@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d909ef_9fa92c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-04-22T06:17:38Z",
+      "side": 1,
+      "message": "```\n@@ -15169,7 +13692,7 @@ func OpenclCts(ctx context.Context, s *testing.State) {\n        test :\u003d s.Param().(oclctsTest)\n\n        const testPath \u003d \"/usr/local/opencl\"\n-       logFile :\u003d filepath.Join(s.OutDir(), filepath.Base(test.logFileName))\n+       logFile :\u003d filepath.Join(s.OutDir(), filepath.Base(s.TestName())+\".txt\")\n        f, err :\u003d os.Create(logFile)\n        if err !\u003d nil {\n                s.Fatalf(\"Failed to create a log file: %s\", err)\n```",
+      "parentUuid": "ab9d6873_d0b15393",
+      "revId": "4d0b2fb320167e6410d61f3336c845eb2d539b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a597e40_94631a15",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-21T21:51:13Z",
       "side": 1,
       "message": "Ok. I find the line. This file is very lengthy.",
+      "revId": "4d0b2fb320167e6410d61f3336c845eb2d539b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60837577_0ab03077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13695,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-04-22T06:17:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a597e40_94631a15",
       "revId": "4d0b2fb320167e6410d61f3336c845eb2d539b6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
