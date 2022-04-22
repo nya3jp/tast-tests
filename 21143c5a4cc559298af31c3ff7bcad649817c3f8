@@ -16,6 +16,24 @@
       "message": "I looked, but couldn\u0027t find a library that does this. Seems like there should be one (there\u0027s one in python for infra code:\nhttps://source.corp.google.com/chromeos_public/infra/recipes/recipe_modules/util/util.py)",
       "revId": "21143c5a4cc559298af31c3ff7bcad649817c3f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8f1702_60cb4ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-22T21:59:30Z",
+      "side": 1,
+      "message": "I don\u0027t think there is one. It\u0027s a simple logic anyways. We can add action.RetryWithExponentialBackoff for client.sendWithRetry in bond https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/bond/bond.go;l\u003d113?q\u003dbond.go.",
+      "parentUuid": "093b1fd3_1f04461a",
+      "revId": "21143c5a4cc559298af31c3ff7bcad649817c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
