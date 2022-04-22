@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20b36a1_49da0a6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T00:27:35Z",
+      "side": 1,
+      "message": "Please review setting MeetCUJ duration to 10 mins. Thank you!",
+      "revId": "9bee8549a6caeca9ca7f9b1b50247fd2bdd001b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
