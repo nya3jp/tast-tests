@@ -481,7 +481,7 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
 	ui := uiauto.New(conf.tconn)
 	pinToMainScreen := func(ctx context.Context) error {
-		pinBtn := nodewith.Name("Pin yourself to your main screen.")
+		pinBtn := nodewith.NameContaining("Pin yourself").Role(role.Button)
 		if err := ui.WaitUntilExists(pinBtn)(ctx); err != nil {
 			// If there are no participants in the room, the pin button will not be displayed.
 			return ParticipantError(errors.Wrap(err, "failed to find the button to pin to main screen; other participants might have left"))
