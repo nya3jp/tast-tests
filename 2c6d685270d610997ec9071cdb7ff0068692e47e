@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0132575_a88a9067",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-04-22T02:10:52Z",
+      "side": 1,
+      "message": "Reading from the [doc](http://go/chromeos-factory-flow), I think platforms not running the factory flow should have this setting with the flag `no_factory_flow`. This sounds to be a more accurate approach, let me check how to add the flag for these platform.",
+      "parentUuid": "d954d7df_d37037ee",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 220
+      },
+      "revId": "2c6d685270d610997ec9071cdb7ff0068692e47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d2872da_6cb21bfc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
         "patchSetId": 2
