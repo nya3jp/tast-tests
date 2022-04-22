@@ -15,6 +15,7 @@ import (
 type videoDecodeAccelVdPerfTestParam struct {
 	dataPath               string
 	disableGlobalVaapiLock bool
+	runConcurrentDecoders  bool
 }
 
 func init() {
@@ -38,6 +39,11 @@ func init() {
 			Name:              "av1_1080p_60fps",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/av1/1080p_60fps_600frames.av1.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_60},
+			ExtraData:         []string{"perf/av1/1080p_60fps_600frames.av1.ivf", "perf/av1/1080p_60fps_600frames.av1.ivf.json"},
+		}, {
+			Name:              "av1_1080p_60fps_global_vaapi_lock_enabled",
+			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/av1/1080p_60fps_600frames.av1.ivf", runConcurrentDecoders: true},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_60, "thread_safe_libva_backend"},
 			ExtraData:         []string{"perf/av1/1080p_60fps_600frames.av1.ivf", "perf/av1/1080p_60fps_600frames.av1.ivf.json"},
 		}, {
 			Name:              "av1_1080p_60fps_global_vaapi_lock_disabled",
@@ -65,6 +71,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
 			ExtraData:         []string{"perf/h264/1080p_60fps_600frames.h264", "perf/h264/1080p_60fps_600frames.h264.json"},
 		}, {
+			Name:              "h264_1080p_60fps_global_vaapi_lock_enabled",
+			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/h264/1080p_60fps_600frames.h264", runConcurrentDecoders: true},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs", "thread_safe_libva_backend"},
+			ExtraData:         []string{"perf/h264/1080p_60fps_600frames.h264", "perf/h264/1080p_60fps_600frames.h264.json"},
+		}, {
 			Name:              "h264_1080p_60fps_global_vaapi_lock_disabled",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/h264/1080p_60fps_600frames.h264", disableGlobalVaapiLock: true},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs", "thread_safe_libva_backend"},
@@ -88,6 +99,11 @@ func init() {
 			Name:              "hevc_1080p_60fps",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/hevc/1080p_60fps_600frames.hevc"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "proprietary_codecs", "protected_content"},
+			ExtraData:         []string{"perf/hevc/1080p_60fps_600frames.hevc", "perf/hevc/1080p_60fps_600frames.hevc.json"},
+		}, {
+			Name:              "hevc_1080p_60fps_global_vaapi_lock_enabled",
+			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/hevc/1080p_60fps_600frames.hevc", runConcurrentDecoders: true},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "proprietary_codecs", "protected_content", "thread_safe_libva_backend"},
 			ExtraData:         []string{"perf/hevc/1080p_60fps_600frames.hevc", "perf/hevc/1080p_60fps_600frames.hevc.json"},
 		}, {
 			Name:              "hevc_1080p_60fps_global_vaapi_lock_disabled",
@@ -115,6 +131,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60},
 			ExtraData:         []string{"perf/vp8/1080p_60fps_600frames.vp8.ivf", "perf/vp8/1080p_60fps_600frames.vp8.ivf.json"},
 		}, {
+			Name:              "vp8_1080p_60fps_global_vaapi_lock_enabled",
+			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/vp8/1080p_60fps_600frames.vp8.ivf", runConcurrentDecoders: true},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60, "thread_safe_libva_backend"},
+			ExtraData:         []string{"perf/vp8/1080p_60fps_600frames.vp8.ivf", "perf/vp8/1080p_60fps_600frames.vp8.ivf.json"},
+		}, {
 			Name:              "vp8_1080p_60fps_global_vaapi_lock_disabled",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/vp8/1080p_60fps_600frames.vp8.ivf", disableGlobalVaapiLock: true},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60, "thread_safe_libva_backend"},
@@ -140,6 +161,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60},
 			ExtraData:         []string{"perf/vp9/1080p_60fps_600frames.vp9.ivf", "perf/vp9/1080p_60fps_600frames.vp9.ivf.json"},
 		}, {
+			Name:              "vp9_1080p_60fps_global_vaapi_lock_enabled",
+			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/vp9/1080p_60fps_600frames.vp9.ivf", runConcurrentDecoders: true},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "thread_safe_libva_backend"},
+			ExtraData:         []string{"perf/vp9/1080p_60fps_600frames.vp9.ivf", "perf/vp9/1080p_60fps_600frames.vp9.ivf.json"},
+		}, {
 			Name:              "vp9_1080p_60fps_global_vaapi_lock_disabled",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/vp9/1080p_60fps_600frames.vp9.ivf", disableGlobalVaapiLock: true},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "thread_safe_libva_backend"},
@@ -160,8 +186,12 @@ func init() {
 
 func DecodeAccelVDPerf(ctx context.Context, s *testing.State) {
 	param := s.Param().(videoDecodeAccelVdPerfTestParam)
+	testCases := decoding.CappedFlag | decoding.UncappedFlag
+	if param.runConcurrentDecoders || param.disableGlobalVaapiLock {
+		testCases |= decoding.UncappedConcurrentFlag
+	}
 
-	if err := decoding.RunAccelVideoPerfTest(ctx, s.OutDir(), s.DataPath(param.dataPath), decoding.TestParams{DecoderType: decoding.VD, DisableGlobalVaapiLock: param.disableGlobalVaapiLock, TestCases: decoding.CappedFlag | decoding.UncappedFlag}); err != nil {
+	if err := decoding.RunAccelVideoPerfTest(ctx, s.OutDir(), s.DataPath(param.dataPath), decoding.TestParams{DecoderType: decoding.VD, DisableGlobalVaapiLock: param.disableGlobalVaapiLock, TestCases: testCases}); err != nil {
 		s.Fatal("test failed: ", err)
 	}
 }
