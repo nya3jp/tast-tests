@@ -50,6 +50,24 @@
       "message": "These values are the policy values for the specific signed in users and set in the admin panel.\nI\u0027d therefore recommend to leave those at the same place as the passed user names, i.e., within the fixture.",
       "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11562004_09c0b331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-22T08:22:39Z",
+      "side": 1,
+      "message": "I considered putting it in the fixture, but it\u0027s actually not so easy. We\u0027d have to write a new fixture for just this test (like an entire fixture implementation with Setup, TearDown, etc). It looks to me like this test is testing that each account has the given values, so in that sense the Value here is like a parameterisation of the test for each account, which IMO makes sense. It\u0027s also the only test which uses these fixtures. That\u0027s why I thought the simplness of this approach was a good tradeoff. I think we have the following options:\n\n1. Leave this as is.\n2. Create a fixture for this like you suggested\n3. Leave this as is but put a comment to say move this to a fixture or shared var associated with each fixture if any new tests are made that want to use these values.\n\nWDYT?",
+      "parentUuid": "c9a1ca75_8be3019b",
+      "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
