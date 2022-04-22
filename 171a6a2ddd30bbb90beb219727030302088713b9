@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2678bc4_583a04d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-04-22T12:21:47Z",
+      "side": 1,
+      "message": "should this be informational as well?",
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
