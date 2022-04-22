@@ -22,6 +22,30 @@
       },
       "revId": "5c84255368d4bf7b90d44a8000ec4f5b4a976105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1de2cbac_ff7895fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-22T08:29:39Z",
+      "side": 0,
+      "message": "This CL changes to use touch.NewTouchscreenAndConverter() (previously, input.Touchscreen) and that includes this rotation.",
+      "parentUuid": "58a0b48d_88476e6b",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 16
+      },
+      "revId": "5c84255368d4bf7b90d44a8000ec4f5b4a976105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

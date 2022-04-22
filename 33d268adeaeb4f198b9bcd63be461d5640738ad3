@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3bbf069_46fadb77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-22T08:29:39Z",
+      "side": 1,
+      "message": "Sorry for the confusion. Yes, this CL isn\u0027t a \"line-level pure\" refactoring because we need to align how (not what) compat_snap.go and split_view.go do the things.\nEspecially, for the touch event emulation, compat_snap uses pointer.Context while split_view.go uses input.Touchscreen. Both results in the same behavior (the touch emulation) but use the different utility methods.\nAnd that\u0027s the reason why it looks like changing the behavior.\n\nI\u0027ve added the commit message about it.",
+      "parentUuid": "98fc1be2_f255ac98",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "33d268adeaeb4f198b9bcd63be461d5640738ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "11c7476d_8cf32e3e",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-22T07:34:48Z",
       "side": 1,
       "message": "Why the methods are reordered here?\nMaybe it\u0027s good to move the method without changing it\u0027s content in this patch, so that this patch become a pure refactoring.",
+      "range": {
+        "startLine": 780,
+        "startChar": 2,
+        "endLine": 788,
+        "endChar": 2
+      },
+      "revId": "33d268adeaeb4f198b9bcd63be461d5640738ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "613715dc_bd95ee3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-22T08:29:39Z",
+      "side": 1,
+      "message": "Haha, good point! This is a fix for another flakiness issue, so let me revert this part for this CL and will address this in another CL.",
+      "parentUuid": "e979eeb8_e30ea109",
       "range": {
         "startLine": 780,
         "startChar": 2,
