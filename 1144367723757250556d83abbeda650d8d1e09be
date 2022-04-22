@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd78776a_d62a78e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T17:57:48Z",
+      "side": 1,
+      "message": "nit: This does not use the imperative mood explained at\nhttps://chris.beams.io/posts/git-commit/\n\nIf you are avoiding the imperative mood because of concerns about length, you can drop `video:` and just write\n`Add DecodeAccelVDPerf concurrent decoders test cases`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "66432aef_03aaab39",
@@ -14,6 +37,46 @@
       "writtenOn": "2022-04-22T05:24:23Z",
       "side": 1,
       "message": "andrescj@, tast-owners@ PTAL\n\nOthers FYI",
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9fcb662_41a21273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T17:57:48Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with nits",
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f178a866_1be377fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T17:57:48Z",
+      "side": 1,
+      "message": "nit: I suggest naming this `forceRunConcurrentDecoders` because concurrent decoders can be run when it is false.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 22
+      },
       "revId": "1144367723757250556d83abbeda650d8d1e09be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
