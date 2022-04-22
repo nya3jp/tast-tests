@@ -46,9 +46,6 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
 
-	closeOnboardingButton := nodewith.Name("Skip tour").Role(role.Button)
-	appWindow := nodewith.Name("Screencast").Role(role.Application)
-	reload := nodewith.Name("Reload Ctrl+R").Role(role.MenuItem)
 	maximizeButton := nodewith.Name("Maximize").Role(role.Button)
 	newScreencastButton := nodewith.Name("New screencast").Role(role.Button)
 	clickAnywhereToRecord := nodewith.Name("Click anywhere to record full screen").Role(role.StaticText)
@@ -63,26 +60,12 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Projector app: ", err)
 	}
 
-	// Dismiss the onboarding dialog, if it exists. Since each
-	// user only sees the onboarding flow a maximum of three
-	// times, the onboarding dialog may not appear.
-	if err := ui.WaitUntilExists(closeOnboardingButton)(ctx); err == nil {
-		s.Log("Dismissing the onboarding dialog")
-		if err = ui.LeftClickUntil(closeOnboardingButton, ui.Gone(closeOnboardingButton))(ctx); err != nil {
-			s.Fatal("Failed to close the onboarding dialog: ", err)
-		}
+	if err := projector.DismissOnboardingDialog(ctx, tconn); err != nil {
+		s.Fatal("Failed to close the onboarding dialog: ", err)
 	}
 
 	// UI action for refreshing the app until the element we're looking for exists.
-	refreshApp := func(ctx context.Context) error {
-		if err := uiauto.Combine("refresh app",
-			ui.RightClickUntil(appWindow, ui.Exists(reload)),
-			ui.LeftClick(reload),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to refresh app")
-		}
-		return nil
-	}
+	refreshApp := projector.RefreshApp(ctx, tconn)
 
 	s.Log("Launching the new screencast creation flow")
 	if err := uiauto.Combine("launch the new screencast creation flow",
