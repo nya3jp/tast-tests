@@ -34,6 +34,24 @@
       "parentUuid": "f3907083_40d94e1a",
       "revId": "9c28638dbb3087cbc1d56682751780ae91af953c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "583fa5e0_591d469f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302660
+      },
+      "writtenOn": "2022-04-22T11:50:36Z",
+      "side": 1,
+      "message": "I see.\nAlso, I checked the failure log and realized that the reason of the failure is different from what we were experiencing.\n\nAnyway, thanks for your clarification!",
+      "parentUuid": "f3907083_40d94e1a",
+      "revId": "9c28638dbb3087cbc1d56682751780ae91af953c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
