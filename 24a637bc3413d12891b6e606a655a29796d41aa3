@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf320495_73043d39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-22T01:28:59Z",
+      "side": 1,
+      "message": "The wificells don\u0027t have an extra DUT(chromebook). However, the new NearbyShare Cells should have 2 DUTs(chromebooks) and 2 APs which should be sufficient to run this kind of test.",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "94e3003c_3392a628",
@@ -14,6 +31,144 @@
       "writtenOn": "2022-04-20T15:18:05Z",
       "side": 1,
       "message": "Please review.\nThis is only a test base, which I\u0027d like to start reviewing sooner. I should add some more test cases later on, in a different commit.",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa47439_943643aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-22T01:28:59Z",
+      "side": 1,
+      "message": "I took a fast look and added comments. I think the tdlsutil could be avoided by adding support for multiple DUT in Tast because other tests will use it. Check MakePeers [1]\n\nI think all the tdls wpa_cli commands can be added to the wpa_cli runner [2]\n\n[1]\nsrc/platform/tast-tests/src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go\n\n[2]\nsrc/platform/tast-tests/src/chromiumos/tast/common/network/wpacli/runner.go",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee4a3f5f_b95194e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-22T01:28:59Z",
+      "side": 1,
+      "message": "IIUC, this test will run on NearbyShare pool, Right? Because it uses another DUT as a peer.",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32fa419a_93b4c31e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-22T01:28:59Z",
+      "side": 1,
+      "message": "The same function is used on both cases. I think you only need one extra subtest here.",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c1822cb_6ff33177",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-22T01:28:59Z",
+      "side": 1,
+      "message": "I think you should use the wpa_cli runner:\ncommon/network/wpacli/runner.go",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1729c36e_44840d01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-22T01:28:59Z",
+      "side": 1,
+      "message": "I think you can use the function DefaultOpenNetworkAPOptions if this custom configuration is not need.\n\nnit: if this custom is needed. move it to var above this funtion and pass it to the function.",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642b9279_9fc34a6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-22T01:28:59Z",
+      "side": 1,
+      "message": "I think you can use this to add the second peer device:\nsrc/platform/tast-tests/src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+      "range": {
+        "startLine": 112,
+        "startChar": 10,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6864bef_f97f5eed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-22T01:28:59Z",
+      "side": 1,
+      "message": "\u003e \"Expcted\" is a possible misspelling of \"Expected\".\n\nPlease fix.",
+      "parentUuid": "b02d424a_0435dd30",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 19
+      },
       "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
