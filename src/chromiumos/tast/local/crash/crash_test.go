@@ -13,6 +13,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"reflect"
+	"regexp"
 	"sort"
 	gotesting "testing"
 	"time"
@@ -555,5 +556,75 @@ func TestDeleteCoreDumps(t *gotesting.T) {
 	want := []string{"a.core", "a.txt", "b.dmp", "b.jpg", "c.core", "c.dmp"}
 	if diff := cmp.Diff(got, want); diff != "" {
 		t.Error("Files mismatch after successful deleteCoreDumps (-got +want):\n", diff)
+	}
+}
+
+func TestCleanupDevcoredump(t *gotesting.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	dirCD := filepath.Join(td, KernelDevCDDir)
+	dirCD1 := filepath.Join(dirCD, "devcd1")
+	if err := os.MkdirAll(dirCD1, 0777); err != nil {
+		t.Fatal("Failed to create dir: ", err)
+	}
+
+	if err := os.WriteFile(filepath.Join(dirCD1, "data"), nil, 0666); err != nil {
+		t.Fatal("Failed to touch file: ", err)
+	}
+
+	if _, err := os.Stat(filepath.Join(dirCD1, "data")); os.IsNotExist(err) {
+		t.Fatal("Can not find data")
+	}
+	re := regexp.MustCompile(kernelDevCDName)
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// mocking the kernel module devcoredump, which is expected to run concurrently
+	go func() {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			files, err := os.ReadDir(dirCD)
+			if err != nil {
+				t.Fatalf("Directory %s isn't created for testing purpose", dirCD)
+			}
+
+			for _, file := range files {
+				if re.MatchString(file.Name()) {
+					dirPath := filepath.Join(dirCD, file.Name())
+					data, err := os.ReadFile(filepath.Join(dirPath, "data"))
+					if err != nil {
+						t.Fatalf("data file doesn't exist in %s/", file.Name())
+					}
+					if len(data) > 0 && data[0] == '0' {
+						// once read '0' from data file, devcoredump removes the directory
+						os.RemoveAll(dirPath)
+						return nil
+					}
+				}
+			}
+
+			return errors.New("Keep devcoredump running in background")
+		}, &testing.PollOptions{Timeout: 2 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
+			// making the failing sooner
+			t.Fatal("Failed to clean up devcoredump in 2 seconds")
+		}
+	}()
+
+	// cleanDevcoredump doesn't delete the devcoredump instance, instead writes '0' it
+	// the deletion is handled by a concurrent kernel thread
+	if err := cleanupDevcoredump(ctx, 100*time.Millisecond, dirCD, kernelDevCDName); err != nil {
+		t.Fatalf("Couldn't cleanup devcoredump data file %s", dirCD1)
+	}
+
+	// check if the devcoredump instance was deleted
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat(dirCD1); os.IsNotExist(err) {
+			return nil
+		}
+		return errors.New("Waiting for devcoredump instance to be deleted")
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		// making the failing sooner
+		t.Fatal("Failed to cleanup devcoredump instance")
 	}
 }

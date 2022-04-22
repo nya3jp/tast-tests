@@ -6,7 +6,6 @@ package crash
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -69,7 +68,7 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 		s.Error("Failed to get OutDir")
 	}
 
-	if err := ioutil.WriteFile(filepath.Join(dir, logName),
+	if err := os.WriteFile(filepath.Join(dir, logName),
 		[]byte(content), 0644); err != nil {
 		s.Error("Failed to write filesystem/disks info outputs: ", err)
 	}
@@ -87,6 +86,10 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 	if _, err := os.Stat(iwlwifiPath); os.IsNotExist(err) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
 	}
+
+	// SetUpCrashTest will create a file filter to ignore core dumps whose names don't match
+	// the pattern in FilterCrashes. So clean it up after the TearDownCrashTest
+	defer crash.CleanupDevcoredump(ctx)
 
 	opt := crash.WithMockConsent()
 
@@ -124,7 +127,7 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Inducing artificial iwlwifi error")
-	if err := ioutil.WriteFile(fwnmi, []byte("1"), 0); err != nil {
+	if err := os.WriteFile(fwnmi, []byte("1"), 0); err != nil {
 		s.Fatal("Failed to induce iwlwifi error in fw_nmi: ", err)
 	}
 
@@ -154,7 +157,7 @@ func KernelIwlwifiError(ctx context.Context, s *testing.State) {
 		return
 	}
 	metaFile := files[metaName][0]
-	contents, err := ioutil.ReadFile(metaFile)
+	contents, err := os.ReadFile(metaFile)
 	if err != nil {
 		s.Fatalf("Couldn't read meta file %s contents: %v", metaFile, err)
 	}
