@@ -35,6 +35,8 @@ func init() {
 			Name:    "productivity_launcher_clamshell_mode",
 			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
 			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+			// b/229135388
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:    "clamshell_mode",
 			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
