@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72023587_6bf32a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T22:52:04Z",
+      "side": 1,
+      "message": "This error message does not contain `err`. It should be:\n`s.Errorf(\"Failed to sleep for %v: %v\", wait, err)`",
+      "range": {
+        "startLine": 337,
+        "startChar": 4,
+        "endLine": 337,
+        "endChar": 46
+      },
+      "revId": "2f7234b370e29a9be24835f1a978c9d6dcbe1612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
