@@ -16,6 +16,23 @@
       "message": "tast-owners@: Please take a look.",
       "revId": "424bbc3e9ecca04bf2801fb11479ce96962f8d97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb84c91c_9400c55f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-22T13:13:16Z",
+      "side": 1,
+      "message": "nit; no conflicting package name so alias is not needed, I think.",
+      "revId": "424bbc3e9ecca04bf2801fb11479ce96962f8d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
