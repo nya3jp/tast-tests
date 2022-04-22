@@ -16,6 +16,40 @@
       "message": "PTAL\n\nThis was the last CL of the day and I didn\u0027t have a chance to check the test results before uploading, otherwise I would have caught this. Sorry for the inconvenience!",
       "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb5285b_6e00c994",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-04-22T07:50:57Z",
+      "side": 1,
+      "message": "See comment: I\u0027d leave the policy values within the fixture.",
+      "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a1ca75_8be3019b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-04-22T07:50:57Z",
+      "side": 1,
+      "message": "These values are the policy values for the specific signed in users and set in the admin panel.\nI\u0027d therefore recommend to leave those at the same place as the passed user names, i.e., within the fixture.",
+      "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
