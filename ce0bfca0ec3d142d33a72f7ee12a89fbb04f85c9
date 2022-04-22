@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de8cea4d_80b5eaa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-22T16:05:49Z",
+      "side": 1,
+      "message": "Software deps are also available but they are usually reserved for software features which may or may not be enabled on particular devices (does the device support Crostini? something of that kind). I know that there was exploration into  having a separate test result for transient infrastructure issues, as well, though I don\u0027t think that went anywhere since.\n\nI can bring this up with the Tast owners and see what they think.",
+      "parentUuid": "f0cf5e68_9305d566",
+      "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd386fc8_0c348301",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/usb_util.go",
         "patchSetId": 4
