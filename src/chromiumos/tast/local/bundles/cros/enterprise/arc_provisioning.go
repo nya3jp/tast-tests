@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -142,6 +143,12 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return retry("start ARC by policy", err)
 		}
 		defer a.Close(ctx)
+
+		// Increase the logcat buffer size to 1MB.
+		if err := a.Command(ctx, "logcat", "-G", "10M").Run(testexec.DumpLogOnError); err != nil {
+			return exit("increase logcat buffer size", err)
+		}
+
 		if err := optin.LaunchAndWaitForPlayStore(ctx, tconn, cr, timeoutWaitForPlayStore); err != nil {
 			if err := optin.DumpLogCat(ctx, strconv.Itoa(attempts)); err != nil {
 				s.Logf("WARNING: Failed to dump logcat: %s", err)
