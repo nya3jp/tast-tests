@@ -16,6 +16,23 @@
       "message": "btw: on chromiumos +1 votes get reset after every code change. Reapproving with +1 but waiting for seewaifu@ to also review",
       "revId": "fb3f37a02152d9f088997c87ad26bac8fcdacd95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66bb7469_983065ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-22T00:13:10Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "fb3f37a02152d9f088997c87ad26bac8fcdacd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
