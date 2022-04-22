@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b02f796_62bd1f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-22T13:13:11Z",
+      "side": 1,
+      "message": "Oh, actually, there are more chrome options that were used in `loggedInToLacros` fixture (e.g. `chrome.GAIALoginPool(s.RequiredVar(\"ui.gaiaPoolDefault\"))`). How do we pass them with \"fixtureless lacros\"?",
+      "parentUuid": "59ca376f_f5ca2e74",
+      "revId": "3f0779c233e55d142db5a896fd1afabe2856fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a76efeb_ce5a7f1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
         "patchSetId": 1
