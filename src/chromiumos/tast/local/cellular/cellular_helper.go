@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/shill"
@@ -30,8 +31,10 @@ const defaultTimeout = shillconst.DefaultTimeout
 
 // Helper fetches Cellular Device and Service properties.
 type Helper struct {
-	Manager *shill.Manager
-	Device  *shill.Device
+	Manager            *shill.Manager
+	Device             *shill.Device
+	enableEthernetFunc func(ctx context.Context)
+	enableWifiFunc     func(ctx context.Context)
 }
 
 // NewHelper creates a Helper object and ensures that a Cellular Device is present.
@@ -861,4 +864,79 @@ func (h *Helper) GetCellularLastAttachAPN(ctx context.Context) (map[string]strin
 // GetCellularLastGoodAPN gets Cellular.LastAttachAPN dictionary from shill properties.
 func (h *Helper) GetCellularLastGoodAPN(ctx context.Context) (map[string]string, error) {
 	return h.getCellularServiceDictProperty(ctx, shillconst.ServicePropertyCellularLastGoodAPN)
+}
+
+// GetApnIPType returns first available ip_type from Cellular.APNList.
+func (h *Helper) GetApnIPType(ctx context.Context) (string, error) {
+	props, _ := h.Device.GetShillProperties(ctx)
+	apns, err := props.Get(shillconst.DevicePropertyCellularAPNList)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get cellular device properties")
+		return "", err
+	}
+
+	apnList, ok := apns.([]map[string]string)
+	if !ok {
+		testing.ContextLog(ctx, "Invalid format for cellular apn list")
+		return "", errors.New("invalid format for cellular apn list")
+	}
+	for i := 0; i < len(apnList); i++ {
+		ipType := apnList[i]["ip_type"]
+		if len(ipType) > 0 {
+			testing.ContextLog(ctx, "First ipType in apn list: ", ipType)
+			return ipType, nil
+		}
+	}
+	return "ipv4", nil
+}
+
+// DisableNonCellularInterfaceforTesting disable all non cellular interfaces
+func (h *Helper) DisableNonCellularInterfaceforTesting(ctx context.Context) error {
+	ctx, cancel := ctxutil.Shorten(ctx, shill.EnableWaitTime*2)
+	defer cancel()
+	// Disable Ethernet and/or WiFi if present and defer re-enabling.
+	if enableFunc, err := h.Manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet); err != nil {
+		return errors.Wrap(err, "unable to disable Ethernet")
+	} else if enableFunc != nil {
+		h.enableEthernetFunc = enableFunc
+	}
+	if enableFunc, err := h.Manager.DisableTechnologyForTesting(ctx, shill.TechnologyWifi); err != nil {
+		return errors.Wrap(err, "unable to disable Wifi")
+	} else if enableFunc != nil {
+		h.enableWifiFunc = enableFunc
+	}
+	return nil
+}
+
+// EnablePreviouslyDisabledNonCellularInterfaceforTesting enable previously disabled interfaces
+func (h *Helper) EnablePreviouslyDisabledNonCellularInterfaceforTesting(ctx context.Context) error {
+	if h.enableEthernetFunc != nil {
+		h.enableEthernetFunc(ctx)
+	}
+	if h.enableWifiFunc != nil {
+		h.enableWifiFunc(ctx)
+	}
+	return nil
+}
+
+// SetupCellularInterfaceForTesting setup the device for cellular tests.
+func (h *Helper) SetupCellularInterfaceForTesting(ctx context.Context, testBody func(ctx context.Context) error) error {
+	// Verify that a connectable Cellular service exists and ensure it is connected.
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to find Cellular Service")
+	}
+	if isConnected, err := service.IsConnected(ctx); err != nil {
+		return errors.Wrap(err, "unable to get IsConnected for Service")
+	} else if !isConnected {
+		if _, err := h.ConnectToDefault(ctx); err != nil {
+			return errors.Wrap(err, "unable to Connect to default service")
+		}
+	}
+
+	if err := h.DisableNonCellularInterfaceforTesting(ctx); err != nil {
+		return errors.Wrap(err, "failed to disable non cellular interface")
+	}
+	defer h.EnablePreviouslyDisabledNonCellularInterfaceforTesting(ctx)
+	return testBody(ctx)
 }
