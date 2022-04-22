@@ -23,6 +23,12 @@ func (d *Device) ShellCommand(ctx context.Context, name string, args ...string) 
 	return d.Command(ctx, "shell", cmd)
 }
 
+// SurfaceFlingerLatencyCommand returns a command specifically for calling the
+// SurfaceFlinger command for latency, via adb.
+func (d *Device) SurfaceFlingerLatencyCommand(ctx context.Context, surfaceViewName string) *testexec.Cmd {
+	return d.Command(ctx, "shell", "exec", "dumpsys", "SurfaceFlinger", "--latency", "\""+surfaceViewName+"\"")
+}
+
 // SendIntentCommand returns a Cmd to send an intent with "am start" command.
 func (d *Device) SendIntentCommand(ctx context.Context, action, data string) *testexec.Cmd {
 	args := []string{"start", "-a", action}
