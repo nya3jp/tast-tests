@@ -104,6 +104,24 @@
       "parentUuid": "e19e3af7_b9e0da93",
       "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6327bf42_1222fe4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-04-22T08:39:58Z",
+      "side": 1,
+      "message": "As next week we have a bug bash week (chromeos commercial) with partial focus on writing tast tests, when are you planning to merge these changes?\nIt would probably make sense to have at least the ChromeOptions merged by then.\nOtherwise, there could be people adding additional tests with lacros fixtures.",
+      "parentUuid": "e7dcd7f7_7b35f140",
+      "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
