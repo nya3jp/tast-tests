@@ -17,6 +17,12 @@ func (a *ARC) Command(ctx context.Context, name string, args ...string) *testexe
 	return a.device.ShellCommand(ctx, name, args...)
 }
 
+// SurfaceFlingerLatencyCommand returns a command specifically for calling
+// the SurfaceFlinger command to obtain latencies, via adb.
+func (a *ARC) SurfaceFlingerLatencyCommand(ctx context.Context, surfaceViewName string) *testexec.Cmd {
+	return a.device.SurfaceFlingerLatencyCommand(ctx, surfaceViewName)
+}
+
 // BootstrapCommand runs a command with android-sh.
 //
 // It is very rare you want to call this function from your test; call Command
