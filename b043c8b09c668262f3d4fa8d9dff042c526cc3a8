@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fdbcf66_00123226",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-04-22T03:40:49Z",
+      "side": 1,
+      "message": "BTW, I just recalled we would use \"ui\" upstart in these tests.\n\nWe would use \"restart ui\" to unmount cryptohome.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/hwsec/cryptohome_client.go;drc\u003d1079159f21abe20081747c3c9a2f333d6463f99e;l\u003d198",
+      "parentUuid": "4a7dbfb0_6fb0b378",
+      "revId": "b043c8b09c668262f3d4fa8d9dff042c526cc3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "37f7f120_0c38394a",
