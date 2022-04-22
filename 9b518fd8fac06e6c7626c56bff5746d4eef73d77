@@ -16,6 +16,46 @@
       "message": "frkoenig@, tast-owners@ PTAL\n\nOthers FYI",
       "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eb83eaf_f350b64f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-04-22T18:45:22Z",
+      "side": 1,
+      "message": "Drive-by review as part of reviewing the next CL.",
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c00b06e_1cade4a5",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-04-22T18:45:22Z",
+      "side": 1,
+      "message": "I have a couple of concerns here:\n\n1) mediacpu.MeasureProcessUsage() doesn\u0027t seem to exit with an error if the gtests fail (at most, it just does testing.ContextLog() in certain situations). So let\u0027s say we run 5 iterations of the tests before getting a failure. In that case, wouldn\u0027t we possibly still have a cappedJSON from the last iteration that succeeded? If so, then I don\u0027t see how we would catch this failure mode compared to before this CL.\n\n2) Since the gtests will be run for 1000 iterations, what will the cappedJSON contain? Will it contain the metrics for all iterations or only for the last one? If the latter, then it seems possible that after 20s, the test process gets killed racily while writing to the json file which seems problematic. Also, if we only get the results of the last iteration, we may be biasing our metrics towards devices that are already hot from being stressed (which might be ok).",
+      "range": {
+        "startLine": 290,
+        "startChar": 22,
+        "endLine": 290,
+        "endChar": 50
+      },
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
