@@ -25,10 +25,14 @@ import (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            fixture.ChromePolicyLoggedIn,
-		Desc:            "Logged into a user session",
-		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
-		Impl:            &policyChromeFixture{},
+		Name:     fixture.ChromePolicyLoggedIn,
+		Desc:     "Logged into a user session",
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{}, nil
+			},
+		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -41,7 +45,9 @@ func init() {
 		Desc:     "Logged into a user session with web app isolation enabled",
 		Contacts: []string{"simonha@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
-			extraOpts: []chrome.Option{chrome.ExtraArgs("--enable-features=WebAppEnableIsolatedStorage")},
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.ExtraArgs("--enable-features=WebAppEnableIsolatedStorage")}, nil
+			},
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -56,7 +62,9 @@ func init() {
 		Desc:     "Logged into a user session with journeys enabled",
 		Contacts: []string{"rodmartin@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
-			extraOpts: []chrome.Option{chrome.ExtraArgs("--enable-features=Journeys")},
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.ExtraArgs("--enable-features=Journeys")}, nil
+			},
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -70,7 +78,9 @@ func init() {
 		Desc:     "Logged into a user session with enrollment",
 		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
-			extraOpts: []chrome.Option{chrome.KeepEnrollment()},
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.KeepEnrollment()}, nil
+			},
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -84,8 +94,10 @@ func init() {
 		Desc:     "Logged into a user session with enrollment with ARC support",
 		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
-			extraOpts: []chrome.Option{chrome.KeepEnrollment(), chrome.ARCEnabled(),
-				chrome.ExtraArgs("--arc-availability=officially-supported")},
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.KeepEnrollment(), chrome.ARCEnabled(),
+					chrome.ExtraArgs("--arc-availability=officially-supported")}, nil
+			},
 			waitForARC: true,
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
@@ -100,7 +112,9 @@ func init() {
 		Desc:     "Logged into a user session with admin desk templates",
 		Contacts: []string{"zhumatthew@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
-			extraOpts: []chrome.Option{chrome.EnableFeatures("DesksTemplates")},
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.EnableFeatures("DesksTemplates")}, nil
+			},
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -116,8 +130,8 @@ type policyChromeFixture struct {
 	// fdms is the already running DMS server from the parent fixture.
 	fdms *fakedms.FakeDMS
 
-	// extraOpts contains extra options passed to Chrome.
-	extraOpts []chrome.Option
+	// extraOptsFunc contains a callback to return extra options to pass to ash-chrome.
+	extraOptsFunc chrome.OptionsCallback
 
 	// waitForARC indicates the fixture needs to wait for ARC before login.
 	// Only needs to be set if ARC is enabled.
@@ -187,7 +201,11 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
 		chrome.DeferLogin(),
 	}
-	opts = append(opts, p.extraOpts...)
+	extraOpts, err := p.extraOptsFunc(ctx, s)
+	if err != nil {
+		return errors.Wrap(err, "failed to get extra options")
+	}
+	opts = append(opts, extraOpts...)
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx, opts...)
