@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -56,32 +55,25 @@ func init() {
 		Name:     fixture.LacrosPolicyLoggedInRealUser,
 		Desc:     "Fixture for a running FakeDMS with lacros with a real managed user logged on",
 		Contacts: []string{"anastasiian@chromium.org", "chromeos-commercial-remote-management@google.com"},
-		Impl: lacrosfixt.NewComposedFixture(lacros.Rootfs, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
-			return &struct {
-				fakedms.HasFakeDMS
-				lacrosfixt.FixtValue
-			}{
-				pv.(fakedms.HasFakeDMS),
-				v,
-			}
-		}, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
-			if !ok {
-				return nil, errors.New("parent is not a FakeDMS fixture")
-			}
-			gaiaCreds, err := chrome.PickRandomCreds(s.RequiredVar("policy.ManagedUser.accountPool"))
-			if err != nil {
-				s.Fatal("Failed to parse managed user creds: ", err)
-			}
-			fdms.SetPersistentPolicyUser(&gaiaCreds.User)
-			if err := fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
-				s.Fatal("Failed to write policies to FakeDMS: ", err)
-			}
-			opts := []chrome.Option{chrome.DMSPolicy(fdms.URL),
-				chrome.GAIALogin(gaiaCreds),
-				chrome.ExtraArgs("--disable-lacros-keep-alive")}
-			return opts, nil
-		}),
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
+				if !ok {
+					return nil, errors.New("parent is not a FakeDMS fixture")
+				}
+				gaiaCreds, err := chrome.PickRandomCreds(s.RequiredVar("policy.ManagedUser.accountPool"))
+				if err != nil {
+					s.Fatal("Failed to parse managed user creds: ", err)
+				}
+				fdms.SetPersistentPolicyUser(&gaiaCreds.User)
+				if err := fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
+					s.Fatal("Failed to write policies to FakeDMS: ", err)
+				}
+				// The policyChromeFixture specifies FakeLogin, but the GAIALogin we specify
+				// here will overwrite it, since these options are applied after policyChromeFixture's options.
+				return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(chrome.GAIALogin(gaiaCreds))).Opts()
+			},
+		},
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
