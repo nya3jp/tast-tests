@@ -33,6 +33,23 @@
       "message": "still lgtm",
       "revId": "39d4fdfa08970f777ac120ac696ce75cd158eac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af71e348_7c1184c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529068
+      },
+      "writtenOn": "2022-04-22T23:06:39Z",
+      "side": 1,
+      "message": "It seems that renaming the tast test wiped out all prior code approvals. Would it be possible to reconfirm the code approval? Thanks!",
+      "revId": "39d4fdfa08970f777ac120ac696ce75cd158eac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
