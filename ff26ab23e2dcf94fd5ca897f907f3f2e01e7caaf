@@ -86,6 +86,24 @@
       "parentUuid": "11562004_09c0b331",
       "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7dcd7f7_7b35f140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-22T08:31:43Z",
+      "side": 1,
+      "message": "Ah fair.\n\nI might rewrite this to use fixtures if I get time early next week.",
+      "parentUuid": "e19e3af7_b9e0da93",
+      "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
