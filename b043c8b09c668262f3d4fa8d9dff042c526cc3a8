@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d0d461_99ade58d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-22T05:23:14Z",
+      "side": 1,
+      "message": "That means instead of removing chrome dependency from these tests, we should actually add chrome dependency to those tests that use cryptohome-client but don\u0027t depend on chrome? For example this one https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_migrate_key.go;l\u003d44",
+      "parentUuid": "9fdbcf66_00123226",
+      "revId": "b043c8b09c668262f3d4fa8d9dff042c526cc3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "37f7f120_0c38394a",
