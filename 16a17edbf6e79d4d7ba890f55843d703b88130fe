@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66181976_8f56ff7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T00:03:11Z",
+      "side": 1,
+      "message": "Actually, that is even worse. According to [1], \"The first line of a commit message represents the title or summary of the change. Standard Git tools often display it differently than the rest of the message, for example in bold font, or show only this line, for example when summarizing multiple commits.\" So you cannot just wrap it onto a second line.\n\n[1] https://dragonfly2.readthedocs.io/en/latest/commit_messages.html#:~:text\u003dThe%20first%20line%20of%20a,example%20when%20summarizing%20multiple%20commits.",
+      "parentUuid": "b65e760a_c371e949",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 74
+      },
+      "revId": "16a17edbf6e79d4d7ba890f55843d703b88130fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a6b0fcf_30888b11",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
