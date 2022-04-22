@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -49,11 +50,35 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 		metaDumpName     = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.meta`
 		logDumpName      = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.log`
 		fwDbgCollectPath = "/iwlmvm/fw_dbg_collect"
+		kernelDevCDDir   = "/sys/class/devcoredump"
+		kernelDevCDName  = `devcd\d+`
 	)
 
 	// Verify that DUT has Intel WiFi.
 	if _, err := os.Stat(iwlwifiDir); os.IsNotExist(err) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
+	}
+
+	// The existence of these files indicates that devcoredump was invoked shortly before.
+	// devcoredump is invoked by crash_reporter during crash collection and testing, by which
+	// a file filter is created to ignore Intel WiFi FW dumps. See b/228462848#comment7
+	if _, err := os.Stat(kernelDevCDDir); !os.IsNotExist(err) {
+		s.Log("devcoredump directory exists on DUT, doing checks")
+		re := regexp.MustCompile(kernelDevCDName)
+
+		files, err := ioutil.ReadDir(kernelDevCDDir)
+		if err == nil {
+			for _, file := range files {
+				if re.MatchString(file.Name()) {
+					s.Log("Sleep 30 seconds to wait for crash_reporter to finish. Then clear the footprints")
+					testing.Sleep(ctx, 30*time.Second)
+					fullPath := filepath.Join(filepath.Join(kernelDevCDDir, file.Name()), "data")
+					if err := ioutil.WriteFile(fullPath, []byte("0"), 0644); err != nil {
+						s.Log("Failed to write devcoredump data file: ", err)
+					}
+				}
+			}
+		}
 	}
 
 	// This test uses crash.DevImage because it is designed to test device
