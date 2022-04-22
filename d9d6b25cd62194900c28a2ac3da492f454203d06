@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c04a794_d8c5eee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-04-22T21:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb4e7db5_52c54a5a",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 15
+      },
+      "revId": "d9d6b25cd62194900c28a2ac3da492f454203d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b7d6ee6_c9fd4813",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "998c799e_4cfefc61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-04-22T21:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b7d6ee6_c9fd4813",
+      "range": {
+        "startLine": 84,
+        "startChar": 19,
+        "endLine": 84,
+        "endChar": 36
+      },
+      "revId": "d9d6b25cd62194900c28a2ac3da492f454203d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca8a7505_86332632",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-22T12:58:35Z",
       "side": 1,
       "message": "nit: looks redundant",
+      "range": {
+        "startLine": 97,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "d9d6b25cd62194900c28a2ac3da492f454203d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be12b665_1fec0f2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-04-22T21:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca8a7505_86332632",
       "range": {
         "startLine": 97,
         "startChar": 13,
