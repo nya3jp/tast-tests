@@ -45,7 +45,7 @@ func init() {
 				Name:              "default",
 				ExtraHardwareDeps: hwdep.D(hwdep.NoX86()),
 				Val: testParameters{
-					apBootRegexp: `power state 3 = S0`,
+					apBootRegexp: `power state 4 = S0`,
 					apBootMax:    1 * time.Second,
 				},
 			},
