@@ -68,6 +68,24 @@
       "parentUuid": "c9a1ca75_8be3019b",
       "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19e3af7_b9e0da93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-04-22T08:29:30Z",
+      "side": 1,
+      "message": "I\u0027m planning to add at least one new test next week (uploads not downloads).\nI will take a look then. For now, we can leave as is.",
+      "parentUuid": "11562004_09c0b331",
+      "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
