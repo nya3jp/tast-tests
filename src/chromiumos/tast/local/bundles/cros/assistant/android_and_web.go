@@ -45,9 +45,9 @@ func init() {
 
 func AndroidAndWeb(ctx context.Context, s *testing.State) {
 	const (
-		QueryOpenYt            = "Open YouTube"
-		WebYtTitle             = "Chrome - YouTube"
-		YtPackageName          = "com.google.android.youtube"
+		QueryOpenGoogleNews    = "Open Google News"
+		WebGoogleNewsTitle     = "Chrome - Google News"
+		GoogleNewsPackageName  = "com.google.android.apps.magazines"
 		PlayStoreLaunchTimeout = time.Minute
 		ApkName                = "AssistantAndroidAppTest.apk"
 	)
@@ -70,15 +70,15 @@ func AndroidAndWeb(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if _, err := assistant.SendTextQuery(ctx, tconn, QueryOpenYt); err != nil {
+	if _, err := assistant.SendTextQuery(ctx, tconn, QueryOpenGoogleNews); err != nil {
 		s.Fatal("Failed to send Assistant text query: ", err)
 	}
 
-	predYtWeb := func(window *ash.Window) bool {
-		return window.Title == WebYtTitle && window.IsVisible && window.ARCPackageName == ""
+	predGoogleNewsWeb := func(window *ash.Window) bool {
+		return window.Title == WebGoogleNewsTitle && window.IsVisible && window.ARCPackageName == ""
 	}
-	if err := ash.WaitForCondition(ctx, tconn, predYtWeb, &testing.PollOptions{}); err != nil {
-		s.Fatal("Failed to confirm that YouTube web page gets opened: ", err)
+	if err := ash.WaitForCondition(ctx, tconn, predGoogleNewsWeb, &testing.PollOptions{}); err != nil {
+		s.Fatal("Failed to confirm that Google News web page gets opened: ", err)
 	}
 
 	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
@@ -89,19 +89,19 @@ func AndroidAndWeb(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install a test app: ", err)
 	}
 
-	if err := pollForArcPackageAvailable(ctx, s, tconn, YtPackageName); err != nil {
+	if err := pollForArcPackageAvailable(ctx, s, tconn, GoogleNewsPackageName); err != nil {
 		s.Fatal("Failed to wait arc package becomes available: ", err)
 	}
 
-	if _, err := assistant.SendTextQuery(ctx, tconn, QueryOpenYt); err != nil {
+	if _, err := assistant.SendTextQuery(ctx, tconn, QueryOpenGoogleNews); err != nil {
 		s.Fatal("Failed to send Assistant text query: ", err)
 	}
 
-	predYtApp := func(window *ash.Window) bool {
-		return window.IsVisible && window.ARCPackageName == YtPackageName
+	predGoogleNewsApp := func(window *ash.Window) bool {
+		return window.IsVisible && window.ARCPackageName == GoogleNewsPackageName
 	}
-	if err := ash.WaitForCondition(ctx, tconn, predYtApp, &testing.PollOptions{}); err != nil {
-		s.Fatal("Failed to confirm that YouTube app gets opened: ", err)
+	if err := ash.WaitForCondition(ctx, tconn, predGoogleNewsApp, &testing.PollOptions{}); err != nil {
+		s.Fatal("Failed to confirm that Google News app gets opened: ", err)
 	}
 }
 

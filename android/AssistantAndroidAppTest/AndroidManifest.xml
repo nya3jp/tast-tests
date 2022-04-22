@@ -3,9 +3,9 @@
      Use of this source code is governed by a BSD-style license that can be
      found in the LICENSE file.
 -->
-<!-- This is a fake app which pretends it as a YouTube app. -->
+<!-- This is a fake app which pretends it as a Google News app. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.android.youtube">
+    package="com.google.android.apps.magazines">
     <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="29" />
     <application>
         <activity android:name=".MainActivity" android:exported="true"

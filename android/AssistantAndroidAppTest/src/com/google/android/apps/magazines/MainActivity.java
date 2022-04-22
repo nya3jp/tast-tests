@@ -4,7 +4,7 @@
  * found in the LICENSE file.
  */
 
-package com.google.android.youtube;
+package com.google.android.apps.magazines;
 
 import android.app.Activity;
 
