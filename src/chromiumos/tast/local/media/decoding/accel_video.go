@@ -57,6 +57,9 @@ type TestParams struct {
 	DecoderType            DecoderType
 	LinearOutput           bool
 	DisableGlobalVaapiLock bool
+	// We only run the concurrent decoders test when explicitly told to, see
+	// see b/230044499.
+	RunConcurrentDecoders bool
 }
 
 func generateCmdArgs(outDir, filename string, parameters TestParams) []string {
@@ -232,13 +235,12 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 
-	// Test 1: Measure capped and uncapped performance.
-	args := generateCmdArgs(outDir, filename, parameters)
-
+	// Measure uncapped performance.
 	const exec = "video_decode_accelerator_perf_tests"
+	args := generateCmdArgs(outDir, filename, parameters)
 	if report, err := runAccelVideoTestCmd(ctx, exec,
-		fmt.Sprintf("*%s:*%s:*%s", cappedTestname, uncappedTestname, multipleConcurrentTestname),
-		filepath.Join(outDir, exec+".1.log"), args); err != nil {
+		fmt.Sprintf("*%s", uncappedTestname),
+		filepath.Join(outDir, exec+".uncapped.log"), args); err != nil {
 		msg := fmt.Sprintf("failed to run %v with video %s", exec, filename)
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
@@ -253,34 +255,41 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 	if _, err := os.Stat(uncappedJSON); os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to find uncapped performance metrics file")
 	}
-
-	cappedJSON := filepath.Join(outDir, "VideoDecoderTest", cappedTestname+".json")
-	if _, err := os.Stat(cappedJSON); os.IsNotExist(err) {
-		return errors.Wrap(err, "failed to find capped performance metrics file")
-	}
-
-	multipleConcurrentJSON := filepath.Join(outDir, "VideoDecoderTest", multipleConcurrentTestname+".json")
-	if _, err := os.Stat(multipleConcurrentJSON); os.IsNotExist(err) {
-		return errors.Wrap(err, "failed to find ten concurrent decoders performance metrics file")
-	}
-
 	if err := parseUncappedPerfMetrics(uncappedJSON, p, "single_decoder"); err != nil {
 		return errors.Wrap(err, "failed to parse uncapped performance metrics")
 	}
-	if err := parseCappedPerfMetrics(cappedJSON, p); err != nil {
-		return errors.Wrap(err, "failed to parse capped performance metrics")
+
+	// Optionally measure uncapped performance with several concurrent decoders.
+	if parameters.RunConcurrentDecoders {
+		if report, err := runAccelVideoTestCmd(ctx, exec,
+			fmt.Sprintf("*%s", multipleConcurrentTestname),
+			filepath.Join(outDir, exec+".uncapped_multiple_concurrent.log"),
+			args); err != nil {
+			msg := fmt.Sprintf("failed to run %v with video %s", exec, filename)
+			if report != nil {
+				for _, name := range report.FailedTestNames() {
+					msg = fmt.Sprintf("%s, %s: failed", msg, name)
+				}
+			}
+			return errors.Wrap(err, msg)
+		}
+
+		multipleConcurrentJSON := filepath.Join(outDir, "VideoDecoderTest", multipleConcurrentTestname+".json")
+		if _, err := os.Stat(multipleConcurrentJSON); os.IsNotExist(err) {
+			return errors.Wrap(err, "failed to find ten concurrent decoders performance metrics file")
+		}
+		// TODO(b/211783279) Replace this parser with one that can handle multiple captures.
+		// Use the uncapped parser since only one performance evaluator is current being used in the test.
+		if err := parseUncappedPerfMetrics(multipleConcurrentJSON, p, "ten_concurrent_decoders"); err != nil {
+			return errors.Wrap(err, "failed to parse multiple concurrent decoders performance metrics")
+		}
 	}
-	// TODO(b/211783279) Replace this parser with one that can handle multiple captures.
-	// Use the uncapped parser since only one performance evaluator is current being used in the test.
-	if err := parseUncappedPerfMetrics(multipleConcurrentJSON, p, "ten_concurrent_decoders"); err != nil {
-		return errors.Wrap(err, "failed to parse multiple concurrent decoders performance metrics")
-	}
-	// Test 2: Measure CPU usage and power consumption while running capped
-	// performance test only.
-	// TODO(dstaessens) Investigate collecting CPU usage during previous test.
+
+	// Measure capped performance. Keep running the test while CPU usage and power
+	// consumption are collected (about 20s).
 	measurements, err := mediacpu.MeasureProcessUsage(ctx, measureDuration, mediacpu.KillProcess, gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
-		gtest.Logfile(filepath.Join(outDir, exec+".2.log")),
+		gtest.Logfile(filepath.Join(outDir, exec+".capped.log")),
 		gtest.Filter("*"+cappedTestname),
 		// Repeat enough times to run for full measurement duration. We don't
 		// use -1 here as this can result in huge log files (b/138822793).
@@ -291,7 +300,13 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 	if err != nil {
 		return errors.Wrapf(err, "failed to measure CPU usage %v", exec)
 	}
-
+	cappedJSON := filepath.Join(outDir, "VideoDecoderTest", cappedTestname+".json")
+	if _, err := os.Stat(cappedJSON); os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to find capped performance metrics file")
+	}
+	if err := parseCappedPerfMetrics(cappedJSON, p); err != nil {
+		return errors.Wrap(err, "failed to parse capped performance metrics")
+	}
 	p.Set(perf.Metric{
 		Name:      "cpu_usage",
 		Unit:      "percent",
