@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d456a72a_c2ed21b0",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-22T23:09:06Z",
+      "side": 1,
+      "message": "nit: whitespace looks a bit weird at the end here, is this how `gofmt` left it?",
+      "revId": "f2d80d30ea8d3f117f51d84193da7c2550de1107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
