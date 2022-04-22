@@ -6,15 +6,14 @@ package policy
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -53,24 +52,17 @@ func init() {
 const certificateName = "TastTest"
 
 func RequiredClientCertificate(ctx context.Context, s *testing.State) {
-	browserType := s.Param().(browser.Type)
+	bt := s.Param().(browser.Type)
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
 
 	extraPolicies := []policy.Policy{&policy.AttestationEnabledForDevice{Val: true}}
-	if browserType == browser.TypeLacros {
+	if bt == browser.TypeLacros {
 		extraPolicies = append(extraPolicies, &policy.LacrosAvailability{Val: "lacros_primary"})
 	}
 
 	chromeOpts := []chrome.Option{
 		chrome.DMSPolicy(fdms.URL), chrome.KeepEnrollment(),
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-	}
-	if browserType == browser.TypeLacros {
-		lacrosOpts, err := lacrosOptsForAsh()
-		if err != nil {
-			s.Fatal("Failed to get Chrome flags: ", err)
-		}
-		chromeOpts = append(chromeOpts, lacrosOpts...)
 	}
 
 	for _, param := range []struct {
@@ -107,56 +99,45 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			cr, err := chrome.New(ctx, chromeOpts...)
-			if err != nil {
-				s.Fatal("Chrome login failed: ", err)
-			}
+			cfg := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary))
+			func() {
+				cr, _, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, cfg, chromeOpts...)
+				if err != nil {
+					s.Fatal("Chrome login failed: ", err)
+				}
+				defer closeBrowser(ctx)
+				pb := newPolicyBlobWithAffiliation()
 
-			pb := newPolicyBlobWithAffiliation()
+				// After this point, IsUserAffiliated flag should be updated.
+				if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
+					s.Fatal("Failed to serve and refresh: ", err)
+				}
 
-			// After this point, IsUserAffiliated flag should be updated.
-			if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
-				s.Fatal("Failed to serve and refresh: ", err)
-			}
+				// We should add policy value in the middle of 2 ServeBlobAndRefresh calls to be sure
+				// that IsUserAffiliated flag is updated and policy handler is triggered.
+				pb.AddPolicies(append([]policy.Policy{param.policy}, extraPolicies...))
 
-			// We should add policy value in the middle of 2 ServeBlobAndRefresh calls to be sure
-			// that IsUserAffiliated flag is updated and policy handler is triggered.
-			pb.AddPolicies(append([]policy.Policy{param.policy}, extraPolicies...))
-
-			// After this point, the policy handler should be triggered.
-			if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
-				s.Fatal("Failed to serve and refresh: ", err)
-			}
+				// After this point, the policy handler should be triggered.
+				if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
+					s.Fatal("Failed to serve and refresh: ", err)
+				}
+			}()
 
 			// Restart Chrome to trigger fetching of the certificate.
-			cr, err = chrome.New(ctx, chromeOpts...)
+			cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, cfg, chromeOpts...)
 			if err != nil {
 				s.Fatal("Chrome login failed: ", err)
 			}
+			defer closeBrowser(ctx)
 
 			tconn, err := cr.TestAPIConn(ctx)
 			if err != nil {
 				s.Fatal("Failed to create Test API connection: ", err)
 			}
 
-			if browserType == browser.TypeLacros {
-				s.Log("Starting to check that certificate is visible in Lacros")
-				func() {
-					l, err := lacros.Launch(ctx, tconn)
-					if err != nil {
-						s.Fatal("Failed to launch Lacros: ", err)
-					}
-					defer l.Close(ctx)
-					if err := checkCertificateVisibleInBrowserSettings(ctx, tconn, l.Browser()); err != nil {
-						s.Fatal("Failed to find certificate: ", err)
-					}
-				}()
-			} else {
-				s.Log("Starting to check that certificate is visible in Ash")
-				// TODO(neis): Remove this once Lacros is the only browser.
-				if err := checkCertificateVisibleInBrowserSettings(ctx, tconn, cr.Browser()); err != nil {
-					s.Fatal("Failed to find certificate: ", err)
-				}
+			s.Log("Starting to check that certificate is visible in browser ", bt)
+			if err := checkCertificateVisibleInBrowserSettings(ctx, tconn, br); err != nil {
+				s.Fatal("Failed to find certificate: ", err)
 			}
 
 			s.Log("Starting to check that certificate is visible in system settings")
@@ -173,19 +154,6 @@ func newPolicyBlobWithAffiliation() *policy.Blob {
 	pb.DeviceAffiliationIds = affiliationIds
 	pb.UserAffiliationIds = affiliationIds
 	return pb
-}
-
-func lacrosOptsForAsh() ([]chrome.Option, error) {
-	extDirs, err := chrome.DeprecatedPrepareExtensions()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare extensions")
-	}
-	extList := strings.Join(extDirs, ",")
-	return []chrome.Option{
-		chrome.EnableFeatures("LacrosSupport", "LacrosPrimary", "ForceProfileMigrationCompletion"),
-		chrome.ExtraArgs("--lacros-selection=rootfs", "--disable-lacros-keep-alive"),
-		chrome.LacrosExtraArgs("--remote-debugging-port=0"),
-		chrome.LacrosExtraArgs(lacrosfixt.ExtensionArgs(chrome.TestExtensionID, extList)...)}, nil
 }
 
 // checkCertificateVisibleInBrowserSettings does what its name suggests.
