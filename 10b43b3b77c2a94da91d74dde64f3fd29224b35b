@@ -33,6 +33,24 @@
       "message": "BTW, Jakub, you probably should not give CR+1 yourselves. Thanks.",
       "revId": "10b43b3b77c2a94da91d74dde64f3fd29224b35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d93a2ed1_ed64c811",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-22T14:56:06Z",
+      "side": 1,
+      "message": "Please run tast unit test: fast_build.sh -T. Then add following line to your commit log\nTEST\u003dtast unit test passed.",
+      "parentUuid": "05c6dc0e_ba3c7b6d",
+      "revId": "10b43b3b77c2a94da91d74dde64f3fd29224b35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
