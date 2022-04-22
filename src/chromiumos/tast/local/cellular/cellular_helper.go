@@ -862,3 +862,57 @@ func (h *Helper) GetCellularLastAttachAPN(ctx context.Context) (map[string]strin
 func (h *Helper) GetCellularLastGoodAPN(ctx context.Context) (map[string]string, error) {
 	return h.getCellularServiceDictProperty(ctx, shillconst.ServicePropertyCellularLastGoodAPN)
 }
+
+// GetApnIPType returns first available ip_type from Cellular.APNList.
+func (h *Helper) GetApnIPType(ctx context.Context) (string, error) {
+	props, _ := h.Device.GetShillProperties(ctx)
+	apns, err := props.Get(shillconst.DevicePropertyCellularAPNList)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get cellular device properties")
+		return "", err
+	}
+
+	apnList, ok := apns.([]map[string]string)
+	if !ok {
+		testing.ContextLog(ctx, "Invalid format for cellular apn list")
+		return "", errors.New("invalid format for cellular apn list")
+	}
+	for i := 0; i < len(apnList); i++ {
+		ipType := apnList[i]["ip_type"]
+		if len(ipType) > 0 {
+			testing.ContextLog(ctx, "First ipType in apn list: ", ipType)
+			return ipType, nil
+		}
+	}
+	return "ipv4", nil
+}
+
+// SetupCellularInterfaceForTesting setup the device for cellular tests.
+func (h *Helper) SetupCellularInterfaceForTesting(ctx context.Context) (func(ctx context.Context), func(ctx context.Context), error) {
+	// Verify that a connectable Cellular service exists and ensure it is connected.
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "unable to find Cellular Service")
+	}
+	if isConnected, err := service.IsConnected(ctx); err != nil {
+		return nil, nil, errors.Wrap(err, "unable to get IsConnected for Service")
+	} else if !isConnected {
+		if _, err := h.ConnectToDefault(ctx); err != nil {
+			return nil, nil, errors.Wrap(err, "unable to Connect to default service")
+		}
+	}
+	// Disable Ethernet if present and defer re-enabling.
+	enableEthernetFunc, err := h.Manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "unable to disable Ethernet")
+	}
+	// Disable WiFi if present and defer re-enabling.
+	enableWifiFunc, err := h.Manager.DisableTechnologyForTesting(ctx, shill.TechnologyWifi)
+	if err != nil {
+		if enableEthernetFunc != nil {
+			enableEthernetFunc(ctx)
+		}
+		return nil, nil, errors.Wrap(err, "unable to disable Wifi")
+	}
+	return enableEthernetFunc, enableWifiFunc, nil
+}
