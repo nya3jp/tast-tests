@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f33850_b6c10bdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-04-22T22:52:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be done by the other test (crash.KernelIwlwifiError in this particular instance)? Tests are supposed to clean up after themselves, precisely to avoid that kind of problem. Or maybe crash.tearDownCrashTest() could to the cleanup?\n\nCheckIntelFWDump could check for the existence of \"/sys/class/devcoredump/devcdXXX\" and report that specifically as an error to make it simple to diagnose",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caa1e44a_668a23f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-04-22T22:52:19Z",
+      "side": 1,
+      "message": "Can there be more than 1 match? If yes, we\u0027d potentially increase the runtime by 30s*$number_of_files instead of just 30s.",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4014413_fae5b620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-04-22T22:52:19Z",
+      "side": 1,
+      "message": "IIUC that will create the file if it didn\u0027t exist anymore, which does not sound like something we want to do? b/228462848#comment7 recommended to check for existence first and then write \u00270\u0027. I suppose there\u0027s still a race condition between checking for existence and writing to the file, but at least the window would be significantly smaller",
+      "range": {
+        "startLine": 76,
+        "startChar": 15,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
