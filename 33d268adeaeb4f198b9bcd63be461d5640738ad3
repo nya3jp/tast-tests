@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aca6082_51d55f07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-22T09:06:16Z",
+      "side": 1,
+      "message": "I\u0027d recommend to do this kind of changes in three phases.\n\n1. Update a function. // behaviour changes.\n2. Extract a function. // pure refactoring\n3. Use the function from other place // behaviour changes.\n\nIt would make patches smaller, and makes review easier.",
+      "parentUuid": "d3bbf069_46fadb77",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "33d268adeaeb4f198b9bcd63be461d5640738ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "11c7476d_8cf32e3e",

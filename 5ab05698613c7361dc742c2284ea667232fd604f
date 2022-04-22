@@ -16,6 +16,29 @@
       "message": "shadow reviewer lgtm",
       "revId": "5ab05698613c7361dc742c2284ea667232fd604f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1844a41_54e9b406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-22T09:06:16Z",
+      "side": 1,
+      "message": "I looked at the implementation of DragToSnapFirstOverviewWindow, and its content is different from what is written before.\nMaybe revert this change for this patch?",
+      "range": {
+        "startLine": 115,
+        "startChar": 14,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "5ab05698613c7361dc742c2284ea667232fd604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
