@@ -16,6 +16,24 @@
       "message": "/var/log/message is not cleaned between the iteration, so could you limit the region of the file to be read?",
       "revId": "a01a387eed879f243ab2e88e673f05eac59ebcb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41bcba4_cc3b97c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-22T14:00:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dac395b9_4f3b57ae",
+      "revId": "a01a387eed879f243ab2e88e673f05eac59ebcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
