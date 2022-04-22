@@ -106,6 +106,24 @@
       "parentUuid": "e8752a67_410e8078",
       "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d07cd06_9bbdfdee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-22T16:05:45Z",
+      "side": 1,
+      "message": "I see where you\u0027re coming from. Going slightly off topic there would be four different types of tests:\na. local tests that need to be run in both Browser/OS\nb. remote tests that need to be run in both Browser/OS\nc. local tests that don’t need to be run in Browser, but in OS\nd. remote tests that don’t need to be run in Browser, but in OS\n\nFor a, we have a lot of them and also solution with NewConfigFromState, which is fine.\nFor b, it\u0027s not supported, but there is no actual use case yet. As you pointed out above, new Tast API design is helpful here *when needed*.\nFor c, d, it\u0027s not supported, by far the firmware test is the first case in the case d. Thus, https://crrev.com/c/3598170 is proposed to unblock this CL. Practically speaking we can give some flexibility to design Tast API that is likely for internal users and not to be widespread in public, and improve it as we go with more cases. PTAL again.",
+      "parentUuid": "88e07e69_ba6aa8d5",
+      "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
