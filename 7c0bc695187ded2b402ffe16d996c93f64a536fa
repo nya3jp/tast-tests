@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1be86236_af0ab2cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T21:58:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a455988_48248762",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "7c0bc695187ded2b402ffe16d996c93f64a536fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af92180e_b7c787f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T21:58:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db3961f8_5d2fa908",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "7c0bc695187ded2b402ffe16d996c93f64a536fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "710142c0_967ed7e1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-22T21:36:33Z",
       "side": 1,
       "message": "nit: Let\u0027s keep these in the order in which they appear in the definition of the `meetTest` struct.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 20
+      },
+      "revId": "7c0bc695187ded2b402ffe16d996c93f64a536fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458d6461_65a6b6b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-22T21:58:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dc56793_732fab66",
       "range": {
         "startLine": 238,
         "startChar": 0,
