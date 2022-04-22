@@ -16,6 +16,24 @@
       "message": "I see that this CL increases the test timeouts by 20 seconds, apparently because `WaitForOwnership` \"waits for up to 20 seconds\" according to [1]. I suggest making that 20 seconds a constant with a name ending in `Timeout`, consistent with other constants already used to express those test timeouts. Also use the new constant at [2], and update the comment at [1] to refer to the constant instead of saying \"20 seconds.\"\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go;drc\u003d692e1a260a6e39f569f0a02f0ad9780ec51cf5ad;l\u003d74\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go;drc\u003d692e1a260a6e39f569f0a02f0ad9780ec51cf5ad;l\u003d84",
       "revId": "a0269edf911455c93f09251027fd42a107684463",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d95712a_a397a587",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-04-22T09:07:19Z",
+      "side": 1,
+      "message": "I think adding exported value would be fair, but simultaneously, I don\u0027t think it\u0027s necessary to add exact 20 seconds to the test timeout.\nIt is because WaitForOwnership uses it as a timeout, which I think just to ensure the program doesn\u0027t hang indefinitely, and usually takes only few seconds.",
+      "parentUuid": "1b7c15c5_7f5c0155",
+      "revId": "a0269edf911455c93f09251027fd42a107684463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
