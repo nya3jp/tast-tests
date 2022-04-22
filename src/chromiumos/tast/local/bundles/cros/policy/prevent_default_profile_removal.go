@@ -10,8 +10,8 @@ import (
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -40,20 +40,24 @@ func PreventDefaultProfileRemoval(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
-	f := s.FixtValue().(lacrosfixt.FixtValue)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
 
 	// Open an empty Lacros window.
-	l, err := lacros.Launch(ctx, f.TestAPIConn())
+	l, err := lacros.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to open lacros: ", err)
 	}
 	defer l.Close(ctx)
 
 	// Dump the UI tree before we close lacros.
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, f.Chrome(), "ui_tree")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// Start interacting with the UI
-	ui := uiauto.New(f.TestAPIConn())
+	ui := uiauto.New(tconn)
 	buttonWith := nodewith.Role(role.Button).Focusable()
 
 	if err := uiauto.Combine("open profile settings",
