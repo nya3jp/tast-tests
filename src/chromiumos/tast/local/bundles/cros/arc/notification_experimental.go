@@ -82,7 +82,7 @@ func closeNotification(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.C
 	case closeMethodSwipeOut:
 		if err := touchPC.Drag(
 			notificationBounds.CenterPoint(),
-			touchPC.DragTo(coords.NewPoint(0, notificationBounds.CenterPoint().Y), time.Second))(ctx); err != nil {
+			touchPC.DragTo(coords.NewPoint(0, notificationBounds.CenterPoint().Y), 500*time.Millisecond))(ctx); err != nil {
 			return errors.Wrap(err, "failed to swipe out the notification")
 		}
 	case closeMethodClickEvent:
