@@ -34,6 +34,52 @@
       "parentUuid": "093b1fd3_1f04461a",
       "revId": "21143c5a4cc559298af31c3ff7bcad649817c3f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0865b564_61f71ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T22:01:24Z",
+      "side": 1,
+      "message": "This is more typecasting than you really need to do. You can just write it this way:\n`100 * time.Millisecond * time.Duration(math.Pow(10, float64(i)))`\n\nOptional: you can avoid `math.Pow` altogether, if you write `wait :\u003d 100 * time.Millisecond` outside the `for` loop, and `wait *\u003d 10` inside the `for` loop.",
+      "range": {
+        "startLine": 335,
+        "startChar": 11,
+        "endLine": 335,
+        "endChar": 84
+      },
+      "revId": "21143c5a4cc559298af31c3ff7bcad649817c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd17b77_d59f1670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-22T22:01:24Z",
+      "side": 1,
+      "message": "`testing.Sleep` can return an error. Please check it.",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 27
+      },
+      "revId": "21143c5a4cc559298af31c3ff7bcad649817c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
