@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa86485e_14f84513",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-22T07:12:41Z",
+      "side": 1,
+      "message": "This is not safe enough. Healthd restart when ash disconnected. There is a chance that we check it is running before it restart.\nSo I think we should just restart the Healthd service (rather than `EnsureJobRunning`).",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f81aaf_c40b9205",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-22T07:12:41Z",
+      "side": 1,
+      "message": "When is `Reset` called? (Between each test?) If healthd is not running, then the ash probably don\u0027t connect to it. Shouldn\u0027t we also restart the ui here?",
+      "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781b5a6f_d567923f",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-22T07:12:41Z",
+      "side": 1,
+      "message": "If we restart the ui in `Reset` we need to make sure this won\u0027t break.",
+      "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
