@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "845d563a873a130963a56a212c52a0991a3e966f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e09c94f_f16606de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-22T22:35:45Z",
+      "side": 1,
+      "message": "Do we also need M90?\n\nhttp://go/chromeos-commercial-lts-branches",
+      "revId": "845d563a873a130963a56a212c52a0991a3e966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
