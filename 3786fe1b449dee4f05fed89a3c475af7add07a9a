@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec3f6035_54cfde41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "IIUC fast_build.sh is supposed to be run in the chroot? In that case ~/chromiumos points to /mnt/host/source (at least in newly created chroots).",
+      "parentUuid": "2f3d93cc_8e5e0b81",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "60a662ea_fa96e90f",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-21T23:58:29Z",
       "side": 1,
       "message": "There probably should be a comment documenting `cardRegexp`. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82dc65af_705c86a8",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "565023c6_532e11c1",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de22081c_c38ed83d",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d407dcc6_6d770d8a",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 55
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "053b978c_3a1b1a44",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b11f3a_b3700012",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76b0bdfa_a7099da9",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-04-21T23:58:29Z",
       "side": 1,
       "message": "It will be a little strange when the error message says something like \"...should find 3.5 cards instead.\" This also makes it difficult to follow the guidance at [1], because `float64(cards) !\u003d float64(lines)/2` would be a bit of a problematic condition to check. I suggest a separate error `unexpected parity of number of lines: got odd; expected even` before the `matches :\u003d` line. Having verified that the number of lines is even, you will be able to compute the expected number of cards as simply `lines/2` (no need for any floating point number) and follow the guidance at [1].\n\n[1] https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13e335f_d3d1bd41",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "Yeah, agreed with you. Shuffled the checks a bit, PTAL, thanks!",
+      "parentUuid": "76b0bdfa_a7099da9",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f04482_c9238729",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3061a90_3987fad6",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd968798_30ee1bdd",
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca003c0c_54cdd330",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd968798_30ee1bdd",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3592b30c_f27a3c57",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-04-21T23:58:29Z",
       "side": 1,
       "message": "`return nil, err`",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 8
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a660bd6_f1d3484c",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3592b30c_f27a3c57",
       "range": {
         "startLine": 64,
         "startChar": 2,
@@ -227,6 +419,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df993464_ceca7006",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like there\u0027s practice documenting test functions: https://source.chromium.org/search?q\u003dlanguage:go%20func%5C%20Test\u0026ss\u003dchromiumos\nIs the case different here?",
+      "parentUuid": "67456cf9_cabe8e4a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f412473_055a3105",
         "filename": "src/chromiumos/tast/local/audio/cards_test.go",
         "patchSetId": 3
@@ -238,6 +454,30 @@
       "writtenOn": "2022-04-21T23:58:29Z",
       "side": 1,
       "message": "I suggest the following, because I do not think you need to check `cards` when `err !\u003d nil`:\n\t\t\tif cards, err :\u003d parseSoundCards(item.input); err !\u003d nil {\n\t\t\t\tt.Errorf(\"unexpected error: %v\", err)\n\t\t\t} else if diff :\u003d cmp.Diff(item.output, cards); diff !\u003d \"\" {\n\t\t\t\tt.Errorf(\"parsed cards differ (-want; +got)\\n%s\", diff)\n\t\t\t}",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6171ca9_b1da8b1d",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "Using Fatalf to achieve the same effect.",
+      "parentUuid": "2f412473_055a3105",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -284,6 +524,30 @@
       "writtenOn": "2022-04-21T23:58:29Z",
       "side": 1,
       "message": "Can you test more ways in which the regular expression could fail to match the expected number of cards?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "3786fe1b449dee4f05fed89a3c475af7add07a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8095638_d440f813",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-22T01:19:45Z",
+      "side": 1,
+      "message": "Updated to have a test for each error branch. I think more tests can be added if the parsing fails on a DUT.",
+      "parentUuid": "4346e701_06786164",
       "range": {
         "startLine": 58,
         "startChar": 0,
