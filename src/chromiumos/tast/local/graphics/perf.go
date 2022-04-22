@@ -217,6 +217,113 @@ func collectMaliPerformanceCounters(ctx context.Context, interval time.Duration)
 	return counters, 0, nil
 }
 
+// collectDevFreqCounters gathers GPU frequency and idle state stats. For that
+// it reads the contents of the appropriate "trans_stat" sysfs file (see [1]),
+// before and after the given interval. Said file contains information on how
+// much time the GPU was operating at a certain frequency, with time not logged
+// being in "idle" state. This "idle" count is returned in the counters' "rc6"
+// entry, with the average frequency in megaPeriods, both imitating what
+// collectGPUPerformanceCounters() does.
+// [1] https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-devfreq
+func collectDevFreqCounters(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, megaPeriods int64, err error) {
+	files, err := ioutil.ReadDir("/sys/class/devfreq/")
+	if err != nil {
+		return nil, 0, errors.Wrap(err, "couldn't read DevFreq folder")
+	}
+
+	transStatFileName := ""
+	r := regexp.MustCompile(".*(gpu|mali)$")
+	for _, file := range files {
+		if match := r.FindStringSubmatch(file.Name()); match == nil {
+			continue
+		}
+
+		if _, err = os.Stat("/sys/class/devfreq/" + file.Name() + "/trans_stat"); err != nil {
+			return nil, 0, errors.Wrap(err, "couldn't find DevFreq trans_stat file")
+		}
+		transStatFileName = "/sys/class/devfreq/" + file.Name() + "/trans_stat"
+	}
+	if transStatFileName == "" {
+		return nil, 0, nil
+	}
+	testing.ContextLogf(ctx, "GPU Frequency meas: using %s", transStatFileName)
+
+	f, err := os.Open(transStatFileName)
+	if err != nil {
+		return nil, 0, errors.Wrap(err, "couldn't open DevFreq trans_stat file")
+	}
+	defer f.Close()
+
+	iterations := [2]bool{true, false}
+	freqStates := make(map[float64]time.Duration)
+	re := regexp.MustCompile("([0-9]+):.* ([0-9]+)$")
+
+	for _, firstIteration := range iterations {
+		out, err := ioutil.ReadFile(transStatFileName)
+		if err != nil {
+			return nil, 0, errors.Wrap(err, "problem reading DevFreq trans_stat file")
+		}
+		// Sample out:
+		//      From  :   To
+		//            : 253500000 299000000 396500000 455000000 494000000 598000000   time(ms)
+		//   253500000:         0         0         0         0         0         1  15005129
+		//   299000000:         0         0         0         0         0         0         0
+		//   396500000:         0         0         0         0         0         0         0
+		//   455000000:         0         0         0         0         0         0         0
+		//   494000000:         0         0         0         0         0         1       304
+		// * 598000000:         0         0         0         0         1         0     10972
+		// Total transition : 3
+		//
+		// (Note that the frequencies can come in any order). We need to extract the
+		// first columns' numbers (frequencies in Hertz) and the last column
+		// (time in each frequency level in ms).
+
+		lines := strings.Split(string(out), "\n")
+		for _, line := range lines {
+			submatch := re.FindStringSubmatch(line)
+			if submatch == nil || len(submatch) != 3 {
+				continue
+			}
+
+			t, err := time.ParseDuration(string(submatch[2]) + "ms")
+			if err != nil {
+				return nil, 0, errors.Wrap(err, "problem parsing string")
+			}
+
+			var f float64
+			if f, err = strconv.ParseFloat(submatch[1], 64); err != nil {
+				return nil, 0, errors.Wrap(err, "problem converting float value")
+			}
+
+			// First time around, sample, second time around calculate the difference.
+			if firstIteration {
+				freqStates[f] = t
+			} else {
+				freqStates[f] = t - freqStates[f]
+			}
+		}
+
+		// First time around sleep for interval.
+		if firstIteration {
+			if err := testing.Sleep(ctx, interval); err != nil {
+				return nil, 0, errors.Wrap(err, "error sleeping")
+			}
+		}
+	}
+
+	accuPeriods := 0.0
+	var accuTime time.Duration
+	for freq, duration := range freqStates {
+		accuTime += duration
+		accuPeriods += freq * duration.Seconds()
+	}
+
+	counters = make(map[string]time.Duration)
+	counters["total"] = interval
+	counters["rc6"] = interval - accuTime
+	return counters, int64(accuPeriods / 1e6), nil
+}
+
 // collectPackagePerformanceCounters gathers the amount of cycles the Package
 // was in each of a given C-States, providing also the total amount of cycles
 // elapsed. If the hardware/kernel doesn't provide this type of event monitoring
@@ -333,11 +440,12 @@ func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) er
 	}
 
 	// tasks defines the performance collecting tasks to run.
-	// The tasks will be run in parallel but the first valid result will be used based on the sequence defined here.
+	// The tasks will be run in parallel and the result entries merged.
 	tasks := []gpuTask{
 		{name: "GPU", run: collectGPUPerformanceCounters},
 		{name: "AMD", run: collectAMDBusyCounter},
 		{name: "Mali", run: collectMaliPerformanceCounters},
+		{name: "DevFreq", run: collectDevFreqCounters},
 	}
 
 	var wg sync.WaitGroup
@@ -350,18 +458,23 @@ func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) er
 		}(&tasks[i])
 	}
 	wg.Wait()
-	var counters map[string]time.Duration
+	counters := make(map[string]time.Duration)
 	var megaPeriods int64
 	for _, task := range tasks {
 		if task.err != nil {
 			// Return at the first error.
 			return errors.Wrapf(task.err, "error collecting %s performance counters", task.name)
 		}
+		// Merge any counters present. Several tasks could report values.
 		if task.counters != nil {
-			// If valid result is found, save the result for further processing and stop the loop.
-			counters = task.counters
+			for k, v := range task.counters {
+				counters[k] = v
+			}
+		}
+		// Only one task should report megaPeriods, because only one counts the
+		// average GPU frequency.
+		if task.megaPeriods != 0 {
 			megaPeriods = task.megaPeriods
-			break
 		}
 	}
 	if counters == nil {
