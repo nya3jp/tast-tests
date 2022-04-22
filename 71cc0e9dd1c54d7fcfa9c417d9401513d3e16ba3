@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5fdf94b_6e767471",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-22T11:41:16Z",
+      "side": 1,
+      "message": "Is that possible? I think `RestartJob()` is a blocking call and I am assuming new ash Chrome is started at this moment. \n\nOr are you saying that there is a little chance that the `cros_healthd` doesn\u0027t handle the disconnect handler and exit() on time?",
+      "parentUuid": "aa86485e_14f84513",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44f81aaf_c40b9205",
         "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
         "patchSetId": 2
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b88f95f_5e164790",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-22T11:41:16Z",
+      "side": 1,
+      "message": "Between each test but no the last one.\n\nFYI the doc: https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/internal/testing#FixtureImpl\n\n\n\n\u003e If healthd is not running, then the ash probably don\u0027t connect to it. Shouldn\u0027t we also restart the ui here?\n\nI forget what\u0027s boostraping flow here. Let me understand it correctly first.\n\n1. we have to ensure `cros_healthd` is alive before `ui` then Ash chrome will connect healthd automatically. Otherwise Ash will never try again.\n2. restarting `ui` is possible to cause `cros_healthd` exit and automatically trigger the restart by upstart.\n\nThen we have to put these together? \n\n\nNew idea:\n\nSetup()\n* Restart `cros_healthd` to disconnect from `ui`\n* Restart `ui`. Here we won\u0027t trigger cros_healthd restart and new Ash will connect to `cros_healthd` when it is up.\n* we can expect cros_healthd is alive and Ash is connected?\n\nReset()\n* If one of above has restarted. Then run the flow above.",
+      "parentUuid": "44f81aaf_c40b9205",
+      "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "781b5a6f_d567923f",
         "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
         "patchSetId": 2
@@ -54,6 +96,24 @@
       "writtenOn": "2022-04-22T07:12:41Z",
       "side": 1,
       "message": "If we restart the ui in `Reset` we need to make sure this won\u0027t break.",
+      "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd22a6f9_5ae434ec",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-22T11:41:16Z",
+      "side": 1,
+      "message": "IIUC, `PreTest()` is called after `Reset()` so probably it is good?",
+      "parentUuid": "781b5a6f_d567923f",
       "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
