@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1efd0a4f_c6587eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-04-22T07:25:01Z",
+      "side": 1,
+      "message": "We may need to restart cras after the testing to restore the correct device settings.",
+      "revId": "e69c2ddc0e5d251910b98b721c58a77b68f70a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
