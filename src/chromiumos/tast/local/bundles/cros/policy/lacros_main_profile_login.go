@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -32,7 +31,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.LacrosPolicyLoggedInRealUser,
-		Vars:         []string{lacrosfixt.LacrosDeployedBinary},
 	})
 }
 
