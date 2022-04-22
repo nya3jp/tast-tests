@@ -79,6 +79,29 @@
       },
       "revId": "1144367723757250556d83abbeda650d8d1e09be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fec06d9_e9ae0aaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-04-22T18:56:51Z",
+      "side": 1,
+      "message": "This suffix may confuse future readers because the global VA-API lock is also enabled on the tests without this prefix, but I\u0027m not sure I have better ideas. Maybe something like vp9_1080p_60fps_with_concurrent_decodes_and_global_vaapi_lock_enabled would be clearer (if also longer)?",
+      "range": {
+        "startLine": 164,
+        "startChar": 38,
+        "endLine": 164,
+        "endChar": 64
+      },
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
