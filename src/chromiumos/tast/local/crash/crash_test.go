@@ -557,3 +557,37 @@ func TestDeleteCoreDumps(t *gotesting.T) {
 		t.Error("Files mismatch after successful deleteCoreDumps (-got +want):\n", diff)
 	}
 }
+
+func TestCleanupDevcoredump(t *gotesting.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	dirCD := filepath.Join(td, KernelDevCDDir)
+	dirCD1 := filepath.Join(dirCD, "devcd1")
+	if err := os.MkdirAll(dirCD1, 0777); err != nil {
+		t.Fatal("Failed to create dir: ", err)
+	}
+
+	if err := os.WriteFile(filepath.Join(dirCD1, "data"), nil, 0666); err != nil {
+		t.Fatal("Failed to touch file: ", err)
+	}
+
+	if _, err := os.Stat(filepath.Join(dirCD1, "data")); os.IsNotExist(err) {
+		t.Fatal("Can not find data")
+	}
+
+	// cleanDevcoredump doesn't delete the devcoredump instance, instead writes '0' it.
+	// the deletion is handled by a concurrent kernel thread
+	if err := cleanupDevcoredump(context.Background(), 100*time.Millisecond, dirCD, kernelDevCDName); err != nil {
+		t.Fatalf("Couldn't cleanup devcoredump data file %s", dirCD1)
+	}
+
+	// check if a '0' was written to the devcoredump instance
+	data, err := os.ReadFile(filepath.Join(dirCD1, "data"))
+	if err != nil {
+		t.Fatalf("Devcoredump data file doesn't exist in %s/", dirCD1)
+	}
+	if len(data) == 0 || data[0] != '0' {
+		t.Fatalf("cleanupDevcoredump failed to write '0' to %s/data", dirCD1)
+	}
+}
