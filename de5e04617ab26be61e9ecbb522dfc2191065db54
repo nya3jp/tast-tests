@@ -16,6 +16,29 @@
       "message": "Thanks for the detailed review!",
       "revId": "de5e04617ab26be61e9ecbb522dfc2191065db54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95db182_ffb0451d",
+        "filename": "src/chromiumos/tast/local/audio/cards_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-22T11:33:41Z",
+      "side": 1,
+      "message": "What about the case when input is an empty string?",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "de5e04617ab26be61e9ecbb522dfc2191065db54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
