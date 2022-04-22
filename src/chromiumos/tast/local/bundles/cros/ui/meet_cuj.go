@@ -257,6 +257,17 @@ func init() {
 			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			// Long meeting to catch slow performance degradation.
+			Name:    "1p_30m",
+			Timeout: defaultTestTimeout + 30*time.Minute,
+			Val: meetTest{
+				num:      1,
+				layout:   meetLayoutTiled,
+				cam:      true,
+				duration: 30 * time.Minute,
+			},
+			Fixture: "loggedInToCUJUser",
 		}},
 	})
 }
