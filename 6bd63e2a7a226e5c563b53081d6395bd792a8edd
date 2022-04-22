@@ -1,6 +1,98 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7556596a_2b3da6f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-04-22T23:23:58Z",
+      "side": 1,
+      "message": "This seems very arbitrary. May be the cleanest way should be to enable each of the tests in separate CLs, so it is easily visible in the git oneline history.",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0142b2ae_88cc2864",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-04-22T23:23:58Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df9df93_f0c485c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-04-22T23:23:58Z",
+      "side": 1,
+      "message": "which CL do you refer to ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 35,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c80d4dd1_ebf75b63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-04-22T23:23:58Z",
+      "side": 1,
+      "message": "Any cleanups should be in separate CLs.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a2fad9f_64b7dd6e",
@@ -31,6 +123,30 @@
       "writtenOn": "2022-04-22T23:02:36Z",
       "side": 1,
       "message": "my understanding is that this test is going to be skipped for \"real\" devices that typically run wifi_matfunc since it\u0027s only enabled for amd64-generic and its derivatives http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/README.hostap_hwsim.md\n\nSo maybe we shouldn\u0027t add it to matfunc?",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 75
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4e1389_fec32bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hostap_hwsim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-04-22T23:23:58Z",
+      "side": 1,
+      "message": "Agree not to add in matfunc, makes sense to run this as one off test for major changes in wpa_sup/hostapd.",
+      "parentUuid": "384e76ca_f34a9e02",
       "range": {
         "startLine": 49,
         "startChar": 42,
