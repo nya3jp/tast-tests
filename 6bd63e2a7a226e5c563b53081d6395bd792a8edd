@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9780ef_e147a4d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-23T01:45:09Z",
+      "side": 1,
+      "message": "With not adding wifi.HostapHwsim.validity to wifi_matfunc, two test names can fit to title line and thus be visible in git oneline history.",
+      "parentUuid": "7556596a_2b3da6f0",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0142b2ae_88cc2864",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-22T23:23:58Z",
       "side": 1,
       "message": "nit: typo",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d50b144_1715a436",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-23T01:45:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0142b2ae_88cc2864",
       "range": {
         "startLine": 10,
         "startChar": 52,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9973948e_01d9f888",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-23T01:45:09Z",
+      "side": 1,
+      "message": "oops, a typo. It\u0027s \"this\" CL",
+      "parentUuid": "2df9df93_f0c485c7",
+      "range": {
+        "startLine": 17,
+        "startChar": 35,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c80d4dd1_ebf75b63",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-22T23:23:58Z",
       "side": 1,
       "message": "Any cleanups should be in separate CLs.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7a425b_ca80f7e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-23T01:45:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c80d4dd1_ebf75b63",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -147,6 +243,30 @@
       "side": 1,
       "message": "Agree not to add in matfunc, makes sense to run this as one off test for major changes in wpa_sup/hostapd.",
       "parentUuid": "384e76ca_f34a9e02",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 75
+      },
+      "revId": "6bd63e2a7a226e5c563b53081d6395bd792a8edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce44824_51032966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hostap_hwsim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-23T01:45:09Z",
+      "side": 1,
+      "message": "Agree. Take wifi.HostapHwsim.validity out form this CL.",
+      "parentUuid": "1a4e1389_fec32bab",
       "range": {
         "startLine": 49,
         "startChar": 42,

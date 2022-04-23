@@ -16,6 +16,24 @@
       "message": "I don\u0027t think I understand how removing this section is relevant to this CL.",
       "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa21990c_0a87aea0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-23T01:45:09Z",
+      "side": 0,
+      "message": "Split the cleanup code to a separate CL.",
+      "parentUuid": "de92e986_5def4621",
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
