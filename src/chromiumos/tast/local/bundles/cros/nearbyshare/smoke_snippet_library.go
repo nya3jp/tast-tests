@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	localadb "chromiumos/tast/local/android/adb"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
@@ -26,7 +27,8 @@ func init() {
 		Data: []string{nearbysnippet.ZipName},
 		// This var can be used when running locally on non-rooted devices which
 		// have already overridden the GMS Core flags by other means.
-		Vars: []string{"rooted"},
+		Vars:    []string{"rooted"},
+		Timeout: 3 * time.Minute,
 	})
 }
 
@@ -37,10 +39,23 @@ func SmokeSnippetLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch adb server: ", err)
 	}
 
-	// Wait for the first available device, since we are assuming only a single device is connected.
-	testDevice, err := adb.WaitForDevice(ctx, func(device *adb.Device) bool { return true }, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to list adb devices: ", err)
+	var adbDevice *adb.Device
+	var err error
+
+	if crossdevice.PhoneIP.Value() != "" {
+		if err := crossdevice.ConnectToWifi(ctx); err != nil {
+			s.Fatal("Failed to connect CrOS device to Wifi: ", err)
+		}
+		adbDevice, err = crossdevice.AdbOverWifi(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to adb over wifi device: ", err)
+		}
+	} else {
+		// Wait for the first available device, since we are assuming only a single device is connected.
+		adbDevice, err = adb.WaitForDevice(ctx, func(device *adb.Device) bool { return true }, 10*time.Second)
+		if err != nil {
+			s.Fatal("Failed to list adb devices: ", err)
+		}
 	}
 
 	// Launch and start the Snippet. Don't override GMS Core flags on a non-rooted device.
@@ -53,7 +68,7 @@ func SmokeSnippetLibrary(ctx context.Context, s *testing.State) {
 		override = b
 	}
 
-	androidNearby, err := nearbysnippet.New(ctx, testDevice, s.DataPath(nearbysnippet.ZipName), override)
+	androidNearby, err := nearbysnippet.New(ctx, adbDevice, s.DataPath(nearbysnippet.ZipName), override)
 	if err != nil {
 		s.Fatal("Failed to set up the snippet server: ", err)
 	}

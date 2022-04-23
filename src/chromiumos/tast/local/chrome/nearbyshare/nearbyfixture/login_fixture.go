@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/testing"
 )
 
@@ -89,7 +90,7 @@ func init() {
 			defaultAndroidPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -113,7 +114,7 @@ func init() {
 			defaultAndroidPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -138,7 +139,7 @@ func init() {
 			prodAndroidPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -162,7 +163,7 @@ func init() {
 			prodAndroidPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -187,7 +188,7 @@ func init() {
 			devAndroidPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -211,7 +212,7 @@ func init() {
 			devAndroidPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -236,7 +237,7 @@ func init() {
 			defaultAndroidPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -285,7 +286,7 @@ func init() {
 			customCrOSPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -307,7 +308,7 @@ func init() {
 			customCrOSPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -329,7 +330,7 @@ func init() {
 			customCrOSPassword,
 			keepState,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -351,6 +352,15 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 	androidDeviceName := s.ParentValue().(*FixtData).AndroidDeviceName
 	androidUsername := s.ParentValue().(*FixtData).AndroidUsername
 	loggedIn := s.ParentValue().(*FixtData).AndroidLoggedIn
+
+	if err := androidDevice.IsConnected(ctx); err != nil {
+		s.Log("Android device is no longer reachable via adb. Reconnecting")
+		adbDevice, _, err := crossdevice.AdbSetup(ctx)
+		if err != nil {
+			s.Fatal("Failed to reconnect to adb device: ", err)
+		}
+		androidDevice.SetADBDevice(ctx, adbDevice)
+	}
 
 	// Reset and save logcat so we have Android logs even if fixture setup fails.
 	if err := androidDevice.ClearLogcat(ctx); err != nil {
@@ -417,8 +427,18 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 		f.arc = a
 	}
 
-	// Sometimes during login the tcp connection to the snippet server on Android is lost.
-	// If we cannot do a simple rpc call, reconnect to the snippet server.
+	// Sometimes during login the tcp connection to the snippet server and/or adb is lost.
+	// Check we can still connect to the adb device.
+	if err := androidDevice.IsConnected(ctx); err != nil {
+		s.Log("Android device is no longer reachable via adb. Reconnecting")
+		adbDevice, _, err := crossdevice.AdbSetup(ctx)
+		if err != nil {
+			s.Fatal("Failed to reconnect to adb device: ", err)
+		}
+		androidDevice.SetADBDevice(ctx, adbDevice)
+	}
+
+	// If we cannot do a simple snippet rpc call, reconnect to the snippet server.
 	if _, err := androidDevice.GetNearbySharingVersion(ctx); err != nil {
 		s.Log("Lost connection to the Snippet server. Reconnecting")
 		if err := androidDevice.ReconnectToSnippet(ctx); err != nil {
