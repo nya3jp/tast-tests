@@ -17,7 +17,6 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/testing"
@@ -51,28 +50,12 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 	var adbDevice *adb.Device
 
 	if PhoneIP.Value() != "" {
-		testing.ContextLogf(ctx, "Android phone IP is: %s", PhoneIP.Value())
-
-		// Ensure CrOS device is on the correct Wifi network
-		out, err := testexec.CommandContext(ctx, "/usr/local/autotest/cros/scripts/wifi", "connect", "nearbysharing_1", "password").CombinedOutput(testexec.DumpLogOnError)
-		if err != nil {
-			if strings.Contains(string(out), "already connected") {
-				testing.ContextLog(ctx, "Already connected to wifi network")
-			} else {
-				return nil, false, errors.Wrap(err, "failed to connect CrOS device to Wifi")
-			}
+		if err := ConnectToWifi(ctx); err != nil {
+			return nil, false, errors.Wrap(err, "failed to connect CrOS device to Wifi")
 		}
-
-		// Connect to the adb-over-tcp Phone that was setup previously (e.g manually or via autotest control file).
-		adbDevice, err = adb.Connect(ctx, PhoneIP.Value(), 30*time.Second)
+		adbDevice, err = AdbOverWifi(ctx)
 		if err != nil {
-			return nil, false, errors.Wrap(err, "failed to connect to adb over wifi")
-		}
-		testing.ContextLog(ctx, "Connected to remote Android device")
-
-		// Wait for the Android device to be ready for use.
-		if err := adbDevice.WaitForState(ctx, adb.StateDevice, 30*time.Second); err != nil {
-			return nil, false, errors.Wrap(err, "wait for state failed")
+			return nil, false, errors.Wrap(err, "failed to connect to adb over wifi device")
 		}
 	} else {
 		waitForDevices := false
@@ -99,6 +82,23 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 	}
 	return adbDevice, rooted, nil
 
+}
+
+// AdbOverWifi connects to the adb-over-wifi Android device that was previously setup.
+func AdbOverWifi(ctx context.Context) (*adb.Device, error) {
+	// Connect to the adb-over-tcp Phone that was setup previously (e.g manually or via autotest control file).
+	testing.ContextLogf(ctx, "Android phone IP is: %s", PhoneIP.Value())
+	adbDevice, err := adb.Connect(ctx, PhoneIP.Value(), 1*time.Minute)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to adb over wifi")
+	}
+	testing.ContextLog(ctx, "Connected to remote Android device")
+
+	// Wait for the Android device to be ready for use.
+	if err := adbDevice.WaitForState(ctx, adb.StateDevice, 30*time.Second); err != nil {
+		return nil, errors.Wrap(err, "wait for state failed")
+	}
+	return adbDevice, nil
 }
 
 // GAIALogin removes existing user accounts from the device and adds the specified one using the tradefed GoogleAccountUtil APK.

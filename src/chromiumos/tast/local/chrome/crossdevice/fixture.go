@@ -416,3 +416,16 @@ func saveDeviceAttributes(crosAttrs *crossdevicecommon.CrosAttributes, androidAt
 	}
 	return nil
 }
+
+// ConnectToWifi connects the chromebook to the Wifi network in its RF box.
+func ConnectToWifi(ctx context.Context) error {
+	out, err := testexec.CommandContext(ctx, "/usr/local/autotest/cros/scripts/wifi", "connect", "nearbysharing_1", "password").CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		if strings.Contains(string(out), "already connected") {
+			testing.ContextLog(ctx, "Already connected to wifi network")
+		} else {
+			return errors.Wrap(err, "failed to connect CrOS device to Wifi")
+		}
+	}
+	return nil
+}
