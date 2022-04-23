@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "489b155c_b31d0d2c",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-23T00:10:01Z",
+      "side": 1,
+      "message": "I believe [1] is for tests where the expected item is a known value.\nI\u0027d argue here `expected even number` is an error and `got %d` is the detail, more\nlike the case of `no such file or directory: %s`.",
+      "parentUuid": "7d784934_06d0a491",
+      "range": {
+        "startLine": 51,
+        "startChar": 28,
+        "endLine": 51,
+        "endChar": 67
+      },
+      "revId": "ee4ee216c49e3c3e79110e81ab61cbdecd625428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8e066a1_7a91e31d",
         "filename": "src/chromiumos/tast/local/audio/cards.go",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-22T17:01:45Z",
       "side": 1,
       "message": "You can simply write\n\tfor _, m :\u003d range cardRegexp.FindAllStringSubmatch(s, -1) {\n\nThen I would use no blank line between `var cards []Card` and the `for` loop. The absence of such a blank line will convey the close relationship where the `for` loop populates `cards`.",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "ee4ee216c49e3c3e79110e81ab61cbdecd625428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae13dc6a_cb2b3d10",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-23T00:10:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e066a1_7a91e31d",
       "range": {
         "startLine": 54,
         "startChar": 17,
