@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ef7e317_6d9db0e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-23T01:05:58Z",
+      "side": 1,
+      "message": "Let\u0027s keep this one and remove the other one from the suite. We also do need lacros data",
+      "parentUuid": "87cb6c5d_0ca8146d",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 36
+      },
+      "revId": "e8cd3fdae1c7a2b9b6c7d3b3c6876c23fe67ba4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b1c10fb_fc7f9585",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 5
