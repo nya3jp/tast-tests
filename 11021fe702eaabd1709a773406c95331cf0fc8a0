@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56593f5c_fffd1046",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-23T02:31:45Z",
+      "side": 1,
+      "message": "udev_collector.cc doesn\u0027t expose ClearDevCoredump() API to tast.\n\nThe code creates a devcd%d directory is inside udev_collector.cc.\nhttp://shortn/_O8d9E8KydC . There may be a bug in it. So we probably be able to fix it this time. The cleanup approach in the crash.KernelIwlwifiError is also checking the existence of file then write 0 to it.",
+      "parentUuid": "e8f33850_b6c10bdc",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "caa1e44a_668a23f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c77c1702_be54efb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-23T02:31:45Z",
+      "side": 1,
+      "message": "Yes it\u0027s possible there are more than 1 match, which indicates multiple instances of crash_reporter/dump_collector are running. With this assumption in mind, I allocated 30s for each instance. But during my tests I never observed more than one file existed.",
+      "parentUuid": "caa1e44a_668a23f9",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4014413_fae5b620",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-22T22:52:19Z",
       "side": 1,
       "message": "IIUC that will create the file if it didn\u0027t exist anymore, which does not sound like something we want to do? b/228462848#comment7 recommended to check for existence first and then write \u00270\u0027. I suppose there\u0027s still a race condition between checking for existence and writing to the file, but at least the window would be significantly smaller",
+      "range": {
+        "startLine": 76,
+        "startChar": 15,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1178aa_42fbeaa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-23T02:31:45Z",
+      "side": 1,
+      "message": "Good point. WriteFile creates a file if it doesn\u0027t exist https://pkg.go.dev/io/ioutil#WriteFile\n\nChecking the existence of the file is the best we can do without using this trick: give the permission of 0444, so that ioutil.WriteFile() won\u0027t be able to write the the file it creates.",
+      "parentUuid": "b4014413_fae5b620",
       "range": {
         "startLine": 76,
         "startChar": 15,
