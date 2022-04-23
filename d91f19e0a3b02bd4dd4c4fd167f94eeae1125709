@@ -16,6 +16,29 @@
       "message": "PTAL. Updated change in https://crrev.com/c/3601375 so the tast tests are updated to use class to find album node to be selected/deselected.\nThank you!",
       "revId": "d91f19e0a3b02bd4dd4c4fd167f94eeae1125709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b947ea70_a3e40ff6",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-04-23T00:36:31Z",
+      "side": 1,
+      "message": "Totally optional comment: How about to make this as pre.go? It should not be a trivial work. It\u0027s totally okay to do it with a different CL.\n\nPut ambient.SetUp in Prepare part and ambient.UnlockScreen in Close part.\n\nExample: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/arc/pre.go",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 76
+      },
+      "revId": "d91f19e0a3b02bd4dd4c4fd167f94eeae1125709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
