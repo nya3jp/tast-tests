@@ -29,7 +29,7 @@ func init() {
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 			"cros-telemetry@google.com",
 		},
-		Attr: []string{"group:mainline"},
+		Attr: []string{"group:mainline", "group:wificell", "wificell_func"},
 		// TODO(b:169152720), Remove "no_kernel_upstream" to enable the test to run on
 		// boards with upstream kernel when upstream iwlwifi is able to produce valid
 		// fw dumps.
