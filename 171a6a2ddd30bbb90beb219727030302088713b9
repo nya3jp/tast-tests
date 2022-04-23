@@ -64,6 +64,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe9a229_f5156d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-23T16:27:28Z",
+      "side": 1,
+      "message": "No, this is currently in CQ. I have another CL removing informational of tpm2 case too. But Lacros is different so I want to keep them as informational until we have enough records in tastboard.",
+      "parentUuid": "d2678bc4_583a04d8",
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c185185_67013aa9",
