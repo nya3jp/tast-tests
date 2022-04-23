@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "931cce82_22b546fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-23T00:19:03Z",
+      "side": 1,
+      "message": "PTAL. Updated change in https://crrev.com/c/3601375 so the tast tests are updated to use class to find album node to be selected/deselected.\nThank you!",
+      "revId": "d91f19e0a3b02bd4dd4c4fd167f94eeae1125709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
