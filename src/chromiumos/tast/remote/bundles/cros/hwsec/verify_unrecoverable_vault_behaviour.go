@@ -107,7 +107,7 @@ func VerifyUnrecoverableVaultBehaviour(ctx context.Context, s *testing.State) {
 		s.Fatal("Mount was expected to fail but succeeded")
 	}
 	// .. and erase the vault
-	_, err = cmdRunner.Run(ctx, "[", "-d", userShadowDir, "]")
+	_, err = cmdRunner.Run(ctx, "rm", "-d", userShadowDir)
 	if err == nil {
 		s.Fatal("Did not remove the unrecoverable vault")
 	}
