@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f54f4a8_f77e54bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-23T02:32:40Z",
+      "side": 1,
+      "message": "Thanks! I took your another suggestion to use `wait *\u003d 10` instead.",
+      "parentUuid": "2920d791_ee77e80e",
+      "range": {
+        "startLine": 335,
+        "startChar": 11,
+        "endLine": 335,
+        "endChar": 84
+      },
+      "revId": "21143c5a4cc559298af31c3ff7bcad649817c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cd17b77_d59f1670",
