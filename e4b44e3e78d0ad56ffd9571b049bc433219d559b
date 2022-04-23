@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb20f77_fc3b3037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-23T00:59:22Z",
+      "side": 1,
+      "message": "remove this for now after we fix b/230059105",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "e4b44e3e78d0ad56ffd9571b049bc433219d559b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac53c0ff_002f4700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-23T00:59:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "e4b44e3e78d0ad56ffd9571b049bc433219d559b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
