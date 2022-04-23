@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/testing"
 )
 
@@ -352,6 +353,11 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 	androidUsername := s.ParentValue().(*FixtData).AndroidUsername
 	loggedIn := s.ParentValue().(*FixtData).AndroidLoggedIn
 
+	// Check we can still connect to the adb device.
+	if err := androidDevice.IsConnected(ctx); err != nil {
+		s.Fatal("Android device is no longer reachable via adb: ", err)
+	}
+
 	// Reset and save logcat so we have Android logs even if fixture setup fails.
 	if err := androidDevice.ClearLogcat(ctx); err != nil {
 		s.Fatal("Failed to clear logcat at start of fixture setup")
@@ -420,7 +426,13 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 	// Sometimes during login the tcp connection to the snippet server on Android is lost.
 	// If we cannot do a simple rpc call, reconnect to the snippet server.
 	if _, err := androidDevice.GetNearbySharingVersion(ctx); err != nil {
-		s.Log("Lost connection to the Snippet server. Reconnecting")
+		s.Log("Lost connection to the Snippet server and adb. Reconnecting to both")
+		adbDevice, _, err := crossdevice.AdbSetup(ctx)
+		if err != nil {
+			s.Fatal("Failed to set up an adb device: ", err)
+		}
+		androidDevice.AdbDevice(ctx, adbDevice)
+
 		if err := androidDevice.ReconnectToSnippet(ctx); err != nil {
 			s.Fatal("Failed to reconnect to the snippet server: ", err)
 		}
