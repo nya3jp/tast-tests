@@ -107,6 +107,19 @@ func overrideGMSCoreFlags(ctx context.Context, device *adb.Device) error {
 	return nil
 }
 
+// IsConnected checks if the Android phone is still reachable over adb.
+func (a *AndroidNearbyDevice) IsConnected(ctx context.Context) error {
+	if err := a.device.IsConnected(ctx); err != nil {
+		return errors.Wrap(err, "Android device is not reachable by adb")
+	}
+	return nil
+}
+
+// SetADBDevice sets the AdbDevice of the snippet. This is useful when using a remote Android device that has become disconnected.
+func (a *AndroidNearbyDevice) SetADBDevice(ctx context.Context, d *adb.Device) {
+	a.device = d
+}
+
 // DumpLogs saves the Android device's logcat output to a file.
 func (a *AndroidNearbyDevice) DumpLogs(ctx context.Context, outDir, filename string) error {
 	filePath := filepath.Join(outDir, filename)

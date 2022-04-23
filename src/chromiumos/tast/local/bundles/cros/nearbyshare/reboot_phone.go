@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	localadb "chromiumos/tast/local/android/adb"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/testing"
 )
 
@@ -35,19 +36,40 @@ func RebootPhone(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch adb server: ", err)
 	}
 
-	// Wait for the first available device, since we are assuming only a single device is connected.
-	d, err := adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
-	if err != nil {
-		s.Fatal("Failed to list adb devices: ", err)
-	}
+	var adbDevice *adb.Device
+	var err error
 
-	// Reboot the device and wait for it to come up again.
-	if err := d.Reboot(ctx); err != nil {
-		s.Fatal("Failed to reboot the phone: ", err)
-	}
-	d, err = adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, time.Minute)
-	if err != nil {
-		s.Fatal("Failed to list adb devices: ", err)
+	if crossdevice.PhoneIP.Value() != "" {
+		if err := crossdevice.ConnectToWifi(ctx); err != nil {
+			s.Fatal("Failed to connect CrOS device to Wifi: ", err)
+		}
+		adbDevice, err = crossdevice.AdbOverWifi(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to adb over wifi device: ", err)
+		}
+		// Reboot the device and wait for it to come up again.
+		if err := adbDevice.Reboot(ctx); err != nil {
+			s.Fatal("Failed to reboot the phone: ", err)
+		}
+		adbDevice, err = crossdevice.AdbOverWifi(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to adb over wifi device: ", err)
+		}
+		s.Log("Reconnected to remote Android device after reboot")
+	} else {
+		// Wait for the first available device, since we are assuming only a single device is connected.
+		adbDevice, err = adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
+		if err != nil {
+			s.Fatal("Failed to list adb devices: ", err)
+		}
+		// Reboot the device and wait for it to come up again.
+		if err := adbDevice.Reboot(ctx); err != nil {
+			s.Fatal("Failed to reboot the phone: ", err)
+		}
+		adbDevice, err = adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, time.Minute)
+		if err != nil {
+			s.Fatal("Failed to list adb devices: ", err)
+		}
 	}
 
 	// Wait a while to give the phone a chance to warm up so it's ready for future tests.
