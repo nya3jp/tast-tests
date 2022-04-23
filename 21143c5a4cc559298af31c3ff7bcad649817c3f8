@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2920d791_ee77e80e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-23T02:06:37Z",
+      "side": 1,
+      "message": "Sorry I think I gave you bad advice here. I believe the typecast of `math.Pow(10, float64(i))` to `time.Duration` will result in a huge rounding error. I think you had the right idea in the first place.",
+      "parentUuid": "9d11c17d_9be82d55",
+      "range": {
+        "startLine": 335,
+        "startChar": 11,
+        "endLine": 335,
+        "endChar": 84
+      },
+      "revId": "21143c5a4cc559298af31c3ff7bcad649817c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cd17b77_d59f1670",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 7
