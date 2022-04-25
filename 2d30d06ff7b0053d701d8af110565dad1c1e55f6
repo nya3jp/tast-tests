@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8371a8e3_7c9d2549",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-25T17:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5716508_5855d4ea",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "2d30d06ff7b0053d701d8af110565dad1c1e55f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78e37141_036a1d45",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-25T16:58:38Z",
       "side": 1,
       "message": "This sounds like a way of saying \"the number of bot requests that are caused by b/229636939,\" implying that the bug causes each of the test variants MeetCUJ.{16p_validation, 16p_notes, 16p_jamboard} to request more than 16 bots. This could lead to an actual misunderstanding because with the code complexity of lines 320-348 at [1], it is perfectly believable that you really do mean the bug causes 16p test variants to request more than 16 bots each.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;drc\u003d4bdea65488cf7090de4de860b047b77313cc634d;l\u003d320",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "2d30d06ff7b0053d701d8af110565dad1c1e55f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea82f791_bda2647a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-25T17:29:07Z",
+      "side": 1,
+      "message": "I see the ambiguity in my msg – I tried to clear that up but I\u0027m not sure if I hit the mark, what do you think?",
+      "parentUuid": "78e37141_036a1d45",
       "range": {
         "startLine": 10,
         "startChar": 22,
