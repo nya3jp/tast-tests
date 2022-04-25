@@ -170,8 +170,12 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		if err := ms.PowerOff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
 		}
-		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
-			return errors.Wrap(err, "disable usb for normal")
+		if ok, err := h.Servo.HasControl(ctx, string(servo.ImageUSBKeyPwr)); err != nil {
+			return errors.Wrap(err, "failed checking control ImageUSBKeyPwr")
+		} else if ok {
+			if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
+				return errors.Wrap(err, "disable usb for normal")
+			}
 		}
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
 			return err
@@ -323,7 +327,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			defer cancel()
 			// Since the DUT will power off, deadline exceeded is expected here.
 			if err := h.DUT.Conn().CommandContext(powerOffCtx, "reboot").Run(); err != nil && !errors.Is(err, context.DeadlineExceeded) {
-				return errors.Wrapf(err, "DUT poweroff %T", err)
+				return errors.Wrap(err, "DUT poweroff")
 			}
 
 			offCtx, cancel := context.WithTimeout(ctx, offTimeout)
@@ -759,8 +763,12 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
 		return errors.Wrapf(err, "sleeping before setting usb mux state to %s", usbMux)
 	}
-	if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
-		return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
+	if ok, err := h.Servo.HasControl(ctx, string(servo.ImageUSBKeyPwr)); err != nil {
+		return errors.Wrap(err, "failed checking control ImageUSBKeyPwr")
+	} else if ok {
+		if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
+			return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
+		}
 	}
 	if err := h.Servo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
 		return errors.Wrapf(err, "setting power state to %s", servo.PowerStateRec)
@@ -779,7 +787,7 @@ func (ms *ModeSwitcher) PowerOff(ctx context.Context) error {
 	defer cancel()
 	// Since the DUT will power off, deadline exceeded is expected here.
 	if err := h.DUT.Conn().CommandContext(powerOffCtx, "poweroff").Run(); err != nil && !errors.Is(err, context.DeadlineExceeded) {
-		return errors.Wrapf(err, "DUT poweroff %T", err)
+		return errors.Wrap(err, "DUT poweroff")
 	}
 
 	// Try reading the power state from the EC.
