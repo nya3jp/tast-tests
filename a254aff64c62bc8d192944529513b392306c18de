@@ -16,6 +16,29 @@
       "message": "Thanks! tast-owners are meant to give owner permission for stylistic issues but you should also have someone from your team +2 the change since they know the context.",
       "revId": "a254aff64c62bc8d192944529513b392306c18de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6667f1de_41cb007b",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-04-25T23:26:50Z",
+      "side": 1,
+      "message": "Would this flag/configuration be best accomplished in the constructor of the runner? I don\u0027t think this is something that should be configured in runtime anyways.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 63
+      },
+      "revId": "a254aff64c62bc8d192944529513b392306c18de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
