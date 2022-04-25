@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe7cb4b_94a8b830",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-25T23:07:29Z",
+      "side": 1,
+      "message": "Fritz, Andres, PTAL at the questions below.\n\nLet\u0027s focus on this CL first before the next one.",
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33fd7eb3_5b86d81f",
@@ -54,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cea290fa_2f974542",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-25T23:07:29Z",
+      "side": 1,
+      "message": "I could do that indeed, although it would duplicate the amount of\ne.g. instead of DecodeAccelVDPerf.hevc_2160p_30fps we\u0027d have\n- DecodeAccelVDPerf.hevc_2160p_30fps_capped\n- DecodeAccelVDPerf.hevc_2160p_30fps_uncapped.\n\n\nSounds good?",
+      "parentUuid": "33fd7eb3_5b86d81f",
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c00b06e_1cade4a5",
         "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
         "patchSetId": 2
@@ -65,6 +100,30 @@
       "writtenOn": "2022-04-22T18:45:22Z",
       "side": 1,
       "message": "I have a couple of concerns here:\n\n1) mediacpu.MeasureProcessUsage() doesn\u0027t seem to exit with an error if the gtests fail (at most, it just does testing.ContextLog() in certain situations). So let\u0027s say we run 5 iterations of the tests before getting a failure. In that case, wouldn\u0027t we possibly still have a cappedJSON from the last iteration that succeeded? If so, then I don\u0027t see how we would catch this failure mode compared to before this CL.\n\n2) Since the gtests will be run for 1000 iterations, what will the cappedJSON contain? Will it contain the metrics for all iterations or only for the last one? If the latter, then it seems possible that after 20s, the test process gets killed racily while writing to the json file which seems problematic. Also, if we only get the results of the last iteration, we may be biasing our metrics towards devices that are already hot from being stressed (which might be ok).",
+      "range": {
+        "startLine": 290,
+        "startChar": 22,
+        "endLine": 290,
+        "endChar": 50
+      },
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5391627_b28fba5c",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-25T23:07:29Z",
+      "side": 1,
+      "message": "Those are legit concerns. Re 1) it usually is how it goes, it usually\ntakes 10s to run 600frames at 60fps (or 300frames at 30fps), so the\nmeasurement runs 2 and a little bit iterations. The JSON file that is\ncollected is then the one from the 2nd iteration (not the incipient \nthird one). This indeed applies to 2), the last json produced is the \none picked up, whereas the cpu/power meas is spread along all the time.\nEven though video_decode_accelerator_perf_tests is stopped \nasynchronously, there\u0027ll always be one such JSON file after the \nfirst iteration is finished.\n\nNote that this CL doesn\u0027t change that cpu/power meas, it simply stops\ncollecting a single MeasureCappedPerformance in favour of just \ncollecting one of the multiple MeasureProcessUsage back-to-back runs.\n\n---\n\nActually after chatting about this offline, maybe it\u0027s best for this\nCL to just extend TestParams to indicate if we want the test to run \nthe capped, uncapped, or uncapped_10concurrent test cases, and for\nany enabled cases, run:\n- A single runAccelVideoTestCmd() to collect the json results\n- And then have a MeasureProcessUsage() run for the cpu+power \ncollection.\n\nThis of course will need to duplicate the callsites to indicate\nif the intention is to collect capped, uncapped, or both (to \nmaintain current functionality we\u0027d need both).\n\nIn due time we should also refactor this MeasureProcessUsage() \npart to be more like what we do for PlaybackPerf Tast test [1], \ni.e. have several collections in parallel with a workload run (in \nthis case, video_decode_accelerator_perf_tests). But that can\nwait : )\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback/playback.go;l\u003d162-204;drc\u003dbef554f2a9d2472169ba2cdea4240a6f22bdbfce",
+      "parentUuid": "1c00b06e_1cade4a5",
       "range": {
         "startLine": 290,
         "startChar": 22,
