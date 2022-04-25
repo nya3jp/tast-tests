@@ -16,6 +16,30 @@
       "message": "also +kerker@",
       "revId": "4de41f736d2262205bb6a477892ecf79abffe7f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "987fa9c2_85e78f14",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-25T15:24:16Z",
+      "side": 1,
+      "message": "\u003e \"boostrap\" is a possible misspelling of \"bootstrap\".\n\nFixed",
+      "parentUuid": "bbee3773_4f87464d",
+      "range": {
+        "startLine": 106,
+        "startChar": 50,
+        "endLine": 106,
+        "endChar": 58
+      },
+      "revId": "4de41f736d2262205bb6a477892ecf79abffe7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
