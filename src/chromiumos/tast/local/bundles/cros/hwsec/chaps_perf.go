@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChapsPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Chaps performance test that includes key import, key sign operation performance measure",
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Contacts: []string{

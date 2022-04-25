@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChapsAttributePolicy,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies Chaps Attribute policy works as intended",
 		Attr:         []string{"group:mainline"},
 		Contacts: []string{
