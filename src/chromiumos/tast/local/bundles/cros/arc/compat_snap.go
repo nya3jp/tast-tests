@@ -110,19 +110,7 @@ func testSnapFromOverview(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		return errors.Wrap(err, "failed to enter overview")
 	}
 
-	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find window in overview grid")
-	}
-
-	displayEdgeMargin := 20
-	snapDestinationX := displayInfo.Bounds.Width - displayEdgeMargin
-	if primary {
-		snapDestinationX = displayEdgeMargin
-	}
-	if err := pc.Drag(
-		w.OverviewInfo.Bounds.CenterPoint(),
-		pc.DragTo(coords.NewPoint(snapDestinationX, displayInfo.Bounds.Height/2), 2*time.Second))(ctx); err != nil {
+	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, primary); err != nil {
 		return errors.Wrap(err, "failed to drag to snap from overview")
 	}
 
