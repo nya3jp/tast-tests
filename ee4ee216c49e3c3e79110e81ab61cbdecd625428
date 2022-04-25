@@ -188,6 +188,30 @@
       },
       "revId": "ee4ee216c49e3c3e79110e81ab61cbdecd625428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b1d7e91_616c0dee",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T18:47:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f57ec97c_2ae78737",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "ee4ee216c49e3c3e79110e81ab61cbdecd625428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
