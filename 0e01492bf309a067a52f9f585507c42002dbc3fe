@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4980524a_f074c64b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:11:25Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with cosmetic changes",
+      "revId": "0e01492bf309a067a52f9f585507c42002dbc3fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67516ca0_e011c9e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:11:25Z",
+      "side": 1,
+      "message": "nit:\n // TakingOwnershipTimeout is the maximum amount of time for taking ownership of the device after login.\n const TakingOwnershipTimeout \u003d 20 * time.Second",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "0e01492bf309a067a52f9f585507c42002dbc3fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d8806f4_e691d733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:11:25Z",
+      "side": 1,
+      "message": "The word `seconds` is not appropriate here, because `TakingOwnershipTimeout` by itself represents 20 seconds.",
+      "range": {
+        "startLine": 92,
+        "startChar": 59,
+        "endLine": 92,
+        "endChar": 66
+      },
+      "revId": "0e01492bf309a067a52f9f585507c42002dbc3fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f286ed_579ce46e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:11:25Z",
+      "side": 1,
+      "message": "nit: You can remove this meaningless `1 * ` because I guess its intended purpose was related to the similarity between `1 * time.Second` and `20 * time.Second` which are now 80 lines apart.",
+      "range": {
+        "startLine": 102,
+        "startChar": 47,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "0e01492bf309a067a52f9f585507c42002dbc3fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
