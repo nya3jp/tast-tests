@@ -60,7 +60,7 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCo
 		gmsCoreMode = cache.GMSCoreDisabled
 	}
 
-	cr, a, err := cache.OpenSession(ctx, packagesMode, gmsCoreMode, nil, targetDir)
+	cr, a, err := cache.OpenGmsCoreSession(ctx, packagesMode, gmsCoreMode, nil, targetDir)
 	if err != nil {
 		os.RemoveAll(targetDir)
 		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
@@ -69,7 +69,7 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCo
 	defer cr.Close(ctx)
 	defer a.Close(ctx)
 
-	if err := cache.CopyCaches(ctx, a, targetDir); err != nil {
+	if err := cache.CopyGmsCoreCaches(ctx, a, targetDir); err != nil {
 		os.RemoveAll(targetDir)
 		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
 	}
