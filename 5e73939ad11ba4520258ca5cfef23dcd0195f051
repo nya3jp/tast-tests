@@ -70,6 +70,30 @@
       },
       "revId": "5e73939ad11ba4520258ca5cfef23dcd0195f051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92780432_2d38aecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-25T11:02:52Z",
+      "side": 1,
+      "message": "The moment we click the \u0027confirm\u0027 button in the pop-up window, the button disappears and it takes some 3-5 seconds to install the Webstore app and the app gets opened in a new tab. Then we need to come back to the parent tab and check for the \u0027upgraded\u0027 text.\n\nEarlier we had a 5 seconds sleep before L125 but that is also a source of flakiness and hence we removed. Can you please suggest if we can include that 5 seconds sleep instead of L125 and then activate the main tab?",
+      "parentUuid": "bc2a3d09_9a77117d",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 55
+      },
+      "revId": "5e73939ad11ba4520258ca5cfef23dcd0195f051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
