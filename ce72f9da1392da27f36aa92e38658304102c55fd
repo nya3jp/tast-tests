@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30fe5390_11320230",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-25T23:47:08Z",
+      "side": 1,
+      "message": "In general, I think it is ok. I do have a few questions.\nPlease also run tast unit tests: ./fastbuild_sh -T\nThen, insert the following line in the commit message:\nTEST\u003dtast unit tests passed.\n\nThanks.\n",
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "605f992e_abd4ef08",
@@ -26,6 +43,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf7138b8_cf578f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateengine/consumer_auto_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-25T23:47:08Z",
+      "side": 1,
+      "message": "What if \"SetPerf\" failed? Do you still want to call \"StartDaemon\"?",
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd25cc68_ca5f66c8",
+        "filename": "src/chromiumos/tast/local/updateengine/feature.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-25T23:47:08Z",
+      "side": 1,
+      "message": "Will it be better to return error instead of panic?",
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad7468f_e46b3cc6",
+        "filename": "src/chromiumos/tast/local/updateengine/prefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-25T23:47:08Z",
+      "side": 1,
+      "message": "I suggest to call os.MkdirAll instead. In this case, ou don\u0027t need to check for os.Stat",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3e267e6_d28e403c",
         "filename": "src/chromiumos/tast/local/updateengine/util.go",
         "patchSetId": 2
@@ -43,6 +117,23 @@
         "endLine": 43,
         "endChar": 1
       },
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75764da_a15f6460",
+        "filename": "src/chromiumos/tast/local/updateengine/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-25T23:47:08Z",
+      "side": 1,
+      "message": "I think arg is better than cmd here.",
       "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
