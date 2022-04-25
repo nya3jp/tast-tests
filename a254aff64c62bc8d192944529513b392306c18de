@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc3fc1d_64ebc004",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T22:29:57Z",
+      "side": 1,
+      "message": "Thanks! tast-owners are meant to give owner permission for stylistic issues but you should also have someone from your team +2 the change since they know the context.",
+      "revId": "a254aff64c62bc8d192944529513b392306c18de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
