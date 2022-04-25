@@ -94,6 +94,30 @@
       },
       "revId": "aea375aa557149fcafc4c0dd4762be3e13df2c60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bbddf8a_82eec247",
+        "filename": "src/chromiumos/tast/services/cros/camera/cca_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-25T13:40:01Z",
+      "side": 1,
+      "message": "I don\u0027t know that there is an issue with importing from ui/. That comment just looks like it was a comment about the order of the includes.",
+      "parentUuid": "c7c56c66_4ebab752",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 76
+      },
+      "revId": "aea375aa557149fcafc4c0dd4762be3e13df2c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
