@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f78962_49684bbf",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-25T17:19:18Z",
+      "side": 1,
+      "message": "consider extending the fixture SetUp timeouts where this function is called, we\u0027re cutting it close on some test runs from what I remember",
+      "range": {
+        "startLine": 91,
+        "startChar": 53,
+        "endLine": 91,
+        "endChar": 66
+      },
+      "revId": "73c9eee98909d12bc7f6475844a4d753281cbec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4d0cca9_687b5a10",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbyfixture/login_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-25T17:19:18Z",
+      "side": 1,
+      "message": "should we log this and try to reconnect here instead?",
+      "revId": "73c9eee98909d12bc7f6475844a4d753281cbec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d6e275b_d1f3a014",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-25T17:19:18Z",
+      "side": 1,
+      "message": "I think it\u0027s best to remove this from the function, and let callers decide if they want to log the error. I can imagine this being used within a `testing.Poll`, in which case this could spam the logs quite a bit haha",
+      "revId": "73c9eee98909d12bc7f6475844a4d753281cbec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f9c6eb_c02a6159",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-25T17:19:18Z",
+      "side": 1,
+      "message": "rename this to SetADBDevice (consistent case for abbreviations, and \"Set\" is okay to have in the function name for setters)",
+      "range": {
+        "startLine": 120,
+        "startChar": 30,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "73c9eee98909d12bc7f6475844a4d753281cbec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
