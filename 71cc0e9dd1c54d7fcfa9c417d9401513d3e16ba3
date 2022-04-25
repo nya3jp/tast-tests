@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dcf190a_bc7f824b",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-25T12:03:14Z",
+      "side": 1,
+      "message": "New flow should not encounter this.",
+      "parentUuid": "677a7980_7f320d39",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44f81aaf_c40b9205",
@@ -155,6 +179,24 @@
       "side": 1,
       "message": "Restart `ui` always cause `healthd` to restart, but I\u0027m not sure when (right after ui stop / happen after a while).\n\nThe way in the above comment may not be safe because the the old ui may reconnected to the new healthd.\nI think the safest way would be, stop healthd, restart ui, start healthd.",
       "parentUuid": "3b88f95f_5e164790",
+      "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f74fdc_73ac69c7",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-04-25T12:03:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd52a3a7_40c83db0",
       "revId": "71cc0e9dd1c54d7fcfa9c417d9401513d3e16ba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
