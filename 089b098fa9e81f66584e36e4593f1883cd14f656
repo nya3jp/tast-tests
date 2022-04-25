@@ -415,6 +415,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cefb0f3_a7037a6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-25T15:22:03Z",
+      "side": 1,
+      "message": "I don\u0027t know how to parameterise based on whether it runs on VM or not. I\u0027m not aware of any check for that, after all the test doesn\u0027t know where it is started from.\nBut a comment definitely makes sense here.",
+      "parentUuid": "ec961d03_4bf84ecc",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1adb24ac_59799fd0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
         "patchSetId": 2
