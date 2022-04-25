@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa92cf32_cb4817f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-25T13:57:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e0d04d6_41cae907",
+      "range": {
+        "startLine": 201,
+        "startChar": 35,
+        "endLine": 201,
+        "endChar": 46
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0910c34a_93d813ce",
@@ -187,6 +211,30 @@
         "id": 1411065
       },
       "writtenOn": "2022-04-22T12:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73e1bab7_f6eb64ee",
+      "range": {
+        "startLine": 232,
+        "startChar": 26,
+        "endLine": 232,
+        "endChar": 150
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a25504_1edc840b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-25T13:57:14Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "73e1bab7_f6eb64ee",
@@ -331,6 +379,30 @@
       "side": 1,
       "message": "Which service account is present depends on whether the test is being run on a DUT or in a VM as those are started from different hosts.",
       "parentUuid": "7ab8c004_d3eb38d1",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec961d03_4bf84ecc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-25T13:57:14Z",
+      "side": 1,
+      "message": "Then, we could parameterize the test depending whether it runs on VM or not and use the appropriate account for each option.\n\nThat reads a bit fishy, don\u0027t you think? - try one account, if it is an error, thy another one.\n\nIf not parameters, this part requires comments why it is done this way.",
+      "parentUuid": "c5f64c35_5f74888a",
       "range": {
         "startLine": 84,
         "startChar": 2,
