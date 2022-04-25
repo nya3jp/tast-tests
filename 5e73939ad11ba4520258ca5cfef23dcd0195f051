@@ -94,6 +94,30 @@
       },
       "revId": "5e73939ad11ba4520258ca5cfef23dcd0195f051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab722ee_5befc66d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-25T15:10:02Z",
+      "side": 1,
+      "message": "If I understand your explanation correctly, the following is what you\u0027d like to see?\n\n  // Making sure confirmation dialog/button is displayed.\n  if err :\u003d ui.WaitUntilExists(confirm)(ctx); err !\u003d nil {\n    return ...\n  }\n  // Then click it.\n  if err :\u003d ui.DoDefault(confirm)(ctx); err !\u003d nil {\n    return ...\n  }\n  // Wait for the button gets gone.\n  if err :\u003d ui.WaitUntilGone(confrm)(ctx); err !\u003d nil {\n    return ...\n  }\n  // Here, the original tab should be focused back.\n  if a, err :\u003d tab.active(ctx); err !\u003d nil {\n    return ...\n  } else if !a {\n    return ...  // tab is not activated.\n  }\n  \n  // Check if the app is upgraded or not\n  if err :\u003d ui.WaitUntilExists(upgraded)(ctx); err !\u003d nil {\n    ...\n    \nwhere\n\n  func (t *tab) active(ctx context.Context) (bool, error) {\n    // call chrome.tabs.get() and return \"active\" property.\n  }\n\ncf) https://developer.chrome.com/docs/extensions/reference/tabs/#type-Tab",
+      "parentUuid": "92780432_2d38aecc",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 55
+      },
+      "revId": "5e73939ad11ba4520258ca5cfef23dcd0195f051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
