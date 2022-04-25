@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bae0fd1_20bdaa08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-25T15:56:46Z",
+      "side": 1,
+      "message": "Got it, I see what you mean. I just tried to implement what you said - I did have to decrement the test-cycle count value by 1 in RunFor to prevent double counting of the first run through (since Run() and RunFor() both have separately increment the test cycle variable). Please let me know if my change made sense or if there\u0027s a cleaner way to do it, I\u0027d be completely open to that!",
+      "parentUuid": "2b744ab1_e3f1e656",
+      "revId": "fc1327c0eee1c5863f19be15388a6d25373c5289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "736e644d_3d41dede",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 2
