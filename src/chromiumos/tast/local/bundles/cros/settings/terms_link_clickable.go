@@ -36,7 +36,7 @@ func init() {
 	})
 }
 
-// TermsLinkClickable checks the chrome://terms link is clickable within 'About Chrome OS' and chrome://help.
+// TermsLinkClickable checks the chrome://terms link is clickable within 'About ChromeOS' and chrome://help.
 func TermsLinkClickable(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
@@ -65,7 +65,7 @@ func TermsLinkClickable(ctx context.Context, s *testing.State) {
 	ossettingsTest := func(ctx context.Context, s *testing.State) {
 		settings, err := ossettings.LaunchAtPage(ctx, tconn, ossettings.AboutChromeOS)
 		if err != nil {
-			s.Fatal("Failed to launch OS settings at `About Chrome OS` page: ", err)
+			s.Fatal("Failed to launch OS settings at `About ChromeOS` page: ", err)
 		}
 		defer settings.Close(cleanupCtx)
 		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ossettings_dump")
@@ -118,7 +118,7 @@ func verifyContent(ctx context.Context, cr *chrome.Chrome, outDir string) (err e
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, outDir, func() bool { return err != nil }, cr, "terms_dump")
 
 	// Verify the content is within the terms page.
-	expected := "Google Chrome and Chrome OS Additional Terms of Service"
+	expected := "Google Chrome and ChromeOS Additional Terms of Service"
 	expr := fmt.Sprintf(`document.querySelector('h2').innerText === '%s'`, expected)
 	if err := conn.WaitForExprWithTimeout(ctx, expr, 10*time.Second); err != nil {
 		return errors.Wrap(err, "unexpected page content")
