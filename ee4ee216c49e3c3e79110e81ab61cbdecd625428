@@ -164,6 +164,30 @@
       },
       "revId": "ee4ee216c49e3c3e79110e81ab61cbdecd625428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57ec97c_2ae78737",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-25T17:34:31Z",
+      "side": 1,
+      "message": "Applied the suggestion of `if expectedCards :\u003d lines/2`",
+      "parentUuid": "e44caf50_15e4fbcf",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "ee4ee216c49e3c3e79110e81ab61cbdecd625428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
