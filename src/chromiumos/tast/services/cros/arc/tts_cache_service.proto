@@ -1,0 +1,24 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.arc;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/arc";
+
+// TTSCacheService provides TTS caches generation
+service TTSCacheService {
+  // Generate generates TTS cache.
+  rpc Generate (google.protobuf.Empty) returns (TTSCacheResponse) {}
+}
+
+message TTSCacheResponse {
+  // Path to directory with TTS cache.
+  string target_dir = 1;
+  // Name of TTS state cache.
+  string tts_state_cache_name = 7;
+}
