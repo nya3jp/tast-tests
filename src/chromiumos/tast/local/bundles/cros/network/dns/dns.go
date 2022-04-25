@@ -153,7 +153,23 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 		if err := m.ScrollDown(); err != nil {
 			return errors.Wrap(err, "failed to scroll down")
 		}
-		tf := nodewith.Role(role.TextField).Name("Enter custom provider")
+
+		// Find secure DNS text field through its parent.
+		gcs, err := ac.NodesInfo(ctx, nodewith.Role(role.GenericContainer))
+		if err != nil {
+			return errors.Wrap(err, "failed to get generic container nodes")
+		}
+		var nth = -1
+		for i, e := range gcs {
+			if attr, ok := e.HTMLAttributes["id"]; ok && attr == "secureDnsInput" {
+				nth = i
+				break
+			}
+		}
+		if nth < 0 {
+			return errors.Wrap(err, "failed to find secure DNS text field")
+		}
+		tf := nodewith.Role(role.TextField).Ancestor(nodewith.Role(role.GenericContainer).Nth(nth))
 		if err := ac.FocusAndWait(tf)(ctx); err != nil {
 			return errors.Wrap(err, "failed to focus on the text field")
 		}
