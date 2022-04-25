@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c07951_de2abb5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-25T22:49:36Z",
+      "side": 1,
+      "message": "can make this as a separate function such as selectFromFile(...), selectProfileImage(...)\nSo the test body can become:\n```\nif err :\u003d selectFromFile(...)(ctx); if err!\u003dnil {\n  s.Fatal(...)}\n  \nif err :\u003d selectProfileImage(...)(ctx); if err !\u003d nil {\n  s.Fatal(...)}\n  \n// we also can add selectDefaultImage(...) here too as they share quite similar codes.\n```\nFunction selectFromFile(...)\n```\nselectFromFile(...) error {\n // Steps to choose from file, return error if any\n // Call validateSelectedAvatar() function, return error if any\n return nil\n}\n```",
+      "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64c7706_e4a41e13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-25T22:49:36Z",
+      "side": 1,
+      "message": "can add ui.WaitUntilExists(chooseFromFileButton) first before LeftClick()",
+      "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d37165_df853b59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-25T22:49:36Z",
+      "side": 1,
+      "message": "We can create a shared function to validate the selected avatar passing in the name and selected type (lastExternalImage, profileImage...)",
+      "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77687681_c6a1f74e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-25T22:49:36Z",
+      "side": 1,
+      "message": "can add ui.WaitUntilExists(googleProfilePhotoIcon) first before LeftClick()",
+      "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
