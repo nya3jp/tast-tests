@@ -29,8 +29,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.FakeDMSEnrolled,
 		Vars: []string{
-			"policy.FakeEnrollmentRealGAIA.username",
-			"policy.FakeEnrollmentRealGAIA.password",
+			"policy.FakeEnrollmentRealGAIA.accountPool",
 		},
 	})
 }
@@ -42,8 +41,13 @@ func FakeEnrollmentRealGAIA(ctx context.Context, s *testing.State) {
 		s.Fatal("Parent is not a FakeDMS fixture")
 	}
 
-	username := s.RequiredVar("policy.FakeEnrollmentRealGAIA.username")
-	password := s.RequiredVar("policy.FakeEnrollmentRealGAIA.password")
+	gaiaCreds, err := chrome.PickRandomCreds(s.RequiredVar("policy.FakeEnrollmentRealGAIA.accountPool"))
+	if err != nil {
+		s.Fatal("Failed to parse managed user creds: ", err)
+	}
+
+	username := gaiaCreds.User
+	password := gaiaCreds.Pass
 
 	pb := policy.NewBlob()
 	pb.PolicyUser = username
