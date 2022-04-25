@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ca31a4_1eb4ca49",
+        "filename": "src/chromiumos/tast/common/android/adb/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a31134b5_5ff60f42",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f9a8a43_1c58b1dd",
@@ -101,6 +119,24 @@
       "writtenOn": "2022-04-25T17:22:58Z",
       "side": 1,
       "message": "I mention this below but the `surfaceViewName` that is passed in should not have extra quotes. Add the quotes around the surfaceViewName here since that\u0027s an implementation detail of this method.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01001c7_996d4a6c",
+        "filename": "src/chromiumos/tast/common/android/adb/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f9a8a43_1c58b1dd",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea88bab_90bd9990",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca8db1a8_e92b29b6",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18492583_f9366026",
@@ -139,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63a14ee_d7a13ae5",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "No, fixed",
+      "parentUuid": "18492583_f9366026",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f848be1_92517bbe",
@@ -152,6 +224,24 @@
       "writtenOn": "2022-04-25T17:22:58Z",
       "side": 1,
       "message": "have this take in a surfaceName string. The user can define exactly what it looks like that way different APKs will work if their pattern is different. Note that The quotes around the text should not be included by the caller. That\u0027s an implementation detail that can be handled further down.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74017178_40afd863",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f848be1_92517bbe",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -175,6 +265,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e0706e1_8b14fedc",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Should I add the same TODO here, or is just the context fine?",
+      "parentUuid": "99d7ec4b_117cffe8",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "582f166e_df97c5e9",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
@@ -186,6 +294,24 @@
       "writtenOn": "2022-04-25T17:22:58Z",
       "side": 1,
       "message": "nit: `Start` as the method name is enough since the whole struct is about SurfaceFlinger",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8962d694_fd181f52",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "582f166e_df97c5e9",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -203,6 +329,24 @@
       "writtenOn": "2022-04-25T17:22:58Z",
       "side": 1,
       "message": "This should be in the `go func()` call below and have a corresponding `defer ticker.Stop` to make sure it gets cleaned up.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3483aeb1_8e443e8a",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "880f760f_6d21c4f7",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -226,6 +370,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a45ff0c_6f4d1145",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "What would be the benefit for struct vs named return variables? If we can extract/decide to add more metrics from SurfaceFlinger latency, we can add it to the struct more easily?",
+      "parentUuid": "f9664b7c_adcf493c",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2c947a8_5948eff3",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
@@ -237,6 +399,24 @@
       "writtenOn": "2022-04-25T17:22:58Z",
       "side": 1,
       "message": "Is a trim and empty string line not enough to check? If rune is really needed then please add a comment about why.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "442da76a_91d7c7f6",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "On second thought, is this check redundant with the check after the parse and length check?",
+      "parentUuid": "c2c947a8_5948eff3",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -260,6 +440,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95028a41_91b42642",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Ricardo\u0027s script also has an INT_MAX check that I haven\u0027t added yet - I assume that can go after the parse?",
+      "parentUuid": "c8b94a06_4535381c",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e026e194_8ce5c70d",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
@@ -271,6 +469,24 @@
       "writtenOn": "2022-04-25T17:22:58Z",
       "side": 1,
       "message": "Considering the error checks will be moved above and there\u0027s only ever expected to be 3 elements, then I think this is simplified by just parsing each of the 3 elements individually rather than building another array. i.e.\n\n```\n\tvar draw, vsync, submit int\n\tvar parseErr error\n\tif draw, parseErr \u003d strconv.Atoi(entries[0]); parseErr !\u003d nil {\n\t}\n```\n\nThat will also allow for clearer errors to be returned",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "165c8968_ee2bf16c",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e026e194_8ce5c70d",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -294,6 +510,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd57895c_64e10b50",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "IIUC draw is declared locally in the for loop, so I would have to declare it outside the loop for it to work as intended here - is that correct?",
+      "parentUuid": "83ef641b_673f61c9",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42b4fb1f_52f29b1a",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
@@ -305,6 +539,24 @@
       "writtenOn": "2022-04-25T17:22:58Z",
       "side": 1,
       "message": "name the output parameters",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e68501_640013d5",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42b4fb1f_52f29b1a",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
