@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a47aff10_2318f44a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-25T03:32:07Z",
+      "side": 1,
+      "message": "Please also add BT team members for the review of bluez.go.",
+      "revId": "f95a8db3e9ad7101f4c393dd54cd2d0204e097ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5362bfc_4d697900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-25T03:32:07Z",
+      "side": 1,
+      "message": "No decoding error without adding \"device\" structure?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "f95a8db3e9ad7101f4c393dd54cd2d0204e097ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3faeabd1_0af69cce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-25T03:32:07Z",
+      "side": 1,
+      "message": "Is the order guaranteed? Should we use a `set` instead of a `list`?",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 24
+      },
+      "revId": "f95a8db3e9ad7101f4c393dd54cd2d0204e097ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
