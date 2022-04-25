@@ -33,6 +33,24 @@
       "message": "How does this work? Is this a private function? Does it not need a function comment?",
       "revId": "2abb2d139436357dd4470fd476eebe08144a52a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0517458_aa553162",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T22:51:25Z",
+      "side": 1,
+      "message": "It is a private function in the sense that it is unexported (meaning its scope is the `action` package) because its name starts with a lower case letter. Because it is a non-trivial function, it still needs a function comment according to [1], but that is a problem independent of this CL (see [2]).\n\n[1] https://github.com/golang/go/wiki/CodeReviewComments#doc-comments\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/action/action.go;drc\u003d3d16fabd45e2b06f07484ab6ccf63574842dbd4f;l\u003d65",
+      "parentUuid": "060eda58_02e9a37f",
+      "revId": "2abb2d139436357dd4470fd476eebe08144a52a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
