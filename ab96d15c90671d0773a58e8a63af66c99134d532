@@ -33,6 +33,24 @@
       "message": "could you add TODO not to ignore the close closure?\ngreat to have detailed reasons why it is ok to do so as a short term workaround.",
       "revId": "ab96d15c90671d0773a58e8a63af66c99134d532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50caf424_71ba5886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-25T13:12:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f93b1e45_833ee114",
+      "revId": "ab96d15c90671d0773a58e8a63af66c99134d532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
