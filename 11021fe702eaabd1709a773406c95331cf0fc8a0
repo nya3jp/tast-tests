@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac5adc55_029856e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-04-25T16:57:10Z",
+      "side": 1,
+      "message": "Should we handle a time of check to time of use issue? It looks like the check in line 65 should ensure that that the directory exists. In the case err !\u003d nil in line 70, that would mean something bad happened to the directory after existing just before. If anything, shouldn\u0027t we log this behavior?",
+      "parentUuid": "e422a8a6_4f6afa09",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "caa1e44a_668a23f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
         "patchSetId": 1
