@@ -456,13 +456,21 @@ func testPhotoResolutionAndAspectRatio(ctx context.Context, app *cca.App) error 
 			if err != nil {
 				return errors.Wrapf(err, "failed to convert aspect ratio value %v to float", aspectRatio)
 			}
-			orientedAspectRatio, err := getOrientedAspectRatio(ctx, app, aspectRatio)
-			if err != nil {
-				return errors.Wrap(err, "failed to get oriented aspect ratio value")
+
+			// For "Others" aspect ratio (value is 0.0), since we don't know
+			// which resolution will it eventually fallback to, we don't know
+			// what is the expected aspect ratio thus we just skip the related
+			// check.
+			checkAspectRatio := aspectRatio != float64(0)
+			if checkAspectRatio {
+				aspectRatio, err = getOrientedAspectRatio(ctx, app, aspectRatio)
+				if err != nil {
+					return errors.Wrap(err, "failed to get oriented aspect ratio value")
+				}
 			}
 
 			// For each aspect ratio, tests through all possible photo resolution options in the photos resolution settings.
-			if err := clickThroughAllPhotoResolutionOptions(ctx, app, facing, orientedAspectRatio); err != nil {
+			if err := clickThroughAllPhotoResolutionOptions(ctx, app, facing, checkAspectRatio, aspectRatio); err != nil {
 				return errors.Wrap(err, "failed to check photo resolution options")
 			}
 		}
@@ -483,7 +491,7 @@ func checkResolutionAspectRatio(ctx context.Context, resolution *cca.Resolution,
 }
 
 // clickThroughAllPhotoResolutionOptions tries out all the photo resolution options under current aspect ratio and ensures the configuration works successfully.
-func clickThroughAllPhotoResolutionOptions(ctx context.Context, app *cca.App, facing cca.Facing, aspectRatio float64) error {
+func clickThroughAllPhotoResolutionOptions(ctx context.Context, app *cca.App, facing cca.Facing, checkAspectRatio bool, aspectRatio float64) error {
 	if err := cca.PhotoAspectRatioMenu.Close(ctx, app); err != nil {
 		return errors.Wrap(err, "failed to close the aspect ratio settings page")
 	}
@@ -514,17 +522,22 @@ func clickThroughAllPhotoResolutionOptions(ctx context.Context, app *cca.App, fa
 		if err != nil {
 			return err
 		}
-		if err := checkResolutionAspectRatio(ctx, &pr, aspectRatio); err != nil {
-			return err
+		if checkAspectRatio {
+			if err := checkResolutionAspectRatio(ctx, &pr, aspectRatio); err != nil {
+				return err
+			}
 		}
 
 		// Ensure captured photo has correct aspect ratio.
-		ir, err := takePhotoAndGetResolution(ctx, app, aspectRatio != float64(1))
+		handleOrientation := checkAspectRatio && aspectRatio != float64(1)
+		ir, err := takePhotoAndGetResolution(ctx, app, handleOrientation)
 		if err != nil {
 			return err
 		}
-		if err := checkResolutionAspectRatio(ctx, ir, aspectRatio); err != nil {
-			return err
+		if checkAspectRatio {
+			if err := checkResolutionAspectRatio(ctx, ir, aspectRatio); err != nil {
+				return err
+			}
 		}
 	}
 	return nil
