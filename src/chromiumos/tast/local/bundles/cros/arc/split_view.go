@@ -12,10 +12,10 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/power"
@@ -73,34 +73,6 @@ func init() {
 			},
 		},
 	})
-}
-
-// dragToSnapFirstOverviewWindow finds the first window in overview, and drags
-// to snap it. This function assumes that overview is already active.
-func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, primary bool) error {
-	info, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get the primary display info")
-	}
-
-	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
-	if err != nil {
-		// If you see this error on the second window snap (to the right), check if
-		// b/143499564 has been reintroduced.
-		return errors.Wrap(err, "failed to find window in overview grid")
-	}
-
-	center := w.OverviewInfo.Bounds.CenterPoint()
-	target := info.Bounds.RightCenter()
-	if primary {
-		target = info.Bounds.LeftCenter()
-	}
-
-	if err := pc.Drag(center, uiauto.Sleep(2*time.Second), pc.DragTo(target, time.Second))(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag to snap from overview")
-	}
-
-	return nil
 }
 
 type windowStateExpectations []struct {
@@ -263,7 +235,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	// Snap activity to left.
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, pc, true /* primary */); err != nil {
+	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, true /* primary */); err != nil {
 		s.Fatal("Failed to drag window from overview and snap left: ", err)
 	}
 	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{leftAct, ash.WindowStateLeftSnapped, arc.WindowStatePrimarySnapped}}); err != nil {
@@ -274,7 +246,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 
 	// Snap activity to right.
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, pc, false /* primary */); err != nil {
+	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, false /* primary */); err != nil {
 		s.Fatal("Failed to drag window from overview and snap right: ", err)
 	}
 	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{rightAct, ash.WindowStateRightSnapped, arc.WindowStateSecondarySnapped}}); err != nil {
