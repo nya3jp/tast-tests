@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee19458_2d84bc36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-25T21:18:17Z",
+      "side": 1,
+      "message": "If you use h.WaitConnect() instead, it will try to force the data role of the USB port to DFP so that it will more reliably detect the ethernet adapter.",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "01bab271e50c79e9b4f074b1002b68ba9e527b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d1e6aa_23255d48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-25T21:18:17Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right. I think what you want is:\n\n!(\n  (battery \u003d\u003d \"Fully charged\" \u0026\u0026 batteryBaseFile \u003d\u003d \"Full\") ||\n  (battery \u003d\u003d \"Charging\" \u0026\u0026 batteryBaseFile \u003d\u003d \"Charging\")\n)",
+      "range": {
+        "startLine": 239,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 61
+      },
+      "revId": "01bab271e50c79e9b4f074b1002b68ba9e527b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a71f59_06fb37ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-25T21:18:17Z",
+      "side": 1,
+      "message": "Likewise this should be ||",
+      "range": {
+        "startLine": 244,
+        "startChar": 6,
+        "endLine": 244,
+        "endChar": 67
+      },
+      "revId": "01bab271e50c79e9b4f074b1002b68ba9e527b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
