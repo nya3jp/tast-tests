@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16e846fd_87ca8af3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:00:41Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with nits",
+      "revId": "bfbff31132f1c16095fdf9026ee161f34ba9cc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66ec2de_ac6dcbaf",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:00:41Z",
+      "side": 1,
+      "message": "nit: `feature`",
+      "range": {
+        "startLine": 38,
+        "startChar": 72,
+        "endLine": 38,
+        "endChar": 79
+      },
+      "revId": "bfbff31132f1c16095fdf9026ee161f34ba9cc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e642e88_0acfbf14",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:00:41Z",
+      "side": 1,
+      "message": "nit: `make`",
+      "range": {
+        "startLine": 38,
+        "startChar": 54,
+        "endLine": 38,
+        "endChar": 59
+      },
+      "revId": "bfbff31132f1c16095fdf9026ee161f34ba9cc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
