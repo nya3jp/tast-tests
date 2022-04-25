@@ -53,7 +53,7 @@ func AutomaticCleanupCritical(ctx context.Context, s *testing.State) {
 		{
 			name:      "unset",
 			policy:    &policy.DeviceRunAutomaticCleanupOnLogin{Stat: policy.StatusUnset},
-			shouldRun: false,
+			shouldRun: true,
 		},
 		{
 			name:      "false",
