@@ -14,11 +14,27 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type deviceInfo struct {
+	Address    string   `json:"address"`
+	Name       string   `json:"name"`
+	Type       string   `json:"type"`
+	Appearance uint16   `json:"appearance"`
+	Modalias   string   `json:"modalias"`
+	MTU        int16    `json:"mtu"`
+	RSSI       uint16   `json:"rssi"`
+	UUIDs      []string `json:"uuids"`
+}
+
 type adapterInfo struct {
 	Address             string           `json:"address"`
 	Name                string           `json:"name"`
 	NumConnectedDevices jsontypes.Uint32 `json:"num_connected_devices"`
 	Powered             bool             `json:"powered"`
+	ConnectedDevices    []deviceInfo     `json:"connected_devices"`
+	Discoverable        bool             `json:"discoverable"`
+	Discovering         bool             `json:"discovering"`
+	UUIDs               []string         `json:"uuids"`
+	Modalias            string           `json:"modalias"`
 }
 
 type bluetoothInfo struct {
@@ -37,7 +53,7 @@ func init() {
 	})
 }
 
-func validateBluetoothData(ctx context.Context, info *bluetoothInfo) error {
+func validateBluetoothAdapterData(ctx context.Context, info *bluetoothInfo) error {
 	// Get Bluetooth adapter values to compare to the output of cros_healthd.
 	adapters, err := bluetooth.Adapters(ctx)
 	if err != nil {
@@ -52,6 +68,12 @@ func validateBluetoothData(ctx context.Context, info *bluetoothInfo) error {
 
 	if len(adapters) != 1 {
 		return errors.Errorf("unexpected Bluetooth adapters count: got %d; want 1", len(adapters))
+	}
+
+	if len(info.Adapters[0].ConnectedDevices) != int(info.Adapters[0].NumConnectedDevices) {
+		return errors.Errorf("inconsistent number of connected Bluetooth devices: got %d; want %d",
+			len(info.Adapters[0].ConnectedDevices),
+			info.Adapters[0].NumConnectedDevices)
 	}
 
 	if name, err := adapters[0].Name(ctx); err != nil {
@@ -72,6 +94,43 @@ func validateBluetoothData(ctx context.Context, info *bluetoothInfo) error {
 		return errors.Errorf("invalid powered value: got %v; want %v", info.Adapters[0].Powered, powered)
 	}
 
+	if discoverable, err := adapters[0].Discoverable(ctx); err != nil {
+		return err
+	} else if info.Adapters[0].Discoverable != discoverable {
+		return errors.Errorf("invalid discoverable value: got %v; want %v", info.Adapters[0].Discoverable, discoverable)
+	}
+
+	if discovering, err := adapters[0].Discovering(ctx); err != nil {
+		return err
+	} else if info.Adapters[0].Discovering != discovering {
+		return errors.Errorf("invalid discovering value: got %v; want %v", info.Adapters[0].Discovering, discovering)
+	}
+
+	if uuids, err := adapters[0].UUIDs(ctx); err != nil {
+		return err
+	} else if len(info.Adapters[0].UUIDs) != len(uuids) {
+		return errors.Errorf("invalid uuids value: got %v; want %v", info.Adapters[0].UUIDs, uuids)
+	} else {
+		for _, uuid := range uuids {
+			found := false
+			for _, cand := range info.Adapters[0].UUIDs {
+				if uuid == cand {
+					found = true
+					break
+				}
+			}
+			if !found {
+				return errors.Errorf("invalid uuids value: got %v; want %v", info.Adapters[0].UUIDs, uuids)
+			}
+		}
+	}
+
+	if modalias, err := adapters[0].Modalias(ctx); err != nil {
+		return err
+	} else if info.Adapters[0].Modalias != modalias {
+		return errors.Errorf("invalid modalias value: got %v; want %v", info.Adapters[0].Modalias, modalias)
+	}
+
 	return nil
 }
 
@@ -82,7 +141,7 @@ func ProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
 	}
 
-	if err := validateBluetoothData(ctx, &info); err != nil {
-		s.Fatalf("Failed to validate bluetooth data, err [%v]", err)
+	if err := validateBluetoothAdapterData(ctx, &info); err != nil {
+		s.Fatalf("Failed to validate bluetooth adapter data, err [%v]", err)
 	}
 }
