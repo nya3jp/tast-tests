@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccaca82d_0cda977b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-25T18:13:44Z",
+      "side": 1,
+      "message": "Whether or not there is a cellular service shouldn\u0027t be affected by disabling wifi and ethernet, which is why I figured it might be better to just avoid the disable/enable altogether if there is no cellular service to begin with. Up to you, though.",
+      "parentUuid": "751880dc_30956b1f",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1f71745_2a8b9b66",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
         "patchSetId": 1
