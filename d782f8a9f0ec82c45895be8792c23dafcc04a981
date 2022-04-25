@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13eb8056_2b2be001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T21:50:08Z",
+      "side": 1,
+      "message": "Agreed. I have updated the code to check for valid service first.",
+      "parentUuid": "ccaca82d_0cda977b",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1f71745_2a8b9b66",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
         "patchSetId": 1
