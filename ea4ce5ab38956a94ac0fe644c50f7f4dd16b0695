@@ -299,6 +299,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a870d5_3bdecb4b",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T23:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac028e3f_14ef6cd4",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "582f166e_df97c5e9",
@@ -422,6 +440,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d141c938_1966d866",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T23:54:51Z",
+      "side": 1,
+      "message": "I\u0027ll use the current method from now, and if even a single more metric obtained from SurfaceFlinger latency is added in the future, I or someone else can make this change",
+      "parentUuid": "046ff365_d2a4fcd3",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2c947a8_5948eff3",
@@ -475,6 +511,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af518a86_78226f8f",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T23:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f33394d3_8f7ae4e3",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8b94a06_4535381c",
@@ -524,6 +578,24 @@
       "side": 1,
       "message": "Ya that seems relevant to the implementation - `math.MaxInt64` should work",
       "parentUuid": "95028a41_91b42642",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75da5835_892d8482",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T23:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8945dcbc_a00717b9",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -648,6 +720,24 @@
       "side": 1,
       "message": "yeah although it seems you don\u0027t need it until the next call of this function. I think either way is fine",
       "parentUuid": "6a7a03f5_62117f7b",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dcefdff_ff1c2101",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-25T23:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7774a97_65381c22",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
