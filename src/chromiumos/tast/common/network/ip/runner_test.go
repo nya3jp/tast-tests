@@ -41,29 +41,90 @@ func TestGetMAC(t *testing.T) {
 			shouldFail: true, // Empty.
 		},
 		{
-			out: `lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP> 
-eth0             UP             01:02:03:04:05:06 <BROADCAST,MULTICAST,UP,LOWER_UP> 
-wlan0            DOWN           1a:2b:3c:4d:5e:6f <NO-CARRIER,BROADCAST,MULTICAST,UP> 
-`,
-			shouldFail: true, // Multiple results.
-		},
-		{
-			out:        "eth0             UP             01:02:03:04:05:06 <BROADCAST,MULTICAST,UP,LOWER_UP> \n",
+			out: `2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
 			shouldFail: true, // Unmatched name.
 		},
 		// Valid case.
 		{
-			out:        "wlan0            DOWN           1a:2b:3c:4d:5e:6f <NO-CARRIER,BROADCAST,MULTICAST,UP> \n",
+			out: `2: wlan0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 1a:2b:3c:4d:5e:6f ff:ff:ff:ff:ff:ff
+`,
 			expect:     net.HardwareAddr{0x1a, 0x2b, 0x3c, 0x4d, 0x5e, 0x6f},
 			shouldFail: false,
 		},
 	}
 	stub := &stubCmdRunner{}
-	r := &Runner{cmd: stub}
+	r := NewRunner(stub)
 	for i, tc := range testcases {
 		stub.out = []byte(tc.out)
 		// Test MAC function.
 		got, err := r.MAC(context.Background(), "wlan0")
+		if tc.shouldFail {
+			if err == nil {
+				t.Errorf("case#%d should have error", i)
+			}
+			continue
+		}
+		if err != nil {
+			t.Errorf("case#%d failed with err=%v", i, err)
+			continue
+		}
+		if !reflect.DeepEqual(got, tc.expect) {
+			t.Errorf("case#%d got MAC: %v, want: %v", i, got, tc.expect)
+		}
+	}
+}
+
+func TestShowLink(t *testing.T) {
+	testcases := []struct {
+		shouldFail bool
+		out        string
+		expect     []string
+	}{
+		// Invalid cases.
+		{
+			shouldFail: true, // Empty.
+			out:        "",
+		},
+		{
+			shouldFail: true, // Incomplete results.
+			out:        `1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000`,
+		},
+		{
+			shouldFail: true, // Unmatched name.
+			out: `2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
+		},
+		{
+			shouldFail: true, // Brief format not supported.
+			out:        "wlan0             UP             01:02:03:04:05:06 <BROADCAST,MULTICAST,UP,LOWER_UP> \n",
+		},
+
+		// Valid cases.
+		{
+			shouldFail: false,
+			out: `2: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
+			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>"},
+		},
+		{
+			shouldFail: false,
+			out: `2: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+`,
+			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>"},
+		},
+	}
+	stub := &stubCmdRunner{}
+	r := NewRunner(stub)
+	for i, tc := range testcases {
+		stub.out = []byte(tc.out)
+		// Test showLink function.
+		got, err := r.showLink(context.Background(), "wlan0")
 		if tc.shouldFail {
 			if err == nil {
 				t.Errorf("case#%d should have error", i)
