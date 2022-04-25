@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6739c05_90b1ec79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-25T23:40:40Z",
+      "side": 1,
+      "message": "Upon further review I\u0027ve decided to go with just switching the showLink to always parse the full format. The format doesn\u0027t actually seem to change between Gales, OpenWrt, and ChromeOS and likely is consistent across other platforms as well.",
+      "revId": "10a581e140358d483c6fbac9c8da18a6169ad7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
