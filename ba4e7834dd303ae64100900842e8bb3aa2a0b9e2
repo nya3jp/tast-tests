@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4327af7_64c687da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T18:35:40Z",
+      "side": 1,
+      "message": "These two things should be switched around if `testCyclesCount` is the number of times a test scenario is `successfully` run. That means do not include runs where `err !\u003d nil`.",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 2
+      },
+      "revId": "ba4e7834dd303ae64100900842e8bb3aa2a0b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d1e5a8_62054fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T18:35:40Z",
+      "side": 1,
+      "message": "This belongs after the `for` loop, because `Run()` should only increment `testCyclesCount` when this function returns nil.",
+      "range": {
+        "startLine": 594,
+        "startChar": 0,
+        "endLine": 596,
+        "endChar": 21
+      },
+      "revId": "ba4e7834dd303ae64100900842e8bb3aa2a0b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a649ed9_77de8139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T18:35:40Z",
+      "side": 1,
+      "message": "These two things should be switched around if `testCyclesCount` is the number of times a test scenario is `successfully` run. That means do not include runs where `err !\u003d nil`.",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 601,
+        "endChar": 4
+      },
+      "revId": "ba4e7834dd303ae64100900842e8bb3aa2a0b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
