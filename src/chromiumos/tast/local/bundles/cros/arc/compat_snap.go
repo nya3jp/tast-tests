@@ -59,13 +59,6 @@ func waitForWindowState(ctx context.Context, tconn *chrome.TestConn, d *ui.Devic
 	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for Android to be idle")
 	}
-	window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
-	if err != nil {
-		return errors.Wrap(err, "failed to get window info")
-	}
-	if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
-		return errors.Wrap(err, "failed to wait for the window animation")
-	}
 
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ashWindowState); err != nil {
 		return errors.Wrapf(err, "failed to wait for ash-side window state: want %v", ashWindowState)
@@ -81,6 +74,14 @@ func waitForWindowState(ctx context.Context, tconn *chrome.TestConn, d *ui.Devic
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "timed out waiting for ARC window state transition")
+	}
+
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	if err != nil {
+		return errors.Wrap(err, "failed to get window info")
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+		return errors.Wrap(err, "failed to wait for the window animation")
 	}
 
 	return nil
@@ -148,19 +149,7 @@ func testSnapFromOverview(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		return errors.Wrap(err, "failed to enter overview")
 	}
 
-	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find window in overview grid")
-	}
-
-	displayEdgeMargin := 20
-	snapDestinationX := displayInfo.Bounds.Width - displayEdgeMargin
-	if primary {
-		snapDestinationX = displayEdgeMargin
-	}
-	if err := pc.Drag(
-		w.OverviewInfo.Bounds.CenterPoint(),
-		pc.DragTo(coords.NewPoint(snapDestinationX, displayInfo.Bounds.Height/2), 2*time.Second))(ctx); err != nil {
+	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, primary); err != nil {
 		return errors.Wrap(err, "failed to drag to snap from overview")
 	}
 
