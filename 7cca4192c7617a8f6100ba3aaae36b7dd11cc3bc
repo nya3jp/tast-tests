@@ -22,6 +22,29 @@
       },
       "revId": "7cca4192c7617a8f6100ba3aaae36b7dd11cc3bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f2aeee5_ba4dc376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T17:59:55Z",
+      "side": 1,
+      "message": "do all bots have to stay long in the meeting or just one bot is fine?",
+      "range": {
+        "startLine": 333,
+        "startChar": 45,
+        "endLine": 333,
+        "endChar": 74
+      },
+      "revId": "7cca4192c7617a8f6100ba3aaae36b7dd11cc3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
