@@ -73,6 +73,244 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a31134b5_5ff60f42",
+        "filename": "src/chromiumos/tast/common/android/adb/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "Add a comment about why, i.e. arguments can\u0027t be sliced because quotes are required as part of surfaceView name",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9a8a43_1c58b1dd",
+        "filename": "src/chromiumos/tast/common/android/adb/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "I mention this below but the `surfaceViewName` that is passed in should not have extra quotes. Add the quotes around the surfaceViewName here since that\u0027s an implementation detail of this method.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca8db1a8_e92b29b6",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "Renaming this something like \"SurfaceFlingerMetrics\" is probably more descriptive and aligns with the name of the file. `frames` are just an implementation detail.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18492583_f9366026",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "Does this need to be public?",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f848be1_92517bbe",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "have this take in a surfaceName string. The user can define exactly what it looks like that way different APKs will work if their pattern is different. Note that The quotes around the text should not be included by the caller. That\u0027s an implementation detail that can be handled further down.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d7ec4b_117cffe8",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "This needs a comment describing what it is, and a link to where it comes from (cs/ link is fine but it\u0027s also a TODO in Ricardo\u0027s script so having that context would be beneficial).",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "582f166e_df97c5e9",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "nit: `Start` as the method name is enough since the whole struct is about SurfaceFlinger",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "880f760f_6d21c4f7",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "This should be in the `go func()` call below and have a corresponding `defer ticker.Stop` to make sure it gets cleaned up.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9664b7c_adcf493c",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "`Stop` as the function name. Also either return a new struct containing the variables (i.e. `SurfaceFlingerMetricsResult`) or name the return values (fps, latency float64, err error) to make it obvious what\u0027s being returned.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c947a8_5948eff3",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "Is a trim and empty string line not enough to check? If rune is really needed then please add a comment about why.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b94a06_4535381c",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "Check for the cases you are expecting, i.e. 0 items `len(entries) \u003d\u003d 0` and expected length `len(entries) \u003d\u003d 3` here, prior to parsing it out. The checks on line 134 and 139 can go away.",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e026e194_8ce5c70d",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "Considering the error checks will be moved above and there\u0027s only ever expected to be 3 elements, then I think this is simplified by just parsing each of the 3 elements individually rather than building another array. i.e.\n\n```\n\tvar draw, vsync, submit int\n\tvar parseErr error\n\tif draw, parseErr \u003d strconv.Atoi(entries[0]); parseErr !\u003d nil {\n\t}\n```\n\nThat will also allow for clearer errors to be returned",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83ef641b_673f61c9",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "`f.lastTimestamp \u003d draw` here to keep track of the latest without having to check through the frames?",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42b4fb1f_52f29b1a",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T17:22:58Z",
+      "side": 1,
+      "message": "name the output parameters",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7863e213_e2bf5581",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
