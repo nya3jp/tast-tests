@@ -62,7 +62,20 @@ func RetrySilently(n int, action Action, interval time.Duration) Action {
 	return retryWithLogging(n, action, interval, false)
 }
 
+// RetryWithExponentialBackoff returns a function that retries a given action if it returns error.
+// The action will be executed up to n times, including the first attempt.
+// The last error will be returned.  Any other errors will be ignored.
+// Between each run of the loop, the interval increases exponentially.
+// i.e. wt = interval * (base) ^ i where 0 <= i < n-1.
+func RetryWithExponentialBackoff(n int, action Action, interval time.Duration, base int) Action {
+	return retryWithExponentialBackoff(n, action, interval, base, true)
+}
+
 func retryWithLogging(n int, action Action, interval time.Duration, verboseLog bool) Action {
+	return retryWithExponentialBackoff(n, action, interval, 1, verboseLog)
+}
+
+func retryWithExponentialBackoff(n int, action Action, interval time.Duration, base int, verboseLog bool) Action {
 	return func(ctx context.Context) error {
 		var err error
 		for i := 0; i < n; i++ {
@@ -82,6 +95,7 @@ func retryWithLogging(n int, action Action, interval time.Duration, verboseLog b
 				if err := testing.Sleep(ctx, interval); err != nil && verboseLog {
 					testing.ContextLog(ctx, "Failed to sleep between retry iterations: ", err)
 				}
+				interval *= time.Duration(base)
 			}
 		}
 		return err
