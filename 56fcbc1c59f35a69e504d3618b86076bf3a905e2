@@ -56,6 +56,30 @@
       },
       "revId": "56fcbc1c59f35a69e504d3618b86076bf3a905e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e8f17b4_876bad77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-25T16:13:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a97ca609_7f335e69",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 36
+      },
+      "revId": "56fcbc1c59f35a69e504d3618b86076bf3a905e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
