@@ -153,9 +153,8 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Validation test for big meeting.
-			Name:      "16p_validation",
-			Timeout:   defaultTestTimeout + 10*time.Minute,
-			ExtraAttr: []string{"group:cuj"},
+			Name:    "16p_validation",
+			Timeout: defaultTestTimeout + 10*time.Minute,
 			Val: meetTest{
 				num:        16,
 				layout:     meetLayoutTiled,
@@ -165,9 +164,8 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Big meeting with notes.
-			Name:      "16p_notes",
-			Timeout:   defaultTestTimeout,
-			ExtraAttr: []string{"group:cuj"},
+			Name:    "16p_notes",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:    16,
 				layout: meetLayoutTiled,
@@ -178,9 +176,8 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// 16p with jamboard test.
-			Name:      "16p_jamboard",
-			Timeout:   defaultTestTimeout,
-			ExtraAttr: []string{"group:cuj"},
+			Name:    "16p_jamboard",
+			Timeout: defaultTestTimeout,
 			Val: meetTest{
 				num:      16,
 				layout:   meetLayoutTiled,
