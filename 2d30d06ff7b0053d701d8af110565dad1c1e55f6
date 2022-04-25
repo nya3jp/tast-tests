@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5716508_5855d4ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:58:38Z",
+      "side": 1,
+      "message": "nit: This makes it sound like you are fixing a problem where the bot shortage causes MeetCUJ tests to run. Here are some ideas:\n`Disable some MeetCUJ tests, to help with bot shortage`\n`Mitigate bot shortage by disabling some MeetCUJ tests`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "2d30d06ff7b0053d701d8af110565dad1c1e55f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e37141_036a1d45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:58:38Z",
+      "side": 1,
+      "message": "This sounds like a way of saying \"the number of bot requests that are caused by b/229636939,\" implying that the bug causes each of the test variants MeetCUJ.{16p_validation, 16p_notes, 16p_jamboard} to request more than 16 bots. This could lead to an actual misunderstanding because with the code complexity of lines 320-348 at [1], it is perfectly believable that you really do mean the bug causes 16p test variants to request more than 16 bots each.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;drc\u003d4bdea65488cf7090de4de860b047b77313cc634d;l\u003d320",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "2d30d06ff7b0053d701d8af110565dad1c1e55f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c01b5152_dc21b27e",
