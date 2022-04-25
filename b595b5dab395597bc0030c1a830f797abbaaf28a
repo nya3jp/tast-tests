@@ -16,6 +16,63 @@
       "message": "Hi Hidehiko,\nCould you help me review this CL? This is to evaluate the extension of Bluetooth telemetry. Thanks.",
       "revId": "b595b5dab395597bc0030c1a830f797abbaaf28a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f35528_1803cc5c",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-25T14:47:56Z",
+      "side": 1,
+      "message": "nit/style: you can move const into the function.\n\nfunc (a *Adapter) Discoverable(...) ... {\n  const prop \u003d adapterIface + \".Discoverable\"\n  v, err :\u003d dbusutil.Property(ctx, a.obj, prop)\n  ...\n}\n\nditto for others (including the existing ones).",
+      "revId": "b595b5dab395597bc0030c1a830f797abbaaf28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4085e07_05375cc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-25T14:47:56Z",
+      "side": 1,
+      "message": "unused?",
+      "revId": "b595b5dab395597bc0030c1a830f797abbaaf28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed102aa_7d05eccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-25T14:47:56Z",
+      "side": 1,
+      "message": "style: how many elements do you expect here?\nIf time-complexity is not concerned (e.g. N \u003d ~10+) just nested for loop is probably simpler.\n\n  for _, uuid :\u003d range uuids {\n    found :\u003d false\n    for _, cand :\u003d info.Adapters[0].UUIDs {\n      if uuid \u003d\u003d cand {\n        found \u003d true\n        break\n      }\n    }\n    if !found {\n      return errors.Errorf(...)\n    }\n  }",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "b595b5dab395597bc0030c1a830f797abbaaf28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
