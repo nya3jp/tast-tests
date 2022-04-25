@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897b5984_e71bc3c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-25T23:55:08Z",
+      "side": 1,
+      "message": "not related to this CL, but you may want to avoid logs like this. \n\nIn general, `s.Log` is normally used when: 1, there is an error, log info for debugging, i.e., inside `err!\u003dnil {}`, or 2, the following function call may take a long time, log a message to.\n\nsee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 32
+      },
+      "revId": "7ca60f9d7e09e45dcb439234593efcfac9ee52ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d36da1_50af726a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-25T23:55:08Z",
+      "side": 1,
+      "message": "Is there any other way for check is the state file is updated? \n\n`testing.Sleep` is one of the major causes for flakiness, thus it should only be used with caution when there is no other ways.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "7ca60f9d7e09e45dcb439234593efcfac9ee52ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f648b8_3cac201b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/web/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-25T23:55:08Z",
+      "side": 1,
+      "message": "looks like all functions here are using `client pb.AppServiceClient`\n\nHow about creating a struct (e.g. WebHelper or UIHelper) that contains this field?\n\nthen the function may look like `func (ui *UIHelper) WelcomePageOperation(ctx context.Context) error`",
+      "range": {
+        "startLine": 20,
+        "startChar": 65,
+        "endLine": 20,
+        "endChar": 91
+      },
+      "revId": "7ca60f9d7e09e45dcb439234593efcfac9ee52ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72654b19_b3192528",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/web/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-25T23:55:08Z",
+      "side": 1,
+      "message": "The support packages should not call `s.Fatal`. Normally, they just return errors. \nsee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#support-packages\n\nIn general, avoid passing `s *testing.State` to helper packages.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "7ca60f9d7e09e45dcb439234593efcfac9ee52ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
