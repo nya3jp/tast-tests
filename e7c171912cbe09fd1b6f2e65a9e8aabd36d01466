@@ -16,6 +16,63 @@
       "message": "Hi Hidehiko,\nCould you help me review this CL? Thanks.",
       "revId": "e7c171912cbe09fd1b6f2e65a9e8aabd36d01466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee37032b_4cb7a587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-25T14:54:25Z",
+      "side": 1,
+      "message": "nit: testexec.DumpLogOnError may help you to debug in the future.",
+      "range": {
+        "startLine": 41,
+        "startChar": 77,
+        "endLine": 41,
+        "endChar": 79
+      },
+      "revId": "e7c171912cbe09fd1b6f2e65a9e8aabd36d01466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4188027_35ee786d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-25T14:54:25Z",
+      "side": 1,
+      "message": "Could you handle error?\n\nAlso, I\u0027m confused here. monitorCmd started before iterating this for-block, and will never restart.\nSo, in the second time (i.e. if action is \"on\"), monitorCmd is not running at the beginning of the block, so following check does not work/make sense...?\n\nCould you check what you wanted to do, and share with me, too?",
+      "revId": "e7c171912cbe09fd1b6f2e65a9e8aabd36d01466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272415bf_ee794e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-25T14:54:25Z",
+      "side": 1,
+      "message": "if !strings.Contains(stdout, \"Blueooth event received\") {\n    ...\n  }\n  \nlooks enough.",
+      "revId": "e7c171912cbe09fd1b6f2e65a9e8aabd36d01466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
