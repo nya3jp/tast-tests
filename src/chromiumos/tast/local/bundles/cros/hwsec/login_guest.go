@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LoginGuest,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies the cryptohome is mounted for guest user login",
 		Contacts: []string{
 			"achuith@chromium.org",  // Original autotest author

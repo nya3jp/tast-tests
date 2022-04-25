@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CryptohomeDataLeak,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify decrypted user data is cleared after end of session",
 		Contacts: []string{
 			"sarthakkukreti@chromium.org", // Original autotest author

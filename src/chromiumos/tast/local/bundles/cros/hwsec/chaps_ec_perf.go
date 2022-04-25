@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChapsECPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Chaps performance test that includes key import, key sign operation performance measure",
 		Contacts: []string{
 			"zuan@chromium.org",

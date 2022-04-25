@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrossVersionLogin,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies login functionality accross the version",
 		Contacts: []string{
 			"chingkang@google.com",
