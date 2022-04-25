@@ -107,12 +107,13 @@ func (c *Client) send(ctx context.Context, method, url string, reqObj, respObj i
 
 func (c *Client) sendWithRetry(ctx context.Context, method, url string, reqObj, respObj interface{}) error {
 	const (
-		retry         = 3
-		retryInterval = 500 * time.Millisecond
+		retry           = 3
+		retryInterval   = 500 * time.Millisecond
+		exponentialBase = 10
 	)
-	return action.Retry(retry, func(ctx context.Context) error {
+	return action.RetryWithExponentialBackoff(retry, func(ctx context.Context) error {
 		return c.send(ctx, method, url, reqObj, respObj)
-	}, retryInterval)(ctx)
+	}, retryInterval, exponentialBase)(ctx)
 }
 
 // AvailableWorkers returns the number of available workers in the server.
