@@ -13,6 +13,8 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/arc/version"
@@ -30,6 +32,8 @@ type testParam struct {
 	upload bool
 	// if set, keep local data in this directory.
 	dataDir string
+	// whether to enable TTS cache collection.
+	ttsEnabled bool
 }
 
 func init() {
@@ -44,7 +48,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
-			"tast.cros.arc.GmsCoreCacheService"},
+			"tast.cros.arc.GmsCoreCacheService", "tast.cros.arc.TTSCacheService"},
 		Timeout: 40 * time.Minute,
 		// Note that arc.DataCollector is not a simple test. It collects data used to
 		// produce test and release images. Not collecting this data leads to performance
@@ -55,9 +59,10 @@ func init() {
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				vmEnabled: false,
-				upload:    true,
-				dataDir:   "",
+				vmEnabled:  false,
+				upload:     true,
+				dataDir:    "",
+				ttsEnabled: false,
 			},
 		}, {
 			Name:              "vm",
@@ -72,25 +77,28 @@ func init() {
 				// devices lower than 8G.
 				hwdep.MinMemory(7500)),
 			Val: testParam{
-				vmEnabled: true,
-				upload:    true,
-				dataDir:   "",
+				vmEnabled:  true,
+				upload:     true,
+				dataDir:    "",
+				ttsEnabled: false,
 			},
 		}, {
 			Name:              "local",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				vmEnabled: false,
-				upload:    false,
-				dataDir:   "/tmp/data_collector",
+				vmEnabled:  false,
+				upload:     false,
+				dataDir:    "/tmp/data_collector",
+				ttsEnabled: true,
 			},
 		}, {
 			Name:              "vm_local",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				vmEnabled: true,
-				upload:    false,
-				dataDir:   "/tmp/data_collector",
+				vmEnabled:  true,
+				upload:     false,
+				dataDir:    "/tmp/data_collector",
+				ttsEnabled: true,
 			},
 		}},
 		VarDeps: []string{"arc.perfAccountPool"},
@@ -109,6 +117,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		// GMS Core caches bucket
 		gmsCoreCache = "gms_core_cache"
+
+		// TTS cache bucket
+		ttsCache = "tts_cache"
 
 		// Name of the pack in case of initial boot.
 		initialPack = "initial_pack"
@@ -373,4 +384,50 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 		s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
 	}
+
+	if param.ttsEnabled {
+		attempts := 0
+		for {
+			err := genTTSCache(ctx, s, cl, filepath.Join(dataDir, ttsCache), v)
+			if err == nil {
+				break
+			}
+			attempts = attempts + 1
+			dumpLogcat("tts", attempts)
+			if attempts > retryCount {
+				s.Fatal("Failed to generate TTS cache. No more retries left: ", err)
+			}
+			s.Log("Retrying generating TTS cache, previous attempt failed: ", err)
+		}
+	}
+}
+
+func genTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, targetDir, androidVersion string) error {
+	service := arc.NewTTSCacheServiceClient(cl.Conn)
+
+	// Shorten the total context by 5 seconds to allow for cleanup.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	response, err := service.Generate(shortCtx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "failed to generate TTS caches")
+	}
+	d := s.DUT()
+	defer d.Conn().CommandContext(ctx, "rm", "-rf", response.TargetDir).Output()
+
+	if err = os.Mkdir(targetDir, 0744); err != nil {
+		s.Fatalf("Failed to create %q: %v", targetDir, err)
+	}
+
+	if err = linuxssh.GetFile(shortCtx, d.Conn(), filepath.Join(response.TargetDir, response.TtsStateCacheName), filepath.Join(targetDir, response.TtsStateCacheName), linuxssh.PreserveSymlinks); err != nil {
+		s.Fatalf("Failed to get %q from the device: %v", response.TtsStateCacheName, err)
+	}
+	targetTar := filepath.Join(targetDir, androidVersion+".tar")
+	testing.ContextLogf(shortCtx, "Compressing TTS cache to %q", targetTar)
+	if err = exec.Command("tar", "-cvpf", targetTar, "-C", targetDir, ".").Run(); err != nil {
+		s.Fatalf("Failed to compress %q: %v", targetDir, err)
+	}
+
+	return nil
 }

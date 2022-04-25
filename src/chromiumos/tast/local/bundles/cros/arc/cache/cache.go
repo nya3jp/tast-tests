@@ -72,31 +72,15 @@ const (
 	GMSCoreManifest = "gms_core_manifest"
 	// GSFCache defines the GSF cache database file name.
 	GSFCache = "gservices_cache.db"
+	// TTSStateCache defines the TTS state cache file name.
+	TTSStateCache = "tts_state_cache.dat"
 	// Timeout to wait GMS Core resources.
 	gmsCoreWaitTimeout = 2 * time.Minute
 )
 
-// OpenSession starts Chrome and ARC with caches turned on or off, depending on the mode parameter.
-// On success, non-nil pointers are returned that must be closed by the calling function.
-// However, if there is an error, both pointers will be nil
-func OpenSession(ctx context.Context, packagesMode PackagesMode, gmsCoreMode GMSCoreMode, extraArgs []string, outputDir string) (cr *chrome.Chrome, a *arc.ARC, retErr error) {
+// OpenSession starts Chrome and ARC with extra arguments.
+func OpenSession(ctx context.Context, extraArgs []string, outputDir string) (cr *chrome.Chrome, a *arc.ARC, retErr error) {
 	args := arc.DisableSyncFlags()
-	args = append(args, "--arc-disable-download-provider")
-	switch packagesMode {
-	case PackagesSkipCopy:
-		args = append(args, "--arc-packages-cache-mode=skip-copy")
-	case PackagesCopy:
-		args = append(args, "--arc-packages-cache-mode=copy")
-	default:
-		return nil, nil, errors.Errorf("invalid packagesMode %d passed", packagesMode)
-	}
-	switch gmsCoreMode {
-	case GMSCoreEnabled:
-	case GMSCoreDisabled:
-		args = append(args, "--arc-disable-gms-core-cache")
-	default:
-		return nil, nil, errors.Errorf("invalid gmsCoreMode %d passed", gmsCoreMode)
-	}
 	args = append(args, extraArgs...)
 
 	// Signs in as chrome.DefaultUser.
@@ -113,8 +97,34 @@ func OpenSession(ctx context.Context, packagesMode PackagesMode, gmsCoreMode GMS
 	return cr, a, nil
 }
 
-// CopyCaches waits for required caches are ready and copies them to the specified output directory.
-func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
+// OpenGmsCoreSession starts Chrome and ARC with GMS Core caches turned on or off, depending on the mode parameter.
+// On success, non-nil pointers are returned that must be closed by the calling function.
+// However, if there is an error, both pointers will be nil
+func OpenGmsCoreSession(ctx context.Context, packagesMode PackagesMode, gmsCoreMode GMSCoreMode, extraArgs []string, outputDir string) (cr *chrome.Chrome, a *arc.ARC, retErr error) {
+	args := []string{"--arc-disable-download-provider"}
+	switch packagesMode {
+	case PackagesSkipCopy:
+		args = append(args, "--arc-packages-cache-mode=skip-copy")
+	case PackagesCopy:
+		args = append(args, "--arc-packages-cache-mode=copy")
+	default:
+		return nil, nil, errors.Errorf("invalid packagesMode %d passed", packagesMode)
+	}
+	switch gmsCoreMode {
+	case GMSCoreEnabled:
+	case GMSCoreDisabled:
+		args = append(args, "--arc-disable-gms-core-cache")
+	default:
+		return nil, nil, errors.Errorf("invalid gmsCoreMode %d passed", gmsCoreMode)
+	}
+
+	args = append(args, extraArgs...)
+
+	return OpenSession(ctx, args, outputDir)
+}
+
+// CopyGmsCoreCaches waits for required caches are ready and copies them to the specified output directory.
+func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	const (
 		gmsRoot      = "/data/user_de/0/com.google.android.gms"
 		appChimera   = "app_chimera"
@@ -278,6 +288,31 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 
 	if err := ioutil.WriteFile(manifestPath, out, 0644); err != nil {
 		return errors.Wrapf(err, "failed to save GMS Core manifest to %q", manifestPath)
+	}
+
+	return nil
+}
+
+// CopyTTSCache waits for the TTS cache to be ready and copies them to the specified output directory.
+func CopyTTSCache(ctx context.Context, a *arc.ARC, outputDir string) error {
+	const (
+		ttsCacheAndroidPath = "/data/data/org.chromium.arc.intent_helper/files/tts_state.dat"
+	)
+
+	// OpenSession signs in as chrome.DefaultUser.
+	androidDataDir, err := arc.AndroidDataDir(ctx, chrome.DefaultUser)
+	if err != nil {
+		return errors.Wrap(err, "failed to get android-data path")
+	}
+
+	ttsCachePath := filepath.Join(androidDataDir, ttsCacheAndroidPath)
+	if err := waitForPath(ctx, ttsCachePath, pathMustExist); err != nil {
+		return err
+	}
+
+	dst := filepath.Join(outputDir, TTSStateCache)
+	if err := fsutil.CopyFile(ttsCachePath, dst); err != nil {
+		return err
 	}
 
 	return nil
