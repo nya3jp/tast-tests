@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e157c7dc_3ace8006",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T22:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dab1f954_9a941607",
+      "range": {
+        "startLine": 67,
+        "startChar": 62,
+        "endLine": 67,
+        "endChar": 69
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb4f3714_f4d3f53a",
@@ -95,6 +119,78 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddfa8725_57d092d0",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T22:19:54Z",
+      "side": 1,
+      "message": "The largest value of i should be n-2 according to L95.",
+      "parentUuid": "072aff73_b8e4982b",
+      "range": {
+        "startLine": 69,
+        "startChar": 48,
+        "endLine": 69,
+        "endChar": 53
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4febe0f3_ba9ff2a2",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T22:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e97fbd77_93d8d6f8",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 10
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e26478_7a6243e1",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T22:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb4f3714_f4d3f53a",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 69,
+        "endChar": 30
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6898bc94_7648fe6d",
         "filename": "src/chromiumos/tast/common/action/action.go",
         "patchSetId": 4
@@ -106,6 +202,30 @@
       "writtenOn": "2022-04-25T21:25:10Z",
       "side": 1,
       "message": "I think it will be significantly cleaner to update lines 54 and 62 so that they call the below `retryWithExponentialBackoff` function directly.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b01740_6377c1ed",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T22:19:54Z",
+      "side": 1,
+      "message": "Done. Should I just remove retryWithLogging?",
+      "parentUuid": "6898bc94_7648fe6d",
       "range": {
         "startLine": 74,
         "startChar": 5,
@@ -162,6 +282,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7a2681b_7ab1a868",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T22:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "373d7331_013d26df",
+      "range": {
+        "startLine": 78,
+        "startChar": 84,
+        "endLine": 78,
+        "endChar": 87
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c5a2fb_5e5b3872",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T22:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb89d794_8313df9a",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 32
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d0c6322_1439da23",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbe69e1_6598063d",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T22:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d0c6322_1439da23",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7781dead_12fa23e5",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-04-25T21:25:10Z",
       "side": 1,
       "message": "Why `3` and not `10`?",
+      "range": {
+        "startLine": 112,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e78e951_3e2f2b7e",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-25T22:19:54Z",
+      "side": 1,
+      "message": "10 is fine as well. Done.",
+      "parentUuid": "7781dead_12fa23e5",
       "range": {
         "startLine": 112,
         "startChar": 20,
