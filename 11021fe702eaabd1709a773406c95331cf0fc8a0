@@ -50,6 +50,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16db1843_d3f14fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-25T01:53:24Z",
+      "side": 1,
+      "message": "Does the comment mean this file may or may not exist on test?\nIf afraid it can be a source of test flakiness. Could you consider if we can make test deterministic? In this case, can we somehow make sure this file actually exist?",
+      "range": {
+        "startLine": 65,
+        "startChar": 22,
+        "endLine": 65,
+        "endChar": 36
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3207d9c3_9db6246e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-25T01:53:24Z",
+      "side": 1,
+      "message": "I feel it a bit strange that err !\u003d nil is not handled.\nCould you add comments for adding rationale?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "caa1e44a_668a23f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
         "patchSetId": 1
@@ -90,6 +136,29 @@
         "startChar": 7,
         "endLine": 72,
         "endChar": 34
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dde9b8c_10c82d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-25T01:53:24Z",
+      "side": 1,
+      "message": "Could you use testing.Poll instead of sleeping? Sleeping is a common source of flakiness.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 39
       },
       "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
