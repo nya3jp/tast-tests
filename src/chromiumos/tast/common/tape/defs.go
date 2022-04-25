@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -119,11 +119,351 @@ func (p *SkipPrintConfirmationMGS) Schema2JSON(orgunit string) ([]byte, error) {
 ///////////////////////////////////////////////////////////////////////////////
 
 type InstallationUrlMGS struct {
-	InstallationUrl string `json:"installationUrl"`
+	InstallationUrl         string `json:"installationUrl"`
+	OverrideInstallationUrl bool   `json:"overrideInstallationUrl"`
 }
 
 func (p *InstallationUrlMGS) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.devices.managedguest.apps.InstallationUrl", p, []string{"installationUrl"})
+	return marshalJSON(orgunit, "chrome.devices.managedguest.apps.InstallationUrl", p, []string{"installationUrl", "overrideInstallationUrl"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// AllowForUsers
+///////////////////////////////////////////////////////////////////////////////
+
+type AllowForUsers struct {
+	AllowForUsers bool `json:"allowForUsers"`
+}
+
+func (p *AllowForUsers) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.printers.AllowForUsers", p, []string{"allowForUsers"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// AllowForDevices
+///////////////////////////////////////////////////////////////////////////////
+
+type AllowForDevices struct {
+	AllowForDevices bool `json:"allowForDevices"`
+}
+
+func (p *AllowForDevices) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.printers.AllowForDevices", p, []string{"allowForDevices"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// AllowForManagedGuest
+///////////////////////////////////////////////////////////////////////////////
+
+type AllowForManagedGuest struct {
+	AllowForManagedGuest bool `json:"allowForManagedGuest"`
+}
+
+func (p *AllowForManagedGuest) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.printers.AllowForManagedGuest", p, []string{"allowForManagedGuest"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// AndroidAppsEnabled
+///////////////////////////////////////////////////////////////////////////////
+
+type AndroidAppsEnabled struct {
+	ArcEnabled bool `json:"arcEnabled"`
+}
+
+func (p *AndroidAppsEnabled) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.AndroidAppsEnabled", p, []string{"arcEnabled"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// AllowedAppTypes
+///////////////////////////////////////////////////////////////////////////////
+
+type AllowedAppTypes struct {
+	ExtensionAllowedTypes []string `json:"extensionAllowedTypes"`
+}
+
+func (p *AllowedAppTypes) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.AllowedAppTypes", p, []string{"extensionAllowedTypes"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// AppExtensionInstallSources
+///////////////////////////////////////////////////////////////////////////////
+
+type AppExtensionInstallSources struct {
+	ExtensionInstallSources []string `json:"extensionInstallSources"`
+}
+
+func (p *AppExtensionInstallSources) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.AppExtensionInstallSources", p, []string{"extensionInstallSources"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// AllowInsecureUpdates
+///////////////////////////////////////////////////////////////////////////////
+
+type AllowInsecureUpdates struct {
+	ExtensionAllowInsecureUpdates bool `json:"extensionAllowInsecureUpdates"`
+}
+
+func (p *AllowInsecureUpdates) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.AllowInsecureUpdates", p, []string{"extensionAllowInsecureUpdates"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// BlockExternalExtensions
+///////////////////////////////////////////////////////////////////////////////
+
+type BlockExternalExtensions struct {
+	BlockExternalExtensions bool `json:"blockExternalExtensions"`
+}
+
+func (p *BlockExternalExtensions) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.BlockExternalExtensions", p, []string{"blockExternalExtensions"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// BlockExtensionsByPermission
+///////////////////////////////////////////////////////////////////////////////
+
+type BlockExtensionsByPermission struct {
+	ExtensionBlockedPermissions []string `json:"extensionBlockedPermissions"`
+	RuntimeBlockedHosts         []string `json:"runtimeBlockedHosts"`
+	RuntimeAllowedHosts         []string `json:"runtimeAllowedHosts"`
+}
+
+func (p *BlockExtensionsByPermission) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.BlockExtensionsByPermission", p, []string{"extensionBlockedPermissions", "runtimeBlockedHosts", "runtimeAllowedHosts"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// HideWebStoreIcon
+///////////////////////////////////////////////////////////////////////////////
+
+type HideWebStoreIcon struct {
+	HideWebStoreIcon bool `json:"hideWebStoreIcon"`
+}
+
+func (p *HideWebStoreIcon) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.HideWebStoreIcon", p, []string{"hideWebStoreIcon"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// ChromeWebStoreHomepage
+///////////////////////////////////////////////////////////////////////////////
+
+type ChromeWebStoreHomepage struct {
+	CwsHomePage                             ChromeWebStoreHomepageLocationEnum `json:"cwsHomePage"`
+	CwsHomePageCollectionName               string                             `json:"cwsHomePageCollectionName"`
+	CwsHomePageCustomUrl                    string                             `json:"cwsHomePageCustomUrl"`
+	CwsHomePageCollectionIncludePrivateApps bool                               `json:"cwsHomePageCollectionIncludePrivateApps"`
+}
+
+type ChromeWebStoreHomepageLocationEnum int
+
+const (
+	CHROMEWEBSTOREHOMEPAGELOCATIONENUM_CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_DEFAULT    ChromeWebStoreHomepageLocationEnum = iota // 0
+	CHROMEWEBSTOREHOMEPAGELOCATIONENUM_CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_COLLECTION                                           // 1
+	CHROMEWEBSTOREHOMEPAGELOCATIONENUM_CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_CUSTOM                                               // 2
+)
+
+func (p *ChromeWebStoreHomepage) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.ChromeWebStoreHomepage", p, []string{"cwsHomePage", "cwsHomePageCollectionName", "cwsHomePageCustomUrl", "cwsHomePageCollectionIncludePrivateApps"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// ChromeWebStorePermissions
+///////////////////////////////////////////////////////////////////////////////
+
+type ChromeWebStorePermissions struct {
+	AllowWebstorePublish           bool `json:"allowWebstorePublish"`
+	AllowWebstorePublishUnverified bool `json:"allowWebstorePublishUnverified"`
+}
+
+func (p *ChromeWebStorePermissions) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.ChromeWebStorePermissions", p, []string{"allowWebstorePublish", "allowWebstorePublishUnverified"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// ReportAndroidStatus
+///////////////////////////////////////////////////////////////////////////////
+
+type ReportAndroidStatus struct {
+	ReportArcStatusEnabled bool `json:"reportArcStatusEnabled"`
+}
+
+func (p *ReportAndroidStatus) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.ReportAndroidStatus", p, []string{"reportArcStatusEnabled"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// FullRestoreEnabled
+///////////////////////////////////////////////////////////////////////////////
+
+type FullRestoreEnabled struct {
+	FullRestoreEnabled bool `json:"fullRestoreEnabled"`
+}
+
+func (p *FullRestoreEnabled) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.FullRestoreEnabled", p, []string{"fullRestoreEnabled"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// GhostWindowEnabled
+///////////////////////////////////////////////////////////////////////////////
+
+type GhostWindowEnabled struct {
+	GhostWindowEnabled bool `json:"ghostWindowEnabled"`
+}
+
+func (p *GhostWindowEnabled) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.GhostWindowEnabled", p, []string{"ghostWindowEnabled"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// AllowedInstallSources
+///////////////////////////////////////////////////////////////////////////////
+
+type AllowedInstallSources struct {
+	PlayStoreInstallSources      PlayStoreInstallSources      `json:"playStoreInstallSources"`
+	ChromeWebStoreInstallSources ChromeWebStoreInstallSources `json:"chromeWebStoreInstallSources"`
+}
+
+type PlayStoreInstallSources int
+
+const (
+	PLAYSTOREINSTALLSOURCES_PLAY_STORE_ALLOW_ALL_APPS PlayStoreInstallSources = iota // 0
+	PLAYSTOREINSTALLSOURCES_PLAY_STORE_BLOCK_ALL_APPS                                // 1
+)
+
+type ChromeWebStoreInstallSources int
+
+const (
+	CHROMEWEBSTOREINSTALLSOURCES_CHROME_WEB_STORE_ALLOW_ALL_APPS                                 ChromeWebStoreInstallSources = iota // 0
+	CHROMEWEBSTOREINSTALLSOURCES_CHROME_WEB_STORE_BLOCK_ALL_APPS                                                                     // 1
+	CHROMEWEBSTOREINSTALLSOURCES_CHROME_WEB_STORE_BLOCK_ALL_APPS_USER_EXTENSION_REQUESTS_ALLOWED                                     // 2
+)
+
+func (p *AllowedInstallSources) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.appsconfig.AllowedInstallSources", p, []string{"playStoreInstallSources", "chromeWebStoreInstallSources"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// InstallType
+///////////////////////////////////////////////////////////////////////////////
+
+type InstallType struct {
+	AppInstallType UserAppInstallType `json:"appInstallType"`
+}
+
+type UserAppInstallType int
+
+const (
+	USERAPPINSTALLTYPE_BLOCKED                   UserAppInstallType = iota // 0
+	USERAPPINSTALLTYPE_ALLOWED                                             // 1
+	USERAPPINSTALLTYPE_FORCED                                              // 2
+	USERAPPINSTALLTYPE_FORCED_AND_PIN_TO_TOOLBAR                           // 3
+)
+
+func (p *InstallType) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.apps.InstallType", p, []string{"appInstallType"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// IncludeInChromeWebStoreCollection
+///////////////////////////////////////////////////////////////////////////////
+
+type IncludeInChromeWebStoreCollection struct {
+	IncludeInCollection bool `json:"includeInCollection"`
+}
+
+func (p *IncludeInChromeWebStoreCollection) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.apps.IncludeInChromeWebStoreCollection", p, []string{"includeInCollection"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// CertificateManagement
+///////////////////////////////////////////////////////////////////////////////
+
+type CertificateManagement struct {
+	AllowAccessToKeys        bool `json:"allowAccessToKeys"`
+	AllowEnterpriseChallenge bool `json:"allowEnterpriseChallenge"`
+}
+
+func (p *CertificateManagement) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.apps.CertificateManagement", p, []string{"allowAccessToKeys", "allowEnterpriseChallenge"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PermissionsAndUrlAccess
+///////////////////////////////////////////////////////////////////////////////
+
+type PermissionsAndUrlAccess struct {
+	BlockedPermissions []string `json:"blockedPermissions"`
+	AllowedPermissions []string `json:"allowedPermissions"`
+	BlockedHosts       []string `json:"blockedHosts"`
+	AllowedHosts       []string `json:"allowedHosts"`
+}
+
+func (p *PermissionsAndUrlAccess) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.apps.PermissionsAndUrlAccess", p, []string{"blockedPermissions", "allowedPermissions", "blockedHosts", "allowedHosts"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// ManagedConfiguration
+///////////////////////////////////////////////////////////////////////////////
+
+type ManagedConfiguration struct {
+	ManagedConfiguration string `json:"managedConfiguration"`
+}
+
+func (p *ManagedConfiguration) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.apps.ManagedConfiguration", p, []string{"managedConfiguration"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// DefaultLaunchContainer
+///////////////////////////////////////////////////////////////////////////////
+
+type DefaultLaunchContainer struct {
+	DefaultLaunchContainer UserAppDefaultLaunchContainer `json:"defaultLaunchContainer"`
+}
+
+type UserAppDefaultLaunchContainer int
+
+const (
+	USERAPPDEFAULTLAUNCHCONTAINER_TAB    UserAppDefaultLaunchContainer = iota // 0
+	USERAPPDEFAULTLAUNCHCONTAINER_WINDOW                                      // 1
+)
+
+func (p *DefaultLaunchContainer) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.apps.DefaultLaunchContainer", p, []string{"defaultLaunchContainer"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// SkipPrintConfirmation
+///////////////////////////////////////////////////////////////////////////////
+
+type SkipPrintConfirmation struct {
+	SkipPrintConfirmation bool `json:"skipPrintConfirmation"`
+}
+
+func (p *SkipPrintConfirmation) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.apps.SkipPrintConfirmation", p, []string{"skipPrintConfirmation"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// InstallationUrl
+///////////////////////////////////////////////////////////////////////////////
+
+type InstallationUrl struct {
+	InstallationUrl         string `json:"installationUrl"`
+	OverrideInstallationUrl bool   `json:"overrideInstallationUrl"`
+}
+
+func (p *InstallationUrl) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.apps.InstallationUrl", p, []string{"installationUrl", "overrideInstallationUrl"})
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -215,47 +555,12 @@ func (p *ManagedConfigurationKiosk) Schema2JSON(orgunit string) ([]byte, error) 
 ///////////////////////////////////////////////////////////////////////////////
 
 type InstallationUrlKiosk struct {
-	InstallationUrl string `json:"installationUrl"`
+	InstallationUrl         string `json:"installationUrl"`
+	OverrideInstallationUrl bool   `json:"overrideInstallationUrl"`
 }
 
 func (p *InstallationUrlKiosk) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.devices.kiosk.apps.InstallationUrl", p, []string{"installationUrl"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// AllowForUsers
-///////////////////////////////////////////////////////////////////////////////
-
-type AllowForUsers struct {
-	AllowForUsers bool `json:"allowForUsers"`
-}
-
-func (p *AllowForUsers) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.printers.AllowForUsers", p, []string{"allowForUsers"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// AllowForDevices
-///////////////////////////////////////////////////////////////////////////////
-
-type AllowForDevices struct {
-	AllowForDevices bool `json:"allowForDevices"`
-}
-
-func (p *AllowForDevices) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.printers.AllowForDevices", p, []string{"allowForDevices"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// AllowForManagedGuest
-///////////////////////////////////////////////////////////////////////////////
-
-type AllowForManagedGuest struct {
-	AllowForManagedGuest bool `json:"allowForManagedGuest"`
-}
-
-func (p *AllowForManagedGuest) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.printers.AllowForManagedGuest", p, []string{"allowForManagedGuest"})
+	return marshalJSON(orgunit, "chrome.devices.kiosk.apps.InstallationUrl", p, []string{"installationUrl", "overrideInstallationUrl"})
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -580,6 +885,7 @@ type IncognitoModeAvailabilityEnum int
 const (
 	INCOGNITOMODEAVAILABILITYENUM_INCOGNITO_MODE_AVAILABILITY_ENUM_AVAILABLE   IncognitoModeAvailabilityEnum = iota // 0
 	INCOGNITOMODEAVAILABILITYENUM_INCOGNITO_MODE_AVAILABILITY_ENUM_UNAVAILABLE                                      // 1
+	INCOGNITOMODEAVAILABILITYENUM_INCOGNITO_MODE_AVAILABILITY_ENUM_FORCED                                           // 2
 )
 
 func (p *IncognitoMode) Schema2JSON(orgunit string) ([]byte, error) {
@@ -1005,6 +1311,20 @@ func (p *AllowSystemNotifications) Schema2JSON(orgunit string) ([]byte, error) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// ScreenBrightnessPercent
+///////////////////////////////////////////////////////////////////////////////
+
+type ScreenBrightnessPercent struct {
+	BrightnessEnabled bool  `json:"brightnessEnabled"`
+	BrightnessAc      int64 `json:"brightnessAc"`
+	BrightnessBattery int64 `json:"brightnessBattery"`
+}
+
+func (p *ScreenBrightnessPercent) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.ScreenBrightnessPercent", p, []string{"brightnessEnabled", "brightnessAc", "brightnessBattery"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // TripleDesEnabled
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1038,6 +1358,30 @@ type DisplayCapturePermissionsPolicyEnabled struct {
 
 func (p *DisplayCapturePermissionsPolicyEnabled) Schema2JSON(orgunit string) ([]byte, error) {
 	return marshalJSON(orgunit, "chrome.users.DisplayCapturePermissionsPolicyEnabled", p, []string{"displayCapturePermissionsPolicyEnabled"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// WebSqlInThirdPartyContextEnabled
+///////////////////////////////////////////////////////////////////////////////
+
+type WebSqlInThirdPartyContextEnabled struct {
+	WebSqlInThirdPartyContextEnabled bool `json:"webSqlInThirdPartyContextEnabled"`
+}
+
+func (p *WebSqlInThirdPartyContextEnabled) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.WebSqlInThirdPartyContextEnabled", p, []string{"webSqlInThirdPartyContextEnabled"})
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// UTwoFSecurityKeyApiEnabled
+///////////////////////////////////////////////////////////////////////////////
+
+type UTwoFSecurityKeyApiEnabled struct {
+	UTwoFSecurityKeyApiEnabled bool `json:"uTwoFSecurityKeyApiEnabled"`
+}
+
+func (p *UTwoFSecurityKeyApiEnabled) Schema2JSON(orgunit string) ([]byte, error) {
+	return marshalJSON(orgunit, "chrome.users.UTwoFSecurityKeyApiEnabled", p, []string{"uTwoFSecurityKeyApiEnabled"})
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1076,340 +1420,4 @@ type RemoteAccessHostFirewallTraversal struct {
 
 func (p *RemoteAccessHostFirewallTraversal) Schema2JSON(orgunit string) ([]byte, error) {
 	return marshalJSON(orgunit, "chrome.users.RemoteAccessHostFirewallTraversal", p, []string{"remoteAccessHostFirewallTraversal", "remoteAccessHostAllowRelayedConnection", "remoteAccessHostUdpPortRange"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// ShowLogoutButton
-///////////////////////////////////////////////////////////////////////////////
-
-type ShowLogoutButton struct {
-	ShowLogoutButtonInTray bool `json:"showLogoutButtonInTray"`
-}
-
-func (p *ShowLogoutButton) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.ShowLogoutButton", p, []string{"showLogoutButtonInTray"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// KerberosTickets
-///////////////////////////////////////////////////////////////////////////////
-
-type KerberosTickets struct {
-	KerberosEnabled                    bool     `json:"kerberosEnabled"`
-	KerberosPrincipal                  string   `json:"kerberosPrincipal"`
-	KerberosConfiguration              []string `json:"kerberosConfiguration"`
-	KerberosAutoAccountEnabled         bool     `json:"kerberosAutoAccountEnabled"`
-	KerberosCustomConfigurationEnabled bool     `json:"kerberosCustomConfigurationEnabled"`
-}
-
-func (p *KerberosTickets) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.KerberosTickets", p, []string{"kerberosEnabled", "kerberosPrincipal", "kerberosConfiguration", "kerberosAutoAccountEnabled", "kerberosCustomConfigurationEnabled"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// KerberosRememberPasswordEnabled
-///////////////////////////////////////////////////////////////////////////////
-
-type KerberosRememberPasswordEnabled struct {
-	KerberosRememberPasswordEnabled bool `json:"kerberosRememberPasswordEnabled"`
-}
-
-func (p *KerberosRememberPasswordEnabled) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.KerberosRememberPasswordEnabled", p, []string{"kerberosRememberPasswordEnabled"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// KerberosAddAccountsAllowed
-///////////////////////////////////////////////////////////////////////////////
-
-type KerberosAddAccountsAllowed struct {
-	KerberosAddAccountsAllowed bool `json:"kerberosAddAccountsAllowed"`
-}
-
-func (p *KerberosAddAccountsAllowed) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.KerberosAddAccountsAllowed", p, []string{"kerberosAddAccountsAllowed"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// SimpleProxySettings
-///////////////////////////////////////////////////////////////////////////////
-
-type SimpleProxySettings struct {
-	SimpleProxyMode      ProxyModeEnum `json:"simpleProxyMode"`
-	SimpleProxyServerUrl string        `json:"simpleProxyServerUrl"`
-	SimpleProxyPacUrl    string        `json:"simpleProxyPacUrl"`
-	ProxyBypassList      []string      `json:"proxyBypassList"`
-}
-
-type ProxyModeEnum int
-
-const (
-	PROXYMODEENUM_PROXY_MODE_ENUM_USER_CONFIGURED ProxyModeEnum = iota // 0
-	PROXYMODEENUM_PROXY_MODE_ENUM_DIRECT                               // 1
-	PROXYMODEENUM_PROXY_MODE_ENUM_AUTO_DETECT                          // 2
-	PROXYMODEENUM_PROXY_MODE_ENUM_FIXED_SERVERS                        // 3
-	PROXYMODEENUM_PROXY_MODE_ENUM_PAC_SCRIPT                           // 4
-)
-
-func (p *SimpleProxySettings) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.SimpleProxySettings", p, []string{"simpleProxyMode", "simpleProxyServerUrl", "simpleProxyPacUrl", "proxyBypassList"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// CaptivePortalAuthenticationIgnoresProxy
-///////////////////////////////////////////////////////////////////////////////
-
-type CaptivePortalAuthenticationIgnoresProxy struct {
-	CaptivePortalAuthenticationIgnoresProxy bool `json:"captivePortalAuthenticationIgnoresProxy"`
-}
-
-func (p *CaptivePortalAuthenticationIgnoresProxy) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.CaptivePortalAuthenticationIgnoresProxy", p, []string{"captivePortalAuthenticationIgnoresProxy"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// AuthSchemes
-///////////////////////////////////////////////////////////////////////////////
-
-type AuthSchemes struct {
-	AuthSchemes []string `json:"authSchemes"`
-}
-
-func (p *AuthSchemes) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.AuthSchemes", p, []string{"authSchemes"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// BasicAuthOverHttpEnabled
-///////////////////////////////////////////////////////////////////////////////
-
-type BasicAuthOverHttpEnabled struct {
-	BasicAuthOverHttpEnabled bool `json:"basicAuthOverHttpEnabled"`
-}
-
-func (p *BasicAuthOverHttpEnabled) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.BasicAuthOverHttpEnabled", p, []string{"basicAuthOverHttpEnabled"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// NtlmV2Enabled
-///////////////////////////////////////////////////////////////////////////////
-
-type NtlmV2Enabled struct {
-	NtlmV2Enabled bool `json:"ntlmV2Enabled"`
-}
-
-func (p *NtlmV2Enabled) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.NtlmV2Enabled", p, []string{"ntlmV2Enabled"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// SslVersionMin
-///////////////////////////////////////////////////////////////////////////////
-
-type SslVersionMin struct {
-	SslVersionMin SSLVersionMinEnum `json:"sslVersionMin"`
-}
-
-type SSLVersionMinEnum int
-
-const (
-	SSLVERSIONMINENUM_SSL_VERSION_MIN_ENUM_TL_SV_1   SSLVersionMinEnum = iota // 0
-	SSLVERSIONMINENUM_SSL_VERSION_MIN_ENUM_TL_SV_1_1                          // 1
-	SSLVERSIONMINENUM_SSL_VERSION_MIN_ENUM_TL_SV_1_2                          // 2
-	SSLVERSIONMINENUM_SSL_VERSION_MIN_ENUM_SSL_V_3                            // 3
-)
-
-func (p *SslVersionMin) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.SslVersionMin", p, []string{"sslVersionMin"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// SslErrorOverrideAllowed
-///////////////////////////////////////////////////////////////////////////////
-
-type SslErrorOverrideAllowed struct {
-	SslErrorOverrideAllowed bool `json:"sslErrorOverrideAllowed"`
-}
-
-func (p *SslErrorOverrideAllowed) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.SslErrorOverrideAllowed", p, []string{"sslErrorOverrideAllowed"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// SslErrorOverrideAllowedForOrigins
-///////////////////////////////////////////////////////////////////////////////
-
-type SslErrorOverrideAllowedForOrigins struct {
-	SslErrorOverrideAllowedForOrigins []string `json:"sslErrorOverrideAllowedForOrigins"`
-}
-
-func (p *SslErrorOverrideAllowedForOrigins) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.SslErrorOverrideAllowedForOrigins", p, []string{"sslErrorOverrideAllowedForOrigins"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// DataCompressionProxy
-///////////////////////////////////////////////////////////////////////////////
-
-type DataCompressionProxy struct {
-	DataCompressionProxyEnabled NullableBoolean `json:"dataCompressionProxyEnabled"`
-}
-
-func (p *DataCompressionProxy) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.DataCompressionProxy", p, []string{"dataCompressionProxyEnabled"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// WebRtcUdpPortRange
-///////////////////////////////////////////////////////////////////////////////
-
-type WebRtcUdpPortRange struct {
-	WebRtcUdpPortsEnabled bool  `json:"webRtcUdpPortsEnabled"`
-	WebRtcUdpPortsMin     int64 `json:"webRtcUdpPortsMin"`
-	WebRtcUdpPortsMax     int64 `json:"webRtcUdpPortsMax"`
-}
-
-func (p *WebRtcUdpPortRange) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.WebRtcUdpPortRange", p, []string{"webRtcUdpPortsEnabled", "webRtcUdpPortsMin", "webRtcUdpPortsMax"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// WebRtcLocalIpsAllowedUrls
-///////////////////////////////////////////////////////////////////////////////
-
-type WebRtcLocalIpsAllowedUrls struct {
-	WebRtcLocalIpsAllowedUrls []string `json:"webRtcLocalIpsAllowedUrls"`
-}
-
-func (p *WebRtcLocalIpsAllowedUrls) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.WebRtcLocalIpsAllowedUrls", p, []string{"webRtcLocalIpsAllowedUrls"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// QuicProtocol
-///////////////////////////////////////////////////////////////////////////////
-
-type QuicProtocol struct {
-	QuicAllowed bool `json:"quicAllowed"`
-}
-
-func (p *QuicProtocol) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.QuicProtocol", p, []string{"quicAllowed"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// WebRtcIpHandling
-///////////////////////////////////////////////////////////////////////////////
-
-type WebRtcIpHandling struct {
-	WebRtcIpHandling WebRtcIPHandlingEnum `json:"webRtcIpHandling"`
-}
-
-type WebRtcIPHandlingEnum int
-
-const (
-	WEBRTCIPHANDLINGENUM_WEB_RTC_IP_HANDLING_ENUM_DEFAULT                               WebRtcIPHandlingEnum = iota // 0
-	WEBRTCIPHANDLINGENUM_WEB_RTC_IP_HANDLING_ENUM_DEFAULT_PUBLIC_AND_PRIVATE_INTERFACES                             // 1
-	WEBRTCIPHANDLINGENUM_WEB_RTC_IP_HANDLING_ENUM_DEFAULT_PUBLIC_INTERFACE_ONLY                                     // 2
-	WEBRTCIPHANDLINGENUM_WEB_RTC_IP_HANDLING_ENUM_DISABLE_NON_PROXIED_UDP                                           // 3
-)
-
-func (p *WebRtcIpHandling) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.WebRtcIpHandling", p, []string{"webRtcIpHandling"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// DnsOverHttps
-///////////////////////////////////////////////////////////////////////////////
-
-type DnsOverHttps struct {
-	DnsOverHttpsMode      DnsOverHttpsModeEnum `json:"dnsOverHttpsMode"`
-	DnsOverHttpsTemplates []string             `json:"dnsOverHttpsTemplates"`
-}
-
-type DnsOverHttpsModeEnum int
-
-const (
-	DNSOVERHTTPSMODEENUM_DNS_OVER_HTTPS_MODE_ENUM_OFF       DnsOverHttpsModeEnum = iota // 0
-	DNSOVERHTTPSMODEENUM_DNS_OVER_HTTPS_MODE_ENUM_AUTOMATIC                             // 1
-	DNSOVERHTTPSMODEENUM_DNS_OVER_HTTPS_MODE_ENUM_SECURE                                // 2
-	DNSOVERHTTPSMODEENUM_DNS_OVER_HTTPS_MODE_ENUM_UNSET                                 // 3
-)
-
-func (p *DnsOverHttps) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.DnsOverHttps", p, []string{"dnsOverHttpsMode", "dnsOverHttpsTemplates"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// BuiltInDnsClientEnabled
-///////////////////////////////////////////////////////////////////////////////
-
-type BuiltInDnsClientEnabled struct {
-	BuiltInDnsClientEnabled NullableBoolean `json:"builtInDnsClientEnabled"`
-}
-
-func (p *BuiltInDnsClientEnabled) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.BuiltInDnsClientEnabled", p, []string{"builtInDnsClientEnabled"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// AlwaysOnVpn
-///////////////////////////////////////////////////////////////////////////////
-
-type AlwaysOnVpn struct {
-	AlwaysOnVpnApp   string `json:"alwaysOnVpnApp"`
-	VpnConfigAllowed bool   `json:"vpnConfigAllowed"`
-}
-
-func (p *AlwaysOnVpn) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.AlwaysOnVpn", p, []string{"alwaysOnVpnApp", "vpnConfigAllowed"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// AuthenticationServerAllowlist
-///////////////////////////////////////////////////////////////////////////////
-
-type AuthenticationServerAllowlist struct {
-	AuthServerAllowlist []string `json:"authServerAllowlist"`
-}
-
-func (p *AuthenticationServerAllowlist) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.AuthenticationServerAllowlist", p, []string{"authServerAllowlist"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// AuthenticationServerDelegationAllowlist
-///////////////////////////////////////////////////////////////////////////////
-
-type AuthenticationServerDelegationAllowlist struct {
-	AuthNegotiateDelegateAllowlist []string `json:"authNegotiateDelegateAllowlist"`
-}
-
-func (p *AuthenticationServerDelegationAllowlist) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.AuthenticationServerDelegationAllowlist", p, []string{"authNegotiateDelegateAllowlist"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// KerberosTicketDelegation
-///////////////////////////////////////////////////////////////////////////////
-
-type KerberosTicketDelegation struct {
-	AuthNegotiateDelegateByKdcPolicy bool `json:"authNegotiateDelegateByKdcPolicy"`
-}
-
-func (p *KerberosTicketDelegation) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.KerberosTicketDelegation", p, []string{"authNegotiateDelegateByKdcPolicy"})
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// KerberosServicePrincipalName
-///////////////////////////////////////////////////////////////////////////////
-
-type KerberosServicePrincipalName struct {
-	DisableAuthNegotiateCnameLookup bool `json:"disableAuthNegotiateCnameLookup"`
-}
-
-func (p *KerberosServicePrincipalName) Schema2JSON(orgunit string) ([]byte, error) {
-	return marshalJSON(orgunit, "chrome.users.KerberosServicePrincipalName", p, []string{"disableAuthNegotiateCnameLookup"})
 }

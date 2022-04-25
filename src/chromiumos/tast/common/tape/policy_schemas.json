@@ -294,6 +294,7 @@
       "description": "Sets extension permissions that should be blocked. If this field is set 'allowedPermissions' must be unset.",
       "knownValueDescriptions": [
         {
+          "value": "",
           "description": "Allow all permissions. If empty string is set, it must be the only value set for the policy."
         },
         {
@@ -748,6 +749,12 @@
             "number": 1,
             "label": "LABEL_OPTIONAL",
             "type": "TYPE_STRING"
+          },
+          {
+            "name": "overrideInstallationUrl",
+            "number": 2,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
           }
         ]
       }
@@ -758,9 +765,1803 @@
       "field": "installationUrl",
       "description": "The url from which to install a self hosted Chrome Extension.",
       "inputConstraint": "Must be a valid url."
+    },
+    {
+      "field": "overrideInstallationUrl",
+      "description": "Override the URL provided in the extension manifest with the provided installation url."
     }
   ],
   "schemaName": "chrome.devices.managedguest.apps.InstallationUrl",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.printers.AllowForUsers",
+  "policyDescription": "Allows a printer for users in a given organization.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "printer_id",
+      "keyDescription": "Id of printer as visible in Admin SDK printers API."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "AllowForUsers",
+        "field": [
+          {
+            "name": "allowForUsers",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "allowForUsers",
+      "description": "Controls whether a printer is allowed for users in a given organization."
+    }
+  ],
+  "schemaName": "chrome.printers.AllowForUsers",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.printers.AllowForDevices",
+  "policyDescription": "Allows a printer for devices in a given organization.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "printer_id",
+      "keyDescription": "Id of printer as visible in Admin SDK printers API."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "AllowForDevices",
+        "field": [
+          {
+            "name": "allowForDevices",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "allowForDevices",
+      "description": "Controls whether a printer is allowed for devices in a given organization."
+    }
+  ],
+  "schemaName": "chrome.printers.AllowForDevices",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.printers.AllowForManagedGuest",
+  "policyDescription": "Allows a printer for Managed Guest in a given organization.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "printer_id",
+      "keyDescription": "Id of printer as visible in Admin SDK printers API."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "AllowForManagedGuest",
+        "field": [
+          {
+            "name": "allowForManagedGuest",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "allowForManagedGuest",
+      "description": "Controls whether a printer is for Managed Guest in a given organization."
+    }
+  ],
+  "schemaName": "chrome.printers.AllowForManagedGuest",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.AndroidAppsEnabled",
+  "policyDescription": "Android applications on Chrome devices.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "AndroidAppsEnabled",
+        "field": [
+          {
+            "name": "arcEnabled",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          },
+          {
+            "name": "ackNoticeForArcEnabledSetToTrue",
+            "number": 10001,
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "arcEnabled",
+      "description": "Whether to allow or disallow to install Android applications for managed Chrome OS users.",
+      "knownValueDescriptions": [
+        {
+          "value": "false",
+          "description": "Disable letting a user install Android applications on a Chrome OS device."
+        },
+        {
+          "value": "true",
+          "description": "Enable letting a user install Android applications on a Chrome OS device."
+        }
+      ]
+    },
+    {
+      "field": "ackNoticeForArcEnabledSetToTrue",
+      "description": "This field must be set to true to acknowledge the notice message associated with the field 'arc_enabled' set to value 'true'. Please sse the notices listed with this policy for more information."
+    }
+  ],
+  "notices": [
+    {
+      "field": "arcEnabled",
+      "noticeValue": "true",
+      "noticeMessage": "Devices must have sufficient resources to support Android apps. Without proper planning, session startup time and network resources might be significantly impacted. For details, read this best practices guide: https://support.google.com/chrome/a/answer/9962839. We strongly recommend that you set this value to \"false\" for highly shared Chromebook environments or if ephemeral mode is set.",
+      "acknowledgementRequired": true
+    },
+    {
+      "field": "arcEnabled",
+      "noticeValue": "true",
+      "noticeMessage": "Before you set this to true you must accept \"Managed Google Play Agreement\" by going here https://play.google.com/work with a super administrator account."
+    }
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/9039146?hl=en#androidapps",
+  "schemaName": "chrome.users.appsconfig.AndroidAppsEnabled",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.AllowedAppTypes",
+  "policyDescription": "Allowed types of apps and extensions.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "AllowedAppTypes",
+        "field": [
+          {
+            "name": "extensionAllowedTypes",
+            "number": 1,
+            "label": "LABEL_REPEATED",
+            "type": "TYPE_STRING"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "extensionAllowedTypes",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "extension",
+          "description": "Extension."
+        },
+        {
+          "value": "theme",
+          "description": "Theme."
+        },
+        {
+          "value": "user_script",
+          "description": "Google Apps Script."
+        },
+        {
+          "value": "hosted_app",
+          "description": "Hosted app."
+        },
+        {
+          "value": "legacy_packaged_app",
+          "description": "Legacy packaged app."
+        },
+        {
+          "value": "platform_app",
+          "description": "Chrome packaged app."
+        }
+      ]
+    }
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/9039146?hl=en#allowed",
+  "schemaName": "chrome.users.appsconfig.AllowedAppTypes",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.AppExtensionInstallSources",
+  "policyDescription": "App and extension install sources.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "AppExtensionInstallSources",
+        "field": [
+          {
+            "name": "extensionInstallSources",
+            "number": 1,
+            "label": "LABEL_REPEATED",
+            "type": "TYPE_STRING"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "extensionInstallSources",
+      "description": "Sources URL patterns. Chrome will offer to install app and extension packages from URLs that match the listed patterns."
+    }
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/9039146?hl=en#installsources",
+  "schemaName": "chrome.users.appsconfig.AppExtensionInstallSources",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.AllowInsecureUpdates",
+  "policyDescription": "Allow insecure extension packaging.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "AllowInsecureUpdates",
+        "field": [
+          {
+            "name": "extensionAllowInsecureUpdates",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "extensionAllowInsecureUpdates",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Allow insecurely packaged extensions."
+        },
+        {
+          "value": "false",
+          "description": "Do not allow insecurely packaged extensions."
+        }
+      ]
+    }
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/9039146?hl=en#insecureextension",
+  "schemaName": "chrome.users.appsconfig.AllowInsecureUpdates",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.BlockExternalExtensions",
+  "policyDescription": "External extensions.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "BlockExternalExtensions",
+        "field": [
+          {
+            "name": "blockExternalExtensions",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "blockExternalExtensions",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Block external extensions from being installed."
+        },
+        {
+          "value": "false",
+          "description": "Allow external extensions to be installed."
+        }
+      ]
+    }
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/9039146?hl=en#block_external_extensions",
+  "schemaName": "chrome.users.appsconfig.BlockExternalExtensions",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.BlockExtensionsByPermission",
+  "policyDescription": "Permissions and URLs.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "BlockExtensionsByPermission",
+        "field": [
+          {
+            "name": "extensionBlockedPermissions",
+            "number": 1,
+            "label": "LABEL_REPEATED",
+            "type": "TYPE_STRING"
+          },
+          {
+            "name": "runtimeBlockedHosts",
+            "number": 2,
+            "label": "LABEL_REPEATED",
+            "type": "TYPE_STRING"
+          },
+          {
+            "name": "runtimeAllowedHosts",
+            "number": 3,
+            "label": "LABEL_REPEATED",
+            "type": "TYPE_STRING"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "extensionBlockedPermissions",
+      "description": "Block extensions by permission.",
+      "knownValueDescriptions": [
+        {
+          "value": "alarms",
+          "description": "Alarms."
+        },
+        {
+          "value": "audioCapture",
+          "description": "Audio capture."
+        },
+        {
+          "value": "certificateProvider",
+          "description": "Certificate provider."
+        },
+        {
+          "value": "clipboardRead",
+          "description": "Clipboard read."
+        },
+        {
+          "value": "clipboardWrite",
+          "description": "Clipboard write."
+        },
+        {
+          "value": "contextMenus",
+          "description": "Context menus."
+        },
+        {
+          "value": "desktopCapture",
+          "description": "Desktop capture."
+        },
+        {
+          "value": "documentScan",
+          "description": "Document scan."
+        },
+        {
+          "value": "enterprise.deviceAttributes",
+          "description": "Enterprise device attributes."
+        },
+        {
+          "value": "experimental",
+          "description": "Experimental APIs."
+        },
+        {
+          "value": "app.window.fullscreen",
+          "description": "Fullscreen apps."
+        },
+        {
+          "value": "fileBrowserHandler",
+          "description": "File browser handler."
+        },
+        {
+          "value": "fileSystem",
+          "description": "File system."
+        },
+        {
+          "value": "fileSystemProvider",
+          "description": "File system provider."
+        },
+        {
+          "value": "hid",
+          "description": "HID."
+        },
+        {
+          "value": "app.window.fullscreen.overrideEsc",
+          "description": "Override fullscreen escape."
+        },
+        {
+          "value": "idle",
+          "description": "Detect idle."
+        },
+        {
+          "value": "identity",
+          "description": "Identity."
+        },
+        {
+          "value": "gcm",
+          "description": "Google Cloud Messaging."
+        },
+        {
+          "value": "geolocation",
+          "description": "Geo location."
+        },
+        {
+          "value": "mediaGalleries",
+          "description": "Media galleries."
+        },
+        {
+          "value": "nativeMessaging",
+          "description": "Native messaging."
+        },
+        {
+          "value": "networking.config",
+          "description": "Captive portal authenticator."
+        },
+        {
+          "value": "power",
+          "description": "Power."
+        },
+        {
+          "value": "notifications",
+          "description": "Notifications."
+        },
+        {
+          "value": "printerProvider",
+          "description": "Printers."
+        },
+        {
+          "value": "serial",
+          "description": "Serial."
+        },
+        {
+          "value": "proxy",
+          "description": "Set proxy."
+        },
+        {
+          "value": "platformKeys",
+          "description": "Platform keys."
+        },
+        {
+          "value": "storage",
+          "description": "Storage."
+        },
+        {
+          "value": "syncFileSystem",
+          "description": "Sync file system."
+        },
+        {
+          "value": "system.cpu",
+          "description": "CPU metadata."
+        },
+        {
+          "value": "system.memory",
+          "description": "Memory metadata."
+        },
+        {
+          "value": "system.network",
+          "description": "Network metadata."
+        },
+        {
+          "value": "system.display",
+          "description": "Display metadata."
+        },
+        {
+          "value": "system.storage",
+          "description": "Storage metadata."
+        },
+        {
+          "value": "tts",
+          "description": "Text to speech."
+        },
+        {
+          "value": "unlimitedStorage",
+          "description": "Unlimited storage."
+        },
+        {
+          "value": "usb",
+          "description": "USB."
+        },
+        {
+          "value": "videoCapture",
+          "description": "Video capture."
+        },
+        {
+          "value": "vpnProvider",
+          "description": "VPN provider."
+        },
+        {
+          "value": "webRequest",
+          "description": "Web requests."
+        },
+        {
+          "value": "webRequestBlocking",
+          "description": "Block web requests."
+        }
+      ]
+    },
+    {
+      "field": "runtimeBlockedHosts",
+      "description": "Runtime blocked hosts. This is a list of patterns for matching against hostnames. URLs that match one of these patterns cannot be modified by apps and extensions. This includes injecting Javascript, altering and viewing webRequests / webNavigation, viewing and altering cookies, exceptions to the same-origin policy, etc. The format is similar to full URL patterns except no paths may be defined. e.g. \"*://*.example.com\". Maximum of 100 URLs.",
+      "inputConstraint": "The list should have 100 or less entries."
+    },
+    {
+      "field": "runtimeAllowedHosts",
+      "description": "Runtime allowed hosts. Hosts that an extension can interact with regardless of whether they are listed in \"Runtime blocked hosts\". This is the same format as \"Runtime blocked hosts\". Maximum of 100 URLs.",
+      "inputConstraint": "The list should have 100 or less entries."
+    }
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/9039146?hl=en#permissionsurls",
+  "schemaName": "chrome.users.appsconfig.BlockExtensionsByPermission",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.HideWebStoreIcon",
+  "policyDescription": "Chrome Web Store app icon.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "HideWebStoreIcon",
+        "field": [
+          {
+            "name": "hideWebStoreIcon",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "hideWebStoreIcon",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Do not show the Chrome Web Store icon in the Chrome OS launcher or on the new tab page."
+        },
+        {
+          "value": "false",
+          "description": "Show the Chrome Web Store icon in the Chrome OS launcher and on the new tab page."
+        }
+      ]
+    }
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/9039146?hl=en#hide_web_store_icon",
+  "schemaName": "chrome.users.appsconfig.HideWebStoreIcon",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.ChromeWebStoreHomepage",
+  "policyDescription": "Chrome Web Store homepage.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "ChromeWebStoreHomepage",
+        "field": [
+          {
+            "name": "cwsHomePage",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_ENUM",
+            "typeName": "ChromeWebStoreHomepageLocationEnum"
+          },
+          {
+            "name": "cwsHomePageCollectionName",
+            "number": 2,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_STRING"
+          },
+          {
+            "name": "cwsHomePageCustomUrl",
+            "number": 3,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_STRING"
+          },
+          {
+            "name": "cwsHomePageCollectionIncludePrivateApps",
+            "number": 4,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ],
+    "enumType": [
+      {
+        "name": "ChromeWebStoreHomepageLocationEnum",
+        "value": [
+          {
+            "name": "CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_DEFAULT",
+            "number": 1
+          },
+          {
+            "name": "CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_COLLECTION",
+            "number": 2
+          },
+          {
+            "name": "CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_CUSTOM",
+            "number": 3
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "cwsHomePage",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_DEFAULT",
+          "description": "Use the default homepage."
+        },
+        {
+          "value": "CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_COLLECTION",
+          "description": "Use the Chrome Web Store collection."
+        },
+        {
+          "value": "CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_CUSTOM",
+          "description": "Use a custom page."
+        }
+      ]
+    },
+    {
+      "field": "cwsHomePageCollectionName",
+      "description": "Collection name.",
+      "fieldDependencies": [
+        {
+          "sourceField": "cwsHomePage",
+          "sourceFieldValue": "CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_COLLECTION"
+        }
+      ]
+    },
+    {
+      "field": "cwsHomePageCustomUrl",
+      "description": "Collection URL.",
+      "fieldDependencies": [
+        {
+          "sourceField": "cwsHomePage",
+          "sourceFieldValue": "CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_CUSTOM"
+        }
+      ]
+    },
+    {
+      "field": "cwsHomePageCollectionIncludePrivateApps",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Include all private apps from this domain."
+        },
+        {
+          "value": "false",
+          "description": "Choose which apps are included in this collection."
+        }
+      ],
+      "fieldDependencies": [
+        {
+          "sourceField": "cwsHomePage",
+          "sourceFieldValue": "CHROME_WEB_STORE_HOMEPAGE_LOCATION_ENUM_COLLECTION"
+        }
+      ]
+    }
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/9039146?hl=en#homepage",
+  "schemaName": "chrome.users.appsconfig.ChromeWebStoreHomepage",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.ChromeWebStorePermissions",
+  "policyDescription": "Chrome Web Store permissions.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "ChromeWebStorePermissions",
+        "field": [
+          {
+            "name": "allowWebstorePublish",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          },
+          {
+            "name": "allowWebstorePublishUnverified",
+            "number": 2,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "allowWebstorePublish",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Allow users to publish private apps that are restricted to your domain on Chrome Web Store."
+        },
+        {
+          "value": "false",
+          "description": "Do not allow users to publish private apps that are restricted to your domain on Chrome Web Store."
+        }
+      ]
+    },
+    {
+      "field": "allowWebstorePublishUnverified",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Allow users to publish private hosted apps even if the domain name of the app's {print \"launch_web_url\"} or {print \"app_url\"} is not owned by the organization."
+        },
+        {
+          "value": "false",
+          "description": "Do not allow users to publish private hosted apps if the domain name of the app's {print \"launch_web_url\"} or {print \"app_url\"} is not owned by the organization."
+        }
+      ],
+      "fieldDependencies": [
+        {
+          "sourceField": "allowWebstorePublish",
+          "sourceFieldValue": "true"
+        }
+      ]
+    }
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/9039146?hl=en#webstorepermissions",
+  "schemaName": "chrome.users.appsconfig.ChromeWebStorePermissions",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.ReportAndroidStatus",
+  "policyDescription": "Android reporting for users and devices.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "ReportAndroidStatus",
+        "field": [
+          {
+            "name": "reportArcStatusEnabled",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "reportArcStatusEnabled",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Enable Android reporting."
+        },
+        {
+          "value": "false",
+          "description": "Disable Android reporting."
+        }
+      ]
+    }
+  ],
+  "accessRestrictions": [
+    "This policy is only modifiable on root organization unit."
+  ],
+  "supportUri": "https://support.google.com/chrome/a/answer/7632230?hl=en",
+  "schemaName": "chrome.users.appsconfig.ReportAndroidStatus",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.FullRestoreEnabled",
+  "policyDescription": "Full restore.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "FullRestoreEnabled",
+        "field": [
+          {
+            "name": "fullRestoreEnabled",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "fullRestoreEnabled",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Restore apps and app windows after crash or reboot."
+        },
+        {
+          "value": "false",
+          "description": "Do not restore apps and app windows after crash or reboot."
+        }
+      ]
+    }
+  ],
+  "schemaName": "chrome.users.appsconfig.FullRestoreEnabled",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.GhostWindowEnabled",
+  "policyDescription": "Android ghost windows.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "GhostWindowEnabled",
+        "field": [
+          {
+            "name": "ghostWindowEnabled",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "ghostWindowEnabled",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Create ghost windows while restoring Android apps."
+        },
+        {
+          "value": "false",
+          "description": "Do not create ghost windows while restoring Android apps."
+        }
+      ]
+    }
+  ],
+  "schemaName": "chrome.users.appsconfig.GhostWindowEnabled",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.appsconfig.AllowedInstallSources",
+  "policyDescription": "Allows setting of the allowed install sources for apps. Note these must be set together.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "AllowedInstallSources",
+        "field": [
+          {
+            "name": "playStoreInstallSources",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_ENUM",
+            "typeName": "PlayStoreInstallSources"
+          },
+          {
+            "name": "chromeWebStoreInstallSources",
+            "number": 2,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_ENUM",
+            "typeName": "ChromeWebStoreInstallSources"
+          }
+        ]
+      }
+    ],
+    "enumType": [
+      {
+        "name": "PlayStoreInstallSources",
+        "value": [
+          {
+            "name": "PLAY_STORE_ALLOW_ALL_APPS",
+            "number": 1
+          },
+          {
+            "name": "PLAY_STORE_BLOCK_ALL_APPS",
+            "number": 2
+          }
+        ]
+      },
+      {
+        "name": "ChromeWebStoreInstallSources",
+        "value": [
+          {
+            "name": "CHROME_WEB_STORE_ALLOW_ALL_APPS",
+            "number": 1
+          },
+          {
+            "name": "CHROME_WEB_STORE_BLOCK_ALL_APPS",
+            "number": 2
+          },
+          {
+            "name": "CHROME_WEB_STORE_BLOCK_ALL_APPS_USER_EXTENSION_REQUESTS_ALLOWED",
+            "number": 3
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "playStoreInstallSources",
+      "description": "Sets the allowed install sources for Play Store.",
+      "knownValueDescriptions": [
+        {
+          "value": "PLAY_STORE_ALLOW_ALL_APPS",
+          "description": "All apps allowed, admin manages blocklist."
+        },
+        {
+          "value": "PLAY_STORE_BLOCK_ALL_APPS",
+          "description": "All apps blocked, admin manages allowlist."
+        }
+      ]
+    },
+    {
+      "field": "chromeWebStoreInstallSources",
+      "description": "Sets the allowed install sources for Chrome Web Store.",
+      "knownValueDescriptions": [
+        {
+          "value": "CHROME_WEB_STORE_ALLOW_ALL_APPS",
+          "description": "All apps allowed, admin manages blocklist."
+        },
+        {
+          "value": "CHROME_WEB_STORE_BLOCK_ALL_APPS",
+          "description": "All apps blocked, admin manages allowlist."
+        },
+        {
+          "value": "CHROME_WEB_STORE_BLOCK_ALL_APPS_USER_EXTENSION_REQUESTS_ALLOWED",
+          "description": "All apps blocked, admin manages allowlist, users may request extensions."
+        }
+      ]
+    }
+  ],
+  "notices": [
+    {
+      "field": "chromeWebStoreInstallSources",
+      "noticeValue": "CHROME_WEB_STORE_BLOCK_ALL_APPS_USER_EXTENSION_REQUESTS_ALLOWED",
+      "noticeMessage": "Warning: Any existing extension that is not explicitly on the allowlist will be blocked."
+    }
+  ],
+  "schemaName": "chrome.users.appsconfig.AllowedInstallSources",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.apps.InstallType",
+  "policyDescription": "Specifies the manner in which the app is to be installed. Note: It's required in order to add an App or Extension to the set of managed apps & extensions of an Organizational Unit.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "app_id",
+      "keyDescription": "Id of the app prefixed with one of \"android:\", \"chrome:\" or \"web:\", depending on the app type. For Android apps, the app id can be found on the Google Play store, example: \"android:com.google.android.apps.translate\". For Chrome apps, the app id can be found on the Chrome Web Store, example: \"chrome:aapbdbdomjkkjkaonfhkkikfgjllcleb\". For Web apps, the app id is simply the URL, example: \"web:https://translate.google.com\"."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "InstallType",
+        "field": [
+          {
+            "name": "appInstallType",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_ENUM",
+            "typeName": "UserAppInstallType"
+          }
+        ]
+      }
+    ],
+    "enumType": [
+      {
+        "name": "UserAppInstallType",
+        "value": [
+          {
+            "name": "BLOCKED",
+            "number": 1
+          },
+          {
+            "name": "ALLOWED",
+            "number": 2
+          },
+          {
+            "name": "FORCED",
+            "number": 3
+          },
+          {
+            "name": "FORCED_AND_PIN_TO_TOOLBAR",
+            "number": 4
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "appInstallType",
+      "description": "Controls how the app is to be installed.",
+      "knownValueDescriptions": [
+        {
+          "value": "BLOCKED",
+          "description": "Block installation of the app. Note: Web apps can't be Blocked, which means setting this option for Web Apps is disallowed."
+        },
+        {
+          "value": "ALLOWED",
+          "description": "Allow installation of the app."
+        },
+        {
+          "value": "FORCED",
+          "description": "Force install the app."
+        },
+        {
+          "value": "FORCED_AND_PIN_TO_TOOLBAR",
+          "description": "Force install and pin the app to the toolbar."
+        }
+      ]
+    }
+  ],
+  "notices": [
+    {
+      "field": "appInstallType",
+      "noticeValue": "ALLOWED",
+      "noticeMessage": "Android apps can only be allowed in the device if policy 'chrome.users.appsconfig.AndroidAppsEnabled' has 'arc_enabled' set to true."
+    },
+    {
+      "field": "appInstallType",
+      "noticeValue": "FORCED",
+      "noticeMessage": "We strongly recommend against force-installing large apps in environments with limited connectivity. Test thoroughly before force-installing apps on users\u2019 devices, or select \u201cAllow install\u201d and tell users how to install the app. For details, read this best practices guide: https://support.google.com/chrome/a/answer/9962839?hl=en"
+    },
+    {
+      "field": "appInstallType",
+      "noticeValue": "FORCED",
+      "noticeMessage": "Android apps can only be installed in the device if policy 'chrome.users.appsconfig.AndroidAppsEnabled' has 'arc_enabled' set to true."
+    },
+    {
+      "field": "appInstallType",
+      "noticeValue": "FORCED_AND_PIN_TO_TOOLBAR",
+      "noticeMessage": "We strongly recommend against force-installing large apps in environments with limited connectivity. Test thoroughly before force-installing apps on users\u2019 devices, or select \u201cAllow install\u201d and tell users how to install the app. For details, read this best practices guide: https://support.google.com/chrome/a/answer/9962839?hl=en"
+    },
+    {
+      "field": "appInstallType",
+      "noticeValue": "FORCED_AND_PIN_TO_TOOLBAR",
+      "noticeMessage": "Android apps can only be installed in the device if policy 'chrome.users.appsconfig.AndroidAppsEnabled' has 'arc_enabled' set to true."
+    }
+  ],
+  "schemaName": "chrome.users.apps.InstallType",
+  "validTargetResources": [
+    "ORG_UNIT"
+  ],
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.apps.IncludeInChromeWebStoreCollection",
+  "policyDescription": "Specifies whether the Chrome Application should appear in the Chrome Web Store collection.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "app_id",
+      "keyDescription": "Id of the app prefixed with \"chrome:\". The app id can be found on the Chrome Web Store, example: \"chrome:aapbdbdomjkkjkaonfhkkikfgjllcleb\"."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "IncludeInChromeWebStoreCollection",
+        "field": [
+          {
+            "name": "includeInCollection",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "includeInCollection",
+      "description": "Controls whether a Chrome Application should appear in the Chrome Web Store collection."
+    }
+  ],
+  "schemaName": "chrome.users.apps.IncludeInChromeWebStoreCollection",
+  "validTargetResources": [
+    "ORG_UNIT"
+  ],
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.apps.CertificateManagement",
+  "policyDescription": "Allows setting of certificate management related permissions.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "app_id",
+      "keyDescription": "Id of the app prefixed with one of \"android:\" or \"chrome:\", depending on the app type. For Android apps, the app id can be found on the Google Play store, example: \"android:com.google.android.apps.translate\". For Chrome apps, the app id can be found on the Chrome Web Store, example: \"chrome:aapbdbdomjkkjkaonfhkkikfgjllcleb\"."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "CertificateManagement",
+        "field": [
+          {
+            "name": "allowAccessToKeys",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          },
+          {
+            "name": "allowEnterpriseChallenge",
+            "number": 2,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "allowAccessToKeys",
+      "description": "Controls whether the app can access client keys."
+    },
+    {
+      "field": "allowEnterpriseChallenge",
+      "description": "Controls whether the app can challenge enterprise keys."
+    }
+  ],
+  "schemaName": "chrome.users.apps.CertificateManagement",
+  "validTargetResources": [
+    "ORG_UNIT"
+  ],
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.apps.PermissionsAndUrlAccess",
+  "policyDescription": "Allows setting of allowed and blocked hosts.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "app_id",
+      "keyDescription": "Id of the app prefixed with \"chrome:\". The app id can be found on the Chrome Web Store, example: \"chrome:aapbdbdomjkkjkaonfhkkikfgjllcleb\"."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "PermissionsAndUrlAccess",
+        "field": [
+          {
+            "name": "blockedPermissions",
+            "number": 1,
+            "label": "LABEL_REPEATED",
+            "type": "TYPE_STRING"
+          },
+          {
+            "name": "allowedPermissions",
+            "number": 2,
+            "label": "LABEL_REPEATED",
+            "type": "TYPE_STRING"
+          },
+          {
+            "name": "blockedHosts",
+            "number": 3,
+            "label": "LABEL_REPEATED",
+            "type": "TYPE_STRING"
+          },
+          {
+            "name": "allowedHosts",
+            "number": 4,
+            "label": "LABEL_REPEATED",
+            "type": "TYPE_STRING"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "blockedPermissions",
+      "description": "Sets extension permissions that should be blocked. If this field is set 'allowedPermissions' must be unset.",
+      "knownValueDescriptions": [
+        {
+          "value": "",
+          "description": "Allow all permissions. If empty string is set, it must be the only value set for the policy."
+        },
+        {
+          "value": "alarms",
+          "description": "Alarms."
+        },
+        {
+          "value": "audioCapture",
+          "description": "Audio capture."
+        },
+        {
+          "value": "certificateProvider",
+          "description": "Certificate provider."
+        },
+        {
+          "value": "clipboardRead",
+          "description": "Clipboard read."
+        },
+        {
+          "value": "clipboardWrite",
+          "description": "Clipboard write."
+        },
+        {
+          "value": "contextMenus",
+          "description": "Context menus."
+        },
+        {
+          "value": "desktopCapture",
+          "description": "Desktop capture."
+        },
+        {
+          "value": "documentScan",
+          "description": "Document scan."
+        },
+        {
+          "value": "enterprise.deviceAttributes",
+          "description": "Enterprise device attributes."
+        },
+        {
+          "value": "experimental",
+          "description": "Experimental APIs."
+        },
+        {
+          "value": "app.window.fullscreen",
+          "description": "Fullscreen apps."
+        },
+        {
+          "value": "fileBrowserHandler",
+          "description": "File browser handler."
+        },
+        {
+          "value": "fileSystem",
+          "description": "File system."
+        },
+        {
+          "value": "fileSystemProvider",
+          "description": "File system provider."
+        },
+        {
+          "value": "hid",
+          "description": "HID."
+        },
+        {
+          "value": "app.window.fullscreen.overrideEsc",
+          "description": "Override fullscreen escape."
+        },
+        {
+          "value": "idle",
+          "description": "Detect idle."
+        },
+        {
+          "value": "identity",
+          "description": "Identity."
+        },
+        {
+          "value": "gcm",
+          "description": "Google Cloud Messaging."
+        },
+        {
+          "value": "geolocation",
+          "description": "Geo location."
+        },
+        {
+          "value": "mediaGalleries",
+          "description": "Media galleries."
+        },
+        {
+          "value": "nativeMessaging",
+          "description": "Native messaging."
+        },
+        {
+          "value": "networking.config",
+          "description": "Captive portal authenticator."
+        },
+        {
+          "value": "power",
+          "description": "Power."
+        },
+        {
+          "value": "notifications",
+          "description": "Notifications."
+        },
+        {
+          "value": "printerProvider",
+          "description": "Printers."
+        },
+        {
+          "value": "serial",
+          "description": "Serial."
+        },
+        {
+          "value": "proxy",
+          "description": "Set proxy."
+        },
+        {
+          "value": "platformKeys",
+          "description": "Platform keys."
+        },
+        {
+          "value": "storage",
+          "description": "Storage."
+        },
+        {
+          "value": "syncFileSystem",
+          "description": "Sync file system."
+        },
+        {
+          "value": "system.cpu",
+          "description": "CPU metadata."
+        },
+        {
+          "value": "system.memory",
+          "description": "Memory metadata."
+        },
+        {
+          "value": "system.network",
+          "description": "Network metadata."
+        },
+        {
+          "value": "system.display",
+          "description": "Display metadata."
+        },
+        {
+          "value": "system.storage",
+          "description": "Storage metadata."
+        },
+        {
+          "value": "tts",
+          "description": "Text to speech."
+        },
+        {
+          "value": "unlimitedStorage",
+          "description": "Unlimited storage."
+        },
+        {
+          "value": "usb",
+          "description": "USB."
+        },
+        {
+          "value": "videoCapture",
+          "description": "Video capture."
+        },
+        {
+          "value": "vpnProvider",
+          "description": "VPN provider."
+        },
+        {
+          "value": "webRequest",
+          "description": "Web requests."
+        },
+        {
+          "value": "webRequestBlocking",
+          "description": "Block web requests."
+        }
+      ]
+    },
+    {
+      "field": "allowedPermissions",
+      "description": "Sets extension permissions that should be allowed. If this field is set 'blockedPermissions' must be unset.",
+      "knownValueDescriptions": [
+        {
+          "value": "alarms",
+          "description": "Alarms."
+        },
+        {
+          "value": "audioCapture",
+          "description": "Audio capture."
+        },
+        {
+          "value": "certificateProvider",
+          "description": "Certificate provider."
+        },
+        {
+          "value": "clipboardRead",
+          "description": "Clipboard read."
+        },
+        {
+          "value": "clipboardWrite",
+          "description": "Clipboard write."
+        },
+        {
+          "value": "contextMenus",
+          "description": "Context menus."
+        },
+        {
+          "value": "desktopCapture",
+          "description": "Desktop capture."
+        },
+        {
+          "value": "documentScan",
+          "description": "Document scan."
+        },
+        {
+          "value": "enterprise.deviceAttributes",
+          "description": "Enterprise device attributes."
+        },
+        {
+          "value": "experimental",
+          "description": "Experimental APIs."
+        },
+        {
+          "value": "app.window.fullscreen",
+          "description": "Fullscreen apps."
+        },
+        {
+          "value": "fileBrowserHandler",
+          "description": "File browser handler."
+        },
+        {
+          "value": "fileSystem",
+          "description": "File system."
+        },
+        {
+          "value": "fileSystemProvider",
+          "description": "File system provider."
+        },
+        {
+          "value": "hid",
+          "description": "HID."
+        },
+        {
+          "value": "app.window.fullscreen.overrideEsc",
+          "description": "Override fullscreen escape."
+        },
+        {
+          "value": "idle",
+          "description": "Detect idle."
+        },
+        {
+          "value": "identity",
+          "description": "Identity."
+        },
+        {
+          "value": "gcm",
+          "description": "Google Cloud Messaging."
+        },
+        {
+          "value": "geolocation",
+          "description": "Geo location."
+        },
+        {
+          "value": "mediaGalleries",
+          "description": "Media galleries."
+        },
+        {
+          "value": "nativeMessaging",
+          "description": "Native messaging."
+        },
+        {
+          "value": "networking.config",
+          "description": "Captive portal authenticator."
+        },
+        {
+          "value": "power",
+          "description": "Power."
+        },
+        {
+          "value": "notifications",
+          "description": "Notifications."
+        },
+        {
+          "value": "printerProvider",
+          "description": "Printers."
+        },
+        {
+          "value": "serial",
+          "description": "Serial."
+        },
+        {
+          "value": "proxy",
+          "description": "Set proxy."
+        },
+        {
+          "value": "platformKeys",
+          "description": "Platform keys."
+        },
+        {
+          "value": "storage",
+          "description": "Storage."
+        },
+        {
+          "value": "syncFileSystem",
+          "description": "Sync file system."
+        },
+        {
+          "value": "system.cpu",
+          "description": "CPU metadata."
+        },
+        {
+          "value": "system.memory",
+          "description": "Memory metadata."
+        },
+        {
+          "value": "system.network",
+          "description": "Network metadata."
+        },
+        {
+          "value": "system.display",
+          "description": "Display metadata."
+        },
+        {
+          "value": "system.storage",
+          "description": "Storage metadata."
+        },
+        {
+          "value": "tts",
+          "description": "Text to speech."
+        },
+        {
+          "value": "unlimitedStorage",
+          "description": "Unlimited storage."
+        },
+        {
+          "value": "usb",
+          "description": "USB."
+        },
+        {
+          "value": "videoCapture",
+          "description": "Video capture."
+        },
+        {
+          "value": "vpnProvider",
+          "description": "VPN provider."
+        },
+        {
+          "value": "webRequest",
+          "description": "Web requests."
+        },
+        {
+          "value": "webRequestBlocking",
+          "description": "Block web requests."
+        }
+      ]
+    },
+    {
+      "field": "blockedHosts",
+      "description": "Sets extension hosts that should be blocked."
+    },
+    {
+      "field": "allowedHosts",
+      "description": "Sets extension hosts that should be allowed. Allowed hosts override blocked hosts."
+    }
+  ],
+  "schemaName": "chrome.users.apps.PermissionsAndUrlAccess",
+  "validTargetResources": [
+    "ORG_UNIT"
+  ],
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.apps.ManagedConfiguration",
+  "policyDescription": "Allows setting of the managed configuration.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "app_id",
+      "keyDescription": "Id of the app prefixed with one of \"android:\" or \"chrome:\", depending on the app type. For Android apps, the app id can be found on the Google Play store, example: \"android:com.google.android.apps.translate\". For Chrome apps, the app id can be found on the Chrome Web Store, example: \"chrome:aapbdbdomjkkjkaonfhkkikfgjllcleb\"."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "ManagedConfiguration",
+        "field": [
+          {
+            "name": "managedConfiguration",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_STRING"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "managedConfiguration",
+      "description": "Sets the managed configuration JSON format."
+    }
+  ],
+  "schemaName": "chrome.users.apps.ManagedConfiguration",
+  "validTargetResources": [
+    "ORG_UNIT"
+  ],
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.apps.DefaultLaunchContainer",
+  "policyDescription": "Allows setting of the default launch container for web apps.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "app_id",
+      "keyDescription": "Id of the app prefixed with \"web:\". The app id is simply the URL, example: \"web:https://translate.google.com\"."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "DefaultLaunchContainer",
+        "field": [
+          {
+            "name": "defaultLaunchContainer",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_ENUM",
+            "typeName": "UserAppDefaultLaunchContainer"
+          }
+        ]
+      }
+    ],
+    "enumType": [
+      {
+        "name": "UserAppDefaultLaunchContainer",
+        "value": [
+          {
+            "name": "TAB",
+            "number": 1
+          },
+          {
+            "name": "WINDOW",
+            "number": 2
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "defaultLaunchContainer",
+      "description": "Sets the default launch container for web apps.",
+      "knownValueDescriptions": [
+        {
+          "value": "TAB",
+          "description": "Browser tab."
+        },
+        {
+          "value": "WINDOW",
+          "description": "Separate window."
+        }
+      ]
+    }
+  ],
+  "schemaName": "chrome.users.apps.DefaultLaunchContainer",
+  "validTargetResources": [
+    "ORG_UNIT"
+  ],
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.apps.SkipPrintConfirmation",
+  "policyDescription": "Allows the app to skip the confirmation dialog when sending print jobs via the Chrome Printing API.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "app_id",
+      "keyDescription": "Id of the app prefixed with \"chrome:\". The app id can be found on the Chrome Web Store, example: \"chrome:aapbdbdomjkkjkaonfhkkikfgjllcleb\"."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "SkipPrintConfirmation",
+        "field": [
+          {
+            "name": "skipPrintConfirmation",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "skipPrintConfirmation",
+      "description": "Controls whether a Chrome Application can skip the confirmation dialog when sending print jobs via the Chrome Printing API."
+    }
+  ],
+  "schemaName": "chrome.users.apps.SkipPrintConfirmation",
+  "validTargetResources": [
+    "ORG_UNIT"
+  ],
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.apps.InstallationUrl",
+  "policyDescription": "Specifies the url from which to install a self hosted Chrome Extension.",
+  "additionalTargetKeyNames": [
+    {
+      "key": "app_id",
+      "keyDescription": "Id of the app prefixed with \"chrome:\". The id must consist of only lowercase letters, example: \"chrome:selfhostedextensionid\"."
+    }
+  ],
+  "definition": {
+    "messageType": [
+      {
+        "name": "InstallationUrl",
+        "field": [
+          {
+            "name": "installationUrl",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_STRING"
+          },
+          {
+            "name": "overrideInstallationUrl",
+            "number": 2,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "installationUrl",
+      "description": "The url from which to install a self hosted Chrome Extension.",
+      "inputConstraint": "Must be a valid url."
+    },
+    {
+      "field": "overrideInstallationUrl",
+      "description": "Override the URL provided in the extension manifest with the provided installation url."
+    }
+  ],
+  "schemaName": "chrome.users.apps.InstallationUrl",
+  "validTargetResources": [
+    "ORG_UNIT"
+  ],
   "policyApiLifeycle": {
     "policyApiLifecycleStage": "API_CURRENT"
   }
@@ -1043,6 +2844,12 @@
             "number": 1,
             "label": "LABEL_OPTIONAL",
             "type": "TYPE_STRING"
+          },
+          {
+            "name": "overrideInstallationUrl",
+            "number": 2,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
           }
         ]
       }
@@ -1053,111 +2860,13 @@
       "field": "installationUrl",
       "description": "The url from which to install a self hosted Chrome Extension.",
       "inputConstraint": "Must be a valid url."
+    },
+    {
+      "field": "overrideInstallationUrl",
+      "description": "Override the URL provided in the extension manifest with the provided installation url."
     }
   ],
   "schemaName": "chrome.devices.kiosk.apps.InstallationUrl",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.printers.AllowForUsers",
-  "policyDescription": "Allows a printer for users in a given organization.",
-  "additionalTargetKeyNames": [
-    {
-      "key": "printer_id",
-      "keyDescription": "Id of printer as visible in Admin SDK printers API."
-    }
-  ],
-  "definition": {
-    "messageType": [
-      {
-        "name": "AllowForUsers",
-        "field": [
-          {
-            "name": "allowForUsers",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "allowForUsers",
-      "description": "Controls whether a printer is allowed for users in a given organization."
-    }
-  ],
-  "schemaName": "chrome.printers.AllowForUsers",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.printers.AllowForDevices",
-  "policyDescription": "Allows a printer for devices in a given organization.",
-  "additionalTargetKeyNames": [
-    {
-      "key": "printer_id",
-      "keyDescription": "Id of printer as visible in Admin SDK printers API."
-    }
-  ],
-  "definition": {
-    "messageType": [
-      {
-        "name": "AllowForDevices",
-        "field": [
-          {
-            "name": "allowForDevices",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "allowForDevices",
-      "description": "Controls whether a printer is allowed for devices in a given organization."
-    }
-  ],
-  "schemaName": "chrome.printers.AllowForDevices",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.printers.AllowForManagedGuest",
-  "policyDescription": "Allows a printer for Managed Guest in a given organization.",
-  "additionalTargetKeyNames": [
-    {
-      "key": "printer_id",
-      "keyDescription": "Id of printer as visible in Admin SDK printers API."
-    }
-  ],
-  "definition": {
-    "messageType": [
-      {
-        "name": "AllowForManagedGuest",
-        "field": [
-          {
-            "name": "allowForManagedGuest",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "allowForManagedGuest",
-      "description": "Controls whether a printer is for Managed Guest in a given organization."
-    }
-  ],
-  "schemaName": "chrome.printers.AllowForManagedGuest",
   "policyApiLifeycle": {
     "policyApiLifecycleStage": "API_CURRENT"
   }
@@ -2279,6 +3988,10 @@
           {
             "name": "INCOGNITO_MODE_AVAILABILITY_ENUM_UNAVAILABLE",
             "number": 2
+          },
+          {
+            "name": "INCOGNITO_MODE_AVAILABILITY_ENUM_FORCED",
+            "number": 3
           }
         ]
       }
@@ -2296,6 +4009,10 @@
         {
           "value": "INCOGNITO_MODE_AVAILABILITY_ENUM_UNAVAILABLE",
           "description": "Disallow incognito mode."
+        },
+        {
+          "value": "INCOGNITO_MODE_AVAILABILITY_ENUM_FORCED",
+          "description": "Force incognito mode."
         }
       ]
     }
@@ -3280,6 +4997,7 @@
       ]
     }
   ],
+  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#ambient_authentication_in_private_modes_enabled",
   "schemaName": "chrome.users.AmbientAuthenticationInPrivateModesEnabled",
   "policyApiLifeycle": {
     "policyApiLifecycleStage": "API_CURRENT"
@@ -3829,6 +5547,78 @@
     "policyApiLifecycleStage": "API_CURRENT"
   }
 },{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.ScreenBrightnessPercent",
+  "policyDescription": "Screen brightness.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "ScreenBrightnessPercent",
+        "field": [
+          {
+            "name": "brightnessEnabled",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          },
+          {
+            "name": "brightnessAc",
+            "number": 2,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_INT64"
+          },
+          {
+            "name": "brightnessBattery",
+            "number": 3,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_INT64"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "brightnessEnabled",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Set initial screen brightness."
+        },
+        {
+          "value": "false",
+          "description": "Do not set initial screen brightness."
+        }
+      ]
+    },
+    {
+      "field": "brightnessAc",
+      "description": "Screen brightness (ac power).",
+      "inputConstraint": "The long field should have value greater than or equal to 0, and should have value less than or equal to 100.",
+      "fieldDependencies": [
+        {
+          "sourceField": "brightnessEnabled",
+          "sourceFieldValue": "true"
+        }
+      ]
+    },
+    {
+      "field": "brightnessBattery",
+      "description": "Screen brightness (battery power).",
+      "inputConstraint": "The long field should have value greater than or equal to 0, and should have value less than or equal to 100.",
+      "fieldDependencies": [
+        {
+          "sourceField": "brightnessEnabled",
+          "sourceFieldValue": "true"
+        }
+      ]
+    }
+  ],
+  "schemaName": "chrome.users.ScreenBrightnessPercent",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
   "name": "customers/C00qjrmdh/policySchemas/chrome.users.TripleDesEnabled",
   "policyDescription": "3DES cipher suites in TLS.",
   "definition": {
@@ -3963,7 +5753,84 @@
       ]
     }
   ],
+  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#display_capture_permissions_policy_enabled",
   "schemaName": "chrome.users.DisplayCapturePermissionsPolicyEnabled",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.WebSqlInThirdPartyContextEnabled",
+  "policyDescription": "WebSQL in third-party context.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "WebSqlInThirdPartyContextEnabled",
+        "field": [
+          {
+            "name": "webSqlInThirdPartyContextEnabled",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "webSqlInThirdPartyContextEnabled",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Allow WebSQL in third-party contexts."
+        },
+        {
+          "value": "false",
+          "description": "Do not allow WebSQL in third-party contexts."
+        }
+      ]
+    }
+  ],
+  "schemaName": "chrome.users.WebSqlInThirdPartyContextEnabled",
+  "policyApiLifeycle": {
+    "policyApiLifecycleStage": "API_CURRENT"
+  }
+},{
+  "name": "customers/C00qjrmdh/policySchemas/chrome.users.UTwoFSecurityKeyApiEnabled",
+  "policyDescription": "U2F Security Key API.",
+  "definition": {
+    "messageType": [
+      {
+        "name": "UTwoFSecurityKeyApiEnabled",
+        "field": [
+          {
+            "name": "uTwoFSecurityKeyApiEnabled",
+            "number": 1,
+            "label": "LABEL_OPTIONAL",
+            "type": "TYPE_BOOL"
+          }
+        ]
+      }
+    ]
+  },
+  "fieldDescriptions": [
+    {
+      "field": "uTwoFSecurityKeyApiEnabled",
+      "description": "N/A",
+      "knownValueDescriptions": [
+        {
+          "value": "true",
+          "description": "Allow use of the deprecated U2F Security Key API."
+        },
+        {
+          "value": "false",
+          "description": "Apply default settings for U2F API deprecation."
+        }
+      ]
+    }
+  ],
+  "schemaName": "chrome.users.UTwoFSecurityKeyApiEnabled",
   "policyApiLifeycle": {
     "policyApiLifecycleStage": "API_CURRENT"
   }
@@ -4103,1299 +5970,6 @@
   ],
   "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#remote_access_host_firewall_traversal",
   "schemaName": "chrome.users.RemoteAccessHostFirewallTraversal",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.ShowLogoutButton",
-  "policyDescription": "Show logout button in tray.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "ShowLogoutButton",
-        "field": [
-          {
-            "name": "showLogoutButtonInTray",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "showLogoutButtonInTray",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Show logout button in tray."
-        },
-        {
-          "value": "false",
-          "description": "Do not show logout button in tray."
-        }
-      ]
-    }
-  ],
-  "schemaName": "chrome.users.ShowLogoutButton",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.KerberosTickets",
-  "policyDescription": "Kerberos tickets.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "KerberosTickets",
-        "field": [
-          {
-            "name": "kerberosEnabled",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          },
-          {
-            "name": "kerberosPrincipal",
-            "number": 2,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_STRING"
-          },
-          {
-            "name": "kerberosConfiguration",
-            "number": 3,
-            "label": "LABEL_REPEATED",
-            "type": "TYPE_STRING"
-          },
-          {
-            "name": "kerberosAutoAccountEnabled",
-            "number": 4,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          },
-          {
-            "name": "kerberosCustomConfigurationEnabled",
-            "number": 5,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "kerberosEnabled",
-      "description": "Enable kerberos.",
-      "knownValueDescriptions": [
-        {
-          "value": "false",
-          "description": "Disable Kerberos."
-        },
-        {
-          "value": "true",
-          "description": "Enable Kerberos."
-        }
-      ]
-    },
-    {
-      "field": "kerberosPrincipal",
-      "description": "Principal name. Define a Kerberos account to be added on behalf of user. The following placeholders are supported: - ${LOGIN_ID}: Username part of principal, e.g. \"user\" if the user logs in as \"user@REALM\"- ${LOGIN_EMAIL}: Full principal, e.g. \"user@REALM\" if the user logs in as \"user@REALM\".",
-      "fieldDependencies": [
-        {
-          "sourceField": "kerberosEnabled",
-          "sourceFieldValue": "true"
-        }
-      ]
-    },
-    {
-      "field": "kerberosConfiguration",
-      "description": "Kerberos configuration.",
-      "fieldDependencies": [
-        {
-          "sourceField": "kerberosEnabled",
-          "sourceFieldValue": "true"
-        }
-      ]
-    },
-    {
-      "field": "kerberosAutoAccountEnabled",
-      "description": "Enable kerberos automatically.",
-      "knownValueDescriptions": [
-        {
-          "value": "false",
-          "description": "Do not automatically add a Kerberos account."
-        },
-        {
-          "value": "true",
-          "description": "Automatically add a Kerberos account."
-        }
-      ],
-      "fieldDependencies": [
-        {
-          "sourceField": "kerberosEnabled",
-          "sourceFieldValue": "true"
-        }
-      ]
-    },
-    {
-      "field": "kerberosCustomConfigurationEnabled",
-      "description": "Enable kerberos custom configuration.",
-      "knownValueDescriptions": [
-        {
-          "value": "false",
-          "description": "Use default Kerberos configuration."
-        },
-        {
-          "value": "true",
-          "description": "Customize Kerberos configuration."
-        }
-      ],
-      "fieldDependencies": [
-        {
-          "sourceField": "kerberosEnabled",
-          "sourceFieldValue": "true"
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#kerberos_enabled",
-  "schemaName": "chrome.users.KerberosTickets",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.KerberosRememberPasswordEnabled",
-  "policyDescription": "Remember Kerberos passwords.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "KerberosRememberPasswordEnabled",
-        "field": [
-          {
-            "name": "kerberosRememberPasswordEnabled",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "kerberosRememberPasswordEnabled",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Allow users to remember Kerberos passwords."
-        },
-        {
-          "value": "false",
-          "description": "Do not allow users to remember Kerberos passwords."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#kerberos_remember_password_enabled",
-  "schemaName": "chrome.users.KerberosRememberPasswordEnabled",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.KerberosAddAccountsAllowed",
-  "policyDescription": "Kerberos accounts.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "KerberosAddAccountsAllowed",
-        "field": [
-          {
-            "name": "kerberosAddAccountsAllowed",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "kerberosAddAccountsAllowed",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Allow users to add Kerberos accounts."
-        },
-        {
-          "value": "false",
-          "description": "Do not allow users to add Kerberos accounts."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#kerberos_add_accounts_allowed",
-  "schemaName": "chrome.users.KerberosAddAccountsAllowed",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.SimpleProxySettings",
-  "policyDescription": "Proxy mode.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "SimpleProxySettings",
-        "field": [
-          {
-            "name": "simpleProxyMode",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_ENUM",
-            "typeName": "ProxyModeEnum"
-          },
-          {
-            "name": "simpleProxyServerUrl",
-            "number": 2,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_STRING"
-          },
-          {
-            "name": "simpleProxyPacUrl",
-            "number": 3,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_STRING"
-          },
-          {
-            "name": "proxyBypassList",
-            "number": 4,
-            "label": "LABEL_REPEATED",
-            "type": "TYPE_STRING"
-          }
-        ]
-      }
-    ],
-    "enumType": [
-      {
-        "name": "ProxyModeEnum",
-        "value": [
-          {
-            "name": "PROXY_MODE_ENUM_USER_CONFIGURED",
-            "number": 1
-          },
-          {
-            "name": "PROXY_MODE_ENUM_DIRECT",
-            "number": 2
-          },
-          {
-            "name": "PROXY_MODE_ENUM_AUTO_DETECT",
-            "number": 3
-          },
-          {
-            "name": "PROXY_MODE_ENUM_FIXED_SERVERS",
-            "number": 4
-          },
-          {
-            "name": "PROXY_MODE_ENUM_PAC_SCRIPT",
-            "number": 5
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "simpleProxyMode",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "PROXY_MODE_ENUM_USER_CONFIGURED",
-          "description": "Allow user to configure."
-        },
-        {
-          "value": "PROXY_MODE_ENUM_DIRECT",
-          "description": "Never use a proxy."
-        },
-        {
-          "value": "PROXY_MODE_ENUM_AUTO_DETECT",
-          "description": "Always auto detect the proxy."
-        },
-        {
-          "value": "PROXY_MODE_ENUM_FIXED_SERVERS",
-          "description": "Always use the proxy specified in 'simpleProxyServerUrl'."
-        },
-        {
-          "value": "PROXY_MODE_ENUM_PAC_SCRIPT",
-          "description": "Always use the proxy auto-config specified in 'simpleProxyPacUrl'."
-        }
-      ]
-    },
-    {
-      "field": "simpleProxyServerUrl",
-      "description": "Proxy server URL.",
-      "inputConstraint": "The string field should be formatted in the format 'url', and should have minimum length of 1.",
-      "fieldDependencies": [
-        {
-          "sourceField": "simpleProxyMode",
-          "sourceFieldValue": "PROXY_MODE_ENUM_FIXED_SERVERS"
-        }
-      ]
-    },
-    {
-      "field": "simpleProxyPacUrl",
-      "description": "Proxy server auto configuration file URL. URL of the .pac file that should be used for network connections.",
-      "fieldDependencies": [
-        {
-          "sourceField": "simpleProxyMode",
-          "sourceFieldValue": "PROXY_MODE_ENUM_PAC_SCRIPT"
-        }
-      ]
-    },
-    {
-      "field": "proxyBypassList",
-      "description": "URLs which bypass the proxy.",
-      "fieldDependencies": [
-        {
-          "sourceField": "simpleProxyMode",
-          "sourceFieldValue": "PROXY_MODE_ENUM_FIXED_SERVERS"
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#simple_proxy_mode",
-  "schemaName": "chrome.users.SimpleProxySettings",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.CaptivePortalAuthenticationIgnoresProxy",
-  "policyDescription": "Ignore proxy on captive portals.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "CaptivePortalAuthenticationIgnoresProxy",
-        "field": [
-          {
-            "name": "captivePortalAuthenticationIgnoresProxy",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "captivePortalAuthenticationIgnoresProxy",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Ignore policies for captive portal pages."
-        },
-        {
-          "value": "false",
-          "description": "Keep policies for captive portal pages."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#captive_portal_authentication_ignores_proxy",
-  "schemaName": "chrome.users.CaptivePortalAuthenticationIgnoresProxy",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.AuthSchemes",
-  "policyDescription": "Supported authentication schemes.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "AuthSchemes",
-        "field": [
-          {
-            "name": "authSchemes",
-            "number": 1,
-            "label": "LABEL_REPEATED",
-            "type": "TYPE_STRING"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "authSchemes",
-      "description": "Supported authentication schemes. Specifies which HTTP authentication schemes are supported by Google Chrome. The default uses all four schemes.",
-      "knownValueDescriptions": [
-        {
-          "value": "basic",
-          "description": "Basic."
-        },
-        {
-          "value": "digest",
-          "description": "Digest."
-        },
-        {
-          "value": "ntlm",
-          "description": "NTLM."
-        },
-        {
-          "value": "negotiate",
-          "description": "Negotiate."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#auth_schemes",
-  "schemaName": "chrome.users.AuthSchemes",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.BasicAuthOverHttpEnabled",
-  "policyDescription": "Allow Basic authentication for HTTP.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "BasicAuthOverHttpEnabled",
-        "field": [
-          {
-            "name": "basicAuthOverHttpEnabled",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "basicAuthOverHttpEnabled",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Basic authentication scheme is allowed on HTTP connections."
-        },
-        {
-          "value": "false",
-          "description": "HTTPS is required to use Basic authentication scheme."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#basic_auth_over_http_enabled",
-  "schemaName": "chrome.users.BasicAuthOverHttpEnabled",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.NtlmV2Enabled",
-  "policyDescription": "NTLMv2 authentication.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "NtlmV2Enabled",
-        "field": [
-          {
-            "name": "ntlmV2Enabled",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "ntlmV2Enabled",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Enable NTLMv2 authentication."
-        },
-        {
-          "value": "false",
-          "description": "Disable NTLMv2 authentication."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#ntlm_v2_enabled",
-  "schemaName": "chrome.users.NtlmV2Enabled",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.SslVersionMin",
-  "policyDescription": "Minimum SSL version enabled.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "SslVersionMin",
-        "field": [
-          {
-            "name": "sslVersionMin",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_ENUM",
-            "typeName": "SSLVersionMinEnum"
-          }
-        ]
-      }
-    ],
-    "enumType": [
-      {
-        "name": "SSLVersionMinEnum",
-        "value": [
-          {
-            "name": "SSL_VERSION_MIN_ENUM_TL_SV_1",
-            "number": 1
-          },
-          {
-            "name": "SSL_VERSION_MIN_ENUM_TL_SV_1_1",
-            "number": 2
-          },
-          {
-            "name": "SSL_VERSION_MIN_ENUM_TL_SV_1_2",
-            "number": 3
-          },
-          {
-            "name": "SSL_VERSION_MIN_ENUM_SSL_V_3",
-            "number": 4
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "sslVersionMin",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "SSL_VERSION_MIN_ENUM_TL_SV_1",
-          "description": "TLS 1.0."
-        },
-        {
-          "value": "SSL_VERSION_MIN_ENUM_TL_SV_1_1",
-          "description": "TLS 1.1."
-        },
-        {
-          "value": "SSL_VERSION_MIN_ENUM_TL_SV_1_2",
-          "description": "TLS 1.2."
-        },
-        {
-          "value": "SSL_VERSION_MIN_ENUM_SSL_V_3",
-          "description": "SSL3."
-        }
-      ]
-    }
-  ],
-  "notices": [
-    {
-      "field": "sslVersionMin",
-      "noticeValue": "SSL_VERSION_MIN_ENUM_SSL_V_3",
-      "noticeMessage": "Only valid for Chrome 39 to Chrome 43."
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#ssl_version_min",
-  "schemaName": "chrome.users.SslVersionMin",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.SslErrorOverrideAllowed",
-  "policyDescription": "SSL error override.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "SslErrorOverrideAllowed",
-        "field": [
-          {
-            "name": "sslErrorOverrideAllowed",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "sslErrorOverrideAllowed",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Allow users to click through SSL warnings and proceed to the page."
-        },
-        {
-          "value": "false",
-          "description": "Block users from clicking through SSL warnings."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#ssl_error_override_allowed",
-  "schemaName": "chrome.users.SslErrorOverrideAllowed",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.SslErrorOverrideAllowedForOrigins",
-  "policyDescription": "SSL error override allowed domains.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "SslErrorOverrideAllowedForOrigins",
-        "field": [
-          {
-            "name": "sslErrorOverrideAllowedForOrigins",
-            "number": 1,
-            "label": "LABEL_REPEATED",
-            "type": "TYPE_STRING"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "sslErrorOverrideAllowedForOrigins",
-      "description": "Domains that allow clicking through SSL warnings. Enter a list of domain names.",
-      "inputConstraint": "Each string field in the list should be formatted in the format 'domain name'."
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#ssl_error_override_allowed_for_origins",
-  "schemaName": "chrome.users.SslErrorOverrideAllowedForOrigins",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.DataCompressionProxy",
-  "policyDescription": "Data compression proxy.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "DataCompressionProxy",
-        "field": [
-          {
-            "name": "dataCompressionProxyEnabled",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_ENUM",
-            "typeName": "NullableBoolean"
-          }
-        ]
-      }
-    ],
-    "enumType": [
-      {
-        "name": "NullableBoolean",
-        "value": [
-          {
-            "name": "UNSET",
-            "number": 1
-          },
-          {
-            "name": "FALSE",
-            "number": 2
-          },
-          {
-            "name": "TRUE",
-            "number": 3
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "dataCompressionProxyEnabled",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "UNSET",
-          "description": "Allow the user to decide."
-        },
-        {
-          "value": "TRUE",
-          "description": "Always enable data compression proxy."
-        },
-        {
-          "value": "FALSE",
-          "description": "Always disable data compression proxy."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#data_compression_proxy_enabled",
-  "schemaName": "chrome.users.DataCompressionProxy",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.WebRtcUdpPortRange",
-  "policyDescription": "WebRTC UDP ports.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "WebRtcUdpPortRange",
-        "field": [
-          {
-            "name": "webRtcUdpPortsEnabled",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          },
-          {
-            "name": "webRtcUdpPortsMin",
-            "number": 2,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_INT64"
-          },
-          {
-            "name": "webRtcUdpPortsMax",
-            "number": 3,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_INT64"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "webRtcUdpPortsEnabled",
-      "description": "Whether to restrict the use of UDP to a specified port range.",
-      "knownValueDescriptions": [
-        {
-          "value": "false",
-          "description": "Allow WebRTC to pick any UDP port (1024-65535)."
-        },
-        {
-          "value": "true",
-          "description": "Specify range of UDP ports allowed for WebRTC."
-        }
-      ]
-    },
-    {
-      "field": "webRtcUdpPortsMin",
-      "description": "Minimum value for allowed UDP ports. This setting can only be set after setting web_rtc_udp_ports_enabled = true.",
-      "inputConstraint": "The long field should have value greater than or equal to zero.",
-      "fieldDependencies": [
-        {
-          "sourceField": "webRtcUdpPortsEnabled",
-          "sourceFieldValue": "true"
-        }
-      ]
-    },
-    {
-      "field": "webRtcUdpPortsMax",
-      "description": "Maximum value for allowed UDP ports. This setting can only be set after setting web_rtc_udp_ports_enabled = true.",
-      "inputConstraint": "The long field should have value greater than or equal to zero.",
-      "fieldDependencies": [
-        {
-          "sourceField": "webRtcUdpPortsEnabled",
-          "sourceFieldValue": "true"
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#web_rtc_udp_ports_max",
-  "schemaName": "chrome.users.WebRtcUdpPortRange",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.WebRtcLocalIpsAllowedUrls",
-  "policyDescription": "WebRTC ICE candidate URLs for local IPs.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "WebRtcLocalIpsAllowedUrls",
-        "field": [
-          {
-            "name": "webRtcLocalIpsAllowedUrls",
-            "number": 1,
-            "label": "LABEL_REPEATED",
-            "type": "TYPE_STRING"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "webRtcLocalIpsAllowedUrls",
-      "description": "URLs for which local IPs are exposed in WebRTC ICE candidates. . Patterns in this list will be matched against the security origin of the requesting URL. If a match is found the local IP addresses are shown in WebRTC ICE candidates. Otherwise, local IP addresses are concealed with mDNS hostnames. Please note that this policy weakens the protection of local IPs if needed by administrators. ."
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#web_rtc_local_ips_allowed_urls",
-  "schemaName": "chrome.users.WebRtcLocalIpsAllowedUrls",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.QuicProtocol",
-  "policyDescription": "QUIC protocol.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "QuicProtocol",
-        "field": [
-          {
-            "name": "quicAllowed",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "quicAllowed",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Enable."
-        },
-        {
-          "value": "false",
-          "description": "Disable."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#quic_allowed",
-  "schemaName": "chrome.users.QuicProtocol",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.WebRtcIpHandling",
-  "policyDescription": "WebRTC IP handling.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "WebRtcIpHandling",
-        "field": [
-          {
-            "name": "webRtcIpHandling",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_ENUM",
-            "typeName": "WebRtcIPHandlingEnum"
-          }
-        ]
-      }
-    ],
-    "enumType": [
-      {
-        "name": "WebRtcIPHandlingEnum",
-        "value": [
-          {
-            "name": "WEB_RTC_IP_HANDLING_ENUM_DEFAULT",
-            "number": 1
-          },
-          {
-            "name": "WEB_RTC_IP_HANDLING_ENUM_DEFAULT_PUBLIC_AND_PRIVATE_INTERFACES",
-            "number": 2
-          },
-          {
-            "name": "WEB_RTC_IP_HANDLING_ENUM_DEFAULT_PUBLIC_INTERFACE_ONLY",
-            "number": 3
-          },
-          {
-            "name": "WEB_RTC_IP_HANDLING_ENUM_DISABLE_NON_PROXIED_UDP",
-            "number": 4
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "webRtcIpHandling",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "WEB_RTC_IP_HANDLING_ENUM_DEFAULT",
-          "description": "WebRTC will use all available interfaces when searching for the best path."
-        },
-        {
-          "value": "WEB_RTC_IP_HANDLING_ENUM_DEFAULT_PUBLIC_AND_PRIVATE_INTERFACES",
-          "description": "WebRTC will only use the interface connecting to the public Internet, but may connect using private IP addresses."
-        },
-        {
-          "value": "WEB_RTC_IP_HANDLING_ENUM_DEFAULT_PUBLIC_INTERFACE_ONLY",
-          "description": "WebRTC will only use the interface connecting to the public Internet, and will not connect using private IP addresses."
-        },
-        {
-          "value": "WEB_RTC_IP_HANDLING_ENUM_DISABLE_NON_PROXIED_UDP",
-          "description": "WebRTC will use TCP on the public-facing interface, and will only use UDP if supported by a configured proxy."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#web_rtc_ip_handling",
-  "schemaName": "chrome.users.WebRtcIpHandling",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.DnsOverHttps",
-  "policyDescription": "DNS-over-HTTPS.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "DnsOverHttps",
-        "field": [
-          {
-            "name": "dnsOverHttpsMode",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_ENUM",
-            "typeName": "DnsOverHttpsModeEnum"
-          },
-          {
-            "name": "dnsOverHttpsTemplates",
-            "number": 2,
-            "label": "LABEL_REPEATED",
-            "type": "TYPE_STRING"
-          }
-        ]
-      }
-    ],
-    "enumType": [
-      {
-        "name": "DnsOverHttpsModeEnum",
-        "value": [
-          {
-            "name": "DNS_OVER_HTTPS_MODE_ENUM_OFF",
-            "number": 1
-          },
-          {
-            "name": "DNS_OVER_HTTPS_MODE_ENUM_AUTOMATIC",
-            "number": 2
-          },
-          {
-            "name": "DNS_OVER_HTTPS_MODE_ENUM_SECURE",
-            "number": 3
-          },
-          {
-            "name": "DNS_OVER_HTTPS_MODE_ENUM_UNSET",
-            "number": 4
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "dnsOverHttpsMode",
-      "description": "DNS-over-HTTPS mode.",
-      "knownValueDescriptions": [
-        {
-          "value": "DNS_OVER_HTTPS_MODE_ENUM_OFF",
-          "description": "Disable DNS-over-HTTPS."
-        },
-        {
-          "value": "DNS_OVER_HTTPS_MODE_ENUM_AUTOMATIC",
-          "description": "Enable DNS-over-HTTPS with insecure fallback."
-        },
-        {
-          "value": "DNS_OVER_HTTPS_MODE_ENUM_SECURE",
-          "description": "Enable DNS-over-HTTPS without insecure fallback."
-        },
-        {
-          "value": "DNS_OVER_HTTPS_MODE_ENUM_UNSET",
-          "description": "May send DNS-over-HTTPS requests to user's configured custom name server."
-        }
-      ]
-    },
-    {
-      "field": "dnsOverHttpsTemplates",
-      "description": "DNS-over-HTTPS templates. URI templates of desired DNS-over-HTTPS resolvers. If the URI template contains a '{?dns}' variable, requests to the resolver will use GET; otherwise requests will use POST.",
-      "fieldDependencies": [
-        {
-          "sourceField": "dnsOverHttpsMode",
-          "sourceFieldValue": "DNS_OVER_HTTPS_MODE_ENUM_AUTOMATIC"
-        },
-        {
-          "sourceField": "dnsOverHttpsMode",
-          "sourceFieldValue": "DNS_OVER_HTTPS_MODE_ENUM_SECURE"
-        },
-        {
-          "sourceField": "dnsOverHttpsMode",
-          "sourceFieldValue": "DNS_OVER_HTTPS_MODE_ENUM_UNSET"
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#dns_over_https_mode",
-  "schemaName": "chrome.users.DnsOverHttps",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.BuiltInDnsClientEnabled",
-  "policyDescription": "Built-in DNS client.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "BuiltInDnsClientEnabled",
-        "field": [
-          {
-            "name": "builtInDnsClientEnabled",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_ENUM",
-            "typeName": "NullableBoolean"
-          }
-        ]
-      }
-    ],
-    "enumType": [
-      {
-        "name": "NullableBoolean",
-        "value": [
-          {
-            "name": "UNSET",
-            "number": 1
-          },
-          {
-            "name": "FALSE",
-            "number": 2
-          },
-          {
-            "name": "TRUE",
-            "number": 3
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "builtInDnsClientEnabled",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "UNSET",
-          "description": "Use the built-in DNS client on macOS, Android and Chrome OS. Allow the user to change the setting."
-        },
-        {
-          "value": "TRUE",
-          "description": "Always use the built-in DNS client if available."
-        },
-        {
-          "value": "FALSE",
-          "description": "Never use the built-in DNS client."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#built_in_dns_client_enabled",
-  "schemaName": "chrome.users.BuiltInDnsClientEnabled",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.AlwaysOnVpn",
-  "policyDescription": "Always on VPN.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "AlwaysOnVpn",
-        "field": [
-          {
-            "name": "alwaysOnVpnApp",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_STRING"
-          },
-          {
-            "name": "vpnConfigAllowed",
-            "number": 2,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "alwaysOnVpnApp",
-      "description": "Activate Always-on VPN for all user traffic with an app from a list of force installed Android VPN apps. Please make sure the configured app is force installed."
-    },
-    {
-      "field": "vpnConfigAllowed",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Allow user to disconnect from a VPN manually (VPN will reconnect on log in)."
-        },
-        {
-          "value": "false",
-          "description": "Do not allow user to disconnect from a VPN manually."
-        }
-      ]
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#always_on_vpn",
-  "schemaName": "chrome.users.AlwaysOnVpn",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.AuthenticationServerAllowlist",
-  "policyDescription": "Integrated authentication servers.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "AuthenticationServerAllowlist",
-        "field": [
-          {
-            "name": "authServerAllowlist",
-            "number": 1,
-            "label": "LABEL_REPEATED",
-            "type": "TYPE_STRING"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "authServerAllowlist",
-      "description": "Allowed authentication servers. Enter a list of servers for integrated authentication."
-    }
-  ],
-  "supportUri": "https://support.google.com/chrome/a/answer/2657289?hl=en#auth_server_allowlist",
-  "schemaName": "chrome.users.AuthenticationServerAllowlist",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.AuthenticationServerDelegationAllowlist",
-  "policyDescription": "Kerberos delegation servers.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "AuthenticationServerDelegationAllowlist",
-        "field": [
-          {
-            "name": "authNegotiateDelegateAllowlist",
-            "number": 1,
-            "label": "LABEL_REPEATED",
-            "type": "TYPE_STRING"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "authNegotiateDelegateAllowlist",
-      "description": "Allowed servers for delegation. Enter a list of servers that Chrome may delegate to for Kerberos authentication."
-    }
-  ],
-  "schemaName": "chrome.users.AuthenticationServerDelegationAllowlist",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.KerberosTicketDelegation",
-  "policyDescription": "Kerberos ticket delegation.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "KerberosTicketDelegation",
-        "field": [
-          {
-            "name": "authNegotiateDelegateByKdcPolicy",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "authNegotiateDelegateByKdcPolicy",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Respect KDC policy."
-        },
-        {
-          "value": "false",
-          "description": "Ignore KDC policy."
-        }
-      ]
-    }
-  ],
-  "schemaName": "chrome.users.KerberosTicketDelegation",
-  "policyApiLifeycle": {
-    "policyApiLifecycleStage": "API_CURRENT"
-  }
-},{
-  "name": "customers/C00qjrmdh/policySchemas/chrome.users.KerberosServicePrincipalName",
-  "policyDescription": "Kerberos service principal name.",
-  "definition": {
-    "messageType": [
-      {
-        "name": "KerberosServicePrincipalName",
-        "field": [
-          {
-            "name": "disableAuthNegotiateCnameLookup",
-            "number": 1,
-            "label": "LABEL_OPTIONAL",
-            "type": "TYPE_BOOL"
-          }
-        ]
-      }
-    ]
-  },
-  "fieldDescriptions": [
-    {
-      "field": "disableAuthNegotiateCnameLookup",
-      "description": "N/A",
-      "knownValueDescriptions": [
-        {
-          "value": "true",
-          "description": "Use original name entered."
-        },
-        {
-          "value": "false",
-          "description": "Use canonical DNS name."
-        }
-      ]
-    }
-  ],
-  "schemaName": "chrome.users.KerberosServicePrincipalName",
   "policyApiLifeycle": {
     "policyApiLifecycleStage": "API_CURRENT"
   }
