@@ -33,6 +33,24 @@
       "message": "Currently, OobeConsolidatedConsent is disabled by default, but we can have it explicitly disabled in the test until we make sure that the cause of the test failure is already fixed.\n\nCan we also disable PerUserMetricsConsent since the 2 features are interdependent?\n\nThanks,",
       "revId": "3e38ad8c7890bc569159100da7131dd6c4803efd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2dc8071_bbb78bc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-25T23:44:08Z",
+      "side": 1,
+      "message": "Ah yeah I noticed the test is passing again now. I will still disable these 2 features explicitly until we find what needs to be changed for it to pass with them enabled. Thanks!",
+      "parentUuid": "dc8c663e_8bcc7f3c",
+      "revId": "3e38ad8c7890bc569159100da7131dd6c4803efd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
