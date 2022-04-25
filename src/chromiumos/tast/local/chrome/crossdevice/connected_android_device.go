@@ -261,10 +261,15 @@ func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed to connect to the UI Automator server")
 	}
 	defer uiDevice.Close(ctx)
-	shutterButton := uiDevice.Object(ui.DescriptionMatches("Take.*photo"))
+
+	shutterButton := uiDevice.Object(ui.ResourceIDMatches(".*/shutter_button"))
 	if err := shutterButton.WaitForExists(ctx, 3*time.Second); err != nil {
-		return "", errors.Wrap(err, "cannot find the shutter button in the Google Camera app")
+		shutterButton = uiDevice.Object(ui.DescriptionMatches("Take.*photo"))
+		if err := shutterButton.WaitForExists(ctx, 3*time.Second); err != nil {
+			return "", errors.Wrap(err, "cannot find the shutter button in the Google Camera app")
+		}
 	}
+
 	if err := shutterButton.Click(ctx); err != nil {
 		return "", errors.Wrap(err, "failed to take a photo")
 	}
