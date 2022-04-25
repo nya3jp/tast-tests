@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f78ed8_b18fdf73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-25T18:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d57bc366_d5301a64",
+      "revId": "4283998978387754105fe88e985fa64c2b65abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ba1957a_e2a88607",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-04-25T14:12:54Z",
       "side": 1,
       "message": "style.\n\nline, err :\u003d ...\nif err !\u003d nil {\n   return false\n}\nif strings.Contains(line, ...) {\n   return true\n}",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 3
+      },
+      "revId": "4283998978387754105fe88e985fa64c2b65abb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d24c11_234f3ed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-25T18:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba1957a_e2a88607",
       "range": {
         "startLine": 199,
         "startChar": 2,
