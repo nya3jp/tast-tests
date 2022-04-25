@@ -82,11 +82,10 @@ func (a *Adapter) Powered(ctx context.Context) (bool, error) {
 	return powered, nil
 }
 
-const addressProp = adapterIface + ".Address"
-
 // Address returns the MAC address of the adapter.
 func (a *Adapter) Address(ctx context.Context) (string, error) {
-	value, err := dbusutil.Property(ctx, a.obj, addressProp)
+	const prop = adapterIface + ".Address"
+	value, err := dbusutil.Property(ctx, a.obj, prop)
 	if err != nil {
 		return "", err
 	}
@@ -110,6 +109,66 @@ func (a *Adapter) Name(ctx context.Context) (string, error) {
 		return "", errors.New("name property not a string")
 	}
 	return name, nil
+}
+
+const discoverableProp = adapterIface + ".Discoverable"
+
+// Discoverable returns the discoverable of the adapter.
+func (a *Adapter) Discoverable(ctx context.Context) (bool, error) {
+	value, err := dbusutil.Property(ctx, a.obj, discoverableProp)
+	if err != nil {
+		return false, err
+	}
+	discoverable, ok := value.(bool)
+	if !ok {
+		return false, errors.New("discoverable property not a string")
+	}
+	return discoverable, nil
+}
+
+const discoveringProp = adapterIface + ".Discovering"
+
+// Discovering returns the discovering of the adapter.
+func (a *Adapter) Discovering(ctx context.Context) (bool, error) {
+	value, err := dbusutil.Property(ctx, a.obj, discoveringProp)
+	if err != nil {
+		return false, err
+	}
+	discovering, ok := value.(bool)
+	if !ok {
+		return false, errors.New("discovering property not a string")
+	}
+	return discovering, nil
+}
+
+const uuidsProp = adapterIface + ".UUIDs"
+
+// UUIDs returns the uuids of the adapter.
+func (a *Adapter) UUIDs(ctx context.Context) ([]string, error) {
+	value, err := dbusutil.Property(ctx, a.obj, uuidsProp)
+	if err != nil {
+		return []string{}, err
+	}
+	uuids, ok := value.([]string)
+	if !ok {
+		return []string{}, errors.New("uuids property not a string")
+	}
+	return uuids, nil
+}
+
+const modaliasProp = adapterIface + ".Modalias"
+
+// Modalias returns the modalias of the adapter.
+func (a *Adapter) Modalias(ctx context.Context) (string, error) {
+	value, err := dbusutil.Property(ctx, a.obj, modaliasProp)
+	if err != nil {
+		return "", err
+	}
+	modalias, ok := value.(string)
+	if !ok {
+		return "", errors.New("modalias property not a string")
+	}
+	return modalias, nil
 }
 
 // StartDiscovery starts a discovery on the adapter.
