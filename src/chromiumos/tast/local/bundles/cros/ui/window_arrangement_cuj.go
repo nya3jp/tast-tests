@@ -176,7 +176,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			perf.SmallerIsBetter, []int64{0, 3}),
 	}
 	if !tabletMode {
-		configs = []cuj.MetricConfig{
+		configs = append(configs,
 			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.ClamshellMode"),
 			cuj.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
@@ -184,9 +184,9 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cuj.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 				"percent", perf.SmallerIsBetter, []int64{50, 80}, conns.BrowserTestConn),
-		}
+		)
 	} else {
-		configs = []cuj.MetricConfig{
+		configs = append(configs,
 			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.TabletMode"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview"),
@@ -194,7 +194,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cuj.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 				"percent", perf.SmallerIsBetter, []int64{50, 80}, conns.BrowserTestConn),
-		}
+		)
 	}
 
 	recorder, err := cuj.NewRecorder(ctx, conns.Chrome, conns.ARC, configs...)
