@@ -94,7 +94,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 			htmlFieldID: "city",
 		},
 		{
-			fieldName:   "Postal code",
+			fieldName:   "ZIP code",
 			fieldValue:  "11111",
 			htmlFieldID: "postal-code",
 		},
