@@ -16,6 +16,24 @@
       "message": "nit: whitespace looks a bit weird at the end here, is this how `gofmt` left it?",
       "revId": "f2d80d30ea8d3f117f51d84193da7c2550de1107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a161c2d_94acbbaf",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-25T20:50:10Z",
+      "side": 1,
+      "message": "I don\u0027t think gofmt touches proto files.",
+      "parentUuid": "d456a72a_c2ed21b0",
+      "revId": "f2d80d30ea8d3f117f51d84193da7c2550de1107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
