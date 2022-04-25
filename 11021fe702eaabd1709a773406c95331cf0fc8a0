@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f73dc90_91f0cafb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-25T06:54:51Z",
+      "side": 1,
+      "message": "Yes this file may or may not exist, depending on the context. Running crash.KernelIwlwifiError leaves the virtual file on system for 6 minute, which will be cleared after the timer expires. The DUT with power cycle won\u0027t have this file on system. I do the checking here to determine whether we need to wait extra 30s for safety and clear the file.",
+      "parentUuid": "16db1843_d3f14fd2",
+      "range": {
+        "startLine": 65,
+        "startChar": 22,
+        "endLine": 65,
+        "endChar": 36
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3207d9c3_9db6246e",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "writtenOn": "2022-04-25T01:53:24Z",
       "side": 1,
       "message": "I feel it a bit strange that err !\u003d nil is not handled.\nCould you add comments for adding rationale?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e422a8a6_4f6afa09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-25T06:54:51Z",
+      "side": 1,
+      "message": "In case of any error, including directory does not exist, I would like to skip the code block for cleanup and proceed the rest of code. The reason we may or may not need to clean is mentioned in above comment. I will add comments to give rationale.",
+      "parentUuid": "3207d9c3_9db6246e",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -154,6 +202,30 @@
       "writtenOn": "2022-04-25T01:53:24Z",
       "side": 1,
       "message": "Could you use testing.Poll instead of sleeping? Sleeping is a common source of flakiness.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6023c48b_685c6590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-25T06:54:51Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "2dde9b8c_10c82d98",
       "range": {
         "startLine": 74,
         "startChar": 0,
