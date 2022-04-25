@@ -51,7 +51,7 @@ func Combine(name string, steps ...Action) Action {
 // The last error will be returned.  Any other errors will be silently logged.
 // Between each run of the loop, it will sleep according the specified interval.
 func Retry(n int, action Action, interval time.Duration) Action {
-	return retryWithLogging(n, action, interval, true)
+	return retry(n, action, interval, 1, true)
 }
 
 // RetrySilently returns a function that retries a given action if it returns error.
@@ -59,12 +59,22 @@ func Retry(n int, action Action, interval time.Duration) Action {
 // The last error will be returned.  Any other errors will be ignored.
 // Between each run of the loop, it will sleep according the specified interval.
 func RetrySilently(n int, action Action, interval time.Duration) Action {
-	return retryWithLogging(n, action, interval, false)
+	return retry(n, action, interval, 1, false)
 }
 
-func retryWithLogging(n int, action Action, interval time.Duration, verboseLog bool) Action {
+// RetryWithExponentialBackoff returns a function that retries a given action if it returns error.
+// The action will be executed up to n times, including the first attempt.
+// The last error will be returned.  Any other errors will be silently logged.
+// Between each run of the loop, the interval increases exponentially.
+// i.e. waiting time = interval * base ^ i where 0 <= i < n-1.
+func RetryWithExponentialBackoff(n int, action Action, interval time.Duration, base int64) Action {
+	return retry(n, action, interval, base, true)
+}
+
+func retry(n int, action Action, interval time.Duration, base int64, verboseLog bool) Action {
 	return func(ctx context.Context) error {
 		var err error
+		backoff := interval
 		for i := 0; i < n; i++ {
 			if err = action(ctx); err == nil {
 				// Print a success log to clear confusing.
@@ -79,9 +89,10 @@ func retryWithLogging(n int, action Action, interval time.Duration, verboseLog b
 			}
 			// Sleep between all iterations.
 			if i < n-1 {
-				if err := testing.Sleep(ctx, interval); err != nil && verboseLog {
+				if err := testing.Sleep(ctx, backoff); err != nil && verboseLog {
 					testing.ContextLog(ctx, "Failed to sleep between retry iterations: ", err)
 				}
+				backoff *= time.Duration(base)
 			}
 		}
 		return err
