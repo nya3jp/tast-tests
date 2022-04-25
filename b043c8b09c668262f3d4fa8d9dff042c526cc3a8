@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0785da68_1f7963a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:34:17Z",
+      "side": 1,
+      "message": "We decided to ignore chrome dependency issue for this CL first, and open a bug to track it. This has been updated to mainly just changing Lacros status to unneeded.",
+      "parentUuid": "29d0d461_99ade58d",
+      "revId": "b043c8b09c668262f3d4fa8d9dff042c526cc3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "37f7f120_0c38394a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
