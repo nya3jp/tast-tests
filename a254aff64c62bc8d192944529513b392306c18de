@@ -39,6 +39,30 @@
       },
       "revId": "a254aff64c62bc8d192944529513b392306c18de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebaa272a_57bcb9c0",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-25T23:37:15Z",
+      "side": 1,
+      "message": "Yeah I agree but that would require updating all the usages of the constructor. \n\nI think having this feature toggle might just be more trouble than it\u0027s worth. I\u0027m just going to update the previous CL to use the general format all the time as the more I think about it the more I\u0027d rather just keep it consistent.",
+      "parentUuid": "6667f1de_41cb007b",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 63
+      },
+      "revId": "a254aff64c62bc8d192944529513b392306c18de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
