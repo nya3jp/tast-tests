@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "780ebdac_59a541f5",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T23:09:51Z",
+      "side": 1,
+      "message": "Based on how it was written I wasn\u0027t sure if the `entries[0] \u003d\u003d \"0\"` case was a unique case. If it\u0027s true that the `entries` must always contain 3 records to be valid AND if the first entry is 0 it\u0027s not important, than what you just wrote is a cleaner check.",
+      "parentUuid": "3f3ec426_beefae33",
+      "revId": "c621e0e67a22d161053740327f5b22644196f47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14299179_efa3da4d",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 3
