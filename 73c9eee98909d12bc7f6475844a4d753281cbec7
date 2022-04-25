@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdee0e4e_f144482e",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-25T23:15:18Z",
+      "side": 1,
+      "message": "All the login ones and the reboot and smokesnippet could. I\u0027ll bump \u0027em all.",
+      "parentUuid": "d9f78962_49684bbf",
+      "range": {
+        "startLine": 91,
+        "startChar": 53,
+        "endLine": 91,
+        "endChar": 66
+      },
+      "revId": "73c9eee98909d12bc7f6475844a4d753281cbec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4d0cca9_687b5a10",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-25T17:19:18Z",
       "side": 1,
       "message": "should we log this and try to reconnect here instead?",
+      "revId": "73c9eee98909d12bc7f6475844a4d753281cbec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "999ebea8_e777bad8",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbyfixture/login_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-25T23:15:18Z",
+      "side": 1,
+      "message": "It needs to be later after the chromeos login definitely. I don\u0027t think it *needs* to be here but cannot hurt",
+      "parentUuid": "a4d0cca9_687b5a10",
       "revId": "73c9eee98909d12bc7f6475844a4d753281cbec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ec15ff_ea267d53",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-25T23:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d6e275b_d1f3a014",
+      "revId": "73c9eee98909d12bc7f6475844a4d753281cbec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7f9c6eb_c02a6159",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-04-25T17:19:18Z",
       "side": 1,
       "message": "rename this to SetADBDevice (consistent case for abbreviations, and \"Set\" is okay to have in the function name for setters)",
+      "range": {
+        "startLine": 120,
+        "startChar": 30,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "73c9eee98909d12bc7f6475844a4d753281cbec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd0e2eb_c39f1f1a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-25T23:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f9c6eb_c02a6159",
       "range": {
         "startLine": 120,
         "startChar": 30,
