@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4b7d06_9eefed91",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T22:27:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ddfa8725_57d092d0",
+      "range": {
+        "startLine": 69,
+        "startChar": 48,
+        "endLine": 69,
+        "endChar": 53
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6898bc94_7648fe6d",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Done. Should I just remove retryWithLogging?",
       "parentUuid": "6898bc94_7648fe6d",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "22771009fb1e2d1b3d85f74f1b10c1a3a7096666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ee7b2c_496f6f6c",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T22:27:55Z",
+      "side": 1,
+      "message": "Yes, please remove `retryWithLogging`. Then this CL can be thought of as renaming `retryWithLogging` to `retry` and adding another parameter.",
+      "parentUuid": "91b01740_6377c1ed",
       "range": {
         "startLine": 74,
         "startChar": 5,
