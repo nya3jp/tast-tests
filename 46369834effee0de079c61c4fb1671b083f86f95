@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e8d61e_d163cd93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T18:45:03Z",
+      "side": 1,
+      "message": "nit: one space here, not two",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "46369834effee0de079c61c4fb1671b083f86f95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c841a46_60a7be5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T18:45:03Z",
+      "side": 1,
+      "message": "Really I think you can just remove this. I think \"Disable some MeetCUJ tests, to help with bot shortage\" is adequate by itself.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "46369834effee0de079c61c4fb1671b083f86f95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
