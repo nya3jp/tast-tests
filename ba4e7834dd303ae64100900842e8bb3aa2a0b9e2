@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c49548c3_6c69360d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-25T19:12:02Z",
+      "side": 1,
+      "message": "Sorry I had one definition for testCycles that I wrote down, and a different one that I was thinking about. I changed it to be as it was written -- successful runs only.",
+      "parentUuid": "f4327af7_64c687da",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 2
+      },
+      "revId": "ba4e7834dd303ae64100900842e8bb3aa2a0b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95d1e5a8_62054fa1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85701ea_c1f4eca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-25T19:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95d1e5a8_62054fa1",
+      "range": {
+        "startLine": 594,
+        "startChar": 0,
+        "endLine": 596,
+        "endChar": 21
+      },
+      "revId": "ba4e7834dd303ae64100900842e8bb3aa2a0b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a649ed9_77de8139",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-25T18:35:40Z",
       "side": 1,
       "message": "These two things should be switched around if `testCyclesCount` is the number of times a test scenario is `successfully` run. That means do not include runs where `err !\u003d nil`.",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 601,
+        "endChar": 4
+      },
+      "revId": "ba4e7834dd303ae64100900842e8bb3aa2a0b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42acbb6b_6d48c03f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-25T19:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a649ed9_77de8139",
       "range": {
         "startLine": 598,
         "startChar": 0,
