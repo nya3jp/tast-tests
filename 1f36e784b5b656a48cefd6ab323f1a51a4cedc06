@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c732d5_4b2ce6fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-04-25T21:33:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cfc8af26_a67223cb",
+      "revId": "1f36e784b5b656a48cefd6ab323f1a51a4cedc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "266a57e8_7260aff0",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6556b425_a05c3c95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-04-25T21:33:40Z",
+      "side": 1,
+      "message": "Ack. As suggested, I added a new \"TestType\" property on \"test\", which is an enum with this CL. Thanks for the suggestions.",
+      "parentUuid": "266a57e8_7260aff0",
+      "revId": "1f36e784b5b656a48cefd6ab323f1a51a4cedc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5c7b3bc_791c4438",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-04-13T20:57:58Z",
       "side": 1,
       "message": "IIUC, We have the individual app tests with longer timeout like 30 mins and we are trying to override that timeout of individual app tests here?\n\nIs it not same as setting the time out of apps to defaultTestCaseTimeout?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 0
+      },
+      "revId": "1f36e784b5b656a48cefd6ab323f1a51a4cedc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4db51ea3_9656be15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-04-25T21:33:40Z",
+      "side": 1,
+      "message": "The current CL does not override the individual app tests timeout of 30 mins. Also verified it. The current CL makes sure that one test case doesn\u0027t use all of the time when it fails.",
+      "parentUuid": "d5c7b3bc_791c4438",
       "range": {
         "startLine": 154,
         "startChar": 0,
