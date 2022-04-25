@@ -33,6 +33,24 @@
       "message": "nit; no conflicting package name so alias is not needed, I think.",
       "revId": "424bbc3e9ecca04bf2801fb11479ce96962f8d97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c9c997_47162f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-25T01:05:54Z",
+      "side": 1,
+      "message": "Good catch! Thanks!",
+      "parentUuid": "eb84c91c_9400c55f",
+      "revId": "424bbc3e9ecca04bf2801fb11479ce96962f8d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
