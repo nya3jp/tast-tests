@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f315938f_a9f94fa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Agreed, I have refactored the code accordingly. Have added ipv6 tests based on the APN type used.",
+      "parentUuid": "78a59c01_31d9a392",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99630411_ebec4fee",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08109720_680c702c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99630411_ebec4fee",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ade9ee5_ca304881",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-04-22T19:03:21Z",
       "side": 1,
       "message": "feels like we should be able to factor this out since we also use it in the other test, but since most of it is deferring functions, that\u0027s difficult.\n\nMaybe we can loop over the technologies and just have this block once?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb9ee6d_19b7a42d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ade9ee5_ca304881",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -83,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "751880dc_30956b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Makes sense. My reasoning was, we should make sure there is cellular service after we disable wifi and ethernet. Let me know if you still want to make that change?",
+      "parentUuid": "d6a8b3ca_64996cb8",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1f71745_2a8b9b66",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
         "patchSetId": 1
@@ -94,6 +178,30 @@
       "writtenOn": "2022-04-22T19:03:21Z",
       "side": 1,
       "message": "you should just be able to do:\n\n```\nfunc() {\n  // ...\n  defer cr.Close(ctx)\n  // ...\n}()\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 11
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "994ec0bd_5fb7c945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1f71745_2a8b9b66",
       "range": {
         "startLine": 81,
         "startChar": 0,
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce4f58fd_4a73643c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89549f21_86618489",
+      "range": {
+        "startLine": 102,
+        "startChar": 27,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b179dafd_9dc89df8",
@@ -140,6 +272,24 @@
       "writtenOn": "2022-04-22T19:03:21Z",
       "side": 1,
       "message": "nit: remove this blank line",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a45c8a_d19f287d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/arc_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b179dafd_9dc89df8",
       "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2390108_92103dd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/crostini_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a10b6a_6393039f",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c119734_3ca1a185",
@@ -174,6 +342,24 @@
       "writtenOn": "2022-04-22T19:03:21Z",
       "side": 1,
       "message": "ditto re: tightening this up a bit",
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f6d273_6a57bb65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/crostini_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c119734_3ca1a185",
       "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d844c1f4_72fa1e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/crostini_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "74b3b340_4e3aee07",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf8b7309_beb51104",
@@ -214,6 +424,30 @@
       "writtenOn": "2022-04-22T19:03:21Z",
       "side": 1,
       "message": "nit: remove this trailing space",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 28
+      },
+      "revId": "d782f8a9f0ec82c45895be8792c23dafcc04a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1039eb27_68b1a058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/crostini_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-25T17:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf8b7309_beb51104",
       "range": {
         "startLine": 93,
         "startChar": 27,
