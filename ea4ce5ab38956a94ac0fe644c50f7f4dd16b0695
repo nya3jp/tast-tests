@@ -283,6 +283,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac028e3f_14ef6cd4",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T22:28:20Z",
+      "side": 1,
+      "message": "I think a TODO which links to Ricardo\u0027s bug, and line in cs would be enough for someone to understand the context",
+      "parentUuid": "5e0706e1_8b14fedc",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "582f166e_df97c5e9",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
@@ -388,6 +406,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "046ff365_d2a4fcd3",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T22:28:20Z",
+      "side": 1,
+      "message": "Correct, the method can get a bit unwieldy, especially when it has a lot of return cases, as the number of return variables increases. A struct can help simplify that and give context to what the return type means through its properties. I\u0027ll defer to you on which one you think is appropriate here",
+      "parentUuid": "1a45ff0c_6f4d1145",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2c947a8_5948eff3",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
@@ -423,6 +459,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f33394d3_8f7ae4e3",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T22:28:20Z",
+      "side": 1,
+      "message": "Once the fixes on `entries` are applied to check for the correct structure, this shouldn\u0027t be needed",
+      "parentUuid": "442da76a_91d7c7f6",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8b94a06_4535381c",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
@@ -452,6 +506,24 @@
       "side": 1,
       "message": "Ricardo\u0027s script also has an INT_MAX check that I haven\u0027t added yet - I assume that can go after the parse?",
       "parentUuid": "c8b94a06_4535381c",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8945dcbc_a00717b9",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T22:28:20Z",
+      "side": 1,
+      "message": "Ya that seems relevant to the implementation - `math.MaxInt64` should work",
+      "parentUuid": "95028a41_91b42642",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -522,6 +594,24 @@
       "side": 1,
       "message": "IIUC draw is declared locally in the for loop, so I would have to declare it outside the loop for it to work as intended here - is that correct?",
       "parentUuid": "83ef641b_673f61c9",
+      "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c5b0c8_3e52ba16",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T22:28:20Z",
+      "side": 1,
+      "message": "I just meant this block:\n\n```\n\tif len(f.frames) \u003e 0 {\n\t\t// Reassign the latest timestamp.\n\t\tf.lastTimestamp \u003d f.frames[len(f.frames)-1].draw\n\t}\n\treturn nil\n```\n\nupdates to the last draw and it could have been done in the `append` clause which may help give it more context?\n\n```\nif draw \u003e f.lastTimestamp {\n\tf.frames \u003d append(f.frames, frame{draw, vsync, submit})\n        f.lastTimestamp \u003d draw\n}\n```",
+      "parentUuid": "bd57895c_64e10b50",
       "revId": "ea4ce5ab38956a94ac0fe644c50f7f4dd16b0695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d6ae305_bfdd0d55",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T22:28:20Z",
+      "side": 1,
+      "message": "This should probably be `if len(entries) \u003c\u003d 0 || entries[0] \u003d\u003d \"0\" { continue }` to ensure the first entry can be read.",
+      "revId": "c621e0e67a22d161053740327f5b22644196f47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14299179_efa3da4d",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T22:28:20Z",
+      "side": 1,
+      "message": "nit: it\u0027s not common to quote the parameters that failed in the error message.  You can remove the `\\\"` lines",
+      "revId": "c621e0e67a22d161053740327f5b22644196f47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54ff305_4c91cc25",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-25T22:28:20Z",
+      "side": 1,
+      "message": "wasn\u0027t `entriesInt` removed? This should just be `draw \u003e f.lastTimestamp`, right?",
+      "revId": "c621e0e67a22d161053740327f5b22644196f47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
