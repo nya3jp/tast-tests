@@ -108,7 +108,7 @@ func checkUpdate(settings *ossettings.OSSettings) uiauto.Action {
 
 func checkOnlineHelp(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Action {
 	helpRoot := nodewith.Name(apps.Help.Name).HasClass("BrowserFrame").Role(role.Window)
-	titleReg := regexp.MustCompile("Welcome to your (Chromebook|Chromebox)")
+	titleReg := regexp.MustCompile("Welcome to your (Chromebook|Chromebox|Chromebit|Chromebase|Chrome device)")
 
 	return uiauto.Combine("check get help",
 		settings.LaunchHelpApp(),
@@ -203,7 +203,7 @@ func checkOpenSources(ui *uiauto.Context, cr *chrome.Chrome, settings *ossetting
 }
 
 func checkTermsOfServiceLinks(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Action {
-	title := "Google Chrome and Chrome OS Additional Terms of Service"
+	title := "Google Chrome and ChromeOS Additional Terms of Service"
 	termsRoot := nodewith.Name("Chrome - " + title).HasClass("BrowserFrame").Role(role.Window)
 	termsOfServiceTitle := nodewith.Name(title).Role(role.Heading).Ancestor(termsRoot)
 

@@ -81,7 +81,7 @@ var Accessibility = nodewith.Name("Accessibility").Role(role.Link).HasClass("ite
 var ResetSettings = nodewith.Name("Reset settings").Role(role.Link).HasClass("item").Focusable()
 
 // AboutChromeOS is a subpage link.
-var AboutChromeOS = nodewith.MultilingualName("About Chrome OS", map[string]string{"de": "Über Chrome OS"}).
+var AboutChromeOS = nodewith.MultilingualName("About ChromeOS", map[string]string{"de": "Über ChromeOS"}).
 	Role(role.Link)
 
 // MenuButton is a button to show the menu on the left side, only exist when the menu does not exist.

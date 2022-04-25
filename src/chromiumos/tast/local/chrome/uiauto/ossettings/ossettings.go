@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package ossettings supports controlling the Settings App on Chrome OS.
+// Package ossettings supports controlling the Settings App on ChromeOS.
 // This differs from Chrome settings (chrome://settings vs chrome://os-settings)
 package ossettings
 
@@ -158,9 +158,9 @@ func (s *OSSettings) NavigateToPageURL(ctx context.Context, cr *chrome.Chrome, p
 	return webutil.NavigateToURLInApp(settingsConn, urlPrefix+pageShortURL, condition, 20*time.Second)(ctx)
 }
 
-// LaunchHelpApp returns a function that launches Help app by clicking "Get help with Chrome OS".
+// LaunchHelpApp returns a function that launches Help app by clicking "Get help with ChromeOS".
 func (s *OSSettings) LaunchHelpApp() uiauto.Action {
-	return s.ui.LeftClick(nodewith.Name("Get help with Chrome OS").Role(role.Link).Ancestor(WindowFinder))
+	return s.ui.LeftClick(nodewith.Name("Get help with ChromeOS").Role(role.Link).Ancestor(WindowFinder))
 }
 
 // LaunchWhatsNew returns a function that launches Help app by clicking "See what's new".
