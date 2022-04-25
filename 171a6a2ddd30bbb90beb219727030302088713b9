@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1674272c_75e863f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdfddc27_e0962e93",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d418450c_b46035bf",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-22T18:26:33Z",
       "side": 1,
       "message": "nit: I would leave this out, because it does not add much information or clarity.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bbb0658_6c903b52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d418450c_b46035bf",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a80ee44_d42a6db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c185185_67013aa9",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3055177c_d97af879",
@@ -118,6 +190,30 @@
       "writtenOn": "2022-04-22T18:26:33Z",
       "side": 1,
       "message": "nit: `bt`",
+      "range": {
+        "startLine": 75,
+        "startChar": 64,
+        "endLine": 75,
+        "endChar": 88
+      },
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52b63c0_18d20b6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3055177c_d97af879",
       "range": {
         "startLine": 75,
         "startChar": 64,
@@ -151,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92ddb4a2_607440dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f9a77f1_fb70d5ff",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 24
+      },
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45fa993b_dedf2f72",
@@ -164,6 +284,30 @@
       "writtenOn": "2022-04-22T18:26:33Z",
       "side": 1,
       "message": "You may as well also make this work when the test times out.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 68
+      },
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2e7b7d_9594d3ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45fa993b_dedf2f72",
       "range": {
         "startLine": 85,
         "startChar": 0,
@@ -197,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a9b7bb_34d95cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8089bb95_ace3d971",
+      "range": {
+        "startLine": 82,
+        "startChar": 64,
+        "endLine": 82,
+        "endChar": 88
+      },
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a25d2d_811719a8",
@@ -220,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a31b56de_609720cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a25d2d_811719a8",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26cf4863_6a14455b",
@@ -233,6 +425,30 @@
       "writtenOn": "2022-04-22T18:26:33Z",
       "side": 1,
       "message": "See code review comment on similar line of code in other source file.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 68
+      },
+      "revId": "171a6a2ddd30bbb90beb219727030302088713b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c179c00f_d3285c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T02:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26cf4863_6a14455b",
       "range": {
         "startLine": 92,
         "startChar": 0,
