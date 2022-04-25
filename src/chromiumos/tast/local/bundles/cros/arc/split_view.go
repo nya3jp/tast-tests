@@ -15,7 +15,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -75,12 +77,11 @@ func init() {
 
 // dragToSnapFirstOverviewWindow finds the first window in overview, and drags
 // to snap it. This function assumes that overview is already active.
-func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, tew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, targetX input.TouchCoord) error {
+func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, primary bool) error {
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the primary display info")
 	}
-	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
 
 	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
@@ -89,21 +90,14 @@ func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, 
 		return errors.Wrap(err, "failed to find window in overview grid")
 	}
 
-	centerX, centerY := tcc.ConvertLocation(w.OverviewInfo.Bounds.CenterPoint())
-	if err := stw.LongPressAt(ctx, centerX, centerY); err != nil {
-		return errors.Wrap(err, "failed to long-press to start dragging window")
+	center := w.OverviewInfo.Bounds.CenterPoint()
+	target := info.Bounds.RightCenter()
+	if primary {
+		target = info.Bounds.LeftCenter()
 	}
 
-	// Validity check to ensure there is one dragging item.
-	if _, err := ash.DraggedWindowInOverview(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to get dragged overview item")
-	}
-
-	if err := stw.Swipe(ctx, centerX, centerY, targetX, tew.Height()/2, time.Second); err != nil {
-		return errors.Wrap(err, "failed to swipe for snapping window")
-	}
-	if err := stw.End(); err != nil {
-		return errors.Wrap(err, "failed to end swipe")
+	if err := pc.Drag(center, uiauto.Sleep(2*time.Second), pc.DragTo(target, time.Second))(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag to snap from overview")
 	}
 
 	return nil
@@ -184,12 +178,6 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	tew, err := input.Touchscreen(ctx)
-	if err != nil {
-		s.Fatal("Failed to access to the touch screen: ", err)
-	}
-	defer tew.Close()
-
 	// Ensure landscape orientation so this test can assume that windows snap on
 	// the left and right. Windows snap on the top and bottom in portrait-oriented
 	// tablet mode. They snap on the left and right in portrait-oriented clamshell
@@ -198,7 +186,6 @@ func SplitView(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain the orientation info: ", err)
 	}
-	rotation := -orientation.Angle
 	if orientation.Type == display.OrientationPortraitPrimary {
 		info, err := display.GetPrimaryInfo(ctx, tconn)
 		if err != nil {
@@ -208,9 +195,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to rotate display: ", err)
 		}
 		defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
-		rotation += 90
 	}
-	tew.SetRotation(rotation)
 
 	// Show two activities. As the content of the activities doesn't matter,
 	// use two activities available by default.
@@ -235,13 +220,24 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for idle: ", err)
 	}
 
-	stw, err := tew.NewSingleTouchWriter()
+	pc, err := pointer.NewTouch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to create a single touch writer: ", err)
+		s.Fatal("Failed to set up the touch context: ", err)
 	}
-	defer stw.Close()
+	defer pc.Close()
 
 	if s.Param().(bool) { // arc.SplitView.tablet_home_launcher or arc.SplitView.tablet_home_launcher_vm
+		tew, _, err := touch.NewTouchscreenAndConverter(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to access to the touchscreen: ", err)
+		}
+		defer tew.Close()
+
+		stw, err := tew.NewSingleTouchWriter()
+		if err != nil {
+			s.Fatal("Failed to create the single touch writer: ", err)
+		}
+
 		if err := ash.DragToShowHomescreen(ctx, tew.Width(), tew.Height(), stw, tconn); err != nil {
 			s.Fatal("Failed to drag to show home launcher: ", err)
 		}
@@ -267,7 +263,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	// Snap activity to left.
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, 0); err != nil {
+	if err := dragToSnapFirstOverviewWindow(ctx, tconn, pc, true /* primary */); err != nil {
 		s.Fatal("Failed to drag window from overview and snap left: ", err)
 	}
 	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{leftAct, ash.WindowStateLeftSnapped, arc.WindowStatePrimarySnapped}}); err != nil {
@@ -278,7 +274,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 
 	// Snap activity to right.
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, tew.Width()-1); err != nil {
+	if err := dragToSnapFirstOverviewWindow(ctx, tconn, pc, false /* primary */); err != nil {
 		s.Fatal("Failed to drag window from overview and snap right: ", err)
 	}
 	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{rightAct, ash.WindowStateRightSnapped, arc.WindowStateSecondarySnapped}}); err != nil {
