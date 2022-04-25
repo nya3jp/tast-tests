@@ -16,6 +16,23 @@
       "message": "This is another example of tests that don\u0027t need the var lacrosDeployedBinary to run in the Browser CI. This is verifying the lacros selection logic in ash-chrome and simulating the stateful lacros versions without needing any actual deployed artifact from the Browser.\nhttps://crrev.com/c/3598170 should be in first.",
       "revId": "5cdf2506dac30be2cb8558234e3ac731ebedf2b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c145c3_194cb5b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-25T14:17:39Z",
+      "side": 1,
+      "message": "(please feel free to add me back, when our discussion about NewConfig is settled down.",
+      "revId": "5cdf2506dac30be2cb8558234e3ac731ebedf2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
