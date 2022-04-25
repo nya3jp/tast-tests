@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee0a406_58a07e04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-25T22:39:09Z",
+      "side": 1,
+      "message": "Here\u0027s the autotest retry implementation, in case there are ideas to borrow from there: https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/client/common_lib/cros/retry.py",
+      "revId": "2abb2d139436357dd4470fd476eebe08144a52a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060eda58_02e9a37f",
+        "filename": "src/chromiumos/tast/common/action/action.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-25T22:39:09Z",
+      "side": 1,
+      "message": "How does this work? Is this a private function? Does it not need a function comment?",
+      "revId": "2abb2d139436357dd4470fd476eebe08144a52a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
