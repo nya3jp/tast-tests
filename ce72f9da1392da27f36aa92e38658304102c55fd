@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "605f992e_abd4ef08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateengine/consumer_auto_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-25T21:38:55Z",
+      "side": 1,
+      "message": "Should probably remove OOBE file during cleanup too.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e267e6_d28e403c",
+        "filename": "src/chromiumos/tast/local/updateengine/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-25T21:38:55Z",
+      "side": 1,
+      "message": "Unused.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
