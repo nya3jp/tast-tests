@@ -26,12 +26,11 @@ type Context struct {
 	tcc *input.TouchCoordConverter
 }
 
-// NewTouchscreenAndConverter is a utility to create a new touchscreen event
-// writer and its touch coord converter with checking the display bounds.
-func NewTouchscreenAndConverter(ctx context.Context, tconn *chrome.TestConn) (*input.TouchscreenEventWriter, *input.TouchCoordConverter, error) {
+// NewTouchscreen is a utility to create a new touchscreen event writer.
+func NewTouchscreen(ctx context.Context, tconn *chrome.TestConn) (*input.TouchscreenEventWriter, error) {
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to access to the touchscreen")
+		return nil, errors.Wrap(err, "failed to access to the touchscreen")
 	}
 	success := false
 	defer func() {
@@ -44,14 +43,34 @@ func NewTouchscreenAndConverter(ctx context.Context, tconn *chrome.TestConn) (*i
 
 	orientation, err := display.GetOrientation(ctx, tconn)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to get the orientation information")
+		return nil, errors.Wrap(err, "failed to get the orientation information")
 	}
 	// Some devices (like kukui/krane) has rotated panel orientation. The negative
 	// value of the panel orientation (rotation.Angle) should be set to cancel
 	// this effect. See also: https://crbug.com/1022614.
 	if err := tsw.SetRotation(-orientation.Angle); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to rotate the touchscreen event writer")
+		return nil, errors.Wrap(err, "failed to rotate the touchscreen event writer")
 	}
+
+	success = true
+	return tsw, nil
+}
+
+// NewTouchscreenAndConverter is a utility to create a new touchscreen event
+// writer and its touch coord converter with checking the display bounds.
+func NewTouchscreenAndConverter(ctx context.Context, tconn *chrome.TestConn) (*input.TouchscreenEventWriter, *input.TouchCoordConverter, error) {
+	tsw, err := NewTouchscreen(ctx, tconn)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to create the touchscreen")
+	}
+	success := false
+	defer func() {
+		if !success {
+			if err := tsw.Close(); err != nil {
+				testing.ContextLog(ctx, "Failed to close the touchscreen: ", err)
+			}
+		}
+	}()
 
 	// Creates the TouchCoordConverter for the touch screen.  Here assumes that
 	// the touch screen is the primary display.  This does not work if the
