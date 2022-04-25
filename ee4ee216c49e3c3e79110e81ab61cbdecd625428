@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b48e9b8_6309150a",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:38:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "489b155c_b31d0d2c",
+      "range": {
+        "startLine": 51,
+        "startChar": 28,
+        "endLine": 51,
+        "endChar": 67
+      },
+      "revId": "ee4ee216c49e3c3e79110e81ab61cbdecd625428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8e066a1_7a91e31d",
@@ -108,6 +132,30 @@
       "writtenOn": "2022-04-22T17:01:45Z",
       "side": 1,
       "message": "Again, [1] asks for the order actual !\u003d expected, both in the `if` condition and in the error message. That means something like this:\n\tif expectedCards :\u003d lines/2; len(cards) !\u003d expectedCards {\n\t\treturn nil, errors.Errorf(\n\t\t\t\"unexpected number of cards parsed from %d lines: got %d; expected %d\",\n\t\t\tlines, len(cards), expectedCards)\n\t}\n\n[1] https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "ee4ee216c49e3c3e79110e81ab61cbdecd625428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44caf50_15e4fbcf",
+        "filename": "src/chromiumos/tast/local/audio/cards.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-25T16:38:15Z",
+      "side": 1,
+      "message": "Here you are reporting a specific number of cards expected, and a specific number of cards found. I think you should at least make sure that the `if` statement compares the same values that are reported in the error message. `len(cards)*2` could overflow, and therefore even if you have already verified that `lines` is even, `lines !\u003d len(cards)*2` is still not quite the same thing as `len(cards) !\u003d lines/2`.",
+      "parentUuid": "fefee72f_9598ad71",
       "range": {
         "startLine": 66,
         "startChar": 0,
