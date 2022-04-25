@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50398cd4_9b2db395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-25T22:21:35Z",
+      "side": 1,
+      "message": "I\u0027ve updated the commit message with an explanation and linked it to the OpenWrt implementation bug.",
+      "parentUuid": "46c578fd_270914f6",
+      "revId": "fa7741aa5ea64961025114639a87e5bb616d8284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b322e2e_4c119f9f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-18T06:03:53Z",
       "side": 1,
       "message": "can showLinkFull version be used always, instead?",
+      "revId": "fa7741aa5ea64961025114639a87e5bb616d8284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7afdfac7_3af99ac4",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-25T22:21:35Z",
+      "side": 1,
+      "message": "While likely, since this is what is used with all other devices we would need to confirm that the full format is the same for all of them as well. Since I had to make this change due to an inconsistency with implementations of `ip` in the first place, I\u0027d rather just op-in to using it where needed rather than assuming that all devices have the same `ip` format.",
+      "parentUuid": "1b322e2e_4c119f9f",
       "revId": "fa7741aa5ea64961025114639a87e5bb616d8284",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
