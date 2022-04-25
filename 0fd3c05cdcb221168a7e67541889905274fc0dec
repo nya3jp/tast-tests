@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d0cac25_436a5996",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-25T14:59:03Z",
+      "side": 1,
+      "message": "Thanks, and if I introduced some pattern that will be contradicting to what you\u0027re planning please suggest a simple workaround so I can setup Lacros in service (where I have no access to testing state) to unblock this CL. We might not want to defer this CL for a long time because we want sufficient time to verify WebAuthn on Lacros is working correctly in this milestone.",
+      "parentUuid": "a4b85d9e_7e3dadd1",
+      "revId": "0fd3c05cdcb221168a7e67541889905274fc0dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd1c4166_cea1a262",
         "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
         "patchSetId": 3
