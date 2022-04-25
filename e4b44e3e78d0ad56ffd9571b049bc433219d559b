@@ -93,6 +93,30 @@
       },
       "revId": "e4b44e3e78d0ad56ffd9571b049bc433219d559b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c871007_be848773",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-25T17:50:06Z",
+      "side": 1,
+      "message": "Keeping this test active so we can still have \"comparative meet performance data\" (referencing the other comment).",
+      "parentUuid": "ac53c0ff_002f4700",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "e4b44e3e78d0ad56ffd9571b049bc433219d559b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
