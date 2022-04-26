@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ed78a5_e66a183c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-04-26T16:31:48Z",
+      "side": 1,
+      "message": "The recent results are good:\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026test\u003d%5Etast%5C.audio%5C.SoundCardInit%24\u0026status\u003dGOOD\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\u0026days\u003d7\n\nonly kernelnext and non-cq builder (kano: https://source.corp.google.com/chromeos_internal/infra/config/build_targets.star;l\u003d1?q\u003dfile:build_targets.star\u0026sq\u003dpackage:chromeos_internal) is failing.",
+      "revId": "042d98398fa8beaf8cae75431b5407ade95bfcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
