@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8576f1d6_bfd77793",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-04-26T00:20:38Z",
+      "side": 1,
+      "message": "I checked the other code sample, and we might not need to sleep at all. I will verify it in next patchset.",
+      "parentUuid": "16d36da1_50af726a",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "7ca60f9d7e09e45dcb439234593efcfac9ee52ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13f648b8_3cac201b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/web/ui.go",
         "patchSetId": 1
