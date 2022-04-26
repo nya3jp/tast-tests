@@ -16,6 +16,24 @@
       "message": "I have removed custom timeouts since Aya, who ported the test to Tast in https://crrev.com/c/2549902, does not seem to recall why they were needed. They were also not present in the original autotest and the test pass on my local DUT just fine without them.",
       "revId": "5965ea8c02804f5408f2a992a15120b4f349e226",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e591866d_996fe431",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-26T14:06:08Z",
+      "side": 1,
+      "message": "Keep the timeouts, the defaults are much higher. It will allow the test to fail faster.",
+      "parentUuid": "55d3eb3c_91c2a913",
+      "revId": "5965ea8c02804f5408f2a992a15120b4f349e226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
