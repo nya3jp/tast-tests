@@ -1,0 +1,92 @@
+# proto-file:
+# third_party/virtual-usb-printer/mock_printer/proto/control_flow.proto
+# proto-message: mocking.TestCase
+
+# Document Format error test
+# TODO: Add more comments here.
+
+steps {
+  cardinality {
+    type: ALL_IN_ORDER
+  }
+  expectation_with_response {
+    expectation {
+      ipp_matcher {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        groups {
+          # `operation-attributes`
+          tag: 0x0001
+        }
+      }
+    }
+    response {
+      ipp_response {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        status: 0
+        groups {
+          tag: PRINTER_ATTRIBUTES
+          collections {
+            attributes {
+              name: "document-format-default"
+              type: MIME_MEDIA_TYPE
+              string_values {
+                string_values {
+                  value: "image/urf"
+                }
+              }
+            }
+            attributes {
+              name: "document-format-preferred"
+              type: MIME_MEDIA_TYPE
+              string_values {
+                string_values {
+                  value: "image/urf"
+                }
+              }
+            }
+            attributes {
+              name: "document-format-supported"
+              type: MIME_MEDIA_TYPE
+              string_values {
+                string_values {
+                  value: "image/urf"
+                }
+                string_values {
+                  value: "image/pwg-raster"
+                }
+                string_values {
+                  value: "image/jpeg"
+                }
+                string_values {
+                  value: "application/pdf"
+                }
+                string_values {
+                  value: "application/octet-stream"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  expectation_with_response {
+    expectation {
+      ipp_matcher {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        groups {
+          # `operation-attributes`
+          tag: 0x0001
+        }
+      }
+    }
+    response {
+      http_properties {
+        status_code: INTERNAL_SERVER_ERROR
+      }
+    }
+  }
+}
