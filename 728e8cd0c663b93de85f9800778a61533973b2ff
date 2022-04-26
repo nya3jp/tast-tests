@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03dae9e2_a38de520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-26T15:16:23Z",
+      "side": 1,
+      "message": "I don\u0027t think we should separate these annotator tests into a separate test, because any test for the annotator would also launch the creation flow and have significant overlap with this test.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 62
+      },
+      "revId": "728e8cd0c663b93de85f9800778a61533973b2ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
