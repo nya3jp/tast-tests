@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac774cc7_f7720503",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-04-26T08:55:35Z",
+      "side": 1,
+      "message": "Thanks for the review!\nI\u0027ve tested this on a local DUT.",
+      "revId": "5b3b37352ea3a34153b7577b04e8a2841f7f0a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
