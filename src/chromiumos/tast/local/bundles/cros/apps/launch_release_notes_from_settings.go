@@ -31,7 +31,7 @@ func init() {
 			"carpenterr@chromium.org", // test author.
 			"showoff-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
@@ -47,7 +47,7 @@ func init() {
 	})
 }
 
-// LaunchReleaseNotesFromSettings verifies launching Help app at the release notes page from Chrome OS settings.
+// LaunchReleaseNotesFromSettings verifies launching Help app at the release notes page from ChromeOS settings.
 func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
