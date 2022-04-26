@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "7f951915761afdfea88135261b0930b5ec5c5381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87537a9a_a8618294",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T08:54:51Z",
+      "side": 1,
+      "message": "optional: now can we add warning message if older LacrosDeployedBinary is used?",
+      "revId": "7f951915761afdfea88135261b0930b5ec5c5381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
