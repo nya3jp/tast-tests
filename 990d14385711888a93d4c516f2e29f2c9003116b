@@ -1,0 +1,143 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522a042c_06613072",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:12:18Z",
+      "side": 1,
+      "message": "\u003e \"compatability\" is a possible misspelling of \"compatibility\".\n\nPlease fix.",
+      "parentUuid": "8c947152_baf52622",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 67
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40caf52f_27bb9d70",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:12:18Z",
+      "side": 1,
+      "message": "could you not declare vars at the beginning of function unnecessary, like ancient C? You can declare/define the variable by using :\u003d where it needs.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b03b2152_714f1dc2",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:12:18Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 102,
+        "startChar": 13,
+        "endLine": 102,
+        "endChar": 14
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df860ac_356a0d0c",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:12:18Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 106,
+        "startChar": 7,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc8754e_c38f1b88",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:12:18Z",
+      "side": 1,
+      "message": "IIUC, the fields a list of pairs (key/value)? Then\n\nstyle:\n\n  for i :\u003d 3; i \u003c len(fields) - 1; i +\u003d 2 {\n    if fields[i] \u003d\u003d \"state\" {\n      state \u003d fields[i+1]\n      break\n    }\n  }",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 24
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a69acc4_419641ef",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:12:18Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
