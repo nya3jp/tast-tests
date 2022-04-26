@@ -127,12 +127,16 @@ func ManagedBookmarks(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			ui := uiauto.New(tconn)
-			if err := ui.WithTimeout(10 * time.Second).LeftClick(nodewith.Name(folder).Role(role.PopUpButton))(ctx); err != nil {
+			ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+			bookmarkMenuItemFinder := nodewith.Role(role.MenuItem)
+			if err := uiauto.Combine("click on folder and wait for menu to appear",
+				ui.LeftClick(nodewith.Name(folder).Role(role.PopUpButton)),
+				ui.WaitUntilExists(bookmarkMenuItemFinder.First()),
+			)(ctx); err != nil {
 				s.Fatal("Could not find top level bookmark folder: ", err)
 			}
 
-			bookmarks, err := ui.NodesInfo(ctx, nodewith.Role(role.MenuItem))
+			bookmarks, err := ui.NodesInfo(ctx, bookmarkMenuItemFinder)
 			if err != nil {
 				s.Fatal("Failed to find bookmarks: ", err)
 			}
@@ -142,7 +146,7 @@ func ManagedBookmarks(ctx context.Context, s *testing.State) {
 			}
 
 			for _, bookmark := range param.value.Val {
-				if err := ui.WithTimeout(15 * time.Second).WaitUntilExists(nodewith.Role(role.MenuItem).Name(bookmark.Name))(ctx); err != nil {
+				if err := ui.WaitUntilExists(nodewith.Role(role.MenuItem).Name(bookmark.Name))(ctx); err != nil {
 					s.Fatal("Could not find bookmark name: ", err)
 				}
 			}
