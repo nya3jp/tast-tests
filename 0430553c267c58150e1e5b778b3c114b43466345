@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2497ad_31a6fd29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_install_dlc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-26T00:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c114f5_b9330a8d",
+      "revId": "0430553c267c58150e1e5b778b3c114b43466345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd420ae2_45714a84",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c1fa26_dff09f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_install_dlc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-26T00:09:04Z",
+      "side": 1,
+      "message": "the 2 instances are a little different. For the install test, the test is considered successful if the variant doesn\u0027t have a DlcId, but for ModemfwdFallbackToRootfsFailedToInstallDlc that is not the case. Besides, we need dlcID in other places, so combining GetDlcIDForVariant and Purge might be messy",
+      "parentUuid": "bd420ae2_45714a84",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "0430553c267c58150e1e5b778b3c114b43466345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51f10e03_1360ff1e",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-04-21T20:42:53Z",
       "side": 1,
       "message": "nit: remove blank line",
+      "revId": "0430553c267c58150e1e5b778b3c114b43466345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ab95eb_e16afb8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_install_dlc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-26T00:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51f10e03_1360ff1e",
       "revId": "0430553c267c58150e1e5b778b3c114b43466345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
