@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f3bf10_38e97cb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:00:27Z",
+      "side": 1,
+      "message": "LGTM, but I think we have to wait for this to submit until:\n- The Add runtime variable CL is landed.\n- update control.lacros (for CrOS infra as you found)\n- wait for LKGM rollout to chromium, followed by updating chromium side bot update\n\nthe last one is a bit tricky, because we have a bit amount delay, but that needs to be done before this CL is being rolled out into the chromium LKGM.",
+      "revId": "c0f148ff3133955073de88d1cb9a556972715dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
