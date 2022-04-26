@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec54530_eb6cee53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_fallback_to_rootfs_failed_to_install_dlc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-26T00:08:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc33e12b_1cd5aa02",
+      "revId": "d5e1158e0edd0b6b1b22e6d13df0a8983080b102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9e0f95f_54de1371",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea0619b_ff58757c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_fallback_to_rootfs_failed_to_install_dlc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-26T00:08:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e0f95f_54de1371",
+      "revId": "d5e1158e0edd0b6b1b22e6d13df0a8983080b102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7ce5a3e_d7b6e777",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-04-21T20:41:26Z",
       "side": 1,
       "message": "nit: DlcId",
+      "range": {
+        "startLine": 112,
+        "startChar": 57,
+        "endLine": 112,
+        "endChar": 62
+      },
+      "revId": "d5e1158e0edd0b6b1b22e6d13df0a8983080b102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d0ab27_eb548c57",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-26T00:08:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7ce5a3e_d7b6e777",
       "range": {
         "startLine": 112,
         "startChar": 57,
