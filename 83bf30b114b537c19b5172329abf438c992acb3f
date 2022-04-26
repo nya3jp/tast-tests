@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6c7e3f_7b0b51c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-26T16:25:06Z",
+      "side": 1,
+      "message": "Reason for change: we ask not to change bluetooth settings (i.e, not disable it) when Bluetooth is enabled by the test.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 47
+      },
+      "revId": "83bf30b114b537c19b5172329abf438c992acb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea19a770_e6d2bfe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-26T16:25:06Z",
+      "side": 1,
+      "message": "Reason for change: this CUJ is part of the performance CUJ suite and needs to pass the Performance CUJ options into recorder.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 42
+      },
+      "revId": "83bf30b114b537c19b5172329abf438c992acb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
