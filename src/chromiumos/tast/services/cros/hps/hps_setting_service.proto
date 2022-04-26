@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package tast.cros.hps;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/hps";
+
+// provides operations on local DUT.
+service HpsService {
+
+  // StartUIWithCustomScreenPrivacySetting changes the settings in screen privacy accordingly.
+  rpc StartUIWithCustomScreenPrivacySetting(StartUIWithCustomScreenPrivacySettingRequest) returns (google.protobuf.Empty) {}
+  // WaitForDbus performs a polling and waits for the firmware being flashed
+  rpc WaitForDbus(google.protobuf.Empty) returns (google.protobuf.Empty){}
+  //
+  rpc CheckForLockScreen(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // OpenHPSInternalPage opens hps-internal page for debugging purpose
+  rpc OpenHPSInternalPage(google.protobuf.Empty) returns (google.protobuf.Empty){}
+}
+
+message StartUIWithCustomScreenPrivacySettingRequest {
+  string setting = 1;  // Option being "Lock on Leave" or "Viewing protection".
+  bool enable = 2;
+}
