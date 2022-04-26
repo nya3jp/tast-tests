@@ -58,7 +58,6 @@ func init() {
 		}},
 		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		VarDeps: []string{"ui.gaiaPoolDefault"},
-		Vars:    []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
@@ -69,7 +68,7 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	bt := s.Param().(testParam).bt
-	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfigFromState(s),
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))

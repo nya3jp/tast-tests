@@ -258,13 +258,12 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image with ARC booted",
 		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(chrome.ARCEnabled())).Opts()
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.ARCEnabled())).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	// arcBootedInClamshellMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in clamshell mode with Touch Mode Mouse compat features enabled in this fixture.

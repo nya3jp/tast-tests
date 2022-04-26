@@ -80,7 +80,6 @@ func init() {
 				browser.TypeAsh, lacros.Rootfs, lacros.NotSpecified,
 			},
 		}},
-		Vars: []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
@@ -112,7 +111,7 @@ type startupMetrics struct {
 // developers.
 func StartupPerf(ctx context.Context, s *testing.State) {
 	param := s.Param().(testParameters)
-	cfg := lacrosfixt.NewConfigFromState(s,
+	cfg := lacrosfixt.NewConfig(
 		lacrosfixt.Selection(param.lacrosSelection),
 		lacrosfixt.Mode(param.lacrosMode))
 

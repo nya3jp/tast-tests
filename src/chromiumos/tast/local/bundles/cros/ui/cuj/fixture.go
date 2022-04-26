@@ -61,9 +61,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars: []string{
-			"ui.cujAccountPool",
-		},
+		Vars:            []string{"ui.cujAccountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInAndKeepState",
@@ -76,9 +74,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars: []string{
-			"ui.cujAccountPool",
-		},
+		Vars:            []string{"ui.cujAccountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToCUJUserLacros",
@@ -99,10 +95,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars: []string{
-			"ui.cujAccountPool",
-			lacrosfixt.LacrosDeployedBinary,
-		},
+		Vars:            []string{"ui.cujAccountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToCUJUserLacrosWithARC",
@@ -139,10 +132,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars: []string{
-			"ui.cujAccountPool",
-			lacrosfixt.LacrosDeployedBinary,
-		},
+		Vars:            []string{"ui.cujAccountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInAndKeepStateLacrosWithARC",

@@ -52,10 +52,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Vars: []string{
-			"ui.gaiaPoolDefault",
-			lacrosfixt.LacrosDeployedBinary,
-		},
+		Vars:            []string{"ui.gaiaPoolDefault"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToChromeAndArcWithLacros",

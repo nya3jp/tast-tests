@@ -63,12 +63,11 @@ func init() {
 		Contacts: []string{"lacros-team@google.com"},
 		Parent:   "gpuWatchDog",
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return lacrosfixt.NewConfigFromState(s).Opts()
+			return lacrosfixt.NewConfig().Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	testing.AddFixture(&testing.Fixture{

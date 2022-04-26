@@ -31,7 +31,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          fixture.PersistentLacros,
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	// TODO(b/218907052): Remove fixture after Journeys flag  is enabled by default.
@@ -48,7 +47,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          fixture.PersistentLacros,
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -78,9 +76,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          fixture.PersistentLacros,
-		Vars: []string{
-			"policy.ManagedUser.accountPool",
-			lacrosfixt.LacrosDeployedBinary,
-		},
+		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
 }

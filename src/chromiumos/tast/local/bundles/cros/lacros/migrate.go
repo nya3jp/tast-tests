@@ -35,7 +35,6 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Name: "copy",
 			Val:  []chrome.Option{chrome.DisableFeatures("LacrosMoveProfileMigration")},
