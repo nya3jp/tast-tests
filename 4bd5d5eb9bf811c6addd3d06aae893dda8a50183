@@ -22,6 +22,30 @@
       },
       "revId": "4bd5d5eb9bf811c6addd3d06aae893dda8a50183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61949cbd_01195bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-26T20:09:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee268d87_8ead5c1f",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 55
+      },
+      "revId": "4bd5d5eb9bf811c6addd3d06aae893dda8a50183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
