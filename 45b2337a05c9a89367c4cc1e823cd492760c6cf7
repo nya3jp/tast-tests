@@ -39,6 +39,30 @@
       },
       "revId": "45b2337a05c9a89367c4cc1e823cd492760c6cf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d830b198_223ef3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-04-26T09:58:13Z",
+      "side": 1,
+      "message": "Yes for sure, fixed.",
+      "parentUuid": "b2ff7a25_f44f2002",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 20
+      },
+      "revId": "45b2337a05c9a89367c4cc1e823cd492760c6cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
