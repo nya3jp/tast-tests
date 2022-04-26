@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -34,6 +35,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -59,7 +61,7 @@ type meetTest struct {
 	split       bool                 // Whether it is in split screen mode. It can not be true if docs is false.
 	cam         bool                 // Whether the camera is on or not.
 	duration    time.Duration        // Duration of the meet call. Must be less than test timeout.
-	useLacros   bool                 // Whether to use lacros browser.
+	browserType browser.Type         // Ash Chrome browser or Lacros.
 	tracing     bool                 // Whether to turn on tracing.
 	validation  bool                 // Whether to add extra cpu loads before collecting metrics.
 	botsOptions []bond.AddBotsOption // Customizes the meeting participant bots.
@@ -75,7 +77,7 @@ const (
 	vp9 videoCodecReport = 1
 )
 
-const defaultTestTimeout = 25 * time.Minute
+const defaultTestTimeout = 30 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -98,9 +100,10 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:    1,
-				layout: meetLayoutTiled,
-				cam:    true,
+				num:         1,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -108,10 +111,10 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:       1,
-				layout:    meetLayoutTiled,
-				cam:       true,
-				useLacros: true,
+				num:         1,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeLacros,
 			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -120,9 +123,10 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:    3,
-				layout: meetLayoutTiled,
-				cam:    true,
+				num:         3,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -131,12 +135,13 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:     3,
-				layout:  meetLayoutTiled,
-				present: true,
-				docs:    true,
-				split:   true,
-				cam:     true,
+				num:         3,
+				layout:      meetLayoutTiled,
+				present:     true,
+				docs:        true,
+				split:       true,
+				cam:         true,
+				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -145,9 +150,10 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:    15,
-				layout: meetLayoutTiled,
-				cam:    true,
+				num:         15,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -155,21 +161,23 @@ func init() {
 			Name:    "49p",
 			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:    48,
-				layout: meetLayoutTiled,
-				cam:    true,
+				num:         48,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Big meeting with tracing.
 			Name:      "16p_trace",
-			Timeout:   defaultTestTimeout + 10*time.Minute,
+			Timeout:   defaultTestTimeout + 20*time.Minute,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:     15,
-				layout:  meetLayoutTiled,
-				cam:     true,
-				tracing: true,
+				num:         15,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeAsh,
+				tracing:     true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -177,10 +185,11 @@ func init() {
 			Name:    "16p_validation",
 			Timeout: defaultTestTimeout + 10*time.Minute,
 			Val: meetTest{
-				num:        15,
-				layout:     meetLayoutTiled,
-				cam:        true,
-				validation: true,
+				num:         15,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeAsh,
+				validation:  true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -188,23 +197,25 @@ func init() {
 			Name:    "16p_notes",
 			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:    15,
-				layout: meetLayoutTiled,
-				docs:   true,
-				split:  true,
-				cam:    true,
+				num:         15,
+				layout:      meetLayoutTiled,
+				docs:        true,
+				split:       true,
+				cam:         true,
+				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// 16p with jamboard test.
 			Name:    "16p_jamboard",
-			Timeout: defaultTestTimeout,
+			Timeout: defaultTestTimeout + 15*time.Minute,
 			Val: meetTest{
-				num:      15,
-				layout:   meetLayoutTiled,
-				jamboard: true,
-				split:    true,
-				cam:      true,
+				num:         15,
+				layout:      meetLayoutTiled,
+				jamboard:    true,
+				split:       true,
+				cam:         true,
+				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -213,10 +224,10 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:       3,
-				layout:    meetLayoutTiled,
-				cam:       true,
-				useLacros: true,
+				num:         3,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeLacros,
 			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -228,6 +239,7 @@ func init() {
 				num:         48,
 				layout:      meetLayoutTiled,
 				cam:         true,
+				browserType: browser.TypeAsh,
 				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
 			},
 			Fixture: "loggedInToCUJUser",
@@ -237,23 +249,23 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:       15,
-				layout:    meetLayoutTiled,
-				cam:       true,
-				useLacros: true,
+				num:         15,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeLacros,
 			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// Lacros variation of 16p trace test
 			Name:    "lacros_16p_trace",
-			Timeout: defaultTestTimeout + 10*time.Minute,
+			Timeout: defaultTestTimeout + 20*time.Minute,
 			Val: meetTest{
-				num:       15,
-				layout:    meetLayoutTiled,
-				cam:       true,
-				useLacros: true,
-				tracing:   true,
+				num:         15,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeLacros,
+				tracing:     true,
 			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -262,10 +274,11 @@ func init() {
 			Name:    "2p_30m",
 			Timeout: defaultTestTimeout + 30*time.Minute,
 			Val: meetTest{
-				num:      1,
-				layout:   meetLayoutTiled,
-				cam:      true,
-				duration: 30 * time.Minute,
+				num:         1,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				duration:    30 * time.Minute,
+				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
 		}},
@@ -332,7 +345,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
-	if meet.useLacros {
+	switch meet.browserType {
+	case browser.TypeLacros:
 		// Launch lacros.
 		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
@@ -344,7 +358,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
 			s.Fatal("Failed to get lacros TestAPIConn: ", err)
 		}
-	} else {
+	case browser.TypeAsh:
 		cs = cr
 		bTconn = tconn
 	}
@@ -374,8 +388,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	sctx, cancel := context.WithTimeout(ctx, 90*time.Second)
 	defer cancel()
-	// Add 15 minutes to the bot duration, to ensure that the bots stay long enough
-	// for the test to detect the video codecs used for encoding and decoding.
 	if !codeOk {
 		defer func(ctx context.Context) {
 			s.Log("Removing all bots from the call")
@@ -390,7 +402,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := testing.Sleep(ctx, wait); err != nil {
 				s.Errorf("Failed to sleep for %v: %v", wait, err)
 			}
-			botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+15*time.Minute, meet.botsOptions...)
+			// Add 30 minutes to the bot duration, to ensure that the bots stay long
+			// enough for the test to get info from chrome://webrtc-internals.
+			botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+30*time.Minute, meet.botsOptions...)
 			if err != nil {
 				s.Fatalf("Failed to create %d bots: ", addBotsCount)
 			}
@@ -493,7 +507,43 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}()
 	}
 
-	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, browser.WithNewWindow())
+	// Open chrome://webrtc-internals now so it will collect data on the meeting's streams.
+	webrtcInternals, err := cs.NewConn(ctx, "chrome://webrtc-internals", browser.WithNewWindow())
+	if err != nil {
+		s.Fatal("Failed to open chrome://webrtc-internals: ", err)
+	}
+	defer webrtcInternals.Close()
+
+	// Lacros specific setup.
+	if meet.browserType == browser.TypeLacros {
+		// Close "New Tab" window after creating the chrome://webrtc-internals window.
+		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return strings.HasPrefix(w.Title, newTabTitle) && strings.HasPrefix(w.Name, "ExoShellSurface")
+		})
+		if err != nil {
+			s.Fatal("Failed to find New Tab window: ", err)
+		}
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			s.Fatal("Failed to close New Tab window: ", err)
+		}
+	}
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Expand the Create Dump section of chrome://webrtc-internals. We will not need it
+	// until after the meeting, but we can expand the section much faster now while
+	// chrome://webrtc-internals does not have much data to show.
+	ui := uiauto.New(tconn)
+	createDumpSection := nodewith.Name("Create Dump").Role(role.DisclosureTriangle)
+	if err := uiauto.Combine("expand",
+		ui.DoDefault(createDumpSection.Collapsed()),
+		ui.WaitUntilExists(createDumpSection.Expanded()),
+	)(ctx); err != nil {
+		s.Fatal("Failed to expand Create Dump section of chrome://webrtc-internals: ", err)
+	}
+
+	// Open the meeting in another tab in the same window as chrome://webrtc-internals.
+	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode)
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
@@ -509,22 +559,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close the meeting: ", err)
 		}
 	}()
-
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Lacros specific setup.
-	if meet.useLacros {
-		// Close "New Tab" window after creating the meet window.
-		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
-			return strings.HasPrefix(w.Title, newTabTitle) && strings.HasPrefix(w.Name, "ExoShellSurface")
-		})
-		if err != nil {
-			s.Fatal("Failed to find New Tab window: ", err)
-		}
-		if err := w.CloseWindow(ctx, tconn); err != nil {
-			s.Fatal("Failed to close New Tab window: ", err)
-		}
-	}
 
 	// Sets the display zoom factor to minimum, to ensure that all
 	// meeting participants' video can be shown simultaneously.
@@ -577,8 +611,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		pc = pointer.NewMouse(tconn)
 	}
 	defer pc.Close()
-
-	ui := uiauto.New(tconn)
 
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
@@ -872,23 +904,33 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
-	webrtcInternals, err := cs.NewConn(ctx, "chrome://webrtc-internals")
-	if err != nil {
-		s.Fatal("Failed to open chrome://webrtc-internals: ", err)
-	}
-	defer webrtcInternals.Close()
-
-	// Report what video codecs were used for decoding and encoding.
-	webRTCReportWaiter := ui.WithTimeout(10 * time.Minute)
+	// Report info from chrome://webrtc-internals.
+	webRTCUI := ui.WithTimeout(10 * time.Minute)
 	videoStream := nodewith.NameContaining("VideoStream").First()
-	if err := webRTCReportWaiter.WaitUntilExists(videoStream)(ctx); err != nil {
-		s.Error("Failed to wait for video stream info to appear: ", err)
-	}
-	if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
-		s.Errorf("Failed to report %s: %v", decodingCodecMetricName, err)
-	}
-	if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
-		s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
+	if err := focusWebRTCInternals(ctx, tconn, meet.browserType, kw); err != nil {
+		s.Error("Failed to focus the chrome://webrtc-internals tab: ", err)
+		s.Log("Info from chrome://webrtc-internals will not be reported")
+	} else {
+		if path, err := dumpWebRTCInternals(ctx, tconn, webRTCUI, cr.NormalizedUser()); err != nil {
+			s.Error("Failed to download dump from chrome://webrtc-internals: ", err)
+		} else {
+			if err := copyFileForTestResults(path, filepath.Join(s.OutDir(), "webrtc-internals.json")); err != nil {
+				s.Error("Failed to copy WebRTC internals dump to results folder: ", err)
+			}
+			if err := os.Remove(path); err != nil {
+				s.Error("Failed to remove WebRTC internals dump from Downloads folder: ", err)
+			}
+		}
+
+		if err := webRTCUI.WaitUntilExists(videoStream)(ctx); err != nil {
+			s.Error("Failed to wait for video stream info: ", err)
+		}
+		if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
+			s.Errorf("Failed to report %s: %v", decodingCodecMetricName, err)
+		}
+		if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
+			s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
+		}
 	}
 
 	// Report WebRTC metrics for video streams.
@@ -933,7 +975,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := meetConn.CloseTarget(closeCtx); err != nil {
 			return errors.Wrap(err, "failed to close the meeting")
 		}
-		if err := webRTCReportWaiter.WaitUntilGone(videoStream)(ctx); err != nil {
+		if err := webRTCUI.WaitUntilGone(videoStream)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for video stream info to disappear")
 		}
 		return nil
@@ -1011,6 +1053,73 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
+}
+
+// copyFileForTestResults copies a file. The destination file must not already exist. The
+// created copy has file permissions 0644 regardless of the file permissions of the original.
+func copyFileForTestResults(srcPath, dstPath string) error {
+	src, err := os.Open(srcPath)
+	if err != nil {
+		return err
+	}
+	defer src.Close()
+
+	dst, err := os.OpenFile(dstPath, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0644)
+	if err != nil {
+		return err
+	}
+	defer dst.Close()
+
+	_, err = io.Copy(dst, src)
+	return err
+}
+
+// focusWebRTCInternals activates the browser tab for chrome://webrtc-internals.
+func focusWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, bt browser.Type, kw *input.KeyboardEventWriter) error {
+	w, err := ash.FindOnlyWindow(ctx, tconn, ash.BrowserTitleMatch(bt, "Meet"))
+	if err != nil {
+		return errors.Wrap(err, "failed to find Meet window")
+	}
+
+	if err := w.ActivateWindow(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to activate Meet window")
+	}
+
+	if err := kw.AccelAction("Ctrl+Shift+Tab")(ctx); err != nil {
+		return errors.Wrap(err, "failed to press Ctrl+Shift+Tab")
+	}
+
+	return nil
+}
+
+// dumpWebRTCInternals downloads a dump from chrome://webrtc-internals and
+// returns the file path. This function assumes that chrome://webrtc-internals
+// is already shown, with the Create Dump section expanded.
+func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, username string) (string, error) {
+	helper, err := hwsec.NewHelper(hwsec.NewCmdRunner())
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create hwsec local helper")
+	}
+
+	sanitizedUsername, err := helper.CryptohomeClient().GetSanitizedUsername(ctx, username, true)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get sanitized username")
+	}
+
+	button := nodewith.Name("Download the PeerConnection updates and stats data").Role(role.Button)
+	if err := uiauto.Combine("invoke the button for the dump download",
+		ui.WaitUntilExists(button),
+		ui.DoDefault(button),
+	)(ctx); err != nil {
+		return "", err
+	}
+
+	notification, err := ash.WaitForNotification(ctx, tconn, 10*time.Minute, ash.WaitTitle("Download complete"))
+	if err != nil {
+		return "", errors.Wrap(err, "failed to wait for download notification")
+	}
+
+	return filepath.Join("/home/user", sanitizedUsername, "Downloads", notification.Message), nil
 }
 
 // reportCodec looks for node names containing given descriptions of a vp8 video stream
