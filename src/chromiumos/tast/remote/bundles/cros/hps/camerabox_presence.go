@@ -6,18 +6,19 @@ package hps
 
 import (
 	"context"
-	"path/filepath"
+	"os"
 	"strconv"
-	"strings"
 	"time"
+
+	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/common/hps/hpsutil"
 	"chromiumos/tast/common/media/caps"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/hps/utils"
 	"chromiumos/tast/rpc"
-	"chromiumos/tast/ssh/linuxssh"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -26,8 +27,7 @@ func init() {
 		Func:         CameraboxPresence,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify that the HPS can correctly detect presence from another tablet",
-		Data: []string{hpsutil.PersonPresentPageArchiveFilename,
-			hpsutil.P2PowerCycleFilename},
+		Data:         []string{hpsutil.PersonPresentPageArchiveFilename},
 		Contacts: []string{
 			"eunicesun@google.com",
 			"mblsha@google.com",
@@ -41,7 +41,7 @@ func init() {
 }
 
 func CameraboxPresence(ctx context.Context, s *testing.State) {
-	// Connecting to DUT with HPS and send powercycle file to it
+	// Connecting to DUT with HPS
 	d := s.DUT()
 	cl, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
@@ -49,39 +49,14 @@ func CameraboxPresence(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	// Power-cycle HPS after two people are already visible on the screen so that
-	// the HPS would already be able to correctly adjust the exposure right from the start.
-
-	// Sending powercycle python file to DUT with HPS
-	powercycleTmpDir, err := d.Conn().CommandContext(ctx, "mktemp", "-d", "/tmp/powercycle_XXXXX").Output()
-	if err != nil {
-		s.Fatal("Failed to create test directory under /tmp for putting powercycle file: ", err)
-	}
-	powercycleDirPath := strings.TrimSpace(string(powercycleTmpDir))
-	powercycleFilePath := filepath.Join(powercycleDirPath, hpsutil.P2PowerCycleFilename)
-	defer d.Conn().CommandContext(ctx, "rm", "-r", powercycleDirPath).Output()
-	if _, err := linuxssh.PutFiles(
-		ctx, d.Conn(), map[string]string{
-			s.DataPath(hpsutil.P2PowerCycleFilename): powercycleFilePath,
-		},
-		linuxssh.DereferenceSymlinks); err != nil {
-		s.Fatalf("Failed to send data to remote data path %v: %v", powercycleFilePath, err)
-	}
-	testing.ContextLog(ctx, "Sending file to dut, path being: ", powercycleFilePath)
-
-	// Extract files from tar
 	archive := s.DataPath(hpsutil.PersonPresentPageArchiveFilename)
-	dirPath := filepath.Dir(archive)
-	testing.ContextLog(ctx, "dirpath: ", dirPath)
-
-	tarOut, err := testexec.CommandContext(ctx, "tar", "--strip-components=1", "-xvf", archive, "-C", dirPath).Output()
-	testing.ContextLog(ctx, "Extracting following files: ", string(tarOut))
 	if err != nil {
-		s.Fatal("Failed to untar test artifacts: ", err)
+		s.Fatal("Tmp dir creation failed on DUT")
 	}
+	filePaths, err := utils.UntarImages(ctx, archive)
 
-	// Creating hps context
-	hctx, err := hpsutil.NewHpsContext(ctx, powercycleFilePath, hpsutil.DeviceTypeBuiltin, s.OutDir(), d.Conn())
+	// Creating hps context. No need for powercycle as it's testing builtin hps
+	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), d.Conn())
 	if err != nil {
 		s.Fatal("Error creating HpsContext: ", err)
 	}
@@ -91,19 +66,14 @@ func CameraboxPresence(ctx context.Context, s *testing.State) {
 	if altAddr, ok := s.Var("tablet"); ok {
 		chartAddr = altAddr
 	}
-
-	picture := filepath.Join(dirPath, "IMG_7451.jpg")
-	chartPaths := []string{
-		filepath.Join(dirPath, "no-person-present.html"),
-		filepath.Join(dirPath, "person-present.html"),
-		filepath.Join(dirPath, "two-people-present.html")}
-	filePaths := append(chartPaths, picture)
-
 	c, hostPaths, err := chart.New(ctx, d, chartAddr, s.OutDir(), filePaths)
+
 	if err != nil {
 		s.Fatal("Put picture failed: ", err)
 	}
 	testing.ContextLog(ctx, "hostPaths: ", hostPaths)
+
+	bindKernelDriver(ctx, d.Conn(), false)
 
 	for i := 0; i < 2; i++ {
 		// for no person
@@ -118,10 +88,10 @@ func CameraboxPresence(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to run N presence ops: ", err)
 		}
 	}
+	bindKernelDriver(ctx, d.Conn(), true)
 }
 
 func numPersonDetect(hctx *hpsutil.HpsContext, feature string) error {
-
 	if _, err := hpsutil.EnablePresence(hctx, feature); err != nil {
 		return errors.Wrap(err, "enablePresence failed")
 	}
@@ -135,4 +105,28 @@ func numPersonDetect(hctx *hpsutil.HpsContext, feature string) error {
 		return errors.Wrap(err, "failed to run N presence ops")
 	}
 	return nil
+}
+
+// bindKernelDriver performs binding/unbinding the driver based on the boolean given
+func bindKernelDriver(ctx context.Context, dconn *ssh.Conn, req bool) (*empty.Empty, error) {
+	var err error
+	var binded bool
+	_, err = os.Stat("/dev/cros-hps")
+	if errors.Is(err, os.ErrNotExist) {
+		binded = false
+	} else if err == nil {
+		binded = true
+	}
+
+	if req && !binded {
+		err = dconn.CommandContext(ctx, "hps", "bind").Run()
+	} else if !req && binded {
+		err = dconn.CommandContext(ctx, "hps", "unbind").Run()
+	}
+
+	if err != nil {
+		return nil, errors.Wrap(err, "Unable to bind/unbind kernel driver")
+	}
+
+	return &empty.Empty{}, nil
 }
