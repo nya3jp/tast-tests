@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0b0eff_eb3b7f3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-26T00:34:00Z",
+      "side": 1,
+      "message": "Hi Keigo,\n\nI think there is much open discussion going on, including workaround in test or fix on another daemon, the way to handle edge case, etc. If you don\u0027t mind, I can postpone the review from your side until our dev agree on the CL.You two comments are already addresses in my local patches.",
+      "parentUuid": "116e0f62_9f1246d8",
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16db1843_d3f14fd2",
@@ -173,6 +191,30 @@
       "side": 1,
       "message": "Should we handle a time of check to time of use issue? It looks like the check in line 65 should ensure that that the directory exists. In the case err !\u003d nil in line 70, that would mean something bad happened to the directory after existing just before. If anything, shouldn\u0027t we log this behavior?",
       "parentUuid": "e422a8a6_4f6afa09",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf18afe_338f8af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-26T00:34:00Z",
+      "side": 1,
+      "message": "Good point, it\u0027s necessary to log unexpected behavior, especially when dealing with racey virtual device. The kernel module could be unloaded or crash, which renders the directory unregistered during testing.",
+      "parentUuid": "ac5adc55_029856e4",
       "range": {
         "startLine": 70,
         "startChar": 0,
