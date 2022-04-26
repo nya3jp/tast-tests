@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd4ac59_3fd32df3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-26T05:16:48Z",
+      "side": 1,
+      "message": "Looks like a nicely written test.\n\n+2 for Tast Owners % nits",
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc819636_e630b934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-26T05:16:48Z",
+      "side": 1,
+      "message": "small nit: comment sentences should end with full stop. Maybe to disambiguate what you are matching and the sentence, you could use quotes around \"Time zone ... (Baghdad)\".",
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66700a88_05fb1f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-26T05:16:48Z",
+      "side": 1,
+      "message": "nit: Verify",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 10
+      },
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54504f0_4a69c261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-26T05:16:48Z",
+      "side": 1,
+      "message": "small nit: see comment above about full stops at the end of comment sentences",
+      "range": {
+        "startLine": 345,
+        "startChar": 71,
+        "endLine": 345,
+        "endChar": 72
+      },
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "676febf4_add7753e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-26T05:16:48Z",
+      "side": 1,
+      "message": "small nit: ditto",
+      "range": {
+        "startLine": 348,
+        "startChar": 69,
+        "endLine": 348,
+        "endChar": 70
+      },
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec47902_f8a934ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-26T05:16:48Z",
+      "side": 1,
+      "message": "small nit: ditto",
+      "range": {
+        "startLine": 396,
+        "startChar": 89,
+        "endLine": 396,
+        "endChar": 90
+      },
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
