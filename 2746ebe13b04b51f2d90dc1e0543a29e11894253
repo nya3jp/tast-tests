@@ -16,6 +16,23 @@
       "message": "1. This CL should have Cq-Depend on  https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3564270\n2. Please mention what other test combination you have tried in the commit log.\n\nThe following message does not give me any information.\n\u003e either DUT primary or companion or both changed will skip.\n\nLet\u0027s do it in this format:\n\ntestdeps_sw.go, \nprimary: octopus_sparky360, companion:hana-hana, result: pass\nprimary: ...,               companion: ...,       result: skip\n...\n\ntestdeps_hw.go\nprimary: octopus_sparky360, companion:hana-hana, result: pass\nprimary: ...,               companion: ...,       result: skip\n...\n\ntestparam_sw.go and \nprimary: octopus_sparky360, companion:hana-hana, result: pass\nprimary: ...,               companion: ...,       result: skip\n...\n\ntestparam_hw.go\nprimary: octopus_sparky360, companion:hana-hana, result: pass\nprimary: ...,               companion: ...,       result: skip\n\nIt should have total 16 combination. Thanks.\n",
       "revId": "2746ebe13b04b51f2d90dc1e0543a29e11894253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0899ff0_2365d118",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-26T20:31:21Z",
+      "side": 1,
+      "message": "Merge \n\nsrc/chromiumos/tast/remote/bundles/cros/meta/testparam_hw.go \nsrc/chromiumos/tast/remote/bundles/cros/meta/testparam_sw.go \n\nto one single\n\nsrc/chromiumos/tast/remote/bundles/cros/meta/testparamdep.go\n\nYou can have multiple params for one single tests.\n\nThanks.\n\n",
+      "revId": "2746ebe13b04b51f2d90dc1e0543a29e11894253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
