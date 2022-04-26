@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7588189f_51db6e3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2022-04-26T18:03:08Z",
+      "side": 1,
+      "message": "login.RemoveExistingUser started to fail recently also because ownership is not present, while it should. Adding the change here as well. PTAL!",
+      "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
