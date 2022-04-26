@@ -1,0 +1,188 @@
+# proto-file:
+# third_party/virtual-usb-printer/mock_printer/proto/control_flow.proto
+# proto-message: mocking.TestCase
+
+# Instructs the mock printer to wait for a series of get-printer-attributes
+# requests, which lpadmin will send. The first request is for a list of
+# supported document formats, where at least one of application/pdf or
+# image/pwg-raster needs to be returned to test the desired lpadmin behavior.
+# The next get-printer-attributes request should include the document-format
+# attribute, and the mock printer will respond with a 500 Internal Server Error.
+# Several older printers demonstrate this behavior. Finally, expect another
+# get-printer-attributes request without the document-format attribute as
+# lpadmin tries again to get some information from the printer.
+
+steps {
+  cardinality {
+    type: ALL_IN_ORDER
+  }
+  expectation_with_response {
+    expectation {
+      ipp_matcher {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+            attributes {
+              name: "printer-uri"
+              type: URI
+              string_values { string_values { value: "ipp://04a9_04d2/ipp/print" } }
+            }
+            attributes {
+              name: "requested-attributes"
+              type: KEYWORD
+              string_values { string_values { value: "document-format-supported" } }
+            }
+          }
+        }
+      }
+    }
+    response {
+      ipp_response {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        status: 0
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+          }
+        }
+        groups {
+          tag: PRINTER_ATTRIBUTES
+          collections {
+            attributes {
+              name: "document-format-supported"
+              type: MIME_MEDIA_TYPE
+              string_values {
+                string_values {
+                  value: "application/octet-stream"
+                }
+                string_values {
+                  value: "image/urf"
+                }
+                string_values {
+                  value: "image/pwg-raster"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  expectation_with_response {
+    expectation {
+      ipp_matcher {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+            attributes {
+              name: "printer-uri"
+              type: URI
+              string_values { string_values { value: "ipp://04a9_04d2/ipp/print" } }
+            }
+            attributes {
+              name: "document-format"
+              type: MIME_MEDIA_TYPE
+              string_values { string_values { value: "image/pwg-raster" } }
+            }
+          }
+        }
+      }
+    }
+    response {
+      http_properties {
+        status_code: INTERNAL_SERVER_ERROR
+      }
+    }
+  }
+  expectation_with_response {
+    expectation {
+      ipp_matcher {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+            attributes {
+              name: "printer-uri"
+              type: URI
+              string_values { string_values { value: "ipp://04a9_04d2/ipp/print" } }
+            }
+          }
+        }
+      }
+    }
+    response {
+      ipp_response {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        status: 0
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+          }
+        }
+        # We could include a PRINTER_ATTRIBUTES group here, but at this point
+        # we've already tested the behavior in question. If in the future we
+        # decide the test would be more comprehensive if we checked that the
+        # printer could be configured properly after the error response to the
+        # document-format request, then this response could be finished and
+        # several other responses would also need to be added.
+      }
+    }
+  }
+}
