@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db117c3_85a18ffe",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-26T18:31:24Z",
+      "side": 1,
+      "message": "OK so we\u0027re zero-ing around a naming\n  (capped|uncapped|uncapped_concurrent)_\u003ccodec\u003e_\u003cresolution\u003e_\u003cframerate\u003e\n  \nwhich will be carried out in subsequent CLs. Let me mark as\nsolved, please reopen if I\u0027m wrong.",
+      "parentUuid": "411fb3ac_1cf63138",
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c00b06e_1cade4a5",
@@ -184,6 +202,30 @@
       "side": 1,
       "message": "\u003e Those are legit concerns. Re 1) it usually is how it goes, it usually\n\u003e takes 10s to run 600frames at 60fps (or 300frames at 30fps), so the\n\u003e measurement runs 2 and a little bit iterations. The JSON file that is\n\u003e collected is then the one from the 2nd iteration (not the incipient \n\u003e third one). This indeed applies to 2), the last json produced is the \n\u003e one picked up, whereas the cpu/power meas is spread along all the time.\n\u003e Even though video_decode_accelerator_perf_tests is stopped \n\u003e asynchronously, there\u0027ll always be one such JSON file after the \n\u003e first iteration is finished.\n\u003e \n\u003e Note that this CL doesn\u0027t change that cpu/power meas, it simply stops\n\u003e collecting a single MeasureCappedPerformance in favour of just \n\u003e collecting one of the multiple MeasureProcessUsage back-to-back runs.\n\u003e \n\u003e ---\n\u003e \n\u003e Actually after chatting about this offline, maybe it\u0027s best for this\n\u003e CL to just extend TestParams to indicate if we want the test to run \n\u003e the capped, uncapped, or uncapped_10concurrent test cases, and for\n\u003e any enabled cases, run:\n\u003e - A single runAccelVideoTestCmd() to collect the json results\n\u003e - And then have a MeasureProcessUsage() run for the cpu+power \n\u003e collection.\n\u003e \n\nI tend to like this :)\n\n\u003e This of course will need to duplicate the callsites to indicate\n\u003e if the intention is to collect capped, uncapped, or both (to \n\u003e maintain current functionality we\u0027d need both).\n\u003e \n\nI\u0027m not sure I understood the \"to maintain current functionality we\u0027d need both\" part. On ToT, we collect the JSON for capped/uncapped/concurrent separately, and to measure the process usage, we only run the capped variant.\n\n\u003e In due time we should also refactor this MeasureProcessUsage() \n\u003e part to be more like what we do for PlaybackPerf Tast test [1], \n\u003e i.e. have several collections in parallel with a workload run (in \n\u003e this case, video_decode_accelerator_perf_tests). But that can\n\u003e wait : )\n\u003e \n\u003e \n\u003e [1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback/playback.go;l\u003d162-204;drc\u003dbef554f2a9d2472169ba2cdea4240a6f22bdbfce",
       "parentUuid": "e5391627_b28fba5c",
+      "range": {
+        "startLine": 290,
+        "startChar": 22,
+        "endLine": 290,
+        "endChar": 50
+      },
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ba37ca_8e6a0a37",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-26T18:31:24Z",
+      "side": 1,
+      "message": "\u003e \u003e Those are legit concerns. Re 1) it usually is how it goes, it usually\n\u003e \u003e takes 10s to run 600frames at 60fps (or 300frames at 30fps), so the\n\u003e \u003e measurement runs 2 and a little bit iterations. The JSON file that is\n\u003e \u003e collected is then the one from the 2nd iteration (not the incipient \n\u003e \u003e third one). This indeed applies to 2), the last json produced is the \n\u003e \u003e one picked up, whereas the cpu/power meas is spread along all the time.\n\u003e \u003e Even though video_decode_accelerator_perf_tests is stopped \n\u003e \u003e asynchronously, there\u0027ll always be one such JSON file after the \n\u003e \u003e first iteration is finished.\n\u003e \u003e \n\u003e \u003e Note that this CL doesn\u0027t change that cpu/power meas, it simply stops\n\u003e \u003e collecting a single MeasureCappedPerformance in favour of just \n\u003e \u003e collecting one of the multiple MeasureProcessUsage back-to-back runs.\n\u003e \u003e \n\u003e \u003e ---\n\u003e \u003e \n\u003e \u003e Actually after chatting about this offline, maybe it\u0027s best for this\n\u003e \u003e CL to just extend TestParams to indicate if we want the test to run \n\u003e \u003e the capped, uncapped, or uncapped_10concurrent test cases, and for\n\u003e \u003e any enabled cases, run:\n\u003e \u003e - A single runAccelVideoTestCmd() to collect the json results\n\u003e \u003e - And then have a MeasureProcessUsage() run for the cpu+power \n\u003e \u003e collection.\n\u003e \u003e \n\u003e \n\u003e I tend to like this :)\n\u003e \n\u003e \u003e This of course will need to duplicate the callsites to indicate\n\u003e \u003e if the intention is to collect capped, uncapped, or both (to \n\u003e \u003e maintain current functionality we\u0027d need both).\n\u003e \u003e \n\u003e \n\u003e I\u0027m not sure I understood the \"to maintain current functionality we\u0027d need both\" part. On ToT, we collect the JSON for capped/uncapped/concurrent separately, and to measure the process usage, we only run the capped variant.\n\nYes, well, what I meant is that this CL modifies the callsites to \nrun the \"capped\" and \"uncapped\" test cases, so some of the current\nfunctionality is maintained, namely the \"capped\" and \"uncapped\"\nvanilla runs and the \"capped\" cpu/power meas (but also adding the\n\"uncapped\" cpu/power meas).\n\nIf this is unclear in the CL description I can spell it out.\n\n\u003e \n\u003e \u003e In due time we should also refactor this MeasureProcessUsage() \n\u003e \u003e part to be more like what we do for PlaybackPerf Tast test [1], \n\u003e \u003e i.e. have several collections in parallel with a workload run (in \n\u003e \u003e this case, video_decode_accelerator_perf_tests). But that can\n\u003e \u003e wait : )\n\u003e \u003e \n\u003e \u003e \n\u003e \u003e [1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback/playback.go;l\u003d162-204;drc\u003dbef554f2a9d2472169ba2cdea4240a6f22bdbfce",
+      "parentUuid": "ec1af4fb_d88aaf27",
       "range": {
         "startLine": 290,
         "startChar": 22,
