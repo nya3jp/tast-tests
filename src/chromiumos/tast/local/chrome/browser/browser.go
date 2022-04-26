@@ -42,6 +42,11 @@ func New(sess *driver.Session) *Browser {
 // CreateTargetOption is cpdutil.CreateTargetOption.
 type CreateTargetOption = cdputil.CreateTargetOption
 
+// WithBackground behaves like cdputil.WithBackground.
+func WithBackground() CreateTargetOption {
+	return cdputil.WithBackground()
+}
+
 // WithNewWindow behaves like cpdutil.WithNewWindow.
 func WithNewWindow() CreateTargetOption {
 	return cdputil.WithNewWindow()
