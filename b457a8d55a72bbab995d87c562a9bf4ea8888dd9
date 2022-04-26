@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "586bd8ee_ab44e0f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-26T03:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "370e1913_dd3b6448",
+      "range": {
+        "startLine": 80,
+        "startChar": 80,
+        "endLine": 80,
+        "endChar": 82
+      },
+      "revId": "b457a8d55a72bbab995d87c562a9bf4ea8888dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a05825a_4163ad6c",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d509692f_6a311c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-26T03:32:01Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "9a05825a_4163ad6c",
+      "range": {
+        "startLine": 99,
+        "startChar": 34,
+        "endLine": 99,
+        "endChar": 39
+      },
+      "revId": "b457a8d55a72bbab995d87c562a9bf4ea8888dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "028f7890_7002cb36",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-25T09:35:42Z",
       "side": 1,
       "message": "Why don\u0027t we define NewTouchscreen in touch, and use it here?\nIt seems it\u0027s redundant to create a *input.TouchCoordConverter and dispose it here.",
+      "range": {
+        "startLine": 230,
+        "startChar": 23,
+        "endLine": 230,
+        "endChar": 49
+      },
+      "revId": "b457a8d55a72bbab995d87c562a9bf4ea8888dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f1d5a7_c0d2b9a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-26T03:32:01Z",
+      "side": 1,
+      "message": "Good idea!!! Thanks!",
+      "parentUuid": "028f7890_7002cb36",
       "range": {
         "startLine": 230,
         "startChar": 23,
