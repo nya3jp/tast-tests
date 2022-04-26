@@ -16,6 +16,23 @@
       "message": "Hi @Patrick, this change is a necessary pick for R101. Could you please help to review when you have free time. Thanks.",
       "revId": "d5d47bb0c185247f36950810f842c660ae7eb079",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6e6d2f1_fc89d529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-26T05:26:12Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "d5d47bb0c185247f36950810f842c660ae7eb079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
