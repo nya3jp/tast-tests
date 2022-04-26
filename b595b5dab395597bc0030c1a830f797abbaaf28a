@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8486479b_3c45ba6c",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-04-26T06:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f35528_1803cc5c",
+      "revId": "b595b5dab395597bc0030c1a830f797abbaaf28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4085e07_05375cc7",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fbaa124_d3e2fe3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-04-26T06:22:04Z",
+      "side": 1,
+      "message": "Added some validation method. Done.",
+      "parentUuid": "c4085e07_05375cc7",
+      "revId": "b595b5dab395597bc0030c1a830f797abbaaf28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ed102aa_7d05eccd",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-04-25T14:47:56Z",
       "side": 1,
       "message": "style: how many elements do you expect here?\nIf time-complexity is not concerned (e.g. N \u003d ~10+) just nested for loop is probably simpler.\n\n  for _, uuid :\u003d range uuids {\n    found :\u003d false\n    for _, cand :\u003d info.Adapters[0].UUIDs {\n      if uuid \u003d\u003d cand {\n        found \u003d true\n        break\n      }\n    }\n    if !found {\n      return errors.Errorf(...)\n    }\n  }",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "b595b5dab395597bc0030c1a830f797abbaaf28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98321756_5133804f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-04-26T06:22:04Z",
+      "side": 1,
+      "message": "I think the size would be no more than 10. Thanks!\nUpdated.",
+      "parentUuid": "3ed102aa_7d05eccd",
       "range": {
         "startLine": 102,
         "startChar": 2,
