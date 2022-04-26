@@ -89,13 +89,13 @@ func init() {
 			} else {
 				opts = append(opts, chrome.ARCDisabled())
 			}
-			return lacrosfixt.NewConfigFromState(s, lacrosfixt.Mode(lacros.LacrosPrimary),
+			return lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary),
 				lacrosfixt.ChromeOptions(opts...)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{"keepState", lacrosfixt.LacrosDeployedBinary},
+		Vars:            []string{"keepState"},
 	})
 
 	testing.AddFixture(&testing.Fixture{

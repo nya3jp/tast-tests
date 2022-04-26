@@ -36,7 +36,7 @@ func init() {
 		Desc:     "Logged into a user session with logging enabled (lacros)",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
@@ -46,7 +46,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -54,7 +53,7 @@ func init() {
 		Desc:     "Logged into a user session on Lacros without verbose logging that can affect the performance",
 		Contacts: []string{"chromeos-camera-eng@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
@@ -64,7 +63,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	// Chrome has two said implementations: a "legacy" one and a Direct, VD-based on. Selecting one ore the other depends on the hardware and is ultimately determined by the overlays/ flags. Tests should be centered on what the users see, hence most of the testing should use chromeVideo, with a few test cases using this fixture.
@@ -138,7 +136,7 @@ func init() {
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in ash-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
 				chrome.ExtraArgs("--enable-hardware-overlays=\"\""))).Opts()
@@ -147,7 +145,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -155,7 +152,7 @@ func init() {
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in lacros-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs("--enable-hardware-overlays=\"\""))).Opts()
@@ -164,7 +161,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	testing.AddFixture(&testing.Fixture{

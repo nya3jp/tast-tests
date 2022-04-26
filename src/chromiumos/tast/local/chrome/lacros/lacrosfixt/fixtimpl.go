@@ -17,11 +17,6 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
-// This should be used by any lacros fixtures defined outside this file.
-// TODO(crbug.com/1319732): Remove this after existing infra is migrated to use lacros.deployedBinary.
-const LacrosDeployedBinary = "lacrosDeployedBinary"
-
 func init() {
 	// lacros uses rootfs lacros, which is the recommend way to use lacros
 	// in Tast tests, unless you have a specific use case for using lacros from
@@ -31,12 +26,11 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s).Opts()
+			return NewConfig().Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosAudio is the same as lacros but has some special flags for audio
@@ -46,7 +40,7 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image with camera/microphone permissions",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s, ChromeOptions(
+			return NewConfig(ChromeOptions(
 				chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
 				chrome.ExtraArgs("--autoplay-policy=no-user-gesture-required"), // Allow media autoplay.
 				chrome.LacrosExtraArgs("--use-fake-ui-for-media-stream"),
@@ -55,7 +49,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosWith100FakeApps is the same as lacros but
@@ -65,13 +58,12 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s).Opts()
+			return NewConfig().Opts()
 		}),
 		Parent:          "install100Apps",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosForceComposition is the same as lacros but
@@ -81,12 +73,11 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image with composition forced on",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s, ChromeOptions(chrome.ExtraArgs("--enable-hardware-overlays=\"\""))).Opts()
+			return NewConfig(ChromeOptions(chrome.ExtraArgs("--enable-hardware-overlays=\"\""))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosForceDelegation is the same as lacros but
@@ -96,14 +87,13 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image with delegated compositing forced on",
 		Contacts: []string{"petermcneeley@chromium.org", "edcourtney@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s, ChromeOptions(
+			return NewConfig(ChromeOptions(
 				chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
 				chrome.LacrosEnableFeatures("DelegatedCompositing"))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosOmaha is a fixture to enable Lacros by feature flag in Chrome.
@@ -114,12 +104,11 @@ func init() {
 		Desc:     "Lacros Chrome from omaha",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s, Selection(lacros.Omaha)).Opts()
+			return NewConfig(Selection(lacros.Omaha)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosPrimary is a fixture to bring up Lacros as a primary browser from the rootfs partition by default.
@@ -128,12 +117,11 @@ func init() {
 		Desc:     "Lacros Chrome from rootfs as a primary browser",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s, Mode(lacros.LacrosPrimary)).Opts()
+			return NewConfig(Mode(lacros.LacrosPrimary)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosKeepAlive is similar to lacros but should be used
@@ -145,12 +133,11 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image using the UI and the Lacros chrome will stay alive even when the browser terminated",
 		Contacts: []string{"mxcai@chromium.org", "hidehiko@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s, KeepAlive(true), Mode(lacros.LacrosPrimary)).Opts()
+			return NewConfig(KeepAlive(true), Mode(lacros.LacrosPrimary)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosVariation is similar to lacros but should be used
@@ -160,14 +147,13 @@ func init() {
 		Desc:     "Lacros with variation service enabled",
 		Contacts: []string{"yjt@google.com", "lacros-team@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s, Mode(lacros.LacrosPrimary), ChromeOptions(
+			return NewConfig(Mode(lacros.LacrosPrimary), ChromeOptions(
 				chrome.LacrosExtraArgs("--fake-variations-channel=beta"),
 				chrome.LacrosExtraArgs("--variations-server-url=https://clients4.google.com/chrome-variations/seed"))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 }
 
@@ -238,7 +224,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		opts = append(opts, extraOpts...)
 	}
 	// Set opts for Lacros based on the selection and the runtime var.
-	cfg := NewConfigFromState(s, Selection(f.selection))
+	cfg := NewConfig(Selection(f.selection))
 	lacrosOpts, err := cfg.Opts()
 	if err != nil {
 		s.Fatal("Failed to set default options: ", err)

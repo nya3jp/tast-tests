@@ -89,47 +89,6 @@ func NewConfig(ops ...Option) *Config {
 	return cfg
 }
 
-// TestingState is a mixin interface that allows both testing.FixtState and
-// testing.State to be passed into NewConfigFromState.
-type TestingState interface {
-	Var(string) (string, bool)
-}
-
-// NewConfigFromState creates a new LacrosConfig instance.
-// TestingState allows both testing.FixtState and testing.State to be passed in.
-// TODO(crbug.com/1319732): Remove this after existing infra is migrated to use lacros.deployedBinary.
-func NewConfigFromState(s TestingState, ops ...Option) *Config {
-	// TODO(crbug.com/1260037): Make lacros.LacrosPrimary the default.
-	cfg := &Config{
-		selection:     lacros.Rootfs,
-		mode:          lacros.NotSpecified,
-		keepAlive:     false,
-		installWebApp: false,
-	}
-
-	for _, op := range ops {
-		op(cfg)
-	}
-
-	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
-	// lacros-chrome instead of always downloading from a gcs location.
-	// Note that this will override any Options changing the deployedPath if it
-	// is specified.
-	if deployedPath, deployed := s.Var(LacrosDeployedBinary); deployed {
-		cfg.deployed = deployed
-		cfg.deployedPath = deployedPath
-	}
-
-	// For now, preferentially overwrite the deployed binary info if the new
-	// global runtime var is specified.
-	if deployedPath := lacros.DeployedBinary.Value(); len(deployedPath) != 0 {
-		cfg.deployed = true
-		cfg.deployedPath = deployedPath
-	}
-
-	return cfg
-}
-
 // ExtensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
 func ExtensionArgs(extID, extList string) []string {
 	return []string{
@@ -179,7 +138,7 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 
 	// Enable Lacros.
 	// Note that specifying the feature LacrosSupport has side-effects, so
-	// we specify it even if the lacros path is being overridden by lacrosDeployedBinary.
+	// we specify it even if the lacros path is being overridden by lacros.DeployedBinary.
 	opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"))
 	switch cfg.selection {
 	case lacros.Rootfs:
@@ -211,11 +170,11 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 		opts = append(opts, chrome.LacrosDisableFeatures("DefaultWebAppInstallation"))
 	}
 
-	// Let cfg.chromeOpts override any other options, except for lacrosDeployedBinary.
-	// Keep this last, but before the lacrosDeployedBinary code.
+	// Let cfg.chromeOpts override any other options, except for lacros.DeployedBinary.
+	// Keep this last, but before the lacros.DeployedBinary code.
 	opts = append(opts, cfg.chromeOpts...)
 
-	// Throw an error if lacros has been deployed, but the var lacrosDeployedBinary is unset.
+	// Throw an error if lacros has been deployed, but the var lacros.DeployedBinary is unset.
 	if !cfg.deployed && (cfg.selection == lacros.Omaha || cfg.selection == lacros.Rootfs) {
 		config, err := ioutil.ReadFile("/etc/chrome_dev.conf")
 		if err == nil {
@@ -223,8 +182,8 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 				line = strings.TrimSpace(line)
 				if strings.HasPrefix(line, "--lacros-chrome-path") {
 					return nil, errors.New(
-						"found --lacros-chrome-path in /etc/chrome_dev.conf, but lacrosDeployedBinary is not specified, " +
-							"you may need to pass `-var lacrosDeployedBinary=/usr/local/lacros-chrome` to `tast run` " +
+						"found --lacros-chrome-path in /etc/chrome_dev.conf, but lacros.DeployedBinary is not specified, " +
+							"you may need to pass `-var lacros.DeployedBinary=/usr/local/lacros-chrome` to `tast run` " +
 							"if you've deployed your own Lacros binary to the DUT, " +
 							"or you may need to comment out/remove --lacros-chrome-path in /etc/chrome_dev.conf")
 				}

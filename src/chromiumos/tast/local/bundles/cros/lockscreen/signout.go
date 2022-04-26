@@ -64,7 +64,6 @@ func init() {
 			Val:               testParam{false, true, browser.TypeLacros},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
-		Vars: []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
@@ -80,7 +79,7 @@ func Signout(ctx context.Context, s *testing.State) {
 
 	// Separate function for the first chrome run to isolate from the second run. For example so it does not generate UI tree two times on error.
 	func() {
-		cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfigFromState(s),
+		cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
 			chrome.ExtraArgs("--force-tablet-mode=clamshell", "--disable-virtual-keyboard"))
 		if err != nil {
 			s.Fatalf("Chrome login failed with %v browser: %v", bt, err)

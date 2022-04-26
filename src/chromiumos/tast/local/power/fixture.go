@@ -53,14 +53,13 @@ func init() {
 		Desc:     "Similar to chromeFastHistogramsAndBuiltinSmartDimModel but on lacros",
 		Contacts: []string{"alanlxl@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
 				chrome.ExtraArgs(chromeQuickMetricsCollectionArg),
 				chrome.ExtraArgs(chromeSmartDimBuiltinModelArg))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 }

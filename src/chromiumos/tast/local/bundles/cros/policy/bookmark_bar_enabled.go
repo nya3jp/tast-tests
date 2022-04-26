@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -36,7 +35,6 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Vars:         []string{lacrosfixt.LacrosDeployedBinary},
 		Params: []testing.Param{{
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val:     browser.TypeAsh,

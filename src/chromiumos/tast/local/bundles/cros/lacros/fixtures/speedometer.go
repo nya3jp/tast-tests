@@ -38,13 +38,12 @@ func init() {
 			if err != nil {
 				return nil, err
 			}
-			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(opts...)).Opts()
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          "speedometerWPR",
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	// TODO(hidehiko): Remove this after checking the impact by running order of the tests.
@@ -59,12 +58,11 @@ func init() {
 			if err != nil {
 				return nil, err
 			}
-			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(opts...)).Opts()
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          "speedometerWPR",
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 }

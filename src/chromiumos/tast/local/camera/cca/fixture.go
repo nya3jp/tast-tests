@@ -101,7 +101,6 @@ func init() {
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
-		Vars:            []string{"lacrosDeployedBinary"},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -126,7 +125,6 @@ func init() {
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
-		Vars:            []string{"lacrosDeployedBinary"},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -296,7 +294,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	if f.lacros {
 		browserType = browser.TypeLacros
 		var err error
-		chromeOpts, err = lacrosfixt.NewConfigFromState(s, lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(chromeOpts...)).Opts()
+		chromeOpts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(chromeOpts...)).Opts()
 		if err != nil {
 			s.Fatal("Failed to compute Chrome options: ", err)
 		}

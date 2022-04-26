@@ -38,7 +38,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
-			lacrosfixt.LacrosDeployedBinary,
 			"enterpriseconnectors.username1",
 			"enterpriseconnectors.password1",
 		},
@@ -64,7 +63,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
-			lacrosfixt.LacrosDeployedBinary,
 			"enterpriseconnectors.username2",
 			"enterpriseconnectors.password2",
 		},
@@ -90,7 +88,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
-			lacrosfixt.LacrosDeployedBinary,
 			"enterpriseconnectors.username3",
 			"enterpriseconnectors.password3",
 		},
@@ -116,7 +113,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
-			lacrosfixt.LacrosDeployedBinary,
 			"enterpriseconnectors.username4",
 			"enterpriseconnectors.password4",
 		},

@@ -91,11 +91,6 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 	}
 }
 
-// Expose various consts, func and types to tests that can access them importing browserfixt.
-
-// LacrosDeployedBinary is lacrosfixt.LacrosDeployedBinary.
-const LacrosDeployedBinary = lacrosfixt.LacrosDeployedBinary
-
 // SetUpWithNewChrome returns a Browser instance along with a new Chrome instance created.
 // This is useful when no fixture is used but the new chrome needs to be instantiated in test for a fresh UI restart between tests.
 // It also returns a closure to be called in order to close the browser instance.
