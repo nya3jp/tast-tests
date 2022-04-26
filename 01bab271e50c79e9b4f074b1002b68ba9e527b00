@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9eed952_b7cc50dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-04-26T08:14:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fee19458_2d84bc36",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "01bab271e50c79e9b4f074b1002b68ba9e527b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55d1e6aa_23255d48",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ebfecfe_97446ea9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-04-26T08:14:26Z",
+      "side": 1,
+      "message": "It appears that on some DUTs, batteryBaseFile would print \"Charing\" when battery is fully charged, and in which case these conditions would yield the error saying: \"Found unexpected battery state when AC plugged. Status: Fully charged, Status from base file: Charging\"\n\nWe\u0027ve also seen a few instances, where battery state from power_supply_info reports opposite to the base file, i.e. one says discharging while the other says charging. \n\nGiving this a second thought, to avoid the risk of changing this test\u0027s objective, I think for now it might be better to keep the original, and log what the base file says.\n\nIf the base files turn out to be more accurate in the logs, we could probably turn to the base files instead.",
+      "parentUuid": "55d1e6aa_23255d48",
+      "range": {
+        "startLine": 239,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 61
+      },
+      "revId": "01bab271e50c79e9b4f074b1002b68ba9e527b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43a71f59_06fb37ca",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-25T21:18:17Z",
       "side": 1,
       "message": "Likewise this should be ||",
+      "range": {
+        "startLine": 244,
+        "startChar": 6,
+        "endLine": 244,
+        "endChar": 67
+      },
+      "revId": "01bab271e50c79e9b4f074b1002b68ba9e527b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83fa656_d5b1db08",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-04-26T08:14:26Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "43a71f59_06fb37ca",
       "range": {
         "startLine": 244,
         "startChar": 6,
