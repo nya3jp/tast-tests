@@ -22,6 +22,30 @@
       },
       "revId": "0dc08f6ebaa11b997fdd7bf2965d72681d841051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d66b15_06997134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_verification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-26T00:08:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "685d4b9f_bce9a5a1",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "0dc08f6ebaa11b997fdd7bf2965d72681d841051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
