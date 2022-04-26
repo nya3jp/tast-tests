@@ -7,12 +7,14 @@ package enterpriseconnectors
 import (
 	"context"
 	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -21,14 +23,6 @@ import (
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
-
-// policyParams entail parameters describing the set policy for a user.
-type policyParams struct {
-	AllowsImmediateDelivery bool // specifies whether immediate delivery of files is allowed
-	AllowsUnscannableFiles  bool // specifies whether unscannable files (large or encrypted) are allowed
-	ScansEnabledForDownload bool // specifies whether malware and dlp scans are enabled for download
-	ScansEnabledForUpload   bool // specifies whether malware and dlp scans are enabled for upload
-}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -52,44 +46,39 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "scan_enabled_allows_immediate_and_unscannable",
-				Fixture: "lacrosGaiaSignedInProdPolicyWPDownloadAllowExtra",
-				Val: policyParams{
+				Fixture: "lacrosGaiaSignedInProdPolicyWPEnabledAllowExtra",
+				Val: helpers.PolicyParams{
 					AllowsImmediateDelivery: true,
 					AllowsUnscannableFiles:  true,
-					ScansEnabledForDownload: true,
-					ScansEnabledForUpload:   false,
+					ScansEnabled:            true,
 				},
 			},
 			{
 				Name:    "scan_enabled_blocks_immediate_and_unscannable",
-				Fixture: "lacrosGaiaSignedInProdPolicyWPDownloadBlockExtra",
-				Val: policyParams{
+				Fixture: "lacrosGaiaSignedInProdPolicyWPEnabledBlockExtra",
+				Val: helpers.PolicyParams{
 					AllowsImmediateDelivery: false,
 					AllowsUnscannableFiles:  false,
-					ScansEnabledForDownload: true,
-					ScansEnabledForUpload:   false,
+					ScansEnabled:            true,
 				},
 			},
 			{
-				Name:    "scan_disabled_allows_immediate_and_unscannable",
-				Fixture: "lacrosGaiaSignedInProdPolicyWPUploadAllowExtra",
-				Val: policyParams{
+				Name:    "scan_disabled",
+				Fixture: "lacrosGaiaSignedInProdPolicyWPDisabled",
+				Val: helpers.PolicyParams{
 					AllowsImmediateDelivery: true,
 					AllowsUnscannableFiles:  true,
-					ScansEnabledForDownload: false,
-					ScansEnabledForUpload:   true,
+					ScansEnabled:            false,
 				},
 			},
-			{
-				Name:    "scan_disabled_blocks_immediate_and_unscannable",
-				Fixture: "lacrosGaiaSignedInProdPolicyWPUploadBlockExtra",
-				Val: policyParams{
-					AllowsImmediateDelivery: false,
-					AllowsUnscannableFiles:  false,
-					ScansEnabledForDownload: false,
-					ScansEnabledForUpload:   true,
-				},
-			},
+		},
+		Data: []string{
+			"download.html",
+			"10ssns.txt",
+			"allowed.txt",
+			"content.exe",
+			"unknown_malware_encrypted.zip",
+			"unknown_malware.zip",
 		},
 	})
 }
@@ -117,11 +106,11 @@ func TestDownload(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get device policies: ", err)
 	}
 	_, ok := devicePolicies.Chrome["OnFileDownloadedEnterpriseConnector"]
-	policyParams := s.Param().(policyParams)
-	if !ok && policyParams.ScansEnabledForDownload {
+	policyParams := s.Param().(helpers.PolicyParams)
+	if !ok && policyParams.ScansEnabled {
 		s.Fatal("Policy isn't set, but should be")
 	}
-	if ok && !policyParams.ScansEnabledForDownload {
+	if ok && !policyParams.ScansEnabled {
 		s.Fatal("Policy is set, but shouldn't be")
 	}
 
@@ -130,12 +119,14 @@ func TestDownload(ctx context.Context, s *testing.State) {
 }
 
 func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType browser.Type) {
-	URL := "https://bce-testingsite.appspot.com/"
-
 	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+
+	// Setup test HTTP server.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -153,11 +144,12 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 		s.Fatal("Failed to connect to chrome: ", err)
 	}
 	defer dconn.Close()
+	defer dconn.CloseTarget(ctx)
 
 	// Need to wait for a valid dm token, i.e., the proper initialization of the enterprise connectors
 	s.Log("Checking for dm token")
 	if err := testing.Poll(ctx, func(c context.Context) error {
-		return checkDMTokenRegistered(ctx, s, br)
+		return helpers.CheckDMTokenRegistered(ctx, s, br, server)
 	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 10 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for dm token to be registered: ", err)
 	}
@@ -193,12 +185,18 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			dlIsBad:         true,
 			dlIsUnscannable: false,
 		},
+		{
+			testName:        "Allowed file",
+			dlFileName:      "allowed.txt",
+			dlIsBad:         false,
+			dlIsUnscannable: false,
+		},
 	} {
 		s.Run(ctx, param.testName, func(ctx context.Context, s *testing.State) {
 			dlFileName := param.dlFileName
-			policyParams := s.Param().(policyParams)
+			policyParams := s.Param().(helpers.PolicyParams)
 			shouldBlockDownload := false
-			if policyParams.ScansEnabledForDownload {
+			if policyParams.ScansEnabled {
 				if param.dlIsUnscannable {
 					shouldBlockDownload = !policyParams.AllowsUnscannableFiles
 				} else {
@@ -206,11 +204,12 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 				}
 			}
 
-			dconn, err := br.NewConn(ctx, URL)
+			dconn, err := br.NewConn(ctx, server.URL+"/download.html")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
 			defer dconn.Close()
+			defer dconn.CloseTarget(ctx)
 
 			// Close all prior notifications.
 			if err := ash.CloseNotifications(ctx, tconn); err != nil {
@@ -272,72 +271,4 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			}
 		})
 	}
-}
-
-func checkDMTokenRegistered(ctx context.Context, s *testing.State, br *browser.Browser) error {
-	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
-
-	// Close all prior notifications
-	if err := ash.CloseNotifications(ctx, tconn); err != nil {
-		s.Fatal("Failed to close notifications: ", err)
-	}
-
-	dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
-	if err != nil {
-		s.Fatal("Failed to connect to chrome: ", err)
-	}
-	defer dconnSafebrowsing.Close()
-
-	URL := "https://bce-testingsite.appspot.com/"
-	dconn, err := br.NewConn(ctx, URL)
-	defer dconn.Close()
-
-	err = dconn.Eval(ctx, `document.getElementById("unknown_malware_encrypted.zip").click()`, nil)
-
-	// Check for notification (this might take some time in case of throttling)
-	timeout := 2 * time.Minute
-
-	deadline, _ := ctx.Deadline()
-	s.Log("Context deadline is ", deadline)
-	ntfctn, err := ash.WaitForNotification(
-		ctx,
-		tconn,
-		timeout,
-		ash.WaitIDContains("notification-ui-manager"),
-		ash.WaitMessageContains("unknown_malware_encrypted.zip"),
-	)
-	if err != nil {
-		s.Fatalf("Failed to wait for notification with title %q: %v", "", err)
-	}
-
-	// Remove file if it was downloaded
-	if ntfctn.Title == "Download complete" {
-		if err := os.Remove(filesapp.DownloadPath + "unknown_malware_encrypted.zip"); err != nil {
-			s.Error("Failed to remove ", "unknown_malware_encrypted.zip", ": ", err)
-		}
-	}
-
-	// Check safebrowsing page, whether there wasn't a failed_to_get_token error in the last message
-	var failedToGetToken bool
-	err = dconnSafebrowsing.Eval(ctx, `(async () => {
-		table = document.getElementById("deep-scan-list");
-		if (table.rows.length == 0) {
-			// If there is no entry, scanning is disabled and the token doesn't matter
-			return false;
-		}
-		// Otherwise we check if the last entry includes a missing token
-		return table.rows[table.rows.length - 1].cells[1].innerHTML.includes("FAILED_TO_GET_TOKEN");
-		})()`, &failedToGetToken)
-	if err != nil {
-		s.Fatal("Failed to check deep-scan-list entry: ", err)
-	}
-	if failedToGetToken {
-		s.Log("FAILED_TO_GET_TOKEN detected")
-		return errors.New("FAILED_TO_GET_TOKEN detected")
-	}
-
-	return nil
 }
