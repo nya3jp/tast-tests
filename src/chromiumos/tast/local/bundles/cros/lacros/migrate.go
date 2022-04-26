@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -54,7 +55,7 @@ func Migrate(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	prepareAshProfile(ctx, s, kb)
-	cr, err := migrateProfile(ctx, s.Param().([]chrome.Option))
+	cr, err := migrateProfile(ctx, s.Param().([]chrome.Option), s)
 	if err != nil {
 		s.Fatal("Failed to migrate profile: ", err)
 	}
@@ -227,7 +228,7 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	}
 }
 
-func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chrome, error) {
+func migrateProfile(ctx context.Context, extraOpts []chrome.Option, s *testing.State) (*chrome.Chrome, error) {
 	// TODO(chromium:1290297): This is a hack.
 	// chrome.New doesn't really support profile migration because it
 	// doesn't anticipate the additional Chrome restart that profile
@@ -240,13 +241,15 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 	testing.ContextLog(ctx, "Restarting for profile migration")
 	opts := []chrome.Option{
 		chrome.KeepState(),
-		chrome.EnableFeatures("LacrosSupport", "LacrosPrimary", "LacrosProfileMigrationForAnyUser"),
-		// Disable keep-alive and login-lacros-opening to work around chromium:1316237.
-		chrome.ExtraArgs("--lacros-selection=rootfs", "--disable-lacros-keep-alive", "--disable-login-lacros-opening"),
-		chrome.LacrosExtraArgs("--remote-debugging-port=0"),
 		chrome.RemoveNotification(false),
+		chrome.EnableFeatures("LacrosProfileMigrationForAnyUser"),
 	}
 	opts = append(opts, extraOpts...)
+	opts, err := lacrosfixt.NewConfigFromState(s, lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.DisableLockingDownExtensions(), lacrosfixt.ChromeOptions(opts...)).Opts()
+	if err != nil {
+		s.Fatal("Failed to compute Chrome options: ", err)
+	}
+
 	crDoNotUse, err := chrome.New(ctx, opts...)
 	if err != nil {
 		return nil, err
