@@ -34,6 +34,24 @@
       "parentUuid": "7085e95e_3644d244",
       "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5605c2fa_32713614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-26T03:15:49Z",
+      "side": 1,
+      "message": "To clarify, based on the discussion on go/robust-ucm-changes, we shall allow alsaucm to fail if the device is not plugged.\n\u003e front mic, rear mic\nDidn\u0027t think about that. Maybe `hwdep.Microphone` does not imply SectionDevice.\"Internal Mic\" exists. Need to take a look.\n\u003e BT offload\nWhether offloading is enabled can be detected with cros_config. Unsure about availability of `hwdep`.\n\u003e Line out, headphone\nNo `hwdep` available. I think detecting \u0026 skipping at run-time is a no-go as the test scheduler might decide that the test can be run in a dut without a headphone, then the test becomes incorrectly skipped (while another dut with a headphone connected is available in lab), introducing flakes.",
+      "parentUuid": "d2f7f5c4_43fe62cc",
+      "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
