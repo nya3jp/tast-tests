@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21412ea6_d60afa8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T16:06:03Z",
+      "side": 1,
+      "message": "My rebase seems to have revoked the CQ run. Submitting again.. ",
+      "revId": "3220f0ee688e33ec7e79499230c3a426c2c71229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
