@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1f946a_6b486942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-04-26T06:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee37032b_4cb7a587",
+      "range": {
+        "startLine": 41,
+        "startChar": 77,
+        "endLine": 41,
+        "endChar": 79
+      },
+      "revId": "e7c171912cbe09fd1b6f2e65a9e8aabd36d01466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4188027_35ee786d",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ddecc1_d76437de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-04-26T06:24:29Z",
+      "side": 1,
+      "message": "After error handling and I found that I missed starting monitor again. Sorry for confusing.\nI would like to run the event detection twice.\nI have added some comments for clarification. Done.",
+      "parentUuid": "f4188027_35ee786d",
+      "revId": "e7c171912cbe09fd1b6f2e65a9e8aabd36d01466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "272415bf_ee794e18",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-04-25T14:54:25Z",
       "side": 1,
       "message": "if !strings.Contains(stdout, \"Blueooth event received\") {\n    ...\n  }\n  \nlooks enough.",
+      "revId": "e7c171912cbe09fd1b6f2e65a9e8aabd36d01466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7a7179_0096b54f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-04-26T06:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272415bf_ee794e18",
       "revId": "e7c171912cbe09fd1b6f2e65a9e8aabd36d01466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
