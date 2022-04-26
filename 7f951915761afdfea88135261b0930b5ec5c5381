@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "256be856_5df2f848",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-26T11:05:33Z",
+      "side": 1,
+      "message": "Maybe we can use the opportunity to rename this to something that makes it clearer that it\u0027s a directory, not the pathname of the binary.",
+      "revId": "7f951915761afdfea88135261b0930b5ec5c5381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87537a9a_a8618294",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
         "patchSetId": 2
