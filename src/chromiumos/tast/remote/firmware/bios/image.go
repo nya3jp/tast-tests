@@ -14,6 +14,9 @@ import (
 	commonbios "chromiumos/tast/common/firmware/bios"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
+	pb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -27,6 +30,49 @@ type ServoHostCommandRunner interface {
 	GetFile(ctx context.Context, asRoot bool, remoteFile, localFile string) error
 	// PutFiles copies a local files to servo host files
 	PutFiles(ctx context.Context, asRoot bool, fileMap map[string]string) error
+}
+
+func CopyFWFileToRemote(ctx context.Context, h *firmware.Helper, backup *pb.FWBackUpInfo) (string, error) {
+	// remoteFile, err := runner.OutputCommand(ctx, true, "tempfile", "-d", "/var/tmp", "-p", fmt.Sprintf("%s", backup.Section))
+	// if err != nil {
+	// 	return "", errors.Wrap(err, "creating remote temp file")
+	// }
+	// remoteImageFilePath := strings.TrimSuffix(string(remoteFile), "\n")
+
+	remoteFile := "/usr/local/tmp"
+	localFile := "/usr/local/tmp"
+	// _, err := h.ServoProxy.OutputCommand(ctx, true, "touch", remoteFile)
+	// if err != nil {
+	// 	return "", errors.Wrap(err, "creating remote temp file")
+	// }
+	// if err := runner.PutFiles(ctx, true, map[string]string{remoteFile: backup.Path}); err != nil {
+	if err := linuxssh.GetFile(ctx, h.DUT.Conn(), remoteFile, localFile, linuxssh.DereferenceSymlinks); err != nil {
+		// if _, err := linuxssh.PutFiles(ctx, h.DUT.Conn(), map[string]string{"": remoteFile}, linuxssh.DereferenceSymlinks); err != nil {
+
+		// if err := runner.GetFile(ctx, true, remoteFile, backup.Path); err != nil {
+
+		return "", errors.Wrap(err, "could not copy files to servo host")
+	}
+
+	// out, err := h.ServoProxy.OutputCommand(ctx, true, "ls", remoteFile)
+	// if err != nil {
+	// 	return "", errors.Wrap(err, "creating remote temp file")
+	// } else {
+	// 	testing.ContextLog(ctx, "OUT: ", string(out))
+	// }
+
+	return remoteFile, nil
+}
+
+func RestoreFWFileFromRemote(ctx context.Context, runner ServoHostCommandRunner, backup *pb.FWBackUpInfo, remotefile string) error {
+	// defer runner.RunCommand(ctx, true, "rm", "-f", remotefile)
+	// if err := runner.GetFile(ctx, true, "/tmp/TEST", remotefile); err != nil {
+	// 	// if err := runner.PutFiles(ctx, true, map[string]string{backup.Path: "/var/tmp/BRUH"}); err != nil {
+	// 	return errors.Wrap(err, "could not copy files to servo host")
+	// }
+
+	return nil
+	// return errors.Errorf("FAILED ON %v", backup.Section)
 }
 
 // NewRemoteImage creates an Image object representing the currently loaded BIOS image. If you pass in a section, only that section will be read.

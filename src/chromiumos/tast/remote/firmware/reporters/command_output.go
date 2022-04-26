@@ -24,7 +24,7 @@ func (r *Reporter) CommandOutputLines(ctx context.Context, format string, args .
 
 // CommandOutput reports the command output as a single string.
 func (r *Reporter) CommandOutput(ctx context.Context, format string, args ...string) (string, error) {
-	res, err := r.d.Conn().CommandContext(ctx, format, args...).Output()
+	res, err := r.d.Conn().CommandContext(ctx, format, args...).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to run %q command on dut: %q", prependString(format, args), res)
 	}

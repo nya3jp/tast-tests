@@ -90,6 +90,12 @@ const (
 
 	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
 	gbbHeaderOffset uint = 12
+
+	// versionSizeOffset is the location of the offset of the version in VBLOCK_A and VBLOCK_B.
+	versionSizeOffset uint64 = 16
+
+	// versionOffset is the shift to the offset of the version in VBLOCK_A and VBLOCK_B.
+	versionOffset uint64 = 40
 )
 
 // defaultChromeosFmapConversion converts dump_fmap names to those recognized by flashrom
@@ -183,6 +189,94 @@ func NewImageToFile(ctx context.Context, section ImageSection, programmer Flashr
 	}
 
 	return tmpFile.Name(), nil
+}
+
+func (i *Image) GetSectionVersion() (uint64, error) {
+	magic := string(i.Data[0:8])
+	if magic != "CHROMEOS" {
+		// Type is uint so cannot use -1 as error value, instead use max uint64.
+		return ^uint64(0), errors.Errorf("expected magic 'CHROMEOS', got %q", magic)
+	}
+	size := binary.LittleEndian.Uint64(i.Data[versionSizeOffset : versionSizeOffset+8])
+	versionPos := size + versionOffset
+	version := binary.LittleEndian.Uint64(i.Data[versionPos : versionPos+8])
+	return version, nil
+}
+
+func (i *Image) SetSectionVersion(ctx context.Context, versionNumber uint64, section ImageSection) error {
+	byteArray := make([]byte, 8)
+	binary.LittleEndian.PutUint64(byteArray, versionNumber)
+	size := binary.LittleEndian.Uint64(i.Data[versionSizeOffset : versionSizeOffset+8])
+	versionPos := size + versionOffset
+	for idx, v := range byteArray {
+		i.Data[versionPos+uint64(idx)] = v
+	}
+	version := binary.LittleEndian.Uint64(i.Data[versionPos : versionPos+8])
+	if version != versionNumber {
+		return errors.Errorf("Expected version to be set to %d, was actually set to %d", versionNumber, version)
+	}
+
+	prog := HostProgrammer
+	vblock := VBLOCKAImageSection
+	fwmain := FWMAINAImageSection
+	// If section is any of the fw b sections, set VBLOCK_B version
+	if section == VBLOCKBImageSection || section == FWMAINBImageSection || section == APRWBImageSection {
+		vblock = VBLOCKBImageSection
+		fwmain = FWMAINBImageSection
+	}
+
+	fwmainFile, err := NewImageToFile(ctx, fwmain, prog)
+	if err != nil {
+		return errors.Wrap(err, "Failed to save image to file")
+	}
+	defer os.Remove(fwmainFile)
+
+	dataRange, ok := i.Sections[vblock]
+	if !ok {
+		return errors.Errorf("section %q is not recognized", string(vblock))
+	}
+	vblockFile, err := ioutil.TempFile("", "")
+	if err != nil {
+		return errors.Wrap(err, "creating tmpfile for image contents")
+	}
+	defer os.Remove(vblockFile.Name())
+	dataToWrite := i.Data[dataRange.Start : dataRange.Start+dataRange.Length]
+	if err := ioutil.WriteFile(vblockFile.Name(), dataToWrite, 0644); err != nil {
+		return errors.Wrap(err, "writing image contents to tmpfile")
+	}
+
+	vbutilArgs := []string{
+		"--vblock", vblockFile.Name(),
+		"--keyblock", "/usr/share/vboot/devkeys/firmware.keyblock",
+		"--fv", fwmainFile,
+		"--version", fmt.Sprintf("%d", version),
+		"--kernelkey", "/usr/share/vboot/devkeys/kernel_subkey.vbpubk",
+		"--signprivate", "/usr/share/vboot/devkeys/firmware_data_key.vbprivk",
+		"--flags", "0",
+	}
+	// Run vbutil cmd
+	if err = testexec.CommandContext(ctx, "vbutil_firmware", vbutilArgs...).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "could not sign AP image")
+	}
+
+	newData, err := ioutil.ReadFile(vblockFile.Name())
+	if err != nil {
+		return errors.Wrap(err, "could not read firmware host image contents")
+	}
+
+	paddedDataArr := make([]byte, int(dataRange.Length))
+	for i, v := range newData {
+		paddedDataArr[i] = v
+	}
+
+	if err := ioutil.WriteFile(vblockFile.Name(), paddedDataArr, 0644); err != nil {
+		return errors.Wrap(err, "writing image contents to tmpfile")
+	}
+
+	if err = testexec.CommandContext(ctx, "flashrom", "-N", "-p", string(prog), "-i", fmt.Sprintf("%s:%s", vblock, vblockFile.Name()), "-w").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "could not write host image")
+	}
+	return nil
 }
 
 // GetGBBFlags returns the list of cleared and list of set flags.
@@ -324,7 +418,7 @@ func calcGBBBits(curr, clear, set uint32) uint32 {
 func (i *Image) readSectionData(sec ImageSection, off, sz uint, out interface{}) error {
 	si, ok := i.Sections[sec]
 	if !ok {
-		return errors.Errorf("Section %s not found", sec)
+		return errors.Errorf("Section %s not found, all sections: %v", sec, i.Sections)
 	}
 	beg := si.Start + off
 	end := si.Start + off + sz

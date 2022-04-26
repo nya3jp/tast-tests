@@ -37,7 +37,7 @@ const proxyTimeout = 10 * time.Second // max time for establishing SSH connectio
 // over SSH if needed.
 type Proxy struct {
 	svo             *Servo
-	hst             *ssh.Conn      // Initialized lazily.
+	Hst             *ssh.Conn      // Initialized lazily.
 	fwd             *ssh.Forwarder // nil if servod is running locally or inside a docker container
 	servoHostname   string
 	port            int
@@ -266,7 +266,7 @@ func getServodContainerIP(ctx context.Context, dcl *client.Client, name string) 
 
 func (p *Proxy) connectSSH(ctx context.Context) (retErr error) {
 	// If the servod instance isn't running locally, assume that we need to connect to it via SSH.
-	if p.sshPort <= 0 || p.hst != nil {
+	if p.sshPort <= 0 || p.Hst != nil {
 		return nil
 	}
 	// First, create an SSH connection to the remote system running servod.
@@ -279,19 +279,19 @@ func (p *Proxy) connectSSH(ctx context.Context) (retErr error) {
 		User:           "root",
 	}
 	testing.ContextLogf(ctx, "Opening Servo SSH connection to %s", sopt.Hostname)
-	hst, err := ssh.New(ctx, &sopt)
+	Hst, err := ssh.New(ctx, &sopt)
 	if err != nil {
-		logServoStatus(ctx, hst, p.sshPort)
+		logServoStatus(ctx, Hst, p.sshPort)
 		return err
 	}
 	defer func() {
 		if retErr != nil {
-			hst.Close(ctx)
+			Hst.Close(ctx)
 		}
 	}()
 
 	testing.ContextLog(ctx, "Creating forwarded connection to port ", p.port)
-	p.fwd, err = hst.NewForwarder("localhost:0", fmt.Sprintf("localhost:%d", p.port),
+	p.fwd, err = Hst.NewForwarder("localhost:0", fmt.Sprintf("localhost:%d", p.port),
 		func(err error) { testing.ContextLog(ctx, "Got servo forwarding error: ", err) })
 	if err != nil {
 		return err
@@ -325,21 +325,21 @@ func (p *Proxy) connectSSH(ctx context.Context) (retErr error) {
 		}
 	}
 
-	p.hst = hst
+	p.Hst = Hst
 	return nil
 }
 
 // logServoStatus logs the current servo status from the servo host.
-func logServoStatus(ctx context.Context, hst *ssh.Conn, port int) {
+func logServoStatus(ctx context.Context, Hst *ssh.Conn, port int) {
 	// Check if servod is running of the servo host.
-	out, err := hst.CommandContext(ctx, "servodtool", "instance", "show", "-p", fmt.Sprint(port)).CombinedOutput()
+	out, err := Hst.CommandContext(ctx, "servodtool", "instance", "show", "-p", fmt.Sprint(port)).CombinedOutput()
 	if err != nil {
 		testing.ContextLogf(ctx, "Servod process is not initialized on the servo-host: %v: %v", err, string(out))
 		return
 	}
 	testing.ContextLogf(ctx, "Servod instance is running on port %v of the servo host", port)
 	// Check if servod is busy.
-	if out, err = hst.CommandContext(ctx, "dut-control", "-p", fmt.Sprint(port), "serialname").CombinedOutput(); err != nil {
+	if out, err = Hst.CommandContext(ctx, "dut-control", "-p", fmt.Sprint(port), "serialname").CombinedOutput(); err != nil {
 		testing.ContextLogf(ctx, "The servod is not responsive or busy: %v: %v", err, string(out))
 		return
 	}
@@ -357,9 +357,9 @@ func (p *Proxy) Close(ctx context.Context) {
 		p.fwd.Close()
 		p.fwd = nil
 	}
-	if p.hst != nil {
-		p.hst.Close(ctx)
-		p.hst = nil
+	if p.Hst != nil {
+		p.Hst.Close(ctx)
+		p.Hst = nil
 	}
 	if p.dcl != nil {
 		p.dcl.Close()
@@ -374,9 +374,9 @@ func (p *Proxy) Reconnect(ctx context.Context) error {
 		p.fwd.Close()
 		p.fwd = nil
 	}
-	if p.hst != nil {
-		p.hst.Close(ctx)
-		p.hst = nil
+	if p.Hst != nil {
+		p.Hst.Close(ctx)
+		p.Hst = nil
 	}
 	return p.connectSSH(ctx)
 }
@@ -412,7 +412,7 @@ func (p *Proxy) runCommandImpl(ctx context.Context, dumpLogOnError, asRoot bool,
 	if err := p.connectSSH(ctx); err != nil {
 		return err
 	}
-	return p.hst.CommandContext(ctx, name, args...).Run(execOpts...)
+	return p.Hst.CommandContext(ctx, name, args...).Run(execOpts...)
 }
 
 // RunCommand execs a command on the servo host, optionally as root.
@@ -441,7 +441,7 @@ func (p *Proxy) OutputCommand(ctx context.Context, asRoot bool, name string, arg
 	if err := p.connectSSH(ctx); err != nil {
 		return nil, err
 	}
-	return p.hst.CommandContext(ctx, name, args...).Output(ssh.DumpLogOnError)
+	return p.Hst.CommandContext(ctx, name, args...).Output(ssh.DumpLogOnError)
 }
 
 // InputCommand execs a command and redirects stdin.
@@ -467,7 +467,7 @@ func (p *Proxy) InputCommand(ctx context.Context, asRoot bool, stdin io.Reader, 
 	if err := p.connectSSH(ctx); err != nil {
 		return err
 	}
-	cmd := p.hst.CommandContext(ctx, name, args...)
+	cmd := p.Hst.CommandContext(ctx, name, args...)
 	cmd.Stdin = stdin
 	return cmd.Run(ssh.DumpLogOnError)
 }
@@ -475,6 +475,7 @@ func (p *Proxy) InputCommand(ctx context.Context, asRoot bool, stdin io.Reader, 
 // GetFile copies a servo host file to a local file.
 func (p *Proxy) GetFile(ctx context.Context, asRoot bool, remoteFile, localFile string) error {
 	if p.isLocal() {
+		testing.ContextLog(ctx, "IS LOCALIZED!!!!!")
 		if p.isDockerized() {
 			outFile, err := os.OpenFile(localFile, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 			if err != nil {
@@ -513,7 +514,8 @@ func (p *Proxy) GetFile(ctx context.Context, asRoot bool, remoteFile, localFile 
 	if err := p.connectSSH(ctx); err != nil {
 		return err
 	}
-	return linuxssh.GetFile(ctx, p.hst, remoteFile, localFile, linuxssh.DereferenceSymlinks)
+	testing.ContextLogf(ctx, "p.Hst: %v, rem: %v, local: %v", p.Hst, remoteFile, localFile)
+	return linuxssh.GetFile(ctx, p.Hst, remoteFile, localFile, linuxssh.DereferenceSymlinks)
 }
 
 // PutFiles copies a local file to a servo host file.
@@ -558,7 +560,7 @@ func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]st
 	if err := p.connectSSH(ctx); err != nil {
 		return err
 	}
-	_, err := linuxssh.PutFiles(ctx, p.hst, fileMap, linuxssh.DereferenceSymlinks)
+	_, err := linuxssh.PutFiles(ctx, p.Hst, fileMap, linuxssh.DereferenceSymlinks)
 	return err
 }
 
@@ -643,7 +645,7 @@ func (p *Proxy) NewForwarder(ctx context.Context, hostPort string) (*ssh.Forward
 	if err := p.connectSSH(ctx); err != nil {
 		return nil, err
 	}
-	fwd, err := p.hst.NewForwarder("localhost:0", hostPort,
+	fwd, err := p.Hst.NewForwarder("localhost:0", hostPort,
 		func(err error) { testing.ContextLog(ctx, "Got forwarding error: ", err) })
 	if err != nil {
 		return nil, errors.Wrap(err, "creating ssh forwarder")

@@ -29,13 +29,13 @@ type BiosService struct {
 	s *testing.ServiceState
 }
 
-// programmerEnumToProgrammer maps the enum from FWBackUpSection to a bios FlashromProgramer.
+// programmerEnumToProgrammer maps the enum from ImageSectionInfo to a bios FlashromProgramer.
 var programmerEnumToProgrammer = map[pb.Programmer]bios.FlashromProgrammer{
 	pb.Programmer_BIOSProgrammer: bios.HostProgrammer,
 	pb.Programmer_ECProgrammer:   bios.ECProgrammer,
 }
 
-// sectionEnumToSection maps the enum from FWBackUpSection to a bios ImageSection.
+// sectionEnumToSection maps the enum from ImageSectionInfo to a bios ImageSection.
 var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
 	pb.ImageSection_BOOTSTUBImageSection:         bios.BOOTSTUBImageSection,
 	pb.ImageSection_COREBOOTImageSection:         bios.COREBOOTImageSection,
@@ -61,7 +61,7 @@ var updateModeEnumtoMode = map[pb.UpdateMode]bios.FirmwareUpdateMode{
 }
 
 // BackupImageSection dumps the image region into temporary file locally and returns its path.
-func (*BiosService) BackupImageSection(ctx context.Context, req *pb.FWBackUpSection) (*pb.FWBackUpInfo, error) {
+func (*BiosService) BackupImageSection(ctx context.Context, req *pb.ImageSectionInfo) (*pb.FWBackUpInfo, error) {
 	path, err := bios.NewImageToFile(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
 	if err != nil {
 		return nil, errors.Wrapf(err, "could not backup %s region with programmer %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
@@ -74,6 +74,39 @@ func (bs *BiosService) RestoreImageSection(ctx context.Context, req *pb.FWBackUp
 	if err := bios.WriteImageFromSingleSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
 		return nil, errors.Wrapf(err, "could not restore %s region with programmer %s from path %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer], req.Path)
 	}
+	return &empty.Empty{}, nil
+}
+
+// GetSectionVersion gets the version of the section.
+func (*BiosService) GetSectionVersion(ctx context.Context, req *pb.ImageSectionInfo) (*pb.SectionVersionInfo, error) {
+	img, err := bios.NewImage(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
+	if err != nil {
+		return nil, errors.Wrap(err, "could not read firmware")
+	}
+	ver, err := img.GetSectionVersion()
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get section version")
+	}
+
+	ret := pb.SectionVersionInfo{Section: req.Section, Programmer: req.Programmer, Version: ver}
+	return &ret, nil
+}
+
+// SetSectionVersion sets the version of the section.
+func (*BiosService) SetSectionVersion(ctx context.Context, req *pb.SectionVersionInfo) (*empty.Empty, error) {
+	if req.Version < 0 {
+		return nil, errors.Errorf("attempted to set version to %d, cannot set version to less than 0", req.Version)
+	}
+	img, err := bios.NewImage(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
+	if err != nil {
+		return nil, errors.Wrap(err, "could not read firmware")
+	}
+	if err := img.SetSectionVersion(ctx, req.Version, sectionEnumToSection[req.Section]); err != nil {
+		return nil, errors.Wrap(err, "could not set section version")
+	}
+	// if err = img.WriteFlashrom(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
+	// 	return nil, errors.Wrap(err, "could not write image")
+	// }
 	return &empty.Empty{}, nil
 }
 
@@ -133,7 +166,7 @@ func (bs *BiosService) CorruptFWSection(ctx context.Context, req *pb.CorruptSect
 	for i, v := range img.Data {
 		img.Data[i] = (v + 1) & 0xff
 	}
-	err = img.WriteFlashrom(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), programmerEnumToProgrammer[req.Programmer])
+	err = img.WriteFlashrom(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
 	if err != nil {
 		return nil, errors.Wrap(err, "could not write firmware")
 	}

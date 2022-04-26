@@ -12,6 +12,10 @@ option go_package = "chromiumos/tast/services/cros/firmware";
 
 // BiosService provides ability to manipulate bios settings on DUT
 service BiosService {
+  // GetSectionVersion gets the section version.
+  rpc GetSectionVersion (ImageSectionInfo) returns (SectionVersionInfo) {}
+  // SetSectionVersion sets the section version.
+  rpc SetSectionVersion (SectionVersionInfo) returns (google.protobuf.Empty) {}
   // GetGBBFlags gets the flags that are cleared and set.
   rpc GetGBBFlags (google.protobuf.Empty) returns (GBBFlagsState) {}
   // ClearAndSetGBBFlags modifies the specified flags, leaving the rest unchanged.
@@ -20,10 +24,8 @@ service BiosService {
   rpc EnableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
   // DisableAPSoftwareWriteProtect disables the AP software write protect.
   rpc DisableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
-  // CorruptFWSection writes garbage bytes to the entire section specified.
-  rpc CorruptFWSection (CorruptSection) returns (google.protobuf.Empty) {}
-  // BackupImageSection backs up the current fw region locally and returns its path.
-  rpc BackupImageSection (FWBackUpSection) returns (FWBackUpInfo) {}
+    // BackupImageSection backs up the current fw region locally and returns its path.
+  rpc BackupImageSection (ImageSectionInfo) returns (FWBackUpInfo) {}
   // RestoreImageSection restores the fw region from path.
   rpc RestoreImageSection (FWBackUpInfo) returns (google.protobuf.Empty) {}
   // WriteImageFromMultiSectionFile writes the provided multi section file in the specified section.
@@ -110,16 +112,17 @@ message FWBackUpInfo {
   Programmer Programmer = 3;
 }
 
-// FWBackUpSection represents the string containing the image section to back up and the programmer to use.
-message FWBackUpSection {
+// ImageSectionInfo represents the string containing the section and programmer.
+message ImageSectionInfo {
   ImageSection Section = 1;
   Programmer Programmer = 2;
 }
 
-// CorruptSection selects the section to corrupt.
-message CorruptSection {
+// SectionVersionInfo represents a version of a section to set in the image.
+message SectionVersionInfo {
   ImageSection Section = 1;
   Programmer Programmer = 2;
+  uint64 Version = 3;
 }
 
 // FirmwareUpdateModeRequest represents the string containing the mode and options to performe the update.

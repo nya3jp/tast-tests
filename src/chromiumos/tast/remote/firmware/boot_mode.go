@@ -265,7 +265,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			}
 			// Depending on how we got to to dev mode, we might end up in normal mode or the recovery
 			// menu, so navigate to dev mode, but it that fails, fall through to the next attempt below.
-			if err := ms.fwScreenToDevMode(ctx); err == nil {
+			if err := ms.FwScreenToDevMode(ctx); err == nil {
 				newMode, err := h.Reporter.CurrentBootMode(ctx)
 				if err != nil {
 					return errors.Wrap(err, "determining boot mode after simple reboot")
@@ -308,7 +308,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			}
 			// Depending on how we got to to rec mode, we might end up in normal mode or the recovery
 			// menu, so navigate to dev mode, but it that fails, fall through to the next attempt below.
-			if err := ms.fwScreenToDevMode(ctx); err == nil {
+			if err := ms.FwScreenToDevMode(ctx); err == nil {
 				newMode, err := h.Reporter.CurrentBootMode(ctx)
 				if err != nil {
 					return errors.Wrap(err, "determining boot mode after simple reboot")
@@ -331,7 +331,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := ms.EnableRecMode(ctx, servo.USBMuxOff); err != nil {
 				return err
 			}
-			if err := ms.fwScreenToDevMode(ctx); err != nil {
+			if err := ms.FwScreenToDevMode(ctx); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to dev mode")
 			}
 			newMode, err := h.Reporter.CurrentBootMode(ctx)
@@ -722,7 +722,7 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, opts ...ModeSw
 				return nil
 			}
 		default:
-			return errors.Errorf("unsupported ModeSwitcherType %s for fwScreenToNormalMode", h.Config.ModeSwitcherType)
+			return errors.Errorf("unsupported ModeSwitcherType %s for FwScreenToNormalMode", h.Config.ModeSwitcherType)
 		}
 		ctx, cancel := context.WithTimeout(ctx, connectTimeout)
 		defer cancel()
@@ -734,10 +734,10 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, opts ...ModeSw
 	return nil
 }
 
-// fwScreenToDevMode moves the DUT from the firmware bootup screen to Dev mode.
+// FwScreenToDevMode moves the DUT from the firmware bootup screen to Dev mode.
 // This should be called immediately after powering on.
 // The actual behavior depends on the ModeSwitcherType.
-func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitchOption) error {
+func (ms *ModeSwitcher) FwScreenToDevMode(ctx context.Context, opts ...ModeSwitchOption) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")

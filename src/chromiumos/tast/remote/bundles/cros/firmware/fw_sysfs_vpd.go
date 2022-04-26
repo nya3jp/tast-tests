@@ -77,7 +77,7 @@ func FWSysfsVPD(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Backing up current RW_VPD region for safety")
-	rwvpdPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+	rwvpdPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.ImageSectionInfo{
 		Programmer: pb.Programmer_BIOSProgrammer,
 		Section:    pb.ImageSection_RWVPDImageSection,
 	})
@@ -87,7 +87,7 @@ func FWSysfsVPD(ctx context.Context, s *testing.State) {
 	s.Log("RW_VPD region backup is stored at: ", rwvpdPath.Path)
 
 	s.Log("Backing up current RO_VPD region for safety")
-	rovpdPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+	rovpdPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.ImageSectionInfo{
 		Programmer: pb.Programmer_BIOSProgrammer,
 		Section:    pb.ImageSection_ROVPDImageSection,
 	})

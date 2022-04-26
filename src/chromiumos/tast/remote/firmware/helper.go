@@ -82,6 +82,7 @@ type Helper struct {
 
 	// hostFilesTmpDir is a temporary directory on the test server holding a copy of Tast host files.
 	hostFilesTmpDir string
+	fwBackupTempDir string
 
 	// Model contains the DUT's model, as reported by the Platform RPC.
 	// Currently, this is based on cros_config / name.
@@ -467,6 +468,40 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 		} else if _, ok := err.(*gossh.ExitError); !ok {
 			return errors.Wrapf(err, "checking for existence of %s", dutSrc)
 		}
+	}
+	return nil
+}
+
+// CopyTastFilesFromDUT retrieves Tast host files from the DUT and stores them locally for later use.
+// This allows the test server to re-push Tast files to the DUT if a different OS image is booted mid-test.
+func (h *Helper) CopyFwBackupFromDUT(ctx context.Context) (string, error) {
+	// Create temp dir to hold copied Tast files.
+	tmpDir, err := ioutil.TempDir("", "fw_backup")
+	testing.ContextLog(ctx, "THIS IS WHERE THINGS ARE ", tmpDir)
+	if err != nil {
+		return "", err
+	}
+	// Copy files from DUT onto test server.
+	testing.ContextLogf(ctx, "Copying file to test server at %s", tmpDir)
+	src := "/usr/local/share/tast/fw_backup"
+	dest := tmpDir
+	// Only copy the file if it exists.
+	if err = h.DUT.Conn().CommandContext(ctx, "test", "-x", src).Run(); err == nil {
+		if err = linuxssh.GetFile(ctx, h.DUT.Conn(), src, dest, linuxssh.PreserveSymlinks); err != nil {
+			return "", errors.Wrapf(err, "copying local Tast file %s from DUT", src)
+		}
+	} else if _, ok := err.(*gossh.ExitError); !ok {
+		return "", errors.Wrapf(err, "checking for existence of %s", src)
+	}
+	return tmpDir, nil
+}
+
+func (h *Helper) CopyFwBackupToDUT(ctx context.Context, backupDir string) error {
+	fileMap := map[string]string{backupDir: "/usr/local/share/tast/fw_backup"}
+
+	testing.ContextLog(ctx, "Syncing Tast files from test server onto DUT: ", fileMap)
+	if _, err := linuxssh.PutFiles(ctx, h.DUT.Conn(), fileMap, linuxssh.DereferenceSymlinks); err != nil {
+		return errors.Wrap(err, "failed syncing Tast files from test server onto DUT")
 	}
 	return nil
 }

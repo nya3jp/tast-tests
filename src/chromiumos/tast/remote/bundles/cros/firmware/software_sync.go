@@ -76,7 +76,7 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	backup, err := bs.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
+	backup, err := bs.BackupImageSection(ctx, &pb.ImageSectionInfo{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
 	if err != nil {
 		s.Fatal("Could not backup EC firmware: ", err)
 	}

@@ -48,7 +48,7 @@ func ECHash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Backing up current EC_RW region for safety")
-	ecPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+	ecPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.ImageSectionInfo{
 		Programmer: pb.Programmer_ECProgrammer,
 		Section:    pb.ImageSection_ECRWImageSection,
 	})
