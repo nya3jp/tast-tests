@@ -52,6 +52,24 @@
       "parentUuid": "d2f7f5c4_43fe62cc",
       "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d27bcfd2_a3f4a6bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308772
+      },
+      "writtenOn": "2022-04-26T22:36:37Z",
+      "side": 1,
+      "message": "You can query alsa directly for the existance of these and bypass hwdep if need be",
+      "parentUuid": "5605c2fa_32713614",
+      "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
