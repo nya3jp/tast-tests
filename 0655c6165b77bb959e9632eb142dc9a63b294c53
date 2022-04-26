@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "680cb0f5_4cfaa013",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-26T04:56:45Z",
+      "side": 1,
+      "message": "Chrome side change landed in 103.0.5013.0 and current uprev is 103.0.5024.0 so I will land this now.",
+      "revId": "0655c6165b77bb959e9632eb142dc9a63b294c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
