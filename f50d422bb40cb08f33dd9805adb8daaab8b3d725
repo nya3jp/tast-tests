@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a8ed37_81813819",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-26T17:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6724b967_d993fb80",
+      "range": {
+        "startLine": 117,
+        "startChar": 15,
+        "endLine": 117,
+        "endChar": 33
+      },
+      "revId": "f50d422bb40cb08f33dd9805adb8daaab8b3d725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66bf348f_57e21a9d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-26T09:20:34Z",
       "side": 1,
       "message": "nocturne_fp_v2.0.13584-6fcfe69780",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 60
+      },
+      "revId": "f50d422bb40cb08f33dd9805adb8daaab8b3d725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d2e41e_eca94dec",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-26T17:03:20Z",
+      "side": 1,
+      "message": "Thanks for catching this! I think it should be `nami_fp`, but feel free to reopen the thread if my edit is not correct. \n\nDone",
+      "parentUuid": "66bf348f_57e21a9d",
       "range": {
         "startLine": 133,
         "startChar": 15,
