@@ -434,6 +434,7 @@ func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserCont
 		return uiauto.Combine("handwriting input on virtual keyboard",
 			its.WaitForHandwritingEngineReadyOnField(hwCtx, inputField, dataPath(inputData.HandwritingFile)),
 			hwCtx.DrawStrokesFromFile(dataPath(inputData.HandwritingFile)),
+			uiauto.Sleep(500*time.Millisecond),
 		)(ctx)
 	}
 	return uiauto.UserAction(
