@@ -16,6 +16,24 @@
       "message": "LGTM. \n\nThis upper level call now looks identical to the legacy router invocation.\n\nI was wondering whether it was worth potentially migrating this to some intermediary common file (between openwrt and legacy) but since not too many functions are completely identical in reuse, I don\u0027t think it\u0027s worth adding more layers of indirection to reuse code.\n",
       "revId": "5d5ec57cbce5d65a4475dd620b1b94fa39bb9784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a1dc39b_ffb39633",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-26T21:56:37Z",
+      "side": 1,
+      "message": "I didn\u0027t extract these out into a common file since they are so small. I did it for some other components though which were more complex and clearly the same. It\u0027s probably worth taking another look at everything after we are fully done with this to see how we can refactor the legacy and openwrt router implementations to only include what is platform specific, and have everything else in common.",
+      "parentUuid": "16e9980a_1f752e35",
+      "revId": "5d5ec57cbce5d65a4475dd620b1b94fa39bb9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
