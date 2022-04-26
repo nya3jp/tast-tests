@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29980faa_4ce59eb1",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T21:10:27Z",
+      "side": 1,
+      "message": "describe its purpose",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69303796_b23607c6",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T21:10:27Z",
+      "side": 1,
+      "message": "nit: move this closer to where it is being used. e.g: move it lo L61",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b46c8bb_34fbda47",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T21:10:27Z",
+      "side": 1,
+      "message": "what I meant is that you don\u0027t need to define `nanosecondsPerSecond` because `time.Second` means that.\n\njust use `time.Second` in L177 and L183",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9adf29f1_d2d52807",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T21:10:27Z",
+      "side": 1,
+      "message": "calculateMetrics could fail. check error",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5335000d_9941c583",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T21:10:27Z",
+      "side": 1,
+      "message": "when does this condition could happen?\nPerhaps adding a link to the source code (where \"0\" is returned) would be great.",
+      "range": {
+        "startLine": 137,
+        "startChar": 40,
+        "endLine": 137,
+        "endChar": 43
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85663998_aff3e197",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T21:10:27Z",
+      "side": 1,
+      "message": "just to double-check, the test should fail if this condition happens?\n\nHow often does it could happen?",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 3
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf790ea3_36efb435",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T21:10:27Z",
+      "side": 1,
+      "message": "nit: inverse the logic.\n\nwhen there is an error, return early. the \"normal\" path should not be inside the if.",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 19
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d86706_e9c55d00",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T21:10:27Z",
+      "side": 1,
+      "message": "don\u0027t use in-band errors\n\ngo/go-style/decisions#in-band-errors",
+      "range": {
+        "startLine": 189,
+        "startChar": 7,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
