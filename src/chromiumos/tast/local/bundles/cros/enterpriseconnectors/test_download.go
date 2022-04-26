@@ -7,12 +7,14 @@ package enterpriseconnectors
 import (
 	"context"
 	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -91,6 +93,13 @@ func init() {
 				},
 			},
 		},
+		Data: []string{
+			"download.html",
+			"10ssns.txt",
+			"content.exe",
+			"unknown_malware_encrypted.zip",
+			"unknown_malware.zip",
+		},
 	})
 }
 
@@ -130,12 +139,14 @@ func TestDownload(ctx context.Context, s *testing.State) {
 }
 
 func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType browser.Type) {
-	URL := "https://bce-testingsite.appspot.com/"
-
 	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+
+	// Setup test HTTP server.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -157,7 +168,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 	// Need to wait for a valid dm token, i.e., the proper initialization of the enterprise connectors
 	s.Log("Checking for dm token")
 	if err := testing.Poll(ctx, func(c context.Context) error {
-		return checkDMTokenRegistered(ctx, s, br)
+		return helpers.CheckDMTokenRegistered(ctx, s, br, server)
 	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 10 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for dm token to be registered: ", err)
 	}
@@ -206,7 +217,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 				}
 			}
 
-			dconn, err := br.NewConn(ctx, URL)
+			dconn, err := br.NewConn(ctx, server.URL+"/download.html")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
@@ -272,72 +283,4 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			}
 		})
 	}
-}
-
-func checkDMTokenRegistered(ctx context.Context, s *testing.State, br *browser.Browser) error {
-	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
-
-	// Close all prior notifications
-	if err := ash.CloseNotifications(ctx, tconn); err != nil {
-		s.Fatal("Failed to close notifications: ", err)
-	}
-
-	dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
-	if err != nil {
-		s.Fatal("Failed to connect to chrome: ", err)
-	}
-	defer dconnSafebrowsing.Close()
-
-	URL := "https://bce-testingsite.appspot.com/"
-	dconn, err := br.NewConn(ctx, URL)
-	defer dconn.Close()
-
-	err = dconn.Eval(ctx, `document.getElementById("unknown_malware_encrypted.zip").click()`, nil)
-
-	// Check for notification (this might take some time in case of throttling)
-	timeout := 2 * time.Minute
-
-	deadline, _ := ctx.Deadline()
-	s.Log("Context deadline is ", deadline)
-	ntfctn, err := ash.WaitForNotification(
-		ctx,
-		tconn,
-		timeout,
-		ash.WaitIDContains("notification-ui-manager"),
-		ash.WaitMessageContains("unknown_malware_encrypted.zip"),
-	)
-	if err != nil {
-		s.Fatalf("Failed to wait for notification with title %q: %v", "", err)
-	}
-
-	// Remove file if it was downloaded
-	if ntfctn.Title == "Download complete" {
-		if err := os.Remove(filesapp.DownloadPath + "unknown_malware_encrypted.zip"); err != nil {
-			s.Error("Failed to remove ", "unknown_malware_encrypted.zip", ": ", err)
-		}
-	}
-
-	// Check safebrowsing page, whether there wasn't a failed_to_get_token error in the last message
-	var failedToGetToken bool
-	err = dconnSafebrowsing.Eval(ctx, `(async () => {
-		table = document.getElementById("deep-scan-list");
-		if (table.rows.length == 0) {
-			// If there is no entry, scanning is disabled and the token doesn't matter
-			return false;
-		}
-		// Otherwise we check if the last entry includes a missing token
-		return table.rows[table.rows.length - 1].cells[1].innerHTML.includes("FAILED_TO_GET_TOKEN");
-		})()`, &failedToGetToken)
-	if err != nil {
-		s.Fatal("Failed to check deep-scan-list entry: ", err)
-	}
-	if failedToGetToken {
-		s.Log("FAILED_TO_GET_TOKEN detected")
-		return errors.New("FAILED_TO_GET_TOKEN detected")
-	}
-
-	return nil
 }
