@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "516812b7_a1905530",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-26T20:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f951ff85_b94bed63",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e6ccb60_a7991829",
@@ -184,6 +208,30 @@
       "side": 1,
       "message": "Do you expect that this condition could happen?\n Yes: Return error (and not `nil`)\n No: Replace with assert... or just remove the condition",
       "parentUuid": "7c1ff84c_7259e5ff",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c82bcc_6d9b6ba0",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-26T20:27:14Z",
+      "side": 1,
+      "message": "Unlike the battery tracker file, it doesn\u0027t seem like the initializer for this object can fail, so I\u0027ll just remove it",
+      "parentUuid": "8c9aa170_da61f2dd",
       "range": {
         "startLine": 53,
         "startChar": 2,
@@ -349,6 +397,30 @@
       "side": 1,
       "message": "sure, go ahead",
       "parentUuid": "971e4667_2bd67fcb",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "906f0d57_48bbf557",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-26T20:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92f17049_430210b7",
       "range": {
         "startLine": 123,
         "startChar": 2,
