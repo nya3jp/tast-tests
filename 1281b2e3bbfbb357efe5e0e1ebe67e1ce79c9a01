@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "afbac82e_142360f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-04-26T09:13:59Z",
+      "side": 1,
+      "message": "Done 👍\n\nJust curious.\nI totally agree with your suggestion, but I feel everyone in tast-owners@ has different opinions of CL\u0027s title prefix...\nOne day, I have been suggested to drop the \"tast-tests:\" prefix because it\u0027s too obvious. I personally like \"tast-tests:\" prefix, though.\nIs there any doc explaining the tast-related CL title?",
+      "parentUuid": "cb4499fb_99ec3bd9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "1281b2e3bbfbb357efe5e0e1ebe67e1ce79c9a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b94cd441_c45af54c",
