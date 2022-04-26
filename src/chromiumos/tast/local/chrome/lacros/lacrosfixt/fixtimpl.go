@@ -19,6 +19,7 @@ import (
 
 // LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
 // This should be used by any lacros fixtures defined outside this file.
+// TODO(crbug.com/1319732): Remove this after existing infra is migrated to use lacros.deployedBinary.
 const LacrosDeployedBinary = "lacrosDeployedBinary"
 
 func init() {
