@@ -125,7 +125,7 @@ func CheckValidUsers(ctx context.Context, s *testing.State) {
 // and makes sure that there is no error msg, and button Install is enabled.
 // It also goes through the installation process with the last username in users.
 func checkUsersAndInstall(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, kb *input.KeyboardEventWriter, users []string) error {
-	if err := settings.OpenInstaller(ctx, tconn, cr); err != nil {
+	if err := settings.OpenLinuxInstallerAndClickNext(ctx, tconn, cr); err != nil {
 		return errors.Wrap(err, "failed to open Crostini installer")
 	}
 
