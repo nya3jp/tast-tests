@@ -45,7 +45,7 @@ func KeepAlive(on bool) Option {
 	}
 }
 
-// EnableWebAppInstall returns whether to automatically install essential web apps on Lacros.
+// EnableWebAppInstall returns an Option that enables automatic installation of essential web apps on Lacros.
 func EnableWebAppInstall() Option {
 	return func(c *Config) {
 		c.installWebApp = true
@@ -138,7 +138,7 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 	// Enable Lacros.
 	// Note that specifying the feature LacrosSupport has side-effects, so
 	// we specify it even if the lacros path is being overridden by lacros.DeployedBinary.
-	opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"))
+	opts = append(opts, chrome.EnableFeatures("LacrosSupport"))
 	switch cfg.selection {
 	case lacros.Rootfs:
 		opts = append(opts, chrome.ExtraArgs("--lacros-selection=rootfs"))
