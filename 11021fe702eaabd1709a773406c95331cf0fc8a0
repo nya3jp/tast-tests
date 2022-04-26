@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fafc0e_66cf4a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-26T22:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f73dc90_91f0cafb",
+      "range": {
+        "startLine": 65,
+        "startChar": 22,
+        "endLine": 65,
+        "endChar": 36
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3207d9c3_9db6246e",
@@ -215,6 +239,30 @@
       "side": 1,
       "message": "Good point, it\u0027s necessary to log unexpected behavior, especially when dealing with racey virtual device. The kernel module could be unloaded or crash, which renders the directory unregistered during testing.",
       "parentUuid": "ac5adc55_029856e4",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f4196f_9363f80b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-26T22:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cf18afe_338f8af7",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -319,6 +367,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f70f66_917fd091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-26T22:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6023c48b_685c6590",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4014413_fae5b620",
@@ -356,6 +428,30 @@
       "side": 1,
       "message": "Good point. WriteFile creates a file if it doesn\u0027t exist https://pkg.go.dev/io/ioutil#WriteFile\n\nChecking the existence of the file is the best we can do without using this trick: give the permission of 0444, so that ioutil.WriteFile() won\u0027t be able to write the the file it creates.",
       "parentUuid": "b4014413_fae5b620",
+      "range": {
+        "startLine": 76,
+        "startChar": 15,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f52d03_ac66d430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-26T22:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d1178aa_42fbeaa6",
       "range": {
         "startLine": 76,
         "startChar": 15,
