@@ -33,6 +33,161 @@
       "message": "PTAL\nDesign doc: https://docs.google.com/document/d/1g-Vz2SQUDZazrgtGfFZiAkaLwfSm3oAE6vOWpb5-E7s/edit?resourcekey\u003d0-YShJGxNQSNr7nDVjrzfJkw#",
       "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd5abbf7_aab6e01e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T15:18:49Z",
+      "side": 1,
+      "message": "first pass... I\u0027ll do a second pass once the \"format\" (what\u0027s being parsed) is documented.\n\n",
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a242ee_5acf6f1c",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T15:18:49Z",
+      "side": 1,
+      "message": "not needed?   just use `time.Second` ?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6ccb60_a7991829",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T15:18:49Z",
+      "side": 1,
+      "message": "(here and below) in which cases the receiver can be nil?\nit should never happen, but if it happens, then it should be documented.\n\nIf it was added just as a safety check, then I guess an assert would be better.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b219390f_abdd748e",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T15:18:49Z",
+      "side": 1,
+      "message": "nit: here and in the rest of the doc. be more verbose on the error message e.g:\n\n  errors.New(\"failed to stop SurfaceFlingerMetrics since it was not started\")",
+      "range": {
+        "startLine": 96,
+        "startChar": 29,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3038cec_ba20ec6c",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T15:18:49Z",
+      "side": 1,
+      "message": "nit: whenever feasible, remove \"get\" from getters\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 114,
+        "startChar": 32,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35a9700_aee254d6",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T15:18:49Z",
+      "side": 1,
+      "message": "whats the format of \"line\". Add a example of what you are trying to parse. e.g:\n\n  // A valid line consist of: x, y, z. Example:\n  // -- copy \u0026 paste one or two real-world lines --",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47322cbf_13ce872c",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-26T15:18:49Z",
+      "side": 1,
+      "message": "huge nit: prefer `latencies :\u003d 0.0` when initliazing variables",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 5
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
