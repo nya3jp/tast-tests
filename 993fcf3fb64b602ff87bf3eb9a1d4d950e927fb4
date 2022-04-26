@@ -16,6 +16,23 @@
       "message": "Oka-san, please take another look!",
       "revId": "993fcf3fb64b602ff87bf3eb9a1d4d950e927fb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3443065d_4cd7bda3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-26T03:53:22Z",
+      "side": 1,
+      "message": "Tast lgtm.\nCould you get it reviewed by someone in your team?",
+      "revId": "993fcf3fb64b602ff87bf3eb9a1d4d950e927fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
