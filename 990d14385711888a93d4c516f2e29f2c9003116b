@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66ce0aa_a5360b09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-26T17:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "522a042c_06613072",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 67
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40caf52f_27bb9d70",
@@ -38,6 +62,30 @@
       "writtenOn": "2022-04-26T09:12:18Z",
       "side": 1,
       "message": "could you not declare vars at the beginning of function unnecessary, like ancient C? You can declare/define the variable by using :\u003d where it needs.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d57d98be_557a4fc8",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-26T17:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40caf52f_27bb9d70",
       "range": {
         "startLine": 81,
         "startChar": 0,
@@ -71,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a884c6_5d3a6b5c",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-26T17:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b03b2152_714f1dc2",
+      "range": {
+        "startLine": 102,
+        "startChar": 13,
+        "endLine": 102,
+        "endChar": 14
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8df860ac_356a0d0c",
@@ -84,6 +156,30 @@
       "writtenOn": "2022-04-26T09:12:18Z",
       "side": 1,
       "message": ":\u003d",
+      "range": {
+        "startLine": 106,
+        "startChar": 7,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7d9363_f88633dc",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-26T17:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8df860ac_356a0d0c",
       "range": {
         "startLine": 106,
         "startChar": 7,
@@ -117,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9180e8ee_6c174f2c",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-26T17:36:37Z",
+      "side": 1,
+      "message": "It couldn\u0027t find any documentation on ip that included the output format confirming that these were a list of pairs, so I used `i++` originally. It does seem like this is this case though based on all of the examples I found, so I\u0027ve switched it to `i +\u003d 2`. Also switched it to using `break` as suggested.",
+      "parentUuid": "ffc8754e_c38f1b88",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 24
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a69acc4_419641ef",
@@ -130,6 +250,30 @@
       "writtenOn": "2022-04-26T09:12:18Z",
       "side": 1,
       "message": ":\u003d",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "990d14385711888a93d4c516f2e29f2c9003116b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "476be78a_f24b7696",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-26T17:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a69acc4_419641ef",
       "range": {
         "startLine": 117,
         "startChar": 8,
