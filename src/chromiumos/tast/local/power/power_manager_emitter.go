@@ -94,7 +94,8 @@ func (*PowerManagerEmitter) emitEvent(ctx context.Context, msg proto.Message, ev
 		case sig := <-watcher.Signals:
 			// Check if arguments are identical.
 			if v, ok := sig.Body[0].([]byte); !ok || !bytes.Equal(v, arg) {
-				return testing.PollBreak(errors.Wrapf(err, "signal argument did not match: got %v; want %v", v, arg))
+				// Retry if received unexpected signal to avoid errors if received an old signal.
+				return errors.Wrapf(err, "signal argument did not match: got %v; want %v", v, arg)
 			}
 
 			return nil
