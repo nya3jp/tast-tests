@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type bootConfig struct {
@@ -41,8 +40,6 @@ func init() {
 			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Timeout:           5 * time.Minute,
-			// TODO(crbug.com/1319257): Skip on betty-pi-arc due to LKGM failures.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("betty-pi-arc")),
 		}, {
 			Name: "forever",
 			Val: bootConfig{
