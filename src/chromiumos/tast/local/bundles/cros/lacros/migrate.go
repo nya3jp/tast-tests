@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -276,13 +277,15 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 	testing.ContextLog(ctx, "Restarting for profile migration")
 	opts := []chrome.Option{
 		chrome.KeepState(),
-		chrome.EnableFeatures("LacrosSupport", "LacrosPrimary", "LacrosProfileMigrationForAnyUser"),
-		// Disable keep-alive and login-lacros-opening to work around chromium:1316237.
-		chrome.ExtraArgs("--lacros-selection=rootfs", "--disable-lacros-keep-alive", "--disable-login-lacros-opening"),
-		chrome.LacrosExtraArgs("--remote-debugging-port=0"),
 		chrome.RemoveNotification(false),
+		chrome.EnableFeatures("LacrosProfileMigrationForAnyUser"),
 	}
 	opts = append(opts, extraOpts...)
+	opts, err := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(opts...)).Opts()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to compute Chrome options")
+	}
+
 	crDoNotUse, err := chrome.New(ctx, opts...)
 	if err != nil {
 		return nil, err
