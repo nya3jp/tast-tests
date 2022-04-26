@@ -216,7 +216,7 @@ func InstallCrostini(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 		return 0, errors.Wrap(err, "failed to run autotestPrivate.registerComponent")
 	}
 
-	if err := settings.OpenInstaller(ctx, tconn, cr); err != nil {
+	if err := settings.OpenLinuxInstallerAndClickNext(ctx, tconn, cr); err != nil {
 		return 0, errors.Wrap(err, "failed to launch crostini installation from Settings")
 	}
 	installer := New(tconn)
@@ -309,7 +309,7 @@ func stopAptDaily(ctx context.Context, cont *vm.Container) error {
 		cmd := cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
 		if err := cmd.Run(); err != nil {
 			cmd.DumpLog(ctx)
-			return errors.Wrapf(err, "failed to stop %s timer: %v", t, err)
+			return errors.Wrapf(err, "failed to stop %s timer", t)
 		}
 	}
 	return nil

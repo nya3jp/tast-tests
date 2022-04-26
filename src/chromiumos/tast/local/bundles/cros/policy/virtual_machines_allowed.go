@@ -83,8 +83,8 @@ func VirtualMachinesAllowed(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			if _, err := settings.OpenLinuxSubpage(ctx, tconn, cr); err != nil {
-				s.Fatal("Failed to open Linux subpage: ", err)
+			if _, err := settings.OpenLinuxInstaller(ctx, tconn, cr); err != nil {
+				s.Fatal("Failed to open Linux installer: ", err)
 			}
 
 			ui := uiauto.New(tconn)
