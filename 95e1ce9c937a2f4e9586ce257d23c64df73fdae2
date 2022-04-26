@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71260d98_0c562866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-04-26T12:26:27Z",
+      "side": 1,
+      "message": "How do we ensure test vpn is removed then if there\u0027s error during forget test?",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "95e1ce9c937a2f4e9586ce257d23c64df73fdae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0989c4c8_ff06f7dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-04-26T12:26:27Z",
+      "side": 1,
+      "message": "Do we need to wait for this button (or check its state) to be enabled?",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "95e1ce9c937a2f4e9586ce257d23c64df73fdae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
