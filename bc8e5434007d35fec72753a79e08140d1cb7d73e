@@ -16,6 +16,24 @@
       "message": "TODO: sync this file with https://crrev.com/c/3595055 when both are merged",
       "revId": "bc8e5434007d35fec72753a79e08140d1cb7d73e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e2e9728_5ef755d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-26T17:34:52Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "81f3ea53_b6aad4e7",
+      "revId": "bc8e5434007d35fec72753a79e08140d1cb7d73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
