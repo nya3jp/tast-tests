@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d829ce39_927330d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-26T12:40:53Z",
+      "side": 1,
+      "message": "nit\u0026optional: In Go, number literals are untyped, so I believe we don\u0027t need explicit casting.",
+      "range": {
+        "startLine": 464,
+        "startChar": 38,
+        "endLine": 464,
+        "endChar": 48
+      },
+      "revId": "91207c51533bff5b20eea04ca465d0b22bb63344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
