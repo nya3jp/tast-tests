@@ -891,7 +891,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
 	}
 
-	// Report WebRTC metrics for the sent video stream.
+	// Report WebRTC metrics for video streams.
 	type histInfo struct {
 		unit      string
 		direction perf.Direction
@@ -928,7 +928,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		names = append(names, name)
 	}
 	if hists, err := metrics.Run(ctx, bTconn, func(ctx context.Context) error {
-		// The histograms are recorded when the sent video stream is removed.
+		// The histograms are recorded when video streams are removed.
 		closedMeet = true
 		if err := meetConn.CloseTarget(closeCtx); err != nil {
 			return errors.Wrap(err, "failed to close the meeting")
