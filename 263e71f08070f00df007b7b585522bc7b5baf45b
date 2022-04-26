@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f30c4de_19183775",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-26T16:53:31Z",
+      "side": 1,
+      "message": "This still defers enableFunc only to the end of this function, before the actual test is run.",
+      "revId": "263e71f08070f00df007b7b585522bc7b5baf45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
