@@ -171,6 +171,19 @@ func (pb *Blob) AddLegacyDevicePolicy(field string, value interface{}) error {
 	return nil
 }
 
+// SetRequestError configures requests of given type to always fail with
+// specified code. To restore standard behavior for a request type, pass code 0.
+func (pb *Blob) SetRequestError(requestType string, code int) {
+	if pb.RequestErrors == nil {
+		pb.RequestErrors = make(map[string]int)
+	}
+	if code > 0 {
+		pb.RequestErrors[requestType] = code
+	} else {
+		delete(pb.RequestErrors, requestType)
+	}
+}
+
 // MarshalJSON marshals the policy blob into JSON. PublicAccountPs needs special
 // handling as the key is based on the account ID. To work around this, we first
 // marshal and unmarshal pb into a map which omits PublicAccountPs, and add the
