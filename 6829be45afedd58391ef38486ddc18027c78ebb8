@@ -16,6 +16,23 @@
       "message": "Trying to send this to chromeos-kiosk-eng to get an MGS reviewer.",
       "revId": "6829be45afedd58391ef38486ddc18027c78ebb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8d2e62_cc246cfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-26T16:49:32Z",
+      "side": 1,
+      "message": "Code looks fine, but please run tast unit tests: fast_build.sh -T\nThen, add this line to your commit log.\nTEST\u003dtast unit tests passed.\n\nThanks.\n",
+      "revId": "6829be45afedd58391ef38486ddc18027c78ebb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
