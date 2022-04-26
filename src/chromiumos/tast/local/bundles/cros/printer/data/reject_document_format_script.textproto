@@ -1,0 +1,198 @@
+# proto-file:
+# third_party/virtual-usb-printer/mock_printer/proto/control_flow.proto
+# proto-message: mocking.TestCase
+
+# Document Format error test
+# TODO: Add more comments here.
+
+steps {
+  cardinality {
+    type: ALL_IN_ORDER
+  }
+  expectation_with_response {
+    expectation {
+      ipp_matcher {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+            attributes {
+              name: "printer-uri"
+              type: URI
+              string_values { string_values { value: "ippusb://04a9_04d2/ipp/print" } }
+            }
+            attributes {
+              name: "requesting-user-name"
+              type: NAME
+            }
+            attributes {
+              name: "requested-attributes"
+              type: KEYWORD
+              string_values { string_values { value: "document-format-supported" } }
+            }
+            attributes {
+              name: "document-format"
+              type: MIME_MEDIA_TYPE
+            }
+          }
+        }
+      }
+    }
+    response {
+      ipp_response {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        status: 0
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+          }
+        }
+        groups {
+          tag: PRINTER_ATTRIBUTES
+          collections {
+            attributes {
+              name: "document-format-supported"
+              type: MIME_MEDIA_TYPE
+              string_values {
+                string_values {
+                  value: "application/octet-stream"
+                }
+                string_values {
+                  value: "image/urf"
+                }
+                string_values {
+                  value: "image/pwg-raster"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  expectation_with_response {
+    expectation {
+      ipp_matcher {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+            attributes {
+              name: "printer-uri"
+              type: URI
+              string_values { string_values { value: "ippusb://04a9_04d2/ipp/print" } }
+            }
+            attributes {
+              name: "document-format"
+              type: MIME_MEDIA_TYPE
+              string_values { string_values { value: "image/pwg-raster" } }
+            }
+          }
+        }
+      }
+    }
+    response {
+      http_properties {
+        status_code: INTERNAL_SERVER_ERROR
+      }
+    }
+  }
+  expectation_with_response {
+    expectation {
+      ipp_matcher {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+            attributes {
+              name: "printer-uri"
+              type: URI
+              string_values { string_values { value: "ippusb://04a9_04d2/ipp/print" } }
+            }
+          }
+        }
+      }
+    }
+    response {
+      ipp_response {
+        # `get-printer-attributes`
+        operation_id: 0x000b
+        status: 0
+        groups {
+          tag: OPERATION_ATTRIBUTES
+          collections {
+            attributes {
+              name: "attributes-charset"
+              type: CHARSET
+              string_values { string_values { value: "utf-8" } }
+            }
+            attributes {
+              name: "attributes-natural-language"
+              type: NATURAL_LANGUAGE
+              string_values { string_values { value: "en-us" } }
+            }
+          }
+        }
+        groups {
+          tag: PRINTER_ATTRIBUTES
+          collections {
+            attributes {
+              name: "copies-default"
+              type: INTEGER
+              int_values { int_values: 1 }
+            }
+            attributes {
+              name: "media-default"
+              type: KEYWORD
+              string_values { string_values { value: "na_letter_8.5x11in" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

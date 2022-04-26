@@ -123,6 +123,17 @@ func WithRecordPath(record string) Option {
 	}
 }
 
+// WithMockPrinterScriptPath sets the mock printer script path.
+func WithMockPrinterScriptPath(script string) Option {
+	return func(o *config) error {
+		if !path.IsAbs(script) {
+			return errors.Errorf("mock printer script path (%q) is not an absolute path", script)
+		}
+		o.args = append(o.args, "--mock_printer_script="+script)
+		return nil
+	}
+}
+
 // WaitUntilConfigured controls whether or not Start() blocks on printer
 // autoconfiguration.
 func WaitUntilConfigured() Option {
@@ -241,7 +252,7 @@ func launchPrinter(ctx context.Context, op config) (cmd *testexec.Cmd, err error
 // virtual-usb-printer process.
 func Start(ctx context.Context, opts ...Option) (pr *Printer, err error) {
 	op := config{
-		args: []string{"-o0", "virtual-usb-printer"},
+		args: []string{"-o0", "virtual-usb-printer", "--v=1"},
 	}
 	for _, field := range opts {
 		if err := field(&op); err != nil {
