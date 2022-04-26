@@ -50,6 +50,57 @@
       "message": "Hi Hidehiko,\n\nCan you please review this CL and provide CR+2?",
       "revId": "0df7c17129366da8a97f1289697e08ce7f8b438c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b55a7db_4e74cf8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:31:54Z",
+      "side": 1,
+      "message": "slgtm, with a bit more comment (which I overlooked in the past iteration).",
+      "revId": "0df7c17129366da8a97f1289697e08ce7f8b438c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f81e1e_7ff341ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:31:54Z",
+      "side": 1,
+      "message": "nit: could you check err, too?",
+      "revId": "0df7c17129366da8a97f1289697e08ce7f8b438c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b169a924_6cd2371f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:31:54Z",
+      "side": 1,
+      "message": "looks like I overlooked...\n\n  fis, err :\u003d ioutil.ReadDir(mountPath)\n  if err !\u003d nil {\n    return nil, errors ...\n  }\n  var ret []string\n  for _, fi :\u003d range fis {\n    ret \u003d append(ret, f.Name())\n  }\n  return ret, nil\n  \nNote: you can drop ctx from arg.",
+      "revId": "0df7c17129366da8a97f1289697e08ce7f8b438c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
