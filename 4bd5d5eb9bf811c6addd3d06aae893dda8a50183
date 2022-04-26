@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee268d87_8ead5c1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-26T16:08:37Z",
+      "side": 1,
+      "message": "Seems like this comment is just a bit unnecessary now since it no longer depends on len(packages) (and even before, the comment assumed things about len(packages) that could have easily bit-rotted).",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 55
+      },
+      "revId": "4bd5d5eb9bf811c6addd3d06aae893dda8a50183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
