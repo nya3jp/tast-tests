@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6803e4b0_188b383f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2022-04-26T19:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "026ee7cb_53f7d497",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 24
+      },
+      "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7588189f_51db6e3d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0837ac_ceff724f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2022-04-26T19:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51600754_becb419d",
+      "range": {
+        "startLine": 46,
+        "startChar": 61,
+        "endLine": 46,
+        "endChar": 106
+      },
+      "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3614026_faa6a503",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7ab88b_436303f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/existing_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2022-04-26T19:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3614026_faa6a503",
+      "range": {
+        "startLine": 36,
+        "startChar": 39,
+        "endLine": 36,
+        "endChar": 84
+      },
+      "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1022cf1c_7f0c65b2",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-04-26T18:19:53Z",
       "side": 1,
       "message": "nit: I think `userutil.TakingOwnershipTimeout` should come before `25*time.Second`. Every part of this timeout corresponds to a step in the test, so you might as well put these things in the order in which the steps are performed.",
+      "range": {
+        "startLine": 34,
+        "startChar": 35,
+        "endLine": 34,
+        "endChar": 83
+      },
+      "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b748437_0ef9cac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2022-04-26T19:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1022cf1c_7f0c65b2",
       "range": {
         "startLine": 34,
         "startChar": 35,
