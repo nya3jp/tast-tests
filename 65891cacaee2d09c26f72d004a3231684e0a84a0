@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca3fd3b8_af189ecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-26T03:56:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94c07951_de2abb5d",
+      "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f64c7706_e4a41e13",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-25T22:49:36Z",
       "side": 1,
       "message": "can add ui.WaitUntilExists(chooseFromFileButton) first before LeftClick()",
+      "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f8224e_af6c7b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-26T03:56:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f64c7706_e4a41e13",
       "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45fdb9a_e43c6aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-26T03:56:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "80d37165_df853b59",
+      "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77687681_c6a1f74e",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-04-25T22:49:36Z",
       "side": 1,
       "message": "can add ui.WaitUntilExists(googleProfilePhotoIcon) first before LeftClick()",
+      "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0650eb5_27c676cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-26T03:56:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77687681_c6a1f74e",
       "revId": "65891cacaee2d09c26f72d004a3231684e0a84a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
