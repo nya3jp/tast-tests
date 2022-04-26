@@ -67,10 +67,13 @@ const (
 	extensionName        = "User-Agent Switcher for Chrome"   // Arbitrary extension from Chrome Store.
 	extensionID          = "djflhoibgkdhkhhcedjiklpkjnoahfmg" // ID of the above extension.
 	shortcutName         = "MyShortcut12345"                  // Arbitrary.
+	titleOfAlphabetPage  = "Alphabet"                         // https://abc.xyz page title.
 	titleOfDownloadsPage = "Downloads"                        // chrome://downloads page title.
+	titleOfNewTabPage    = "New Tab"                          // chrome://newtab page title.
 )
 
-// prepareAshProfile resets profile migration and creates two tabs, a bookmark, a download, and a shortcut.
+// prepareAshProfile resets profile migration, installs an extension, and
+// creates two tabs, browsing history, a bookmark, a download, and a shortcut.
 func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.KeyboardEventWriter) {
 	// First restart Chrome with Lacros disabled in order to reset profile migration.
 	cr, err := chrome.New(ctx, chrome.DisableFeatures("LacrosSupport"))
@@ -114,6 +117,11 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 		ui.WaitUntilExists(removeButton),
 	)(ctx); err != nil {
 		s.Fatal("Failed to install: ", err)
+	}
+
+	// Visit the Alphabet page, just for creating a history entry.
+	if err := conn.Navigate(ctx, "https://abc.xyz"); err != nil {
+		s.Fatal("Failed to open Alphabet page: ", err)
 	}
 
 	// Bookmark the chrome://downloads page.
@@ -197,7 +205,26 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		s.Error("Failed to find shortcut: ", err)
 	}
 
+	// Check that the browsing history contains the Alphabet page.
+	func() {
+		conn, err := l.NewConn(ctx, "chrome://history")
+		if err != nil {
+			s.Fatal("Failed to open history page: ", err)
+		}
+		defer conn.Close()
+		alphabetLink := nodewith.Name(titleOfAlphabetPage).Role(role.Link)
+		if err := ui.WaitUntilExists(alphabetLink)(ctx); err != nil {
+			s.Error("Failed to find Alphabet history entry: ", err)
+		}
+		if err := kb.Accel(ctx, "Ctrl+w"); err != nil {
+			s.Fatal("Failed to close tab: ", err)
+		}
+	}()
+
 	// Check that there is another tab showing the downloads page.
+	if err := lacros.WaitForLacrosWindow(ctx, tconn, titleOfNewTabPage); err != nil {
+		s.Fatal("Failed to find appropriate window: ", err)
+	}
 	if err := kb.Accel(ctx, "Ctrl+w"); err != nil {
 		s.Fatal("Failed to close tab: ", err)
 	}
@@ -211,20 +238,30 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		s.Error("Failed to find download: ", err)
 	}
 
+	// Check that going back in history once brings us to the Alphabet page.
+	if err := kb.Accel(ctx, "Alt+Left"); err != nil {
+		s.Fatal("Failed to go to previous page: ", err)
+	}
+	if err := lacros.WaitForLacrosWindow(ctx, tconn, titleOfAlphabetPage); err != nil {
+		s.Fatal("Failed to find appropriate window: ", err)
+	}
+
 	// Check that the extension is installed and enabled.
-	conn, err := l.NewConn(ctx, "chrome://extensions/?id="+extensionID)
-	if err != nil {
-		s.Fatal("Failed to open extension page: ", err)
-	}
-	defer conn.Close()
-	extensionText := nodewith.Name(extensionName).Role(role.StaticText)
-	onText := nodewith.Name("On").Role(role.StaticText)
-	if err := uiauto.Combine("Verify extension status",
-		ui.WaitUntilExists(extensionText),
-		ui.Exists(onText),
-	)(ctx); err != nil {
-		s.Error("Failed: ", err)
-	}
+	func() {
+		conn, err := l.NewConn(ctx, "chrome://extensions/?id="+extensionID)
+		if err != nil {
+			s.Fatal("Failed to open extension page: ", err)
+		}
+		defer conn.Close()
+		extensionText := nodewith.Name(extensionName).Role(role.StaticText)
+		onText := nodewith.Name("On").Role(role.StaticText)
+		if err := uiauto.Combine("Verify extension status",
+			ui.WaitUntilExists(extensionText),
+			ui.Exists(onText),
+		)(ctx); err != nil {
+			s.Error("Failed: ", err)
+		}
+	}()
 }
 
 func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chrome, error) {
