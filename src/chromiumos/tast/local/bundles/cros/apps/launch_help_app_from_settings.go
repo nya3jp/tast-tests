@@ -28,7 +28,7 @@ func init() {
 			"carpenterr@chromium.org", // test author.
 			"showoff-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
@@ -44,7 +44,7 @@ func init() {
 	})
 }
 
-// LaunchHelpAppFromSettings verifies launching Help app from Chrome OS settings.
+// LaunchHelpAppFromSettings verifies launching Help app from ChromeOS settings.
 func LaunchHelpAppFromSettings(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
