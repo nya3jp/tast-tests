@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a09fe98_8ac898c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:37:15Z",
+      "side": 1,
+      "message": "could you terminate monitorCmd in this case?",
+      "revId": "11b1afe85aa3ccbf997b651d1f8b040f9cc4ba58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
