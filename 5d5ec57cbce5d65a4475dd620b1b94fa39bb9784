@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16e9980a_1f752e35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-04-26T21:16:11Z",
+      "side": 1,
+      "message": "LGTM. \n\nThis upper level call now looks identical to the legacy router invocation.\n\nI was wondering whether it was worth potentially migrating this to some intermediary common file (between openwrt and legacy) but since not too many functions are completely identical in reuse, I don\u0027t think it\u0027s worth adding more layers of indirection to reuse code.\n",
+      "revId": "5d5ec57cbce5d65a4475dd620b1b94fa39bb9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
