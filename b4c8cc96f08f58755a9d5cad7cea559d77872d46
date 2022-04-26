@@ -33,6 +33,23 @@
       "message": "android/ lgtm",
       "revId": "b4c8cc96f08f58755a9d5cad7cea559d77872d46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1a321b_2c42a0db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-04-26T19:44:19Z",
+      "side": 1,
+      "message": "edcourtney@: ping. Thank you!",
+      "revId": "b4c8cc96f08f58755a9d5cad7cea559d77872d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
