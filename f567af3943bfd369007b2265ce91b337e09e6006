@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50cd31da_6b4ea4d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-26T09:20:09Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "cc819636_e630b934",
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66700a88_05fb1f3c",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-04-26T05:16:48Z",
       "side": 1,
       "message": "nit: Verify",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 10
+      },
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc3937d1_8b2518a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-26T09:20:09Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "66700a88_05fb1f3c",
       "range": {
         "startLine": 328,
         "startChar": 4,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc96126_5ddf4b4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-26T09:20:09Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "d54504f0_4a69c261",
+      "range": {
+        "startLine": 345,
+        "startChar": 71,
+        "endLine": 345,
+        "endChar": 72
+      },
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "676febf4_add7753e",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8982379_a07a6c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-26T09:20:09Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "676febf4_add7753e",
+      "range": {
+        "startLine": 348,
+        "startChar": 69,
+        "endLine": 348,
+        "endChar": 70
+      },
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ec47902_f8a934ae",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-04-26T05:16:48Z",
       "side": 1,
       "message": "small nit: ditto",
+      "range": {
+        "startLine": 396,
+        "startChar": 89,
+        "endLine": 396,
+        "endChar": 90
+      },
+      "revId": "f567af3943bfd369007b2265ce91b337e09e6006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e797f2_dea9671b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-26T09:20:09Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "3ec47902_f8a934ae",
       "range": {
         "startLine": 396,
         "startChar": 89,
