@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1926d6e_60267a0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-26T13:55:31Z",
+      "side": 1,
+      "message": "I needed to rebase due LacrosConfig refactoring. Can someone please send to CQ? I don\u0027t have rights I think.\n\nThank you",
+      "revId": "fd30ee7fc01a9e387bc677733395bd5acd1b9915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
