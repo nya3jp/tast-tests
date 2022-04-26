@@ -19,7 +19,7 @@ const (
 )
 
 // ServiceProviderOverridePath isth path of the modb file to override serviceproviders.pbf
-const ServiceProviderOverridePath = "/usr/share/shill/serviceproviders-exclusive-override.pbf"
+const ServiceProviderOverridePath = "/var/cache/shill/serviceproviders-exclusive-override.pbf"
 
 // Type values defined in dbus-constants.h
 // The values are used both for Service type and Technology type.
