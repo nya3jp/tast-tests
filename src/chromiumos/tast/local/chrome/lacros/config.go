@@ -4,8 +4,21 @@
 
 package lacros
 
+import "chromiumos/tast/testing"
+
 // UserDataDir is the directory that contains the user data of lacros.
 const UserDataDir = "/home/chronos/user/lacros/"
+
+// DeployedBinary describes the location of a lacros binary that has been
+// separately deployed to the device. For example, /usr/local/lacros-chrome.
+// This is useful to run tests in the Chromium CI with newer version of lacros,
+// or for developers to test against their own local builds of lacros.
+// If this is empty, the lacros described by lacros.Selection is used.
+var DeployedBinary = testing.RegisterVarString(
+	"lacros.DeployedBinary",
+	"",
+	"The location of a lacros binary that has been separately deployed to the device. Example: --var=lacros.DeployedBinary=/usr/local/lacros-chrome",
+)
 
 // Selection describes how lacros-chrome should be set-up during the test.
 // See the Selection constants for more explanation. Use Rootfs as a default.
