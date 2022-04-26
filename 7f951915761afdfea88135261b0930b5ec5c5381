@@ -33,6 +33,24 @@
       "message": "optional: now can we add warning message if older LacrosDeployedBinary is used?",
       "revId": "7f951915761afdfea88135261b0930b5ec5c5381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "978f67be_6cd9326b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-26T10:12:59Z",
+      "side": 1,
+      "message": "I can but I have also uploaded the CL that removes it, and if people start removing and migrating themselves after seeing the message, it will conflict with my CL that migrates every test (which I have already uploaded) and cause us more work in the end.",
+      "parentUuid": "87537a9a_a8618294",
+      "revId": "7f951915761afdfea88135261b0930b5ec5c5381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
