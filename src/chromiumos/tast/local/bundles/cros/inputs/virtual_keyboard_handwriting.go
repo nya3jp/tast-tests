@@ -29,7 +29,6 @@ import (
 var hwTestMessages = []data.Message{data.HandwritingMessageHello}
 var hwTestIMEs = []ime.InputMethod{
 	ime.AlphanumericWithJapaneseKeyboard,
-	ime.Arabic,
 	ime.ChinesePinyin,
 	ime.EnglishUK,
 	ime.EnglishUS,
@@ -39,6 +38,8 @@ var hwTestIMEs = []ime.InputMethod{
 }
 
 var hwTestIMEsUpstream = []ime.InputMethod{
+	// TODO(b/230424689): Add Arabic to CQ once issue fixed.
+	ime.Arabic,
 	ime.EnglishSouthAfrica,
 }
 
@@ -49,7 +50,7 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		Data:         data.ExtractExternalFiles(hwTestMessages, append(hwTestIMEs, hwTestIMEsUpstream...)),
 		Timeout:      2 * time.Duration(len(hwTestIMEs)+len(hwTestIMEsUpstream)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		Params: []testing.Param{
@@ -126,6 +127,17 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 		cr = s.PreValue().(pre.PreData).Chrome
 		tconn = s.PreValue().(pre.PreData).TestAPIConn
 		uc = s.PreValue().(pre.PreData).UserContext
+	}
+
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VirtualKeyboardHandwriting.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
 	}
 
 	testIMEs := s.Param().([]ime.InputMethod)
