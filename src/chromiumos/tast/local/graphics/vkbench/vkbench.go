@@ -28,9 +28,9 @@ import (
 var (
 	// passRE is a regex to parse test result. It matches a line like
 	// "@RESULT:                                  SubmitTest@10 =     221.00 us"
-	passRE = regexp.MustCompile(`^@RESULT:\s*(\S+)\s*=\s*(\S+) (\S+)`)
-	skipRE = regexp.MustCompile(`^@RESULT:\s*(\S+)\s*=\s*SKIP\[(\S+)\]`)
-	failRE = regexp.MustCompile(`^@RESULT:\s*(\S+)\s*=\s*ERROR\[(\S+)\]`)
+	passRE = regexp.MustCompile(`^@RESULT:\s*(\S+)\s*=\s*([\d\.]+) (\S+)`)
+	skipRE = regexp.MustCompile(`^@RESULT:\s*(\S+)\s*=\s*SKIP\[(.+)\]`)
+	failRE = regexp.MustCompile(`^@RESULT:\s*(\S+)\s*=\s*ERROR\[(.+)\]`)
 )
 
 // Config is the interface that setup/runs/teardown the vkbench running environment.
