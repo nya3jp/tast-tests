@@ -68,6 +68,24 @@
       "parentUuid": "3e4f8b8e_76b0436d",
       "revId": "85f5220f2272ee3094d8415d425472cd9b6d23a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf70c4e_65c287b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-04-26T17:07:45Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to land it together and disable individually when we see the failures that come along (hopefully these tests shouldn\u0027t break /other/ tests, necessitating revert of everything).",
+      "parentUuid": "2ccfa7a9_cb8ce1fe",
+      "revId": "85f5220f2272ee3094d8415d425472cd9b6d23a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
