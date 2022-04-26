@@ -76,6 +76,13 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
+	// Ensure that the device is in clamshell mode.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+	}
+	defer cleanup(ctx)
+
 	resetPinState, err := ash.ResetShelfPinState(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the function to reset pin states: ", err)
