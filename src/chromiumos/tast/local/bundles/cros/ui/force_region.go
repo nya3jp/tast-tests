@@ -30,7 +30,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros"},
 			ExtraAttr:         []string{"informational"},
 		}},
-		Vars: []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
@@ -42,7 +41,7 @@ func ForceRegion(ctx context.Context, s *testing.State) {
 
 	// Connect to a fresh ash-chrome instance (cr) and get a browser instance (br) for browser functionality.
 	bt := s.Param().(browser.Type)
-	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfigFromState(s),
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
 		chrome.Region(region))
 	if err != nil {
 		s.Fatalf("Chrome login failed with %v browser: %v", bt, err)

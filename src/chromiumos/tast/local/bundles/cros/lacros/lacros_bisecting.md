@@ -52,10 +52,10 @@ Optionally, you may have to deploy the Chromium OS Chromium version as well:
 
 Then run the given Tast test. N.B. that the Tast test must use the
 lacros fixture or a variant of it for setting
-`lacrosDeployedBinary` to work.
+`lacros.DeployedBinary` to work.
 
 ```sh
-(cros) tast run -var lacrosDeployedBinary=/usr/local/lacros-chrome $DUT $TEST
+(cros) tast run -var lacros.DeployedBinary=/usr/local/lacros-chrome $DUT $TEST
 ```
 
 Based on the result, continue the bisect:

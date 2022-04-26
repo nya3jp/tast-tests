@@ -40,7 +40,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.FakeDMSEnrolled,
 		Timeout:      3 * time.Minute,
-		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Val: browser.TypeAsh,
 		}, {

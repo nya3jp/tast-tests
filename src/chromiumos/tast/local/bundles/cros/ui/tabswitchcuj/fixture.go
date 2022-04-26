@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -46,6 +45,5 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          "tabSwitchCUJWPR",
-		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 }

@@ -22,7 +22,7 @@ var DeployedBinary = testing.RegisterVarString(
 
 // Selection describes how lacros-chrome should be set-up during the test.
 // See the Selection constants for more explanation. Use Rootfs as a default.
-// Note that if the lacrosDeployedBinary var is specified, the lacros binary
+// Note that if the lacros.DeployedBinary var is specified, the lacros binary
 // located at the path specified by that var will be used in all cases.
 type Selection string
 
