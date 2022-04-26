@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d551dd28_cd4d12c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-26T09:42:59Z",
+      "side": 1,
+      "message": "I have updated the format and I think it looks better now. Thanks for the preview link tool :)",
+      "parentUuid": "7710cf19_df275e7c",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "f8f289810dcffe058533732b11daa33602f1b7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c08177fb_de29d0e1",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "869e35ad_02293cfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-26T09:42:59Z",
+      "side": 1,
+      "message": "Done, I also updated the format",
+      "parentUuid": "c08177fb_de29d0e1",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "f8f289810dcffe058533732b11daa33602f1b7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ff20b14_1ea467b1",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-26T07:21:25Z",
       "side": 1,
       "message": "nit: are",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "f8f289810dcffe058533732b11daa33602f1b7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd99bfc_741e76b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-26T09:42:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ff20b14_1ea467b1",
       "range": {
         "startLine": 39,
         "startChar": 36,
