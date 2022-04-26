@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e83f81_6dfac4f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-26T09:52:33Z",
+      "side": 1,
+      "message": "I know what you mean.\nIn the commercial part we follow something like:\n1. if the change is general (utils, new fixture) it has \u0027tast-tests:\u0027 prefix\n2. if CL affects tests in packages it usually has package prefix \u0027policy:\u0027, \u0027kiosk:\u0027, \u0027vdi:\u0027 and so on\n\nI agree that the point 1. is a bit redundant as looking at https://chromium.googlesource.com/chromiumos/platform/tast-tests/+log we look into tast-tests repo so by default any change affects that repo. However, I am don\u0027t know if there is a view where commits messages could be seen from both tast and tast-tests repos.\n\nI will bring that topic up during the next Tast core meeting as I was not able to find any reference about that in the documentation.",
+      "parentUuid": "afbac82e_142360f1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "1281b2e3bbfbb357efe5e0e1ebe67e1ce79c9a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b94cd441_c45af54c",
