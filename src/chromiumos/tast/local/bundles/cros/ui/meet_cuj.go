@@ -50,7 +50,7 @@ const (
 
 // meetTest specifies the setting of a Hangouts Meet journey. More info at go/cros-meet-tests.
 type meetTest struct {
-	num         int                  // Number of the participants in the meeting.
+	num         int                  // Number of bots in the meeting.
 	layout      meetLayoutType       // Type of the layout in the meeting.
 	present     bool                 // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
 	docs        bool                 // Whether it is running with a Google Docs window.
@@ -93,7 +93,7 @@ func init() {
 			"ui.MeetCUJ.bond_credentials",
 		},
 		Params: []testing.Param{{
-			Name:      "1p",
+			Name:      "2p",
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
@@ -103,7 +103,7 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
-			Name:      "lacros_1p",
+			Name:      "lacros_2p",
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
@@ -119,7 +119,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:    4,
+				num:    3,
 				layout: meetLayoutTiled,
 				cam:    true,
 			},
@@ -130,7 +130,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:     4,
+				num:     3,
 				layout:  meetLayoutTiled,
 				present: true,
 				docs:    true,
@@ -144,7 +144,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:    16,
+				num:    15,
 				layout: meetLayoutTiled,
 				cam:    true,
 			},
@@ -154,7 +154,7 @@ func init() {
 			Name:    "49p",
 			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:    49,
+				num:    48,
 				layout: meetLayoutTiled,
 				cam:    true,
 			},
@@ -165,7 +165,7 @@ func init() {
 			Timeout:   defaultTestTimeout + 10*time.Minute,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:     16,
+				num:     15,
 				layout:  meetLayoutTiled,
 				cam:     true,
 				tracing: true,
@@ -176,7 +176,7 @@ func init() {
 			Name:    "16p_validation",
 			Timeout: defaultTestTimeout + 10*time.Minute,
 			Val: meetTest{
-				num:        16,
+				num:        15,
 				layout:     meetLayoutTiled,
 				cam:        true,
 				validation: true,
@@ -187,7 +187,7 @@ func init() {
 			Name:    "16p_notes",
 			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:    16,
+				num:    15,
 				layout: meetLayoutTiled,
 				docs:   true,
 				split:  true,
@@ -199,7 +199,7 @@ func init() {
 			Name:    "16p_jamboard",
 			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:      16,
+				num:      15,
 				layout:   meetLayoutTiled,
 				jamboard: true,
 				split:    true,
@@ -212,7 +212,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:       4,
+				num:       3,
 				layout:    meetLayoutTiled,
 				cam:       true,
 				useLacros: true,
@@ -224,7 +224,7 @@ func init() {
 			Name:    "49p_vp8",
 			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:         49,
+				num:         48,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
@@ -236,7 +236,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:       16,
+				num:       15,
 				layout:    meetLayoutTiled,
 				cam:       true,
 				useLacros: true,
@@ -248,7 +248,7 @@ func init() {
 			Name:    "lacros_16p_trace",
 			Timeout: defaultTestTimeout + 10*time.Minute,
 			Val: meetTest{
-				num:       16,
+				num:       15,
 				layout:    meetLayoutTiled,
 				cam:       true,
 				useLacros: true,
@@ -258,7 +258,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// Long meeting to catch slow performance degradation.
-			Name:    "1p_30m",
+			Name:    "2p_30m",
 			Timeout: defaultTestTimeout + 30*time.Minute,
 			Val: meetTest{
 				num:      1,
