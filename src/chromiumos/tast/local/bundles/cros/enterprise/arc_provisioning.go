@@ -221,11 +221,7 @@ func dumpBugReport(ctx context.Context, a *arc.ARC, filePath string) {
 // Note: if the user policy for the user is changed, the packages listed in
 // credentials files must be updated.
 func waitForPackages(ctx context.Context, a *arc.ARC, packages []string) error {
-	// waitForPackages waits indefinitely and we're installing only 2 packages
-	// so it is not necessary to wait more than 4 minutes.
-	const installTimePerPackageMins = 2
-	totalInstallTimeMins := len(packages) * installTimePerPackageMins
-	timeout := time.Duration(totalInstallTimeMins) * time.Minute
+	timeout := 8 * time.Minute
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
