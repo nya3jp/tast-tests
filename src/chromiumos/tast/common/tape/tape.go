@@ -64,36 +64,9 @@ type RequestGenericAccountParams struct {
 	PoolID           *string `json:"pool_id"`
 }
 
-// TokenString creates a json string from an oauth.Token generated for a serviceAccount
-// which can be used for http connections to the TAPE GCP.
-func TokenString(ctx context.Context, serviceAccountFile string) (string, error) {
-
-	ts, err := CreateTokenSource(ctx, serviceAccountFile)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create token")
-	}
-
-	token, err := ts.Token()
-	if err != nil {
-		return "", errors.Wrap(err, "failed to get Token")
-	}
-
-	tsJSON, err := json.Marshal(token)
-	if err != nil {
-		return "", errors.Wrap(err, "failed create JSON from token")
-	}
-
-	return string(tsJSON), nil
-}
-
-// CreateTokenSource an oauth2.TokenSource from a service account key file.
-func CreateTokenSource(ctx context.Context, serviceAccountFile string) (oauth2.TokenSource, error) {
-	data, err := ioutil.ReadFile(serviceAccountFile)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read credential json")
-	}
-
-	config, err := google.JWTConfigFromJSON(data)
+// createTokenSource an oauth2.TokenSource from a service account key file.
+func createTokenSource(ctx context.Context, credsJSON []byte) (oauth2.TokenSource, error) {
+	config, err := google.JWTConfigFromJSON(credsJSON)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to generate JWT config")
 	}
@@ -106,11 +79,54 @@ func CreateTokenSource(ctx context.Context, serviceAccountFile string) (oauth2.T
 	return config.TokenSource(ctx), nil
 }
 
+type newTapeClientOption struct {
+	credsJSON       []byte
+	pathToCredsJSON string
+}
+
+// NewTapeClientOption is used to configure the TAPE client.
+type NewTapeClientOption func(*newTapeClientOption)
+
+// WithCredsJSON specifies the json service account data to use.
+func WithCredsJSON(jsonData []byte) NewTapeClientOption {
+	return func(opt *newTapeClientOption) {
+		opt.credsJSON = jsonData
+	}
+}
+
+// WithPathToCredsJSON specifies the path to a service account file to use.
+func WithPathToCredsJSON(pathToCredsJSON string) NewTapeClientOption {
+	return func(opt *newTapeClientOption) {
+		opt.pathToCredsJSON = pathToCredsJSON
+	}
+}
+
 // NewTapeClient creates a http client which provides the necessary token to connect to the TAPE
 // GCP from a service account key file. This function can only be called remotely as the DuT does
 // not have service account key files. All functions in the tape package should be passed this http client.
-func NewTapeClient(ctx context.Context, serviceAccountFile string) (*http.Client, error) {
-	ts, err := CreateTokenSource(ctx, serviceAccountFile)
+func NewTapeClient(ctx context.Context, opts ...NewTapeClientOption) (*http.Client, error) {
+	// Copy over all options.
+	option := newTapeClientOption{}
+	for _, opt := range opts {
+		opt(&option)
+	}
+
+	// Load the correct credentials.
+	var credsJSON []byte
+	var err error
+	if len(option.credsJSON) > 0 {
+		credsJSON = option.credsJSON
+	} else if len(option.pathToCredsJSON) > 0 {
+		credsJSON, err = ioutil.ReadFile(option.pathToCredsJSON)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to read credential json")
+		}
+	} else {
+		return nil, errors.New("One of credsJSON or pathToCredsJSON must be set")
+	}
+
+	// Return the Oauth client using the credentials.
+	ts, err := createTokenSource(ctx, credsJSON)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create token")
 	}
@@ -137,18 +153,6 @@ func (ts tapeTokensource) Token() (*oauth2.Token, error) {
 		}
 	}
 	return ts.AccessToken, nil
-}
-
-// NewTapeClientLocal creates a http client which provides the necessary token to connect to the TAPE
-// GCP from a token string. This function can be used locally on a DuT and requires an oauth token to
-// be present at TokenDir/TokenFile. All functions in the tape package should be passed this http client.
-func NewTapeClientLocal(ctx context.Context) (*http.Client, error) {
-	ts := tapeTokensource{AccessToken: nil}
-	token, err := ts.Token()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get access token")
-	}
-	return oauth2.NewClient(ctx, oauth2.ReuseTokenSource(token, ts)), nil
 }
 
 // sendRequestWithTimeout makes a call to the specified REST endpoint of TAPE with the given http method and payload.

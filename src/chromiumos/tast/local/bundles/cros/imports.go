@@ -118,5 +118,4 @@ import (
 	// returns FixtData type from policyutil/fixtures.
 	_ "chromiumos/tast/local/kioskmode/fixtures"
 	_ "chromiumos/tast/local/meta" // import fixture for meta tests
-	_ "chromiumos/tast/local/tape" // import for tape.
 )
