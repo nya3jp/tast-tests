@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4499fb_99ec3bd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-26T08:57:44Z",
+      "side": 1,
+      "message": "For consistency I would say use either of those:\ntast-tests: Faster swipe in ... test\narc: Faster swipe in ... test",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "1281b2e3bbfbb357efe5e0e1ebe67e1ce79c9a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b94cd441_c45af54c",
@@ -31,6 +54,23 @@
       "writtenOn": "2022-04-26T01:01:53Z",
       "side": 1,
       "message": "tast-owners@: Please take a look.",
+      "revId": "1281b2e3bbfbb357efe5e0e1ebe67e1ce79c9a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff8958f_03bf9461",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-26T08:57:44Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "1281b2e3bbfbb357efe5e0e1ebe67e1ce79c9a01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
