@@ -59,6 +59,30 @@ func waitForCharonStop(ctx context.Context) error {
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
+// RemoveVPNProfile removes the VPN service with |name| if it exists in a
+// best-effort way.
+func RemoveVPNProfile(ctx context.Context, name string) error {
+	findServiceProps := make(map[string]interface{})
+	findServiceProps[shillconst.ServicePropertyName] = name
+	findServiceProps[shillconst.ServicePropertyType] = shillconst.TypeVPN
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	svc, err := manager.FindMatchingService(ctx, findServiceProps)
+	if err != nil {
+		if err.Error() == shillconst.ErrorMatchingServiceNotFound {
+			return nil
+		}
+		return errors.Wrap(err, "failed to call FindMatchingService")
+	}
+
+	testing.ContextLog(ctx, "Removing VPN service ", svc)
+	return svc.Remove(ctx)
+}
+
 // VerifyVPNProfile verifies a VPN service with certain GUID exists in shill,
 // and can be connected if |verifyConnect| set to true.
 func VerifyVPNProfile(ctx context.Context, m *shill.Manager, serviceGUID string, verifyConnect bool) error {

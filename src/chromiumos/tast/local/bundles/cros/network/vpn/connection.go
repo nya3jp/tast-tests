@@ -85,6 +85,10 @@ type Connection struct {
 	certStore *netcertstore.Store
 	service   *shill.Service
 
+	// Properties is the key values of D-Bus properties used for creating this VPN
+	// service.
+	Properties map[string]interface{}
+
 	// The following TPM-related fields will be set and used when config.AuthType
 	// is "cert".
 	certID   string
@@ -119,6 +123,16 @@ func NewConnection(ctx context.Context, config Config) (*Connection, error) {
 // SetUp starts the VPN server and configures the VPN service (client) in shill.
 // Callers still need to call Connect() on the connection before it's ready for use.
 func (c *Connection) SetUp(ctx context.Context) error {
+	return c.setUpInternal(ctx, true)
+}
+
+// SetUpWithoutService prepares the environment for a VPN connection as in
+// SetUp(), but without creating the Service in shill.
+func (c *Connection) SetUpWithoutService(ctx context.Context) error {
+	return c.setUpInternal(ctx, false)
+}
+
+func (c *Connection) setUpInternal(ctx context.Context, withSvc bool) error {
 	// Makes sure that the physical Ethernet service is online before we start,
 	// since the physical service change event may affect the VPN connection. We
 	// use 60 seconds here for DHCP negotiation since some DUTs will end up
@@ -140,9 +154,18 @@ func (c *Connection) SetUp(ctx context.Context) error {
 		return err
 	}
 
-	if err := c.configureService(ctx); err != nil {
+	var err error
+	c.Properties, err = c.createProperties()
+	if err != nil {
 		return err
 	}
+
+	if withSvc {
+		if err := c.configureService(ctx); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -262,14 +285,9 @@ func (c *Connection) startServer(ctx context.Context) error {
 }
 
 func (c *Connection) configureService(ctx context.Context) error {
-	properties, err := c.createProperties()
+	servicePath, err := c.manager.ConfigureService(ctx, c.Properties)
 	if err != nil {
-		return errors.Wrap(err, "unable to create service properties")
-	}
-
-	servicePath, err := c.manager.ConfigureService(ctx, properties)
-	if err != nil {
-		return errors.Wrapf(err, "unable to configure the service for the VPN properties %v", properties)
+		return errors.Wrapf(err, "unable to configure the service for the VPN properties %v", c.Properties)
 	}
 
 	if c.service, err = shill.NewService(ctx, servicePath); err != nil {
