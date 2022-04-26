@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea02c62e_f71ba4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-26T12:43:47Z",
+      "side": 1,
+      "message": "To be removed again when NewConfig doesn\u0027t need it anymore...",
+      "revId": "da93e8d12534b51a13f98c08718c11e87928cdab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267207be_1d68deab",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-26T12:43:47Z",
+      "side": 1,
+      "message": "Name is up for discussion.",
+      "revId": "da93e8d12534b51a13f98c08718c11e87928cdab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccae745f_3644aa44",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-26T12:43:47Z",
+      "side": 1,
+      "message": "Why do we actually want this?",
+      "revId": "da93e8d12534b51a13f98c08718c11e87928cdab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
