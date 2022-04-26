@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "026ee7cb_53f7d497",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-26T18:19:53Z",
+      "side": 1,
+      "message": "This needs to be one line (maybe `Wait for ownership in certain login tests`) because according to [1], \"The first line of a commit message represents the title or summary of the change. Standard Git tools often display it differently than the rest of the message, for example in bold font, or show only this line, for example when summarizing multiple commits.\"\n\n[1] https://dragonfly2.readthedocs.io/en/latest/commit_messages.html#:~:text\u003dThe%20first%20line%20of%20a,example%20when%20summarizing%20multiple%20commits",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 24
+      },
+      "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7588189f_51db6e3d",
@@ -14,6 +37,75 @@
       "writtenOn": "2022-04-26T18:03:08Z",
       "side": 1,
       "message": "login.RemoveExistingUser started to fail recently also because ownership is not present, while it should. Adding the change here as well. PTAL!",
+      "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51600754_becb419d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-26T18:19:53Z",
+      "side": 1,
+      "message": "nit: I think `userutil.TakingOwnershipTimeout` should come before `time.Minute`. Every part of this timeout corresponds to a step in the test, so you might as well put these things in the order in which the steps are performed.",
+      "range": {
+        "startLine": 46,
+        "startChar": 61,
+        "endLine": 46,
+        "endChar": 106
+      },
+      "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3614026_faa6a503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/existing_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-26T18:19:53Z",
+      "side": 1,
+      "message": "nit: I think `userutil.TakingOwnershipTimeout` should come before `time.Minute`. Every part of this timeout corresponds to a step in the test, so you might as well put these things in the order in which the steps are performed.",
+      "range": {
+        "startLine": 36,
+        "startChar": 39,
+        "endLine": 36,
+        "endChar": 84
+      },
+      "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1022cf1c_7f0c65b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-26T18:19:53Z",
+      "side": 1,
+      "message": "nit: I think `userutil.TakingOwnershipTimeout` should come before `25*time.Second`. Every part of this timeout corresponds to a step in the test, so you might as well put these things in the order in which the steps are performed.",
+      "range": {
+        "startLine": 34,
+        "startChar": 35,
+        "endLine": 34,
+        "endChar": 83
+      },
       "revId": "fec14c211a61c256866e73ac5e18f8e65a0a0c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
