@@ -41,49 +41,18 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create config: ", err)
 	}
 
-	// checkBatteryInfo returns information relevant to the battery.
-	checkBatteryInfo := func(ctx context.Context) (string, error) {
-		regex := `state:(\s+\w+\s?\w+)`
-		expMatch := regexp.MustCompile(regex)
-
-		out, err := h.DUT.Conn().CommandContext(ctx, "power_supply_info").Output()
-		if err != nil {
-			return "", errors.Wrap(err, "failed to retrieve power supply info from DUT")
-		}
-
-		matches := expMatch.FindStringSubmatch(string(out))
-		if len(matches) < 2 {
-			return "", errors.Errorf("failed to match regex %q in %q", expMatch, string(out))
-		}
-
-		batteryStatus := strings.TrimSpace(matches[1])
-		return batteryStatus, nil
+	// For debugging purposes, log servo and dut connection type.
+	servoType, err := h.Servo.GetServoType(ctx)
+	if err != nil {
+		s.Fatal("Failed to find servo type: ", err)
 	}
+	s.Logf("Servo type: %s", servoType)
 
-	// checkACInfo returns information relevant to the AC. This is temporary, and may be
-	// combined with checkBatteryInfo, depending on future needs. At the moment, this is to
-	// help log some AC states for debugging purposes.
-	checkACInfo := func(ctx context.Context) (string, error) {
-		acLines := map[string]*regexp.Regexp{
-			"source": regexp.MustCompile(`enum type:(\s+\w+)`),
-			"online": regexp.MustCompile(`online:(\s+\w+)`),
-		}
-		out, err := h.DUT.Conn().CommandContext(ctx, "power_supply_info").Output()
-		if err != nil {
-			return "", errors.Wrap(err, "failed to retrieve AC info from DUT")
-		}
-		var measurements []string
-		for k, v := range acLines {
-			match := v.FindStringSubmatch(string(out))
-			if len(match) < 2 {
-				s.Logf("Did not match regex %q in %q", v, string(out))
-			} else {
-				acInfo := strings.TrimSpace(match[1])
-				measurements = append(measurements, fmt.Sprintf("%s: %s", k, acInfo))
-			}
-		}
-		return strings.Join(measurements, ", "), nil
+	dutConnType, err := h.Servo.GetDUTConnectionType(ctx)
+	if err != nil {
+		s.Fatal("Failed to find dut connection type: ", err)
 	}
+	s.Logf("DUT connection type: %s", dutConnType)
 
 	for _, tc := range []struct {
 		plugAC     bool
@@ -97,6 +66,14 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to set DUT power: ", err)
 		}
 		hasPluggedAC := tc.plugAC
+
+		// When charger disconnects/reconnects, there's a temporary drop in connection with the DUT.
+		// Wait for DUT to reconnect before proceeding to the next step.
+		waitConnectShortCtx, cancelWaitConnectShort := context.WithTimeout(ctx, 1*time.Minute)
+		defer cancelWaitConnectShort()
+		if err := h.WaitConnect(waitConnectShortCtx); err != nil {
+			s.Fatal("Failed to reconnect to DUT: ", err)
+		}
 
 		// Verify that DUT's charger was plugged/unplugged as expected.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -115,6 +92,11 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend")
 		if err := cmd.Start(); err != nil {
 			s.Fatal("Failed to suspend DUT: ", err)
+		}
+
+		// Delay for some time to ensure DUT has fully suspended.
+		if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
 		}
 
 		s.Log("Checking for DUT in S0ix or S3 powerstates")
@@ -177,16 +159,24 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Checking AC information")
-		if ac, err := checkACInfo(ctx); err != nil {
+		if ac, err := checkACInfo(ctx, h); err != nil {
 			s.Fatal("While verifying ac information: ", err)
 		} else {
 			s.Logf("Line power %s", ac)
 		}
 
 		s.Log("Checking battery information")
-		battery, err := checkBatteryInfo(ctx)
+		reBatteryState := `state:(\s+\w+\s?\w+)`
+		battery, err := checkBatteryInfo(ctx, h, reBatteryState)
 		if err != nil {
 			s.Fatal("While verifying battery information: ", err)
+		}
+		s.Logf("Battery state: %s", battery)
+
+		// For debugging purposes, also log information from the base file that
+		// 'power_supply_info' derives battery state from.
+		if err := checkBatteryFromBaseFile(ctx, h); err != nil {
+			s.Fatal("Could not determine battery status from base file: ", err)
 		}
 
 		switch hasPluggedAC {
@@ -199,6 +189,68 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 				s.Fatalf("Found unexpected battery state when AC unplugged: %s", battery)
 			}
 		}
-		s.Logf("Battery state: %q", battery)
 	}
+}
+
+// checkACInfo runs the host command 'power_supply_info', and returns information relevant to
+// the AC. For debugging purposes, at the moment, only the source and online status are checked.
+func checkACInfo(ctx context.Context, h *firmware.Helper) (string, error) {
+	acLines := map[string]*regexp.Regexp{
+		"source": regexp.MustCompile(`enum type:(\s+\w+)`),
+		"online": regexp.MustCompile(`online:(\s+\w+)`),
+	}
+	out, err := h.DUT.Conn().CommandContext(ctx, "power_supply_info").Output()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to retrieve AC info from DUT")
+	}
+	var measurements []string
+	for k, v := range acLines {
+		match := v.FindStringSubmatch(string(out))
+		if len(match) < 2 {
+			return "", errors.Errorf("Did not match regex %q in %q", v, string(out))
+		}
+		acInfo := strings.TrimSpace(match[1])
+		measurements = append(measurements, fmt.Sprintf("%s: %s", k, acInfo))
+	}
+	return strings.Join(measurements, ", "), nil
+}
+
+// checkBatteryInfo runs the host command 'power_supply_info'and returns information relevant
+// to the battery, based on the passed in pattern.
+func checkBatteryInfo(ctx context.Context, h *firmware.Helper, pattern string) (string, error) {
+	expMatch := regexp.MustCompile(pattern)
+	out, err := h.DUT.Conn().CommandContext(ctx, "power_supply_info").Output()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to retrieve power supply info from DUT")
+	}
+	matches := expMatch.FindStringSubmatch(string(out))
+	if len(matches) < 2 {
+		return "", errors.Errorf("failed to match regex %q in %q", expMatch, string(out))
+	}
+	batteryInfo := strings.TrimSpace(matches[1])
+	return batteryInfo, nil
+}
+
+// checkBatteryFromBaseFile returns battery state reported by the base file,
+// which the host command 'power_supply_info' depends on.
+func checkBatteryFromBaseFile(ctx context.Context, h *firmware.Helper) error {
+	// Find the battery device path from 'power_supply_info'.
+	reBatteryDevicePath := `Device: (Battery\n.*path:\s*\S*)`
+	batteryDevicePath, err := checkBatteryInfo(ctx, h, reBatteryDevicePath)
+	if err != nil {
+		return errors.Wrap(err, "unable to find battery device path")
+	}
+
+	// Information on battery status can usually be found under 'batteryDevicePath/status'.
+	str := strings.Split(strings.TrimSpace(batteryDevicePath), "\n")
+	baseFilePath := strings.TrimLeft(strings.ReplaceAll(str[len(str)-1], " ", ""), "path:")
+	statusPath := fmt.Sprintf("%s/%s", baseFilePath, "status")
+
+	testing.ContextLogf(ctx, "Checking battery information from %s", statusPath)
+	batteryBaseFile, err := h.Reporter.CatFile(ctx, statusPath)
+	if err != nil {
+		return errors.Wrap(err, "could not determine battery status")
+	}
+	testing.ContextLogf(ctx, "Battery state from base file: %s", batteryBaseFile)
+	return nil
 }
