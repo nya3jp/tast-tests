@@ -124,6 +124,24 @@
       "parentUuid": "88e07e69_ba6aa8d5",
       "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68867b67_bda07b3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T17:30:33Z",
+      "side": 1,
+      "message": "To close this thread after discussion on NewConfig, https://crrev.com/c/3607412 will be added to support arbitrary lacros builds via the global runtime variable and make it work for both local/remote tests.\nOnce the CL lands, we can rebase to it to check this in. Thanks,",
+      "parentUuid": "3d07cd06_9bbdfdee",
+      "revId": "e549320fb5c357fb0d214457c3a171eca07b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
