@@ -16,6 +16,40 @@
       "message": "defer to hidehiko@ but lgtm",
       "revId": "7e1beb7ce96893276a25e01d24e1126490d9c4ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b53ef7_8bb75b72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:22:09Z",
+      "side": 1,
+      "message": "FYI to camera teams.",
+      "revId": "7e1beb7ce96893276a25e01d24e1126490d9c4ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "620f16df_5c9426b9",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-26T09:22:09Z",
+      "side": 1,
+      "message": "note: as you may know this is being updated.",
+      "revId": "7e1beb7ce96893276a25e01d24e1126490d9c4ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
