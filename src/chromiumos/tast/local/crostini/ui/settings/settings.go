@@ -57,8 +57,8 @@ var (
 	DebianUpgradeText = nodewith.NameStartingWith("An upgrade to Debian").First()
 	PageLinux         = nodewith.NameStartingWith(PageNameLinux).First()
 	// We may need to update this if more 'Turn on' buttons are added to Settings, but there isn't a good way to make this more specific yet.
-	TurnOnButton          = nodewith.NameRegex(regexp.MustCompile("Turn on")).Role(role.Button).Ancestor(ossettings.WindowFinder)
-	DevelopersButton      = nodewith.NameRegex(regexp.MustCompile("Developers")).Role(role.Button).Ancestor(ossettings.WindowFinder)
+	TurnOnButton          = nodewith.Name("Turn on").Role(role.Button).Ancestor(ossettings.WindowFinder)
+	DevelopersButton      = nodewith.Name("Developers").Role(role.Button).Ancestor(ossettings.WindowFinder)
 	LinuxText             = nodewith.Name("Linux development environment").Role(role.StaticText).Ancestor(ossettings.WindowFinder)
 	nextButton            = nodewith.Name("Next").Role(role.Button)
 	settingsHead          = nodewith.Name("Settings").Role(role.Heading)
@@ -156,14 +156,32 @@ func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName st
 	return &Settings{tconn: tconn, ui: ui}, nil
 }
 
-// OpenInstaller clicks the "Turn on" Linux button to open the Crostini installer.
-//
-// It also clicks next to skip the information screen.  An ui.Installer
-// page object can be constructed after calling OpenInstaller to adjust the settings and to complete the installation.
-func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (retErr error) {
+// OpenLinuxInstaller opens the Linux subpage on Settings page and clicks on the Turn on button.
+func OpenLinuxInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*Settings, error) {
 	// Open Settings app.
 	if err := ash.CloseNotifications(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to close all notifications in OpenLinuxSubpage()")
+		return nil, errors.Wrap(err, "failed to close all notifications in OpenLinuxInstaller()")
+	}
+
+	ui := uiauto.New(tconn)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.WaitUntilExists(TurnOnButton)); err != nil {
+		return nil, errors.Wrap(err, "failed to launch settings app")
+	}
+	if err := ui.LeftClick(TurnOnButton)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to open Linux installer")
+	}
+
+	return &Settings{tconn: tconn, ui: ui}, nil
+}
+
+// OpenLinuxInstallerAndClickNext clicks the "Turn on" Linux button to open the Crostini installer.
+//
+// It also clicks next to skip the information screen.  An ui.Installer
+// page object can be constructed after calling OpenLinuxInstallerAndClickNext to adjust the settings and to complete the installation.
+func OpenLinuxInstallerAndClickNext(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (retErr error) {
+	// Open Settings app.
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close all notifications in OpenLinuxInstaller()")
 	}
 
 	ui := uiauto.New(tconn).WithInterval(500 * time.Millisecond)

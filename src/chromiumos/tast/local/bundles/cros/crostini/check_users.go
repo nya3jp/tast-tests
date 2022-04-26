@@ -121,7 +121,7 @@ func CheckUsers(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := settings.OpenInstaller(ctx, tconn, cr); err != nil {
+	if err := settings.OpenLinuxInstallerAndClickNext(ctx, tconn, cr); err != nil {
 		s.Fatal("Failed to open Crostini installer: ", err)
 	}
 
