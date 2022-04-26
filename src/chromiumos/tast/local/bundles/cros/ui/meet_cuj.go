@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -34,6 +35,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
@@ -316,6 +318,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Run meeting for ", meetTimeout)
 
+	var webRTCFilePath string
+	defer func() {
+		if webRTCFilePath == "" {
+			return
+		}
+		if err := outputFile(webRTCFilePath, filepath.Join(s.OutDir(), "webrtc-internals.json")); err != nil {
+			s.Error("Failed to copy WebRTC internals dump to results folder: ", err)
+		}
+		if err := os.Remove(webRTCFilePath); err != nil {
+			s.Error("Failed to remove WebRTC internals dump from Downloads folder: ", err)
+		}
+	}()
+
 	// Shorten context to allow for cleanup. Reserve one minute in case of power
 	// test.
 	closeCtx := ctx
@@ -374,7 +389,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	sctx, cancel := context.WithTimeout(ctx, 90*time.Second)
 	defer cancel()
 	// Add 15 minutes to the bot duration, to ensure that the bots stay long enough
-	// for the test to detect the video codecs used for encoding and decoding.
+	// for the test to get info from chrome://webrtc-internals.
 	if !codeOk {
 		defer func(ctx context.Context) {
 			s.Log("Removing all bots from the call")
@@ -492,7 +507,39 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}()
 	}
 
-	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, browser.WithNewWindow())
+	// Open chrome://webrtc-internals now so it will collect data on the meeting's streams.
+	webrtcInternals, err := cs.NewConn(ctx, "chrome://webrtc-internals", browser.WithNewWindow())
+	if err != nil {
+		s.Fatal("Failed to open chrome://webrtc-internals: ", err)
+	}
+	defer webrtcInternals.Close()
+
+	// Lacros specific setup.
+	if meet.useLacros {
+		// Close "New Tab" window after creating the chrome://webrtc-internals window.
+		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return strings.HasPrefix(w.Title, newTabTitle) && strings.HasPrefix(w.Name, "ExoShellSurface")
+		})
+		if err != nil {
+			s.Fatal("Failed to find New Tab window: ", err)
+		}
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			s.Fatal("Failed to close New Tab window: ", err)
+		}
+	}
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Expand the Create Dump section of chrome://webrtc-internals. We will not need it
+	// until after the meeting, but we can expand the section much faster now while
+	// chrome://webrtc-internals does not have much data to show.
+	ui := uiauto.New(tconn)
+	if err := ui.DoDefault(nodewith.Name("Create Dump").Role(role.DisclosureTriangle).Collapsed())(ctx); err != nil {
+		s.Fatal("Failed to expand Create Dump section of chrome://webrtc-internals: ", err)
+	}
+
+	// Open the meeting in another tab in the same window as chrome://webrtc-internals.
+	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode)
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
@@ -508,22 +555,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close the meeting: ", err)
 		}
 	}()
-
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Lacros specific setup.
-	if meet.useLacros {
-		// Close "New Tab" window after creating the meet window.
-		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
-			return strings.HasPrefix(w.Title, newTabTitle) && strings.HasPrefix(w.Name, "ExoShellSurface")
-		})
-		if err != nil {
-			s.Fatal("Failed to find New Tab window: ", err)
-		}
-		if err := w.CloseWindow(ctx, tconn); err != nil {
-			s.Fatal("Failed to close New Tab window: ", err)
-		}
-	}
 
 	// Sets the display zoom factor to minimum, to ensure that all
 	// meeting participants' video can be shown simultaneously.
@@ -576,8 +607,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		pc = pointer.NewMouse(tconn)
 	}
 	defer pc.Close()
-
-	ui := uiauto.New(tconn)
 
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
@@ -871,23 +900,22 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
-	webrtcInternals, err := cs.NewConn(ctx, "chrome://webrtc-internals")
-	if err != nil {
-		s.Fatal("Failed to open chrome://webrtc-internals: ", err)
-	}
-	defer webrtcInternals.Close()
-
-	// Report what video codecs were used for decoding and encoding.
-	webRTCReportWaiter := ui.WithTimeout(10 * time.Minute)
-	videoStream := nodewith.NameContaining("VideoStream").First()
-	if err := webRTCReportWaiter.WaitUntilExists(videoStream)(ctx); err != nil {
-		s.Error("Failed to wait for video stream info to appear: ", err)
-	}
-	if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
-		s.Errorf("Failed to report %s: %v", decodingCodecMetricName, err)
-	}
-	if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
-		s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
+	// Report info from chrome://webrtc-internals.
+	webRTCUI := ui.WithTimeout(10 * time.Minute)
+	if err := kw.AccelAction("Ctrl+Shift+Tab")(ctx); err != nil {
+		s.Error("Failed to press Ctrl+Shift+Tab (to activate the chrome://webrtc-internals tab): ", err)
+		s.Log("Info from chrome://webrtc-internals will not be reported")
+	} else {
+		webRTCFilePath, err = dumpWebRTCInternals(ctx, tconn, webRTCUI, cr.NormalizedUser())
+		if err != nil {
+			s.Error("Failed to download dump from chrome://webrtc-internals: ", err)
+		}
+		if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
+			s.Errorf("Failed to report %s: %v", decodingCodecMetricName, err)
+		}
+		if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
+			s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
+		}
 	}
 
 	// Report WebRTC metrics for video streams.
@@ -932,7 +960,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := meetConn.CloseTarget(closeCtx); err != nil {
 			return errors.Wrap(err, "failed to close the meeting")
 		}
-		if err := webRTCReportWaiter.WaitUntilGone(videoStream)(ctx); err != nil {
+		if err := webRTCUI.WaitUntilGone(nodewith.NameContaining("VideoStream").First())(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for video stream info to disappear")
 		}
 		return nil
@@ -1010,6 +1038,50 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
+}
+
+// outputFile copies a file for test results.
+func outputFile(srcPath, dstPath string) error {
+	src, err := os.Open(srcPath)
+	if err != nil {
+		return err
+	}
+	defer src.Close()
+
+	dst, err := os.OpenFile(dstPath, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0644)
+	if err != nil {
+		return err
+	}
+	defer dst.Close()
+
+	_, err = io.Copy(dst, src)
+	return err
+}
+
+// dumpWebRTCInternals downloads a dump from chrome://webrtc-internals and
+// returns the file path. This function assumes that chrome://webrtc-internals
+// is already shown, with the Create Dump section expanded.
+func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, username string) (string, error) {
+	helper, err := hwsec.NewHelper(hwsec.NewCmdRunner())
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create hwsec local helper")
+	}
+
+	sanitizedUsername, err := helper.CryptohomeClient().GetSanitizedUsername(ctx, username, true)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get sanitized username")
+	}
+
+	if err := ui.DoDefault(nodewith.Name("Download the PeerConnection updates and stats data").Role(role.Button))(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to click the button for the dump download")
+	}
+
+	notification, err := ash.WaitForNotification(ctx, tconn, 10*time.Minute, ash.WaitTitle("Download complete"))
+	if err != nil {
+		return "", errors.Wrap(err, "failed to wait for download notification")
+	}
+
+	return filepath.Join("/home/user", sanitizedUsername, "Downloads", notification.Message), nil
 }
 
 // reportCodec looks for node names containing given descriptions of a vp8 video stream
