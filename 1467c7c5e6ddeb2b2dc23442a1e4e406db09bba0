@@ -16,6 +16,24 @@
       "message": "front mic, rear mic, BT offload, line out, headphone, these should all also be tested.",
       "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f7f5c4_43fe62cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-26T02:12:56Z",
+      "side": 1,
+      "message": "We don\u0027t have a hwdep for those.",
+      "parentUuid": "7085e95e_3644d244",
+      "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
