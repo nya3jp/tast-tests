@@ -29,7 +29,6 @@ import (
 var hwTestMessages = []data.Message{data.HandwritingMessageHello}
 var hwTestIMEs = []ime.InputMethod{
 	ime.AlphanumericWithJapaneseKeyboard,
-	ime.Arabic,
 	ime.ChinesePinyin,
 	ime.EnglishUK,
 	ime.EnglishUS,
@@ -39,6 +38,8 @@ var hwTestIMEs = []ime.InputMethod{
 }
 
 var hwTestIMEsUpstream = []ime.InputMethod{
+	// TODO(b/230424689): Add Arabic to CQ once issue fixed.
+	ime.Arabic,
 	ime.EnglishSouthAfrica,
 }
 
@@ -49,7 +50,7 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		Data:         data.ExtractExternalFiles(hwTestMessages, append(hwTestIMEs, hwTestIMEsUpstream...)),
 		Timeout:      2 * time.Duration(len(hwTestIMEs)+len(hwTestIMEsUpstream)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		Params: []testing.Param{
