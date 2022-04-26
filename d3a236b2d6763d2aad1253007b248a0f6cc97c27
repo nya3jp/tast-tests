@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f242c619_9ec5fc09",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-26T16:46:22Z",
+      "side": 1,
+      "message": "I use this later to normalize the timestamps received from SurfaceFlinger. I\u0027m not sure I follow regarding how `time.Second` could be used for that end?",
+      "parentUuid": "d5a242ee_5acf6f1c",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e6ccb60_a7991829",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 5
@@ -88,6 +112,30 @@
       "writtenOn": "2022-04-26T15:18:49Z",
       "side": 1,
       "message": "(here and below) in which cases the receiver can be nil?\nit should never happen, but if it happens, then it should be documented.\n\nIf it was added just as a safety check, then I guess an assert would be better.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c1ff84c_7259e5ff",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-26T16:46:22Z",
+      "side": 1,
+      "message": "It\u0027s a safety check that I\u0027ve seen in the other files in `local/perf` (e.g. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/perf/battery_info_tracker.go;l\u003d68?q\u003d%22if%20t%20%3D%3D%20nil%22\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fperf%2F)",
+      "parentUuid": "3e6ccb60_a7991829",
       "range": {
         "startLine": 53,
         "startChar": 2,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f8468c_73404ffb",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-26T16:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b219390f_abdd748e",
+      "range": {
+        "startLine": 96,
+        "startChar": 29,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3038cec_ba20ec6c",
@@ -134,6 +206,30 @@
       "writtenOn": "2022-04-26T15:18:49Z",
       "side": 1,
       "message": "nit: whenever feasible, remove \"get\" from getters\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 114,
+        "startChar": 32,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c8a75e_b8c545c1",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-26T16:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3038cec_ba20ec6c",
       "range": {
         "startLine": 114,
         "startChar": 32,
@@ -169,6 +265,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "971e4667_2bd67fcb",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-26T16:46:22Z",
+      "side": 1,
+      "message": "Would you mind if I copied those comments on your script and pasted them here for that purpose?",
+      "parentUuid": "c35a9700_aee254d6",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47322cbf_13ce872c",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 5
@@ -180,6 +300,30 @@
       "writtenOn": "2022-04-26T15:18:49Z",
       "side": 1,
       "message": "huge nit: prefer `latencies :\u003d 0.0` when initliazing variables",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 5
+      },
+      "revId": "d3a236b2d6763d2aad1253007b248a0f6cc97c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0df3b39_e8e39e9c",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-26T16:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47322cbf_13ce872c",
       "range": {
         "startLine": 170,
         "startChar": 2,
