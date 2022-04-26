@@ -294,7 +294,7 @@ func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string,
 		return nil, nil, errors.Wrap(err, "failed to prepare extensions")
 	}
 	extList := strings.Join(extDirs, ",")
-	opts = append(opts, chrome.LacrosExtraArgs(lacrosfixt.ExtensionArgs(chrome.TestExtensionID, extList)...))
+	opts = append(opts, chrome.LacrosExtraArgs(lacrosfixt.ExtensionArgs(chrome.TestExtensionID, extList, true)...))
 	// KeepState should be enabled to retain user data including provisioned Lacros image
 	// after restarting ui to make new Chrome options take effect.
 	opts = append(opts, chrome.KeepState())

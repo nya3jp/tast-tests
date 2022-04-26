@@ -45,32 +45,41 @@ func KeepAlive(on bool) Option {
 	}
 }
 
-// EnableWebAppInstall returns whether to automatically install essential web apps on Lacros.
+// EnableWebAppInstall returns an Option that enables automatic installation of essential web apps on Lacros.
 func EnableWebAppInstall() Option {
 	return func(c *Config) {
 		c.installWebApp = true
 	}
 }
 
+// DisableLockingDownExtensions returns an Option that disables the locking down of extensions on Lacros.
+func DisableLockingDownExtensions() Option {
+	return func(c *Config) {
+		c.lockDownExtensions = false
+	}
+}
+
 // Config holds runtime vars or other variables needed to set up Lacros.
 type Config struct {
-	selection     lacros.Selection
-	mode          lacros.Mode
-	keepAlive     bool
-	installWebApp bool
-	chromeOpts    []chrome.Option
-	deployed      bool
-	deployedPath  string // dirpath to lacros executable file
+	selection          lacros.Selection
+	mode               lacros.Mode
+	keepAlive          bool
+	installWebApp      bool
+	lockDownExtensions bool
+	chromeOpts         []chrome.Option
+	deployed           bool
+	deployedPath       string // dirpath to lacros executable file
 }
 
 // NewConfig creates a new LacrosConfig instance.
 func NewConfig(ops ...Option) *Config {
 	// TODO(crbug.com/1260037): Make lacros.LacrosPrimary the default.
 	cfg := &Config{
-		selection:     lacros.Rootfs,
-		mode:          lacros.NotSpecified,
-		keepAlive:     false,
-		installWebApp: false,
+		selection:          lacros.Rootfs,
+		mode:               lacros.NotSpecified,
+		keepAlive:          false,
+		installWebApp:      false,
+		lockDownExtensions: true,
 	}
 
 	for _, op := range ops {
@@ -101,10 +110,11 @@ type TestingState interface {
 func NewConfigFromState(s TestingState, ops ...Option) *Config {
 	// TODO(crbug.com/1260037): Make lacros.LacrosPrimary the default.
 	cfg := &Config{
-		selection:     lacros.Rootfs,
-		mode:          lacros.NotSpecified,
-		keepAlive:     false,
-		installWebApp: false,
+		selection:          lacros.Rootfs,
+		mode:               lacros.NotSpecified,
+		keepAlive:          false,
+		installWebApp:      false,
+		lockDownExtensions: true,
 	}
 
 	for _, op := range ops {
@@ -131,14 +141,18 @@ func NewConfigFromState(s TestingState, ops ...Option) *Config {
 }
 
 // ExtensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
-func ExtensionArgs(extID, extList string) []string {
-	return []string{
-		"--remote-debugging-port=0",              // Let Chrome choose its own debugging port.
-		"--enable-experimental-extension-apis",   // Allow Chrome to use the Chrome Automation API.
-		"--allowlisted-extension-id=" + extID,    // Whitelists the test extension to access all Chrome APIs.
-		"--load-extension=" + extList,            // Load extensions.
-		"--disable-extensions-except=" + extList, // Disable extensions other than the Tast test extension.
+func ExtensionArgs(extID, extList string, lockDown bool) []string {
+	result := []string{
+		"--remote-debugging-port=0",            // Let Chrome choose its own debugging port.
+		"--enable-experimental-extension-apis", // Allow Chrome to use the Chrome Automation API.
+		"--allowlisted-extension-id=" + extID,  // Whitelists the test extension to access all Chrome APIs.
+		"--load-extension=" + extList,          // Load extensions.
 	}
+	if lockDown {
+		// Disable extensions other than the Tast test extension.
+		result = append(result, "--disable-extensions-except="+extList)
+	}
+	return result
 }
 
 // Opts returns common chrome options for Lacros for the Config.
@@ -175,12 +189,12 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
 	extList := strings.Join(extDirs, ",")
-	opts = append(opts, chrome.LacrosExtraArgs(ExtensionArgs(chrome.TestExtensionID, extList)...))
+	opts = append(opts, chrome.LacrosExtraArgs(ExtensionArgs(chrome.TestExtensionID, extList, cfg.lockDownExtensions)...))
 
 	// Enable Lacros.
 	// Note that specifying the feature LacrosSupport has side-effects, so
 	// we specify it even if the lacros path is being overridden by lacrosDeployedBinary.
-	opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"))
+	opts = append(opts, chrome.EnableFeatures("LacrosSupport"))
 	switch cfg.selection {
 	case lacros.Rootfs:
 		opts = append(opts, chrome.ExtraArgs("--lacros-selection=rootfs"))
