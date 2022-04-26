@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "411fb3ac_1cf63138",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-04-26T17:30:47Z",
+      "side": 1,
+      "message": "This sounds good to me. Based on the other comment thread, there would be an additional variant for concurrent decoders?\n\nAlso, if the number of combinations starts getting unmanageable, consider the mechanism introduced by https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2297086. I haven\u0027t tried it, but it looks very interesting and was suggested to me in another CL.",
+      "parentUuid": "c3487eeb_99e71d38",
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c00b06e_1cade4a5",
         "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
         "patchSetId": 2
@@ -142,6 +160,30 @@
       "side": 1,
       "message": "Those are legit concerns. Re 1) it usually is how it goes, it usually\ntakes 10s to run 600frames at 60fps (or 300frames at 30fps), so the\nmeasurement runs 2 and a little bit iterations. The JSON file that is\ncollected is then the one from the 2nd iteration (not the incipient \nthird one). This indeed applies to 2), the last json produced is the \none picked up, whereas the cpu/power meas is spread along all the time.\nEven though video_decode_accelerator_perf_tests is stopped \nasynchronously, there\u0027ll always be one such JSON file after the \nfirst iteration is finished.\n\nNote that this CL doesn\u0027t change that cpu/power meas, it simply stops\ncollecting a single MeasureCappedPerformance in favour of just \ncollecting one of the multiple MeasureProcessUsage back-to-back runs.\n\n---\n\nActually after chatting about this offline, maybe it\u0027s best for this\nCL to just extend TestParams to indicate if we want the test to run \nthe capped, uncapped, or uncapped_10concurrent test cases, and for\nany enabled cases, run:\n- A single runAccelVideoTestCmd() to collect the json results\n- And then have a MeasureProcessUsage() run for the cpu+power \ncollection.\n\nThis of course will need to duplicate the callsites to indicate\nif the intention is to collect capped, uncapped, or both (to \nmaintain current functionality we\u0027d need both).\n\nIn due time we should also refactor this MeasureProcessUsage() \npart to be more like what we do for PlaybackPerf Tast test [1], \ni.e. have several collections in parallel with a workload run (in \nthis case, video_decode_accelerator_perf_tests). But that can\nwait : )\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback/playback.go;l\u003d162-204;drc\u003dbef554f2a9d2472169ba2cdea4240a6f22bdbfce",
       "parentUuid": "1c00b06e_1cade4a5",
+      "range": {
+        "startLine": 290,
+        "startChar": 22,
+        "endLine": 290,
+        "endChar": 50
+      },
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1af4fb_d88aaf27",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-04-26T17:30:47Z",
+      "side": 1,
+      "message": "\u003e Those are legit concerns. Re 1) it usually is how it goes, it usually\n\u003e takes 10s to run 600frames at 60fps (or 300frames at 30fps), so the\n\u003e measurement runs 2 and a little bit iterations. The JSON file that is\n\u003e collected is then the one from the 2nd iteration (not the incipient \n\u003e third one). This indeed applies to 2), the last json produced is the \n\u003e one picked up, whereas the cpu/power meas is spread along all the time.\n\u003e Even though video_decode_accelerator_perf_tests is stopped \n\u003e asynchronously, there\u0027ll always be one such JSON file after the \n\u003e first iteration is finished.\n\u003e \n\u003e Note that this CL doesn\u0027t change that cpu/power meas, it simply stops\n\u003e collecting a single MeasureCappedPerformance in favour of just \n\u003e collecting one of the multiple MeasureProcessUsage back-to-back runs.\n\u003e \n\u003e ---\n\u003e \n\u003e Actually after chatting about this offline, maybe it\u0027s best for this\n\u003e CL to just extend TestParams to indicate if we want the test to run \n\u003e the capped, uncapped, or uncapped_10concurrent test cases, and for\n\u003e any enabled cases, run:\n\u003e - A single runAccelVideoTestCmd() to collect the json results\n\u003e - And then have a MeasureProcessUsage() run for the cpu+power \n\u003e collection.\n\u003e \n\nI tend to like this :)\n\n\u003e This of course will need to duplicate the callsites to indicate\n\u003e if the intention is to collect capped, uncapped, or both (to \n\u003e maintain current functionality we\u0027d need both).\n\u003e \n\nI\u0027m not sure I understood the \"to maintain current functionality we\u0027d need both\" part. On ToT, we collect the JSON for capped/uncapped/concurrent separately, and to measure the process usage, we only run the capped variant.\n\n\u003e In due time we should also refactor this MeasureProcessUsage() \n\u003e part to be more like what we do for PlaybackPerf Tast test [1], \n\u003e i.e. have several collections in parallel with a workload run (in \n\u003e this case, video_decode_accelerator_perf_tests). But that can\n\u003e wait : )\n\u003e \n\u003e \n\u003e [1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback/playback.go;l\u003d162-204;drc\u003dbef554f2a9d2472169ba2cdea4240a6f22bdbfce",
+      "parentUuid": "e5391627_b28fba5c",
       "range": {
         "startLine": 290,
         "startChar": 22,
