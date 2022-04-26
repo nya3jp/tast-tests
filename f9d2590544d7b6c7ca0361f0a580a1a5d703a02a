@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "195969de_dc8ec8bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T20:40:02Z",
+      "side": 1,
+      "message": "L68-74 could be removed.\nL83: `browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig())`",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf296cde_369b7762",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T20:40:02Z",
+      "side": 1,
+      "message": "could be removed",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "967ce447_a790fa6e",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T20:40:02Z",
+      "side": 1,
+      "message": "https://crrev.com/c/3607848 added this with the global variable. You can rebase to that.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b8e1503_401a41ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T20:40:02Z",
+      "side": 1,
+      "message": "could be removed",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa2fbcd_370581c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T20:40:02Z",
+      "side": 1,
+      "message": "could be removed",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c5bdcc_1869c607",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T20:40:02Z",
+      "side": 1,
+      "message": "could be removed",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b18df1ca_fa1ca55b",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T20:40:02Z",
+      "side": 1,
+      "message": "could be removed",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
