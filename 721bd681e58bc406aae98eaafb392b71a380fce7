@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ee51e2_5acdb112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-26T05:36:22Z",
+      "side": 1,
+      "message": "Working now after Hyung Tae\u0027s fix for default apps.\n\nPTAL again ",
+      "revId": "721bd681e58bc406aae98eaafb392b71a380fce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
