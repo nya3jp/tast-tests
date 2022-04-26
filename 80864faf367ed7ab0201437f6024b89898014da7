@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d70b70_3fb340cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/testdeps_hwrun.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1518777
+      },
+      "writtenOn": "2022-04-26T19:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d36fd56_766b2795",
+      "revId": "80864faf367ed7ab0201437f6024b89898014da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08c3f659_081eeda2",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "905509aa_bd7e023b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/testdeps_hwskip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1518777
+      },
+      "writtenOn": "2022-04-26T19:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c3f659_081eeda2",
+      "revId": "80864faf367ed7ab0201437f6024b89898014da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91c70a3a_dad81762",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-04-21T18:25:28Z",
       "side": 1,
       "message": "The are nothing related to your description? I think it is better you use the board name instead.",
+      "revId": "80864faf367ed7ab0201437f6024b89898014da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a50c08b_2915d9dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/testdeps_swrun.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1518777
+      },
+      "writtenOn": "2022-04-26T19:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c70a3a_dad81762",
       "revId": "80864faf367ed7ab0201437f6024b89898014da7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
