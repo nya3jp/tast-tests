@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fb9001_6af99ded",
+        "filename": "src/chromiumos/tast/local/bundles/cros/terminal/ssh.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-26T00:24:33Z",
+      "side": 1,
+      "message": "Create a package for a single app seems too simple. It would be nice to organise at pillar level or considering its potential amount of tests in future.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "d9f3c956a566c669b3bd071571889fa85cb19d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeae90d5_8c51ddbe",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-26T00:24:33Z",
+      "side": 1,
+      "message": "It is not a good practice to launch an app in `Find` function. The function name should be meaningful enough.",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "d9f3c956a566c669b3bd071571889fa85cb19d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
