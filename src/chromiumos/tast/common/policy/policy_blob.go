@@ -69,8 +69,9 @@ type BlobPolicyMap map[string]json.RawMessage
 // and device policies or modify initial setup as desired.
 func NewBlob() *Blob {
 	return &Blob{
-		ManagedUsers: []string{"*"},
-		PolicyUser:   DefaultPolicyUser,
+		ManagedUsers:  []string{"*"},
+		PolicyUser:    DefaultPolicyUser,
+		RequestErrors: make(map[string]int),
 	}
 }
 
