@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3487eeb_99e71d38",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2022-04-26T17:08:21Z",
+      "side": 1,
+      "message": "That could work.  Which makes more sense:\n  DecodeAccelVDPerf.hevc_2160p_30fps_capped\n\nor\n  DecodeAccelVDPerf.capped_hevc_2160p_30fps\n\nI\u0027m leaning towards the latter because the grouping would be around capped vs. uncapped as opposed to the grouping being around the codec.",
+      "parentUuid": "cea290fa_2f974542",
+      "revId": "9b518fd8fac06e6c7626c56bff5746d4eef73d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c00b06e_1cade4a5",
         "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
         "patchSetId": 2
