@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ce8589_eef23857",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-26T20:35:06Z",
+      "side": 1,
+      "message": "Thanks for reviewing! Precondition added + below small changes. PTAL!\nui.Exists -\u003e ui.WaitUntilExists \n(https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3597028/7/src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go#95)\nui.Gone -\u003e ui.WaitUntilGone \n(https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3597028/7/src/chromiumos/tast/local/bundles/cros/personalization/set_art_gallery_screensaver.go#96)",
+      "revId": "8443820263e07514750aa73d94911d3ad2abb447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

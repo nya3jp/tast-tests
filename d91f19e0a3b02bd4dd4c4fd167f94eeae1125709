@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23026bed_8dd9bac3",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-26T20:35:06Z",
+      "side": 1,
+      "message": "Thanks Yuki, I have created pre.go file as suggested.",
+      "parentUuid": "b947ea70_a3e40ff6",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 76
+      },
+      "revId": "d91f19e0a3b02bd4dd4c4fd167f94eeae1125709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3067fbb9_d89db847",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fac6c36_21e12e81",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-26T20:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3067fbb9_d89db847",
+      "range": {
+        "startLine": 137,
+        "startChar": 99,
+        "endLine": 137,
+        "endChar": 105
+      },
+      "revId": "d91f19e0a3b02bd4dd4c4fd167f94eeae1125709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "042babe5_6f7403ec",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-04-25T16:58:04Z",
       "side": 1,
       "message": "comments need formatting",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 69
+      },
+      "revId": "d91f19e0a3b02bd4dd4c4fd167f94eeae1125709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7eb5331_cd258d6d",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-26T20:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042babe5_6f7403ec",
       "range": {
         "startLine": 137,
         "startChar": 0,
