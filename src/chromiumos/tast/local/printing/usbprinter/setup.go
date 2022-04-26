@@ -124,6 +124,17 @@ func WithRecordPath(record string) Option {
 	}
 }
 
+// WithMockPrinterScriptPath sets the mock printer script path.
+func WithMockPrinterScriptPath(script string) Option {
+	return func(o *config) error {
+		if !path.IsAbs(script) {
+			return errors.Errorf("mock printer script path (%q) is not an absolute path", script)
+		}
+		o.args = append(o.args, "--mock_printer_script="+script)
+		return nil
+	}
+}
+
 // WaitUntilConfigured controls whether or not Start() blocks on printer
 // autoconfiguration.
 func WaitUntilConfigured() Option {
