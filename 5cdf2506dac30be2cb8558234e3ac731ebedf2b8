@@ -33,6 +33,24 @@
       "message": "(please feel free to add me back, when our discussion about NewConfig is settled down.",
       "revId": "5cdf2506dac30be2cb8558234e3ac731ebedf2b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac01a2e_a3cc275e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-26T15:59:03Z",
+      "side": 1,
+      "message": "Rebased to a new lacros.DeployedBinary global var that removed the testing.State requirement as we talked. PTAL again.",
+      "parentUuid": "e7b5ff40_d23254f6",
+      "revId": "5cdf2506dac30be2cb8558234e3ac731ebedf2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
