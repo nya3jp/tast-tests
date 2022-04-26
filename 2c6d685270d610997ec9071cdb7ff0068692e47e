@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00831157_fa181126",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-04-26T06:16:16Z",
+      "side": 1,
+      "message": "Sure, but I think correctly mark these platforms not only solve the issue in this test, but also benefits other factory tests. Also, we can save resources for CQ as well.",
+      "parentUuid": "3d7a31bc_caa728a2",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 220
+      },
+      "revId": "2c6d685270d610997ec9071cdb7ff0068692e47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d2872da_6cb21bfc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
         "patchSetId": 2
