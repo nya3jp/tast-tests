@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e25cee_d2f015f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-26T18:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eeb5477_a5180531",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "268eeab2b03d748b79b5c7ce96534091518802b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d63b16ba_cc3b8c4a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-26T18:09:11Z",
       "side": 1,
       "message": "This is supposed to document what you do before you give Verified +1. It should be consistent with your other comment \"Yes I verified 2p and 4p\" if that is all you did.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "268eeab2b03d748b79b5c7ce96534091518802b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e14e760_4e427e83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-04-26T18:17:49Z",
+      "side": 1,
+      "message": "You\u0027re right -- I\u0027ll make sure to do that in the future and I adjusted it here as well.",
+      "parentUuid": "d63b16ba_cc3b8c4a",
       "range": {
         "startLine": 14,
         "startChar": 0,
