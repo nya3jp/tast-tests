@@ -362,6 +362,9 @@ func (a *App) CountUI(ctx context.Context, ui UIComponent) (int, error) {
 	}
 	selector, err := a.resolveUISelector(ctx, ui)
 	if err != nil {
+		if IsUINotExist(err) {
+			return 0, nil
+		}
 		return 0, wrapError(err)
 	}
 	var number int
