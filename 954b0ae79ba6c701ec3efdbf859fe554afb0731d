@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd6cec8_85934d6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-04-26T22:17:14Z",
+      "side": 1,
+      "message": "lgtm. Thank you!",
+      "revId": "954b0ae79ba6c701ec3efdbf859fe554afb0731d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a974e635_1a0b2523",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-04-26T22:17:14Z",
+      "side": 1,
+      "message": "optional: Should we check that screen is locked before we start typing a password? If the screen is not locked, we will type a password to a random place.",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 31
+      },
+      "revId": "954b0ae79ba6c701ec3efdbf859fe554afb0731d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
