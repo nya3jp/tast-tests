@@ -282,16 +282,6 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 		return errors.Wrap(err, dividerDragError)
 	}
 
-	// For the part with an ARC window, adjust the drag points to help avoid https://crbug.com/1297297.
-	// Specifically, avoid resizing either window to its minimum width. The minimum width of the
-	// browser window is 500, so we stay 501 away from the left end. Likewise, the minimum width of the
-	// ARC window is 342, so we stay 343 away from the right end.
-	// TODO(https://crbug.com/1297297): Remove this when the bug is fixed.
-	if splitViewDragPoints[1].X < 501 {
-		splitViewDragPoints[1].X = 501
-	}
-	splitViewDragPoints[2].X -= 343
-
 	// Start the ARC app.
 	if err := act.Start(ctx, tconn, withTestVideo); err != nil {
 		return errors.Wrap(err, "failed to start ARC app")

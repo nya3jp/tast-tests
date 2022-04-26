@@ -153,16 +153,6 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 		return errors.Wrap(err, "failed to exercise split view resize functionality with two browser windows")
 	}
 
-	// For the part with an ARC window, adjust the drag points to help avoid https://crbug.com/1297297.
-	// Specifically, avoid resizing the ARC window to its minimum width which is 342. The split view
-	// divider width is 8, half of that is 4, and so there are 4 DIPs between the divider's centerpoint
-	// and the ARC window. The divider's centerpoint is between pixels and cannot be the exact position
-	// of a touch gesture, so there are only 3 DIPs between the drag point and the ARC window. So the
-	// ARC window has width 342 at a drag point 345 away from the right end. To avoid reaching the
-	// minimum size of the ARC window, we stay 346 away from the right end.
-	// TODO(https://crbug.com/1297297): Remove this when the bug is fixed.
-	splitViewDragPoints[2].X -= 346
-
 	// Start the ARC app.
 	if err := act.Start(ctx, tconn, withTestVideo); err != nil {
 		return errors.Wrap(err, "failed to start ARC app")
