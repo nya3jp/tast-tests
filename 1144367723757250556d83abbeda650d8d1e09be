@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d48a5892_fc982a6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-26T16:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd78776a_d62a78e9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "66432aef_03aaab39",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79f5a887_40753613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-26T16:11:05Z",
+      "side": 1,
+      "message": "Thanks! I thought the previous CL was going to be uncontroversial\nbut it turned out to need more back and forth with reviewers. \nWe\u0027ll come and revisit this CL when the previous one is settled.",
+      "parentUuid": "f178a866_1be377fd",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fec06d9_e9ae0aaa",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
         "patchSetId": 1
@@ -94,6 +142,30 @@
       "writtenOn": "2022-04-22T18:56:51Z",
       "side": 1,
       "message": "This suffix may confuse future readers because the global VA-API lock is also enabled on the tests without this prefix, but I\u0027m not sure I have better ideas. Maybe something like vp9_1080p_60fps_with_concurrent_decodes_and_global_vaapi_lock_enabled would be clearer (if also longer)?",
+      "range": {
+        "startLine": 164,
+        "startChar": 38,
+        "endLine": 164,
+        "endChar": 64
+      },
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65f54f9_07ac4911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-26T16:11:05Z",
+      "side": 1,
+      "message": "Let\u0027s pin this until the previous CL is settled!",
+      "parentUuid": "8fec06d9_e9ae0aaa",
       "range": {
         "startLine": 164,
         "startChar": 38,
