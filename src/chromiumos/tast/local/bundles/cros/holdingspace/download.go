@@ -94,7 +94,6 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
-		Vars: []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
@@ -108,7 +107,7 @@ func Download(ctx context.Context, s *testing.State) {
 
 	// Connect to a fresh ash-chrome instance (cr) to ensure holding space first-run state,
 	// also get a browser instance (br) for browser functionality in common.
-	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfigFromState(s))
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig())
 	if err != nil {
 		s.Fatalf("Failed to connect to %v browser: %v", bt, err)
 	}
