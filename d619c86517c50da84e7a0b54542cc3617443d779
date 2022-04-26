@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa69f7d4_8815bd8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-26T17:27:53Z",
+      "side": 1,
+      "message": "Make sure to list all of the firmware update CLs in this list since we\u0027re changing all of them here. You\u0027ll also want to add a `Cq-Depend` in those CLs on this CL, since we want everything to land together atomically.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "d619c86517c50da84e7a0b54542cc3617443d779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
