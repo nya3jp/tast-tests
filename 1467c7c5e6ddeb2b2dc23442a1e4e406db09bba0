@@ -70,6 +70,24 @@
       "parentUuid": "5605c2fa_32713614",
       "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b49934c_43148514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T02:36:00Z",
+      "side": 1,
+      "message": "I think querying at run-time is not robust. Suppose we detect the presence of a headphone at run-time. The test may be scheduled to run on a DUT without a headphone for a bad CL (and incorrectly passes), and then break the tree as other CLs\u0027 tests may be scheduled on a DUT with a headphone.",
+      "parentUuid": "d27bcfd2_a3f4a6bd",
+      "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
