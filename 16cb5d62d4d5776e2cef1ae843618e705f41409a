@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bdce02_caf676d0",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-27T20:16:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f7443e1_7e120488",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 12
+      },
+      "revId": "16cb5d62d4d5776e2cef1ae843618e705f41409a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d79145f0_effe9555",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aa3027c_ae4a8a28",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-27T20:16:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d79145f0_effe9555",
+      "range": {
+        "startLine": 216,
+        "startChar": 5,
+        "endLine": 216,
+        "endChar": 19
+      },
+      "revId": "16cb5d62d4d5776e2cef1ae843618e705f41409a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f05e2464_da037131",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-04-27T20:03:39Z",
       "side": 1,
       "message": "Are we doing something special in SetUp? If not, can we put them here?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go;l\u003d229-240;drc\u003d472fc48397d1f509e38184982eb11c9c2ea9c58d",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "16cb5d62d4d5776e2cef1ae843618e705f41409a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ab70ca_5c4f12d8",
+        "filename": "src/chromiumos/tast/local/personalization/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-27T20:16:13Z",
+      "side": 1,
+      "message": "We only do an extra step to create API connection in the setup.",
+      "parentUuid": "f05e2464_da037131",
       "range": {
         "startLine": 27,
         "startChar": 1,
