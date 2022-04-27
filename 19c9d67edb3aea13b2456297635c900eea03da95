@@ -171,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb03d7d_177a970e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-04-27T17:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebd20144_a7be9ce5",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45be58de_7328e68c",
@@ -232,6 +250,30 @@
       "side": 1,
       "message": "You can simply print the regex:\n\nhttps://go.dev/play/p/GppyyVilvcv",
       "parentUuid": "0889d7cd_023f0dad",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 35
+      },
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a7b156_b52669e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-04-27T17:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d2c992_c5e21b1a",
       "range": {
         "startLine": 117,
         "startChar": 24,
