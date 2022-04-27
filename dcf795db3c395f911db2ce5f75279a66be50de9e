@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7a65108_7e059805",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-27T04:12:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc0868b0_1e37770e",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "dcf795db3c395f911db2ce5f75279a66be50de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0626253d_685369d7",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4bef9f_f00a586c",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-27T04:12:21Z",
+      "side": 1,
+      "message": "Let me not do this, since it makes it confusing which one to use, and which order they will be used in.",
+      "parentUuid": "0626253d_685369d7",
+      "revId": "dcf795db3c395f911db2ce5f75279a66be50de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df8d2485_21855210",
@@ -88,6 +130,30 @@
       "writtenOn": "2022-04-22T19:29:31Z",
       "side": 1,
       "message": "chrome.EnableFeatures(\"WebAppEnableIsolatedStorage\") here and the line 66 while you\u0027re at it?",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 93
+      },
+      "revId": "dcf795db3c395f911db2ce5f75279a66be50de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dee8e68_fe72519d",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-27T04:12:21Z",
+      "side": 1,
+      "message": "good idea ty",
+      "parentUuid": "df8d2485_21855210",
       "range": {
         "startLine": 49,
         "startChar": 27,
