@@ -63,6 +63,30 @@
       },
       "revId": "f52f6d90148237ec406e6216dc8ce4f9c48e4e3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc1c679_7d13f075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T14:54:24Z",
+      "side": 1,
+      "message": "Also changed s.Fatal for arc.New failure in the second user session to s.Error so that SELinux labels can be checked after that. Looks like arc.New can fail with an ADB connection error after a host-side restorecon.",
+      "parentUuid": "84433561_e5ea931a",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "f52f6d90148237ec406e6216dc8ce4f9c48e4e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
