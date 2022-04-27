@@ -67,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cc6eecf_b5ef8b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T10:05:28Z",
+      "side": 1,
+      "message": "Mention that the last path (databases) checks regressions for b/228881316 ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e02bc3b9_82f03b56",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
         "patchSetId": 10
@@ -196,6 +219,30 @@
       "side": 1,
       "message": "Since we do not explicitly trigger host-side restorecon, I restructured the top level test func so that it calls chrome.New twice, and added a comment stating that the second chrome.New will trigger restorecon by cryptohome.\nI guess two chrome.New in the top level func will also make it clear that the test involves two user sessions (with the same account).\nWhat do you think?",
       "parentUuid": "46dca9f0_914acf91",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 28
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f131cee_a0fc37e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T10:05:28Z",
+      "side": 1,
+      "message": "LGTM. I think it became easier to understand the entire testing process.",
+      "parentUuid": "57868037_26764081",
       "range": {
         "startLine": 201,
         "startChar": 0,
