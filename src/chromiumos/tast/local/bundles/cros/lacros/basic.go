@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
+	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/set"
 	"chromiumos/tast/testing"
 )
 
@@ -35,7 +37,36 @@ func init() {
 	})
 }
 
+func crashFiles() ([]string, error) {
+	var result []string
+	for _, dir := range crash.DefaultDirs() {
+		crashFiles, err := crash.GetCrashes(dir)
+		if err != nil {
+			return nil, err
+		}
+		result = append(result, crashFiles...)
+	}
+	return result, nil
+}
+
 func Basic(ctx context.Context, s *testing.State) {
+	// Fail if crashes are reported during the test.
+	crashFilesBefore, err := crashFiles()
+	if err != nil {
+		s.Fatal("Failed to read crash directory: ", err)
+	}
+	defer func() {
+		// Wait a few seconds for any reports to get written to disk.
+		testing.Sleep(ctx, 5*time.Second)
+		crashFilesAfter, err := crashFiles()
+		if err != nil {
+			s.Fatal("Failed to read crash directory: ", err)
+		}
+		if set.DiffStringSlice(crashFilesAfter, crashFilesBefore) != nil {
+			s.Fatal("Detected new crash reports (see the \"crashes\" directory in the Tast results)")
+		}
+	}()
+
 	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
