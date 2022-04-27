@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5714c57_20ae8f43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T10:53:25Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "f52f6d90148237ec406e6216dc8ce4f9c48e4e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67a586e_48111e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T10:53:25Z",
+      "side": 1,
+      "message": "Change this to s.Errorf ?\n\nThen the test will continue to check the remaining paths (instead of aborting) and also runs testPlayability, which might be helpful.",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "f52f6d90148237ec406e6216dc8ce4f9c48e4e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
