@@ -47,6 +47,12 @@ var UnnamedFolderFinder = nodewith.Name("Folder Unnamed").ClassName(ExpandedItem
 // SearchResultListItemFinder is the finder of the list items in launcher search result.
 var SearchResultListItemFinder = nodewith.ClassName("ui/app_list/SearchResultView")
 
+// SearchResultListViewFinder is the finder of the list views in launcher search result.
+var SearchResultListViewFinder = nodewith.ClassName("SearchResultListView")
+
+// SearchResultListLabelFinder is the finder of the list label in launcher search result.
+var SearchResultListLabelFinder = nodewith.ClassName("Label")
+
 // TestCase describes modes in which the launcher UI can be shown, and by which launcher test should generally be parameterized.
 type TestCase struct {
 	ProductivityLauncher bool // Whether productivity launcher feature should be enabled
@@ -91,6 +97,22 @@ type SortTestType struct {
 	SortMethod                  SortType // Indicates the sort method used in tests
 	OrderedAppNames             []string // Specifies the fake app names arranged in the expected sort order
 	OrderedAppNamesAfterInstall []string // Indicates the fake app names in order after fake app installation. Used by the tests that verify app installation after sort
+}
+
+// WaitForCategoryLabel waits for a search result list view of type 'category'
+// to be created and labeled.
+func WaitForCategoryLabel(tconn *chrome.TestConn, category, categoryLabel string) uiauto.Action {
+	ui := uiauto.New(tconn)
+	categoryListView := SearchResultListViewFinder.Name(category)
+	return ui.WaitUntilExists(SearchResultListLabelFinder.Name(categoryLabel).Ancestor(categoryListView))
+}
+
+// WaitForCategorizedResult waits for a search result list view of type
+// 'category' to be populated with 'result'.
+func WaitForCategorizedResult(tconn *chrome.TestConn, category, result string) uiauto.Action {
+	ui := uiauto.New(tconn)
+	categoryListView := SearchResultListViewFinder.Name(category)
+	return ui.WaitUntilExists(SearchResultListItemFinder.Name(result).Ancestor(categoryListView))
 }
 
 // CreateAppSearchFinder creates a finder for an app search result in the current launcher search UI.
