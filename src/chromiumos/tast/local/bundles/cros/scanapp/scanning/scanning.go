@@ -41,8 +41,12 @@ const (
 	Attributes = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 
 	// Descriptors is the path to the descriptors used to configure the virtual
-	// USB scanner.
+	// USB scanner with default settings.
 	Descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
+
+	// FlipTestDescriptors is the path to the descriptors used to configure the virtual
+	// USB scanner with settings that will trigger duplex back page rotation in Chrome.
+	FlipTestDescriptors = "/usr/local/etc/virtual-usb-printer/ippusb_backflip_printer.json"
 
 	// EsclCapabilities is the path to the capabilities used to configure the
 	// virtual USB scanner.

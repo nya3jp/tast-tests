@@ -98,6 +98,7 @@ type Resolution string
 // The available resolution options.
 const (
 	Resolution75DPI   Resolution = "75 dpi"
+	Resolution100DPI  Resolution = "100 dpi"
 	Resolution150DPI  Resolution = "150 dpi"
 	Resolution200DPI  Resolution = "200 dpi"
 	Resolution300DPI  Resolution = "300 dpi"
