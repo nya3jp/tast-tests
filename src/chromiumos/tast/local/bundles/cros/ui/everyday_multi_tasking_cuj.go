@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -57,7 +56,7 @@ func init() {
 				},
 			}, {
 				Name:              "basic_lacros_ytmusic",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           20 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: multiTaskingParam{
@@ -88,7 +87,7 @@ func init() {
 				},
 			}, {
 				Name:              "basic_lacros_ytmusic_bluetooth",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           20 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: multiTaskingParam{
@@ -108,7 +107,7 @@ func init() {
 				},
 			}, {
 				Name:              "basic_lacros_spotify_bluetooth",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           20 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: multiTaskingParam{
@@ -150,7 +149,7 @@ func init() {
 				},
 			}, {
 				Name:              "plus_lacros_ytmusic",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           30 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: multiTaskingParam{
@@ -181,7 +180,7 @@ func init() {
 				},
 			}, {
 				Name:              "plus_lacros_ytmusic_bluetooth",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           30 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: multiTaskingParam{
@@ -201,7 +200,7 @@ func init() {
 				},
 			}, {
 				Name:              "plus_lacros_spotify_bluetooth",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           30 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: multiTaskingParam{
@@ -232,10 +231,6 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	a := s.FixtValue().(cuj.FixtureData).ARC
-	var lacrosFixtValue lacrosfixt.FixtValue
-	if param.browserType == browser.TypeLacros {
-		lacrosFixtValue = s.FixtValue().(cuj.FixtureData).LacrosFixt
-	}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -338,7 +333,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
 	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode, enableBT)
-	if err := et.Run(ctx, cr, lacrosFixtValue, a, testRunParams); err != nil {
+	if err := et.Run(ctx, cr, param.browserType, a, testRunParams); err != nil {
 		s.Fatal("Failed to run everyday multi-tasking cuj test: ", err)
 	}
 }
