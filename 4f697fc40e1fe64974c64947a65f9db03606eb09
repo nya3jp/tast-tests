@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0159e8de_64f52b21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-04-27T12:26:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b9b82a9_0287c16d",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "4f697fc40e1fe64974c64947a65f9db03606eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9709eb93_136021f1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c69dd6a_37725e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/secondary_apps_installed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-04-27T12:26:38Z",
+      "side": 1,
+      "message": "This test is to automate a manual test case mentioned in b/230317306. The original instructions include both auto launch and manual launch. I guess it\u0027s structured like this for a reason. Should we make this test a 1:1 replica of the original test?",
+      "parentUuid": "c4e71f95_78e21643",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 71
+      },
+      "revId": "4f697fc40e1fe64974c64947a65f9db03606eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21a9c108_6567e4ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/secondary_apps_installed.go",
         "patchSetId": 1
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-27T11:02:24Z",
       "side": 1,
       "message": "Yeah, I have experienced that too.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "4f697fc40e1fe64974c64947a65f9db03606eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a67597_57b699d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/secondary_apps_installed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-04-27T12:26:38Z",
+      "side": 1,
+      "message": "Actually I did not test if it works without delay. I copied the code along with comments from your test kiosk.StartAppFromSignInScreen.",
+      "parentUuid": "21a9c108_6567e4ed",
       "range": {
         "startLine": 109,
         "startChar": 0,
