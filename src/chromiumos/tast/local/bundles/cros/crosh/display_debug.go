@@ -36,7 +36,9 @@ type expectedMethodCall struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DisplayDebug, LacrosStatus: testing.LacrosVariantUnneeded, Desc: "Tests the display_debug commands",
+		Func:         DisplayDebug,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Tests the display_debug commands",
 		Contacts: []string{
 			"ddavenport@google.com",
 			"chromeos-gfx-display@google.com",
