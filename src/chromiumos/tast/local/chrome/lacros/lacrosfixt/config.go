@@ -137,7 +137,7 @@ func ExtensionArgs(extID, extList string) []string {
 		"--enable-experimental-extension-apis",   // Allow Chrome to use the Chrome Automation API.
 		"--allowlisted-extension-id=" + extID,    // Whitelists the test extension to access all Chrome APIs.
 		"--load-extension=" + extList,            // Load extensions.
-		"--disable-extensions-except=" + extList, // Disable extensions other than the Tast test extension.
+		// "--disable-extensions-except=" + extList, // Disable extensions other than the Tast test extension.
 	}
 }
 
