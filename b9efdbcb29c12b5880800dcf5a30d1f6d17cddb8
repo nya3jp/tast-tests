@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b50008_439b2313",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T05:44:18Z",
+      "side": 1,
+      "message": "Overall looks good to me. Thanks for the work!\nI have some minor comments about func names and func structure.",
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6af6d8_b737aaac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T05:44:18Z",
+      "side": 1,
+      "message": "I think adding \"SELinux\" to the test name makes it easier to understand for people who are not familiar with SELinux.\nFor example,\n- arc.SELinuxHostSideRestorecon\n- arc.RestoreSELinuxContextInHost",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02bc3b9_82f03b56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T05:44:18Z",
+      "side": 1,
+      "message": "For the func name, how about\ninvalidateSELinuxHashForPaths or prepareForRestorecon\n(Since this entire test is about host-side restorecon, I think it\u0027s fine to drop \"hostSide\")",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 70
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eadc34aa_c23d3f13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T05:44:18Z",
+      "side": 1,
+      "message": "I feel it would be cleaner to separate getSELinuxLabelsUnderAndroidData from this func and have the top level func call them like this.\n\n cr :\u003d setUpHostSideRestorecon(...)\n correctLabels :\u003d getSELinuxLabelsUnderAndroidData(... cr)\n testHostSideRestorecon(... correctLabels )",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46dca9f0_914acf91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T05:44:18Z",
+      "side": 1,
+      "message": "How about renaming the func to runHostSideRestorecon and call them from the top level func like this?\n\n cr :\u003d runHostSideRestorecon(...)\n checkSELinuxLabelsUnderAndroidData(... cr)\n checkPlayability(... cr)",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 28
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8540c21f_7b5a72d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-27T05:44:18Z",
+      "side": 1,
+      "message": "Can we reuse getSELinuxLabelsUnderAndroidData ?\n\nlabels :\u003d getSELinuxLabelsUnderAndroidData(...)\n// Compare labels with expected labels.",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 39
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
