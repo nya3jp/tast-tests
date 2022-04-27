@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -54,7 +53,7 @@ func init() {
 			}, {
 				Name:              "plus_lacros_video_youtube_web",
 				Timeout:           10 * time.Minute,
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				ExtraSoftwareDeps: []string{"lacros"},
 
 				Val: extendedDisplayCUJParam{
@@ -166,15 +165,10 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	defer uiHandler.Close()
 
 	param := s.Param().(extendedDisplayCUJParam)
-	var lacrosFixtValue lacrosfixt.FixtValue
-	if param.browserType == browser.TypeLacros {
-		lacrosFixtValue = s.FixtValue().(cuj.FixtureData).LacrosFixt
-	}
 
 	testResources := videocuj.TestResources{
 		Cr:        cr,
 		Tconn:     tconn,
-		LFixtVal:  lacrosFixtValue,
 		A:         a,
 		Kb:        kb,
 		UIHandler: uiHandler,

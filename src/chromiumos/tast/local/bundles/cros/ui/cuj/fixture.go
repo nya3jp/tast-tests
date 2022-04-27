@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
@@ -66,7 +67,7 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{},
+		Impl:            &loggedInToCUJUserFixture{bt: browser.TypeAsh},
 		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -80,7 +81,7 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true},
+		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true, bt: browser.TypeAsh},
 		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -94,32 +95,12 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				loginOption(s),
-				chrome.ARCSupported(),
-				chrome.ExtraArgs(arc.DisableSyncFlags()...),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-			}, nil
-		}),
+		Impl:            &loggedInToCUJUserFixture{bt: browser.TypeLacros},
 		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars:            []string{"ui.cujAccountPool"},
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: "loggedInToCUJUserLacrosWithARC",
-		Desc: "Fixture used for lacros variation of UI CUJ tests that also need ARC",
-		Contacts: []string{
-			"xiyuan@chromium.org",
-			"chromeos-perfmetrics-eng@google.com",
-		},
-		Impl:            &loggedInToCUJUserFixture{},
-		Parent:          "loggedInToCUJUserLacros",
-		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: resetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInAndKeepStateLacros",
@@ -128,35 +109,11 @@ func init() {
 			"xliu@cienet.com",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				loginOption(s),
-				chrome.ARCSupported(),
-				chrome.ExtraArgs(arc.DisableSyncFlags()...),
-				chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.EnableFeatures("LacrosPrimary"),
-				chrome.KeepState(),
-				chrome.EnableFeatures("WebUITabStrip"),                    // Enable TabStrip UI for tablet.
-				chrome.LacrosExtraArgs("--enable-features=WebUITabStrip"), // Enable TabStrip UI for lacros.
-			}, nil
-		}),
+		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true, bt: browser.TypeLacros},
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars:            []string{"ui.cujAccountPool"},
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: "loggedInAndKeepStateLacrosWithARC",
-		Desc: "Fixture keeping login status and used for lacros variation of UI CUJ tests that also need ARC",
-		Contacts: []string{
-			"xliu@cienet.com",
-			"chromeos-perfmetrics-eng@google.com",
-		},
-		Impl:            &loggedInToCUJUserFixture{keepState: true},
-		Parent:          "loggedInAndKeepStateLacros",
-		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: resetTimeout,
 	})
 }
 
@@ -244,9 +201,8 @@ func (f *cpuIdleForCUJFixture) PostTest(ctx context.Context, s *testing.FixtTest
 
 // FixtureData is the struct returned by the preconditions.
 type FixtureData struct {
-	chrome     *chrome.Chrome
-	ARC        *arc.ARC
-	LacrosFixt lacrosfixt.FixtValue
+	chrome *chrome.Chrome
+	ARC    *arc.ARC
 }
 
 // Chrome gets the CrOS-chrome instance.
@@ -261,51 +217,52 @@ type loggedInToCUJUserFixture struct {
 	// webUITabStrip indicates whether we should run new chrome UI under tablet mode.
 	// Remove this flag when new UI becomes default.
 	webUITabStrip bool
-	// Whether chrome is created by parent fixture.
-	useParentChrome bool
+	// bt describes what type of browser this fixture should use
+	bt browser.Type
 }
 
 func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	var cr *chrome.Chrome
-	var lacrosFixt lacrosfixt.FixtValue
 
-	if s.ParentValue() != nil {
-		lacrosFixt = s.ParentValue().(lacrosfixt.FixtValue)
-		cr = lacrosFixt.Chrome()
-		f.useParentChrome = true
-	} else {
-		func() {
-			ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
-			defer cancel()
+	func() {
+		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
+		defer cancel()
 
-			opts := []chrome.Option{
-				loginOption(s),
-				chrome.ARCSupported(),
-				chrome.ExtraArgs(arc.DisableSyncFlags()...),
-			}
-			if f.keepState {
-				opts = append(opts, chrome.KeepState())
-			}
-			if f.webUITabStrip {
-				opts = append(opts, chrome.EnableFeatures("WebUITabStrip"))
-			}
-			var err error
-			cr, err = chrome.New(ctx, opts...)
+		opts := []chrome.Option{
+			loginOption(s),
+			chrome.ARCSupported(),
+			chrome.ExtraArgs(arc.DisableSyncFlags()...),
+		}
+		if f.keepState {
+			opts = append(opts, chrome.KeepState())
+		}
+		if f.webUITabStrip {
+			opts = append(opts, chrome.EnableFeatures("WebUITabStrip"))
+		}
 
+		var err error
+		if f.bt == browser.TypeLacros {
+			opts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary),
+				lacrosfixt.ChromeOptions(opts...)).Opts()
 			if err != nil {
-				s.Fatal("Failed to start Chrome: ", err)
+				s.Fatal("Failed to get lacros options: ", err)
 			}
-			chrome.Lock()
-		}()
-		defer func() {
-			if cr != nil {
-				chrome.Unlock()
-				if err := cr.Close(ctx); err != nil {
-					s.Error("Failed to close Chrome: ", err)
-				}
+		}
+		cr, err = chrome.New(ctx, opts...)
+
+		if err != nil {
+			s.Fatal("Failed to start Chrome: ", err)
+		}
+		chrome.Lock()
+	}()
+	defer func() {
+		if cr != nil {
+			chrome.Unlock()
+			if err := cr.Close(ctx); err != nil {
+				s.Error("Failed to close Chrome: ", err)
 			}
-		}()
-	}
+		}
+	}()
 
 	enablePlayStore := true
 	if f.keepState {
@@ -384,22 +341,18 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 	f.cr = cr
 	f.arc = a
 	cr = nil
-	return FixtureData{chrome: f.cr, ARC: f.arc, LacrosFixt: lacrosFixt}
+	return FixtureData{chrome: f.cr, ARC: f.arc}
 }
 
 func (f *loggedInToCUJUserFixture) TearDown(ctx context.Context, s *testing.FixtState) {
-	if !f.useParentChrome {
-		chrome.Unlock()
-	}
+	chrome.Unlock()
 
 	if err := f.arc.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close ARC connection: ", err)
 	}
 
-	if !f.useParentChrome {
-		if err := f.cr.Close(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to close Chrome connection: ", err)
-		}
+	if err := f.cr.Close(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to close Chrome connection: ", err)
 	}
 }
 
@@ -431,13 +384,11 @@ func (f *loggedInToCUJUserFixture) Reset(ctx context.Context) error {
 		}
 	}
 
-	if !f.useParentChrome {
-		// Unlike ARC.preImpl, this does not uninstall apps. This is because we
-		// typically want to reuse the same list of applications, and additional
-		// installed apps wouldn't affect the test scenarios.
-		if err = f.cr.ResetState(ctx); err != nil {
-			return errors.Wrap(err, "failed to reset chrome")
-		}
+	// Unlike ARC.preImpl, this does not uninstall apps. This is because we
+	// typically want to reuse the same list of applications, and additional
+	// installed apps wouldn't affect the test scenarios.
+	if err := f.cr.ResetState(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset chrome")
 	}
 
 	// Ensures that there are no toplevel windows left open.
