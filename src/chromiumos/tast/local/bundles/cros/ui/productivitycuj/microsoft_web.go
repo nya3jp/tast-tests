@@ -1164,7 +1164,7 @@ func (app *MicrosoftWebOffice) closeTab(title string) action.Action {
 func (app *MicrosoftWebOffice) renameDocument(fileName string) uiauto.Action {
 	return func(ctx context.Context) error {
 		renameButton := nodewith.NameContaining("Saved to OneDrive").Role(role.Button)
-		fileNameTextField := nodewith.Name("File Name").Role(role.TextField)
+		fileNameTextField := nodewith.NameContaining("File Name").Role(role.TextField)
 
 		checkFileName := func(ctx context.Context) error {
 			if err := app.uiHdl.Click(renameButton)(ctx); err != nil {
