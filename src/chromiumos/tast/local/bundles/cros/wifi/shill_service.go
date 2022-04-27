@@ -2490,10 +2490,15 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		}
 		return ath11kWCN6750Format, nil
 	}
-	ath11kReset := func(_ context.Context, resetPath string) error {
+	ath11kReset := func(ctx context.Context, resetPath string) error {
 		if err := writeStringToFile(resetPath, "assert"); err != nil {
 			return errors.Wrapf(err, "failed to write to the reset path %q", resetPath)
 		}
+		// Ath11k does not explicitly disconnect/reconnect during simulated FW crash.
+		// This will cause ping to start right after simulated FW crash, causing ping pkt drops.
+		// Allow 20 secs sleep (FW takes approx ~12 for complete initialization/full scan).
+		// TODO(b/230656342): Handle no disconnection/connection during simulated FW crash.
+		testing.Sleep(ctx, 20*time.Second)
 		return nil
 	}
 	ath10kWCN3990ResetPath := func(ctx context.Context, iface string) (string, error) {
@@ -2554,7 +2559,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 			return nil
 		})
 	}
-	rtwResetPath := func(ctx context.Context, iface string, driver string) (string, error) {
+	rtwResetPath := func(ctx context.Context, iface, driver string) (string, error) {
 		phy, err := network_iface.NewInterface(iface).PhyName(ctx)
 		if err != nil {
 			return "", errors.Wrapf(err, "failed to get the phy name of the WiFi interface (%s)", iface)
