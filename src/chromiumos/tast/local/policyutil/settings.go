@@ -191,6 +191,8 @@ func CheckCertificateVisibleInSystemSettings(ctx context.Context, tconn *chrome.
 		ui.LeftClick(nodewith.Name("EAP").Role(role.ListBoxOption)),
 		ui.LeftClick(nodewith.Name("EAP method").ClassName("md-select")),
 		ui.LeftClick(nodewith.Name("EAP-TLS").Role(role.ListBoxOption)),
+		ui.WaitUntilExists(nodewith.Name("Server CA certificate").Role(role.InlineTextBox)),
+		ui.MakeVisible(nodewith.Name("User certificate").Role(role.InlineTextBox)),
 		ui.LeftClick(nodewith.Name("User certificate").ClassName("md-select")),
 		ui.LeftClick(nodewith.Name(certName+" ["+certName+"]").Role(role.ListBoxOption)))(ctx)
 }
