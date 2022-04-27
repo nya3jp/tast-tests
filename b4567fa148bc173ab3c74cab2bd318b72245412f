@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ab9ab9_4bd81ba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "// alsaucmCommander provides commands() that returns a list of alsaucmCommand,  which can be used to generate alsaucm command to run.",
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8142576_8735d97b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "As the interface contains only one function, how about moving the comment as the interface comment?",
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926f5f03_aa6fed6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "Ending period.\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-sentences\n\nSame below.",
+      "range": {
+        "startLine": 89,
+        "startChar": 51,
+        "endLine": 89,
+        "endChar": 54
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f138e4f5_65707772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "alsaucmCommand.",
+      "range": {
+        "startLine": 98,
+        "startChar": 79,
+        "endLine": 98,
+        "endChar": 90
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2845a940_a7a33945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "an alsaucmCommender",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 41
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f545d664_71c36580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "modifierCommander",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29871868_c13d66af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "an alsaucmCommender",
+      "range": {
+        "startLine": 107,
+        "startChar": 23,
+        "endLine": 107,
+        "endChar": 40
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc85b3c_c07abaad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "alsaucmCommand",
+      "range": {
+        "startLine": 107,
+        "startChar": 64,
+        "endLine": 107,
+        "endChar": 75
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c4a16d1_49c9ff2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "Since ... .",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 9
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ef9756_ca3a5ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "Leave some time for defer to run:\n```\nclearUpCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, n*time.Second)\ndefer cancel()\ndefer ...(clearUpCtx, ...)\n// use ctx for non-defer part.\n```",
+      "range": {
+        "startLine": 142,
+        "startChar": 25,
+        "endLine": 142,
+        "endChar": 28
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394ce513_499fa6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T03:51:24Z",
+      "side": 1,
+      "message": "What if a device failed to expected to have a SectionVerb? Is it okay to skip the test? Should it be treated as a regression?",
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
