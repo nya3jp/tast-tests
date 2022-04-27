@@ -34,12 +34,13 @@ const (
 	screenshareResumedIDContains = "screen_share_dlp_resumed-"
 )
 
-// screenshareTarget is an enum containing different possible ways a user can share their screen.
+// screenshareMediaStreamType is an enum containing different possible ways a user can share their screen.
 type screenshareMediaStreamType int
 
 const (
 	screen screenshareMediaStreamType = iota
 	window
+	tab
 )
 
 // A struct containing parameters for different screenshare tests.
@@ -138,7 +139,7 @@ func init() {
 			Name:    "ash_warn_proceeded_screen_share",
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "warn_proceded_screen_share",
+				name:        "warn_proceeded_screen_share",
 				url:         "https://www.example.com/",
 				restriction: restrictionlevel.WarnProceeded,
 				target:      screen,
@@ -185,7 +186,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "warn_proceded_screen_share",
+				name:        "warn_proceeded_screen_share",
 				url:         "https://www.example.com/",
 				restriction: restrictionlevel.WarnProceeded,
 				target:      screen,
@@ -230,7 +231,7 @@ func init() {
 			Name:    "ash_warn_proceeded_window_share",
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "warn_proceded_window_share",
+				name:        "warn_proceeded_window_share",
 				url:         "https://www.google.com/",
 				restriction: restrictionlevel.WarnProceeded,
 				target:      window,
@@ -277,7 +278,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "warn_proceded_window_share",
+				name:        "warn_proceeded_window_share",
 				url:         "https://www.google.com/",
 				restriction: restrictionlevel.WarnProceeded,
 				target:      window,
@@ -295,6 +296,50 @@ func init() {
 				target:      window,
 				policyDLP:   screenshareWarnPolicy,
 				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:    "ash_blocked_tab_share",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "blocked_tab_share",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.Blocked,
+				target:      tab,
+				policyDLP:   screenshareBlockPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:    "ash_allowed_tab_share",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "allowed_tab_share",
+				url:         "https://www.chromium.org/",
+				restriction: restrictionlevel.Allowed,
+				target:      tab,
+				policyDLP:   screenshareBlockPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:    "ash_warn_proceeded_tab_share",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_proceeded_tab_share",
+				url:         "https://www.google.com/",
+				restriction: restrictionlevel.WarnProceeded,
+				target:      tab,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:    "ash_warn_cancelled_tab_share",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_cancelled_tab_share",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.WarnCancelled,
+				target:      tab,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeAsh,
 			},
 		},
 		}})
@@ -348,6 +393,8 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 		screenRecorder, err = uiauto.NewScreenRecorder(ctx, tconn)
 	} else if params.target == window {
 		screenRecorder, err = uiauto.NewWindowRecorder(ctx, tconn /*windowIndex=*/, 0)
+	} else if params.target == tab {
+		screenRecorder, err = uiauto.NewTabRecorder(ctx, tconn /*tabIndex=*/, 0)
 	}
 
 	if err != nil {
@@ -369,8 +416,14 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 		s.Fatal("Failed to check frame status: ", err)
 	}
 
-	if conn, err = br.NewConn(ctx, params.url); err != nil {
-		s.Fatal("Failed to open page: ", err)
+	if params.target == tab {
+		if err := conn.Navigate(ctx, params.url); err != nil {
+			s.Fatal("Failed to open page: ", err)
+		}
+	} else {
+		if conn, err = br.NewConn(ctx, params.url); err != nil {
+			s.Fatal("Failed to open page: ", err)
+		}
 	}
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
@@ -392,9 +445,13 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 			s.Fatal("Failed to hit Enter: ", err)
 		}
 
-		// Continuing screen sharing should result in a "Screen share resumed" notification.
-		if _, err := ash.WaitForNotification(ctx, tconn, 10*time.Second, ash.WaitIDContains(screenshareResumedIDContains), ash.WaitTitle(screenshareResumedTitle)); err != nil {
-			s.Errorf("Failed to wait for notification with title %q: %v", screenshareResumedTitle, err)
+		// Continuing screen or window sharing should result in a "Screen share resumed" notification.
+		// While the notification does not appear for tab sharing, we still check if the recording
+		// is active below.
+		if params.target != tab {
+			if _, err := ash.WaitForNotification(ctx, tconn, 10*time.Second, ash.WaitIDContains(screenshareResumedIDContains), ash.WaitTitle(screenshareResumedTitle)); err != nil {
+				s.Errorf("Failed to wait for notification with title %q: %v", screenshareResumedTitle, err)
+			}
 		}
 	} else if params.restriction == restrictionlevel.WarnCancelled {
 		// Hit Esc, which is equivalent to clicking on the "Cancel" button.
@@ -409,32 +466,42 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 	}
 
 	// Frame status value should be as per wantAllowed.
-	// This check can sometimes randomly fail even if the screen is being shared, so we poll.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := checkFrameStatus(ctx, screenRecorder, wantAllowed); err != nil {
-			return errors.Wrap(err, "failed to check frame status")
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
+	if err := checkFrameStatus(ctx, screenRecorder, wantAllowed); err != nil {
 		s.Fatal("Polling the frame status timed out: ", err)
 	}
 
-	if conn, err = br.NewConn(ctx, nonRestrictedSite); err != nil {
-		s.Fatal("Failed to open page: ", err)
+	if params.target == tab {
+		if err := conn.Navigate(ctx, nonRestrictedSite); err != nil {
+			s.Fatal("Failed to open page: ", err)
+		}
+	} else {
+		if conn, err = br.NewConn(ctx, nonRestrictedSite); err != nil {
+			s.Fatal("Failed to open page: ", err)
+		}
 	}
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		s.Fatalf("Failed to wait for %q to achieve quiescence: %v", nonRestrictedSite, err)
 	}
 
-	// If screen sharing was blocked, the "screenshare resumed" notification should appear now, having navigated to a non-restricted site. Otherwise, the notification should not appear.
-	if _, err := ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains(screenshareResumedIDContains), ash.WaitTitle(screenshareResumedTitle)); (err != nil) == (params.restriction == restrictionlevel.Blocked) {
-		if err != nil {
-			s.Errorf("Failed to wait for notification with title %q: %v", screenshareResumedTitle, err)
-		} else {
-			s.Errorf("Notification with title %q appeared when it should not have", screenshareResumedTitle)
+	// If screen or window sharing was blocked, the "screenshare resumed" notification
+	// should appear now, having navigated to a non-restricted site. Otherwise, the
+	// notification should not appear.
+	//
+	// The notification does not appear for tab shares.
+	if params.target != tab {
+		if _, err := ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains(screenshareResumedIDContains), ash.WaitTitle(screenshareResumedTitle)); (err != nil) == (params.restriction == restrictionlevel.Blocked) {
+			if err != nil {
+				s.Errorf("Failed to wait for notification with title %q: %v", screenshareResumedTitle, err)
+			} else {
+				s.Errorf("Notification with title %q appeared when it should not have", screenshareResumedTitle)
+			}
 		}
+	}
+
+	// Screenshare should be allowed unless user cancelled sharing after a warning.
+	if err := checkFrameStatus(ctx, screenRecorder, params.restriction != warnCancelled); err != nil {
+		s.Fatal("Failed to check frame status: ", err)
 	}
 
 	// Closing all windows.
@@ -455,17 +522,24 @@ func checkFrameStatus(ctx context.Context, screenRecorder *uiauto.ScreenRecorder
 		return errors.New("couldn't check frame status. Screen recorder was not found")
 	}
 
-	status, err := screenRecorder.FrameStatus(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get status of frame")
-	}
+	// Checking the frame status can randomly fail, so we poll instead.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		status, err := screenRecorder.FrameStatus(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get status of frame")
+		}
 
-	if status != "Success" && wantAllowed {
-		return errors.Errorf("Frame not recording. got: %v, want Success", status)
-	}
+		if status != "Success" && wantAllowed {
+			return errors.Errorf("Frame not recording. got: %v, want Success", status)
+		}
 
-	if status != "Fail" && !wantAllowed {
-		return errors.Errorf("Frame recording. got: %v, want Fail", status)
+		if status != "Fail" && !wantAllowed {
+			return errors.Errorf("Frame recording. got: %v, want Fail", status)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
+		return errors.Wrap(err, "polling the frame status timed out")
 	}
 
 	return nil
