@@ -73,7 +73,8 @@ func PrepareExtensions(destDir string, cfg *config.Config, guestMode GuestModeLo
 	}
 	extraBgJs := fmt.Sprintf("%s = %q;", TastChromeOptionsJSVar, data)
 	// Prepare the user test extension.
-	user, err := prepareTestExtension(filepath.Join(destDir, "test_api"), testExtensionKey, TestExtensionID, extraBgJs)
+	user, err := prepareTestExtension(filepath.Join(destDir, "test_api"),
+		testExtensionKey, TestExtensionID, extraBgJs, cfg.TestExtOAuthClientID())
 	if err != nil {
 		return nil, err
 	}
@@ -81,7 +82,8 @@ func PrepareExtensions(destDir string, cfg *config.Config, guestMode GuestModeLo
 	// Prepare the sign-in profile test extension if it is available.
 	var signin *testExtension
 	if cfg.SigninExtKey() != "" {
-		signin, err = prepareTestExtension(filepath.Join(destDir, "test_api_signin_profile"), cfg.SigninExtKey(), SigninProfileTestExtensionID, extraBgJs)
+		signin, err = prepareTestExtension(filepath.Join(destDir, "test_api_signin_profile"),
+			cfg.SigninExtKey(), SigninProfileTestExtensionID, extraBgJs, "")
 		if err != nil {
 			return nil, err
 		}

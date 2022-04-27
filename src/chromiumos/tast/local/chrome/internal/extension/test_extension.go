@@ -38,7 +38,7 @@ type testExtension struct {
 // ID of the extension.
 // extraBgJs is the extra JavaScript that will be appended to the test extension's
 // background.js file.
-func prepareTestExtension(dir, key, id, extraBgJs string) (e *testExtension, retErr error) {
+func prepareTestExtension(dir, key, id, extraBgJs, clientID string) (e *testExtension, retErr error) {
 	// Ensure dir does not exist at the beginning.
 	if _, err := os.Stat(dir); err == nil {
 		return nil, errors.Errorf("%s must not exist at the beginning", dir)
@@ -55,7 +55,7 @@ func prepareTestExtension(dir, key, id, extraBgJs string) (e *testExtension, ret
 		}
 	}()
 
-	actualID, err := writeTestExtension(dir, key, extraBgJs)
+	actualID, err := writeTestExtension(dir, key, extraBgJs, clientID)
 	if err != nil {
 		return nil, err
 	}
@@ -91,11 +91,21 @@ func (e *testExtension) Dir() string {
 // key. The extension's ID is returned.
 // extraBgJs is the extra JavaScript that will be appended to the test extension's
 // background.js file.
-func writeTestExtension(dir, key, extraBgJs string) (id string, err error) {
+// clientID is an OAuth Client ID to use in some chrome.identity APIs.
+func writeTestExtension(dir, key, extraBgJs, clientID string) (id string, err error) {
 	if err = os.MkdirAll(dir, 0755); err != nil {
 		return "", err
 	}
 
+	var oauthConfig string
+	if clientID != "" {
+		oauthConfig = fmt.Sprintf(`
+  "oauth2": {
+    "client_id": "%s",
+    "scopes": []
+  },
+`, clientID)
+	}
 	// Based on Autotest's client/common_lib/cros/autotest_private_ext/manifest.json and
 	// client/cros/multimedia/multimedia_test_extension/manifest.json. Key must be
 	// present in the manifest to generate stable extension id.
@@ -106,7 +116,7 @@ func writeTestExtension(dir, key, extraBgJs string) (id string, err error) {
   "background": { "scripts": ["background.js"] },
   "incognito": "split",
   "manifest_version": 2,
-  "version": "0.1",
+  "version": "0.1",%s
   "permissions": [
     "accessibilityFeatures.modify",
     "accessibilityFeatures.read",
@@ -119,6 +129,7 @@ func writeTestExtension(dir, key, extraBgJs string) (id string, err error) {
     "feedbackPrivate",
     "fontSettings",
     "i18n",
+    "identity",
     "inputMethodPrivate",
     "languageSettingsPrivate",
     "management",
@@ -139,7 +150,7 @@ func writeTestExtension(dir, key, extraBgJs string) (id string, err error) {
     "interact": true,
     "desktop": true
   }
-}`, key)
+}`, key, oauthConfig)
 
 	for _, f := range []struct{ name, data string }{
 		{"manifest.json", manifest},

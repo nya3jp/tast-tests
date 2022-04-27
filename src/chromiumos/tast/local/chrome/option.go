@@ -489,3 +489,12 @@ func EnableFilesAppSWA() Option {
 		return nil
 	}
 }
+
+// TestExtOAuthClientID returns an Option that provides an OAuth Client ID
+// to the generated test extension.
+func TestExtOAuthClientID(clientID string) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.TestExtOAuthClientID = clientID
+		return nil
+	}
+}
