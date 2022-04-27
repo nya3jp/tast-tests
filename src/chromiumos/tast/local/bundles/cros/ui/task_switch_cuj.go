@@ -98,7 +98,7 @@ func init() {
 				Name:              "lacros_clamshell",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
-				Fixture:           "loggedInToCUJUserLacrosWithARC",
+				Fixture:           "loggedInToCUJUserLacros",
 				Val: taskSwitchCUJTestParam{
 					useLacros: true,
 				},
@@ -107,7 +107,7 @@ func init() {
 				Name:              "lacros_clamshell_vm",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
-				Fixture:           "loggedInToCUJUserLacrosWithARC",
+				Fixture:           "loggedInToCUJUserLacros",
 				Val: taskSwitchCUJTestParam{
 					useLacros: true,
 				},
@@ -116,7 +116,7 @@ func init() {
 				Name:              "lacros_tablet",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
-				Fixture:           "loggedInToCUJUserLacrosWithARC",
+				Fixture:           "loggedInToCUJUserLacros",
 				Val: taskSwitchCUJTestParam{
 					useLacros: true,
 					tablet:    true,
@@ -126,7 +126,7 @@ func init() {
 				Name:              "lacros_tablet_vm",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
-				Fixture:           "loggedInToCUJUserLacrosWithARC",
+				Fixture:           "loggedInToCUJUserLacros",
 				Val: taskSwitchCUJTestParam{
 					useLacros: true,
 					tablet:    true,

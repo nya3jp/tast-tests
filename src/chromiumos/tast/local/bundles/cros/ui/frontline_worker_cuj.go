@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/frontlineworkercuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -144,7 +145,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 
 	var browserStartTime, appStartTime time.Duration
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, false, tabletMode, false)
+	_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, false, tabletMode, browser.TypeAsh)
 	if err != nil {
 		s.Fatal("Failed to get browser start time: ", err)
 	}
