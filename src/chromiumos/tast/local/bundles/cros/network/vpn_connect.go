@@ -25,7 +25,7 @@ func init() {
 		Func:     VPNConnect,
 		Desc:     "Ensure that we can connect to a VPN",
 		Contacts: []string{"jiejiang@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Fixture:  "shillReset",
 		Params: []testing.Param{{
 			Name: "ikev2_psk",
