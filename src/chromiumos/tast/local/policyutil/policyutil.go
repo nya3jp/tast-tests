@@ -6,13 +6,62 @@ package policyutil
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/timing"
 )
+
+// InstallPwaAppByPolicy installs a pre-defined PWA application. Returns the app's id, the name, the callback for cleanup and the error message if any.
+func InstallPwaAppByPolicy(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, fdms *fakedms.FakeDMS, root http.FileSystem) (string, string, func(ctx context.Context) error, error) {
+	server := httptest.NewServer(http.FileServer(root))
+
+	policies := []policy.Policy{
+		&policy.WebAppInstallForceList{
+			Val: []*policy.WebAppInstallForceListValue{
+				{
+					Url:                    server.URL + "/web_app_install_force_list_index.html",
+					DefaultLaunchContainer: "window",
+					CreateDesktopShortcut:  false,
+					CustomName:             "",
+					FallbackAppName:        "",
+					CustomIcon: &policy.WebAppInstallForceListValueCustomIcon{
+						Hash: "",
+						Url:  "",
+					},
+				},
+			},
+		},
+	}
+
+	// Update policies.
+	if err := ServeAndVerify(ctx, fdms, cr, policies); err != nil {
+		server.Close()
+		return "", "", nil, errors.Wrap(err, "failed to update policies")
+	}
+
+	cleanUp := func(ctx context.Context) error {
+		if err := ResetChrome(ctx, fdms, cr); err != nil {
+			return errors.Wrap(err, "failed to reset policies")
+		}
+		server.Close()
+		return nil
+	}
+
+	const name = "Test PWA"
+	id, err := ash.WaitForChromeAppByNameInstalled(ctx, tconn, name, 1*time.Minute)
+	if err != nil {
+		return "", "", nil, errors.Wrap(err, "failed to wait until the PWA is installed")
+	}
+
+	return id, name, cleanUp, nil
+}
 
 // serveAndVerify is a helper function. Similar to ServeAndVerify(OnLoginScreen) but also accepts the test connection.
 func serveAndVerify(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tconn *chrome.TestConn, ps []policy.Policy) error {
