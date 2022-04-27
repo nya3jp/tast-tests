@@ -44,7 +44,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "plus_video_youtube_web",
-				Timeout: 10 * time.Minute,
+				Timeout: 12 * time.Minute,
 				Fixture: "loggedInAndKeepState",
 				Val: extendedDisplayCUJParam{
 					tier: cuj.Basic, // Extended display plus tier test uses basic tier test of video CUJ.
@@ -52,8 +52,8 @@ func init() {
 				},
 			}, {
 				Name:              "plus_lacros_video_youtube_web",
-				Timeout:           10 * time.Minute,
-				Fixture:           "loggedInAndKeepStateLacros",
+				Timeout:           12 * time.Minute,
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
 				ExtraSoftwareDeps: []string{"lacros"},
 
 				Val: extendedDisplayCUJParam{
