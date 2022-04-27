@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eccf519_bec51231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-04-27T22:12:32Z",
+      "side": 1,
+      "message": "nit: Test would be counted as a failure and not skipped due to a failed precondition.",
+      "range": {
+        "startLine": 65,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "174088b280751109943643c193f91cf51100e352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
