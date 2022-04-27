@@ -37,6 +37,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef69df69_41698149",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:34:39Z",
+      "side": 1,
+      "message": "you may need to handle the returned value `output, err` (e.g., log the errors or output). If you don\u0027t need output, use `.Run()`",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 72
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e825e2_b29cb2dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:34:39Z",
+      "side": 1,
+      "message": "logs like this (check other logs as well) should be avoided, see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log\n\nNormally, logs are allowed when: 1, logging info for debugging when an error happens, i.e., inside `if err!\u003dnil{...}`. 2, a function may take a long time to execute.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 81
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10356e10_8aba5f92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:34:39Z",
+      "side": 1,
+      "message": "can you use the `tar` package (https://pkg.go.dev/archive/tar) to extract tar files? instead of using the linux cmd, which can be a cause of flakiness.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 119
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0013eeb_5aa1ade2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
         "patchSetId": 1
