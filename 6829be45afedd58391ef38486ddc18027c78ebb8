@@ -33,6 +33,24 @@
       "message": "Code looks fine, but please run tast unit tests: fast_build.sh -T\nThen, add this line to your commit log.\nTEST\u003dtast unit tests passed.\n\nThanks.\n",
       "revId": "6829be45afedd58391ef38486ddc18027c78ebb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2badcb58_36895165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-27T08:04:09Z",
+      "side": 1,
+      "message": "Done, I\u0027ve added ~/trunk/src/platform/tast/fast_build.sh -T",
+      "parentUuid": "5d8d2e62_cc246cfd",
+      "revId": "6829be45afedd58391ef38486ddc18027c78ebb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
