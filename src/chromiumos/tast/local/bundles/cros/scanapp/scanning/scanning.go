@@ -33,18 +33,17 @@ import (
 )
 
 const (
-	// ScannerName is the name of the virtual USB scanner.
-	ScannerName = "DavieV Virtual USB Printer (USB)"
-
 	// SourceImage is the image used to configure the virtual USB scanner.
 	SourceImage = "scan_source.jpg"
 
 	// Attributes is the path to the attributes used to configure the virtual
 	// USB scanner.
 	Attributes = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
+
 	// Descriptors is the path to the descriptors used to configure the virtual
 	// USB scanner.
 	Descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
+
 	// EsclCapabilities is the path to the capabilities used to configure the
 	// virtual USB scanner.
 	EsclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
@@ -304,6 +303,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
+	s.Logf("Started virtual printer: %s", printer.VisibleName)
 	defer func(ctx context.Context) {
 		if err := printer.Stop(ctx); err != nil {
 			s.Error("Failed to stop printer: ", err)
@@ -315,7 +315,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	if err = cups.RestartPrintingSystem(ctx); err != nil {
 		s.Fatal("Failed to restart printing system: ", err)
 	}
-	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(ScannerName)); err != nil {
+	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(printer.VisibleName)); err != nil {
 		s.Fatal("Failed to wait for printer notification: ", err)
 	}
 	if err = ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
@@ -333,6 +333,8 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	}
 
 	for _, test := range testParams {
+		settings := test.Settings
+		settings.Scanner = printer.VisibleName
 		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+test.Name)
 			defer func() {
@@ -347,7 +349,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 			}
 
 			if err := uiauto.Combine("scan",
-				app.SetScanSettings(test.Settings),
+				app.SetScanSettings(settings),
 				app.Scan(),
 				app.ClickDone(),
 			)(ctx); err != nil {

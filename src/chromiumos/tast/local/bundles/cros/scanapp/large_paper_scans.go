@@ -53,7 +53,6 @@ var testSetups = []scanning.TestingStruct{
 	{
 		Name: "paper_size_a3",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePNG,
 			ColorMode:  scanapp.ColorModeColor,
@@ -64,7 +63,6 @@ var testSetups = []scanning.TestingStruct{
 	}, {
 		Name: "paper_size_a4",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePNG,
 			ColorMode:  scanapp.ColorModeColor,
@@ -75,7 +73,6 @@ var testSetups = []scanning.TestingStruct{
 	}, {
 		Name: "paper_size_b4",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePNG,
 			ColorMode:  scanapp.ColorModeColor,
@@ -86,7 +83,6 @@ var testSetups = []scanning.TestingStruct{
 	}, {
 		Name: "paper_size_legal",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePNG,
 			ColorMode:  scanapp.ColorModeColor,
@@ -97,7 +93,6 @@ var testSetups = []scanning.TestingStruct{
 	}, {
 		Name: "paper_size_letter",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePNG,
 			ColorMode:  scanapp.ColorModeColor,
@@ -108,7 +103,6 @@ var testSetups = []scanning.TestingStruct{
 	}, {
 		Name: "paper_size_tabloid",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePNG,
 			ColorMode:  scanapp.ColorModeColor,
