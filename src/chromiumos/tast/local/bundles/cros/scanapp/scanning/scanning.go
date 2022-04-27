@@ -44,6 +44,10 @@ const (
 	// USB scanner.
 	Descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
 
+	// FlipTestDescriptors is the path to the descriptors used to configure the virtual
+	// USB scanner.
+	FlipTestDescriptors = "/usr/local/etc/virtual-usb-printer/ippusb_backflip_printer.json"
+
 	// EsclCapabilities is the path to the capabilities used to configure the
 	// virtual USB scanner.
 	EsclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"

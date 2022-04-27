@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/scanapp/adf_duplex_pdf_color_letter_100_dpi_20220427.pdf",
+  "size": 24870,
+  "sha256sum": "b63cdb83cdb166948f0d131010d6fee09050c0448bbf0414d85e9994e97ac256"
+}
