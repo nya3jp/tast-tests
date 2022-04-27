@@ -936,12 +936,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			info := infoByName[hist.Name]
+			var expectedCount int64
+			if info.outbound {
+				expectedCount = 1
+			} else {
+				expectedCount = int64(meet.num)
+			}
+			if count != expectedCount {
+				s.Errorf("Unexpected sample count on %s: got %d; expected %d", hist.Name, count, expectedCount)
+				continue
+			}
+
 			total := float64(hist.Sum)
 			if info.outbound {
-				if count != 1 {
-					s.Errorf("Unexpected sample count on %s: got %d; expected 1", hist.Name, count)
-					continue
-				}
 				pv.Set(perf.Metric{
 					Name:      hist.Name,
 					Unit:      info.unit,
