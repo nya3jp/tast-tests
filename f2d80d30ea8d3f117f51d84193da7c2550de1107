@@ -34,6 +34,24 @@
       "parentUuid": "d456a72a_c2ed21b0",
       "revId": "f2d80d30ea8d3f117f51d84193da7c2550de1107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94aac3df_2d4537ea",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-04-27T01:47:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a161c2d_94acbbaf",
+      "revId": "f2d80d30ea8d3f117f51d84193da7c2550de1107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
