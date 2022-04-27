@@ -46,6 +46,30 @@
       },
       "revId": "a80a51584bc3187d5223878cb9ab5a60a7d372e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da70314d_4f5c0f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T23:46:39Z",
+      "side": 0,
+      "message": "nit: you might want to update the commit message to mention this as well.",
+      "parentUuid": "81fb3dc2_ae4bed54",
+      "range": {
+        "startLine": 85,
+        "startChar": 25,
+        "endLine": 85,
+        "endChar": 62
+      },
+      "revId": "a80a51584bc3187d5223878cb9ab5a60a7d372e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
