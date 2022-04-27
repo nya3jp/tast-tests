@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8fdc5a0_c98baf37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-27T21:34:01Z",
+      "side": 1,
+      "message": "Please wait for team member review for technical content review.",
+      "revId": "d7f31a11c064d83e993ab7598832e60ef6715083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ea0765_2c834b8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-27T21:34:01Z",
+      "side": 1,
+      "message": "Optional: this feels a bit too low level for this location.  Can you break it into a helper function which returns an enum or state struct to make the high level logic of this poll more clear?",
+      "revId": "d7f31a11c064d83e993ab7598832e60ef6715083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
