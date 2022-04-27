@@ -93,6 +93,30 @@
       },
       "revId": "f50d422bb40cb08f33dd9805adb8daaab8b3d725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7ae9fd3_b9c25eea",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-04-27T08:54:51Z",
+      "side": 1,
+      "message": "Of course it should be `nami_fp`. Copy\u0026paste mistake.",
+      "parentUuid": "65d2e41e_eca94dec",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 60
+      },
+      "revId": "f50d422bb40cb08f33dd9805adb8daaab8b3d725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
