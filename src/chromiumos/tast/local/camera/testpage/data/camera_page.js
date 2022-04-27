@@ -17,11 +17,22 @@ window.Tast = {
    * @return {!Promise<!TrackState>}
    */
   async startStream() {
-    const stream = await navigator.mediaDevices.getUserMedia({
+    return Tast.startStreamWithConstraints({
       audio: false,
       video: true,
     });
+  },
 
+  /**
+   * Starts a camera stream and returns a TrackState object to track the
+   * stream status.
+   * @param {Object} constraints
+   * @return {!Promise<!TrackState>}
+   */
+  async startStreamWithConstraints(constraints) {
+    console.log(
+        "getUserMedia with constraints: " + JSON.stringify(constraints));
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
     const video = document.querySelector('video');
     video.srcObject = stream;
 
