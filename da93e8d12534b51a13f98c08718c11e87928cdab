@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5001dea3_ddf6a330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-27T02:40:14Z",
+      "side": 1,
+      "message": "Thanks, rebased.",
+      "parentUuid": "66a71466_2aab978c",
+      "revId": "da93e8d12534b51a13f98c08718c11e87928cdab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "267207be_1d68deab",
