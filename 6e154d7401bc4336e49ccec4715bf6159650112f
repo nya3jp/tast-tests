@@ -22,6 +22,30 @@
       },
       "revId": "6e154d7401bc4336e49ccec4715bf6159650112f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22622b65_266f5bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosh/display_debug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-04-27T19:20:03Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll send up a new CL. Note that this is what gofmt emitted. I wonder if there are any settings for gofmt that would have it prefer splitting this out onto lines, rather than how it is.",
+      "parentUuid": "3245b0a2_42716bf6",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 108
+      },
+      "revId": "6e154d7401bc4336e49ccec4715bf6159650112f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
