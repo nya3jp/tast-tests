@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2abcfb2c_ef400536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:54:31Z",
+      "side": 1,
+      "message": "comments should end with a full stop (period) `.`\n\nPlease also check others.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fff496f_e98ff257",
         "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
         "patchSetId": 1
@@ -14,6 +37,70 @@
       "writtenOn": "2022-04-26T09:17:01Z",
       "side": 1,
       "message": "Will this restart the Chrome UI if it was already in this mode?\n\nMaybe it would be better to rename this function to StartUIWithCustomScreenPrivacySetting?",
+      "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2325dd4_aa7506c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:54:31Z",
+      "side": 1,
+      "message": "yes, `New` restarts the UI. Maybe `RestartXXXX`.",
+      "parentUuid": "7fff496f_e98ff257",
+      "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce6beb7_2b8bf4be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:54:31Z",
+      "side": 1,
+      "message": "this err should be handled.",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 8
+      },
+      "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d343a3_3c1cd699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:54:31Z",
+      "side": 1,
+      "message": "you don\u0027t need to check this",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 2
+      },
       "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +135,52 @@
       "writtenOn": "2022-04-26T09:17:01Z",
       "side": 1,
       "message": "How long does it take to change the setting?",
+      "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb1c87c_f0c01323",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:54:31Z",
+      "side": 1,
+      "message": "Documentation needed for every service, field and method. see https://google.aip.dev/192\n\nAlso, \"the first sentence of each comment should omit the subject and be in the third-person present tense\".",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7abcae58_86be0ddf",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:54:31Z",
+      "side": 1,
+      "message": "`ChangeSettingsRequest`",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 41
+      },
       "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
