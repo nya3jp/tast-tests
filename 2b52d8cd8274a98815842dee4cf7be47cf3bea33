@@ -1,0 +1,302 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "496ed2ac_5209b5e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cff4df0_0b17e88b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/update_engine_features.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "clar: do you plan to add more parameterized test variations soon?",
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e956f5dc_3cd288cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/update_engine_features.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "I think fixture should fit the use case, more?\nYou can then inline the most of test main code here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 1
+      },
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb06f773_dced7b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateengine/consumer_auto_update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "in case of error, maybe testing.BreakPoll()",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92881772_e57c7d3d",
+        "filename": "src/chromiumos/tast/local/updateengine/feature.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "you can use string\n\ntype Feature string\n\nso map won\u0027t needed.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bafd0ab_ccccb3ad",
+        "filename": "src/chromiumos/tast/local/updateengine/oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "\u003e \"releated\" is a possible misspelling of \"related\".\n\nPlease fix.",
+      "parentUuid": "54b770c0_a33dd13b",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838534a2_538c12eb",
+        "filename": "src/chromiumos/tast/local/updateengine/oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "could you add document for each?",
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb08860b_26bb85f6",
+        "filename": "src/chromiumos/tast/local/updateengine/oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "could you close the file?",
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faadedc1_64f53a02",
+        "filename": "src/chromiumos/tast/local/updateengine/oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "optional: do you want to check if ENOENT here?",
+      "range": {
+        "startLine": 32,
+        "startChar": 41,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44b8741_ae48c965",
+        "filename": "src/chromiumos/tast/local/updateengine/prefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "could you describe the comments for each?",
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c2227e_59178afe",
+        "filename": "src/chromiumos/tast/local/updateengine/prefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "could you document prefPath is relative to prefsDir?",
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1706e4b_a063e841",
+        "filename": "src/chromiumos/tast/local/updateengine/prefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "clar: what do you want to check by this condition...? prefPath must be two or more components?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35ba128_dd0543ba",
+        "filename": "src/chromiumos/tast/local/updateengine/prefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "ditto for ENOENT check?",
+      "range": {
+        "startLine": 42,
+        "startChar": 35,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b5859d_693d6b42",
+        "filename": "src/chromiumos/tast/local/updateengine/prefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "should we resume daemon on failure?",
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe9c5f3_6f0d7711",
+        "filename": "src/chromiumos/tast/local/updateengine/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-27T09:26:53Z",
+      "side": 1,
+      "message": "nit/style: could you move this to L78?",
+      "revId": "2b52d8cd8274a98815842dee4cf7be47cf3bea33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
