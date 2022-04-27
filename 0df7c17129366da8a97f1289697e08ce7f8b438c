@@ -104,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "185c35e3_5873c498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-27T10:20:38Z",
+      "side": 1,
+      "message": "Sorry misunderstood.",
+      "parentUuid": "f2966396_9757bbf1",
+      "revId": "0df7c17129366da8a97f1289697e08ce7f8b438c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b169a924_6cd2371f",
