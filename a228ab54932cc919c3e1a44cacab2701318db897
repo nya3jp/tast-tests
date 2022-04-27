@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ff1cacd_54c5814f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-04-27T16:39:16Z",
+      "side": 1,
+      "message": "Can we get a wifi reviewer before submitting?\n\nI have added cros-wifi reviews",
+      "revId": "a228ab54932cc919c3e1a44cacab2701318db897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
