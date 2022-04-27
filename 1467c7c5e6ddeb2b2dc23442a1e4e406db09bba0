@@ -88,6 +88,24 @@
       "parentUuid": "d27bcfd2_a3f4a6bd",
       "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c912a6_eedf1a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308772
+      },
+      "writtenOn": "2022-04-27T18:12:19Z",
+      "side": 1,
+      "message": "I am not sure I understand that logic. Querying the UCM directly is deterministic, and if it says it has a headphone then the headphone should pass, otherwise it will operated controls that don\u0027t exist and fail.",
+      "parentUuid": "3b49934c_43148514",
+      "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
