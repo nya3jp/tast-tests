@@ -71,7 +71,7 @@ func FwmpDevDisableBoot(ctx context.Context, s *testing.State) {
 
 	// When dev mode is disabled by FWMP, DUT is expected to boot into normal mode.
 	var opts []firmware.ModeSwitchOption
-	opts = append(opts, firmware.SkipModeCheckAfterReboot, firmware.PressEnterAtToNorm)
+	opts = append(opts, firmware.SkipModeCheckAfterReboot)
 	if err := ms.ModeAwareReboot(ctx, firmware.ColdReset, opts...); err != nil {
 		s.Fatal("Unexpected error occurred while attempting to boot DUT: ", err)
 	}
