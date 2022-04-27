@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd37cf4b_b72bdc11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-04-27T23:02:38Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t quite understand the relationship with udev_collector.cc.\n\nMy point is generic: KernelIwlwifiError should do the cleanup after itself since it modifies the state of the DUT, instead of relying on potentially all other tests to do the cleanup",
+      "parentUuid": "56593f5c_fffd1046",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "116e0f62_9f1246d8",
