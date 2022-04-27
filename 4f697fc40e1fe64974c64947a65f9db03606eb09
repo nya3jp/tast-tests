@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9b82a9_0287c16d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-27T11:02:24Z",
+      "side": 1,
+      "message": "tast run DUT kiosk.SecondaryAppInstalled",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "4f697fc40e1fe64974c64947a65f9db03606eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9709eb93_136021f1",
@@ -14,6 +37,52 @@
       "writtenOn": "2022-04-27T10:21:18Z",
       "side": 1,
       "message": "Hi all,\n\nAs I mentioned connecting to a Kiosk app currently launching results in blank screen. What I did here is to sleep for 3 seconds. I could not figure out a better way of doing this. Please take a look!",
+      "revId": "4f697fc40e1fe64974c64947a65f9db03606eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e71f95_78e21643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/secondary_apps_installed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-27T11:02:24Z",
+      "side": 1,
+      "message": "Do we have an explicit need to check whether functionality works when Kiosk:\n1. auto starts\n2. is started from UI\n?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 71
+      },
+      "revId": "4f697fc40e1fe64974c64947a65f9db03606eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a9c108_6567e4ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/secondary_apps_installed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-27T11:02:24Z",
+      "side": 1,
+      "message": "Yeah, I have experienced that too.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
       "revId": "4f697fc40e1fe64974c64947a65f9db03606eb09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
