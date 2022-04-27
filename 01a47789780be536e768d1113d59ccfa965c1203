@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "878869b4_ce9465ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-27T20:52:26Z",
+      "side": 1,
+      "message": "Done. Yes, we should add WaitUntilExists here.",
+      "parentUuid": "d5c5c250_9c6132ec",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "01a47789780be536e768d1113d59ccfa965c1203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ea2c270_9ac0f473",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b00a2b38_12baf063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-27T20:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea2c270_9ac0f473",
+      "revId": "01a47789780be536e768d1113d59ccfa965c1203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "163bf7d7_24de5317",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-04-27T19:50:40Z",
       "side": 1,
       "message": "google profile avatar is not selected",
+      "revId": "01a47789780be536e768d1113d59ccfa965c1203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed97c43_c4630d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-27T20:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "163bf7d7_24de5317",
       "revId": "01a47789780be536e768d1113d59ccfa965c1203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
