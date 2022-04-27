@@ -75,7 +75,7 @@ const (
 	kioskStartingLog = "Starting kiosk mode"
 	// kioskLaunchSucceededLog is reported by chrome once the kiosk launch is succeeded.
 	kioskLaunchSucceededLog = "Kiosk launch succeeded"
-	// kioskClosingSplashScreenLog is reported by chtome once the splash screen is gone.
+	// kioskClosingSplashScreenLog is reported by chrome once the splash screen is gone.
 	kioskClosingSplashScreenLog = "App window created, closing splash screen."
 )
 
@@ -154,6 +154,19 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 		return errors.Wrap(err, "failed to verify successful launch of Kiosk mode")
 	}
 
+	return nil
+}
+
+// DisableAutoLaunch disables auto launch by serving a new policy. After Chrome
+// is restarted with RestartChromeWithOptions it will stay on login screen.
+func (k *Kiosk) DisableAutoLaunch(ctx context.Context) error {
+	var policies []policy.Policy
+	policies = append(policies, k.localAccounts)
+	testing.ContextLog(ctx, "Serving new policy to disable auto launch")
+	if err := policyutil.ServeAndRefresh(ctx, k.fdms, k.cr, policies); err != nil {
+		testing.ContextLog(ctx, "Could not serve and refresh policies: ", err)
+		return errors.Wrap(err, "could not clear policies")
+	}
 	return nil
 }
 
