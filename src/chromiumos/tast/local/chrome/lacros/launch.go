@@ -6,6 +6,7 @@ package lacros
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
 
 	"chromiumos/tast/errors"
@@ -91,7 +92,11 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*Lacros, error) {
 
 	testing.ContextLog(ctx, "Wait for Lacros window")
 	if err := WaitForLacrosWindow(ctx, tconn, ""); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for lacros")
+		msg := "failed to wait for lacros"
+		if info, _ := InfoSnapshot(ctx, tconn); info != nil {
+			msg = fmt.Sprintf("%s to be launched from %s", msg, info.LacrosPath)
+		}
+		return nil, errors.Wrap(err, msg)
 	}
 
 	l, err := Connect(ctx, tconn)

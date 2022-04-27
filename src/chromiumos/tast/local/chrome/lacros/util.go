@@ -78,7 +78,7 @@ type Info struct {
 	Running bool `json:"isRunning"`
 	// Contains the path to the lacros directory - this is where lacros will be
 	// executed from. Note that this may change over time if omaha is used (even
-	// during a test). This also may be empty is lacros is not running.
+	// during a test). This also may be empty if lacros is not running.
 	LacrosPath string `json:"lacrosPath"`
 }
 
