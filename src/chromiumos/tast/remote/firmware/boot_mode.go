@@ -75,9 +75,6 @@ const (
 	// boot mode check after resetting DUT. One instance where this can be useful is
 	// when verifying that FWMP prevents DUT from booting into dev mode.
 	SkipModeCheckAfterReboot ModeSwitchOption = iota
-
-	// PressEnterAtToNorm presses ENTER to allow DUT to continue to boot when dev mode disabled by FWMP.
-	PressEnterAtToNorm ModeSwitchOption = iota
 )
 
 // msOptsContain determines whether a slice of ModeSwitchOptions contains a specific Option.
@@ -626,43 +623,27 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, hasSerialAP bool,
 		if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
 			testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
 		}
-		pressingKeyTillConnected := func(key string, connectTimeout time.Duration) error {
-			testing.ContextLogf(ctx, "Pressing %s", key)
-			switch key {
-			case "CTRL-D":
-				if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlD, servo.DurTab); err != nil {
-					return err
-				}
-			case "ENTER":
-				if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
-					return err
-				}
+		// Keep pressing CTRL-D + ENTER until connected, but wait a little longer for the connect each time.
+		connectTimeout := 2 * time.Second
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			testing.ContextLog(ctx, "Pressing CTRL-D")
+			if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlD, servo.DurTab); err != nil {
+				return err
+			}
+			testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
+			if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+				return err
+			}
+			testing.ContextLog(ctx, "Pressing enter key")
+			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+				return err
 			}
 			ctx, cancel := context.WithTimeout(ctx, connectTimeout)
 			defer cancel()
 			connectTimeout += time.Second
 			return h.DUT.WaitConnect(ctx)
-		}
-		connectTimeout := 2 * time.Second
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			// Keep pressing CTRL-D until connected, but wait a little longer for the connect each time.
-			if err := pressingKeyTillConnected("CTRL-D", connectTimeout); err != nil {
-				return err
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil && !msOptsContain(opts, PressEnterAtToNorm) {
+		}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT")
-		} else if err != nil && msOptsContain(opts, PressEnterAtToNorm) {
-			// DUTs would boot into the to_norm screen if dev mode was disabled by FWMP.
-			// Keep pressing ENTER to bypass the to_norm screen, until connection is established.
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				if err := pressingKeyTillConnected("ENTER", connectTimeout); err != nil {
-					return err
-				}
-				return nil
-			}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
-				return errors.Wrap(err, "failed to reconnect to DUT")
-			}
 		}
 	case TabletDetachableSwitcher:
 		// 1. Wait [FirmwareScreen] seconds for the INSERT screen to appear.
