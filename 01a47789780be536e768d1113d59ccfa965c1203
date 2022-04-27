@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9dd060_c43d28e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-27T19:50:40Z",
+      "side": 1,
+      "message": "lgtm %comments",
+      "revId": "01a47789780be536e768d1113d59ccfa965c1203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea2c270_9ac0f473",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-27T19:50:40Z",
+      "side": 1,
+      "message": "should change to different variable name (Eg: selectedAvatarOption...)",
+      "revId": "01a47789780be536e768d1113d59ccfa965c1203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163bf7d7_24de5317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-27T19:50:40Z",
+      "side": 1,
+      "message": "google profile avatar is not selected",
+      "revId": "01a47789780be536e768d1113d59ccfa965c1203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
