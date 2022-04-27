@@ -273,6 +273,10 @@ func (c *Config) EnableWallpaperSWA() bool { return c.m.EnableWallpaperSWA }
 // UseSandboxGaia returns true if the sandbox instance of Gaia should be used.
 func (c *Config) UseSandboxGaia() bool { return c.m.UseSandboxGaia }
 
+// TestExtOAuthClientID returns the OAuth Client ID to use in the test extension
+// if one was provided.
+func (c *Config) TestExtOAuthClientID() string { return c.m.TestExtOAuthClientID }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -327,6 +331,7 @@ type MutableConfig struct {
 	EnableFilesAppSWA               bool       `reuse_match:"true"`
 	EnableWallpaperSWA              bool       `reuse_match:"true"`
 	UseSandboxGaia                  bool       `reuse_match:"true"`
+	TestExtOAuthClientID            string     `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
