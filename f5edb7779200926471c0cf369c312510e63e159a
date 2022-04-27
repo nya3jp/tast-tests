@@ -50,6 +50,24 @@
       "message": "could you not keep unused import?",
       "revId": "f5edb7779200926471c0cf369c312510e63e159a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2522f2ab_3bd513d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-04-27T06:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fecc4666_d2c3a109",
+      "revId": "f5edb7779200926471c0cf369c312510e63e159a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
