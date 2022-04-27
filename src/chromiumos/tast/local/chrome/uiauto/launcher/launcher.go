@@ -47,6 +47,9 @@ var UnnamedFolderFinder = nodewith.Name("Folder Unnamed").ClassName(ExpandedItem
 // SearchResultListItemFinder is the finder of the list items in launcher search result.
 var SearchResultListItemFinder = nodewith.ClassName("ui/app_list/SearchResultView")
 
+// SearchResultListViewFinder is the finder of the list views in launcher search result.
+var SearchResultListViewFinder = nodewith.ClassName("SearchResultListView")
+
 // TestCase describes modes in which the launcher UI can be shown, and by which launcher test should generally be parameterized.
 type TestCase struct {
 	ProductivityLauncher bool // Whether productivity launcher feature should be enabled
