@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3989145b_49b9f764",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-27T10:49:49Z",
+      "side": 1,
+      "message": "Tast LGTM, but please wait Jason LGTM. Thanks!",
+      "revId": "443588082540795b8eafbee5bfcf876b9c606c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828ca24b_9a4a9c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/terminal/ssh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-27T10:49:49Z",
+      "side": 1,
+      "message": "nit: use `:\u003d` instead of `\u003d`",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "443588082540795b8eafbee5bfcf876b9c606c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
