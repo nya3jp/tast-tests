@@ -16,6 +16,23 @@
       "message": "Renato, please review this one too!\n\nBecause of the rename the diff seems big :( You could start from the line 145 - this is where I added login and onboarding steps",
       "revId": "fe991713d807cb253fa41d182a29025ff0256fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd4d8f2_0635acf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-04-27T17:06:29Z",
+      "side": 1,
+      "message": "lgtm. Should ARC tos be there too?",
+      "revId": "fe991713d807cb253fa41d182a29025ff0256fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
