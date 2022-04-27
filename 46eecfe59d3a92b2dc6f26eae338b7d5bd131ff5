@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5de44d_ac3e3abb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-27T14:56:42Z",
+      "side": 1,
+      "message": "I was thinking something like\n\n```\nfunc (h *Helper) SetupCellularInterfaceForTesting(ctx context.Context, testBody func(ctx context.Context) error) error {\n  // check for service...\n  // set up shortened ctx...\n\n  // Disable Ethernet and/or WiFi if present and defer re-enabling.\n  if enableFunc, err :\u003d h.Manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet); err !\u003d nil {\n    return errors.Wrap(err, \"unable to disable Ethernet\")\n  } else if enableFunc !\u003d nil {\n    defer enableFunc(cleanupCtx)\n  }\n\n  // do the same for wifi...\n\n  return testBody(ctx)\n}\n```\n\nin order to keep the return values from getting too complicated, and in order to make it impossible for users to forget to defer the cleanup functions. But this works as well.",
+      "revId": "46eecfe59d3a92b2dc6f26eae338b7d5bd131ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
