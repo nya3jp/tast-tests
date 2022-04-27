@@ -46,6 +46,30 @@
       },
       "revId": "271aca200d8540d26916b1f5fecad4e9eead9045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0972a943_35d0a04f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-04-27T04:43:44Z",
+      "side": 0,
+      "message": "But looks like there are some flakiness happening on betty-pi-arc.\nhttps://b.corp.google.com/issues/230554717\nDid you have any idea about it?",
+      "parentUuid": "ddde9d35_f910c6a2",
+      "range": {
+        "startLine": 52,
+        "startChar": 62,
+        "endLine": 52,
+        "endChar": 79
+      },
+      "revId": "271aca200d8540d26916b1f5fecad4e9eead9045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
