@@ -46,7 +46,6 @@ func init() {
 }
 
 var settings = scanapp.ScanSettings{
-	Scanner:    scanning.ScannerName,
 	Source:     scanapp.SourceFlatbed,
 	FileType:   scanapp.FileTypePNG,
 	ColorMode:  scanapp.ColorModeColor,
@@ -93,7 +92,7 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 	if err = cups.RestartPrintingSystem(ctx); err != nil {
 		s.Fatal("Failed to reset printing system: ", err)
 	}
-	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(scanning.ScannerName)); err != nil {
+	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(printer.VisibleName)); err != nil {
 		s.Fatal("Failed to wait for printer notification: ", err)
 	}
 	if err = ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
@@ -124,9 +123,11 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close notifications: ", err)
 	}
 
+	scanSettings := settings
+	scanSettings.Scanner = printer.VisibleName
 	if err := uiauto.Combine("scan",
 		app.ClickMoreSettings(),
-		app.SetScanSettings(settings),
+		app.SetScanSettings(scanSettings),
 		app.Scan(),
 		app.ClickMyFilesLink(),
 	)(ctx); err != nil {

@@ -159,6 +159,11 @@ type Printer struct {
 	// Whether or not Stop() should propagate an error if
 	// no udev event is observed on stoppage.
 	expectUdevEventOnStop bool
+
+	// The human-readable printer name as it would be displayed
+	// in the UI.  This is parsed from its USB descriptors, e.g.
+	// "DavieV Virtual USB Printer (USB)".
+	VisibleName string
 }
 
 func ippUSBPrinterURI(devInfo DevInfo) string {
@@ -168,10 +173,10 @@ func ippUSBPrinterURI(devInfo DevInfo) string {
 // loadPrinterIDs loads the JSON file located at path and attempts to extract
 // the "vid" and "pid" from the USB device descriptor which should be defined
 // in path.
-func loadPrinterIDs(path string) (devInfo DevInfo, err error) {
+func loadPrinterIDs(path string) (devInfo DevInfo, deviceName string, err error) {
 	f, err := os.Open(path)
 	if err != nil {
-		return devInfo, errors.Wrapf(err, "failed to open %s", path)
+		return devInfo, "", errors.Wrapf(err, "failed to open %s", path)
 	}
 	defer f.Close()
 
@@ -180,13 +185,15 @@ func loadPrinterIDs(path string) (devInfo DevInfo, err error) {
 			Vendor  int `json:"idVendor"`
 			Product int `json:"idProduct"`
 		} `json:"device_descriptor"`
+		VendorModel []string `json:"string_descriptors"`
 	}
 
 	if err := json.NewDecoder(f).Decode(&cfg); err != nil {
-		return devInfo, errors.Wrapf(err, "failed to decode JSON in %s", path)
+		return devInfo, "", errors.Wrapf(err, "failed to decode JSON in %s", path)
 	}
 
-	return DevInfo{fmt.Sprintf("%04x", cfg.DevDesc.Vendor), fmt.Sprintf("%04x", cfg.DevDesc.Product)}, nil
+	deviceName = fmt.Sprintf("%s %s (USB)", cfg.VendorModel[0], cfg.VendorModel[1])
+	return DevInfo{fmt.Sprintf("%04x", cfg.DevDesc.Vendor), fmt.Sprintf("%04x", cfg.DevDesc.Product)}, deviceName, nil
 }
 
 // absoluteConfigPath returns configPath untouched if it is absolute.
@@ -253,7 +260,7 @@ func Start(ctx context.Context, opts ...Option) (pr *Printer, err error) {
 		return nil, errors.New("missing required WithDescriptors() option")
 	}
 
-	devInfo, err := loadPrinterIDs(op.descriptors)
+	devInfo, deviceName, err := loadPrinterIDs(op.descriptors)
 	if err != nil {
 		return nil, err
 	}
@@ -292,6 +299,7 @@ func Start(ctx context.Context, opts ...Option) (pr *Printer, err error) {
 		DevInfo:               devInfo,
 		cmd:                   cmd,
 		expectUdevEventOnStop: op.expectUdevEventOnStop,
+		VisibleName:           deviceName,
 	}, nil
 }
 

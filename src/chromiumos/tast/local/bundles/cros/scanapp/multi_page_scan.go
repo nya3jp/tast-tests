@@ -116,7 +116,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 	if err := cups.RestartPrintingSystem(ctx); err != nil {
 		s.Fatal("Failed to restart printing system: ", err)
 	}
-	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(scanning.ScannerName)); err != nil {
+	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(printer.VisibleName)); err != nil {
 		s.Fatal("Failed to wait for printer notification: ", err)
 	}
 	if err := ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
@@ -135,7 +135,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("set scan settings",
 		app.SetScanSettings(scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
+			Scanner:    printer.VisibleName,
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePDF,
 			ColorMode:  scanapp.ColorModeColor,
