@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -74,7 +73,7 @@ type runResources struct {
 }
 
 // Run runs the EverydayMultitaskingCUJ test.
-func Run(ctx context.Context, cr *chrome.Chrome, lFixtVal lacrosfixt.FixtValue, a *arc.ARC, params *RunParams) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, params *RunParams) (retErr error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -143,7 +142,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, lFixtVal lacrosfixt.FixtValue, 
 	defer uiHandler.Close()
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, params.tabletMode, lFixtVal != nil)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, params.tabletMode, bt)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
@@ -152,7 +151,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, lFixtVal lacrosfixt.FixtValue, 
 	}
 	br := cr.Browser()
 	tconns := []*chrome.TestConn{tconn}
-	if lFixtVal != nil {
+	if l != nil {
 		br = l.Browser()
 		bTconn, err := l.TestAPIConn(ctx)
 		if err != nil {

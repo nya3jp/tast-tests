@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
@@ -112,15 +113,11 @@ func chromeArgsWithFileCameraInput(fileName string) []string {
 
 // newConferenceChrome returns a new Chrome instance with custom options for confernce cuj,
 // including setting whether to use fake camera and lacros browser.
-func newConferenceChrome(ctx context.Context, accountPool, cameraVideoPath string, isLacros bool) (cr *chrome.Chrome, err error) {
+func newConferenceChrome(ctx context.Context, accountPool, cameraVideoPath string, bt browser.Type) (cr *chrome.Chrome, err error) {
 	opts := confereceChromeOpts(accountPool, cameraVideoPath)
-	if isLacros {
-		opts = append(opts, chrome.LacrosExtraArgs("--enable-features=WebUITabStrip")) // Enable TabStrip UI for lacros.
-		cfg := &lacrosfixt.Config{}
-		lacrosfixt.Selection(lacros.Rootfs)(cfg)
-		lacrosfixt.Mode(lacros.LacrosPrimary)(cfg)
-		lacrosfixt.KeepAlive(false)(cfg)
-		lacrosOpts, err := cfg.Opts()
+	if bt == browser.TypeLacros {
+		lacrosOpts, err := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary),
+			lacrosfixt.ChromeOptions(chrome.LacrosEnableFeatures("WebUITabStrip"))).Opts()
 		if err != nil {
 			return cr, err
 		}
@@ -158,8 +155,11 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		if !ok {
 			return errors.New("failed to get variable ui.cujAccountPool")
 		}
-		isLacros := req.IsLacros
-		cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, isLacros)
+		bt := browser.TypeAsh
+		if req.IsLacros {
+			bt = browser.TypeLacros
+		}
+		cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, bt)
 		if err != nil {
 			return errors.Wrap(err, "failed to new Chrome")
 		}
@@ -238,13 +238,13 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 		// Creates a Google Meet conference instance which implements conference.Conference methods
 		// which provides conference operations.
-		gmcli := conference.NewGoogleMeetConference(cr, tconn, kb, uiHandler, tabletMode, req.ExtendedDisplay, isLacros, int(req.RoomSize), meet.Account, meet.Password, outDir)
+		gmcli := conference.NewGoogleMeetConference(cr, tconn, kb, uiHandler, tabletMode, req.ExtendedDisplay, bt, int(req.RoomSize), meet.Account, meet.Password, outDir)
 		defer gmcli.End(cleanupCtx)
 		// Shorten context a bit to allow for cleanup if Run fails.
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 		defer cancel()
 
-		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, isLacros, roomSize); err != nil {
+		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, bt, roomSize); err != nil {
 			return errors.Wrap(err, "failed to run Google Meet conference")
 		}
 		return nil
@@ -413,8 +413,11 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 
 	testing.ContextLog(ctx, "Start zoom meet scenario")
-	isLacros := req.IsLacros
-	cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, isLacros)
+	bt := browser.TypeAsh
+	if req.IsLacros {
+		bt = browser.TypeLacros
+	}
+	cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, bt)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to new Chrome")
 	}
@@ -515,7 +518,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
-	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, isLacros, int(req.RoomSize)); err != nil {
+	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, bt, int(req.RoomSize)); err != nil {
 		return nil, errors.Wrap(err, "failed to run Zoom conference")
 	}
 

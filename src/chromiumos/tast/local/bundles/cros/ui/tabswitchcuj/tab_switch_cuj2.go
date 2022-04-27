@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -425,7 +424,7 @@ func closeAllTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 // Run2 runs the TabSwitchCUJ test. It is invoked by TabSwitchCujRecorder2 to
 // record web contents via WPR and invoked by TabSwitchCUJ2 to execute the tests
 // from the recorded contents. Additional actions will be executed in each tab.
-func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Level, isTablet bool, lFixtVal lacrosfixt.FixtValue) {
+func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Level, isTablet bool, bt browser.Type) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API, error: ", err)
@@ -476,7 +475,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 
 	timeTabsOpenStart := time.Now()
 	// Launch browser and track the elapsed time.
-	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, isTablet, lFixtVal != nil)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, isTablet, bt)
 	if err != nil {
 		s.Fatal("Failed to launch Chrome: ", err)
 	}
@@ -486,7 +485,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	s.Log("Browser start ms: ", browserStartTime)
 	br := cr.Browser()
 	tconns := []*chrome.TestConn{tconn}
-	if lFixtVal != nil {
+	if l != nil {
 		br = l.Browser()
 		bTconn, err := l.TestAPIConn(ctx)
 		if err != nil {
