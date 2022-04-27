@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b45861_5834414b",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-27T17:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb2ef121_2779c5d8",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5335000d_9941c583",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "Now that I took a look at your script, you simply continue; I\u0027ll modify this to do the same.\n\nAs for how often it happens, I wasn\u0027t able to find any literature on that. I\u0027ve not encountered it in testing either, but I included as a check because you and others did the same.",
       "parentUuid": "85663998_aff3e197",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 3
+      },
+      "revId": "837d40a2cf0641b5cfaf8cedd04a60052a01c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c0190e4_c8106d09",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-27T17:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcc6bda7_02859365",
       "range": {
         "startLine": 155,
         "startChar": 0,
