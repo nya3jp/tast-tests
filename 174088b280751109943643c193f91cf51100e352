@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "044b6532_46e675f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-27T22:50:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1eccf519_bec51231",
+      "range": {
+        "startLine": 65,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "174088b280751109943643c193f91cf51100e352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9d2c106_74d1d67e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-27T22:26:28Z",
       "side": 1,
       "message": "Given the current logic, we will never do anything with the error \"errors.New(\"Waiting crash_reporter to finish\")\" in line 81. In case crash_reporter didn\u0027t finish, we would silently exit without ever indicating that we were waiting for crash_reporter to finish.\n\nShouldn\u0027t we at least log wrap the error in the case timeout (it will only be logged once) especially since the log message in line 74 prompts the user of a subroutine to wait?",
+      "range": {
+        "startLine": 82,
+        "startChar": 78,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "174088b280751109943643c193f91cf51100e352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aecc72b_5bbc42c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-27T22:50:26Z",
+      "side": 1,
+      "message": "In most of case of running two tests in tandem, crash_reported won\u0027t finish within 30s. The 30s timer is heuristic for safety concern, which means the deadline exceeded events are expected in wifi_matfunc scenario. So that I would like to clear the devcoredump even if the file is still there when the timer expires.\n\n\u003e return errors.New(\"Waiting crash_reporter to finish\")\nThis line of code is supposed to keep the poll loop running until expiration. The poll immediately ends when the inner function returns nil. The message \"Waiting crash_reporter to finish\" won\u0027t print in logs.",
+      "parentUuid": "b9d2c106_74d1d67e",
       "range": {
         "startLine": 82,
         "startChar": 78,
