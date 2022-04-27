@@ -50,6 +50,91 @@
       "message": "Sorry I am currently unavailable. Reassigining to tast-owners again to get another reviewer.",
       "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d733ccf_47182499",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-27T21:29:41Z",
+      "side": 1,
+      "message": "optional nit: probably doesn\u0027t apply to sysfs, but in general stat before read is an antipattern due to the fact that the file can be deleted in between.  In particular, this Stat doesn\u0027t seem to actually be necessary at all.",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb17924_8c619e9c",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-27T21:29:41Z",
+      "side": 1,
+      "message": "This opened file is not actually used?",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44547361_5ab611e8",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-27T21:29:41Z",
+      "side": 1,
+      "message": "This is confusing, you should probably break the file read into a helper function and just call it twice rather than trying to do a loop with a conditional sleep here.",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e770bf44_fd78b839",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-27T21:29:41Z",
+      "side": 1,
+      "message": "shadows the previous f variable",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea9ab96_716f0f0d",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-27T21:29:41Z",
+      "side": 1,
+      "message": "Sleep is generally avoided in tests due to flakiness concerns.  Is there ay other way you can work out when the second sampling should be done?",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
