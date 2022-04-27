@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/remote/firmware/rpm"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -310,7 +311,7 @@ func (h *Helper) CloseRPCConnection(ctx context.Context) error {
 	}()
 	if h.RPCClient != nil {
 		testing.ContextLog(ctx, "Closing RPCClient connection")
-		if err := h.RPCClient.Close(ctx); err != nil {
+		if err := h.RPCClient.Close(ctx, ssh.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "closing rpc client")
 		}
 	}
