@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "239b46e8_951a08da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-27T23:41:03Z",
+      "side": 1,
+      "message": "Does this fail the test?",
+      "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d3369d_5b8723c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-27T23:41:03Z",
+      "side": 1,
+      "message": "Does this work on lacros as well?",
+      "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25665483_606ba7fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-27T23:41:03Z",
+      "side": 1,
+      "message": "Why not navigate to chrome://webrtc-internals instead of using the accelerator?",
+      "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33565310_680981e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-27T23:41:03Z",
+      "side": 1,
+      "message": "We can pick a location? /var/tmp would be nicer",
+      "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
