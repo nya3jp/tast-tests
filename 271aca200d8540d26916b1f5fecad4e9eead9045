@@ -70,6 +70,30 @@
       },
       "revId": "271aca200d8540d26916b1f5fecad4e9eead9045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fdf86a2_1de6dbaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_handwriting.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T04:58:50Z",
+      "side": 0,
+      "message": "The fix https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3607248 was landed a bit later (which should had been landed before this CL but I forgot to add the cq-depend), may take some time to be effective.",
+      "parentUuid": "0972a943_35d0a04f",
+      "range": {
+        "startLine": 52,
+        "startChar": 62,
+        "endLine": 52,
+        "endChar": 79
+      },
+      "revId": "271aca200d8540d26916b1f5fecad4e9eead9045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
