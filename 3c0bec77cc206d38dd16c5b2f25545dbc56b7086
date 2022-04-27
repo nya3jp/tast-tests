@@ -16,6 +16,24 @@
       "message": "Maybe we should explicitly do nothing for this case in the config code? Seems weird if it\u0027s just missing from the switch case, wdyt?",
       "revId": "3c0bec77cc206d38dd16c5b2f25545dbc56b7086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7737fd9b_3dc39d26",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-27T01:50:41Z",
+      "side": 1,
+      "message": "This const could be mapped directly to the #lacros-selection flag, which is the switch case at http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go?l\u003d184-189\n\nI don\u0027t think the other part of the config code needs to be updated for this though. Btw, \u0027NotSelected\u0027 sounds weird to me. Please suggest if you think of any better name here.",
+      "parentUuid": "2850f2b0_39718f2f",
+      "revId": "3c0bec77cc206d38dd16c5b2f25545dbc56b7086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
