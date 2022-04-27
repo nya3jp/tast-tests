@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8f4269_1a3fa266",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-27T19:32:29Z",
+      "side": 1,
+      "message": "PTAL. This patchset uses Fixture to set up the test before running instead of Precondition like the earlier one.",
+      "revId": "16cb5d62d4d5776e2cef1ae843618e705f41409a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
