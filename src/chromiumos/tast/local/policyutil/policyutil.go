@@ -6,13 +6,74 @@ package policyutil
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/timing"
 )
+
+// InstallPwaAppByPolicy installs a pre-defined Progressive Web App (PWA). Returns the app's id,
+// the name, the callback for cleanup and the error message if any. This method guarantees to
+// do cleanup if the method execution generates an error. Callers have the responsibility to run
+// the cleanup closure if the method is executed without any error.
+// NOTE executing this method requires the following files:
+// 1. web_app_install_force_list_icon-192x192.png
+// 2. web_app_install_force_list_icon-512x512.png
+// 3. web_app_install_force_list_index.html
+// 4. web_app_install_force_list_manifest.json
+// 5. web_app_install_force_list_service-worker.js
+// These files are kept under the subdirectory data/ under the policyutil package. Callers have the duty to
+// symlink these files into their test packages' data subdirectory and register them.
+func InstallPwaAppByPolicy(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, fdms *fakedms.FakeDMS, root http.FileSystem) (string, string, func(ctx context.Context) error, error) {
+	server := httptest.NewServer(http.FileServer(root))
+
+	policies := []policy.Policy{
+		&policy.WebAppInstallForceList{
+			Val: []*policy.WebAppInstallForceListValue{
+				{
+					Url:                    server.URL + "/web_app_install_force_list_index.html",
+					DefaultLaunchContainer: "window",
+					CreateDesktopShortcut:  false,
+					CustomName:             "",
+					FallbackAppName:        "",
+					CustomIcon: &policy.WebAppInstallForceListValueCustomIcon{
+						Hash: "",
+						Url:  "",
+					},
+				},
+			},
+		},
+	}
+
+	// Update policies.
+	if err := ServeAndVerify(ctx, fdms, cr, policies); err != nil {
+		server.Close()
+		return "", "", nil, errors.Wrap(err, "failed to update policies")
+	}
+
+	cleanUp := func(ctx context.Context) error {
+		if err := ResetChrome(ctx, fdms, cr); err != nil {
+			return errors.Wrap(err, "failed to reset policies")
+		}
+		server.Close()
+		return nil
+	}
+
+	const name = "Test PWA"
+	id, err := ash.WaitForChromeAppByNameInstalled(ctx, tconn, name, 1*time.Minute)
+	if err != nil {
+		cleanUp(ctx)
+		return "", "", nil, errors.Wrap(err, "failed to wait until the PWA is installed")
+	}
+
+	return id, name, cleanUp, nil
+}
 
 // serveAndVerify is a helper function. Similar to ServeAndVerify(OnLoginScreen) but also accepts the test connection.
 func serveAndVerify(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tconn *chrome.TestConn, ps []policy.Policy) error {
