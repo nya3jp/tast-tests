@@ -124,6 +124,24 @@
       "parentUuid": "d5c912a6_eedf1a43",
       "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181da7cf_d70e50b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308772
+      },
+      "writtenOn": "2022-04-27T21:10:15Z",
+      "side": 1,
+      "message": "Mixer controls don\u0027t have any effect on whether the device is plugged, or even matter. Most of the time its simply changing some i2c registers on the codec into open the audio path, which should not matter if a jack is plugged or not.",
+      "parentUuid": "ba503407_fa1e077d",
+      "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
