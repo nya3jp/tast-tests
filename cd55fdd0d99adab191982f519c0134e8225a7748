@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef4601ff_4928551b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-04-27T17:01:17Z",
+      "side": 1,
+      "message": "This covers one tab sharing scenario, I\u0027ll add others afterwards.",
+      "revId": "cd55fdd0d99adab191982f519c0134e8225a7748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
