@@ -48,7 +48,7 @@ const (
 	pdfGoldenFile = "adf_duplex_pdf_grayscale_max_300_dpi.pdf"
 )
 
-var tests = []scanning.TestingStruct{
+var scanTests = []scanning.TestingStruct{
 	{
 		Name: "flatbed_png_color_letter_300_dpi",
 		Settings: scanapp.ScanSettings{
@@ -93,5 +93,5 @@ func Scan(ctx context.Context, s *testing.State) {
 		EsclCaps:    scanning.EsclCapabilities,
 	}
 
-	scanning.RunAppSettingsTests(ctx, s, cr, tests, scannerParams)
+	scanning.RunAppSettingsTests(ctx, s, cr, scanTests, scannerParams)
 }
