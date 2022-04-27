@@ -423,6 +423,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9e43f5_9d3c7eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T07:46:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18ef9756_ca3a5ca9",
+      "range": {
+        "startLine": 142,
+        "startChar": 25,
+        "endLine": 142,
+        "endChar": 28
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394ce513_499fa6b5",
@@ -454,6 +478,24 @@
       "side": 1,
       "message": "During bringup I would like to allow empty placeholder HiFi.conf files to live in the tree before a ODM fills them. Changed to only skip on empty files, which is more strict. WDYT?",
       "parentUuid": "394ce513_499fa6b5",
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4cee3d_1ea9fb1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-27T07:46:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88327a7a_c88f4b06",
       "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
