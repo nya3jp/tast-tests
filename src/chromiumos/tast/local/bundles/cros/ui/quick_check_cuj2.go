@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -51,7 +50,7 @@ func init() {
 				},
 			}, {
 				Name:              "basic_lacros_unlock",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           5 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: quickCheckParam{
@@ -69,7 +68,7 @@ func init() {
 				},
 			}, {
 				Name:              "basic_lacros_wakeup",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           5 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: quickCheckParam{
@@ -94,12 +93,7 @@ func init() {
 
 // QuickCheckCUJ2 measures the system performance after login or wakeup by checking common apps
 func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
-	p := s.Param().(quickCheckParam)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-	var lacrosFixtValue lacrosfixt.FixtValue
-	if p.browserType == browser.TypeLacros {
-		lacrosFixtValue = s.FixtValue().(cuj.FixtureData).LacrosFixt
-	}
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -137,7 +131,7 @@ func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
 	param := s.Param().(quickCheckParam)
 	scenario := param.scenario
 
-	pv := quickcheckcuj.Run(ctx, s, cr, scenario, tabletMode, lacrosFixtValue)
+	pv := quickcheckcuj.Run(ctx, s, cr, scenario, tabletMode, param.browserType)
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to saving perf data: ", err)
 	}

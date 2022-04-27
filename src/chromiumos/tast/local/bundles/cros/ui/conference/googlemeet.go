@@ -35,7 +35,7 @@ type GoogleMeetConference struct {
 	uiHandler       cuj.UIActionHandler
 	tabletMode      bool
 	extendedDisplay bool
-	isLacros        bool
+	bt              browser.Type
 	roomSize        int
 	account         string
 	password        string
@@ -240,7 +240,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 				return errors.Wrap(err, "failed to close notifications")
 			}
 			// The ui of Chrome and Lacros are different when adding account.
-			if conf.isLacros {
+			if conf.bt == browser.TypeLacros {
 				continueButton := nodewith.Name("Continue").Role(role.Button)
 				if err := ui.LeftClick(continueButton)(ctx); err != nil {
 					return err
@@ -649,14 +649,14 @@ var _ Conference = (*GoogleMeetConference)(nil)
 
 // NewGoogleMeetConference creates Google Meet conference room instance which implements Conference interface.
 func NewGoogleMeetConference(cr *chrome.Chrome, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler,
-	tabletMode, extendedDisplay, isLacros bool, roomSize int, account, password, outDir string) *GoogleMeetConference {
+	tabletMode, extendedDisplay bool, bt browser.Type, roomSize int, account, password, outDir string) *GoogleMeetConference {
 	return &GoogleMeetConference{
 		cr:              cr,
 		tconn:           tconn,
 		uiHandler:       uiHandler,
 		tabletMode:      tabletMode,
 		extendedDisplay: extendedDisplay,
-		isLacros:        isLacros,
+		bt:              bt,
 		roomSize:        roomSize,
 		account:         account,
 		password:        password,
