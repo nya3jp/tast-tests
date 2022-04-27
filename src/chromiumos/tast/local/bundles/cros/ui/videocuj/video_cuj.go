@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -40,8 +40,8 @@ const (
 // TestResources holds the cuj test resources passed in from main test case.
 type TestResources struct {
 	Cr        *chrome.Chrome
-	LFixtVal  lacrosfixt.FixtValue
 	Tconn     *chrome.TestConn
+	Bt        browser.Type
 	A         *arc.ARC
 	Kb        *input.KeyboardEventWriter
 	UIHandler cuj.UIActionHandler
@@ -108,6 +108,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	var (
 		cr              = resources.Cr
 		tconn           = resources.Tconn
+		bt              = resources.Bt
 		a               = resources.A
 		kb              = resources.Kb
 		uiHandler       = resources.UIHandler
@@ -148,7 +149,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	defer cleanupSetting(cleanupSettingsCtx)
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, resources.LFixtVal != nil)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, bt)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
@@ -160,7 +161,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	br := cr.Browser()
 	tconns := []*chrome.TestConn{tconn}
 	var bTconn *chrome.TestConn
-	if resources.LFixtVal != nil {
+	if l != nil {
 		br = l.Browser()
 		bTconn, err = l.TestAPIConn(ctx)
 		if err != nil {
@@ -261,7 +262,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 					a.DumpUIHierarchyOnError(ctx, filepath.Join(outDir, "arc"), func() bool { return retErr != nil })
 				}
 				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
-				if appName == YoutubeWeb && resources.LFixtVal != nil {
+				if appName == YoutubeWeb && bt == browser.TypeLacros {
 					// For lacros, leave a new tab to keep the browser alive for further testing.
 					if err := cuj.KeepNewTab(ctx, bTconn); err != nil {
 						testing.ContextLog(ctx, "Failed to keep new tab: ", err)
@@ -291,7 +292,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 			if err != nil {
 				return errors.Wrap(err, "failed to open Gmail website")
 			}
-			if appName == YoutubeApp && resources.LFixtVal != nil {
+			if appName == YoutubeApp && bt == browser.TypeLacros {
 				// For Youtube App, the current lacros with Gmail is the only lacros window.
 				// Leave a new tab to keep the browser alive for further testing.
 				defer func() {

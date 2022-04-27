@@ -21,8 +21,8 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
@@ -58,7 +58,7 @@ const retryTimes = 3
 // Run runs the QuickCheckCUJ2 test. The lock is the function that suspends or locks
 // the DUT. The lockInRecorder flag indicates if the lock function should be executed
 // inside metrics recorder.
-func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode PauseMode, tabletMode bool, lFixtVal lacrosfixt.FixtValue) *perf.Values {
+func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode PauseMode, tabletMode bool, bt browser.Type) *perf.Values {
 	password := cr.Creds().Pass // Required to unlock screen.
 
 	// Ensure display on to record ui performance correctly.
@@ -158,7 +158,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 
 	// Launch browser and track the elapsed time.
 	// Browser is launched out side of recorder to get test API conns to set up metrics.
-	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, lFixtVal != nil)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, bt)
 	if err != nil {
 		s.Fatal("Failed to launch Chrome: ", err)
 	}
@@ -167,7 +167,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	}
 	br := cr.Browser()
 	tconns := []*chrome.TestConn{tconn}
-	if lFixtVal != nil {
+	if l != nil {
 		br = l.Browser()
 		bTconn, err := l.TestAPIConn(ctx)
 		if err != nil {
