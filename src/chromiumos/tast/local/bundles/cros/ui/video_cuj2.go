@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -52,7 +51,7 @@ func init() {
 				},
 			}, {
 				Name:              "basic_lacros_youtube_web",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           12 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
@@ -80,7 +79,7 @@ func init() {
 				},
 			}, {
 				Name:              "premium_lacros_youtube_web",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           12 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
@@ -108,7 +107,7 @@ func init() {
 				},
 			}, {
 				Name:              "basic_lacros_youtube_app",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           10 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
@@ -136,7 +135,7 @@ func init() {
 				},
 			}, {
 				Name:              "premium_lacros_youtube_app",
-				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Fixture:           "loggedInAndKeepStateLacros",
 				Timeout:           10 * time.Minute,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
@@ -164,10 +163,7 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	p := s.Param().(videoCUJParam)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	a := s.FixtValue().(cuj.FixtureData).ARC
-	var lacrosFixtValue lacrosfixt.FixtValue
-	if p.browserType == browser.TypeLacros {
-		lacrosFixtValue = s.FixtValue().(cuj.FixtureData).LacrosFixt
-	}
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
@@ -225,8 +221,8 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 
 	testResources := videocuj.TestResources{
 		Cr:        cr,
-		LFixtVal:  lacrosFixtValue,
 		Tconn:     tconn,
+		Bt:        p.browserType,
 		A:         a,
 		Kb:        kb,
 		UIHandler: uiHandler,
