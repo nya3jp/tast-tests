@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6eeaa25_e154b365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5ab9ab9_4bd81ba5",
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8142576_8735d97b",
@@ -54,6 +72,48 @@
         "endLine": 89,
         "endChar": 54
       },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82984f2_3d564c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "926f5f03_aa6fed6e",
+      "range": {
+        "startLine": 89,
+        "startChar": 51,
+        "endLine": 89,
+        "endChar": 54
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7488e4d6_11e8eedd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8142576_8735d97b",
       "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +159,54 @@
         "startChar": 22,
         "endLine": 98,
         "endChar": 41
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9daebaf7_158a705b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2845a940_a7a33945",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 41
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "417ffa65_d21abb2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f138e4f5_65707772",
+      "range": {
+        "startLine": 98,
+        "startChar": 79,
+        "endLine": 98,
+        "endChar": 90
       },
       "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -173,6 +281,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95aa3911_6d629746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dc85b3c_c07abaad",
+      "range": {
+        "startLine": 107,
+        "startChar": 64,
+        "endLine": 107,
+        "endChar": 75
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68274d73_7d9dcac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29871868_c13d66af",
+      "range": {
+        "startLine": 107,
+        "startChar": 23,
+        "endLine": 107,
+        "endChar": 40
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d66031b_ed4411d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f545d664_71c36580",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4a16d1_49c9ff2d",
@@ -186,6 +366,30 @@
       "writtenOn": "2022-04-27T03:51:24Z",
       "side": 1,
       "message": "Since ... .",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 9
+      },
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2614dc82_1cd1098a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c4a16d1_49c9ff2d",
       "range": {
         "startLine": 141,
         "startChar": 4,
@@ -232,6 +436,24 @@
       "writtenOn": "2022-04-27T03:51:24Z",
       "side": 1,
       "message": "What if a device failed to expected to have a SectionVerb? Is it okay to skip the test? Should it be treated as a regression?",
+      "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88327a7a_c88f4b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T04:17:41Z",
+      "side": 1,
+      "message": "During bringup I would like to allow empty placeholder HiFi.conf files to live in the tree before a ODM fills them. Changed to only skip on empty files, which is more strict. WDYT?",
+      "parentUuid": "394ce513_499fa6b5",
       "revId": "b4567fa148bc173ab3c74cab2bd318b72245412f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
