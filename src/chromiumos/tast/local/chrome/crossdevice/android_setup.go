@@ -74,6 +74,7 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 			return nil, false, errors.Wrap(err, "failed to list adb devices after multiple attempts")
 		}
 	}
+
 	// Check if adb root is available.
 	rooted := true
 	if err := adbDevice.Root(ctx); err != nil {
