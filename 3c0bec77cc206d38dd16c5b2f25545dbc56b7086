@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2850f2b0_39718f2f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-27T01:42:30Z",
+      "side": 1,
+      "message": "Maybe we should explicitly do nothing for this case in the config code? Seems weird if it\u0027s just missing from the switch case, wdyt?",
+      "revId": "3c0bec77cc206d38dd16c5b2f25545dbc56b7086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
