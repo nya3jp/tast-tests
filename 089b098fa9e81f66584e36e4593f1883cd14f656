@@ -439,6 +439,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8d45a88_e13bd938",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-27T07:20:38Z",
+      "side": 1,
+      "message": "I guess it will be:\nVM \u003d qemu [1]\nReal hardware \u003d crossystem [2]\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/crosbundle/software_defs.go;l\u003d157?q\u003dsoftware_defs\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/crosbundle/software_defs.go;l\u003d55?q\u003dsoftware_defs",
+      "parentUuid": "3cefb0f3_a7037a6f",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1adb24ac_59799fd0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
         "patchSetId": 2
