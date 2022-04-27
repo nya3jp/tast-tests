@@ -557,6 +557,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ac12c1_714bcf50",
+        "filename": "src/chromiumos/tast/remote/wificell/ap/cisco/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-04-27T08:46:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c1fba753_a2b83904",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 35
+      },
+      "revId": "7963750d084e9655af89e4e5ca9255bad6633d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "913767fe_20703810",
