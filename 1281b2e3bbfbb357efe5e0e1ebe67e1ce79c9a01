@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "58ae582f_817b9f6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-27T15:27:26Z",
+      "side": 1,
+      "message": "Here is the doc I was reminded about:\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "parentUuid": "52e83f81_6dfac4f4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "1281b2e3bbfbb357efe5e0e1ebe67e1ce79c9a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b94cd441_c45af54c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
