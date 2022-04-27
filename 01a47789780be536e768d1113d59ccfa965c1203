@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5c5c250_9c6132ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-04-27T20:23:03Z",
+      "side": 1,
+      "message": "Do we need to add ui.WaitUntilExists for these nodes to make the test less flaky?",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "01a47789780be536e768d1113d59ccfa965c1203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ea2c270_9ac0f473",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
         "patchSetId": 7
