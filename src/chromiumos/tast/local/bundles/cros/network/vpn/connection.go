@@ -26,8 +26,11 @@ import (
 // Config contains the parameters (for both client and server) to configure a
 // VPN connection.
 type Config struct {
-	Type     string
-	AuthType string
+	Type          string
+	AuthType      string
+	MTU           int
+	Metered       bool
+	SearchDomains []string
 
 	// Parameters for an L2TP/IPsec VPN connection.
 	IPsecUseXauth         bool
@@ -310,18 +313,35 @@ func (c *Connection) generateWireGuardKey(ctx context.Context) (string, error) {
 }
 
 func (c *Connection) createProperties() (map[string]interface{}, error) {
+	var properties map[string]interface{}
+	var err error
+
 	switch c.config.Type {
 	case TypeIKEv2:
-		return c.createIKEv2Properties()
+		properties, err = c.createIKEv2Properties()
 	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
-		return c.createL2TPIPsecProperties()
+		properties, err = c.createL2TPIPsecProperties()
 	case TypeOpenVPN:
-		return c.createOpenVPNProperties()
+		properties, err = c.createOpenVPNProperties()
 	case TypeWireGuard:
-		return c.createWireGuardProperties(), nil
+		properties = c.createWireGuardProperties()
 	default:
 		return nil, errors.Errorf("unexpected server type: got %s", c.config.Type)
 	}
+
+	if err != nil {
+		return nil, err
+	}
+
+	properties["Metered"] = c.config.Metered
+	staticIPConfig, ok := properties["StaticIPConfig"].(map[string]interface{})
+	if !ok {
+		staticIPConfig = make(map[string]interface{})
+		properties["StaticIPConfig"] = staticIPConfig
+	}
+	staticIPConfig["Mtu"] = c.config.MTU
+	staticIPConfig["SearchDomains"] = c.config.SearchDomains
+	return properties, nil
 }
 
 func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error) {

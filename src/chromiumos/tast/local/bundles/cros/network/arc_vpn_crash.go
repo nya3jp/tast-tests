@@ -45,7 +45,15 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 
 	a := s.FixtValue().(*arc.PreData).ARC
 
-	conn, cleanup, err := arcvpn.SetUpHostVPN(ctx, cleanupCtx)
+	// Host VPN config we'll use for connections. Arbitrary VPN type, but it can't cause the
+	// test to log out of the user during setup otherwise we won't have access to adb anymore.
+	// For example, vpn.AuthTypeCert VPNs will log the user out while trying to prep the cert
+	// store.
+	config := vpn.Config{
+		Type:     vpn.TypeL2TPIPsecSwanctl,
+		AuthType: vpn.AuthTypePSK,
+	}
+	conn, cleanup, err := arcvpn.SetUpHostVPN(ctx, cleanupCtx, config)
 	if err != nil {
 		s.Fatal("Failed to setup host VPN: ", err)
 	}

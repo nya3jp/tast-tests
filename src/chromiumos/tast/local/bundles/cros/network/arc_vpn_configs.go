@@ -9,18 +9,22 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
+	// "chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/arcvpn"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	localping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/testing"
+
+	"chromiumos/tast/common/testexec"
+	"regexp"
+	"strings"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ARCVPNConnect,
-		Desc:     "Host VPN is mirrored with ARC VPN properly",
+		Func:     ARCVPNConfigs,
+		Desc:     "Host VPN configs are mirrored in ARC VPN properly",
 		Contacts: []string{"cassiewang@google.com", "cros-networking@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Fixture:  "shillResetWithArcBooted",
@@ -33,11 +37,7 @@ func init() {
 	})
 }
 
-// ARCVPNConnect differs from VPNConnect in that ARCVPNConnect focuses on
-// testing the VPN that's started in ARC to mirror the host VPN. See b/147256449
-// for more details. Much of the testing around host VPN setup is left to
-// VPNConnect to verify.
-func ARCVPNConnect(ctx context.Context, s *testing.State) {
+func ARCVPNConfigs(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a
 	// few seconds to allow for our cleanup code to run.
 	cleanupCtx := ctx
@@ -51,8 +51,11 @@ func ARCVPNConnect(ctx context.Context, s *testing.State) {
 	// For example, vpn.AuthTypeCert VPNs will log the user out while trying to prep the cert
 	// store.
 	config := vpn.Config{
-		Type:     vpn.TypeL2TPIPsecSwanctl,
-		AuthType: vpn.AuthTypePSK,
+		Type:          vpn.TypeL2TPIPsecSwanctl,
+		AuthType:      vpn.AuthTypePSK,
+		MTU:           1499,
+		Metered:       true,
+		SearchDomains: []string{"foo", "bar"},
 	}
 	conn, cleanup, err := arcvpn.SetUpHostVPN(ctx, cleanupCtx, config)
 	if err != nil {
@@ -60,8 +63,6 @@ func ARCVPNConnect(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup()
 
-	// Verify ArcHostVpnService can connect and disconnect properly following the host VPN
-	// lifecycle events.
 	if err := arcvpn.SetARCVPNEnabled(ctx, a, true); err != nil {
 		s.Fatal("Failed to enable ARC VPN: ", err)
 	}
@@ -84,46 +85,28 @@ func ARCVPNConnect(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ping %s from ARC over 'vpn': %v", conn.Server.OverlayIP, err)
 	}
 
-	// Disconnect
-	if err := conn.Disconnect(ctx); err != nil {
-		s.Error("Failed to disconnect VPN: ", err)
+	cmd := a.Command(ctx, "dumpsys", "wifi", "networks")
+	o, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal(err, "failed to execute 'dumpsys wifi networks' commmand")
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, false); err != nil {
-		s.Fatal("ArcHostVpnService should be stopped, but isn't: ", err)
-	}
-	if err := arcvpn.ExpectARCPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err == nil {
-		s.Fatalf("Expected unable to ping %s from ARC over 'vpn', but was reachable", conn.Server.OverlayIP)
+	networks := strings.Split(string(o), "\n\n")
+	for _, network := range networks {
+		testing.ContextLog(ctx, "====")
+		testing.ContextLog(ctx, network)
+		matched, matchErr := regexp.Match(`transports=[A-Z|]*VPN`, o)
+		if matchErr != nil {
+			s.Fatal(err, "issue matching regexp for VPN transport")
+		}
+		if matched {
+			testing.ContextLog(ctx, "!! found vpn")
+		}
 	}
 
-	// Reconnect
-	if err := waitForConnect(ctx, conn); err != nil {
-		s.Fatal("Failed to reconnect to VPN: ", err)
+	cmd = a.Command(ctx, "dumpsys", "wifi", "arc-networks")
+	o, err = cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal(err, "failed to execute 'dumpsys wifi arc-networks' commmand")
 	}
-	if err := arcvpn.CheckARCVPNState(ctx, a, true); err != nil {
-		s.Fatal("Failed to start ArcHostVpnService on reconnection: ", err)
-	}
-	if err := vpn.ExpectPingSuccess(ctx, pr, conn.Server.OverlayIP); err != nil {
-		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
-	}
-	if err := arcvpn.ExpectARCPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err != nil {
-		s.Fatalf("Failed to ping %s from ARC over 'vpn': %v", conn.Server.OverlayIP, err)
-	}
-}
-
-func waitForConnect(ctx context.Context, conn *vpn.Connection) error {
-	// Reconnecting right after a disconnect takes some time for the reconnection to succeed.
-	// Poll for a bit since it should be a transient issue.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		connected, err := conn.Connect(ctx)
-		if err != nil {
-			return err
-		}
-		if !connected {
-			return errors.New("unable to connect to VPN")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return err
-	}
-	return nil
+	testing.ContextLog(ctx, string(o))
 }
