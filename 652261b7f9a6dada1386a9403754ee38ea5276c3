@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c7c4d2d_592a3f27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-04-27T01:39:38Z",
+      "side": 1,
+      "message": "Sorry I am currently unavailable. Reassigning to tast-owners for getting another reivewer.",
+      "revId": "652261b7f9a6dada1386a9403754ee38ea5276c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac0bec09_70d36003",
