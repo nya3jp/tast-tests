@@ -155,6 +155,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebd20144_a7be9ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T12:54:48Z",
+      "side": 1,
+      "message": "The approach in tast is different, polling (via testing.Poll) is widely used and has a 100ms default wait between iterations. tast tests also don\u0027t run under asan and have more generous timeouts.\n\nYou could also use WaitForExpr instead of js looping (might also make the code more readable since it\u0027s split up in multiple js chunks): https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;l\u003d184?q\u003dfile:tast%20WaitForExpr\n\nIf you do make the change, also update the code above.",
+      "parentUuid": "0e1acbfe_dec8dc68",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45be58de_7328e68c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
         "patchSetId": 5
@@ -190,6 +208,30 @@
       "side": 1,
       "message": "I also use reStr in the error message below, so I would have to pass both the compiled Regexp and the original string. There also doesn\u0027t seem to be a way to extract the original regexp expression from a compiled Regex. Hence, changed to regexp.Compile instead.",
       "parentUuid": "45be58de_7328e68c",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 35
+      },
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d2c992_c5e21b1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T12:54:48Z",
+      "side": 1,
+      "message": "You can simply print the regex:\n\nhttps://go.dev/play/p/GppyyVilvcv",
+      "parentUuid": "0889d7cd_023f0dad",
       "range": {
         "startLine": 117,
         "startChar": 24,
@@ -266,6 +308,24 @@
       "side": 1,
       "message": "I skipped newline intentionally so that code is grouped under the comment that describes what it is doing. I could split the comment, though IMHO it\u0027s more readable the way it is. Please let me know if you prefer otherwise.",
       "parentUuid": "577c8282_cd40eb33",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eefd29e_e0de80eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T12:54:48Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "ab8f018a_b9c75dfb",
       "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
