@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92586aeb_b2891b62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateengine/consumer_auto_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-27T01:03:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605f992e_abd4ef08",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf7138b8_cf578f91",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-04-25T23:47:08Z",
       "side": 1,
       "message": "What if \"SetPerf\" failed? Do you still want to call \"StartDaemon\"?",
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd1a60e1_d60d0d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateengine/consumer_auto_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-27T01:03:13Z",
+      "side": 1,
+      "message": "Handled within cleanup",
+      "parentUuid": "cf7138b8_cf578f91",
       "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e2c8a37_bda2a0c4",
+        "filename": "src/chromiumos/tast/local/updateengine/feature.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-27T01:03:13Z",
+      "side": 1,
+      "message": "Sure let\u0027s do that instead, Done",
+      "parentUuid": "cd25cc68_ca5f66c8",
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aad7468f_e46b3cc6",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-04-25T23:47:08Z",
       "side": 1,
       "message": "I suggest to call os.MkdirAll instead. In this case, ou don\u0027t need to check for os.Stat",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79718106_2f421e59",
+        "filename": "src/chromiumos/tast/local/updateengine/prefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-27T01:03:13Z",
+      "side": 1,
+      "message": "Good idea, Done",
+      "parentUuid": "aad7468f_e46b3cc6",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37895d1b_08338934",
+        "filename": "src/chromiumos/tast/local/updateengine/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-27T01:03:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3e267e6_d28e403c",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a75764da_a15f6460",
@@ -134,6 +242,24 @@
       "writtenOn": "2022-04-25T23:47:08Z",
       "side": 1,
       "message": "I think arg is better than cmd here.",
+      "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0699cba3_aed84e5a",
+        "filename": "src/chromiumos/tast/local/updateengine/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-27T01:03:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a75764da_a15f6460",
       "revId": "ce72f9da1392da27f36aa92e38658304102c55fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
