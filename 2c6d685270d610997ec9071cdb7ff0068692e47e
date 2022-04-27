@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4d6c1b6_5f649d4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-04-27T08:17:17Z",
+      "side": 1,
+      "message": "Found we have an [item](https://buganizer.corp.google.com/issues/204166216#comment6) for this.\n\nThese *-kernelnext, *-arc-r are filtered out that fails this test and are not all items. Maybe I can check whether runtime probe is supposed to work on these platform.",
+      "parentUuid": "00831157_fa181126",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 220
+      },
+      "revId": "2c6d685270d610997ec9071cdb7ff0068692e47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d2872da_6cb21bfc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
         "patchSetId": 2
