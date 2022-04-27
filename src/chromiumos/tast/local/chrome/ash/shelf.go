@@ -408,6 +408,42 @@ func WaitForChromeAppInstalled(ctx context.Context, tconn *chrome.TestConn, appI
 	}, &testing.PollOptions{Timeout: timeout, Interval: uiPollingInterval})
 }
 
+// WaitForChromeAppByNameInstalled is similar to WaitForChromeAppInstalled. But the target app
+// is specified by name rather than id. Returns the target app's id and the error message if any.
+func WaitForChromeAppByNameInstalled(ctx context.Context, tconn *chrome.TestConn, appName string, timeout time.Duration) (string, error) {
+	appID := ""
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		installedApps, err := ChromeApps(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the list of the installed apps")
+		}
+
+		// The count of the apps which share the target app's name.
+		count := 0
+
+		for _, app := range installedApps {
+			if app.Name != appName {
+				continue
+			}
+			appID = app.AppID
+			count = count + 1
+		}
+
+		if count == 0 {
+			return errors.Errorf("failed to find the target app %q", appName)
+		}
+
+		if count > 1 {
+			return errors.Errorf("expected 1 app whose name is %s; got %d", appName, count)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout, Interval: uiPollingInterval}); err != nil {
+		return appID, errors.Wrap(err, "failed to wait for the target app to be installed")
+	}
+
+	return appID, nil
+}
+
 // ShelfItems returns the list of apps in the shelf.
 func ShelfItems(ctx context.Context, tconn *chrome.TestConn) ([]*ShelfItem, error) {
 	var s []*ShelfItem
