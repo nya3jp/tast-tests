@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57cab4f0_30b9e4ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T10:35:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1cc6eecf_b5ef8b1d",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e02bc3b9_82f03b56",

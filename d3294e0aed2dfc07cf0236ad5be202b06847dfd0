@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be63b52_90567d84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T10:35:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3a6dea5d_033aaa1b",
+      "range": {
+        "startLine": 30,
+        "startChar": 82,
+        "endLine": 30,
+        "endChar": 85
+      },
+      "revId": "d3294e0aed2dfc07cf0236ad5be202b06847dfd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54c8d2b2_378fef7f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-27T10:05:28Z",
       "side": 1,
       "message": "If this is called only inside invalidateSELinuxHashForPaths, you can make this a nested function in it. (then you don\u0027t need to pass Context/State)",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "d3294e0aed2dfc07cf0236ad5be202b06847dfd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08fceed8_9c5e1252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T10:35:47Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestions!",
+      "parentUuid": "54c8d2b2_378fef7f",
       "range": {
         "startLine": 150,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b56c11e_d4c6e6ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T10:35:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2ed85b70_dbd33cfd",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 51
+      },
+      "revId": "d3294e0aed2dfc07cf0236ad5be202b06847dfd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54ffc89f_58694a31",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-27T10:05:28Z",
       "side": 1,
       "message": "(optional) This func is very short, so maybe you can embed this in the top-level func?",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 22
+      },
+      "revId": "d3294e0aed2dfc07cf0236ad5be202b06847dfd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9470be_02d61441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T10:35:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "54ffc89f_58694a31",
       "range": {
         "startLine": 210,
         "startChar": 5,
