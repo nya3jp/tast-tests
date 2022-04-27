@@ -16,6 +16,69 @@
       "message": "Jit, would you be familiar with how MGS is supposed to work and able to verify the test reasonably replaces the manual test?",
       "revId": "955499a9e3dbbe53fb327f4536884ff3fb0a1a34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "105eb073_c5c20583",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-04-27T09:52:14Z",
+      "side": 1,
+      "message": "LGTM for the MGS parts",
+      "revId": "955499a9e3dbbe53fb327f4536884ff3fb0a1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c934be64_9a27db91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/files_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-04-27T09:52:14Z",
+      "side": 1,
+      "message": "optional: Using`testexec` to add a file under `/home/chronos/user/Downloads/` can help avoid the dependency on the Print Preview UI.\n\ne.g. `touch /home/chronos/user/Downloads/foo.txt` (although I haven\u0027t confirmed if `testexec` has write permissions).",
+      "range": {
+        "startLine": 71,
+        "startChar": 27,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "955499a9e3dbbe53fb327f4536884ff3fb0a1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58e9b156_00f1ba54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/files_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-04-27T09:52:14Z",
+      "side": 1,
+      "message": "just checking: is the Gallery app check part of the test as well? If so, adding a comment can help explain why the Gallery app needs to be checked as well.",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "955499a9e3dbbe53fb327f4536884ff3fb0a1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
