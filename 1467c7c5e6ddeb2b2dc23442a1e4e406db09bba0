@@ -106,6 +106,24 @@
       "parentUuid": "3b49934c_43148514",
       "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba503407_fa1e077d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-27T18:32:14Z",
+      "side": 1,
+      "message": "So we don\u0027t allow mixer controls to fail if the device is not plugged?\n\nSee also Jimmy\u0027s comment on http://shortn/_CMGMLihaOc:\n\u003e There is a concern that it may not be able to run all the sequences. If a node is not plugged, calling enable sequence may fail.",
+      "parentUuid": "d5c912a6_eedf1a43",
+      "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
