@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26142948_17721743",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-04-27T11:27:36Z",
+      "side": 1,
+      "message": "Good points. Removed helper, added map creation to NewBlob.",
+      "parentUuid": "54d19d6e_438a88ae",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "910f64f6_7ddb2e33",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a30fc82_b049f09d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-04-27T11:27:36Z",
+      "side": 1,
+      "message": "This exercises the button on the chrome://policy page, implicitly testing it. Added comment.",
+      "parentUuid": "910f64f6_7ddb2e33",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c35ce305_5e01f3ff",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-04-27T07:43:23Z",
       "side": 1,
       "message": "nit: this name looks like a variable\n\nMaybe statusBoxesMap?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 16
+      },
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e21df98e_d021fc05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-04-27T11:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c35ce305_5e01f3ff",
       "range": {
         "startLine": 73,
         "startChar": 5,
@@ -77,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e1acbfe_dec8dc68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-04-27T11:27:36Z",
+      "side": 1,
+      "message": "Why? I was told on another review that window.requestIdleCallback is better: https://chromium-review.googlesource.com/c/chromium/src/+/3474382/comments/941b6f1a_4dac8f1e",
+      "parentUuid": "127e2440_0b3b1f9f",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45be58de_7328e68c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
         "patchSetId": 5
@@ -88,6 +166,30 @@
       "writtenOn": "2022-04-27T07:43:23Z",
       "side": 1,
       "message": "nit: Don\u0027t use MustCompile without a constant.\n\nPass the compiled regex to the function instad.",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 35
+      },
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0889d7cd_023f0dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-04-27T11:27:36Z",
+      "side": 1,
+      "message": "I also use reStr in the error message below, so I would have to pass both the compiled Regexp and the original string. There also doesn\u0027t seem to be a way to extract the original regexp expression from a compiled Regex. Hence, changed to regexp.Compile instead.",
+      "parentUuid": "45be58de_7328e68c",
       "range": {
         "startLine": 117,
         "startChar": 24,
@@ -115,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f6a015_b5293941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-04-27T11:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3668517a_444ac093",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "577c8282_cd40eb33",
@@ -128,6 +248,24 @@
       "writtenOn": "2022-04-27T07:43:23Z",
       "side": 1,
       "message": "nit: newline before",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8f018a_b9c75dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-04-27T11:27:36Z",
+      "side": 1,
+      "message": "I skipped newline intentionally so that code is grouped under the comment that describes what it is doing. I could split the comment, though IMHO it\u0027s more readable the way it is. Please let me know if you prefer otherwise.",
+      "parentUuid": "577c8282_cd40eb33",
       "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
