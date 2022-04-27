@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f02070_a65aa5b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T09:47:12Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! Renamed the test to arc.SELinuxHostSideRestorecon.",
+      "parentUuid": "bf6af6d8_b737aaac",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e02bc3b9_82f03b56",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8ddf71_a09914c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T09:47:12Z",
+      "side": 1,
+      "message": "Renamed the function to invalidateSELinuxHashForPaths, and split getSELinuxLabelsForPaths from it.",
+      "parentUuid": "e02bc3b9_82f03b56",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 70
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eadc34aa_c23d3f13",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-27T05:44:18Z",
       "side": 1,
       "message": "I feel it would be cleaner to separate getSELinuxLabelsUnderAndroidData from this func and have the top level func call them like this.\n\n cr :\u003d setUpHostSideRestorecon(...)\n correctLabels :\u003d getSELinuxLabelsUnderAndroidData(... cr)\n testHostSideRestorecon(... correctLabels )",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "735d7678_daeaa31c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T09:47:12Z",
+      "side": 1,
+      "message": "Renamed the function to getSELinuxLabelsForPaths and made it called from top level.",
+      "parentUuid": "eadc34aa_c23d3f13",
       "range": {
         "startLine": 65,
         "startChar": 2,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57868037_26764081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T09:47:12Z",
+      "side": 1,
+      "message": "Since we do not explicitly trigger host-side restorecon, I restructured the top level test func so that it calls chrome.New twice, and added a comment stating that the second chrome.New will trigger restorecon by cryptohome.\nI guess two chrome.New in the top level func will also make it clear that the test involves two user sessions (with the same account).\nWhat do you think?",
+      "parentUuid": "46dca9f0_914acf91",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 28
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8540c21f_7b5a72d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
         "patchSetId": 10
@@ -123,6 +219,30 @@
       "writtenOn": "2022-04-27T05:44:18Z",
       "side": 1,
       "message": "Can we reuse getSELinuxLabelsUnderAndroidData ?\n\nlabels :\u003d getSELinuxLabelsUnderAndroidData(...)\n// Compare labels with expected labels.",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 39
+      },
+      "revId": "b9efdbcb29c12b5880800dcf5a30d1f6d17cddb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3948f1e_2217d187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/host_side_restorecon.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-27T09:47:12Z",
+      "side": 1,
+      "message": "That\u0027s a good idea! Done.",
+      "parentUuid": "8540c21f_7b5a72d9",
       "range": {
         "startLine": 206,
         "startChar": 5,
