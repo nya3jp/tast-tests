@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df1e83b_ce16c576",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-27T23:51:43Z",
+      "side": 1,
+      "message": "`Add`\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1792a62_c1246f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-27T23:51:43Z",
+      "side": 1,
+      "message": "This also tests setting avatar from Google Drive.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f87898_21c921cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-27T23:51:43Z",
+      "side": 1,
+      "message": "There is no need for an `if` statement here. Just write `return uiauto.Combine(`...`)(ctx)`. Also, to reduce test flake, use `DoDefault` instead of `LeftClick`.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aec8668f_1b04b407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-27T23:51:43Z",
+      "side": 1,
+      "message": "Same deal.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e199de2_ae8302e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-27T23:51:43Z",
+      "side": 1,
+      "message": "Please reserve time for cleanup so it will work even if the test times out. Here is an example of how to do that:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go;drc\u003d4bdea65488cf7090de4de860b047b77313cc634d;l\u003d43",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349a4160_6e51c3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-27T23:51:43Z",
+      "side": 1,
+      "message": "This can also use the time reserved for cleanup.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 68
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afa564d8_3a3c37fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-27T23:51:43Z",
+      "side": 1,
+      "message": "You do not need to write `personalization.` inside the `personalization` package.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
