@@ -52,6 +52,138 @@
       "parentUuid": "980e75cb_464f541f",
       "revId": "4b740b34f7b138edb08175de1afbe6ce23ee6918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef69786_849243bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-27T02:07:07Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "4b740b34f7b138edb08175de1afbe6ce23ee6918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5596ea27_45598a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/session_ephemeral.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-27T02:07:07Z",
+      "side": 1,
+      "message": "nit: insert: now",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "4b740b34f7b138edb08175de1afbe6ce23ee6918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779e0d8a_4747eb8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/session_ephemeral.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-27T02:07:07Z",
+      "side": 1,
+      "message": "nit: and",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 43
+      },
+      "revId": "4b740b34f7b138edb08175de1afbe6ce23ee6918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f0b2dbf_73d6427c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/session_ephemeral.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-27T02:07:07Z",
+      "side": 1,
+      "message": "nit: It would be good to define your acronym somewhere in this file.\n// E.g. First Managed Guest Session (MGS) is closed, now start a new one ...",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "4b740b34f7b138edb08175de1afbe6ce23ee6918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84cb8713_46bbd84d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/session_ephemeral.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-27T02:07:07Z",
+      "side": 1,
+      "message": "nit: \"Mgs\" should be in all-caps. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "4b740b34f7b138edb08175de1afbe6ce23ee6918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08e7562_dcc4abbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/session_ephemeral.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-27T02:07:07Z",
+      "side": 1,
+      "message": "See above.",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "4b740b34f7b138edb08175de1afbe6ce23ee6918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
