@@ -16,6 +16,24 @@
       "message": "is it possible to take a lacros faillog here?",
       "revId": "f8ee0ac43e66875763349d6ac26dd1d9439e9fd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b3d809_fd3432ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-27T15:28:23Z",
+      "side": 1,
+      "message": "I would vote for letting its callers decide whether to do that. To me `Launch` is a library code that can propagate its error to callers in the call chain so that they can handle faillogs along with ui dump or screenshot.\nIMO what\u0027s helpful in `Launch` is to append the error message with the lacros executable info, which doesn\u0027t seem to appear in stdout yet for troubleshooting.",
+      "parentUuid": "d6cd96dc_e0b2ed2c",
+      "revId": "f8ee0ac43e66875763349d6ac26dd1d9439e9fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
