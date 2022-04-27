@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/testing"
 )
@@ -51,16 +53,21 @@ func SSH(ctx context.Context, s *testing.State) {
 	// Open Terminal apps, first creating port forward for second to use.
 	ta1, err := terminalapp.LaunchSSH(ctx, tconn, "chronos@localhost", "-L 8822:localhost:22", "test0000")
 	if err != nil {
-		s.Fatal("Failed to open Terminal app with port forwarding: ", err)
+		s.Fatal("Failed to open ssh1: ", err)
 	}
 	ta2, err := terminalapp.LaunchSSH(ctx, tconn, "chronos@localhost", "-p 8822", "test0000")
 	if err != nil {
-		s.Fatal("Failed to open Terminal app over port forwarding: ", err)
+		s.Fatal("Failed to open ssh2: ", err)
 	}
-	if err = uiauto.Combine("exit and cleanup",
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("pwd command",
+		ta2.RunSSHCommand("pwd"),
+		ui.WaitUntilExists(nodewith.Name("/home/chronos/user").Role(role.StaticText)),
 		ta2.ExitSSH(),
-		ta1.ExitSSH(),
 	)(ctx); err != nil {
-		s.Fatal("Failed to exit and cleanup: ", err)
+		s.Fatal("Failed to run command in ssh2: ", err)
+	}
+	if err := ta1.ExitSSH()(ctx); err != nil {
+		s.Fatal("Failed to exit ssh1: ", err)
 	}
 }
