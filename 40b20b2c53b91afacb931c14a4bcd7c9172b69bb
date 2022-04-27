@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08cb9e85_aaa23a64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-04-27T21:33:11Z",
+      "side": 1,
+      "message": "you can put these as const and then combine the select* action with the code in `verifyAvatar` to a single block. This makes it easier to see what you are verifying.\n\nSomething like this:\n```\nuiauto.Combine(\"Select from google drive\",\n    selectFromGoogleDrive(ui),\n    ui.WaitUntilExists(selectedAvatarOption)\n)(ctx); \n```",
+      "range": {
+        "startLine": 124,
+        "startChar": 34,
+        "endLine": 124,
+        "endChar": 53
+      },
+      "revId": "40b20b2c53b91afacb931c14a4bcd7c9172b69bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
