@@ -52,6 +52,24 @@
       "parentUuid": "e29a4457_3790852d",
       "revId": "24d6f73e4a5f38359f308b68b473baf317e4f0cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b081c10_ca523f56",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-27T15:37:44Z",
+      "side": 1,
+      "message": "LMK I can do it in a follow up if needed.",
+      "parentUuid": "a5743266_61680708",
+      "revId": "24d6f73e4a5f38359f308b68b473baf317e4f0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
