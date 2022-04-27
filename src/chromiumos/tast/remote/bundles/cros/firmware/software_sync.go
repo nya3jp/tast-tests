@@ -123,8 +123,11 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Corrupt the EC section: ", ecSection)
 	defer func(ctx context.Context) {
+		if err := h.RequireBiosServiceClient(ctx); err != nil {
+			s.Fatal("Requiring BiosServiceClient: ", err)
+		}
 		s.Log("Restoring EC firmware backup")
-		if _, err := bs.RestoreImageSection(ctx, backup); err != nil {
+		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, backup); err != nil {
 			s.Fatal("Failed to restore EC firmware: ", err)
 		}
 	}(cleanupContext)
