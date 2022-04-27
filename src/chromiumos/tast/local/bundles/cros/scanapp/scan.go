@@ -52,7 +52,6 @@ var tests = []scanning.TestingStruct{
 	{
 		Name: "flatbed_png_color_letter_300_dpi",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePNG,
 			ColorMode:  scanapp.ColorModeColor,
@@ -63,7 +62,6 @@ var tests = []scanning.TestingStruct{
 	}, {
 		Name: "adf_simplex_jpg_grayscale_a4_150_dpi",
 		Settings: scanapp.ScanSettings{
-			Scanner:  scanning.ScannerName,
 			Source:   scanapp.SourceADFOneSided,
 			FileType: scanapp.FileTypeJPG,
 			// TODO(b/181773386): Change this to black and white when the virtual
@@ -76,7 +74,6 @@ var tests = []scanning.TestingStruct{
 	}, {
 		Name: "adf_duplex_pdf_grayscale_max_300_dpi",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
 			Source:     scanapp.SourceADFTwoSided,
 			FileType:   scanapp.FileTypePDF,
 			ColorMode:  scanapp.ColorModeGrayscale,
