@@ -13,8 +13,7 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib"
-	hwsecremote "chromiumos/tast/remote/hwsec"
+	"chromiumos/tast/remote/bundles/cros/autoupdate/util"
 	"chromiumos/tast/testing"
 )
 
@@ -32,12 +31,9 @@ const (
 )
 
 const (
-	sleepTimeN2M    = 10 * time.Second
-	userName        = "foo@bar.baz"
-	userPassword    = "secret"
-	testFile        = "compat_testing_file"
-	encstatefulFile = "/mnt/stateful_partition/encrypted/file"
-	testFileContent = "content"
+	sleepTimeN2M = 10 * time.Second
+	userName     = "foo@bar.baz"
+	userPassword = "secret"
 )
 
 func init() {
@@ -55,7 +51,7 @@ func init() {
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.UpdateService",
 		},
-		Timeout: autoupdatelib.TotalTestTime + 2*sleepTimeN2M,
+		Timeout: util.TotalTestTime + 2*sleepTimeN2M,
 		Params: []testing.Param{{
 			Name: "default",
 			Val:  &params{VaultType: defaultVaultType},
@@ -70,92 +66,80 @@ func init() {
 	})
 }
 
-type hwsecEnv struct {
-	cmdRunner *hwsecremote.CmdRunnerRemote
-	helper    *hwsecremote.CmdHelperRemote
-	utility   *hwsec.CryptohomeClient
-}
-
 func NToMVaultCompat(ctx context.Context, s *testing.State) {
-	var err error
-	env := &hwsecEnv{}
-	env.cmdRunner = hwsecremote.NewCmdRunner(s.DUT())
-	env.helper, err = hwsecremote.NewHelper(env.cmdRunner, s.DUT())
+	dut := s.DUT()
+
+	env, err := util.NewHwsecEnv(dut)
 	if err != nil {
-		s.Fatal("Failed to create hwsec local helper: ", err)
-	}
-	env.utility = env.helper.CryptohomeClient()
-
-	ops := &autoupdatelib.Operations{
-		PreUpdate: func(ctx context.Context, s *testing.State) {
-			clearTpm(ctx, s, env)
-		},
-		PostUpdate: func(ctx context.Context, s *testing.State) {
-			createVault(ctx, s, env)
-		},
-		PostRollback: func(ctx context.Context, s *testing.State) {
-			verifyVault(ctx, s, env)
-		},
-		CleanUp: func(ctx context.Context, s *testing.State) {
-			cleanupVault(ctx, s, env)
-		},
+		s.Fatal("Failed to create hwsec env: ", err)
 	}
 
-	autoupdatelib.NToMTest(ctx, s, ops, 3 /*deltaM*/)
-}
-
-func clearTpm(ctx context.Context, s *testing.State, env *hwsecEnv) {
-	// Resets the TPM states before running the tests.
-	if err := env.helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
-		s.Fatal("Failed to ensure resetting TPM: ", err)
-	}
-	if err := env.helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
-		s.Fatal("Failed to wait for TPM to be owned: ", err)
-	}
-}
-
-func createVault(ctx context.Context, s *testing.State, env *hwsecEnv) {
-	s.Log("Creating test vault")
 	vtype := s.Param().(*params).VaultType
-	if err := prepareVault(ctx, s.DUT(), env.utility, vtype /*create=*/, true, userName, userPassword); err != nil {
-		s.Fatal("Can't create vault: ", err)
-	}
-	defer env.utility.UnmountAll(ctx)
 
-	if _, err := env.cmdRunner.Run(ctx, "sh", "-c", fmt.Sprintf("echo -n %q > %q", testFileContent, encstatefulFile)); err != nil {
-		s.Fatal("Failed to write encstatefule test content: ", err)
+	ops := &util.Operations{
+		PreUpdate: func(ctx context.Context) error {
+			return util.ClearTpm(ctx, env)
+		},
+		PostUpdate: func(ctx context.Context) error {
+			return createVault(ctx, env, dut, vtype)
+		},
+		PostRollback: func(ctx context.Context) error {
+			return verifyVault(ctx, env, dut, vtype)
+		},
+		CleanUp: func(ctx context.Context) {
+			cleanupVault(ctx, env)
+		},
 	}
-	if err := hwsec.WriteUserTestContent(ctx, env.utility, env.cmdRunner, userName, testFile, testFileContent); err != nil {
-		s.Fatal("Failed to write user vault test content: ", err)
+
+	if err := util.NToMTest(ctx, dut, s.OutDir(), s.RPCHint(), ops, 3 /*deltaM*/); err != nil {
+		s.Fatal("Failed to run cross version test: ", err)
 	}
 }
 
-func verifyVault(ctx context.Context, s *testing.State, env *hwsecEnv) {
-	s.Log("Verifying vault")
-	vtype := s.Param().(*params).VaultType
-	if err := prepareVault(ctx, s.DUT(), env.utility, vtype /*create=*/, false, userName, userPassword); err != nil {
-		s.Fatal("Can't mount vault: ", err)
+func createVault(ctx context.Context, env *util.HwsecEnv, dut *dut.DUT, vaultType vaultType) error {
+	testing.ContextLog(ctx, "Creating test vault")
+	if err := prepareVault(ctx, dut, env.Utility, vaultType /*create=*/, true, userName, userPassword); err != nil {
+		return errors.New("can't create vault")
 	}
-	defer env.utility.UnmountAll(ctx)
+	defer env.Utility.UnmountAll(ctx)
+
+	if _, err := env.CmdRunner.Run(ctx, "sh", "-c", fmt.Sprintf("echo -n %q > %q", util.TestFileContent, util.EncstatefulFile)); err != nil {
+		return errors.Wrap(err, "failed to write encstatefule test content")
+	}
+	if err := hwsec.WriteUserTestContent(ctx, env.Utility, env.CmdRunner, userName, util.TestFile, util.TestFileContent); err != nil {
+		return errors.Wrap(err, "failed to write user vault test content")
+	}
+
+	return nil
+}
+
+func verifyVault(ctx context.Context, env *util.HwsecEnv, dut *dut.DUT, vaultType vaultType) error {
+	testing.ContextLog(ctx, "Verifying vault")
+	if err := prepareVault(ctx, dut, env.Utility, vaultType /*create=*/, false, userName, userPassword); err != nil {
+		return errors.New("can't mount vault")
+	}
+	defer env.Utility.UnmountAll(ctx)
 
 	// Encstateful shouldn't be recreated.
-	if content, err := env.cmdRunner.Run(ctx, "cat", encstatefulFile); err != nil {
-		s.Fatal("Failed to read encstateful test content: ", err)
-	} else if !bytes.Equal(content, []byte(testFileContent)) {
-		s.Fatalf("Unexpected encstateful test file content: got %q, want %q", string(content), testFileContent)
+	if content, err := env.CmdRunner.Run(ctx, "cat", util.EncstatefulFile); err != nil {
+		return errors.Wrap(err, "failed to read encstateful test content")
+	} else if !bytes.Equal(content, []byte(util.TestFileContent)) {
+		return errors.Errorf("unexpected encstateful test file content: got %q, want %q", string(content), util.TestFileContent)
 	}
 
 	// User vault should already exist and shouldn't be recreated.
-	if content, err := hwsec.ReadUserTestContent(ctx, env.utility, env.cmdRunner, userName, testFile); err != nil {
-		s.Fatal("Failed to read user vault test content: ", err)
-	} else if !bytes.Equal(content, []byte(testFileContent)) {
-		s.Fatalf("Unexpected user vault test file content: got %q, want %q", string(content), testFileContent)
+	if content, err := hwsec.ReadUserTestContent(ctx, env.Utility, env.CmdRunner, userName, util.TestFile); err != nil {
+		return errors.Wrap(err, "failed to read user vault test content")
+	} else if !bytes.Equal(content, []byte(util.TestFileContent)) {
+		return errors.Errorf("unexpected user vault test file content: got %q, want %q", string(content), util.TestFileContent)
 	}
+
+	return nil
 }
 
-func cleanupVault(ctx context.Context, s *testing.State, env *hwsecEnv) {
-	env.utility.UnmountAll(ctx)
-	env.utility.RemoveVault(ctx, userName)
+func cleanupVault(ctx context.Context, env *util.HwsecEnv) {
+	env.Utility.UnmountAll(ctx)
+	env.Utility.RemoveVault(ctx, userName)
 }
 
 func prepareVault(ctx context.Context, dut *dut.DUT, utility *hwsec.CryptohomeClient, vtype vaultType, create bool, username, password string) error {

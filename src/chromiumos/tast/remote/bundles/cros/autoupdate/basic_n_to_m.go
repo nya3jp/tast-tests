@@ -7,7 +7,7 @@ package autoupdate
 import (
 	"context"
 
-	"chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib"
+	"chromiumos/tast/remote/bundles/cros/autoupdate/util"
 	"chromiumos/tast/testing"
 )
 
@@ -25,10 +25,10 @@ func init() {
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.UpdateService",
 		},
-		Timeout: autoupdatelib.TotalTestTime,
+		Timeout: util.TotalTestTime,
 	})
 }
 
 func BasicNToM(ctx context.Context, s *testing.State) {
-	autoupdatelib.NToMTest(ctx, s, &autoupdatelib.Operations{}, 3 /*deltaM*/)
+	util.NToMTest(ctx, s.DUT(), s.OutDir(), s.RPCHint(), &util.Operations{}, 3 /*deltaM*/)
 }
