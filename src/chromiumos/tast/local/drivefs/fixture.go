@@ -24,6 +24,10 @@ const (
 	driveFsCommandLineArgsFilePath = "/home/chronos/user/GCache/v2/%s/command_line_args"
 )
 
+var (
+	driveAPIScopes = []string{"https://www.googleapis.com/auth/drive"}
+)
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "driveFsStarted",
@@ -35,8 +39,7 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
 			"drivefs.accountPool",
-			"drivefs.clientCredentials",
-			"drivefs.refreshTokens",
+			"drivefs.extensionClientID",
 		},
 	})
 
@@ -55,8 +58,7 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
 			"drivefs.accountPool",
-			"drivefs.clientCredentials",
-			"drivefs.refreshTokens",
+			"drivefs.extensionClientID",
 		},
 	})
 }
@@ -122,7 +124,10 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		defer cancel()
 
 		var err error
-		f.cr, err = chrome.New(ctx, append(f.chromeOptions, chrome.GAIALoginPool(s.RequiredVar("drivefs.accountPool")), chrome.ARCDisabled())...)
+		f.cr, err = chrome.New(ctx, append(f.chromeOptions,
+			chrome.GAIALoginPool(s.RequiredVar("drivefs.accountPool")),
+			chrome.TestExtOAuthClientID(s.RequiredVar("drivefs.extensionClientID")),
+			chrome.ARCDisabled())...)
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
@@ -173,19 +178,15 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	}
 	f.tconn = tconn
 
-	jsonCredentials := s.RequiredVar("drivefs.clientCredentials")
-	refreshTokens := s.RequiredVar("drivefs.refreshTokens")
-	token, err := getRefreshTokenForAccount(f.cr.NormalizedUser(), refreshTokens)
-	if err != nil {
-		s.Fatal("Failed to get refresh token for account: ", err)
-	}
-
 	// Perform Drive API authentication.
-	APIClient, err := CreateAPIClient(ctx, f.cr, jsonCredentials, token)
+	ts := NewExtensionTokenSourceForAccount(
+		s.FixtContext(),
+		f.cr, tconn, driveAPIScopes, f.cr.Creds().User)
+	apiClient, err := CreateAPIClient(ctx, ts)
 	if err != nil {
-		s.Fatal("Failed creating a APIClient instance: ", err)
+		s.Fatal("Failed to create Drive API client: ", err)
 	}
-	f.APIClient = APIClient
+	f.APIClient = apiClient
 
 	// Lock Chrome and make sure deferred function does not run cleanup.
 	chrome.Lock()
