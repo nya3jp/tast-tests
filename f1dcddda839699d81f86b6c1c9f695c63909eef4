@@ -56,6 +56,30 @@
       },
       "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f499df62_a6b4768d",
+        "filename": "src/chromiumos/tast/local/personalization/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-27T21:31:38Z",
+      "side": 1,
+      "message": "I was recommended by a tast owner in previous CL to use it to reserve some time for defer call to run (in case the function has defer call for clean-up)",
+      "parentUuid": "be7d932d_c1a5afa4",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 51
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
