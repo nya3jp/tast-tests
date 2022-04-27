@@ -117,7 +117,6 @@ func LaunchSSH(ctx context.Context, tconn *chrome.TestConn, usernameAtHost, sshA
 		return nil, errors.Wrap(err, "failed to find keyboard")
 	}
 
-	// If an existing 'chronos@localhost' exists, delete it.
 	ui := uiauto.New(tconn)
 	var ta = &TerminalApp{tconn: tconn, ui: ui, kb: kb}
 
@@ -127,7 +126,7 @@ func LaunchSSH(ctx context.Context, tconn *chrome.TestConn, usernameAtHost, sshA
 		ui.LeftClick(nodewith.Name("Add SSH").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Command").Role(role.TextField)),
 		kb.TypeAction(usernameAtHost+" -o StrictHostKeyChecking=no "+sshArgs),
-		ui.LeftClick(nodewith.Name("OK").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Save").Role(role.Button)),
 		ui.LeftClick(nodewith.Name(usernameAtHost).Role(role.Link)),
 		ui.LeftClick(nodewith.Name("("+usernameAtHost+") Password:").Role(role.TextField)),
 		kb.TypeAction(password),
@@ -151,15 +150,22 @@ func (ta *TerminalApp) DeleteSSHConnection(name string) uiauto.Action {
 		))
 }
 
+// RunSSHCommand runs command in Terminal SSH tab.
+func (ta *TerminalApp) RunSSHCommand(cmd string) uiauto.Action {
+	return uiauto.Combine("run command "+cmd,
+		ta.ui.LeftClick(sshWebArea.First()),
+		ta.kb.TypeAction(cmd),
+		ta.kb.AccelAction("Enter"),
+	)
+}
+
 // ExitSSH exits the current connection and closes the app.
 func (ta *TerminalApp) ExitSSH() uiauto.Action {
 	exitDialog := nodewith.NameStartingWith("Program exited with status code").
 		Role(role.StaticText).Ancestor(nodewith.Role(role.Dialog))
 	terminalWebArea := nodewith.Name("Terminal").Role(role.RootWebArea)
 	return uiauto.Combine("exit ssh",
-		ta.ui.LeftClick(sshWebArea.First()),
-		ta.kb.TypeAction("exit"),
-		ta.kb.AccelAction("Enter"),
+		ta.RunSSHCommand("exit"),
 		ta.ui.WaitUntilExists(exitDialog),
 		ta.kb.TypeAction("x"),
 		ta.ui.WaitUntilExists(terminalWebArea),
