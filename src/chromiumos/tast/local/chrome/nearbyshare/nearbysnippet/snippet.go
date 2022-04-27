@@ -98,10 +98,10 @@ func overrideGMSCoreFlags(ctx context.Context, device *adb.Device) error {
 	overrideCmd1 := gmsOverrideCmd(ctx, device, "com.google.android.gms.nearby", "sharing_package_whitelist_check_bypass")
 	overrideCmd2 := gmsOverrideCmd(ctx, device, "com.google.android.gms", "GoogleCertificatesFlags__enable_debug_certificates")
 
-	if err := overrideCmd1.Run(); err != nil {
+	if err := overrideCmd1.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to override sharing_package_whitelist_check_bypass flag")
 	}
-	if err := overrideCmd2.Run(); err != nil {
+	if err := overrideCmd2.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to override GoogleCertificatesFlags__enable_debug_certificates flag")
 	}
 	return nil
