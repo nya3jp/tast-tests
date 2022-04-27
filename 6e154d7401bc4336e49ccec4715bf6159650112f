@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3245b0a2_42716bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosh/display_debug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-27T07:06:22Z",
+      "side": 1,
+      "message": "This is irrelevant to this CL: break this line to three lines for better readability.",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 108
+      },
+      "revId": "6e154d7401bc4336e49ccec4715bf6159650112f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
