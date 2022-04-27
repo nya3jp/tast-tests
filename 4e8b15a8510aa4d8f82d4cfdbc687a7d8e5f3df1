@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61441ea3_8e400d66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-27T15:30:18Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "4e8b15a8510aa4d8f82d4cfdbc687a7d8e5f3df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76547c4_08a4e14c",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-27T15:30:18Z",
+      "side": 1,
+      "message": "copy \u0026 paste the original message. e.g:\n\n  // Some entries could be empty. e.g: when the SF stats are cleared and\n  // immediately this function is called",
+      "range": {
+        "startLine": 142,
+        "startChar": 5,
+        "endLine": 142,
+        "endChar": 86
+      },
+      "revId": "4e8b15a8510aa4d8f82d4cfdbc687a7d8e5f3df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3efa9d35_b3a46af8",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-27T15:30:18Z",
+      "side": 1,
+      "message": "nit: 0, 0 instead of -1, -1",
+      "range": {
+        "startLine": 182,
+        "startChar": 9,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "4e8b15a8510aa4d8f82d4cfdbc687a7d8e5f3df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
