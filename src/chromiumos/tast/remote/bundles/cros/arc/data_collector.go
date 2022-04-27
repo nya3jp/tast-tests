@@ -36,6 +36,73 @@ type testParam struct {
 	ttsEnabled bool
 }
 
+const (
+	// Name of gsutil
+	gsUtil = "gsutil"
+
+	// Base path for uploaded resources.
+	runtimeArtifactsRoot = "gs://chromeos-arc-images/runtime_artifacts"
+
+	// TTS cache bucket
+	ttsCache = "tts_cache"
+)
+
+type dataUploader struct {
+	ctx             context.Context
+	androidVersion  string
+	shouldUpload    bool
+	buildDescriptor *version.BuildDescriptor
+}
+
+func (du dataUploader) needUpload(bucket string) bool {
+	if !du.shouldUpload {
+		testing.ContextLog(du.ctx, "Cloud upload is disabled")
+		return false
+	}
+
+	if !du.buildDescriptor.Official {
+		testing.ContextLogf(du.ctx, "Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", du.androidVersion)
+		return false
+	}
+
+	gsURL := du.remoteURL(bucket, du.androidVersion)
+	if err := exec.Command(gsUtil, "stat", gsURL).Run(); err != nil {
+		return true
+	}
+
+	// This test is scheduled to run once per build id and ARCH. So race should never happen.
+	testing.ContextLogf(du.ctx, "%q exists and won't be uploaded to the server", gsURL)
+	return false
+}
+
+func (du dataUploader) remoteURL(bucket, version string) string {
+	return fmt.Sprintf("%s/%s_%s.tar", runtimeArtifactsRoot, bucket, version)
+}
+
+func (du dataUploader) upload(src, bucket string) error {
+	gsURL := du.remoteURL(bucket, du.androidVersion)
+
+	// Use gsutil command to upload the file to the server.
+	testing.ContextLogf(du.ctx, "Uploading %q to the server", gsURL)
+	if out, err := exec.Command(gsUtil, "copy", src, gsURL).CombinedOutput(); err != nil {
+		return errors.Wrapf(err, "failed to upload %q to the server %q", src, out)
+	}
+
+	testing.ContextLogf(du.ctx, "Uploaded %q to the server", gsURL)
+
+	// AllUsers read access is considered safe for two reasons.
+	// First, this data is included into the image unmodified.
+	// Second, we already practice setting this permission for other Android build
+	// artifacts. For example from APPS bucket.
+	if out, err := exec.Command(gsUtil, "acl", "ch", "-u", "AllUsers:READ", gsURL).CombinedOutput(); err != nil {
+		return errors.Wrapf(err, "failed to set read permission for %q to the server %q", gsURL, out)
+	}
+
+	testing.ContextLogf(du.ctx, "Set read permission for  %q", gsURL)
+
+	return nil
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataCollector,
@@ -109,17 +176,11 @@ func init() {
 // the binary server.
 func DataCollector(ctx context.Context, s *testing.State) {
 	const (
-		// Base path for uploaded resources.
-		runtimeArtifactsRoot = "gs://chromeos-arc-images/runtime_artifacts"
-
 		// ureadahed packs bucket
 		ureadAheadPack = "ureadahead_pack"
 
 		// GMS Core caches bucket
 		gmsCoreCache = "gms_core_cache"
-
-		// TTS cache bucket
-		ttsCache = "tts_cache"
 
 		// Name of the pack in case of initial boot.
 		initialPack = "initial_pack"
@@ -131,9 +192,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// TODO(b/183648019): Once VM ureadahead flow is stable, remove this and
 		// change vm_initial_pack -> initial_pack.
 		vmInitialPack = "vm_initial_pack"
-
-		// Name of gsutil
-		gsUtil = "gsutil"
 
 		// Number of retries for each flow in case of failure.
 		// Please see b/167697547, b/181832600 for more information. Retries are
@@ -151,10 +209,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	remoteURL := func(bucket, version string) string {
-		return fmt.Sprintf("%s/%s_%s.tar", runtimeArtifactsRoot, bucket, version)
-	}
-
 	param := s.Param().(testParam)
 
 	desc, err := version.GetBuildDescriptorRemotely(ctx, d, param.vmEnabled)
@@ -166,52 +220,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	s.Logf("Detected version: %s", v)
 	if desc.BuildType != "user" {
 		s.Fatal("Data collector should only be run on a user build")
-	}
-
-	// Checks if generated resources need to be uploaded to the server.
-	needUpload := func(bucket string) bool {
-		if !param.upload {
-			s.Log("Cloud upload is disabled")
-			return false
-		}
-
-		if !desc.Official {
-			s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
-			return false
-		}
-
-		gsURL := remoteURL(bucket, v)
-		if err := exec.Command(gsUtil, "stat", gsURL).Run(); err != nil {
-			return true
-		}
-
-		// This test is scheduled to run once per build id and ARCH. So race should never happen.
-		s.Logf("%q exists and won't be uploaded to the server", gsURL)
-		return false
-	}
-
-	upload := func(ctx context.Context, src, bucket string) error {
-		gsURL := remoteURL(bucket, v)
-
-		// Use gsutil command to upload the file to the server.
-		testing.ContextLogf(ctx, "Uploading %q to the server", gsURL)
-		if out, err := exec.Command(gsUtil, "copy", src, gsURL).CombinedOutput(); err != nil {
-			return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
-		}
-
-		testing.ContextLogf(ctx, "Uploaded %q to the server", gsURL)
-
-		// AllUsers read access is considered safe for two reasons.
-		// First, this data is included into the image unmodified.
-		// Second, we already practice setting this permission for other Android build
-		// artifacts. For example from APPS bucket.
-		if out, err := exec.Command(gsUtil, "acl", "ch", "-u", "AllUsers:READ", gsURL).CombinedOutput(); err != nil {
-			return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
-		}
-
-		testing.ContextLogf(ctx, "Set read permission for  %q", gsURL)
-
-		return nil
 	}
 
 	dataDir := param.dataDir
@@ -230,6 +238,13 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to create local dir: ", err)
 		}
+	}
+
+	du := dataUploader{
+		ctx:             ctx,
+		androidVersion:  v,
+		shouldUpload:    param.upload,
+		buildDescriptor: desc,
 	}
 
 	genUreadaheadPack := func() (retErr error) {
@@ -282,8 +297,8 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to compress %q: %v", targetDir, err)
 		}
 
-		if needUpload(ureadAheadPack) {
-			if err := upload(shortCtx, targetTar, ureadAheadPack); err != nil {
+		if du.needUpload(ureadAheadPack) {
+			if err := du.upload(targetTar, ureadAheadPack); err != nil {
 				s.Fatalf("Failed to upload %q: %v", ureadAheadPack, err)
 			}
 		}
@@ -325,8 +340,8 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to compress %q: %v", targetDir, err)
 		}
 
-		if needUpload(gmsCoreCache) {
-			if err := upload(shortCtx, targetTar, gmsCoreCache); err != nil {
+		if du.needUpload(gmsCoreCache) {
+			if err := du.upload(targetTar, gmsCoreCache); err != nil {
 				s.Fatalf("Failed to upload %q: %v", gmsCoreCache, err)
 			}
 		}
@@ -388,7 +403,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	if param.ttsEnabled {
 		attempts := 0
 		for {
-			err := genTTSCache(ctx, s, cl, filepath.Join(dataDir, ttsCache), v)
+			err := genTTSCache(ctx, s, cl, filepath.Join(dataDir, ttsCache), v, &du)
 			if err == nil {
 				break
 			}
@@ -402,7 +417,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	}
 }
 
-func genTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, targetDir, androidVersion string) error {
+func genTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, targetDir, androidVersion string, du *dataUploader) error {
 	service := arc.NewTTSCacheServiceClient(cl.Conn)
 
 	// Shorten the total context by 5 seconds to allow for cleanup.
@@ -427,6 +442,12 @@ func genTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, targetDi
 	testing.ContextLogf(shortCtx, "Compressing TTS cache to %q", targetTar)
 	if err = exec.Command("tar", "-cvpf", targetTar, "-C", targetDir, ".").Run(); err != nil {
 		s.Fatalf("Failed to compress %q: %v", targetDir, err)
+	}
+
+	if du.needUpload(ttsCache) {
+		if err := du.upload(targetTar, ttsCache); err != nil {
+			s.Fatalf("Failed to upload %q: %v", ttsCache, err)
+		}
 	}
 
 	return nil
