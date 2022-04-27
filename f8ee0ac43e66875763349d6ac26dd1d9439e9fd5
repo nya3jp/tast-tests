@@ -34,6 +34,41 @@
       "parentUuid": "d6cd96dc_e0b2ed2c",
       "revId": "f8ee0ac43e66875763349d6ac26dd1d9439e9fd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b28008_ae936a2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-27T22:41:17Z",
+      "side": 1,
+      "message": "Did we lose faillog capturing in the recent refactorings? I think we used to get the faillog if launching Lacros failed and I think we should add that back. But that can be independent of this CL imho.",
+      "parentUuid": "98b3d809_fd3432ac",
+      "revId": "f8ee0ac43e66875763349d6ac26dd1d9439e9fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf5c803_0fb0d1cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-27T22:41:17Z",
+      "side": 1,
+      "message": "Fine with me. But didn\u0027t we have some printing of the Lacros config during launch ",
+      "revId": "f8ee0ac43e66875763349d6ac26dd1d9439e9fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
