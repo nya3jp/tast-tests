@@ -6,12 +6,9 @@ package wmp
 
 import (
 	"context"
-	"net/http"
-	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/common/fixture"
-	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -53,38 +50,18 @@ func VirtualDesksChromeApp(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	defer cancel()
 
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer server.Close()
-
-	policies := []policy.Policy{
-		&policy.WebAppInstallForceList{
-			Val: []*policy.WebAppInstallForceListValue{
-				{
-					Url:                    server.URL + "/web_app_install_force_list_index.html",
-					DefaultLaunchContainer: "window",
-					CreateDesktopShortcut:  false,
-					CustomName:             "",
-					FallbackAppName:        "",
-					CustomIcon: &policy.WebAppInstallForceListValueCustomIcon{
-						Hash: "",
-						Url:  "",
-					},
-				},
-			},
-		},
-	}
-
-	// Update policies.
-	if err := policyutil.ServeAndVerify(ctx, fdms, cr, policies); err != nil {
-		s.Fatal("Failed to update policies: ", err)
-	}
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	_, name, cleanUp, err := policyutil.InstallPwaAppByPolicy(ctx, tconn, cr, fdms, s.DataFileSystem())
+	if err != nil {
+		s.Fatal("Failed to install PWA: ", err)
+	}
+
+	defer cleanUp(ctx)
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
@@ -103,7 +80,6 @@ func VirtualDesksChromeApp(ctx context.Context, s *testing.State) {
 
 	// Wait until the PWA is installed.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		const name = "Test PWA"
 		if err := launcher.SearchAndLaunch(tconn, kb, name)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to launch %s", name)
 		}
