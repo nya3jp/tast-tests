@@ -16,6 +16,24 @@
       "message": "nit: maybe \"NotSpecified\" ? or \"Unspecified\"?",
       "revId": "24d6f73e4a5f38359f308b68b473baf317e4f0cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29a4457_3790852d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-27T15:33:32Z",
+      "side": 1,
+      "message": "I was thinking about that, but I couldn\u0027t because:\n- `NotSpecified` already exists for `Mode`.\n- `Unspecified` might be confusing if it coexists with `NotSpecified` for different const.\nso, I ended up with `NotSelected` for `Selection`. Does it sound okay?",
+      "parentUuid": "29d377dd_e2a4c3a4",
+      "revId": "24d6f73e4a5f38359f308b68b473baf317e4f0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
