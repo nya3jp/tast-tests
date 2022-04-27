@@ -6,11 +6,8 @@ package nearbyshare
 
 import (
 	"context"
-	"strconv"
 	"time"
 
-	"chromiumos/tast/common/android/adb"
-	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
@@ -23,52 +20,21 @@ func init() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr: []string{"group:nearby-share"},
-		Data: []string{nearbysnippet.ZipName},
-		// This var can be used when running locally on non-rooted devices which
-		// have already overridden the GMS Core flags by other means.
-		Vars:    []string{"rooted"},
+		Attr:    []string{"group:nearby-share"},
+		Data:    []string{nearbysnippet.ZipName},
 		Timeout: 3 * time.Minute,
 	})
 }
 
 // SmokeSnippetLibrary tests that we can successfully start and interact with the Nearby Snippet on the Android device.
 func SmokeSnippetLibrary(ctx context.Context, s *testing.State) {
-	// This loads the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
-	if err := localadb.LaunchServer(ctx); err != nil {
-		s.Fatal("Failed to launch adb server: ", err)
+	// Set up adb, connect to the Android phone, and check if ADB root access is available.
+	adbDevice, rooted, err := crossdevice.AdbSetup(ctx)
+	if err != nil {
+		s.Fatal("Failed to set up an adb device: ", err)
 	}
 
-	var adbDevice *adb.Device
-	var err error
-
-	if crossdevice.PhoneIP.Value() != "" {
-		if err := crossdevice.ConnectToWifi(ctx); err != nil {
-			s.Fatal("Failed to connect CrOS device to Wifi: ", err)
-		}
-		adbDevice, err = crossdevice.AdbOverWifi(ctx)
-		if err != nil {
-			s.Fatal("Failed to connect to adb over wifi device: ", err)
-		}
-	} else {
-		// Wait for the first available device, since we are assuming only a single device is connected.
-		adbDevice, err = adb.WaitForDevice(ctx, func(device *adb.Device) bool { return true }, 10*time.Second)
-		if err != nil {
-			s.Fatal("Failed to list adb devices: ", err)
-		}
-	}
-
-	// Launch and start the Snippet. Don't override GMS Core flags on a non-rooted device.
-	override := true
-	if val, ok := s.Var("rooted"); ok {
-		b, err := strconv.ParseBool(val)
-		if err != nil {
-			s.Fatal("Unable to convert rooted var to bool: ", err)
-		}
-		override = b
-	}
-
-	androidNearby, err := nearbysnippet.New(ctx, adbDevice, s.DataPath(nearbysnippet.ZipName), override)
+	androidNearby, err := nearbysnippet.New(ctx, adbDevice, s.DataPath(nearbysnippet.ZipName), rooted)
 	if err != nil {
 		s.Fatal("Failed to set up the snippet server: ", err)
 	}
