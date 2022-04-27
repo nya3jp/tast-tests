@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48cd597b_399b4e8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-27T23:34:52Z",
+      "side": 1,
+      "message": "nit: TTS (consistent case for abbreviations)",
+      "range": {
+        "startLine": 405,
+        "startChar": 8,
+        "endLine": 405,
+        "endChar": 11
+      },
+      "revId": "1267a18863e999183132a7b048199d93e2dbe3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
