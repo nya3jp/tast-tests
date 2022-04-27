@@ -140,6 +140,24 @@
       "parentUuid": "6327bf42_1222fe4d",
       "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d18edf_cd081166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-27T04:24:52Z",
+      "side": 1,
+      "message": "I am about to be on public holidays for like a week, so, sorry about creating more work for you but let me merge this as you suggested previously.",
+      "parentUuid": "72e8f39c_3c91057d",
+      "revId": "ff26ab23e2dcf94fd5ca897f907f3f2e01e7caaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
