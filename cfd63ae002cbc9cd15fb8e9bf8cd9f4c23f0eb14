@@ -16,6 +16,24 @@
       "message": "hmm isn\u0027t this clashing with the CL I sent you earlier? https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3607111",
       "revId": "cfd63ae002cbc9cd15fb8e9bf8cd9f4c23f0eb14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2accbabb_4c81187c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-27T04:37:09Z",
+      "side": 1,
+      "message": "Yes (although this CL has been around since April 22nd).\n\nIMO we should go with this CL, because it simplifies the test more than https://crrev.com/c/3607111 by using the browser abstraction. But lmk if there\u0027s more of a reason to use https://crrev.com/c/3607111",
+      "parentUuid": "bd83a1c0_e185b11c",
+      "revId": "cfd63ae002cbc9cd15fb8e9bf8cd9f4c23f0eb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
