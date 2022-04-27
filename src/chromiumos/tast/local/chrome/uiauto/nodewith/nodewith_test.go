@@ -88,7 +88,7 @@ func TestPrettyPrinter(t *gotesting.T) {
 		{Role(role.Button), `{role: button}`},
 		{ClassName("clsname"), `{className: "clsname"}`},
 		{HasClass("clsname"), `{className: /\bclsname\b/}`},
-		{HasClass("clsname").NameRegex(regexp.MustCompile("^/nameBlah$")), `{name: /^/nameBlah$/, className: /\bclsname\b/}`},
+		{HasClass("cls/name").NameRegex(regexp.MustCompile("^/nameBlah$")), `{name: /^\/nameBlah$/, className: /\bcls\/name\b/}`},
 		{Name("hello"), `{name: /^hello$/}`},
 		{Collapsed(), `{state: map[collapsed:true]}`},
 		{First(), `{first: true}`},

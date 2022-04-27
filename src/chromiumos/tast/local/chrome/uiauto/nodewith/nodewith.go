@@ -202,14 +202,14 @@ func (f *Finder) nameInTree() bool {
 func (f *Finder) Pretty() string {
 	var result []string
 	if name, ok := f.name["en"]; ok {
-		result = append(result, fmt.Sprintf("name: /%v/", &name))
+		result = append(result, fmt.Sprintf("name: %v", convertRegexp(&name)))
 	}
 	for k, v := range f.attributes {
 		switch v := v.(type) {
 		case int, float32, float64, bool:
 			result = append(result, fmt.Sprintf("%s: %v", k, v))
 		case *regexp.Regexp:
-			result = append(result, fmt.Sprintf("%s: /%v/", k, v))
+			result = append(result, fmt.Sprintf("%s: %v", k, convertRegexp(v)))
 		default:
 			result = append(result, fmt.Sprintf("%s: %q", k, v))
 		}
