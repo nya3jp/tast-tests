@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddadd0d6_a1a2af33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-04-27T07:06:02Z",
+      "side": 1,
+      "message": "Added a best-effort way to remove VPN service and updated the reason here, as per the offline discussion.",
+      "parentUuid": "71260d98_0c562866",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "95e1ce9c937a2f4e9586ce257d23c64df73fdae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0989c4c8_ff06f7dc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-26T12:26:27Z",
       "side": 1,
       "message": "Do we need to wait for this button (or check its state) to be enabled?",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "95e1ce9c937a2f4e9586ce257d23c64df73fdae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac93c7ce_11bb86f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-04-27T07:06:02Z",
+      "side": 1,
+      "message": "Seems no, the doc [1] says that \"It will wait until the location is stable before clicking\", and I didn\u0027t see any flakiness when running the test locally.\n\n[1] https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uiauto#Context.LeftClick",
+      "parentUuid": "0989c4c8_ff06f7dc",
       "range": {
         "startLine": 103,
         "startChar": 2,
