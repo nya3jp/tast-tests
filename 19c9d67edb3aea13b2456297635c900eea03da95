@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d19d6e_438a88ae",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T07:43:23Z",
+      "side": 1,
+      "message": "I\u0027m not convinced this helper is useful.\n\nMaybe add the map creation to NewBlob instead. That will make the rest simpler.\n\nAlso don\u0027t use magic values to clear errors. Either use a separate function or a *int that can be nil.",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910f64f6_7ddb2e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T07:43:23Z",
+      "side": 1,
+      "message": "Is this different to calling chrome.autotestPrivate.refreshEnterprisePolicies ?\n\nIf yes, please add a comment on why.",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35ce305_5e01f3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T07:43:23Z",
+      "side": 1,
+      "message": "nit: this name looks like a variable\n\nMaybe statusBoxesMap?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 16
+      },
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "127e2440_0b3b1f9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T07:43:23Z",
+      "side": 1,
+      "message": "nit: add a timer here instead.",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45be58de_7328e68c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T07:43:23Z",
+      "side": 1,
+      "message": "nit: Don\u0027t use MustCompile without a constant.\n\nPass the compiled regex to the function instad.",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 35
+      },
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3668517a_444ac093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T07:43:23Z",
+      "side": 1,
+      "message": "Not needed, handled by the fixtures",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577c8282_cd40eb33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/chrome_policy_page_status_timestamps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-27T07:43:23Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "19c9d67edb3aea13b2456297635c900eea03da95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
