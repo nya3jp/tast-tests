@@ -16,6 +16,29 @@
       "message": "I cleaned up the CL and rebased.\nPTAL.",
       "revId": "ee0076652ed027394cedcab51a3e0cd8a3370883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a31a31_1f134d52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-27T12:32:22Z",
+      "side": 1,
+      "message": "This is new implementation of CL:3581746 specifically for the SPERA team.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "ee0076652ed027394cedcab51a3e0cd8a3370883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
