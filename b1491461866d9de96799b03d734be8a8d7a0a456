@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223772cf_3a72d5b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/secondary_apps_installed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T08:30:16Z",
+      "side": 1,
+      "message": "I am not sure this is really needed.",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 50
+      },
+      "revId": "b1491461866d9de96799b03d734be8a8d7a0a456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b271fe36_89da0fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/secondary_apps_installed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T08:30:16Z",
+      "side": 1,
+      "message": "did you try here - ui.WaitUntilExists(nodefinder) call? This call comes from the uiauto library. You could check if an UI element that is part of the primary app is present.",
+      "range": {
+        "startLine": 170,
+        "startChar": 11,
+        "endLine": 170,
+        "endChar": 44
+      },
+      "revId": "b1491461866d9de96799b03d734be8a8d7a0a456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dae1523_f84e13fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/secondary_apps_installed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T08:30:16Z",
+      "side": 1,
+      "message": "if any of these return an error tconn won\u0027t be released. \nCall defer in the function that will be guarded by a flag, similarly as early version of the kiosk library:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go;l\u003d107;bpv\u003d1;bpt\u003d0;rcl\u003d2df33826f269512d1d81b6933392d80c397b913e",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "b1491461866d9de96799b03d734be8a8d7a0a456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
