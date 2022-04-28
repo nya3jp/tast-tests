@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbc52b91_cbf63859",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-04-28T02:30:10Z",
+      "side": 1,
+      "message": "Because these script generating code will be used by both local test and remote test. Our idea is to make both of these test reuse more code as many as possible so that any of these shared code failed, we can have enough failure information from both side to debug.",
+      "parentUuid": "59ab5086_7ab43870",
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b440e8f_6cf17c83",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
         "patchSetId": 4
