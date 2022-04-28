@@ -34,6 +34,24 @@
       "parentUuid": "fac014e9_43f5904d",
       "revId": "66a6fa70c48ceddb64e0e88722dfb5d3a6ef2926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ba205c_5c806712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T14:29:12Z",
+      "side": 1,
+      "message": "It\u0027s a false success if the timeout is too short. If it takes 10 second for something to show up and you are only waiting 5 seconds to confirm it does not, the test succeeds, but not actually checked anything.",
+      "parentUuid": "1b14805c_34605f54",
+      "revId": "66a6fa70c48ceddb64e0e88722dfb5d3a6ef2926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
