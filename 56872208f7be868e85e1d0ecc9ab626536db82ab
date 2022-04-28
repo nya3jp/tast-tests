@@ -16,6 +16,24 @@
       "message": "could collect the process?",
       "revId": "56872208f7be868e85e1d0ecc9ab626536db82ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdcd29e5_ec2c6f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-04-28T02:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e918e101_6114b8e0",
+      "revId": "56872208f7be868e85e1d0ecc9ab626536db82ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
