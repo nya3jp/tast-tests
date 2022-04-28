@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79851c06_84ca7c94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 0,
+      "message": "Why is this being removed? Move to a separate CL or at least mention in the CL description.",
+      "revId": "dfbaf17be5a73c400b75b3b10b95830dc9ea4021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

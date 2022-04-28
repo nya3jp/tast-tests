@@ -20,6 +20,297 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "954b4f73_7da26258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "nit: move this change to a separate CL.",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c5cc0f_7723088f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "Why have these been added? Don;t they need a cleanup context to make sure there\u0027s enough time to run cleanup.",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d877212_33d29df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "Return errors instead of passing state.",
+      "range": {
+        "startLine": 150,
+        "startChar": 53,
+        "endLine": 150,
+        "endChar": 69
+      },
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1422c84_b35d55a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "conn.WaitForExpr should be helpful here.",
+      "range": {
+        "startLine": 151,
+        "startChar": 11,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76fd3c56_98130f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "Return errors instead of passing state.",
+      "range": {
+        "startLine": 176,
+        "startChar": 52,
+        "endLine": 176,
+        "endChar": 68
+      },
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a637a0_12a1f1dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "Use cleanupCtx",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6955d0e8_3726881e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "Use cleanupCtx",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2cd697_a50486b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "Provide a better description here.",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1350c6_e88acb8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "nit: end comment with a .\n\nSame for most below.",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff0d1ad_1e6127d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 159,
+        "startChar": 25,
+        "endLine": 159,
+        "endChar": 28
+      },
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3e74e9_e6125847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "Log statement not userful",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc80c11_cd2b5552",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 198,
+        "startChar": 39,
+        "endLine": 198,
+        "endChar": 42
+      },
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b074b61b_cc7599b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 205,
+        "startChar": 27,
+        "endLine": 205,
+        "endChar": 30
+      },
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8308b3_f5d35442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "Can this be done from js instead?",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c525bb4b_53653f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T12:46:07Z",
+      "side": 1,
+      "message": "Why are you waiting on the same element twice?",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3853d0f_c3e1740d",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
         "patchSetId": 7
