@@ -10,11 +10,13 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -56,6 +58,31 @@ func DragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, 
 
 	if err := pc.Drag(center, waitForDragged, pc.DragTo(target, time.Second))(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag to snap from overview")
+	}
+
+	return nil
+}
+
+// ToggleSnapViaKeyboardShortcut snaps (unsnap if it's already snapped) the given activity's window
+// to the primary (left/top on the landscape/portrait mode accordingly) side (the secondary side if
+// primary is false) by using the keyboard shortcut.
+func ToggleSnapViaKeyboardShortcut(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, primary bool) error {
+	if err := act.Focus(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to focus the activity")
+	}
+
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open keyboard device")
+	}
+	defer ew.Close()
+
+	shortcutCommand := "Alt+]"
+	if primary {
+		shortcutCommand = "Alt+["
+	}
+	if err := ew.Accel(ctx, shortcutCommand); err != nil {
+		return errors.Wrap(err, "failed to write keyboard events")
 	}
 
 	return nil
