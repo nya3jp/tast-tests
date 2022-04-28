@@ -75,6 +75,7 @@ func init() {
 		Data: []string{
 			"download.html",
 			"10ssns.txt",
+			"allowed.txt",
 			"content.exe",
 			"unknown_malware_encrypted.zip",
 			"unknown_malware.zip",
@@ -95,7 +96,7 @@ func TestDownload(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Verify policy
+	// Verify policy.
 	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -133,7 +134,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Create Browser
+	// Create Browser.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browserType)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
@@ -145,55 +146,31 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 		s.Fatal("Failed to connect to chrome: ", err)
 	}
 	defer dconn.Close()
+	defer dconn.CloseTarget(cleanupCtx)
 
-	// Need to wait for a valid dm token, i.e., the proper initialization of the enterprise connectors
-	s.Log("Checking for dm token")
-	if err := testing.Poll(ctx, func(c context.Context) error {
-		return helpers.CheckDMTokenRegistered(ctx, s, br, server)
-	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 10 * time.Second}); err != nil {
-		s.Fatal("Failed to wait for dm token to be registered: ", err)
+	// Need to wait for a valid dm token, i.e., the proper initialization of the enterprise connectors.
+	if policyParams.ScansEnabled {
+		s.Log("Checking for dm token")
+		err = helpers.WaitForDMTokenRegistered(ctx, br, tconn, server)
+		if err != nil {
+			s.Fatal("Failed to wait for DM token: ", err)
+		}
 	}
-	s.Log("Checking for dm token done")
 
-	for _, param := range []struct {
-		testName        string
-		dlFileName      string
-		dlIsBad         bool
-		dlIsUnscannable bool
-	}{
-		{
-			testName:        "Encrypted malware",
-			dlFileName:      "unknown_malware_encrypted.zip",
-			dlIsBad:         true,
-			dlIsUnscannable: true,
-		},
-		{
-			testName:        "Unknown malware",
-			dlFileName:      "unknown_malware.zip",
-			dlIsBad:         true,
-			dlIsUnscannable: false,
-		},
-		{
-			testName:        "Known malware",
-			dlFileName:      "content.exe",
-			dlIsBad:         true,
-			dlIsUnscannable: false,
-		},
-		{
-			testName:        "DLP clear text",
-			dlFileName:      "10ssns.txt",
-			dlIsBad:         true,
-			dlIsUnscannable: false,
-		},
-	} {
-		s.Run(ctx, param.testName, func(ctx context.Context, s *testing.State) {
-			dlFileName := param.dlFileName
+	for _, params := range helpers.GetTestFileParams() {
+		s.Run(ctx, params.TestName, func(ctx context.Context, s *testing.State) {
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			dlFileName := params.FileName
+
 			shouldBlockDownload := false
 			if policyParams.ScansEnabled {
-				if param.dlIsUnscannable {
+				if params.IsUnscannable {
 					shouldBlockDownload = !policyParams.AllowsUnscannableFiles
 				} else {
-					shouldBlockDownload = param.dlIsBad
+					shouldBlockDownload = params.IsBad
 				}
 			}
 
@@ -202,6 +179,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
 			defer dconn.Close()
+			defer dconn.CloseTarget(cleanupCtx)
 
 			// Close all prior notifications.
 			if err := ash.CloseNotifications(ctx, tconn); err != nil {
@@ -209,7 +187,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			}
 
 			// The file name is also the ID of the link elements.
-			err = dconn.Eval(ctx, `document.getElementById('`+param.dlFileName+`').click()`, nil)
+			err = dconn.Eval(ctx, `document.getElementById('`+params.FileName+`').click()`, nil)
 			if err != nil {
 				s.Fatal("Failed to execute JS expression: ", err)
 			}
@@ -224,7 +202,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 				}
 			}()
 
-			// Check for notification (this might take some time in case of throttling)
+			// Check for notification (this might take some time in case of throttling).
 			timeout := 2 * time.Minute
 
 			deadline, _ := ctx.Deadline()
@@ -250,7 +228,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 				}
 			}
 
-			// Check file blocked/existence
+			// Check file blocked/existence.
 			_, err = os.Stat(filesapp.DownloadPath + dlFileName)
 			if os.IsNotExist(err) {
 				if !shouldBlockDownload {
