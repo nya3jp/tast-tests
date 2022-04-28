@@ -78,8 +78,11 @@ func CreateFixture(user, pw string) testing.FixtureImpl {
 	return chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 		username := s.RequiredVar(user)
 		password := s.RequiredVar(pw)
-		return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
-			chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
-			chrome.ProdPolicy())).Opts()
+		return lacrosfixt.NewConfig(
+			lacrosfixt.ChromeOptions(
+				chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+				chrome.ProdPolicy(),
+			),
+		).Opts()
 	})
 }
