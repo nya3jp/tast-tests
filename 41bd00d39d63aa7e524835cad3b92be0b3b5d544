@@ -16,6 +16,24 @@
       "message": "Reassigning since original tast reviewer seems to ",
       "revId": "41bd00d39d63aa7e524835cad3b92be0b3b5d544",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c9d8e74_4d0b479a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-28T04:16:44Z",
+      "side": 1,
+      "message": "Rephrase: I\u0027ll reassign this if the assigned tast owner don\u0027t have time to look at this recently.",
+      "parentUuid": "66497eb8_01344efe",
+      "revId": "41bd00d39d63aa7e524835cad3b92be0b3b5d544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
