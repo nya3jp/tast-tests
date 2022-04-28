@@ -116,8 +116,9 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			// 5 seconds should be enough time to wait to make sure a node appears or not
-			waitTimeout := 5 * time.Second
+			// 10 seconds should be enough time to wait to make sure a node appears
+			// or not.
+			waitTimeout := 10 * time.Second
 
 			// The popup to send feedback to Google is opened in two ways: 1) Key
 			// combination (Alt+Shift+I); 2) From the menu (Chrome Menu > Help >
