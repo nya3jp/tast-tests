@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2093cbee_0aa6208f",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-28T19:30:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fd513c5_15358acb",
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f43fb4ac_f4a40e29",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-04-28T17:22:26Z",
       "side": 1,
       "message": "Do we need to export this? If not, lowercase the first letter: `disableNonCellularInterfaceForTesting`",
+      "range": {
+        "startLine": 894,
+        "startChar": 17,
+        "endLine": 894,
+        "endChar": 54
+      },
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a2ca668_59c40657",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-28T19:30:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f43fb4ac_f4a40e29",
       "range": {
         "startLine": 894,
         "startChar": 17,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d733e2af_b8c0a882",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-28T19:30:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d58667ec_205593b6",
+      "range": {
+        "startLine": 912,
+        "startChar": 17,
+        "endLine": 912,
+        "endChar": 71
+      },
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3845306c_ac2ade45",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05774f85_18b34720",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-28T19:30:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3845306c_ac2ade45",
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e551647_5eb58ab4",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-04-28T17:22:26Z",
       "side": 1,
       "message": "This is now actually running the test body, not just doing setup, so maybe we should rename this to something more descriptive. Perhaps `RunTestOnCellularInterface`?",
+      "range": {
+        "startLine": 923,
+        "startChar": 17,
+        "endLine": 923,
+        "endChar": 49
+      },
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ddaf64c_9d52dfd9",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-04-28T19:30:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e551647_5eb58ab4",
       "range": {
         "startLine": 923,
         "startChar": 17,
