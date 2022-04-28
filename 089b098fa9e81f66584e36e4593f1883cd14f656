@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c7f1f5_0523a850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-04-28T13:40:00Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "ea583f05_8d7973c6",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "089b098fa9e81f66584e36e4593f1883cd14f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05a9bb1c_68d82c75",
