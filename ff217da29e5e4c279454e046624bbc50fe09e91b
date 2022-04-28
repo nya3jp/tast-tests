@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a91eba5_ee07014b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-28T21:43:38Z",
+      "side": 1,
+      "message": "IIRC, we use the name `informational` for inputs tests.",
+      "range": {
+        "startLine": 45,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d48e1d7_019defda",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
         "patchSetId": 3
@@ -59,6 +82,29 @@
         "startChar": 47,
         "endLine": 122,
         "endChar": 65
+      },
+      "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6112e0ef_27c5b3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-28T21:43:38Z",
+      "side": 1,
+      "message": "checking the return value of `s.Run` is not needed here, unless you want to stop the whole test with `s.Fatal`.",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 3
       },
       "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
