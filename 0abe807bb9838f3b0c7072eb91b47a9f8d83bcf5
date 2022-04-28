@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2b06e8_08124faf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-04-28T17:45:52Z",
+      "side": 1,
+      "message": "sorry. It was a typo error, corrected it.",
+      "parentUuid": "fe54acd0_cdc8f14d",
+      "revId": "0abe807bb9838f3b0c7072eb91b47a9f8d83bcf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8430dbb0_2c7161b6",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-26T22:50:07Z",
       "side": 1,
       "message": "You went through and added the appropriate timeout to all the items you added the TType value to so is TType even needed? in the check below you could just do:\n\n```\ntimeout :\u003d test.Timeout\n// Use the default if the timeout wasn\u0027t set\nif timeout \u003d\u003d time.Duration(0) {\n  timeout \u003d defaultTestCaseTimeout\n}\n\n```\n\nwhich is easier to follow then having two fields which hold duplicate information.",
+      "revId": "0abe807bb9838f3b0c7072eb91b47a9f8d83bcf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc08871c_157466e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-04-28T17:45:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8430dbb0_2c7161b6",
       "revId": "0abe807bb9838f3b0c7072eb91b47a9f8d83bcf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
