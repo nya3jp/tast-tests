@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "025d3e4a_b8ac3cf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-28T03:57:13Z",
+      "side": 1,
+      "message": "Carry over Verified +1 since patchset 4 only modified the Cq-Depend in the commit message.",
+      "revId": "12dfd45cb84b8285a95f30746f68e1375fbee425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
