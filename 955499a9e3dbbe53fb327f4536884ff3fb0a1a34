@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b468eba9_ba3fe94e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/files_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-04-28T07:31:08Z",
+      "side": 1,
+      "message": "I see. Let\u0027s keep the manual testing steps, but document the steps in the godoc for the test. e.g. (almost verbatim from the test steps):\n```\nTests the Files App by:\n1. Starting an MGS.\n2. Opening chrome://dino and printing the page with Print to PDF\n3. Using the Files App to open the saved PDF file\n4. Verifying the file is opened by checking the Gallery app is opened\n```",
+      "parentUuid": "647df2d7_e58934e3",
+      "range": {
+        "startLine": 71,
+        "startChar": 27,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "955499a9e3dbbe53fb327f4536884ff3fb0a1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58e9b156_00f1ba54",
         "filename": "src/chromiumos/tast/local/bundles/cros/mgs/files_app.go",
         "patchSetId": 2
