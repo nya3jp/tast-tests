@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e9274a_1ebc32e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-28T06:18:26Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "a2509f011187710fe9708aaba11f8dd961cd1281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02dc7d90_99634db5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_default_user_avatar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-28T06:18:26Z",
+      "side": 1,
+      "message": "Add the `Timeout` field with a reasonable value. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dTests%20should%20always%20set%20the%20Timeout%20field",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "a2509f011187710fe9708aaba11f8dd961cd1281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca5592ab_60e39dcb",
@@ -31,6 +71,29 @@
       "writtenOn": "2022-04-28T04:58:49Z",
       "side": 1,
       "message": "Is this a common set of flags? If there are other tests using these flags, we should probably make it into a fixture to reduce CQ load.",
+      "revId": "a2509f011187710fe9708aaba11f8dd961cd1281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815a6b31_fe22ef73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_default_user_avatar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-28T06:18:26Z",
+      "side": 1,
+      "message": "reserve time for cleanup tasks (deferred functions that need a context), see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 19
+      },
       "revId": "a2509f011187710fe9708aaba11f8dd961cd1281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
