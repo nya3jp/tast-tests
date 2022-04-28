@@ -1094,3 +1094,57 @@ func ReadImageBytesFromFilePath(filePath string) ([]byte, error) {
 	}
 	return buf.Bytes(), nil
 }
+
+// OpenProductivityLauncher performs the correct action to show the launcher depending on the tabletMode state.
+// tabletMode when true, drags upwards from the hotseat to show the home screen. Otherwise, it opens the launcher by triggering the search accelerator.
+func OpenProductivityLauncher(ctx context.Context, tconn *chrome.TestConn, tabletMode bool) error {
+	if tabletMode {
+		touchScreen, err := input.Touchscreen(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the touch screen")
+		}
+		defer touchScreen.Close()
+
+		stw, err := touchScreen.NewSingleTouchWriter()
+		if err != nil {
+			return errors.Wrap(err, "failed to get the single touch event writer")
+		}
+		defer stw.Close()
+
+		// Make sure the shelf bounds is stable before dragging.
+		if err := ash.WaitForStableShelfBounds(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to wait for stable shelf bounds")
+		}
+		if err := ash.DragToShowHomescreen(ctx, touchScreen.Width(), touchScreen.Height(), stw, tconn); err != nil {
+			return errors.Wrap(err, "failed to show homescreen")
+		}
+	} else {
+		if err := OpenBubbleLauncher(tconn)(ctx); err != nil {
+			return errors.Wrap(err, "failed to open bubble launcher")
+		}
+	}
+	return nil
+}
+
+// DismissSortNudgeIfExists will get rid of the sort nudge that appears the first time the productivity launcher is open.
+// This method will click on the OK button on the sort nudge
+func DismissSortNudgeIfExists(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	sortNudge := nodewith.Name("Sort your apps by name or color")
+	sortNudgeFound, err := ui.IsNodeFound(ctx, sortNudge)
+	if err != nil {
+		return errors.Wrap(err, "failed to search for sort nudge")
+	}
+
+	if sortNudgeFound {
+		dismissButton := nodewith.Name("OK").ClassName("PillButton")
+		if err := uiauto.Combine("Click on the dismiss button",
+			ui.WaitUntilExists(dismissButton),
+			ui.LeftClick(dismissButton),
+			ui.WaitUntilGone(sortNudge),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click on the OK button")
+		}
+	}
+	return nil
+}
