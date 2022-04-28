@@ -45,10 +45,9 @@ func ModemFWManifestInstallation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to parse the firmware manifest: ", err)
 	}
 
-	dutVariant, err := cellular.GetDeviceVariant(ctx)
-	if err != nil {
-		s.Fatalf("Failed to get device variant: %s", err)
-	}
+	// Ignore the error since older boards didn't always use variants and this
+	// test does not require a variant to succeed.
+	dutVariant, _ := cellular.GetDeviceVariant(ctx)
 
 	// Find the USB device ID of the modem in this variant.
 	deviceID := ""
