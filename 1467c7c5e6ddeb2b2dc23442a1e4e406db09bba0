@@ -160,6 +160,24 @@
       "parentUuid": "181da7cf_d70e50b1",
       "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ddb7c74_a96aaf5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308772
+      },
+      "writtenOn": "2022-04-28T18:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9e5c8e2_8a010782",
+      "revId": "1467c7c5e6ddeb2b2dc23442a1e4e406db09bba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
