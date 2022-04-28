@@ -7,6 +7,7 @@ package network
 import (
 	"context"
 	"fmt"
+	"reflect"
 
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/chrome"
@@ -65,12 +66,13 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 	}
 
 	for _, tc := range []struct {
-		subtest    string
-		properties string
+		subtest            string
+		mojoProperties     string
+		providerProperties map[string]interface{}
 	}{
 		{
 			subtest: "WireGuard",
-			properties: `{
+			mojoProperties: `{
 				name: 'temp-wg1',
 				typeConfig: {
 					vpn: {
@@ -88,10 +90,23 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 					},
 				},
 			}`,
+			providerProperties: map[string]interface{}{
+				"Host": "wireguard",
+				"Type": "wireguard",
+				// PSK and private key are not exposed so they cannot be verified.
+				"WireGuard.Peers": []map[string]string{
+					{
+						"PublicKey":           "xLwB3ayvpYqvRrkyiEfK1YtipzpZKAdLJBP9ikHJbhg=",
+						"Endpoint":            "2.2.2.2:30000",
+						"AllowedIPs":          "0.0.0.0/0",
+						"PersistentKeepalive": "",
+					},
+				},
+			},
 		},
 		{
 			subtest: "WireGuard-NoPrivateKey",
-			properties: `{
+			mojoProperties: `{
 				name: 'temp-wg2',
 				typeConfig: {
 					vpn: {
@@ -109,16 +124,18 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 					},
 				},
 			}`,
+			// This subtest has the same peer struct as the previous one, so skip the
+			// property verification.
 		},
 		{
 			subtest: "L2TPIPsec-PSK",
-			properties: `{
-				name: 'temp',
+			mojoProperties: `{
+				name: 'temp-l2tpipsec-psk',
 				typeConfig: {
 					vpn: {
 						host:'host',
 						type: {value: chromeos.networkConfig.mojom.VpnType.kL2TPIPsec},
-						ipsec: {
+						ipSec: {
 							authenticationType: 'PSK',
 							ikeVersion: 1,
 							psk: 'psk',
@@ -130,11 +147,16 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 					}
 				}
 			}`,
+			providerProperties: map[string]interface{}{
+				"Host":           "host",
+				"Type":           "l2tpipsec",
+				"L2TPIPsec.User": "username",
+			},
 		},
 		// TODO(b/216386693): Add L2TPIPsec-cert and OpenVPN subtests
 	} {
 		s.Run(ctx, tc.subtest, func(ctx context.Context, s *testing.State) {
-			jsWrap := fmt.Sprintf(jsTemplate, tc.properties)
+			jsWrap := fmt.Sprintf(jsTemplate, tc.mojoProperties)
 			var result configureNetworkResult
 			if err := conn.Call(ctx, &result, jsWrap); err != nil {
 				s.Fatal("Failed to call configureNetwork(): ", err)
@@ -145,8 +167,27 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 				testing.ContextLog(ctx, "configureNetwork() returns guid ", result.GUID)
 			}
 
-			if err := vpn.VerifyVPNProfile(ctx, m, result.GUID, false); err != nil {
-				s.Errorf("Failed to verify %s VPN service of guid %s: %v", tc.subtest, result.GUID, err)
+			// Verifies that service is created in shill.
+			svc, err := vpn.FindVPNService(ctx, m, result.GUID)
+			if err != nil {
+				s.Fatalf("Failed to verify %s VPN service: %v", tc.subtest, err)
+			}
+
+			// Verifies that Provider property of this service contain all the
+			// expected properties.
+			props, err := svc.GetProperties(ctx)
+			if err != nil {
+				s.Fatal("Failed to get service properties: ", err)
+			}
+			provider, err := props.Get("Provider")
+			if err != nil {
+				s.Fatal("Failed to get Provider property: ", err)
+			}
+			for k, v := range tc.providerProperties {
+				got := provider.(map[string]interface{})[k]
+				if reflect.DeepEqual(v, got) == false {
+					s.Errorf("Value mismatched for %s: expect %v, got %v", k, v, got)
+				}
 			}
 		})
 	}
