@@ -97,6 +97,103 @@
       "message": "hwsec-wise LGTM, but i want to hear opinions by Abe-san regarding where it should belong.\n\nHoward, pls also chime in if you have thoughts around this. thanks!",
       "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea38da8a_d55713cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-28T08:50:14Z",
+      "side": 1,
+      "message": "optional: can we have better name from what it is, rather than how it will be used?",
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e48022_73ceb9fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-28T08:50:14Z",
+      "side": 1,
+      "message": "pls do not declare at the beginning of the function. Instead, please do so for each when needed at latest timing. :\u003d also helps you to do it.",
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c65cde_8e5468e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-28T08:50:14Z",
+      "side": 1,
+      "message": "can these be encapsulated into the library side?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 44
+      },
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d6c20d_cb08c465",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-28T08:50:14Z",
+      "side": 1,
+      "message": "let\u0027s avoid testing.State passing.\nPlease see go/tast-writing. Ditto for below.",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 57
+      },
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0102d4_69f17c3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-28T08:50:14Z",
+      "side": 1,
+      "message": "cr.Close should be called here and following error cases, too?",
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
