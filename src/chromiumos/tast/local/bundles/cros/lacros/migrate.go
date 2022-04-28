@@ -71,10 +71,12 @@ const (
 	titleOfAlphabetPage  = "Alphabet"                         // https://abc.xyz page title.
 	titleOfDownloadsPage = "Downloads"                        // chrome://downloads page title.
 	titleOfNewTabPage    = "New Tab"                          // chrome://newtab page title.
+	cookie               = "MyCookie1234=abcd"                // Arbitrary cookie.
 )
 
 // prepareAshProfile resets profile migration, installs an extension, and
-// creates two tabs, browsing history, a bookmark, a download, and a shortcut.
+// creates two tabs, browsing history, a bookmark, a download, a shortcut and a
+// cookie.
 func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.KeyboardEventWriter) {
 	// First restart Chrome with Lacros disabled in order to reset profile migration.
 	cr, err := chrome.New(ctx, chrome.DisableFeatures("LacrosSupport"))
@@ -127,6 +129,11 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 	}
 	if err := conn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
 		s.Fatal("Failed to wait for Alphabet page: ", err)
+	}
+
+	// Set cookie on Alphabet page.
+	if err := conn.Call(ctx, nil, `(cookie) => document.cookie = cookie`, cookie); err != nil {
+		s.Fatal("Failed to set cookie: ", err)
 	}
 
 	// Bookmark the chrome://downloads page.
@@ -250,6 +257,25 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	if err := lacros.WaitForLacrosWindow(ctx, tconn, titleOfAlphabetPage); err != nil {
 		s.Fatal("Failed to find appropriate window: ", err)
 	}
+
+	// Check if the cookie set in Ash is carried over to Lacros.
+	func() {
+		conn, err := l.NewConn(ctx, "https://abc.xyz")
+		if err != nil {
+			s.Fatal("Failed to open abc.xyz: ", err)
+		}
+		defer conn.Close()
+		contained := false
+
+		if err := conn.Call(ctx,
+			&contained,
+			`(cookie) => { return document.cookie.split('; ').includes(cookie); }`, cookie); err != nil {
+			s.Fatal("Failed to get cookie: ", err)
+		}
+		if !contained {
+			s.Fatal("Cookie set in Ash could not be found in Lacros")
+		}
+	}()
 
 	// Check that the extension is installed and enabled.
 	func() {
