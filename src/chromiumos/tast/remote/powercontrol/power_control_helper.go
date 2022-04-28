@@ -78,13 +78,15 @@ func ShutdownAndWaitForPowerState(ctx context.Context, pxy *servo.Proxy, dut *du
 
 // PowerOntoDUT performs power normal press to wake DUT.
 func PowerOntoDUT(ctx context.Context, pxy *servo.Proxy, dut *dut.DUT) error {
-	waitCtx, cancel := context.WithTimeout(ctx, 1*time.Minute)
-	defer cancel()
-	if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-		return errors.Wrap(err, "failed to power button press")
-	}
-	if err := dut.WaitConnect(waitCtx); err != nil {
-		return errors.Wrap(err, "failed to wait connect DUT")
-	}
-	return nil
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+		defer cancel()
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+			return errors.Wrap(err, "failed to power normal press")
+		}
+		if err := dut.WaitConnect(waitCtx); err != nil {
+			return errors.Wrap(err, "failed to wait connect DUT")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Minute})
 }
