@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a144ee_3ed2c796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-28T02:10:15Z",
+      "side": 1,
+      "message": "Nvm, I didn\u0027t read the link carefully enough. \"Note that it‘s still best to practice information hiding and pass only as much data is needed. Avoid passing testing.State when it’s not actually necessary: [...]\" is relevant.",
+      "parentUuid": "be0bcde4_9e70f65c",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 72
+      },
+      "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee7d50ae_4932f127",
