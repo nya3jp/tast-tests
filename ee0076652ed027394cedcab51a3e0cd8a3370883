@@ -91,6 +91,24 @@
       "parentUuid": "e4f4df70_eb1d92b3",
       "revId": "ee0076652ed027394cedcab51a3e0cd8a3370883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae61ed49_49e629ca",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-28T08:58:27Z",
+      "side": 1,
+      "message": "the current way was just not designed properly, IMHO. The easiest way is to move the tconn part back to the bundles/* package for the short term.\n\nMore important thing to me is, no more users. Marking / Naming \"deprecated\" practically blocks engineers from using this in new code, so I highly recommend to rename, even if there\u0027s no straightforward short-circuit alternatives, there\u0027s still a way to inject the code outside of this package.",
+      "parentUuid": "e962f61c_0521afd4",
+      "revId": "ee0076652ed027394cedcab51a3e0cd8a3370883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
