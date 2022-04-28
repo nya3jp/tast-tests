@@ -69,6 +69,24 @@
       "parentUuid": "710b730c_2879fe48",
       "revId": "e6449c66d9fe2fd316972e4285ece8871d7663f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822f5d15_1965b0f5",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-28T22:16:47Z",
+      "side": 1,
+      "message": "Yes, looks like another CL adding more usages of this was merged at the same time. Hyung, I am OOO for the next week, could you please fix this up? Thanks for the help!",
+      "parentUuid": "4d5ef8cf_b79b1436",
+      "revId": "e6449c66d9fe2fd316972e4285ece8871d7663f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
