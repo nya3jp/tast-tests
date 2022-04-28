@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e746fe9a_654777a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-28T12:26:57Z",
+      "side": 1,
+      "message": "Add Alvin to review this cl as well.",
+      "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d48e1d7_019defda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-28T12:26:57Z",
+      "side": 1,
+      "message": "ClearThenClickFieldAndWaitForActive",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 47
+      },
+      "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "318875eb_68c38c8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-28T12:26:57Z",
+      "side": 1,
+      "message": "nit: it would be nice to print out the test data.",
+      "range": {
+        "startLine": 122,
+        "startChar": 47,
+        "endLine": 122,
+        "endChar": 65
+      },
+      "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
