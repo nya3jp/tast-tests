@@ -16,12 +16,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
-	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -52,82 +50,54 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		Data:         data.ExtractExternalFiles(hwTestMessages, append(hwTestIMEs, hwTestIMEsUpstream...)),
+		Fixture:      fixture.AnyVK,
 		Timeout:      2 * time.Duration(len(hwTestIMEs)+len(hwTestIMEsUpstream)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "docked",
-				Pre:               pre.VKEnabledReset,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val:               hwTestIMEs,
 			},
 			{
 				Name:              "docked_upstream",
-				Pre:               pre.VKEnabledReset,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
 				Val:               hwTestIMEsUpstream,
 			},
 			{
 				Name:              "docked_informational",
-				Pre:               pre.VKEnabledReset,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
 			},
 			{
 				Name:              "floating",
-				Pre:               pre.VKEnabledReset,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val:               hwTestIMEs,
 			},
 			{
 				Name:              "floating_upstream",
-				Pre:               pre.VKEnabledReset,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 				Val:               hwTestIMEsUpstream,
 			},
 			{
 				Name:              "floating_informational",
-				Pre:               pre.VKEnabledReset,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
-			},
-			{
-				Name:              "docked_fixture",
-				Fixture:           fixture.AnyVK,
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"informational"},
-				Val:               hwTestIMEs,
-			},
-			{
-				Name:              "floating_fixture",
-				Fixture:           fixture.AnyVK,
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"informational"},
-				Val:               hwTestIMEs,
 			},
 		},
 	})
 }
 
 func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
-	var cr *chrome.Chrome
-	var tconn *chrome.TestConn
-	var uc *useractions.UserContext
-	if strings.Contains(s.TestName(), "fixture") {
-		cr = s.FixtValue().(fixture.FixtData).Chrome
-		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
-		uc = s.FixtValue().(fixture.FixtData).UserContext
-		uc.SetTestName(s.TestName())
-	} else {
-		cr = s.PreValue().(pre.PreData).Chrome
-		tconn = s.PreValue().(pre.PreData).TestAPIConn
-		uc = s.PreValue().(pre.PreData).UserContext
-	}
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
+	uc := s.FixtValue().(fixture.FixtData).UserContext
+	uc.SetTestName(s.TestName())
 
 	testIMEs := s.Param().([]ime.InputMethod)
 
