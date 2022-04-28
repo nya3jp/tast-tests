@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f87371_c44ff18f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-04-28T12:11:11Z",
+      "side": 1,
+      "message": "@domfc: as an fyi, this is the test for uploads. You might want to check the comments of the test_file_attached.go file if there are some wrong assumptions.\n@muhamedp: as an fyi, in case you need to add tast tests for MGS.",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3853d0f_c3e1740d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-04-28T12:11:11Z",
+      "side": 1,
+      "message": "I\u0027m not perfectly satisfied with this change here.\n\nIf you have better ideas, please let me know.\n\nSome concerns:\n* From what I see most functions should work for the picker as well.\n* Some functions will not work (e.g., DragAndDropFile)\n* New function will potentially not work (e.g., copy/move).",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
