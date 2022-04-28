@@ -73,6 +73,24 @@
       "message": "could you rename this is something like \n\nDeprecatedNewSmoothnessMetricConfigWithTestConn\n\nand document it is actually deprecated? Ditto for all other methods in this package taking tconn.\n\nAlso, could you file a bug to remove tconn from config at all?",
       "revId": "ee0076652ed027394cedcab51a3e0cd8a3370883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e962f61c_0521afd4",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-28T02:15:41Z",
+      "side": 1,
+      "message": "\u003e document it is actually deprecated?\n\nThere is no alternative to it, so we probably cannot mark it deprecated.\nI added TODO with a bug for now.",
+      "parentUuid": "e4f4df70_eb1d92b3",
+      "revId": "ee0076652ed027394cedcab51a3e0cd8a3370883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
