@@ -134,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c1e427_2ed18b41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-28T10:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc7e5a65_108845e4",
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8e48022_73ceb9fd",
@@ -151,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ce8872c_9c5a3021",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-28T10:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e48022_73ceb9fd",
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6c65cde_8e5468e1",
@@ -164,6 +200,30 @@
       "writtenOn": "2022-04-28T08:50:14Z",
       "side": 1,
       "message": "can these be encapsulated into the library side?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 44
+      },
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5320035d_0e17a0a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-28T10:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6c65cde_8e5468e1",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -199,6 +259,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c81c7b9e_cac9eac9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-28T10:35:42Z",
+      "side": 1,
+      "message": "Fixing this resulted in a quite huge change. Git also fails to recognize that autoupdatelib, though renamed the directory, is the same file but modified. But I do believe the refactored interface is better, PTAL, thanks!",
+      "parentUuid": "b6d6c20d_cb08c465",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 57
+      },
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea0102d4_69f17c3b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
         "patchSetId": 1
@@ -210,6 +294,24 @@
       "writtenOn": "2022-04-28T08:50:14Z",
       "side": 1,
       "message": "cr.Close should be called here and following error cases, too?",
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb3edcc_6ab928ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-28T10:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea0102d4_69f17c3b",
       "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
