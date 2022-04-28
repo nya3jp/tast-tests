@@ -52,6 +52,24 @@
       "parentUuid": "cdcd29e5_ec2c6f8d",
       "revId": "56872208f7be868e85e1d0ecc9ab626536db82ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f99aeff_11be1605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-04-28T09:53:46Z",
+      "side": 1,
+      "message": "Thanks for your explanation and review! Done.",
+      "parentUuid": "b5514481_853c598d",
+      "revId": "56872208f7be868e85e1d0ecc9ab626536db82ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
