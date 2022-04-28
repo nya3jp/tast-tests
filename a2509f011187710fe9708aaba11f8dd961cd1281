@@ -16,6 +16,23 @@
       "message": "Hi Tast Owners,\n\nPTAL. Thank you!",
       "revId": "a2509f011187710fe9708aaba11f8dd961cd1281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca5592ab_60e39dcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_default_user_avatar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-04-28T04:58:49Z",
+      "side": 1,
+      "message": "Is this a common set of flags? If there are other tests using these flags, we should probably make it into a fixture to reduce CQ load.",
+      "revId": "a2509f011187710fe9708aaba11f8dd961cd1281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
