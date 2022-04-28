@@ -16,6 +16,24 @@
       "message": "Increase this timeout instead. Maybe 10 seconds.\n\nEnsureGoneFor will not test things correctly otherwise.",
       "revId": "66a6fa70c48ceddb64e0e88722dfb5d3a6ef2926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b14805c_34605f54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-28T14:05:04Z",
+      "side": 1,
+      "message": "It does not seem EnsureGoneFor requires more than 5 seconds in this test as it has never produced any error related to it (neither in tast-board or in my local tests), that it is why I have left it as it was",
+      "parentUuid": "fac014e9_43f5904d",
+      "revId": "66a6fa70c48ceddb64e0e88722dfb5d3a6ef2926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
