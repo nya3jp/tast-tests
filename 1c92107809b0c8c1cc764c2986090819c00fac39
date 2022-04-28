@@ -16,6 +16,29 @@
       "message": "Hi Li, this CL is ready for review.",
       "revId": "1c92107809b0c8c1cc764c2986090819c00fac39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a2b2f9_6d6225e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-28T18:21:45Z",
+      "side": 1,
+      "message": "I\u0027m removing these web component tests because they\u0027re flaky and relying on WebDriver to test them instead. I\u0027m only going to test the Chromium components that must be tested in Tast.",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 61
+      },
+      "revId": "1c92107809b0c8c1cc764c2986090819c00fac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
