@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d014b2af_3df9dfbd",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-28T18:50:58Z",
+      "side": 1,
+      "message": "NewConfig instead?",
+      "revId": "e6449c66d9fe2fd316972e4285ece8871d7663f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710b730c_2879fe48",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-28T18:50:58Z",
+      "side": 1,
+      "message": "Remove? I am suspecting a merge issue.",
+      "revId": "e6449c66d9fe2fd316972e4285ece8871d7663f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
