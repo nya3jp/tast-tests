@@ -16,6 +16,121 @@
       "message": "Back again to this 😂",
       "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6034c71c_61c0b5b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-28T06:37:29Z",
+      "side": 1,
+      "message": "could we evaluate the UI element directly? Instead of relying on the testing API.\n\nI\u0027m not sure exactly how - wonder if it\u0027s possible to find the element which visualizes the keyboard connected (checkbox?) and inspect it",
+      "range": {
+        "startLine": 73,
+        "startChar": 47,
+        "endLine": 73,
+        "endChar": 84
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c9ceba_baa7e52b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-28T06:37:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 81,
+        "startChar": 66,
+        "endLine": 81,
+        "endChar": 79
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd645a7a_5cfef0ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-28T06:37:29Z",
+      "side": 1,
+      "message": "could you check if the button is enabled with the UI tools?",
+      "range": {
+        "startLine": 102,
+        "startChar": 82,
+        "endLine": 102,
+        "endChar": 94
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32601dd2_055e66b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-28T06:37:29Z",
+      "side": 1,
+      "message": "is there also WaitUntilEnabled ?",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16fac48d_a5c365f2",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-28T06:37:29Z",
+      "side": 1,
+      "message": "nit: switch from negative to positive\nDisableHIDScreenOnOobe:      true,",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 42
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
