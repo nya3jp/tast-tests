@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f174ee73_9850ee85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-28T11:54:20Z",
+      "side": 1,
+      "message": "Could you particulary have a look at the account ID generation?\nAcess of user home happens via hashing of the User set by Chrome config in tast. That\u0027s why I needed to set the User to the equivalent of this:\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/policy/core/device_local_account.cc;l\u003d134\nbut I\u0027m not sure if that\u0027s the best way to do it.",
+      "revId": "2f97184f41b4a2b8e4470c5dde071cc3c5481169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
