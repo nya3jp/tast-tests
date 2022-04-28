@@ -16,6 +16,23 @@
       "message": "Hi Harpreet/Kalin,\nUpdated LacrosUnneeded tag as requested for dns_proxy tests. Can you please review the change?",
       "revId": "8453a820ede0cbc25b5417fcb94f0bf0ec4d206d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "552cb9b7_7b89e83d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-28T20:54:38Z",
+      "side": 1,
+      "message": "FYI there was a merge conflict that I think caused your CQ runs to fail. https://crrev.com/c/3615396 fixed it.",
+      "revId": "8453a820ede0cbc25b5417fcb94f0bf0ec4d206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
