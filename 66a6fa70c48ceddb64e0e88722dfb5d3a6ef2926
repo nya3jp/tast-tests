@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac014e9_43f5904d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-28T13:56:32Z",
+      "side": 1,
+      "message": "Increase this timeout instead. Maybe 10 seconds.\n\nEnsureGoneFor will not test things correctly otherwise.",
+      "revId": "66a6fa70c48ceddb64e0e88722dfb5d3a6ef2926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
