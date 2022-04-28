@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7774ca_2b52a9a4",
+        "filename": "src/chromiumos/tast/local/kioskmode/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T13:27:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33e78cfc_325ac4bf",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "f53247665e5b48b3029c4669a1264f3768ce56c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07ff9e39_9f5112b5",
