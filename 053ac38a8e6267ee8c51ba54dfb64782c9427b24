@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34dd423e_c2090c3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-28T16:10:53Z",
+      "side": 1,
+      "message": "nit: `test` because there is only one",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "053ac38a8e6267ee8c51ba54dfb64782c9427b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d468dd_02b13df8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-28T16:10:53Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with nit",
+      "revId": "053ac38a8e6267ee8c51ba54dfb64782c9427b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f2347f2_84b438fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
         "patchSetId": 13
