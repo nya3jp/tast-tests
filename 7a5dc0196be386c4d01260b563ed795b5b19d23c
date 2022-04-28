@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85b6412_0e39e972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2022-04-28T15:07:05Z",
+      "side": 1,
+      "message": "Done. Thanks for the review!",
+      "parentUuid": "8d6fda2b_83588a64",
+      "revId": "7a5dc0196be386c4d01260b563ed795b5b19d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bbf84b5_e4d4e791",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9f221a_111cbdab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoplay_allowlist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2022-04-28T15:07:05Z",
+      "side": 1,
+      "message": "I added it. Thanks a lot for the pointer François!",
+      "parentUuid": "4bbf84b5_e4d4e791",
+      "revId": "7a5dc0196be386c4d01260b563ed795b5b19d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4be91131_91f82259",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-04-28T12:56:25Z",
       "side": 1,
       "message": "I think this should probably be Francois\u0027s team then and not the remote-management team.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "7a5dc0196be386c4d01260b563ed795b5b19d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da79ff5_67722386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoplay_allowlist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2022-04-28T15:07:05Z",
+      "side": 1,
+      "message": "I changed it to \"chrome-media-ux@google.com\" now. Thanks!",
+      "parentUuid": "4be91131_91f82259",
       "range": {
         "startLine": 36,
         "startChar": 3,
