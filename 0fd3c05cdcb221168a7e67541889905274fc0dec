@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a35f7211_2ac07bda",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-28T15:51:33Z",
+      "side": 1,
+      "message": "That sounds good to me. We can do it on a later date with more use cases. Resolving this comment.",
+      "parentUuid": "dfdc44d5_473e8db4",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "0fd3c05cdcb221168a7e67541889905274fc0dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd1c4166_cea1a262",
