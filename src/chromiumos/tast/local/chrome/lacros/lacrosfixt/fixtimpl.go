@@ -130,14 +130,13 @@ func init() {
 		Desc:     "Lacros Chrome from rootfs as a primary browser and disables app sync",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfigFromState(s, Mode(lacros.LacrosPrimary), ChromeOptions(
+			return NewConfig(Mode(lacros.LacrosPrimary), ChromeOptions(
 				chrome.ExtraArgs("--disable-sync"),
 			)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
 	})
 
 	// lacrosUIKeepAlive is similar to lacros but should be used
