@@ -59,7 +59,10 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		scanStartDelay         = 500 * time.Millisecond
 		scanRetryTimeout       = 10 * time.Second
 		missingBeaconThreshold = 2
+		maxRetries             = 2
 	)
+
+	var ErrNoProbeRequest = errors.New("no probe requests in packet capture")
 
 	// TODO(b/182308669): Tighten up min/max bounds on various channel dwell times
 	testcases := []csdtTestcase{
@@ -120,7 +123,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get MAC of WiFi interface: ", err)
 	}
 
-	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) {
+	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) error {
 		ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
 
 		bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
@@ -223,7 +226,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		}
 		s.Logf("Received %d probe requests", len(probeReqPackets))
 		if len(probeReqPackets) == 0 {
-			s.Fatal("No probe requests in packet capture")
+			return ErrNoProbeRequest
 		}
 		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
 		s.Log("Probe Request Time: ", probeReqTimestamp)
@@ -324,11 +327,25 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, dwellTime.Seconds())
+		return nil
 	}
 
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc)
+			testCount := 0
+			for {
+				err := testOnce(ctx, s, tc)
+				testCount++
+				if err == ErrNoProbeRequest {
+					if testCount < maxRetries {
+						s.Logf("%s, testCount %d < maxRetries %d, run the test again", ErrNoProbeRequest.Error(), testCount, maxRetries)
+						continue
+					} else {
+						s.Fatalf("%s and testCount reached maxRetries", ErrNoProbeRequest.Error())
+					}
+				}
+				return
+			}
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d (ch%d)", i, tc.apChannel), subtest) {
 			// Stop if one of the subtest's parameter set fails the test.
