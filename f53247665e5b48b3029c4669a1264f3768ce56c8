@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33e78cfc_325ac4bf",
+        "filename": "src/chromiumos/tast/local/kioskmode/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-04-28T11:48:19Z",
+      "side": 1,
+      "message": "I am not sure, it\u0027s part of the device policy that is stored in `/var/lib/devicesettings/policy.1` in binary format. It\u0027s available from chrome://policy and can be read by a ForceInstalledExtension via `chrome.enterprise.deviceAttributes.getDirectoryDeviceId`.\nDoes this answer your question?",
+      "parentUuid": "dd7b1058_06b4b00d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "f53247665e5b48b3029c4669a1264f3768ce56c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07ff9e39_9f5112b5",
         "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-28T08:33:51Z",
       "side": 1,
       "message": "Please end the comment with .",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 35
+      },
+      "revId": "f53247665e5b48b3029c4669a1264f3768ce56c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe3d45d_db7901a9",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-04-28T11:48:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ff9e39_9f5112b5",
       "range": {
         "startLine": 229,
         "startChar": 2,
