@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/apps/cursive"
 	"chromiumos/tast/local/chrome"
@@ -68,17 +69,31 @@ func CursiveSmoke(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
+	ui := uiauto.New(tconn).WithInterval(2 * time.Second)
+	installIcon := nodewith.HasClass("PwaInstallView").Role(role.Button)
+	installButton := nodewith.Name("Install").Role(role.Button)
+
 	conn, err := cr.NewConn(ctx, cursive.AppURL)
 	if err != nil {
 		s.Fatalf("Failed to open URL %q: %v", cursive.AppURL, err)
 	}
 	defer conn.Close()
+	defer conn.CloseTarget(cleanupCtx)
 
-	ui := uiauto.New(tconn).WithInterval(2 * time.Second)
-	installIcon := nodewith.ClassName("PwaInstallView").Role(role.Button)
-	installButton := nodewith.Name("Install").Role(role.Button)
-	if err := ui.WithTimeout(2 * time.Minute).WaitUntilExists(installIcon)(ctx); err != nil {
-		s.Fatal("Failed to wait for the install button in the omnibox")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Wait for longer time after second launch, since it can be delayed on low-end devices.
+		if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(installIcon)(ctx); err != nil {
+			testing.ContextLog(ctx, "Install button is not shown initially. See b/230413572")
+			testing.ContextLog(ctx, "Refresh page to enable installation")
+			if reloadErr := conn.Eval(ctx, `location.reload()`, nil); reloadErr != nil {
+				return testing.PollBreak(errors.Wrap(reloadErr, "failed to reload page"))
+			}
+			return err
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Minute}); err != nil {
+		s.Fatal("Failed to wait for Cursive to be installable: ", err)
 	}
 
 	if err := uiauto.Combine("",
