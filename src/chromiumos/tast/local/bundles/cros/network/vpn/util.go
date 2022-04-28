@@ -83,25 +83,23 @@ func RemoveVPNProfile(ctx context.Context, name string) error {
 	return svc.Remove(ctx)
 }
 
-// VerifyVPNProfile verifies a VPN service with certain GUID exists in shill,
-// and can be connected if |verifyConnect| set to true.
-func VerifyVPNProfile(ctx context.Context, m *shill.Manager, serviceGUID string, verifyConnect bool) error {
+// FindVPNService returns a VPN service matching the given |serviceGUID| in
+// shill.
+func FindVPNService(ctx context.Context, m *shill.Manager, serviceGUID string) (*shill.Service, error) {
 	testing.ContextLog(ctx, "Trying to find service with guid ", serviceGUID)
 
 	findServiceProps := make(map[string]interface{})
 	findServiceProps["GUID"] = serviceGUID
 	findServiceProps["Type"] = "vpn"
 	service, err := m.WaitForServiceProperties(ctx, findServiceProps, 5*time.Second)
-	if err != nil {
-		testing.ContextLog(ctx, "Cannot find service matching guid ", serviceGUID)
-		return err
+	if err == nil {
+		testing.ContextLogf(ctx, "Found service %v matching guid %s", service, serviceGUID)
 	}
-	testing.ContextLogf(ctx, "Found service %v matching guid %s", service, serviceGUID)
+	return service, err
+}
 
-	if !verifyConnect {
-		return nil
-	}
-
+// VerifyVPNServiceConnect verifies if |service| is connectable.
+func VerifyVPNServiceConnect(ctx context.Context, m *shill.Manager, service *shill.Service) error {
 	pw, err := service.CreateWatcher(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create watcher")
