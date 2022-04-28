@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7615d8_78f351c6",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-28T18:48:51Z",
+      "side": 0,
+      "message": "Where has this code moved to? I get a bulider error:\nhttps://ci.chromium.org/ui/p/chromeos/builders/general/Try/b8815619627412533457/overview\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8815619627412533457/+/steps/InitSDK/0/stdout?format\u003draw\n\n```\ntast-remote-tests-cros-0.0.2-r10465: # chromiumos/tast/local/chrome/lacros/lacrosfixt\ntast-remote-tests-cros-0.0.2-r10465: src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go:133:11: undefined: NewConfigFromState\ntast-remote-tests-cros-0.0.2-r10465: src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go:140:29: undefined: LacrosDeployedBinary\n```",
+      "revId": "659dfeb4b43e5ca619efb13a6e07e75f3bfddd1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
