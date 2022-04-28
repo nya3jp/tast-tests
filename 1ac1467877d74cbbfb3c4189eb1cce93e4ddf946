@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0bcde4_9e70f65c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-28T01:40:18Z",
+      "side": 1,
+      "message": "Thanks! Done.\nBtw, the link is for \"test subpackages that are located in subdirectories below test files\", which I guess do not include non-main functions in test files. Is there a more relevant link?",
+      "parentUuid": "0099e7df_960ec22b",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 72
+      },
+      "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee7d50ae_4932f127",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-28T00:37:49Z",
       "side": 1,
       "message": "Just kindly remind that even this test does not abort, the test result is already set to fail. You can consider just logging the message if do not want to fail the test.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#errors-and-logging",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da7070d_3354477d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-28T01:40:18Z",
+      "side": 1,
+      "message": "Thank you! Actually I\u0027d like the test to fail when this arc.New fails, but also would like to gather more information by proceeding to SELinux label check. So I think s.Error is appropriate here.",
+      "parentUuid": "ee7d50ae_4932f127",
       "range": {
         "startLine": 94,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f20abf6_1b37762d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-28T01:40:18Z",
+      "side": 1,
+      "message": "Added a comment. Thanks!",
+      "parentUuid": "c6005b0c_7fc26fb1",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddf67578_2348dac1",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-04-28T00:37:49Z",
       "side": 1,
       "message": "ditto. Please do not terminate the test in a function.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 17
+      },
+      "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa2fbe80_22188a7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-04-28T01:40:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ddf67578_2348dac1",
       "range": {
         "startLine": 113,
         "startChar": 2,
