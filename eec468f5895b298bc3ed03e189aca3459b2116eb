@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fda11f25_11c550c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/update_engine_features.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-28T19:13:42Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t quite get your comment, but I inlined the entire updateengine (verification functions) here.\n\nHopefully this is what you meant, otherwise I\u0027ll fix it.",
+      "parentUuid": "09ed7d52_262824c3",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "eec468f5895b298bc3ed03e189aca3459b2116eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab40b222_d8f84cb0",
         "filename": "src/chromiumos/tast/local/updateengine/fixture.go",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-28T09:31:24Z",
       "side": 1,
       "message": "no parent is specified?",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "eec468f5895b298bc3ed03e189aca3459b2116eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16050d4_c464c220",
+        "filename": "src/chromiumos/tast/local/updateengine/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-28T19:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab40b222_d8f84cb0",
       "range": {
         "startLine": 42,
         "startChar": 10,
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-28T09:31:24Z",
       "side": 1,
       "message": "nit/style:\n\nreturn \u0026StatusResult{ LastCheckedTime: i }, nil",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "eec468f5895b298bc3ed03e189aca3459b2116eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7ff7b5_d6993446",
+        "filename": "src/chromiumos/tast/local/updateengine/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-28T19:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec1e4c21_bc9e2491",
       "range": {
         "startLine": 77,
         "startChar": 1,
