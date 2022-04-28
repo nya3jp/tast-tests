@@ -19,6 +19,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// PolicyParams entail parameters describing the set policy for a user.
+type PolicyParams struct {
+	AllowsImmediateDelivery bool // Specifies whether immediate delivery of files is allowed.
+	AllowsUnscannableFiles  bool // Specifies whether unscannable files (large or encrypted) are allowed.
+	ScansEnabled            bool // Specifies whether malware and dlp scans are enabled.
+}
+
 // CheckDMTokenRegistered waits until a valid DM token exists.
 // This is done by downloading unknown_malware_encrypted.zip from `download.html`.
 func CheckDMTokenRegistered(ctx context.Context, s *testing.State, br *browser.Browser, server *httptest.Server) error {
