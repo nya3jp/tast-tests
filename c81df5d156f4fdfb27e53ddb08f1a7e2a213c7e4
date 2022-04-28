@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29ae2588_adf86321",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-28T03:10:53Z",
+      "side": 1,
+      "message": "Gotcha. In this case I just want the function to proceed if there is\na /sys/class/devfreq/*.(gpu|mali) but not in other cases. Is there a\nway to bundle it with the ioutil.ReadFile() below?",
+      "parentUuid": "6d733ccf_47182499",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abb17924_8c619e9c",
         "filename": "src/chromiumos/tast/local/graphics/perf.go",
         "patchSetId": 2
@@ -82,6 +100,24 @@
       "writtenOn": "2022-04-27T21:29:41Z",
       "side": 1,
       "message": "This opened file is not actually used?",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08beab70_f5346021",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-28T03:10:53Z",
+      "side": 1,
+      "message": "Oops this must be a remnant from a previous experiment. Good catch.",
+      "parentUuid": "abb17924_8c619e9c",
       "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e97e2c_cbdfbb5d",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-28T03:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44547361_5ab611e8",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e770bf44_fd78b839",
@@ -120,6 +174,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca0ebc18_92a109fa",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-28T03:10:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e770bf44_fd78b839",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ea9ab96_716f0f0d",
@@ -133,6 +205,24 @@
       "writtenOn": "2022-04-27T21:29:41Z",
       "side": 1,
       "message": "Sleep is generally avoided in tests due to flakiness concerns.  Is there ay other way you can work out when the second sampling should be done?",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1ff097_7d30b762",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-04-28T03:10:53Z",
+      "side": 1,
+      "message": "Hmm not that I know of, I could sample the file several times, but\nI think that\u0027d only complicate the arithmetic and introduce more\ncode.",
+      "parentUuid": "3ea9ab96_716f0f0d",
       "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
