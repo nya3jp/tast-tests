@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Verifies CRAS playback function works correctly",
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		HardwareDeps: hwdep.D(hwdep.Speaker()),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
