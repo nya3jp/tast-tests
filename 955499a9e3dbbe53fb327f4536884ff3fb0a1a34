@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c33ea80_d6835426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/files_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-28T11:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b468eba9_ba3fe94e",
+      "range": {
+        "startLine": 71,
+        "startChar": 27,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "955499a9e3dbbe53fb327f4536884ff3fb0a1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58e9b156_00f1ba54",
