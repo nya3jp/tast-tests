@@ -148,6 +148,7 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*MGS, *chr
 
 	if cfg.m.AutoLaunch {
 		crOpts = append(crOpts, chrome.NoLogin())
+		crOpts = append(crOpts, chrome.MGSUser(*cfg.m.AutoLaunchMGSAppID))
 		testing.ContextLog(ctx, "MGS: starting MGS in auto launch mode")
 	} else {
 		crOpts = append(crOpts, chrome.DeferLogin())
