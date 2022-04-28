@@ -52,6 +52,40 @@
       "parentUuid": "e77db6a0_22ee7ac6",
       "revId": "534275ce53e6f12e67652319e1e94cab7fb89069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c7828db_2338463d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-28T07:16:44Z",
+      "side": 1,
+      "message": "It seems that this CL was indeed split into two: https://crrev.com/c/3607409 + https://crrev.com/c/3607410. If that\u0027s correct then this one should be abandoned.",
+      "revId": "534275ce53e6f12e67652319e1e94cab7fb89069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee8168d_1c40f8b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-28T07:16:44Z",
+      "side": 1,
+      "message": "If Chrome was already launched with QuickDim feature, will calling this re-start the UI?",
+      "revId": "534275ce53e6f12e67652319e1e94cab7fb89069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

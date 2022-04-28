@@ -16,6 +16,24 @@
       "message": "I\u0027d suggest keep name consistent with method name, e.g. using ChangeSettingsRequest",
       "revId": "c729ea38e002d5ee89bbf70fed06b867c83c47a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb816437_13ddbf06",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-28T07:16:44Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "dbcc7d07_a9effe00",
+      "revId": "c729ea38e002d5ee89bbf70fed06b867c83c47a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
