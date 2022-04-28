@@ -29,7 +29,11 @@ func init() {
 		Func:         ReportDiskUsage,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Reports available disk space in the root filesystem",
-		Contacts:     []string{"cros-telemetry@google.com"}, // or http://b/new?component=1175318
+		// Owner of this config is temporarily set to the Healthmon team. We should
+		// find new owners for it.
+		//
+		// TODO(b/230679272): find new owners and update this config.
+		Contacts: []string{"chromeos-performance-eng@google.com"},
 		// chromeos-assets is not available on devices without Chrome, require chrome
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
