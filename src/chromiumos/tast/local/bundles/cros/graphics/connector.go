@@ -92,14 +92,16 @@ func Connector(ctx context.Context, s *testing.State) {
 func checkUniqueEncoders(ctx context.Context, connectors []*graphics.Connector) error {
 	g := graph.NewBipartite()
 	for _, connector := range connectors {
-		for _, encoder := range connector.Encoders {
-			g.AddEdge(connector.Cid, encoder)
+		for _, encoderID := range connector.Encoders {
+			g.AddEdge(int(connector.ConnectorID), int(encoderID))
 		}
 	}
 
 	maxMatch := g.MaxMatching()
 	if maxMatch != len(connectors) {
-		return errors.Errorf("not all connector has a unqiue encoder matching (expect %d but got %d)", len(connectors), maxMatch)
+		return errors.Errorf(
+			"not all connector has a unqiue encoder matching (expect %d but got %d)",
+			len(connectors), maxMatch)
 	}
 	return nil
 }
