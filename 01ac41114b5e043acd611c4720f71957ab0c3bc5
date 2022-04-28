@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5469e5c5_8d039558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T13:25:25Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "01ac41114b5e043acd611c4720f71957ab0c3bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85299bee_a288a3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/secondary_apps_installed.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T13:25:25Z",
+      "side": 1,
+      "message": "nit: You can just say \"Checking secondary extension\" ;), same below.\n\nIf it fails you will have in the log statement about what the test was doing and failure message.",
+      "range": {
+        "startLine": 163,
+        "startChar": 26,
+        "endLine": 163,
+        "endChar": 60
+      },
+      "revId": "01ac41114b5e043acd611c4720f71957ab0c3bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
