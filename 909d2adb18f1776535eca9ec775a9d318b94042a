@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0884d5cf_61a00e7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-28T00:37:23Z",
+      "side": 1,
+      "message": "nit: `HasClass`",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "909d2adb18f1776535eca9ec775a9d318b94042a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3409db2_2fd21734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-28T00:37:23Z",
+      "side": 1,
+      "message": "nit: cleanupCtx.",
+      "range": {
+        "startLine": 81,
+        "startChar": 24,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "909d2adb18f1776535eca9ec775a9d318b94042a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
