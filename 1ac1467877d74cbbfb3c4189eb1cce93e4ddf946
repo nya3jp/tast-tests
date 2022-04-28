@@ -16,6 +16,98 @@
       "message": "SLGTM",
       "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0099e7df_960ec22b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-28T00:37:49Z",
+      "side": 1,
+      "message": "This function is the main test function, and supposed to take care of any result. It is not recommended to pass through testing.State around and terminate the test anywhere. \n\nSuggested change as below: \n\nif err :\u003d performOptin(ctx, cr, tconn); err !\u003d nil{\n    s.Fatal(\"Failed to optin:\", err)\n}\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 72
+      },
+      "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee7d50ae_4932f127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-28T00:37:49Z",
+      "side": 1,
+      "message": "Just kindly remind that even this test does not abort, the test result is already set to fail. You can consider just logging the message if do not want to fail the test.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#errors-and-logging",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6005b0c_7fc26fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-28T00:37:49Z",
+      "side": 1,
+      "message": "Do not abort as well?",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf67578_2348dac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-28T00:37:49Z",
+      "side": 1,
+      "message": "ditto. Please do not terminate the test in a function.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 17
+      },
+      "revId": "1ac1467877d74cbbfb3c4189eb1cce93e4ddf946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
