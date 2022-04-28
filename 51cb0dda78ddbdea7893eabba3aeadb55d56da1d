@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "399ca7b9_9ae0cfbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T13:32:27Z",
+      "side": 1,
+      "message": "nit: Please start the CL subject with \"kiosk:\"",
+      "revId": "51cb0dda78ddbdea7893eabba3aeadb55d56da1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c70a3be_a63d4903",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -14,6 +31,23 @@
       "writtenOn": "2022-04-28T12:21:58Z",
       "side": 1,
       "message": "nit: reflow",
+      "revId": "51cb0dda78ddbdea7893eabba3aeadb55d56da1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a88eee41_18acb92b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T13:32:27Z",
+      "side": 1,
+      "message": "LGTM. Thank you for adding Lacros variant 👍",
       "revId": "51cb0dda78ddbdea7893eabba3aeadb55d56da1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
