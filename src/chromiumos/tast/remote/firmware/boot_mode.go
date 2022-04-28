@@ -160,10 +160,6 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 
 	switch toMode {
 	case fwCommon.BootModeNormal:
-		hasSerialAP := false
-		if fromMode != fwCommon.BootModeNormal {
-			hasSerialAP = ms.hasSerialAPFirmware(ctx)
-		}
 		if err := ms.PowerOff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
 		}
@@ -178,16 +174,17 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			return err
 		}
 		if fromMode != fwCommon.BootModeNormal {
-			if err := ms.fwScreenToNormalMode(ctx, hasSerialAP); err != nil {
+			if err := ms.fwScreenToNormalMode(ctx); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to normal mode")
 			}
-		}
-		// Reconnect to the DUT.
-		testing.ContextLog(ctx, "Reestablishing connection to DUT")
-		connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
-		defer cancel()
-		if err := h.WaitConnect(connectCtx); err != nil {
-			return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
+		} else {
+			// Reconnect to the DUT.
+			testing.ContextLog(ctx, "Reestablishing connection to DUT")
+			connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
+			defer cancel()
+			if err := h.WaitConnect(connectCtx); err != nil {
+				return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
+			}
 		}
 	case fwCommon.BootModeRecovery:
 		// Recovery mode requires the DUT to boot the image on the USB.
@@ -216,7 +213,6 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			}
 			break
 		}
-		hasSerialAP := ms.hasSerialAPFirmware(ctx)
 		transitionToDev := true
 		// Recovery -> Dev sometimes gets stuck on the recovery screen. Try a normal reboot first.
 		// Even if it doesn't get us back to Dev, rebooting from Normal -> Dev is less flaky.
@@ -226,7 +222,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			}
 			// Depending on how we got to to dev mode, we might end up in normal mode or the recovery
 			// menu, so navigate to dev mode, but it that fails, fall through to the next attempt below.
-			if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err == nil {
+			if err := ms.fwScreenToDevMode(ctx); err == nil {
 				newMode, err := h.Reporter.CurrentBootMode(ctx)
 				if err != nil {
 					return errors.Wrap(err, "determining boot mode after simple reboot")
@@ -242,7 +238,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := ms.enableRecMode(ctx, servo.USBMuxOff); err != nil {
 				return err
 			}
-			if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err != nil {
+			if err := ms.fwScreenToDevMode(ctx); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to dev mode")
 			}
 		} else {
@@ -260,7 +256,6 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		if msOptsContain(opts, AllowGBBForce) || fromMode == fwCommon.BootModeDev {
 			transitionToDev = false
 		}
-		hasSerialAP := ms.hasSerialAPFirmware(ctx)
 		// Recovery -> Dev sometimes gets stuck on the recovery screen. Try a normal reboot first.
 		// Even if it doesn't get us back to Dev, rebooting from Normal -> Dev is less flaky.
 		if fromMode == fwCommon.BootModeRecovery {
@@ -270,7 +265,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			}
 			// Depending on how we got to to rec mode, we might end up in normal mode or the recovery
 			// menu, so navigate to dev mode, but it that fails, fall through to the next attempt below.
-			if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err == nil {
+			if err := ms.fwScreenToDevMode(ctx); err == nil {
 				newMode, err := h.Reporter.CurrentBootMode(ctx)
 				if err != nil {
 					return errors.Wrap(err, "determining boot mode after simple reboot")
@@ -293,7 +288,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := ms.enableRecMode(ctx, servo.USBMuxOff); err != nil {
 				return err
 			}
-			if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err != nil {
+			if err := ms.fwScreenToDevMode(ctx); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to dev mode")
 			}
 			newMode, err := h.Reporter.CurrentBootMode(ctx)
@@ -415,10 +410,6 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 		return errors.Wrap(err, "determining boot ID before reboot")
 	}
 
-	hasSerialAP := false
-	if fromMode == fwCommon.BootModeDev {
-		hasSerialAP = ms.hasSerialAPFirmware(ctx)
-	}
 	// Perform sync prior to reboot, then close the RPC connection.
 	if err := h.DUT.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
 		testing.ContextLogf(ctx, "Failed to sync DUT: %s", err)
@@ -448,7 +439,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 
 	// If in dev mode, bypass the TO_DEV screen.
 	if fromMode == fwCommon.BootModeDev {
-		if err := ms.fwScreenToDevMode(ctx, hasSerialAP, opts...); err != nil {
+		if err := ms.fwScreenToDevMode(ctx, opts...); err != nil {
 			return errors.Wrap(err, "bypassing fw screen")
 		}
 	} else if fromMode == fwCommon.BootModeUSBDev {
@@ -488,7 +479,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 // fwScreenToNormalMode moves the DUT from the firmware bootup screen to Normal mode.
 // This should be called immediately after powering on.
 // The actual behavior depends on the ModeSwitcherType.
-func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, hasSerialAP bool) error {
+func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
@@ -497,72 +488,76 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, hasSerialAP bo
 	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
 	}
-	if hasSerialAP {
-		testing.ContextLogf(ctx, "Sleeping %s (SerialFirmwareBootDelay)", h.Config.SerialFirmwareBootDelay)
-		if err := testing.Sleep(ctx, h.Config.SerialFirmwareBootDelay); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (SerialFirmwareBootDelay) while enabling dev mode", h.Config.SerialFirmwareBootDelay)
+	// Keep pressing the normal mode keys until connected, but wait a little longer for the connect each time.
+	connectTimeout := 2 * time.Second
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		switch h.Config.ModeSwitcherType {
+		case KeyboardDevSwitcher:
+			// 1. Sleep for [FirmwareScreen] seconds.
+			// 2. Press enter.
+			// 3. Sleep for [KeypressDelay] seconds.
+			// 4. Press enter.
+			testing.ContextLog(ctx, "Pressing ENTER")
+			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+				return errors.Wrap(err, "pressing Enter on firmware screen while disabling dev mode")
+			}
+			testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
+			if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+				return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
+			}
+			testing.ContextLog(ctx, "Pressing ENTER")
+			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+				return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
+			}
+		case MenuSwitcher:
+			// 1. Sleep for [FirmwareScreen] seconds.
+			// 2. Press Ctrl+S.
+			// 3. Sleep for [KeypressDelay] seconds.
+			// 4. Press enter.
+			testing.ContextLog(ctx, "Pressing Ctrl-S")
+			if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlS, servo.DurTab); err != nil {
+				return errors.Wrap(err, "pressing Ctrl-S on firmware screen while disabling dev mode")
+			}
+			testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
+			if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+				return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
+			}
+			testing.ContextLog(ctx, "Pressing ENTER")
+			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+				return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
+			}
+		case TabletDetachableSwitcher:
+			// 1. Wait until the firmware screen appears.
+			// 2. Hold volume_up for 100ms to highlight the previous menu item (Enable Root Verification).
+			// 3. Sleep for [KeypressDelay] seconds to confirm keypress.
+			// 4. Press power to select Enable Root Verification.
+			// 5. Sleep for [KeypressDelay] seconds to confirm keypress.
+			// 6. Wait until the TO_NORM screen appears.
+			// 7. Press power to select Confirm Enabling Verified Boot.
+			if err := h.Servo.SetInt(ctx, servo.VolumeUpHold, 100); err != nil {
+				return errors.Wrap(err, "changing menu selection to 'Enable Root Verification'")
+			}
+			if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+				return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
+			}
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+				return errors.Wrap(err, "selecting menu option 'Enable Root Verification'")
+			}
+			if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+				return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
+			}
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+				return errors.Wrap(err, "selecting menu option 'Confirm Enabling Verified Boot'")
+			}
+		default:
+			return errors.Errorf("unsupported ModeSwitcherType %s for fwScreenToNormalMode", h.Config.ModeSwitcherType)
 		}
-	}
-	switch h.Config.ModeSwitcherType {
-	case KeyboardDevSwitcher:
-		// 1. Sleep for [FirmwareScreen] seconds.
-		// 2. Press enter.
-		// 3. Sleep for [KeypressDelay] seconds.
-		// 4. Press enter.
-		testing.ContextLog(ctx, "Pressing ENTER")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
-			return errors.Wrap(err, "pressing Enter on firmware screen while disabling dev mode")
-		}
-		testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
-		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
-		}
-		testing.ContextLog(ctx, "Pressing ENTER")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
-			return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
-		}
-	case MenuSwitcher:
-		// 1. Sleep for [FirmwareScreen] seconds.
-		// 2. Press Ctrl+S.
-		// 3. Sleep for [KeypressDelay] seconds.
-		// 4. Press enter.
-		testing.ContextLog(ctx, "Pressing Ctrl-S")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlS, servo.DurTab); err != nil {
-			return errors.Wrap(err, "pressing Ctrl-S on firmware screen while disabling dev mode")
-		}
-		testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
-		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
-		}
-		testing.ContextLog(ctx, "Pressing ENTER")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
-			return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
-		}
-	case TabletDetachableSwitcher:
-		// 1. Wait until the firmware screen appears.
-		// 2. Hold volume_up for 100ms to highlight the previous menu item (Enable Root Verification).
-		// 3. Sleep for [KeypressDelay] seconds to confirm keypress.
-		// 4. Press power to select Enable Root Verification.
-		// 5. Sleep for [KeypressDelay] seconds to confirm keypress.
-		// 6. Wait until the TO_NORM screen appears.
-		// 7. Press power to select Confirm Enabling Verified Boot.
-		if err := h.Servo.SetInt(ctx, servo.VolumeUpHold, 100); err != nil {
-			return errors.Wrap(err, "changing menu selection to 'Enable Root Verification'")
-		}
-		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
-		}
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-			return errors.Wrap(err, "selecting menu option 'Enable Root Verification'")
-		}
-		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
-		}
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-			return errors.Wrap(err, "selecting menu option 'Confirm Enabling Verified Boot'")
-		}
-	default:
-		return errors.Errorf("unsupported ModeSwitcherType %s for fwScreenToNormalMode", h.Config.ModeSwitcherType)
+		ctx, cancel := context.WithTimeout(ctx, connectTimeout)
+		defer cancel()
+		connectTimeout += time.Second
+		return h.DUT.WaitConnect(ctx)
+	}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
+		return errors.Wrap(err, "failed to reconnect to DUT")
 	}
 	return nil
 }
@@ -570,7 +565,7 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, hasSerialAP bo
 // fwScreenToDevMode moves the DUT from the firmware bootup screen to Dev mode.
 // This should be called immediately after powering on.
 // The actual behavior depends on the ModeSwitcherType.
-func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, hasSerialAP bool, opts ...ModeSwitchOption) error {
+func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitchOption) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
@@ -579,12 +574,6 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, hasSerialAP bool,
 	testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
 	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
-	}
-	if hasSerialAP {
-		testing.ContextLogf(ctx, "Sleeping %s (SerialFirmwareBootDelay)", h.Config.SerialFirmwareBootDelay)
-		if err := testing.Sleep(ctx, h.Config.SerialFirmwareBootDelay); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (SerialFirmwareBootDelay) while enabling dev mode", h.Config.SerialFirmwareBootDelay)
-		}
 	}
 	switch h.Config.ModeSwitcherType {
 	case MenuSwitcher:
@@ -797,9 +786,4 @@ func (ms *ModeSwitcher) waitUnreachable(ctx context.Context) error {
 		return errors.Wrap(err, "waiting for DUT to be unreachable after powering off")
 	}
 	return nil
-}
-
-func (ms *ModeSwitcher) hasSerialAPFirmware(ctx context.Context) bool {
-	// TODO(b/206004543): Get this working. Reading CONFIG_CONSOLE_SERIAL doesn't work.
-	return false
 }
