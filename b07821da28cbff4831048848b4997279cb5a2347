@@ -16,6 +16,24 @@
       "message": "we should also get someone from wmp to review this.\n\nis it possible to install an app without using policy?",
       "revId": "b07821da28cbff4831048848b4997279cb5a2347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2726eb9_cd4ba6aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-28T20:16:47Z",
+      "side": 1,
+      "message": "I did not find a possible way without using policy so far. Another example is https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/appsplatform/webapk.go \n\nBut if you take a look at webapk_manager.go, it actually installs an app through ARC installation so I may not think it is a suitable way.",
+      "parentUuid": "0c4338ad_a0ab3aed",
+      "revId": "b07821da28cbff4831048848b4997279cb5a2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
