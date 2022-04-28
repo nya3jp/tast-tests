@@ -7,6 +7,8 @@ package powercontrol
 import (
 	"context"
 	"fmt"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -17,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/security"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -46,7 +49,7 @@ func ValidatePrevSleepState(ctx context.Context, dut *dut.DUT, sleepStateValue i
 	got := strings.TrimSpace(string(out))
 	want := fmt.Sprintf("prev_sleep_state %d", sleepStateValue)
 
-	if got != want {
+	if !strings.Contains(got, want) {
 		return errors.Errorf("unexpected sleep state = got %q, want %q", got, want)
 	}
 	return nil
@@ -78,13 +81,89 @@ func ShutdownAndWaitForPowerState(ctx context.Context, pxy *servo.Proxy, dut *du
 
 // PowerOntoDUT performs power normal press to wake DUT.
 func PowerOntoDUT(ctx context.Context, pxy *servo.Proxy, dut *dut.DUT) error {
-	waitCtx, cancel := context.WithTimeout(ctx, 1*time.Minute)
-	defer cancel()
-	if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-		return errors.Wrap(err, "failed to power button press")
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+		defer cancel()
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+			return errors.Wrap(err, "failed to power normal press")
+		}
+		if err := dut.WaitConnect(waitCtx); err != nil {
+			return errors.Wrap(err, "failed to wait connect DUT")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Minute})
+}
+
+// PerformSuspendStressTest performs suspend stress test for suspendStressTestCounter cycles.
+func PerformSuspendStressTest(ctx context.Context, dut *dut.DUT, suspendStressTestCounter int) error {
+	const (
+		zeroPrematureWakes    = "Premature wakes: 0"
+		zeroSuspendFailures   = "Suspend failures: 0"
+		zeroFirmwareLogErrors = "Firmware log errors: 0"
+		zeroS0ixErrors        = "s0ix errors: 0"
+	)
+
+	testing.ContextLog(ctx, "Wait for a suspend test without failures")
+	zeroSuspendErrors := []string{zeroPrematureWakes, zeroSuspendFailures, zeroFirmwareLogErrors, zeroS0ixErrors}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		stressOut, err := dut.Conn().CommandContext(ctx, "suspend_stress_test", "-c", "1").Output()
+		if err != nil {
+			return errors.Wrap(err, "failed to execute suspend_stress_test -c 1 command")
+		}
+
+		for _, errMsg := range zeroSuspendErrors {
+			if !strings.Contains(string(stressOut), errMsg) {
+				return errors.Errorf("expect zero failures for %q, got %q", errMsg, string(stressOut))
+			}
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+		return err
 	}
-	if err := dut.WaitConnect(waitCtx); err != nil {
-		return errors.Wrap(err, "failed to wait connect DUT")
+
+	testing.ContextLogf(ctx, "Run: suspend_stress_test -c %d", suspendStressTestCounter)
+	counterValue := fmt.Sprintf("%d", suspendStressTestCounter)
+	stressOut, err := dut.Conn().CommandContext(ctx, "suspend_stress_test", "-c", counterValue).Output()
+	if err != nil {
+		return errors.Wrap(err, "failed to execute suspend_stress_test -c 10 command")
+	}
+
+	for _, errMsg := range zeroSuspendErrors {
+		if !strings.Contains(string(stressOut), errMsg) {
+			return errors.Errorf("failed: expect zero failures for %q, got %q", errMsg, string(stressOut))
+		}
 	}
 	return nil
+}
+
+// SlpAndC10PackageValues returns SLP counter value and C10 package value.
+func SlpAndC10PackageValues(ctx context.Context, dut *dut.DUT) (int, string, error) {
+	var c10PackageRe = regexp.MustCompile(`C10 : ([A-Za-z0-9]+)`)
+	const (
+		slpS0File     = "/sys/kernel/debug/pmc_core/slp_s0_residency_usec"
+		pkgCstateFile = "/sys/kernel/debug/pmc_core/package_cstate_show"
+	)
+
+	slpOpSetInBytes, err := linuxssh.ReadFile(ctx, dut.Conn(), slpS0File)
+	if err != nil {
+		return 0, "", errors.Wrap(err, "failed to get SLP counter value")
+	}
+
+	slpOpSetValue, err := strconv.Atoi(strings.TrimSpace(string(slpOpSetInBytes)))
+	if err != nil {
+		return 0, "", errors.Wrap(err, "failed to convert type string to integer")
+	}
+
+	pkgOpSetOutput, err := linuxssh.ReadFile(ctx, dut.Conn(), pkgCstateFile)
+	if err != nil {
+		return 0, "", errors.Wrap(err, "failed to get package cstate value")
+	}
+
+	matchSetValue := c10PackageRe.FindStringSubmatch(string(pkgOpSetOutput))
+	if matchSetValue == nil {
+		return 0, "", errors.New("failed to match pre PkgCstate value")
+	}
+	pkgOpSetValue := matchSetValue[1]
+
+	return slpOpSetValue, pkgOpSetValue, nil
 }
