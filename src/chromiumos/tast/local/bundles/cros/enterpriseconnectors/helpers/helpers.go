@@ -19,6 +19,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// PolicyParams entail parameters describing the set policy for a user
+type PolicyParams struct {
+	AllowsImmediateDelivery bool // specifies whether immediate delivery of files is allowed
+	AllowsUnscannableFiles  bool // specifies whether unscannable files (large or encrypted) are allowed
+	ScansEnabled            bool // specifies whether malware and dlp scans are enabled
+}
+
 // CheckDMTokenRegistered waits until a valid DM token exists.
 // This is done by downloading unknown_malware_encrypted.zip from `download.html`.
 func CheckDMTokenRegistered(ctx context.Context, s *testing.State, br *browser.Browser, server *httptest.Server) error {
@@ -37,9 +44,11 @@ func CheckDMTokenRegistered(ctx context.Context, s *testing.State, br *browser.B
 		s.Fatal("Failed to connect to chrome: ", err)
 	}
 	defer dconnSafebrowsing.Close()
+	defer dconnSafebrowsing.CloseTarget(ctx)
 
 	dconn, err := br.NewConn(ctx, server.URL+"/download.html")
 	defer dconn.Close()
+	defer dconn.CloseTarget(ctx)
 
 	err = dconn.Eval(ctx, `document.getElementById("unknown_malware_encrypted.zip").click()`, nil)
 
@@ -86,4 +95,50 @@ func CheckDMTokenRegistered(ctx context.Context, s *testing.State, br *browser.B
 	}
 
 	return nil
+}
+
+// WaitForDeepScanningVerdict waits until a valid deep scanning verdict is found.
+func WaitForDeepScanningVerdict(ctx context.Context, s *testing.State, dconnSafebrowsing *browser.Conn, timeout time.Duration) {
+	if err := testing.Poll(ctx, func(c context.Context) error {
+		var scanningComplete bool
+		err := dconnSafebrowsing.Eval(ctx, `(async () => {
+			table = document.getElementById("deep-scan-list");
+			if (table.rows.length == 0) {
+				// If there is no entry, scanning is not yet complete
+				return false;
+			}
+			// Otherwise we check if the last entry includes a status field to check whether there is an actual answer
+			return table.rows[table.rows.length - 1].cells[1].innerHTML.includes("status");
+			})()`, &scanningComplete)
+		if err != nil {
+			s.Fatal("Failed to check deep-scan-list entry: ", err)
+		}
+		if !scanningComplete {
+			s.Log("Scanning not yet complete")
+			return errors.New("Scanning not yet complete")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout, Interval: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for deep scanning verdict: ", err)
+	}
+}
+
+// VerifyDeepScanningVerdict verifies that the deep scanning verdict corresponds to shouldBlock.
+func VerifyDeepScanningVerdict(ctx context.Context, s *testing.State, dconnSafebrowsing *browser.Conn, shouldBlock bool) {
+	var isBlocked bool
+	err := dconnSafebrowsing.Eval(ctx, `(async () => {
+		table = document.getElementById("deep-scan-list");
+		if (table.rows.length == 0) {
+			// If there is no entry, scanning is not yet complete
+			throw 'No deep scanning verdict!';
+		}
+		// Otherwise we check if the last entry includes a status field to check whether there is an actual answer
+		return table.rows[table.rows.length - 1].cells[1].innerHTML.includes("BLOCK");
+		})()`, &isBlocked)
+	if err != nil {
+		s.Fatal("Failed to check deep-scan-list entry: ", err)
+	}
+	if isBlocked != shouldBlock {
+		s.Error("Block state (", isBlocked, ") doesn't match expectation (", shouldBlock, ")")
+	}
 }
