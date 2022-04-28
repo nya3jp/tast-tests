@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3ecca9_93c08b8e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2022-04-28T13:15:36Z",
+      "side": 1,
+      "message": "Changed this because presubmit was complaining about it.",
+      "range": {
+        "startLine": 312,
+        "startChar": 3,
+        "endLine": 312,
+        "endChar": 57
+      },
+      "revId": "1967b1a3bd33fd8a308c15076c32b22c909dc266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
