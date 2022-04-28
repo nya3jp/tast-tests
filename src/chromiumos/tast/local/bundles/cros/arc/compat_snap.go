@@ -19,8 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
-	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -37,15 +35,6 @@ func init() {
 		// TODO(b/215063759): Replace this with arcBootedInClamshellMode after the feature is launched.
 		Fixture: "arcBootedInClamshellModeWithCompatSnap",
 	})
-}
-
-func windowDragPoint(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity) (coords.Point, error) {
-	window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
-	if err != nil {
-		return coords.NewPoint(0, 0), errors.Wrap(err, "failed to get window info")
-	}
-	// As resize-locked windows have the compat mode button at the center of the caption, we need to drag on the right of the back button instead of the center point.
-	return coords.NewPoint(window.BoundsInRoot.Left+100, window.BoundsInRoot.Top+window.CaptionHeight/2), nil
 }
 
 func checkCompatSnappedWindowState(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, act *arc.Activity, primary bool, stableWidth int) error {
@@ -76,13 +65,7 @@ func checkCompatSnappedWindowState(ctx context.Context, tconn *chrome.TestConn, 
 }
 
 func testUnsnapByDragging(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, pc pointer.Context, displayInfo *display.Info, d *ui.Device, act *arc.Activity, stableWidth int) error {
-	dragPoint, err := windowDragPoint(ctx, tconn, act)
-	if err != nil {
-		return errors.Wrap(err, "failed to get window drag point")
-	}
-	if err := pc.Drag(
-		dragPoint,
-		pc.DragTo(displayInfo.Bounds.CenterPoint(), 2*time.Second))(ctx); err != nil {
+	if err := wm.DragCaptionToUnsnap(ctx, tconn, pc, displayInfo, act); err != nil {
 		return errors.Wrap(err, "failed to drag to unsnap")
 	}
 
@@ -122,18 +105,8 @@ func testSnapFromOverview(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 }
 
 func testSnapByDragToSnap(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, pc pointer.Context, displayInfo *display.Info, d *ui.Device, act *arc.Activity, primary bool, stableWidth int) error {
-	snapDestinationX := displayInfo.Bounds.Width
-	if primary {
-		snapDestinationX = 0
-	}
-	dragPoint, err := windowDragPoint(ctx, tconn, act)
-	if err != nil {
-		return errors.Wrap(err, "failed to get window drag point")
-	}
-	if err := pc.Drag(
-		dragPoint,
-		pc.DragTo(coords.NewPoint(snapDestinationX, displayInfo.Bounds.Height/2), 2*time.Second))(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag to snap from overview")
+	if err := wm.DragCaptionToSnap(ctx, tconn, pc, displayInfo, act, primary); err != nil {
+		return errors.Wrap(err, "failed to drag to snap")
 	}
 
 	if err := checkCompatSnappedWindowState(ctx, tconn, a, cr, d, act, primary, stableWidth); err != nil {
@@ -144,18 +117,8 @@ func testSnapByDragToSnap(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 }
 
 func testSnapViaKeyboardShortcut(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, act *arc.Activity, primary bool, stableWidth int) error {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to open keyboard device")
-	}
-	defer ew.Close()
-
-	shortcutCommand := "Alt+]"
-	if primary {
-		shortcutCommand = "Alt+["
-	}
-	if err := ew.Accel(ctx, shortcutCommand); err != nil {
-		return errors.Wrap(err, "failed to write keyboard events")
+	if err := wm.ToggleSnapViaKeyboardShortcut(ctx, tconn, act, primary); err != nil {
+		return errors.Wrap(err, "failed to snap window via keyboard shortcut")
 	}
 
 	if err := checkCompatSnappedWindowState(ctx, tconn, a, cr, d, act, primary, stableWidth); err != nil {
