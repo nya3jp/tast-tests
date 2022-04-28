@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c4338ad_a0ab3aed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-28T19:31:36Z",
+      "side": 1,
+      "message": "we should also get someone from wmp to review this.\n\nis it possible to install an app without using policy?",
+      "revId": "b07821da28cbff4831048848b4997279cb5a2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
