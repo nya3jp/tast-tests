@@ -24,7 +24,7 @@ func init() {
 		Contacts: []string{"mohamedaomar@google.com", "wtlee@chromium.org", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
 			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-				return lacrosfixt.NewConfigFromState(s).Opts()
+				return lacrosfixt.NewConfig().Opts()
 			},
 		},
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -40,7 +40,7 @@ func init() {
 		Contacts: []string{"rodmartin@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
 			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-				return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(chrome.LacrosEnableFeatures("Journeys"))).Opts()
+				return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.LacrosEnableFeatures("Journeys"))).Opts()
 			},
 		},
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -69,7 +69,7 @@ func init() {
 				}
 				// The policyChromeFixture specifies FakeLogin, but the GAIALogin we specify
 				// here will overwrite it, since these options are applied after policyChromeFixture's options.
-				return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(chrome.GAIALogin(gaiaCreds))).Opts()
+				return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.GAIALogin(gaiaCreds))).Opts()
 			},
 		},
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
