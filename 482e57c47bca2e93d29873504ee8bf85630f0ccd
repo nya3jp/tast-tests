@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "875ce2d4_fe3e871b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-28T22:28:51Z",
+      "side": 1,
+      "message": "nit: could you initialize uiauto with a timeout of 60 seconds here? That way you don\u0027t have to write it on each step (which makes them harder to follow). i.e. `ui :\u003d uiauto.New(...).WithTimeout(60 * time.Second)` seems appropriate.",
+      "revId": "482e57c47bca2e93d29873504ee8bf85630f0ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4820056_4ced8f4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
         "patchSetId": 1
