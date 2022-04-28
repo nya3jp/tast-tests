@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "02787ab2_cdfd5697",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2022-04-28T08:07:45Z",
+      "side": 1,
+      "message": "question: where is the better fit? autoupdate bundle or hwsec bundle?\n\nI personally prefer to mov it under hwsec actually, which means we also need to make autoupdatelib a library public to hwsec or other packegs.\n\nAbe-san, if more and more tests from  different feature teams need such a n-to-m autoupdate pattern, do you think my idea makes sense? and does it make sense to do it now?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fd640c37_3e553be2",
@@ -31,6 +54,23 @@
       "writtenOn": "2022-04-28T00:39:40Z",
       "side": 1,
       "message": "Haven\u0027t reviewed it yet, but want to post FYI: we are still figuring out how to make this test entirely stable https://buganizer.corp.google.com/issues/229517059",
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39218237_f889e1bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2022-04-28T08:07:45Z",
+      "side": 1,
+      "message": "hwsec-wise LGTM, but i want to hear opinions by Abe-san regarding where it should belong.\n\nHoward, pls also chime in if you have thoughts around this. thanks!",
       "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
