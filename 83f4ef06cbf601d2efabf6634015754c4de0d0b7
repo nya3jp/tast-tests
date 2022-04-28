@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5b25f5a_bde6e9eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-28T09:15:23Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "6778ca01_733f26d1",
+      "range": {
+        "startLine": 45,
+        "startChar": 64,
+        "endLine": 45,
+        "endChar": 92
+      },
+      "revId": "83f4ef06cbf601d2efabf6634015754c4de0d0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0faa3266_27881b6d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-21T12:08:53Z",
       "side": 1,
       "message": "We are WIP migrating from Pre to Fixture. Please use fixture directly for new test.\n\nFor reference https://crrev.com/c/3585281",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "83f4ef06cbf601d2efabf6634015754c4de0d0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71bdeb66_7552f8bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-28T09:15:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "0faa3266_27881b6d",
       "range": {
         "startLine": 48,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e38cbe_a511e9da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-28T09:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c943cda0_3a0706b0",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 69
+      },
+      "revId": "83f4ef06cbf601d2efabf6634015754c4de0d0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56553549_fab36c19",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-21T12:08:53Z",
       "side": 1,
       "message": "I would see these test data as 2 separate sub-tests. Can you pls use s.Run?",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "83f4ef06cbf601d2efabf6634015754c4de0d0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2c3b132_fcb0cc92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-28T09:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56553549_fab36c19",
       "range": {
         "startLine": 95,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62db7c18_2c88ad92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-28T09:15:23Z",
+      "side": 1,
+      "message": "We adjust the cleanup of auto correction setup and move out from a sub test.",
+      "parentUuid": "445d33ab_2d244d9a",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "83f4ef06cbf601d2efabf6634015754c4de0d0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42b70bc0_7ee7a66a",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-04-21T12:08:53Z",
       "side": 1,
       "message": "This function is not necessary. Just make them inline.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 33
+      },
+      "revId": "83f4ef06cbf601d2efabf6634015754c4de0d0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b7a95a0_97be4d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-28T09:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42b70bc0_7ee7a66a",
       "range": {
         "startLine": 121,
         "startChar": 5,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a62dcd_87902e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-28T09:15:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "aee92380_aceafcff",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 27
+      },
+      "revId": "83f4ef06cbf601d2efabf6634015754c4de0d0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60e888e9_cccd5be4",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-04-21T12:08:53Z",
       "side": 1,
       "message": "This is not required. Please ignore closing the target.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 0
+      },
+      "revId": "83f4ef06cbf601d2efabf6634015754c4de0d0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb11a2ab_735b6e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-28T09:15:23Z",
+      "side": 1,
+      "message": "Done, removed",
+      "parentUuid": "60e888e9_cccd5be4",
       "range": {
         "startLine": 234,
         "startChar": 0,
