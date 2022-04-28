@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d5c5db97_28178479",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T22:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34dd423e_c2090c3f",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "053ac38a8e6267ee8c51ba54dfb64782c9427b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a8d468dd_02b13df8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 13
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-28T09:01:55Z",
       "side": 1,
       "message": "This test relies on a lot of user-readable strings and DOM class names. They make your test very fragile to stylistic changes in Chrome.\n\nWhat do you think about adding test-only class names to DOM? Just like:\n\n \u003cdiv class\u003d\"avater-button-container tast-choose-from-file-button\"\u003e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "053ac38a8e6267ee8c51ba54dfb64782c9427b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1a2c11_48ad36aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T22:24:49Z",
+      "side": 1,
+      "message": "Thanks for bringing this up. We have one tast-specific class for this test, i.e. `selected-`. Adding class name for each DOM element would require some extra work. I will check with my teammates working on personalization app first.",
+      "parentUuid": "3f2347f2_84b438fe",
       "range": {
         "startLine": 22,
         "startChar": 0,

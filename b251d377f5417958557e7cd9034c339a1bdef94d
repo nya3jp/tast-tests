@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0801bef_d7bfe346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T22:24:49Z",
+      "side": 1,
+      "message": "Got it. `ui.DoDefault` cannot find the OpenButton in this case, so I change it back to `ui.LeftClick`.",
+      "parentUuid": "a9410242_1b120d58",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aec8668f_1b04b407",
