@@ -6,18 +6,15 @@ package inputs
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/imesettings"
-	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -32,41 +29,26 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
+		Fixture:      fixture.ClamshellNonVKInGuest,
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
-				Pre:               pre.NonVKClamshellReset,
 			},
 			{
 				Name:              "informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
-				Pre:               pre.NonVKClamshellReset,
 			},
 			{
 				Name:              "guest",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
-				Pre:               pre.NonVKClamshellInGuest,
 			},
 			{
 				Name:              "guest_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
-				Pre:               pre.NonVKClamshellInGuest,
-			},
-			{
-				Name:              "fixture",
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"informational"},
-				Fixture:           fixture.ClamshellNonVK,
-			},
-			{
-				Name:              "guest_fixture",
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"informational"},
-				Fixture:           fixture.ClamshellNonVKInGuest,
 			},
 		},
 	})
@@ -75,16 +57,9 @@ func init() {
 func InputMethodManagement(ctx context.Context, s *testing.State) {
 	testInputMethod := ime.JapaneseWithUSKeyboard
 
-	var tconn *chrome.TestConn
-	var uc *useractions.UserContext
-	if strings.Contains(s.TestName(), "fixture") {
-		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
-		uc = s.FixtValue().(fixture.FixtData).UserContext
-		uc.SetTestName(s.TestName())
-	} else {
-		tconn = s.PreValue().(pre.PreData).TestAPIConn
-		uc = s.PreValue().(pre.PreData).UserContext
-	}
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
+	uc := s.FixtValue().(fixture.FixtData).UserContext
+	uc.SetTestName(s.TestName())
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)

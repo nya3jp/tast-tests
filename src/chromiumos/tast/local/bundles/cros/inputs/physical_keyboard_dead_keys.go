@@ -7,7 +7,6 @@ package inputs
 import (
 	"context"
 	"fmt"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -15,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -42,10 +40,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      5 * time.Minute,
+		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{
 			{
 				Name: "french",
-				Pre:  pre.NonVKClamshell,
 				Val: pkDeadKeysTestCase{
 					inputMethod:          ime.FrenchFrance,
 					typingKeys:           "[e",
@@ -54,7 +52,6 @@ func init() {
 			},
 			{
 				Name: "us_intl_acute",
-				Pre:  pre.NonVKClamshell,
 				Val: pkDeadKeysTestCase{
 					inputMethod:          ime.EnglishUSWithInternationalKeyboard,
 					typingKeys:           "'a",
@@ -63,37 +60,6 @@ func init() {
 			},
 			{
 				Name: "us_intl_double",
-				Pre:  pre.NonVKClamshell,
-				Val: pkDeadKeysTestCase{
-					inputMethod:          ime.EnglishUSWithInternationalKeyboard,
-					typingKeys:           "''",
-					expectedTypingResult: "´",
-				},
-			},
-			{
-				Name:      "french_fixture",
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"informational"},
-				Val: pkDeadKeysTestCase{
-					inputMethod:          ime.FrenchFrance,
-					typingKeys:           "[e",
-					expectedTypingResult: "ê",
-				},
-			},
-			{
-				Name:      "us_intl_acute_fixture",
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"informational"},
-				Val: pkDeadKeysTestCase{
-					inputMethod:          ime.EnglishUSWithInternationalKeyboard,
-					typingKeys:           "'a",
-					expectedTypingResult: "á",
-				},
-			},
-			{
-				Name:      "us_intl_double_fixture",
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"informational"},
 				Val: pkDeadKeysTestCase{
 					inputMethod:          ime.EnglishUSWithInternationalKeyboard,
 					typingKeys:           "''",
@@ -107,19 +73,10 @@ func init() {
 func PhysicalKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(pkDeadKeysTestCase)
 
-	var cr *chrome.Chrome
-	var tconn *chrome.TestConn
-	var uc *useractions.UserContext
-	if strings.Contains(s.TestName(), "fixture") {
-		cr = s.FixtValue().(fixture.FixtData).Chrome
-		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
-		uc = s.FixtValue().(fixture.FixtData).UserContext
-		uc.SetTestName(s.TestName())
-	} else {
-		cr = s.PreValue().(pre.PreData).Chrome
-		tconn = s.PreValue().(pre.PreData).TestAPIConn
-		uc = s.PreValue().(pre.PreData).UserContext
-	}
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
+	uc := s.FixtValue().(fixture.FixtData).UserContext
+	uc.SetTestName(s.TestName())
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)

@@ -7,7 +7,6 @@ package inputs
 import (
 	"context"
 	"fmt"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -16,7 +15,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -34,15 +32,14 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks that physical keyboard can perform typing with autocorrects",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		HardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...)),
+		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{
 			{
-				Name:      "en_us_1",
-				Pre:       pre.NonVKClamshellReset,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Name: "en_us_1",
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "helol",
@@ -51,31 +48,7 @@ func init() {
 				},
 			},
 			{
-				Name:      "en_us_2",
-				Pre:       pre.NonVKClamshellReset,
-				ExtraAttr: []string{"group:input-tools-upstream"},
-				Val: autocorrect.TestCase{
-					InputMethod:  ime.EnglishUS,
-					MisspeltWord: "wrold",
-					CorrectWord:  "world",
-					UndoMethod:   autocorrect.ViaPopupUsingMouse,
-				},
-			},
-			{
-				Name:      "en_us_1_fixture",
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"informational"},
-				Val: autocorrect.TestCase{
-					InputMethod:  ime.EnglishUS,
-					MisspeltWord: "helol",
-					CorrectWord:  "hello",
-					UndoMethod:   autocorrect.ViaPopupUsingPK,
-				},
-			},
-			{
-				Name:      "en_us_2_fixture",
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"informational"},
+				Name: "en_us_2",
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "wrold",
@@ -91,19 +64,11 @@ func init() {
 
 func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(autocorrect.TestCase)
-	var cr *chrome.Chrome
-	var tconn *chrome.TestConn
-	var uc *useractions.UserContext
-	if strings.Contains(s.TestName(), "fixture") {
-		cr = s.FixtValue().(fixture.FixtData).Chrome
-		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
-		uc = s.FixtValue().(fixture.FixtData).UserContext
-		uc.SetTestName(s.TestName())
-	} else {
-		cr = s.PreValue().(pre.PreData).Chrome
-		tconn = s.PreValue().(pre.PreData).TestAPIConn
-		uc = s.PreValue().(pre.PreData).UserContext
-	}
+
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
+	uc := s.FixtValue().(fixture.FixtData).UserContext
+	uc.SetTestName(s.TestName())
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)

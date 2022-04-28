@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -37,67 +36,37 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{
 			{
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...)),
-				Pre:               pre.NonVKClamshell,
 			},
 			{
 				Name:              "guest",
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...)),
-				Pre:               pre.NonVKClamshellInGuest,
 			},
 			{
 				Name:              "incognito",
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...)),
-				Pre:               pre.NonVKClamshell,
 			},
 			{
 				// Only run informational tests in consumer mode.
 				Name:              "informational",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-				Pre:               pre.NonVKClamshell,
-			},
-			{
-				Name:              "fixture",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...)),
-				Fixture:           fixture.ClamshellNonVK,
-			},
-			{
-				Name:              "guest_fixture",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...)),
-				Fixture:           fixture.ClamshellNonVKInGuest,
-			},
-			{
-				Name:              "incognito_fixture",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...)),
-				Fixture:           fixture.ClamshellNonVK,
 			},
 		},
 	})
 }
 
 func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
-	var cr *chrome.Chrome
-	var tconn *chrome.TestConn
-	var uc *useractions.UserContext
-	if strings.Contains(s.TestName(), "fixture") {
-		cr = s.FixtValue().(fixture.FixtData).Chrome
-		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
-		uc = s.FixtValue().(fixture.FixtData).UserContext
-		uc.SetTestName(s.TestName())
-	} else {
-		cr = s.PreValue().(pre.PreData).Chrome
-		tconn = s.PreValue().(pre.PreData).TestAPIConn
-		uc = s.PreValue().(pre.PreData).UserContext
-	}
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
+	uc := s.FixtValue().(fixture.FixtData).UserContext
+	uc.SetTestName(s.TestName())
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)

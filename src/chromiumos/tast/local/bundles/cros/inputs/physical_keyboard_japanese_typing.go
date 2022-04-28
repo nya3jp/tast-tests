@@ -6,7 +6,6 @@ package inputs
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -30,34 +29,19 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks that Japanese physical keyboard works",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
+		Fixture:      fixture.ClamshellNonVK,
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:      "us",
-				ExtraAttr: []string{"group:input-tools-upstream"},
-				Pre:       pre.NonVKClamshell,
-				Val:       ime.JapaneseWithUSKeyboard,
+				Name: "us",
+				Val:  ime.JapaneseWithUSKeyboard,
 			},
 			{
-				Name:      "jp",
-				ExtraAttr: []string{"group:input-tools-upstream"},
-				Pre:       pre.NonVKClamshell,
-				Val:       ime.Japanese,
-			},
-			{
-				Name:      "us_fixture",
-				ExtraAttr: []string{"informational"},
-				Fixture:   fixture.ClamshellNonVK,
-				Val:       ime.JapaneseWithUSKeyboard,
-			},
-			{
-				Name:      "jp_fixture",
-				ExtraAttr: []string{"informational"},
-				Fixture:   fixture.ClamshellNonVK,
-				Val:       ime.Japanese,
+				Name: "jp",
+				Val:  ime.Japanese,
 			},
 		},
 	})
@@ -71,19 +55,10 @@ func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn 
 }
 
 func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
-	var cr *chrome.Chrome
-	var tconn *chrome.TestConn
-	var uc *useractions.UserContext
-	if strings.Contains(s.TestName(), "fixture") {
-		cr = s.FixtValue().(fixture.FixtData).Chrome
-		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
-		uc = s.FixtValue().(fixture.FixtData).UserContext
-		uc.SetTestName(s.TestName())
-	} else {
-		cr = s.PreValue().(pre.PreData).Chrome
-		tconn = s.PreValue().(pre.PreData).TestAPIConn
-		uc = s.PreValue().(pre.PreData).UserContext
-	}
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
+	uc := s.FixtValue().(fixture.FixtData).UserContext
+	uc.SetTestName(s.TestName())
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
