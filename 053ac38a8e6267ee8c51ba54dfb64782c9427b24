@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2347f2_84b438fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-28T09:01:55Z",
+      "side": 1,
+      "message": "This test relies on a lot of user-readable strings and DOM class names. They make your test very fragile to stylistic changes in Chrome.\n\nWhat do you think about adding test-only class names to DOM? Just like:\n\n \u003cdiv class\u003d\"avater-button-container tast-choose-from-file-button\"\u003e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "053ac38a8e6267ee8c51ba54dfb64782c9427b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
