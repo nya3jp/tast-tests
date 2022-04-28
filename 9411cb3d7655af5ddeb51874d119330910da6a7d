@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7592ff29_8d552f1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-28T08:19:59Z",
+      "side": 1,
+      "message": "The problem is autoupdate tests need a special way of running, and can only be run in leased DUT. This is why I kept them in the original group. It might cause confusion if you used autoupdate utils in your tests then discovered it won\u0027t work. But yes, I want tast owner\u0027s input too.",
+      "parentUuid": "02787ab2_cdfd5697",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fd640c37_3e553be2",
