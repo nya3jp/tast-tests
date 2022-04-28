@@ -60,6 +60,11 @@ const (
 	Images      = "Images"
 )
 
+// Picker pseudo app id
+const (
+	PickerPseudoAppID = "PickerPseudoAppID"
+)
+
 // FilesApp represents an instance of the Files App.
 type FilesApp struct {
 	ui    *uiauto.Context
@@ -71,6 +76,9 @@ type FilesApp struct {
 func WindowFinder(appID string) *nodewith.Finder {
 	if appID == apps.FilesSWA.ID {
 		return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("BrowserFrame")
+	}
+	if appID == PickerPseudoAppID {
+		return nodewith.NameStartingWith("Select a file to open").Role(role.Window).ClassName("ExtensionViewViews")
 	}
 	return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("RootView")
 }
@@ -131,6 +139,9 @@ func App(ctx context.Context, tconn *chrome.TestConn, appID string) (*FilesApp, 
 // Close closes the Files App.
 // This is automatically done when chrome resets and is not necessary to call.
 func (f *FilesApp) Close(ctx context.Context) error {
+	if f.appID == PickerPseudoAppID {
+		return errors.New("closing a picker is not supported")
+	}
 	// Close the Files App.
 	if err := apps.Close(ctx, f.tconn, f.appID); err != nil {
 		return err
@@ -147,6 +158,10 @@ func (f *FilesApp) OpenDir(dirName, expectedTitle string) uiauto.Action {
 	roleType := role.RootWebArea
 	if f.appID == apps.FilesSWA.ID {
 		roleType = role.Window
+	}
+	if f.appID == PickerPseudoAppID {
+		// For the picker, we check that the button in the header exists.
+		roleType = role.Button
 	}
 	return uiauto.Combine("OpenDir",
 		f.LeftClick(nodewith.Name(dirName).Role(role.StaticText).Ancestor(dir)),
