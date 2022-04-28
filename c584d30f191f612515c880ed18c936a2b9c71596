@@ -33,6 +33,24 @@
       "message": "nits:combine line 100 and line 102 together as the comment in line 99 describes the two lines.",
       "revId": "c584d30f191f612515c880ed18c936a2b9c71596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2578b3b_ede4ed63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-04-28T03:12:10Z",
+      "side": 1,
+      "message": "I\u0027d like to but gofmt undoes it",
+      "parentUuid": "091c630c_ac621bcb",
+      "revId": "c584d30f191f612515c880ed18c936a2b9c71596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
