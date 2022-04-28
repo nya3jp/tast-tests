@@ -862,7 +862,7 @@ func init() {
 				measureRoughness: true,
 			},
 			ExtraData:         []string{"crosvideo/1080_vp8.webm"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "drm_atomic"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "vp8_1080p_30fps_sw_long",
@@ -873,6 +873,7 @@ func init() {
 				measureRoughness: true,
 			},
 			ExtraData: []string{"crosvideo/1080_vp8.webm"},
+			ExtraSoftwareDeps: []string{"drm_atomic"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_1080p_30fps_hw_long",
@@ -883,7 +884,7 @@ func init() {
 				measureRoughness: true,
 			},
 			ExtraData:         []string{"crosvideo/1080.webm"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "drm_atomic"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "vp9_1080p_30fps_sw_long",
@@ -894,6 +895,7 @@ func init() {
 				measureRoughness: true,
 			},
 			ExtraData: []string{"crosvideo/1080.webm"},
+			ExtraSoftwareDeps: []string{"drm_atomic"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "h264_1080p_30fps_hw_long",
@@ -904,7 +906,7 @@ func init() {
 				measureRoughness: true,
 			},
 			ExtraData:         []string{"crosvideo/1080.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "drm_atomic"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_1080p_30fps_sw_long",
@@ -915,6 +917,7 @@ func init() {
 				measureRoughness: true,
 			},
 			ExtraData: []string{"crosvideo/1080.mp4"},
+			ExtraSoftwareDeps: []string{"drm_atomic"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_1080p_30fps_hw_long",
@@ -925,7 +928,7 @@ func init() {
 				measureRoughness: true,
 			},
 			ExtraData:         []string{"crosvideo/av1_1080p_30fps.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1, "drm_atomic"},
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "av1_1080p_30fps_sw_long",
@@ -936,6 +939,7 @@ func init() {
 				measureRoughness: true,
 			},
 			ExtraData: []string{"crosvideo/av1_1080p_30fps.mp4"},
+			ExtraSoftwareDeps: []string{"drm_atomic"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}},
 	})
