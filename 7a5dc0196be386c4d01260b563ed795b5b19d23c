@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db618e0b_8537a3e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2022-04-28T11:41:29Z",
+      "side": 1,
+      "message": "Hi Alexander! Can you review my CL please?\n\nAdding fbeaufort@ to CC as I added him to the contacts of the test as the owner of the policy.",
+      "revId": "7a5dc0196be386c4d01260b563ed795b5b19d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
