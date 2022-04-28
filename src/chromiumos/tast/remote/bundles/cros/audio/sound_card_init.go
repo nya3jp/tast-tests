@@ -27,7 +27,7 @@ func init() {
 		// Skip volteer2 as it's a reference design device not an official launched device.
 		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2", "lindar", "lillipup", "helios")),
 		Contacts:     []string{"judyhsiao@chromium.org", "yuhsuan@chromium.org"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
 	})
 }
