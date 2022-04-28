@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3172d90a_0f04b89a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-28T17:22:26Z",
+      "side": 1,
+      "message": "Mostly looking good now, just some nits around naming/exporting and one question about IP type.\n\nI also like that you were able to factor out the IP connectivity checks, nice work!",
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd513c5_15358acb",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-28T17:22:26Z",
+      "side": 1,
+      "message": "Should we be looking at the first one in the list, or should we get the IP type of the currently-connected APN?",
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f43fb4ac_f4a40e29",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-28T17:22:26Z",
+      "side": 1,
+      "message": "Do we need to export this? If not, lowercase the first letter: `disableNonCellularInterfaceForTesting`",
+      "range": {
+        "startLine": 894,
+        "startChar": 17,
+        "endLine": 894,
+        "endChar": 54
+      },
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d58667ec_205593b6",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-28T17:22:26Z",
+      "side": 1,
+      "message": "ditto re: lowercase the first letter if we don\u0027t need to export this",
+      "range": {
+        "startLine": 912,
+        "startChar": 17,
+        "endLine": 912,
+        "endChar": 71
+      },
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3845306c_ac2ade45",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-28T17:22:26Z",
+      "side": 1,
+      "message": "You probably want to set `enableEthernetFunc` and `enableWifiFunc` to nil here. (Also, if they return errors, we might want to report them.)",
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e551647_5eb58ab4",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-28T17:22:26Z",
+      "side": 1,
+      "message": "This is now actually running the test body, not just doing setup, so maybe we should rename this to something more descriptive. Perhaps `RunTestOnCellularInterface`?",
+      "range": {
+        "startLine": 923,
+        "startChar": 17,
+        "endLine": 923,
+        "endChar": 49
+      },
+      "revId": "e52afd3177474eb37ebc229b4eb65d690e3eef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
