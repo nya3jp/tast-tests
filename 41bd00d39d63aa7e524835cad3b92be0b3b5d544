@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66497eb8_01344efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-28T03:21:06Z",
+      "side": 1,
+      "message": "Reassigning since original tast reviewer seems to ",
+      "revId": "41bd00d39d63aa7e524835cad3b92be0b3b5d544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
