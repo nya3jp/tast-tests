@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
@@ -344,10 +345,24 @@ func (f *graphicsIgtFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Failed to stop tlsdated job: ", err)
 	}
 
+	if IsUsingVKMS(ctx) {
+		cmd := testexec.CommandContext(ctx, "modprobe", "vkms", "cursor=1", "overlays=1", "enable_writeback=1")
+		if err := cmd.Run(); err != nil {
+			s.Fatal("Unable to 'modprobe' VKMS: ", err)
+		}
+	}
+
 	return nil
 }
 
 func (f *graphicsIgtFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	s.Log("TearDown: Start tlsdated")
 	upstart.EnsureJobRunning(ctx, "tlsdated")
+
+	if IsUsingVKMS(ctx) {
+		cmd := testexec.CommandContext(ctx, "modprobe", "-r", "vkms")
+		if err := cmd.Run(); err != nil {
+			s.Fatal("Unable to 'modprobe -r' VKMS: ", err)
+		}
+	}
 }

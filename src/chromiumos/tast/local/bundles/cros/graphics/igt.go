@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -35,8 +36,17 @@ type resultSummary struct {
 var subtestResultRegex = regexp.MustCompile("^Subtest (.*): ([A-Z]+)")
 
 var gpuAmd = []string{"zork", "grunt"}
-var gpuQcom = []string{"strongbad", "trogdor"}
 var gpuMtk = []string{"kukui", "jacuzzi"}
+var gpuQcom = []string{"strongbad", "trogdor"}
+var gpuVM = []string{"generic"}
+
+func combineSlices(slices ...[]string) []string {
+	var out []string
+	for _, slice := range slices {
+		out = append(out, slice...)
+	}
+	return out
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -48,7 +58,7 @@ func init() {
 			"chromeos-gfx-display@google.com",
 			"markyacoub@google.com",
 		},
-		SoftwareDeps: []string{"drm_atomic", "igt", "no_qemu"},
+		SoftwareDeps: []string{"drm_atomic", "igt"},
 		Attr:         []string{"group:graphics", "graphics_igt"},
 		Fixture:      "chromeGraphicsIgt",
 		Params: []testing.Param{{
@@ -171,7 +181,7 @@ func init() {
 			},
 			Timeout:           20 * time.Minute,
 			ExtraAttr:         []string{"graphics_weekly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_cursor_legacy_unstable",
 			Val: igtTest{
@@ -179,7 +189,7 @@ func init() {
 			},
 			Timeout:           20 * time.Minute,
 			ExtraAttr:         []string{"graphics_weekly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_dp_aux_dev",
 			Val: igtTest{
@@ -201,7 +211,7 @@ func init() {
 			},
 			Timeout:           30 * time.Minute,
 			ExtraAttr:         []string{"graphics_weekly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(append(gpuAmd, gpuQcom...), gpuMtk...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(combineSlices(gpuVM, gpuAmd, gpuQcom, gpuMtk)...)),
 		}, {
 			Name: "kms_flip_unstable",
 			Val: igtTest{
@@ -209,7 +219,7 @@ func init() {
 			},
 			Timeout:           30 * time.Minute,
 			ExtraAttr:         []string{"graphics_weekly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(append(gpuAmd, gpuQcom...), gpuMtk...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(combineSlices(gpuAmd, gpuQcom, gpuMtk)...)),
 		}, {
 			Name: "kms_flip_event_leak",
 			Val: igtTest{
@@ -252,7 +262,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_panel_fitting_unstable",
 			Val: igtTest{
@@ -260,7 +270,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_pipe_crc_basic",
 			Val: igtTest{
@@ -275,7 +285,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_plane_unstable",
 			Val: igtTest{
@@ -283,7 +293,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_plane_alpha_blend",
 			Val: igtTest{
@@ -291,7 +301,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_plane_alpha_blend_unstable",
 			Val: igtTest{
@@ -299,7 +309,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_plane_cursor",
 			Val: igtTest{
@@ -307,7 +317,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(append(gpuAmd, gpuQcom...), gpuMtk...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(combineSlices(gpuAmd, gpuQcom, gpuMtk)...)),
 		}, {
 			Name: "kms_plane_cursor_unstable",
 			Val: igtTest{
@@ -315,7 +325,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(append(gpuAmd, gpuQcom...), gpuMtk...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(combineSlices(gpuAmd, gpuQcom, gpuMtk)...)),
 		}, {
 			Name: "kms_plane_lowres",
 			Val: igtTest{
@@ -330,7 +340,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_plane_multiple_unstable",
 			Val: igtTest{
@@ -338,7 +348,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_plane_scaling",
 			Val: igtTest{
@@ -346,7 +356,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_plane_scaling_unstable",
 			Val: igtTest{
@@ -354,15 +364,15 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(combineSlices(gpuAmd, gpuQcom)...)),
 		}, {
 			Name: "kms_prime",
 			Val: igtTest{
 				exe: "kms_prime",
 			},
-			Timeout:           5 * time.Minute,
-			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...)),
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
+			// ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...)),
 		}, {
 			Name: "kms_prime_unstable",
 			Val: igtTest{
@@ -522,6 +532,11 @@ func IGT(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, exePath)
 	cmd.Stdout = f
 	cmd.Stderr = f
+
+	if graphics.IsUsingVKMS(ctx) {
+		cmd.Env = append(cmd.Env, append(os.Environ(), "IGT_DEVICE=sys:/sys/devices/platform/vkms")...)
+	}
+
 	err = cmd.Run()
 	exitErr, isExitErr := err.(*exec.ExitError)
 
