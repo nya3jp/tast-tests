@@ -116,7 +116,7 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			// 5 seconds should be enough time to wait to make sure a node appears or not
+			// 5 seconds should be enough time to make sure a node disappears.
 			waitTimeout := 5 * time.Second
 
 			// The popup to send feedback to Google is opened in two ways: 1) Key
@@ -137,7 +137,7 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 				// Availability of report window popup should match wantReportOption.
 				feedbackRoot := nodewith.Name("Send feedback to Google").HasClass("RootView")
 				if param.wantReportOption {
-					if err := uia.WithTimeout(waitTimeout).WaitUntilExists(feedbackRoot)(ctx); err != nil {
+					if err := uia.WaitUntilExists(feedbackRoot)(ctx); err != nil {
 						s.Error("Failed to wait for Feedback window: ", err)
 					}
 					// Close the feedback window to continue the test in a clean state.
@@ -177,7 +177,7 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 				// Availability of the report option in the menu should match wantReportOption.
 				reportAnIssueFinder := nodewith.ClassName("MenuItemView").NameContaining("Alt+Shift+I")
 				if param.wantReportOption {
-					if err := uia.WithTimeout(waitTimeout).WaitUntilExists(reportAnIssueFinder)(ctx); err != nil {
+					if err := uia.WaitUntilExists(reportAnIssueFinder)(ctx); err != nil {
 						s.Error("Failed to find the Report option: ", err)
 					}
 				} else {
