@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -35,8 +36,9 @@ type resultSummary struct {
 var subtestResultRegex = regexp.MustCompile("^Subtest (.*): ([A-Z]+)")
 
 var gpuAmd = []string{"zork", "grunt"}
-var gpuQcom = []string{"strongbad", "trogdor"}
 var gpuMtk = []string{"kukui", "jacuzzi"}
+var gpuQcom = []string{"strongbad", "trogdor"}
+var gpuVM = []string{"generic"}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -48,7 +50,7 @@ func init() {
 			"chromeos-gfx-display@google.com",
 			"markyacoub@google.com",
 		},
-		SoftwareDeps: []string{"drm_atomic", "igt", "no_qemu"},
+		SoftwareDeps: []string{"drm_atomic", "igt"},
 		Attr:         []string{"group:graphics", "graphics_igt"},
 		Fixture:      "chromeGraphicsIgt",
 		Params: []testing.Param{{
@@ -201,7 +203,7 @@ func init() {
 			},
 			Timeout:           30 * time.Minute,
 			ExtraAttr:         []string{"graphics_weekly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(append(gpuAmd, gpuQcom...), gpuMtk...)...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(append(append(gpuVM, gpuAmd...), gpuQcom...), gpuMtk...)...)),
 		}, {
 			Name: "kms_flip_unstable",
 			Val: igtTest{
@@ -360,9 +362,9 @@ func init() {
 			Val: igtTest{
 				exe: "kms_prime",
 			},
-			Timeout:           5 * time.Minute,
-			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...)),
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
+			// ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...)),
 		}, {
 			Name: "kms_prime_unstable",
 			Val: igtTest{
@@ -522,6 +524,12 @@ func IGT(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, exePath)
 	cmd.Stdout = f
 	cmd.Stderr = f
+
+	if graphics.ShouldUseVKMS(ctx) {
+		s.Log("WARNING: Running IGT tests against VKMS. This is expected behavior on VMs")
+		cmd.Env = append(cmd.Env, append(os.Environ(), "IGT_DEVICE=sys:/sys/devices/platform/vkms")...)
+	}
+
 	err = cmd.Run()
 	exitErr, isExitErr := err.(*exec.ExitError)
 
