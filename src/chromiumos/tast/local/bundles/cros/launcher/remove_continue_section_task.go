@@ -30,9 +30,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShowContinueSection,
+		Func:         RemoveContinueSectionTask,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verify that a local file shows to Continue Section",
+		Desc:         "Verify that tasks gets removed from the Continue Section",
 		Contacts: []string{
 			"anasalazar@chromium.org",
 			"chromeos-sw-engprod@google.com",
@@ -42,29 +42,24 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3*time.Minute + cws.InstallationTimeout,
 		Params: []testing.Param{{
-			Name: "clamshell_mode",
-			Val:  launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+			Name:    "clamshell_mode",
+			Val:     launcher.TestCase{TabletMode: false},
+			Fixture: "chromeLoggedInWithProductivityLauncherContinueSectionFeedbackDisabled",
 		}, {
 			Name:              "tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
+			Val:               launcher.TestCase{TabletMode: true},
+			Fixture:           "chromeLoggedInWithProductivityLauncherContinueSectionFeedbackDisabled",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}},
 	})
 }
 
-func ShowContinueSection(ctx context.Context, s *testing.State) {
+func RemoveContinueSectionTask(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	opt := chrome.EnableFeatures("ProductivityLauncher")
-
-	// Start a new chrome session to avoid reusing user sessions and verify that the privacy nudge gets shown.
-	cr, err := chrome.New(ctx, opt)
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -96,12 +91,12 @@ func ShowContinueSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to dismiss sort nudge: ", err)
 	}
 
-	// Create enough fake files to show the continue section.
+	// Create enough fake files to show the continue section with one extra file to be able to remove items from it.
 	var numFiles int
 	if tabletMode {
-		numFiles = 2
-	} else {
 		numFiles = 3
+	} else {
+		numFiles = 4
 	}
 
 	testDocFileNames := make([]string, 0)
@@ -152,6 +147,7 @@ func ShowContinueSection(ctx context.Context, s *testing.State) {
 		}
 
 	}
+	filesApp.Close(ctx)
 
 	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
 		s.Fatal("Failed to open launcher: ", err)
@@ -164,26 +160,52 @@ func ShowContinueSection(ctx context.Context, s *testing.State) {
 
 	// Click on the button to confirm the privacy notice.
 	privacyNoticeButton := nodewith.Ancestor(continueSection).ClassName("PillButton")
-	if err := uiauto.Combine("Accept privacy notice",
-		ui.WaitUntilExists(privacyNoticeButton),
-		ui.LeftClick(privacyNoticeButton),
-		ui.WaitUntilGone(privacyNoticeButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to confirm privacy notice: ", err)
-	}
-
-	for i, filePath := range testDocFileNames {
-		// If the continue section is shown, then we don't need to try to re open the launcher.
-		fileContent := fmt.Sprintf("Test file %d", i)
-		if err := openFileFromContinueSection(ctx, tconn, tabletMode, filePath, fileContent); err != nil {
-			s.Fatalf("Failed to open task %d - %s: %v", i, filePath, err)
+	if privacyNoticeFound, err := ui.IsNodeFound(ctx, privacyNoticeButton); err != nil {
+		s.Fatal("Failed to search for privacy toast: ", err)
+	} else if privacyNoticeFound {
+		if err := uiauto.Combine("Accept privacy notice",
+			ui.LeftClick(privacyNoticeButton),
+			ui.WaitUntilGone(privacyNoticeButton),
+		)(ctx); err != nil {
+			s.Fatal("Failed to confirm privacy notice: ", err)
 		}
 	}
+
+	// Try to remove a file from the continue section with the context menu option.
+	filePath := testDocFileNames[0]
+	if err := openContextMenuAndClickOnRemoveForFile(ctx, tconn, tabletMode, filePath); err != nil {
+		s.Fatalf("Failed to attempt to remove task 0 - %s: %v", filePath, err)
+	}
+
+	// Verify that the task was removed.
+	if err := ui.WaitUntilGone(nodewith.Ancestor(continueSection).Name(filePath))(ctx); err != nil {
+		s.Fatalf("Failed to confirm the task 0 - %s was removed: %v", filePath, err)
+	}
+
+	// Verify that the continue section is displayed as the minimum number of files requirement is still met.
+	if err := ui.Exists(continueSection)(ctx); err != nil {
+		s.Fatal("Failed to verify that the continue section has disappeared: ", err)
+	}
+
+	// Try to remove another file.
+	filePath = testDocFileNames[1]
+	if err := openContextMenuAndClickOnRemoveForFile(ctx, tconn, tabletMode, filePath); err != nil {
+		s.Fatalf("Failed to attempt to remove task 1 - %s: %v", filePath, err)
+	}
+
+	if err := ui.WaitUntilGone(nodewith.Ancestor(continueSection).Name(filePath))(ctx); err != nil {
+		s.Fatalf("Failed to confirm the task 1 - %s was removed: %v", filePath, err)
+	}
+
+	// Verify that the continue section is not displayed as the minimum number of files requirement is not met.
+	if err := ui.Gone(continueSection)(ctx); err != nil {
+		s.Fatal("Failed to verify that the continue section has disappeared: ", err)
+	}
+
 }
 
-func openFileFromContinueSection(ctx context.Context, tconn *chrome.TestConn, tabletMode bool, filePath, fileContent string) error {
+func openContextMenuAndClickOnRemoveForFile(ctx context.Context, tconn *chrome.TestConn, tabletMode bool, filePath string) error {
 	ui := uiauto.New(tconn)
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
 	// If the continue section is shown, then we don't need to try to re open the launcher.
 	continueSection := nodewith.ClassName("ContinueSectionView")
 	continueSectionFound, err := ui.IsNodeFound(ctx, continueSection)
@@ -196,28 +218,12 @@ func openFileFromContinueSection(ctx context.Context, tconn *chrome.TestConn, ta
 		}
 	}
 	continueTask := nodewith.Ancestor(continueSection).Name(filePath)
-	if err := uiauto.Combine("Open file task",
+	if err := uiauto.Combine("Remove file task",
 		ui.WithTimeout(3*time.Second).WaitUntilExists(continueTask),
-		ui.DoubleClick(continueTask),
+		ui.RightClick(continueTask),
+		ui.LeftClick(nodewith.Name("Remove suggestion").ClassName("MenuItemView")),
 	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to open the task on continue section")
-	}
-
-	if err := ash.WaitForApp(ctx, tconn, chromeApp.ID, 10*time.Second); err != nil {
-		return errors.Wrap(err, "browser window never opened")
-	}
-
-	fileContentNode := nodewith.Name(fileContent).First()
-	if err := ui.WaitUntilExists(fileContentNode)(ctx); err != nil {
-		return errors.Wrap(err, "failed to find the file contents node")
-	}
-
-	if err := apps.Close(ctx, tconn, chromeApp.ID); err != nil {
-		return errors.Wrap(err, "failed to trigger browser close")
-	}
-
-	if err := ash.WaitForAppClosed(ctx, tconn, chromeApp.ID); err != nil {
-		return errors.Wrap(err, "browser did not close succesfully")
+		return errors.Wrap(err, "failed to remove the task on continue section")
 	}
 	return nil
 }
