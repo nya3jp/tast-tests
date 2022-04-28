@@ -148,8 +148,11 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*MGS, *chr
 
 	if cfg.m.AutoLaunch {
 		crOpts = append(crOpts, chrome.NoLogin())
+		crOpts = append(crOpts, chrome.MGSUser(*cfg.m.AutoLaunchMGSAppID))
 		testing.ContextLog(ctx, "MGS: starting MGS in auto launch mode")
 	} else {
+		// TODO(kamilszarek) Set the MGSUser to the one that will be logged in.
+		// Otherwise Chrome config will not know the username and e.g. won't be able to access their home directory.
 		crOpts = append(crOpts, chrome.DeferLogin())
 		testing.ContextLog(ctx, "MGS: starting Chrome with MGS accounts loaded")
 	}
