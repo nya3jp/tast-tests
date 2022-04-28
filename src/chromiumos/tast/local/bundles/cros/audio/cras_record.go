@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Verifies CRAS record function works correctly",
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		HardwareDeps: hwdep.D(hwdep.Microphone()),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
