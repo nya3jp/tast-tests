@@ -35,6 +35,7 @@ type Blob struct {
 	InitialState         map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
 	DeviceAffiliationIds []string                     `json:"device_affiliation_ids,omitempty"`
 	UserAffiliationIds   []string                     `json:"user_affiliation_ids,omitempty"`
+	DirectoryAPIID       string                       `json:"directory_api_id,omitempty"`
 }
 
 // A BlobUserPolicies struct is a sub-struct used in a PolicyBlob.
