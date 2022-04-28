@@ -24,19 +24,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// policyParams entail parameters describing the set policy for a user.
-type policyParams struct {
-	AllowsImmediateDelivery bool // specifies whether immediate delivery of files is allowed
-	AllowsUnscannableFiles  bool // specifies whether unscannable files (large or encrypted) are allowed
-	ScansEnabledForDownload bool // specifies whether malware and dlp scans are enabled for download
-	ScansEnabledForUpload   bool // specifies whether malware and dlp scans are enabled for upload
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TestDownload,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Enterprise connector test",
+		Desc:         "Enterprise connector test for downloading files",
 		Timeout:      10 * time.Minute,
 		Contacts: []string{
 			"sseckler@google.com",
@@ -54,42 +46,29 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "scan_enabled_allows_immediate_and_unscannable",
-				Fixture: "lacrosGaiaSignedInProdPolicyWPDownloadAllowExtra",
-				Val: policyParams{
+				Fixture: "lacrosGaiaSignedInProdPolicyWPEnabledAllowExtra",
+				Val: helpers.PolicyParams{
 					AllowsImmediateDelivery: true,
 					AllowsUnscannableFiles:  true,
-					ScansEnabledForDownload: true,
-					ScansEnabledForUpload:   false,
+					ScansEnabled:            true,
 				},
 			},
 			{
 				Name:    "scan_enabled_blocks_immediate_and_unscannable",
-				Fixture: "lacrosGaiaSignedInProdPolicyWPDownloadBlockExtra",
-				Val: policyParams{
+				Fixture: "lacrosGaiaSignedInProdPolicyWPEnabledBlockExtra",
+				Val: helpers.PolicyParams{
 					AllowsImmediateDelivery: false,
 					AllowsUnscannableFiles:  false,
-					ScansEnabledForDownload: true,
-					ScansEnabledForUpload:   false,
+					ScansEnabled:            true,
 				},
 			},
 			{
-				Name:    "scan_disabled_allows_immediate_and_unscannable",
-				Fixture: "lacrosGaiaSignedInProdPolicyWPUploadAllowExtra",
-				Val: policyParams{
+				Name:    "scan_disabled",
+				Fixture: "lacrosGaiaSignedInProdPolicyWPDisabled",
+				Val: helpers.PolicyParams{
 					AllowsImmediateDelivery: true,
 					AllowsUnscannableFiles:  true,
-					ScansEnabledForDownload: false,
-					ScansEnabledForUpload:   true,
-				},
-			},
-			{
-				Name:    "scan_disabled_blocks_immediate_and_unscannable",
-				Fixture: "lacrosGaiaSignedInProdPolicyWPUploadBlockExtra",
-				Val: policyParams{
-					AllowsImmediateDelivery: false,
-					AllowsUnscannableFiles:  false,
-					ScansEnabledForDownload: false,
-					ScansEnabledForUpload:   true,
+					ScansEnabled:            false,
 				},
 			},
 		},
@@ -126,11 +105,11 @@ func TestDownload(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get device policies: ", err)
 	}
 	_, ok := devicePolicies.Chrome["OnFileDownloadedEnterpriseConnector"]
-	policyParams := s.Param().(policyParams)
-	if !ok && policyParams.ScansEnabledForDownload {
+	policyParams := s.Param().(helpers.PolicyParams)
+	if !ok && policyParams.ScansEnabled {
 		s.Fatal("Policy isn't set, but should be")
 	}
-	if ok && !policyParams.ScansEnabledForDownload {
+	if ok && !policyParams.ScansEnabled {
 		s.Fatal("Policy is set, but shouldn't be")
 	}
 
@@ -139,6 +118,8 @@ func TestDownload(ctx context.Context, s *testing.State) {
 }
 
 func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType browser.Type) {
+	policyParams := s.Param().(helpers.PolicyParams)
+
 	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -207,9 +188,8 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 	} {
 		s.Run(ctx, param.testName, func(ctx context.Context, s *testing.State) {
 			dlFileName := param.dlFileName
-			policyParams := s.Param().(policyParams)
 			shouldBlockDownload := false
-			if policyParams.ScansEnabledForDownload {
+			if policyParams.ScansEnabled {
 				if param.dlIsUnscannable {
 					shouldBlockDownload = !policyParams.AllowsUnscannableFiles
 				} else {

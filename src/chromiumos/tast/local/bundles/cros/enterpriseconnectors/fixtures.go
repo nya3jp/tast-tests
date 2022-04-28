@@ -16,8 +16,8 @@ import (
 func init() {
 	// Note that for these fixtures the credentials are configured with the specific policy parameters through the admin dpanel.
 	testing.AddFixture(&testing.Fixture{
-		Name: "lacrosGaiaSignedInProdPolicyWPDownloadAllowExtra",
-		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and enabled WebProtect scanning for downloads which allows immediate file transfers, large and encrypted files",
+		Name: "lacrosGaiaSignedInProdPolicyWPEnabledAllowExtra",
+		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and enabled WebProtect scanning which allows immediate file transfers, large and encrypted files",
 		Contacts: []string{
 			"sseckler@google.com",
 			"webprotect-eng@google.com",
@@ -35,8 +35,8 @@ func init() {
 		},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "lacrosGaiaSignedInProdPolicyWPDownloadBlockExtra",
-		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and enabled WebProtect scanning for downloads which blocks immediate file transfers, large and encrypted files",
+		Name: "lacrosGaiaSignedInProdPolicyWPEnabledBlockExtra",
+		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and enabled WebProtect scanning which blocks immediate file transfers, large and encrypted files",
 		Contacts: []string{
 			"sseckler@google.com",
 			"webprotect-eng@google.com",
@@ -54,8 +54,8 @@ func init() {
 		},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "lacrosGaiaSignedInProdPolicyWPUploadAllowExtra",
-		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and enabled WebProtect scanning for uploads which allows immediate file transfers, large and encrypted files",
+		Name: "lacrosGaiaSignedInProdPolicyWPDisabled",
+		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and disabled WebProtect scanning",
 		Contacts: []string{
 			"sseckler@google.com",
 			"webprotect-eng@google.com",
@@ -70,25 +70,6 @@ func init() {
 		Vars: []string{
 			"enterpriseconnectors.username3",
 			"enterpriseconnectors.password3",
-		},
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name: "lacrosGaiaSignedInProdPolicyWPUploadBlockExtra",
-		Desc: "Fixture that allows usage of Lacros, with a gaia login with production policy and enabled WebProtect scanning for uploads which blocks immediate file transfers, large and encrypted files",
-		Contacts: []string{
-			"sseckler@google.com",
-			"webprotect-eng@google.com",
-		},
-		Impl: CreateFixture(
-			"enterpriseconnectors.username4",
-			"enterpriseconnectors.password4",
-		),
-		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		Vars: []string{
-			"enterpriseconnectors.username4",
-			"enterpriseconnectors.password4",
 		},
 	})
 }
