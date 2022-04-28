@@ -60,6 +60,11 @@ const (
 	Images      = "Images"
 )
 
+// PickerPseudoAppID to be used internally by the filepicker package.
+const (
+	PickerPseudoAppID = "PickerPseudoAppID"
+)
+
 // FilesApp represents an instance of the Files App.
 type FilesApp struct {
 	ui    *uiauto.Context
@@ -71,6 +76,9 @@ type FilesApp struct {
 func WindowFinder(appID string) *nodewith.Finder {
 	if appID == apps.FilesSWA.ID {
 		return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("BrowserFrame")
+	}
+	if appID == PickerPseudoAppID {
+		return nodewith.NameStartingWith("Select a file to open").Role(role.Window).ClassName("ExtensionViewViews")
 	}
 	return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("RootView")
 }
@@ -111,6 +119,7 @@ func Relaunch(ctx context.Context, tconn *chrome.TestConn, filesApp *FilesApp) (
 
 // App returns an existing instance of the Files app.
 // An error is returned if the app cannot be found.
+// Note: Do not call this function directly with PickerPseudoAppID. Instead, use uiauto.filepicker.Find().
 func App(ctx context.Context, tconn *chrome.TestConn, appID string) (*FilesApp, error) {
 	// Create a uiauto.Context with default timeout.
 	ui := uiauto.New(tconn).WithInterval(500 * time.Millisecond)
@@ -147,6 +156,10 @@ func (f *FilesApp) OpenDir(dirName, expectedTitle string) uiauto.Action {
 	roleType := role.RootWebArea
 	if f.appID == apps.FilesSWA.ID {
 		roleType = role.Window
+	}
+	if f.appID == PickerPseudoAppID {
+		// For the picker, we check that the button in the header exists.
+		roleType = role.Button
 	}
 	return uiauto.Combine("OpenDir",
 		f.LeftClick(nodewith.Name(dirName).Role(role.StaticText).Ancestor(dir)),
