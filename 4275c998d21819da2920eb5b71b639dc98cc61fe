@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c5899d_dcb9e6cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-28T06:43:59Z",
+      "side": 1,
+      "message": "Missing argument to `func cuj.NewRecorder(...)`",
+      "revId": "4275c998d21819da2920eb5b71b639dc98cc61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af3f056b_10b6bebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-04-28T06:43:59Z",
+      "side": 1,
+      "message": "After removing \n```\ncleanupRecorderCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n```\ncancel() becomes a new variable.",
+      "revId": "4275c998d21819da2920eb5b71b639dc98cc61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
