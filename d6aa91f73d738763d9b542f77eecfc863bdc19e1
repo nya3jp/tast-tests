@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "523076a7_12faff34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-28T19:51:36Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3614690",
+      "parentUuid": "239b46e8_951a08da",
+      "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3d3369d_5b8723c7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-27T23:41:03Z",
       "side": 1,
       "message": "Does this work on lacros as well?",
+      "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "044e776a_52bf5bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-28T19:51:36Z",
+      "side": 1,
+      "message": "Yes (or at least it does now that I have worked more to improve the tests).",
+      "parentUuid": "f3d3369d_5b8723c7",
       "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df98d013_9ad1883f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-28T19:51:36Z",
+      "side": 1,
+      "message": "If you open chrome://webrtc-internals in multiple browser tabs, it records timeline data in each of those tabs separately. Here, the test needs to switch to the tab where chrome://webrtc-internals was opened before the meeting, to get data since then.",
+      "parentUuid": "25665483_606ba7fd",
+      "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33565310_680981e4",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-04-27T23:41:03Z",
       "side": 1,
       "message": "We can pick a location? /var/tmp would be nicer",
+      "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74696f9d_652934be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-28T19:51:36Z",
+      "side": 1,
+      "message": "The default behavior is not to prompt for a file path, but just to download to the Downloads folder. To download the file to a different path, I would have to modify the test so that it changes the browser settings and then changes them back. I believe it would be more problematic than helpful.",
+      "parentUuid": "33565310_680981e4",
       "revId": "d6aa91f73d738763d9b542f77eecfc863bdc19e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
