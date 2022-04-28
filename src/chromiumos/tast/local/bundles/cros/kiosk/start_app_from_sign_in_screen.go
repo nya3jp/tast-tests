@@ -22,10 +22,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StartAppFromSignInScreen,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Adds 2 Kiosk accounts, checks if both are available then starts one of them",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
+			"vkovalova@google.com",   // Lacros test author
 			"chromeos-kiosk-eng+TAST@google.com",
 		},
 		Vars: []string{"ui.signinProfileTestExtensionManifestKey"},
@@ -34,17 +35,30 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.FakeDMSEnrolled,
+		Params: []testing.Param{
+			{
+				Name: "ash",
+				Val:  chrome.ExtraArgs(""),
+			},
+			{
+				Name:              "lacros",
+				Val:               chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore"),
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+		},
 	})
 }
 
 func StartAppFromSignInScreen(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+	chromeOptions := s.Param().(chrome.Option)
 	kiosk, cr, err := kioskmode.New(
 		ctx,
 		fdms,
 		kioskmode.DefaultLocalAccounts(),
 		kioskmode.ExtraChromeOptions(
 			chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+			chromeOptions,
 		),
 	)
 	if err != nil {
