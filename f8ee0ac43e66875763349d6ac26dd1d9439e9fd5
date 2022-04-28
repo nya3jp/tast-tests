@@ -69,6 +69,24 @@
       "message": "Fine with me. But didn\u0027t we have some printing of the Lacros config during launch ",
       "revId": "f8ee0ac43e66875763349d6ac26dd1d9439e9fd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7147b7ec_50d34b17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-28T00:04:48Z",
+      "side": 1,
+      "message": "We have lots of flakes relating to lacros not launching or launching going wrong. The upside to adding a faillog is we get much more information and it should help fix the issues. Callers can still capture a faillog even if we capture one here.\n\nJust adding the path seems not very useful to me. We can already tell which path it\u0027s loading from by checking the vars and which mode it\u0027s using. I think it\u0027s pretty unlikely the flakes are caused by the path being wrong.",
+      "parentUuid": "12b28008_ae936a2d",
+      "revId": "f8ee0ac43e66875763349d6ac26dd1d9439e9fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
