@@ -113,8 +113,13 @@ func VPNPolicy(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to update %s policy: %v", tc.subtest, err)
 			}
 
-			if err := vpn.VerifyVPNProfile(ctx, m, tc.guid, true); err != nil {
-				s.Errorf("Verifying %s profile defined VPN failed: %v", tc.subtest, err)
+			service, err := vpn.FindVPNService(ctx, m, tc.guid)
+			if err != nil {
+				s.Fatalf("Failed to find %s service: %v", tc.subtest, err)
+			}
+
+			if err := vpn.VerifyVPNServiceConnect(ctx, m, service); err != nil {
+				s.Errorf("Failed to verify %s service connectable: %v", tc.subtest, err)
 			}
 		})
 	}
