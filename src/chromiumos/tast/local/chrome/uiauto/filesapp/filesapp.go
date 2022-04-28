@@ -12,11 +12,13 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/filepicker/vars"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -72,6 +74,9 @@ func WindowFinder(appID string) *nodewith.Finder {
 	if appID == apps.FilesSWA.ID {
 		return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("BrowserFrame")
 	}
+	if appID == vars.FilePickerPseudoAppID {
+		return nodewith.NameStartingWith("Select a file to open").Role(role.Window).ClassName("ExtensionViewViews")
+	}
 	return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("RootView")
 }
 
@@ -112,6 +117,11 @@ func Relaunch(ctx context.Context, tconn *chrome.TestConn, filesApp *FilesApp) (
 // App returns an existing instance of the Files app.
 // An error is returned if the app cannot be found.
 func App(ctx context.Context, tconn *chrome.TestConn, appID string) (*FilesApp, error) {
+	if appID == vars.FilePickerPseudoAppID {
+		// Only allow uiauto.filepicker to call this function with vars.FilePickerPseudoAppID.
+		caller.Check(2, []string{"chromiumos/tast/local/chrome/uiauto/filepicker"})
+	}
+
 	// Create a uiauto.Context with default timeout.
 	ui := uiauto.New(tconn).WithInterval(500 * time.Millisecond)
 
@@ -147,6 +157,10 @@ func (f *FilesApp) OpenDir(dirName, expectedTitle string) uiauto.Action {
 	roleType := role.RootWebArea
 	if f.appID == apps.FilesSWA.ID {
 		roleType = role.Window
+	}
+	if f.appID == vars.FilePickerPseudoAppID {
+		// For the picker, we check that the button in the header exists.
+		roleType = role.Button
 	}
 	return uiauto.Combine("OpenDir",
 		f.LeftClick(nodewith.Name(dirName).Role(role.StaticText).Ancestor(dir)),

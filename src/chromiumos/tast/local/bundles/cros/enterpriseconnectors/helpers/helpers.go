@@ -11,6 +11,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -19,78 +20,211 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// PolicyParams entail parameters describing the set policy for a user.
-type PolicyParams struct {
-	AllowsImmediateDelivery bool // Specifies whether immediate delivery of files is allowed.
-	AllowsUnscannableFiles  bool // Specifies whether unscannable files (large or encrypted) are allowed.
-	ScansEnabled            bool // Specifies whether malware and dlp scans are enabled.
+// TestParams entail parameters describing the set policy for a user and more.
+type TestParams struct {
+	AllowsImmediateDelivery bool         // Specifies whether immediate delivery of files is allowed.
+	AllowsUnscannableFiles  bool         // Specifies whether unscannable files (large or encrypted) are allowed.
+	ScansEnabled            bool         // Specifies whether malware and dlp scans are enabled.
+	BrowserType             browser.Type // Specifies the type of browser.
 }
 
-// CheckDMTokenRegistered waits until a valid DM token exists.
-// This is done by downloading unknown_malware_encrypted.zip from `download.html`.
-func CheckDMTokenRegistered(ctx context.Context, s *testing.State, br *browser.Browser, server *httptest.Server) error {
-	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
+// TestFileParams describe the parameters for a test file.
+type TestFileParams struct {
+	TestName      string
+	FileName      string
+	UlBlockLabel  string
+	IsBad         bool
+	IsUnscannable bool
+}
 
-	// Close all prior notifications
-	if err := ash.CloseNotifications(ctx, tconn); err != nil {
-		s.Fatal("Failed to close notifications: ", err)
+// ScanningTimeOut describes the typical time out for a scan.
+const (
+	ScanningTimeOut time.Duration = 2 * time.Minute
+)
+
+// GetTestFileParams returns the list of parameters for the files that should be tested.
+func GetTestFileParams() []TestFileParams {
+	return []TestFileParams{
+		{
+			TestName:      "Encrypted malware",
+			FileName:      "unknown_malware_encrypted.zip",
+			UlBlockLabel:  "encrypted",
+			IsBad:         true,
+			IsUnscannable: true,
+		},
+		{
+			TestName:      "Unknown malware",
+			FileName:      "unknown_malware.zip",
+			UlBlockLabel:  "try again",
+			IsBad:         true,
+			IsUnscannable: false,
+		},
+		{
+			TestName:      "Known malware",
+			FileName:      "content.exe",
+			UlBlockLabel:  "try again",
+			IsBad:         true,
+			IsUnscannable: false,
+		},
+		{
+			TestName:      "DLP clear text",
+			FileName:      "10ssns.txt",
+			UlBlockLabel:  "try again",
+			IsBad:         true,
+			IsUnscannable: false,
+		},
+		{
+			TestName:      "Allowed file",
+			FileName:      "allowed.txt",
+			UlBlockLabel:  "",
+			IsBad:         false,
+			IsUnscannable: false,
+		},
 	}
+}
+
+// WaitForDMTokenRegistered waits until a valid DM token exists.
+// This is done by downloading unknown_malware.zip from `download.html`.
+// This function fails if scanning is disabled.
+func WaitForDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, server *httptest.Server) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return checkDMTokenRegistered(ctx, br, tconn, server)
+	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for dm token to be registered")
+	}
+	return nil
+}
+
+func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, server *httptest.Server) error {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
 	if err != nil {
-		s.Fatal("Failed to connect to chrome: ", err)
+		return testing.PollBreak(errors.Wrap(err, "failed to connect to chrome"))
 	}
 	defer dconnSafebrowsing.Close()
+	defer dconnSafebrowsing.CloseTarget(cleanupCtx)
 
 	dconn, err := br.NewConn(ctx, server.URL+"/download.html")
 	defer dconn.Close()
+	defer dconn.CloseTarget(cleanupCtx)
 
-	err = dconn.Eval(ctx, `document.getElementById("unknown_malware_encrypted.zip").click()`, nil)
+	// Close all prior notifications.
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		return testing.PollBreak(errors.Wrap(err, "failed to close notifications"))
+	}
 
-	// Check for notification (this might take some time in case of throttling)
+	err = dconn.Eval(ctx, `document.getElementById("unknown_malware.zip").click()`, nil)
+	if err != nil {
+		return testing.PollBreak(errors.Wrap(err, "failed to click on link to download file"))
+	}
+
+	// Check for notification (this might take some time in case of throttling).
 	timeout := 2 * time.Minute
 
-	deadline, _ := ctx.Deadline()
-	s.Log("Context deadline is ", deadline)
-	ntfctn, err := ash.WaitForNotification(
+	_, err = ash.WaitForNotification(
 		ctx,
 		tconn,
 		timeout,
 		ash.WaitIDContains("notification-ui-manager"),
-		ash.WaitMessageContains("unknown_malware_encrypted.zip"),
+		ash.WaitMessageContains("unknown_malware.zip"),
 	)
 	if err != nil {
-		s.Fatalf("Failed to wait for notification with title %q: %v", "", err)
+		return testing.PollBreak(errors.Wrap(err, "failed to wait for notification"))
 	}
 
-	// Remove file if it was downloaded
-	if ntfctn.Title == "Download complete" {
-		if err := os.Remove(filesapp.DownloadPath + "unknown_malware_encrypted.zip"); err != nil {
-			s.Error("Failed to remove ", "unknown_malware_encrypted.zip", ": ", err)
-		}
-	}
+	// Remove file if it was downloaded.
+	defer os.Remove(filesapp.DownloadPath + "unknown_malware.zip")
 
-	// Check safebrowsing page, whether there wasn't a failed_to_get_token error in the last message
 	var failedToGetToken bool
-	err = dconnSafebrowsing.Eval(ctx, `(async () => {
-		table = document.getElementById("deep-scan-list");
-		if (table.rows.length == 0) {
-			// If there is no entry, scanning is disabled and the token doesn't matter
-			return false;
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		err := dconnSafebrowsing.Eval(ctx, `(async () => {
+			const table = document.getElementById("deep-scan-list");
+			if (table.rows.length == 0) {
+				// If there is no entry, scanning is not yet complete.
+				throw "Scanning is not yet complete";
+			}
+			// We check if the last entry is not empty to check whether there is an actual answer.
+			innerHTML = table.rows[table.rows.length - 1].cells[1].innerHTML;
+			if (innerHTML.includes("FAILED_TO_GET_TOKEN")) {
+				return true;
+			}
+			if (innerHTML.includes("status")) {
+				return false;
+			}
+			if (innerHTML.includes("UPLOAD_FAILURE")) {
+				// Handle upload failure as token failure.
+				return true;
+			}
+			throw "Scanning not yet complete";
+			})()`, &failedToGetToken)
+		if err != nil {
+			testing.ContextLog(ctx, "Polling: ", err)
 		}
-		// Otherwise we check if the last entry includes a missing token
-		return table.rows[table.rows.length - 1].cells[1].innerHTML.includes("FAILED_TO_GET_TOKEN");
-		})()`, &failedToGetToken)
-	if err != nil {
-		s.Fatal("Failed to check deep-scan-list entry: ", err)
+		return err
+	}, &testing.PollOptions{Timeout: timeout, Interval: 5 * time.Second}); err != nil {
+		return testing.PollBreak(errors.Wrap(err, "failed to wait for dm token registration"))
 	}
+
 	if failedToGetToken {
-		s.Log("FAILED_TO_GET_TOKEN detected")
+		testing.ContextLog(ctx, "FAILED_TO_GET_TOKEN detected")
 		return errors.New("FAILED_TO_GET_TOKEN detected")
 	}
 
+	return nil
+}
+
+// WaitForDeepScanningVerdict waits until a valid deep scanning verdict is found.
+func WaitForDeepScanningVerdict(ctx context.Context, dconnSafebrowsing *browser.Conn, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		return dconnSafebrowsing.Eval(ctx, `(async () => {
+			const table = document.getElementById("deep-scan-list");
+			if (table.rows.length == 0) {
+				// If there is no entry, scanning is not yet complete.
+				throw "Scanning is not yet complete";
+			}
+			// We check if the last entry is not empty to check whether there is an actual answer.
+			innerHTML = table.rows[table.rows.length - 1].cells[1].innerHTML;
+			if (innerHTML.includes("status")) {
+				return;
+			}
+			throw "Scanning not yet complete";
+			})()`, nil)
+	}, &testing.PollOptions{Timeout: timeout, Interval: 5 * time.Second})
+}
+
+// VerifyDeepScanningVerdict verifies that the deep scanning verdict corresponds to shouldBlock.
+func VerifyDeepScanningVerdict(ctx context.Context, dconnSafebrowsing *browser.Conn, shouldBlock bool) error {
+	var isBlocked bool
+	err := dconnSafebrowsing.Eval(ctx, `(async () => {
+		const table = document.getElementById("deep-scan-list");
+		if (table.rows.length == 0) {
+			// If there is no entry, scanning is not yet complete.
+			throw 'No deep scanning verdict!';
+		}
+		if (table.rows[table.rows.length - 1].cells[1].innerHTML.length == 0) {
+			throw 'Invalid empty response detected';
+		}
+		// We check if the last entry includes a block message.
+		return table.rows[table.rows.length - 1].cells[1].innerHTML.includes("BLOCK");
+		})()`, &isBlocked)
+	if err != nil {
+		var tableHTML string
+		err2 := dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").outerHTML`, &tableHTML)
+		if err2 != nil {
+			return errors.Wrap(err2, "failed to get html of table")
+		}
+		return errors.Wrapf(err, "failed to check deep-scan-list entry. Html of table: %v", tableHTML)
+	}
+	if isBlocked != shouldBlock {
+		var tableHTML string
+		err := dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").outerHTML`, &tableHTML)
+		if err != nil {
+			return errors.Wrapf(err, "block state (%v) doesn't match expectation (%v). Failed to get html of table", isBlocked, shouldBlock)
+		}
+		return errors.Errorf("block state (%v) doesn't match expectation (%v). Html of table: %v", isBlocked, shouldBlock, tableHTML)
+	}
 	return nil
 }
