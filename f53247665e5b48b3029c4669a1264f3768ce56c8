@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e228c30e_47a0a9b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T08:33:51Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f53247665e5b48b3029c4669a1264f3768ce56c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd7b1058_06b4b00d",
+        "filename": "src/chromiumos/tast/local/kioskmode/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T08:33:51Z",
+      "side": 1,
+      "message": "Is there a way to retrieve the real Directory_API_ID when real enrollment happens?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "f53247665e5b48b3029c4669a1264f3768ce56c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ff9e39_9f5112b5",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-28T08:33:51Z",
+      "side": 1,
+      "message": "Please end the comment with .",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 35
+      },
+      "revId": "f53247665e5b48b3029c4669a1264f3768ce56c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
