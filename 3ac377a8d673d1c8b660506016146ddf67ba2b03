@@ -33,6 +33,24 @@
       "message": "if req.BrowserType was changed, cr needs to be closed and re-created IIUC.",
       "revId": "3ac377a8d673d1c8b660506016146ddf67ba2b03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "636aa8fc_9f771ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_virtual_keyboard_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-28T17:51:32Z",
+      "side": 1,
+      "message": "The way I see is.. remote tests can do orchestration work (eg, like you said resetting `cr` when browser type changed or error handling), while local services can just provide APIs that do one specific action at a time upon a request of the remote tests (actions like new, open, close)\n\nSpecifically for ECVerifyVK that is the only caller of this service by far, it has a setup implementation to ensure clean start by a hard power reset per each browser and also implements a reset function in test when needed (http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/ec_verify_vk.go?l\u003d275)\nGiven that I think the test is unlikely failing by that assumption. Is it okay to move on for the initial check-in? PTAL.",
+      "parentUuid": "b2510495_5c6480bb",
+      "revId": "3ac377a8d673d1c8b660506016146ddf67ba2b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
