@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d77e450_dbff7eb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T04:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df1e83b_ce16c576",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1792a62_c1246f41",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-27T23:51:43Z",
       "side": 1,
       "message": "This also tests setting avatar from Google Drive.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe9c25e_986ad766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T04:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1792a62_c1246f41",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8979138d_3a369393",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T04:26:46Z",
+      "side": 1,
+      "message": "Done. Is `DoDefault` a complete replacement of `LeftClick`?",
+      "parentUuid": "66f87898_21c921cf",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aec8668f_1b04b407",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-27T23:51:43Z",
       "side": 1,
       "message": "Same deal.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82e982a_f990d293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T04:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aec8668f_1b04b407",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a12d7c4_0a18a81a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T04:26:46Z",
+      "side": 1,
+      "message": "Done. Good to know. Thank you!",
+      "parentUuid": "3e199de2_ae8302e5",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "349a4160_6e51c3ce",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ba325e_588351f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T04:26:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "349a4160_6e51c3ce",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 68
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afa564d8_3a3c37fd",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-04-27T23:51:43Z",
       "side": 1,
       "message": "You do not need to write `personalization.` inside the `personalization` package.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "b251d377f5417958557e7cd9034c339a1bdef94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c984b3_05147be6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-28T04:26:46Z",
+      "side": 1,
+      "message": "Ack. It will not compile if we remove `personalization.`. These two functions are defined in \"chromiumos/tast/local/personalization\"",
+      "parentUuid": "afa564d8_3a3c37fd",
       "range": {
         "startLine": 109,
         "startChar": 0,
