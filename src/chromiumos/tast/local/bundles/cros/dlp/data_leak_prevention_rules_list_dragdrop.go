@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -28,7 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataLeakPreventionRulesListDragdrop,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction by drag and drop",
 		Contacts: []string{
 			"ayaelattar@google.com",
@@ -36,8 +38,15 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromePolicyLoggedIn",
-	})
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               browser.TypeLacros,
+		}}})
 }
 
 func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) {
@@ -88,13 +97,13 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 		content     string
 	}{
 		{
-			name:        "example",
+			name:        "dropBlocked",
 			wantAllowed: false,
 			url:         "www.example.com",
 			content:     "Example Domain",
 		},
 		{
-			name:        "chromium",
+			name:        "dropAllowed",
 			wantAllowed: true,
 			url:         "www.chromium.org",
 			content:     "The Chromium Projects",
@@ -107,21 +116,29 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 				s.Fatal("Failed to reset the Chrome: ", err)
 			}
 
-			conn1, err := cr.NewConn(ctx, "https://www.google.com/")
+			br, closeBr, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			if err != nil {
+				s.Fatal("Failed to open the destination browser: ", err)
+			}
+			defer closeBr(cleanupCtx)
+
+			dstConn, err := br.NewConn(ctx, "https://www.google.com/")
 			if err != nil {
 				s.Fatal("Failed to open page: ", err)
 			}
+			defer dstConn.Close()
 
-			if err := webutil.WaitForQuiescence(ctx, conn1, 10*time.Second); err != nil {
+			if err := webutil.WaitForQuiescence(ctx, dstConn, 10*time.Second); err != nil {
 				s.Fatal("Failed to wait for google.com to achieve quiescence: ", err)
 			}
 
-			conn2, err := cr.NewConn(ctx, "https://"+param.url, browser.WithNewWindow())
+			srcConn, err := br.NewConn(ctx, "https://"+param.url, browser.WithNewWindow())
 			if err != nil {
 				s.Fatal("Failed to open page: ", err)
 			}
+			defer srcConn.Close()
 
-			if err := webutil.WaitForQuiescence(ctx, conn2, 10*time.Second); err != nil {
+			if err := webutil.WaitForQuiescence(ctx, srcConn, 10*time.Second); err != nil {
 				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.url, err)
 			}
 
