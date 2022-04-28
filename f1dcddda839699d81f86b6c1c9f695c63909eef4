@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4174645b_e407e3b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "nit: it\u0027s a bin redundant",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a00c9fd_dae62b3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "nit: DUT IP is missing: tast run \u003cIP\u003e testname",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae834dc_d8eac41c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "nit: align with previous line or add new TEST field",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74560b56_96aa730e",
@@ -48,6 +117,207 @@
       "writtenOn": "2022-04-27T21:58:18Z",
       "side": 1,
       "message": "Thank you!",
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da38134e_9c44f8ae",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "nit: a bit redundant as well",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa8c2d5_1784d320",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "nit: add period at the end of comments.\nhttps://go.dev/doc/effective_go#commentary",
+      "range": {
+        "startLine": 23,
+        "startChar": 55,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b830e7b_f6bbc09d",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "you use this function just once. Do you really need it to be a separate function?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 78
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a15b34_2305283f",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "nit: kb is much more common name",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 3
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91fd78bb_9b950d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_art_gallery_screensaver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "you don\u0027t perform GAIA login in the test. Fixture does that and fixture time does not count as a test time.",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 39
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f98974_0b5f4d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_art_gallery_screensaver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "nit: don\u0027t ignore error",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664319cd_1cb7adde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "this file is almost identical to src/chromiumos/tast/local/bundles/cros/personalization/set_art_gallery_screensaver.go\n\nI think it makes sense to have parametrised test instead of 2 almost identical tests.",
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45128203_9d31aa90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "nit: at. Don\u0027t start error with capital letter",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60655f6_65156d6b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-28T12:28:07Z",
+      "side": 1,
+      "message": "Why do you add this import?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 41
+      },
       "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
