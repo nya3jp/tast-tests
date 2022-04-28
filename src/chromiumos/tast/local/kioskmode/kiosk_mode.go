@@ -226,7 +226,10 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 				pb.AddPublicAccountPolicies(accountID, policies)
 			}
 		}
-
+		// Handle custom directory api id
+		if cfg.m.CustomDirectoryAPIID != nil {
+			pb.DirectoryAPIID = *cfg.m.CustomDirectoryAPIID
+		}
 		// Update policies.
 		if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 			// In case of AutoLaunch was used we try to override policies with

@@ -67,3 +67,11 @@ func ExtraChromeOptions(opts ...chrome.Option) Option {
 		return nil
 	}
 }
+
+// CustomDirectoryAPIID adds a device id that will be added to the policy blob.
+func CustomDirectoryAPIID(directoryAPIID string) Option {
+	return func(cfg *MutableConfig) error {
+		cfg.CustomDirectoryAPIID = &directoryAPIID
+		return nil
+	}
+}

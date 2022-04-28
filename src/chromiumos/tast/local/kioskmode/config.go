@@ -38,6 +38,9 @@ type MutableConfig struct {
 	// ExtraChromeOptions holds all extra options that will be passed to Chrome
 	// instance that will run in Kiosk mode.
 	ExtraChromeOptions []chrome.Option
+	// CustomDirectoryAPIID holds a custom directory_api_id string, aka device id,
+	// to be set in the policy blob.
+	CustomDirectoryAPIID *string
 }
 
 // NewConfig creates new configuration.
