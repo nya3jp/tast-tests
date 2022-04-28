@@ -16,6 +16,23 @@
       "message": "hidehiko@: It\u0027s ready for lacros tast owner\u0027s review. Ty!",
       "revId": "3ac377a8d673d1c8b660506016146ddf67ba2b03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2510495_5c6480bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/check_virtual_keyboard_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-28T16:53:06Z",
+      "side": 1,
+      "message": "if req.BrowserType was changed, cr needs to be closed and re-created IIUC.",
+      "revId": "3ac377a8d673d1c8b660506016146ddf67ba2b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
