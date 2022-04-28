@@ -103,6 +103,41 @@ func waitForStableWindowBounds(ctx context.Context, tconn *chrome.TestConn, pack
 
 	return nil
 }
+func testDragCaptionToSnapLeftRight(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, pc pointer.Context, displayInfo *display.Info, leftAct, rightAct *arc.Activity) error {
+	if err := wm.DragCaptionToSnap(ctx, tconn, pc, displayInfo, leftAct, true /* primary */); err != nil {
+		return errors.Wrap(err, "failed to drag window's caption and snap to left")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, leftAct, arc.WindowStatePrimarySnapped); err != nil {
+		return errors.Wrap(err, "failed to wait until window state changes to primary snapped")
+	}
+
+	if err := wm.DragCaptionToSnap(ctx, tconn, pc, displayInfo, rightAct, false /* primary */); err != nil {
+		return errors.Wrap(err, "failed to drag window's caption and snap to right")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateSecondarySnapped); err != nil {
+		return errors.Wrap(err, "failed to wait until window state changes to secondary snapped")
+	}
+
+	return nil
+}
+
+func testDragCaptionToUnsnapLeftRight(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, pc pointer.Context, displayInfo *display.Info, leftAct, rightAct *arc.Activity) error {
+	if err := wm.DragCaptionToUnsnap(ctx, tconn, pc, displayInfo, leftAct); err != nil {
+		return errors.Wrap(err, "failed to drag window's caption and unsnap from left")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, leftAct, arc.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "failed to wait until window state changes to unsnapped")
+	}
+
+	if err := wm.DragCaptionToUnsnap(ctx, tconn, pc, displayInfo, rightAct); err != nil {
+		return errors.Wrap(err, "failed to drag window's caption and unsnap from right")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "failed to wait until window state changes to unsnapped")
+	}
+
+	return nil
+}
 
 func testSnapLeftRightViaKeyboardShortcut(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, leftAct, rightAct *arc.Activity) error {
 	if err := wm.ToggleSnapViaKeyboardShortcut(ctx, tconn, leftAct, true /* primary */); err != nil {
@@ -270,15 +305,15 @@ func SplitView(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain the orientation info: ", err)
 	}
+	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain primary display info: ", err)
+	}
 	if orientation.Type == display.OrientationPortraitPrimary {
-		info, err := display.GetPrimaryInfo(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to obtain primary display info: ", err)
-		}
-		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
+		if err = display.SetDisplayRotationSync(ctx, tconn, displayInfo.ID, display.Rotate90); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
 		}
-		defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
+		defer display.SetDisplayRotationSync(cleanupCtx, tconn, displayInfo.ID, display.Rotate0)
 	}
 
 	// Show two activities. As the content of the activities doesn't matter,
@@ -357,6 +392,22 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 
 	if !tabletMode {
+		// On small displays with R and devices with P, the app gets launched in a maximized state
+		// although the drag-to-snap assumes the app is in a freeform mode.
+		if err := wm.RestoreARCWindowIfMaximized(ctx, tconn, leftAct.PackageName()); err != nil {
+			s.Fatal("Failed to restore left window if maximized: ", err)
+		}
+		if err := wm.RestoreARCWindowIfMaximized(ctx, tconn, rightAct.PackageName()); err != nil {
+			s.Fatal("Failed to restore right window if maximized: ", err)
+		}
+
+		if err := testDragCaptionToSnapLeftRight(ctx, tconn, d, pc, displayInfo, leftAct, rightAct); err != nil {
+			s.Fatal("Failed to drag windows' caption to snap: ", err)
+		}
+		if err := testDragCaptionToUnsnapLeftRight(ctx, tconn, d, pc, displayInfo, leftAct, rightAct); err != nil {
+			s.Fatal("Failed to drag windows' caption to unsnap: ", err)
+		}
+
 		if err := testSnapLeftRightViaKeyboardShortcut(ctx, tconn, d, leftAct, rightAct); err != nil {
 			s.Fatal("Failed to snap windows via keyboard shortcut: ", err)
 		}
