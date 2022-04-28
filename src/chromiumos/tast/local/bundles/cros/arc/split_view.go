@@ -104,6 +104,69 @@ func waitForStableWindowBounds(ctx context.Context, tconn *chrome.TestConn, pack
 	return nil
 }
 
+func testSnapLeftRightViaKeyboardShortcut(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, leftAct, rightAct *arc.Activity) error {
+	if err := wm.ToggleSnapViaKeyboardShortcut(ctx, tconn, leftAct, true /* primary */); err != nil {
+		return errors.Wrap(err, "failed to snap window to left via keyboard shortcut")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, leftAct, arc.WindowStatePrimarySnapped); err != nil {
+		return errors.Wrap(err, "failed to wait until window state changes to primary snapped")
+	}
+
+	if err := wm.ToggleSnapViaKeyboardShortcut(ctx, tconn, rightAct, false /* primary */); err != nil {
+		return errors.Wrap(err, "failed to snap window to right via keyboard shortcut")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateSecondarySnapped); err != nil {
+		return errors.Wrap(err, "failed to wait until window state changes to secondary snapped")
+	}
+
+	return nil
+}
+
+func testUnsnapLeftRightViaKeyboardShortcut(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, leftAct, rightAct *arc.Activity) error {
+	if err := wm.ToggleSnapViaKeyboardShortcut(ctx, tconn, leftAct, true /* primary */); err != nil {
+		return errors.Wrap(err, "failed to unsnap window from left via keyboard shortcut")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, leftAct, arc.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "failed to wait until window state changes to unsnapped state")
+	}
+
+	if err := wm.ToggleSnapViaKeyboardShortcut(ctx, tconn, rightAct, false /* primary */); err != nil {
+		return errors.Wrap(err, "failed to unsnap window from right via keyboard shortcut")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "failed to wait until window state changes to unsnapped state")
+	}
+
+	return nil
+}
+
+func testSnapLeftRightFromOverview(ctx, cleanupCtx context.Context, tconn *chrome.TestConn, d *ui.Device, pc pointer.Context, leftAct, rightAct *arc.Activity) error {
+	if err := leftAct.Focus(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to focus the activity")
+	}
+
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+		return errors.Wrap(err, "failed to enter overview")
+	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
+
+	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, true /* primary */); err != nil {
+		return errors.Wrap(err, "failed to drag window from overview and snap to left")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, leftAct, arc.WindowStatePrimarySnapped); err != nil {
+		return errors.Wrap(err, "failed to wait until window state change")
+	}
+
+	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, false /* primary */); err != nil {
+		return errors.Wrap(err, "failed to drag window from overview and snap to right")
+	}
+	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateSecondarySnapped); err != nil {
+		return errors.Wrap(err, "failed to wait until window state change")
+	}
+
+	return nil
+}
+
 func testResize(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, ui *uiauto.Context, pc pointer.Context, tabletMode bool, leftActPackageName, rightActPackageName string) error {
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
@@ -293,25 +356,17 @@ func SplitView(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-		s.Fatal("Failed to enter overview: ", err)
-	}
-	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
-
-	// Snap activity to left.
-	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, true /* primary */); err != nil {
-		s.Fatal("Failed to drag window from overview and snap left: ", err)
-	}
-	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, leftAct, arc.WindowStatePrimarySnapped); err != nil {
-		s.Fatal("Failed to wait until window state change: ", err)
+	if !tabletMode {
+		if err := testSnapLeftRightViaKeyboardShortcut(ctx, tconn, d, leftAct, rightAct); err != nil {
+			s.Fatal("Failed to snap windows via keyboard shortcut: ", err)
+		}
+		if err := testUnsnapLeftRightViaKeyboardShortcut(ctx, tconn, d, leftAct, rightAct); err != nil {
+			s.Fatal("Failed to Unsnap windows via keyboard shortcut: ", err)
+		}
 	}
 
-	// Snap activity to right.
-	if err := wm.DragToSnapFirstOverviewWindow(ctx, tconn, pc, false /* primary */); err != nil {
-		s.Fatal("Failed to drag window from overview and snap right: ", err)
-	}
-	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateSecondarySnapped); err != nil {
-		s.Fatal("Failed to wait until window state change: ", err)
+	if err := testSnapLeftRightFromOverview(ctx, cleanupCtx, tconn, d, pc, leftAct, rightAct); err != nil {
+		s.Fatal("Failed to snap windows from overview: ", err)
 	}
 
 	// Resize snapped windows.
