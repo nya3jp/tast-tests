@@ -50,6 +50,23 @@
       "message": "+ Seewai Fu for code owner\u0027s approval.",
       "revId": "8453a820ede0cbc25b5417fcb94f0bf0ec4d206d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32cc6580_7b2be925",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-28T21:45:48Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "8453a820ede0cbc25b5417fcb94f0bf0ec4d206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
