@@ -384,3 +384,21 @@ func GetHangCheckTimer() (time.Duration, error) {
 	}
 	return time.Duration(minDuration) * time.Millisecond, nil
 }
+
+func ShouldUseVKMS(ctx context.Context) bool {
+	// This is a somewhat hackish way to determine if this is being run in a
+	// VM. If we're not running in a VM, we should prefer to use the system's
+	// drivers.
+	dmidecode := testexec.CommandContext(ctx, "dmidecode")
+	dmiDecodeBytes, err := dmidecode.CombinedOutput()
+	if err != nil {
+		testing.ContextLog(ctx, "Unable to run 'dmidecode' to check for VKMS capabilities: ", err)
+		return false
+	}
+	if !strings.Contains(string(dmiDecodeBytes), "QEMU") {
+		return false
+	}
+
+	modinfo := testexec.CommandContext(ctx, "modinfo", "vkms")
+	return modinfo.Run() == nil
+}

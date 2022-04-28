@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -48,7 +49,7 @@ func init() {
 			"chromeos-gfx-display@google.com",
 			"markyacoub@google.com",
 		},
-		SoftwareDeps: []string{"drm_atomic", "igt", "no_qemu"},
+		SoftwareDeps: []string{"drm_atomic", "igt"},
 		Attr:         []string{"group:graphics", "graphics_igt"},
 		Fixture:      "chromeGraphicsIgt",
 		Params: []testing.Param{{
@@ -362,7 +363,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...)),
+			// ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...)),
 		}, {
 			Name: "kms_prime_unstable",
 			Val: igtTest{
@@ -522,6 +523,11 @@ func IGT(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, exePath)
 	cmd.Stdout = f
 	cmd.Stderr = f
+
+	if graphics.ShouldUseVKMS(ctx) {
+		cmd.Env = append(os.Environ(), "IGT_DEVICE=\"sys:/sys/devices/platform/vkms\"")
+	}
+
 	err = cmd.Run()
 	exitErr, isExitErr := err.(*exec.ExitError)
 
