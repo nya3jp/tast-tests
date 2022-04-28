@@ -28,7 +28,6 @@ func init() {
 			Name: "end_to_end_tests",
 			Val:  "dawn_end2end_tests",
 		}},
-		// TODO(crbug.com/1031054): Re-enable once binaries are built again.
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "gpuWatchDog",
 	})
