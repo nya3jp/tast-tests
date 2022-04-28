@@ -16,6 +16,46 @@
       "message": "Hi Alexander! Can you review my CL please?\n\nAdding fbeaufort@ to CC as I added him to the contacts of the test as the owner of the policy.",
       "revId": "7a5dc0196be386c4d01260b563ed795b5b19d23c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6fda2b_83588a64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-28T12:56:25Z",
+      "side": 1,
+      "message": "LGTM, but take a look at which team to add for the contacts here.",
+      "revId": "7a5dc0196be386c4d01260b563ed795b5b19d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be91131_91f82259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autoplay_allowlist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-28T12:56:25Z",
+      "side": 1,
+      "message": "I think this should probably be Francois\u0027s team then and not the remote-management team.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "7a5dc0196be386c4d01260b563ed795b5b19d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
