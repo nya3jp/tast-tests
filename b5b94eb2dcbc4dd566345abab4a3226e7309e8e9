@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc5170e4_eb99c70a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-04-28T23:09:32Z",
+      "side": 1,
+      "message": "Rebased.\n\nvsavu@, could you help with an owner reivew? Thanks.",
+      "revId": "b5b94eb2dcbc4dd566345abab4a3226e7309e8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
