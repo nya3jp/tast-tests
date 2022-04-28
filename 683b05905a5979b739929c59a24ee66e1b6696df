@@ -22,6 +22,30 @@
       },
       "revId": "683b05905a5979b739929c59a24ee66e1b6696df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d58973e_32ec448b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-28T17:32:14Z",
+      "side": 0,
+      "message": "I had misunderstood, I have removed the changes to leave the timeout in both cases. I have run the test 40 times and observed no related failures, so it seems that just increasing the timeout is enough. Thanks!",
+      "parentUuid": "df9b86aa_e2140101",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 30
+      },
+      "revId": "683b05905a5979b739929c59a24ee66e1b6696df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
