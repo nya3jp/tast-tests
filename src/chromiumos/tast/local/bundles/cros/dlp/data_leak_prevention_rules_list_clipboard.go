@@ -11,10 +11,14 @@ import (
 	"net/url"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -29,7 +33,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataLeakPreventionRulesListClipboard,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction by copy and paste",
 		Contacts: []string{
 			"ayaelattar@google.com",
@@ -37,8 +41,16 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromePolicyLoggedIn",
 		Data:         []string{"text_1.html", "text_2.html", "editable_text_box.html"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -93,9 +105,20 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			// Reserve time for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
 
-			sourceConn, err := cr.NewConn(ctx, param.sourceURL)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+
+			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer closeBrowser(cleanupCtx)
+
+			sourceConn, err := br.NewConn(ctx, param.sourceURL)
 			if err != nil {
 				s.Fatalf("Failed to open page %q: %v", param.sourceURL, err)
 			}
@@ -117,7 +140,7 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 			}
 
 			destURL := destServer.URL + "/editable_text_box.html"
-			destConn, err := cr.NewConn(ctx, destURL)
+			destConn, err := br.NewConn(ctx, destURL)
 			if err != nil {
 				s.Fatalf("Failed to open page %q: %v", destURL, err)
 			}
