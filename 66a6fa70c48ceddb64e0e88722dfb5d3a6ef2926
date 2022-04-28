@@ -52,6 +52,24 @@
       "parentUuid": "1b14805c_34605f54",
       "revId": "66a6fa70c48ceddb64e0e88722dfb5d3a6ef2926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72fade78_4f6194bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-28T15:17:17Z",
+      "side": 1,
+      "message": "I understand, thank you for clarifying. I have changed it to 10 seconds and checked the tests still pass without issues. Thanks!",
+      "parentUuid": "b3ba205c_5c806712",
+      "revId": "66a6fa70c48ceddb64e0e88722dfb5d3a6ef2926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
