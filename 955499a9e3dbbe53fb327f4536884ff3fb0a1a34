@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "647df2d7_e58934e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/files_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-28T06:09:37Z",
+      "side": 1,
+      "message": "Using print preview is specifically mentioned in the manual test. Could you have a look at the manual test and check whether it should test the print preview as well, or that\u0027s just there to make testers life easier? If not, you\u0027re right, we could get rid of it. If yes, I\u0027d make it more explicit that this test is also checking that printing to pdf works.\n\nSee https://b.corp.google.com/issues/200987809\nand https://testtracker.googleplex.com/testplans/testcase/detail/2139859?id\u003d2107",
+      "parentUuid": "c934be64_9a27db91",
+      "range": {
+        "startLine": 71,
+        "startChar": 27,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "955499a9e3dbbe53fb327f4536884ff3fb0a1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58e9b156_00f1ba54",
         "filename": "src/chromiumos/tast/local/bundles/cros/mgs/files_app.go",
         "patchSetId": 2
@@ -88,6 +112,30 @@
       "writtenOn": "2022-04-27T09:52:14Z",
       "side": 1,
       "message": "just checking: is the Gallery app check part of the test as well? If so, adding a comment can help explain why the Gallery app needs to be checked as well.",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "955499a9e3dbbe53fb327f4536884ff3fb0a1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "101eb164_6c3694c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/files_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-28T06:09:37Z",
+      "side": 1,
+      "message": "I don\u0027t think so, no. The manual test states \"verify file can be opened\" so I figured making sure that clicking on it opens the gallery app should be enough.",
+      "parentUuid": "58e9b156_00f1ba54",
       "range": {
         "startLine": 94,
         "startChar": 15,
