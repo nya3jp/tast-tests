@@ -60,6 +60,13 @@ const (
 	Images      = "Images"
 )
 
+// Picker pseudo app id. Usage:
+// 1. Create a FilesApp struct for an existing, opened picker using the App(...) function.
+// 2. For the picker, not all functions are applicable (e.g., DragAndDrop).
+const (
+	PickerPseudoAppID = "PickerPseudoAppID"
+)
+
 // FilesApp represents an instance of the Files App.
 type FilesApp struct {
 	ui    *uiauto.Context
@@ -71,6 +78,9 @@ type FilesApp struct {
 func WindowFinder(appID string) *nodewith.Finder {
 	if appID == apps.FilesSWA.ID {
 		return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("BrowserFrame")
+	}
+	if appID == PickerPseudoAppID {
+		return nodewith.NameStartingWith("Select a file to open").Role(role.Window).ClassName("ExtensionViewViews")
 	}
 	return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("RootView")
 }
@@ -99,6 +109,9 @@ func LaunchSWA(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 
 // Relaunch closes the existing Files app first then launch the Files app again.
 func Relaunch(ctx context.Context, tconn *chrome.TestConn, filesApp *FilesApp) (*FilesApp, error) {
+	if filesApp.appID == PickerPseudoAppID {
+		return nil, errors.New("relaunching a picker is not supported")
+	}
 	if err := filesApp.Close(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to close Files app")
 	}
@@ -131,6 +144,9 @@ func App(ctx context.Context, tconn *chrome.TestConn, appID string) (*FilesApp, 
 // Close closes the Files App.
 // This is automatically done when chrome resets and is not necessary to call.
 func (f *FilesApp) Close(ctx context.Context) error {
+	if f.appID == PickerPseudoAppID {
+		return errors.New("closing a picker is not supported")
+	}
 	// Close the Files App.
 	if err := apps.Close(ctx, f.tconn, f.appID); err != nil {
 		return err
@@ -147,6 +163,10 @@ func (f *FilesApp) OpenDir(dirName, expectedTitle string) uiauto.Action {
 	roleType := role.RootWebArea
 	if f.appID == apps.FilesSWA.ID {
 		roleType = role.Window
+	}
+	if f.appID == PickerPseudoAppID {
+		// For the picker, we check that the button in the header exists.
+		roleType = role.Button
 	}
 	return uiauto.Combine("OpenDir",
 		f.LeftClick(nodewith.Name(dirName).Role(role.StaticText).Ancestor(dir)),
@@ -382,6 +402,11 @@ func (f *FilesApp) ToggleAvailableOfflineForFile(fileName string) uiauto.Action 
 
 // DragAndDropFile selects the specified file and does a drag and drop to the specified point.
 func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *input.KeyboardEventWriter) uiauto.Action {
+	if f.appID == PickerPseudoAppID {
+		return func(ctx context.Context) error {
+			return errors.New("the function DragAndDropFile is not supported for a picker")
+		}
+	}
 	return func(ctx context.Context) error {
 		// Clicking on a file is not enough as the clicks can be too quick for FileInfo
 		// to be added to the drop event, this leads to an empty event. Clicking the
