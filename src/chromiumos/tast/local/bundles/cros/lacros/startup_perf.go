@@ -47,12 +47,12 @@ func init() {
 		Contacts:     []string{"hidehiko@chromium.org", "tvignatti@igalia.com", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      10 * time.Minute,
+		Timeout:      chrome.GAIALoginTimeout + 10*time.Minute,
 		Params: []testing.Param{{
 			Name:              "rootfs_primary",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Val: testParameters{
-				browser.TypeLacros, lacros.Rootfs, lacros.LacrosSideBySide,
+				browser.TypeLacros, lacros.Rootfs, lacros.LacrosPrimary,
 			},
 		}, {
 			Name:              "rootfs_sidebyside",
@@ -77,9 +77,11 @@ func init() {
 		}, {
 			Name: "chrome",
 			Val: testParameters{
-				browser.TypeAsh, lacros.Rootfs, lacros.NotSpecified,
+				// lacrosSelection and lacrosMode are actually ignored when bt is TypeAsh
+				browser.TypeAsh, lacros.NotSelected, lacros.NotSpecified,
 			},
 		}},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -133,13 +135,14 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 	for i := 0; i < iterationCount; i++ {
 		testing.ContextLogf(ctx, "StartupPerf: Running iteration %d/%d", i+1, iterationCount)
 		// Start UI, open a browser and leave a window opened in 'server.URL'.
-		if err := performInitialLogin(ctx, param.bt, cfg, s.OutDir(), s.HasError, server.URL); err != nil {
+		creds, err := performInitialLogin(ctx, param.bt, cfg, s.RequiredVar("ui.gaiaPoolDefault"), s.OutDir(), s.HasError, server.URL)
+		if err != nil {
 			s.Fatal("Failed to do initial login: ", err)
 		}
 
 		// Start to collect data, restart UI, wait for browser window to be opened and get the
 		// metrics.
-		v, err := performRegularLogin(ctx, param.bt, cfg, s.OutDir(), s.HasError, sm, server.URL, htmlPageTitle)
+		v, err := performRegularLogin(ctx, param.bt, creds, cfg, s.OutDir(), s.HasError, sm, server.URL, htmlPageTitle)
 		if err != nil {
 			s.Error("Failed to do regular login: ", err)
 			// keep on the next iteration in case of failure
@@ -178,30 +181,26 @@ func createHTMLServer(title string) *httptest.Server {
 // performInitialLogin does the initial UI session login and opens a very particular browser
 // (Lacros or Ash-Chrome) window. This function intentionally leaves this particular window opened,
 // so the next UI session (see performRegularLogin) will restore it in order to record all the
-// browser window start time.
-func performInitialLogin(ctx context.Context, browserType browser.Type, cfg *lacrosfixt.Config, outDir string, hasError func() bool, url string) error {
+// browser window start time. It returns GAIA credentials to use for regular login with preserved
+// state.
+func performInitialLogin(ctx context.Context, browserType browser.Type, cfg *lacrosfixt.Config, credPool, outDir string, hasError func() bool, url string) (chrome.Creds, error) {
 	// Connect to a fresh ash-chrome instance to ensure the UI session first-run state, and also
 	// get a browser instance.
-	//
-	// TODO(tvignatti): this performs fake login, which is different from actual login flow, and
-	// probably bypasses some key flow. That could be done if performed by Gaia login though. So to
-	// avoid fake that, as this is performance test and we want to be more careful, we want to
-	// change to use Gaia accounts instead.
 	//
 	// TODO(crbug.com/1318180): at the moment for Lacros, we're not getting SetUpWithNewChrome
 	// close closure because when used it'd close all resources, including targets and wouldn't let
 	// the session to proper restore later during performRegularLogin. As a short term workaround
 	// we're closing Lacros resources using CloseResources fn instead, though ideally we want to
 	// use SetUpWithNewChrome close closure when it's properly implemented.
-	cr, br, _, err := browserfixt.SetUpWithNewChrome(ctx, browserType, cfg)
+	cr, br, _, err := browserfixt.SetUpWithNewChrome(ctx, browserType, cfg, chrome.GAIALoginPool(credPool))
 	if err != nil {
-		return errors.Wrapf(err, "failed to connect to %v browser", browserType)
+		return chrome.Creds{}, errors.Wrapf(err, "failed to connect to %v browser", browserType)
 	}
 	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to connect to test API")
+		return chrome.Creds{}, errors.Wrap(err, "failed to connect to test API")
 	}
 	defer faillog.DumpUITreeOnError(ctx, outDir, hasError, tconn)
 
@@ -209,7 +208,7 @@ func performInitialLogin(ctx context.Context, browserType browser.Type, cfg *lac
 	// data, is expected to be restored.
 	conn, err := br.NewConn(ctx, url)
 	if err != nil {
-		return errors.Wrapf(err, "failed to connect to the %v restore URL", url)
+		return chrome.Creds{}, errors.Wrapf(err, "failed to connect to the %v restore URL", url)
 	}
 	defer conn.Close()
 
@@ -219,16 +218,16 @@ func performInitialLogin(ctx context.Context, browserType browser.Type, cfg *lac
 	if browserType == browser.TypeLacros {
 		l, err := lacros.Connect(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to connect to lacros-chrome")
+			return chrome.Creds{}, errors.Wrap(err, "failed to connect to lacros-chrome")
 		}
 		defer l.CloseResources(ctx)
 	}
 
-	return nil
+	return cr.Creds(), nil
 }
 
 // performRegularLogin restores browser (Lacros or Ash-Chrome) window and record start time.
-func performRegularLogin(ctx context.Context, browserType browser.Type, cfg *lacrosfixt.Config, outDir string, hasError func() bool, sm *session.SessionManager, url, expectedTitle string) (startupMetrics, error) {
+func performRegularLogin(ctx context.Context, browserType browser.Type, creds chrome.Creds, cfg *lacrosfixt.Config, outDir string, hasError func() bool, sm *session.SessionManager, url, expectedTitle string) (startupMetrics, error) {
 	var v startupMetrics
 	if _, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
 		return v, errors.Wrap(err, "failed to wait until CPU is cooled down")
@@ -246,6 +245,7 @@ func performRegularLogin(ctx context.Context, browserType browser.Type, cfg *lac
 		// Disable whats-new page. See crbug.com/1271436.
 		chrome.DisableFeatures("ChromeWhatsNewUI"),
 		chrome.EnableRestoreTabs(),
+		chrome.GAIALogin(creds),
 		chrome.KeepState()}
 
 	if browserType == browser.TypeLacros {
