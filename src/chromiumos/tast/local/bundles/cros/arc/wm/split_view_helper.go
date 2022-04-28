@@ -63,6 +63,59 @@ func DragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, 
 	return nil
 }
 
+func windowDragPoint(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity) (coords.Point, error) {
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	if err != nil {
+		return coords.NewPoint(0, 0), errors.Wrap(err, "failed to get window info")
+	}
+	// As resize-locked windows have the compat mode button at the center of the caption, we need to drag on the right of the back button instead of the center point.
+	return coords.NewPoint(window.BoundsInRoot.Left+100, window.BoundsInRoot.Top+window.CaptionHeight/2), nil
+}
+
+// DragCaptionToSnap drags the given activity's caption to snap it to the primary side (the secondary
+// side if primary is false) by using the given pointer.Context.
+func DragCaptionToSnap(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, displayInfo *display.Info, act *arc.Activity, primary bool) error {
+	if err := act.Focus(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to focus the activity")
+	}
+
+	snapDestinationX := displayInfo.Bounds.Width
+	if primary {
+		snapDestinationX = 0
+	}
+	dragPoint, err := windowDragPoint(ctx, tconn, act)
+	if err != nil {
+		return errors.Wrap(err, "failed to get window drag point")
+	}
+	if err := pc.Drag(
+		dragPoint,
+		pc.DragTo(coords.NewPoint(snapDestinationX, displayInfo.Bounds.Height/2), 2*time.Second))(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag to snap")
+	}
+
+	return nil
+}
+
+// DragCaptionToUnsnap drags the given activity's caption to unsnap it by using the given
+// pointer.Context.
+func DragCaptionToUnsnap(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, displayInfo *display.Info, act *arc.Activity) error {
+	if err := act.Focus(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to focus the activity")
+	}
+
+	dragPoint, err := windowDragPoint(ctx, tconn, act)
+	if err != nil {
+		return errors.Wrap(err, "failed to get window drag point")
+	}
+	if err := pc.Drag(
+		dragPoint,
+		pc.DragTo(displayInfo.Bounds.CenterPoint(), 2*time.Second))(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag to unsnap")
+	}
+
+	return nil
+}
+
 // ToggleSnapViaKeyboardShortcut snaps (unsnap if it's already snapped) the given activity's window
 // to the primary (left/top on the landscape/portrait mode accordingly) side (the secondary side if
 // primary is false) by using the keyboard shortcut.
