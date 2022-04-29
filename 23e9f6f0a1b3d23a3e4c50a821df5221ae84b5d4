@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf7f458_ccf53d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T22:02:41Z",
+      "side": 1,
+      "message": "Hmm interesting. Generally, the absence of a type from a combination means that there is no concurrency allowed for that type in that combination. (put another way, there is an implicit `{type} \u003c\u003d 0` for every non-referenced type). It really comes down to the nuance of how p2p-device is being overloaded. Are you referencing a specific documentation on this? It comes down to whether the correct explanation is \"every P2P-GO and P2P-Client is also a P2P-device\" or \"P2P-device is a special case that encapsulates additional restrictions for P2P-GO and P2P-Client.",
+      "parentUuid": "22279421_9f2fbe20",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d492fd08_4322ff57",
