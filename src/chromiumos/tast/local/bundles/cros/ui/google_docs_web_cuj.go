@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/productivitycuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -114,7 +115,7 @@ func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
 		testFileLocation = s.DataPath("productivity_cuj_voice_to_text_en.wav")
 	}
 
-	if err := productivitycuj.Run(ctx, cr, office, tier, tabletMode, s.OutDir(), sampleSheetURL, expectedText, testFileLocation); err != nil {
+	if err := productivitycuj.Run(ctx, cr, office, tier, tabletMode, browser.TypeAsh, s.OutDir(), sampleSheetURL, expectedText, testFileLocation); err != nil {
 		s.Fatal("Failed to run productivity cuj: ", err)
 	}
 }
