@@ -49,8 +49,8 @@ func addTest(suite, args, additionalArgs, status, bug string, timeout int, extra
 }
 
 func TestOpenclCtsParamsAreGenerated(t *testing.T) {
-	addTest("allocations", "multiple 1 buffer_non_blocking", "", "pass", "", 1, nil)
-	addTest("allocations", "multiple 1 buffer", "", "pass", "", 1, nil)
+	addTest("allocations", "multiple 1 buffer_non_blocking", "", "pass", "b/227132306", 1, nil)
+	addTest("allocations", "multiple 1 buffer", "", "pass", "b/227132306", 1, nil)
 	addTest("allocations", "multiple 1 image2d_read_non_blocking", "", "pass", "", 1, nil)
 	addTest("allocations", "multiple 1 image2d_read", "", "pass", "", 1, nil)
 	addTest("allocations", "multiple 1 image2d_write_non_blocking", "", "pass", "", 1, nil)
@@ -220,8 +220,8 @@ func TestOpenclCtsParamsAreGenerated(t *testing.T) {
 	addTest("basic", "imagearraycopy", "", "pass", "", 1, nil)
 	addTest("basic", "imagecopy3d", "", "pass", "", 1, []string{"graphics_nightly"})
 	addTest("basic", "imagecopy", "", "pass", "", 1, []string{"graphics_nightly"})
-	addTest("basic", "imagedim_non_pow2", "", "pass", "", 10, []string{"graphics_nightly"})
-	addTest("basic", "imagedim_pow2", "", "pass", "", 10, []string{"graphics_nightly"})
+	addTest("basic", "imagedim_non_pow2", "", "pass", "b/227132306", 10, []string{"graphics_nightly"})
+	addTest("basic", "imagedim_pow2", "", "pass", "b/227132306", 10, []string{"graphics_nightly"})
 	addTest("basic", "image_multipass_float_coord", "", "pass", "", 1, []string{"graphics_nightly"})
 	addTest("basic", "image_multipass_integer_coord", "", "pass", "", 1, []string{"graphics_nightly"})
 	addTest("basic", "imagenpot", "", "pass", "", 1, []string{"graphics_nightly"})
