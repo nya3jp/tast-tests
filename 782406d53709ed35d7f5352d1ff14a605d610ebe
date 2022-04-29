@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5921a605_9fa8af96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/extension_read_device_id.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-29T12:03:21Z",
+      "side": 1,
+      "message": "If you need Lacros variant you could easily parameterize this test. E.g.\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/kiosk/floating_accessibility_menu_enabled.go;l\u003d34",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "782406d53709ed35d7f5352d1ff14a605d610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7c44fd_71628192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/extension_read_device_id.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-29T12:03:21Z",
+      "side": 1,
+      "message": "Is a value of that variable equal to deviceID variable\u0027s value?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "782406d53709ed35d7f5352d1ff14a605d610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
