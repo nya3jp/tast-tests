@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -57,7 +58,6 @@ const (
 // MicrosoftWebOffice implements the ProductivityApp interface.
 type MicrosoftWebOffice struct {
 	br              *browser.Browser
-	cr              *chrome.Chrome
 	tconn           *chrome.TestConn
 	ui              *uiauto.Context
 	kb              *input.KeyboardEventWriter
@@ -68,6 +68,7 @@ type MicrosoftWebOffice struct {
 	documentCreated bool
 	slideCreated    bool
 	sheetCreated    bool
+	isLacros        bool
 }
 
 // CreateDocument creates a new document from microsoft web app.
@@ -129,24 +130,29 @@ func (app *MicrosoftWebOffice) CreateSlides(ctx context.Context) error {
 // Since MS Office documents cannot directly copy view-only documents,
 // we can only copy the contents of worksheets from public shared documents.
 func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleSheetURL string) (string, error) {
+	bTconn, err := app.br.TestAPIConn(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create test API connection")
+	}
+	closeTabsFunc := cuj.CloseBrowserTabs
+	if app.isLacros {
+		// For lacros-Chrome, it should leave a new tab to keep the Chrome process alive.
+		closeTabsFunc = cuj.KeepNewTab
+	}
 	connExcel, err := app.br.NewConn(ctx, sampleSheetURL)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to open URL: %s", sampleSheetURL)
 	}
-	defer func() {
-		connExcel.CloseTarget(ctx)
-		connExcel.Close()
-		// There are two tabs related to "Microsoft Excel Online".
-		// Sometimes the first target doesn't close quickly. Give it time to close by order.
-		err = uiauto.NamedAction("close the excel tab", app.ui.Retry(retryTimes, app.closeTab(excelTab)))(ctx)
-	}()
-
+	defer connExcel.Close()
+	defer closeTabsFunc(ctx, bTconn)
+	if err := webutil.WaitForQuiescence(ctx, connExcel, longerUIWaitTime); err != nil {
+		return "", errors.Wrap(err, "failed to wait for sample sheet page to finish loading")
+	}
 	conn, err := app.openOneDrive(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to open OneDrive")
 	}
 	defer conn.Close()
-	defer conn.CloseTarget(ctx)
 
 	if err := uiauto.NamedAction("remove if the same file name exists",
 		uiauto.Combine("check if the file already exists",
@@ -164,7 +170,7 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleShee
 
 	copyFromExistingSheet := uiauto.Combine("copy from existing spreadsheet",
 		app.openBlankDocument(excel),
-		app.uiHdl.SwitchToChromeTabByIndex(0),
+		app.uiHdl.SwitchToChromeTabByName(excelTab),
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
 		app.selectBox("A1"),
 		app.kb.AccelAction("Ctrl+A"),
@@ -174,7 +180,7 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleShee
 	)
 
 	pasteIntoNewSheet := uiauto.Combine("paste into newly created spreadsheet",
-		app.uiHdl.SwitchToChromeTabByIndex(3),
+		app.uiHdl.SwitchToChromeTabByName("Book"),
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
 		app.selectBox("A1"),
 		app.kb.AccelAction("Ctrl+V"),
@@ -188,7 +194,6 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleShee
 		uiauto.NamedAction("copy from existing spreadsheet", copyFromExistingSheet),
 		uiauto.NamedAction("paste into newly created spreadsheet", pasteIntoNewSheet),
 		uiauto.NamedAction("rename the spreadsheet", app.renameDocument(sheetName)),
-		app.maybeCloseOneDriveTab(myFilesTab),
 	)(ctx); err != nil {
 		return "", err
 	}
@@ -244,17 +249,10 @@ func (app *MicrosoftWebOffice) OpenSpreadsheet(ctx context.Context, fileName str
 // MoveDataFromDocToSheet moves data from document to spreadsheet.
 func (app *MicrosoftWebOffice) MoveDataFromDocToSheet(ctx context.Context) error {
 	testing.ContextLog(ctx, "Moving data from document to spreadsheet")
-
-	// tabIndexMap define the index of the corresponding service tab.
-	tabIndexMap := map[string]int{
-		wordTab:  0,
-		excelTab: 2,
-	}
-
 	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
 	paragraph := nodewith.Role(role.GenericContainer).Ancestor(wordWebArea).HasClass("EditingSurfaceBody").Editable()
 	if err := uiauto.Combine("switch to Microsoft Word cut selected text from the document",
-		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[wordTab]),
+		app.uiHdl.SwitchToChromeTabByName(wordTab),
 		app.uiHdl.Click(paragraph),
 		app.kb.AccelAction("Ctrl+A"),
 		app.kb.AccelAction("Ctrl+C"),
@@ -266,7 +264,7 @@ func (app *MicrosoftWebOffice) MoveDataFromDocToSheet(ctx context.Context) error
 	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
 	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
 	return uiauto.Combine("switch to Microsoft Excel and paste the content into a cell of the spreadsheet",
-		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[excelTab]),
+		app.uiHdl.SwitchToChromeTabByName(excelTab),
 		app.ui.WaitUntilExists(canvas),
 		app.selectBox("H3"),
 		app.kb.AccelAction("Ctrl+V"),
@@ -287,7 +285,7 @@ func (app *MicrosoftWebOffice) MoveDataFromSheetToDoc(ctx context.Context) error
 	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
 	paragraph := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).Editable()
 	return uiauto.Combine("switch to Microsoft Word and paste the content",
-		app.uiHdl.SwitchToChromeTabByIndex(0),
+		app.uiHdl.SwitchToChromeTabByName(wordTab),
 		app.ui.WaitUntilExists(paragraph),
 		app.kb.AccelAction("Ctrl+V"),
 	)(ctx)
@@ -296,13 +294,11 @@ func (app *MicrosoftWebOffice) MoveDataFromSheetToDoc(ctx context.Context) error
 // ScrollPage scrolls the document and spreadsheet.
 func (app *MicrosoftWebOffice) ScrollPage(ctx context.Context) error {
 	testing.ContextLog(ctx, "Scrolling the document and spreadsheet")
-
-	for _, tabIdx := range []int{0, 2} {
-		if err := scrollTabPage(ctx, app.uiHdl, tabIdx); err != nil {
+	for _, tabName := range []string{wordTab, excelTab} {
+		if err := scrollTabPageByName(ctx, app.uiHdl, tabName); err != nil {
 			return err
 		}
 	}
-
 	return nil
 }
 
@@ -359,6 +355,7 @@ func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedT
 				app.kb.AccelAction("Ctrl+A"),
 				uiauto.Sleep(dataWaitTime), // Wait for all text to be selected.
 				app.kb.AccelAction("Ctrl+C"),
+				uiauto.Sleep(dataWaitTime), // Wait for all text to be copied.
 			)(ctx); err != nil {
 				return err
 			}
@@ -390,7 +387,7 @@ func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedT
 	stopDictationButton := nodewith.Name("Stop Dictation").Role(role.Button).Ancestor(dictationToolbar).First()
 	return uiauto.NamedAction("use voice to text (VTT) to enter text directly to document",
 		uiauto.Combine("turn on the voice typing",
-			app.uiHdl.SwitchToChromeTabByIndex(0), // Switch to Microsoft Word.
+			app.uiHdl.SwitchToChromeTabByName(wordTab), // Switch to Microsoft Word.
 			app.ui.WaitUntilExists(wordWebArea),
 			app.ui.Retry(retryTimes, dictate),
 			uiauto.IfSuccessThen(app.ui.Exists(stopDictationButton), app.uiHdl.Click(stopDictationButton)),
@@ -461,7 +458,12 @@ func (app *MicrosoftWebOffice) removeSheet(sheetName string) uiauto.Action {
 // Sometimes the tab name is just "OneDrive". Therefore, if the specified tab cannot be found, try to search for it.
 func (app *MicrosoftWebOffice) maybeCloseOneDriveTab(tabName string) action.Action {
 	return func(ctx context.Context) error {
-		tabs, err := cuj.GetBrowserTabs(ctx, app.tconn)
+		// Get a TestConn to active browser.
+		bTconn, err := app.br.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create test API connection")
+		}
+		tabs, err := cuj.GetBrowserTabs(ctx, bTconn)
 		if err != nil {
 			return err
 		}
@@ -478,7 +480,7 @@ func (app *MicrosoftWebOffice) maybeCloseOneDriveTab(tabName string) action.Acti
 			testing.ContextLogf(ctx, "Cannot find the tab name containing %q or %q", tabName, oneDriveTab)
 			return nil
 		}
-		return cuj.CloseBrowserTabsByID(ctx, app.tconn, []int{tabID})
+		return cuj.CloseBrowserTabsByID(ctx, bTconn, []int{tabID})
 	}
 }
 
@@ -488,13 +490,13 @@ func (app *MicrosoftWebOffice) checkSignIn(ctx context.Context) error {
 
 	// If the account manager exists, it means it has been logged in. Skip the login procedure.
 	accountManager := nodewith.NameContaining("Account manager for").Role(role.Button)
-	if err := app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(accountManager)(ctx); err != nil {
+	if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(accountManager)(ctx); err != nil {
 		testing.ContextLog(ctx, "Clicking the sign in link")
 
 		msWebArea := nodewith.NameContaining("Microsoft Office").Role(role.RootWebArea)
 		signInLink := nodewith.NameContaining("Sign in").Role(role.Link).Ancestor(msWebArea).First()
 		if err := uiauto.IfSuccessThen(
-			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(signInLink),
+			app.ui.WithTimeout(defaultUIWaitTime*2).WaitUntilExists(signInLink),
 			app.uiHdl.Click(signInLink),
 		)(ctx); err != nil {
 			return err
@@ -513,42 +515,19 @@ func (app *MicrosoftWebOffice) checkSignIn(ctx context.Context) error {
 	return nil
 }
 
-// fillInAccount enters the account information in the account text box if it hasn't been filled in yet.
-func (app *MicrosoftWebOffice) fillInAccount(expected string) action.Action {
-	return func(ctx context.Context) error {
-		accountField := nodewith.NameContaining("Enter your email").Role(role.TextField)
-		node, err := app.ui.Info(ctx, accountField)
-		if err != nil {
-			return err
-		}
-		if node.Value == "" {
-			return app.kb.TypeAction(app.username)(ctx)
-		}
-		if node.Value != expected {
-			// If it has filled in the wrong account information, select all first and then enter the information.
-			testing.ContextLog(ctx, "Incorrect account information")
-			return uiauto.Combine("select all and enter account",
-				app.kb.AccelAction("Ctrl+A"),
-				app.kb.TypeAction(app.username),
-			)(ctx)
-		}
-		// If it has filled in the correct account information, skip entering it again.
-		testing.ContextLog(ctx, "Account information is correct")
-		return nil
-	}
-}
-
 // signIn signs in to Microsoft Office account.
 func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 	testing.ContextLog(ctx, "Signing in to Microsoft Office")
 
-	nextButton := nodewith.Name("Next").Role(role.Button)
-
 	enterAccount := func(ctx context.Context) error {
+		accountField := nodewith.NameContaining("Enter your email").Role(role.TextField)
+		nextButton := nodewith.Name("Next").Role(role.Button)
 		testing.ContextLog(ctx, "Entering the account")
 		return uiauto.Combine("enter the account",
-			app.fillInAccount(app.username),
-			app.uiHdl.Click(nextButton),
+			app.ui.RetryUntil(app.ui.DoDefault(accountField), app.ui.Exists(accountField.Focused())),
+			app.kb.AccelAction("Ctrl+A"),
+			app.kb.TypeAction(app.username),
+			app.ui.DoDefault(nextButton),
 		)(ctx)
 	}
 
@@ -561,7 +540,7 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 	enterPassword := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Entering the password")
 		return uiauto.Combine("enter the password",
-			app.ui.DoubleClick(passwordField),
+			app.ui.RetryUntil(app.ui.DoDefault(passwordField), app.ui.Exists(passwordField.Focused())),
 			app.kb.TypeAction(app.password),
 			app.uiHdl.Click(signInButton),
 			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(staySignInHeading), app.uiHdl.Click(yesButton)),
@@ -582,7 +561,7 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 	accountField := nodewith.NameContaining("Enter your email").Role(role.TextField)
 	// If we select the account option in the "Pick an account" list, there is no need to fill in the account field.
 	if err := uiauto.IfSuccessThen(
-		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(accountField),
+		app.ui.WaitUntilExists(accountField),
 		enterAccount,
 	)(ctx); err != nil {
 		return err
@@ -659,7 +638,7 @@ func (app *MicrosoftWebOffice) reloadPage(ctx context.Context) error {
 func (app *MicrosoftWebOffice) reload(finder *nodewith.Finder, action action.Action) action.Action {
 	return func(ctx context.Context) error {
 		oneDriveWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
-		if err := app.ui.WaitUntilExists(finder)(ctx); err != nil {
+		if err := app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(finder)(ctx); err != nil {
 			return uiauto.Combine("reload and reoperate the action",
 				app.reloadPage,
 				uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(oneDriveWebArea), action),
@@ -678,28 +657,32 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to open URL: %s", cuj.MicrosoftOfficeURL)
 	}
+	if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for microsoft page to finish loading")
+	}
 
 	appLauncher := nodewith.Name("App launcher").Role(role.PopUpButton).Collapsed()
 	appLauncherOpened := nodewith.Name("App launcher opened").Role(role.GenericContainer)
 	closeAppLauncher := nodewith.Name("Close the app launcher").Role(role.Button).Ancestor(appLauncherOpened)
 	oneDriveLink := nodewith.Name("OneDrive").Role(role.Link).Ancestor(appLauncherOpened)
 	goToOffice := nodewith.Name("Go to Office").Role(role.Link)
-
-	navigateToOneDrive := func() uiauto.Action {
-		return uiauto.Retry(retryTimes, func(ctx context.Context) error {
-			if err := uiauto.Combine("navigate to OneDrive",
-				app.uiHdl.Click(appLauncher),
-				app.ui.WaitUntilExists(closeAppLauncher),
-				app.uiHdl.Click(oneDriveLink),
-			)(ctx); err == nil {
-				return nil
-			}
-			return uiauto.Combine(`click the "Office" link`,
-				app.uiHdl.Click(goToOffice),
-				app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(goToOffice),
-			)(ctx)
-		})
-	}
+	savePasswordWindow := nodewith.Name("Save password?").Role(role.Window)
+	closeSavePasswordWindow := nodewith.Name("Close").Role(role.Button).Ancestor(savePasswordWindow)
+	navigateToOneDrive := uiauto.Retry(retryTimes, func(ctx context.Context) error {
+		if err := uiauto.Combine("navigate to OneDrive",
+			uiauto.IfSuccessThen(app.ui.Exists(closeSavePasswordWindow), app.uiHdl.Click(closeSavePasswordWindow)),
+			app.uiHdl.Click(appLauncher),
+			app.ui.WaitUntilExists(closeAppLauncher),
+			app.ui.FocusAndWait(oneDriveLink),
+			app.uiHdl.Click(oneDriveLink),
+		)(ctx); err == nil {
+			return nil
+		}
+		return uiauto.Combine(`click the "Office" link`,
+			app.uiHdl.Click(goToOffice),
+			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(goToOffice),
+		)(ctx)
+	})
 
 	myFiles := nodewith.Name("My files").Role(role.Heading).First()
 	alertDialog := nodewith.Role(role.AlertDialog).First()
@@ -708,7 +691,7 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 
 	if err := uiauto.Combine("check if already signed in and navigate to OneDrive",
 		app.checkSignIn,
-		navigateToOneDrive(),
+		navigateToOneDrive,
 		app.reload(myFiles, func(ctx context.Context) error { return nil }),
 		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeDialog), app.uiHdl.Click(closeDialog)),
 		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(gotItButton), app.uiHdl.Click(gotItButton)),
@@ -783,7 +766,7 @@ func (app *MicrosoftWebOffice) clickNavigationItem(itemName string) action.Actio
 
 		if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(itemLink)(ctx); err == nil {
 			testing.ContextLogf(ctx, "Directly enter to %q from the navigation list", itemName)
-			return app.uiHdl.Click(itemLink)(ctx)
+			return app.ui.DoDefault(itemLink)(ctx)
 		}
 
 		menu := nodewith.Role(role.Menu).Ancestor(navigation)
@@ -829,7 +812,7 @@ func (app *MicrosoftWebOffice) switchToListView(ctx context.Context) error {
 		return app.ui.Retry(retryTimes, uiauto.Combine("switch to list view",
 			// Sometimes "Details" will be displayed later, causing the position of the "View Options" button to change.
 			app.ui.WaitUntilExists(details),
-			app.uiHdl.ClickUntil(viewOptions, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(viewOptionsExpanded)),
+			app.ui.RetryUntil(app.ui.DoDefault(viewOptions), app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(viewOptionsExpanded)),
 			// After the page loads, OneDrive will reload and display again.
 			// Therefore, the expanded list of "View Options" might disappear and cause the "List" option to not be found.
 			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(listView),
@@ -925,15 +908,15 @@ func (app *MicrosoftWebOffice) selectRange(ctx context.Context) error {
 	if !app.tabletMode {
 		testing.ContextLog(ctx, `Selecting range by focus on "Name Box"`)
 		nameBox := nodewith.NameContaining("Name Box").Role(role.TextFieldWithComboBox).Editable()
-		nameBoxFocused := nameBox.Focused()
-		return app.uiHdl.ClickUntil(nameBox, app.ui.Exists(nameBoxFocused))(ctx)
+		return app.uiHdl.ClickUntil(nameBox, app.ui.Exists(nameBox.Focused()))(ctx)
 	}
 
 	rangeText := nodewith.Name("Range:").Role(role.TextField).Editable()
 	rangeTextFocused := rangeText.Focused()
 	// Pressing Ctrl+G will open the "Go To" box.
 	// Sometimes key events are typed but the UI does not respond. Retry to alert dialog does appear.
-	if err := app.ui.WithInterval(time.Second).RetryUntil(app.kb.AccelAction("Ctrl+G"), app.ui.Exists(rangeText))(ctx); err != nil {
+	if err := app.ui.WithInterval(time.Second).RetryUntil(app.kb.AccelAction("Ctrl+G"),
+		app.ui.WithTimeout(3*time.Second).WaitUntilExists(rangeText))(ctx); err != nil {
 		testing.ContextLog(ctx, "Opening with panel due to ", err.Error())
 
 		home := nodewith.Name("Home").Role(role.Tab)
@@ -1184,7 +1167,6 @@ func (app *MicrosoftWebOffice) renameDocument(fileName string) uiauto.Action {
 	return func(ctx context.Context) error {
 		renameButton := nodewith.NameContaining("Saved to OneDrive").Role(role.Button)
 		fileNameTextField := nodewith.NameContaining("File Name").Role(role.TextField)
-
 		checkFileName := func(ctx context.Context) error {
 			if err := app.uiHdl.Click(renameButton)(ctx); err != nil {
 				return err
@@ -1198,14 +1180,9 @@ func (app *MicrosoftWebOffice) renameDocument(fileName string) uiauto.Action {
 			}
 			return nil
 		}
-
-		if err := app.uiHdl.Click(renameButton)(ctx); err != nil {
-			return err
-		}
-
 		return app.ui.Retry(retryTimes, uiauto.Combine("rename the document: "+fileName,
-			app.ui.WaitUntilExists(fileNameTextField.Focused()),
-			app.uiHdl.Click(fileNameTextField),
+			app.uiHdl.ClickUntil(renameButton, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileNameTextField)),
+			app.uiHdl.ClickUntil(fileNameTextField, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileNameTextField.Focused())),
 			app.kb.AccelAction("Ctrl+A"),
 			uiauto.Sleep(dataWaitTime), // Given time to select all data.
 			app.kb.TypeAction(sheetName),
@@ -1232,14 +1209,14 @@ func (app *MicrosoftWebOffice) removeDocument(fileName string) uiauto.Action {
 }
 
 // NewMicrosoftWebOffice creates MicrosoftWebOffice instance which implements ProductivityApp interface.
-func NewMicrosoftWebOffice(cr *chrome.Chrome, tconn *chrome.TestConn, uiHdl cuj.UIActionHandler, kb *input.KeyboardEventWriter, tabletMode bool, username, password string) *MicrosoftWebOffice {
+func NewMicrosoftWebOffice(tconn *chrome.TestConn, uiHdl cuj.UIActionHandler, kb *input.KeyboardEventWriter, tabletMode, isLacros bool, username, password string) *MicrosoftWebOffice {
 	return &MicrosoftWebOffice{
-		cr:         cr,
 		tconn:      tconn,
 		ui:         uiauto.New(tconn),
 		uiHdl:      uiHdl,
 		kb:         kb,
 		tabletMode: tabletMode,
+		isLacros:   isLacros,
 		username:   username,
 		password:   password,
 	}
