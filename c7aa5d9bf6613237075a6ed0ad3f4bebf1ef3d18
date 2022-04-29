@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ebe5f9_405fd44a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-29T09:07:05Z",
+      "side": 1,
+      "message": "nami and volteer have sparse failure records in the recent 20 builds. Do you clarify the flakiness reasons?\n \nAlso, certain *-kernelnext boards are failing, you have to skip them in critical test.\n",
+      "revId": "c7aa5d9bf6613237075a6ed0ad3f4bebf1ef3d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
