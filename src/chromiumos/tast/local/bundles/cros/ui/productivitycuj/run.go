@@ -24,17 +24,29 @@ import (
 )
 
 // Run runs the specified user scenario in productivity with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.Tier, tabletMode bool, outDir, sampleSheetURL, expectedText, testFileLocation string) (err error) {
+func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.Tier, tabletMode bool, bt browser.Type, outDir, sampleSheetURL, expectedText, testFileLocation string) (err error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
 	}
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, browser.TypeAsh)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, bt)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
+	br := cr.Browser()
+	tconns := []*chrome.TestConn{tconn}
+	if l != nil {
+		defer l.Close(ctx)
+		br = l.Browser()
+		bTconn, err := l.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros test API conn")
+		}
+		tconns = append(tconns, bTconn)
+	}
+	app.SetBrowser(br)
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
@@ -57,7 +69,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 
 	testing.ContextLog(ctx, "Start recording actions")
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs(tconns)...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the recorder")
 	}
