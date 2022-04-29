@@ -206,6 +206,20 @@ func absoluteConfigPath(configPath string) string {
 	return path.Join("/usr/local/etc/virtual-usb-printer/", configPath)
 }
 
+func terminatePrinterProcess(ctx context.Context, cmd *testexec.Cmd) error {
+	if err := cmd.Signal(syscall.SIGTERM); err != nil {
+		return errors.Wrap(err, "failed to send SIGTERM to virtual-usb-printer")
+	}
+	if err := cmd.Wait(); err != nil {
+		// We're expecting the exit status to be non-zero if the process was killed by SIGTERM.
+		// Anything else indicates a problem.
+		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGTERM {
+			return errors.Wrap(err, "failed to wait for virtual-usb-printer termination")
+		}
+	}
+	return nil
+}
+
 func launchPrinter(ctx context.Context, op config) (cmd *testexec.Cmd, err error) {
 	testing.ContextLog(ctx, "Starting virtual printer: ", op.args)
 
@@ -223,13 +237,8 @@ func launchPrinter(ctx context.Context, op config) (cmd *testexec.Cmd, err error
 		if err == nil {
 			return
 		}
-		if cleanupErr := launch.Signal(syscall.SIGTERM); cleanupErr != nil {
+		if cleanupErr := terminatePrinterProcess(ctx, launch); cleanupErr != nil {
 			testing.ContextLogf(ctx, "Virtual printer termination failed (%q)", cleanupErr)
-		}
-		if cleanupErr := launch.Wait(); cleanupErr != nil {
-			// This error is noisy: sending SIGTERM always causes Wait()
-			// to return an error.
-			testing.ContextLogf(ctx, "Virtual printer termination wait failed (%q)", cleanupErr)
 		}
 	}(ctx)
 
@@ -327,13 +336,8 @@ func (p *Printer) Stop(ctx context.Context) error {
 		}()
 	}
 
-	if err := p.cmd.Signal(syscall.SIGTERM); err != nil {
+	if err := terminatePrinterProcess(ctx, p.cmd); err != nil {
 		testing.ContextLogf(ctx, "Failed to terminate printer (%q)", err)
-	}
-	if err := p.cmd.Wait(); err != nil {
-		// This error is noisy: sending SIGTERM always causes Wait() to
-		// return an error.
-		testing.ContextLogf(ctx, "Failed to wait on printer (%q)", err)
 	}
 
 	if p.expectUdevEventOnStop {
