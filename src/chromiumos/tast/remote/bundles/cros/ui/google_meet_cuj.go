@@ -31,63 +31,63 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.TwoRoomSize,
 				},
 			}, {
 				Name:    "basic_small",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.SmallRoomSize,
 				},
 			}, {
 				Name:    "basic_large",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:    "basic_class",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.ClassRoomSize,
 				},
 			}, {
 				Name:    "plus_large",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:    "plus_class",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.ClassRoomSize,
 				},
 			}, {
 				Name:    "premium_large",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "premium",
 					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:    "plus_no_meet",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute*10 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.NoRoom,
 				},
 			}, {
 				Name:    "premium_no_meet",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute*10 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "premium",
 					Size: conference.NoRoom,
