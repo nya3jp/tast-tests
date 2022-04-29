@@ -16,6 +16,23 @@
       "message": "Hi Hyung \u0026 Seewai,\nCan you please review the update?\n\nRegards,\nDinesh",
       "revId": "6750c04d5dc45d30b0f2ee867e6492d3b7f47bbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b045b033_00f81e6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-29T17:09:03Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6750c04d5dc45d30b0f2ee867e6492d3b7f47bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
