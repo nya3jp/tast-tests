@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69c736e3_91913cbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-29T03:22:20Z",
+      "side": 1,
+      "message": "This is for extracting the files into the same directory of where the tar file is. It can be done by several builtin commandline library calls I suppose.",
+      "parentUuid": "ad48ce1b_13cd15a0",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 119
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0013eeb_5aa1ade2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
         "patchSetId": 1
@@ -296,6 +320,24 @@
       "writtenOn": "2022-04-26T09:04:08Z",
       "side": 1,
       "message": "I think timeLength should be renamed to timeout, and its type should be time.Duration.\n\nYou could then add +3 seconds to it when you create the poll options.",
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49c17be0_20801b08",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-29T03:22:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4728bd44_579d37a1",
       "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
