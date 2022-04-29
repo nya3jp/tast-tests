@@ -33,6 +33,109 @@
       "message": "tast-owners@: Please take a look.",
       "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21372fbb_6c4d1ea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-29T08:23:21Z",
+      "side": 1,
+      "message": "How about SnapLeftRight instead of SnapBoth as \"both\" is unclear until we read into the code?",
+      "range": {
+        "startLine": 84,
+        "startChar": 13,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee219f6_4698fe8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-29T08:23:21Z",
+      "side": 1,
+      "message": "The line is exactly the same as line 85. Is that correct?",
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "090b15c9_d833df48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-29T08:23:21Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ae1edf_674fe6a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/split_view_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-29T08:23:21Z",
+      "side": 1,
+      "message": "Is primary side the left hand side? If so, how about naming it as snapLeft? Or at least adding a comment here: \"primary (left hand) side\".",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9ca885_38174ffb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/split_view_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-29T08:23:21Z",
+      "side": 1,
+      "message": "What does \"ew\" stand for?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
