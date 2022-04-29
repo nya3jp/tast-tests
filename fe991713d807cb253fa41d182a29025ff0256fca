@@ -33,6 +33,41 @@
       "message": "lgtm. Should ARC tos be there too?",
       "revId": "fe991713d807cb253fa41d182a29025ff0256fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef65107e_27aa2666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T09:59:10Z",
+      "side": 1,
+      "message": "I think ARC should be allowed explicitly. I\u0027d suggest to add it later.",
+      "parentUuid": "ebd4d8f2_0635acf2",
+      "revId": "fe991713d807cb253fa41d182a29025ff0256fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8f6688_2962a942",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T09:59:10Z",
+      "side": 1,
+      "message": "+tast-owners@ please review!\n\nBecause of the rename the diff seems big :( You could start from the line 145 - this is where I added login and onboarding steps",
+      "revId": "fe991713d807cb253fa41d182a29025ff0256fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
