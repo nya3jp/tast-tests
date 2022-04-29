@@ -29,6 +29,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/input"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
@@ -129,8 +130,16 @@ func newConferenceChrome(ctx context.Context, accountPool, cameraVideoPath strin
 	if err != nil {
 		return cr, errors.Wrap(err, "failed to restart Chrome")
 	}
-
+	preTest(ctx)
 	return cr, nil
+}
+
+func preTest(ctx context.Context) {
+	// Wait for cpu to idle before test.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		// Log the cpu idle wait failure instead of make it fatal.
+		testing.ContextLog(ctx, "Failed to wait for CPU to become idle: ", err)
+	}
 }
 
 func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {
@@ -292,7 +301,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		}
 
 		if len(meet.URLs) == 0 {
-			return nil, errors.Wrap(err, "Failed to create a meeting via BOND API and no static rooms specified")
+			return nil, errors.Wrap(err, "failed to create a meeting via BOND API and no static rooms specified")
 		}
 	}
 
