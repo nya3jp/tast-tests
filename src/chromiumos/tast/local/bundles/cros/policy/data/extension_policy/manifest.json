@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Tast Policy Extension",
+  "description": "Dummy extension for testing extension policies",
+  "version": "1.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAumInlub8vGnFr1uRH6TD1gz+EJBJvXE323efiOqZ2fVcPtBtiVxAzOe2biFgnjPdqxriADA1lcpovu79YgEAJ4/h9rOHO1bArh/gP5B7S2Rf6OPDzMc0/LQWCLajekOiY6DjVgplUagDp8gYW8lvpwoMmZYINKlxOFc5tff3amjUcVL7o2W6iBDCp69riis1JXuEtoFoHKyEK7TOpd6s2q7y0BRJlyt8DrNj59LatFqH5ohusu9ST1htmxgSvlnurD0gXA1x8/xgEMATVOJDNrUphg9wnP5JydcyLwtYIdFzKdgav1gtTj4SNva5488EyWzbwvC29ABalLAOjVpNzQIDAQAB",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "storage": {
+    "managed_schema": "schema.json"
+  },
+  "permissions": [
+    "storage"
+  ]
+}
