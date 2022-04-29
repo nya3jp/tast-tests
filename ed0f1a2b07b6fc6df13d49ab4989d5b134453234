@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "634a5f27_f945c2e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Thanks for reviewing. PTAL the updated patchset!",
+      "revId": "ed0f1a2b07b6fc6df13d49ab4989d5b134453234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

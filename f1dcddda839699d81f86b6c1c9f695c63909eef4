@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f124b7a_39b12159",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4174645b_e407e3b1",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a00c9fd_dae62b3b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6baa9c_05ae2299",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a00c9fd_dae62b3b",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ae834dc_d8eac41c",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-28T12:28:07Z",
       "side": 1,
       "message": "nit: align with previous line or add new TEST field",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae55cb1_519d2bca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae834dc_d8eac41c",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -167,6 +239,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb78cb22_dc7a4da6",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da38134e_9c44f8ae",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "963919bc_0d3fe5a8",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa8c2d5_1784d320",
+      "range": {
+        "startLine": 23,
+        "startChar": 55,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b830e7b_f6bbc09d",
@@ -180,6 +300,30 @@
       "writtenOn": "2022-04-28T12:28:07Z",
       "side": 1,
       "message": "you use this function just once. Do you really need it to be a separate function?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 78
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a488b13_05fd1987",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "I created a separate function as we might want to disable Ambient Mode in the future by calling `toggleAmbientMode(\"On\", ui)`",
+      "parentUuid": "2b830e7b_f6bbc09d",
       "range": {
         "startLine": 81,
         "startChar": 0,
@@ -213,6 +357,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de25f44f_80e671f8",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14a15b34_2305283f",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 3
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91fd78bb_9b950d95",
@@ -226,6 +394,30 @@
       "writtenOn": "2022-04-28T12:28:07Z",
       "side": 1,
       "message": "you don\u0027t perform GAIA login in the test. Fixture does that and fixture time does not count as a test time.",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 39
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c639fb8_c12855d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_art_gallery_screensaver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91fd78bb_9b950d95",
       "range": {
         "startLine": 35,
         "startChar": 16,
@@ -259,6 +451,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e07fef_d01c7780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_art_gallery_screensaver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f98974_0b5f4d57",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "664319cd_1cb7adde",
@@ -272,6 +488,24 @@
       "writtenOn": "2022-04-28T12:28:07Z",
       "side": 1,
       "message": "this file is almost identical to src/chromiumos/tast/local/bundles/cros/personalization/set_art_gallery_screensaver.go\n\nI think it makes sense to have parametrised test instead of 2 almost identical tests.",
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96846b6_c9f7f425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "that\u0027s nice! I updated the test to use parameterized test.",
+      "parentUuid": "664319cd_1cb7adde",
       "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -299,6 +533,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9975442_772f603f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_google_photos_screensaver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45128203_9d31aa90",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f60655f6_65156d6b",
@@ -312,6 +570,30 @@
       "writtenOn": "2022-04-28T12:28:07Z",
       "side": 1,
       "message": "Why do you add this import?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "f1dcddda839699d81f86b6c1c9f695c63909eef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6116904_b3faa90c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:04:58Z",
+      "side": 1,
+      "message": "In the fixture I created under personalization, SetUp and TearDown use chrome.Lock() and chrome.Unlock(). Without importing \"chromiumos/tast/local/personalization\", I\u0027ll get this error while running the tast test \n`Panic: chromiumos/tast/local/personalization.(*personalizationFixture).SetUp is not allowed to call chrome.Lock; check the list in chrome.Lock`\nWe also have a question about the fixture design in below unresolved comment from Yuki, it would be great if you could have a look. Thank you!",
+      "parentUuid": "f60655f6_65156d6b",
       "range": {
         "startLine": 116,
         "startChar": 0,
