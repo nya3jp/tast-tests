@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10bddfd_56267c09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-29T05:06:38Z",
+      "side": 1,
+      "message": "I\u0027d remove productivity launcher from the name (given that these tests only can ever run with productivity launcher enabled)",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "27d817e404df9066c2b806e981e56e07fc127f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f28300b_8fd775cc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-29T05:06:38Z",
+      "side": 1,
+      "message": "can we be more precise with the result name?",
+      "revId": "27d817e404df9066c2b806e981e56e07fc127f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
