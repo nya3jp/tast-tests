@@ -25,9 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DefaultSerialGuardSetting,
+		Func:         SerialBlockedForUrls,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Tests the behavior of the DefaultSerialGuardSetting policy by checking that it correctly configures access to the serial port selection prompt",
+		Desc:         "Tests the behavior of the SerialBlockedForUrls policy by checking that it correctly configures access to the serial port selection prompt",
 		Contacts: []string{
 			"cmfcmf@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
@@ -52,8 +52,8 @@ func init() {
 	})
 }
 
-// DefaultSerialGuardSetting tests the DefaultSerialGuardSetting policy.
-func DefaultSerialGuardSetting(ctx context.Context, s *testing.State) {
+// SerialBlockedForUrls tests the SerialBlockedForUrls policy.
+func SerialBlockedForUrls(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
@@ -63,22 +63,41 @@ func DefaultSerialGuardSetting(ctx context.Context, s *testing.State) {
 	for _, param := range []struct {
 		name             string
 		wantSerialDialog bool
-		policy           *policy.DefaultSerialGuardSetting
+		policies         []policy.Policy
 	}{
 		{
-			name:             "blocked",
+			name:             "set",
 			wantSerialDialog: false,
-			policy:           &policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingBlock},
+			policies: []policy.Policy{
+				&policy.SerialBlockedForUrls{Val: []string{httpServer.URL}}},
 		},
 		{
-			name:             "non_blocked",
-			wantSerialDialog: true,
-			policy:           &policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingAsk},
+			name:             "set_and_ask_by_default",
+			wantSerialDialog: false,
+			policies: []policy.Policy{
+				&policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingAsk},
+				&policy.SerialBlockedForUrls{Val: []string{httpServer.URL}}},
 		},
+		{
+			name:             "set_and_block_by_default",
+			wantSerialDialog: false,
+			policies: []policy.Policy{
+				&policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingBlock},
+				&policy.SerialBlockedForUrls{Val: []string{httpServer.URL}}},
+		},
+		{
+			name:             "set_non_matching_and_ask_by_default",
+			wantSerialDialog: true,
+			policies: []policy.Policy{
+				&policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingAsk},
+				&policy.SerialBlockedForUrls{Val: []string{"https://example.com"}}},
+		},
+		// Conflicts with the SerialAskForUrls policy are tested as part of that policy test.
 		{
 			name:             "unset",
 			wantSerialDialog: true,
-			policy:           &policy.DefaultSerialGuardSetting{Stat: policy.StatusUnset},
+			policies: []policy.Policy{
+				&policy.SerialBlockedForUrls{Stat: policy.StatusUnset}},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -93,7 +112,7 @@ func DefaultSerialGuardSetting(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, param.policies); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
