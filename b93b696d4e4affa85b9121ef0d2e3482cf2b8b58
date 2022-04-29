@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f520295_03bfe0b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-29T08:34:02Z",
+      "side": 1,
+      "message": "Is this a fix? Or just align the interface with cros-health-tool?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "b93b696d4e4affa85b9121ef0d2e3482cf2b8b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
