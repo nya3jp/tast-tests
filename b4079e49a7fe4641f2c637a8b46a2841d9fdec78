@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0eeb0e0_ebde592c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-29T05:02:31Z",
+      "side": 1,
+      "message": "Hi Seewai,\n\nDomain owner Shyh-In has reviewed this CL. Can you please review it and provide CR+2?",
+      "revId": "b4079e49a7fe4641f2c637a8b46a2841d9fdec78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
