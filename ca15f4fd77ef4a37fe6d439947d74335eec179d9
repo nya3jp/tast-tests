@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "ca15f4fd77ef4a37fe6d439947d74335eec179d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19003841_ef2b1b8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-04-29T18:15:04Z",
+      "side": 1,
+      "message": "LGTM but could you mention full_2d_implicit_local and full_3d_implicit_local in the commit messages?",
+      "revId": "ca15f4fd77ef4a37fe6d439947d74335eec179d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
