@@ -80,28 +80,38 @@ func StressRunner(ctx context.Context, s *testing.State, rw *FioResultWriter, te
 	for _, tc := range []struct {
 		name     string
 		function subTestFunc
+		enabled  bool
 	}{
 		{
 			name:     "stressBenchmarks",
 			function: subTestFunc(SetupBenchmarks),
+			enabled:  true,
 		},
 		{
 			name:     "soak",
 			function: subTestFunc(soakTestBlock),
+			enabled:  true,
 		},
 		{
 			name:     "suspend",
 			function: subTestFunc(suspendTestBlock),
+			enabled:  true,
 		},
 		{
 			name:     "retention",
 			function: subTestFunc(retentionTestBlock),
+			enabled:  !testParam.FollowupQual,
 		},
 		{
 			name:     "trim",
 			function: subTestFunc(trimTestBlock),
+			enabled:  true,
 		},
 	} {
+		if !tc.enabled {
+			s.Logf("Subtest: %s, disabled", tc.name)
+			continue
+		}
 		for retries := 0; retries < maxSubtestRetry; retries++ {
 			s.Logf("Subtest: %s, retry: %d of %d", tc.name, retries+1, maxSubtestRetry)
 			passed := s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
