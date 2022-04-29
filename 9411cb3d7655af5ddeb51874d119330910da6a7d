@@ -178,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd77d9da_6080bec1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-29T18:46:32Z",
+      "side": 1,
+      "message": "\"util\" is also not recommended either. It means \"utility used by autoupdate test\", so no improvement can be found.\nAlso, just \"util\" is not recommended in general. Many packages uses some name, like \"ioutil\" in standard, or \"gopsutil\" etc., specifically, there\u0027s some context in other package (like \"io\") and it is the convenient wrapper.\n\nCould you come up with \"what\" is what you would like to provide from the library?",
+      "parentUuid": "62c1e427_2ed18b41",
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8e48022_73ceb9fd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
         "patchSetId": 1
@@ -295,6 +313,30 @@
       "side": 1,
       "message": "Fixing this resulted in a quite huge change. Git also fails to recognize that autoupdatelib, though renamed the directory, is the same file but modified. But I do believe the refactored interface is better, PTAL, thanks!",
       "parentUuid": "b6d6c20d_cb08c465",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 57
+      },
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8762dfc2_385f80f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-29T18:46:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c81c7b9e_cac9eac9",
       "range": {
         "startLine": 55,
         "startChar": 39,

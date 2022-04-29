@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba34b7c5_20a06b91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-29T18:46:32Z",
+      "side": 1,
+      "message": "Marking CR+2 just to unblock, but I strongly recommend you to re-consider the package structures and naming.",
+      "revId": "839ea5579fbe716c5fd76e8863d5f9b9e0d4bad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
