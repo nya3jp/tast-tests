@@ -11,11 +11,13 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/media/pre"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
 
@@ -610,13 +612,25 @@ func applyMediaTrackConstraints(ctx context.Context, conn *chrome.Conn, constrai
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MediaTrackAdvancedControls,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verifies the MediaTrack advanced controls",
 		Contacts:     []string{"mojahsu@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"media_track_advanced_controls.html", "media_track_advanced_controls.js"},
-		Pre:          pre.ChromeVideo(),
+		Params: []testing.Param{
+			{
+				Fixture: "chromeVideo",
+				Val:     browser.TypeAsh,
+			},
+			{
+				Name:              "lacros",
+				Fixture:           "chromeVideoLacros",
+				ExtraSoftwareDeps: []string{caps.BuiltinOrVividCamera, "lacros"},
+				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
+				Val:               browser.TypeLacros,
+			},
+		},
 	})
 }
 
@@ -624,7 +638,13 @@ func MediaTrackAdvancedControls(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	cr := s.PreValue().(*chrome.Chrome)
+	browserType := s.Param().(browser.Type)
+	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), browserType)
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacros(ctx, l)
+
 	conn, err := cr.NewConn(ctx, server.URL+"/media_track_advanced_controls.html")
 	if err != nil {
 		s.Fatal("Failed to open testing page: ", err)
