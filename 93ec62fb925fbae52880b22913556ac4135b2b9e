@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e4dc034_91278161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/update_engine_consumer_auto_update_feature.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-29T18:52:30Z",
+      "side": 1,
+      "message": "If that\u0027s the case, could your remove testing.Poll from L67-L76?",
+      "parentUuid": "74947e61_4c14547d",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "93ec62fb925fbae52880b22913556ac4135b2b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "995d9453_997ed228",
         "filename": "src/chromiumos/tast/local/updateengine/prefs.go",
         "patchSetId": 6

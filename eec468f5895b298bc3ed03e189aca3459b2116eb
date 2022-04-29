@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff9efca_ff37e988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/update_engine_features.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-29T18:52:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8fc79fae_b0d44b2f",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "eec468f5895b298bc3ed03e189aca3459b2116eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab40b222_d8f84cb0",
