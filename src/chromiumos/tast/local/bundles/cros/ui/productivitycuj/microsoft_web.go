@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -55,6 +56,7 @@ const (
 
 // MicrosoftWebOffice implements the ProductivityApp interface.
 type MicrosoftWebOffice struct {
+	br              *browser.Browser
 	cr              *chrome.Chrome
 	tconn           *chrome.TestConn
 	ui              *uiauto.Context
@@ -127,7 +129,7 @@ func (app *MicrosoftWebOffice) CreateSlides(ctx context.Context) error {
 // Since MS Office documents cannot directly copy view-only documents,
 // we can only copy the contents of worksheets from public shared documents.
 func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleSheetURL string) (string, error) {
-	connExcel, err := app.cr.NewConn(ctx, sampleSheetURL)
+	connExcel, err := app.br.NewConn(ctx, sampleSheetURL)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to open URL: %s", sampleSheetURL)
 	}
@@ -432,6 +434,11 @@ func (app *MicrosoftWebOffice) Cleanup(ctx context.Context, sheetName string) er
 	return nil
 }
 
+// SetBrowser sets browser to chrome or lacros.
+func (app *MicrosoftWebOffice) SetBrowser(br *browser.Browser) {
+	app.br = br
+}
+
 // removeSheet checks the existence of the sheet and remove it if it exists.
 func (app *MicrosoftWebOffice) removeSheet(sheetName string) uiauto.Action {
 	return func(ctx context.Context) error {
@@ -667,7 +674,7 @@ func (app *MicrosoftWebOffice) reload(finder *nodewith.Finder, action action.Act
 func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, error) {
 	testing.ContextLog(ctx, "Navigating to OneDrive")
 
-	conn, err := app.cr.NewConn(ctx, cuj.MicrosoftOfficeURL)
+	conn, err := app.br.NewConn(ctx, cuj.MicrosoftOfficeURL)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to open URL: %s", cuj.MicrosoftOfficeURL)
 	}
@@ -1161,7 +1168,7 @@ func (app *MicrosoftWebOffice) closeTab(title string) action.Action {
 			return strings.Contains(t.Title, title) && t.Type == "page"
 		}
 
-		conn, err := app.cr.NewConnForTarget(ctx, matcher)
+		conn, err := app.br.NewConnForTarget(ctx, matcher)
 		if err != nil {
 			return err
 		}
