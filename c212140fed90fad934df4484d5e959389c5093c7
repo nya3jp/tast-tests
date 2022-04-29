@@ -70,6 +70,30 @@
       },
       "revId": "c212140fed90fad934df4484d5e959389c5093c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6fc0614_b653268a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2501,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T20:30:19Z",
+      "side": 1,
+      "message": "Ah, I did not realize that state changes were going to be added to ath11k for FW crashes. Is there a bug/task open for this request? If so then it would be best to include that item with a TODO to update the code when that bug is fixed.",
+      "parentUuid": "29647577_c1780d1c",
+      "range": {
+        "startLine": 2501,
+        "startChar": 2,
+        "endLine": 2501,
+        "endChar": 15
+      },
+      "revId": "c212140fed90fad934df4484d5e959389c5093c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
