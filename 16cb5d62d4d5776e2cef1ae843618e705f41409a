@@ -198,6 +198,30 @@
       },
       "revId": "16cb5d62d4d5776e2cef1ae843618e705f41409a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b3027e_8802d01a",
+        "filename": "src/chromiumos/tast/local/personalization/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T01:17:38Z",
+      "side": 1,
+      "message": "@lamzin: Do you have any suggestion on this?\nIn case that only Chrome log in part should be in the fixture, is it recommended to add several fixtures for personalization in `chromiumos/tast/local/chrome/fixture.go`\nor we still create a `fixture.go` file in our `chromiumos/tast/local/personalization` and call `chrome.NewLoggedInFixture(...)` for Impl.\nThank you!",
+      "parentUuid": "a634c447_4b238b38",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "16cb5d62d4d5776e2cef1ae843618e705f41409a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
