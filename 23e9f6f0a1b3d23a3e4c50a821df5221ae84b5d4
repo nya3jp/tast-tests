@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "84843014_323a6330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-04-29T22:37:31Z",
+      "side": 1,
+      "message": "My understanding is that P2P-device is a general term that encompasses P2P-GO and P2P-Client. https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/nl80211.h#L3250 has some documentation on the iface type, noting that it\u0027s not a normal network device. Also, if you look at some concrete examples here: https://kernel.org/doc/html/v5.10/driver-api/80211/cfg80211.html?highlight\u003dcfg80211#c.ieee80211_iface_combination, note that none of those examples mention p2p-device despite supporting p2p-client and p2p-go.",
+      "parentUuid": "acf7f458_ccf53d1a",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d492fd08_4322ff57",
