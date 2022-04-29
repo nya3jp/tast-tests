@@ -7,6 +7,7 @@ package conference
 import (
 	"context"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -15,6 +16,8 @@ import (
 )
 
 const (
+	// CPUIdleTimeout is used to wait for the cpu idle.
+	CPUIdleTimeout = 2 * time.Minute
 	// NoRoom means not joining google meet when running the test.
 	NoRoom = 0
 	// TwoRoomSize creates a conference room with 2 participants.

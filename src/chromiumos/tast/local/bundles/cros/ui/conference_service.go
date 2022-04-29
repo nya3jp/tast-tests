@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/cpu"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -103,6 +104,14 @@ func chromeArgsWithFileCameraInput(fileName string) []string {
 	}
 }
 
+func preTest(ctx context.Context) {
+	// Wait for cpu to idle before test.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		// Log the cpu idle wait failure instead of make it fatal.
+		testing.ContextLog(ctx, "Failed to wait for CPU to become idle: ", err)
+	}
+}
+
 func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {
 	roomSize := int(req.RoomSize)
 	meet, err := conference.GetGoogleMeetConfig(ctx, s.s, roomSize)
@@ -124,6 +133,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		if err != nil {
 			return errors.Wrap(err, "failed to restart Chrome")
 		}
+		preTest(ctx)
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to connect to test API")
@@ -325,6 +335,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	testing.ContextLog(ctx, "Start zoom meet scenario")
 	opts := confereceChromeOpts(accountPool, req.CameraVideoPath)
 	cr, err := chrome.New(ctx, opts...)
+	preTest(ctx)
 	account := cr.Creds().User
 
 	tconn, err := cr.TestAPIConn(ctx)
