@@ -336,6 +336,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dfa01ad_f6a385c7",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-29T03:29:10Z",
+      "side": 1,
+      "message": "it\u0027s updated in patch set 2",
+      "parentUuid": "69ee82fe_2dd9fa0f",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7abcae58_86be0ddf",
