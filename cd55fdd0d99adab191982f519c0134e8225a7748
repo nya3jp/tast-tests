@@ -16,6 +16,57 @@
       "message": "This covers one tab sharing scenario, I\u0027ll add others afterwards.",
       "revId": "cd55fdd0d99adab191982f519c0134e8225a7748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf3e4df_a43f4453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-04-29T08:20:02Z",
+      "side": 1,
+      "message": "Thanks! Generally lgtm, just have a few questions.",
+      "revId": "cd55fdd0d99adab191982f519c0134e8225a7748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e65b9cf2_e61baa99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-04-29T08:20:02Z",
+      "side": 1,
+      "message": "Nit: could be good to have this extra check: navigate again to the restricted page and confirm it\u0027s allowed without a warning. Not sure how complicated it would be.",
+      "revId": "cd55fdd0d99adab191982f519c0134e8225a7748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e45e57c_5b3923c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-04-29T08:20:02Z",
+      "side": 1,
+      "message": "Would it maybe be easier to have different tests for screen, window and tab share? \n\nEven though a lot of code is repeated, there are several `if params.target \u003d\u003d tab do this else do that`, and also I guess it wouldn\u0027t be necessary to have that many different urls for warning proceeded tests.",
+      "revId": "cd55fdd0d99adab191982f519c0134e8225a7748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
