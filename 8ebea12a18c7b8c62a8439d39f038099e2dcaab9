@@ -214,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad48ce1b_13cd15a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-29T01:53:12Z",
+      "side": 1,
+      "message": "IIUC, you want to extract several files to a folder and return the path? If so, `tar` package should be able to do that. \n\nAvoid using linux cmd if there are built-in packages that can do the tasks, even with some degree of complexity. Especially when it comes to I/O or file operations, the linux commands can be flaky sometimes.",
+      "parentUuid": "7298581d_ca2965d3",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 119
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0013eeb_5aa1ade2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
         "patchSetId": 1
