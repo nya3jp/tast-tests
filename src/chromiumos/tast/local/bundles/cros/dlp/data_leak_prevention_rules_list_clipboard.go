@@ -6,6 +6,9 @@ package dlp
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
 	"time"
 
 	"chromiumos/tast/common/policy/fakedms"
@@ -35,6 +38,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "chromePolicyLoggedIn",
+		Data:         []string{"text_1.html", "text_2.html", "editable_text_box.html"},
 	})
 }
 
@@ -42,7 +46,16 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fakeDMS := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.StandardDLPPolicyForClipboard()); err != nil {
+	allowedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer allowedServer.Close()
+
+	blockedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer blockedServer.Close()
+
+	destServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer destServer.Close()
+
+	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.PopulateDLPPolicyForClipboard(blockedServer.URL, destServer.URL)); err != nil {
 		s.Fatal("Failed to serve and verify the DLP policy: ", err)
 	}
 
@@ -66,30 +79,30 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 	for _, param := range []struct {
 		name        string
 		copyAllowed bool
-		url         string
+		sourceURL   string
 	}{
 		{
 			name:        "copyBlocked",
 			copyAllowed: false,
-			url:         "www.example.com",
+			sourceURL:   blockedServer.URL + "/text_1.html",
 		},
 		{
 			name:        "copyAllowed",
 			copyAllowed: true,
-			url:         "www.chromium.org",
+			sourceURL:   allowedServer.URL + "/text_2.html",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
-			conn, err := cr.NewConn(ctx, "https://"+param.url)
+			sourceConn, err := cr.NewConn(ctx, param.sourceURL)
 			if err != nil {
-				s.Fatalf("Failed to open page %q: %v", param.url, err)
+				s.Fatalf("Failed to open page %q: %v", param.sourceURL, err)
 			}
-			defer conn.Close()
+			defer sourceConn.Close()
 
-			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.url, err)
+			if err := webutil.WaitForQuiescence(ctx, sourceConn, 10*time.Second); err != nil {
+				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.sourceURL, err)
 			}
 
 			if err := uiauto.Combine("copy all text from source website",
@@ -103,49 +116,32 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 				s.Fatal("Failed to get clipboard content: ", err)
 			}
 
-			googleConn, err := cr.NewConn(ctx, "https://www.google.com/?hl=en")
+			destURL := destServer.URL + "/editable_text_box.html"
+			destConn, err := cr.NewConn(ctx, destURL)
 			if err != nil {
-				s.Fatal("Failed to open page: ", err)
+				s.Fatalf("Failed to open page %q: %v", destURL, err)
 			}
-			defer googleConn.Close()
+			defer destConn.Close()
 
-			if err := webutil.WaitForQuiescence(ctx, googleConn, 10*time.Second); err != nil {
-				s.Fatal("Failed to wait for google.com to achieve quiescence: ", err)
+			if err := webutil.WaitForQuiescence(ctx, destConn, 10*time.Second); err != nil {
+				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", destURL, err)
 			}
 
 			ui := uiauto.New(tconn)
 
-			searchNode := nodewith.Name("Search").Role(role.TextFieldWithComboBox).State(state.Editable, true).First()
-
-			if err := ui.WaitUntilExists(searchNode)(ctx); err != nil {
-				s.Fatal("Failed to find search bar: ", err)
-			}
-
-			searchNodeInfo, err := ui.Info(ctx, searchNode)
-			if err != nil {
-				s.Fatal("Error retrieving info for search node: ", err)
-			}
-
-			// If the search bar is invisible, it is probably overlaid by the Google consent banner.
-			// It does not provide usable ids, so we try to quit it with Shift+Tab, then Enter.
-			if searchNodeInfo.State[state.Invisible] {
-				s.Log("Search bar is invisible, closing consent banner")
-				if err := keyboard.Accel(ctx, "Shift+Tab+Enter"); err != nil {
-					s.Fatal("Failed to press Shift+Tab+Enter to close consent banner: ", err)
-				}
-			}
-
-			if err := uiauto.Combine("Pasting into search bar",
-				ui.WaitUntilExists(searchNode.Visible()),
-				ui.LeftClick(searchNode),
-				ui.WaitUntilExists(searchNode.Focused()),
+			textBoxNode := nodewith.Name("textarea").Role(role.TextField).State(state.Editable, true).First()
+			if err := uiauto.Combine("Pasting into text box",
+				ui.WaitUntilExists(textBoxNode.Visible()),
+				ui.LeftClick(textBoxNode),
+				ui.WaitUntilExists(textBoxNode.Focused()),
 				keyboard.AccelAction("Ctrl+V"),
 			)(ctx); err != nil {
-				s.Fatal("Failed to paste into search bar: ", err)
+				s.Fatal("Failed to paste into text box: ", err)
 			}
 
 			// Verify notification bubble.
-			notifError := clipboard.CheckClipboardBubble(ctx, ui, param.url)
+			parsedSourceURL, _ := url.Parse(blockedServer.URL)
+			notifError := clipboard.CheckClipboardBubble(ctx, ui, parsedSourceURL.Hostname())
 
 			if !param.copyAllowed && notifError != nil {
 				s.Error("Expected notification but found an error: ", notifError)
