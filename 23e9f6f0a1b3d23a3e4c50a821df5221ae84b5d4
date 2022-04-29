@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "12668e41_c86cfd9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T21:45:46Z",
+      "side": 1,
+      "message": "This is what I started with, but this doesn\u0027t account for the case where there isn\u0027t a \"P2P-device\" entry in the combination. That probably requires 2 more bools, a \"P2PDeviceIfaceFound\", and a \"NeedP2PDeviceIface\" which is true if we find a GO or client. Then another comparison like line 91.\n\nNot terribly complex, but IMO less clean than the other way. WDYT?",
+      "parentUuid": "2b713ce2_87688772",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d492fd08_4322ff57",
