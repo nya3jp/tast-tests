@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "7b4cecf997504ce94342e7466fbd2721d9e01aa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27cd0934_2604bb2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-04-29T18:14:23Z",
+      "side": 1,
+      "message": "Please mention simple_library_with_callback and simple_link_with_callback in the commit message.",
+      "revId": "7b4cecf997504ce94342e7466fbd2721d9e01aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948464ff_5f2ce582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-04-29T18:14:23Z",
+      "side": 1,
+      "message": "Could you mention simple_library_with_callback and simple_link_with_callback in the commit message as not all compiler tests are failing?",
+      "range": {
+        "startLine": 936,
+        "startChar": 22,
+        "endLine": 936,
+        "endChar": 50
+      },
+      "revId": "7b4cecf997504ce94342e7466fbd2721d9e01aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
