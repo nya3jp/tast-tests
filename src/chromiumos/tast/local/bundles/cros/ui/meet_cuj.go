@@ -380,7 +380,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		defer func(ctx context.Context) {
 			s.Log("Removing all bots from the call")
 			if _, _, err := bc.RemoveAllBots(ctx, meetingCode); err != nil {
-				s.Fatal("Failed to remove all bots: ", err)
+				s.Log("Failed to remove all bots: ", err)
 			}
 		}(closeCtx)
 		addBotsCount := meet.num
