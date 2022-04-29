@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4266a5ee_89d7d2ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-29T20:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66bc655d_5eeb48d9",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "fc8a1801d25a296822040da1d3e8313a337a4945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11520843_5fea1edb",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-29T16:58:06Z",
       "side": 1,
       "message": "We should drop the logging level of this line (or maybe just remove it?). We\u0027re up to 40 different combinations of args now and 40 lines is way too much here. It\u0027s a pretty unnecessary log, given that any failed combinations will trigger an error line anyway, so any combinations that aren\u0027t included in an error can be assumed to have run and passed.",
+      "revId": "fc8a1801d25a296822040da1d3e8313a337a4945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9950fdda_8bc344cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-04-29T20:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11520843_5fea1edb",
       "revId": "fc8a1801d25a296822040da1d3e8313a337a4945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
