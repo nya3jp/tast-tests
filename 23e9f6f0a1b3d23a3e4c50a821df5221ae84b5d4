@@ -1,6 +1,57 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8b008a_82c8289c",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-04-29T21:26:56Z",
+      "side": 1,
+      "message": "nit: reference where these are defined",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7355b1fa_1c137789",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-04-29T21:26:56Z",
+      "side": 1,
+      "message": "nit: error check in case we get an invalid iface type",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b713ce2_87688772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-04-29T21:26:56Z",
+      "side": 1,
+      "message": "I think if you just added:\n\n  else if iface \u003d\u003d iw.IfTypeP2PDevice \u0026\u0026 (concurrentIface \u003d\u003d iw.IfTypeP2PGO || concurrentIface \u003d\u003d iw.IfTypeP2PClient) {\n    ifaceCounts[i]++\n    if ifaceCounts[i] \u003e limit.MaxCount {\n      return false\n    }\n  }\n\nthis would cover it.",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d492fd08_4322ff57",
@@ -14,6 +65,30 @@
       "writtenOn": "2022-04-29T20:05:51Z",
       "side": 1,
       "message": "This logic definitely could have been incorporated into the main loop, but I think that separating it out down here makes is better because we avoid gumming up the main loop with a bunch of special-case logic. It also allows for the entire idea to be explained in a single comment, rather than needing to sprinkle a bunch of comments into different spots in the main loop.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e542ae_9ffbdc09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-04-29T21:26:56Z",
+      "side": 1,
+      "message": "See above, I actually think it\u0027s cleaner that way.",
+      "parentUuid": "d492fd08_4322ff57",
       "range": {
         "startLine": 96,
         "startChar": 0,
