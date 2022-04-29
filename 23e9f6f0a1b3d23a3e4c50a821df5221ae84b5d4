@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d492fd08_4322ff57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T20:05:51Z",
+      "side": 1,
+      "message": "This logic definitely could have been incorporated into the main loop, but I think that separating it out down here makes is better because we avoid gumming up the main loop with a bunch of special-case logic. It also allows for the entire idea to be explained in a single comment, rather than needing to sprinkle a bunch of comments into different spots in the main loop.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

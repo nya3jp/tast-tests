@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56bf429a_7091c845",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T20:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e9e7265_60c0c713",
+      "range": {
+        "startLine": 89,
+        "startChar": 14,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "bbb49453b5a850b832da35c820a3dd707c741640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97f5ddb4_6caa85a7",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-04-28T21:27:01Z",
       "side": 1,
       "message": "maybe add a couple more lines to verify that it can parse multiple. For example, trogdor looks like:\n\n\tvalid interface combinations:\n\t\t * #{ managed } \u003c\u003d 2, #{ AP, P2P-client, P2P-GO } \u003c\u003d 2, #{ P2P-device } \u003c\u003d 1,\n\t\t   total \u003c\u003d 4, #channels \u003c\u003d 1\n\t\t * #{ managed } \u003c\u003d 2, #{ P2P-client } \u003c\u003d 2, #{ AP, P2P-GO } \u003c\u003d 1, #{ P2P-device } \u003c\u003d 1,\n\t\t   total \u003c\u003d 4, #channels \u003c\u003d 2\n\t\t * #{ managed } \u003c\u003d 1, #{ IBSS } \u003c\u003d 1,\n\t\t   total \u003c\u003d 2, #channels \u003c\u003d 1",
+      "revId": "bbb49453b5a850b832da35c820a3dd707c741640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3047bba0_c89c9248",
+        "filename": "src/chromiumos/tast/common/network/iw/runner_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T20:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97f5ddb4_6caa85a7",
       "revId": "bbb49453b5a850b832da35c820a3dd707c741640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34100871_067d9f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T20:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adfe7f4e_d29fbe70",
+      "revId": "bbb49453b5a850b832da35c820a3dd707c741640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34992e32_5e8ec13d",
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06141d95_e5fb0dff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T20:05:51Z",
+      "side": 1,
+      "message": "Ok, I updated the function to account for this, I think.",
+      "parentUuid": "34992e32_5e8ec13d",
+      "revId": "bbb49453b5a850b832da35c820a3dd707c741640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6691ee2a_03af0719",
@@ -122,6 +200,24 @@
       "writtenOn": "2022-04-28T21:27:01Z",
       "side": 1,
       "message": "can we do this by allocating zeroes and incrementing instead (checking against limit.MaxCount)? It\u0027s clearer that way.",
+      "revId": "bbb49453b5a850b832da35c820a3dd707c741640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "041edd64_4696e201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T20:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6691ee2a_03af0719",
       "revId": "bbb49453b5a850b832da35c820a3dd707c741640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
