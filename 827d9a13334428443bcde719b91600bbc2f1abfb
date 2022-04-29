@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fdb56d_99dc010c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T00:52:30Z",
+      "side": 1,
+      "message": "`TEST\u003dtast run \u003cDUT\u003e personalization.SelectAvatarFromFile`\nIf you specify `ambient.username` and `ambient.password` on the command line when you run the test, include that part here as well. This should document what you do when you put Verified +1 on the CL.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "827d9a13334428443bcde719b91600bbc2f1abfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
