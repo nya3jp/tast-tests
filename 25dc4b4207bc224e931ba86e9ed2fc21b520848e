@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e20d7bd_fe03cfc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-29T16:17:45Z",
+      "side": 1,
+      "message": "adding yulun to take a pass",
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f3c21a_1b828dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-29T16:17:45Z",
+      "side": 1,
+      "message": "do we actually care whether privacy nudge is shown here (it would be preferable to reuse session where possible)?",
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
