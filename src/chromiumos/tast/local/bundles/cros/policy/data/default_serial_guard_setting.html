@@ -1,0 +1,15 @@
+<a href="#">requestSerialPort</a>
+<script>
+  let isBlocked = false;
+
+  document.querySelector("a").addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    try {
+      await navigator.serial.requestPort();
+    } catch (err) {
+      isBlocked = true;
+      console.error(err);
+    }
+  });
+</script>
