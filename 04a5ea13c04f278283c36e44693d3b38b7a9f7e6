@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71161aec_a033ac17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-29T19:37:53Z",
+      "side": 1,
+      "message": "SG, done.",
+      "parentUuid": "54805e67_0cac21c8",
+      "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "382604d7_89985b64",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-29T08:07:02Z",
       "side": 1,
       "message": "Can you add a comment here?\n\nI\u0027m not sure how this checks that an entry does not exist.",
+      "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f075f0_1bf7d678",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-29T19:37:53Z",
+      "side": 1,
+      "message": "Added a comment there but let me know if it\u0027s still not clear enough.",
+      "parentUuid": "382604d7_89985b64",
       "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "075dd842_0d3fe84f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-29T19:37:53Z",
+      "side": 1,
+      "message": "Removed. Not sure why I had it there..",
+      "parentUuid": "63ce0b70_ad84a765",
+      "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04f40c87_1e558f8b",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-04-29T08:07:02Z",
       "side": 1,
       "message": "nit: move above the command",
+      "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "110c6564_5d54cd6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-29T19:37:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f40c87_1e558f8b",
       "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
