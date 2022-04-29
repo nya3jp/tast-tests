@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42e7c096_f4a8ab26",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-04-29T01:18:11Z",
+      "side": 1,
+      "message": "From the current architecture, the bash trick here is inevitable due to the script will be run on another chart device instead of DUT without gRPC support. So we cannot completely start python script in golang library. I do agree the golang library may help catch more debug information and handle the timeout properly, but since this test is kind of backing up for the remote test, it also make sense to make them share more code as possible.\nI\u0027m neutral to both options.",
+      "parentUuid": "e60d295e_ada8b8f6",
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b440e8f_6cf17c83",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
         "patchSetId": 4
