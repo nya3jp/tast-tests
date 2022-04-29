@@ -16,6 +16,24 @@
       "message": "`s.Error` does not terminate the test, but it does mark the test run as a failure. If you want the test to pass, use `s.Log`.",
       "revId": "407e0e9816ee2ecb539624b582ac9d2e53cc4d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e07e43_f9a00bbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-29T21:26:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b3d0d88_cabd1efa",
+      "revId": "407e0e9816ee2ecb539624b582ac9d2e53cc4d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
