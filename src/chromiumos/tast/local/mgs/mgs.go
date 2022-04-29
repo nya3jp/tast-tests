@@ -119,6 +119,9 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*MGS, *chr
 		}
 
 		pb := policy.NewBlob()
+		if cfg.m.ExternalPolicyBlob != nil {
+			pb = cfg.m.ExternalPolicyBlob
+		}
 		pb.AddPolicies(policies)
 		// Handle public account policies.
 		if cfg.m.PublicAccountPolicies != nil {
