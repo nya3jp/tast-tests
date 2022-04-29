@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcd0e0a7_f1ce5395",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-29T18:35:27Z",
+      "side": 1,
+      "message": "nit/ DisplayCMD",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59ab5086_7ab43870",
         "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
         "patchSetId": 4
@@ -68,6 +91,24 @@
       "side": 1,
       "message": "From the current architecture, the bash trick here is inevitable due to the script will be run on another chart device instead of DUT without gRPC support. So we cannot completely start python script in golang library. I do agree the golang library may help catch more debug information and handle the timeout properly, but since this test is kind of backing up for the remote test, it also make sense to make them share more code as possible.\nI\u0027m neutral to both options.",
       "parentUuid": "e60d295e_ada8b8f6",
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570bdf20_de3b5e3b",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-29T18:35:27Z",
+      "side": 1,
+      "message": "Ok, thanks for explanation. Could you document it that this is exceptional case, and so that it is not recommended in general?",
+      "parentUuid": "42e7c096_f4a8ab26",
       "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
