@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1eae4e3_ffc0e7a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-29T11:34:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8998cf60_510df502",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3abfa957_620b1a2d",
@@ -160,6 +184,24 @@
       "side": 1,
       "message": "Because otherwise the User is going to be set incorrectly, and cryptohome won\u0027t find the correct home directory when called here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/cca.go;l\u003d874",
       "parentUuid": "3abfa957_620b1a2d",
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cb0f15_840631bb",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-29T11:34:27Z",
+      "side": 1,
+      "message": "Do we have to take care of that as well when \"AutoLaunch\" is NOT used?",
+      "parentUuid": "f265bb06_4b3b4b00",
       "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
