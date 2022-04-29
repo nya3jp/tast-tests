@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48ec7f9_c3af7160",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-04-29T21:53:48Z",
+      "side": 1,
+      "message": "If you think the probe request is not coming because packet capture starts later then then scan, then why not start it earlier instead of doing retries ?",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 43
+      },
+      "revId": "00def1bd90662c78b5e6b5763fcb8e67368857d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
