@@ -24,7 +24,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         util.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_stress_block_timeout", "tast_suspend_block_timeout", "tast_skip_setup_check", "tast_skip_s0ix_check"},
+		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_stress_block_timeout", "tast_suspend_block_timeout", "tast_skip_setup_check", "tast_skip_s0ix_check", "tast_followup_qual"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     util.SetupBenchmarks,
@@ -76,6 +76,7 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	testParam.RetentionBlockTimeout = util.DefaultRetentionBlockTimeout
 	testParam.SuspendBlockTimeout = util.DefaultSuspendBlockTimeout
 	testParam.SkipS0iXResidencyCheck = false
+	testParam.FollowupQual = false
 	testParam.TestDevice, err = util.RootPartitionForTest(ctx)
 	if err != nil {
 		s.Fatal("Cannot set free root partition as test device: ", err)
@@ -97,6 +98,12 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	if val, ok := s.Var("tast_skip_s0ix_check"); ok {
 		if testParam.SkipS0iXResidencyCheck, err = strconv.ParseBool(val); err != nil {
 			s.Fatal("Cannot parse argument 'tast_skip_s0ix_check' of type bool: ", err)
+		}
+	}
+
+	if val, ok := s.Var("tast_followup_qual"); ok {
+		if testParam.FollowupQual, err = strconv.ParseBool(val); err != nil {
+			s.Fatal("Cannot parse argument 'tast_followup_qual' of type bool: ", err)
 		}
 	}
 

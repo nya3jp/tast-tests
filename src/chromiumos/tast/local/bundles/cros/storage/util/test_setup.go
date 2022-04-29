@@ -25,6 +25,7 @@ type QualParam struct {
 	SuspendBlockTimeout    time.Duration
 	StressBlockTimeout     time.Duration
 	SkipS0iXResidencyCheck bool
+	FollowupQual           bool
 }
 
 // subTestFunc is the code associated with a sub-test.
