@@ -220,9 +220,11 @@ func launchPrinter(ctx context.Context, op config) (cmd *testexec.Cmd, err error
 			testing.ContextLogf(ctx, "Virtual printer termination failed (%q)", cleanupErr)
 		}
 		if cleanupErr := launch.Wait(); cleanupErr != nil {
-			// This error is noisy: sending SIGTERM always causes Wait()
-			// to return an error.
-			testing.ContextLogf(ctx, "Virtual printer termination wait failed (%q)", cleanupErr)
+			// We're expecting the exit status to be non-zero because it was killed by SIGTERM.
+			// Anything else indicates a problem.
+			if ws, ok := testexec.GetWaitStatus(cleanupErr); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGTERM {
+				testing.ContextLogf(ctx, "Virtual printer termination wait failed (%q)", cleanupErr)
+			}
 		}
 	}(ctx)
 
@@ -323,9 +325,11 @@ func (p *Printer) Stop(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Failed to terminate printer (%q)", err)
 	}
 	if err := p.cmd.Wait(); err != nil {
-		// This error is noisy: sending SIGTERM always causes Wait() to
-		// return an error.
-		testing.ContextLogf(ctx, "Failed to wait on printer (%q)", err)
+		// We're expecting the exit status to be non-zero because it was killed by SIGTERM.
+		// Anything else indicates a problem.
+		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGTERM {
+			testing.ContextLogf(ctx, "Failed to wait on printer (%q)", err)
+		}
 	}
 
 	if p.expectUdevEventOnStop {
