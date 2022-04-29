@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0312cc_b3a102a9",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T20:18:16Z",
+      "side": 1,
+      "message": "I looked into the router code and I was unable to find anything that would actually require an update for new interface types. I think that it would only require an update if you wanted the router code to explicitly handle a certain interface type, which is not the case for any of my additions. Further, now that I\u0027ve included all the possible types here, we no longer need instructions for adding new types.",
+      "revId": "bbb49453b5a850b832da35c820a3dd707c741640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e9e7265_60c0c713",
