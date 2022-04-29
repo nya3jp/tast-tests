@@ -13707,13 +13707,18 @@ func OpenclCts(ctx context.Context, s *testing.State) {
 	cmd.Stderr = f
 	err = cmd.Run(testexec.DumpLogOnError)
 
+	bug := test.buganizer
+
 	if err != nil && test.expectedPass {
-		// b/227133175 - [OpenCL-CTS] CI issues:
-		// Project issue tracking tests failing in CI while expected to pass.
-		s.Fatalf("%q: untriage failure (%s) - b/227133175", test.executable, err)
+		if bug == "" {
+			// b/227133175 - [OpenCL-CTS] CI issues:
+			// Project issue tracking tests failing in CI while expected to pass.
+			s.Fatalf("%q: untriaged failure (%s) - b/227133175", test.executable, err)
+		} else {
+			s.Fatalf("%q: triaged failure (%s) - %s", test.executable, err, bug)
+		}
 	}
 
-	bug := test.buganizer
 	if bug == "" {
 		// Should not happen. Every tests marked as fail should have a bug associated with it.
 		// b/227134897 - [OpenCL-CTS] Conformance: Project issue tracking tests not passing.
