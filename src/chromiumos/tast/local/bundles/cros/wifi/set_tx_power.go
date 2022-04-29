@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/wlan"
 )
 
 func init() {
@@ -50,33 +51,46 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 		s.Logf("Testing static mode: %s", staticMode)
 	}
 
-	// For both static and dynamic devices, attempt to set transmit power.
-	for _, tc := range []struct {
-		mode   string
-		domain string
-		args   []string
-	}{
-		// Iterate through each combination of regdomain and tablet mode.
-		{"tablet", "fcc", []string{"--tablet", "--domain=fcc"}},
-		{"tablet", "eu", []string{"--tablet", "--domain=eu"}},
-		{"tablet", "rest-of-world", []string{"--tablet", "--domain=rest-of-world"}},
-		{"tablet", "none", []string{"--tablet", "--domain=none"}},
-		{"non-tablet", "fcc", []string{"--notablet", "--domain=fcc"}},
-		{"non-tablet", "eu", []string{"--notablet", "--domain=eu"}},
-		{"non-tablet", "rest-of-world", []string{"--notablet", "--domain=rest-of-world"}},
-		{"non-tablet", "none", []string{"--notablet", "--domain=none"}},
-	} {
-		// Dynamic devices support all modes, whereas static devices
-		// only support the specified mode.
-		supported := len(staticMode) == 0 || (len(staticMode) != 0 && tc.mode == staticMode)
+	// Get the information of the WLAN device.
+	devInfo, err := wlan.DeviceInfo()
+	if err != nil {
+		s.Fatal("Failed reading the WLAN device information: ", err)
+	}
 
-		// Supported modes must not fail, and unsupported modes must not succeed.
-		s.Logf("Testing mode: %s, domain: %s, staticMode: %s, supported: %t", tc.mode, tc.domain, staticMode, supported)
-		err := testexec.CommandContext(ctx, setTxPowerExe, tc.args...).Run(testexec.DumpLogOnError)
-		if supported && err != nil {
-			s.Errorf("Failed to set TX power for %s mode with reg domain %s: %v", tc.mode, tc.domain, err)
-		} else if !supported && err == nil {
-			s.Errorf("Succeeded setting unsupported TX power for %s mode with reg domain %s: %v", tc.mode, tc.domain, err)
+	marvell88w8897SDIO := wlan.DeviceNames[wlan.Marvell88w8897SDIO]
+	marvell88w8997PCIE := wlan.DeviceNames[wlan.Marvell88w8997PCIE]
+
+	modes := []string{"tablet", "notablet"}
+	domains := []string{"fcc", "eu", "rest-of-world", "none"}
+	sources := []string{"tablet_mode", "reg_domain", "proximity", "udev_event", "unknown"}
+	for _, mode := range modes {
+		for _, domain := range domains {
+			for _, source := range sources {
+				supported := true
+				// Marvel devices does not support changing the tx power based on reg_domain.
+				if source == "reg_domain" && (devInfo.Name == marvell88w8897SDIO || devInfo.Name == marvell88w8997PCIE) {
+					supported = false
+				} else {
+					// Dynamic devices support all modes, whereas static devices
+					// only support the specified mode.
+					supported = len(staticMode) == 0 || (len(staticMode) != 0 && mode == staticMode)
+				}
+
+				// Supported modes must not fail, and unsupported modes must not succeed.
+				var args []string
+				args = append(args, "--"+mode, "--domain="+domain, "--source="+source)
+				var err error
+				if supported {
+					err = testexec.CommandContext(ctx, setTxPowerExe, args...).Run(testexec.DumpLogOnError)
+				} else {
+					err = testexec.CommandContext(ctx, setTxPowerExe, args...).Run()
+				}
+				if supported && err != nil {
+					s.Errorf("Failed to set TX power for %s mode with reg domain %s and trigger source %s: %v", mode, domain, source, err)
+				} else if !supported && err == nil {
+					s.Errorf("Succeeded setting unsupported TX power for %s mode with reg domain %s and trigger source %s: %v", mode, domain, source, err)
+				}
+			}
 		}
 	}
 }
