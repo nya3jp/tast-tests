@@ -31,14 +31,14 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.TwoRoomSize,
 				},
 			}, {
 				Name:              "basic_lacros_two",
-				Timeout:           time.Minute * 50,
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					Tier:     "basic",
@@ -47,14 +47,14 @@ func init() {
 				},
 			}, {
 				Name:    "basic_small",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.SmallRoomSize,
 				},
 			}, {
 				Name:              "basic_lacros_small",
-				Timeout:           time.Minute * 50,
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					Tier:     "basic",
@@ -63,14 +63,14 @@ func init() {
 				},
 			}, {
 				Name:    "basic_large",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:              "basic_lacros_large",
-				Timeout:           time.Minute * 50,
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					Tier:     "basic",
@@ -79,14 +79,14 @@ func init() {
 				},
 			}, {
 				Name:    "basic_class",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.ClassRoomSize,
 				},
 			}, {
 				Name:              "basic_lacros_class",
-				Timeout:           time.Minute * 50,
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					Tier:     "basic",
@@ -95,14 +95,14 @@ func init() {
 				},
 			}, {
 				Name:    "plus_large",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:              "plus_lacros_large",
-				Timeout:           time.Minute * 50,
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					Tier:     "plus",
@@ -111,14 +111,14 @@ func init() {
 				},
 			}, {
 				Name:    "plus_class",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.ClassRoomSize,
 				},
 			}, {
 				Name:              "plus_lacros_class",
-				Timeout:           time.Minute * 50,
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					Tier:     "plus",
@@ -127,14 +127,14 @@ func init() {
 				},
 			}, {
 				Name:    "premium_large",
-				Timeout: time.Minute * 50,
+				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "premium",
 					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:              "premium_lacros_large",
-				Timeout:           time.Minute * 50,
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					Tier:     "premium",
@@ -143,14 +143,14 @@ func init() {
 				},
 			}, {
 				Name:    "plus_no_meet",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute*10 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.NoRoom,
 				},
 			}, {
 				Name:              "plus_lacros_no_meet",
-				Timeout:           time.Minute * 10,
+				Timeout:           time.Minute*10 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					Tier:     "plus",
@@ -159,14 +159,14 @@ func init() {
 				},
 			}, {
 				Name:    "premium_no_meet",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute*10 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					Tier: "premium",
 					Size: conference.NoRoom,
 				},
 			}, {
 				Name:              "premium_lacros_no_meet",
-				Timeout:           time.Minute * 10,
+				Timeout:           time.Minute*10 + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					Tier:     "premium",

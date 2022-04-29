@@ -35,7 +35,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "premium_meet_large",
-				Timeout: 50 * time.Minute,
+				Timeout: 50*time.Minute + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
 					// This is a premium test case for extended display CUJ.
 					// But this case just calls Google Meet "plus" case, so the given tier
@@ -46,7 +46,7 @@ func init() {
 			},
 			{
 				Name:              "premium_lacros_meet_large",
-				Timeout:           50 * time.Minute,
+				Timeout:           50*time.Minute + conference.CPUIdleTimeout,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: conference.TestParameters{
 					// This is a premium test case for extended display CUJ.
