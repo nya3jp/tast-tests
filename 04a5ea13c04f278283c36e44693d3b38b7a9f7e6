@@ -16,6 +16,23 @@
       "message": "To assing a tast reviewer, include tast-owners@google.com as a reviewer.\nDon\u0027t include reviewers directly.\n\nhttp://go/tast-reviews",
       "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54805e67_0cac21c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-04-29T00:58:20Z",
+      "side": 1,
+      "message": "I think all your methods here should be pointer receivers? They\u0027re operating on copies unneccesarily.\n\nhttps://go.dev/tour/methods/4",
+      "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
