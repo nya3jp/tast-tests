@@ -16,6 +16,52 @@
       "message": "Thanks!",
       "revId": "b895facd57580cedc08f8b8c7da1c8eef543446b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74994c77_cfb97136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:53:00Z",
+      "side": 1,
+      "message": "Please reserve time for cleanup so it will work even if the test times out. Here is an example of how that is done:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go;drc\u003d3dac3d750dbc830382d921902954ace04b056e4f;l\u003d44",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 19
+      },
+      "revId": "b895facd57580cedc08f8b8c7da1c8eef543446b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f29dba0c_f377c8c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:53:00Z",
+      "side": 1,
+      "message": "Depending on how much time you are willing to reserve for cleanup, you might consider allowing this to use that time too.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 104
+      },
+      "revId": "b895facd57580cedc08f8b8c7da1c8eef543446b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
