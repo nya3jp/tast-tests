@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -35,6 +36,7 @@ const (
 
 // GoogleDocs implements the ProductivityApp interface.
 type GoogleDocs struct {
+	br    *browser.Browser
 	cr    *chrome.Chrome
 	tconn *chrome.TestConn
 	ui    *uiauto.Context
@@ -44,7 +46,7 @@ type GoogleDocs struct {
 
 // CreateDocument creates a new document from GDocs.
 func (app *GoogleDocs) CreateDocument(ctx context.Context) error {
-	_, err := app.cr.NewConn(ctx, cuj.GoogleDocsURL)
+	_, err := app.br.NewConn(ctx, cuj.GoogleDocsURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleDocsURL)
 	}
@@ -57,7 +59,7 @@ func (app *GoogleDocs) CreateDocument(ctx context.Context) error {
 
 // CreateSlides creates a new presentation from GDocs.
 func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
-	_, err := app.cr.NewConn(ctx, cuj.GoogleSlidesURL)
+	_, err := app.br.NewConn(ctx, cuj.GoogleSlidesURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleSlidesURL)
 	}
@@ -76,7 +78,7 @@ func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
 
 // CreateSpreadsheet creates a new spreadsheet by copying from sample spreadsheet.
 func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context, sampleSheetURL string) (string, error) {
-	conn, err := app.cr.NewConn(ctx, sampleSheetURL+"/copy")
+	conn, err := app.br.NewConn(ctx, sampleSheetURL+"/copy")
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to open URL: %s", sampleSheetURL)
 	}
@@ -98,7 +100,7 @@ func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context, sampleSheetURL str
 func (app *GoogleDocs) OpenSpreadsheet(ctx context.Context, filename string) error {
 	testing.ContextLog(ctx, "Opening an existing spreadsheet: ", filename)
 
-	_, err := app.cr.NewConn(ctx, cuj.GoogleSheetsURL)
+	_, err := app.br.NewConn(ctx, cuj.GoogleSheetsURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleSheetsURL)
 	}
@@ -308,6 +310,11 @@ func (app *GoogleDocs) Cleanup(ctx context.Context, sheetName string) error {
 		}
 	}
 	return nil
+}
+
+// SetBrowser sets browser to chrome or lacros.
+func (app *GoogleDocs) SetBrowser(br *browser.Browser) {
+	app.br = br
 }
 
 // maybeCloseWelcomeDialog closes the "Welcome to Google Docs/Slides/Sheets" dialog if it exists.
