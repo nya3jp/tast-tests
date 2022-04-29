@@ -16,6 +16,23 @@
       "message": "Xiyuan, could you PTAL?",
       "revId": "077efb2b9a095d95bddb47d621df9ca6a481666b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76e8e6e0_f505d792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-04-29T19:37:30Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "077efb2b9a095d95bddb47d621df9ca6a481666b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
