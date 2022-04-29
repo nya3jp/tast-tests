@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "22279421_9f2fbe20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-04-29T21:50:49Z",
+      "side": 1,
+      "message": "If there isn\u0027t a P2P-device entry, I think it\u0027s fine to assume that there\u0027s no additional restriction on P2P device count other than the explicit P2P-client and P2P-GO counts.",
+      "parentUuid": "12668e41_c86cfd9d",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d492fd08_4322ff57",
