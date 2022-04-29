@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edfe75ac_957bd6fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:39:16Z",
+      "side": 1,
+      "message": "key",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 7
+      },
+      "revId": "bc1753472762f7adec2cce850d127f13d06b1434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311afe71_fc05926c",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:39:16Z",
+      "side": 1,
+      "message": "I think default should be `true`",
+      "range": {
+        "startLine": 364,
+        "startChar": 36,
+        "endLine": 364,
+        "endChar": 41
+      },
+      "revId": "bc1753472762f7adec2cce850d127f13d06b1434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c95260c_aa4c3926",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:39:16Z",
+      "side": 1,
+      "message": "rename to DisableHIDScreenOnOobe and remove `!`\n\nto avoid double negative",
+      "range": {
+        "startLine": 119,
+        "startChar": 9,
+        "endLine": 119,
+        "endChar": 35
+      },
+      "revId": "bc1753472762f7adec2cce850d127f13d06b1434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
