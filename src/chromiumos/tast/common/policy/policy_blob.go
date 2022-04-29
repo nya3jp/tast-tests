@@ -22,7 +22,7 @@ const (
 type Blob struct {
 	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
 	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
-	ExtensionPM          BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
+	ExtensionPM          BlobPolicyMap                `json:"-"` // Extension policies are passed via separate files.
 	PublicAccountPs      map[string]*BlobUserPolicies `json:"-"` // Public account policies are identical to user policies.
 	PolicyUser           string                       `json:"policy_user"`
 	ManagedUsers         []string                     `json:"managed_users"`
