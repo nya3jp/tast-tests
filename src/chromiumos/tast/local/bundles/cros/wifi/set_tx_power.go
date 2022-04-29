@@ -6,6 +6,7 @@ package wifi
 
 import (
 	"context"
+	"strings"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/crosconfig"
@@ -50,33 +51,27 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 		s.Logf("Testing static mode: %s", staticMode)
 	}
 
-	// For both static and dynamic devices, attempt to set transmit power.
-	for _, tc := range []struct {
-		mode   string
-		domain string
-		args   []string
-	}{
-		// Iterate through each combination of regdomain and tablet mode.
-		{"tablet", "fcc", []string{"--tablet", "--domain=fcc"}},
-		{"tablet", "eu", []string{"--tablet", "--domain=eu"}},
-		{"tablet", "rest-of-world", []string{"--tablet", "--domain=rest-of-world"}},
-		{"tablet", "none", []string{"--tablet", "--domain=none"}},
-		{"non-tablet", "fcc", []string{"--notablet", "--domain=fcc"}},
-		{"non-tablet", "eu", []string{"--notablet", "--domain=eu"}},
-		{"non-tablet", "rest-of-world", []string{"--notablet", "--domain=rest-of-world"}},
-		{"non-tablet", "none", []string{"--notablet", "--domain=none"}},
-	} {
-		// Dynamic devices support all modes, whereas static devices
-		// only support the specified mode.
-		supported := len(staticMode) == 0 || (len(staticMode) != 0 && tc.mode == staticMode)
+	modes := []string{"--tablet", "--notablet"}
+	domains := []string{"--domain=fcc", "--domain=eu", "--domain=rest-of-world", "--domain=none"}
+	sources := []string{"--source=tablet_mode", "--source=reg_domain", "--source=proximity", "--source=udev_event", "--source=unknown"}
+	for _, mode := range modes {
+		for _, domain := range domains {
+			for _, source := range sources {
+				// Dynamic devices support all modes, whereas static devices
+				// only support the specified mode.
+				supported := len(staticMode) == 0 || (len(staticMode) != 0 && mode == staticMode)
 
-		// Supported modes must not fail, and unsupported modes must not succeed.
-		s.Logf("Testing mode: %s, domain: %s, staticMode: %s, supported: %t", tc.mode, tc.domain, staticMode, supported)
-		err := testexec.CommandContext(ctx, setTxPowerExe, tc.args...).Run(testexec.DumpLogOnError)
-		if supported && err != nil {
-			s.Errorf("Failed to set TX power for %s mode with reg domain %s: %v", tc.mode, tc.domain, err)
-		} else if !supported && err == nil {
-			s.Errorf("Succeeded setting unsupported TX power for %s mode with reg domain %s: %v", tc.mode, tc.domain, err)
+				// Supported modes must not fail, and unsupported modes must not succeed.
+				s.Logf("Testing mode=%s, %s, %s, staticMode=%s, supported=%t", strings.TrimLeft(mode, "--"), strings.TrimLeft(domain, "--"), strings.TrimLeft(source, "--"), staticMode, supported)
+				var args []string
+				args = append(args, mode, domain, source)
+				err := testexec.CommandContext(ctx, setTxPowerExe, args...).Run(testexec.DumpLogOnError)
+				if supported && err != nil {
+					s.Errorf("Failed to set TX power for %s mode with reg domain %s and trigger source %s: %v", mode, domain, source, err)
+				} else if !supported && err == nil {
+					s.Errorf("Succeeded setting unsupported TX power for %s mode with reg domain %s and trigger source %s: %v", mode, domain, source, err)
+				}
+			}
 		}
 	}
 }
