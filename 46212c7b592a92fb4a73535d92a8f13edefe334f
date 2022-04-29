@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ec183b_b91218f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1360995
+      },
+      "writtenOn": "2022-04-29T12:23:33Z",
+      "side": 1,
+      "message": "encrypted?",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "46212c7b592a92fb4a73535d92a8f13edefe334f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d359bb6_7ed0db6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1360995
+      },
+      "writtenOn": "2022-04-29T12:23:33Z",
+      "side": 1,
+      "message": "is \"video\" right here? I didn\u0027t see a video test file for this upload test.",
+      "range": {
+        "startLine": 215,
+        "startChar": 39,
+        "endLine": 215,
+        "endChar": 44
+      },
+      "revId": "46212c7b592a92fb4a73535d92a8f13edefe334f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c446556_3753428e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1360995
+      },
+      "writtenOn": "2022-04-29T12:23:33Z",
+      "side": 1,
+      "message": "For my own info, would these tast tests run on the CQ? I\u0027m asking because this kind of testing logic relies on the way the dialog is built and what string it contains, so if a later CL changes that we would need to update this test.\n\nIf it does run on the regular CQ then this is fine, otherwise I would like you to add a comment to content_analysis_dialog.h to mitigate this.",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 136
+      },
+      "revId": "46212c7b592a92fb4a73535d92a8f13edefe334f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
