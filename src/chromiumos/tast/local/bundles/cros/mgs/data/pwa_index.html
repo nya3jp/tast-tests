@@ -1,0 +1,18 @@
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<head>
+  <title>Test PWA Title</title>
+  <link rel="manifest" href="/pwa_manifest.json" />
+</head>
+
+<body>
+  <h1>Test PWA Heading</h1>
+  <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/pwa_service.js');
+      });
+    }
+  </script>
+</body>
