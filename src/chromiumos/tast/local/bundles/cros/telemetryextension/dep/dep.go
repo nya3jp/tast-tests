@@ -19,6 +19,7 @@ var targetModelList = []string{
 
 	// "brya" board:
 	"redrix",
+	"vell",
 
 	// "dedede" board:
 	"drawcia",
@@ -80,6 +81,7 @@ var allAllowlistedOEMModels = []string{
 
 	// "brya" board:
 	"redrix",
+	"vell",
 
 	// "chell" board:
 	"chell",
