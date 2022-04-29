@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ff35b2_5da71866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:35:06Z",
+      "side": 1,
+      "message": "I think 3 should be enough? Owner login, not-owner login, not-owner login when network is offline",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fbc167_38bce269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:35:06Z",
+      "side": 1,
+      "message": "400 ? 😊\nI\u0027d suggest to make it 10 secs",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4134ac54_121f6abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:35:06Z",
+      "side": 1,
+      "message": "fix",
+      "range": {
+        "startLine": 77,
+        "startChar": 20,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1d81cb5_ae7147f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:35:06Z",
+      "side": 1,
+      "message": "please change to more verbose name.\n\n\"clickSignInAsExistingUserLink\" ?",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 11
+      },
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1403776e_055d6f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:35:06Z",
+      "side": 1,
+      "message": "do you want to check if user is in the session?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/login/offline.go;l\u003d88?q\u003dWaitForLoggedIn%20package:chromeos\u0026type\u003dcs",
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0196941_64fc80d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:35:06Z",
+      "side": 1,
+      "message": "why not 1 ? :)",
+      "range": {
+        "startLine": 119,
+        "startChar": 24,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6856c37_49f33d87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:35:06Z",
+      "side": 1,
+      "message": "ui.leftClick ?",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98196eac_1f1c5b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-29T07:35:06Z",
+      "side": 1,
+      "message": "why do you need the 3rd user?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
