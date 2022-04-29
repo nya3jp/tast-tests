@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5d6d85_0cfac3d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195969de_dc8ec8bb",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7e27ec5_211252ef",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae9dc78_80260b4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7e27ec5_211252ef",
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53af5070_2e355ca1",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-04-28T08:44:08Z",
       "side": 1,
       "message": "nit: I\u0027d recommend to shutdown in the reverse order of the setup.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4daedf96_8db06203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53af5070_2e355ca1",
       "range": {
         "startLine": 105,
         "startChar": 1,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b08871e_6bbf89c9",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf296cde_369b7762",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "967ce447_a790fa6e",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-04-26T20:40:02Z",
       "side": 1,
       "message": "https://crrev.com/c/3607848 added this with the global variable. You can rebase to that.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b1b6f1_8a39bf4a",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "967ce447_a790fa6e",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df0a7aea_bd99db8a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b8e1503_401a41ed",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9aa2fbcd_370581c5",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-04-26T20:40:02Z",
       "side": 1,
       "message": "could be removed",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb933642_164fe18e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa2fbcd_370581c5",
       "range": {
         "startLine": 76,
         "startChar": 0,
@@ -196,6 +358,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae343e24_9088b65d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4c5bdcc_1869c607",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be8b6dc6_68638b0c",
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65932100_1a07986f",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be8b6dc6_68638b0c",
+      "range": {
+        "startLine": 54,
+        "startChar": 30,
+        "endLine": 54,
+        "endChar": 31
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b18df1ca_fa1ca55b",
@@ -232,6 +442,30 @@
       "writtenOn": "2022-04-26T20:40:02Z",
       "side": 1,
       "message": "could be removed",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "f9d2590544d7b6c7ca0361f0a580a1a5d703a02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0935d442_576089f8",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-04-29T02:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b18df1ca_fa1ca55b",
       "range": {
         "startLine": 55,
         "startChar": 0,
