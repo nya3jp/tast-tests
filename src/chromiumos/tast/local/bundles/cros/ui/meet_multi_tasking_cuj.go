@@ -268,25 +268,25 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 			perf.SmallerIsBetter, []int64{0, 3}),
 		// Browser metrics config, collected from ash-chrome or lacros-chrome
 		// depending on the browser being used.
-		cujrecorder.NewCustomMetricConfigWithTestConn(
+		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
 			perf.SmallerIsBetter, []int64{5, 10}, bTconn),
 	}
 	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
-		configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
+		configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
 			[]int64{50, 80}, bTconn))
 	}
-	configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
+	configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 		"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter,
 		[]int64{80000, 400000}, bTconn))
-	configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
+	configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 		"Event.Latency.EndToEnd.Mouse", "microsecond", perf.SmallerIsBetter,
 		[]int64{80000, 400000}, bTconn))
-	configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
+	configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 		"PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
 		perf.SmallerIsBetter, []int64{4000, 5000}, bTconn))
-	configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
+	configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 		"PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
 		perf.SmallerIsBetter, []int64{4000, 5000}, bTconn))
 

@@ -167,7 +167,7 @@ func Run(ctx context.Context, s *testing.State) {
 
 		// Browser metrics config, collected from ash-chrome or lacros-chrome
 		// depending on the browser being used.
-		cujrecorder.NewCustomMetricConfigWithTestConn(
+		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 			"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter,
 			[]int64{800, 1600}, bTconn),
 	}

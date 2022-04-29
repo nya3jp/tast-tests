@@ -87,11 +87,11 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfigWithTestConn("Event.Latency.EndToEnd.KeyPress", "microseconds",
+		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn("Event.Latency.EndToEnd.KeyPress", "microseconds",
 			perf.SmallerIsBetter, []int64{80000, 400000}, bTconn),
-		cujrecorder.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
+		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
 			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn),
-		cujrecorder.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
+		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
 			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn)}
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
 	if err != nil {
