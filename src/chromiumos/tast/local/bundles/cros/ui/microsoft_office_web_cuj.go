@@ -23,12 +23,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MicrosoftOfficeWebCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of Microsoft Office web version CUJ",
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "jane.yang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
 			"ui.ms_username",            // Required. Expecting the username of the "Microsoft" account.
 			"ui.ms_password",            // Required. Expecting the password of the "Microsoft" account.
@@ -38,22 +37,49 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "plus",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 15 * time.Minute,
-				Val:     cuj.Plus,
+				Val: productivitycuj.ProductivityParam{
+					Tier: cuj.Plus,
+				},
+			},
+			{
+				Name:              "plus_lacros",
+				Fixture:           "loggedInAndKeepStateLacros",
+				Timeout:           15 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: productivitycuj.ProductivityParam{
+					Tier:     cuj.Plus,
+					IsLacros: true,
+				},
 			},
 			{
 				Name:      "premium",
+				Fixture:   "loggedInAndKeepState",
 				Timeout:   15 * time.Minute,
 				ExtraData: []string{"productivity_cuj_voice_to_text_en.wav"},
-				Val:       cuj.Premium,
+				Val: productivitycuj.ProductivityParam{
+					Tier: cuj.Premium,
+				},
+			},
+			{
+				Name:              "premium_lacros",
+				Fixture:           "loggedInAndKeepStateLacros",
+				Timeout:           15 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraData:         []string{"productivity_cuj_voice_to_text_en.wav"},
+				Val: productivitycuj.ProductivityParam{
+					Tier:     cuj.Premium,
+					IsLacros: true,
+				},
 			},
 		},
 	})
 }
 
 func MicrosoftOfficeWebCUJ(ctx context.Context, s *testing.State) {
+	p := s.Param().(productivitycuj.ProductivityParam)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-
 	sampleSheetURL, ok := s.Var("ui.sampleMSOfficeSheetURL")
 	if !ok {
 		s.Fatal("Require variable ui.sampleMSOfficeSheetURL is not provided")
@@ -107,19 +133,21 @@ func MicrosoftOfficeWebCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	tier := s.Param().(cuj.Tier)
-
 	username := s.RequiredVar("ui.ms_username")
 	password := s.RequiredVar("ui.ms_password")
 
-	office := productivitycuj.NewMicrosoftWebOffice(cr, tconn, uiHdl, kb, tabletMode, username, password)
+	office := productivitycuj.NewMicrosoftWebOffice(tconn, uiHdl, kb, tabletMode, p.IsLacros, username, password)
 
 	var expectedText, testFileLocation string
-	if tier == cuj.Premium {
+	if p.Tier == cuj.Premium {
 		expectedText = "Mary had a little lamb whose fleece was white as snow And everywhere that Mary went the lamb was sure to go"
 		testFileLocation = s.DataPath("productivity_cuj_voice_to_text_en.wav")
 	}
-	if err := productivitycuj.Run(ctx, cr, office, tier, tabletMode, browser.TypeAsh, s.OutDir(), sampleSheetURL, expectedText, testFileLocation); err != nil {
+	bt := browser.TypeAsh
+	if p.IsLacros {
+		bt = browser.TypeLacros
+	}
+	if err := productivitycuj.Run(ctx, cr, office, p.Tier, tabletMode, bt, s.OutDir(), sampleSheetURL, expectedText, testFileLocation); err != nil {
 		s.Fatal("Failed to run productivity cuj: ", err)
 	}
 }
