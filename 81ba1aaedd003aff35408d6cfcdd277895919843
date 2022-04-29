@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8a5e09_41aa850c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-29T11:22:30Z",
+      "side": 1,
+      "message": "Oops, that was actually a comment to myself. It is a symlink already...",
+      "parentUuid": "f5690c34_1a3262ed",
+      "range": {
+        "startLine": 30,
+        "startChar": 40,
+        "endLine": 30,
+        "endChar": 47
+      },
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4c36e4b_2916c8eb",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8998cf60_510df502",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-29T11:22:30Z",
+      "side": 1,
+      "message": "I\u0027d prefer to actually do that, as that test is supposed to verify that \"the camera works\".",
+      "parentUuid": "e4c36e4b_2916c8eb",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3abfa957_620b1a2d",
         "filename": "src/chromiumos/tast/local/mgs/mgs.go",
         "patchSetId": 3
@@ -94,6 +142,24 @@
       "writtenOn": "2022-04-29T09:36:10Z",
       "side": 1,
       "message": "I see there is a comment in the commit message:\n\n\"Add the account id as it is generated for MGS to Chrome in order to be\nable to access the user\u0027s home.\"\n\nBut I don\u0027t see why that needs to be added here.",
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f265bb06_4b3b4b00",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-29T11:22:30Z",
+      "side": 1,
+      "message": "Because otherwise the User is going to be set incorrectly, and cryptohome won\u0027t find the correct home directory when called here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/cca.go;l\u003d874",
+      "parentUuid": "3abfa957_620b1a2d",
       "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
