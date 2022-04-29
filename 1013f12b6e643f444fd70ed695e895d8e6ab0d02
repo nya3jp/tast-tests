@@ -16,6 +16,46 @@
       "message": "Thanks in advance.",
       "revId": "1013f12b6e643f444fd70ed695e895d8e6ab0d02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "353f8eed_996f239b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-04-29T15:25:01Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "1013f12b6e643f444fd70ed695e895d8e6ab0d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89c480d_4110f670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-04-29T15:25:01Z",
+      "side": 1,
+      "message": "Isn\u0027t it already there once the website is loaded?",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "1013f12b6e643f444fd70ed695e895d8e6ab0d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
