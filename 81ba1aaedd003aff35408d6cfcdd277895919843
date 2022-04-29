@@ -222,6 +222,24 @@
       "parentUuid": "b8cb0f15_840631bb",
       "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e7ad33_f91d261a",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-29T11:54:12Z",
+      "side": 1,
+      "message": "Got it. Then, could I ask you to add nil check in the \u0027else\u0027 that it has to be set. Otherwise, throw an error:\n\nnil, nil, errors.New(\"mgs.MGSUser() option was not set. Use that option with MGS user ID\")\n\nor something like that and update the doc for mgs.New().\n\nThat would be complementary, but wait. It will not be backward compatible 😞 Could you please add TODO and assign it to me to do so?",
+      "parentUuid": "fc2743d1_fb0a94e1",
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
