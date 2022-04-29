@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "091d9df8_06bbe973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-04-29T06:10:26Z",
+      "side": 1,
+      "message": "Don\u0027t think there\u0027s a clean way to find the check marks, I used the strings instead. wdyt?\nhttps://crrev.com/c/3613654",
+      "parentUuid": "6034c71c_61c0b5b4",
+      "range": {
+        "startLine": 73,
+        "startChar": 47,
+        "endLine": 73,
+        "endChar": 84
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00c9ceba_baa7e52b",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-28T06:37:29Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 81,
+        "startChar": 66,
+        "endLine": 81,
+        "endChar": 79
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d159c8_0b598a3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-04-29T06:10:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00c9ceba_baa7e52b",
       "range": {
         "startLine": 81,
         "startChar": 66,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea59e712_0a41119a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-04-29T06:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd645a7a_5cfef0ef",
+      "range": {
+        "startLine": 102,
+        "startChar": 82,
+        "endLine": 102,
+        "endChar": 94
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32601dd2_055e66b7",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d35e4ab_8c53a917",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-04-29T06:10:26Z",
+      "side": 1,
+      "message": "There is not, but we can duplicate this for example:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go;l\u003d163-197\n\nI don\u0027t think it\u0027s necessary though, by waiting for the keyboard to be detected, the button should be enabled by then. So, `CheckRestriction` should work fine.\n\nI\u0027ve removed the WaitUntilExists all together",
+      "parentUuid": "32601dd2_055e66b7",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16fac48d_a5c365f2",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-04-28T06:37:29Z",
       "side": 1,
       "message": "nit: switch from negative to positive\nDisableHIDScreenOnOobe:      true,",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 42
+      },
+      "revId": "428a6ca86c7abb06c767511f7816b97d7c4ef9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f7190e_fa752f3b",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-04-29T06:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16fac48d_a5c365f2",
       "range": {
         "startLine": 364,
         "startChar": 0,
