@@ -25,9 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DefaultSerialGuardSetting,
+		Func:         SerialAskForUrls,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Tests the behavior of the DefaultSerialGuardSetting policy by checking that it correctly configures access to the serial port selection prompt",
+		Desc:         "Tests the behavior of the SerialAskForUrls policy by checking that it correctly configures access to the serial port selection prompt",
 		Contacts: []string{
 			"cmfcmf@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
@@ -52,8 +52,8 @@ func init() {
 	})
 }
 
-// DefaultSerialGuardSetting tests the DefaultSerialGuardSetting policy.
-func DefaultSerialGuardSetting(ctx context.Context, s *testing.State) {
+// SerialAskForUrls tests the SerialAskForUrls policy.
+func SerialAskForUrls(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
@@ -63,22 +63,61 @@ func DefaultSerialGuardSetting(ctx context.Context, s *testing.State) {
 	for _, param := range []struct {
 		name             string
 		wantSerialDialog bool
-		policy           *policy.DefaultSerialGuardSetting
+		policies         []policy.Policy
 	}{
 		{
-			name:             "blocked",
-			wantSerialDialog: false,
-			policy:           &policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingBlock},
+			name:             "set",
+			wantSerialDialog: true,
+			policies: []policy.Policy{
+				&policy.SerialAskForUrls{Val: []string{httpServer.URL}}},
 		},
 		{
-			name:             "non_blocked",
+			name:             "set_and_ask_by_default",
 			wantSerialDialog: true,
-			policy:           &policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingAsk},
+			policies: []policy.Policy{
+				&policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingAsk},
+				&policy.SerialAskForUrls{Val: []string{httpServer.URL}}},
 		},
+		{
+			name:             "set_and_block_by_default",
+			wantSerialDialog: true,
+			policies: []policy.Policy{
+				&policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingBlock},
+				&policy.SerialAskForUrls{Val: []string{httpServer.URL}}},
+		},
+		{
+			name:             "set_non_matching_and_block_by_default",
+			wantSerialDialog: false,
+			policies: []policy.Policy{
+				&policy.DefaultSerialGuardSetting{Val: serial.DefaultSerialGuardSettingBlock},
+				&policy.SerialAskForUrls{Val: []string{"https://example.com"}}},
+		},
+		// TODO(crbug.com/1321219): The behavior of when these policies conflict
+		// with each other does not follow the documented behavior. According to the
+		// documentation, neither of both policies should be applied, but it looks
+		// like in reality, the request is always blocked.
+		//
+		// {
+		// 	name:             "conflict_and_block_by_default",
+		// 	wantSerialDialog: false,
+		// 	policies:           []policy.Policy{
+		// 		&policy.DefaultSerialGuardSetting{Val: defaultSerialGuardSettingBlock},
+		// 		&policy.SerialAskForUrls{Val: []string{httpServer.URL}},
+		// 		&policy.SerialBlockedForUrls{Val: []string{httpServer.URL}}},
+		// },
+		// {
+		// 	name:             "conflict_and_ask_by_default",
+		// 	wantSerialDialog: true,
+		// 	policies:           []policy.Policy{
+		// 		&policy.DefaultSerialGuardSetting{Val: defaultSerialGuardSettingAsk},
+		// 		&policy.SerialAskForUrls{Val: []string{httpServer.URL}},
+		// 		&policy.SerialBlockedForUrls{Val: []string{httpServer.URL}}},
+		// },
 		{
 			name:             "unset",
 			wantSerialDialog: true,
-			policy:           &policy.DefaultSerialGuardSetting{Stat: policy.StatusUnset},
+			policies: []policy.Policy{
+				&policy.SerialAskForUrls{Stat: policy.StatusUnset}},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -93,7 +132,7 @@ func DefaultSerialGuardSetting(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, param.policies); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
