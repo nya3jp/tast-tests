@@ -117,6 +117,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5ee935_10b2748f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:07:29Z",
+      "side": 1,
+      "message": "This idea no longer applies.",
+      "parentUuid": "56d9ffe5_e5c06e8e",
+      "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb1896f_f68a8f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:07:29Z",
+      "side": 1,
+      "message": "This idea no longer applies.",
+      "parentUuid": "ddd9d8bf_47aa88f4",
+      "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e45652d_31d16a77",
@@ -130,6 +166,30 @@
       "writtenOn": "2022-04-11T16:35:30Z",
       "side": 1,
       "message": "This should be `open` (not capitalized) because of how the whole string will be used here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/action/action.go;drc\u003d3d16fabd45e2b06f07484ab6ccf63574842dbd4f;l\u003d42",
+      "range": {
+        "startLine": 118,
+        "startChar": 30,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ca246f_8981d4f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:07:29Z",
+      "side": 1,
+      "message": "This idea no longer applies.",
+      "parentUuid": "3e45652d_31d16a77",
       "range": {
         "startLine": 118,
         "startChar": 30,
@@ -163,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb0c0ec_c1da82c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:07:29Z",
+      "side": 1,
+      "message": "This idea no longer applies.",
+      "parentUuid": "eb80b554_da76e802",
+      "range": {
+        "startLine": 119,
+        "startChar": 44,
+        "endLine": 119,
+        "endChar": 58
+      },
+      "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88cb4b73_67d4f05c",
@@ -176,6 +260,30 @@
       "writtenOn": "2022-04-11T16:35:30Z",
       "side": 1,
       "message": "There is a code comment stating that `ClassName` is deprecated and you should use `HasClass` instead:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;drc\u003d926e0accc3e24e21c27e73bcb975a96b7c7532a8;l\u003d596",
+      "range": {
+        "startLine": 120,
+        "startChar": 32,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eed67c3_4dfe1b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:07:29Z",
+      "side": 1,
+      "message": "This idea no longer applies.",
+      "parentUuid": "88cb4b73_67d4f05c",
       "range": {
         "startLine": 120,
         "startChar": 32,
@@ -209,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb064263_5daca98c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:07:29Z",
+      "side": 1,
+      "message": "This idea no longer applies.",
+      "parentUuid": "313a6f0d_7e4d7e58",
+      "range": {
+        "startLine": 121,
+        "startChar": 17,
+        "endLine": 121,
+        "endChar": 81
+      },
+      "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca660454_6e7ae628",
@@ -222,6 +354,30 @@
       "writtenOn": "2022-04-11T16:35:30Z",
       "side": 1,
       "message": "`expandArrow`",
+      "range": {
+        "startLine": 122,
+        "startChar": 19,
+        "endLine": 122,
+        "endChar": 83
+      },
+      "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d289ad40_3c56f021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:07:29Z",
+      "side": 1,
+      "message": "This idea no longer applies.",
+      "parentUuid": "ca660454_6e7ae628",
       "range": {
         "startLine": 122,
         "startChar": 19,
@@ -255,6 +411,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f99d6581_47719bdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:07:29Z",
+      "side": 1,
+      "message": "This idea no longer applies.",
+      "parentUuid": "a2939ac8_8b461738",
+      "range": {
+        "startLine": 123,
+        "startChar": 34,
+        "endLine": 123,
+        "endChar": 43
+      },
+      "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dfc0fd8_f3aa2ddf",
@@ -268,6 +448,24 @@
       "writtenOn": "2022-04-11T16:35:30Z",
       "side": 1,
       "message": "This will look like `Failed to open Expanded Apps list view: failed to Open Launcher and go to Expanded Apps list view on step `... and so I would just write `s.Fatal(err)`. See:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/action/action.go;drc\u003d3d16fabd45e2b06f07484ab6ccf63574842dbd4f;l\u003d42",
+      "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61c8e17f_26313c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T16:07:29Z",
+      "side": 1,
+      "message": "This idea no longer applies.",
+      "parentUuid": "8dfc0fd8_f3aa2ddf",
       "revId": "a3d0b25694c03bf210e241fc43936d67d9b532c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
