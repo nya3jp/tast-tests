@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83400d2a_804a0998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-29T09:01:44Z",
+      "side": 1,
+      "message": "Volteer and Nami have failure record in the recent 20 builds. Also, certain *-kernelnext boards are failing, you have to skip them in critical test. ",
+      "revId": "0c1b3b52c153d5aa5c4748b490793e1e2bf89db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
