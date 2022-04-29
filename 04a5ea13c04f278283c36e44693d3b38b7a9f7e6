@@ -173,6 +173,24 @@
       "message": "Maybe add a helper uploadIfNeeded to reduce code duplication.",
       "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90e4c87_bfcc03db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-29T19:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7c7435f_e0eea28b",
+      "revId": "04a5ea13c04f278283c36e44693d3b38b7a9f7e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
