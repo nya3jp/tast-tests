@@ -75,3 +75,11 @@ func ExtraChromeOptions(opts ...chrome.Option) Option {
 		return nil
 	}
 }
+
+// ExternalPolicyBlob allows to specify a policy blob that is constructed externally.
+func ExternalPolicyBlob(blob *policy.Blob) Option {
+	return func(cfg *MutableConfig) error {
+		cfg.ExternalPolicyBlob = blob
+		return nil
+	}
+}
