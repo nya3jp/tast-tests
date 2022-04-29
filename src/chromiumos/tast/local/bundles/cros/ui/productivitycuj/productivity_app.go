@@ -66,6 +66,12 @@ type ProductivityApp interface {
 	SetBrowser(br *browser.Browser)
 }
 
+// ProductivityParam defines the test parameters for productivity.
+type ProductivityParam struct {
+	Tier     cuj.Tier
+	IsLacros bool
+}
+
 // dialogInfo holds the information of a dialog that will be encountered and needs to be handled during testing.
 type dialogInfo struct {
 	name string
@@ -101,6 +107,20 @@ func getClipboardText(ctx context.Context, tconn *chrome.TestConn) (string, erro
 func scrollTabPage(ctx context.Context, uiHdl cuj.UIActionHandler, idx int) error {
 	scrollActions := uiHdl.ScrollChromePage(ctx)
 	if err := uiHdl.SwitchToChromeTabByIndex(idx)(ctx); err != nil {
+		return errors.Wrap(err, "failed to switch tab")
+	}
+	for _, act := range scrollActions {
+		if err := act(ctx); err != nil {
+			return errors.Wrap(err, "failed to execute action")
+		}
+	}
+	return nil
+}
+
+// scrollTabPageByName scrolls the specified tab name of the webpage.
+func scrollTabPageByName(ctx context.Context, uiHdl cuj.UIActionHandler, name string) error {
+	scrollActions := uiHdl.ScrollChromePage(ctx)
+	if err := uiHdl.SwitchToChromeTabByName(name)(ctx); err != nil {
 		return errors.Wrap(err, "failed to switch tab")
 	}
 	for _, act := range scrollActions {
