@@ -35,6 +35,7 @@ type ServerConfiguration struct {
 	ServerCertificatePath string
 	HostedFilesBasePath   string
 	CaCertificatePath     string
+	PatternHandlers       []patternHandler // See HandleFunc().
 }
 
 func copyFile(source, destination string) error {
@@ -46,20 +47,48 @@ func copyFile(source, destination string) error {
 	return nil
 }
 
+type handlerFunction func(w http.ResponseWriter, r *http.Request)
+
+type patternHandler struct {
+	pattern string
+	handler handlerFunction
+}
+
 type httpsHandler struct {
+	serverID        int
+	patternHandlers []patternHandler
+}
+
+// HandleFunc sets a custom HTTP handler function for a specific file.
+// HandleFunc needs to be called before StartServer(). When the relative path of a requested file exactly matches
+// |pattern|, e.g. "/index.html", the server will use the ResponseWriter to set all required HTTPS
+// headers and then call the handlerFunction instead of directly serving the requested file.
+func (config *ServerConfiguration) HandleFunc(pattern string, fun handlerFunction) {
+	config.PatternHandlers = append(config.PatternHandlers, patternHandler{pattern, fun})
 }
 
 func (handler httpsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	for key, value := range server.ServerConfiguration.Headers {
-		w.Header().Set(key, value)
-	}
-	path := r.URL.String()
-	b, err := ioutil.ReadFile(server.ServerConfiguration.HostedFilesBasePath + "/" + path[1:len(path)])
-	if err != nil {
-		w.WriteHeader(404)
-	} else {
-		w.WriteHeader(200)
-		w.Write([]byte(b))
+	for _, server := range servers {
+		if server.handler.serverID != handler.serverID {
+			continue
+		}
+		for key, value := range server.ServerConfiguration.Headers {
+			w.Header().Set(key, value)
+		}
+		path := r.URL.String()
+		for _, ph := range handler.patternHandlers {
+			if ph.pattern == path {
+				ph.handler(w, r)
+				return
+			}
+		}
+		b, err := ioutil.ReadFile(server.ServerConfiguration.HostedFilesBasePath + "/" + path[1:len(path)])
+		if err != nil {
+			w.WriteHeader(404)
+		} else {
+			w.WriteHeader(200)
+			w.Write([]byte(b))
+		}
 	}
 }
 
@@ -72,7 +101,7 @@ type Server struct {
 	handler             httpsHandler
 }
 
-var server Server
+var servers []Server
 
 // Close shuts down a server that was started with the StartServer function.
 func (server Server) Close() error {
@@ -85,13 +114,12 @@ func (server Server) Close() error {
 // - the base address,
 // - an error object in case the server could not be started.
 func StartServer(config ServerConfiguration) Server {
-
-	server = Server{
+	server := Server{
 		ServerConfiguration: config,
 		server:              &http.Server{},
 		Address:             "",
 		Error:               nil,
-		handler:             httpsHandler{},
+		handler:             httpsHandler{patternHandlers: config.PatternHandlers, serverID: len(servers)},
 	}
 	address, err := net.ResolveTCPAddr("tcp", "localhost:0")
 	if err != nil {
@@ -106,8 +134,8 @@ func StartServer(config ServerConfiguration) Server {
 	server.server.Handler = &server.handler
 	go server.server.ServeTLS(listener, config.ServerCertificatePath, config.ServerKeyPath)
 	server.Address = fmt.Sprintf("https://localhost:%d", listener.Addr().(*net.TCPAddr).Port)
+	servers = append(servers, server)
 	return server
-
 }
 
 // ConfigureChromeToAcceptCertificate adds the specified CA certificate to the authorities configuration of chrome.
