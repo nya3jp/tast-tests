@@ -580,6 +580,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09ee991_844def55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-29T08:19:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba8050f3_55d309af",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82723973_66a2f18d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-29T08:19:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba8050f3_55d309af",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c525bb4b_53653f7c",
@@ -615,6 +651,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2133f3ed_bd480043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-29T08:19:32Z",
+      "side": 1,
+      "message": "Missed the Gone 😊",
+      "parentUuid": "df04c57c_71d11de4",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3853d0f_c3e1740d",
@@ -628,6 +682,24 @@
       "writtenOn": "2022-04-28T12:11:11Z",
       "side": 1,
       "message": "I\u0027m not perfectly satisfied with this change here.\n\nIf you have better ideas, please let me know.\n\nSome concerns:\n* From what I see most functions should work for the picker as well.\n* Some functions will not work (e.g., DragAndDropFile)\n* New function will potentially not work (e.g., copy/move).",
+      "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be61146_6938f06d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-29T08:19:32Z",
+      "side": 1,
+      "message": "I agree, maybe add a new package for the picker and only add the supported functions.\n\nYou can reuse code from this package there, but it\u0027s clearer for callers.",
+      "parentUuid": "e3853d0f_c3e1740d",
       "revId": "7c46ca17d311822564cd205dc6b762076959b3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
