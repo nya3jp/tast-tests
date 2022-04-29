@@ -16,6 +16,86 @@
       "message": "Adding tast owners",
       "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a17c8a8_5bb9b421",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-29T09:36:10Z",
+      "side": 1,
+      "message": "Thanks for the test.",
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5690c34_1a3262ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-29T09:36:10Z",
+      "side": 1,
+      "message": "Please add ldap or even better a ticket, otherwise it will never be done 😊",
+      "range": {
+        "startLine": 30,
+        "startChar": 40,
+        "endLine": 30,
+        "endChar": 47
+      },
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c36e4b_2916c8eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-29T09:36:10Z",
+      "side": 1,
+      "message": "I guess we don\u0027t have to verify that there is a new file in Camera folder, right?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3abfa957_620b1a2d",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-29T09:36:10Z",
+      "side": 1,
+      "message": "I see there is a comment in the commit message:\n\n\"Add the account id as it is generated for MGS to Chrome in order to be\nable to access the user\u0027s home.\"\n\nBut I don\u0027t see why that needs to be added here.",
+      "revId": "81ba1aaedd003aff35408d6cfcdd277895919843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
