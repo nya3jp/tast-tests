@@ -7,6 +7,7 @@ package fixtures
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"time"
 
@@ -136,5 +137,15 @@ func (f *fakeDMSFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 	dst = filepath.Join(s.OutDir(), "fakedms_"+fakedms.PolicyFile)
 	if err := fsutil.CopyFile(src, dst); err != nil {
 		s.Error("Failed to copy FakeDMS policies: ", err)
+	}
+
+	// Copy external policies to the current tests OutDir.
+	// Add prefix for consistency with copied policy file.
+	src = filepath.Join(f.fdmsDir, fakedms.ExtensionPolicyDir)
+	dst = filepath.Join(s.OutDir(), "fakedms_"+fakedms.ExtensionPolicyDir)
+	if stat, err := os.Stat(src); err == nil && stat.Mode()&os.ModeType == os.ModeDir {
+		if err := fsutil.CopyDir(src, dst); err != nil {
+			s.Error("Failed to copy external FakeDMS policies: ", err)
+		}
 	}
 }
