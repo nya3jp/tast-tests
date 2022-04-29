@@ -15,26 +15,36 @@ import (
 )
 
 type deviceInfo struct {
-	Address    string   `json:"address"`
-	Name       string   `json:"name"`
-	Type       string   `json:"type"`
-	Appearance uint16   `json:"appearance"`
-	Modalias   string   `json:"modalias"`
-	MTU        int16    `json:"mtu"`
-	RSSI       uint16   `json:"rssi"`
-	UUIDs      []string `json:"uuids"`
+	Address           string   `json:"address"`
+	Name              string   `json:"name"`
+	Type              string   `json:"type"`
+	Appearance        uint16   `json:"appearance"`
+	Modalias          string   `json:"modalias"`
+	MTU               int16    `json:"mtu"`
+	RSSI              uint16   `json:"rssi"`
+	UUIDs             []string `json:"uuids"`
+	BatteryPercentage []string `json:"battery_percentage"`
+}
+
+type capabilitiesInfo struct {
+	MaxAdvLen    uint8 `json:"max_adv_len"`
+	MaxScnRspLen uint8 `json:"max_scn_rsp_len"`
+	MaxTxPower   int16 `json:"max_tx_power"`
+	MinTxPower   int16 `json:"min_tx_power"`
 }
 
 type adapterInfo struct {
-	Address             string           `json:"address"`
-	Name                string           `json:"name"`
-	NumConnectedDevices jsontypes.Uint32 `json:"num_connected_devices"`
-	Powered             bool             `json:"powered"`
-	ConnectedDevices    []deviceInfo     `json:"connected_devices"`
-	Discoverable        bool             `json:"discoverable"`
-	Discovering         bool             `json:"discovering"`
-	UUIDs               []string         `json:"uuids"`
-	Modalias            string           `json:"modalias"`
+	Address               string           `json:"address"`
+	Name                  string           `json:"name"`
+	NumConnectedDevices   jsontypes.Uint32 `json:"num_connected_devices"`
+	Powered               bool             `json:"powered"`
+	ConnectedDevices      []deviceInfo     `json:"connected_devices"`
+	Discoverable          bool             `json:"discoverable"`
+	Discovering           bool             `json:"discovering"`
+	UUIDs                 []string         `json:"uuids"`
+	Modalias              string           `json:"modalias"`
+	ServiceAllowList      []string         `json:"service_allow_list"`
+	SupportedCapabilities capabilitiesInfo `json:"supported_capabilities"`
 }
 
 type bluetoothInfo struct {
