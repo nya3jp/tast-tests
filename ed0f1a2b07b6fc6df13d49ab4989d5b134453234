@@ -39,6 +39,30 @@
       },
       "revId": "ed0f1a2b07b6fc6df13d49ab4989d5b134453234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "745b12e4_d3c917a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T17:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec4f99a5_bc74bf7a",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "ed0f1a2b07b6fc6df13d49ab4989d5b134453234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

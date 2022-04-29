@@ -246,6 +246,30 @@
       },
       "revId": "16cb5d62d4d5776e2cef1ae843618e705f41409a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b4ca16b_c9b993c9",
+        "filename": "src/chromiumos/tast/local/personalization/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-29T17:50:22Z",
+      "side": 1,
+      "message": "Thank you! I have updated fixture.go file",
+      "parentUuid": "1ee012b5_64b82c26",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "16cb5d62d4d5776e2cef1ae843618e705f41409a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
