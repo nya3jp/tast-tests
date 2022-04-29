@@ -39,6 +39,30 @@
       },
       "revId": "a525d8941ada48a93c768a8bcc25835dfa624cf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2206f425_d26bcfe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-29T19:10:35Z",
+      "side": 1,
+      "message": "When I\u0027ve landed the initial code from this test, this enum was not available. It was something I\u0027ve actually missed for the \u0027chrome\u0027 variant, because lacrosfixt.NewConfig fn was requiring enums meant for Lacros only (Rootfs and Omaha). So that enum came handy therefore.\n\nI thought this was a straightforward change. I\u0027m sorry. Do you prefer to see this type of changes happening separately instead?",
+      "parentUuid": "29f1e992_8929f216",
+      "range": {
+        "startLine": 80,
+        "startChar": 20,
+        "endLine": 80,
+        "endChar": 39
+      },
+      "revId": "a525d8941ada48a93c768a8bcc25835dfa624cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
