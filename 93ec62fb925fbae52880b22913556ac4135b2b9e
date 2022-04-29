@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94beb6b4_3b103619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/update_engine_consumer_auto_update_feature.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-29T19:24:28Z",
+      "side": 1,
+      "message": "Done!\n\nThanks, that simplies it at the top level",
+      "parentUuid": "8e4dc034_91278161",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "93ec62fb925fbae52880b22913556ac4135b2b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "995d9453_997ed228",
