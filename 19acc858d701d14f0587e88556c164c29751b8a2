@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd979c8_865a9a9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-29T09:03:30Z",
+      "side": 1,
+      "message": "Some boards have sparse failure records in the recent 20 builds. Do you clarify the flakiness reasons?\n \nAlso, certain *-kernelnext boards are failing, you have to skip them in critical test.\n",
+      "revId": "19acc858d701d14f0587e88556c164c29751b8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
