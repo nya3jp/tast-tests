@@ -16,6 +16,69 @@
       "message": "I\u0027m not sure if this test will be too brittle if, for example, google news is not a PWA anymore. Or if the PWA cannot be installed over the same URL anymore.",
       "revId": "4aed90f1e2cf5cd67bf926774d27147589365aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df42474a_0912e57c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-04-29T09:10:37Z",
+      "side": 1,
+      "message": "MGS + PWA parts LGTM",
+      "revId": "4aed90f1e2cf5cd67bf926774d27147589365aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e79010_90de676e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/platform_web_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-04-29T09:10:37Z",
+      "side": 1,
+      "message": "nit: unused const",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "4aed90f1e2cf5cd67bf926774d27147589365aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38dbd3d8_bd26ab67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/platform_web_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-04-29T09:10:37Z",
+      "side": 1,
+      "message": "I think this should be Progressive Web App.",
+      "range": {
+        "startLine": 25,
+        "startChar": 29,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "4aed90f1e2cf5cd67bf926774d27147589365aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
