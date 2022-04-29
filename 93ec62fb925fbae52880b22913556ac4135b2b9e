@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b485686b_1f8f6660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/update_engine_consumer_auto_update_feature.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-29T18:45:56Z",
+      "side": 1,
+      "message": "We want to break here, since an update check was performed when it wasn\u0027t supposed to.",
+      "parentUuid": "6ce4b12f_4fbf0ab9",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 29
+      },
+      "revId": "93ec62fb925fbae52880b22913556ac4135b2b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da8b8199_cfbf1741",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-29T18:32:03Z",
       "side": 1,
       "message": "nit/style: can be simpliefied to\n\n  if err :\u003d testing.Poll(... {\n    status, err :\u003d updateengine.Status(ctx)\n    if err !\u003d nil {\n      return ...\n    }\n    e :\u003d status.LastCheckedTime !\u003d 0\n    if enabled !\u003d e {\n      return ...\n    }\n    return nil\n  }, ...): err !\u003d nil {\n  ...",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "93ec62fb925fbae52880b22913556ac4135b2b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74947e61_4c14547d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/update_engine_consumer_auto_update_feature.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-29T18:45:56Z",
+      "side": 1,
+      "message": "It seems simpler to read to break them up at the top level (enabled)\nSince we\u0027ll keep maintaining this test, fine to keep as is?",
+      "parentUuid": "da8b8199_cfbf1741",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a70e06e_135bf86c",
+        "filename": "src/chromiumos/tast/local/updateengine/prefs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-29T18:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "995d9453_997ed228",
+      "range": {
+        "startLine": 59,
+        "startChar": 40,
+        "endLine": 59,
+        "endChar": 46
+      },
+      "revId": "93ec62fb925fbae52880b22913556ac4135b2b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a1be499_f280cff9",
@@ -128,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4374e243_4558699f",
+        "filename": "src/chromiumos/tast/local/updateengine/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-29T18:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a1be499_f280cff9",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "93ec62fb925fbae52880b22913556ac4135b2b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3b9862d_40508794",
@@ -141,6 +237,30 @@
       "writtenOn": "2022-04-29T18:32:03Z",
       "side": 1,
       "message": "nit/style: in go, we do not use getter prefix, like get, has, is.\n\njust FeatureEnabled()",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 7
+      },
+      "revId": "93ec62fb925fbae52880b22913556ac4135b2b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87352cd6_97570b4c",
+        "filename": "src/chromiumos/tast/local/updateengine/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-04-29T18:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3b9862d_40508794",
       "range": {
         "startLine": 86,
         "startChar": 5,
