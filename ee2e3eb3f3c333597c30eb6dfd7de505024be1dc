@@ -50,6 +50,23 @@
       "message": "Oh wait, msta@ is a shadow reviewer, let me remove the CQ +2",
       "revId": "ee2e3eb3f3c333597c30eb6dfd7de505024be1dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2922f287_f75d1994",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-04-29T18:30:29Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "ee2e3eb3f3c333597c30eb6dfd7de505024be1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
