@@ -41,11 +41,6 @@ const (
 	// reboot.
 	rebootPersistDir = "/mnt/stateful_partition/unencrypted/preserve/"
 
-	// usePerUserMetricsConsent is the file governing whether we use
-	// per-user metrics consent.
-	// TODO(b/214111113): Once all CLs are in and this defaults to on, remove this.
-	usePerUserMetricsConsent = "/run/metrics/use-per-user-consent"
-
 	// daemonStoreConsentName is the name of file in daemon-store that
 	// gives per-user consent state.
 	daemonStoreConsentName = "consent-enabled"
@@ -360,10 +355,6 @@ func CreatePerUserConsent(ctx context.Context, enable bool) error {
 			return errors.Wrapf(err, "failed writing consent-enabled file %s", f)
 		}
 	}
-	// Also create file indicating we should use per-user consent.
-	if err := ioutil.WriteFile(usePerUserMetricsConsent, []byte{}, 0644); err != nil {
-		return errors.Wrap(err, "failed writing use-per-user-consent file")
-	}
 	return nil
 }
 
@@ -382,12 +373,6 @@ func RemovePerUserConsent(ctx context.Context) error {
 			if firstErr == nil {
 				firstErr = errors.Wrapf(err, "failed removing consent-enabled file %s", f)
 			}
-		}
-	}
-	if err := os.Remove(usePerUserMetricsConsent); err != nil && !os.IsNotExist(err) {
-		testing.ContextLog(ctx, "Failed writing use-per-user-consent file: ", err)
-		if firstErr == nil {
-			firstErr = errors.Wrap(err, "failed writing use-per-user-consent file")
 		}
 	}
 	return firstErr
