@@ -27,7 +27,9 @@ func init() {
 		// Skip volteer2 as it's a reference design device not an official launched device.
 		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2", "lindar", "lillipup", "helios")),
 		Contacts:     []string{"judyhsiao@chromium.org", "yuhsuan@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
+		// TODO(b/198550559) : remove "no_manatee" when b/198550559 is fixed.
+		SoftwareDeps: []string{"no_manatee"},
 		Timeout:      5 * time.Minute,
 	})
 }
