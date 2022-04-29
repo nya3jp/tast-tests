@@ -182,7 +182,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cujrecorder.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
 			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
 			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.WithOverview"),
-			cujrecorder.NewCustomMetricConfigWithTestConn(
+			cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 				"percent", perf.SmallerIsBetter, []int64{50, 80}, conns.BrowserTestConn),
 		)
@@ -192,7 +192,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow"),
 			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview"),
 			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
-			cujrecorder.NewCustomMetricConfigWithTestConn(
+			cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 				"percent", perf.SmallerIsBetter, []int64{50, 80}, conns.BrowserTestConn),
 		)

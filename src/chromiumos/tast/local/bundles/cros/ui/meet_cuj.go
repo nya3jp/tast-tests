@@ -440,7 +440,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		// Browser metrics config, collected from ash-chrome or lacros-chrome
 		// depending on the browser being used.
-		cujrecorder.NewCustomMetricConfigWithTestConn(
+		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
 			perf.SmallerIsBetter, []int64{5, 10}, bTconn),
 	}
@@ -449,11 +449,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	// very jank.
 	jankCriteria := []int64{80000, 400000}
 	if meet.docs {
-		configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
+		configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 			"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter,
 			jankCriteria, bTconn))
 	} else if meet.jamboard {
-		configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
+		configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 			"Event.Latency.EndToEnd.Mouse", "microsecond", perf.SmallerIsBetter,
 			jankCriteria, bTconn))
 	}

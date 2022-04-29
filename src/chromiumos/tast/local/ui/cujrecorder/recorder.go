@@ -63,7 +63,7 @@ type MetricConfig struct {
 
 	// TestConn to pull the histogram. If nil, the histogram is fetched using
 	// the TestConn in recorder.
-	// TODO(b/230676548): Deprecate.
+	// TODO(b/230676548): Deprecated.
 	tconn *chrome.TestConn
 }
 
@@ -75,10 +75,11 @@ func NewSmoothnessMetricConfig(histogramName string) MetricConfig {
 	return MetricConfig{histogramName: histogramName, unit: "percent", direction: perf.BiggerIsBetter, jankCriteria: []int64{50, 20}, group: groupSmoothness}
 }
 
-// NewSmoothnessMetricConfigWithTestConn works like NewSmoothnessMetricConfig
-// but allows specifying a TestConn to pull histogram data.
-// TODO(b/230676548): Deprecate.
-func NewSmoothnessMetricConfigWithTestConn(histogramName string, tconn *chrome.TestConn) MetricConfig {
+// DeprecatedNewSmoothnessMetricConfigWithTestConn (use non-"WithTestConn"
+// version) works like NewSmoothnessMetricConfig but allows specifying a
+// TestConn to pull histogram data.
+// TODO(b/230676548): Deprecated.
+func DeprecatedNewSmoothnessMetricConfigWithTestConn(histogramName string, tconn *chrome.TestConn) MetricConfig {
 	conf := NewSmoothnessMetricConfig(histogramName)
 	conf.tconn = tconn
 	return conf
@@ -91,10 +92,11 @@ func NewLatencyMetricConfig(histogramName string) MetricConfig {
 	return MetricConfig{histogramName: histogramName, unit: "ms", direction: perf.SmallerIsBetter, jankCriteria: []int64{100, 250}, group: groupLatency}
 }
 
-// NewLatencyMetricConfigWithTestConn works like NewLatencyMetricConfig but
-// allows specifying a TestConn to pull histogram data.
-// TODO(b/230676548): Deprecate.
-func NewLatencyMetricConfigWithTestConn(histogramName string, tconn *chrome.TestConn) MetricConfig {
+// DeprecatedNewLatencyMetricConfigWithTestConn (use non-"WithTestConn"
+// version) works like NewLatencyMetricConfig but allows specifying a TestConn
+// to pull histogram data.
+// TODO(b/230676548): Deprecated.
+func DeprecatedNewLatencyMetricConfigWithTestConn(histogramName string, tconn *chrome.TestConn) MetricConfig {
 	conf := NewLatencyMetricConfig(histogramName)
 	conf.tconn = tconn
 	return conf
@@ -107,10 +109,11 @@ func NewCustomMetricConfig(histogramName, unit string, direction perf.Direction,
 	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction, jankCriteria: jankCriteria, group: groupOther}
 }
 
-// NewCustomMetricConfigWithTestConn works like NewCustomMetricConfig but
-// allows specifying a TestConn to pull histogram data.
-// TODO(b/230676548): Deprecate.
-func NewCustomMetricConfigWithTestConn(histogramName, unit string,
+// DeprecatedNewCustomMetricConfigWithTestConn (use non-"WithTestConn" version)
+// works like NewCustomMetricConfig but allows specifying a TestConn to pull
+// histogram data.
+// TODO(b/230676548): Deprecated.
+func DeprecatedNewCustomMetricConfigWithTestConn(histogramName, unit string,
 	direction perf.Direction, jankCriteria []int64, tconn *chrome.TestConn) MetricConfig {
 	conf := NewCustomMetricConfig(histogramName, unit, direction, jankCriteria)
 	conf.tconn = tconn
@@ -220,9 +223,52 @@ func NewPerformanceCUJOptions() RecorderOptions {
 	}
 }
 
-// NewRecorder creates a Recorder based on the configs. It also aggregates the
-// metrics of each category (animation smoothness and input latency) and creates
-// the aggregated reports.
+// addCollectedMetrics is a special version of AddCollectedMetrics that allows
+// to use per-metric test connection. This is needed until MetricConfig.tconn
+// is deprecated per b/230676548).
+//
+// tconn handling is different from the public AddCollectedMetrics() method.
+// If tconn is nil, config's tconn is used.
+func (r *Recorder) addCollectedMetrics(tconn *chrome.TestConn, configs ...MetricConfig) error {
+	if !r.startedAtTm.IsZero() {
+		return errors.New("canont modify list of collected metrics after recodding was started")
+	}
+	for _, config := range configs {
+		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
+			return errors.Errorf("invalid histogram name: %s", config.histogramName)
+		}
+
+		bTconn := tconn
+		if bTconn == nil {
+			// TODO(b/230676548): Remove this.
+			bTconn = config.tconn
+		}
+		if bTconn == nil {
+			// TODO(b/230676548): Remove this.
+			bTconn = r.tconn
+		}
+
+		r.names[bTconn] = append(r.names[bTconn], config.histogramName)
+		r.records[config.histogramName] = &record{config: config}
+	}
+	return nil
+}
+
+// AddCollectedMetrics adds |configs| to the collected metrics using the |tconn|
+// as test connection. Note: MetricConfig.tconn is ignored (b/230676548)!
+func (r *Recorder) AddCollectedMetrics(tconn *chrome.TestConn, configs ...MetricConfig) error {
+	if tconn == nil {
+		return errors.New("tconn must never be nil")
+	}
+	return r.addCollectedMetrics(tconn, configs...)
+}
+
+// NewRecorder creates a Recorder. It also aggregates the metrics of each
+// category (animation smoothness and input latency) and creates the aggregated
+// reports.
+//
+// TODO(b/230676548): |configs| is deprecated, use
+// recorder.AddCollectedMetrics() instead.
 func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options RecorderOptions, configs ...MetricConfig) (*Recorder, error) {
 	r := &Recorder{cr: cr}
 
@@ -324,19 +370,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 
 	r.names = make(map[*chrome.TestConn][]string)
 	r.records = make(map[string]*record, len(configs)+2)
-	for _, config := range configs {
-		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
-			return nil, errors.Errorf("invalid histogram name: %s", config.histogramName)
-		}
-
-		bTconn := r.tconn
-		if config.tconn != nil {
-			bTconn = config.tconn
-		}
-
-		r.names[bTconn] = append(r.names[bTconn], config.histogramName)
-		r.records[config.histogramName] = &record{config: config}
-	}
+	r.addCollectedMetrics(nil, configs...)
 	r.records[string(groupLatency)] = &record{config: MetricConfig{
 		histogramName: string(groupLatency),
 		unit:          "ms",

@@ -15,7 +15,7 @@ import (
 func NewSmoothnessMetricConfigWithTestConns(histogramName string, tconns []*chrome.TestConn) []cujrecorder.MetricConfig {
 	result := make([]cujrecorder.MetricConfig, 0)
 	for _, tconn := range tconns {
-		result = append(result, cujrecorder.NewSmoothnessMetricConfigWithTestConn(histogramName, tconn))
+		result = append(result, cujrecorder.DeprecatedNewSmoothnessMetricConfigWithTestConn(histogramName, tconn))
 	}
 	return result
 }
@@ -26,7 +26,7 @@ func NewCustomMetricConfigWithTestConns(histogramName, unit string,
 	direction perf.Direction, jankCriteria []int64, tconns []*chrome.TestConn) []cujrecorder.MetricConfig {
 	result := make([]cujrecorder.MetricConfig, 0)
 	for _, tconn := range tconns {
-		result = append(result, cujrecorder.NewCustomMetricConfigWithTestConn(histogramName, unit, direction, jankCriteria, tconn))
+		result = append(result, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(histogramName, unit, direction, jankCriteria, tconn))
 	}
 	return result
 }
@@ -36,7 +36,7 @@ func NewCustomMetricConfigWithTestConns(histogramName, unit string,
 func NewLatencyMetricConfigWithTestConns(histogramName string, tconns []*chrome.TestConn) []cujrecorder.MetricConfig {
 	result := make([]cujrecorder.MetricConfig, 0)
 	for _, tconn := range tconns {
-		result = append(result, cujrecorder.NewLatencyMetricConfigWithTestConn(histogramName, tconn))
+		result = append(result, cujrecorder.DeprecatedNewLatencyMetricConfigWithTestConn(histogramName, tconn))
 	}
 	return result
 }

@@ -129,7 +129,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 
 		// Browser metrics config, collected from ash-chrome or lacros-chrome
 		// depending on the browser being used.
-		cujrecorder.NewCustomMetricConfigWithTestConn(
+		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
 			perf.SmallerIsBetter, []int64{50, 80}, bTconn),
 	}
