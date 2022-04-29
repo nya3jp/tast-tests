@@ -16,6 +16,24 @@
       "message": "nit: Indicate in the CL description why this was removed.",
       "revId": "233508ccbf8f5501faf8df5173c533441f982998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49af61ff_7081179e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-04-29T08:38:47Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "ed78a86e_bfade1ed",
+      "revId": "233508ccbf8f5501faf8df5173c533441f982998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
