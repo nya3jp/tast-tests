@@ -46,6 +46,30 @@
       },
       "revId": "c212140fed90fad934df4484d5e959389c5093c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29647577_c1780d1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2501,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-04-29T20:26:24Z",
+      "side": 1,
+      "message": "Ya I think, that is concern here. I do not think we can use Poll here, because there is not going to be any state change. Eventually this will be removed once connection/disconnection state change gets added in ath11k from FW crashes.",
+      "parentUuid": "7136212d_3121f3f0",
+      "range": {
+        "startLine": 2501,
+        "startChar": 2,
+        "endLine": 2501,
+        "endChar": 15
+      },
+      "revId": "c212140fed90fad934df4484d5e959389c5093c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
