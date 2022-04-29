@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
@@ -62,6 +63,7 @@ type ProductivityApp interface {
 	UpdateCells(ctx context.Context) error
 	VoiceToTextTesting(ctx context.Context, expectedText string, playAudio action.Action) error
 	Cleanup(ctx context.Context, sheetName string) error
+	SetBrowser(br *browser.Browser)
 }
 
 // dialogInfo holds the information of a dialog that will be encountered and needs to be handled during testing.
