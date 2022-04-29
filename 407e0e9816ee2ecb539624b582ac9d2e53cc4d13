@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3d0d88_cabd1efa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-29T21:12:00Z",
+      "side": 1,
+      "message": "`s.Error` does not terminate the test, but it does mark the test run as a failure. If you want the test to pass, use `s.Log`.",
+      "revId": "407e0e9816ee2ecb539624b582ac9d2e53cc4d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
