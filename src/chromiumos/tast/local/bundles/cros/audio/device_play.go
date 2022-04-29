@@ -21,7 +21,7 @@ func init() {
 			"nya@chromium.org",      // Tast port author
 		},
 		HardwareDeps: hwdep.D(hwdep.Speaker()),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
