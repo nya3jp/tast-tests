@@ -110,6 +110,30 @@
       },
       "revId": "053ac38a8e6267ee8c51ba54dfb64782c9427b24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c137a2_6e23fcae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_file.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-04-29T23:05:16Z",
+      "side": 1,
+      "message": "We decided to keep the format of (name+class) selector for now. Instead of adding tast classname to each DOM element, we would consider adding these tast tests to chromium CQ when these tests are stable, so that all the front-end changes will be verified against tast.",
+      "parentUuid": "db1a2c11_48ad36aa",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "053ac38a8e6267ee8c51ba54dfb64782c9427b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
