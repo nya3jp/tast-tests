@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8da63b_689c9075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2022-04-29T17:12:45Z",
+      "side": 1,
+      "message": "Thanks, fixed the nits and two more typos.\nptal",
+      "revId": "723d216ad1bd2891a49a43c852a26156916c78d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
