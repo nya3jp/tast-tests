@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce472d66_86f12eee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_presence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-29T01:33:43Z",
+      "side": 1,
+      "message": "It might be a naming issue. I\u0027ll update this",
+      "parentUuid": "01bb90cd_4bad35a1",
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c51b786_1372bca3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-26T09:04:08Z",
       "side": 1,
       "message": "We should better rename powercycle to hpstestdata, or something else.",
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8cde67_49a73262",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-29T01:33:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6c51b786_1372bca3",
       "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e42786d_bec2c332",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-29T01:33:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef69df69_41698149",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 72
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3e825e2_b29cb2dc",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-04-27T04:34:39Z",
       "side": 1,
       "message": "logs like this (check other logs as well) should be avoided, see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log\n\nNormally, logs are allowed when: 1, logging info for debugging when an error happens, i.e., inside `if err!\u003dnil{...}`. 2, a function may take a long time to execute.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 81
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab51cba8_39df2b7c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-29T01:33:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c3e825e2_b29cb2dc",
       "range": {
         "startLine": 52,
         "startChar": 1,
@@ -106,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7298581d_ca2965d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-29T01:33:43Z",
+      "side": 1,
+      "message": "Not really, I\u0027ve looked into this, but the tar package doesn\u0027t really do what we want it to do, not easily at least",
+      "parentUuid": "10356e10_8aba5f92",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 119
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0013eeb_5aa1ade2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
         "patchSetId": 1
@@ -117,6 +225,30 @@
       "writtenOn": "2022-04-26T09:04:08Z",
       "side": 1,
       "message": "nit: disgnated -\u003e designated",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 65
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05de3505_431ff3cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-29T01:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0013eeb_5aa1ade2",
       "range": {
         "startLine": 52,
         "startChar": 56,
