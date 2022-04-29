@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43235946_7cfbca04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-29T09:59:57Z",
+      "side": 1,
+      "message": "Can\u0027t you just serve a PWA locally as in the WebAppInstallForceList test:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go?q\u003dwebappinstallforcelist%20tast\n\nThat way you don\u0027t have this external dependency anymore.",
+      "parentUuid": "c6c3e6b4_6a31ef4e",
+      "revId": "4aed90f1e2cf5cd67bf926774d27147589365aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7e79010_90de676e",
