@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66bc655d_5eeb48d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T16:58:06Z",
+      "side": 1,
+      "message": "I\u0027d recommend defining these as just the actual argument string, e.g. \"fcc\", \"rest-of-world\", etc. And then we can append the \"--domain\u003d\" to the arg itself later on. Same with the `modes` and `sources` strings.  I think this would improve the logging since in the logging failures it\u0027s pretty redundant to have \"...trigger source: --source\u003dreg_domain\", when it could just be \"...trigger source: reg_domain\".\n\nThen I think you can use something like::\n\n`args \u003d append(args, \"--\" + mode, \"--domain\u003d\" + domain, \"--source\u003d\" + source)`",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "fc8a1801d25a296822040da1d3e8313a337a4945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11520843_5fea1edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-04-29T16:58:06Z",
+      "side": 1,
+      "message": "We should drop the logging level of this line (or maybe just remove it?). We\u0027re up to 40 different combinations of args now and 40 lines is way too much here. It\u0027s a pretty unnecessary log, given that any failed combinations will trigger an error line anyway, so any combinations that aren\u0027t included in an error can be assumed to have run and passed.",
+      "revId": "fc8a1801d25a296822040da1d3e8313a337a4945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
