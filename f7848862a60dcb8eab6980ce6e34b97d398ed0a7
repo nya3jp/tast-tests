@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75306d8d_08191f77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-29T17:02:14Z",
+      "side": 1,
+      "message": "Is there a way to test the change manually?",
+      "revId": "f7848862a60dcb8eab6980ce6e34b97d398ed0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb54be90_9e519981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13717,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-29T17:02:14Z",
+      "side": 1,
+      "message": "Do not need else.  s.Falalf already makes the function return.",
+      "revId": "f7848862a60dcb8eab6980ce6e34b97d398ed0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
