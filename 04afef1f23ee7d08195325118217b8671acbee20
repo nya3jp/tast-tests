@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "521b6dbe_c1299bf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-04-29T14:24:49Z",
+      "side": 1,
+      "message": "I\u0027ve changed the test to set Tablet mode to be false, can you please take another look? ",
+      "revId": "04afef1f23ee7d08195325118217b8671acbee20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
