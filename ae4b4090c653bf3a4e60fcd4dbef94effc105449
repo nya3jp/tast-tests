@@ -16,6 +16,69 @@
       "message": "Fixed some typos in the comments. ptal",
       "revId": "ae4b4090c653bf3a4e60fcd4dbef94effc105449",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c915e4_69c1cfcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-29T16:26:50Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "ae4b4090c653bf3a4e60fcd4dbef94effc105449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e773e8c0_a687bbcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/block_third_party_cookies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-29T16:26:50Z",
+      "side": 1,
+      "message": "nit: htmlBuffer",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "ae4b4090c653bf3a4e60fcd4dbef94effc105449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f0c77e_274f37ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/third_party_cookies.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-04-29T16:26:50Z",
+      "side": 1,
+      "message": "nit: delete",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "ae4b4090c653bf3a4e60fcd4dbef94effc105449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
