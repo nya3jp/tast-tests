@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf312341_561580bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-29T01:59:08Z",
+      "side": 1,
+      "message": "remote this empty line",
+      "revId": "d88119e730254cab757a9726983bf23bed91c422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c28d3a_1c2340a7",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-29T01:59:08Z",
+      "side": 1,
+      "message": "`StartUIWithCustomScreenPrivacySettingRequest`, as you changed the method here.\n\nThe convention is `MethodName(MethodNameRequest)`",
+      "range": {
+        "startLine": 12,
+        "startChar": 44,
+        "endLine": 12,
+        "endChar": 65
+      },
+      "revId": "d88119e730254cab757a9726983bf23bed91c422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

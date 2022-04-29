@@ -314,6 +314,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69ee82fe_2dd9fa0f",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-29T01:59:08Z",
+      "side": 1,
+      "message": "Please check and complete the comments in this file.",
+      "parentUuid": "ba0d1551_d75d66ba",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7abcae58_86be0ddf",
         "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
         "patchSetId": 1
