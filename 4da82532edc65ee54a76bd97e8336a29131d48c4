@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd4df79_6c0095de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-04-29T18:11:12Z",
+      "side": 1,
+      "message": "PTAL at this Tast test for the DefaultSerialGuardSetting policy.\n\nreillyg@: I added you since you are listed as the owner of this policy. PTAL whether my understanding of the policy is correct (tast-owners@ will look at the Tast-specific implementation details of the test).",
+      "revId": "4da82532edc65ee54a76bd97e8336a29131d48c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
