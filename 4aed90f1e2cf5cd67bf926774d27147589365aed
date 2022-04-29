@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c3e6b4_6a31ef4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-29T08:55:30Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this test will be too brittle if, for example, google news is not a PWA anymore. Or if the PWA cannot be installed over the same URL anymore.",
+      "revId": "4aed90f1e2cf5cd67bf926774d27147589365aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
