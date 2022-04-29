@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "311249b3_9dbf23aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/extension_read_device_id.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-04-29T12:24:02Z",
+      "side": 1,
+      "message": "I tried to do that, but it seems like lacros is only supported for *web* kiosk mode, not for chrome app kiosk like in this test. I tried to launch it in lacros mode, but in the process list I could see that it is still running ash. I found a bug that is currently implementing this: b/206912472.",
+      "parentUuid": "5921a605_9fa8af96",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "782406d53709ed35d7f5352d1ff14a605d610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad7c44fd_71628192",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/extension_read_device_id.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-29T12:03:21Z",
       "side": 1,
       "message": "Is a value of that variable equal to deviceID variable\u0027s value?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "782406d53709ed35d7f5352d1ff14a605d610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66927bdc_2ce36689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/extension_read_device_id.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-04-29T12:24:02Z",
+      "side": 1,
+      "message": "I am not sure if I understood your question right. The extension must have a node with the text `Device Directory API ID: 123e4567-e89b-12d3-a456-426614174000` for the test to succeed, indicating that the deviceID variable was successfully read from the device policy.",
+      "parentUuid": "ad7c44fd_71628192",
       "range": {
         "startLine": 75,
         "startChar": 1,
