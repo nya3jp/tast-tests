@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd71d7f_02dac429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-04-30T02:12:37Z",
+      "side": 1,
+      "message": "Maybe call it \"ExtensionPoliciesMGS\", to reflect it\u0027s only testing it in Managed Guest Sessions?\n\nWe\u0027ll add similar tests for other types of user sessions in the future; they\u0027ll need to be separate tests, since they\u0027ll need different fixtures.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f48451e_e5da257d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-04-30T02:12:37Z",
+      "side": 1,
+      "message": "FWIW it doesn\u0027t compile for me locally, complaining on a name collision with a constant from the extension_install_policy_check.go file. So I guess we need to rename it?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6bfaba_1ecb48fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-04-30T02:12:37Z",
+      "side": 1,
+      "message": "FWIW it doesn\u0027t compile for me locally - looks like the expression needs to be wrapped into json.RawMessage:\n\n  cannot use fmt.Sprintf(extensionPolicyTemplate, defaultProxyServerURL) (type string) as type json.RawMessage in assignment",
+      "range": {
+        "startLine": 51,
+        "startChar": 31,
+        "endLine": 51,
+        "endChar": 90
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
