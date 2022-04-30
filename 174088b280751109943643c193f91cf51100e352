@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f2519b5_04e6449a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-30T02:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79300f8d_11800481",
+      "range": {
+        "startLine": 65,
+        "startChar": 54,
+        "endLine": 65,
+        "endChar": 68
+      },
+      "revId": "174088b280751109943643c193f91cf51100e352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22c3e603_3cb88173",
@@ -284,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43fc7b70_29e99420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-30T02:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1753761d_cd675255",
+      "range": {
+        "startLine": 82,
+        "startChar": 78,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "174088b280751109943643c193f91cf51100e352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0e9f395_20ceac1d",
@@ -321,6 +369,30 @@
       "side": 1,
       "message": "Sure, I would change \"Failed to\" to \"Didn\u0027t\". And explain briefly why this is not an error as well as add the error to log.",
       "parentUuid": "a0e9f395_20ceac1d",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 67
+      },
+      "revId": "174088b280751109943643c193f91cf51100e352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df188f2_0d797749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-30T02:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "364928d4_a76f7ed0",
       "range": {
         "startLine": 92,
         "startChar": 11,

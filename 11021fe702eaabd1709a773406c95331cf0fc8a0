@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "633cdb34_5546245b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-30T02:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b51f7a_aeaef495",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "116e0f62_9f1246d8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -376,6 +400,30 @@
       "side": 1,
       "message": "Yes it\u0027s possible there are more than 1 match, which indicates multiple instances of crash_reporter/dump_collector are running. With this assumption in mind, I allocated 30s for each instance. But during my tests I never observed more than one file existed.",
       "parentUuid": "caa1e44a_668a23f9",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "11021fe702eaabd1709a773406c95331cf0fc8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "938c5198_08ef52aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-04-30T02:17:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c77c1702_be54efb8",
       "range": {
         "startLine": 72,
         "startChar": 7,
