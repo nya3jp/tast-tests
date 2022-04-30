@@ -104,6 +104,24 @@
       "parentUuid": "33735c8a_f710e5ab",
       "revId": "f33f67dc1a54e9e99bea10a991668b53df978c5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f87901d_f82e3006",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/docs_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-30T08:49:17Z",
+      "side": 1,
+      "message": "After https://crrev.com/c/3574165 we no longer need to move it.\n\nPTAL.",
+      "parentUuid": "72a400d3_9c0ae4bb",
+      "revId": "f33f67dc1a54e9e99bea10a991668b53df978c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
