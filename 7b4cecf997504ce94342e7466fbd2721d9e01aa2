@@ -56,6 +56,30 @@
       },
       "revId": "7b4cecf997504ce94342e7466fbd2721d9e01aa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57948f47_ff89b4df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-04-30T06:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "948464ff_5f2ce582",
+      "range": {
+        "startLine": 936,
+        "startChar": 22,
+        "endLine": 936,
+        "endChar": 50
+      },
+      "revId": "7b4cecf997504ce94342e7466fbd2721d9e01aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
