@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf97d8ad_417465f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-30T01:52:22Z",
+      "side": 1,
+      "message": "Tast",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9371256d_cd3ada27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-30T01:52:22Z",
+      "side": 1,
+      "message": "Tast",
+      "range": {
+        "startLine": 5,
+        "startChar": 35,
+        "endLine": 5,
+        "endChar": 39
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b7611b_efa630d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-30T01:52:22Z",
+      "side": 1,
+      "message": "\"SetUp\" unless the term \"Setup\" is widely used in your project.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f06de7_a5a854f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-30T01:52:22Z",
+      "side": 1,
+      "message": "Spare some time for defer to run:\n```\nclearUpCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, n*time.Second)\ndefer cancel()\ndefer ...(clearUpCtx, ...)\n// use ctx for non-defer part.\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f18ef538_a0496389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-30T01:52:22Z",
+      "side": 1,
+      "message": "network",
+      "range": {
+        "startLine": 67,
+        "startChar": 46,
+        "endLine": 67,
+        "endChar": 53
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64241b73_19394f79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-30T01:52:22Z",
+      "side": 1,
+      "message": "How about: \"NetworkScreen.shouldSkip() is true; skipped\"?",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b78b31_27f811a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-30T01:52:22Z",
+      "side": 1,
+      "message": "EULA\n\nSame below.",
+      "range": {
+        "startLine": 86,
+        "startChar": 46,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a258db2_22a1f8dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-30T01:52:22Z",
+      "side": 1,
+      "message": "How about: \"EulaScreen.shouldSkip() is true; skipped\"?",
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5611b5e_ccd388a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-30T01:52:22Z",
+      "side": 1,
+      "message": "How about giving the watcher a shorter time to expect a state change?",
+      "range": {
+        "startLine": 122,
+        "startChar": 40,
+        "endLine": 122,
+        "endChar": 43
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
