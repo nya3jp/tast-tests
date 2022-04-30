@@ -136,3 +136,8 @@ func (d *Device) DumpLogcat(ctx context.Context, filePath string) error {
 	}
 	return nil
 }
+
+// OutputLogcatGrep greps logcat with the given string and returns the output.
+func (d *Device) OutputLogcatGrep(ctx context.Context, grepArg string) ([]byte, error) {
+	return d.Command(ctx, "shell", "logcat", "-d", "|", "grep", grepArg).Output()
+}
