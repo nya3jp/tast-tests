@@ -21,3 +21,8 @@ func RegexpPred(exp *regexp.Regexp) func(string) bool {
 func (a *ARC) WaitForLogcat(ctx context.Context, pred func(string) bool, quitFunc ...func() bool) error {
 	return a.device.WaitForLogcat(ctx, pred, quitFunc...)
 }
+
+// OutputLogcatGrep greps logcat with the given string and returns the output.
+func (a *ARC) OutputLogcatGrep(ctx context.Context, grepArg string) ([]byte, error) {
+	return a.device.OutputLogcatGrep(ctx, grepArg)
+}
