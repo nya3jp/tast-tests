@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "90c0ffc1d15e576e6f5ba685f68fdbaa36c224d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e9baf3_6dcc05ec",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-01T05:24:31Z",
+      "side": 1,
+      "message": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go:78:4: unknown field \u0027extraOpts\u0027 in struct literal of type policyChromeFixture",
+      "revId": "90c0ffc1d15e576e6f5ba685f68fdbaa36c224d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
