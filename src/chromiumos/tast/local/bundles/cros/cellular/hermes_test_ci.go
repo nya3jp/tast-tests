@@ -25,7 +25,7 @@ func init() {
 			"pholla@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		Attr:    []string{"group:cellular", "cellular_unstable", "cellular_sim_test_esim"},
+		Attr:    []string{"group:cellular", "cellular_sim_test_esim"},
 		Timeout: 10 * time.Minute,
 		Params: []testing.Param{{
 			Name: "hermes_only",
