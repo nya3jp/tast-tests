@@ -20,7 +20,7 @@ func init() {
 		Func:     ShillCellularSimPinLock,
 		Desc:     "Verifies that cellular device SIM PIN lock",
 		Contacts: []string{"srikanthkumar@google.com", "chromeos-cellular-team@google.com"},
-		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_dual_active"},
+		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_pinlock"},
 		Fixture:  "cellular",
 	})
 }
