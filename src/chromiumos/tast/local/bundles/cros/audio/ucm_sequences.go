@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/crosconfig"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -127,11 +128,17 @@ func (p listCommander) commands(ctx context.Context, ucmName string) ([]alsaucmC
 }
 
 func UCMSequences(ctx context.Context, s *testing.State) {
-	// Since we are messing with mixer controls, restart CRAS after running the test.
+	// Restart CRAS after running the test.
 	clearUpCtx := ctx
 	ctx, cancel := ctxutil.Shorten(clearUpCtx, 5*time.Second)
 	defer cancel()
 	defer audio.RestartCras(clearUpCtx)
+
+	// Stop cras and sleep to get exclusive access to audio devices.
+	if err := upstart.StopJob(ctx, "cras"); err != nil {
+		s.Fatal("Cannot stop cras: ", err)
+	}
+	testing.Sleep(ctx, time.Second)
 
 	param := s.Param().(ucmSequencesParam)
 
