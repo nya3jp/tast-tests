@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f502da5f_a486bb74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-01T23:31:54Z",
+      "side": 1,
+      "message": "Optional: the Name can be omitted so you can continue to use dlp.DataLeakPreventionRulesListClipboardShelf without changing existing test name.",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "36543ddf3bdaea1643f9bdb53afab12eac8f374d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
