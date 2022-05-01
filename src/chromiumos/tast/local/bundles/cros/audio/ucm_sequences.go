@@ -208,7 +208,7 @@ func ucmSequencesTestCard(ctx context.Context, s *testing.State, c alsaucmComman
 func formatCommand(cmd *testexec.Cmd) string {
 	var b strings.Builder
 	b.WriteString(shellQuote(cmd.Path))
-	for _, arg := range cmd.Args {
+	for _, arg := range cmd.Args[1:] {
 		b.WriteByte(' ')
 		b.WriteString(shellQuote(arg))
 	}
