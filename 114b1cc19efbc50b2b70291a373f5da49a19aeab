@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e4f10a_bb41965c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "1. Please make the name and description of this test consistent with DpSuspendResume, HdmiAdapterSuspendResume, and HdmiSuspendResume, unless this test is somehow not like those.\n\n2. Please use `s.Log` instead of `testing.ContextLog`.",
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "298efd48_1ab7e798",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "How about:\n type powerMode int\n const (\n \tcloseLid powerMode \u003d iota\n \tsuspendResumeCommand\n )",
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd06a21_56e6c84f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "This is used only as an argument to `powerutils.USBDeviceDetection` and therefore should have exactly the same name as the corresponding parameter `numberOfConnectedDevice`, but I suggest you change the name in both places. I think it is important to use the plural word devices instead of the word device, because a \"number of connected device\" sounds like some kind of ID number, index, etc. Meanwhile you can create consistency in variable names across `USBDeviceDetection` and `USBDeviceSpeed`.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c3982e_c2ffc435",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "I think these should be in this order:\n\tpowerMode           powerMode\n\tusbDeviceClassName  string\n\tusbSpeed            string\n\tnoOfConnectedDevice int\n\n`powerMode` comes first because it corresponds to the name of the test variant. The rest of the fields are used only as arguments to `powerutils.USBDeviceDetection` and therefore should be in order of the parameters to that function.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77721145_b3cfb9cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "I would just write\n\t\t\tVal: usbHIDTestParam{closeLid, \"Human Interface Device\", \"1.5M\", 1},\n\nbecause mostly this is how it looks when you call `powerutils.USBDeviceDetection` (which is the only purpose of most of these values).",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 5
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d812eb73_97437ef1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "Likewise, I would just write\n\t\t\tVal: usbHIDTestParam{suspendResumeCommand, \"Human Interface Device\", \"1.5M\", 2},",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90fd37a3_cc3872ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "To be consistent with the above code, this should be:\n\t\t}},\n\t})",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 5
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cac2c70_b20fa4f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "This can be one line:\n\tvar c10PackageRe \u003d regexp.MustCompile(`C10 : ([A-Za-z0-9]+)`)",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4b2af1_31631bec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "This should be `log in to`. Note that login (one word) can be a noun or an adjective, but should not be used as a verb; for that, write \"log in\" (two words).",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01384cad_0107e83e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "`device(s)`",
+      "range": {
+        "startLine": 109,
+        "startChar": 42,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a844d3_ce17130e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "Please write this as a `switch` statement instead of multiple `if` statements.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c42192f1_730c14d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "`nonzero`",
+      "range": {
+        "startLine": 227,
+        "startChar": 44,
+        "endLine": 227,
+        "endChar": 52
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c149a8f0_4d34ebcf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:46:43Z",
+      "side": 1,
+      "message": "`nonzero`",
+      "range": {
+        "startLine": 246,
+        "startChar": 41,
+        "endLine": 246,
+        "endChar": 49
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
