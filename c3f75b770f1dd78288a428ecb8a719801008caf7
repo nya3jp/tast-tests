@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a236f1f_10dd931f",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T11:40:38Z",
+      "side": 1,
+      "message": "It makes the log spammy.\n\nTast logs are designed for human consumption. A better alternative would be to dump the content in a new file in the output directory every time it is written.",
+      "parentUuid": "ed4b6766_12ce8254",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b585918f_ce5c5c47",
         "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
         "patchSetId": 3
@@ -284,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1acc51fe_0c885e72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T11:40:38Z",
+      "side": 1,
+      "message": "Downloading from the WebStore might require a valid GAIA id. Is the test working as is?",
+      "parentUuid": "78fc5459_8037f152",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c6bfaba_1ecb48fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
         "patchSetId": 3
@@ -360,6 +402,24 @@
       "side": 1,
       "message": "Similar to the argument about making extension locally, I would like to keep this test as close to what users experience as possible and make it E2E at some point.",
       "parentUuid": "427f3c85_451db6e0",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0719996_11d139e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T11:40:38Z",
+      "side": 1,
+      "message": "The js API is E2E, it is the API the extension calls to get policy values, not a testing one.",
+      "parentUuid": "2a13b75a_3c230ca4",
       "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
