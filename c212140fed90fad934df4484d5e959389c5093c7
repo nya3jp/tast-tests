@@ -94,6 +94,30 @@
       },
       "revId": "c212140fed90fad934df4484d5e959389c5093c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df29a378_07d85c5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2501,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-05-02T16:39:30Z",
+      "side": 1,
+      "message": "Not sure you noticed, the line number 2500 contains the TODO",
+      "parentUuid": "f6fc0614_b653268a",
+      "range": {
+        "startLine": 2501,
+        "startChar": 2,
+        "endLine": 2501,
+        "endChar": 15
+      },
+      "revId": "c212140fed90fad934df4484d5e959389c5093c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
