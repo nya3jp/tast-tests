@@ -33,6 +33,218 @@
       "message": "LGTM thanks",
       "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d472d084_8cd6f0bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a93aed82_1db07cbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "typo: keyboardDetectedText",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 24
+      },
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab8b8e2_9350ede0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "nit: This log is redundant. The value is logged if WaitUntilExists fails.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 27
+      },
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa742b1_9bdd63f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "Super nit: this function returns an action. It does not do anything here. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go?l\u003d834",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee617c4f_60ac6111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_skipped.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "This sounds like a good candidate for parameterised test.https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests\n\nMost of the code are duplicated.",
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "516bee02_04dcecbd",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "nit: The same to OOBE naming, please fix all in the cl.",
+      "range": {
+        "startLine": 272,
+        "startChar": 3,
+        "endLine": 272,
+        "endChar": 25
+      },
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84715d32_efd2ec2d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "nit: Please remove these empty lines. It is irrelevant to the change.",
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b36c76_7381a5ea",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ef19af_cc89a98b",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "nit: Why not just name it as EnableHIDScreenOnOOBE?\n\nbtw, OOBE is an abbreviation, it should be fully capitalised as OOBE.",
+      "range": {
+        "startLine": 480,
+        "startChar": 3,
+        "endLine": 480,
+        "endChar": 29
+      },
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c3cbba_9e7222b1",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T00:01:24Z",
+      "side": 1,
+      "message": "nit: the description is not accurate to the function. It only appends --disable-hid-detection-on-oobe\u003dfalse to Chrome argument, it does not prevent anything from happening after that. For example, after using DontDisableHIDScreenOnOobe(), you can again use DisableHIDScreenOnOobe() which overwrites the setting.",
+      "range": {
+        "startLine": 482,
+        "startChar": 37,
+        "endLine": 482,
+        "endChar": 45
+      },
+      "revId": "eda043c308b827c9b6dd3f244c90dbc156660939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
