@@ -70,6 +70,30 @@
       },
       "revId": "e59119bc3ee4805629a64288418275f4ae99210b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3df5f64_85aa4d35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-05-02T07:15:21Z",
+      "side": 1,
+      "message": "That\u0027s ok.\nThe final list (that may be empty) of URLs goes into GoogleMeetConfig.URLs and bond credentials go into GoogleMeetConfig.BondCreds. Then the BOND API is used just before launching the test and the BOND room is inserted in front of all other rooms (if there are any).\nLet\u0027s chat on VC if it doesn\u0027t look good?",
+      "parentUuid": "85b8c499_be285bf7",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 7
+      },
+      "revId": "e59119bc3ee4805629a64288418275f4ae99210b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
