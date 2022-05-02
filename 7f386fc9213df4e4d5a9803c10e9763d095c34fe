@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c79279_eb78d708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-02T21:46:34Z",
+      "side": 1,
+      "message": "Thanks, Ben.",
+      "revId": "7f386fc9213df4e4d5a9803c10e9763d095c34fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d345ca0_85f0a5c2",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-05-02T16:15:25Z",
       "side": 1,
       "message": "nit: This also includes the protocol. Maybe consider including the /eSCL and just call it URI?",
+      "range": {
+        "startLine": 253,
+        "startChar": 60,
+        "endLine": 253,
+        "endChar": 67
+      },
+      "revId": "7f386fc9213df4e4d5a9803c10e9763d095c34fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f16cd2f3_f4c7c8c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-02T21:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d345ca0_85f0a5c2",
       "range": {
         "startLine": 253,
         "startChar": 60,
@@ -43,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20f570f6_469e5196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-02T21:46:34Z",
+      "side": 1,
+      "message": "Do you think a scanner would ever report idle on one URI and a different status on another URI? If not, then I think we should keep this code simpler rather than trying to prefer https.",
+      "parentUuid": "76970eaa_75b2f46f",
+      "revId": "7f386fc9213df4e4d5a9803c10e9763d095c34fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b41bd50_cbc0b359",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
         "patchSetId": 1
@@ -54,6 +113,24 @@
       "writtenOn": "2022-05-02T16:15:25Z",
       "side": 1,
       "message": "Should this also poll with a slower interval?  If a scan is in progress, rechecking every 100ms seems aggressive compared to the slow scanner head.  What about every 500ms or 1s?",
+      "revId": "7f386fc9213df4e4d5a9803c10e9763d095c34fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f1ab315_baf3adad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-02T21:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b41bd50_cbc0b359",
       "revId": "7f386fc9213df4e4d5a9803c10e9763d095c34fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "599dd751_60618b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-02T21:46:34Z",
+      "side": 1,
+      "message": "It actually doesn\u0027t unsuccessfully unmarshal with \"pwg\"!",
+      "parentUuid": "06245b21_5233e863",
+      "revId": "7f386fc9213df4e4d5a9803c10e9763d095c34fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed6128ce_d6115f34",
@@ -88,6 +183,24 @@
       "writtenOn": "2022-05-02T16:15:25Z",
       "side": 1,
       "message": "Should this come before launching the scan app?  If a busy scanner interferes with getting capabilities or enumeration, we\u0027d want it to be idle before starting.  If it doesn\u0027t, I think the check below should be sufficient.",
+      "revId": "7f386fc9213df4e4d5a9803c10e9763d095c34fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a05e40_1a541363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-02T21:46:34Z",
+      "side": 1,
+      "message": "The goal is to get enumeration to be more consistent, so I think you\u0027re right, we should move it up!",
+      "parentUuid": "ed6128ce_d6115f34",
       "revId": "7f386fc9213df4e4d5a9803c10e9763d095c34fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
