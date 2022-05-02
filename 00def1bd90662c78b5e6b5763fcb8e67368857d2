@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "630d2988_cb9a924a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-02T05:00:52Z",
+      "side": 1,
+      "message": "Could you just retry the operation/function that might go wrong, instead of retrying the whole test case?",
+      "revId": "00def1bd90662c78b5e6b5763fcb8e67368857d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c48ec7f9_c3af7160",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
         "patchSetId": 10
