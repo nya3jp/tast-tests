@@ -50,6 +50,24 @@
       "message": "Could you revert the changes here to this file. /%v/ was done to make it clear that it\u0027s a regex, and specifically a javascript regex. If you have something like a.b, it won\u0027t be clear that it\u0027s a regex and not a string.",
       "revId": "cc1743788fa655fceaedcc3298354a96cedf66d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27060251_88dbd649",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-05-02T04:02:15Z",
+      "side": 1,
+      "message": "The output of convertRegexp() includes the slashes.  It just escapes any slashes inside the regexp.  See changes in nodewith_test.go for what is different.\n\nWhen I was making this CL, I was creating a regexp which included slashes, and it was hard to debug what was going wrong.  I think it helps if Pretty() calls convertRegexp() so that its output matches what is sent to JS eval.",
+      "parentUuid": "85b550f3_bc7f48f5",
+      "revId": "cc1743788fa655fceaedcc3298354a96cedf66d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
