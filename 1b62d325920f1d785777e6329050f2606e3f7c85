@@ -33,6 +33,23 @@
       "message": "I can\u0027t make it today. Will review tomorrow.",
       "revId": "1b62d325920f1d785777e6329050f2606e3f7c85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbeb6d7_31bed4ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T08:36:44Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "1b62d325920f1d785777e6329050f2606e3f7c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
