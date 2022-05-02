@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf49752_a8f1485a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T10:40:42Z",
+      "side": 1,
+      "message": "This is already done by the policy test server, although the way it\u0027s passed down to it needs to be fixed (see https://crrev.com/c/3616536). IMHO it\u0027s better to keep this logic in the policy test server even though it\u0027ll be ported to C++ soon. Otherwise, each test will have to start this server for each extension that they need policy for and that will make writing tests a tad harder.",
+      "revId": "8921a5ba641ab2458c02b9d702d6d4a409bf3704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
