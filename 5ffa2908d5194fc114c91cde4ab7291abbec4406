@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba2ef64_849eae92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-02T22:11:21Z",
+      "side": 1,
+      "message": "nit: should this description say \"... USB scanner with default behavior\", then FlipTestDescriptors briefly say how their behavior is different? Right now having these two comments be identical doesn\u0027t help the reader much.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "5ffa2908d5194fc114c91cde4ab7291abbec4406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
