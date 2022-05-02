@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c6a553c_10b85070",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-02T05:51:28Z",
+      "side": 1,
+      "message": "Hi reviewers,\n\nThis test referred to go/cros-ent-au-config on simulating OS version. Please take a look. Thanks!",
+      "revId": "09460a4014bf55533fe4755d5ab80cd0825ff8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
