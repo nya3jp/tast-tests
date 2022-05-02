@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "648b66ea_9256be74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-02T01:29:40Z",
+      "side": 1,
+      "message": "sounds good!",
+      "parentUuid": "21372fbb_6c4d1ea2",
+      "range": {
+        "startLine": 84,
+        "startChar": 13,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fee219f6_4698fe8c",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-04-29T08:23:21Z",
       "side": 1,
       "message": "The line is exactly the same as line 85. Is that correct?",
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5cdfe3_e5c4e854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-02T01:29:40Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "fee219f6_4698fe8c",
       "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -117,6 +159,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae17ad22_28ace997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/split_view_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-02T01:29:40Z",
+      "side": 1,
+      "message": "In splitscreen context, we use primary/secondary because the meaning of \"primary\" depends on the screen orientation. It means \"left\" on a landscape screen and it does \"top\" on a portrait screen.\n\nAdded the explanation.",
+      "parentUuid": "a8ae1edf_674fe6a4",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c9ca885_38174ffb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/split_view_helper.go",
         "patchSetId": 1
@@ -128,6 +194,30 @@
       "writtenOn": "2022-04-29T08:23:21Z",
       "side": 1,
       "message": "What does \"ew\" stand for?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d116fa4_8a8c5b41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/split_view_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-02T01:29:40Z",
+      "side": 1,
+      "message": "Event writer.\nUsed in the tast example so I believe it\u0027s a correct use.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/keyboard.go;l\u003d88",
+      "parentUuid": "4c9ca885_38174ffb",
       "range": {
         "startLine": 71,
         "startChar": 1,
