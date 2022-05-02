@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036b9de2_e0a03d34",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-02T14:20:50Z",
+      "side": 1,
+      "message": "could you add a bit more descriptiuon that \"tconn\" \u0027s handling is different from public method\u0027s? Specifically, if tconn is nil, config\u0027s tconn is used.",
+      "revId": "47a316aff9754b2430fd8b40055fe7ffd1a50a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

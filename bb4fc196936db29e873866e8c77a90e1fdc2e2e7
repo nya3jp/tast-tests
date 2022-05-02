@@ -63,6 +63,23 @@
       "message": "lgtm if it is what hidehiko@ wants.",
       "revId": "bb4fc196936db29e873866e8c77a90e1fdc2e2e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe7c0a7c_7f1f1444",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-02T14:20:50Z",
+      "side": 1,
+      "message": "how about renaming the function itself? I think there are only a few callers?",
+      "revId": "bb4fc196936db29e873866e8c77a90e1fdc2e2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
