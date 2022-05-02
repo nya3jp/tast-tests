@@ -67,6 +67,115 @@
       "message": "yamaguchi@ said was unavailable for crrev/c/3600865, I\u0027d assume\nthe same here. Another crank of the tast-owners.",
       "revId": "eac63baf2ef8c099e281d9250a0f2559a00ea6d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb7d990_13ade360",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-02T17:32:16Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "eac63baf2ef8c099e281d9250a0f2559a00ea6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4561bb_2778f776",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-02T17:32:16Z",
+      "side": 1,
+      "message": "nit: see comment below: perhaps `TesetCaseBitmask`  (?).\n\nor just add that more than one test can be selected to run by using the correct mask.",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "eac63baf2ef8c099e281d9250a0f2559a00ea6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ad22c54_62aad586",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-02T17:32:16Z",
+      "side": 1,
+      "message": "nit (here and below): is \"identifies\" the correct work? (perhaps it is... just double checking).\n\nPerhaps \"represents\" suits better (?)",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "eac63baf2ef8c099e281d9250a0f2559a00ea6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2aae49_3ce78c27",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-02T17:32:16Z",
+      "side": 1,
+      "message": "I\u0027d rename `Capped` to `CappedFlag` (?) or something that implies that each entry represents an entry that can be combined with others.\n\nOr add comments explaining that each entry can be combined... but better if the code that express that by itself without the need for additional comments.",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 28
+      },
+      "revId": "eac63baf2ef8c099e281d9250a0f2559a00ea6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6076f6ba_18fef92c",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-02T17:32:16Z",
+      "side": 1,
+      "message": "nit: `JSON` -\u003e `json`",
+      "range": {
+        "startLine": 274,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 6
+      },
+      "revId": "eac63baf2ef8c099e281d9250a0f2559a00ea6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
