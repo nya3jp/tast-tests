@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/network/util"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	localping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/testing"
@@ -309,17 +310,20 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 
 	pr := localping.NewLocalRunner()
 	if err := vpn.ExpectPingSuccess(ctx, pr, conn.Server.OverlayIP); err != nil {
+		util.DumpNetworkInfo(ctx)
 		s.Fatalf("Failed to ping %s: %v", conn.Server.OverlayIP, err)
 	}
 
 	if conn.SecondServer != nil {
 		if err := vpn.ExpectPingSuccess(ctx, pr, conn.SecondServer.OverlayIP); err != nil {
+			util.DumpNetworkInfo(ctx)
 			s.Fatalf("Failed to ping %s: %v", conn.SecondServer.OverlayIP, err)
 		}
 	}
 
 	// IPv6 should be blackholed.
 	if res, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); err == nil && res.Received != 0 {
+		util.DumpNetworkInfo(ctx)
 		s.Fatal("IPv6 ping should fail: ", err)
 	}
 }
