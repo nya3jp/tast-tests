@@ -19,6 +19,7 @@ import (
 type GoogleMeetConfig struct {
 	Account       string
 	Password      string
+	BondCreds     []byte
 	URLs          []string
 	RetryTimeout  time.Duration
 	RetryInterval time.Duration
@@ -43,6 +44,11 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 	meetPassword, ok := s.Var("ui.meet_password")
 	if !ok {
 		return GoogleMeetConfig{}, errors.New("failed to get variable ui.meet_password")
+	}
+
+	creds, ok := s.Var("ui.bond_credentials")
+	if !ok {
+		creds = ""
 	}
 
 	var urlVar, urlSeondaryVar string
@@ -80,9 +86,9 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 		return urls
 	}
 	meetURLs := varToURLs(urlVar, "ui.meet_url")
-	if len(meetURLs) == 0 {
+	if len(meetURLs) == 0 && creds == "" {
 		// Primary meet URL is mandatory.
-		return GoogleMeetConfig{}, errors.New("no valid primary meet URLs are given")
+		return GoogleMeetConfig{}, errors.New("neither valid primary meet URLs nor BOND credentials are given")
 	}
 	meetSecURLs := varToURLs(urlSeondaryVar, "ui.meet_url_secondary")
 	// Shuffle the URLs so different tests can try different URLs with random order.
@@ -119,6 +125,7 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 	return GoogleMeetConfig{
 		Account:       meetAccount,
 		Password:      meetPassword,
+		BondCreds:     []byte(creds),
 		URLs:          meetURLs,
 		RetryTimeout:  meetRetryTimeout,
 		RetryInterval: meetRetryInterval,
