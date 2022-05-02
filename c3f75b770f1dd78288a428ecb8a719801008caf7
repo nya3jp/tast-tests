@@ -3,6 +3,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03f6cb3b_f693b539",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:10:45Z",
+      "side": 1,
+      "message": "nit: not useful\n\nthe json itself is saved at the end of each test",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b585918f_ce5c5c47",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:10:45Z",
+      "side": 1,
+      "message": "nit: move this into a separate function and call it here.",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22e07a2_3fa2dcc7",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:10:45Z",
+      "side": 1,
+      "message": "Make this a global, WritePolicyBlob is called quite often",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12a6eb5_33aeb9bf",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:10:45Z",
+      "side": 1,
+      "message": "nit: not useful\n\nMake sure to copy the extension policies at the end of tests as well.",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0dd71d7f_02dac429",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
         "patchSetId": 3
@@ -49,6 +117,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbd96dad_4faa5700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:10:45Z",
+      "side": 1,
+      "message": "You can avoid installing the extension by providing a local one. My WIP test for extension policy:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3250710",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c6bfaba_1ecb48fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
         "patchSetId": 3
@@ -66,6 +157,40 @@
         "endLine": 51,
         "endChar": 90
       },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427f3c85_451db6e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:10:45Z",
+      "side": 1,
+      "message": "Use the extension js API to check if policy was applied correctly. It will be much more maintainable than UI interactions.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3250710",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b5d926_b969fd87",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:10:45Z",
+      "side": 1,
+      "message": "@Kamil: Is this going to break anything for mgs?",
       "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

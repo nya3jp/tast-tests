@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a13fce6_e3d967f4",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:10:45Z",
+      "side": 0,
+      "message": "Never managed to find out why this wasn\u0027t working.",
+      "revId": "cb35d2d64fbb7183e32d1f508c691357d400772b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
