@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa0571ba_64afd874",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-02T03:32:14Z",
+      "side": 1,
+      "message": "nit: a connected USB device?",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41f4d8df_05a7eb50",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-02T03:32:14Z",
+      "side": 1,
+      "message": "nit: maybe USBDevice is a clearer name?",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be95fe2_6aa66c57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-02T03:32:14Z",
+      "side": 1,
+      "message": "clar: any reason why not \", \"?",
+      "range": {
+        "startLine": 41,
+        "startChar": 51,
+        "endLine": 41,
+        "endChar": 53
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98490897_4cc6a411",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-02T03:32:14Z",
+      "side": 1,
+      "message": "nit: maybe just match for \" \" (space)",
+      "range": {
+        "startLine": 41,
+        "startChar": 84,
+        "endLine": 41,
+        "endChar": 85
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df2187a_48c996a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-02T03:32:14Z",
+      "side": 1,
+      "message": "As you are not matching start and end of string, I suspect leading and trailing .* makes no difference...",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a10845_3444bc98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-02T03:32:14Z",
+      "side": 1,
+      "message": "Maybe add an explanation of the format of the result, as a string is a somewhat unusual way of representing a speed.\n\nIf there is a limited number of possible speeds, you might consider defining an enumeration of possible speed values and parsing any speeds into that enumeration. This will make this library easier to use by tests.",
+      "range": {
+        "startLine": 66,
+        "startChar": 26,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f802a9d7_519d805c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-02T03:32:14Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of this method interface, as it violates command-query separation.\nhttps://en.wikipedia.org/wiki/Command%E2%80%93query_separation\n\nIt is trying to do multiple things at once, by getting device speeds and asserting the number of connected devices.\n\nI think it would be cleaner to refactor your API into a pure Query API as follows:\n- Let the test call ListDevicesInfo and get the set of connected USB devices.\n  The return type would be a ([]USBDevice, error)\n- Provide some helper methods that are passed a []USBDevice info and tests one property at a time. E.g. whether a device with the given class and speed exists, or how many devices of a given class exist. The return type of these methods would (bool) or (int) only (i.e. no need for an error as the devices have already been obtained, and any assertions on the result would be left to the test).\n\nThe test will call these methods and take care of generating any error if the result does not meet expectations.\n\nIf you want to still wrap the calls to the query methods into a method that tests a complex mix of assertions you need to do repeatedly, like USBDeviceDetection, you can. Although I think that method would be better moved to the same file as the test, as it seems unlikely to be re-used.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 124
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e17f31a_9b6808c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-02T03:32:14Z",
+      "side": 1,
+      "message": "nit: as-is, this method might be better named VerifyUSBDeviceDetected. But see comments above.",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43e8aa2_4f44c5af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_device_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-02T03:32:14Z",
+      "side": 1,
+      "message": "clar: How can the same test, with no difference in hardware dependencies, find both one and two connected devices? I think this deserves at least a comment.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
