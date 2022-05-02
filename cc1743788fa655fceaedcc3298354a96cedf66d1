@@ -109,6 +109,24 @@
       "parentUuid": "27060251_88dbd649",
       "revId": "cc1743788fa655fceaedcc3298354a96cedf66d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "596f9ce7_99d82b56",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-05-02T05:01:15Z",
+      "side": 1,
+      "message": "I\u0027m going to submit as-is to save having to get through CQ again.\n\nCan I leave it for you to make any other changes?\n\nI think the current format is ok. To me it was obvious that name is regexp since it starts and ends with slashes.",
+      "parentUuid": "c6671529_72c94feb",
+      "revId": "cc1743788fa655fceaedcc3298354a96cedf66d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
