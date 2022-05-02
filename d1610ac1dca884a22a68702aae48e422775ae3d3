@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8995c939_4b4234f1",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-02T14:48:57Z",
+      "side": 1,
+      "message": "then, instead of Signaled(), could you check actual signal value by Signal() ?",
+      "range": {
+        "startLine": 225,
+        "startChar": 59,
+        "endLine": 225,
+        "endChar": 73
+      },
+      "revId": "d1610ac1dca884a22a68702aae48e422775ae3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
