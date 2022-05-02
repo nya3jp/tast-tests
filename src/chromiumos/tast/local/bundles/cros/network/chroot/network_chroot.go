@@ -8,20 +8,22 @@ package chroot
 import (
 	"bytes"
 	"context"
-	"encoding/binary"
 	"fmt"
 	"io"
 	"io/ioutil"
-	"net"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"text/template"
+	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	patchpanel "chromiumos/tast/local/network/patchpanel_client"
+	"chromiumos/tast/local/bundles/cros/network/veth"
+	"chromiumos/tast/local/shill"
+	"chromiumos/tast/testing"
 )
 
 // Subset of bindRootDirectories that should be mounted writable.
@@ -42,18 +44,24 @@ type NetworkChroot struct {
 	netConfigFileValues    map[string]interface{}
 	netTempDir             string
 	netJailArgs            []string
-	netnsLifelineFD        *os.File
-	netnsName              string
+	netnsCreated           bool
 	startupCmd             *testexec.Cmd
+	vethPair               *veth.Pair
 	NetEnv                 []string
 }
 
 const (
+	netnsName       = "netns-in-test"
 	startup         = "etc/chroot_startup.sh"
 	startupLog      = "var/log/startup.log"
 	startupTemplate = "#!/bin/sh\n" +
 		"exec > /{{.startup_log}} 2>&1\n" + // Redirect all commands output to the file startup.log.
 		"set -x\n" // Print all executed commands to the terminal.
+	vethClientName = "pseudoethernet0"
+	vethClientIP   = "10.9.8.2"
+	vethPrefixLen  = 24
+	vethServerName = "serverethernet0"
+	vethServerIP   = "10.9.8.1"
 )
 
 // NewNetworkChroot creates a new chroot object.
@@ -69,36 +77,30 @@ func NewNetworkChroot() *NetworkChroot {
 
 // Startup creates the chroot, calls patchpanel API to create a netns, starts
 // user processes and returns the IPv4 address inside this netns.
-func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
-	pc, err := patchpanel.New(ctx)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create patchpanel client")
-	}
+func (n *NetworkChroot) Startup(ctx context.Context) (ip string, err error) {
+	// Clean up if any step failed.
+	defer func() {
+		if err != nil {
+			n.Shutdown(ctx)
+		}
+	}()
 
-	// -1 indicates we want a new netns instead of naming a netns associated with a
-	// process. We do not need to communicate outside the DUT in the VPN tests so
-	// the other parameters do not matter.
-	fd, resp, err := pc.ConnectNamespace(ctx, -1, "", false)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to call ConnectNamespace")
+	n.netConfigFileValues["netns_ip"] = vethServerIP
+
+	if err := n.makeNetNS(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to create and connect to netns")
 	}
-	b := make([]byte, 4)
-	binary.LittleEndian.PutUint32(b, uint32(resp.PeerIpv4Address))
-	netnsIP := net.IP(b).String()
-	n.netConfigFileValues["netns_ip"] = netnsIP
-	n.netnsLifelineFD = fd
-	n.netnsName = resp.NetnsName
 
 	if err := n.makeChroot(ctx); err != nil {
-		return "", errors.Wrap(err, "failed making the chroot")
+		return "", errors.Wrap(err, "failed to make the chroot")
 	}
 
 	if err := n.writeConfigs(); err != nil {
-		return "", errors.Wrap(err, "failed writing the configs")
+		return "", errors.Wrap(err, "failed to write the configs")
 	}
 
 	cmdArgs := append(n.netJailArgs, "/bin/bash", filepath.Join("/", startup), "&")
-	ipArgs := []string{"netns", "exec", n.netnsName, "/sbin/minijail0", "-C", n.netTempDir}
+	ipArgs := []string{"netns", "exec", netnsName, "/sbin/minijail0", "-C", n.netTempDir}
 	ipArgs = append(ipArgs, cmdArgs...)
 	n.startupCmd = testexec.CommandContext(ctx, "ip", ipArgs...)
 	n.startupCmd.Env = append(os.Environ(), n.NetEnv...)
@@ -106,14 +108,23 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed to run minijail")
 	}
 
-	return netnsIP, nil
+	return vethServerIP, nil
 }
 
 // Shutdown remove the chroot filesystem in which the VPN server was running.
 func (n *NetworkChroot) Shutdown(ctx context.Context) error {
-	// Delete the network namespace.
-	if n.netnsLifelineFD != nil {
-		n.netnsLifelineFD.Close()
+	// Remove netns.
+	if n.netnsCreated {
+		if err := testexec.CommandContext(ctx, "ip", "netns", "del", netnsName).Run(); err != nil {
+			return errors.Wrapf(err, "failed to delete the netns %s", netnsName)
+		}
+	}
+
+	// Delete veth pair.
+	if n.vethPair != nil {
+		if err := n.vethPair.Delete(ctx); err != nil {
+			return errors.Wrap(err, "failed to delete remove veth pair")
+		}
 	}
 
 	// Wait for the startup command finishing. Kill it at first just in case if it is still running.
@@ -130,7 +141,7 @@ func (n *NetworkChroot) Shutdown(ctx context.Context) error {
 	return nil
 }
 
-// makeChroot make a chroot filesystem.
+// makeChroot makes a chroot filesystem.
 func (n *NetworkChroot) makeChroot(ctx context.Context) error {
 	temp, err := testexec.CommandContext(ctx, "mktemp", "-d", "/usr/local/tmp/chroot.XXXXXXXXX").Output()
 	if err != nil {
@@ -192,6 +203,102 @@ func (n *NetworkChroot) makeChroot(ctx context.Context) error {
 		if err := os.Symlink(targetPath, linkPath); err != nil {
 			return errors.Wrapf(err, "failed to Symlink %s to %s", targetPath, linkPath)
 		}
+	}
+
+	return nil
+}
+
+// makeNetNS ...
+func (n *NetworkChroot) makeNetNS(ctx context.Context) error {
+	var err error
+	n.vethPair, err = veth.NewPair(ctx, vethClientName, vethServerName)
+	if err != nil {
+		return errors.Wrap(err, "failed to setup veth")
+	}
+
+	// Create new namespace.
+	if err := testexec.CommandContext(ctx, "ip", "netns", "add", netnsName).Run(); err != nil {
+		return errors.Wrapf(err, "failed to add the namespace %s", netnsName)
+	}
+	n.netnsCreated = true
+
+	// Move the server side interface into the created netns.
+	if err := testexec.CommandContext(ctx, "ip", "link", "set", vethServerName, "netns", netnsName).Run(); err != nil {
+		return errors.Wrap(err, "failed to move the network interface to the namespace of the server")
+	}
+
+	if err := testexec.CommandContext(ctx, "ip", "-n", netnsName, "addr", "add", vethServerIP, "dev", vethServerName).Run(); err != nil {
+		return errors.Wrapf(err, "failed to add the address %s to the server", vethServerIP)
+	}
+
+	if err := testexec.CommandContext(ctx, "ip", "-n", netnsName, "link", "set", vethServerName, "up").Run(); err != nil {
+		return errors.Wrapf(err, "failed to set the network interface %s up", vethServerName)
+	}
+
+	// Configure the client side interface in shill.
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	testing.ContextLog(ctx, "Waiting for veth appearing in shill")
+	device, err := manager.WaitForDeviceByName(ctx, vethClientName, 5*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the device with interface name %s", vethClientName)
+	}
+
+	testing.ContextLog(ctx, "Waiting for veth service selected")
+	servicePath, err := device.WaitForSelectedService(ctx, 5*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the selected service path")
+	}
+	testing.ContextLog(ctx, "Selected service: ", servicePath)
+
+	// Configure static IP parameters on the service for this veth. The properties
+	// should be applied automatically and bring this service Online.
+	service, err := shill.NewService(ctx, servicePath)
+	if err != nil {
+		return errors.Wrap(err, "failed to create shill service proxy")
+	}
+	if err := service.SetProperty(ctx, "CheckPortal", "false"); err != nil {
+		return errors.Wrap(err, "failed to configure the static IP address")
+	}
+	if err := service.SetProperty(ctx, "Priority", 100); err != nil {
+		return errors.Wrap(err, "failed to configure the service priority")
+	}
+	staticIPProps := map[string]interface{}{
+		shillconst.IPConfigPropertyAddress:   vethClientIP,
+		shillconst.IPConfigPropertyPrefixlen: vethPrefixLen,
+	}
+	if err := service.SetProperty(ctx, shillconst.ServicePropertyStaticIPConfig, staticIPProps); err != nil {
+		return errors.Wrap(err, "failed to configure the static IP address")
+	}
+
+	// TODO: add comment
+	testing.ContextLog(ctx, "Reconnecting service")
+	if err = service.Disconnect(ctx); err != nil {
+		return errors.Wrapf(err, "failed to dis-connect the service %v", service)
+	}
+
+	// Spawn a watcher before connect.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	if err = service.Connect(ctx); err != nil {
+		return errors.Wrap(err, "failed to re-connect after configuring the static IP")
+	}
+	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+	state, err := pw.ExpectIn(timeoutCtx, shillconst.ServicePropertyState,
+		[]interface{}{shillconst.ServiceStateOnline, shillconst.ServiceStateFailure})
+	if err != nil {
+		return errors.Wrap(err, "failed to wait for veth service online")
+	}
+	if state != shillconst.ServiceStateOnline {
+		return errors.New("failed to connect to veth service")
 	}
 
 	return nil
@@ -266,7 +373,7 @@ func (n *NetworkChroot) writeConfigs() error {
 // with this chroot.
 func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) error {
 	minijailArgs := []string{"/sbin/minijail0", "-C", n.netTempDir}
-	ipArgs := []string{"netns", "exec", n.netnsName}
+	ipArgs := []string{"netns", "exec", netnsName}
 	ipArgs = append(ipArgs, minijailArgs...)
 	ipArgs = append(ipArgs, n.netJailArgs...)
 	ipArgs = append(ipArgs, args...)
