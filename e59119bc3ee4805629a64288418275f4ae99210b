@@ -46,6 +46,30 @@
       },
       "revId": "e59119bc3ee4805629a64288418275f4ae99210b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b8c499_be285bf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-05-02T07:06:09Z",
+      "side": 1,
+      "message": "What I mean is, if ui.meet_url is absent and both ui.meet_url_small and ui.bond_credentials are provided, the room url creeated by the BonD should be updated in the value of ui.meet_url_small.",
+      "parentUuid": "1e51a2b9_724da268",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 7
+      },
+      "revId": "e59119bc3ee4805629a64288418275f4ae99210b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
