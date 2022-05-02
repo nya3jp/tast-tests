@@ -16,6 +16,23 @@
       "message": "Two changes:\nBots were failing because the script js-tag did end in \"/\u003e\" instead of having a closing \u003c/script\u003e. This caused the HTML to be misinterpreted and the first-party cookies were not set.\n\nAlso, I noticed the cookie-domain sometimes contained the port-number, so I\u0027m using NameStartingWith to find the right buttons.",
       "revId": "809211be7b5a4efe0c9b6a012b7f44012b850f1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22008b6c_46f090cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-02T17:23:05Z",
+      "side": 1,
+      "message": "still LGTM",
+      "revId": "809211be7b5a4efe0c9b6a012b7f44012b850f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
