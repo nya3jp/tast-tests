@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c09e79_117d33a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-02T07:30:12Z",
+      "side": 1,
+      "message": "nit: No need to pass ctx",
+      "range": {
+        "startLine": 79,
+        "startChar": 19,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cd57cb_647e1049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-02T07:30:12Z",
+      "side": 1,
+      "message": "We have to be extremely careful on accessing an external website from tests; tests might cause traffic spikes to the website, and also the test might get flaky due to Internet connection issues or website downtime.\n\nCan we serve a page locally and access it?",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
