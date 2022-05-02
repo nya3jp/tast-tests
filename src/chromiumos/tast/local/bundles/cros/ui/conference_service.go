@@ -19,6 +19,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/bond"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/conference"
@@ -45,6 +46,8 @@ func init() {
 			// Credentials used to join Google Meet. It might be different with CrOS login credentials.
 			"ui.meet_account",
 			"ui.meet_password",
+			// Credentials for BOND API
+			"ui.bond_credentials",
 
 			// Static Google meet rooms with different participant number have been created.
 			// They have different URLs. ui.meet_url can be used to run a specific subtest but
@@ -239,6 +242,64 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 			return nil, err
 		}
 		return &empty.Empty{}, nil
+	}
+
+	if len(meet.BondCreds) > 0 {
+		var bondConn *bond.Client
+		var bondMeetingCode string
+		bondInit := func() error {
+			// Connect
+			if bondConn, err = bond.NewClient(ctx, bond.WithCredsJSON(meet.BondCreds)); err != nil {
+				testing.ContextLogf(ctx, "BOND API: Failed to connect: %+v", err)
+				return err
+			}
+
+			// Create room
+			sctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+			defer cancel()
+			if bondMeetingCode, err = bondConn.CreateConference(sctx); err != nil {
+				testing.ContextLogf(ctx, "BOND API: Failed to create conference: %+v", err)
+				bondConn.Close()
+				return err
+			}
+			testing.ContextLogf(ctx, "BOND API: Created a conference: %+v", bondMeetingCode)
+
+			// Add bots
+			sctx, cancel = context.WithTimeout(ctx, 50*time.Second)
+			defer cancel()
+			botsDuration := 60 * time.Minute // one hour long by default
+			deadline, ok := ctx.Deadline()
+			if ok {
+				botsDuration = deadline.Add(90 * time.Second).Sub(time.Now())
+			}
+			numBots := roomSize - 1 // one of participants is the test itself
+			if _, numFailures, err := bondConn.AddBots(sctx, bondMeetingCode, numBots, botsDuration); err != nil || numFailures > 0 {
+				testing.ContextLogf(ctx, "BOND API: %d bots failed to connect. Error: %+v", numFailures, err)
+				sctx, cancel = context.WithTimeout(ctx, 10*time.Second)
+				defer cancel()
+				bondConn.Close()
+				bondConn.RemoveAllBots(sctx, bondMeetingCode)
+				return err
+			}
+			testing.ContextLogf(ctx, "BOND API: Added %d bots for the duration of %v", numBots, botsDuration)
+
+			// Make the room created by BOND the first one
+			meet.URLs = append([]string{fmt.Sprintf("https://meet.google.com/%s", bondMeetingCode)}, meet.URLs...)
+
+			return nil
+		}
+		if err = bondInit(); err == nil {
+			cleanupCtx := ctx
+			var cancel context.CancelFunc
+			ctx, cancel = ctxutil.Shorten(ctx, 3*time.Second)
+			defer cancel()
+			defer bondConn.Close()
+			defer bondConn.RemoveAllBots(cleanupCtx, bondMeetingCode)
+			defer testing.ContextLogf(ctx, "BOND API: Performing graceful cleanup")
+		}
+		if len(meet.URLs) == 0 {
+			return nil, errors.Wrap(err, "Failed to create a meeting via BOND API and no static rooms specified")
+		}
 	}
 
 	runWithMeetUrls := func(ctx context.Context) error {

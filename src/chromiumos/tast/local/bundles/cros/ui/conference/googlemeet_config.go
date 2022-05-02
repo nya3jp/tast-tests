@@ -19,6 +19,7 @@ import (
 type GoogleMeetConfig struct {
 	Account       string
 	Password      string
+	BondCreds     []byte
 	URLs          []string
 	RetryTimeout  time.Duration
 	RetryInterval time.Duration
@@ -43,6 +44,11 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 	meetPassword, ok := s.Var("ui.meet_password")
 	if !ok {
 		return GoogleMeetConfig{}, errors.New("failed to get variable ui.meet_password")
+	}
+
+	creds, ok := s.Var("ui.bond_credentials")
+	if !ok {
+		creds = ""
 	}
 
 	var urlVar, urlSeondaryVar string
@@ -80,18 +86,21 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 		return urls
 	}
 	meetURLs := varToURLs(urlVar, "ui.meet_url")
-	if len(meetURLs) == 0 {
-		// Primary meet URL is mandatory.
-		return GoogleMeetConfig{}, errors.New("no valid primary meet URLs are given")
+	if len(meetURLs) > 0 {
+		meetSecURLs := varToURLs(urlSeondaryVar, "ui.meet_url_secondary")
+		// Shuffle the URLs so different tests can try different URLs with random order.
+		rand.Seed(time.Now().UnixNano())
+		rand.Shuffle(len(meetURLs), func(i, j int) { meetURLs[i], meetURLs[j] = meetURLs[j], meetURLs[i] })
+		rand.Shuffle(len(meetSecURLs), func(i, j int) { meetSecURLs[i], meetSecURLs[j] = meetSecURLs[j], meetSecURLs[i] })
+		// Put secondary URLs to the tail.
+		meetURLs = append(meetURLs, meetSecURLs...)
+		testing.ContextLog(ctx, "Google meet URLs: ", meetURLs)
+	} else {
+		if creds == "" {
+			// Must have meet URL and/or BOND creds.
+			return GoogleMeetConfig{}, errors.New("neither valid primary meet URLs nor BOND credentials are given")
+		}
 	}
-	meetSecURLs := varToURLs(urlSeondaryVar, "ui.meet_url_secondary")
-	// Shuffle the URLs so different tests can try different URLs with random order.
-	rand.Seed(time.Now().UnixNano())
-	rand.Shuffle(len(meetURLs), func(i, j int) { meetURLs[i], meetURLs[j] = meetURLs[j], meetURLs[i] })
-	rand.Shuffle(len(meetSecURLs), func(i, j int) { meetSecURLs[i], meetSecURLs[j] = meetSecURLs[j], meetSecURLs[i] })
-	// Put secondary URLs to the tail.
-	meetURLs = append(meetURLs, meetSecURLs...)
-	testing.ContextLog(ctx, "Google meet URLs: ", meetURLs)
 
 	varToDuration := func(name string, defaultValue time.Duration) (time.Duration, error) {
 		str, ok := s.Var(name)
@@ -119,6 +128,7 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 	return GoogleMeetConfig{
 		Account:       meetAccount,
 		Password:      meetPassword,
+		BondCreds:     []byte(creds),
 		URLs:          meetURLs,
 		RetryTimeout:  meetRetryTimeout,
 		RetryInterval: meetRetryInterval,
