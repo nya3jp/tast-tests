@@ -16,6 +16,46 @@
       "message": "PTAL at this extension of the Printers policy test.",
       "revId": "258b3450a248224860c635a8423095d804c1e589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f77805_d90f8f82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-02T01:15:53Z",
+      "side": 1,
+      "message": "In general, I think we should add something like: \"TODO(crbug/1290846): replace DoDefault with LeftClick\" at least once in each of the files in this CL, since left clicking is really what we want to be doing and this is just a workaround.",
+      "revId": "258b3450a248224860c635a8423095d804c1e589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e23747_6c0eb562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-02T01:15:53Z",
+      "side": 1,
+      "message": "Is all this functionality new? If so, I think you should either make a note in the CL description that you\u0027re expanding the test\u0027s logic or do this in a separate CL.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "258b3450a248224860c635a8423095d804c1e589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
