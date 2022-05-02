@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4aeef9b_c559fd52",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-05-02T00:48:19Z",
+      "side": 1,
+      "message": "I guess you could use filepath.WalkDir, but its pretty much equivalent.  Seems ok to leave as is for now.",
+      "parentUuid": "29ae2588_adf86321",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abb17924_8c619e9c",
@@ -223,6 +241,24 @@
       "side": 1,
       "message": "Hmm not that I know of, I could sample the file several times, but\nI think that\u0027d only complicate the arithmetic and introduce more\ncode.",
       "parentUuid": "3ea9ab96_716f0f0d",
+      "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31dc0b5b_deaddbf0",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-05-02T00:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f1ff097_7d30b762",
       "revId": "c81df5d156f4fdfb27e53ddb08f1a7e2a213c7e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
