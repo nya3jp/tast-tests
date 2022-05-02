@@ -341,7 +341,6 @@ func (s *Settings) ClickChange() uiauto.Action {
 	return uiauto.Combine("click button resize and wait for resize dialog and slider",
 		s.tconn.ResetAutomation,
 		s.ui.LeftClick(resizeButton),
-		s.ui.WaitUntilExists(ResizeDiskDialog.Self),
 		s.ui.WithTimeout(time.Minute).WaitUntilExists(ResizeDiskDialog.Slider))
 }
 
