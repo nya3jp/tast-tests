@@ -6,8 +6,13 @@ package quickanswers
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -18,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Translation,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test Quick Answers unit conversion feature",
 		Contacts: []string{
 			"updowndota@google.com",
@@ -28,12 +33,25 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"quickanswers.username", "quickanswers.password"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 // Translation tests Quick Answers translation fearture.
 func Translation(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx,
+	// Reserve five seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	bt := s.Param().(browser.Type)
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
 		chrome.GAIALogin(chrome.Creds{
 			User: s.RequiredVar("quickanswers.username"),
 			Pass: s.RequiredVar("quickanswers.password"),
@@ -41,14 +59,13 @@ func Translation(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
-	ui := uiauto.New(tconn)
 
 	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.quick_answers.enabled", true); err != nil {
 		s.Fatal("Failed to enable Quick Answers: ", err)
@@ -56,13 +73,14 @@ func Translation(ctx context.Context, s *testing.State) {
 
 	// Open page with query word on it.
 	const queryWord = "翻译"
-	conn, err := cr.NewConn(ctx, "https://google.com/search?q="+queryWord)
+	conn, err := br.NewConn(ctx, "https://google.com/search?q="+queryWord)
 	if err != nil {
 		s.Fatal("Failed to create new Chrome connection: ", err)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
+	ui := uiauto.New(tconn)
 	// Wait for the query word to appear.
 	query := nodewith.Name(queryWord).Role(role.StaticText).First()
 	if err := ui.WaitUntilExists(query)(ctx); err != nil {
