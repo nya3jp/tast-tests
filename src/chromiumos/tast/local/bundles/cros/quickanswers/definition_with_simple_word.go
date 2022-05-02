@@ -6,8 +6,13 @@ package quickanswers
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -18,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DefinitionWithSimpleWord,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test Quick Answers always trigger for single word feature",
 		Contacts: []string{
 			"updowndota@google.com",
@@ -28,20 +33,35 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 // DefinitionWithSimpleWord tests Quick Answers always trigger for single word feature.
 func DefinitionWithSimpleWord(ctx context.Context, s *testing.State) {
-	// Setup chrome session with the Quick Answers always trigger for single word feature flag enabled.
-	cr, err := chrome.New(
-		ctx,
-		chrome.EnableFeatures("QuickAnswersAlwaysTriggerForSingleWord"),
-	)
+	// Reserve five seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	bt := s.Param().(browser.Type)
+	opt := chrome.EnableFeatures("QuickAnswersAlwaysTriggerForSingleWord")
+	if bt == browser.TypeLacros {
+		opt = chrome.LacrosEnableFeatures("QuickAnswersAlwaysTriggerForSingleWord")
+	}
+	// Setup chrome session with the Quick Answers always trigger for single word feature flag enabled for any browser.
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), opt)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -56,7 +76,7 @@ func DefinitionWithSimpleWord(ctx context.Context, s *testing.State) {
 
 	// Open page with the simple query word on it.
 	const queryWord = "dog"
-	conn, err := cr.NewConn(ctx, "https://google.com/search?q="+queryWord)
+	conn, err := br.NewConn(ctx, "https://google.com/search?q="+queryWord)
 	if err != nil {
 		s.Fatal("Failed to create new Chrome connection: ", err)
 	}
