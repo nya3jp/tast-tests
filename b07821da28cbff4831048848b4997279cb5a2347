@@ -121,6 +121,29 @@
       },
       "revId": "b07821da28cbff4831048848b4997279cb5a2347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f7fbcd_17a1c46e",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T13:08:14Z",
+      "side": 1,
+      "message": "If I remember right the order of execution inside the body of a defer is sequential. I am thinking - would it be better to close the server first and the ResetChrome? WDYT?",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "b07821da28cbff4831048848b4997279cb5a2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
