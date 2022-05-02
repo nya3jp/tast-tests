@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d0770b_2abd9e5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-02T08:53:55Z",
+      "side": 1,
+      "message": "reilly@: PTAL at serial_ask_for_urls.go and serial_blocked_for_urls.go and check that the test cases inside the for loop correspond to the expected behavior of the policies.",
+      "revId": "a42c90f89776952aa36f187d298c3e422cb19461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
