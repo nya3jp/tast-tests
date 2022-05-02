@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0df548b_b0ba2f66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-02T21:04:31Z",
+      "side": 1,
+      "message": "As Eric(one of the owner from cellular OOO) added other owners to review.\n\nThis change is about creating seperate pool name for SIM pin lock tests which are already running as part of sim_dual_active_sim pool.\n\nThanks.",
+      "revId": "3380643038a43c1128c2ca1613bfca8c9f5bd92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
