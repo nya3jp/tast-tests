@@ -16,6 +16,103 @@
       "message": "Thanks Yi, LGTM",
       "revId": "dc7bed983a8ae32d251aa20bbf13cf03be6f965c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11544f8c_5027fc24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_prefix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T12:34:42Z",
+      "side": 1,
+      "message": "Please use . at the end of the comments.",
+      "revId": "dc7bed983a8ae32d251aa20bbf13cf03be6f965c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9618ad5_f77c9d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_prefix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T12:34:42Z",
+      "side": 1,
+      "message": "Use .",
+      "revId": "dc7bed983a8ae32d251aa20bbf13cf03be6f965c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2324187_ff8368da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_prefix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T12:34:42Z",
+      "side": 1,
+      "message": "Use .",
+      "revId": "dc7bed983a8ae32d251aa20bbf13cf03be6f965c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d01744_fd3ea3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_prefix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T12:34:42Z",
+      "side": 1,
+      "message": "Since this deals with lsb file, let\u0027s shorten the context to make sure cleaning will happen if the test times out.",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 6
+      },
+      "revId": "dc7bed983a8ae32d251aa20bbf13cf03be6f965c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f889a12a_ed995f75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_prefix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T12:34:42Z",
+      "side": 1,
+      "message": "I am not fond of a function with a boolean parameter as it suggests it does at least 2 things based on the passed flag. However, I can\u0027t see an easy way to make it more readable. Maybe passing the policy and expected statuses like:\n\nfunc servePolicyAndCheckUpdates(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, dbusConn *dbus.Conn, policies []policy.Policy, extpextedStatuses ...string)\n\nWDYT?",
+      "range": {
+        "startLine": 127,
+        "startChar": 11,
+        "endLine": 127,
+        "endChar": 69
+      },
+      "revId": "dc7bed983a8ae32d251aa20bbf13cf03be6f965c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
