@@ -50,6 +50,21 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name: fixture.LacrosPolicyLoggedInFeatureChromeLabs,
+		Desc: "Fixture for a running FakeDMS with lacros and enabling the feature flag Chrome Labs",
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.LacrosEnableFeatures("ChromeLabs"))).Opts()
+			},
+		},
+		Contacts:        []string{"samicolon@google.com", "chromeos-commercial-remote-management@google.com"},
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Parent:          fixture.PersistentLacros,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.LacrosPolicyLoggedInRealUser,
 		Desc:     "Fixture for a running FakeDMS with lacros with a real managed user logged on",
 		Contacts: []string{"anastasiian@chromium.org", "chromeos-commercial-remote-management@google.com"},
