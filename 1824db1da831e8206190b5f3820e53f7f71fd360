@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf4f6fc_51d55ef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T07:40:31Z",
+      "side": 1,
+      "message": "nit:\n\nbondConn, err :\u003d ...\nif err !\u003d nil{\n    ...\n}",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 4
+      },
+      "revId": "1824db1da831e8206190b5f3820e53f7f71fd360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f6ace9_eb4e6c46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T07:40:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 73
+      },
+      "revId": "1824db1da831e8206190b5f3820e53f7f71fd360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
