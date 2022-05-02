@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2232b934_cc74db2e",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-05-02T22:39:44Z",
+      "side": 1,
+      "message": "I added a hopefully not-too-brittle reference in the code, but here is a direct link if you\u0027re curious. https://git.sipsolutions.net/iw.git/tree/util.c?id\u003d2781d641f37602469b21a00f0850a7117a3879c3#n124",
+      "parentUuid": "de8b008a_82c8289c",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7355b1fa_1c137789",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-29T21:26:56Z",
       "side": 1,
       "message": "nit: error check in case we get an invalid iface type",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "123a63a5_cb530577",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-05-02T22:39:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7355b1fa_1c137789",
       "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +156,24 @@
       "side": 1,
       "message": "My understanding is that P2P-device is a general term that encompasses P2P-GO and P2P-Client. https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/nl80211.h#L3250 has some documentation on the iface type, noting that it\u0027s not a normal network device. Also, if you look at some concrete examples here: https://kernel.org/doc/html/v5.10/driver-api/80211/cfg80211.html?highlight\u003dcfg80211#c.ieee80211_iface_combination, note that none of those examples mention p2p-device despite supporting p2p-client and p2p-go.",
       "parentUuid": "acf7f458_ccf53d1a",
+      "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf6b86f_1537c16a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/concurrency_caps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-05-02T22:39:44Z",
+      "side": 1,
+      "message": "Ok, that sounds reasonable to me. I\u0027ve implemented your suggestion.",
+      "parentUuid": "84843014_323a6330",
       "revId": "23e9f6f0a1b3d23a3e4c50a821df5221ae84b5d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
