@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd23e948_86b489ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-02T15:56:59Z",
+      "side": 1,
+      "message": "This CL should have a Cq-Depend on https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3620673",
+      "revId": "dc7bed983a8ae32d251aa20bbf13cf03be6f965c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11544f8c_5027fc24",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_prefix.go",
         "patchSetId": 2
