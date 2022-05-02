@@ -66,9 +66,14 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 	}
 
 	for _, tc := range []struct {
-		subtest            string
-		mojoProperties     string
+		subtest        string
+		mojoProperties string
+		// |providerProperties| contains all the expected properties in the Provider
+		// property, while |serviceProperties| contains all the expected properties
+		// except for Provider. Most VPN properties are held in the Provider
+		// properties but some are not (e.g., EAP).
 		providerProperties map[string]interface{}
+		serviceProperties  map[string]string
 	}{
 		{
 			subtest: "WireGuard",
@@ -153,7 +158,71 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 				"L2TPIPsec.User": "username",
 			},
 		},
-		// TODO(b/216386693): Add L2TPIPsec-cert and OpenVPN subtests
+		{
+			subtest: "IKEv2-EAP",
+			mojoProperties: `{
+				name: 'temp-ikev2-eap',
+				typeConfig: {
+					vpn: {
+						host:'host',
+						type: {value: chromeos.networkConfig.mojom.VpnType.kIKEv2},
+						ipSec: {
+							authenticationType: 'EAP',
+							ikeVersion: 2,
+							serverCaPems: ['1234'],
+							eap: {
+								domainSuffixMatch: [],
+								identity: 'eap-identity',
+								outer: 'MSCHAPv2',
+								password: 'eap-password',
+								subjectAltNameMatch: [],
+							}
+						},
+					}
+				}
+			}`,
+			providerProperties: map[string]interface{}{
+				"Host":                     "host",
+				"Type":                     "ikev2",
+				"IKEv2.AuthenticationType": "EAP",
+				"IKEv2.CACertPEM":          []string{"1234"},
+			},
+			serviceProperties: map[string]string{
+				"EAP.EAP":      "MSCHAPV2",
+				"EAP.Identity": "eap-identity",
+			},
+		},
+		{
+			subtest: "IKEv2-PSK",
+			mojoProperties: `{
+				name: 'temp-ikev2-psk',
+				typeConfig: {
+					vpn: {
+						host:'host',
+						type: {value: chromeos.networkConfig.mojom.VpnType.kIKEv2},
+						ipSec: {
+							authenticationType: 'PSK',
+							ikeVersion: 2,
+							psk: 'psk',
+							localIdentity: 'local-id',
+							remoteIdentity: 'remote-id',
+						},
+					}
+				}
+			}`,
+			providerProperties: map[string]interface{}{
+				"Host":                     "host",
+				"Type":                     "ikev2",
+				"IKEv2.AuthenticationType": "PSK",
+				"IKEv2.LocalIdentity":      "local-id",
+				"IKEv2.RemoteIdentity":     "remote-id",
+			},
+		},
+		// TODO(b/216386693): Add L2TPIPsec-cert, IKEv2-cert and OpenVPN subtests.
+		// Note that for L2TPIPsec-cert and IKEv2-cert, the NetworkCertMigrator
+		// class in Chrome will check if the configured cert exists on the device,
+		// we need to find a way to make this check happy in this test (e.g., really
+		// install the certs in the test).
 	} {
 		s.Run(ctx, tc.subtest, func(ctx context.Context, s *testing.State) {
 			jsWrap := fmt.Sprintf(jsTemplate, tc.mojoProperties)
@@ -173,12 +242,22 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to verify %s VPN service: %v", tc.subtest, err)
 			}
 
-			// Verifies that Provider property of this service contain all the
-			// expected properties.
+			// Verifies service properties.
 			props, err := svc.GetProperties(ctx)
 			if err != nil {
 				s.Fatal("Failed to get service properties: ", err)
 			}
+
+			for k, v := range tc.serviceProperties {
+				got, err := props.GetString(k)
+				if err != nil {
+					s.Errorf("Unexpected failure for getting %s: %v", k, err)
+				}
+				if got != v {
+					s.Errorf("Value mismatched for %s: expect %v, got %v", k, v, got)
+				}
+			}
+
 			provider, err := props.Get("Provider")
 			if err != nil {
 				s.Fatal("Failed to get Provider property: ", err)
