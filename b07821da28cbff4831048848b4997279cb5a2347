@@ -51,6 +51,29 @@
       "message": "LGTM, thanks for working on this!",
       "revId": "b07821da28cbff4831048848b4997279cb5a2347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311fec9c_f0d4b75f",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T12:57:09Z",
+      "side": 1,
+      "message": "Does this call work? \nI thought once a fixture (fixture.ChromePolicyLoggedIn) that provides chrome reference is used by a test, the test cannot restart Chrome.",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "b07821da28cbff4831048848b4997279cb5a2347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
