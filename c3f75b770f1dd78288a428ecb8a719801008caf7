@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4b6766_12ce8254",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:19:04Z",
+      "side": 1,
+      "message": "I disagree. This logs each time policy blob is written, which includes all intermediate versions of the blob. The test added in this example changes extension policies during the test, so debugging is hard unless you actually keep all copies of the file and not just the final version.",
+      "parentUuid": "03f6cb3b_f693b539",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b585918f_ce5c5c47",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-02T07:10:45Z",
       "side": 1,
       "message": "nit: move this into a separate function and call it here.",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d2c73f_06fce0ca",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b585918f_ce5c5c47",
       "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71aeea16_d2544854",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b22e07a2_3fa2dcc7",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f12a6eb5_33aeb9bf",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c082f3_c333bd78",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:19:04Z",
+      "side": 1,
+      "message": "Same as for policy.json above.",
+      "parentUuid": "f12a6eb5_33aeb9bf",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dd71d7f_02dac429",
@@ -82,6 +154,30 @@
       "writtenOn": "2022-04-30T02:12:37Z",
       "side": 1,
       "message": "Maybe call it \"ExtensionPoliciesMGS\", to reflect it\u0027s only testing it in Managed Guest Sessions?\n\nWe\u0027ll add similar tests for other types of user sessions in the future; they\u0027ll need to be separate tests, since they\u0027ll need different fixtures.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530d5cb1_bdcb9ec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dd71d7f_02dac429",
       "range": {
         "startLine": 25,
         "startChar": 16,
@@ -115,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3469a2c_755088c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f48451e_e5da257d",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbd96dad_4faa5700",
@@ -128,6 +248,30 @@
       "writtenOn": "2022-05-02T07:10:45Z",
       "side": 1,
       "message": "You can avoid installing the extension by providing a local one. My WIP test for extension policy:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3250710",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78fc5459_8037f152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:19:04Z",
+      "side": 1,
+      "message": "That would definitely make this test more stable, but it would make it close to an integration test, whilst I was aiming of it becoming E2E test at some point (added a TODO to make this more clear). This is because it is intended to replace a manual test and we ought to be testing that everything works as expected including the downloading of an extension, application of policies etc.",
+      "parentUuid": "dbd96dad_4faa5700",
       "range": {
         "startLine": 47,
         "startChar": 5,
@@ -161,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70fb8b6_222344f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6bfaba_1ecb48fb",
+      "range": {
+        "startLine": 51,
+        "startChar": 31,
+        "endLine": 51,
+        "endChar": 90
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "427f3c85_451db6e0",
@@ -174,6 +342,24 @@
       "writtenOn": "2022-05-02T07:10:45Z",
       "side": 1,
       "message": "Use the extension js API to check if policy was applied correctly. It will be much more maintainable than UI interactions.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3250710",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a13b75a_3c230ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:19:04Z",
+      "side": 1,
+      "message": "Similar to the argument about making extension locally, I would like to keep this test as close to what users experience as possible and make it E2E at some point.",
+      "parentUuid": "427f3c85_451db6e0",
       "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
