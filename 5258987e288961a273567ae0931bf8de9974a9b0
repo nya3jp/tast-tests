@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a51aee_d4bfd626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-02T02:47:35Z",
+      "side": 1,
+      "message": "I don\u0027t want to do this in this test atm since adding it will 1) extend the running time of this test 2) introduce additional flakiness (as what we observed for the VPNConnect tests).\nSo if this is the only way (I\u0027m feeling the NetworkCertMigrator class can be removed according to its name -- it\u0027s a migration and this code has been existing for a very long time, but I didn\u0027t check that), maybe it\u0027s not worth adding the L2TPIPsec-cert and IKEv2-cert test. The cert part will be covered by the VPNUI test in the future and we can make this test focus on properties not covered by the VPNUI test.\n\nAny thoughts here?",
+      "range": {
+        "startLine": 225,
+        "startChar": 5,
+        "endLine": 225,
+        "endChar": 34
+      },
+      "revId": "5258987e288961a273567ae0931bf8de9974a9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
