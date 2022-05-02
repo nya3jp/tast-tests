@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8f1992_b69face9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T12:38:38Z",
+      "side": 1,
+      "message": "Thank you for the test 👍",
+      "revId": "782406d53709ed35d7f5352d1ff14a605d610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5921a605_9fa8af96",
@@ -48,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ea359e_1df33ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/extension_read_device_id.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T12:38:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "311249b3_9dbf23aa",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "782406d53709ed35d7f5352d1ff14a605d610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad7c44fd_71628192",
@@ -85,6 +126,30 @@
       "side": 1,
       "message": "I am not sure if I understood your question right. The extension must have a node with the text `Device Directory API ID: 123e4567-e89b-12d3-a456-426614174000` for the test to succeed, indicating that the deviceID variable was successfully read from the device policy.",
       "parentUuid": "ad7c44fd_71628192",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "782406d53709ed35d7f5352d1ff14a605d610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad0b403_260e3b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/extension_read_device_id.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-02T12:38:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66927bdc_2ce36689",
       "range": {
         "startLine": 75,
         "startChar": 1,
