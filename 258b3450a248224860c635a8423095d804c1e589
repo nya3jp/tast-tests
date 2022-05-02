@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ced0fb_bd3a41aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-02T11:43:10Z",
+      "side": 1,
+      "message": "Good point, done!",
+      "parentUuid": "d7f77805_d90f8f82",
+      "revId": "258b3450a248224860c635a8423095d804c1e589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2e23747_6c0eb562",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-02T01:15:53Z",
       "side": 1,
       "message": "Is all this functionality new? If so, I think you should either make a note in the CL description that you\u0027re expanding the test\u0027s logic or do this in a separate CL.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "258b3450a248224860c635a8423095d804c1e589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e205f6d_f8437897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-02T11:43:10Z",
+      "side": 1,
+      "message": "Indeed - I can see how the CL description was a bit misleading. The main goal of this CL was to automate a manual test (linked to in b/215675957). While trying to implement the new functionality, I stumbled upon crbug.com/1290846, which is why I had to use `DoDefault` instead of `LeftClick` in the new functionality. I updated the CL description to better reflect that. Thanks for point this out!",
+      "parentUuid": "b2e23747_6c0eb562",
       "range": {
         "startLine": 135,
         "startChar": 1,
