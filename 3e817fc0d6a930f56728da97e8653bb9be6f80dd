@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b2ed30_05e4d2bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-05-02T07:34:15Z",
+      "side": 1,
+      "message": "Wonder if we could extract some of the code to reuse here and in oobe.Smoke",
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9371256d_cd3ada27",
@@ -88,6 +105,29 @@
         "startChar": 16,
         "endLine": 32,
         "endChar": 19
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4efa3b3d_0b0a209f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-05-02T07:34:15Z",
+      "side": 1,
+      "message": "We (OOBE team) try to use the UI automation tools whenever possible.\nSee for example https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3610029\n\nAlso https://docs.google.com/document/d/1cxMLPQUNVVoa_i3dBfrAGhITQtdKV_HS1vdcM8BjKEE/edit?resourcekey\u003d0-TOcN57danKvOskgvJGpRJQ#heading\u003dh.4cvz8ttx47ot",
+      "range": {
+        "startLine": 53,
+        "startChar": 90,
+        "endLine": 53,
+        "endChar": 97
       },
       "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
