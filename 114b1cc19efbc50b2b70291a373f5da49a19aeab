@@ -265,6 +265,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05eed89d_ec1d8a7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T20:00:26Z",
+      "side": 1,
+      "message": "Never mind. `non-zero` is better for consistency with existing code.",
+      "parentUuid": "c42192f1_730c14d7",
+      "range": {
+        "startLine": 227,
+        "startChar": 44,
+        "endLine": 227,
+        "endChar": 52
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c149a8f0_4d34ebcf",
@@ -278,6 +302,30 @@
       "writtenOn": "2022-05-02T16:46:43Z",
       "side": 1,
       "message": "`nonzero`",
+      "range": {
+        "startLine": 246,
+        "startChar": 41,
+        "endLine": 246,
+        "endChar": 49
+      },
+      "revId": "114b1cc19efbc50b2b70291a373f5da49a19aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b987106f_e0334997",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_usb_hid_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T20:00:26Z",
+      "side": 1,
+      "message": "Never mind. `non-zero` is better for consistency with existing code.",
+      "parentUuid": "c149a8f0_4d34ebcf",
       "range": {
         "startLine": 246,
         "startChar": 41,
