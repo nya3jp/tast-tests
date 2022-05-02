@@ -7,12 +7,18 @@ package scanning
 
 import (
 	"context"
+	"crypto/tls"
+	"encoding/xml"
+	"fmt"
+	"io/ioutil"
 	"math"
 	"math/rand"
+	"net/http"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -236,6 +242,101 @@ func verifyScannedImage(ctx context.Context, scan string, pageSize scanapp.PageS
 	return nil
 }
 
+// getScannerAddress runs `lorgnette_cli list` and parses the output to find the
+// network address for the scanner with `name`.
+func getScannerAddress(ctx context.Context, name string) (string, error) {
+	out, err := testexec.CommandContext(ctx, "lorgnette_cli", "list").Output()
+	if err != nil {
+		return "", err
+	}
+
+	r, err := regexp.Compile(fmt.Sprintf(`^airscan:escl:%s:(?P<address>.*)/eSCL/$`, regexp.QuoteMeta(name)))
+	if err != nil {
+		return "", err
+	}
+
+	lines := strings.Split(string(out), "\n")
+	for _, line := range lines {
+		match := r.FindStringSubmatch(line)
+		if match == nil || len(match) < 2 {
+			continue
+		}
+
+		for i, submatch := range r.SubexpNames() {
+			if submatch == "address" {
+				return match[i], nil
+			}
+		}
+	}
+
+	return "", errors.Errorf("failed to parse output: %s", string(out))
+}
+
+// getScannerStatus queries the /eSCL/ScannerStatus endpoint for the scanner at
+// `address` and returns the scanner's status.
+func getScannerStatus(address string) (string, error) {
+	// Deliberately ignore certificate errors because printers normally
+	// have self-signed certificates.
+	client := &http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{
+				MinVersion:         tls.VersionTLS12,
+				InsecureSkipVerify: true,
+			},
+		},
+	}
+
+	response, err := client.Get(address + "/eSCL/ScannerStatus")
+	if err != nil {
+		return "", err
+	}
+	defer response.Body.Close()
+
+	if response.Status != "200 OK" {
+		return "", errors.Errorf("unexpected HTTP response status: %s", response.Status)
+	}
+
+	bytes, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return "", err
+	}
+
+	var scannerStatus ScannerStatus
+	err = xml.Unmarshal(bytes, &scannerStatus)
+	if err != nil {
+		return "", err
+	}
+
+	return scannerStatus.State, nil
+}
+
+// ensureScannerIdle ensure that the scanner with `name` reports Idle as its
+// status.
+func ensureScannerIdle(ctx context.Context, name string) error {
+	address, err := getScannerAddress(ctx, name)
+	if err != nil {
+		return errors.Wrap(err, "failed to get scanner address")
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		status, err := getScannerStatus(address)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get scanner status"))
+		}
+		if status != "Idle" {
+			return errors.Errorf("scanner status is %s", status)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second})
+}
+
+// ScannerStatus structures the data returned by a call to a scanner's
+// /eSCL/ScannerStatus endpoint. Unused data from the response is left out of
+// the struct.
+type ScannerStatus struct {
+	State string `xml:"State"`
+}
+
 // TestingStruct contains the parameters used when testing the scanapp settings
 // in RunAppSettingsTests.
 type TestingStruct struct {
@@ -397,6 +498,10 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		s.Fatal("Failed to expand More settings: ", err)
 	}
 
+	if err := ensureScannerIdle(ctx, scanner.ScannerName); err != nil {
+		s.Fatal("Scanner not idle: ", err)
+	}
+
 	// Loop through all of the supported options. Skip file type for now, since
 	// that is not a property of the scanners themselves and we're not
 	// performing any real scans.
@@ -475,6 +580,10 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 			// Scan button.
 			if err := ash.CloseNotifications(ctx, tconn); err != nil {
 				s.Fatal("Failed to close notifications: ", err)
+			}
+
+			if err := ensureScannerIdle(ctx, scanner.ScannerName); err != nil {
+				s.Fatal("Scanner not idle: ", err)
 			}
 
 			s.Logf("Testing scan combination: {%v %v %v}", colorMode, pageSize, resolution)
