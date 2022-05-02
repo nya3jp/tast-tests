@@ -1,0 +1,23 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.tape;
+
+option go_package = "chromiumos/tast/services/cros/tape";
+
+// TapeService provides functions for use with the TAPE GCP.
+service Service {
+  // GetDeviceID retrieves the deviceID used for deprovisioning from the DuT.
+  rpc GetDeviceID(GetDeviceIDRequest) returns (GetDeviceIDResponse) {}
+}
+
+message GetDeviceIDRequest {
+  string customerID = 1;
+}
+
+message GetDeviceIDResponse {
+  string deviceID = 1;
+}
