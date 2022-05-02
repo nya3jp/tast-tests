@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f00c880_1b4a2aae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/scan_source.jpg.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T21:57:04Z",
+      "side": 1,
+      "message": "This is a test data used for scanapp testing. Please do not add extra deps between filemanager test and scanapp.",
+      "range": {
+        "startLine": 2,
+        "startChar": 50,
+        "endLine": 2,
+        "endChar": 87
+      },
+      "revId": "a67c6ac432455617b73427199b5846ec42657747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb0fdc98_3874892b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T21:57:04Z",
+      "side": 1,
+      "message": "FindFileByName returns error if the file does not exist. Does this test folder need to be available before test?",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "a67c6ac432455617b73427199b5846ec42657747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e321891_079964ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T21:57:04Z",
+      "side": 1,
+      "message": "I understand this as removing existing test directory if exists. The folder name looks unique and unlikely to have any file having the same name. However it is not a safe way.\n\ne.g. if fileList.Files length\u003e1, should it throw out error and ask for a manual check? \n\nBesides, I assume only one result is expected, then we do not need to run a loop but just fileList.Files[0]",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "a67c6ac432455617b73427199b5846ec42657747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90bfbc5_3a8da042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T21:57:04Z",
+      "side": 1,
+      "message": "The folder is not created in this action. It waits for sync?",
+      "range": {
+        "startLine": 203,
+        "startChar": 49,
+        "endLine": 203,
+        "endChar": 55
+      },
+      "revId": "a67c6ac432455617b73427199b5846ec42657747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34790104_510b835a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T21:57:04Z",
+      "side": 1,
+      "message": "Does refresh page work simpler? You can connect to Files connection to run location.reload()",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 2
+      },
+      "revId": "a67c6ac432455617b73427199b5846ec42657747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5624eaed_b825f6ff",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T21:57:04Z",
+      "side": 1,
+      "message": "This service initiation repeated 12 times in this file. I would recommend to attach these functions on service instead of APIClient.",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "a67c6ac432455617b73427199b5846ec42657747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1adae4_1d66853b",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T21:57:04Z",
+      "side": 1,
+      "message": "nit: FindFilesByName since it returns a list of files.",
+      "range": {
+        "startLine": 219,
+        "startChar": 3,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "a67c6ac432455617b73427199b5846ec42657747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db50e83b_c79d9bf2",
+        "filename": "src/chromiumos/tast/local/drivefs/drive_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-02T21:57:04Z",
+      "side": 1,
+      "message": "I do not think returning error is good for empty result. How about return nil, nil?",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "a67c6ac432455617b73427199b5846ec42657747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
