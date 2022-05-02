@@ -33,6 +33,24 @@
       "message": "Please remove this line, or add TODO note w/ issue number if this code is planned to be added for a specific purpose.",
       "revId": "837c125c9d42b0251a5af151073fd7a5615e9ed8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c1111ea_034a95a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_using_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-02T04:25:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fffddbb_c7d4906c",
+      "revId": "837c125c9d42b0251a5af151073fd7a5615e9ed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
