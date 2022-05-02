@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eda8fc7b_44721b30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-02T15:42:36Z",
+      "side": 1,
+      "message": "...and add a more descriptive CL description",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "61d0c88784788a1296b3af0d589ddd966d6886c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "154f4d35_03301ffa",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
