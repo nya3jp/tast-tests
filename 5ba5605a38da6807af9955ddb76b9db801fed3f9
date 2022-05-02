@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7dba563_1f117b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/serial/serial.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-02T08:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f68898f_5c7db4ae",
+      "revId": "5ba5605a38da6807af9955ddb76b9db801fed3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "070bf697_8243087d",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-05-02T08:44:15Z",
       "side": 1,
       "message": "url ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 88,
+        "endLine": 34,
+        "endChar": 92
+      },
+      "revId": "5ba5605a38da6807af9955ddb76b9db801fed3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19cdbb3a_b92582a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/serial/serial.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-02T08:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "070bf697_8243087d",
       "range": {
         "startLine": 34,
         "startChar": 88,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ea1839_b2d30a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/serial_ask_for_urls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-02T08:51:07Z",
+      "side": 1,
+      "message": "Argh, I was so certain that I had fixed that after your comment in the previous CL. Sorry for that and thank you for catching this again!",
+      "parentUuid": "b2d4c544_bded52c8",
+      "range": {
+        "startLine": 145,
+        "startChar": 49,
+        "endLine": 145,
+        "endChar": 52
+      },
+      "revId": "5ba5605a38da6807af9955ddb76b9db801fed3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe060546_38b46cdf",
@@ -111,6 +177,30 @@
       "writtenOn": "2022-05-02T08:44:15Z",
       "side": 1,
       "message": "test",
+      "range": {
+        "startLine": 95,
+        "startChar": 75,
+        "endLine": 95,
+        "endChar": 81
+      },
+      "revId": "5ba5605a38da6807af9955ddb76b9db801fed3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6076803b_aa4f2cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/serial_blocked_for_urls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-02T08:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe060546_38b46cdf",
       "range": {
         "startLine": 95,
         "startChar": 75,
