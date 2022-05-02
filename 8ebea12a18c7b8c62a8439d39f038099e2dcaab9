@@ -284,6 +284,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9a99a1_68f9f1fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-02T02:33:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "914d46d5_4a318678",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 119
+      },
+      "revId": "8ebea12a18c7b8c62a8439d39f038099e2dcaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0013eeb_5aa1ade2",
