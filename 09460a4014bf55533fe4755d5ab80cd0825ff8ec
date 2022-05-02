@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f137adbd_7203112b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_prefix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-02T09:48:58Z",
+      "side": 1,
+      "message": "I think this is not actually an error. It\u0027s returned from testing.Poll() which won\u0027t make the test fail immediately. I changed the wording of this message a bit.",
+      "parentUuid": "48e2f635_7eaaeb66",
+      "range": {
+        "startLine": 155,
+        "startChar": 21,
+        "endLine": 155,
+        "endChar": 49
+      },
+      "revId": "09460a4014bf55533fe4755d5ab80cd0825ff8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a56a50a7_f673693b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-02T07:48:17Z",
       "side": 1,
       "message": "Could you please parameterise / pick out this flow to separate methods?\n\nThere are quite a few differences, but in general: setting the policy and checking the update engine happens twice. I think it\u0027s important to highlight that the steps are the same by parameterising or moving the code into the helper method.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 40
+      },
+      "revId": "09460a4014bf55533fe4755d5ab80cd0825ff8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f3be153_e3383e13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_prefix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-02T09:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a56a50a7_f673693b",
       "range": {
         "startLine": 167,
         "startChar": 1,
