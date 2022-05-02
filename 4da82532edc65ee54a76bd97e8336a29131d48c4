@@ -33,6 +33,69 @@
       "message": "I am not familiar with Tast tests but this LGTM from my perspective.",
       "revId": "4da82532edc65ee54a76bd97e8336a29131d48c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf282b91_505b6248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:13:00Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "4da82532edc65ee54a76bd97e8336a29131d48c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0ae2f8_8dc1abdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_serial_guard_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:13:00Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 109,
+        "startChar": 49,
+        "endLine": 109,
+        "endChar": 52
+      },
+      "revId": "4da82532edc65ee54a76bd97e8336a29131d48c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "615a060c_13b5a7f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_serial_guard_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-02T07:13:00Z",
+      "side": 1,
+      "message": "Use a constant to share with the Data entry.",
+      "range": {
+        "startLine": 111,
+        "startChar": 68,
+        "endLine": 111,
+        "endChar": 104
+      },
+      "revId": "4da82532edc65ee54a76bd97e8336a29131d48c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
