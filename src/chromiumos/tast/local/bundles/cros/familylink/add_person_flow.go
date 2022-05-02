@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/testing"
 )
@@ -25,7 +26,10 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "familyLinkUnicornLoginNonOwner",
+		VarDeps: []string{
+			"unicorn.childUser",
+		},
+		Fixture: "familyLinkUnicornLoginNonOwner",
 	})
 }
 
@@ -38,5 +42,9 @@ func AddPersonFlow(ctx context.Context, s *testing.State) {
 	}
 	if tconn == nil {
 		s.Fatal("Failed to create test API connection")
+	}
+	// TODO(https://crbug.com/1313067) set browser type to be Ash or LaCrOS based on param.
+	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("unicorn.childUser")); err != nil {
+		s.Fatal("Failed to verify user signed into browser: ", err)
 	}
 }
