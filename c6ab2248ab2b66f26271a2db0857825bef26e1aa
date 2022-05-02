@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01186b3_9e249706",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:59:05Z",
+      "side": 1,
+      "message": "`nonzero`",
+      "range": {
+        "startLine": 223,
+        "startChar": 44,
+        "endLine": 223,
+        "endChar": 52
+      },
+      "revId": "c6ab2248ab2b66f26271a2db0857825bef26e1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65949430_9d5317de",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:59:05Z",
+      "side": 1,
+      "message": "`if`",
+      "range": {
+        "startLine": 223,
+        "startChar": 53,
+        "endLine": 223,
+        "endChar": 60
+      },
+      "revId": "c6ab2248ab2b66f26271a2db0857825bef26e1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539635e5_f435dbbf",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:59:05Z",
+      "side": 1,
+      "message": "The word `it` here seems to refer to the exit status (and that is not right).",
+      "range": {
+        "startLine": 223,
+        "startChar": 61,
+        "endLine": 223,
+        "endChar": 63
+      },
+      "revId": "c6ab2248ab2b66f26271a2db0857825bef26e1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c563acb_e6c866e7",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-02T16:59:05Z",
+      "side": 1,
+      "message": "I think to avoid code duplication, this should be a function with a parameter that can get `launch` or `p.cmd`.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 2
+      },
+      "revId": "c6ab2248ab2b66f26271a2db0857825bef26e1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
