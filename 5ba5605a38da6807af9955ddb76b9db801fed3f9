@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "991c7386_f990e4f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-02T08:36:16Z",
+      "side": 1,
+      "message": "PTAL at two more serial tests (assigning you manually since you reviewed the previous serial test)",
+      "revId": "5ba5605a38da6807af9955ddb76b9db801fed3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
