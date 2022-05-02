@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "561fc8ed_ae571346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-05-02T06:32:06Z",
+      "side": 1,
+      "message": "Usually, we use ui.meet_url_\u003csize\u003e vars rather than ui.meet_url. Make sure that if ui.bond_credentials is present, it overrides value in any of the ui.meet_url_two/_small/_large/_class variables.",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 7
+      },
+      "revId": "e59119bc3ee4805629a64288418275f4ae99210b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
