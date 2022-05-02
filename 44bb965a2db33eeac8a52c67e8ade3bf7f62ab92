@@ -265,6 +265,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5a5f13_f35c248b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-02T05:57:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c9964b64_72e6bc2e",
+      "revId": "44bb965a2db33eeac8a52c67e8ade3bf7f62ab92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcb1c87c_f0c01323",
