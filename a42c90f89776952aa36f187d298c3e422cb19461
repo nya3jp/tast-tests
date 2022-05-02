@@ -16,6 +16,23 @@
       "message": "reilly@: PTAL at serial_ask_for_urls.go and serial_blocked_for_urls.go and check that the test cases inside the for loop correspond to the expected behavior of the policies.",
       "revId": "a42c90f89776952aa36f187d298c3e422cb19461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3d33a9_1db13507",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113896
+      },
+      "writtenOn": "2022-05-02T18:54:35Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a42c90f89776952aa36f187d298c3e422cb19461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
