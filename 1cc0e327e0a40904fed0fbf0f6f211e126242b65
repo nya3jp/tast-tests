@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53753abe_5c58a035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-05-02T06:50:06Z",
+      "side": 1,
+      "message": "Hi, I\u0027ve changed the code from a function to a `for {}` loop.",
+      "revId": "1cc0e327e0a40904fed0fbf0f6f211e126242b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

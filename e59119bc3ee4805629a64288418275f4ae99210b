@@ -22,6 +22,30 @@
       },
       "revId": "e59119bc3ee4805629a64288418275f4ae99210b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e51a2b9_724da268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-05-02T06:50:06Z",
+      "side": 1,
+      "message": "I didn\u0027t change how this code works, just rearranged it.\nThe actual var name is in the variable urlVar and it\u0027s filled in from the vars you mentioned in the code above.\nAs I can see, it works the way you said.\nAlso, the I tested the fallback to the static rooms to work.",
+      "parentUuid": "561fc8ed_ae571346",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 7
+      },
+      "revId": "e59119bc3ee4805629a64288418275f4ae99210b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
