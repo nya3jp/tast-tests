@@ -33,6 +33,23 @@
       "message": "Add msta to review the change in nodewith.go\n\nNot sure any special reason to add an extra slash in formatting.",
       "revId": "cc1743788fa655fceaedcc3298354a96cedf66d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b550f3_bc7f48f5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-02T01:06:28Z",
+      "side": 1,
+      "message": "Could you revert the changes here to this file. /%v/ was done to make it clear that it\u0027s a regex, and specifically a javascript regex. If you have something like a.b, it won\u0027t be clear that it\u0027s a regex and not a string.",
+      "revId": "cc1743788fa655fceaedcc3298354a96cedf66d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
