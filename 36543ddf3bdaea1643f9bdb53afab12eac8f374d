@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e2e48197_0004b8d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-05-02T08:19:02Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "36543ddf3bdaea1643f9bdb53afab12eac8f374d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f502da5f_a486bb74",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
         "patchSetId": 1
@@ -19,6 +36,29 @@
         "startChar": 3,
         "endLine": 42,
         "endChar": 18
+      },
+      "revId": "36543ddf3bdaea1643f9bdb53afab12eac8f374d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a56cbd3_bc85656a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-05-02T08:19:02Z",
+      "side": 1,
+      "message": "Optional: Maybe allow the dump to use cleanupCtx time.",
+      "range": {
+        "startLine": 102,
+        "startChar": 49,
+        "endLine": 102,
+        "endChar": 52
       },
       "revId": "36543ddf3bdaea1643f9bdb53afab12eac8f374d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
