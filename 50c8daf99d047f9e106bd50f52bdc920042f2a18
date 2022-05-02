@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c82f267d_1b70e22e",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-02T14:41:51Z",
+      "side": 1,
+      "message": "nit: looks redundant. you can always append suffix.",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 24
+      },
+      "revId": "50c8daf99d047f9e106bd50f52bdc920042f2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60328b95_4f2f1007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-02T14:41:51Z",
+      "side": 1,
+      "message": "tconn can be dropped. setup returns cr instance, and TestConn should be taken from it for consistency.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 24
+      },
+      "revId": "50c8daf99d047f9e106bd50f52bdc920042f2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec256ad_379f7484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-02T14:41:51Z",
+      "side": 1,
+      "message": "could you document that the callback function is what we mainly focusing in this test, and in addition, TPS score is taken by cujRecorder?\n\nThis test now takes two kinds of metrics, and so that it is unclear now, IMO.",
+      "revId": "50c8daf99d047f9e106bd50f52bdc920042f2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
