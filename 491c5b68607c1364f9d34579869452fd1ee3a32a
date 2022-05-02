@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c05035_656d0831",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-05-02T14:32:14Z",
+      "side": 1,
+      "message": "Maybe add a test command here\ntast run ${cr} \u0027(\"group:cellular\" \u0026\u0026 \"cellular_sim_pinlock\")\u0027",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "491c5b68607c1364f9d34579869452fd1ee3a32a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
