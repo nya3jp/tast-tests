@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1197041b_7c953574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-02T01:05:42Z",
+      "side": 1,
+      "message": "LGTM from tast owners perspective. Please wait for Alex to LGTM before submitting.",
+      "revId": "3a9c00a34718367986207f431d6fc5792b33d578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
