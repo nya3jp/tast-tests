@@ -35,6 +35,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f9242e_bb854306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/terminal/ssh.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-02T04:14:02Z",
+      "side": 1,
+      "message": "nit/optional: I know this mount is being actively discouraged now, no action required just thought I\u0027d bring it up.\n\nhttps://groups.google.com/u/1/a/google.com/g/cros-cryptohome-dev/c/uCwZyHZpVzg/m/9BLSx9tOBAAJ?pli\u003d1",
+      "range": {
+        "startLine": 65,
+        "startChar": 35,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "cc1743788fa655fceaedcc3298354a96cedf66d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85b550f3_bc7f48f5",
