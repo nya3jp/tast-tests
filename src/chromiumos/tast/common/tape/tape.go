@@ -292,7 +292,7 @@ func (acc *Account) SetPolicy(ctx context.Context, policySchema PolicySchema, cl
 		return errors.Wrap(err, "failed to marshal data")
 	}
 	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "setPolicy", 30*time.Second, payload, client)
+	response, err := sendRequestWithTimeout(ctx, "POST", "Policies/setPolicy", 30*time.Second, payload, client)
 	if err != nil {
 		return errors.Wrap(err, "failed to make REST call")
 	}
@@ -313,7 +313,7 @@ func Deprovision(ctx context.Context, request DeprovisionRequest, client *http.C
 		return errors.Wrap(err, "failed to marshal data")
 	}
 	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "deprovision", 60*time.Second, payload, client)
+	response, err := sendRequestWithTimeout(ctx, "POST", "Devices/deprovision", 60*time.Second, payload, client)
 	if err != nil {
 		return errors.Wrap(err, "failed to make REST call")
 	}
