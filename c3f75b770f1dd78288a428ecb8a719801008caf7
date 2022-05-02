@@ -379,6 +379,24 @@
       "message": "@Kamil: Is this going to break anything for mgs?",
       "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c92bb01_9659d646",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-02T11:20:07Z",
+      "side": 1,
+      "message": "Why would it? It could only break new tests that are using this feature.",
+      "parentUuid": "51b5d926_b969fd87",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
