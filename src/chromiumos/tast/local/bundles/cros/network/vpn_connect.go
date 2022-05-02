@@ -309,17 +309,20 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 
 	pr := localping.NewLocalRunner()
 	if err := vpn.ExpectPingSuccess(ctx, pr, conn.Server.OverlayIP); err != nil {
+		vpn.DumpNetworkInfo(ctx)
 		s.Fatalf("Failed to ping %s: %v", conn.Server.OverlayIP, err)
 	}
 
 	if conn.SecondServer != nil {
 		if err := vpn.ExpectPingSuccess(ctx, pr, conn.SecondServer.OverlayIP); err != nil {
+			vpn.DumpNetworkInfo(ctx)
 			s.Fatalf("Failed to ping %s: %v", conn.SecondServer.OverlayIP, err)
 		}
 	}
 
 	// IPv6 should be blackholed.
 	if res, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); err == nil && res.Received != 0 {
+		vpn.DumpNetworkInfo(ctx)
 		s.Fatal("IPv6 ping should fail: ", err)
 	}
 }
