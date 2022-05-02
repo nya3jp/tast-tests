@@ -16,6 +16,23 @@
       "message": "+updowndota for the test author\u0027s review\n",
       "revId": "97e7ee14a2ed63790bbd90a301766c5e4f9f4d82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f87b19b6_d694e196",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-05-02T18:33:14Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "97e7ee14a2ed63790bbd90a301766c5e4f9f4d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
