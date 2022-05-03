@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68b50d92_14077813",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-03T03:40:09Z",
+      "side": 1,
+      "message": "Nit: Tast (otherwise it looks too much like test). Here and below.",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "937b373fa113eb623c837b63e41b80a132362a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3675cb5b_f220c9fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-03T03:40:09Z",
+      "side": 1,
+      "message": "Nit: work",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "937b373fa113eb623c837b63e41b80a132362a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bddde784_0b1b3584",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-03T03:40:09Z",
+      "side": 1,
+      "message": "Nit: extra space",
+      "range": {
+        "startLine": 12,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "937b373fa113eb623c837b63e41b80a132362a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4494392_589798c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-03T03:40:09Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "937b373fa113eb623c837b63e41b80a132362a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
