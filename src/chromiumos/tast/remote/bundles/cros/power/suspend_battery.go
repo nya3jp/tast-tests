@@ -63,12 +63,16 @@ func init() {
 				// coral
 				"babymega",
 
+				// elm
+				"elm",
+
 				// eve
 				"eve",
 
 				// dedede
 				"boten",
 				"metaknight",
+				"sasuke",
 				"storo360",
 
 				// grunt
@@ -81,8 +85,12 @@ func init() {
 				"treeya",
 
 				// hatch
+				"akemi",
+				"dratini",
 				"helios",
 				"jinlon",
+				"kindred",
+				"kohaku",
 				"nightfury",
 
 				// jacuzzi
@@ -98,6 +106,9 @@ func init() {
 
 				// octopus
 				"apel",
+				"blooglet",
+				"casta",
+				"garg360",
 				"grabbiter",
 				"laser14",
 				"orbatrix",
@@ -111,13 +122,19 @@ func init() {
 
 				// volteer
 				"chronicler",
+				"collis",
 				"eldrid",
 				"elemi",
+				"voema",
+				"volta",
 
 				// zork
+				"berknip",
 				"dirinboz",
 				"ezkinil",
+				"morphius",
 				"vilboz",
+				"vilboz14",
 				"vilboz360",
 			)),
 		}, {
@@ -145,6 +162,14 @@ func init() {
 
 				// guybrush
 				"nipperkin",
+
+				// jacuzzi
+				"fennel",
+				"juniper",
+				"willow",
+
+				// kukui
+				"kodama",
 
 				// nami
 				"bard",
