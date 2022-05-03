@@ -11,6 +11,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/crossdevice/phonehub"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -30,7 +32,15 @@ func init() {
 		},
 		Attr:         []string{"group:cross-device"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "crossdeviceOnboardedAllFeatures",
+		Params: []testing.Param{{
+			Fixture: "crossdeviceOnboardedAllFeatures",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosCrossdeviceOnboardedAllFeatures",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -91,6 +101,7 @@ func RecentTabs(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get recent tab chips: ", err)
 	}
+	bt := s.Param().(browser.Type)
 	for _, chip := range chips {
 		if err := phonehub.Show(ctx, tconn); err != nil {
 			s.Fatal("Failed to open Phone Hub: ", err)
@@ -98,11 +109,16 @@ func RecentTabs(ctx context.Context, s *testing.State) {
 		if err := ui.LeftClick(chip.Finder)(ctx); err != nil {
 			s.Fatalf("Failed to click chip for %v: %v", chip.URL, err)
 		}
-		c, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(chip.URL))
+		br, err := browserfixt.Connect(ctx, cr, bt)
 		if err != nil {
-			s.Fatalf("Failed to find Chrome window for %v: %v", chip.URL, err)
+			s.Fatalf("Failed to connect to active browser for %v: %v", chip.URL, err)
 		}
-		defer c.Close()
-		defer c.CloseTarget(ctx)
+		ok, err := br.IsTargetAvailable(ctx, chrome.MatchTargetURL(chip.URL))
+		if !ok {
+			s.Fatalf("Failed to find browser window for %v: %v", chip.URL, err)
+		}
+		if err := br.CloseWithURL(ctx, chip.URL); err != nil {
+			s.Fatalf("Failed to close browser window for %v: %v", chip.URL, err)
+		}
 	}
 }
