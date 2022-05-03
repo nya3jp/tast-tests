@@ -69,6 +69,23 @@
       "parentUuid": "f8ad1f3f_ef077827",
       "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "920382e8_3294cba3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-03T17:40:42Z",
+      "side": 1,
+      "message": "I have an octopus device and flashed it with a fairly recent ToT build with DCHECKs enabled. It crashes immediately on sign in, with and without the personalization hub feature enabled. I also commented on b/231250006\n",
+      "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
