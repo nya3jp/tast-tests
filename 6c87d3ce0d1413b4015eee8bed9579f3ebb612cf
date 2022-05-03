@@ -16,6 +16,24 @@
       "message": "in clamshell mode, we should probably wait for bubble launcher view is gone (using uiauto APIs) - we probably have a helper in launcher.go but I\u0027m not sure.\n\n(WaitForLauncherState will wait for tablet mode launcher to be closed, which will be no-op in clamshell)",
       "revId": "6c87d3ce0d1413b4015eee8bed9579f3ebb612cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f157a2aa_ecdff704",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T23:57:13Z",
+      "side": 1,
+      "message": "We could do:\n\n\n\tif tabletMode {\n\t\tif err :\u003d launcher.HideTabletModeLauncher(tconn)(ctx); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to hide the launcher in tablet: \", err)\n\t\t}\n\t} else if err :\u003d launcher.CloseBubbleLauncher(tconn)(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to close the bubble launcher: \", err)\n\t}\n\n\nBut HideTabletModeLauncher hides the launcher by launching a chrome browser. I think it makes more sense to go back to using the escape key. I have clarified documentation that it does not close the launcher, it simply exits the search state.",
+      "parentUuid": "73e92044_2fb4e4e4",
+      "revId": "6c87d3ce0d1413b4015eee8bed9579f3ebb612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
