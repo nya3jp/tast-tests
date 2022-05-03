@@ -16,6 +16,24 @@
       "message": "can we add a cleanup context that we can use in deferred methods?",
       "revId": "6dc3a1698484f6f969afcd8f9dd041e1a960af37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "918c71cc_da93d55d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-03T19:37:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d60c15c7_756df277",
+      "revId": "6dc3a1698484f6f969afcd8f9dd041e1a960af37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
