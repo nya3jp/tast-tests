@@ -87,8 +87,6 @@ func setup(
 	cr, err := chrome.New(
 		ctx,
 		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
-		// TODO(b/229899887) Enable PersonalizationHub when this tast test is updated.
-		chrome.EnablePersonalizationHub(false),
 		chrome.EnableFeatures("ChromeOSAmbientMode:FineArtAlbumEnabled/true/CulturalInstitutePhotosEnabled/true/FeaturedPhotoAlbumEnabled/true/FeaturedPhotosEnabled/true"),
 	)
 	if err != nil {
