@@ -80,6 +80,24 @@
       "message": "how about renaming the function itself? I think there are only a few callers?",
       "revId": "bb4fc196936db29e873866e8c77a90e1fdc2e2e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7283fde_8a93a487",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-03T05:07:46Z",
+      "side": 1,
+      "message": "There are a little bit more than just a few, but let\u0027s try ;)\n\nDone.",
+      "parentUuid": "fe7c0a7c_7f1f1444",
+      "revId": "bb4fc196936db29e873866e8c77a90e1fdc2e2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
