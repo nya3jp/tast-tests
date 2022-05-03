@@ -161,8 +161,9 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60},
 			ExtraData:         []string{"perf/vp9/1080p_60fps_600frames.vp9.ivf", "perf/vp9/1080p_60fps_600frames.vp9.ivf.json"},
 		}, {
-			Name:              "vp9_1080p_60fps_concurrent",
-			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/vp9/1080p_60fps_600frames.vp9.ivf", runConcurrentDecodersOnly: true},
+			Name: "vp9_1080p_60fps_concurrent",
+			Val:  videoDecodeAccelVdPerfTestParam{dataPath: "perf/vp9/1080p_60fps_600frames.vp9.ivf", runConcurrentDecodersOnly: true},
+
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "thread_safe_libva_backend"},
 			ExtraData:         []string{"perf/vp9/1080p_60fps_600frames.vp9.ivf", "perf/vp9/1080p_60fps_600frames.vp9.ivf.json"},
 		}, {
