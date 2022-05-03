@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 
 	"chromiumos/tast/common/network/iw"
@@ -59,6 +60,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		scanStartDelay         = 500 * time.Millisecond
 		scanRetryTimeout       = 10 * time.Second
 		missingBeaconThreshold = 2
+		maxRetries             = 2
 	)
 
 	// TODO(b/182308669): Tighten up min/max bounds on various channel dwell times
@@ -121,83 +123,113 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	}
 
 	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) {
-		ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
-
-		bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
-			s.Log("Configuring AP on router")
-			apOpts := append([]hostapd.Option{hostapd.Channel(tc.apChannel)}, tc.apOpts...)
-			ap, err := tf.ConfigureAP(ctx, apOpts, nil)
-			if err != nil {
-				return nil, nil, errors.Wrap(err, "failed to configure ap")
-			}
-			defer func(ctx context.Context) {
-				if err := tf.DeconfigAP(ctx, ap); err != nil {
-					s.Error("Failed to deconfig ap: ", err)
+		var ssidPrefix string
+		var bssList []*iw.BSSData
+		var capturer *pcap.Capturer
+		var err error
+		var probeReqPackets []gopacket.Packet
+		var pcapPath string
+		for testCount := 1; testCount <= maxRetries; testCount++ {
+			ssidPrefix = knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
+			bssList, capturer, err = func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
+				s.Log("Configuring AP on router")
+				apOpts := append([]hostapd.Option{hostapd.Channel(tc.apChannel)}, tc.apOpts...)
+				ap, err := tf.ConfigureAP(ctx, apOpts, nil)
+				if err != nil {
+					return nil, nil, errors.Wrap(err, "failed to configure ap")
 				}
-			}(ctx)
-			ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
-			defer cancel()
-			capturer, ok := tf.Capturer(ap)
-			if !ok {
-				return nil, nil, errors.New("failed to get capturer for AP")
-			}
-
-			s.Log("Starting frame sender on ", ap.Interface())
-			s.Log("SSID Prefix: ", ssidPrefix)
-			cleanupCtx := ctx
-			ctx, cancel = router.ReserveForCloseFrameSender(ctx)
-			defer cancel()
-			sender, err := router.NewFrameSender(ctx, ap.Interface())
-			if err != nil {
-				return nil, nil, errors.Wrap(err, "failed to create frame sender")
-			}
-			senderDone := make(chan error)
-			go func(ctx context.Context) {
-				senderDone <- sender.Send(ctx, framesender.TypeBeacon, tc.apChannel,
-					framesender.SSIDPrefix(ssidPrefix),
-					framesender.NumBSS(numBSS),
-					framesender.Count(numBSS),
-					framesender.Delay(int(delayInterval.Milliseconds())),
-				)
-			}(ctx)
-			defer func(ctx context.Context) {
-				if err := router.CloseFrameSender(ctx, sender); err != nil {
-					s.Error("Failed to close frame sender: ", err)
-				}
-				select {
-				case err := <-senderDone:
-					if err != nil && !errors.Is(err, context.Canceled) {
-						s.Error("Failed to send beacon frames: ", err)
+				defer func(ctx context.Context) {
+					if err := tf.DeconfigAP(ctx, ap); err != nil {
+						s.Error("Failed to deconfig ap: ", err)
 					}
-				case <-ctx.Done():
-					s.Error("Timed out waiting for frame sender to finish")
+				}(ctx)
+				ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+				defer cancel()
+				capturer, ok := tf.Capturer(ap)
+				if !ok {
+					return nil, nil, errors.New("failed to get capturer for AP")
 				}
-			}(cleanupCtx)
-			// Wait a little while for beacons to start actually being transmitted
-			if err := testing.Sleep(ctx, scanStartDelay); err != nil {
-				return nil, nil, errors.Wrap(err, "interrupted while sleeping for frame sender startup")
+
+				s.Log("Starting frame sender on ", ap.Interface())
+				s.Log("SSID Prefix: ", ssidPrefix)
+				cleanupCtx := ctx
+				ctx, cancel = router.ReserveForCloseFrameSender(ctx)
+				defer cancel()
+				sender, err := router.NewFrameSender(ctx, ap.Interface())
+				if err != nil {
+					return nil, nil, errors.Wrap(err, "failed to create frame sender")
+				}
+				senderDone := make(chan error)
+				go func(ctx context.Context) {
+					senderDone <- sender.Send(ctx, framesender.TypeBeacon, tc.apChannel,
+						framesender.SSIDPrefix(ssidPrefix),
+						framesender.NumBSS(numBSS),
+						framesender.Count(numBSS),
+						framesender.Delay(int(delayInterval.Milliseconds())),
+					)
+				}(ctx)
+				defer func(ctx context.Context) {
+					if err := router.CloseFrameSender(ctx, sender); err != nil {
+						s.Error("Failed to close frame sender: ", err)
+					}
+					select {
+					case err := <-senderDone:
+						if err != nil && !errors.Is(err, context.Canceled) {
+							s.Error("Failed to send beacon frames: ", err)
+						}
+					case <-ctx.Done():
+						s.Error("Timed out waiting for frame sender to finish")
+					}
+				}(cleanupCtx)
+				// Wait a little while for beacons to start actually being transmitted
+				if err := testing.Sleep(ctx, scanStartDelay); err != nil {
+					return nil, nil, errors.Wrap(err, "interrupted while sleeping for frame sender startup")
+				}
+
+				s.Log("Performing scan")
+				freq, err := hostapd.ChannelToFrequency(tc.apChannel)
+				if err != nil {
+					return nil, nil, errors.Wrap(err, "failed to select scan frequency")
+				}
+				bssList, err := pollScan(ctx, s.DUT(), clientIface, []int{freq}, scanRetryTimeout)
+				if err != nil {
+					return nil, nil, errors.Wrap(err, "failed to scan")
+				}
+				s.Logf("Scan found %d APs", len(bssList))
+				return bssList, capturer, nil
+			}(ctx)
+			if err != nil {
+				s.Fatal("Failed to perform test: ", err)
 			}
 
-			s.Log("Performing scan")
-			freq, err := hostapd.ChannelToFrequency(tc.apChannel)
+			pcapPath, err = capturer.PacketPath(ctx)
 			if err != nil {
-				return nil, nil, errors.Wrap(err, "failed to select scan frequency")
+				s.Fatal("Failed to get packet capture: ", err)
 			}
-			bssList, err := pollScan(ctx, s.DUT(), clientIface, []int{freq}, scanRetryTimeout)
+
+			// Find the first probe request from the DUT.
+			probeReqFilter := []pcap.Filter{
+				pcap.TypeFilter(layers.LayerTypeDot11MgmtProbeReq, nil),
+				pcap.TransmitterAddress(dutMAC),
+			}
+			probeReqPackets, err = pcap.ReadPackets(pcapPath, probeReqFilter...)
 			if err != nil {
-				return nil, nil, errors.Wrap(err, "failed to scan")
+				s.Fatal("Failed to read probe requests from packet capture: ", err)
 			}
-			s.Logf("Scan found %d APs", len(bssList))
-			return bssList, capturer, nil
-		}(ctx)
-		if err != nil {
-			s.Fatal("Failed to perform test: ", err)
+			s.Logf("Received %d probe requests", len(probeReqPackets))
+			if len(probeReqPackets) == 0 {
+				if testCount < maxRetries {
+					s.Logf("No probe requests in packet capture, testCount %d < maxRetries %d", testCount, maxRetries)
+					continue
+				} else {
+					s.Fatal("No probe requests in packet capture, and testCount reached maxRetries")
+				}
+			}
+			break
 		}
 
-		pcapPath, err := capturer.PacketPath(ctx)
-		if err != nil {
-			s.Fatal("Failed to get packet capture: ", err)
-		}
+		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
+		s.Log("Probe Request Time: ", probeReqTimestamp)
 
 		s.Log("Calculating dwell time")
 		var ssids []string
@@ -210,23 +242,6 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		if len(ssids) == 0 {
 			s.Fatal("No Beacons Found")
 		}
-
-		// Find the first probe request from the DUT.
-		// If there are no probe requests, fail.
-		probeReqFilter := []pcap.Filter{
-			pcap.TypeFilter(layers.LayerTypeDot11MgmtProbeReq, nil),
-			pcap.TransmitterAddress(dutMAC),
-		}
-		probeReqPackets, err := pcap.ReadPackets(pcapPath, probeReqFilter...)
-		if err != nil {
-			s.Fatal("Failed to read probe requests from packet capture: ", err)
-		}
-		s.Logf("Received %d probe requests", len(probeReqPackets))
-		if len(probeReqPackets) == 0 {
-			s.Fatal("No probe requests in packet capture")
-		}
-		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
-		s.Log("Probe Request Time: ", probeReqTimestamp)
 
 		// Find the first test beacon after the first probe request.
 		// Note that beacons arriving *before* the probe request should not be counted.
