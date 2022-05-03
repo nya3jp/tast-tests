@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type playbackPerfParams struct {
@@ -863,6 +864,8 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/1080_vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "drm_atomic"},
+			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "vp8_1080p_30fps_sw_long",
@@ -872,9 +875,11 @@ func init() {
 				browserType:      browser.TypeAsh,
 				measureRoughness: true,
 			},
-			ExtraData: []string{"crosvideo/1080_vp8.webm"},
+			ExtraData:         []string{"crosvideo/1080_vp8.webm"},
 			ExtraSoftwareDeps: []string{"drm_atomic"},
-			Fixture:   "chromeVideoWithSWDecoding",
+			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_1080p_30fps_hw_long",
 			Val: playbackPerfParams{
@@ -885,6 +890,8 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/1080.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "drm_atomic"},
+			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "vp9_1080p_30fps_sw_long",
@@ -894,9 +901,11 @@ func init() {
 				browserType:      browser.TypeAsh,
 				measureRoughness: true,
 			},
-			ExtraData: []string{"crosvideo/1080.webm"},
+			ExtraData:         []string{"crosvideo/1080.webm"},
 			ExtraSoftwareDeps: []string{"drm_atomic"},
-			Fixture:   "chromeVideoWithSWDecoding",
+			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "h264_1080p_30fps_hw_long",
 			Val: playbackPerfParams{
@@ -907,6 +916,8 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/1080.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "drm_atomic"},
+			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_1080p_30fps_sw_long",
@@ -916,9 +927,11 @@ func init() {
 				browserType:      browser.TypeAsh,
 				measureRoughness: true,
 			},
-			ExtraData: []string{"crosvideo/1080.mp4"},
+			ExtraData:         []string{"crosvideo/1080.mp4"},
 			ExtraSoftwareDeps: []string{"drm_atomic"},
-			Fixture:   "chromeVideoWithSWDecoding",
+			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_1080p_30fps_hw_long",
 			Val: playbackPerfParams{
@@ -929,6 +942,8 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/av1_1080p_30fps.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1, "drm_atomic"},
+			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "av1_1080p_30fps_sw_long",
@@ -938,9 +953,11 @@ func init() {
 				browserType:      browser.TypeAsh,
 				measureRoughness: true,
 			},
-			ExtraData: []string{"crosvideo/av1_1080p_30fps.mp4"},
+			ExtraData:         []string{"crosvideo/av1_1080p_30fps.mp4"},
 			ExtraSoftwareDeps: []string{"drm_atomic"},
-			Fixture:   "chromeVideoWithSWDecoding",
+			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			Fixture:           "chromeVideoWithSWDecoding",
 		}},
 	})
 }
