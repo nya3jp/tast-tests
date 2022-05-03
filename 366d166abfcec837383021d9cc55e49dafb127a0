@@ -16,6 +16,24 @@
       "message": "Good morning Alexander,\n\nNot sure why CQ in crrev.com/c/3620233 failed for some boards but pass on tast board, but to make sure that the suggestion popup has been correctly opened and clicked before checking the JS values, I added a couple of waits. Let\u0027s land this CL and confirm it still continues to work on the tast board before landing the other CL making the tests non-informational!\n\n",
       "revId": "366d166abfcec837383021d9cc55e49dafb127a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7e978f_8a2fceef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-05-03T08:09:18Z",
+      "side": 1,
+      "message": "Some of them failed for this one though:\n\n`Failed to obtain policies from Chrome: could not get policies from DUT: cdp.Runtime: Evaluate: context deadline exceeded`\n\nwhich is unrelated to the autofill features which these tests are testing.",
+      "parentUuid": "1f1e40f0_28883791",
+      "revId": "366d166abfcec837383021d9cc55e49dafb127a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
