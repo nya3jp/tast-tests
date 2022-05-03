@@ -16,6 +16,92 @@
       "message": "Hola Anastasiia, PTAL, thank you!",
       "revId": "c2b2968641012464f013f48565655ca7937d5e92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d9a0c9_6acc8379",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-03T06:11:10Z",
+      "side": 1,
+      "message": "Thanks a lot!",
+      "revId": "c2b2968641012464f013f48565655ca7937d5e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f7693b_6b00040f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-03T06:11:10Z",
+      "side": 1,
+      "message": "Let\u0027s call it \u0027is24HourFormat\u0027 ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "c2b2968641012464f013f48565655ca7937d5e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ae2153_e73b5520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-03T06:11:10Z",
+      "side": 1,
+      "message": "If we convert `osSettings.SetToggleOption` to `uiauto.Action`, then we can move it to `uiauto.Combine` section above. Otherwise, we probably can use `osSettings.SetToggleOption` directly here?",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 24
+      },
+      "revId": "c2b2968641012464f013f48565655ca7937d5e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332e6929_e0dbaf18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-03T06:11:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure but I think this should be at the top? `defer` will be executed at the end of the scope of the function / or on error anyways.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "c2b2968641012464f013f48565655ca7937d5e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
