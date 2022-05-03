@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a9ea6c8_84277c19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-03T01:24:31Z",
+      "side": 1,
+      "message": "\u003e \"stablize\" is a possible misspelling of \"stabilize\".\n\nPlease fix.",
+      "parentUuid": "3d5abacd_016167fe",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "6903a7978c3d081111664892d5c9f9aab35d55d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
