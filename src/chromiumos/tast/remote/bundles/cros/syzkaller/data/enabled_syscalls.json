@@ -761,6 +761,7 @@
 	},
 	{
 		"driver": "devlink(CONFIG_NET_DEVLINK)",
+		"boards": ["brya"],
 		"syscalls": [
 			"syz_genetlink_get_family_id$devlink",
 			"sendmsg$DEVLINK_CMD_GET",
