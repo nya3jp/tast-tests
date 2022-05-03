@@ -35,7 +35,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Fixture:      fixture.ChromePolicyLoggedInLockscreen,
 	})
 }
 

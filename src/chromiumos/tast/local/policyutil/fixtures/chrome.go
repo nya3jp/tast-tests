@@ -36,6 +36,20 @@ func init() {
 		Parent:          fixture.FakeDMS,
 	})
 
+	// ChromePolicyLoggedInLockscreen is identical to ChromePolicyLoggedIn, but will isolate test failures better.
+	// TODO(b/231276590): Remove once ChromePolicyLoggedIn can clear the lockscreen.
+	testing.AddFixture(&testing.Fixture{
+		Name:            fixture.ChromePolicyLoggedInLockscreen,
+		Desc:            "Logged into a user session and allow lockscreen to be used",
+		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl:            &policyChromeFixture{},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
+
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromePolicyLoggedInIsolatedApp,
 		Desc:     "Logged into a user session with web app isolation enabled",
