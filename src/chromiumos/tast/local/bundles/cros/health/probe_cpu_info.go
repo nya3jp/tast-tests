@@ -5,9 +5,13 @@
 package health
 
 import (
+	"bufio"
 	"context"
+	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
+	"unsafe"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
@@ -35,19 +39,51 @@ type logicalCPUInfo struct {
 	CStates                    []cStateInfo     `json:"c_states"`
 }
 
-type physicalCPUInfo struct {
-	ModelName   *string          `json:"model_name"`
-	LogicalCPUs []logicalCPUInfo `json:"logical_cpus"`
+type cpuVirtualizationInfo struct {
+	Type      string `json:"type"`
+	IsEnabled bool   `json:"is_enabled"`
+	IsLocked  bool   `json:"is_locked"`
 }
+
+type physicalCPUInfo struct {
+	ModelName         *string                `json:"model_name"`
+	LogicalCPUs       []logicalCPUInfo       `json:"logical_cpus"`
+	Flags             []string               `json:"flags"`
+	CPUVirtualization *cpuVirtualizationInfo `json:"cpu_virtualization"`
+}
+
 type keylockerinfo struct {
 	KeylockerConfigured bool `json:"keylocker_configured"`
 }
+
+type virtualizationInfo struct {
+	HasKvmDevice bool   `json:"has_kvm_device"`
+	IsSmtActive  bool   `json:"is_smt_active"`
+	SmtControl   string `json:"smt_control"`
+}
+
+type vulnerabilityInfo struct {
+	Status  string `json:"status"`
+	Message string `json:"message"`
+}
+
 type cpuInfo struct {
-	Architecture        string                   `json:"architecture"`
-	NumTotalThreads     jsontypes.Uint32         `json:"num_total_threads"`
-	TemperatureChannels []temperatureChannelInfo `json:"temperature_channels"`
-	PhysicalCPUs        []physicalCPUInfo        `json:"physical_cpus"`
-	KeylockerInfo       *keylockerinfo           `json:"keylocker_info"`
+	Architecture        string                       `json:"architecture"`
+	NumTotalThreads     jsontypes.Uint32             `json:"num_total_threads"`
+	TemperatureChannels []temperatureChannelInfo     `json:"temperature_channels"`
+	PhysicalCPUs        []physicalCPUInfo            `json:"physical_cpus"`
+	KeylockerInfo       *keylockerinfo               `json:"keylocker_info"`
+	Virtualization      virtualizationInfo           `json:"virtualization"`
+	Vulnerabilities     map[string]vulnerabilityInfo `json:"vulnerabilities"`
+}
+
+type cpuInfoTestParams struct {
+	// Whether to check vulnerabilities.
+	checkVulnerability bool
+	// Whether to check virtualization.
+	checkVirtualization bool
+	// Whether to check cpu virtualization.
+	checkCPUVirtualization bool
 }
 
 func init() {
@@ -64,11 +100,93 @@ func init() {
 		SoftwareDeps: []string{"chrome", "diagnostics",
 			// TODO(b/210950844): Reenable after plumbing through cpu frequency info.
 			"no_manatee"},
-		Fixture: "crosHealthdRunning",
+		Params: []testing.Param{{
+			Fixture: "crosHealthdRunning",
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name:      "vulnerability",
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     true,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name:      "virtualization",
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    true,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name:      "cpu_virtualization",
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: true,
+			},
+		}},
 	})
 }
 
-func verifyPhysicalCPU(physicalCPU *physicalCPUInfo) error {
+func readMsr(msrReg uint32) (uint64, error) {
+	// msr read/write always comes at 8 bytes: https://man7.org/linux/man-pages/man4/msr.4.html
+	const msrSize = 8
+	bytes := make([]byte, msrSize)
+	msrFile, err := os.Open(fmt.Sprintf("/dev/cpu/0/msr"))
+	if err != nil {
+		return 0, errors.New("could not open msr file")
+	}
+	msrFile.Seek(int64(msrReg), 0)
+	readSize, err := msrFile.Read(bytes)
+	if err != nil || readSize != msrSize {
+		return 0, errors.New("could not read msr file")
+	}
+
+	// To align with ReadMsr tool implementation, return a uint64
+	return *(*uint64)(unsafe.Pointer(&bytes[0])), nil
+}
+
+func getFlags() (map[string]bool, error) {
+	cpuinfoFile, err := os.Open("/proc/cpuinfo")
+	if err != nil {
+		return nil, errors.New("could not read /proc/cpuinfo")
+	}
+	defer cpuinfoFile.Close()
+
+	// We assume all CPUs have the same CPU flag, as no chromebook possess multiple
+	// physical CPUs and even those with multiple physical CPUs usually have the
+	// same CPU model and same CPU flags enabled.
+
+	flags := make(map[string]bool)
+	flagFound := false
+
+	scanner := bufio.NewScanner(cpuinfoFile)
+	for scanner.Scan() {
+		keyValue := strings.Split(scanner.Text(), ":")
+		if strings.Contains(keyValue[0], "flags") || strings.Contains(keyValue[0], "Features") {
+			flagFound = true
+			flagValues := strings.Fields(keyValue[1])
+			for _, val := range flagValues {
+				flags[val] = true
+			}
+		}
+	}
+
+	if !flagFound {
+		return nil, errors.New("no flags found in /proc/cpuinfo")
+	}
+
+	return flags, nil
+}
+
+func verifyPhysicalCPU(physicalCPU *physicalCPUInfo, checkCPUVirtualization bool) error {
 	if len(physicalCPU.LogicalCPUs) < 1 {
 		return errors.Errorf("invalid LogicalCPUs, got %d; want 1+", len(physicalCPU.LogicalCPUs))
 	}
@@ -81,6 +199,79 @@ func verifyPhysicalCPU(physicalCPU *physicalCPUInfo) error {
 
 	if *physicalCPU.ModelName == "" {
 		return errors.New("empty CPU model name")
+	}
+
+	flags, err := getFlags()
+	if err != nil {
+		return err
+	}
+
+	for _, flag := range physicalCPU.Flags {
+		if _, ok := flags[flag]; !ok {
+			return errors.Errorf("Nonexistent flag: %s", flag)
+		}
+	}
+
+	if physicalCPU.CPUVirtualization != nil {
+		var isLocked bool
+		var isEnabled bool
+
+		const IA32FeatureLocked uint64 = 1 << 0
+		const IA32FeatureEnableVmxInsideSmx uint64 = 1 << 1
+		const IA32FeatureEnableVmxOutsideSmx uint64 = 1 << 2
+		const vmCrLockedBit uint64 = 1 << 3
+		const vmCrSvmeDisabledBit uint64 = 1 << 4
+
+		_, vmxPresent := flags["vmx"]
+		_, svmPresent := flags["svm"]
+
+		if physicalCPU.CPUVirtualization == nil {
+			if vmxPresent || svmPresent {
+				return errors.New("virtualization flag exists")
+			}
+		}
+
+		if physicalCPU.CPUVirtualization.Type == "VMX" {
+			if !vmxPresent {
+				return errors.New("vmx flag does not exist")
+			}
+			// The msr address for IA32_FEATURE_CONTROL (0x3A), used to report vmx
+			// virtualization data.
+			vmxMsrReg := 0x3A
+			val, err := readMsr(uint32(vmxMsrReg))
+			if err != nil {
+				return err
+			}
+
+			isLocked = uint(val&IA32FeatureLocked) > 0
+			isEnabled = uint(val&IA32FeatureEnableVmxInsideSmx) > 0 ||
+				uint(val&IA32FeatureEnableVmxOutsideSmx) > 0
+		}
+
+		if physicalCPU.CPUVirtualization.Type == "SVM" {
+			if !svmPresent {
+				return errors.New("svm flag does not exist")
+			}
+			// The msr address for VM_CRl (C001_0114), used to report svm virtualization
+			// data.
+			var svmMsrReg uint32 = 0xC0010114
+			val, err := readMsr(uint32(svmMsrReg))
+			if err != nil {
+				return err
+			}
+			isLocked = uint(val&vmCrLockedBit) > 0
+			isEnabled = !(uint(val&vmCrSvmeDisabledBit) > 0)
+		}
+
+		if isLocked != physicalCPU.CPUVirtualization.IsLocked {
+			return errors.Errorf("cpu virtualization locked status got: %t, want: %t",
+				physicalCPU.CPUVirtualization.IsLocked, isLocked)
+		}
+		if isEnabled != physicalCPU.CPUVirtualization.IsEnabled {
+			return errors.Errorf("cpu virtualization enabled status got: %t, want: %t",
+				physicalCPU.CPUVirtualization.IsEnabled, isEnabled)
+		}
+
 	}
 
 	return nil
@@ -104,7 +295,7 @@ func verifyCState(cState cStateInfo) error {
 	return nil
 }
 
-func validateCPUData(info *cpuInfo) error {
+func validateCPUData(info *cpuInfo, checkCPUVirtualization bool) error {
 	// Every board should have at least one physical CPU
 	if len(info.PhysicalCPUs) < 1 {
 		return errors.Errorf("invalid PhysicalCPUs, got %d; want 1+", len(info.PhysicalCPUs))
@@ -118,7 +309,7 @@ func validateCPUData(info *cpuInfo) error {
 	}
 
 	for _, physicalCPU := range info.PhysicalCPUs {
-		if err := verifyPhysicalCPU(&physicalCPU); err != nil {
+		if err := verifyPhysicalCPU(&physicalCPU, checkCPUVirtualization); err != nil {
 			return errors.Wrap(err, "failed to verify physical CPU")
 		}
 	}
@@ -133,15 +324,90 @@ func validateKeyLocker(keylocker *keylockerinfo) error {
 	return nil
 }
 
+func getVirtualization() (virtualizationInfo, error) {
+	var virtualization virtualizationInfo
+
+	virtualization.HasKvmDevice = true
+	if _, err := os.Stat("/dev/kvm"); err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			virtualization.HasKvmDevice = false
+		} else {
+			return virtualization, err
+		}
+	}
+
+	if _, err := os.Stat("/sys/devices/system/cpu/smt"); err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			virtualization.IsSmtActive = false
+			virtualization.SmtControl = "notimplemented"
+			return virtualization, nil
+		}
+		return virtualization, err
+	}
+
+	smtActiveContent, err := ioutil.ReadFile("/sys/devices/system/cpu/smt/active")
+	if err != nil {
+		return virtualization, errors.New("could not read /sys/devices/system/cpu/smt/active")
+	}
+	smtActiveMap := map[string]bool{
+		"1": true,
+		"0": false,
+	}
+	smtActive, ok := smtActiveMap[strings.TrimSpace(string(smtActiveContent))]
+	if !ok {
+		return virtualization, errors.New("error parsing /sys/devices/system/cpu/smt/active")
+	}
+	virtualization.IsSmtActive = smtActive
+
+	smtControl, err := ioutil.ReadFile("/sys/devices/system/cpu/smt/control")
+	if err != nil {
+		return virtualization, errors.New("could not read /sys/devices/system/cpu/smt/control")
+	}
+	virtualization.SmtControl = strings.TrimSpace(string(smtControl))
+
+	return virtualization, nil
+}
+
+func validateVulnerabilities(vulnerabilities map[string]vulnerabilityInfo) error {
+	for name, vulnerability := range vulnerabilities {
+		if out, err := ioutil.ReadFile("/sys/devices/system/cpu/vulnerabilities/" + name); err != nil {
+			return errors.Errorf("failed to read vulnerability: %s", name)
+		} else if !(strings.Contains(string(out), vulnerability.Status) &&
+			strings.Contains(string(out), vulnerability.Message)) {
+			return errors.Errorf("vulnerability reporter incorrectly: %s", name)
+		}
+	}
+
+	return nil
+}
+
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
+	testParam := s.Param().(cpuInfoTestParams)
+
 	var info cpuInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
 		s.Fatal("Failed to run telem command: ", err)
 	}
 
-	if err := validateCPUData(&info); err != nil {
+	if err := validateCPUData(&info, testParam.checkCPUVirtualization); err != nil {
 		s.Fatalf("Failed to validate cpu data, err [%v]", err)
+	}
+
+	if testParam.checkVirtualization {
+		virtualization, err := getVirtualization()
+		if err != nil {
+			s.Fatalf("Failed to get virtualization, err [%v]", err)
+		}
+		if virtualization != info.Virtualization {
+			s.Fatalf("Failed to validate virtualization, expected %+v got %+v ", virtualization, info.Virtualization)
+		}
+	}
+
+	if testParam.checkVulnerability {
+		if err := validateVulnerabilities(info.Vulnerabilities); err != nil {
+			s.Fatalf("Failed to validate cpu vulnerabilities, err [%v]", err)
+		}
 	}
 
 	out, err := ioutil.ReadFile("/proc/crypto")
