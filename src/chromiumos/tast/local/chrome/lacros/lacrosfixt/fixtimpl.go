@@ -170,6 +170,23 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	// lacrosLoggedInWithGaiaProductivityLauncher is similar to chromeLoggedInWithGaiaProductivityLauncher but should be used
+	// by launcher tests that will enable lacros and verify the productivity launcher.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosLoggedInWithGaiaProductivityLauncher",
+		Desc:     "Logged into a session with Gaia user where productivity launcher is enabled",
+		Contacts: []string{"tbarzic@google.com"},
+		Vars:     []string{"ui.gaiaPoolDefault"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(Mode(lacros.LacrosPrimary), KeepAlive(true), ChromeOptions(
+				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+				chrome.EnableFeatures("ProductivityLauncher"))).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 const (
