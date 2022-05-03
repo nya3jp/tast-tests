@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5da058a_4125b261",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-05-03T08:46:59Z",
+      "side": 1,
+      "message": "nit: How about \"WriteFeatureConfigFile\"? I think this function doesn\u0027t imply \"Override\".",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61316b7f_0b6b729d",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-05-03T08:46:59Z",
+      "side": 1,
+      "message": "ftype",
+      "range": {
+        "startLine": 71,
+        "startChar": 39,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
