@@ -264,7 +264,7 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-			return testing.PollBreak(errors.New("Play Store is empty"))
+			return errors.New("Play Store is empty")
 		}
 
 		if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
@@ -276,7 +276,7 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 		}
 
 		return nil
-	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 10 * time.Second})
+	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 60 * time.Second})
 }
 
 // launchAssetBrowserActivity starts the activity that displays the available apps.
@@ -291,7 +291,7 @@ func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *
 		return errors.Wrap(err, "failed to create new activity")
 	}
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed starting Play Store or Play Store is empty")
+		return errors.Wrap(err, "failed starting Play Store")
 	}
 
 	return nil
