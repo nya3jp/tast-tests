@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d4ea21_c344e888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-03T06:47:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91eba5_ee07014b",
+      "range": {
+        "startLine": 45,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d48e1d7_019defda",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-28T12:26:57Z",
       "side": 1,
       "message": "ClearThenClickFieldAndWaitForActive",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 47
+      },
+      "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1405a7e_b7e8af4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-03T06:47:35Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "6d48e1d7_019defda",
       "range": {
         "startLine": 105,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9627fd1_bd5d81c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-03T06:47:35Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "318875eb_68c38c8d",
+      "range": {
+        "startLine": 122,
+        "startChar": 47,
+        "endLine": 122,
+        "endChar": 65
+      },
+      "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6112e0ef_27c5b3c0",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-04-28T21:43:38Z",
       "side": 1,
       "message": "checking the return value of `s.Run` is not needed here, unless you want to stop the whole test with `s.Fatal`.",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "ff217da29e5e4c279454e046624bbc50fe09e91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3491f86_ddd99b15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_accent_key_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-03T06:47:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6112e0ef_27c5b3c0",
       "range": {
         "startLine": 126,
         "startChar": 2,
