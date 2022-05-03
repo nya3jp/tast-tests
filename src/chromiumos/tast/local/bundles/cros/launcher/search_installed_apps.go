@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/cws"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -25,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SearchInstalledApps,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Install apps from CWS and verify that it appears in the launcher",
 		Contacts: []string{
 			"kyle.chen@cienet.com",
@@ -37,22 +39,27 @@ func init() {
 		Timeout:      3*time.Minute + cws.InstallationTimeout,
 		Params: []testing.Param{{
 			Name:    "productivity_launcher_clamshell_mode",
-			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: false, BrowserType: browser.TypeAsh},
 			Fixture: "chromeLoggedInWithGaiaProductivityLauncher",
 		}, {
 			Name:    "clamshell_mode",
-			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: false, BrowserType: browser.TypeAsh},
 			Fixture: "chromeLoggedInWithGaiaLegacyLauncher",
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
+			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true, BrowserType: browser.TypeAsh},
 			Fixture:           "chromeLoggedInWithGaiaProductivityLauncher",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}, {
 			Name:              "tablet_mode",
-			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true, BrowserType: browser.TypeAsh},
 			Fixture:           "chromeLoggedInWithGaiaLegacyLauncher",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			// TODO(b/219789923): Add lacros variants to other parameterized tests.
+		}, {
+			Name:    "productivity_launcher_clamshell_mode_lacros",
+			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: false, BrowserType: browser.TypeLacros},
+			Fixture: "lacrosLoggedInWithGaiaProductivityLauncher",
 		}},
 	})
 }
@@ -63,7 +70,7 @@ func SearchInstalledApps(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -104,7 +111,14 @@ func SearchInstalledApps(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	cwsapp := newCwsAppGoogleDrawings(cr, tconn)
+	// Setup a browser instance.
+	bt := s.Param().(launcher.TestCase).BrowserType
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	if err != nil {
+		s.Fatalf("Failed to open the %v browser: %v", bt, err)
+	}
+	defer closeBrowser(cleanupCtx)
+	cwsapp := newCwsAppGoogleDrawings(cr, br, tconn)
 
 	if err := cwsapp.install(ctx); err != nil {
 		s.Fatal("Failed to install an app from Chrome Web Store: ", err)
@@ -131,6 +145,7 @@ func SearchInstalledApps(ctx context.Context, s *testing.State) {
 // cwsAppGoogleDrawings defines the cws-app `Google Drawings`.
 type cwsAppGoogleDrawings struct {
 	cr    *chrome.Chrome
+	br    *browser.Browser
 	tconn *chrome.TestConn
 
 	id     string
@@ -141,7 +156,8 @@ type cwsAppGoogleDrawings struct {
 }
 
 // newCwsAppGoogleDrawings returns the instance of cwsAppGoogleDrawings.
-func newCwsAppGoogleDrawings(cr *chrome.Chrome, tconn *chrome.TestConn) *cwsAppGoogleDrawings {
+// tconn is a test connection from ash-chrome.
+func newCwsAppGoogleDrawings(cr *chrome.Chrome, br *browser.Browser, tconn *chrome.TestConn) *cwsAppGoogleDrawings {
 	const (
 		id   = "mkaakpdehdafacodkgkpghoibnmamcme"
 		name = "Google Drawings"
@@ -150,6 +166,7 @@ func newCwsAppGoogleDrawings(cr *chrome.Chrome, tconn *chrome.TestConn) *cwsAppG
 
 	return &cwsAppGoogleDrawings{
 		cr:     cr,
+		br:     br,
 		tconn:  tconn,
 		id:     id,
 		name:   name,
@@ -170,7 +187,7 @@ func (c *cwsAppGoogleDrawings) install(ctx context.Context) error {
 	}
 
 	testing.ContextLogf(ctx, "Install CWS app: %q", c.name)
-	return cws.InstallApp(ctx, c.cr.Browser(), c.tconn, *c.app)
+	return cws.InstallApp(ctx, c.br, c.tconn, *c.app)
 }
 
 // uninstall uninstalls the cws-app via ossettings.
@@ -190,4 +207,5 @@ func (c *cwsAppGoogleDrawings) uninstall(ctx context.Context) error {
 	}()
 	testing.ContextLogf(ctx, "Uninstall CWS app: %q", c.name)
 	return ossettings.UninstallApp(ctx, c.tconn, c.cr, c.name, c.id)
+	return nil
 }
