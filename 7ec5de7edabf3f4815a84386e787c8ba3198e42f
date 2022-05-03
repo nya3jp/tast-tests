@@ -86,6 +86,23 @@
       "message": "I have an octopus device and flashed it with a fairly recent ToT build with DCHECKs enabled. It crashes immediately on sign in, with and without the personalization hub feature enabled. I also commented on b/231250006\n",
       "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8f7d22_0f93d549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-03T17:41:39Z",
+      "side": 1,
+      "message": "Is there any way to run this against the specific DCHECK on bots that were failing? My suspicion is they will still fail, even with this revert applied.",
+      "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
