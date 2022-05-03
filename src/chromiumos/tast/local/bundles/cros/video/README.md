@@ -38,8 +38,8 @@ are:
 
   - [`video_decode_accelerator_tests`] and
 [`video_decode_accelerator_perf_tests`], wrapped by
-`video.DecodeAccel`/`video.DecodeAccelPerf` and
-`video.DecodeAccelVD`/`video.DecodeAccelVDPerf` respectively, see the [video
+`video.DecodeAccel`/`video.ChromeStackDecoderLegacyPerf` and
+`video.DecodeAccelVD`/`video.ChromeStackDecoderPerf` respectively, see the [video
 decoder integration tests](#Video-decoder-integration-tests) Section.
 
   - [`video_encode_accelerator_tests`], wrapped by
@@ -64,19 +64,20 @@ running tests of level 2, 3 or 4.
 
 ChromeOS supports both a legacy Video Decoder and a new direct VideoDecoder, see
 [tinyurl.com/chromeos-video-decoders](https://tinyurl.com/chromeos-video-decoders)
-(except for a few legacy platforms that only support the legacy one).
+(except for a few legacy platforms that only support the legacy one, and a few
+modern ones that do not support the legacy at all).
 
 Both the legacy and the direct decoders must coexist for some time, hence tests
 at the Chrome //media level are present for both implementations, marking the
-direct ones with a `VD` prefix (e.g. `video.DecodeAccel` and
-`video.DecodeAccelVD`). Full stack tests are focused on the implementation being
-currently shipped, while keeping a few test cases operating on the alternate
-VideoDecoder. These variants have an `alt` suffix.
+direct ones with a `Legacy` suffix (e.g. `video.ChromeStackDecoderPerf` and
+`video.ChromeStackDecoderLegacyPerf`). Full stack tests are focused on the
+implementation being currently shipped, while keeping a few test cases
+operating on the alternate VideoDecoder. These variants have an `alt` suffix.
 
-There are [Software Dependencies] (see the
-[Capabilities](#Capabilities) Section) to gate Tast tests,
-namely: `video_decoder_direct`, `video_decoder_legacy` to mark the implementation
-shipped by default, and `video_decoder_legacy_supported`.
+There are [Software Dependencies] (see the[Capabilities](#Capabilities) Section)
+to gate Tast tests, namely: `video_decoder_direct`, `video_decoder_legacy` to
+mark the implementation shipped by default, and
+`video_decoder_legacy_supported`.
 
 ## Capabilities
 
@@ -153,16 +154,16 @@ the [Direct Video Decoder](#direct-video-decoder) Section). To run the test use:
     tast run $HOST video.DecodeAccel.*
     tast run $HOST video.DecodeAccelVD.*
 
-### Video decoder performance tests (`video.DecodeAccelPerf`)
+### Video decoder performance tests (`video.ChromeStackDecoderPerf`)
 
-Similarly, `video.DecodeAccelPerf` and `video.DecodeAccelVDPerf` measure
+Similarly, `video.ChromeStackDecoderPerf` and `video.ChromeStackDecoderLegacyPerf` measure
 Chrome's video decode stack performance by running
 [`video_decode_accelerator_perf_tests`]. Various metrics are collected such as
 decode latency, FPS, CPU or power usage for various codecs and resolutions. To
 run these tests use:
 
-    tast run $HOST video.DecodeAccelPerf.*
-    tast run $HOST video.DecodeAccelVDPerf.*
+    tast run $HOST video.ChromeStackDecoderPerf.*
+    tast run $HOST video.ChromeStackDecoderLegacyPerf.*
 
 ### Video decoder compliance tests (`video.DecodeCompliance`)
 
