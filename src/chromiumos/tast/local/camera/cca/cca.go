@@ -1735,7 +1735,7 @@ func (a *App) ClickOptionAndWaitConfiguration(ctx context.Context, optionUI UICo
 }
 
 // IterateResolutions toggles through all |rt| resolutions in camera |facing| setting menu and calls |onSwitched| with the toggled resolution.
-func (a *App) IterateResolutions(ctx context.Context, rt ResolutionType, facing Facing, onSwitched func(r Resolution) error) error {
+func (a *App) IterateResolutions(ctx context.Context, rt ResolutionType, facing Facing, rs map[Resolution]bool, onSwitched func(r Resolution) error) error {
 	optionUI := PhotoResolutionOption
 	if rt == VideoResolution {
 		optionUI = VideoResolutionOption
@@ -1753,7 +1753,7 @@ func (a *App) IterateResolutions(ctx context.Context, rt ResolutionType, facing 
 		return err
 	}
 
-	toggleOption := func(index int) (Resolution, error) {
+	getResolutionAttributes := func(index int) (Resolution, error) {
 		var r Resolution
 		err := a.withInnerResolutionSetting(ctx, rt, facing, func() error {
 			width, err := a.AttributeWithIndexAsInt(ctx, optionUI, index, "data-width")
@@ -1764,9 +1764,6 @@ func (a *App) IterateResolutions(ctx context.Context, rt ResolutionType, facing 
 			if err != nil {
 				return err
 			}
-			if err := a.ClickOptionAndWaitConfiguration(ctx, optionUI, index); err != nil {
-				return errors.Wrap(err, "failed to click option and wait configration done")
-			}
 			r.Width = width
 			r.Height = height
 			return nil
@@ -1774,13 +1771,29 @@ func (a *App) IterateResolutions(ctx context.Context, rt ResolutionType, facing 
 		return r, err
 	}
 
+	toggleOption := func(index int) error {
+		err := a.withInnerResolutionSetting(ctx, rt, facing, func() error {
+			if err := a.ClickOptionAndWaitConfiguration(ctx, optionUI, index); err != nil {
+				return errors.Wrap(err, "failed to click option and wait configration done")
+			}
+			return nil
+		})
+		return err
+	}
+
 	for index := 0; index < numOptions; index++ {
-		r, err := toggleOption(index)
+		r, err := getResolutionAttributes(index)
 		if err != nil {
 			return err
 		}
-		if err := onSwitched(r); err != nil {
-			return err
+		if val, ok := rs[r]; val && ok {
+			err := toggleOption(index)
+			if err != nil {
+				return err
+			}
+			if err := onSwitched(r); err != nil {
+				return err
+			}
 		}
 	}
 
