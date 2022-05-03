@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"regexp"
 	"strings"
 	"time"
 
@@ -1107,7 +1108,9 @@ func (cl *ClamshellActionHandler) MinimizeAllWindow() action.Action {
 
 				// Find the button under window and click it.
 				windowNode := nodewith.Name(w.Title).Role(role.Window).First()
-				minimizeBtn := nodewith.Name("Minimize").Role(role.Button).ClassName("FrameCaptionButton").Ancestor(windowNode)
+				// Some DUTs get a "Minimize" button with the node name "Minimise". Add RegexCapture to capture both.
+				minimizeRegexCapture := "(Minimize|Minimise)"
+				minimizeBtn := nodewith.NameRegex(regexp.MustCompile(minimizeRegexCapture)).Role(role.Button).ClassName("FrameCaptionButton").Ancestor(windowNode)
 				if err := uiauto.Combine("find minimize button under window and click it",
 					ui.WaitUntilExists(windowNode),
 					ui.WaitUntilExists(minimizeBtn),
