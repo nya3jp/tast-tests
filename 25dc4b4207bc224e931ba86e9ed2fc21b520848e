@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa264f6d_42804a97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T17:50:33Z",
+      "side": 1,
+      "message": "tasks",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2e20d7bd_fe03cfc0",
@@ -18,6 +41,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "669b4623_e0e746c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T17:50:33Z",
+      "side": 1,
+      "message": "LGTM w/nits!",
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f160c9eb_6b68cc8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T17:50:33Z",
+      "side": 1,
+      "message": "I think we can remove this",
+      "range": {
+        "startLine": 49,
+        "startChar": 40,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89f3c21a_1b828dc6",
@@ -31,6 +94,98 @@
       "writtenOn": "2022-04-29T16:17:45Z",
       "side": 1,
       "message": "do we actually care whether privacy nudge is shown here (it would be preferable to reuse session where possible)?",
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3744d267_a35b0f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T17:50:33Z",
+      "side": 1,
+      "message": "Maybe rename this function? I would assume that this would go through the complete removal process but it seems like it the feedback dialog prevents this from happening on the first attempt. I would also be fine with some documentation explaining this.",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 40
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13dc705d_d306abc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T17:50:33Z",
+      "side": 1,
+      "message": "Would this func be more at home somewhere else?",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 239,
+        "endChar": 34
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777dc52f_262ae907",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T17:50:33Z",
+      "side": 1,
+      "message": "Not sure if needed",
+      "range": {
+        "startLine": 1100,
+        "startChar": 0,
+        "endLine": 1100,
+        "endChar": 88
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09cb76f_61d2fbaa",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T17:50:33Z",
+      "side": 1,
+      "message": "Needed? TriggerAppListSortAndWaitForUndoButtonExist doesn\u0027t have this, I think we can safely remove it:",
+      "range": {
+        "startLine": 1132,
+        "startChar": 0,
+        "endLine": 1132,
+        "endChar": 61
+      },
       "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
