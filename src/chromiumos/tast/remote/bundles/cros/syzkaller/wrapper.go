@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -47,6 +48,7 @@ var boardArchMapping = map[string]string{
 	"dedede":   "amd64",
 	"nautilus": "amd64",
 	"guybrush": "amd64",
+	"brya":     "amd64",
 	// syzkaller binaries built for trogdor are 32 bit.
 	"trogdor":   "arm",
 	"strongbad": "arm",
@@ -107,7 +109,40 @@ func init() {
 		Attr:    []string{"group:syzkaller"},
 		Data:    []string{"testing_rsa", "enabled_syscalls.json"},
 		VarDeps: []string{"syzkaller.Wrapper.botoCredSection"},
+		Params: []testing.Param{
+			{
+				// This testcase should only run on brya devices.
+				Name:              "brya_cellular",
+				ExtraHardwareDeps: hwdep.D(hwdep.Cellular(), hwdep.Model(bryaModels()...)),
+			},
+			{
+				// This testcase should only run on non-brya devices.
+				Name:              "non_brya",
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(bryaModels()...)),
+			},
+		},
 	})
+}
+
+func bryaModels() []string {
+	return []string{
+		"brya",
+		"anahera",
+		"banshee",
+		"crota360",
+		"felwinter",
+		"gimble",
+		"kano",
+		"primus",
+		"redrix",
+		"taeko",
+		"taeland",
+		"taniks",
+		"tarlo",
+		"vell",
+		"volmar",
+		"zavala",
+	}
 }
 
 // Wrapper runs Syzkaller against DUTs with KASAN and KCOV enabled.
@@ -186,7 +221,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		Name:      board,
 		Target:    fmt.Sprintf("linux/%v", syzArch),
 		Reproduce: false,
-		HTTP:      "localhost:56700",
+		HTTP:      "localhost:56701",
 		Workdir:   syzkallerWorkdir,
 		Syzkaller: artifactsDir,
 		Type:      "isolated",
