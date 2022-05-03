@@ -120,6 +120,20 @@ func init() {
 		ServiceDeps:     []string{TFServiceName, "tast.cros.policy.PolicyService"},
 		Vars:            []string{"router", "pcap", "routertype", "pcaptype"},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "wificellFixtCompanionDut",
+		Desc: "Wificell setup with companion Chromebook DUT",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
+		Impl:            newTastFixture(TFFeaturesCompanionDUT),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: tearDownTimeout,
+		ServiceDeps:     []string{TFServiceName},
+		Vars:            []string{"router", "pcap", "routertype", "pcaptype"},
+	})
 }
 
 // TFFeatures is an enum type for extra features needed for Tast fixture.
@@ -139,6 +153,8 @@ const (
 	TFFeaturesRouterAsCapture
 	// TFFeaturesEnroll enrolls Chrome.
 	TFFeaturesEnroll
+	// TFFeaturesCompanionDUT is a feature that spawns companion DUT in TestFixture.
+	TFFeaturesCompanionDUT
 )
 
 // String returns name component corresponding to enum value(s).
@@ -352,6 +368,15 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	testing.ContextLog(ctx, "pcaptype: ", pcapType.String())
 	ops = append(ops, TFPcapType(pcapType))
+
+	// Read companion DUT.
+	if f.features&TFFeaturesCompanionDUT != 0 {
+		cd := s.CompanionDUT("cd1")
+		if cd == nil {
+			s.Fatal("Failed to get companion DUT cd1")
+		}
+		ops = append(ops, TFCompanionDUT(cd))
+	}
 
 	tf, err := NewTestFixture(ctx, s.FixtContext(), s.DUT(), s.RPCHint(), ops...)
 	if err != nil {

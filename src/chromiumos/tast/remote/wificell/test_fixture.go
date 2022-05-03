@@ -150,6 +150,13 @@ func TFHostUsers(hostUsers map[string]string) TFOption {
 	}
 }
 
+// TFCompanionDUT sets the companion DUT to use in the test fixture.
+func TFCompanionDUT(cd *dut.DUT) TFOption {
+	return func(tf *TestFixture) {
+		tf.peer = cd
+	}
+}
+
 // TFServiceName is the service needed by TestFixture.
 const TFServiceName = "tast.cros.wifi.ShillService"
 
@@ -164,6 +171,10 @@ type TestFixture struct {
 	dut        *dut.DUT
 	rpc        *rpc.Client
 	wifiClient *WifiClient
+
+	peer           *dut.DUT
+	peerRpc        *rpc.Client
+	peerWifiClient *WifiClient
 
 	hostUsers  map[string]string
 	routers    []routerData
@@ -318,6 +329,19 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
 	if _, err := tf.wifiClient.InitDUT(ctx, &wifi.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
 		return nil, errors.Wrap(err, "failed to InitDUT")
+	}
+
+	if tf.peer != nil {
+		tf.peerRpc, err = rpc.Dial(daemonCtx, tf.peer, rpcHint)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to connect companion DUT's rpc")
+		}
+		tf.peerWifiClient = &WifiClient{
+			ShillServiceClient: wifi.NewShillServiceClient(tf.peerRpc.Conn),
+		}
+		if _, err := tf.peerWifiClient.InitDUT(ctx, &wifi.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
+			return nil, errors.Wrap(err, "failed to init companion DUT")
+		}
 	}
 
 	if tf.setLogging {
@@ -537,11 +561,24 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		}
 		tf.wifiClient = nil
 	}
+	if tf.peerWifiClient != nil {
+		if _, err := tf.peerWifiClient.TearDown(ctx, &empty.Empty{}); err != nil {
+			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
+		}
+		tf.peerWifiClient = nil
+	}
+
 	if tf.rpc != nil {
 		// Ignore the error of rpc.Close as aborting rpc daemon will always have error.
 		tf.rpc.Close(ctx)
 		tf.rpc = nil
 	}
+	if tf.peerRpc != nil {
+		// Ignore the error of rpc.Close as aborting rpc daemon will always have error.
+		tf.peerRpc.Close(ctx)
+		tf.peerRpc = nil
+	}
+
 	// Do not close DUT, it'll be closed by the framework.
 	return firstErr
 }
