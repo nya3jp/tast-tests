@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576368eb_280754e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-03T05:49:55Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "210cdb2a766a20c25083003ef1a4279348375b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecfb716a_7d27b43e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-03T05:49:55Z",
+      "side": 1,
+      "message": "Yichen, PTAL",
+      "revId": "210cdb2a766a20c25083003ef1a4279348375b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
