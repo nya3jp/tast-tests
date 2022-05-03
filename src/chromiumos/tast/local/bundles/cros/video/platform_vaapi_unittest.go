@@ -23,9 +23,9 @@ func init() {
 			"stevecho@chromium.org",
 			"chromeos-gfx-video@google.com",
 		},
-		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 		SoftwareDeps: []string{"vaapi"},
-		Timeout:      40 * time.Minute,
+		Timeout:      120 * time.Minute,
 		// TODO(b/191801955): Reenable on grunt when it stops hanging forever.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt")),
 	})
