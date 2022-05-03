@@ -16,6 +16,148 @@
       "message": "Thanks for the reviews!",
       "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8286b4be_496fad97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T09:38:44Z",
+      "side": 1,
+      "message": "Check this error",
+      "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c5a141_18b5c4f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T09:38:44Z",
+      "side": 1,
+      "message": "Do this unconditionally, but don\u0027t check errors.",
+      "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bccd2de_fbb170af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T09:38:44Z",
+      "side": 1,
+      "message": "Should this be using the same fixture (that includes lacros)?",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2491a32_85b73307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T09:38:44Z",
+      "side": 1,
+      "message": "This function has 200 lines, please split up the code into smaller chunks.",
+      "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73ba303_17c45fc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T09:38:44Z",
+      "side": 1,
+      "message": "Not sure this is useful",
+      "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf79c7bc_0117f7a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T09:38:44Z",
+      "side": 1,
+      "message": "nit: comment no longer relevant.",
+      "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea879441_35b244c3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T09:38:44Z",
+      "side": 1,
+      "message": "Move this to the filepicker package.",
+      "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e80ac1_a1072521",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T09:38:44Z",
+      "side": 1,
+      "message": "Add a check that fails in that case instead of the comment.\n\nYou can selectively allow the filepicker package to skip that check. https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d125?q\u003dfile:tast%20chrome.go",
+      "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
