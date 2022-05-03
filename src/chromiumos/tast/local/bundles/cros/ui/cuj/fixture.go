@@ -49,6 +49,16 @@ func init() {
 		PreTestTimeout: CPUStablizationTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: "cpuIdleForCUJ",
+		Desc: "The fixture to wait DUT cpu to idle for CUJ tests",
+		Contacts: []string{
+			"jane.yang@cienet.com",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl:           &cpuIdleForCUJFixture{},
+		PreTestTimeout: CPUIdleTimeout + 5*time.Second,
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToCUJUser",
 		Desc: "The main fixture used for UI CUJ tests",
 		Contacts: []string{
@@ -72,6 +82,7 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true},
+		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -94,7 +105,7 @@ func init() {
 				chrome.ExtraArgs("--disable-lacros-keep-alive"),
 			}, nil
 		}),
-		Parent:          "prepareForCUJ",
+		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -213,6 +224,30 @@ func (f *prepareCUJFixture) PreTest(ctx context.Context, s *testing.FixtTestStat
 }
 
 func (f *prepareCUJFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+type cpuIdleForCUJFixture struct{}
+
+func (f *cpuIdleForCUJFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	return nil
+}
+
+func (f *cpuIdleForCUJFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+}
+
+func (f *cpuIdleForCUJFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+func (f *cpuIdleForCUJFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// Wait for cpu to idle before test.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		// Log the cpu idle wait failure instead of make it fatal.
+		testing.ContextLog(ctx, "Failed to wait for CPU to become idle: ", err)
+	}
+}
+
+func (f *cpuIdleForCUJFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 }
 
 // FixtureData is the struct returned by the preconditions.
