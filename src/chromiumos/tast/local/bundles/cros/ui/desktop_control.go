@@ -15,10 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -54,12 +51,6 @@ func init() {
 
 func DesktopControl(ctx context.Context, s *testing.State) {
 	expects := perfutil.CreateExpectations(ctx,
-		"Apps.StateTransition.AnimationSmoothness.Peeking.ClamshellMode",
-		"Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode",
-		"Apps.StateTransition.AnimationSmoothness.FullscreenSearch.ClamshellMode",
-		"Apps.StateTransition.AnimationSmoothness.FullscreenAllApps.ClamshellMode",
-		"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
-		"Apps.StateTransition.Drag.PresentationTime",
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToCollapsed",
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded",
 	)
@@ -109,75 +100,12 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	r.Runs = 3
 	r.RunTracing = false
 
-	kw, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to take keyboard: ", err)
-	}
-
-	// Controls of the launcher:
-	// - hit the search key to open the launcher as the peeking state
-	// - type a query string to turn the launcher into half state
-	// - hit shift+search to turn the launcher into the fullscreen
-	// - hit esc key to turn show the app list in fullscreen
-	// - hit esc key to close the launcher
-	s.Log("Open/close the launcher")
-	r.RunMultiple(ctx, s, "launcher", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		for i, action := range []struct {
-			key         string
-			isAccel     bool
-			targetState ash.LauncherState
-		}{
-			{"Search", true, ash.Peeking},                // Search key to open the launcher as peeking
-			{"lorem ipsum", false, ash.Half},             // Type some query
-			{"Shift+Search", true, ash.FullscreenSearch}, // Shift+Search to turn into fullsceen
-			{"Esc", true, ash.FullscreenAllApps},         // Esc to cancel the query
-			{"Esc", true, ash.Closed},                    // Esc to close.
-		} {
-			if action.isAccel {
-				if err := kw.Accel(ctx, action.key); err != nil {
-					return errors.Wrapf(err, "failed to type key %q at step %d", action.key, i)
-				}
-			} else {
-				if err := kw.Type(ctx, action.key); err != nil {
-					return errors.Wrapf(err, "failed to type %q at step %d", action.key, i)
-				}
-			}
-			if err := ash.WaitForLauncherState(ctx, tconn, action.targetState); err != nil {
-				return errors.Wrapf(err, "the launcher isn't in the state %q at step %d", action.targetState, i)
-			}
-		}
-		return nil
-	},
-		"Apps.StateTransition.AnimationSmoothness.Peeking.ClamshellMode",
-		"Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode",
-		"Apps.StateTransition.AnimationSmoothness.FullscreenSearch.ClamshellMode",
-		"Apps.StateTransition.AnimationSmoothness.FullscreenAllApps.ClamshellMode",
-		"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
-	), perfutil.StoreAllWithHeuristics(""))
-
-	// Controls of the launcher by mouse drag:
-	// - drag up from the bottom of the screen to open the launcher
-	// - drag down from the top of the screen to close the launcher
-	s.Log("Open/close the launcher by drag")
-	dragStart := coords.NewPoint(info.Bounds.Left+info.Bounds.Width/4, info.Bounds.Bottom()-1)
-	dragEnd := coords.NewPoint(dragStart.X, info.Bounds.Top+1)
-	r.RunMultiple(ctx, s, "launcher-drag", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		if err := mouse.Drag(tconn, dragStart, dragEnd, time.Second)(ctx); err != nil {
-			return errors.Wrap(err, "failed to drag to open the launcher")
-		}
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
-			return errors.Wrap(err, "launcher isn't in fullscreen")
-		}
-		if err := mouse.Drag(tconn, dragEnd, dragStart, time.Second)(ctx); err != nil {
-			return errors.Wrap(err, "failed to drag to close the launcher")
-		}
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			return errors.Wrap(err, "launcher isn't closed")
-		}
-		return nil
-	},
-		"Apps.StateTransition.Drag.PresentationTime.ClamshellMode",
-	), perfutil.StoreAllWithHeuristics(""))
+	// TODO(crbug.com/1321838): After feature ProductivityLauncher is enabled by
+	// default, add a test that opens and closes the launcher and checks
+	// animation performance with the histograms:
+	// - Apps.ClamshellLauncher.AnimationSmoothness.OpenAppsPage
+	// - Apps.ClamshellLauncher.AnimationSmoothness.Close
+	// These will need to be added to `expects` above.
 
 	// Controls of the quick settings:
 	// - open the quick settings
