@@ -27,7 +27,7 @@ var fakeAppInfoForSortSmokeTest = launcher.FakeAppInfoForSort{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppListSortSmoke,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Basic smoke tests for the app list sorting",
 		Contacts: []string{
 			"cros-system-ui-eng@google.com",
