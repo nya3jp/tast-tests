@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b9fa9a1_38b73315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-03T10:23:42Z",
+      "side": 1,
+      "message": "I renamed it to `use24HourFormat` because `is24HourFormat` is already used as a function.",
+      "parentUuid": "98f7693b_6b00040f",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "c2b2968641012464f013f48565655ca7937d5e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01ae2153_e73b5520",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74681258_138a6ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-03T10:23:42Z",
+      "side": 1,
+      "message": "I thought that they\u0027re 2 different actions, so I separated them. But I will inline the code here to be coherent with codes above.",
+      "parentUuid": "01ae2153_e73b5520",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 24
+      },
+      "revId": "c2b2968641012464f013f48565655ca7937d5e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "332e6929_e0dbaf18",
         "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
         "patchSetId": 1
@@ -94,6 +142,30 @@
       "writtenOn": "2022-05-03T06:11:10Z",
       "side": 1,
       "message": "I\u0027m not sure but I think this should be at the top? `defer` will be executed at the end of the scope of the function / or on error anyways.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "c2b2968641012464f013f48565655ca7937d5e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b34390_e3e71416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-03T10:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332e6929_e0dbaf18",
       "range": {
         "startLine": 128,
         "startChar": 0,
