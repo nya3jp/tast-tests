@@ -28,6 +28,10 @@ const (
 
 	// GCS bucket for syzkaller artifacts.
 	gsURL = "gs://syzkaller-ctp-corpus"
+
+	// Convenience toggle for local use of the tast test.
+	// Set this when running the tast test locally.
+	local = false
 )
 
 const startupScriptContents = `
@@ -132,13 +136,15 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := os.Mkdir(syzkallerWorkdir, 0755); err != nil {
 		s.Fatal("Unable to create temp workdir: ", err)
 	}
-	if err := loadCorpus(
-		ctx,
-		s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
-		board,
-		syzkallerWorkdir,
-	); err != nil {
-		s.Fatal("Unable to load corpus: ", err)
+	if !local {
+		if err := loadCorpus(
+			ctx,
+			s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
+			board,
+			syzkallerWorkdir,
+		); err != nil {
+			s.Fatal("Unable to load corpus: ", err)
+		}
 	}
 
 	// Chmod the keyfile so that ssh connections do not fail due to
@@ -250,13 +256,15 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := cmd.Run(); err != nil {
 		s.Fatal("Failed to copy syzkaller logfile: ", err)
 	}
-	if err := saveCorpus(
-		ctx,
-		s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
-		board,
-		filepath.Join(syzkallerWorkdir, "corpus.db"),
-	); err != nil {
-		s.Fatal("Failed to save corpus: ", err)
+	if !local {
+		if err := saveCorpus(
+			ctx,
+			s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
+			board,
+			filepath.Join(syzkallerWorkdir, "corpus.db"),
+		); err != nil {
+			s.Fatal("Failed to save corpus: ", err)
+		}
 	}
 
 	s.Log("Done fuzzing, exiting")
