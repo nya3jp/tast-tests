@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7feecbad_b1b49999",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-05-03T18:02:28Z",
+      "side": 1,
+      "message": "Thanks, Victor-Gabriel and Ian!",
+      "revId": "a16cb1f479be8818c756b89d5d8badea898f6ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
