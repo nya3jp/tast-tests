@@ -141,6 +141,30 @@
       },
       "revId": "2c6d685270d610997ec9071cdb7ff0068692e47e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645aa5b3_14d62066",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/hwiddatabase.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-05-03T03:40:25Z",
+      "side": 1,
+      "message": "Discussed with kevinptt, runtime probe is supposed to probe all boards with storage. I will mark this CL as WIP until there devices that really need this flag.",
+      "parentUuid": "9d2872da_6cb21bfc",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 105
+      },
+      "revId": "2c6d685270d610997ec9071cdb7ff0068692e47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
