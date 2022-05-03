@@ -45,7 +45,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      fixture.ChromePolicyLoggedInWithoutPersonalizationHub,
+		Fixture:      fixture.ChromePolicyLoggedIn,
 		Data:         []string{"user_avatar_image.jpeg"},
 	})
 }

@@ -81,7 +81,7 @@ func FullscreenPreviewWallpaper(ctx context.Context, s *testing.State) {
 	}
 
 	if err := uiauto.Combine("preview and cancel local wallpaper",
-		wallpaper.BackToWallpaper(ui),
+		wallpaper.Back(ui),
 		previewLocalWallpaper(ui, cr),
 		wallpaper.CancelFullscreenPreview(ui),
 		// Should revert to online wallpaper.
@@ -93,7 +93,7 @@ func FullscreenPreviewWallpaper(ctx context.Context, s *testing.State) {
 	localWallpaperFilenameWithoutExtension := strings.TrimSuffix(constants.LocalWallpaperFilename, filepath.Ext(constants.LocalWallpaperFilename))
 
 	if err := uiauto.Combine("preview and confirm local wallpaper",
-		wallpaper.BackToWallpaper(ui),
+		wallpaper.Back(ui),
 		previewLocalWallpaper(ui, cr),
 		wallpaper.ConfirmFullscreenPreview(ui),
 		wallpaper.WaitForWallpaperWithName(ui, localWallpaperFilenameWithoutExtension),
@@ -102,12 +102,12 @@ func FullscreenPreviewWallpaper(ctx context.Context, s *testing.State) {
 	}
 
 	if err := uiauto.Combine("preview and cancel online wallpaper",
-		wallpaper.BackToWallpaper(ui),
+		wallpaper.Back(ui),
 		previewOnlineWallpaper(ui, cr),
 		wallpaper.CancelFullscreenPreview(ui),
 		// Should revert to local wallpaper.
 		wallpaper.WaitForWallpaperWithName(ui, localWallpaperFilenameWithoutExtension),
-		wallpaper.ClosePersonalizationHub(),
+		wallpaper.CloseWallpaperPicker(),
 	)(ctx); err != nil {
 		s.Fatal("Failed to preview online wallpaper: ", err)
 	}
