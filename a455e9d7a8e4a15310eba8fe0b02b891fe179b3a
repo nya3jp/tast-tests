@@ -16,6 +16,24 @@
       "message": "optional: could you check err and log, too?",
       "revId": "a455e9d7a8e4a15310eba8fe0b02b891fe179b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c41740fa_5b4fda9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-03T02:09:28Z",
+      "side": 1,
+      "message": "It will always return an error with log `signal: killed`.\nWe could ignore it.",
+      "parentUuid": "61741b32_0bd79266",
+      "revId": "a455e9d7a8e4a15310eba8fe0b02b891fe179b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
