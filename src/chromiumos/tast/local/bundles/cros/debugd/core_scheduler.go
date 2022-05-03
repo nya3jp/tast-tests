@@ -23,7 +23,6 @@ func init() {
 		Desc: "Verifies debugd's SetSchedulerConfiguration D-Bus API works",
 		Contacts: []string{
 			"kerrnel@chromium.org",
-			"mnissler@chromium.org",
 		},
 		SoftwareDeps: []string{"amd64"},
 		// TODO(b/197182645): re-enable Volteer once CPU offlining issues are resolved.

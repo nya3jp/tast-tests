@@ -21,8 +21,7 @@ func init() {
 		Func: MultiUserPolicy,
 		Desc: "Verifies that storing and retrieving user policy works with multiple profiles signed-in",
 		Contacts: []string{
-			"mnissler@chromium.org", // session_manager owner
-			"hidehiko@chromium.org", // Tast port author
+			"hidehiko@chromium.org",
 		},
 		Data: []string{"testcert.p12"},
 		Attr: []string{"group:mainline"},

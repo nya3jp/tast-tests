@@ -25,8 +25,7 @@ func init() {
 		Func: RemoteOwnership,
 		Desc: "Verifies that Ownership API can be used to set device policies (as an enterprise might do)",
 		Contacts: []string{
-			"mnissler@chromium.org", // session_manager owner
-			"hidehiko@chromium.org", // Tast port author
+			"hidehiko@chromium.org",
 		},
 		Data: []string{"testcert.p12"},
 		Attr: []string{"group:mainline"},

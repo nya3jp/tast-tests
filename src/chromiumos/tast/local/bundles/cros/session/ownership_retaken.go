@@ -26,8 +26,7 @@ func init() {
 		Func: OwnershipRetaken,
 		Desc: "Ensures that ownership is re-taken upon loss of owner's cryptohome",
 		Contacts: []string{
-			"mnissler@chromium.org", // session_manager owner
-			"hidehiko@chromium.org", // Tast port author
+			"hidehiko@chromium.org",
 		},
 		Data: []string{"testcert.p12"},
 		Attr: []string{"group:mainline"},
