@@ -320,6 +320,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b97b091_c566b275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-05-03T07:59:38Z",
+      "side": 1,
+      "message": "sorry for not being clear,\nI thought it\u0027s possible to use the enum name:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d532?q\u003dMouseClickAtLocation%20package:chromeos\u0026type\u003dcs\n\nbut looking through the code it\u0027s `ui.MouseClickAtLocation(0 or 1 or 2,` everywhere",
+      "parentUuid": "ec6a5074_4ff80156",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98196eac_1f1c5b4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
         "patchSetId": 1
