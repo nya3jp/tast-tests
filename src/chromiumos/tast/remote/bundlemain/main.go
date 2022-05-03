@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware/reporters"
 	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/baserpc"
@@ -54,13 +55,20 @@ func hwsecGetTPMStatus(ctx context.Context, s *testing.TestHookState) (*hwsec.No
 }
 
 func hwsecCheckTPMState(ctx context.Context, s *testing.TestHookState, origStatus *hwsec.NonsensitiveStatusInfo, origCounter int) error {
-	cmdRunner := hwsecremote.NewLoglessCmdRunner(s.DUT())
-	fwType, err := cmdRunner.Run(ctx, "crossystem", "mainfw_type")
+	r := reporters.New(s.DUT())
+
+	rootPart, err := reporters.RootPartition(ctx, r)
 	if err != nil {
-		testing.ContextLog(ctx, "Failed to get the firmware type")
+		testing.ContextLog(ctx, "Failed to get root partition")
 	}
-	if string(fwType) == "recovery" {
-		// Skipping this check when the device is in recovery mode.
+
+	removable, err := reporters.IsRemovableDevice(ctx, r, rootPart)
+	if err != nil {
+		testing.ContextLogf(ctx, "Failed to determine if %q is removable", rootPart)
+	}
+
+	if removable {
+		// Skipping this check when the device is boot from removable device.
 		return nil
 	}
 

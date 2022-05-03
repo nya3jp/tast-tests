@@ -60,7 +60,7 @@ func (r *Reporter) BootedDevice(ctx context.Context) (BootedDeviceType, error) {
 		return "", errors.Wrap(err, "failed to get root partition")
 	}
 
-	removable, err := isRemovableDevice(ctx, r, rootPart)
+	removable, err := IsRemovableDevice(ctx, r, rootPart)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to determine if %q is removable", rootPart)
 	}
@@ -104,9 +104,9 @@ func isTargetHosted(ctx context.Context, r *Reporter) (bool, error) {
 	return rTargetHosted.FindStringIndex(lines[0]) != nil, nil
 }
 
-// isRemovableDevice determines if the device is removable media.
+// IsRemovableDevice determines if the device is removable media.
 // TODO(aluo): deduplicate with utils.deviceRemovable.
-func isRemovableDevice(ctx context.Context, r *Reporter, device string) (bool, error) {
+func IsRemovableDevice(ctx context.Context, r *Reporter, device string) (bool, error) {
 	hosted, err := isTargetHosted(ctx, r)
 	if err != nil {
 		return false, err
