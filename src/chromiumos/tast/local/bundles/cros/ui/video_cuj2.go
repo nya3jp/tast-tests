@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -38,6 +39,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
 			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
+			"ui.checkPIP",
 		},
 		Params: []testing.Param{
 			{
@@ -181,6 +183,13 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	var checkPIP bool
+	if v, ok := s.Var("ui.checkPIP"); ok {
+		checkPIP, err = strconv.ParseBool(v)
+		if err != nil {
+			s.Fatal("Failed to parse value: ", err)
+		}
+	}
 	var tabletMode bool
 	if mode, ok := s.Var("ui.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
@@ -230,6 +239,7 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		OutDir:          s.OutDir(),
 		TabletMode:      tabletMode,
 		ExtendedDisplay: false,
+		CheckPIP:        checkPIP,
 	}
 
 	if err := videocuj.Run(ctx, testResources, testParams); err != nil {

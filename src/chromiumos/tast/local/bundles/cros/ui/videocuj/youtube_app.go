@@ -22,6 +22,9 @@ import (
 
 const (
 	youtubePkg      = "com.google.android.youtube"
+	playPauseBtnID  = youtubePkg + ":id/player_control_play_pause_replay_button"
+	playBtnDesc     = "Play video"
+	pauseBtnDesc    = "Pause video"
 	playerViewID    = youtubePkg + ":id/player_view"
 	optionsDialogID = youtubePkg + ":id/bottom_sheet_list_view"
 	uiWaitTime      = 3 * time.Second // this is for arc-obj, not for uiauto.Context
@@ -341,13 +344,7 @@ func (y *YtApp) EnterFullscreen(ctx context.Context) error {
 // PauseAndPlayVideo verifies video playback on youtube app.
 func (y *YtApp) PauseAndPlayVideo(ctx context.Context) error {
 	testing.ContextLog(ctx, "Pause and play video")
-
-	const (
-		playPauseBtnID = "com.google.android.youtube:id/player_control_play_pause_replay_button"
-		playBtnDesc    = "Play video"
-		pauseBtnDesc   = "Pause video"
-		sleepTime      = 3 * time.Second
-	)
+	const sleepTime = 3 * time.Second
 
 	playerView := y.d.Object(androidui.ID(playerViewID))
 	pauseBtn := y.d.Object(androidui.ID(playPauseBtnID), androidui.Description(pauseBtnDesc))
@@ -405,6 +402,19 @@ func (y *YtApp) ensureVideoPlaying(ctx context.Context, playerView, playBtn *and
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second})
+}
+
+// IsPlaying checks if the video is playing now.
+func (y *YtApp) IsPlaying() uiauto.Action {
+	return func(ctx context.Context) error {
+		playerView := y.d.Object(androidui.ID(playerViewID))
+		playBtn := y.d.Object(androidui.ID(playPauseBtnID), androidui.Description(playBtnDesc))
+		testing.ContextLog(ctx, "Verify the video is playing")
+		if err := y.ensureVideoPlaying(ctx, playerView, playBtn); err != nil {
+			return errors.Wrap(err, "failed to verify the video is playing")
+		}
+		return nil
+	}
 }
 
 func (y *YtApp) skipAds(ctx context.Context) error {

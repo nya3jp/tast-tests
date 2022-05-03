@@ -54,6 +54,7 @@ type TestParams struct {
 	TabletMode      bool
 	Tier            cuj.Tier
 	ExtendedDisplay bool
+	CheckPIP        bool
 }
 
 // VideoApp declares video operation.
@@ -64,6 +65,8 @@ type VideoApp interface {
 	EnterFullscreen(ctx context.Context) error
 	// PauseAndPlayVideo verifies video playback.
 	PauseAndPlayVideo(ctx context.Context) error
+	// IsPlaying verifies video is playing.
+	IsPlaying() uiauto.Action
 	// Close closes the resources related to video.
 	Close(ctx context.Context)
 }
@@ -279,10 +282,10 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 			if err := videoApp.EnterFullscreen(ctx); err != nil {
 				return errors.Wrap(err, "failed to play video in fullscreen")
 			}
-
-			// Let the video play in fullscreen for some time.
-			if err := testing.Sleep(ctx, time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep")
+			// After entering full screen, it must be in playback state.
+			// This will make sure to switch to pip mode.
+			if err := videoApp.IsPlaying()(ctx); err != nil {
+				return errors.Wrap(err, "failed to verify video is playing")
 			}
 
 			// Open Gmail web.
@@ -307,7 +310,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 
 			ytApp, ok := videoApp.(*YtApp)
 			// Only do PiP testing for YT APP and when logged in as premium user.
-			if ok && ytApp.isPremiumAccount() {
+			if ok && param.CheckPIP && ytApp.isPremiumAccount() {
 				if err = ytApp.checkYoutubeAppPIP(ctx); err != nil {
 					return errors.Wrap(err, "youtube app smaller video preview window is not shown")
 				}
