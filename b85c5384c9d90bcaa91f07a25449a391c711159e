@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6894e277_1ef579d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-03T21:04:11Z",
+      "side": 1,
+      "message": "Thanks James for taking care of it.",
+      "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "911e609b_26d21728",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-05-03T20:58:14Z",
       "side": 1,
       "message": "we could also parameterize this by productivity launcher (and use chromeLoggedInWithLegacyLauncher; chromeLoggedInWithProductivityLauncher fixtures based on param)",
+      "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1f0596_907c878e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-03T21:04:11Z",
+      "side": 1,
+      "message": "ui.DesktopControl is a sanity perf test for desktop UI components. Particular UI feature should have its own perf test. Think we have some launcher perf test and let\u0027s do that there.",
+      "parentUuid": "911e609b_26d21728",
       "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
