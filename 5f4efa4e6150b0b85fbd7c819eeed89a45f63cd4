@@ -16,6 +16,23 @@
       "message": "Thanks, Christian!",
       "revId": "5f4efa4e6150b0b85fbd7c819eeed89a45f63cd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44149eb6_580e5925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T08:54:02Z",
+      "side": 1,
+      "message": "This might be too detailed for a tast test. It will fail every time the UI is changed.",
+      "revId": "5f4efa4e6150b0b85fbd7c819eeed89a45f63cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
