@@ -98,16 +98,16 @@ var TouchviewCommonTests = []TestCase{
 
 // ClamshellSmokeTests is a list of clamshell tests common to apps in appcompat_smoke suite.
 var ClamshellSmokeTests = []TestCase{
-	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
+	/* {Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
 	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
 	{Name: "Clamshell: Mouse click", Fn: MouseClick},
-	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow}, */
 }
 
 // TouchviewSmokeTests is a list of touchview tests common to apps in appcompat_smoke suite.
 var TouchviewSmokeTests = []TestCase{
-	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+	/* {Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow}, */
 }
 
 // RunTestCases setups the device and runs all app compat test cases.
@@ -1597,7 +1597,7 @@ func GetAppVersion(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Devi
 // TabletOnlyModels is a list of tablet only models to be skipped from clamshell mode runs.
 var TabletOnlyModels = []string{
 	"dru",
-	"krane",
+	//"krane",
 }
 
 // ClamshellOnlyModels is a list of clamshell only models to be skipped from tablet mode runs.
