@@ -28,8 +28,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"tbarzic@chromium.org",
 		},
-		// TODO(https://crbug.com/1255265): Remove "informational" once stable.
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedInWith100FakeAppsProductivityLauncher",
 	})
