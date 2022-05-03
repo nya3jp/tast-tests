@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49b45772_396d78f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T18:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7187d7a_e08b69e2",
+      "revId": "309d45ff8d91dada2b74029f5f868190ac2c1f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76017afb_0993596c",
@@ -92,6 +110,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de1aa5f8_85d09682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T18:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76017afb_0993596c",
+      "range": {
+        "startLine": 111,
+        "startChar": 49,
+        "endLine": 111,
+        "endChar": 52
+      },
+      "revId": "309d45ff8d91dada2b74029f5f868190ac2c1f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b2ac8f3_1d2c675f",
@@ -105,6 +147,24 @@
       "writtenOn": "2022-05-03T01:00:29Z",
       "side": 1,
       "message": "wait for the launcher to close (launcher.go may have a util method for it)?",
+      "revId": "309d45ff8d91dada2b74029f5f868190ac2c1f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d097b3db_c4a5ebeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-03T18:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b2ac8f3_1d2c675f",
       "revId": "309d45ff8d91dada2b74029f5f868190ac2c1f5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
