@@ -16,6 +16,24 @@
       "message": "nit: can we add TODO here to remove this fixture once Chrome will reset correctly its state?",
       "revId": "89cb1986285790fbe644cbf56e5dbffce8bddd75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53ee956_a9ebfd5e",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T09:40:21Z",
+      "side": 1,
+      "message": "I don\u0027t expect Chrome reset to clear the lockscreen. Maybe in the future we can add extra cleanup in this fixture. WDYT?",
+      "parentUuid": "c2462950_0e4f30ab",
+      "revId": "89cb1986285790fbe644cbf56e5dbffce8bddd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
