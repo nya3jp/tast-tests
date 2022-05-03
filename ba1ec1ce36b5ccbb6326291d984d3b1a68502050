@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2e2f97f7_6069d01e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-05-03T03:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6dbb582_e9d64b3e",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "ba1ec1ce36b5ccbb6326291d984d3b1a68502050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "33e6eee8_cdf4d79b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-29T09:08:18Z",
       "side": 1,
       "message": "nami and volteer have sparse failure records in the recent 20 builds. Do you clarify the flakiness reasons?\n \nAlso, certain *-kernelnext boards are failing, you have to skip them in critical test.",
+      "revId": "ba1ec1ce36b5ccbb6326291d984d3b1a68502050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28aa8847_b4cf8cbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-05-03T03:19:34Z",
+      "side": 1,
+      "message": "Thanks for noticing that.\n\natlas-kernelnext, hatch-kernelnext, volteer-kernelnext are not marked as critical boards. (https://source.corp.google.com/chromeos_internal/infra/config/build_targets.star?q\u003dinfra%2Fconfig%2Fbuild_targets.star)\n\nSome background explained here: https://b.corp.google.com/issues/223191258#comment7\n\nThe failure of volteer/lilipop and nami/akali catched a regression in the audio driver( arecord recognized no sound cards which means the arecord -l failed to list the sound card)",
+      "parentUuid": "33e6eee8_cdf4d79b",
       "revId": "ba1ec1ce36b5ccbb6326291d984d3b1a68502050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
