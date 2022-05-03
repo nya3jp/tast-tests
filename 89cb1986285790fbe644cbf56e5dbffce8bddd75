@@ -70,6 +70,24 @@
       "parentUuid": "ec415473_e44fd5bc",
       "revId": "89cb1986285790fbe644cbf56e5dbffce8bddd75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e995162_b545202e",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T10:57:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec415473_e44fd5bc",
+      "revId": "89cb1986285790fbe644cbf56e5dbffce8bddd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
