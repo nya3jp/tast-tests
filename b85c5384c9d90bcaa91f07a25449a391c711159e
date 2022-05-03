@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff66117_7112248d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-05-03T21:15:28Z",
+      "side": 1,
+      "message": "Toni, please take another look (see Xiyuan\u0027s comment and mine).",
+      "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "911e609b_26d21728",
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "ui.DesktopControl is a sanity perf test for desktop UI components. Particular UI feature should have its own perf test. Think we have some launcher perf test and let\u0027s do that there.",
       "parentUuid": "911e609b_26d21728",
+      "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c9af77_2cb34019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-05-03T21:15:28Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t mention that, we have ui.BubbleLauncherAnimationPerf for launcher perf tests of the new launcher.\n\nThe design doc go/cros-ui-perftests-cq#heading\u003dh.fwfk0yg3teo1 also mentions it\u0027s intentional that these tests don\u0027t exercise features behind flags.",
+      "parentUuid": "ec1f0596_907c878e",
       "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
