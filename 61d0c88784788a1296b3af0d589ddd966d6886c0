@@ -56,6 +56,29 @@
       "message": "To request a review from Tast owners, please include tast-owners@google.com\n\nhttp://go/tast-reviews",
       "revId": "61d0c88784788a1296b3af0d589ddd966d6886c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578c1d20_f99c8cc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/browser_labs_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-03T09:22:06Z",
+      "side": 1,
+      "message": "nit: no need to start with capital letter.",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 14
+      },
+      "revId": "61d0c88784788a1296b3af0d589ddd966d6886c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
