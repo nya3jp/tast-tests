@@ -3,6 +3,132 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01014e75_4566ea0a",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-03T10:43:39Z",
+      "side": 1,
+      "message": "Does not looks very nice.\n\nMaybe have 2 methods: New(model string) and NewFromJSON(model string, json []byte)\n\nNew will call NewFromJSON and only NewFromJSON will be covered by unit tests.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "073e42a2_d5e72a07",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-03T10:43:39Z",
+      "side": 1,
+      "message": "you can bind this method to *ModelConfig\n\nfunc (m *ModelConfig) IsFeatureEnabled(ftype string) bool",
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb8cc05_d9e79d70",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-03T10:43:39Z",
+      "side": 1,
+      "message": "what about testing this and other functions?",
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ff16b7_e48ae45f",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-03T10:43:39Z",
+      "side": 1,
+      "message": "Remove Get prefix\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f1178a_75244a50",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-03T10:43:39Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 81,
+        "startChar": 85,
+        "endLine": 81,
+        "endChar": 101
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8421f7a_5ceba635",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-03T10:43:39Z",
+      "side": 1,
+      "message": "nit: i\u0027d use \n\n```\nif m.Type !\u003d ftype {\n   continue\n}\n```\ninstead",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 22
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5da058a_4125b261",
         "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
         "patchSetId": 1
@@ -18,6 +144,52 @@
         "startLine": 102,
         "startChar": 5,
         "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9da54a3_31ee3e07",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-03T10:43:39Z",
+      "side": 1,
+      "message": "it will be good to see in the same CL how to do use this function\n\nif it\u0027s test only, we should not have it",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8b5d3f_289af4c1",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-03T10:43:39Z",
+      "side": 1,
+      "message": "nit: rename to TestNew since you test New function?",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
         "endChar": 29
       },
       "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
