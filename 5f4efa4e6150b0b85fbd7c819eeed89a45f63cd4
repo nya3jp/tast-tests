@@ -69,6 +69,24 @@
       "parentUuid": "58ef4cf6_9e23bb6d",
       "revId": "5f4efa4e6150b0b85fbd7c819eeed89a45f63cd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4020f0f5_7c437638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-03T16:13:50Z",
+      "side": 1,
+      "message": "It probably could be done as a browser test :) I\u0027ll add a comment to the bug that this should likely be a browser test, not a Tast test, and abandon this CL for now.",
+      "parentUuid": "a8ddfedc_d7dda642",
+      "revId": "5f4efa4e6150b0b85fbd7c819eeed89a45f63cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
