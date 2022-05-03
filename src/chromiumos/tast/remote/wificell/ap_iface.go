@@ -138,10 +138,6 @@ func StartAPIface(ctx context.Context, r router.Base, name string, conf *hostapd
 		}
 	}()
 
-	h.dhcpd, err = h.router.StartDHCP(ctx, name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
-	if err != nil {
-		return nil, err
-	}
 	return &h, nil
 }
 
