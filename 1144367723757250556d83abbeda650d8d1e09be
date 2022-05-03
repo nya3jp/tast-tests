@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "344b4188_5a0ca6b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-05-03T21:48:24Z",
+      "side": 1,
+      "message": "How about runConcurrentDecodersOnly? The reason I say this is that we don\u0027t need to run the CappedFlag and UncappedFlag tests in the counterparts of the *_concurrent_global_vaapi_lock_disabled tests since the results of the CappedFlag/UncappedFlag tests are already collected by existing tests.",
+      "parentUuid": "79f5a887_40753613",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fec06d9_e9ae0aaa",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
         "patchSetId": 1
