@@ -16,6 +16,23 @@
       "message": "LGTM from tast owners",
       "revId": "ec86a83620365c2ea75308a2e043d9f09a36f30e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886d7697_f8b694f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-03T16:44:14Z",
+      "side": 1,
+      "message": "Thanks, all.",
+      "revId": "ec86a83620365c2ea75308a2e043d9f09a36f30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
