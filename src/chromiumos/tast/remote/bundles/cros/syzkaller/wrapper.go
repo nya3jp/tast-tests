@@ -18,7 +18,9 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/reporters"
+	"chromiumos/tast/rpc"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -46,6 +48,7 @@ var boardArchMapping = map[string]string{
 	"octopus":  "amd64",
 	"dedede":   "amd64",
 	"nautilus": "amd64",
+	"brya":     "amd64",
 	// syzkaller binaries built for trogdor are 32 bit.
 	"trogdor": "arm",
 }
@@ -90,6 +93,13 @@ type fuzzEnvConfig struct {
 	Syscalls []string `json:"syscalls"`
 }
 
+type shouldFuzzConfig struct {
+	// Board on which to determine if fuzzing should occur.
+	Board string `json:"board"`
+	// Files to check for presence on the DUT.
+	Files []string `json:"files"`
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Wrapper,
@@ -103,7 +113,7 @@ func init() {
 		// stopping. The overall test duration is 32 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
-		Data:    []string{"testing_rsa", "enabled_syscalls.json"},
+		Data:    []string{"testing_rsa", "enabled_syscalls.json", "should_fuzz.json"},
 		VarDeps: []string{"syzkaller.Wrapper.botoCredSection"},
 	})
 }
@@ -117,6 +127,19 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to find syzkaller arch: ", err)
 	}
 	s.Log("syzArch found to be: ", syzArch)
+
+	rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to connect RPCDUT: ", err)
+	}
+	defer rpcClient.Close(ctx)
+
+	if ok, err := shouldFuzz(ctx, rpcClient, s.DataPath("should_fuzz.json"), board); err != nil {
+		s.Fatal("Unable to determine if DUT should be fuzzed: ", err)
+	} else if !ok {
+		s.Logf("DUT of board [%v] should not be fuzzed, done testing", board)
+		return
+	}
 
 	syzkallerTastDir, err := ioutil.TempDir("", "tast-syzkaller")
 	if err != nil {
@@ -184,7 +207,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		Name:      board,
 		Target:    fmt.Sprintf("linux/%v", syzArch),
 		Reproduce: false,
-		HTTP:      "localhost:56700",
+		HTTP:      "localhost:56701",
 		Workdir:   syzkallerWorkdir,
 		Syzkaller: artifactsDir,
 		Type:      "isolated",
@@ -271,6 +294,37 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Done fuzzing, exiting")
+}
+
+func shouldFuzz(ctx context.Context, rpcClient *rpc.Client, fpath, board string) (bool, error) {
+	contents, err := ioutil.ReadFile(fpath)
+	if err != nil {
+		return false, err
+	}
+	var sfConfig []shouldFuzzConfig
+	err = json.Unmarshal([]byte(contents), &sfConfig)
+	if err != nil {
+		return false, err
+	}
+	dutfsClient := dutfs.NewClient(rpcClient.Conn)
+	for _, config := range sfConfig {
+		if config.Board == board {
+			return filePresence(ctx, dutfsClient, config.Files)
+		}
+	}
+	return true, nil
+}
+
+func filePresence(ctx context.Context, dutfsClient *dutfs.Client, fnames []string) (bool, error) {
+	for _, fname := range fnames {
+		testing.ContextLogf(ctx, "Checking presence: [%v]", fname)
+		if exists, err := dutfsClient.Exists(ctx, fname); err != nil {
+			return false, errors.Wrapf(err, "failed to stat %s", fname)
+		} else if !exists {
+			return false, nil
+		}
+	}
+	return true, nil
 }
 
 func gsutilCmd(ctx context.Context, cred string, args ...string) *testexec.Cmd {
