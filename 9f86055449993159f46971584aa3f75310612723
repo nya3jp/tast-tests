@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4dcf2d_1a2dad63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-03T09:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8299d65_06e5dddc",
+      "revId": "9f86055449993159f46971584aa3f75310612723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae623f85_c8e37968",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-29T08:19:32Z",
       "side": 1,
       "message": "Parametrize the test for lacros and ash.\n\nIt will make it easier to investigate which one is failing.",
+      "revId": "9f86055449993159f46971584aa3f75310612723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e2f3e1_ff656b39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-03T09:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae623f85_c8e37968",
       "revId": "9f86055449993159f46971584aa3f75310612723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

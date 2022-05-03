@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea03c24_ee43bcd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-03T09:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47ec183b_b91218f3",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "46212c7b592a92fb4a73535d92a8f13edefe334f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d359bb6_7ed0db6e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f846e9_4b157452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-03T09:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d359bb6_7ed0db6e",
+      "range": {
+        "startLine": 215,
+        "startChar": 39,
+        "endLine": 215,
+        "endChar": 44
+      },
+      "revId": "46212c7b592a92fb4a73535d92a8f13edefe334f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c446556_3753428e",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-29T12:23:33Z",
       "side": 1,
       "message": "For my own info, would these tast tests run on the CQ? I\u0027m asking because this kind of testing logic relies on the way the dialog is built and what string it contains, so if a later CL changes that we would need to update this test.\n\nIf it does run on the regular CQ then this is fine, otherwise I would like you to add a comment to content_analysis_dialog.h to mitigate this.",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 136
+      },
+      "revId": "46212c7b592a92fb4a73535d92a8f13edefe334f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1f69ef2_06f09f30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-03T09:14:42Z",
+      "side": 1,
+      "message": "From what I know, they currently don\u0027t run on any CQ.\nOnce this test gets promoted to a non-informational test (by removing the \"informational\" attribute), they run on ChromeOS\u0027 CQ.\nAdditionally, you can manually start a job on Chrome\u0027s CQ, if I remember correctly. But there they do not run automatically on Chrome\u0027s CQ.\n\n\u003d\u003e I\u0027ll add a comment.",
+      "parentUuid": "5c446556_3753428e",
       "range": {
         "startLine": 249,
         "startChar": 4,
