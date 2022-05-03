@@ -30,7 +30,13 @@ func init() {
 		},
 		Attr:         []string{"group:cross-device"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "crossdeviceOnboardedAllFeatures",
+		Params: []testing.Param{{
+			Fixture: "crossdeviceOnboardedAllFeatures",
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosCrossdeviceOnboardedAllFeatures",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
