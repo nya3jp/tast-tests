@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c07783_c776efaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T20:49:44Z",
+      "side": 1,
+      "message": "`Add`\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "fc708f87821e507487f70b5a0cb9fd2323ac6fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7905a9d5_e06f6cee",
@@ -50,6 +73,23 @@
       "side": 1,
       "message": "nit: could you please add this to the testing part in the commit message.",
       "parentUuid": "8e22054b_46eb37c7",
+      "revId": "fc708f87821e507487f70b5a0cb9fd2323ac6fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd90f31_5eea5405",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T20:49:44Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with minor revision to commit message",
       "revId": "fc708f87821e507487f70b5a0cb9fd2323ac6fc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
