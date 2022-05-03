@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f29336a_6bba9315",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-03T02:32:40Z",
+      "side": 1,
+      "message": "There is refactoring for the package `wlan` in the CL: chromium:3537587",
+      "revId": "cc146856686b73ea558f57dd65b46a69fc6f944d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
