@@ -16,6 +16,23 @@
       "message": "tbarzic and tast-owners, please take a look.\n\nCC xiyuan, just FYI",
       "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911e609b_26d21728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-03T20:58:14Z",
+      "side": 1,
+      "message": "we could also parameterize this by productivity launcher (and use chromeLoggedInWithLegacyLauncher; chromeLoggedInWithProductivityLauncher fixtures based on param)",
+      "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
