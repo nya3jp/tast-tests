@@ -32,8 +32,7 @@ func init() {
 		Func: OwnershipAPI,
 		Desc: "Verifies that Ownership API works for a local device owner",
 		Contacts: []string{
-			"mnissler@chromium.org", // session_manager owner
-			"hidehiko@chromium.org", // Tast port author
+			"hidehiko@chromium.org",
 		},
 		Data: []string{"testcert.p12"},
 		Attr: []string{"group:mainline", "informational"},

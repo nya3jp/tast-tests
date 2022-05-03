@@ -23,8 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Subsequent logins after the owner must not clobber the owner's key",
 		Contacts: []string{
-			"mnissler@chromium.org", // session_manager owner
-			"hidehiko@chromium.org", // Tast port author
+			"hidehiko@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

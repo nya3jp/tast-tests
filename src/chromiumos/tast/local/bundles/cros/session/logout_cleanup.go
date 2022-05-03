@@ -26,8 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies all processes owned by chronos are destroyed on logout",
 		Contacts: []string{
-			"mnissler@chromium.org", // session_manager owner
-			"hidehiko@chromium.org", // Tast port author
+			"hidehiko@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},

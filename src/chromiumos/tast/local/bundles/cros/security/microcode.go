@@ -29,7 +29,6 @@ func init() {
 		Func: Microcode,
 		Desc: "Checks that compatible CPU microcode is built into the kernel",
 		Contacts: []string{
-			"mnissler@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
 		Attr: []string{"group:mainline"},

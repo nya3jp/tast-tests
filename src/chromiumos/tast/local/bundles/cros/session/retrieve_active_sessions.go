@@ -19,8 +19,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Ensures that the session_manager correctly tracks active sessions",
 		Contacts: []string{
-			"mnissler@chromium.org", // session_manager owner
-			"hidehiko@chromium.org", // Tast port author
+			"hidehiko@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
