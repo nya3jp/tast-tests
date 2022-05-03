@@ -34,8 +34,8 @@ func CrasRecord(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for input stream: ", err)
 	}
 
-	// Set timeout to duration + 1s, which is the time buffer to complete the normal execution.
-	runCtx, cancel := context.WithTimeout(ctx, (duration+1)*time.Second)
+	// Set timeout to duration + 3s, which is the time buffer to complete the normal execution.
+	runCtx, cancel := context.WithTimeout(ctx, (duration+3)*time.Second)
 	defer cancel()
 
 	// Record function by CRAS.
