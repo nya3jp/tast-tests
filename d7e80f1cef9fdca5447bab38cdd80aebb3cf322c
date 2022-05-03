@@ -51,6 +51,24 @@
       "parentUuid": "15a51197_96401ac0",
       "revId": "d7e80f1cef9fdca5447bab38cdd80aebb3cf322c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ecee737_97ebb0d2",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-03T20:25:32Z",
+      "side": 1,
+      "message": "I think UIName or VisibleName would have been beneficial as a reader who doesn\u0027t have a ton of exposure in this area but I\u0027ll defer to your judgement.",
+      "parentUuid": "968ff3b7_f4255135",
+      "revId": "d7e80f1cef9fdca5447bab38cdd80aebb3cf322c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
