@@ -33,6 +33,24 @@
       "message": "nit: Would `UIName` or `Name` be better here? It\u0027s already part of a `Printer` struct so I\u0027m not sure what `Printable` adds. When reading the rest of the code, lines like: `settings.Scanner \u003d printer.PrintableName` stick out as a bit confusing with the current property name.",
       "revId": "d7e80f1cef9fdca5447bab38cdd80aebb3cf322c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968ff3b7_f4255135",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-03T20:01:32Z",
+      "side": 1,
+      "message": "I called it PrintableName to distinguish from ConfiguredName above (which is the internal name).  I don\u0027t object to renaming to UIName (or VisibleName?) if you think that\u0027s more clear.",
+      "parentUuid": "15a51197_96401ac0",
+      "revId": "d7e80f1cef9fdca5447bab38cdd80aebb3cf322c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
