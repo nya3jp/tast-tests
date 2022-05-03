@@ -16,6 +16,91 @@
       "message": "Hola Victor-Gabriel, PTAL, thank you!",
       "revId": "1d09f82c4c3b723f51580a94131a166164558a2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa8c4e9_8c3f7905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T13:34:52Z",
+      "side": 1,
+      "message": "Make this a table driven test instead.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "revId": "1d09f82c4c3b723f51580a94131a166164558a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca42de6_2b6d971e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T13:34:52Z",
+      "side": 1,
+      "message": "nit: Use the defaults for username and password",
+      "revId": "1d09f82c4c3b723f51580a94131a166164558a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8cb791_9ad00dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T13:34:52Z",
+      "side": 1,
+      "message": "This is too much UI interaction for a tast test. It will make updating the settings UI impossible.\n\nCan the setting be changed in a different way instead?",
+      "revId": "1d09f82c4c3b723f51580a94131a166164558a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46eabae2_485fc2de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T13:34:52Z",
+      "side": 1,
+      "message": "nit: not useful",
+      "revId": "1d09f82c4c3b723f51580a94131a166164558a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8bae1f_2e5019bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-03T13:34:52Z",
+      "side": 1,
+      "message": "nit: not useful",
+      "revId": "1d09f82c4c3b723f51580a94131a166164558a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
