@@ -50,6 +50,63 @@
       "message": "test cases LGTM",
       "revId": "309d45ff8d91dada2b74029f5f868190ac2c1f5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7187d7a_e08b69e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-03T01:00:29Z",
+      "side": 1,
+      "message": "can you add something like:\n\n```\nif (!tabletMode)\n  waitForLauncherState(Closed)\n ```\n \n (to make sure the launcher finishes closing after transition from tablet mode - you can see other launcher tests if you want to reuse wording for a comment)",
+      "revId": "309d45ff8d91dada2b74029f5f868190ac2c1f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76017afb_0993596c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-03T01:00:29Z",
+      "side": 1,
+      "message": "cleanupCtx?",
+      "range": {
+        "startLine": 111,
+        "startChar": 49,
+        "endLine": 111,
+        "endChar": 52
+      },
+      "revId": "309d45ff8d91dada2b74029f5f868190ac2c1f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b2ac8f3_1d2c675f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-03T01:00:29Z",
+      "side": 1,
+      "message": "wait for the launcher to close (launcher.go may have a util method for it)?",
+      "revId": "309d45ff8d91dada2b74029f5f868190ac2c1f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
