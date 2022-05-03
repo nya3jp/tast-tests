@@ -21,6 +21,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/crossdevice/phonehub"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
@@ -31,23 +33,9 @@ import (
 // NewCrossDeviceOnboarded creates a fixture that logs in to CrOS, pairs it with an Android device,
 // and ensures the features in the "Connected devices" section of OS Settings are ready to use (Smart Lock, Phone Hub, etc.).
 // Note that crossdevice fixtures inherit from crossdeviceAndroidSetup.
-func NewCrossDeviceOnboarded(allFeatures, saveScreenRecording, lockFixture bool) testing.FixtureImpl {
-	tags := []string{
-		"*nearby*=3",
-		"*cryptauth*=3",
-		"*device_sync*=3",
-		"*multidevice*=3",
-		"*secure_channel*=3",
-		"*phonehub*=3",
-		"*blue*=3",
-		"ble_*=3",
-	}
-	defaultOpts := []chrome.Option{
-		chrome.ExtraArgs("--enable-logging", "--vmodule="+strings.Join(tags, ",")),
-		chrome.EnableFeatures("PhoneHubCameraRoll", "SmartLockUIRevamp"),
-	}
+func NewCrossDeviceOnboarded(allFeatures, saveScreenRecording, lockFixture bool, fOpt chrome.OptionsCallback) testing.FixtureImpl {
 	return &crossdeviceFixture{
-		opts:                defaultOpts,
+		fOpt:                fOpt,
 		allFeatures:         allFeatures,
 		saveScreenRecording: saveScreenRecording,
 		lockFixture:         lockFixture,
@@ -71,7 +59,9 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "crossdeviceAndroidSetupPhoneHub",
-		Impl:   NewCrossDeviceOnboarded(true, true, true),
+		Impl: NewCrossDeviceOnboarded(true, true, true, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
+		}),
 		Vars: []string{
 			customCrOSUsername,
 			customCrOSPassword,
@@ -91,7 +81,9 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "crossdeviceAndroidSetupSmartLock",
-		Impl:   NewCrossDeviceOnboarded(false, false, true),
+		Impl: NewCrossDeviceOnboarded(false, false, true, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
+		}),
 		Vars: []string{
 			customCrOSUsername,
 			customCrOSPassword,
@@ -111,7 +103,9 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "crossdeviceAndroidSetupSmartLockLogin",
-		Impl:   NewCrossDeviceOnboarded(false, false, false),
+		Impl: NewCrossDeviceOnboarded(false, false, false, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
+		}),
 		Vars: []string{
 			customCrOSUsername,
 			customCrOSPassword,
@@ -124,10 +118,34 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 
+	// lacros fixtures
+	testing.AddFixture(&testing.Fixture{
+		Name: "lacrosCrossdeviceOnboardedAllFeatures",
+		Desc: "User is signed in (with GAIA) to CrOS and paired with an Android phone with all Cross Device features enabled with lacros enabled",
+		Contacts: []string{
+			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "crossdeviceAndroidSetupPhoneHub",
+		Impl: NewCrossDeviceOnboarded(true, true, true, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			// TODO(b/222367920): Move to LacrosOnly when available.
+			return lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary)).Opts()
+		}),
+		Vars: []string{
+			customCrOSUsername,
+			customCrOSPassword,
+			KeepStateVar,
+		},
+		SetUpTimeout:    4 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
 }
 
 type crossdeviceFixture struct {
-	opts                              []chrome.Option
+	fOpt                              chrome.OptionsCallback // Function to generate Chrome Options
 	cr                                *chrome.Chrome
 	tconn                             *chrome.TestConn
 	kb                                *input.KeyboardEventWriter
@@ -184,6 +202,25 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 	defer androidDevice.DumpLogs(cleanupCtx, s.OutDir(), "fixture_setup_logcat.txt")
 
+	// Set default chrome options.
+	opts, err := f.fOpt(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to obtain Chrome options: ", err)
+	}
+
+	tags := []string{
+		"*nearby*=3",
+		"*cryptauth*=3",
+		"*device_sync*=3",
+		"*multidevice*=3",
+		"*secure_channel*=3",
+		"*phonehub*=3",
+		"*blue*=3",
+		"ble_*=3",
+	}
+	opts = append(opts, chrome.ExtraArgs("--enable-logging", "--vmodule="+strings.Join(tags, ",")))
+	opts = append(opts, chrome.EnableFeatures("PhoneHubCameraRoll", "SmartLockUIRevamp"))
+
 	customUser, userOk := s.Var(customCrOSUsername)
 	customPass, passOk := s.Var(customCrOSPassword)
 	if userOk && passOk {
@@ -193,7 +230,7 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	} else {
 		s.Log("Logging in with default GAIA credentials")
 	}
-	opts := append(f.opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
+	opts = append(opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
 	if val, ok := s.Var(KeepStateVar); ok {
 		b, err := strconv.ParseBool(val)
 		if err != nil {
@@ -296,7 +333,7 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		AndroidDevice: androidDevice,
 		Username:      crosUsername,
 		Password:      crosPassword,
-		ChromeOptions: f.opts,
+		ChromeOptions: opts,
 	}
 }
 
