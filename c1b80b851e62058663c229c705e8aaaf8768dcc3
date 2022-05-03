@@ -1,0 +1,418 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1d6090_3fb5b3a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "`wifi: Add flexible hostapd configuration for Passpoint`\nSee: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23601393_913fe6aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "No `,` here.",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d6d679_291d4165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "nit: Can this fit on two lines instead of three?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5547768b_a744f7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "Just `s.CliCmd` should work.",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1acc092e_63cb7162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "Just `s.OutDir` should work.",
+      "range": {
+        "startLine": 109,
+        "startChar": 23,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ceeb12_1631a4f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "Just `s.CliCmd` should work.",
+      "range": {
+        "startLine": 135,
+        "startChar": 25,
+        "endLine": 135,
+        "endChar": 40
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64e0f230_965698ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "if err :\u003d ap.Start(fullCtx); err !\u003d nil {",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 16
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe29e84c_4d2253e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "nit: This should be `Passpoint-` because Passpoint-compatible should be hyphenated.",
+      "range": {
+        "startLine": 30,
+        "startChar": 54,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6b945e_542cf61f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "This should be `set up` (two words) because setup (one word) can be a noun or an adjective, but not a verb.",
+      "range": {
+        "startLine": 30,
+        "startChar": 46,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09952422_1c21a13b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "Should this be `authenticate`?",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce6783b_7cecf213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "Heed https://go.dev/doc/effective_go#commentary particularly where it says \"Doc comments work best as complete sentences, which allow a wide variety of automated presentations. The first sentence should be a one-sentence summary that starts with the name being declared.\"",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d7e204_6b090cdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "I suggest making all of these fields unexported and providing an exported function to create an `APConf` value. That way you can prevent callers from changing the values around inappropriately.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d84610ec_c0859214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "nit:\n\tdefault:\n\t\treturn \"\", errors.Errorf(\"unsupported authentication method: %v\", c.Auth)\n\t}\n\nThis way, you can have no `return` statement after the `switch` statement, and then the compiler will effectively verify that every `case` of the `switch` statement returns something as it should.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 74
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d43659_989ab6cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "Use a `switch` statement.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 14
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca22833_0d3c13cd",
+        "filename": "src/chromiumos/tast/local/hostapd/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "`interacting`",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c49f84e3_0b71a98e",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "`\t// Conf is the server configuration.`",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db432e7b_edc9fa67",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "I suggest making them all unexported and providing an exported function that creates a `Server` value. That way, the caller cannot start a server and then change these things around.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a701e967_abdc21f2",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-03T18:28:26Z",
+      "side": 1,
+      "message": "Just write `nil` here, and get rid of the `stas` variable.",
+      "range": {
+        "startLine": 117,
+        "startChar": 9,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
