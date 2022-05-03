@@ -71,6 +71,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "094b7891_b27971b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-03T08:53:08Z",
+      "side": 1,
+      "message": "Can we put the common routines of managing a companion DUT to a new fixture support so that other tests could also benefit from this. I have a draft CL for this. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3622604",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32fa419a_93b4c31e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 4
