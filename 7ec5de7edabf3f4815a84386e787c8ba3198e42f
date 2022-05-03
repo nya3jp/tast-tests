@@ -51,6 +51,24 @@
       "parentUuid": "bf772359_06443e3a",
       "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b14209_b937d627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-03T17:23:19Z",
+      "side": 1,
+      "message": "My concern is this message:\n\nGerrit GetPureRevert API does not mark this CL as a pure revert. Learn more: go/rubber-stamper-user-guide.\n\nI think it is due to Cq-Depend. I don\u0027t think Gerrit can tell if the other CL is necessary. My guess is that it will simple check for the Cq-Depend.",
+      "parentUuid": "f8ad1f3f_ef077827",
+      "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
