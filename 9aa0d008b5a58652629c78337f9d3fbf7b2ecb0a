@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e04bec23_85cdb1b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-05-03T19:04:42Z",
+      "side": 1,
+      "message": "s/speicfic/speicfic/",
+      "revId": "9aa0d008b5a58652629c78337f9d3fbf7b2ecb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "334eb9f9_32e9d4eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/loop_device_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-05-03T19:04:42Z",
+      "side": 1,
+      "message": "loop device management is duplicated 3 times already:\n- src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go\n- src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go\n- src/chromiumos/tast/local/crosdisks/loopback.go\n\nDoes it make sense to promote one and use it throughout? [The later seems to be already well delineated].",
+      "revId": "9aa0d008b5a58652629c78337f9d3fbf7b2ecb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e63e52a_dd3a4e10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/loop_device_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-05-03T19:04:42Z",
+      "side": 1,
+      "message": "To meet go logic, does it make sense [ab]use the defer callbacks and do check for the loop device while you unwind the loop object?",
+      "revId": "9aa0d008b5a58652629c78337f9d3fbf7b2ecb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
