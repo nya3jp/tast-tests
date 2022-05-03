@@ -41,7 +41,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_60},
 			ExtraData:         []string{"perf/av1/1080p_60fps_600frames.av1.ivf", "perf/av1/1080p_60fps_600frames.av1.ivf.json"},
 		}, {
-			Name:              "av1_1080p_60fps_global_concurrent",
+			Name:              "av1_1080p_60fps_concurrent",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/av1/1080p_60fps_600frames.av1.ivf", runConcurrentDecoders: true},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_60, "thread_safe_libva_backend"},
 			ExtraData:         []string{"perf/av1/1080p_60fps_600frames.av1.ivf", "perf/av1/1080p_60fps_600frames.av1.ivf.json"},
@@ -71,7 +71,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
 			ExtraData:         []string{"perf/h264/1080p_60fps_600frames.h264", "perf/h264/1080p_60fps_600frames.h264.json"},
 		}, {
-			Name:              "h264_1080p_60fps_global_concurrent",
+			Name:              "h264_1080p_60fps_concurrent",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/h264/1080p_60fps_600frames.h264", runConcurrentDecoders: true},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs", "thread_safe_libva_backend"},
 			ExtraData:         []string{"perf/h264/1080p_60fps_600frames.h264", "perf/h264/1080p_60fps_600frames.h264.json"},
@@ -101,7 +101,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"perf/hevc/1080p_60fps_600frames.hevc", "perf/hevc/1080p_60fps_600frames.hevc.json"},
 		}, {
-			Name:              "hevc_1080p_60fps_global_concurrent",
+			Name:              "hevc_1080p_60fps_concurrent",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/hevc/1080p_60fps_600frames.hevc", runConcurrentDecoders: true},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "proprietary_codecs", "protected_content", "thread_safe_libva_backend"},
 			ExtraData:         []string{"perf/hevc/1080p_60fps_600frames.hevc", "perf/hevc/1080p_60fps_600frames.hevc.json"},
@@ -131,7 +131,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60},
 			ExtraData:         []string{"perf/vp8/1080p_60fps_600frames.vp8.ivf", "perf/vp8/1080p_60fps_600frames.vp8.ivf.json"},
 		}, {
-			Name:              "vp8_1080p_60fps_global_concurrent",
+			Name:              "vp8_1080p_60fps_concurrent",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/vp8/1080p_60fps_600frames.vp8.ivf", runConcurrentDecoders: true},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60, "thread_safe_libva_backend"},
 			ExtraData:         []string{"perf/vp8/1080p_60fps_600frames.vp8.ivf", "perf/vp8/1080p_60fps_600frames.vp8.ivf.json"},
@@ -161,7 +161,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60},
 			ExtraData:         []string{"perf/vp9/1080p_60fps_600frames.vp9.ivf", "perf/vp9/1080p_60fps_600frames.vp9.ivf.json"},
 		}, {
-			Name:              "vp9_1080p_60fps_global_concurrent",
+			Name:              "vp9_1080p_60fps_concurrent",
 			Val:               videoDecodeAccelVdPerfTestParam{dataPath: "perf/vp9/1080p_60fps_600frames.vp9.ivf", runConcurrentDecoders: true},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "thread_safe_libva_backend"},
 			ExtraData:         []string{"perf/vp9/1080p_60fps_600frames.vp9.ivf", "perf/vp9/1080p_60fps_600frames.vp9.ivf.json"},
