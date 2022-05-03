@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FolderDragAndDrop,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Launcher Folder Item Drag and Drop",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
