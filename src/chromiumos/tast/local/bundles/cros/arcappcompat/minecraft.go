@@ -7,16 +7,23 @@ package arcappcompat
 
 import (
 	"context"
+	"strings"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
+)
+
+const (
+	signOutTestCaseTimeoutForMinecraft = 4 * time.Minute
 )
 
 // clamshellLaunchForMinecraft launches Minecraft in clamshell mode.
@@ -27,6 +34,16 @@ var clamshellLaunchForMinecraft = []testutil.TestCase{
 // touchviewLaunchForMinecraft launches Minecraft in tablet mode.
 var touchviewLaunchForMinecraft = []testutil.TestCase{
 	{Name: "Launch app in Touchview", Fn: launchAppForMinecraft, Timeout: testutil.LaunchTestCaseTimeout},
+}
+
+// clamshellAppSpecificTestsForMinecraft are placed here.
+var clamshellAppSpecificTestsForMinecraft = []testutil.TestCase{
+	{Name: "Clamshell: Signout app", Fn: signOutOfMinecraft, Timeout: signOutTestCaseTimeoutForMinecraft},
+}
+
+// touchviewAppSpecificTestsForMinecraft are placed here.
+var touchviewAppSpecificTestsForMinecraft = []testutil.TestCase{
+	{Name: "Touchview: Signout app", Fn: signOutOfMinecraft, Timeout: signOutTestCaseTimeoutForMinecraft},
 }
 
 func init() {
@@ -40,8 +57,9 @@ func init() {
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForMinecraft,
-				CommonTests: testutil.ClamshellCommonTests,
+				LaunchTests:      clamshellLaunchForMinecraft,
+				CommonTests:      testutil.ClamshellSmokeTests,
+				AppSpecificTests: clamshellAppSpecificTestsForMinecraft,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -51,8 +69,9 @@ func init() {
 		}, {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForMinecraft,
-				CommonTests: testutil.TouchviewSmokeTests,
+				LaunchTests:      touchviewLaunchForMinecraft,
+				CommonTests:      testutil.TouchviewSmokeTests,
+				AppSpecificTests: touchviewAppSpecificTestsForMinecraft,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -62,8 +81,9 @@ func init() {
 		}, {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
-				LaunchTests: clamshellLaunchForMinecraft,
-				CommonTests: testutil.ClamshellSmokeTests,
+				LaunchTests:      clamshellLaunchForMinecraft,
+				CommonTests:      testutil.ClamshellSmokeTests,
+				AppSpecificTests: clamshellAppSpecificTestsForMinecraft,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -73,8 +93,9 @@ func init() {
 		}, {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
-				LaunchTests: touchviewLaunchForMinecraft,
-				CommonTests: testutil.TouchviewSmokeTests,
+				LaunchTests:      touchviewLaunchForMinecraft,
+				CommonTests:      testutil.TouchviewSmokeTests,
+				AppSpecificTests: touchviewAppSpecificTestsForMinecraft,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -84,6 +105,7 @@ func init() {
 		}},
 		Timeout: 30 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		VarDeps: []string{"arcappcompat.Minecraft.emailid", "arcappcompat.Minecraft.password"},
 	})
 }
 
@@ -102,100 +124,54 @@ func Minecraft(ctx context.Context, s *testing.State) {
 // verify app reached main activity page of the app.
 func launchAppForMinecraft(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		appPageClassName = "android.widget.FrameLayout"
+		// The inputs rendered by Minecraft are not immediately active after being clicked
+		// so wait a moment for the engine to make the input active before interacting with it.
+		waitForActiveInputTime = time.Second * 10
 	)
-	closeAndRelaunchApp(ctx, s, tconn, a, d, appPkgName, appActivity)
-	appPage := d.Object(ui.ClassName(appPageClassName), ui.PackageName(appPkgName), ui.Enabled(true))
-	if err := appPage.Exists(ctx); err == nil {
-		s.Log("App page does exist")
-		// Wait for app page to load.
-		if err := testing.Sleep(ctx, testutil.ShortUITimeout); err != nil {
-			s.Fatal("Failed to sleep for welcome page to load: ", err)
-		}
-		// To select try a demo lesson option.
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_TAB: ", err)
-		}
-		s.Log("Entered KEYCODE_TAB")
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_ENTER: ", err)
-		}
-		s.Log("Entered KEYCODE_ENTER")
-	}
+	// Login to Minecraft.
+	testutil.LoginToApp(ctx, s, tconn, a, d, appPkgName, appActivity)
 
-	if err := appPage.Exists(ctx); err == nil {
-		s.Log("App Page does exist")
-		// Wait for view terms page to appear.
-		if err := testing.Sleep(ctx, testutil.DefaultUITimeout); err != nil {
-			s.Fatal("Failed to sleep for view terms page to appear: ", err)
-		}
-		// To select accept term option.
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_TAB: ", err)
-		}
-		s.Log("Entered KEYCODE_TAB")
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_TAB: ", err)
-		}
-		s.Log("Entered KEYCODE_TAB")
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_ENTER: ", err)
-		}
-		s.Log("Entered KEYCODE_ENTER")
-		// To select play option.
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_TAB: ", err)
-		}
-		s.Log("Entered KEYCODE_TAB")
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_TAB: ", err)
-		}
-		s.Log("Entered KEYCODE_TAB")
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_ENTER: ", err)
-		}
-		s.Log("Entered KEYCODE_ENTER")
-	}
-
-	if err := appPage.Exists(ctx); err == nil {
-		s.Log("selectStartLesson does exist")
-		// Wait for select start lesson page to appear.
-		if err := testing.Sleep(ctx, testutil.DefaultUITimeout); err != nil {
-			s.Fatal("Failed to sleep for select start lesson page: ", err)
-		}
-		// To select start lesson option.
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_TAB, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_TAB: ", err)
-		}
-		s.Log("Entered KEYCODE_TAB")
-		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-			s.Log("Failed to enter KEYCODE_ENTER: ", err)
-		}
-		s.Log("Entered KEYCODE_ENTER")
-	}
-
-	// Check for launch verifier.
-	launchVerifier := d.Object(ui.PackageName(appPkgName))
-	if err := launchVerifier.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("launchVerifier doesn't exists: ", err)
+	playButton := uidetection.Word("Flay") // Since Detection library doesn't distinguish between P, and F well and matches better on Flay in this case.
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	if err := uiauto.Combine("Check for Play in the home screen",
+		ud.WaitUntilExists(playButton),
+		action.Sleep(waitForActiveInputTime),
+	)(ctx); err != nil {
+		s.Fatal("Failed to find Play: ", err)
 	}
 }
 
-// closeAndRelaunchApp func close and relaunch the app to skip login page and reach try a demo lesson option page.
-// TODO(b/222120246): Remove closeAndRelaunchApp func once the login credentials are received from dev rel team.
-func closeAndRelaunchApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
-	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to stop app: ", err)
+// signOutOfMinecraft verifies app is signed out.
+func signOutOfMinecraft(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		// The inputs rendered by Minecraft are not immediately active after being clicked
+		// so wait a moment for the engine to make the input active before interacting with it.
+		waitForActiveInputTime = time.Second * 10
+	)
+	// Check if sign in page does exists.
+	// This happens when app is already signed out when performing any of the common test cases.
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
+	signInPage := uidetection.TextBlock(strings.Split("Sign In", " ")).First()
+	if err := uiauto.Combine("Check for sign in page",
+		ud.WithTimeout(testutil.ShortUITimeout).WaitUntilExists(signInPage),
+	)(ctx); err == nil {
+		s.Log("Sign in does exist and app is signed out already")
+		return
 	}
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
-	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
+
+	switchAccount := uidetection.TextBlock([]string{"Suitch", "Accounts"}) // Since Detection library doesn't distinguish between w, and u well and matches better on Suitch in this case.
+	signoutButton := strings.Split("Sign Out", " ")
+	signoutTextMsg := uidetection.TextBlock(strings.Split("Do you want to sign out and suitch accounts?", " ")) // Since Detection library doesn't distinguish between w, and u well and matches better on Suitch in this case.
+	if err := uiauto.Combine("Find switch accounts",
+		ud.WaitUntilExists(switchAccount),
+		ud.Tap(switchAccount),
+		action.Sleep(waitForActiveInputTime),
+		action.IfSuccessThen(
+			ud.WaitUntilExists(uidetection.TextBlock(signoutButton).Below(signoutTextMsg)),
+			ud.Tap(uidetection.TextBlock(signoutButton).Below(signoutTextMsg)),
+		),
+		action.Sleep(waitForActiveInputTime),
+	)(ctx); err != nil {
+		s.Error("Failed to find switch account / sign out: ", err)
 	}
-	defer act.Close()
-	// Launch the app.
-	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app: ", err)
-	}
-	s.Log("Closed and relaunch the app successfully")
 }
