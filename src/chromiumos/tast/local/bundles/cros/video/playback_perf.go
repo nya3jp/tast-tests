@@ -864,8 +864,9 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/1080_vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "drm_atomic"},
-			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			// Test produces no Media DevTools roughness on MT8173, nor on chromeboxes
+			// with external displays, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm"), hwdep.InternalDisplay()),
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "vp8_1080p_30fps_sw_long",
@@ -877,8 +878,9 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/1080_vp8.webm"},
 			ExtraSoftwareDeps: []string{"drm_atomic"},
-			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			// Test produces no Media DevTools roughness on MT8173, nor on chromeboxes
+			// with external displays, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm"), hwdep.InternalDisplay()),
 			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_1080p_30fps_hw_long",
@@ -890,8 +892,9 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/1080.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "drm_atomic"},
-			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			// Test produces no Media DevTools roughness on MT8173, nor on chromeboxes
+			// with external displays, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm"), hwdep.InternalDisplay()),
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "vp9_1080p_30fps_sw_long",
@@ -903,8 +906,9 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/1080.webm"},
 			ExtraSoftwareDeps: []string{"drm_atomic"},
-			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			// Test produces no Media DevTools roughness on MT8173, nor on chromeboxes
+			// with external displays, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm"), hwdep.InternalDisplay()),
 			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "h264_1080p_30fps_hw_long",
@@ -916,8 +920,9 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/1080.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "drm_atomic"},
-			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			// Test produces no Media DevTools roughness on MT8173, nor on chromeboxes
+			// with external displays, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm"), hwdep.InternalDisplay()),
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_1080p_30fps_sw_long",
@@ -929,8 +934,9 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/1080.mp4"},
 			ExtraSoftwareDeps: []string{"drm_atomic"},
-			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			// Test produces no Media DevTools roughness on MT8173, nor on chromeboxes
+			// with external displays, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm"), hwdep.InternalDisplay()),
 			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
 			Name: "av1_1080p_30fps_hw_long",
@@ -942,8 +948,9 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/av1_1080p_30fps.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1, "drm_atomic"},
-			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			// Test produces no Media DevTools roughness on MT8173, nor on chromeboxes
+			// with external displays, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm"), hwdep.InternalDisplay()),
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "av1_1080p_30fps_sw_long",
@@ -955,8 +962,9 @@ func init() {
 			},
 			ExtraData:         []string{"crosvideo/av1_1080p_30fps.mp4"},
 			ExtraSoftwareDeps: []string{"drm_atomic"},
-			// Test produces no Media DevTools roughness on MT8173, see b/171913706.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm")),
+			// Test produces no Media DevTools roughness on MT8173, nor on chromeboxes
+			// with external displays, see b/171913706.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("hana", "elm"), hwdep.InternalDisplay()),
 			Fixture:           "chromeVideoWithSWDecoding",
 		}},
 	})
