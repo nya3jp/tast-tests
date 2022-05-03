@@ -120,6 +120,24 @@
       "parentUuid": "ec1f0596_907c878e",
       "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95fa5b24_c1d0f346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-03T21:18:05Z",
+      "side": 1,
+      "message": "yeah, I was thinking that we use this temporarily as we switch default launcher implementation, but on the other hand, we\u0027d likely lose data either way (given that we\u0027d have productivity_launcher variant only for a short period of time before it becomes default)\n\nso, I agree going with this and adding new launcher metric afterwards if needed is the better way to go...",
+      "parentUuid": "ec1f0596_907c878e",
+      "revId": "b85c5384c9d90bcaa91f07a25449a391c711159e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
