@@ -6,7 +6,6 @@ package videocuj
 
 import (
 	"context"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -24,6 +23,7 @@ import (
 
 const (
 	mouseMoveDuration = 500 * time.Millisecond
+	longUITimeout     = time.Minute
 	shortUITimeout    = 5 * time.Second
 )
 
@@ -167,16 +167,12 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 			return errors.Wrap(err, "failed to wait for Youtube ready state")
 		}
 
-		// We've clicked the center of video player to show setting panel,
-		// that might pause the video (mouse-click will, but touch-tap won't),
-		// here let the video keep playing anyway when switch the quality is finished.
-		if err := uiauto.IfSuccessThen(
-			y.ui.WithTimeout(3*time.Second).WaitUntilExists(video),
-			y.uiHdl.Click(video),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to ensure video is playing after show setting panel")
+		// Clicked the center of video player to show setting panel might pause the video.
+		// (mouse-click will, but touch-tap won't)
+		// Here let the video keep playing anyway when switch the quality is finished.
+		if err := y.ui.WithTimeout(longUITimeout).RetryUntil(y.Play(), y.IsPlaying())(ctx); err != nil {
+			return errors.Wrap(err, "failed to verify video is playing")
 		}
-
 		return nil
 	}
 
@@ -240,7 +236,7 @@ func (y *YtWeb) SkipAd() uiauto.Action {
 				return errors.Wrap(err, "failed to click 'Skip Ads'")
 			}
 			return errors.New("have not determined whether the ad has been skipped successfully")
-		}, &testing.PollOptions{Timeout: time.Minute})
+		}, &testing.PollOptions{Timeout: longUITimeout})
 	}
 }
 
@@ -348,19 +344,27 @@ func (y *YtWeb) Pause() uiauto.Action {
 	}
 }
 
+const (
+	playButton  = "Play (k)"
+	pauseButton = "Pause (k)"
+)
+
+func (y *YtWeb) getPlayButtonTitle(ctx context.Context) (result string, err error) {
+	script := `document.querySelector(".ytp-play-button").title`
+	if err := y.ytConn.Eval(ctx, script, &result); err != nil {
+		return result, errors.Wrap(err, "failed to get result")
+	}
+	return result, nil
+}
+
 // IsPlaying checks if the video is playing now.
 func (y *YtWeb) IsPlaying() uiauto.Action {
 	return func(ctx context.Context) error {
-		previousTime, err := y.getCurrentTime(ctx)
-		if err != nil {
-			return err
-		}
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			currentTime, err := y.getCurrentTime(ctx)
-			if err != nil {
+			if title, err := y.getPlayButtonTitle(ctx); err != nil {
 				return err
-			}
-			if currentTime > previousTime {
+			} else if title == pauseButton {
+				testing.ContextLog(ctx, "Verify youtube is playing")
 				return nil
 			}
 			return errors.New("youtube is not playing")
@@ -371,23 +375,11 @@ func (y *YtWeb) IsPlaying() uiauto.Action {
 // IsPaused checks if the video is paused now.
 func (y *YtWeb) IsPaused() uiauto.Action {
 	return func(ctx context.Context) error {
-		previousTime, err := y.getCurrentTime(ctx)
-		if err != nil {
-			return err
-		}
-		// Considering that the paused action might not react immediately to the low-end DUTs.
-		// If the "paused" reaches the threshold, it means the video is actually paused.
-		threshold := 5
-		paused := 0
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			currentTime, err := y.getCurrentTime(ctx)
-			if err != nil {
+			if title, err := y.getPlayButtonTitle(ctx); err != nil {
 				return err
-			}
-			if currentTime == previousTime {
-				paused++
-			}
-			if paused >= threshold {
+			} else if title == playButton {
+				testing.ContextLog(ctx, "Verify youtube is paused")
 				return nil
 			}
 			return errors.New("youtube is not paused")
@@ -413,7 +405,7 @@ func waitForYoutubeReadyState(ctx context.Context, conn *chrome.Conn) error {
 		}
 		testing.ContextLogf(ctx, "Elapsed time when waiting for youtube ready state: %.3f s", time.Since(startTime).Seconds())
 		return nil
-	}, &testing.PollOptions{Interval: time.Second, Timeout: time.Minute})
+	}, &testing.PollOptions{Interval: time.Second, Timeout: longUITimeout})
 }
 
 // Close closes the resources related to video.
@@ -423,34 +415,6 @@ func (y *YtWeb) Close(ctx context.Context) {
 		y.ytConn.Close()
 		y.ytConn = nil
 	}
-}
-
-// getCurrentTime gets the current video time in seconds.
-func (y *YtWeb) getCurrentTime(ctx context.Context) (int, error) {
-	settings := nodewith.Name("Settings").Role(role.PopUpButton).Ancestor(videoPlayer)
-	timeNode := nodewith.NameRegex(regexp.MustCompile("((\\d+):)?(\\d+):(\\d+)$")).Role(role.InlineTextBox).First()
-	if err := uiauto.Combine("make youtube video play time pop up",
-		y.ui.MouseMoveTo(settings, mouseMoveDuration),
-		y.ui.MouseMoveTo(videoPlayer, mouseMoveDuration),
-		y.ui.WaitUntilExists(timeNode),
-	)(ctx); err != nil {
-		return 0, err
-	}
-
-	node, err := y.ui.Info(ctx, timeNode)
-	if err != nil {
-		return 0, err
-	}
-
-	timeFormat := "4:05"
-	if len(node.Name) > 5 { // If the playback time exceeds an hour.
-		timeFormat = "15:04:05"
-	}
-	videoTime, err := time.Parse(timeFormat, node.Name)
-	if err != nil {
-		return 0, err
-	}
-	return videoTime.Hour()*60*60 + videoTime.Minute()*60 + videoTime.Second(), nil
 }
 
 // clearNotificationPrompts finds and clears some youtube web prompts.
