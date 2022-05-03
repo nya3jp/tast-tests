@@ -9,12 +9,16 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
@@ -23,6 +27,7 @@ type rearrangmentTestType string
 const (
 	chromeAppTest rearrangmentTestType = "ChromeAppTest" // Verify the rearrangement behavior on a Chrome app.
 	fileAppTest   rearrangmentTestType = "FileAppTest"   // Verify the rearrangement behavior on the File app.
+	pwaAppTest    rearrangmentTestType = "PwaAppTest"    // Verify the rearrangement behavior on a PWA.
 )
 
 func init() {
@@ -38,6 +43,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
+		Data:         []string{"web_app_install_force_list_index.html", "web_app_install_force_list_manifest.json", "web_app_install_force_list_service-worker.js", "web_app_install_force_list_icon-192x192.png", "web_app_install_force_list_icon-512x512.png"},
 		Params: []testing.Param{
 			{
 				Name:    "rearrange_chrome_apps",
@@ -48,6 +54,11 @@ func init() {
 				Name:    "rearrange_file_app",
 				Val:     fileAppTest,
 				Fixture: "chromeLoggedIn",
+			},
+			{
+				Name:    "rearrange_pwa_app",
+				Val:     pwaAppTest,
+				Fixture: fixture.ChromePolicyLoggedIn,
 			},
 		},
 	})
@@ -69,6 +80,8 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		defer cr.Close(ctx)
 	case fileAppTest:
 		cr = s.FixtValue().(*chrome.Chrome)
+	case pwaAppTest:
+		cr = s.FixtValue().(chrome.HasChrome).Chrome()
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -142,6 +155,21 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		// Use the File app as the target app.
 		targetAppID = apps.Files.ID
 		targetAppName = apps.Files.Name
+	case pwaAppTest:
+		fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+		var cleanUp func(ctx context.Context) error
+		targetAppID, targetAppName, cleanUp, err = policyutil.InstallPwaAppByPolicy(ctx, tconn, cr, fdms, s.DataFileSystem())
+		if err != nil {
+			s.Fatal("Failed to install PWA: ", err)
+		}
+
+		// Use a shortened context for test operations to reserve time for cleanup.
+		cleanupCtx := ctx
+		var cancel context.CancelFunc
+		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+		defer cancel()
+
+		defer cleanUp(cleanupCtx)
 	}
 
 	// Pin the target app.
