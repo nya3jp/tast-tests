@@ -33,6 +33,24 @@
       "message": "I am not sure, but I think you may need to revert the related CL, too.",
       "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ad1f3f_ef077827",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-03T16:45:25Z",
+      "side": 1,
+      "message": "https://crrev.com/c/3600862 won\u0027t be impacted, because `PersonalizationHub` is enabled in that CL as well. There are two related CLs that only touched `codelab_3.md`. In short, just reversing this CL should be fine.",
+      "parentUuid": "bf772359_06443e3a",
+      "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
