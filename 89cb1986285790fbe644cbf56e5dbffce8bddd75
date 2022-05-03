@@ -52,6 +52,24 @@
       "parentUuid": "b53ee956_a9ebfd5e",
       "revId": "89cb1986285790fbe644cbf56e5dbffce8bddd75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9ec097_9fe0cf58",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-05-03T10:55:14Z",
+      "side": 1,
+      "message": "I also think isolating the tests should be a temporary workaround. I would want to see that ChromeLoggedIn fixture\u0027s Reset as reliable as possible (just like Chrome.New, that usually works no matter what strange state you got your Chromebook into), so that those tests could run together. The problem is not solved perfectly by isolating the tests that lock/logout as they still affect each other in that build.",
+      "parentUuid": "ec415473_e44fd5bc",
+      "revId": "89cb1986285790fbe644cbf56e5dbffce8bddd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
