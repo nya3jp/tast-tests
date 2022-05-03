@@ -103,6 +103,42 @@
       "message": "Is there any way to run this against the specific DCHECK on bots that were failing? My suspicion is they will still fail, even with this revert applied.",
       "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce157136_26887875",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-05-03T23:53:12Z",
+      "side": 1,
+      "message": "I did test this by hand, and the revert fixed things. It\u0027s possible there are other DCHECK issues as well, of course.",
+      "parentUuid": "ef8f7d22_0f93d549",
+      "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c496dcce_8d739e0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-05-03T23:53:12Z",
+      "side": 1,
+      "message": "I rebased this over a change that deleted one of the files, so it actually isn\u0027t a pure revert (see the diff from patch 1 to patch 2)",
+      "parentUuid": "32b14209_b937d627",
+      "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
