@@ -80,7 +80,7 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	if err := uiauto.Combine("Click a button to add a profile",
+	if err := uiauto.Combine("click a button to add a profile",
 		ui.WaitUntilExists(profileToolbarButton),
 		ui.LeftClick(profileToolbarButton),
 		ui.WaitUntilExists(addProfileButton),
@@ -89,13 +89,26 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click a button to add a profile: ", err)
 	}
 
+	// Profile chooser screen:
+	chooseProfileRoot := nodewith.Name("Choose a profile").Role(role.RootWebArea)
+	addButton := nodewith.Name("Add").Role(role.Button).Focusable().Ancestor(chooseProfileRoot)
+	if err := ui.Exists(addButton)(ctx); err == nil {
+		// If we get profile chooser screen - click "Add".
+		if err1 := ui.LeftClick(addButton)(ctx); err1 != nil {
+			s.Fatal("Failed to click a button to add a profile: ", err1)
+		}
+	}
+
 	s.Log("Adding a new profile")
 	addAccountDialog := accountmanager.AddAccountDialog()
 	addProfileRoot := nodewith.Name("Set up your new Chrome profile").Role(role.RootWebArea)
-	nextButton := nodewith.Name("Next").Role(role.Button).Focusable().Ancestor(addProfileRoot)
-	if err := uiauto.Combine("Click on nextButton",
+	nextButton := nodewith.Name("Sign in").Role(role.Button).ClassName("action-button").Focusable().Ancestor(addProfileRoot)
+	chooseAccountRoot := nodewith.Name("Choose an account").Role(role.RootWebArea)
+	addAccountButton := nodewith.Name("Use another account").Role(role.Button).Focusable().Ancestor(chooseAccountRoot)
+	if err := uiauto.Combine("click on nextButton",
 		ui.WaitUntilExists(nextButton),
-		ui.WithInterval(time.Second).LeftClickUntil(nextButton, ui.Exists(addAccountDialog)),
+		ui.WithInterval(time.Second).LeftClickUntil(nextButton, ui.Exists(addAccountButton)),
+		ui.WithInterval(time.Second).LeftClickUntil(addAccountButton, ui.Exists(addAccountDialog)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to click on nextButton: ", err)
 	}
@@ -106,14 +119,13 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Finish profile addition")
-	finishAddProfileRoot := nodewith.Name("Chrome browser sync is on").Role(role.RootWebArea)
-	doneButton := nodewith.Name("Done").Role(role.Button).Focusable().Ancestor(finishAddProfileRoot)
-	if err := uiauto.Combine("Click on doneButton",
-		ui.WaitUntilExists(nodewith.Name("Chrome browser sync is on").Role(role.Heading).Ancestor(finishAddProfileRoot)),
-		ui.WaitUntilExists(doneButton),
-		ui.LeftClick(doneButton),
+	syncProfileRoot := nodewith.Name("Turn on sync?").Role(role.RootWebArea)
+	yesButton := nodewith.Name("Yes, I'm in").Role(role.Button).Focusable().Ancestor(syncProfileRoot)
+	if err := uiauto.Combine("click on yesButton",
+		ui.WaitUntilExists(yesButton),
+		ui.LeftClick(yesButton),
 	)(ctx); err != nil {
-		s.Fatal("Failed to click on doneButton: ", err)
+		s.Fatal("Failed to click on yesButton: ", err)
 	}
 
 	// There are two Chrome windows open. Find the window of the new profile:
@@ -126,7 +138,7 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 	}
 
 	// Make sure that a new profile was added for the correct account
-	if err := uiauto.Combine("Check that the new profile belongs to the correct account",
+	if err := uiauto.Combine("check that the new profile belongs to the correct account",
 		ui.WaitUntilExists(newProfileWindow),
 		ui.WaitUntilExists(profileToolbarButton.Ancestor(newProfileWindow)),
 		ui.LeftClick(profileToolbarButton.Ancestor(newProfileWindow)),

@@ -70,7 +70,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
 	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
-	if err := uiauto.Combine("Add a secondary account in OS Settings",
+	if err := uiauto.Combine("add a secondary account in OS Settings",
 		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
 		ui.LeftClick(addAccountButton),
 		func(ctx context.Context) error {
@@ -98,31 +98,38 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	// Nodes in the profile addition dialog:
 	accountPicker := nodewith.Name("Choose an account").Role(role.RootWebArea)
 	addProfileRoot := nodewith.Name("Set up your new Chrome profile").Role(role.RootWebArea)
-	nextButton := nodewith.Name("Next").Role(role.Button).Focusable().Ancestor(addProfileRoot)
+	nextButton := nodewith.Name("Sign in").Role(role.Button).ClassName("action-button").Focusable().Ancestor(addProfileRoot)
 	accountEntry := nodewith.NameContaining(username).Role(role.Button).Focusable().Ancestor(accountPicker)
-
+	// Profile chooser screen:
+	chooseProfileRoot := nodewith.Name("Choose a profile").Role(role.RootWebArea)
+	addButton := nodewith.Name("Add").Role(role.Button).Focusable().Ancestor(chooseProfileRoot)
 	// Nodes on the last screen of the profile addition dialog:
-	finishAddProfileRoot := nodewith.Name("Chrome browser sync is on").Role(role.RootWebArea)
-	finishAddProfileHeading := nodewith.Name("Chrome browser sync is on").Role(role.Heading).Ancestor(finishAddProfileRoot)
-	doneButton := nodewith.Name("Done").Role(role.Button).Focusable().Ancestor(finishAddProfileRoot)
+	syncProfileRoot := nodewith.Name("Turn on sync?").Role(role.RootWebArea)
+	yesButton := nodewith.Name("Yes, I'm in").Role(role.Button).Focusable().Ancestor(syncProfileRoot)
 
-	if err := uiauto.Combine("Add a profile",
-		uiauto.Combine("Click a button to add a profile",
+	if err := uiauto.Combine("add a profile",
+		uiauto.Combine("click a button to add a profile",
 			ui.WaitUntilExists(profileToolbarButton),
 			ui.LeftClick(profileToolbarButton),
 			ui.WaitUntilExists(addProfileButton),
 			ui.LeftClick(addProfileButton),
+			func(ctx context.Context) error {
+				// If we get profile chooser screen - click "Add".
+				if err := ui.Exists(addButton)(ctx); err == nil {
+					return ui.LeftClick(addButton)(ctx)
+				}
+				return nil
+			},
 		),
-		uiauto.Combine("Click next and pick an account",
+		uiauto.Combine("click next and pick an account",
 			ui.WaitUntilExists(nextButton),
 			ui.WithInterval(time.Second).LeftClickUntil(nextButton, ui.Exists(accountPicker)),
 			ui.WaitUntilExists(accountEntry),
 			ui.LeftClick(accountEntry),
 		),
-		uiauto.Combine("Check that the final screen is open and click done",
-			ui.WaitUntilExists(finishAddProfileHeading),
-			ui.WaitUntilExists(doneButton),
-			ui.LeftClick(doneButton),
+		uiauto.Combine("accept sync",
+			ui.WaitUntilExists(yesButton),
+			ui.LeftClick(yesButton),
 		),
 	)(ctx); err != nil {
 		s.Fatal("Failed to create a new profile for secondary account: ", err)
@@ -138,7 +145,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	}
 
 	// Make sure that a new profile was added for the correct account
-	if err := uiauto.Combine("Check that the new profile belongs to the correct account",
+	if err := uiauto.Combine("check that the new profile belongs to the correct account",
 		ui.WaitUntilExists(newProfileWindow),
 		ui.WaitUntilExists(profileToolbarButton.Ancestor(newProfileWindow)),
 		ui.LeftClick(profileToolbarButton.Ancestor(newProfileWindow)),
