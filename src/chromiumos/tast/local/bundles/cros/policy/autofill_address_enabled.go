@@ -212,6 +212,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 					ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Email")),
 					ui.WaitUntilExists(suggestionPopup),
 					ui.LeftClick(suggestionPopup),
+					ui.WaitUntilExists(nodewith.Role(role.InlineTextBox).Name(addressValues[1].fieldValue)),
 				)(ctx); err != nil {
 					s.Fatal("Failed to trigger and use address autofill: ", err)
 				}

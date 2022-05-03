@@ -251,9 +251,11 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 				}
 
 				// Trigger the autofill on the credit card form page.
+				autofillPopup := nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView")
 				if err := uiauto.Combine("clicking the Name on card field and choosing the suggested credit card",
 					ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Name on card")),
-					ui.LeftClick(nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView")),
+					ui.WaitUntilExists(autofillPopup),
+					ui.LeftClick(autofillPopup),
 					ui.WaitUntilExists(nodewith.Role(role.InlineTextBox).Name(creditCardFields[0].fieldValue)),
 				)(ctx); err != nil {
 					s.Fatal("Failed to trigger and use credit card autofill: ", err)
