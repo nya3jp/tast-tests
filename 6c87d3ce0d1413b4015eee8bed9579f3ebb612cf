@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e92044_2fb4e4e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-03T22:56:54Z",
+      "side": 1,
+      "message": "in clamshell mode, we should probably wait for bubble launcher view is gone (using uiauto APIs) - we probably have a helper in launcher.go but I\u0027m not sure.\n\n(WaitForLauncherState will wait for tablet mode launcher to be closed, which will be no-op in clamshell)",
+      "revId": "6c87d3ce0d1413b4015eee8bed9579f3ebb612cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
