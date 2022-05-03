@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -49,8 +50,9 @@ var SearchResultListItemFinder = nodewith.ClassName("ui/app_list/SearchResultVie
 
 // TestCase describes modes in which the launcher UI can be shown, and by which launcher test should generally be parameterized.
 type TestCase struct {
-	ProductivityLauncher bool // Whether productivity launcher feature should be enabled
-	TabletMode           bool // Whether the test runs in tablet mode
+	ProductivityLauncher bool         // Whether productivity launcher feature should be enabled
+	TabletMode           bool         // Whether the test runs in tablet mode
+	BrowserType          browser.Type // What type of browser is used
 }
 
 // SortType Indicates the order that the launcher is sorted with.
