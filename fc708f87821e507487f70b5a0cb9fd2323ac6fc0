@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7905a9d5_e06f6cee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-03T08:55:43Z",
+      "side": 1,
+      "message": "Put my code which abstract the support of a companion DUT to a new test fixture here.",
+      "revId": "fc708f87821e507487f70b5a0cb9fd2323ac6fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
