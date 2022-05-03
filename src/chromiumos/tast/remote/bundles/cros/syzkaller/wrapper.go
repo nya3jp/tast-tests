@@ -30,6 +30,13 @@ const (
 	gsURL = "gs://syzkaller-ctp-corpus"
 )
 
+// A global runtime variable to indicate the test is running locally.
+var isLocal = testing.RegisterVarString(
+	"syzkaller.isLocal",
+	"",
+	"A variable to indicate the test is running locally.",
+)
+
 const startupScriptContents = `
 sysctl -w kernel.panic_on_warn=1
 dmesg --clear
@@ -132,13 +139,15 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := os.Mkdir(syzkallerWorkdir, 0755); err != nil {
 		s.Fatal("Unable to create temp workdir: ", err)
 	}
-	if err := loadCorpus(
-		ctx,
-		s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
-		board,
-		syzkallerWorkdir,
-	); err != nil {
-		s.Fatal("Unable to load corpus: ", err)
+	if isLocal.Value() != "" {
+		if err := loadCorpus(
+			ctx,
+			s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
+			board,
+			syzkallerWorkdir,
+		); err != nil {
+			s.Fatal("Unable to load corpus: ", err)
+		}
 	}
 
 	// Chmod the keyfile so that ssh connections do not fail due to
@@ -250,13 +259,15 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	if err := cmd.Run(); err != nil {
 		s.Fatal("Failed to copy syzkaller logfile: ", err)
 	}
-	if err := saveCorpus(
-		ctx,
-		s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
-		board,
-		filepath.Join(syzkallerWorkdir, "corpus.db"),
-	); err != nil {
-		s.Fatal("Failed to save corpus: ", err)
+	if isLocal.Value() != "" {
+		if err := saveCorpus(
+			ctx,
+			s.RequiredVar("syzkaller.Wrapper.botoCredSection"),
+			board,
+			filepath.Join(syzkallerWorkdir, "corpus.db"),
+		); err != nil {
+			s.Fatal("Failed to save corpus: ", err)
+		}
 	}
 
 	s.Log("Done fuzzing, exiting")
