@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f1e40f0_28883791",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-05-03T08:05:09Z",
+      "side": 1,
+      "message": "Good morning Alexander,\n\nNot sure why CQ in crrev.com/c/3620233 failed for some boards but pass on tast board, but to make sure that the suggestion popup has been correctly opened and clicked before checking the JS values, I added a couple of waits. Let\u0027s land this CL and confirm it still continues to work on the tast board before landing the other CL making the tests non-informational!\n\n",
+      "revId": "366d166abfcec837383021d9cc55e49dafb127a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
