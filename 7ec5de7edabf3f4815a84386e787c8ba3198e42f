@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20980b69_5084fe22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-05-03T13:31:55Z",
+      "side": 1,
+      "message": "Rebasing reset the approvals, so one of you needs to +2 this again",
+      "revId": "7ec5de7edabf3f4815a84386e787c8ba3198e42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
