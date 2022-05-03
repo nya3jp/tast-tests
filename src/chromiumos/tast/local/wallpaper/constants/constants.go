@@ -7,6 +7,18 @@ package constants
 
 import "image/color"
 
+// GooglePhotosWallpaperAlbum is the name of an album in the GooglePhotosWallpaperCollection.
+const GooglePhotosWallpaperAlbum = "wallpaper.SetGooglePhotosWallpaper"
+
+// GooglePhotosWallpaperCollection is the name of the Google Photos wallpaper collection.
+const GooglePhotosWallpaperCollection = "Google Photos"
+
+// GooglePhotosWallpaperPhoto is the name of a photo in the GooglePhotosWallpaperAlbum.
+const GooglePhotosWallpaperPhoto = "wallpaper.SetGooglePhotosWallpaper"
+
+// GooglePhotosWallpaperColor is the color of the GooglePhotosWallpaperPhoto.
+var GooglePhotosWallpaperColor = color.RGBA{255, 203, 198, 255}
+
 // SolidColorsCollection is the name of a wallpaper collection of solid colors.
 const SolidColorsCollection = "Solid colors"
 

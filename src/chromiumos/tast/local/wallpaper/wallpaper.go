@@ -47,6 +47,24 @@ func SelectCollection(ui *uiauto.Context, collection string) uiauto.Action {
 	)
 }
 
+// SelectGooglePhotosAlbum returns an action to select the Google Photos album with the given name.
+func SelectGooglePhotosAlbum(ui *uiauto.Context, name string) uiauto.Action {
+	albumNode := nodewith.HasClass("album").Name(name)
+	return uiauto.Combine(fmt.Sprintf("select Google Photos album %q", name),
+		ui.WaitUntilExists(albumNode),
+		ui.MakeVisible(albumNode),
+		ui.LeftClick(albumNode))
+}
+
+// SelectGooglePhotosPhoto returns an action to select the Google Photos photo with the given name.
+func SelectGooglePhotosPhoto(ui *uiauto.Context, name string) uiauto.Action {
+	photoNode := nodewith.HasClass("photo").Name(name)
+	return uiauto.Combine(fmt.Sprintf("select Google Photos photo %q", name),
+		ui.WaitUntilExists(photoNode),
+		ui.MakeVisible(photoNode),
+		ui.LeftClick(photoNode))
+}
+
 // SelectImage returns an action to select the image with the given image title.
 func SelectImage(ui *uiauto.Context, image string) uiauto.Action {
 	imageNode := nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container").Name(image)
