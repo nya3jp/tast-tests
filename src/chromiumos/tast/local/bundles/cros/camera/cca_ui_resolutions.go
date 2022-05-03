@@ -132,7 +132,7 @@ func testPhotoResolution(ctx context.Context, app *cca.App) error {
 		if err := app.SwitchMode(ctx, cca.Photo); err != nil {
 			return errors.Wrap(err, "failed to switch to photo mode")
 		}
-		return app.IterateResolutions(ctx, cca.PhotoResolution, facing, func(r cca.Resolution) error {
+		return app.IterateResolutions(ctx, cca.PhotoResolution, facing, nil, func(r cca.Resolution) error {
 			or, err := getOrientedResolution(ctx, app, r)
 			if err != nil {
 				return err
@@ -254,7 +254,7 @@ func testVideoResolution(ctx context.Context, app *cca.App) error {
 		if err := app.SwitchMode(ctx, cca.Video); err != nil {
 			return errors.Wrap(err, "failed to switch to video mode")
 		}
-		return app.IterateResolutions(ctx, cca.VideoResolution, facing, func(r cca.Resolution) error {
+		return app.IterateResolutions(ctx, cca.VideoResolution, facing, nil, func(r cca.Resolution) error {
 			or, err := getOrientedResolution(ctx, app, r)
 			if err != nil {
 				return err
