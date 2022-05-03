@@ -89,19 +89,22 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Suspending DUT")
-		cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend")
-		if err := cmd.Start(); err != nil {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend")
+			if err := cmd.Start(); err != nil {
+				return err
+			}
+			// Delay for some time to ensure the suspend command has fully propagated.
+			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep")
+			}
+			// Check for DUT in S0ix or S3 powerstates.
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0ix", "S3"); err != nil {
+				return errors.Wrap(err, "failed to get powerstates at S0ix or S3")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 3 * time.Minute}); err != nil {
 			s.Fatal("Failed to suspend DUT: ", err)
-		}
-
-		// Delay for some time to ensure DUT has fully suspended.
-		if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-			s.Fatal("Failed to sleep: ", err)
-		}
-
-		s.Log("Checking for DUT in S0ix or S3 powerstates")
-		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0ix", "S3"); err != nil {
-			s.Fatal("Failed to get powerstates at S0ix or S3: ", err)
 		}
 
 		s.Log("Waiting for DUT to disconnect")
@@ -165,29 +168,33 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			s.Logf("Line power %s", ac)
 		}
 
-		s.Log("Checking battery information")
-		reBatteryState := `state:(\s+\w+\s?\w+)`
-		battery, err := checkBatteryInfo(ctx, h, reBatteryState)
-		if err != nil {
-			s.Fatal("While verifying battery information: ", err)
-		}
-		s.Logf("Battery state: %s", battery)
-
 		// For debugging purposes, also log information from the base file that
 		// 'power_supply_info' derives battery state from.
 		if err := checkBatteryFromBaseFile(ctx, h); err != nil {
 			s.Fatal("Could not determine battery status from base file: ", err)
 		}
 
-		switch hasPluggedAC {
-		case true:
-			if battery != "Fully charged" && battery != "Charging" {
-				s.Fatalf("Found unexpected battery state when AC plugged: %s", battery)
+		s.Log("Checking battery information")
+		reBatteryState := `state:(\s+\w+\s?\w+)`
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			battery, err := checkBatteryInfo(ctx, h, reBatteryState)
+			if err != nil {
+				return err
 			}
-		case false:
-			if battery != "Discharging" {
-				s.Fatalf("Found unexpected battery state when AC unplugged: %s", battery)
+			s.Logf("Battery state: %s", battery)
+			switch hasPluggedAC {
+			case true:
+				if battery != "Fully charged" && battery != "Charging" {
+					return errors.Errorf("found unexpected battery state when AC plugged: %s", battery)
+				}
+			case false:
+				if battery != "Discharging" {
+					return errors.Errorf("found unexpected battery state when AC unplugged: %s", battery)
+				}
 			}
+			return nil
+		}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 2 * time.Minute}); err != nil {
+			s.Fatal("While verifying battery information: ", err)
 		}
 	}
 }
