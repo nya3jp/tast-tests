@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b42a93_9704dd2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-03T07:49:57Z",
+      "side": 1,
+      "message": "I would split this CL into two. One that introduces Tape changes and dependent one that enriches the arc test. WDYT?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "686168e21061dc80ee67c26562508c34af464716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b6846e97_9ae58f60",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-05-02T15:04:24Z",
       "side": 1,
       "message": "I changed the way on how to get the deviceId after the pointer to the /var/lib/devicesettings/policy.1 file on the DuT which contains it.\nThis way it should be more stable and can be reused by other tests.\n\nPTAL",
+      "revId": "686168e21061dc80ee67c26562508c34af464716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca1aa93_a122e8a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/tape/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-03T07:49:57Z",
+      "side": 1,
+      "message": "Please adjust.",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 69
+      },
       "revId": "686168e21061dc80ee67c26562508c34af464716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
