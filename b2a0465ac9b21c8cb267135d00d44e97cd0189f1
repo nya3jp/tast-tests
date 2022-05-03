@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb740534_4d9d6e1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-03T23:39:32Z",
+      "side": 1,
+      "message": "I think you should make sure of a runtime variable here. I don\u0027t see how you can set local to false here.",
+      "revId": "b2a0465ac9b21c8cb267135d00d44e97cd0189f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "935fab5c_d604072b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-03T23:39:32Z",
+      "side": 1,
+      "message": "I don\u0027t see how you how you can set local true. I suggest to use global runtime variable instead.\n\n```\n// A global runtime variable to indicate the test is running locally.\nvar isLocal \u003d testing.RegisterVarString(\n\t\t\"syzkaller.Islocal\",\n\t\t\"\",\n\t\t\"A variable to indicate the test is running locally.\")\n```\n\nTo override the default value, you can\n\ntast run -var\u003dsyzkaller.Islocal\u003d\"true\" \u003cdut\u003e syzkaller.Wrapper",
+      "revId": "b2a0465ac9b21c8cb267135d00d44e97cd0189f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef008c4_6d04f1ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-03T23:39:32Z",
+      "side": 1,
+      "message": "If you use global run time variable, you can do something like tha\n\n```\nif isLocal.Value() !\u003d \"\" \n\n```",
+      "revId": "b2a0465ac9b21c8cb267135d00d44e97cd0189f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
