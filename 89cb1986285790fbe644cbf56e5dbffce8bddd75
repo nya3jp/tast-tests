@@ -34,6 +34,24 @@
       "parentUuid": "c2462950_0e4f30ab",
       "revId": "89cb1986285790fbe644cbf56e5dbffce8bddd75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec415473_e44fd5bc",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-03T10:47:15Z",
+      "side": 1,
+      "message": "yeah, I think it makes sense to check if Chrome on the lock screen in the ChromePolicyLoggedIn fixture. Other tests that rely on ChromePolicyLoggedIn fixture might turn on lock screen in the future.",
+      "parentUuid": "b53ee956_a9ebfd5e",
+      "revId": "89cb1986285790fbe644cbf56e5dbffce8bddd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
