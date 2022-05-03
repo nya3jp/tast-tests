@@ -20,6 +20,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6781df4_ce310c92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-03T17:12:44Z",
+      "side": 1,
+      "message": "nit: `testIterations \u003d 30`?",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38cb4a13_fbb418a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-03T17:12:44Z",
+      "side": 1,
+      "message": "nit: missing period at end.",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb32001a_424efb7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-03T17:12:44Z",
+      "side": 1,
+      "message": "Is there a benefit in wrapping this, rather than just calling:\n\n`defer pkcs11test.CleanupP11TestToken(cleanupCtx, r, scratchpadPath);` ?",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7318e7_8e60df8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-03T17:12:44Z",
+      "side": 1,
+      "message": "nit: what is the (1) referring to?",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ecc89bc_39a80cf5",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
         "patchSetId": 2
@@ -31,6 +99,40 @@
       "writtenOn": "2022-05-03T13:00:28Z",
       "side": 1,
       "message": "You might have to supply the label, that way we\u0027ll not have many keys with the same label, thus unable to differentiate between them and ensure that the right key is selected for the task.",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b9a1fd6_9e9ca506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-03T17:12:44Z",
+      "side": 1,
+      "message": "`s.Error` means the program will be marked as failing but keep running. Assuming that\u0027s what you want, then should you add the iteration this error happened on?",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd6b275_0f6a607e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-03T17:12:44Z",
+      "side": 1,
+      "message": "same as above, should you include the iteration if `s.Error` is intended?",
       "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
