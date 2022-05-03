@@ -228,3 +228,21 @@ func VerifyDeepScanningVerdict(ctx context.Context, dconnSafebrowsing *browser.C
 	}
 	return nil
 }
+
+// GetSafeBrowsingExperimentEnabled checks whether the given safe browsing experiment is enabled.
+func GetSafeBrowsingExperimentEnabled(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, experimentName string) (bool, error) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#preferences")
+	if err != nil {
+		return false, errors.Wrap(err, "failed to connect to chrome")
+	}
+	defer dconnSafebrowsing.Close()
+	defer dconnSafebrowsing.CloseTarget(cleanupCtx)
+
+	var experimentEnabled bool
+	err = dconnSafebrowsing.Eval(ctx, `Array.from(document.getElementById("experiments-list").children).find((obj) => obj.innerHTML.includes("`+experimentName+`")).innerHTML.includes("Enabled:")`, &experimentEnabled)
+	return experimentEnabled, err
+}

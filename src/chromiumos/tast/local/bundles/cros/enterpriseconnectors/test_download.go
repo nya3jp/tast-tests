@@ -190,16 +190,40 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 		}
 	}
 
+	reportOnlyUIEnabled, err := helpers.GetSafeBrowsingExperimentEnabled(ctx, br, tconn, "ConnectorsScanningReportOnlyUI")
+	if err != nil {
+		s.Fatal("Could not determine value of ConnectorsScanningReportOnlyUI: ", err)
+	}
+	// ReportOnlyUI only effective if AllowsImmediateDelivery is true.
+	reportOnlyUIEnabled = reportOnlyUIEnabled && testParams.AllowsImmediateDelivery
+
 	for _, params := range helpers.GetTestFileParams() {
 		s.Run(ctx, params.TestName, func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
+			dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
+			if err != nil {
+				s.Fatal("Failed to connect to chrome: ", err)
+			}
+			defer dconnSafebrowsing.Close()
+			defer dconnSafebrowsing.CloseTarget(cleanupCtx)
+
+			var numRows int
+			err = dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").rows.length`, &numRows)
+			if err != nil {
+				s.Fatal("Could not verify numRows: ", err)
+			}
+			if numRows != 0 {
+				s.Fatal("There already exists a deep scanning verdict, even though it shouldn't. numRows: ", numRows)
+			}
+
 			dlFileName := params.FileName
 
 			shouldBlockDownload := false
-			if testParams.ScansEnabled {
+			// For the report only UI, no blocking should happen.
+			if testParams.ScansEnabled && !reportOnlyUIEnabled {
 				if params.IsUnscannable {
 					shouldBlockDownload = !testParams.AllowsUnscannableFiles
 				} else {
@@ -267,6 +291,18 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			} else {
 				if shouldBlockDownload {
 					s.Error("Download was not blocked")
+				}
+			}
+
+			if testParams.ScansEnabled && !params.IsUnscannable {
+				// If scans are enabled and the content isn't unscannable, we check the deep scanning verdict.
+				err := helpers.WaitForDeepScanningVerdict(ctx, dconnSafebrowsing, helpers.ScanningTimeOut)
+				if err != nil {
+					s.Fatal("Failed to wait for deep scanning verdict: ", err)
+				}
+				err = helpers.VerifyDeepScanningVerdict(ctx, dconnSafebrowsing, params.IsBad)
+				if err != nil {
+					s.Fatal("Failed to verify deep scanning verdict: ", err)
 				}
 			}
 		})
