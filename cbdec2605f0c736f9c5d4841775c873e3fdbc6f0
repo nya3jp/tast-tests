@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5beffa81_33df44f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T15:42:36Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "cbdec2605f0c736f9c5d4841775c873e3fdbc6f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f95767b_3f7c420c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T15:42:36Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "cbdec2605f0c736f9c5d4841775c873e3fdbc6f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

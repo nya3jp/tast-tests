@@ -219,6 +219,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "370c21f5_ecde38d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T15:42:36Z",
+      "side": 1,
+      "message": "Good point. Keep as is, but add a comment explaining this.",
+      "parentUuid": "49dd7dc9_d519e57a",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3bed2872_b0b2df11",
         "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
         "patchSetId": 1
@@ -277,6 +301,30 @@
       "writtenOn": "2022-05-04T14:00:30Z",
       "side": 1,
       "message": "With the change above this might no longer be necessary.",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0645d7d5_bd407cff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T15:42:36Z",
+      "side": 1,
+      "message": "No longer relevant",
+      "parentUuid": "06799b54_5700efb6",
       "range": {
         "startLine": 107,
         "startChar": 4,
