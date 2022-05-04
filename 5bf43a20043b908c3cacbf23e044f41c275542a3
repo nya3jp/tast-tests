@@ -39,6 +39,30 @@
       },
       "revId": "5bf43a20043b908c3cacbf23e044f41c275542a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ae6a08_5bd2bb97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-04T09:57:51Z",
+      "side": 1,
+      "message": "Thanks for noticing it!",
+      "parentUuid": "841e65c2_e0b2d7bd",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "5bf43a20043b908c3cacbf23e044f41c275542a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
