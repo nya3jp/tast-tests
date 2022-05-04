@@ -93,7 +93,7 @@ func FilesApp(ctx context.Context, s *testing.State) {
 		fa.WaitForFile(fileName),
 		fa.OpenFile(fileName),
 	)(ctx); err != nil {
-		s.Fatal("Failed to verify file exists: ")
+		s.Fatal("Failed to verify file exists: ", err)
 	}
 
 	if err := ash.WaitForApp(ctx, tconn, apps.Gallery.ID, time.Second*30); err != nil {
