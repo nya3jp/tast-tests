@@ -16,6 +16,23 @@
       "message": "shadow reviewer lgtm",
       "revId": "ddd6ed5b25305e844d58dbc9d92bc36ccb904aa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c103b1bf_4868e15a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-04T15:23:17Z",
+      "side": 1,
+      "message": "Adding another tast owner since hidehiko@ is out until next week.",
+      "revId": "ddd6ed5b25305e844d58dbc9d92bc36ccb904aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
