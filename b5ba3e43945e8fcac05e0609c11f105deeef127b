@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1199ab79_bbbcb343",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-04T00:24:21Z",
+      "side": 1,
+      "message": "LGTM, but usually we have one tast owner and one domain expert to review a CL. Please add a domain expert to review this code and give you a +2. Thanks.",
+      "revId": "b5ba3e43945e8fcac05e0609c11f105deeef127b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
