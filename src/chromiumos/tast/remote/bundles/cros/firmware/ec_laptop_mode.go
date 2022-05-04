@@ -93,6 +93,12 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		if err := h.RequireRPCUtils(ctx); err != nil {
 			return false, errors.Wrap(err, "requiring RPC utils")
 		}
+
+		s.Log("Sleeping for a few seconds before starting a new Chrome")
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return false, errors.Wrap(err, "failed to wait for a few seconds")
+		}
+
 		if _, err := h.RPCUtils.NewChrome(ctx, &empty.Empty{}); err != nil {
 			return false, errors.Wrap(err, "failed to create instance of chrome")
 		}
@@ -155,6 +161,11 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 	} else {
 		if err := h.RequireRPCUtils(ctx); err != nil {
 			s.Fatal("Requiring RPC utils: ", err)
+		}
+
+		s.Log("Sleeping for a few seconds before starting a new Chrome")
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to wait for a few seconds: ", err)
 		}
 
 		// Logging in with a testuser session would default
@@ -374,8 +385,17 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			}
 		}
 
+		// Differentiate the press durations on Zork from the other platforms.
+		// Depending on Stainless results, a new flag may be created from
+		// fw-testing-configs for a more general use.
 		s.Log("Pressing and holding the power button for 2~3 seconds")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur((h.Config.HoldPwrButtonPowerOff)/3)); err != nil {
+		var whiteScreenPwrDur time.Duration
+		if h.Config.Platform == "zork" {
+			whiteScreenPwrDur = 1500 * time.Millisecond
+		} else {
+			whiteScreenPwrDur = (h.Config.HoldPwrButtonPowerOff) / 3
+		}
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(whiteScreenPwrDur)); err != nil {
 			s.Fatal("Failed to press and hold on the power button for 3 second: ", err)
 		}
 
