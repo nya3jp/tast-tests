@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9383a375_e6e6516d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-05-04T00:13:04Z",
+      "side": 1,
+      "message": "Thanks, this is very useful, wasn\u0027t aware there was an option to pass CLI arguments in this way.\nI was having to set \"local\" to true by editing the source each time.",
+      "parentUuid": "935fab5c_d604072b",
+      "revId": "b2a0465ac9b21c8cb267135d00d44e97cd0189f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aef008c4_6d04f1ef",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-03T23:39:32Z",
       "side": 1,
       "message": "If you use global run time variable, you can do something like tha\n\n```\nif isLocal.Value() !\u003d \"\" \n\n```",
+      "revId": "b2a0465ac9b21c8cb267135d00d44e97cd0189f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b484fa5_a7f8f614",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-05-04T00:13:04Z",
+      "side": 1,
+      "message": "Done thanks",
+      "parentUuid": "aef008c4_6d04f1ef",
       "revId": "b2a0465ac9b21c8cb267135d00d44e97cd0189f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
