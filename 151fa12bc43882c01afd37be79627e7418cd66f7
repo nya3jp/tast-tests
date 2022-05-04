@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c44a043_78304cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-04T00:55:42Z",
+      "side": 1,
+      "message": "Could you add a comment about why you need a ~ here?\nI would have thought it should be ~/%s/shill to match the home directory?",
+      "revId": "151fa12bc43882c01afd37be79627e7418cd66f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94f5b7af_c91dd95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-04T00:55:42Z",
+      "side": 1,
+      "message": "Use a cleanup ctx",
+      "revId": "151fa12bc43882c01afd37be79627e7418cd66f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826e9ac9_f8503150",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-04T00:55:42Z",
+      "side": 1,
+      "message": "Please add a team contact as well.",
+      "revId": "151fa12bc43882c01afd37be79627e7418cd66f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f95231_40c61352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-04T00:55:42Z",
+      "side": 1,
+      "message": "Please add an explicit test timeout and a LacrosStatus",
+      "revId": "151fa12bc43882c01afd37be79627e7418cd66f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639d8df9_379b2b78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-04T00:55:42Z",
+      "side": 1,
+      "message": "Should this be longer given that you need to add more stuff to it now?",
+      "revId": "151fa12bc43882c01afd37be79627e7418cd66f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6841351b_dbfbf74b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-04T00:55:42Z",
+      "side": 1,
+      "message": "fullctx",
+      "revId": "151fa12bc43882c01afd37be79627e7418cd66f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9dd06b_7857f81c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-04T00:55:42Z",
+      "side": 1,
+      "message": "fullctx",
+      "revId": "151fa12bc43882c01afd37be79627e7418cd66f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
