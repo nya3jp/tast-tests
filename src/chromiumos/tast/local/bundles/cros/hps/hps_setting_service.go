@@ -6,11 +6,16 @@ package hps
 
 import (
 	"context"
+	"os"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/ptypes/empty"
+	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	"google.golang.org/grpc"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -53,16 +58,19 @@ func (hss *SettingService) WaitForDbus(ctx context.Context, req *empty.Empty) (*
 		return nil, errors.Wrapf(err, "failed to connect to %s", dbusName)
 	}
 	return &empty.Empty{}, nil
-
 }
 
 // StartUIWithCustomScreenPrivacySetting changes the settings under the screen privacy page depending on the needs.
 func (hss *SettingService) StartUIWithCustomScreenPrivacySetting(ctx context.Context, req *pb.StartUIWithCustomScreenPrivacySettingRequest) (*empty.Empty, error) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=QuickDim"))
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to start UI")
+	// If user is logged in already, then no need to start again within the same test
+	if hss.cr == nil {
+		cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=QuickDim"))
+		hss.cr = cr
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to start UI")
+		}
 	}
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := hss.cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Test API connection")
 	}
@@ -75,7 +83,7 @@ func (hss *SettingService) StartUIWithCustomScreenPrivacySetting(ctx context.Con
 	ui := uiauto.New(tconn)
 
 	const subsettingsName = "Screen privacy"
-	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "osPrivacy", ui.WaitUntilExists(nodewith.Name(subsettingsName)))
+	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, hss.cr, "osPrivacy", ui.WaitUntilExists(nodewith.Name(subsettingsName)))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the settings page")
 	}
@@ -87,7 +95,7 @@ func (hss *SettingService) StartUIWithCustomScreenPrivacySetting(ctx context.Con
 		return nil, errors.Wrap(err, "failed to wait for the toggle to show the list of users")
 	}
 
-	isEnabled, err := settings.IsToggleOptionEnabled(ctx, cr, req.Setting)
+	isEnabled, err := settings.IsToggleOptionEnabled(ctx, hss.cr, req.Setting)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not check the status of the toggle")
 	}
@@ -96,7 +104,6 @@ func (hss *SettingService) StartUIWithCustomScreenPrivacySetting(ctx context.Con
 			return nil, errors.Wrap(err, "failed to show the list of users")
 		}
 	}
-	hss.cr = cr
 	return &empty.Empty{}, nil
 }
 
@@ -119,4 +126,56 @@ func (hss *SettingService) OpenHPSInternalPage(ctx context.Context, req *empty.E
 		return nil, errors.Wrap(err, "error rendring hps-internal")
 	}
 	return &empty.Empty{}, nil
+}
+
+// GetDimMetrics gets the quick dim/lock delays after the lol is enabled/disabled
+func (hss *SettingService) GetDimMetrics(ctx context.Context, quickDimEnabled *wrappers.BoolValue) (*pb.DimSettings, error) {
+	var dimKey, screenOffKey string
+	var dimTime, screenOffTime, lockTime time.Duration
+
+	if quickDimEnabled.Value {
+		dimKey = "quick_dim"
+		screenOffKey = "quick_lock"
+	} else {
+		dimKey = "dim"
+		screenOffKey = "screen_off"
+	}
+
+	dat, err := os.ReadFile("/var/log/power_manager/powerd.LATEST")
+	if err != nil {
+		return nil, err
+	}
+	settingRegex := regexp.MustCompile(`Updated settings:(.+)`)
+	results := settingRegex.FindAll(dat, -1)
+	newestSettings := results[len(results)-1]
+	testing.ContextLog(ctx, "UPDATED setting, ", string(newestSettings))
+	dimTime, err = getSingleMetric(ctx, newestSettings, dimKey)
+	if err != nil {
+		return nil, errors.Wrap(err, "error getting dim delay")
+	}
+	screenOffTime, err = getSingleMetric(ctx, newestSettings, screenOffKey)
+	if err != nil {
+		return nil, errors.Wrap(err, "error getting screenoff delay")
+	}
+	if lockTime = screenOffTime + 60; quickDimEnabled.Value {
+		lockTime = screenOffTime
+	}
+
+	response := &pb.DimSettings{
+		DimDelay:       durationpb.New(dimTime),
+		ScreenOffDelay: durationpb.New(screenOffTime - dimTime),
+		LockDelay:      durationpb.New(lockTime - screenOffTime),
+	}
+	return response, nil
+}
+
+func getSingleMetric(ctx context.Context, settings []byte, key string) (time.Duration, error) {
+	reg := regexp.QuoteMeta(key) + `=([0-9][0-9]?[s,m][0-9]?[0-9]?[s,m]?)`
+	settingReg := regexp.MustCompile(reg)
+	result := string(settingReg.Find(settings))
+	delay, err := time.ParseDuration(strings.Replace(result, key+"=", "", -1))
+	if err != nil {
+		return -1, err
+	}
+	return delay, nil
 }
