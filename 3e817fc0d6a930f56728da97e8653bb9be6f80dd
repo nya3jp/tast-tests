@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f99a125c_65e092a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf97d8ad_417465f3",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "67b2ed30_05e4d2bf",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-02T07:34:15Z",
       "side": 1,
       "message": "Wonder if we could extract some of the code to reuse here and in oobe.Smoke",
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce4af395_397cb1ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Agreed, there\u0027s some shared setup behavior as well as waiting for / clicking through shared OOBE screens (EULA, network).\n\nNot being super familiar with Go and Tast, my first thought would be something like creating a small oobeutil helper library for clicking through the various shared screens, and a new fixture for the setup. Does that sound reasonable?\n\nIn the interest of getting a first working test submitted though, I\u0027m going to keep it as-is for now. Added a TODO for deduplicating the code in a future CL.",
+      "parentUuid": "67b2ed30_05e4d2bf",
       "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1050cd56_6228335e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9371256d_cd3ada27",
+      "range": {
+        "startLine": 5,
+        "startChar": 35,
+        "endLine": 5,
+        "endChar": 39
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55b7611b_efa630d1",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-04-30T01:52:22Z",
       "side": 1,
       "message": "\"SetUp\" unless the term \"Setup\" is widely used in your project.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5297cc21_88fa26f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Done, renamed test file to set_up.go as well for uniformity, so the test name is demomode.SetUp",
+      "parentUuid": "55b7611b_efa630d1",
       "range": {
         "startLine": 27,
         "startChar": 5,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "506ec651_626dbf63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Done. So for my own understanding, this shortens ctx\u0027s deadline by 10 seconds, providing a 10 second buffer window for deferred cleanup to run during, before everything is shut down?",
+      "parentUuid": "14f06de7_a5a854f5",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4efa3b3d_0b0a209f",
         "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
         "patchSetId": 1
@@ -123,6 +237,30 @@
       "writtenOn": "2022-05-02T07:34:15Z",
       "side": 1,
       "message": "We (OOBE team) try to use the UI automation tools whenever possible.\nSee for example https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3610029\n\nAlso https://docs.google.com/document/d/1cxMLPQUNVVoa_i3dBfrAGhITQtdKV_HS1vdcM8BjKEE/edit?resourcekey\u003d0-TOcN57danKvOskgvJGpRJQ#heading\u003dh.4cvz8ttx47ot",
+      "range": {
+        "startLine": 53,
+        "startChar": 90,
+        "endLine": 53,
+        "endChar": 97
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b59c93_674542b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Done. Replaced all oobeConn.Eval button-clicking code with corresponding uiauto-based solutions for finding and clicking on buttons.",
+      "parentUuid": "4efa3b3d_0b0a209f",
       "range": {
         "startLine": 53,
         "startChar": 90,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "813ff1e6_25ddb65f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f18ef538_a0496389",
+      "range": {
+        "startLine": 67,
+        "startChar": 46,
+        "endLine": 67,
+        "endChar": 53
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64241b73_19394f79",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-04-30T01:52:22Z",
       "side": 1,
       "message": "How about: \"NetworkScreen.shouldSkip() is true; skipped\"?",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c341e56_75260769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64241b73_19394f79",
       "range": {
         "startLine": 81,
         "startChar": 9,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef56c18_decd92e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53b78b31_27f811a0",
+      "range": {
+        "startLine": 86,
+        "startChar": 46,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a258db2_22a1f8dd",
@@ -219,6 +429,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a5baaf_7c035292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a258db2_22a1f8dd",
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5611b5e_ccd388a0",
@@ -232,6 +460,30 @@
       "writtenOn": "2022-04-30T01:52:22Z",
       "side": 1,
       "message": "How about giving the watcher a shorter time to expect a state change?",
+      "range": {
+        "startLine": 122,
+        "startChar": 40,
+        "endLine": 122,
+        "endChar": 43
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6620b5_a812d139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-05-04T21:43:38Z",
+      "side": 1,
+      "message": "Just to verify, the default timeout is 2 mins, right? For this use case, I think that\u0027s a reasonable timeout - any shorter and we risk flakiness.\n\nFor context, we proceed through 2 more non-interactive screens before automatically logging in to the session. The first screen shows loading spinners while 1) downloading demo resources from Omaha and 2) enterprise enrolling the device. This can take anywhere from 20-60 seconds. The second screen then sometimes has a ~10s delay before autologin commences.",
+      "parentUuid": "f5611b5e_ccd388a0",
       "range": {
         "startLine": 122,
         "startChar": 40,
