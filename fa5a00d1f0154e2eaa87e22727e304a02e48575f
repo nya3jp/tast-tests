@@ -16,6 +16,24 @@
       "message": "nit: hpsutil.P2PowerCycleFilename shouldn\u0027t be necessary anymore.",
       "revId": "fa5a00d1f0154e2eaa87e22727e304a02e48575f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d9e179_95346348",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_off.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-04T06:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4d9cd5c_db4a350b",
+      "revId": "fa5a00d1f0154e2eaa87e22727e304a02e48575f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
