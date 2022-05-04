@@ -16,6 +16,29 @@
       "message": "Done.\n\nAlso split the change into smaller components so it is easier to review.",
       "revId": "81ad4cd7a7e6ffa2858377f32ab8baa09932f5ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12b05f7_0ee4f180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-05-04T10:14:29Z",
+      "side": 1,
+      "message": "why it is a pointer? for optional?",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "81ad4cd7a7e6ffa2858377f32ab8baa09932f5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
