@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30370bd_166436d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-04T00:15:34Z",
+      "side": 1,
+      "message": "andrescj@ PTAL",
+      "revId": "ba090a52500e98334c7d41c475aa8740dd7f2eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cfce5e7_f6e86810",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-05-03T21:48:24Z",
       "side": 1,
       "message": "I\u0027m not sure I understand the _global_concurrent suffix. I think it was nicer the way you had it in a previous patchset, something like \"_concurrent_global_vaapi_lock_enabled\".",
+      "range": {
+        "startLine": 44,
+        "startChar": 38,
+        "endLine": 44,
+        "endChar": 56
+      },
+      "revId": "ba090a52500e98334c7d41c475aa8740dd7f2eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "963d1328_05514ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-04T00:15:34Z",
+      "side": 1,
+      "message": "Oh this is my bad, I wanted these two to be called \n - av1_1080p_60fps_concurrent\n - av1_1080p_60fps_concurrent_global_vaapi_lock_disabled\n \n \nlet me fix it.",
+      "parentUuid": "5cfce5e7_f6e86810",
       "range": {
         "startLine": 44,
         "startChar": 38,

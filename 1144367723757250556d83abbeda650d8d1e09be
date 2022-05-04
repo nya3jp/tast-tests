@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e29a660_82ecc442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-04T00:15:34Z",
+      "side": 1,
+      "message": "SG, let me do that.",
+      "parentUuid": "344b4188_5a0ca6b6",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fec06d9_e9ae0aaa",
@@ -190,6 +214,30 @@
       "side": 1,
       "message": "Let\u0027s pin this until the previous CL is settled!",
       "parentUuid": "8fec06d9_e9ae0aaa",
+      "range": {
+        "startLine": 164,
+        "startChar": 38,
+        "endLine": 164,
+        "endChar": 64
+      },
+      "revId": "1144367723757250556d83abbeda650d8d1e09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b888fe_16c96146",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-04T00:15:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c65f54f9_07ac4911",
       "range": {
         "startLine": 164,
         "startChar": 38,
