@@ -20,8 +20,8 @@ import (
 )
 
 // PostTestTimeout is the timeout duration to save logs after each test.
-// It's intentionally set longer than resetTimeout because dumping 'dumpsys' takes around 20 seconds.
-const PostTestTimeout = resetTimeout + 20*time.Second
+// It's intentionally set longer than ResetTimeout because dumping 'dumpsys' takes around 20 seconds.
+const PostTestTimeout = ResetTimeout + 20*time.Second
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -35,9 +35,9 @@ func init() {
 			return []chrome.Option{chrome.ARCEnabled()}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedWithoutUIAutomator is a fixture similar to arcBooted. The only difference from arcBooted is that UI Automator is not enabled.
@@ -52,9 +52,9 @@ func init() {
 			return []chrome.Option{chrome.ARCEnabled()}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedWithDisableSyncFlags is a fixture similar to arcBooted. The only difference from arcBooted is that ARC content sync is disabled to avoid noise during power/performance measurements.
@@ -72,9 +72,9 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedRestricted is a fixture similar to arcBootedWithDisableSyncFlags. The only difference
@@ -96,9 +96,9 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedWithPlayStore is a fixture similar to arcBooted along with GAIA login and Play Store Optin.
@@ -118,9 +118,9 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + BootTimeout + 2*time.Minute,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedInTabletMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in tablet mode in this fixture.
@@ -138,9 +138,9 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedInClamshellMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in clamshell mode in this fixture.
@@ -158,9 +158,9 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
-		PostTestTimeout: resetTimeout,
-		TearDownTimeout: resetTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: ResetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedWithVideoLogging is a fixture similar to arcBooted, but with additional Chrome video logging enabled.
@@ -180,9 +180,9 @@ func init() {
 					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedWithOutOfProcessVideoDecoding is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched with out-of-process
@@ -201,9 +201,9 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding is a fixture similar to arcBootedWithVideoLogging, but Chrome is launched with out-of-process video
@@ -225,9 +225,9 @@ func init() {
 					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// arcBootedWithVideoLoggingVD is a fixture similar to arcBootedWithVideoLogging, but with additional Chrome
@@ -247,9 +247,9 @@ func init() {
 					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
 		}, "--video-decoder=libvda-vd\n"),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// lacrosWithArcBooted is a fixture that combines the functionality of arcBooted and lacros.
@@ -261,9 +261,9 @@ func init() {
 			return lacrosfixt.NewConfigFromState(s, lacrosfixt.ChromeOptions(chrome.ARCEnabled())).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
@@ -283,9 +283,9 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
-		PostTestTimeout: resetTimeout,
-		TearDownTimeout: resetTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: ResetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// TODO(b/215063759): Remove this after the feature is launched.
@@ -306,9 +306,9 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
-		PostTestTimeout: resetTimeout,
-		TearDownTimeout: resetTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: ResetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 
 	// TODO(b/216709995): Remove this after the feature is launched.
@@ -328,9 +328,9 @@ func init() {
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    resetTimeout,
+		ResetTimeout:    ResetTimeout,
 		PostTestTimeout: PostTestTimeout,
-		TearDownTimeout: resetTimeout,
+		TearDownTimeout: ResetTimeout,
 	})
 }
 
