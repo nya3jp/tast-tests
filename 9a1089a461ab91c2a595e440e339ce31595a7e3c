@@ -50,6 +50,24 @@
       "message": "I\u0027d put this in the filepicker package directly.\n\nDo you have a plan on adding many variables?",
       "revId": "9a1089a461ab91c2a595e440e339ce31595a7e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e756b0_935009c8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filepicker/vars/vars.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-04T08:25:08Z",
+      "side": 1,
+      "message": "That would result in a circular import because the filepicker already imports the filesapp.",
+      "parentUuid": "0e56ca61_b028ea08",
+      "revId": "9a1089a461ab91c2a595e440e339ce31595a7e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
