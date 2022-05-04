@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -140,4 +140,40 @@ var (
 
 	// RoamingToggle is the finder for the roaming toggle UI in the cellular detail page.
 	RoamingToggle = nodewith.Name("Allow mobile data roaming").Role(role.ToggleButton)
+)
+
+// Elements in "Proxy" section of Network page.
+var (
+	// ShowProxySettingsTab is the finder for the "show proxy settings" tab.
+	ShowProxySettingsTab = WindowFinder.HasClass("settings-box").Name("Show proxy settings").Role(role.GenericContainer)
+
+	// SharedNetworksToggleButton is the finder for the "show shared networks" button.
+	SharedNetworksToggleButton = WindowFinder.Name("Allow proxies for shared networks").Role(role.ToggleButton)
+
+	// ConfirmButton is the finder for the "confirm" button.
+	ConfirmButton = WindowFinder.Name("Confirm").Role(role.Button)
+
+	// ProxyDropDownMenu is the finder for the proxy drop down menu.
+	ProxyDropDownMenu = WindowFinder.HasClass("md-select").NameContaining("Connection type").Role(role.PopUpButton)
+
+	// ManualProxyOption is the finder for the "Manual proxy configuration" option in the proxy drop down menu.
+	ManualProxyOption = WindowFinder.Name("Manual proxy configuration").Role(role.ListBoxOption)
+
+	// HTTPHostTextField is the finder for the "HTTP host" text field.
+	HTTPHostTextField = WindowFinder.Name("HTTP Proxy - Host").Role(role.TextField)
+
+	// HTTPPortTextField is the finder for the "HTTP port" text field.
+	HTTPPortTextField = WindowFinder.Name("HTTP Proxy - Port").Role(role.TextField)
+
+	// HTTPSHostTextField is the finder for the "Secure HTTP host" text field.
+	HTTPSHostTextField = WindowFinder.Name("Secure HTTP Proxy - Host").Role(role.TextField)
+
+	// HTTPSPortTextField is the finder for the "Secure HTTP port" text field.
+	HTTPSPortTextField = WindowFinder.Name("Secure HTTP Proxy - Port").Role(role.TextField)
+
+	// SocksHostTextField is the finder for the "SOCKS host" text field.
+	SocksHostTextField = WindowFinder.Name("SOCKS Host - Host").Role(role.TextField)
+
+	// SocksPortTextField is the finder for the "SOCKS port" text field.
+	SocksPortTextField = WindowFinder.Name("SOCKS Host - Port").Role(role.TextField)
 )
