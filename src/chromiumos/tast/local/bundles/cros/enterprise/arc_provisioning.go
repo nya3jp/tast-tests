@@ -5,9 +5,7 @@
 package enterprise
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -311,11 +309,7 @@ func readPackageRestrictions(ctx context.Context, a *arc.ARC, cr *chrome.Chrome)
 	// android-data dir under the cryptohome dir (/home/root/${USER_HASH}/android-data)
 	androidDataDir := filepath.Join(rootCryptDir, "android-data")
 
-	out, err := ioutil.ReadFile(filepath.Join(androidDataDir, packageRestrictionsPath))
-	if err == nil && !bytes.HasPrefix(out, []byte("<?xml ")) {
-		out, err = a.Abx2Xml(ctx, out)
-	}
-	return out, err
+	return a.ReadXMLFile(ctx, filepath.Join(androidDataDir, packageRestrictionsPath))
 }
 
 // waitForBlockUninstall waits for Android packages to be set as not uninstallable.
