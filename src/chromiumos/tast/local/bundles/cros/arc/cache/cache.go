@@ -5,7 +5,6 @@
 package cache
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -253,19 +252,9 @@ func CopyGmsCoreCaches(ctx context.Context, a *arc.ARC, outputDir string) error 
 	}
 
 	// Extract GMS Core location and create manifest for this directory.
-	b, err := ioutil.ReadFile(packagesPathLocal)
+	b, err := a.ReadXMLFile(ctx, packagesPathLocal)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read %q", packagesPathLocal)
-	}
-	if !bytes.HasPrefix(b, []byte("<?xml ")) {
-		// This file is a binary XML. Convert it to a text XML using abx2xml.
-		// Read from stdin ("-") and write to stdout ("-").
-		cmd := a.Command(ctx, "abx2xml", "-", "-")
-		cmd.Stdin = bytes.NewBuffer(b)
-		b, err = cmd.Output(testexec.DumpLogOnError)
-		if err != nil {
-			return errors.Wrap(err, "abx2xml failed")
-		}
 	}
 
 	gmsCorePath := regexp.MustCompile(`<package name=\"com\.google\.android\.gms\".+codePath=\"(\S+)\".+>`).FindStringSubmatch(string(b))

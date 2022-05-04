@@ -153,6 +153,15 @@ func (a *ARC) Close(ctx context.Context) error {
 	return nil
 }
 
+// ReadXMLFile reads XML file and converts from binary to plain-text if necessary.
+func (a *ARC) ReadXMLFile(ctx context.Context, filepath string) ([]byte, error) {
+	out, err := ioutil.ReadFile(filepath)
+	if err == nil && !bytes.HasPrefix(out, []byte("<?xml ")) {
+		out, err = a.Abx2Xml(ctx, out)
+	}
+	return out, err
+}
+
 // Abx2Xml converts binary XML to plain-text XML.
 func (a *ARC) Abx2Xml(ctx context.Context, data []byte) ([]byte, error) {
 	cmd := a.Command(ctx, "abx2xml", "-", "-")
