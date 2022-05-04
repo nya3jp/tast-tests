@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f1b2a26_72bd5f55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-04T21:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76aad8a8_30b43678",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "295695b0a60ce9c9494cbc1bb3fa6ed83786a455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5470a27_066f6fad",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-04T16:20:13Z",
       "side": 1,
       "message": "I think that `git blame` will generally produce more helpful results if you do not change lines of code just to make such minor revisions as this adjustment from `identifies` to `represents`.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "295695b0a60ce9c9494cbc1bb3fa6ed83786a455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00e9c34_e217a680",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-04T21:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5470a27_066f6fad",
       "range": {
         "startLine": 59,
         "startChar": 0,
