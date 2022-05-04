@@ -196,8 +196,22 @@ func validateKeyLocker(keylocker *keylockerinfo) error {
 	return nil
 }
 
+func validateVulnerabilities(vulnerabilities map[string]vulnerabilityInfo) error {
+	for name, vulnerability := range vulnerabilities {
+		if out, err := ioutil.ReadFile("/sys/devices/system/cpu/vulnerabilities/" + name); err != nil {
+			return errors.Errorf("failed to read vulnerability: %s", name)
+		} else if !(strings.Contains(string(out), vulnerability.Status) &&
+			strings.Contains(string(out), vulnerability.Message)) {
+			return errors.Errorf("vulnerability reporter incorrectly: %s", name)
+		}
+	}
+
+	return nil
+}
+
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
+	testParam := s.Param().(cpuInfoTestParams)
 
 	var info cpuInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
@@ -206,6 +220,12 @@ func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 
 	if err := validateCPUData(&info); err != nil {
 		s.Fatalf("Failed to validate cpu data, err [%v]", err)
+	}
+
+	if testParam.checkVulnerability {
+		if err := validateVulnerabilities(info.Vulnerabilities); err != nil {
+			s.Fatalf("Failed to validate cpu vulnerabilities, err [%v]", err)
+		}
 	}
 
 	out, err := ioutil.ReadFile("/proc/crypto")
