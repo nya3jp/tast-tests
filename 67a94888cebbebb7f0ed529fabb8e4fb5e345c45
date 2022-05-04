@@ -67,6 +67,24 @@
       "message": "Same for Chrome close, it only uses ctx for logging.\n\nMaybe this should be documented.",
       "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdbe49a8_67d8fc53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-04T14:06:34Z",
+      "side": 1,
+      "message": "Hmm, the fact that some deferred functions do and some deferred functions don\u0027t need a cleanup context sounds like it makes writing (correct) Tast tests even more complex than it already is. :/",
+      "parentUuid": "67872c65_31b93134",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
