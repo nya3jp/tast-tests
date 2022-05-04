@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "774450e5_5ef75134",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01014e75_4566ea0a",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "073e42a2_d5e72a07",
@@ -58,6 +82,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37fdd5e9_841d574d",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb8cc05_d9e79d70",
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db1f22db_55535536",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "073e42a2_d5e72a07",
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89ff16b7_e48ae45f",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-05-03T10:43:39Z",
       "side": 1,
       "message": "Remove Get prefix\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3f4d2a_e3decc12",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ff16b7_e48ae45f",
       "range": {
         "startLine": 68,
         "startChar": 5,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6314ab_e1e0abf9",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f1178a_75244a50",
+      "range": {
+        "startLine": 81,
+        "startChar": 85,
+        "endLine": 81,
+        "endChar": 101
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8421f7a_5ceba635",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-05-03T10:43:39Z",
       "side": 1,
       "message": "nit: i\u0027d use \n\n```\nif m.Type !\u003d ftype {\n   continue\n}\n```\ninstead",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 22
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15afcf38_97b08713",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8421f7a_5ceba635",
       "range": {
         "startLine": 83,
         "startChar": 2,
@@ -173,6 +305,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "550b745a_ebbd9ebd",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "\"Override\" because I intend to use this function to write to the `/run/camera/[feature]_config.json` files which can be used to override the default config under `/etc/camera/`. Let me refactor this function a bit to allow extending or overwriting the existing config.",
+      "parentUuid": "d5da058a_4125b261",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a611d96_5d89cf00",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "I\u0027m adding the tast test that will use this function. This function will be used to set different values into camera feature config files to test different camera features.\n\nI have another CL for the feature control tool in the camera repo that will use this function: crrev.com/c/3627271",
+      "parentUuid": "c9da54a3_31ee3e07",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba8b5d3f_289af4c1",
@@ -196,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05c44db4_051e6e7d",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba8b5d3f_289af4c1",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61316b7f_0b6b729d",
@@ -209,6 +413,30 @@
       "writtenOn": "2022-05-03T08:46:59Z",
       "side": 1,
       "message": "ftype",
+      "range": {
+        "startLine": 71,
+        "startChar": 39,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55b41028_19403217",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-04T06:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61316b7f_0b6b729d",
       "range": {
         "startLine": 71,
         "startChar": 39,
