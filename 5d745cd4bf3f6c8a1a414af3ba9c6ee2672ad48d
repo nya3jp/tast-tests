@@ -16,6 +16,92 @@
       "message": "Matt ,can you take a look?",
       "revId": "5d745cd4bf3f6c8a1a414af3ba9c6ee2672ad48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "748d1563_d85eab4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-05-04T21:11:16Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "5d745cd4bf3f6c8a1a414af3ba9c6ee2672ad48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc83ef4_67a13f37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-05-04T21:11:16Z",
+      "side": 1,
+      "message": "nit: remove extra space after \"%q\"",
+      "range": {
+        "startLine": 204,
+        "startChar": 104,
+        "endLine": 204,
+        "endChar": 106
+      },
+      "revId": "5d745cd4bf3f6c8a1a414af3ba9c6ee2672ad48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "506c0135_8c59d576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-05-04T21:11:16Z",
+      "side": 1,
+      "message": "nit: remove extra space after \"%q\"",
+      "range": {
+        "startLine": 209,
+        "startChar": 112,
+        "endLine": 209,
+        "endChar": 114
+      },
+      "revId": "5d745cd4bf3f6c8a1a414af3ba9c6ee2672ad48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca2879e_8d3e9dd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-05-04T21:11:16Z",
+      "side": 1,
+      "message": "nit: only need 1 space between \"alignment\" and \"when\"",
+      "range": {
+        "startLine": 213,
+        "startChar": 43,
+        "endLine": 213,
+        "endChar": 59
+      },
+      "revId": "5d745cd4bf3f6c8a1a414af3ba9c6ee2672ad48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
