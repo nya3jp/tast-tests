@@ -24,11 +24,12 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DUTBehaviorOnACInsertionTabletMode,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that system comes back from sleep after AC insertion in tabletmode",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
-		Attr:         []string{"group:mainline", "informational"},
+		Vars:         []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      10 * time.Minute,
 		Fixture:      fixture.NormalMode,
@@ -42,6 +43,9 @@ func DUTBehaviorOnACInsertionTabletMode(ctx context.Context, s *testing.State) {
 
 	dut := s.DUT()
 	h := s.FixtValue().(*fixture.Value).Helper
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
 	if err := h.RequireConfig(ctx); err != nil {
 		s.Fatal("Failed to create config: ", err)
 	}
