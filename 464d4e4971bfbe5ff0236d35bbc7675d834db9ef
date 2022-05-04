@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a2afc4_112c4453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-04T06:00:36Z",
+      "side": 1,
+      "message": "DO NOT USE get prefix for function names. see go/go-style/decisions#getters\n\nYou may just use `singleMetric`",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 20
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0e659d_9057fbe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-04T06:00:36Z",
+      "side": 1,
+      "message": "why pass in `ctx` if you are not using it?",
+      "range": {
+        "startLine": 172,
+        "startChar": 21,
+        "endLine": 172,
+        "endChar": 40
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e33e83c_71d9e2e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-04T06:00:36Z",
+      "side": 1,
+      "message": "Remove `\"`, end with a period.\n\nPlease also check all other comments.",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 6
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6bad16_121c18e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-04T06:00:36Z",
+      "side": 1,
+      "message": "remove this, or only log it when there is an error",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 52
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe411bc6_96036d63",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-04T06:00:36Z",
+      "side": 1,
+      "message": "DO NOT USE the name of GetXXXX, unless it is specifically related to the Htto GET concept.",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe13a8c2_7bfd684b",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-04T06:00:36Z",
+      "side": 1,
+      "message": "return type should always be {MethodName}Response",
+      "range": {
+        "startLine": 25,
+        "startChar": 56,
+        "endLine": 25,
+        "endChar": 67
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "510a3ecf_cfd40ed5",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-04T06:00:36Z",
+      "side": 1,
+      "message": "where is 1?",
+      "range": {
+        "startLine": 34,
+        "startChar": 37,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
