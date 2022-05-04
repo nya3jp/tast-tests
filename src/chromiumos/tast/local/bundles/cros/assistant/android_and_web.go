@@ -45,11 +45,7 @@ func init() {
 
 func AndroidAndWeb(ctx context.Context, s *testing.State) {
 	const (
-		QueryOpenGoogleNews    = "Open Google News"
-		WebGoogleNewsTitle     = "Chrome - Google News"
-		GoogleNewsPackageName  = "com.google.android.apps.magazines"
-		PlayStoreLaunchTimeout = time.Minute
-		ApkName                = "AssistantAndroidAppTest.apk"
+		QueryOpenGoogleNews = "Open Google News"
 	)
 
 	predata := s.PreValue().(arc.PreData)
@@ -74,51 +70,23 @@ func AndroidAndWeb(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send Assistant text query: ", err)
 	}
 
-	predGoogleNewsWeb := func(window *ash.Window) bool {
-		return window.Title == WebGoogleNewsTitle && window.IsVisible && window.ARCPackageName == ""
-	}
-	if err := ash.WaitForCondition(ctx, tconn, predGoogleNewsWeb, &testing.PollOptions{}); err != nil {
-		s.Fatal("Failed to confirm that Google News web page gets opened: ", err)
+	if err := assistant.WaitForGoogleNewsWebActivation(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait Google News Web gets active: ", err)
 	}
 
 	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
 		s.Fatal("Failed to close all windows: ", err)
 	}
 
-	if err := a.Install(ctx, arc.APKPath(ApkName)); err != nil {
-		s.Fatal("Failed to install a test app: ", err)
-	}
-
-	if err := pollForArcPackageAvailable(ctx, s, tconn, GoogleNewsPackageName); err != nil {
-		s.Fatal("Failed to wait arc package becomes available: ", err)
+	if err := assistant.InstallTestApkAndWaitReady(ctx, tconn, a); err != nil {
+		s.Fatal("Failed to install a test apk: ", err)
 	}
 
 	if _, err := assistant.SendTextQuery(ctx, tconn, QueryOpenGoogleNews); err != nil {
 		s.Fatal("Failed to send Assistant text query: ", err)
 	}
 
-	predGoogleNewsApp := func(window *ash.Window) bool {
-		return window.IsVisible && window.ARCPackageName == GoogleNewsPackageName
+	if err := assistant.WaitForGoogleNewsAppActivation(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait Google News Android gets active: ", err)
 	}
-	if err := ash.WaitForCondition(ctx, tconn, predGoogleNewsApp, &testing.PollOptions{}); err != nil {
-		s.Fatal("Failed to confirm that Google News app gets opened: ", err)
-	}
-}
-
-type arcPackageDict struct {
-	PackageName         string  `json:"packageName"`
-	PackageVersion      int64   `json:"packageVersion"`
-	LastBackupAndroidID string  `json:"lastBackupAndroidId"`
-	LastBackupTime      float64 `json:"lastBackupTime"`
-	ShouldSync          bool    `json:"shouldSync"`
-	System              bool    `json:"system"`
-	VpnProvider         bool    `json:"vpnProvider"`
-}
-
-func pollForArcPackageAvailable(ctx context.Context, s *testing.State, tconn *chrome.TestConn, packageName string) error {
-	f := func(ctx context.Context) error {
-		var packageDict arcPackageDict
-		return tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getArcPackage.bind(this,"`+packageName+`"))()`, &packageDict)
-	}
-	return testing.Poll(ctx, f, &testing.PollOptions{})
 }
