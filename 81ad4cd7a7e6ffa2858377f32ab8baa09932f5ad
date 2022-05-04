@@ -39,6 +39,30 @@
       },
       "revId": "81ad4cd7a7e6ffa2858377f32ab8baa09932f5ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70aa3513_baa1009f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T10:24:05Z",
+      "side": 1,
+      "message": "I believe so. If I understand correctly, the json parser will view pointers as optional. Since model_name can be empty. Maybe @chungsheng can provide more information?",
+      "parentUuid": "e12b05f7_0ee4f180",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "81ad4cd7a7e6ffa2858377f32ab8baa09932f5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
