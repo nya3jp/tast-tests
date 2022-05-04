@@ -153,6 +153,17 @@ func (a *ARC) Close(ctx context.Context) error {
 	return nil
 }
 
+// Abx2Xml converts binary XML to plain-text XML.
+func (a *ARC) Abx2Xml(ctx context.Context, data []byte) ([]byte, error) {
+	cmd := a.Command(ctx, "abx2xml", "-", "-")
+	cmd.Stdin = bytes.NewBuffer(data)
+	out, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "abx2xml failed")
+	}
+	return out, nil
+}
+
 // New waits for Android to finish booting.
 //
 // ARC must be enabled in advance by passing chrome.ARCEnabled or chrome.ARCSupported with
