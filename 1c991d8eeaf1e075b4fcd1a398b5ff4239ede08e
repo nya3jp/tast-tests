@@ -22,6 +22,29 @@
       },
       "revId": "1c991d8eeaf1e075b4fcd1a398b5ff4239ede08e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c85886_31723105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-05-04T10:24:42Z",
+      "side": 1,
+      "message": "Can we just `s.Fatal(\"...\", err)`. Also apply for line 222?",
+      "range": {
+        "startLine": 227,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 68
+      },
+      "revId": "1c991d8eeaf1e075b4fcd1a398b5ff4239ede08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
