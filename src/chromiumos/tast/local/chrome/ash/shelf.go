@@ -987,3 +987,39 @@ func GetDefaultPinnedAppIDs(ctx context.Context, tconn *chrome.TestConn) ([]stri
 	}
 	return pinnedAppIDs, nil
 }
+
+// VerifyShelfAppAlignment verifies that shelf app icons are aligned as expected based on the given shelf alignment.
+func VerifyShelfAppAlignment(ctx context.Context, tconn *chrome.TestConn, alignment ShelfAlignment) error {
+	// Get the shelf icons' screen bounds.
+	shelfInfo, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the shelf UI info")
+	}
+	iconBounds := shelfInfo.IconsBoundsInScreen
+
+	// NOTE: the shelf contains one row (or column) of app icons of the same size.
+	for index, bounds := range iconBounds {
+		if index == 0 {
+			continue
+		}
+
+		switch alignment {
+		case ShelfAlignmentInvalid:
+			return errors.New("failed to receive a valid shelf alignment as the parameter")
+		case ShelfAlignmentBottom:
+			fallthrough
+		case ShelfAlignmentBottomLocked:
+			if iconBounds[index-1].Top != bounds.Top {
+				return errors.Errorf("failed to verify that shelf icons are aligned horizontally when shelf alignment is %s", alignment)
+			}
+		case ShelfAlignmentLeft:
+			fallthrough
+		case ShelfAlignmentRight:
+			if iconBounds[index-1].Left != bounds.Left {
+				return errors.Errorf("failed to verify that shelf icons are aligned vertically when shelf alignment is %s", alignment)
+			}
+		}
+	}
+
+	return nil
+}
