@@ -16,6 +16,29 @@
       "message": "tast-owners@ PTAL\n\nTrivial CL to skip a test, chromeos-gfx-video@ in CC.",
       "revId": "c65c9adc3e6c05337b2a4a9bf7c1a5a32798db7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d0d4446_9140055f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-05-04T21:02:20Z",
+      "side": 1,
+      "message": "SkipOnPlatform is known unreliable.\n\nConsider using SkipOnModel or board: * software Dependency.",
+      "range": {
+        "startLine": 946,
+        "startChar": 36,
+        "endLine": 946,
+        "endChar": 50
+      },
+      "revId": "c65c9adc3e6c05337b2a4a9bf7c1a5a32798db7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
