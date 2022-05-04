@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52921510_8eb73e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-04T10:11:28Z",
+      "side": 1,
+      "message": "Why this is `uint32`?",
+      "range": {
+        "startLine": 138,
+        "startChar": 20,
+        "endLine": 138,
+        "endChar": 26
+      },
+      "revId": "fd381add4d2745a1bb9bf56fc2e0902d0c4435b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84920544_940ecb50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-04T10:11:28Z",
+      "side": 1,
+      "message": "Why don\u0027t use `\u003d\u003d` here?",
+      "range": {
+        "startLine": 173,
+        "startChar": 13,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "fd381add4d2745a1bb9bf56fc2e0902d0c4435b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17954d57_1e0ddcfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-04T10:11:28Z",
+      "side": 1,
+      "message": "This won\u0027t catch the error if `flags` contains a flag which is not in `physicalCPU.Flags`",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "fd381add4d2745a1bb9bf56fc2e0902d0c4435b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
