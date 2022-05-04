@@ -16,8 +16,8 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// resetTimeout is the timeout duration to trying reset of the current precondition.
-const resetTimeout = 30 * time.Second
+// ResetTimeout is the timeout duration to trying reset of the current precondition.
+const ResetTimeout = 30 * time.Second
 
 // PreData holds information made available to tests that specify preconditions.
 type PreData struct {
@@ -53,14 +53,14 @@ func Booted() testing.Precondition { return bootedPre }
 // bootedPre is returned by Booted.
 var bootedPre = &preImpl{
 	name:    "arc_booted",
-	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
+	timeout: ResetTimeout + chrome.LoginTimeout + BootTimeout,
 }
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
 func NewPrecondition(name string, gaia *GaiaVars, gaiaPool *GaiaLoginPoolVars, oDirect bool, extraArgs ...string) testing.Precondition {
-	timeout := resetTimeout + chrome.LoginTimeout + BootTimeout
+	timeout := ResetTimeout + chrome.LoginTimeout + BootTimeout
 	if gaia != nil || gaiaPool != nil {
-		timeout = resetTimeout + chrome.GAIALoginTimeout + BootTimeout + optin.OptinTimeout
+		timeout = ResetTimeout + chrome.GAIALoginTimeout + BootTimeout + optin.OptinTimeout
 	}
 	pre := &preImpl{
 		name:      name,
@@ -110,7 +110,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 
 	if p.arc != nil {
 		pre, err := func() (interface{}, error) {
-			ctx, cancel := context.WithTimeout(ctx, resetTimeout)
+			ctx, cancel := context.WithTimeout(ctx, ResetTimeout)
 			defer cancel()
 			ctx, st := timing.Start(ctx, "reset_"+p.name)
 			defer st.End()
