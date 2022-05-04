@@ -153,3 +153,40 @@ var (
 	// VisibilityButton is the finder for the show PIN button in the SIM lock dialog UI.
 	VisibilityButton = nodewith.Role(role.Button).HasClass("icon-visibility")
 )
+
+// Elements in "Proxy" section of Network page.
+var (
+	// ShowProxySettingsTab is the finder for the "show proxy settings" tab.
+	ShowProxySettingsTab = nodewith.HasClass("settings-box").Name("Show proxy settings").Role(role.GenericContainer)
+
+	// SharedNetworksToggleButton is the finder for the "show shared networks" button.
+	SharedNetworksToggleButton = nodewith.Name("Allow proxies for shared networks").Role(role.ToggleButton)
+
+	// ConfirmButton is the finder for the "confirm" button.
+	ConfirmButton = nodewith.Name("Confirm").Role(role.Button)
+
+	proxyDropDownNameRegex = regexp.MustCompile(`(C|c)onnection type`)
+	// ProxyDropDownMenu is the finder for the proxy drop down menu.
+	ProxyDropDownMenu = nodewith.HasClass("md-select").NameRegex(proxyDropDownNameRegex).Role(role.PopUpButton)
+
+	// ManualProxyOption is the finder for the "Manual proxy configuration" option in the proxy drop down menu.
+	ManualProxyOption = nodewith.Name("Manual proxy configuration").Role(role.ListBoxOption)
+
+	// HTTPHostTextField is the finder for the "HTTP host" text field.
+	HTTPHostTextField = nodewith.Name("HTTP Proxy - Host").Role(role.TextField)
+
+	// HTTPPortTextField is the finder for the "HTTP port" text field.
+	HTTPPortTextField = nodewith.Name("HTTP Proxy - Port").Role(role.TextField)
+
+	// HTTPSHostTextField is the finder for the "Secure HTTP host" text field.
+	HTTPSHostTextField = nodewith.Name("Secure HTTP Proxy - Host").Role(role.TextField)
+
+	// HTTPSPortTextField is the finder for the "Secure HTTP port" text field.
+	HTTPSPortTextField = nodewith.Name("Secure HTTP Proxy - Port").Role(role.TextField)
+
+	// SocksHostTextField is the finder for the "SOCKS host" text field.
+	SocksHostTextField = nodewith.Name("SOCKS Host - Host").Role(role.TextField)
+
+	// SocksPortTextField is the finder for the "SOCKS port" text field.
+	SocksPortTextField = nodewith.Name("SOCKS Host - Port").Role(role.TextField)
+)
