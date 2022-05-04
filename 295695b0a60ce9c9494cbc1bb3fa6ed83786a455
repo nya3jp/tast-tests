@@ -16,6 +16,52 @@
       "message": "Thanks! Looks great.",
       "revId": "295695b0a60ce9c9494cbc1bb3fa6ed83786a455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76aad8a8_30b43678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-04T16:20:13Z",
+      "side": 1,
+      "message": "optional nit: Is this clearer:\n\tparam :\u003d s.Param().(videoDecodeAccelVdPerfTestParam)\n\tprocessedParam :\u003d decoding.TestParams{\n\t\tDecoderType:            decoding.VD,\n\t\tDisableGlobalVaapiLock: param.disableGlobalVaapiLock,\n\t}\n\tif param.runConcurrentDecodersOnly {\n\t\tprocessedParam.TestCases \u003d decoding.UncappedConcurrentFlag\n\t} else {\n\t\tprocessedParam.TestCases \u003d decoding.CappedFlag | decoding.UncappedFlag\n\t}\n\tif err :\u003d decoding.RunAccelVideoPerfTest(ctx, s.OutDir(), s.DataPath(param.dataPath), processedParam); err !\u003d nil {\n\t\ts.Fatal(\"Test failed: \", err)\n\t}",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "295695b0a60ce9c9494cbc1bb3fa6ed83786a455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5470a27_066f6fad",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-04T16:20:13Z",
+      "side": 1,
+      "message": "I think that `git blame` will generally produce more helpful results if you do not change lines of code just to make such minor revisions as this adjustment from `identifies` to `represents`.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "295695b0a60ce9c9494cbc1bb3fa6ed83786a455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
