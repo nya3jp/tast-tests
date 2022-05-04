@@ -16,6 +16,166 @@
       "message": "Hi Victor-Gabriel, PTAL, thank you!",
       "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3b1755_4768f7f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T14:00:30Z",
+      "side": 1,
+      "message": "Use the defaults by removing fakelogin\n\nThe defaults can be found here:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/option.go;l\u003d18?q\u003dfile:tast%20creds",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 89
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3578d057_682f44c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T14:00:30Z",
+      "side": 1,
+      "message": "nit: add a newline before",
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1abd6738_3bd00b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T14:00:30Z",
+      "side": 1,
+      "message": "Since this test starts Chrome on it\u0027s own, no need for cleanup.",
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13701a4b_a47278c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T14:00:30Z",
+      "side": 1,
+      "message": "Not sure using a function here is useful. The code continues anyway.",
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1734f7f4_3371960d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T14:00:30Z",
+      "side": 1,
+      "message": "Check this at the end of the for loop and return early with a different error.",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bed2872_b0b2df11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T14:00:30Z",
+      "side": 1,
+      "message": "nit: use constant inline",
+      "range": {
+        "startLine": 102,
+        "startChar": 61,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06799b54_5700efb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T14:00:30Z",
+      "side": 1,
+      "message": "With the change above this might no longer be necessary.",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c22eb30_1afdbe2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T14:00:30Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
