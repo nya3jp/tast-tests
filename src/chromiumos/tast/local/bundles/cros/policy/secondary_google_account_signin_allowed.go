@@ -6,10 +6,12 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -62,6 +64,11 @@ func SecondaryGoogleAccountSigninAllowed(ctx context.Context, s *testing.State) 
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// Update the policy blob.
 			pb := policy.NewBlob()
 			pb.AddPolicies([]policy.Policy{param.policy})
@@ -79,7 +86,7 @@ func SecondaryGoogleAccountSigninAllowed(ctx context.Context, s *testing.State) 
 			}
 			defer cr.Close(ctx)
 
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Open people settings page.
 			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osPeople")

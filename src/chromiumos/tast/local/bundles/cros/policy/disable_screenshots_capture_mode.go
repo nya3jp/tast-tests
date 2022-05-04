@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -77,7 +78,12 @@ func DisableScreenshotsCaptureMode(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {

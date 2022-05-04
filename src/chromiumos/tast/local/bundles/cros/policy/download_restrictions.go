@@ -54,11 +54,6 @@ func DownloadRestrictions(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	// Clear Downloads directory.
 	files, err := ioutil.ReadDir(filesapp.DownloadPath)
 	if err != nil {
@@ -95,6 +90,11 @@ func DownloadRestrictions(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -132,7 +132,7 @@ func DownloadRestrictions(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Launching the Files App failed: ", err)
 			}
-			defer files.Close(ctx)
+			defer files.Close(cleanupCtx)
 
 			if err := files.OpenDownloads()(ctx); err != nil {
 				s.Fatal("Opening Downloads folder failed: ", err)

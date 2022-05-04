@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -68,6 +69,11 @@ func SharedManagedGuestSessionCleanup(ctx context.Context, s *testing.State) {
 	// ID for the Test API extension.
 	testAPIExtensionID := "behllobkkfkfnphdnhnkndlbkcpglgmj"
 
+	// Reserve 10 seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	mgs, cr, err := mgs.New(
 		ctx,
 		fdms,
@@ -93,7 +99,7 @@ func SharedManagedGuestSessionCleanup(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Failed to start Chrome on Signin screen with MGS accounts: ", err)
 	}
-	defer mgs.Close(ctx)
+	defer mgs.Close(cleanupCtx)
 
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
@@ -104,7 +110,7 @@ func SharedManagedGuestSessionCleanup(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to watch for D-Bus signals: ", err)
 	}
-	defer sw.Close(ctx)
+	defer sw.Close(cleanupCtx)
 
 	loginScreenBGURL := chrome.ExtensionBackgroundPageURL(loginScreenExtensionID)
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(loginScreenBGURL))
@@ -213,7 +219,7 @@ func SharedManagedGuestSessionCleanup(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to watch for D-Bus signals: ", err)
 	}
-	defer swUnlocked.Close(ctx)
+	defer swUnlocked.Close(cleanupCtx)
 
 	// Previous conn is closed since it is a login screen extension which
 	// closes when the session starts.

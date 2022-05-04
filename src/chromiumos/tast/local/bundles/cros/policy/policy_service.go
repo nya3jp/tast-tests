@@ -139,14 +139,14 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 		c.fakeDMSRemoval = false
 	}
 
-	defer func() {
+	defer func(ctx context.Context) {
 		if !ok {
 			if err := os.RemoveAll(c.fakeDMSDir); err != nil {
 				testing.ContextLogf(ctx, "Failed to delete %s: %v", c.fakeDMSDir, err)
 			}
 			c.fakeDMSDir = ""
 		}
-	}()
+	}(ctx)
 
 	// fakedms.New starts a background process that outlives the current context.
 	fdms, err := fakedms.New(c.s.ServiceContext(), c.fakeDMSDir) // NOLINT
@@ -154,12 +154,12 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 		return nil, errors.Wrap(err, "failed to start FakeDMS")
 	}
 	c.fakeDMS = fdms
-	defer func() {
+	defer func(ctx context.Context) {
 		if !ok {
 			c.fakeDMS.Stop(ctx)
 			c.fakeDMS = nil
 		}
-	}()
+	}(ctx)
 
 	if err := fdms.WritePolicyBlobRaw(req.PolicyJson); err != nil {
 		return nil, errors.Wrap(err, "failed to write policy blob")

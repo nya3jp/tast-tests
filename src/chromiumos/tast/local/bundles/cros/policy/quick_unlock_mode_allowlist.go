@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -133,7 +134,12 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 
 	for _, param := range testCases {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeOnErrorToFile(cleanupCtx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {

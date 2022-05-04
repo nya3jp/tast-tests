@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/checked"
@@ -59,9 +58,6 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close Chrome connection: ", err)
 		}
 	}(ctx)
-
-	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
-	defer cancel()
 
 	for _, param := range []struct {
 		name            string                  // name is the subtest name.

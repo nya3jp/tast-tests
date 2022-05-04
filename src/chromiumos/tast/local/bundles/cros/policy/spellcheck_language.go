@@ -66,7 +66,12 @@ func SpellcheckLanguage(ctx context.Context, s *testing.State) {
 		s.Error("Failed to update policy: ", err)
 	}
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// The default language in the DUT is English US. Therefore, the test
 	// chooses different languages to test this policy. To avoid false

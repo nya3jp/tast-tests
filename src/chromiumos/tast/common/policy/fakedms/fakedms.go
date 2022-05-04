@@ -90,14 +90,14 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot create startup-pipe file")
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		if err := fr.Close(); err != nil {
 			testing.ContextLog(ctx, "Could not close startup-pipe read file: ", err)
 		}
 		if err := fw.Close(); err != nil {
 			testing.ContextLog(ctx, "Could not close startup-pipe write file: ", err)
 		}
-	}()
+	}(ctx)
 
 	args := []string{
 		testserverPath,

@@ -66,11 +66,6 @@ func WindowCaptureAllowedByOrigins(ctx context.Context, s *testing.State) {
 	}
 	ui := uiauto.New(tconn)
 
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
@@ -117,6 +112,11 @@ func WindowCaptureAllowedByOrigins(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)

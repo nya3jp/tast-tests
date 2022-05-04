@@ -121,6 +121,7 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
 			cleanupCtx := ctx
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
