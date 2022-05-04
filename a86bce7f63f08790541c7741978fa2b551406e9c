@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1dc9ef_2e9715fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-05-04T15:47:39Z",
+      "side": 1,
+      "message": "Hmm, the requirement here is that:\n[1] when running against non-brya devices, don\u0027t check for modem\n[2] when running on brya devices, run only on models with a modem\n\nHaving 2 testing.Param(one for brya and one for non-brya; non-brya having ExtraSoftwareDeps as modemfwd) would address [1]; but not [2]. I think all brya images would have modemfwd, regardless of whether or not the modem is present.\n\n+danielwinkler@ for suggestions; do we have a list of models we should run on/skip?",
+      "parentUuid": "d62d248e_971a3900",
+      "revId": "a86bce7f63f08790541c7741978fa2b551406e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d9c5557_19ab4d5f",
