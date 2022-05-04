@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad69cadb_8511727b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-04T12:31:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74994c77_cfb97136",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 19
+      },
+      "revId": "b895facd57580cedc08f8b8c7da1c8eef543446b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f29dba0c_f377c8c1",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-29T16:53:00Z",
       "side": 1,
       "message": "Depending on how much time you are willing to reserve for cleanup, you might consider allowing this to use that time too.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 104
+      },
+      "revId": "b895facd57580cedc08f8b8c7da1c8eef543446b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b12b92_bfc5e039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-04T12:31:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f29dba0c_f377c8c1",
       "range": {
         "startLine": 91,
         "startChar": 0,
