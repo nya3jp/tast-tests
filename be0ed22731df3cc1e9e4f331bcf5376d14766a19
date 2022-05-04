@@ -16,6 +16,24 @@
       "message": "Why not fix this function instead?",
       "revId": "be0ed22731df3cc1e9e4f331bcf5376d14766a19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb543af_aad99bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-05-04T15:27:08Z",
+      "side": 0,
+      "message": "Makes sense. Then the API interface needs to change, and all affected tests will go in a same CL (~4 tests). I think we should probably do it that way.",
+      "parentUuid": "3d2167d1_9fdbff14",
+      "revId": "be0ed22731df3cc1e9e4f331bcf5376d14766a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
