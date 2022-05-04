@@ -584,39 +584,6 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitc
 		// 2. Press Ctrl-D to move to the confirm screen.
 		// 3. Wait until the confirm screen appears.
 		// 4. Push some button depending on the DUT's config: toggle the rec button, press power, or press enter.
-		testing.ContextLog(ctx, "Pressing Ctrl-D")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlD, servo.DurTab); err != nil {
-			return err
-		}
-		testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
-		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
-			return err
-		}
-		if h.Config.RecButtonDevSwitch {
-			testing.ContextLog(ctx, "Toggling RecMode")
-			if err := h.Servo.ToggleOnOff(ctx, servo.RecMode); err != nil {
-				return err
-			}
-		} else if h.Config.PowerButtonDevSwitch {
-			testing.ContextLog(ctx, "Pressing power key")
-			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-				return err
-			}
-		} else {
-			testing.ContextLog(ctx, "Pressing enter key")
-			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
-				return err
-			}
-		}
-		testing.ContextLogf(ctx, "Sleeping %s", 2*time.Second)
-		if err := testing.Sleep(ctx, 2*time.Second); err != nil {
-			return err
-		}
-		testing.ContextLog(ctx, "Set DFP mode")
-		if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
-			testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
-		}
-		// Keep pressing CTRL-D + ENTER until connected, but wait a little longer for the connect each time.
 		connectTimeout := 2 * time.Second
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			testing.ContextLog(ctx, "Pressing CTRL-D")
@@ -627,9 +594,25 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitc
 			if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
 				return err
 			}
-			testing.ContextLog(ctx, "Pressing enter key")
-			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
-				return err
+			if h.Config.RecButtonDevSwitch {
+				testing.ContextLog(ctx, "Toggling RecMode")
+				if err := h.Servo.ToggleOnOff(ctx, servo.RecMode); err != nil {
+					return err
+				}
+			} else if h.Config.PowerButtonDevSwitch {
+				testing.ContextLog(ctx, "Pressing power key")
+				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+					return err
+				}
+			} else {
+				testing.ContextLog(ctx, "Pressing enter key")
+				if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+					return err
+				}
+			}
+			testing.ContextLog(ctx, "Set DFP mode")
+			if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
+				testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
 			}
 			ctx, cancel := context.WithTimeout(ctx, connectTimeout)
 			defer cancel()
