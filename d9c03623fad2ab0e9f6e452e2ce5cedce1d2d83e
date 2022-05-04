@@ -46,6 +46,30 @@
       },
       "revId": "d9c03623fad2ab0e9f6e452e2ce5cedce1d2d83e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "896a847a_9e902963",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-04T17:33:23Z",
+      "side": 0,
+      "message": "I see. Does the latest patch look okay forwarding all options passed to ash-chrome to the child?",
+      "parentUuid": "59991aca_030b3d8f",
+      "range": {
+        "startLine": 299,
+        "startChar": 17,
+        "endLine": 299,
+        "endChar": 23
+      },
+      "revId": "d9c03623fad2ab0e9f6e452e2ce5cedce1d2d83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

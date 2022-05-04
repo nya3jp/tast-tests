@@ -63,6 +63,30 @@
       },
       "revId": "322ce426905c52146ad59953154ab6b4c1120c07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa01111_8b48b12f",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-04T17:33:23Z",
+      "side": 1,
+      "message": "Ack. then no additional change is needed.",
+      "parentUuid": "e01bf815_ce619250",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 0
+      },
+      "revId": "322ce426905c52146ad59953154ab6b4c1120c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
