@@ -16,6 +16,57 @@
       "message": "Please let me know what you think about this CL that unifies cleanupCtx usage across all policy tests.",
       "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d8bc544_52e3be1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_backup_restore_service_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T13:05:45Z",
+      "side": 1,
+      "message": "Not needed. fdms can be closed with an expired context (less gracefully)\n\nWe don\u0027t need a cleanup context in this case IMO.",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47b5c26f_21046342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T13:05:45Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67872c65_31b93134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T13:05:45Z",
+      "side": 1,
+      "message": "Same for Chrome close, it only uses ctx for logging.\n\nMaybe this should be documented.",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
