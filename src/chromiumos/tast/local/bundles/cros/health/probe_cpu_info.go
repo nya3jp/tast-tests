@@ -10,6 +10,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
@@ -201,15 +204,53 @@ func validateKeyLocker(keylocker *keylockerinfo) error {
 	return nil
 }
 
+func validateVulnerabilities(gotVulnerabilities map[string]vulnerabilityInfo) error {
+	expectedVulnerabilities := make(map[string]vulnerabilityInfo)
+	vulnerabilityFiles, err := ioutil.ReadDir("/sys/devices/system/cpu/vulnerabilities")
+	if err != nil {
+		return errors.Wrap(err, "failed to read vulnerabilities directory")
+	}
+	for _, vulnerabilityFile := range vulnerabilityFiles {
+		name := vulnerabilityFile.Name()
+		out, err := ioutil.ReadFile("/sys/devices/system/cpu/vulnerabilities/" + name)
+		if err != nil {
+			return errors.Wrapf(err, "failed to read vulnerability: %s", name)
+		}
+		expectedVulnerabilities[name] =
+			vulnerabilityInfo{Message: strings.TrimSpace(string(out))}
+	}
+
+	ignoreOpt := cmpopts.IgnoreFields(vulnerabilityInfo{}, "Status")
+	if diff := cmp.Diff(gotVulnerabilities, expectedVulnerabilities, ignoreOpt); diff != "" {
+		return errors.Errorf("Vulnerability reported differently: (-got +want) %s", diff)
+	}
+
+	for name, vulnerability := range gotVulnerabilities {
+		if vulnerability.Status == "Unrecognized" {
+			return errors.Errorf("unrecognized vulnerability status, name: %v message: %v", name, vulnerability.Message)
+		}
+	}
+
+	return nil
+}
+
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
+	testParam := s.Param().(cpuInfoTestParams)
+
 	var info cpuInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
 		s.Fatal("Failed to run telem command: ", err)
 	}
 
 	if err := validateCPUData(&info); err != nil {
-		s.Fatalf("Failed to validate cpu data, err [%v]", err)
+		s.Fatal("Failed to validate cpu data: ", err)
+	}
+
+	if testParam.checkVulnerability {
+		if err := validateVulnerabilities(info.Vulnerabilities); err != nil {
+			s.Fatal("Failed to validate cpu vulnerabilities: ", err)
+		}
 	}
 
 	out, err := ioutil.ReadFile("/proc/crypto")
