@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f80417f_b8350063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-04T21:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9353e0ba_d21e4201",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "abcace84c9253c29d6b2c051e8620465316566c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f6486f9_21410ec0",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-04T21:39:27Z",
       "side": 1,
       "message": "`processedParam`",
+      "range": {
+        "startLine": 204,
+        "startChar": 87,
+        "endLine": 204,
+        "endChar": 102
+      },
+      "revId": "abcace84c9253c29d6b2c051e8620465316566c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eb1d76d_2f8995a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-04T21:47:00Z",
+      "side": 1,
+      "message": "Argh, I fixed this in the follow up CL. Repo/Rebase confused me.",
+      "parentUuid": "7f6486f9_21410ec0",
       "range": {
         "startLine": 204,
         "startChar": 87,
