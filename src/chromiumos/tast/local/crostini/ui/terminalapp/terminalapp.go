@@ -28,7 +28,7 @@ import (
 const uiTimeout = 15 * time.Second
 
 var (
-	linuxLink  = nodewith.Name("Linux").Role(role.Link)
+	linuxLink  = nodewith.Name("penguin").Role(role.Link)
 	linuxTab   = nodewith.NameContaining("@penguin: ").Role(role.Window).ClassName("BrowserFrame")
 	rootWindow = nodewith.NameStartingWith("Terminal").Role(role.Window).ClassName("BrowserFrame")
 	homeTab    = nodewith.Name("Terminal").Role(role.Window).ClassName("BrowserFrame")
@@ -77,7 +77,7 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 
 	// If this is Home tab with Linux link, open Linux tab.
 	if err = ui.Exists(linuxLink)(ctx); err == nil {
-		if err := ui.LeftClick(nodewith.Name("Linux").Role(role.Link))(ctx); err != nil {
+		if err := ui.LeftClick(linuxLink)(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to click Terminal Home Linux")
 		}
 	}
@@ -169,7 +169,7 @@ func (ta *TerminalApp) ExitSSH() uiauto.Action {
 		ta.ui.WaitUntilExists(exitDialog),
 		ta.kb.TypeAction("x"),
 		ta.ui.WaitUntilExists(terminalWebArea),
-		ta.kb.AccelAction("Ctrl+W"),
+		ta.kb.AccelAction("Ctrl+Shift+W"),
 	)
 }
 
@@ -232,6 +232,9 @@ func (ta *TerminalApp) RestartCrostini(keyboard *input.KeyboardEventWriter, cont
 		if err := ta.ShutdownCrostini(cont)(ctx); err != nil {
 			return errors.Wrap(err, "failed to shutdown crostini")
 		}
+		if err := ta.Close()(ctx); err != nil {
+			return errors.Wrap(err, "failed to close Terminal app after shutdown")
+		}
 
 		// Start the VM and container.
 		ta, err := Launch(ctx, ta.tconn)
@@ -243,8 +246,8 @@ func (ta *TerminalApp) RestartCrostini(keyboard *input.KeyboardEventWriter, cont
 			return errors.Wrap(err, "failed to connect to restarted container")
 		}
 
-		if err := ta.ClickShelfMenuItem("Close")(ctx); err != nil {
-			return errors.Wrap(err, "failed to close Terminal app")
+		if err := ta.Close()(ctx); err != nil {
+			return errors.Wrap(err, "failed to close Terminal app after restart")
 		}
 
 		return nil
@@ -288,7 +291,8 @@ func (ta *TerminalApp) RunCommand(keyboard *input.KeyboardEventWriter, cmd strin
 func (ta *TerminalApp) Exit(keyboard *input.KeyboardEventWriter) uiauto.Action {
 	return uiauto.Combine("exit Terminal window",
 		ta.RunCommand(keyboard, "exit"),
-		ta.ui.WithTimeout(time.Minute).WaitUntilGone(linuxTab))
+		ta.ui.WithTimeout(time.Minute).WaitUntilGone(linuxTab),
+		ta.kb.AccelAction("Ctrl+Shift+W"))
 }
 
 // Close closes the Terminal App through clicking Close on shelf context menu.
