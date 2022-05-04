@@ -28,9 +28,9 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppEmacs,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Test Emacs in Terminal window",
+		Desc:         "Opens Emacs from terminal and does some edits via keyboard",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         screenshot.ScreenDiffVars,
 		SoftwareDeps: []string{"chrome", "vm_host", "amd64"},
 		Params: []testing.Param{
