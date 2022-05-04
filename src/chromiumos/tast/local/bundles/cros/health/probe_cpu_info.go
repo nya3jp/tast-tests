@@ -96,7 +96,41 @@ func init() {
 		SoftwareDeps: []string{"chrome", "diagnostics",
 			// TODO(b/210950844): Reenable after plumbing through cpu frequency info.
 			"no_manatee"},
-		Fixture: "crosHealthdRunning",
+		Params: []testing.Param{{
+			Fixture: "crosHealthdRunning",
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name: "vulnerability",
+			// TODO(b/231673454): Promote to critical once tests are stable.
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     true,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name: "virtualization",
+			// TODO(b/231673454): Promote to critical once tests are stable.
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    true,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name: "cpu_virtualization",
+			// TODO(b/231673454): Promote to critical once tests are stable.
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: true,
+			},
+		}},
 	})
 }
 
