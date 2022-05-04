@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -37,6 +38,11 @@ func init() {
 func DeviceMinimumVersionNotifications(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Start a Chrome instance to fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
@@ -46,13 +52,13 @@ func DeviceMinimumVersionNotifications(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get test API connection: ", err)
 	}
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_update_required_notification")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_update_required_notification")
 
 	// Create and update DeviceMinimumVersion policy.
 	policyValue := policy.DeviceMinimumVersion{

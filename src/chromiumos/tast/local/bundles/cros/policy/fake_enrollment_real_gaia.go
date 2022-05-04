@@ -6,10 +6,12 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
@@ -59,6 +61,11 @@ func FakeEnrollmentRealGAIA(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to write policy blob before starting Chrome: ", err)
 	}
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	cr, err := chrome.New(ctx,
 		chrome.KeepEnrollment(),
 		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
@@ -67,9 +74,9 @@ func FakeEnrollmentRealGAIA(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// Connect to Test API.
 	tconn, err := cr.TestAPIConn(ctx)

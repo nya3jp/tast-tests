@@ -40,11 +40,6 @@ func init() {
 func SharedArrayBufferUnrestrictedAccessAllowedAsh(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Reserve 10 seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	server := httptest.NewServer(http.HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Add("Content-Type", "text/plain")
@@ -82,6 +77,11 @@ func SharedArrayBufferUnrestrictedAccessAllowedAsh(ctx context.Context, s *testi
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve 10 seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// The SharedArrayBufferUnrestrictedAccessAllowed policy does not support
 			// dynamic refresh, which means that we need to restart the browser for
 			// every subtest. This works out of the box for Lacros, but requires us
@@ -106,7 +106,7 @@ func SharedArrayBufferUnrestrictedAccessAllowedAsh(ctx context.Context, s *testi
 				s.Fatal("Failed to connect to the browser: ", err)
 			}
 			defer conn.Close()
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Check availability of SharedArrayBuffer on a non-isolated page.
 			availableOnNonIsolatedPages := true

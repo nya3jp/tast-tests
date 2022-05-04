@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
@@ -151,9 +152,14 @@ func UpdateEnginePolicies(ctx context.Context, s *testing.State) {
 
 	const waitTime = 10 * time.Second
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Restart update-engine after clearing policies.
-	defer upstart.RestartJob(ctx, "update-engine")
-	defer policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{})
+	defer upstart.RestartJob(cleanupCtx, "update-engine")
+	defer policyutil.ServeAndVerify(cleanupCtx, fdms, cr, []policy.Policy{})
 
 	// Set the policy and check that the attribute is set.
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, param.policyValues); err != nil {

@@ -51,11 +51,6 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -92,6 +87,11 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -128,6 +128,11 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 			// (or not) in the Help menu.
 
 			s.Run(ctx, "key_combination", func(ctx context.Context, s *testing.State) {
+				// Reserve ten seconds for cleanup.
+				cleanupCtx := ctx
+				ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+				defer cancel()
+
 				defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name+"_key_combination")
 
 				// Check if the popup appears (or not) when Alt+Shift+I is pressed.
@@ -153,6 +158,11 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 			})
 
 			s.Run(ctx, "menu_access", func(ctx context.Context, s *testing.State) {
+				// Reserve ten seconds for cleanup.
+				cleanupCtx := ctx
+				ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+				defer cancel()
+
 				defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name+"_menu_access")
 
 				// Check if the option "Report an issue" is available (or not) in the

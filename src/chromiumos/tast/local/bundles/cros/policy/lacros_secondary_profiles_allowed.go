@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LacrosSecondaryProfilesAllowed,
-		Desc: "Behavior of LacrosSecondaryProfilesAllowed policy",
+		Func:         LacrosSecondaryProfilesAllowed,
+		LacrosStatus: testing.LacrosVariantExists,
+		Desc:         "Behavior of LacrosSecondaryProfilesAllowed policy",
 		Contacts: []string{
 			"anastasiian@chromium.org", // Test author
 			"chromeos-commercial-identity@google.com",
@@ -49,11 +50,6 @@ func LacrosSecondaryProfilesAllowed(ctx context.Context, s *testing.State) {
 	// 'Add' and 'Guest' profile buttons.
 	addProfileButton := nodewith.Name("Add").Role(role.Button).Focusable().Ancestor(profileMenu)
 	guestProfileButton := nodewith.Name("Guest").Role(role.Button).Focusable().Ancestor(profileMenu)
-
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
 
 	for _, param := range []struct {
 		// name is the subtest name.
@@ -80,6 +76,11 @@ func LacrosSecondaryProfilesAllowed(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -102,7 +103,7 @@ func LacrosSecondaryProfilesAllowed(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to connect Test API: ", err)
 			}
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			ui := uiauto.New(tconn)
 

@@ -52,11 +52,6 @@ func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	for _, param := range []struct {
 		name            string
 		wantRestriction restriction.Restriction        // wantRestriction is the wanted restriction state of the toggle button for the "Offer to save password" option.
@@ -83,7 +78,10 @@ func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -101,6 +99,7 @@ func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the browser: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if err := policyutil.SettingsPage(ctx, cr, br, "passwords").
 				SelectNode(ctx, nodewith.

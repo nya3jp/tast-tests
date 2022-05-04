@@ -53,15 +53,17 @@ func SystemTimezone(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome login failed: ", err)
 	}
 
-	defer func(ctx context.Context) {
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	defer func() {
 		// Use cr as a reference to close the last started Chrome instance.
-		if err := cr.Close(ctx); err != nil {
+		if err := cr.Close(cleanupCtx); err != nil {
 			s.Error("Failed to close Chrome connection: ", err)
 		}
-	}(ctx)
-
-	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
-	defer cancel()
+	}()
 
 	for _, param := range []struct {
 		name            string                  // name is the subtest name.

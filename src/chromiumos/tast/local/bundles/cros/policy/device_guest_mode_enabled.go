@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -50,11 +51,16 @@ func DeviceGuestModeEnabled(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome login failed: ", err)
 	}
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	defer func(ctx context.Context) {
 		if err := cr.Close(ctx); err != nil {
 			s.Error("Failed to close Chrome connection: ", err)
 		}
-	}(ctx)
+	}(cleanupCtx)
 
 	tconn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
@@ -85,7 +91,12 @@ func DeviceGuestModeEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeOnErrorToFile(cleanupCtx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name)
 
 			pb := policy.NewBlob()
 			pb.AddPolicy(param.value)

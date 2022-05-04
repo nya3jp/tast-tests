@@ -95,7 +95,12 @@ func AutoOpenAllowedForURLs(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -109,11 +114,6 @@ func AutoOpenAllowedForURLs(ctx context.Context, s *testing.State) {
 			}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
-
-			// Reserve 10 seconds for cleanup.
-			cleanupCtx := ctx
-			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-			defer cancel()
 
 			// Setup browser based on the chrome type.
 			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))

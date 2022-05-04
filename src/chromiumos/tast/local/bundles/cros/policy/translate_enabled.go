@@ -59,11 +59,6 @@ func TranslateEnabled(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -98,7 +93,10 @@ func TranslateEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -110,23 +108,18 @@ func TranslateEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// Open the browser and navigate to the to be translated page.
+			url := server.URL + "/translate_enabled_page_fr.html"
 			// TODO(crbug.com/1259615): This should be part of the fixture.
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), s.Param().(browser.Type), url)
 			if err != nil {
 				s.Fatal("Failed to setup chrome: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+			defer conn.Close()
 
 			// Provide more data in artefacts if test fails.
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-			// Open the browser and navigate to the to be translated page.
-			url := server.URL + "/translate_enabled_page_fr.html"
-			conn, err := br.NewConn(ctx, url)
-			if err != nil {
-				s.Fatal("Failed to connect to chrome: ", err)
-			}
-			defer conn.Close()
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			ui := uiauto.New(tconn)
 			if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
