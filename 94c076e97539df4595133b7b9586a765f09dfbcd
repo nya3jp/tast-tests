@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cadc0442_01ad248f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-04T14:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d3b1755_4768f7f6",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 89
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3578d057_682f44c0",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-05-04T14:00:30Z",
       "side": 1,
       "message": "nit: add a newline before",
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65dc49ed_5f3e7b66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-04T14:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3578d057_682f44c0",
       "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa869eb7_b3f46995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-04T14:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1abd6738_3bd00b3b",
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13701a4b_a47278c0",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-05-04T14:00:30Z",
       "side": 1,
       "message": "Not sure using a function here is useful. The code continues anyway.",
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f81e41_650a1d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-04T14:59:00Z",
+      "side": 1,
+      "message": "I will remove it then.",
+      "parentUuid": "13701a4b_a47278c0",
       "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -117,6 +195,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49dd7dc9_d519e57a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-04T14:59:00Z",
+      "side": 1,
+      "message": "Ftm, the max number of wrong tries of PIN is 6 times. However, as the following 2 reasons, I didn\u0027t want to specify the value of max try to 6, but more like trying the wrong PIN until the pin pad disappeared or that it\u0027s 10 tries already to avoid a potential endless loop.\n\n(1) Max number of tries is subject to changes \n(2) The verification definition of this tast test is to try the wrong Pin multiple times (not specifically 6 times) until the password field is shown.\n\nFor your approach, IIUC, we would need the exact number of max tries.",
+      "parentUuid": "1734f7f4_3371960d",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3bed2872_b0b2df11",
         "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
         "patchSetId": 1
@@ -128,6 +230,30 @@
       "writtenOn": "2022-05-04T14:00:30Z",
       "side": 1,
       "message": "nit: use constant inline",
+      "range": {
+        "startLine": 102,
+        "startChar": 61,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b5498d_96133f0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-04T14:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bed2872_b0b2df11",
       "range": {
         "startLine": 102,
         "startChar": 61,
@@ -174,6 +300,24 @@
       "writtenOn": "2022-05-04T14:00:30Z",
       "side": 1,
       "message": "nit: newline before",
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15442cbd_7b37a838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-04T14:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c22eb30_1afdbe2d",
       "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
