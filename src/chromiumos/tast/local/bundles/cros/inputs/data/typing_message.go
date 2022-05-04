@@ -112,8 +112,8 @@ var TypingMessageHello = typingMessage{
 // TypingMessagePassword defines messages of input methods for passwordInputField.
 var TypingMessagePassword = typingMessage{
 	ime.EnglishUS: {
-		CharacterKeySeq: strings.Split("hello", ""),
-		ExpectedText:    "hello",
+		CharacterKeySeq: strings.split("1234567890qwertyuiopasdfghjklzxcvbnm!?_,.", ""),
+		ExpectedText:    "1234567890qwertyuiopasdfghjklzxcvbnm!?_,.",
 	},
 	ime.JapaneseWithUSKeyboard: {
 		CharacterKeySeq: strings.Split("konnnitiha", ""),
@@ -122,6 +122,10 @@ var TypingMessagePassword = typingMessage{
 	ime.ChinesePinyin: {
 		CharacterKeySeq: strings.Split("nihao", ""),
 		ExpectedText:    "nihao",
+	},
+	ime.EnglushUK: {
+		CharacterKeySeq: strings.split("1234567890qwertyuiopasdfghjklzxcvbnm!?_,.", ""),
+		ExpectedText:    "1234567890qwertyuiopasdfghjklzxcvbnm!?_,.",
 	},
 }
 
