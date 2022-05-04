@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82fcd127_56b145a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-05-04T03:14:47Z",
+      "side": 1,
+      "message": "Why in the terminal window, these are GUI apps?",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "54fa3c230c7b958b887e5c6f1f737a684ec44809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
