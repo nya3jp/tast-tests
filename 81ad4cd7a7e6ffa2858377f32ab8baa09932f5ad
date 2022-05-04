@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dcf6f66_866944a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done.\n\nAlso split the change into smaller components so it is easier to review.",
+      "revId": "81ad4cd7a7e6ffa2858377f32ab8baa09932f5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

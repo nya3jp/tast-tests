@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01677fd7_e6bcc85a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d290fcf4_68911b07",
+      "range": {
+        "startLine": 74,
+        "startChar": 21,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36c9fa57_24986206",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce00cc38_139f3bf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36c9fa57_24986206",
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61f7d491_f6cde305",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-04-21T03:49:20Z",
       "side": 1,
       "message": "This should be an uint64.\n\nHere should use\n```\n*(*uint64)(unsafe.Pointer(\u0026bytes[0]))\n```\n\nto align with the implementation of readmsr tool.",
+      "range": {
+        "startLine": 96,
+        "startChar": 29,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e271ee95_62dcced6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61f7d491_f6cde305",
       "range": {
         "startLine": 96,
         "startChar": 29,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da616f53_04806c1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccd66724_8d4db5d0",
+      "range": {
+        "startLine": 129,
+        "startChar": 28,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3d17a37_514e9527",
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53bde862_1268d9c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3d17a37_514e9527",
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f1b68af_fa1700c1",
@@ -134,6 +242,30 @@
       "writtenOn": "2022-04-21T03:49:20Z",
       "side": 1,
       "message": "I think this is not safe. If a flag are a substring of another (or even string in other fields), this could be an issue.",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 45
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94cbb279_f7760397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f1b68af_fa1700c1",
       "range": {
         "startLine": 181,
         "startChar": 5,
@@ -167,6 +299,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73988b6_d3f08ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84348731_c24b12a1",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d25ef41_b07b37ac",
@@ -180,6 +336,24 @@
       "writtenOn": "2022-04-21T03:49:20Z",
       "side": 1,
       "message": "I think this function is not clear. Maybe you should just write a function which returns a expected virtualizationInfo and compare them.",
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e2773f1_917a1e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d25ef41_b07b37ac",
       "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -207,6 +381,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91298b1_0b1057a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f3d2d3_bc0aca91",
+      "range": {
+        "startLine": 268,
+        "startChar": 8,
+        "endLine": 268,
+        "endChar": 32
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b025b5e_3bac7638",
@@ -220,6 +418,30 @@
       "writtenOn": "2022-04-21T03:49:20Z",
       "side": 1,
       "message": "How about changing the cros-health-tool so you don\u0027t need to do the convertion here.",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 294,
+        "endChar": 2
+      },
+      "revId": "15dd73182739c4ae93c2f6805579bfa2afb1d1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd386fd_5a0ca03f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-04T07:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b025b5e_3bac7638",
       "range": {
         "startLine": 288,
         "startChar": 1,
