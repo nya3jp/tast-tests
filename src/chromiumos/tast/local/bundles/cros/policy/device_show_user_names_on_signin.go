@@ -41,7 +41,8 @@ func init() {
 func DeviceShowUserNamesOnSignin(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
 
-	cleanUpCtx := ctx
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
@@ -93,7 +94,7 @@ func DeviceShowUserNamesOnSignin(ctx context.Context, s *testing.State) {
 		ui = uiauto.New(tconn).WithTimeout(10 * time.Second)
 	}
 
-	defer cr.Close(cleanUpCtx)
+	defer cr.Close(cleanupCtx)
 
 	for _, param := range []struct {
 		name          string
@@ -117,7 +118,12 @@ func DeviceShowUserNamesOnSignin(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeOnErrorToFile(cleanUpCtx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeOnErrorToFile(cleanupCtx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name)
 			if err := policyutil.ServeAndVerifyOnLoginScreen(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to serve and verify policies: ", err)
 			}

@@ -6,10 +6,12 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	pb "chromiumos/tast/services/cros/policy"
@@ -33,6 +35,11 @@ type DeviceMinimumVersionService struct { // NOLINT
 // checks that an update required screen with update now button is visible on the login page.
 // Chrome is closed when function exists.
 func (c *DeviceMinimumVersionService) TestUpdateRequiredScreenIsVisible(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	cr, err := chrome.New(
 		ctx,
 		chrome.NoLogin(),
@@ -41,7 +48,7 @@ func (c *DeviceMinimumVersionService) TestUpdateRequiredScreenIsVisible(ctx cont
 	if err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to start Chrome")
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	oobeConn, err := cr.WaitForOOBEConnection(ctx)
 	if err != nil {

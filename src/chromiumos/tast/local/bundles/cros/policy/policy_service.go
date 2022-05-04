@@ -17,6 +17,7 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -97,18 +98,23 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 
 	ok := false
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	for _, extension := range req.Extensions {
 		extDir, err := ioutil.TempDir("", "tast-extensions-")
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create temp dir")
 		}
-		defer func(ctx context.Context) {
+		defer func() {
 			if !ok {
 				if err := os.RemoveAll(extDir); err != nil {
-					testing.ContextLogf(ctx, "Failed to delete %s: %v", extDir, err)
+					testing.ContextLogf(cleanupCtx, "Failed to delete %s: %v", extDir, err)
 				}
 			}
-		}(ctx)
+		}()
 
 		c.extensionDirs = append(c.extensionDirs, extDir)
 
@@ -142,7 +148,7 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 	defer func() {
 		if !ok {
 			if err := os.RemoveAll(c.fakeDMSDir); err != nil {
-				testing.ContextLogf(ctx, "Failed to delete %s: %v", c.fakeDMSDir, err)
+				testing.ContextLogf(cleanupCtx, "Failed to delete %s: %v", c.fakeDMSDir, err)
 			}
 			c.fakeDMSDir = ""
 		}
@@ -156,7 +162,7 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 	c.fakeDMS = fdms
 	defer func() {
 		if !ok {
-			c.fakeDMS.Stop(ctx)
+			c.fakeDMS.Stop(cleanupCtx)
 			c.fakeDMS = nil
 		}
 	}()

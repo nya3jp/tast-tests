@@ -6,10 +6,12 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -62,6 +64,11 @@ func DeviceEphemeralUsersEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			if err := updatePolicyBlob(fdms, pb, param.value); err != nil {
 				s.Fatal("Failed to write policies to FakeDMS: ", err)
 			}
@@ -78,7 +85,7 @@ func DeviceEphemeralUsersEnabled(ctx context.Context, s *testing.State) {
 				opts = append(opts, chrome.EphemeralUser())
 			}
 			cr, err := chrome.New(ctx, opts...)
-			defer cr.Close(ctx)
+			defer cr.Close(cleanupCtx)
 			if err != nil {
 				s.Fatal("Failed to start Chrome: ", err)
 			}

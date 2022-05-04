@@ -66,7 +66,12 @@ func SpellcheckLanguage(ctx context.Context, s *testing.State) {
 		s.Error("Failed to update policy: ", err)
 	}
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// The default language in the DUT is English US. Therefore, the test
 	// chooses different languages to test this policy. To avoid false
@@ -80,14 +85,14 @@ func SpellcheckLanguage(ctx context.Context, s *testing.State) {
 
 	for _, l := range languages {
 		s.Run(ctx, "lang_"+l.languageName, func(ctx context.Context, s *testing.State) {
-			if err := verifySpellcheckForLanguage(ctx, s, cr, tconn, l); err != nil {
+			if err := verifySpellcheckForLanguage(ctx, cleanupCtx, s, cr, tconn, l); err != nil {
 				s.Error("Failed to verify spellcheck: ", err)
 			}
 		})
 	}
 }
 
-func verifySpellcheckForLanguage(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *browser.TestConn, language spellcheckLanguageWordTestCase) error {
+func verifySpellcheckForLanguage(ctx, cleanupCtx context.Context, s *testing.State, cr *chrome.Chrome, tconn *browser.TestConn, language spellcheckLanguageWordTestCase) error {
 
 	ui := uiauto.New(tconn)
 
@@ -102,11 +107,6 @@ func verifySpellcheckForLanguage(ctx context.Context, s *testing.State, cr *chro
 		Name("Remove " + language.languageName))(ctx); err != nil {
 		return errors.Wrapf(err, "failed to find language %s in settings", language.languageName)
 	}
-
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
 
 	// Open lacros browser.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeLacros)

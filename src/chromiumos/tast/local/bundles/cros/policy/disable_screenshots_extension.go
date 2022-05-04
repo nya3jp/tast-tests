@@ -76,11 +76,16 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	fdms, err := fakedms.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
-	defer fdms.Stop(ctx)
+	defer fdms.Stop(cleanupCtx)
 
 	if err := fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
@@ -97,7 +102,7 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Chrome instance: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	for _, tc := range []struct {
 		name      string
@@ -121,6 +126,7 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
 			cleanupCtx := ctx
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()

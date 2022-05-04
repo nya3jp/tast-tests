@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -41,12 +42,17 @@ func init() {
 
 // ArcBackupRestoreServiceEnabled tests the ArcBackupRestoreServiceEnabled policy.
 func ArcBackupRestoreServiceEnabled(ctx context.Context, s *testing.State) {
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Start FakeDMS.
 	fdms, err := fakedms.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
-	defer fdms.Stop(ctx)
+	defer fdms.Stop(cleanupCtx)
 
 	for _, param := range []struct {
 		name        string
@@ -75,6 +81,11 @@ func ArcBackupRestoreServiceEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// Update the policy blob.
 			pb := policy.NewBlob()
 			pb.AddPolicies([]policy.Policy{param.value})
@@ -91,13 +102,13 @@ func ArcBackupRestoreServiceEnabled(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Chrome login failed: ", err)
 			}
-			defer cr.Close(ctx)
+			defer cr.Close(cleanupCtx)
 
 			a, err := arc.New(ctx, s.OutDir())
 			if err != nil {
 				s.Fatal("Failed to start ARC: ", err)
 			}
-			defer a.Close(ctx)
+			defer a.Close(cleanupCtx)
 
 			// Get ARC Backup Manager state.
 			var enabled bool

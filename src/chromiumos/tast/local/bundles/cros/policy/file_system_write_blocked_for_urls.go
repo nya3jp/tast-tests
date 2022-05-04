@@ -60,11 +60,6 @@ func FileSystemWriteBlockedForUrls(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Reserve 10 seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	matchingServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer matchingServer.Close()
 	nonMatchingServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
@@ -100,6 +95,11 @@ func FileSystemWriteBlockedForUrls(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve 10 seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)

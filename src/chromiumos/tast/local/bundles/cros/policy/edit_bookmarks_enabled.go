@@ -6,10 +6,12 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/browser"
@@ -62,8 +64,13 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Add initial bookmark.
-	if err := addInitialBookmark(ctx, tconn, cr, keyboard); err != nil {
+	if err := addInitialBookmark(ctx, cleanupCtx, tconn, cr, keyboard); err != nil {
 		s.Fatal("Encountered error when adding initial bookmark: ", err)
 	}
 
@@ -95,7 +102,12 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform Chrome reset.
 			if err := policyutil.ResetChrome(ctx, fakeDMS, cr); err != nil {
@@ -111,7 +123,7 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to launch browser: ", err)
 			}
-			defer browserUI.Close(ctx)
+			defer browserUI.Close(cleanupCtx)
 
 			if err := browserUI.ShowBookmarksBar(ctx, keyboard); err != nil {
 				s.Fatal("Could not show bookmark bar: ", err)
@@ -152,7 +164,7 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 }
 
 // addInitialBookmark adds initial bookmark.
-func addInitialBookmark(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
+func addInitialBookmark(ctx, cleanupCtx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
 	browserUI, err := browser.Launch(ctx, tconn, cr, urlOfInitialBookmark)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch browser")
