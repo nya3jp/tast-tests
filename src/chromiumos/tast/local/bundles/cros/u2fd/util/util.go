@@ -13,10 +13,11 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/input"
 )
 
 // SetUpUserPIN sets up a test user with a specific PIN.
-func SetUpUserPIN(ctx context.Context, cr *chrome.Chrome, PIN, password string, autosubmit bool) (*chrome.TestConn, error) {
+func SetUpUserPIN(ctx context.Context, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter, PIN, password string, autosubmit bool) (*chrome.TestConn, error) {
 	user := cr.NormalizedUser()
 	if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
 		return nil, errors.Wrapf(err, "failed to check mounted vault for %q", user)
@@ -39,14 +40,14 @@ func SetUpUserPIN(ctx context.Context, cr *chrome.Chrome, PIN, password string, 
 		return nil, errors.Wrap(err, "failed to enable PIN unlock")
 	}
 
-	if err := verifyPINUnlock(ctx, tconn, PIN, autosubmit); err != nil {
+	if err := verifyPINUnlock(ctx, tconn, keyboard, PIN, autosubmit); err != nil {
 		return nil, errors.Wrap(err, "PIN unlock doesn't work so IsUvpaa will be false")
 	}
 
 	return tconn, nil
 }
 
-func verifyPINUnlock(ctx context.Context, tconn *chrome.TestConn, PIN string, autosubmit bool) error {
+func verifyPINUnlock(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, PIN string, autosubmit bool) error {
 	// Lock the screen.
 	if err := lockscreen.Lock(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to lock the screen")
@@ -56,15 +57,14 @@ func verifyPINUnlock(ctx context.Context, tconn *chrome.TestConn, PIN string, au
 		return errors.Wrapf(err, "waiting for screen to be locked failed (last status %+v)", st)
 	}
 
-	// Enter and submit the PIN to unlock the DUT.
-	if err := lockscreen.EnterPIN(ctx, tconn, PIN); err != nil {
-		return errors.Wrap(err, "failed to enter in PIN")
+	pin := PIN
+	if !autosubmit {
+		pin += "\n"
 	}
 
-	if !autosubmit {
-		if err := lockscreen.SubmitPIN(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to submit PIN")
-		}
+	// Enter and submit the PIN to unlock the DUT.
+	if err := keyboard.Type(ctx, pin); err != nil {
+		return errors.Wrap(err, "failed to enter PIN")
 	}
 
 	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
