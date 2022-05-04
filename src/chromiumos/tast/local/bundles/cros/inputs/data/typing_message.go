@@ -112,8 +112,8 @@ var TypingMessageHello = typingMessage{
 // TypingMessagePassword defines messages of input methods for passwordInputField.
 var TypingMessagePassword = typingMessage{
 	ime.EnglishUS: {
-		CharacterKeySeq: strings.Split("hello", ""),
-		ExpectedText:    "hello",
+		CharacterKeySeq: strings.Split("1234567890qwertyuiopasdfghjklzxcvbnm!?_,.", ""),
+		ExpectedText:    "1234567890qwertyuiopasdfghjklzxcvbnm!?_,.",
 	},
 	ime.JapaneseWithUSKeyboard: {
 		CharacterKeySeq: strings.Split("konnnitiha", ""),
@@ -122,6 +122,10 @@ var TypingMessagePassword = typingMessage{
 	ime.ChinesePinyin: {
 		CharacterKeySeq: strings.Split("nihao", ""),
 		ExpectedText:    "nihao",
+	},
+	ime.EnglishUK: {
+		CharacterKeySeq: strings.Split("1234567890qwertyuiopasdfghjklzxcvbnm!?_,.", ""),
+		ExpectedText:    "1234567890qwertyuiopasdfghjklzxcvbnm!?_,.",
 	},
 }
 
@@ -140,6 +144,10 @@ var TypingMessageNumber = typingMessage{
 		ExpectedText:    "-123.456",
 	},
 	ime.ChinesePinyin: {
+		CharacterKeySeq: strings.Split("-123.456", ""),
+		ExpectedText:    "-123.456",
+	},
+	ime.EnglishUK: {
 		CharacterKeySeq: strings.Split("-123.456", ""),
 		ExpectedText:    "-123.456",
 	},
@@ -162,6 +170,10 @@ var TypingMessageEmail = typingMessage{
 		SubmitFromSuggestion: true,
 		ExpectedText:         "你好",
 	},
+	ime.EnglishUK: {
+		CharacterKeySeq: []string{"t", "e", "s", "t", "@", "g", "m", "a", "i", "l", ".com"},
+		ExpectedText:    "test@gmail.com",
+	},
 }
 
 // TypingMessageURL defines messages of input methods for urlInputField.
@@ -181,6 +193,10 @@ var TypingMessageURL = typingMessage{
 		SubmitFromSuggestion: true,
 		ExpectedText:         "你好",
 	},
+	ime.EnglishUK: {
+		CharacterKeySeq: []string{"g", "o", "o", "g", "l", "e", ".com", "/"},
+		ExpectedText:    "google.com/",
+	},
 }
 
 // TypingMessageTel defines messages of input methods for telInputField.
@@ -196,5 +212,9 @@ var TypingMessageTel = typingMessage{
 	ime.ChinesePinyin: {
 		CharacterKeySeq: []string{"-", "+", ",", ".", "(", ")", "Pause", "Wait", "N", "1", "0"},
 		ExpectedText:    "-+,.(),;N10",
+	},
+	ime.EnglishUK: {
+		CharacterKeySeq: []string{"-", "+", ",", ".", "(", ")", "Pause", "Wait", "N", "1", "2", "3"},
+		ExpectedText:    "-+,.(),;N123",
 	},
 }
