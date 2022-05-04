@@ -97,13 +97,20 @@ func PrintingBackgroundGraphicsDefault(ctx context.Context, s *testing.State) {
 			}
 
 			// Setup browser based on the chrome type.
-			_, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
 			// The UI tree must be dumped before closing the browser.
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+
+			// Open an empty page.
+			conn, err := br.NewConn(ctx, "chrome://newtab/")
+			if err != nil {
+				s.Fatal("Failed to connect to Chrome: ", err)
+			}
+			defer conn.Close()
 
 			// Connect to Test API to use it with the UI library.
 			tconn, err := cr.TestAPIConn(ctx)
