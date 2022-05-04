@@ -85,6 +85,24 @@
       "parentUuid": "67872c65_31b93134",
       "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1397474_80bd9314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T15:44:34Z",
+      "side": 1,
+      "message": "Maybe, good consistent examples do help. Thanks for fixing this!",
+      "parentUuid": "fdbe49a8_67d8fc53",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
