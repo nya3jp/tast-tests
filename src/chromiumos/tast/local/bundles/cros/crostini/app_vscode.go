@@ -42,9 +42,9 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppVscode,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Test Visual Studio Code in Terminal window",
+		Desc:         "Opens Visual Studio Code from terminal and performs UI interactions",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         screenshot.ScreenDiffVars,
 		SoftwareDeps: []string{"chrome", "vm_host", "amd64"},
 		Params: []testing.Param{
