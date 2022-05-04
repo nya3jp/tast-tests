@@ -46,8 +46,10 @@ var boardArchMapping = map[string]string{
 	"octopus":  "amd64",
 	"dedede":   "amd64",
 	"nautilus": "amd64",
+	"guybrush": "amd64",
 	// syzkaller binaries built for trogdor are 32 bit.
-	"trogdor": "arm",
+	"trogdor":   "arm",
+	"strongbad": "arm",
 }
 
 // dutConfig represents information related to the DUT configuration;
