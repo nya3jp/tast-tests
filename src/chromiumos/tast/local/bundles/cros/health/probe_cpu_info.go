@@ -96,7 +96,38 @@ func init() {
 		SoftwareDeps: []string{"chrome", "diagnostics",
 			// TODO(b/210950844): Reenable after plumbing through cpu frequency info.
 			"no_manatee"},
-		Fixture: "crosHealthdRunning",
+		Params: []testing.Param{{
+			Fixture: "crosHealthdRunning",
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name:      "vulnerability",
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     true,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name:      "virtualization",
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    true,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name:      "cpu_virtualization",
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: true,
+			},
+		}},
 	})
 }
 
