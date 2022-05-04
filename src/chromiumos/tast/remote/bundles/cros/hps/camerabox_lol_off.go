@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/common/camera/chart"
@@ -71,11 +73,31 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
+	// Wait for Dbus to be available.
+	client := pb.NewHpsServiceClient(cl.Conn)
+	if _, err := client.WaitForDbus(hctx.Ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to wait for dbus command to be available: ", err)
+	}
+
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
 		Setting: "Lock on Leave",
-		Enable:  false,
+		Enable:  true,
 	}
-	client := pb.NewHpsServiceClient(cl.Conn)
+	// Change the setting to true so that we can get the quickdim delay time.
+	if _, err := client.StartUIWithCustomScreenPrivacySetting(hctx.Ctx, req, grpc.WaitForReady(true)); err != nil {
+		s.Fatal("Failed to change setting: ", err)
+	}
+
+	// Get the delays for the quick dim.
+	delayReq := &wrappers.BoolValue{
+		Value: true,
+	}
+	quickDimMetrics, err := client.RetrieveDimMetrics(hctx.Ctx, delayReq)
+	if err != nil {
+		s.Fatal("Error getting delay settings: ", err)
+	}
+
+	req.Enable = false
 	if _, err := client.StartUIWithCustomScreenPrivacySetting(hctx.Ctx, req, grpc.WaitForReady(true)); err != nil {
 		s.Fatal("Failed to change setting: ", err)
 	}
@@ -84,10 +106,13 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Error failed to get brightness: ", err)
 	}
-	testing.ContextLog(ctx, "Brightness: ", brightness)
 
-	// It should not dim after 6s.
-	testing.Sleep(ctx, utils.QuickDimTime)
+	// Render hps-internal page for debugging before waiting for dim.
+	if _, err := client.OpenHPSInternalsPage(hctx.Ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Error open hps-internals")
+	}
+	// It should not dim after 10s.
+	testing.Sleep(ctx, quickDimMetrics.DimDelay.AsDuration())
 	newBrightness, err := utils.GetBrightness(hctx.Ctx, d.Conn())
 	if err != nil {
 		s.Fatal("Error when getting brightness: ", err)
@@ -96,8 +121,8 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Unexpected brightness change")
 	}
 
-	// It should not lock after 2mins.
-	testing.Sleep(ctx, utils.QuickLockTime)
+	// It should not lock after quick dim delay.
+	testing.Sleep(ctx, quickDimMetrics.ScreenOffDelay.AsDuration())
 	newBrightness, err = utils.GetBrightness(hctx.Ctx, d.Conn())
 	if err != nil {
 		s.Fatal("Error when getting brightness: ", err)
