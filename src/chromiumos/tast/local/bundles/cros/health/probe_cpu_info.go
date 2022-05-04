@@ -35,19 +35,51 @@ type logicalCPUInfo struct {
 	CStates                    []cStateInfo     `json:"c_states"`
 }
 
-type physicalCPUInfo struct {
-	ModelName   *string          `json:"model_name"`
-	LogicalCPUs []logicalCPUInfo `json:"logical_cpus"`
+type cpuVirtualizationInfo struct {
+	Type      string `json:"type"`
+	IsEnabled bool   `json:"is_enabled"`
+	IsLocked  bool   `json:"is_locked"`
 }
+
+type physicalCPUInfo struct {
+	ModelName         *string                `json:"model_name"`
+	LogicalCPUs       []logicalCPUInfo       `json:"logical_cpus"`
+	Flags             []string               `json:"flags"`
+	CPUVirtualization *cpuVirtualizationInfo `json:"cpu_virtualization"`
+}
+
 type keylockerinfo struct {
 	KeylockerConfigured bool `json:"keylocker_configured"`
 }
+
+type virtualizationInfo struct {
+	HasKvmDevice bool   `json:"has_kvm_device"`
+	IsSmtActive  bool   `json:"is_smt_active"`
+	SmtControl   string `json:"smt_control"`
+}
+
+type vulnerabilityInfo struct {
+	Status  string `json:"status"`
+	Message string `json:"message"`
+}
+
 type cpuInfo struct {
-	Architecture        string                   `json:"architecture"`
-	NumTotalThreads     jsontypes.Uint32         `json:"num_total_threads"`
-	TemperatureChannels []temperatureChannelInfo `json:"temperature_channels"`
-	PhysicalCPUs        []physicalCPUInfo        `json:"physical_cpus"`
-	KeylockerInfo       *keylockerinfo           `json:"keylocker_info"`
+	Architecture        string                       `json:"architecture"`
+	NumTotalThreads     jsontypes.Uint32             `json:"num_total_threads"`
+	TemperatureChannels []temperatureChannelInfo     `json:"temperature_channels"`
+	PhysicalCPUs        []physicalCPUInfo            `json:"physical_cpus"`
+	KeylockerInfo       *keylockerinfo               `json:"keylocker_info"`
+	Virtualization      virtualizationInfo           `json:"virtualization"`
+	Vulnerabilities     map[string]vulnerabilityInfo `json:"vulnerabilities"`
+}
+
+type cpuInfoTestParams struct {
+	// Whether to check vulnerabilities.
+	checkVulnerability bool
+	// Whether to check virtualization.
+	checkVirtualization bool
+	// Whether to check cpu virtualization.
+	checkCPUVirtualization bool
 }
 
 func init() {
