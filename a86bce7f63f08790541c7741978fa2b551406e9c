@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62d248e_971a3900",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-04T00:16:00Z",
+      "side": 1,
+      "message": "I think the proper way is to skip the test if there is no modem. In the current implementation, it made it passed instead. \n\nI am not familiar with firmware testing. I did a check and see a lot of modem test use SoftwareDeps.\n```\nSoftwareDeps: []string{\"modemfwd\"},\n```\n\nWill it work for you?\n",
+      "revId": "a86bce7f63f08790541c7741978fa2b551406e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d9c5557_19ab4d5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-04T00:16:00Z",
+      "side": 1,
+      "message": "You are not skipping the test. You are making it pass.",
+      "revId": "a86bce7f63f08790541c7741978fa2b551406e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
