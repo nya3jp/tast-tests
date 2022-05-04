@@ -7,6 +7,7 @@ package health
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"strings"
 	"time"
 
@@ -204,6 +205,61 @@ func validateKeyLocker(keylocker *keylockerinfo) error {
 	return nil
 }
 
+func getExpectedVirtualization() (virtualizationInfo, error) {
+	var virtualization virtualizationInfo
+
+	virtualization.HasKvmDevice = true
+	if _, err := os.Stat("/dev/kvm"); err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			virtualization.HasKvmDevice = false
+		} else {
+			return virtualization, err
+		}
+	}
+
+	if _, err := os.Stat("/sys/devices/system/cpu/smt"); err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			virtualization.IsSmtActive = false
+			virtualization.SmtControl = "notimplemented"
+			return virtualization, nil
+		}
+		return virtualization, err
+	}
+
+	smtActiveContent, err := ioutil.ReadFile("/sys/devices/system/cpu/smt/active")
+	if err != nil {
+		return virtualization, errors.Wrap(err, "could not read /sys/devices/system/cpu/smt/active")
+	}
+	smtActiveMap := map[string]bool{
+		"1": true,
+		"0": false,
+	}
+	smtActive, ok := smtActiveMap[strings.TrimSpace(string(smtActiveContent))]
+	if !ok {
+		return virtualization, errors.Errorf("error parsing /sys/devices/system/cpu/smt/active: %v", smtActiveContent)
+	}
+	virtualization.IsSmtActive = smtActive
+
+	smtControl, err := ioutil.ReadFile("/sys/devices/system/cpu/smt/control")
+	if err != nil {
+		return virtualization, errors.Wrap(err, "could not read /sys/devices/system/cpu/smt/control")
+	}
+	virtualization.SmtControl = strings.TrimSpace(string(smtControl))
+
+	return virtualization, nil
+}
+
+func validateVirtualization(gotVirtualization virtualizationInfo) error {
+	expectedVirtualization, err := getExpectedVirtualization()
+	if err != nil {
+		return errors.Wrap(err, "failed to get virtualization")
+	}
+	if expectedVirtualization != gotVirtualization {
+		return errors.Errorf("failed to validate Virtualization, expected %+v got %+v ", expectedVirtualization, gotVirtualization)
+	}
+	return nil
+}
+
 func validateVulnerabilities(gotVulnerabilities map[string]vulnerabilityInfo) error {
 	expectedVulnerabilities := make(map[string]vulnerabilityInfo)
 	vulnerabilityFiles, err := ioutil.ReadDir("/sys/devices/system/cpu/vulnerabilities")
@@ -245,6 +301,12 @@ func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 
 	if err := validateCPUData(&info); err != nil {
 		s.Fatal("Failed to validate cpu data: ", err)
+	}
+
+	if testParam.checkVirtualization {
+		if err := validateVirtualization(info.Virtualization); err != nil {
+			s.Fatal("Failed to validate virtualization: ", err)
+		}
 	}
 
 	if testParam.checkVulnerability {
