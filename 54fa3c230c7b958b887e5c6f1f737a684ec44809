@@ -22,6 +22,30 @@
       },
       "revId": "54fa3c230c7b958b887e5c6f1f737a684ec44809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f82b20_75429e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_emacs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-04T03:31:35Z",
+      "side": 1,
+      "message": "I guess Judy wrote this because that this app is launched from the Terminal window? Do you want me to change the desc?",
+      "parentUuid": "82fcd127_56b145a9",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "54fa3c230c7b958b887e5c6f1f737a684ec44809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
