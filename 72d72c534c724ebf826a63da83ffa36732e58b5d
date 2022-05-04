@@ -33,6 +33,23 @@
       "message": "+kyle for tast owner\u0027s review\ncc hidehiko for lacros tast code",
       "revId": "72d72c534c724ebf826a63da83ffa36732e58b5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7facd6fd_9b3c860b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-04T18:38:49Z",
+      "side": 1,
+      "message": "Looks like 103.0.5043.0 is needed for this feature. I\u0027ll get this in once the build has landed.",
+      "revId": "72d72c534c724ebf826a63da83ffa36732e58b5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
