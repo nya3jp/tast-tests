@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfebf126_5ddaab2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-04T07:51:09Z",
+      "side": 1,
+      "message": "This is not safe. How about use StartsWith?\n\nFor the `KVM:` case, I think you can check the `name` and add `KVM: ` to the expected value.",
+      "range": {
+        "startLine": 203,
+        "startChar": 14,
+        "endLine": 203,
+        "endChar": 42
+      },
+      "revId": "1c991d8eeaf1e075b4fcd1a398b5ff4239ede08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
