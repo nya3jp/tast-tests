@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e6ff7673_0cd2776d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-04T17:49:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa264f6d_42804a97",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2e20d7bd_fe03cfc0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "382e3445_03e88aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-04T17:49:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f160c9eb_6b68cc8c",
+      "range": {
+        "startLine": 49,
+        "startChar": 40,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89f3c21a_1b828dc6",
@@ -100,6 +148,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71fc1eda_c8b9e85d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-04T17:49:22Z",
+      "side": 1,
+      "message": "So if we skip the feedback dialog logic we can reuse the session.\nI think we can skip it since it is not meant to be permanent. \nCan bring it back otherwise.\nAlso, wonder if this would be the best way to reuse the session (creating a new fixture)",
+      "parentUuid": "89f3c21a_1b828dc6",
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3744d267_a35b0f7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
         "patchSetId": 3
@@ -111,6 +177,30 @@
       "writtenOn": "2022-05-03T17:50:33Z",
       "side": 1,
       "message": "Maybe rename this function? I would assume that this would go through the complete removal process but it seems like it the feedback dialog prevents this from happening on the first attempt. I would also be fine with some documentation explaining this.",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 40
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58c893a_e46934ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-04T17:49:22Z",
+      "side": 1,
+      "message": "Hmm good point. going for a more specific name.",
+      "parentUuid": "3744d267_a35b0f7c",
       "range": {
         "startLine": 178,
         "startChar": 11,
@@ -146,6 +236,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7914ce6_419d8fa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-04T17:49:22Z",
+      "side": 1,
+      "message": "Are you saying we should move the function to maybe launcher.go? \n\nI would think that since we are only using it on this test it\u0027s fine to have it here. Also, I can\u0027t think of other tests where it could be useful.",
+      "parentUuid": "13dc705d_d306abc2",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 239,
+        "endChar": 34
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "777dc52f_262ae907",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 3
@@ -157,6 +271,30 @@
       "writtenOn": "2022-05-03T17:50:33Z",
       "side": 1,
       "message": "Not sure if needed",
+      "range": {
+        "startLine": 1100,
+        "startChar": 0,
+        "endLine": 1100,
+        "endChar": 88
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd306b4_e1ac5c7e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-04T17:49:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "777dc52f_262ae907",
       "range": {
         "startLine": 1100,
         "startChar": 0,
@@ -180,6 +318,30 @@
       "writtenOn": "2022-05-03T17:50:33Z",
       "side": 1,
       "message": "Needed? TriggerAppListSortAndWaitForUndoButtonExist doesn\u0027t have this, I think we can safely remove it:",
+      "range": {
+        "startLine": 1132,
+        "startChar": 0,
+        "endLine": 1132,
+        "endChar": 61
+      },
+      "revId": "25dc4b4207bc224e931ba86e9ed2fc21b520848e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37fdc761_bc4f5fd3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-04T17:49:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f09cb76f_61d2fbaa",
       "range": {
         "startLine": 1132,
         "startChar": 0,
