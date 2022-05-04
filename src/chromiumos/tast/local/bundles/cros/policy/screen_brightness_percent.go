@@ -6,10 +6,12 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -78,7 +80,12 @@ func ScreenBrightnessPercent(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -101,12 +108,12 @@ func ScreenBrightnessPercent(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to find and click the status try: ", err)
 			}
 
-			defer func() {
+			defer func(ctx context.Context) {
 				// Close the Status tray again, otherwise the next subtest won't find it.
 				if err := ui.LeftClick(statusTray)(ctx); err != nil {
 					s.Fatal("Failed to close Status tray: ", err)
 				}
-			}()
+			}(cleanupCtx)
 
 			// Get the NodeInfo of the Brightness slider.
 			brightnessSlider := nodewith.Name("Brightness").Role(role.Slider)

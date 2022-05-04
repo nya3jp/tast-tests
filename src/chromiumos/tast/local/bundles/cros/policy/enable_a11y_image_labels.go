@@ -96,6 +96,11 @@ func EnableA11yImageLabels(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// Perform cleanup before each test.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -126,11 +131,11 @@ func EnableA11yImageLabels(ctx context.Context, s *testing.State) {
 			}
 
 			sm, cleanup, err := setUpChromeVox(ctx, tconn, cr)
-			defer func() {
-				if err := cleanup(cleanupCtx); err != nil {
+			defer func(ctx context.Context) {
+				if err := cleanup(ctx); err != nil {
 					s.Fatal("Failed to clean up ChromeVox: ", err)
 				}
-			}()
+			}(cleanupCtx)
 			if err != nil {
 				s.Fatal("Failed to set up ChromeVox: ", err)
 			}

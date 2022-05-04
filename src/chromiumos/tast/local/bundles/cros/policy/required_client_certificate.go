@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -107,6 +108,11 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			cr, err := chrome.New(ctx, chromeOpts...)
 			if err != nil {
 				s.Fatal("Chrome login failed: ", err)
@@ -146,7 +152,7 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 					if err != nil {
 						s.Fatal("Failed to launch Lacros: ", err)
 					}
-					defer l.Close(ctx)
+					defer l.Close(cleanupCtx)
 					if err := checkCertificateVisibleInBrowserSettings(ctx, tconn, l.Browser()); err != nil {
 						s.Fatal("Failed to find certificate: ", err)
 					}

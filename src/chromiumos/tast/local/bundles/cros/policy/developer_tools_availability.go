@@ -55,11 +55,6 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	// Connect to Test API.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -99,6 +94,11 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -123,6 +123,11 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 				"Ctrl+Shift+J",
 			} {
 				s.Run(ctx, keys, func(ctx context.Context, s *testing.State) {
+					// Reserve ten seconds for cleanup.
+					cleanupCtx := ctx
+					ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+					defer cancel()
+
 					defer faillog.DumpUITreeOnErrorToFile(cleanupCtx, s.OutDir(), s.HasError, tconn, fmt.Sprintf("ui_tree_%s_%s.txt", tc.name, keys))
 
 					// Open new tab and navigate to chrome://user-actions.
