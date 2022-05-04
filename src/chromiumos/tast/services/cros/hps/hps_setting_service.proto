@@ -3,24 +3,35 @@ syntax = "proto3";
 package tast.cros.hps;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/duration.proto";
 
 option go_package = "chromiumos/tast/services/cros/hps";
 
-// provides operations on local DUT.
+// Provides operations on local DUT.
 service HpsService {
 
   // StartUIWithCustomScreenPrivacySetting changes the settings in screen privacy accordingly.
   rpc StartUIWithCustomScreenPrivacySetting(StartUIWithCustomScreenPrivacySettingRequest) returns (google.protobuf.Empty) {}
-  // WaitForDbus performs a polling and waits for the firmware being flashed
+  // WaitForDbus performs a polling and waits for the firmware being flashed.
   rpc WaitForDbus(google.protobuf.Empty) returns (google.protobuf.Empty){}
-  //
+  // CheckForLockScreen checks if the screen is at lock status.
   rpc CheckForLockScreen(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-  // OpenHPSInternalPage opens hps-internal page for debugging purpose
-  rpc OpenHPSInternalPage(google.protobuf.Empty) returns (google.protobuf.Empty){}
+  // OpenHPSInternalPage opens hps-internal page for debugging purpose.
+  rpc OpenHPSInternalsPage(google.protobuf.Empty) returns (google.protobuf.Empty){}
+
+  // DimMetrics gets the quick dim/lock delays after the lol is enabled/disabled.
+  rpc RetrieveDimMetrics(google.protobuf.BoolValue) returns (RetrieveDimMetricsResponse){}
 }
 
 message StartUIWithCustomScreenPrivacySettingRequest {
   string setting = 1;  // Option being "Lock on Leave" or "Viewing protection".
   bool enable = 2;
+}
+
+message RetrieveDimMetricsResponse {
+	google.protobuf.Duration dimDelay = 1;
+	google.protobuf.Duration screenOffDelay = 2;
+	google.protobuf.Duration lockDelay = 3;
 }
