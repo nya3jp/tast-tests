@@ -135,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7874ec7e_6fe27192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T07:56:27Z",
+      "side": 1,
+      "message": "Just wanted to make sure it\u0027s correct.",
+      "parentUuid": "d3f3ecbe_3cc83ce4",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "98d1dd63aa0729e816cde0ba8787a1d144aff8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2491a32_85b73307",

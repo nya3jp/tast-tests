@@ -16,6 +16,40 @@
       "message": "Thanks for the reviews!",
       "revId": "9a1089a461ab91c2a595e440e339ce31595a7e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b7852fc_030f462b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T07:56:27Z",
+      "side": 1,
+      "message": "LGTM % final nit",
+      "revId": "9a1089a461ab91c2a595e440e339ce31595a7e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e56ca61_b028ea08",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filepicker/vars/vars.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T07:56:27Z",
+      "side": 1,
+      "message": "I\u0027d put this in the filepicker package directly.\n\nDo you have a plan on adding many variables?",
+      "revId": "9a1089a461ab91c2a595e440e339ce31595a7e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
