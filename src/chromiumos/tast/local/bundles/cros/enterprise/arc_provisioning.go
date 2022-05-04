@@ -5,6 +5,7 @@
 package enterprise
 
 import (
+	"bytes"
 	"context"
 	"io/ioutil"
 	"os"
@@ -298,7 +299,7 @@ func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *
 }
 
 // readPackageRestrictions reads content of package restrictions file.
-func readPackageRestrictions(ctx context.Context, cr *chrome.Chrome) ([]byte, error) {
+func readPackageRestrictions(ctx context.Context, a *arc.ARC, cr *chrome.Chrome) ([]byte, error) {
 	const packageRestrictionsPath = "/data/system/users/0/package-restrictions.xml"
 
 	// Cryptohome dir for the current user.
@@ -310,7 +311,11 @@ func readPackageRestrictions(ctx context.Context, cr *chrome.Chrome) ([]byte, er
 	// android-data dir under the cryptohome dir (/home/root/${USER_HASH}/android-data)
 	androidDataDir := filepath.Join(rootCryptDir, "android-data")
 
-	return ioutil.ReadFile(filepath.Join(androidDataDir, packageRestrictionsPath))
+	out, err := ioutil.ReadFile(filepath.Join(androidDataDir, packageRestrictionsPath))
+	if err == nil && !bytes.HasPrefix(out, []byte("<?xml ")) {
+		out, err = a.Abx2Xml(ctx, out)
+	}
+	return out, err
 }
 
 // waitForBlockUninstall waits for Android packages to be set as not uninstallable.
@@ -319,7 +324,7 @@ func waitForBlockUninstall(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, p
 	defer st.End()
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := readPackageRestrictions(ctx, cr)
+		out, err := readPackageRestrictions(ctx, a, cr)
 		if err != nil {
 			if errors.Is(err, os.ErrNotExist) {
 				return errors.Wrap(err, "package-restrictions.xml does not exist yet")
