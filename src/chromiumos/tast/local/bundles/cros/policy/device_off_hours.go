@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
@@ -34,6 +35,12 @@ func init() {
 }
 func DeviceOffHours(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
@@ -42,12 +49,12 @@ func DeviceOffHours(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Starting chrome failed: ", err)
 	}
-	defer func(ctx context.Context) {
+	defer func() {
 		// Use cr as a reference to close the last started Chrome instance.
-		if err := cr.Close(ctx); err != nil {
+		if err := cr.Close(cleanupCtx); err != nil {
 			s.Error("Failed to close Chrome connection: ", err)
 		}
-	}(ctx)
+	}()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)

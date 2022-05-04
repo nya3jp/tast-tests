@@ -274,11 +274,6 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -290,8 +285,13 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 
 	for _, tc := range tcs {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
 			defer faillog.DumpUITreeWithScreenshotOnError(
-				ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.name)
+				cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.name)
 
 			// Get tablet mode state.
 			tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
@@ -300,7 +300,7 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 			}
 
 			// Restore the tablet mode to the initial state.
-			defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+			defer ash.SetTabletModeEnabled(cleanupCtx, tconn, tabletModeEnabled)
 
 			// Set tablet mode to false - turn DUT to desktop mode.
 			if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {

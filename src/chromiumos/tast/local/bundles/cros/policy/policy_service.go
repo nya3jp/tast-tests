@@ -102,13 +102,13 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create temp dir")
 		}
-		defer func(ctx context.Context) {
+		defer func() {
 			if !ok {
 				if err := os.RemoveAll(extDir); err != nil {
 					testing.ContextLogf(ctx, "Failed to delete %s: %v", extDir, err)
 				}
 			}
-		}(ctx)
+		}()
 
 		c.extensionDirs = append(c.extensionDirs, extDir)
 

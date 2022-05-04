@@ -50,9 +50,11 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	// Reserve 10 seconds for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
 	defer quicksettings.Hide(cleanupCtx, tconn)
 
 	for _, param := range []struct {
@@ -81,7 +83,12 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			// Reserve 10 seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {

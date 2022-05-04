@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -45,6 +46,11 @@ func init() {
 
 // ArcEnabled tests the ArcEnabled policy.
 func ArcEnabled(ctx context.Context, s *testing.State) {
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Start FakeDMS.
 	fdms, err := fakedms.New(ctx, s.OutDir())
 	if err != nil {
@@ -66,7 +72,7 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	if err := cr.ContinueLogin(ctx); err != nil {
 		s.Fatal("Chrome login failed: ", err)
@@ -107,7 +113,12 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			// Reserve ten seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {

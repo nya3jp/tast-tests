@@ -51,7 +51,7 @@ func PreventDefaultProfileRemoval(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open lacros: ", err)
 	}
-	defer l.Close(ctx)
+	defer l.Close(cleanupCtx)
 
 	// Dump the UI tree before we close lacros.
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")

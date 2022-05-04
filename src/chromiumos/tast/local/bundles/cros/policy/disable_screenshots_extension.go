@@ -76,11 +76,16 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	fdms, err := fakedms.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
-	defer fdms.Stop(ctx)
+	defer fdms.Stop(cleanupCtx)
 
 	if err := fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
@@ -97,7 +102,7 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Chrome instance: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	for _, tc := range []struct {
 		name      string
@@ -121,19 +126,20 @@ func DisableScreenshotsExtension(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			// Reserve ten seconds for cleanup.
 			cleanupCtx := ctx
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
 			// This is needed only for debugging purpose to understand why the test is flaky.
 			// TODO(crbug:1159824): Remove once test will be stable.
-			defer func(ctx context.Context) {
+			defer func() {
 				if s.HasError() {
-					if err := screenshot.Capture(ctx, filepath.Join(s.OutDir(), fmt.Sprintf("screenshot_%s.png", tc.name))); err != nil {
+					if err := screenshot.Capture(cleanupCtx, filepath.Join(s.OutDir(), fmt.Sprintf("screenshot_%s.png", tc.name))); err != nil {
 						s.Error("Failed to capture screenshot: ", err)
 					}
 				}
-			}(cleanupCtx)
+			}()
 
 			// Minimum interval between captureVisibleTab requests is 1 second, so we
 			// must sleep for 1 seconds to be able to take screenshot,

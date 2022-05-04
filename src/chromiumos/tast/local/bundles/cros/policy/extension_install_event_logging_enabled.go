@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -58,6 +59,11 @@ func ExtensionInstallEventLoggingEnabled(ctx context.Context, s *testing.State) 
 	username := s.RequiredVar("policy.ExtensionInstallEventLoggingEnabled.username")
 	password := s.RequiredVar("policy.ExtensionInstallEventLoggingEnabled.password")
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	cr, err := chrome.New(ctx,
 		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ProdPolicy(),
 		chrome.KeepState(),
@@ -65,14 +71,14 @@ func ExtensionInstallEventLoggingEnabled(ctx context.Context, s *testing.State) 
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	const (
 		extensionID = "hoppbgdeajkagempifacalpdapphfoai"
