@@ -68,6 +68,24 @@
       "parentUuid": "0e56ca61_b028ea08",
       "revId": "9a1089a461ab91c2a595e440e339ce31595a7e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bee0f7_d3df4eda",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filepicker/vars/vars.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T08:33:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a2e756b0_935009c8",
+      "revId": "9a1089a461ab91c2a595e440e339ce31595a7e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
