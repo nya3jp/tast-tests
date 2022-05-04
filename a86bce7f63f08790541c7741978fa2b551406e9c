@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12623fef_733291be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-05-04T18:25:26Z",
+      "side": 1,
+      "message": "+aashay\n\nI see, yes, it looks like we do not have any vell devices in the lab at the moment. We could do one of the following:\n\n[1] enable fuzzing on just vell devices after they are deployed in the lab\n[2] OR; use this CL for the time-being for fuzzing redrix devices with the modem. This means that using the hwdep.D() check alone would not be sufficient(and we would need to do something like checking for \"/sys/kernel/debug/ccci_driver/flashing\" on the DUT.) Is this fine seewaifu@?",
+      "parentUuid": "e3fe5558_14a65c07",
+      "revId": "a86bce7f63f08790541c7741978fa2b551406e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d9c5557_19ab4d5f",
