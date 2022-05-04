@@ -26,6 +26,7 @@ var inputFieldTestIMEs = []ime.InputMethod{
 	ime.JapaneseWithUSKeyboard,
 	ime.ChinesePinyin,
 	ime.EnglishUS,
+	ime.EnglishUK,
 }
 
 var inputFieldToMessage = map[testserver.InputField]data.Message{
