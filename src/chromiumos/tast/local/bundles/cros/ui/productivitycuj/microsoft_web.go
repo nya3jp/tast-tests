@@ -791,7 +791,7 @@ func (app *MicrosoftWebOffice) clickNavigationItem(itemName string) action.Actio
 
 // switchToListView switches the view option to list view.
 func (app *MicrosoftWebOffice) switchToListView(ctx context.Context) error {
-	details := nodewith.Name("Details").Role(role.MenuItem)
+	details := nodewith.NameRegex(regexp.MustCompile(`(Details|Info).*`)).Role(role.MenuItem).First()
 	viewOptions := nodewith.NameContaining("View options").Role(role.MenuItem)
 	viewOptionsExpanded := viewOptions.Expanded()
 	listView := nodewith.NameContaining("List").Role(role.MenuItemCheckBox).Ancestor(viewOptions)
