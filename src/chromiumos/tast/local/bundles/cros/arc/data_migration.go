@@ -5,10 +5,8 @@
 package arc
 
 import (
-	"bytes"
 	"context"
 	"fmt"
-	"io/ioutil"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -252,20 +250,7 @@ func checkSdkVersionsInPackagesXML(ctx context.Context, a *arc.ARC, username str
 	}
 
 	// /home/root/<hash>/android-data/data/system/packages.xml
-	b, err := ioutil.ReadFile(filepath.Join(rootCryptDir, "android-data", packagesXMLPath))
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to open packages.xml")
-	}
-	if !bytes.HasPrefix(b, []byte("<?xml ")) {
-		// This file is a binary XML. Convert it to a text XML using abx2xml.
-		// Read from stdin ("-") and write to stdout ("-").
-		cmd := a.Command(ctx, "abx2xml", "-", "-")
-		cmd.Stdin = bytes.NewBuffer(b)
-		b, err = cmd.Output(testexec.DumpLogOnError)
-		if err != nil {
-			return 0, errors.Wrap(err, "abx2xml failed")
-		}
-	}
+	b, err := a.ReadXMLFile(ctx, filepath.Join(rootCryptDir, "android-data", packagesXMLPath))
 
 	for _, l := range strings.Split(string(b), "\n") {
 		m := systemVersionRegexp.FindStringSubmatch(l)
