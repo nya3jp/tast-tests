@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5aa977_76824c25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-04T23:26:31Z",
+      "side": 1,
+      "message": "nit: Put a comma here to convey that the test, rather than the Epson-specific logic, verifies that the resulting PDF is rotated correctly.",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "69117248e3e762734dec761a8962edeb4a27b5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e8f676_5797868c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-04T23:26:31Z",
+      "side": 1,
+      "message": "nit: `\u003cDUT\u003e`",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "69117248e3e762734dec761a8962edeb4a27b5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a44eb0f0_3f365816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-04T23:26:31Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with nits",
+      "revId": "69117248e3e762734dec761a8962edeb4a27b5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
