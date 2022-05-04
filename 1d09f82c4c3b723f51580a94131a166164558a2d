@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc023521_ae678b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T07:28:10Z",
+      "side": 1,
+      "message": "You can just specify nothing:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/option.go;l\u003d147\n\nSee example:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/chrome_extension.go",
+      "parentUuid": "4c5ee68b_4662f5db",
+      "revId": "1d09f82c4c3b723f51580a94131a166164558a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f8cb791_9ad00dbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
         "patchSetId": 2
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "3f8cb791_9ad00dbf",
+      "revId": "1d09f82c4c3b723f51580a94131a166164558a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ee8348_4a75250d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/display_proper_time_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-04T07:28:10Z",
+      "side": 1,
+      "message": "Is there no API to change this setting without going trough the UI?",
+      "parentUuid": "b4ef6a86_136fb2b7",
       "revId": "1d09f82c4c3b723f51580a94131a166164558a2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
