@@ -96,7 +96,38 @@ func init() {
 		SoftwareDeps: []string{"chrome", "diagnostics",
 			// TODO(b/210950844): Reenable after plumbing through cpu frequency info.
 			"no_manatee"},
-		Fixture: "crosHealthdRunning",
+		Params: []testing.Param{{
+			Fixture: "crosHealthdRunning",
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name:      "vulnerability",
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     true,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name:      "virtualization",
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    true,
+				checkCPUVirtualization: false,
+			},
+		}, {
+			Name:      "cpu_virtualization",
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: true,
+			},
+		}},
 	})
 }
 
@@ -167,6 +198,7 @@ func validateKeyLocker(keylocker *keylockerinfo) error {
 
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
+
 	var info cpuInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
 		s.Fatal("Failed to run telem command: ", err)
