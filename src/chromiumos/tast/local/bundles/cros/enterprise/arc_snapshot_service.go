@@ -6,10 +6,8 @@ package enterprise
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -22,8 +20,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash/ashproc"
-	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/session"
@@ -41,8 +37,7 @@ func init() {
 
 // ArcSnapshotService implements tast.cros.enterprise.ArcSnapshotService.
 type ArcSnapshotService struct {
-	cr        *chrome.Chrome
-	startTime time.Time
+	cr *chrome.Chrome
 }
 
 // Enroll the device with the provided account credentials.
@@ -92,9 +87,7 @@ func (service *ArcSnapshotService) WaitForPackagesInMgs(origCtx context.Context,
 		testing.ContextLog(ctx, "Mounted user system path")
 	}
 
-	if service.startTime.IsZero() {
-		service.startTime = time.Now()
-	}
+	startTime := time.Now()
 
 	// Ensure that ARC is launched.
 	a, err := arc.New(ctx, outDir)
@@ -162,8 +155,7 @@ func (service *ArcSnapshotService) WaitForPackagesInMgs(origCtx context.Context,
 	if err := a.WaitForPackages(ctx, packages); err != nil {
 		return nil, errors.Wrap(err, "failed to force install packages")
 	}
-	duration := time.Since(service.startTime)
-	service.startTime = time.Time{}
+	duration := time.Since(startTime)
 
 	perfValues.Set(perf.Metric{
 		Name:      name,
@@ -200,48 +192,6 @@ func (service *ArcSnapshotService) WaitForSnapshot(ctx context.Context, req *pb.
 		}, &testing.PollOptions{Interval: time.Second})
 	}
 	return &empty.Empty{}, nil
-}
-
-// GetDeviceID retrieves the device id from the chrome://policy site.
-func (service *ArcSnapshotService) GetDeviceID(ctx context.Context, _ *empty.Empty) (resp *pb.GetDeviceIDResponse, retErr error) {
-	if service.cr == nil {
-		return nil, errors.New("the DUT is not set up")
-	}
-
-	outDir, ok := testing.ContextOutDir(ctx)
-	if !ok {
-		return nil, errors.New("failed to get outDir")
-	}
-
-	service.startTime = time.Now()
-
-	// Ensure that ARC is launched.
-	a, err := arc.New(ctx, outDir)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to start ARC by user policy")
-	}
-	defer a.Close(ctx)
-
-	conn, err := service.cr.NewConn(ctx, "chrome://policy")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to open chrome://policy")
-	}
-	defer conn.Close()
-
-	tconn, err := service.cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to test api")
-	}
-
-	ui := uiauto.New(tconn)
-	ui.WaitUntilExists(nodewith.Name("Directory API ID"))
-	var deviceID string
-	fieldSelector := "#status-box-container > fieldset:nth-child(1) div.directory-api-id"
-	value := fmt.Sprintf("document.querySelector(\"%s\").innerText", fieldSelector)
-	if err := conn.Eval(ctx, value, &deviceID); err != nil {
-		return nil, errors.Wrap(err, "could not read the device id")
-	}
-	return &pb.GetDeviceIDResponse{DeviceId: strings.TrimSpace(deviceID)}, nil
 }
 
 // waitForCryptohome waits for a system path for the user is mounted.
