@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c887e1b_fd375ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-04T20:26:20Z",
+      "side": 1,
+      "message": "Let\u0027s just disable the feedback dialog by default (which is something we want to do for 103), and have the test assume it\u0027s disabled?\n\nOptionally, you can add something that checks if the dialog is visible and confirms it, with a todo to remove it.",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 92
+      },
+      "revId": "e56d43a38be8165be2f2640f5d79ceadbfbddbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35cc9b6_c65dff31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-04T20:26:20Z",
+      "side": 1,
+      "message": "will this fail if sort nudge is not visible?",
+      "revId": "e56d43a38be8165be2f2640f5d79ceadbfbddbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d782b2ef_4f4c59fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-04T20:26:20Z",
+      "side": 1,
+      "message": "you shouldn\u0027t need else (given that if clause has fatal)",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 7
+      },
+      "revId": "e56d43a38be8165be2f2640f5d79ceadbfbddbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbbfc566_6a1f4969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-04T20:26:20Z",
+      "side": 1,
+      "message": "verify that we can\u0027t find an item for the removed file",
+      "revId": "e56d43a38be8165be2f2640f5d79ceadbfbddbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb1300d_32ce5b83",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-04T20:26:20Z",
+      "side": 1,
+      "message": "append \"IfShown\" to the function name.",
+      "revId": "e56d43a38be8165be2f2640f5d79ceadbfbddbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
