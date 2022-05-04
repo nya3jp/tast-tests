@@ -3,6 +3,8 @@ syntax = "proto3";
 package tast.cros.hps;
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/duration.proto";
 
 option go_package = "chromiumos/tast/services/cros/hps";
 
@@ -18,9 +20,18 @@ service HpsService {
 
   // OpenHPSInternalPage opens hps-internal page for debugging purpose
   rpc OpenHPSInternalPage(google.protobuf.Empty) returns (google.protobuf.Empty){}
+
+  // GetDelays gets the quick dim/lock delays after the lol is enabled/disabled
+  rpc GetDelays(google.protobuf.BoolValue) returns (DimMetrics){}
 }
 
 message StartUIWithCustomScreenPrivacySettingRequest {
   string setting = 1;  // Option being "Lock on Leave" or "Viewing protection".
   bool enable = 2;
+}
+
+message DimMetrics {
+	google.protobuf.Duration dimDelay = 2;
+	google.protobuf.Duration screenOffDelay = 3;
+	google.protobuf.Duration lockDelay = 4;
 }
