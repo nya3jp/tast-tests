@@ -90,6 +90,9 @@ var (
 
 	// DxDefocusingMsg export is used to find the pop up message when input page isn't focused.
 	DxDefocusingMsg = nodewith.Name("Keys aren't tested when you're using another window").Role(role.StaticText)
+
+	// DxKeyboardTester export is used to find the keyboard tester on the input page.
+	DxKeyboardTester = nodewith.HasClass("body-container").Role(role.GenericContainer)
 )
 
 // DiagnosticsRootNode returns the root ui node of Diagnotsics app.
@@ -111,11 +114,11 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, erro
 		return nil, errors.Wrap(err, "diagnostics app did not appear in shelf after launch")
 	}
 
-	dxRootnode, err := DiagnosticsRootNode(ctx, tconn)
+	dxRootNode, err := DiagnosticsRootNode(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find diagnostics app")
 	}
-	return dxRootnode, nil
+	return dxRootNode, nil
 }
 
 // Close closes the diagnostics app.
