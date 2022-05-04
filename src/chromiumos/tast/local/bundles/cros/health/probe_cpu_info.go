@@ -7,6 +7,7 @@ package health
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"reflect"
 	"strings"
 
@@ -197,6 +198,50 @@ func validateKeyLocker(keylocker *keylockerinfo) error {
 	return nil
 }
 
+func getExpectedVirtualization() (virtualizationInfo, error) {
+	var virtualization virtualizationInfo
+
+	virtualization.HasKvmDevice = true
+	if _, err := os.Stat("/dev/kvm"); err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			virtualization.HasKvmDevice = false
+		} else {
+			return virtualization, err
+		}
+	}
+
+	if _, err := os.Stat("/sys/devices/system/cpu/smt"); err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			virtualization.IsSmtActive = false
+			virtualization.SmtControl = "notimplemented"
+			return virtualization, nil
+		}
+		return virtualization, err
+	}
+
+	smtActiveContent, err := ioutil.ReadFile("/sys/devices/system/cpu/smt/active")
+	if err != nil {
+		return virtualization, errors.New("could not read /sys/devices/system/cpu/smt/active")
+	}
+	smtActiveMap := map[string]bool{
+		"1": true,
+		"0": false,
+	}
+	smtActive, ok := smtActiveMap[strings.TrimSpace(string(smtActiveContent))]
+	if !ok {
+		return virtualization, errors.Errorf("error parsing /sys/devices/system/cpu/smt/active: %v", smtActiveContent)
+	}
+	virtualization.IsSmtActive = smtActive
+
+	smtControl, err := ioutil.ReadFile("/sys/devices/system/cpu/smt/control")
+	if err != nil {
+		return virtualization, errors.New("could not read /sys/devices/system/cpu/smt/control")
+	}
+	virtualization.SmtControl = strings.TrimSpace(string(smtControl))
+
+	return virtualization, nil
+}
+
 func validateVulnerabilities(vulnerabilities map[string]vulnerabilityInfo) error {
 	expectedVulnerabilityNames := make(map[string]bool)
 	items, err := ioutil.ReadDir("/sys/devices/system/cpu/vulnerabilities")
@@ -238,6 +283,16 @@ func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 
 	if err := validateCPUData(&info); err != nil {
 		s.Fatal("Failed to validate cpu data: ", err)
+	}
+
+	if testParam.checkVirtualization {
+		virtualization, err := getExpectedVirtualization()
+		if err != nil {
+			s.Fatalf("Failed to get virtualization, err [%v]", err)
+		}
+		if virtualization != info.Virtualization {
+			s.Fatalf("Failed to validate virtualization, expected %+v got %+v ", virtualization, info.Virtualization)
+		}
 	}
 
 	if testParam.checkVulnerability {
