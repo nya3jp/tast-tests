@@ -16,6 +16,52 @@
       "message": "amusbach@ PTAL",
       "revId": "abcace84c9253c29d6b2c051e8620465316566c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9353e0ba_d21e4201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-04T21:39:27Z",
+      "side": 1,
+      "message": "This code should be removed now.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "abcace84c9253c29d6b2c051e8620465316566c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6486f9_21410ec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-04T21:39:27Z",
+      "side": 1,
+      "message": "`processedParam`",
+      "range": {
+        "startLine": 204,
+        "startChar": 87,
+        "endLine": 204,
+        "endChar": 102
+      },
+      "revId": "abcace84c9253c29d6b2c051e8620465316566c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
