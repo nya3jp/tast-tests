@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1801a211_53a1c9f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381147
+      },
+      "writtenOn": "2022-05-04T11:15:22Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "37befce9c73b6b0973b0e569cf29684b8fd5ae97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b52b332_b73f6cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1381147
+      },
+      "writtenOn": "2022-05-04T11:15:22Z",
+      "side": 1,
+      "message": "nit: doneButton -\u003e yesButton\nAlso, this is capitalized, while similar things in the other file are not.",
+      "revId": "37befce9c73b6b0973b0e569cf29684b8fd5ae97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf2d1d7_493139fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1381147
+      },
+      "writtenOn": "2022-05-04T11:15:22Z",
+      "side": 1,
+      "message": "nit: yesButton",
+      "revId": "37befce9c73b6b0973b0e569cf29684b8fd5ae97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
