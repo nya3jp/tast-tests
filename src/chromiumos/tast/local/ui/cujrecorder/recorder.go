@@ -9,12 +9,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io/fs"
 	"io/ioutil"
+	"os"
+	"os/exec"
 	"path"
 	"path/filepath"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -427,11 +432,16 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 		return nil, errors.New("start requested but some paramerters are already initialized:" + fmt.Sprintf(" mr=%v, r.cleanup=%p", r.mr, r.cleanup))
 	}
 
+	var stopRapl func() error
 	const traceCleanupDuration = 2 * time.Second
 	runCtx, cancelRunCtx := ctxutil.Shorten(ctx, traceCleanupDuration)
 	cancel := func(ctx context.Context) error {
+		var err error
+		if stopRapl != nil {
+			err = stopRapl()
+		}
 		cancelRunCtx()
-		return nil
+		return err
 	}
 	defer func(ctx context.Context) {
 		// If this function finishes without errors, cleanup will happen in stopRecording
@@ -446,6 +456,11 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 		r.startedAtTm = time.Time{} // Reset to zero.
 		r.mr = nil
 	}(ctx)
+
+	stopRapl, err := startLoggingIntelRaplConsumption(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to start logging Intel rapl consumption: ", err)
+	}
 
 	if r.traceDir != "" {
 		if err := r.cr.StartTracing(ctx,
@@ -472,9 +487,15 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 			return nil
 		}
 		cancel = func(ctx context.Context) error {
-			err := stopTracing(ctx)
+			var firstErr error
+			if stopRapl != nil {
+				firstErr = stopRapl()
+			}
+			if err := stopTracing(ctx); firstErr == nil {
+				firstErr = err
+			}
 			cancelRunCtx()
-			return err
+			return firstErr
 		}
 	}
 
@@ -765,6 +786,91 @@ func (r *Recorder) SaveHistograms(outDir string) error {
 		return err
 	}
 	return ioutil.WriteFile(filePath, j, 0644)
+}
+
+// startLoggingIntelRaplConsumption starts logging Intel rapl consumption if applicable, and
+// returns a "stop" function to end the logging. If the functionality is not applicable,
+// startLoggingIntelRaplConsumption returns a nil stop function and nil error.
+func startLoggingIntelRaplConsumption(ctx context.Context) (stop func() error, retErr error) {
+	defer func() {
+		if stop != nil && retErr != nil {
+			stop()
+		}
+	}()
+
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return
+	}
+
+	const raplExec = "/usr/bin/dump_intel_rapl_consumption"
+	if _, err := os.Stat(raplExec); err != nil {
+		// If the executable does not exist, then the functionality probably just is
+		// not applicable to the device. Anything else is an error worth reporting.
+		if !errors.Is(err, fs.ErrNotExist) {
+			retErr = err
+		}
+		return
+	}
+
+	stdoutFile, err := os.OpenFile(filepath.Join(outDir, "intel_rapl_consumption.txt"), os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
+	if err != nil {
+		retErr = err
+		return
+	}
+	stop = func() error {
+		return stdoutFile.Close()
+	}
+
+	stderrFile, err := os.OpenFile(filepath.Join(outDir, "intel_rapl_consumption_errors.txt"), os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
+	if err != nil {
+		retErr = err
+		return
+	}
+	closeFiles := func() error {
+		firstErr := stdoutFile.Close()
+		if err := stderrFile.Close(); firstErr == nil {
+			firstErr = err
+		}
+		return firstErr
+	}
+	stop = closeFiles
+
+	cmd := testexec.CommandContext(ctx,
+		"stdbuf",
+		"-oL",
+		"-eL",
+		raplExec,
+		"--interval_ms="+strconv.FormatInt(int64(checkInterval/time.Millisecond), 10),
+		"--repeat",
+	)
+	cmd.Stdout = stdoutFile
+	cmd.Stderr = stderrFile
+	if err := cmd.Start(); err != nil {
+		retErr = err
+		return
+	}
+	stop = func() error {
+		firstErr := cmd.Kill()
+		// Wait for the command to finish only if we successfully killed it.
+		// Otherwise it will never finish, because we use the --repeat flag.
+		if firstErr == nil {
+			err := cmd.Wait()
+			// We expect an error of type *exec.ExitError because we killed
+			// the command. Anything else is an error worth reporting.
+			if _, ok := err.(*exec.ExitError); !ok {
+				firstErr = err
+			}
+		}
+
+		if err := closeFiles(); firstErr == nil {
+			firstErr = err
+		}
+
+		return firstErr
+	}
+
+	return
 }
 
 // histsWithSamples returns the names of the histograms that have at least one sample.
