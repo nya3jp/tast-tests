@@ -16,6 +16,24 @@
       "message": "This seems like it\u0027d be easier to just provide the file path in the command line instead of the bytes via stdin?",
       "revId": "01e331b677c4169548c83c85c6a1d518e1737894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16905a09_ce9fc34f",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-04T04:56:16Z",
+      "side": 1,
+      "message": "We have to sniff the contents to determine if we need to call abx2xml so we have bytes in hand at the point.",
+      "parentUuid": "98f5d32f_99ce141b",
+      "revId": "01e331b677c4169548c83c85c6a1d518e1737894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
