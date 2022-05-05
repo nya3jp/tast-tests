@@ -22,6 +22,30 @@
       },
       "revId": "4f3076f9a145a046848e9c5672ddd02eb4856d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "562d74ba_5d4021d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T09:55:39Z",
+      "side": 1,
+      "message": "And I think we can add the bug id as `TODO(b/xxx)` here before each `ExtraAttr: []string{\"informational\"},`",
+      "parentUuid": "93f93310_2a9c35c8",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 5
+      },
+      "revId": "4f3076f9a145a046848e9c5672ddd02eb4856d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
