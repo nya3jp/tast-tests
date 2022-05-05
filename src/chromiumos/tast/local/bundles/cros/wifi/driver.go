@@ -53,6 +53,7 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.14": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"5.10": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
+		"5.15": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 	},
 	wlan.Intel9260: {
 		"4.4":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
@@ -132,6 +133,7 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.14": "wireless/realtek/rtw88/rtw88_8822ce.ko",
 		"5.4":  "wireless/realtek/rtw88/rtw88_8822ce.ko",
 		"5.10": "wireless/realtek/rtw88/rtw88_8822ce.ko",
+		"5.15": "wireless/realtek/rtw88/rtw88_8822ce.ko",
 	},
 	wlan.Realtek8852APCIE: {
 		"5.4":  "wireless/realtek/rtw89/rtw89_pci.ko",
