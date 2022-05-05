@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/arc/testutil"
+	"chromiumos/tast/local/bundles/cros/arc/gio"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/uidetection"
@@ -41,7 +41,7 @@ func init() {
 }
 
 func InputOverlayLaunch(ctx context.Context, s *testing.State) {
-	testutil.SetupTestApp(ctx, s, func(params testutil.TestParams) error {
+	gio.SetupTestApp(ctx, s, func(params gio.TestParams) error {
 		// Start up UIAutomator.
 		ui := uiauto.New(params.TestConn).WithTimeout(time.Minute)
 		// Start up ACUITI.

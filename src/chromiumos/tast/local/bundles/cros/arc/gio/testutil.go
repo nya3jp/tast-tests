@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package testutil contains functions and structs used for testing the gaming input overlay.
-package testutil
+// Package gio contains functions and structs used for testing the gaming input overlay.
+package gio
 
 import (
 	"context"
@@ -68,7 +68,7 @@ type TestParams struct {
 	Device            *ui.Device
 	Activity          *arc.Activity
 	ActivityStartTime time.Time
-	WindowContentSize coords.Point
+	windowContentSize coords.Point
 	lastTimestamp     string
 }
 
@@ -140,6 +140,14 @@ func SetupTestApp(ctx context.Context, s *testing.State, testFunc PerformTestFun
 	}
 	defer act.Stop(ctx, tconn)
 
+	// Obtain window surface bounds.
+	loc, err := act.SurfaceBounds(ctx)
+	if err != nil {
+		s.Error("Failed to obtain activity window bounds: ", err)
+	}
+	appWidth := loc.BottomRight().X - loc.TopLeft().X
+	appHeight := loc.BottomRight().Y - loc.TopLeft().Y
+
 	// Always take a screenshot of the final state for debugging purposes.
 	// This is done with the cleanup context so the main flow is not interrupted.
 	defer captureScreenshot(cleanupCtx, s, cr, "final-state.png")
@@ -151,10 +159,29 @@ func SetupTestApp(ctx context.Context, s *testing.State, testFunc PerformTestFun
 		Device:            d,
 		Activity:          act,
 		ActivityStartTime: startTime,
+		windowContentSize: coords.NewPoint(appWidth, appHeight),
 		lastTimestamp:     "00:00:00.000",
 	}); err != nil {
 		s.Fatal("Failed to perform test: ", err)
 	}
+}
+
+// CloseAndRelaunchActivity closes and reopens the test application again.
+func CloseAndRelaunchActivity(ctx context.Context, params *TestParams) error {
+	// Close current test application instance.
+	params.Activity.Stop(ctx, params.TestConn)
+	// Relaunch another test application instance.
+	act, err := arc.NewActivity(params.Arc, pkg, cls)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a new ArcInputOverlayTest activity")
+	}
+	if err := act.StartWithDefaultOptions(ctx, params.TestConn); err != nil {
+		return errors.Wrap(err, "failed to restart ArcInputOverlayTest")
+	}
+	// Reassign "Activity" field in params.
+	*params.Activity = *act
+
+	return nil
 }
 
 // MoveOverlayButton returns a function that takes in the given character corresponding
@@ -312,8 +339,8 @@ func parsePoint(line []string) (coords.Point, error) {
 // confirmApproximateLocation returns an error if the given point does not fall within the
 // approximate location in the activity given by the heuristic parameters.
 func confirmApproximateLocation(point coords.Point, params *TestParams, heuristic ButtonHeuristics) error {
-	x := int(float64(params.WindowContentSize.X) * heuristic.xHeuristic)
-	y := int(float64(params.WindowContentSize.Y) * heuristic.yHeuristic)
+	x := int(float64(params.windowContentSize.X) * heuristic.xHeuristic)
+	y := int(float64(params.windowContentSize.Y) * heuristic.yHeuristic)
 	if point.X < (x-errorMargin) || point.X > (x+errorMargin) {
 		return errors.Errorf("x coordinate of tap (%d) not close enough to UI element on screen (%d)", point.X, x)
 	}
