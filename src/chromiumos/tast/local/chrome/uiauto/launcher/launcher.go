@@ -38,8 +38,18 @@ const ExpandedItemsClass = "AppListItemView"
 // BubbleAppsGridViewClass defines the class name of the bubble apps grid.
 const BubbleAppsGridViewClass = "ScrollableAppsGridView"
 
+// BubbleSearchPage defines the class name of the bubble apps search page.
+const BubbleSearchPage = "AppListBubbleSearchPage"
+
+// BubbleAppsPage defines the class name of the bubble apps search page.
+const BubbleAppsPage = "AppListBubbleAppsPage"
+
 // PagedAppsGridViewClass defines the class name of the paged apps grid.
 const PagedAppsGridViewClass = "AppsGridView"
+
+// SearchResultPageView defines the class name of the search view shown in
+// tablet mode.
+const SearchResultPageView = "SearchResultPageView"
 
 // UnnamedFolderFinder is the finder of a newly created folder with the default name.
 var UnnamedFolderFinder = nodewith.Name("Folder Unnamed").ClassName(ExpandedItemsClass)
@@ -256,6 +266,32 @@ func CloseBubbleLauncher(tconn *chrome.TestConn) uiauto.Action {
 	return uiauto.Combine("Wait for bubble launcher to be closed",
 		ui.LeftClick(nodewith.ClassName("ash/HomeButton")),
 		ui.WaitUntilGone(bubbleLauncher),
+	)
+}
+
+// WaitForLauncherSearchExit waits for the launcher to exit the search UI.
+func WaitForLauncherSearchExit(tconn *chrome.TestConn, tabletMode bool) uiauto.Action {
+	if tabletMode {
+		return WaitForTabletLauncherSearchExit(tconn)
+	}
+	return WaitForClamshellLauncherSearchExit(tconn)
+}
+
+// WaitForTabletLauncherSearchExit waits for the search page to be hidden.
+func WaitForTabletLauncherSearchExit(tconn *chrome.TestConn) uiauto.Action {
+	ui := uiauto.New(tconn)
+	return uiauto.Combine("Wait for bubble launcher search to be closed and apps page to be shown",
+		ui.WaitUntilGone(nodewith.ClassName(SearchResultPageView)),
+	)
+}
+
+// WaitForClamshellLauncherSearchExit waits for the search page to be hidden and the
+// apps page to be shown.
+func WaitForClamshellLauncherSearchExit(tconn *chrome.TestConn) uiauto.Action {
+	ui := uiauto.New(tconn)
+	return uiauto.Combine("Wait for bubble launcher search to be closed and apps page to be shown",
+		ui.WaitUntilGone(nodewith.ClassName(BubbleSearchPage)),
+		ui.WaitUntilExists(nodewith.ClassName(BubbleAppsPage)),
 	)
 }
 
