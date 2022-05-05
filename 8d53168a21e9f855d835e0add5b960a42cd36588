@@ -50,6 +50,24 @@
       "message": "If the file exists, we should just write over it rather than append, right?",
       "revId": "8d53168a21e9f855d835e0add5b960a42cd36588",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b65352_1a0aa1ec",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-05T21:37:46Z",
+      "side": 1,
+      "message": "If the file exists, it is from an earlier call to Recorder.Run. We want to keep the rapl consumption data from all calls to Recorder.Run.",
+      "parentUuid": "ba1ca81a_31bd6d86",
+      "revId": "8d53168a21e9f855d835e0add5b960a42cd36588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
