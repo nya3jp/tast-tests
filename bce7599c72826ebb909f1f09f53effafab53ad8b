@@ -16,6 +16,57 @@
       "message": "Hi Roman, this CL modifies many tests owned by your team. PTAL, thanks.",
       "revId": "bce7599c72826ebb909f1f09f53effafab53ad8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09ab6e3e_24970543",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-05T09:30:55Z",
+      "side": 1,
+      "message": "Style LGTM, please wait for the other reviewers as well.",
+      "revId": "bce7599c72826ebb909f1f09f53effafab53ad8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86c528d_031d3276",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-05T09:30:55Z",
+      "side": 1,
+      "message": "Can you first confirm that we are on the right UI before starting to type?",
+      "revId": "bce7599c72826ebb909f1f09f53effafab53ad8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755d98be_096af313",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-05T09:30:55Z",
+      "side": 1,
+      "message": "Why not log the error here as well?",
+      "revId": "bce7599c72826ebb909f1f09f53effafab53ad8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
