@@ -146,19 +146,15 @@ func Lock(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed calling chrome.autotestPrivate.lockScreen")
 	}
 	if st, err := WaitState(ctx, tconn, func(st State) bool { return st.Locked && st.ReadyForPassword }, 3*uiTimeout); err != nil {
-		return errors.Wrapf(err, "waiting for screen to be locked failed: %v (last status %+v)", err, st)
+		return errors.Wrapf(err, "failed to wait for screen to be locked (last status %+v)", st)
 	}
 	return nil
 }
 
 // EnterPIN enters the specified PIN.
-func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
-	ui := uiauto.New(tconn)
-	for i, d := range PIN {
-		button := nodewith.Role(role.Button).Name(string(d))
-		if err := ui.WithTimeout(uiTimeout).LeftClick(button)(ctx); err != nil {
-			return errors.Wrapf(err, "failed to press %q button (Digit %v of PIN)", d, i)
-		}
+func EnterPIN(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, PIN string) error {
+	if err := kb.Type(ctx, PIN); err != nil {
+		return errors.Wrap(err, "failed to type PIN")
 	}
 	return nil
 }
@@ -170,8 +166,8 @@ func HasPinPad(ctx context.Context, tconn *chrome.TestConn) bool {
 	return found
 }
 
-// SubmitPIN submits the entered PIN.
-func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
+// SubmitPINOrPassword submits the entered PIN.
+func SubmitPINOrPassword(ctx context.Context, tconn *chrome.TestConn) error {
 	return uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(SubmitButton)(ctx)
 }
 
@@ -247,11 +243,11 @@ func UserPassword(ctx context.Context, tconn *chrome.TestConn, username string, 
 
 // Unlock unlocks the screen, assuming that PIN / Password has already been entered by the user.
 func Unlock(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := SubmitPIN(ctx, tconn); err != nil {
+	if err := SubmitPINOrPassword(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to click the Submit button")
 	}
 	if st, err := WaitState(ctx, tconn, func(st State) bool { return st.LoggedIn }, 3*uiTimeout); err != nil {
-		return errors.Wrapf(err, "failed waiting to log in: %v, last state: %+v", err, st)
+		return errors.Wrapf(err, "failed waiting to log in (last state: %+v)", st)
 	}
 	return nil
 }
