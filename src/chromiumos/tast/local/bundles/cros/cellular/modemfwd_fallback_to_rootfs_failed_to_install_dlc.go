@@ -33,7 +33,7 @@ func init() {
 		Timeout:      1 * time.Minute,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.SkipOnPlatform(
 			// List of existing cellular boards in which we never want to run this test.
-			"coral", "dedede", "drallion", "hatch", "nautilus", "octopus", "sarien", "zork",
+			"coral", "dedede", "drallion", "hatch", "nautiluslte", "octopus", "sarien", "zork",
 			// List of boards which have their FW in DLCs, but no longer have them in the rootfs.
 			// When the FWs are removed from the rootfs, add that board to the list to skip this test.
 			// "guybrush"
