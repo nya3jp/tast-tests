@@ -239,6 +239,12 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 				Driver:          ifc.Driver,
 			})
 		}
+		if udIn.FwupdFirmwareVersionInfo != nil {
+			udOut.FwupdFirmwareVersionInfo = &usb.FwupdFirmwareVersionInfo{
+				Version:       udIn.FwupdFirmwareVersionInfo.Version,
+				VersionFormat: udIn.FwupdFirmwareVersionInfo.VersionFormat,
+			}
+		}
 		got = append(got, udOut)
 	}
 	usb.Sort(got)
@@ -348,12 +354,13 @@ type pciBusInfo struct {
 
 // usbBusInfo represents the UsbBusInfo in cros-healthd mojo interface.
 type usbBusInfo struct {
-	ClassID    uint8              `json:"class_id"`
-	SubClassID uint8              `json:"subclass_id"`
-	ProtocolID uint8              `json:"protocol_id"`
-	VendorID   uint16             `json:"vendor_id"`
-	ProductID  uint16             `json:"product_id"`
-	Interfaces []usbInterfaceInfo `json:"interfaces"`
+	ClassID                  uint8                     `json:"class_id"`
+	SubClassID               uint8                     `json:"subclass_id"`
+	ProtocolID               uint8                     `json:"protocol_id"`
+	VendorID                 uint16                    `json:"vendor_id"`
+	ProductID                uint16                    `json:"product_id"`
+	Interfaces               []usbInterfaceInfo        `json:"interfaces"`
+	FwupdFirmwareVersionInfo *fwupdFirmwareVersionInfo `json:"fwupd_firmware_version_info"`
 }
 
 // usbInterfaceInfo represents the UsbInterfaceInfo in cros-healthd mojo
@@ -383,4 +390,11 @@ type thunderboltInterfaceInfo struct {
 type thunderboltBusInfo struct {
 	SecurityLevel         string                     `json:"security_level"`
 	ThunderboltInterfaces []thunderboltInterfaceInfo `json:"thunderbolt_interfaces"`
+}
+
+// fwupdFirmwareVersionInfo represents the FwupdFirmwareVersionInfo in
+// cros-healthd mojo interface.
+type fwupdFirmwareVersionInfo struct {
+	Version       string `json:"version"`
+	VersionFormat string `json:"version_format"`
 }
