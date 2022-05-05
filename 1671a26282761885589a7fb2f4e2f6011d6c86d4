@@ -16,6 +16,23 @@
       "message": "changed tast owner reviewer to benreich who is local",
       "revId": "1671a26282761885589a7fb2f4e2f6011d6c86d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b1bf9b_cdf24580",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-05T01:52:11Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "1671a26282761885589a7fb2f4e2f6011d6c86d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
