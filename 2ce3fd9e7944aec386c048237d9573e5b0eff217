@@ -69,6 +69,41 @@
       "parentUuid": "6c607e63_a39dbd3a",
       "revId": "2ce3fd9e7944aec386c048237d9573e5b0eff217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f344f69d_4e0da910",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-05T11:43:03Z",
+      "side": 1,
+      "message": "Thank for the review. Submitting.\n(Verified)",
+      "revId": "2ce3fd9e7944aec386c048237d9573e5b0eff217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0c9e00_47132389",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-05T11:43:03Z",
+      "side": 1,
+      "message": "This waited only for Tast Owner\u0027a approval. Now I see it can be submitted.",
+      "parentUuid": "4ab9eed5_f7b04469",
+      "revId": "2ce3fd9e7944aec386c048237d9573e5b0eff217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
