@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef7ddec_e95ee456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d48984_51083f4c",
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fc537c0_c1a896fe",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-05T10:15:49Z",
       "side": 1,
       "message": "It is obvious that here returns a uint64. What is not obvious is why we can use unsafe.Pointer and cast directly. Document this instead of `return a uint64`.",
+      "range": {
+        "startLine": 153,
+        "startChar": 47,
+        "endLine": 153,
+        "endChar": 62
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1cd4df_36a7cb82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc537c0_c1a896fe",
       "range": {
         "startLine": 153,
         "startChar": 47,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3065a5_f1d669b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T11:20:47Z",
+      "side": 1,
+      "message": "I think either way can work. I think using bufio.reader is still the best option, so I would have to create a string reader to achieve the same thing.",
+      "parentUuid": "6f24c97e_36c9b29d",
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fd9be7f_6dddbcb2",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-05-05T10:15:49Z",
       "side": 1,
       "message": "Just assume that we only have one CPU.\n\nWe also need a check for this, so it raise error if this is nolonger true. Don\u0027t put it in this function (maybe at the beginning of this tast).",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e61da723_191a6612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fd9be7f_6dddbcb2",
       "range": {
         "startLine": 164,
         "startChar": 1,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b2b84f_11b06ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83f1b52e_f3b0c7d9",
+      "range": {
+        "startLine": 191,
+        "startChar": 5,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2111f769_5d2b2de5",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-05-05T10:15:49Z",
       "side": 1,
       "message": "Why not just use `_, ok :\u003d flags[\"vmx\"]; ok`",
+      "range": {
+        "startLine": 209,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 14
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7913b571_19f4557a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2111f769_5d2b2de5",
       "range": {
         "startLine": 209,
         "startChar": 4,
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "789a2c9a_339c7cab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "212d2d5a_2f879a15",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 47
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "058482c4_3f1be158",
@@ -163,6 +319,30 @@
       "writtenOn": "2022-05-05T10:15:49Z",
       "side": 1,
       "message": "This should be `expectedFlags`",
+      "range": {
+        "startLine": 270,
+        "startChar": 65,
+        "endLine": 270,
+        "endChar": 78
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b77fef46_91e606a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "058482c4_3f1be158",
       "range": {
         "startLine": 270,
         "startChar": 65,
