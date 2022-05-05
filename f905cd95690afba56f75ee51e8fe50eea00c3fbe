@@ -33,6 +33,23 @@
       "message": "Oleh, friendly ping?\n",
       "revId": "f905cd95690afba56f75ee51e8fe50eea00c3fbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3929f790_908e7de8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-05T12:28:05Z",
+      "side": 1,
+      "message": "sorry for delay\n\nThere was a failure recently\n\nR103-14776.0.0\toctopus (ampton)\tchromeos6-row14-rack4-host2\tFailed to ensure clamshell mode: Error: failed to switch the tablet mode state\n\nPTAL. If you think that failure is not test related and won\u0027t repeat, feel free to submit.",
+      "revId": "f905cd95690afba56f75ee51e8fe50eea00c3fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
