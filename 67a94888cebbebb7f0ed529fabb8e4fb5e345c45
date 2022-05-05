@@ -175,6 +175,24 @@
       "parentUuid": "8b7450b6_16e19e79",
       "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0610d262_df2e3ecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-05T16:11:50Z",
+      "side": 1,
+      "message": "+1 for the comment from Oleh\n\nI\u0027d also keep things consistent and never use cleanupCtx with cr.Close and fdms.Close.",
+      "parentUuid": "814652c9_f89dda53",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
