@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package testutil contains functions and structs used for testing the gaming input overlay.
-package testutil
+// Package gio contains functions and structs used for testing the gaming input overlay.
+package gio
 
 import (
 	"context"
@@ -155,6 +155,24 @@ func SetupTestApp(ctx context.Context, s *testing.State, testFunc PerformTestFun
 	}); err != nil {
 		s.Fatal("Failed to perform test: ", err)
 	}
+}
+
+// CloseAndRelaunchActivity closes and reopens the test application again.
+func CloseAndRelaunchActivity(ctx context.Context, params *TestParams) error {
+	// Close current test application instance.
+	params.Activity.Stop(ctx, params.TestConn)
+	// Relaunch another test application instance.
+	act, err := arc.NewActivity(params.Arc, pkg, cls)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a new ArcInputOverlayTest activity")
+	}
+	if err := act.StartWithDefaultOptions(ctx, params.TestConn); err != nil {
+		return errors.Wrap(err, "failed to restart ArcInputOverlayTest")
+	}
+	// Reassign "Activity" field in params.
+	*params.Activity = *act
+
+	return nil
 }
 
 // MoveOverlayButton returns a function that takes in the given character corresponding
