@@ -52,6 +52,13 @@ func EnableWebAppInstall() Option {
 	}
 }
 
+// EnableChromeFRE removes --no-first-run switch and enables Chrome First Run Experience.
+func EnableChromeFRE() Option {
+	return func(c *Config) {
+		c.enableFRE = true
+	}
+}
+
 // Config holds runtime vars or other variables needed to set up Lacros.
 type Config struct {
 	selection     lacros.Selection
@@ -61,6 +68,7 @@ type Config struct {
 	chromeOpts    []chrome.Option
 	deployed      bool
 	deployedPath  string // dirpath to lacros executable file
+	enableFRE     bool
 }
 
 // NewConfig creates a new LacrosConfig instance.
@@ -71,6 +79,7 @@ func NewConfig(ops ...Option) *Config {
 		mode:          lacros.NotSpecified,
 		keepAlive:     false,
 		installWebApp: false,
+		enableFRE:     false,
 	}
 
 	for _, op := range ops {
@@ -119,8 +128,10 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 	// expectations more predirectable, and thus make the tests more stable.
 	opts = append(opts, chrome.LacrosDisableFeatures("ChromeWhatsNewUI"))
 
-	// Prevent showing up offer pages, e.g. google.com/chromebooks.
-	opts = append(opts, chrome.LacrosExtraArgs("--no-first-run"))
+	if !cfg.enableFRE {
+		// Prevent showing up offer pages, e.g. google.com/chromebooks.
+		opts = append(opts, chrome.LacrosExtraArgs("--no-first-run"))
+	}
 
 	// Force color profile to sRGB regardless of device. See b/221643955 for details.
 	opts = append(opts, chrome.LacrosExtraArgs("--force-color-profile=srgb"))
