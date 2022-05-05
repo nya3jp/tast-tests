@@ -119,6 +119,24 @@
       "parentUuid": "755d98be_096af313",
       "revId": "bce7599c72826ebb909f1f09f53effafab53ad8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bff51b79_9c874c95",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-05T10:30:55Z",
+      "side": 1,
+      "message": "Missed the wrap part, just saw the removal of err logging.",
+      "parentUuid": "50b2bcea_2fdf914c",
+      "revId": "bce7599c72826ebb909f1f09f53effafab53ad8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
