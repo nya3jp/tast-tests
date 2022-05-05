@@ -6,37 +6,56 @@ package wallpaper
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Change,
-		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Follows the user flow to change the wallpaper",
+		Func: Change, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Follows the user flow to change the wallpaper",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
-			"assistive-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		VarDeps:      []string{"wallpaper.category", "wallpaper.name"},
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
 func Change(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	ui := uiauto.New(tconn)
+	personalizeMenu := nodewith.Name("Personalize").Role(role.MenuItem)
+	changeWallpaperButton := nodewith.Role(role.Button).Name("Change wallpaper")
+	solidColorsMenu := nodewith.Name("Solid colors").Role(role.StaticText)
+	if err := uiauto.Combine("change the wallpaper",
+		ui.RightClick(nodewith.ClassName("WallpaperView")),
+		// This button takes a bit before it is clickable.
+		// Keep clicking it until the click is received and the menu closes.
+		ui.WithInterval(1*time.Second).LeftClickUntil(personalizeMenu, ui.Gone(personalizeMenu)),
+		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()),
+		ui.WaitUntilExists(changeWallpaperButton),
+		ui.LeftClick(changeWallpaperButton),
+		ui.WaitUntilExists(solidColorsMenu),
+		ui.MakeVisible(solidColorsMenu),
+		ui.LeftClick(solidColorsMenu),
+		ui.LeftClick(nodewith.Name("Deep Purple").Role(role.ListBoxOption)),
+		// Ensure that "Deep Purple" text is displayed.
+		// The UI displays the name of the currently set wallpaper.
+		ui.WaitUntilExists(nodewith.NameContaining("Deep Purple").Role(role.Heading)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to change the wallpaper: ", err)
+	}
 }

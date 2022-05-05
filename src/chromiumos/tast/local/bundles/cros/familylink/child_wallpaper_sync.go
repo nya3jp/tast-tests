@@ -45,7 +45,7 @@ func ChildWallpaperSync(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open the wallpaper picker: ", err)
 	}
 	defer func(ctx context.Context) {
-		if err := wallpaper.CloseWallpaperPicker()(ctx); err != nil {
+		if err := wallpaper.ClosePersonalizationHub()(ctx); err != nil {
 			s.Fatal("Failed to close the wallpaper picker: ", err)
 		}
 	}(ctx)

@@ -759,7 +759,7 @@ func SetSolidWhiteWallpaper(ctx context.Context, ui *uiauto.Context) error {
 		return errors.Wrapf(selectImageErr, "failed to select wallpaper image after %d retries", maxNumSelectRetries)
 	}
 
-	if err := wallpaper.CloseWallpaperPicker()(ctx); err != nil {
+	if err := wallpaper.ClosePersonalizationHub()(ctx); err != nil {
 		return errors.Wrap(err, "failed to close wallpaper picker")
 	}
 

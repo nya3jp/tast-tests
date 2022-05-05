@@ -69,6 +69,23 @@ func init() {
 		Parent:          fixture.FakeDMS,
 	})
 
+	// TODO(b/230901276): Remove fixture after updating policy.UserAvatarImage.
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromePolicyLoggedInWithoutPersonalizationHub,
+		Desc:     "Logged into a user session without personalization hub",
+		Contacts: []string{"pzliu@google.com", "assistive-eng@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.EnablePersonalizationHub(false)}, nil
+			},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
+
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromeEnrolledLoggedIn,
 		Desc:     "Logged into a user session with enrollment",

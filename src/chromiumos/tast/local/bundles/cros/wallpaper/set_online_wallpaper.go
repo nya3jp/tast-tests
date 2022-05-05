@@ -74,7 +74,7 @@ func SetOnlineWallpaper(ctx context.Context, s *testing.State) {
 
 	// Navigate back to collection view by clicking on the back arrow in breadcrumb.
 	if err := uiauto.Combine(fmt.Sprintf("Change the wallpaper to %s %s", secondCollection, secondImage),
-		ui.LeftClick(nodewith.Name("Back to Wallpaper").HasClass("icon-arrow-back").Role(role.Button)),
+		wallpaper.BackToWallpaper(ui),
 		wallpaper.SelectCollection(ui, secondCollection),
 		wallpaper.SelectImage(ui, secondImage),
 		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", secondImage)).Role(role.Heading)))(ctx); err != nil {
