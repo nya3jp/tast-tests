@@ -351,7 +351,7 @@ func (conf *ZoomConference) TypingInChat(ctx context.Context) error {
 	manageChatPanelMenu := nodewith.Name("Manage Chat Panel").Role(role.Menu)
 	closeButton := nodewith.Name("Close").Role(role.MenuItem).Ancestor(manageChatPanelMenu)
 	return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
-		conf.ui.LeftClick(chatButton),
+		conf.ui.DoDefault(chatButton),
 		conf.ui.WaitUntilExists(chatTextField),
 		conf.ui.LeftClickUntil(chatTextField, conf.ui.WithTimeout(shortUITimeout).WaitUntilExists(chatTextField.Focused())),
 		conf.kb.TypeAction(message),
