@@ -68,32 +68,23 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 
 	var l *lacros.Lacros
 	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
 	switch bt {
 	case browser.TypeLacros:
 		var err error
 		if cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros); err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+		if _, err = l.TestAPIConn(ctx); err != nil {
 			s.Fatal("Failed to get lacros TestAPIConn: ", err)
 		}
 		defer lacros.CloseLacros(closeCtx, l)
 	case browser.TypeAsh:
 		cs = cr
-		bTconn = tconn
 	default:
 		s.Fatal("Unrecognized browser type: ", bt)
 	}
 
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfigWithTestConn("Event.Latency.EndToEnd.KeyPress", "microseconds",
-			perf.SmallerIsBetter, []int64{80000, 400000}, bTconn),
-		cujrecorder.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
-			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn),
-		cujrecorder.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
-			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn)}
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, cujrecorder.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
