@@ -33,6 +33,10 @@ var ConsecutiveAuthErrorFinder = nodewith.Role(role.AlertDialog).NameStartingWit
 // SmartLockArrowButtonFinder is the finder for the button that needs to be clicked to complete authentication with Smart Lock.
 var SmartLockArrowButtonFinder = nodewith.NameContaining("Unlocked by your phone. Tap or click to enter.").ClassName("ArrowButtonView")
 
+// SimplePinFieldFinder is like PINFieldFinder, but doesn't check the name attribute so that username doesn't
+// need to be passed in and it's more convenient to use.
+var SimplePinFieldFinder = nodewith.Role(role.TextField).Attribute("placeholder", "PIN or password")
+
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
 type State struct {
@@ -146,18 +150,36 @@ func Lock(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed calling chrome.autotestPrivate.lockScreen")
 	}
 	if st, err := WaitState(ctx, tconn, func(st State) bool { return st.Locked && st.ReadyForPassword }, 3*uiTimeout); err != nil {
-		return errors.Wrapf(err, "waiting for screen to be locked failed: %v (last status %+v)", err, st)
+		return errors.Wrapf(err, "failed to wait for screen to be locked (last status %+v)", st)
 	}
 	return nil
 }
 
 // EnterPIN enters the specified PIN.
-func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
+func EnterPIN(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, PIN string) error {
+	// If PIN pad is present, press the PIN pad buttons. Otherwise wait until the PIN or password
+	// field to exist before typing the PIN.
 	ui := uiauto.New(tconn)
-	for i, d := range PIN {
-		button := nodewith.Role(role.Button).Name(string(d))
-		if err := ui.WithTimeout(uiTimeout).LeftClick(button)(ctx); err != nil {
-			return errors.Wrapf(err, "failed to press %q button (Digit %v of PIN)", d, i)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(nodewith.ClassName("LoginPinView"))(ctx); err != nil {
+		if err := ui.WithTimeout(uiTimeout).WaitUntilExists(SimplePinFieldFinder)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find PIN or password box")
+		}
+		if err := ui.LeftClick(SimplePinFieldFinder)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click PIN or password box")
+		}
+		// Wait for the field to be focused before entering PIN.
+		if err := ui.WaitUntilExists(SimplePinFieldFinder.Focused())(ctx); err != nil {
+			return errors.Wrap(err, "PIN or password field not focused yet")
+		}
+		if err := kb.Type(ctx, PIN); err != nil {
+			return errors.Wrap(err, "failed to type PIN")
+		}
+	} else {
+		for i, d := range PIN {
+			button := nodewith.Role(role.Button).Name(string(d))
+			if err := ui.WithTimeout(uiTimeout).LeftClick(button)(ctx); err != nil {
+				return errors.Wrapf(err, "failed to press %q button (Digit %v of PIN)", d, i)
+			}
 		}
 	}
 	return nil
@@ -170,8 +192,8 @@ func HasPinPad(ctx context.Context, tconn *chrome.TestConn) bool {
 	return found
 }
 
-// SubmitPIN submits the entered PIN.
-func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
+// SubmitPINOrPassword submits the entered PIN.
+func SubmitPINOrPassword(ctx context.Context, tconn *chrome.TestConn) error {
 	return uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(SubmitButton)(ctx)
 }
 
@@ -247,11 +269,11 @@ func UserPassword(ctx context.Context, tconn *chrome.TestConn, username string, 
 
 // Unlock unlocks the screen, assuming that PIN / Password has already been entered by the user.
 func Unlock(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := SubmitPIN(ctx, tconn); err != nil {
+	if err := SubmitPINOrPassword(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to click the Submit button")
 	}
 	if st, err := WaitState(ctx, tconn, func(st State) bool { return st.LoggedIn }, 3*uiTimeout); err != nil {
-		return errors.Wrapf(err, "failed waiting to log in: %v, last state: %+v", err, st)
+		return errors.Wrapf(err, "failed waiting to log in (last state: %+v)", st)
 	}
 	return nil
 }

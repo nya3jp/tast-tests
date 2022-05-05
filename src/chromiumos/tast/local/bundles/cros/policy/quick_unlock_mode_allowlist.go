@@ -299,18 +299,12 @@ func lockAndUnlockScreen(ctx context.Context, tconn *chrome.TestConn, kb *input.
 		return errors.Wrapf(err, "waiting for screen to be locked failed (last status %+v)", st)
 	}
 
-	hasPinPad := lockscreen.HasPinPad(ctx, tconn)
-
-	if hasPinPad != pinEnabled {
-		return errors.Errorf("unexpected PIN pad presence: got %v, want %v", hasPinPad, pinEnabled)
-	}
-
 	if pinEnabled {
-		if err := lockscreen.EnterPIN(ctx, tconn, PIN); err != nil {
+		if err := lockscreen.EnterPIN(ctx, tconn, kb, PIN); err != nil {
 			return errors.Wrap(err, "failed to enter in PIN")
 		}
 
-		if err := lockscreen.SubmitPIN(ctx, tconn); err != nil {
+		if err := lockscreen.SubmitPINOrPassword(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to submit PIN")
 		}
 	} else {
