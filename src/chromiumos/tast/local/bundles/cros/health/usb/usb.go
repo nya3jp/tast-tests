@@ -8,6 +8,7 @@ package usb
 import (
 	"bufio"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"regexp"
@@ -15,20 +16,23 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/google/uuid"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 )
 
 // Device represents a USB device.
 type Device struct {
-	VendorID    string
-	ProdID      string
-	VendorName  string
-	ProductName string
-	Class       string
-	SubClass    string
-	Protocol    string
-	Interfaces  []Interface
+	VendorID                 string
+	ProdID                   string
+	VendorName               string
+	ProductName              string
+	Class                    string
+	SubClass                 string
+	Protocol                 string
+	Interfaces               []Interface
+	FwupdFirmwareVersionInfo *FwupdFirmwareVersionInfo
 }
 
 // Interface represents a USB interface.
@@ -38,6 +42,26 @@ type Interface struct {
 	SubClass        string
 	Protocol        string
 	Driver          *string
+}
+
+// FwupdFirmwareVersionInfo represents a firmware version information obtained from fwupd.
+type FwupdFirmwareVersionInfo struct {
+	Version       string
+	VersionFormat string
+}
+
+// fwupdGetDevicesResponse is used for parsing the JSON response of the `fwupdmgr get-devices` command.
+type fwupdGetDevicesResponse struct {
+	Devices []fwupdDevice `json:"Devices"`
+}
+
+// fwupdDevice represents a device in fwupdGetDevicesResponse.
+type fwupdDevice struct {
+	GUID          []string `json:"Guid"`
+	Serial        *string  `json:"Serial"`
+	VendorID      *string  `json:"VendorId"`
+	Version       *string  `json:"Version"`
+	VersionFormat *string  `json:"VersionFormat"`
 }
 
 // For mocking.
@@ -133,6 +157,100 @@ func deviceNames(ctx context.Context, vendorID, prodID string) (string, string, 
 	return vendor, product, nil
 }
 
+// matchFwupdDevice returns whether the device matches vendorID:prodID:serial.
+// The matching of serial will be skipped if it is empty.
+func matchFwupdDevice(device fwupdDevice, vendorID, prodID, serial string) bool {
+	var matchVendor bool
+	// Example arget vendor id: USB:0x1FC9.
+	targetVendorID := fmt.Sprintf("USB:0x%s", strings.ToUpper(vendorID))
+	if device.VendorID != nil {
+		for _, vid := range strings.Split(*device.VendorID, "|") {
+			if vid == targetVendorID {
+				matchVendor = true
+			}
+		}
+	}
+
+	var matchProduct bool
+	// Example target instance id: USB\VID_1FC9&PID_5002.
+	targetInstanceID := fmt.Sprintf("USB\\VID_%s&PID_%s", strings.ToUpper(vendorID), strings.ToUpper(prodID))
+	// Example target GUID: a01d9cb7-dc1c-52dc-88ad-ba94f473681a.
+	targetGUID := uuid.NewSHA1(uuid.NameSpaceDNS, []byte(targetInstanceID)).String()
+	for _, guid := range device.GUID {
+		if guid == targetGUID {
+			matchProduct = true
+		}
+	}
+
+	matchSerial := serial == "" || (device.Serial != nil && serial == *device.Serial)
+
+	return matchVendor && matchProduct && matchSerial
+}
+
+// deviceFirmwareVersion returns the firmware version info of device with
+// vendorID:prodID:serial. Returns nil if no devices are matched or the matched
+// devices have more than one distinct versions. The matching of serial will be
+// skipped if it is empty. The version info is obtained from fwupd with its
+// command line tool.
+func deviceFirmwareVersion(ctx context.Context, vendorID, prodID, serial string) (*FwupdFirmwareVersionInfo, error) {
+	b, err := runCommand(ctx, "fwupdmgr", "get-devices", "--show-all", "--json")
+	if err != nil {
+		return nil, err
+	}
+	// Example output: (some fields are omitted)
+	// {
+	//  	"Devices": [
+	//  		{
+	//  			"Name" : "Type-C Video Adapter",
+	//  			"Guid" : [
+	//  				"8964759e-69bc-5f6c-a4fa-c89c455d0228",
+	//  				"a01d9cb7-dc1c-52dc-88ad-ba94f473681a"
+	//  			],
+	//  			"Serial" : "0000064ffcb5",
+	//  			"VendorId" : "USB:0x1FC9",
+	//  			"Version" : "6.45",
+	//  			"VersionFormat" : "bcd",
+	//  			...
+	//  		},
+	//  		...
+	//  	]
+	// }
+
+	var fwupdResponse fwupdGetDevicesResponse
+	err = json.Unmarshal(b, &fwupdResponse)
+	if err != nil {
+		return nil, err
+	}
+
+	var resultVersionInfo *FwupdFirmwareVersionInfo
+	for _, device := range fwupdResponse.Devices {
+		if matchFwupdDevice(device, vendorID, prodID, serial) {
+			version := ""
+			if device.Version != nil {
+				version = *device.Version
+			}
+			versionFormat := "unknown"
+			if device.VersionFormat != nil {
+				versionFormat = *device.VersionFormat
+			}
+			versionInfo := FwupdFirmwareVersionInfo{
+				Version:       version,
+				VersionFormat: versionFormat,
+			}
+			// Returns nil when matched versions are not unique.
+			if resultVersionInfo != nil && *resultVersionInfo != versionInfo {
+				return nil, err
+			}
+			resultVersionInfo = &versionInfo
+		}
+	}
+
+	if resultVersionInfo != nil && resultVersionInfo.Version != "" {
+		return resultVersionInfo, err
+	}
+	return nil, err
+}
+
 // ExpectedDevices returns expected USB devices, sorted by VendorID+ProdID.
 func ExpectedDevices(ctx context.Context) ([]Device, error) {
 	// Reference: https://www.kernel.org/doc/html/v4.12/driver-api/usb/usb.html#sys-kernel-debug-usb-devices-output-format
@@ -143,6 +261,8 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 	reP := regexp.MustCompile(`Vendor=([0-9a-f]{4}) ProdID=([0-9a-f]{4})`)
 	// E.g. I:*  If#= 0 Alt= 0 #EPs= 1 Cls=09(hub  ) Sub=00 Prot=00 Driver=hub
 	reI := regexp.MustCompile(`^I:[*] If#=([0-9 ]{2}) .* Cls=([0-9a-f]{2}).* Sub=([0-9a-f]{2}) Prot=([0-9a-f]{2}) Driver=([\S]*)`)
+	// E.g. S:  SerialNumber=0000064ffcb5
+	reSerial := regexp.MustCompile(`SerialNumber=(.*)`)
 
 	var res []Device
 	devs, err := usbDevices(ctx)
@@ -151,6 +271,7 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 	}
 	for _, dev := range devs {
 		var r Device
+		var serial string
 		for _, line := range dev {
 			switch line[0] {
 			case 'D':
@@ -189,12 +310,23 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 					ifc.Driver = nil
 				}
 				r.Interfaces = append(r.Interfaces, ifc)
+			case 'S':
+				m := reSerial.FindStringSubmatch(line)
+				// The matching can fail since either this device does not have
+				// a serial number or this line is a descriptor of other string,
+				// e.g. Manufacturer or Product.
+				if m != nil {
+					serial = m[1]
+				}
 			default:
 				// It is safe to ignore other cases.
 			}
 		}
 		var err error
 		if r.VendorName, r.ProductName, err = deviceNames(ctx, r.VendorID, r.ProdID); err != nil {
+			return nil, err
+		}
+		if r.FwupdFirmwareVersionInfo, err = deviceFirmwareVersion(ctx, r.VendorID, r.ProdID, serial); err != nil {
 			return nil, err
 		}
 		res = append(res, r)
@@ -231,6 +363,18 @@ func (d *Device) key() string {
 		}
 		s = strings.Join(fields, splitter)
 	}
+	version := "null"
+	versionFormat := "null"
+	if d.FwupdFirmwareVersionInfo != nil {
+		version = d.FwupdFirmwareVersionInfo.Version
+		versionFormat = d.FwupdFirmwareVersionInfo.VersionFormat
+	}
+	fields = []string{
+		s,
+		version,
+		versionFormat,
+	}
+	s = strings.Join(fields, splitter)
 	return s
 }
 
