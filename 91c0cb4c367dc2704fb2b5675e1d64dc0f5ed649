@@ -33,6 +33,24 @@
       "message": "I believe `Unknown` is discouraged. is `LacrosVariantUnneeded` applicable?",
       "revId": "91c0cb4c367dc2704fb2b5675e1d64dc0f5ed649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f22810_65243dff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-05T04:54:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b769ae2e_95f81612",
+      "revId": "91c0cb4c367dc2704fb2b5675e1d64dc0f5ed649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
