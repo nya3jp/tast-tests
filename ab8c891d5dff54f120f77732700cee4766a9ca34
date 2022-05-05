@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "492688eb_9fd5a832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/learn_more_wrong_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-05-05T10:22:14Z",
+      "side": 1,
+      "message": "Should we just put these checks into \nsrc/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/login/auth_error.go ?\n\nMaybe we could extend login.AuthError with a param https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\n\nOf course if the tests share a lot?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "ab8c891d5dff54f120f77732700cee4766a9ca34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
