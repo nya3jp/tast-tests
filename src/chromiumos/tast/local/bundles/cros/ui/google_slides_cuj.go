@@ -86,18 +86,15 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Unrecognized browser type: ", bt)
 	}
 
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn("Event.Latency.EndToEnd.KeyPress", "microseconds",
-			perf.SmallerIsBetter, []int64{80000, 400000}, bTconn),
-		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
-			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn),
-		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
-			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn)}
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
 	defer recorder.Close(closeCtx)
+
+	if err := recorder.AddCollectedMetrics(bTconn, cujrecorder.MetricConfigs()...); err != nil {
+		s.Fatal("Failed to add metrics to recorder: ", err)
+	}
 
 	// Create a virtual keyboard.
 	kw, err := input.Keyboard(ctx)
