@@ -61,6 +61,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/loginapi"
 	_ "chromiumos/tast/local/bundles/cros/loginminutemaid"
 	_ "chromiumos/tast/local/bundles/cros/logs"
+	_ "chromiumos/tast/local/bundles/cros/lurs"
 	_ "chromiumos/tast/local/bundles/cros/meta"
 	_ "chromiumos/tast/local/bundles/cros/mgs"
 	_ "chromiumos/tast/local/bundles/cros/mlservice"
