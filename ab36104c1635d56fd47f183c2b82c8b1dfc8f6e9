@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab39e26_4f24c22a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:16:27Z",
+      "side": 1,
+      "message": "getExpectedVirtualization",
+      "range": {
+        "startLine": 200,
+        "startChar": 5,
+        "endLine": 200,
+        "endChar": 22
+      },
+      "revId": "ab36104c1635d56fd47f183c2b82c8b1dfc8f6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
