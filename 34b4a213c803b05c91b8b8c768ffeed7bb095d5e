@@ -22,6 +22,30 @@
       },
       "revId": "34b4a213c803b05c91b8b8c768ffeed7bb095d5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6727e5d_d1920742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-05T10:45:36Z",
+      "side": 1,
+      "message": "That make senses. I split the install and activate and moved install to the top of function, as putting installAndActivate before uninstalling other IMEs resulted in some display issues, which was the reason why I put it to the bottom.",
+      "parentUuid": "27150bcc_66043a5f",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 2
+      },
+      "revId": "34b4a213c803b05c91b8b8c768ffeed7bb095d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
