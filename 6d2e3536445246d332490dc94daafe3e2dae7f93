@@ -16,6 +16,23 @@
       "message": "amusbach@ PTAL",
       "revId": "6d2e3536445246d332490dc94daafe3e2dae7f93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc014b26_72ed3cb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-05T00:52:38Z",
+      "side": 1,
+      "message": "yamaguchi@ is OOO (JP holidays), so back to tast-owners@",
+      "revId": "6d2e3536445246d332490dc94daafe3e2dae7f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
