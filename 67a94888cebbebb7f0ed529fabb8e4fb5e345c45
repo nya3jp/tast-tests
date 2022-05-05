@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2342d188_e86486c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_backup_restore_service_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-05T13:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d8bc544_52e3be1d",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47b5c26f_21046342",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-04T13:05:45Z",
       "side": 1,
       "message": "Same",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a1bc06b_5489b145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-05T13:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b5c26f_21046342",
       "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "Maybe, good consistent examples do help. Thanks for fixing this!",
       "parentUuid": "fdbe49a8_67d8fc53",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7450b6_16e19e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-05T13:26:34Z",
+      "side": 1,
+      "message": "Just to make sure I understand you and cleanupCtx correctly:\n\n- Assuming that a test already uses a cleanupCtx, e.g., because it takes a screenshot. It is my understanding that in this case, it wouldn\u0027t hurt to also use cleanupCtx with `cr.Close` and `fdms.Close`. Is this correct? Or should I still change these to use just `ctx`, regardless of whether a cleanupCtx is already available and used for other cleanup?\n- However, we want to avoid introducing a cleanupCtx unnecessarily, because it subtracts 10 seconds from the rest of the test execution. Thus, in files where we only use a cleanupCtx for `cr.Close` or `fdms.Close`, it would be better to not use cleanupCtx at all. Did I get that right?\n\nI was also wondering whether you have an opinion on my changes that unify deferred lambdas. These are the possible styles, which one do you prefer?\n\n```\ndefer func() {\n  // use cleanupCtx from the outer scope here\n}()\n```\n\nor:\n\n```\ndefer func(cleanupCtx context.Context) {\n // use cleanupCtx here\n}(cleanupCtx)\n```\n\nor: \n\n```\ndefer func(ctx context.Context) {\n // use ctx here\n}(cleanupCtx)\n```",
+      "parentUuid": "a1397474_80bd9314",
       "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
