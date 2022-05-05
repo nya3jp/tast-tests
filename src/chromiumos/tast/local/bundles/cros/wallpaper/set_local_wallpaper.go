@@ -38,7 +38,7 @@ func init() {
 		Data:         []string{constants.LocalWallpaperFilename},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "personalizationDefault",
 	})
 }
 
