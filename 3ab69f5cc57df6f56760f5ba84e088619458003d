@@ -355,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a6bc28a_91941d37",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-05T13:22:46Z",
+      "side": 1,
+      "message": "I still don\u0027t see how to do use all methods. For example, there is no use of FeatureConfig.\n\nI see that you need FeatureConfig in another Tast CL, but maybe there might be another alternative approach and a bit unclear the purpose of that method.\n\nHere is the code:\n```\nerr :\u003d features.GetFeatureConfig(modelConf, t, d.config, nil)\nif err !\u003d nil {\n\ts.Errorf(\"Failed to get feature config for %s: %s\", t, err)\n}\ntesting.ContextLogf(ctx, \"%s config: %s\", t, d.config)\n\nfeatures.SetOverrideFeatureConfig(d.config, d.overrideFilePath)\n```\nit looks like you just read config and write it to another file. Maybe just copy file instead?\n\n\nI\u0027d really like to see only functions/methods in this CL that you use in crrev.com/c/3627271.\n\nIf you add some function to the library and want to use in tast-tests repo, function and it\u0027s clients should be in 1 CL.",
+      "parentUuid": "5a611d96_5d89cf00",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba8b5d3f_289af4c1",
         "filename": "src/chromiumos/tast/local/camera/features/feature_control_test.go",
         "patchSetId": 1
