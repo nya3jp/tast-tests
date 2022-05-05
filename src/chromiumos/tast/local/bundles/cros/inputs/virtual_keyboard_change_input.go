@@ -69,7 +69,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	inputMethod := ime.Japanese
+	inputMethod := ime.ChinesePinyin
 	typingTestData, ok := data.TypingMessageHello.GetInputData(inputMethod)
 	if !ok {
 		s.Fatalf("Test Data for input method %v does not exist", inputMethod)
