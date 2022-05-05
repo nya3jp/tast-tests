@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7296b490_5dcef757",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T06:38:48Z",
+      "side": 1,
+      "message": "I followed the typing in the original ReadMsr signature (written by Intel). \n\nBut I think that since golang has seek accepting an int64, I should simply use msrReg type of int64 for clarity.",
+      "parentUuid": "52921510_8eb73e29",
+      "range": {
+        "startLine": 138,
+        "startChar": 20,
+        "endLine": 138,
+        "endChar": 26
+      },
+      "revId": "fd381add4d2745a1bb9bf56fc2e0902d0c4435b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84920544_940ecb50",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bc7941_6876e9be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T06:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84920544_940ecb50",
+      "range": {
+        "startLine": 173,
+        "startChar": 13,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "fd381add4d2745a1bb9bf56fc2e0902d0c4435b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17954d57_1e0ddcfb",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-04T10:11:28Z",
       "side": 1,
       "message": "This won\u0027t catch the error if `flags` contains a flag which is not in `physicalCPU.Flags`",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "fd381add4d2745a1bb9bf56fc2e0902d0c4435b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db042038_07f4c910",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T06:38:48Z",
+      "side": 1,
+      "message": "True. I decided to use the map as a counter, and see if all flags are counted twice (once by golang\u0027s GetFlag(), once by telem.cc\u0027s reported flag).\n\nSince the tast assumes one physical CPU, this shouldn\u0027t create any problem.",
+      "parentUuid": "17954d57_1e0ddcfb",
       "range": {
         "startLine": 209,
         "startChar": 1,
