@@ -69,8 +69,11 @@ func init() {
 				}
 				// The policyChromeFixture specifies FakeLogin, but the GAIALogin we specify
 				// here will overwrite it, since these options are applied after policyChromeFixture's options.
-				return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.GAIALogin(gaiaCreds))).Opts()
+				return lacrosfixt.NewConfig(
+					lacrosfixt.ChromeOptions(chrome.GAIALogin(gaiaCreds)),
+					lacrosfixt.EnableChromeFRE()).Opts()
 			},
+			enableLacrosFRE: true,
 		},
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
