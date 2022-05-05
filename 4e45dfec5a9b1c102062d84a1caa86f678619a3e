@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d849f064_e8a0a3de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-05T00:08:33Z",
+      "side": 1,
+      "message": "Yeah CQ should test them, just better to ensure you validate locally too (I\u0027ve seen patches get through due to some scheduling issues and land and stuff up CQ)\n\nTo run all crostini critical tests, use: \n```\ntast run DUT \u0027(\"group:mainline\" \u0026\u0026 !informational \u0026\u0026 \"name:crostini.*\")\u0027\n```",
+      "parentUuid": "1bf344e8_5151df15",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "4e45dfec5a9b1c102062d84a1caa86f678619a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "80570555_b32dbc6f",
