@@ -334,16 +334,17 @@ func appendJSONFiles(videoFiles []string) []string {
 	return tf
 }
 
-// chromeStackDecodingTestParam is used to describe the options used to run each test.
-type chromeStackDecodingTestParam struct {
+// chromeStackDecoderVerificationTestParam is used to describe the options used
+// to run each test.
+type chromeStackDecoderVerificationTestParam struct {
 	videoFiles    []string               // The paths of video files to be tested.
 	validatorType decoding.ValidatorType // The frame validation type of video_decode_accelerator_tests.
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChromeStackDecoding,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		Func:         ChromeStackDecoderVerification,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies video decoding using Chrome's stack (via the video_decode_accelerator_tests binary) and either MD5 or SSIM criteria",
 		Contacts: []string{
 			"mcasas@chromium.org",
@@ -356,7 +357,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			ExtraData:         appendJSONFiles(av1CommonFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    av1CommonFiles,
 				validatorType: decoding.MD5,
 			},
@@ -368,7 +369,7 @@ func init() {
 			// producing a visually correct output (AV1 spec 7.2). Thus we validate
 			// the decoding of film-grain streams using SSIM.
 			ExtraData: appendJSONFiles(av1FilmGrainFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    av1FilmGrainFiles,
 				validatorType: decoding.SSIM,
 			},
@@ -377,7 +378,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
 			ExtraData:         appendJSONFiles(av110BitCommonFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    av110BitCommonFiles,
 				validatorType: decoding.MD5,
 			},
@@ -390,7 +391,7 @@ func init() {
 			// don't validate the decoding of film-grain streams using MD5. Instead,
 			// validate them using SSIM (see the av1_10bit_ssim test).
 			ExtraData: appendJSONFiles(av110BitFilmGrainFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    av110BitFilmGrainFiles,
 				validatorType: decoding.SSIM,
 			},
@@ -399,7 +400,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264FilesFromBugs),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    h264FilesFromBugs,
 				validatorType: decoding.MD5,
 			},
@@ -408,7 +409,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264Files["baseline"]),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    h264Files["baseline"],
 				validatorType: decoding.MD5,
 			},
@@ -417,7 +418,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264Files["main"]),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    h264Files["main"],
 				validatorType: decoding.MD5,
 			},
@@ -427,7 +428,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264Files["first_mb_in_slice"]),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    h264Files["first_mb_in_slice"],
 				validatorType: decoding.MD5,
 			},
@@ -436,7 +437,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8ComprehensiveFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp8ComprehensiveFiles,
 				validatorType: decoding.MD5,
 			},
@@ -445,7 +446,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8InterFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp8InterFiles,
 				validatorType: decoding.MD5,
 			},
@@ -454,7 +455,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8InterMultiCoeffFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp8InterMultiCoeffFiles,
 				validatorType: decoding.MD5,
 			},
@@ -463,7 +464,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8InterSegmentFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp8InterSegmentFiles,
 				validatorType: decoding.MD5,
 			},
@@ -472,7 +473,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8IntraFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp8IntraFiles,
 				validatorType: decoding.MD5,
 			},
@@ -481,7 +482,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8IntraMultiCoeffSegmentFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp8IntraMultiCoeffSegmentFiles,
 				validatorType: decoding.MD5,
 			},
@@ -490,7 +491,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8IntraSegmentFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp8IntraSegmentFiles,
 				validatorType: decoding.MD5,
 			},
@@ -499,7 +500,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp9FilesFromBugs),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp9FilesFromBugs,
 				validatorType: decoding.MD5,
 			},
@@ -508,7 +509,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1Buf),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp90Group1Buf,
 				validatorType: decoding.MD5,
 			},
@@ -518,7 +519,7 @@ func init() {
 			//ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1FrmResize),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp90Group1FrmResize,
 				validatorType: decoding.MD5,
 			},
@@ -527,7 +528,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1GfDist),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp90Group1GfDist,
 				validatorType: decoding.MD5,
 			},
@@ -536,7 +537,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1OddSize),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp90Group1OddSize,
 				validatorType: decoding.MD5,
 			},
@@ -545,7 +546,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1Sub8x8),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp90Group1Sub8x8,
 				validatorType: decoding.MD5,
 			},
@@ -555,7 +556,7 @@ func init() {
 			//ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1Sub8x8Sf),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp90Group1Sub8x8Sf,
 				validatorType: decoding.MD5,
 			},
@@ -564,7 +565,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp9SVCFiles),
-			Val: chromeStackDecodingTestParam{
+			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    vp9SVCFiles,
 				validatorType: decoding.MD5,
 			},
@@ -572,9 +573,9 @@ func init() {
 	})
 }
 
-func ChromeStackDecoding(ctx context.Context, s *testing.State) {
+func ChromeStackDecoderVerification(ctx context.Context, s *testing.State) {
 	var tv []string
-	param := s.Param().(chromeStackDecodingTestParam)
+	param := s.Param().(chromeStackDecoderVerificationTestParam)
 	for _, file := range param.videoFiles {
 		tv = append(tv, s.DataPath(file))
 	}
