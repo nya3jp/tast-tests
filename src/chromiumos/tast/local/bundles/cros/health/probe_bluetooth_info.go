@@ -7,10 +7,12 @@ package health
 import (
 	"context"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
+	"chromiumos/tast/local/set"
 	"chromiumos/tast/testing"
 )
 
@@ -63,7 +65,7 @@ func init() {
 	})
 }
 
-func validateBluetoothAdapterData(ctx context.Context, info *bluetoothInfo) error {
+func validateBluetoothAdapterData(ctx context.Context, s *testing.State, info *bluetoothInfo) error {
 	// Get Bluetooth adapter values to compare to the output of cros_healthd.
 	adapters, err := bluetooth.Adapters(ctx)
 	if err != nil {
@@ -118,27 +120,56 @@ func validateBluetoothAdapterData(ctx context.Context, info *bluetoothInfo) erro
 
 	if uuids, err := adapters[0].UUIDs(ctx); err != nil {
 		return err
-	} else if len(info.Adapters[0].UUIDs) != len(uuids) {
+	} else if len(set.DiffStringSlice(info.Adapters[0].UUIDs, uuids)) != 0 {
 		return errors.Errorf("invalid uuids value: got %v; want %v", info.Adapters[0].UUIDs, uuids)
-	} else {
-		for _, uuid := range uuids {
-			found := false
-			for _, cand := range info.Adapters[0].UUIDs {
-				if uuid == cand {
-					found = true
-					break
-				}
-			}
-			if !found {
-				return errors.Errorf("invalid uuids value: got %v; want %v", info.Adapters[0].UUIDs, uuids)
-			}
-		}
 	}
 
 	if modalias, err := adapters[0].Modalias(ctx); err != nil {
 		return err
 	} else if info.Adapters[0].Modalias != modalias {
 		return errors.Errorf("invalid modalias value: got %v; want %v", info.Adapters[0].Modalias, modalias)
+	}
+
+	if err := validateAdminPolicy(ctx, info, adapters[0]); err != nil {
+		return err
+	}
+
+	if err := validateAdvertising(ctx, info, adapters[0]); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func validateAdminPolicy(ctx context.Context, info *bluetoothInfo, adapter *bluetooth.Adapter) error {
+	// Clear allowed services.
+	if b, err := testexec.CommandContext(ctx, "bluetoothctl", "admin.allow", "clear").Output(testexec.DumpLogOnError); err != nil {
+		return errors.Errorf("clear allowed service failed: %v", b)
+	}
+	// Set the allowed services for validation.
+	if b, err := testexec.CommandContext(ctx, "bluetoothctl", "admin.allow", "110d", "110c", "110b").Output(testexec.DumpLogOnError); err != nil {
+		return errors.Errorf("set allowed service failed: %v", b)
+	}
+
+	if serviceAllowList, err := adapter.ServiceAllowList(ctx); err != nil {
+		return err
+	} else if len(serviceAllowList) != 3 {
+		return errors.Errorf("unexpected allowed services count: got %d; want 3", len(serviceAllowList))
+	} else if len(set.DiffStringSlice(info.Adapters[0].ServiceAllowList, serviceAllowList)) != 0 {
+		return errors.Errorf("invalid serviceAllowList value: got %v; want %v", info.Adapters[0].ServiceAllowList, serviceAllowList)
+	}
+
+	return nil
+}
+
+func validateAdvertising(ctx context.Context, info *bluetoothInfo, adapter *bluetooth.Adapter) error {
+	if supportedCapabilities, err := adapter.SupportedCapabilities(ctx); err != nil {
+		return err
+	} else if info.Adapters[0].SupportedCapabilities.MaxAdvLen != supportedCapabilities.MaxAdvLen ||
+		info.Adapters[0].SupportedCapabilities.MaxScnRspLen != supportedCapabilities.MaxScnRspLen ||
+		info.Adapters[0].SupportedCapabilities.MaxTxPower != supportedCapabilities.MaxTxPower ||
+		info.Adapters[0].SupportedCapabilities.MinTxPower != supportedCapabilities.MinTxPower {
+		return errors.Errorf("invalid supportedCapabilities value: got %v; want %v", info.Adapters[0].SupportedCapabilities, supportedCapabilities)
 	}
 
 	return nil
@@ -151,7 +182,7 @@ func ProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
 	}
 
-	if err := validateBluetoothAdapterData(ctx, &info); err != nil {
+	if err := validateBluetoothAdapterData(ctx, s, &info); err != nil {
 		s.Fatalf("Failed to validate bluetooth adapter data, err [%v]", err)
 	}
 }
