@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db2fdc22_8e40b77a",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-05-05T21:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d82d07f2_165eaf3f",
+      "range": {
+        "startLine": 174,
+        "startChar": 54,
+        "endLine": 174,
+        "endChar": 75
+      },
+      "revId": "6b54036006425515d8dde4d39d9c67c18626a271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c2f76e9_6b918f98",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-05-05T01:55:51Z",
       "side": 1,
       "message": "nit: WaitForGoogleNewsWebActivation or WaitForGoogleNewsWebToBecomeActive",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "6b54036006425515d8dde4d39d9c67c18626a271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a214c300_e0164554",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-05-05T21:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2f76e9_6b918f98",
       "range": {
         "startLine": 206,
         "startChar": 5,
