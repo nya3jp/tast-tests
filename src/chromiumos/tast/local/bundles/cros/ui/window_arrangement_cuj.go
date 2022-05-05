@@ -167,41 +167,27 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	// also the percent of dropped frames of video; In tablet mode, this test will measure
 	// the combinations of input latency of tab dragging and of input latency of split view
 	// resizing and the percent of dropped frames of video.
-	configs := []cujrecorder.MetricConfig{
-		// Ash metrics config, always collected from ash-chrome.
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter, []int64{50, 80}),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter, []int64{0, 3}),
-	}
+	configs := cujrecorder.MetricConfigs()
+
 	if !tabletMode {
-		configs = append(configs,
-			cujrecorder.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.ClamshellMode"),
-			cujrecorder.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
-			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
-			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.WithOverview"),
-			cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
-				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-				"percent", perf.SmallerIsBetter, []int64{50, 80}, conns.BrowserTestConn),
-		)
+		configs = append(configs, cujrecorder.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"))
 	} else {
 		configs = append(configs,
 			cujrecorder.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.TabletMode"),
 			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow"),
 			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview"),
-			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
-			cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
-				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-				"percent", perf.SmallerIsBetter, []int64{50, 80}, conns.BrowserTestConn),
-		)
+			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"))
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, conns.Chrome, conns.ARC, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, conns.Chrome, conns.ARC, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+
+	if err := recorder.AddCollectedMetrics(conns.BrowserTestConn, configs...); err != nil {
+		s.Fatal("Failed to add metrics to recorder: ", err)
+	}
+
 	if testParam.Tracing {
 		recorder.EnableTracing(s.OutDir())
 	}

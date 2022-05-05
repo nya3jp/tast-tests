@@ -156,26 +156,15 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	configs := []cujrecorder.MetricConfig{
-		// Ash metrics config, always collected from ash-chrome.
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter, []int64{50, 80}),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter, []int64{0, 3}),
-
-		// Browser metrics config, collected from ash-chrome or lacros-chrome
-		// depending on the browser being used.
-		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
-			"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter,
-			[]int64{800, 1600}, bTconn),
-	}
-
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+
+	if err := recorder.AddCollectedMetrics(bTconn, cujrecorder.MetricConfigs()...); err != nil {
+		s.Fatal("Failed to add metrics to recorder: ", err)
+	}
+
 	if param.Tracing {
 		recorder.EnableTracing(s.OutDir())
 	}

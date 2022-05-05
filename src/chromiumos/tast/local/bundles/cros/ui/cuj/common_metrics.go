@@ -114,6 +114,8 @@ func MetricConfigs(tconns []*chrome.TestConn) []cujrecorder.MetricConfig {
 	// Media Quality.
 	result = append(result, NewCustomMetricConfigWithTestConns("Cras.FetchDelayMilliSeconds", "ms", perf.SmallerIsBetter, []int64{0, 20}, tconns)...)
 	result = append(result, NewCustomMetricConfigWithTestConns("Cras.UnderrunsPerDevice", "count", perf.SmallerIsBetter, []int64{0, 10}, tconns)...)
+	result = append(result, NewCustomMetricConfigWithTestConns("Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter, []int64{1, 20}, tconns)...)
+	result = append(result, NewCustomMetricConfigWithTestConns("Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter, []int64{1, 20}, tconns)...)
 
 	// Others to monitor.
 	result = append(result, NewCustomMetricConfigWithTestConns("MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter, []int64{800, 1600}, tconns)...)
