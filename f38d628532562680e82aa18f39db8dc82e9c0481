@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e9a953a_2a2d1734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T18:10:39Z",
+      "side": 1,
+      "message": "What is this for?",
+      "range": {
+        "startLine": 158,
+        "startChar": 59,
+        "endLine": 158,
+        "endChar": 68
+      },
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5089037f_77b89d9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T18:10:39Z",
+      "side": 1,
+      "message": "This can be `bytes.NewReader`",
+      "range": {
+        "startLine": 171,
+        "startChar": 29,
+        "endLine": 171,
+        "endChar": 69
+      },
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6458aa_a4689a1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T18:10:39Z",
+      "side": 1,
+      "message": "Put this return into the `if` above, and remove the `else` from the if blocks.\u0027\n\n```\nif ... {\n  return ...;\n}\nif ... {\n  return ...;\n}\nreturn nil, nil\n```",
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d3fb77c_a610bf30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T18:10:39Z",
+      "side": 1,
+      "message": "dito.",
+      "range": {
+        "startLine": 404,
+        "startChar": 29,
+        "endLine": 404,
+        "endChar": 69
+      },
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0dc1fb_3e5facfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T18:10:39Z",
+      "side": 1,
+      "message": "How about using the validate pattern here? I think we can just check if there is any `physical id` !\u003d `0`.\n\nAlso, this should be in another CL. So it is easy to be reverted if it break the current test.",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 2
+      },
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
