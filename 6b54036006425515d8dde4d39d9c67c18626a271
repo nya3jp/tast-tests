@@ -16,6 +16,69 @@
       "message": "PTAL. Thank you!",
       "revId": "6b54036006425515d8dde4d39d9c67c18626a271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3801004_783f3f9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-05T01:55:51Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "6b54036006425515d8dde4d39d9c67c18626a271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82d07f2_165eaf3f",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-05T01:55:51Z",
+      "side": 1,
+      "message": "nit: ...and waits for it to become available.",
+      "range": {
+        "startLine": 174,
+        "startChar": 54,
+        "endLine": 174,
+        "endChar": 75
+      },
+      "revId": "6b54036006425515d8dde4d39d9c67c18626a271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2f76e9_6b918f98",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-05T01:55:51Z",
+      "side": 1,
+      "message": "nit: WaitForGoogleNewsWebActivation or WaitForGoogleNewsWebToBecomeActive",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 38
+      },
+      "revId": "6b54036006425515d8dde4d39d9c67c18626a271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
