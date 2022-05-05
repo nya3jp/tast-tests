@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ebcdff55_a41f1529",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-05-05T08:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1ff74d_829158d6",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "6a94cdbb5ff54160fc011cd24344c2d7d3b25ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "de53ab9a_77a9f2cb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "287191d2_b189af46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/learn_more_wrong_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-05-05T08:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12fb844f_3cbd81ac",
+      "revId": "6a94cdbb5ff54160fc011cd24344c2d7d3b25ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1000752e_3d489b5c",
@@ -72,6 +114,30 @@
       "writtenOn": "2022-02-03T08:46:29Z",
       "side": 1,
       "message": ".WithTimeout(10 * time.Second)\n\nand remove the call below",
+      "range": {
+        "startLine": 76,
+        "startChar": 23,
+        "endLine": 76,
+        "endChar": 24
+      },
+      "revId": "6a94cdbb5ff54160fc011cd24344c2d7d3b25ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c4c3ef3_7964f503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/learn_more_wrong_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-05-05T08:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1000752e_3d489b5c",
       "range": {
         "startLine": 76,
         "startChar": 23,
@@ -105,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f398062_c3a25adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/learn_more_wrong_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-05-05T08:48:57Z",
+      "side": 1,
+      "message": "Discarded as discussed offline.",
+      "parentUuid": "e235eb49_e1502be9",
+      "range": {
+        "startLine": 90,
+        "startChar": 69,
+        "endLine": 90,
+        "endChar": 79
+      },
+      "revId": "6a94cdbb5ff54160fc011cd24344c2d7d3b25ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6462473b_27872817",
@@ -118,6 +208,24 @@
       "writtenOn": "2022-02-03T08:46:29Z",
       "side": 1,
       "message": "let\u0027s check that the window is gone here.",
+      "revId": "6a94cdbb5ff54160fc011cd24344c2d7d3b25ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd268d1_00d585ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/learn_more_wrong_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-05-05T08:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6462473b_27872817",
       "revId": "6a94cdbb5ff54160fc011cd24344c2d7d3b25ebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
