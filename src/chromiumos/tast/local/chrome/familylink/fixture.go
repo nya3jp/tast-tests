@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -32,6 +33,20 @@ func NewFamilyLinkFixture(parentUser, parentPassword, childUser, childPassword s
 		childUser:      childUser,
 		childPassword:  childPassword,
 		isOwner:        isOwner,
+		isLacros:       false,
+	}
+}
+
+// NewFamilyLinkFixtureLacros creates a new implementation of the Family Link fixture for Lacros.
+func NewFamilyLinkFixtureLacros(parentUser, parentPassword, childUser, childPassword string, isOwner bool, opts ...chrome.Option) testing.FixtureImpl {
+	return &familyLinkFixture{
+		opts:           opts,
+		parentUser:     parentUser,
+		parentPassword: parentPassword,
+		childUser:      childUser,
+		childPassword:  childPassword,
+		isOwner:        isOwner,
+		isLacros:       true,
 	}
 }
 
@@ -41,6 +56,24 @@ func init() {
 		Desc:     "Supervised Family Link user login with Unicorn account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Impl:     NewFamilyLinkFixture("unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword", true),
+		Vars: []string{
+			"unicorn.parentUser",
+			"unicorn.parentPassword",
+			"unicorn.childUser",
+			"unicorn.childPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkUnicornLoginWithLacros",
+		Desc:     "Supervised Family Link user login with Unicorn account",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixtureLacros("unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword", true),
 		Vars: []string{
 			"unicorn.parentUser",
 			"unicorn.parentPassword",
@@ -78,6 +111,24 @@ func init() {
 		Desc:     "Supervised Family Link user login with Geller account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Impl:     NewFamilyLinkFixture("geller.parentUser", "geller.parentPassword", "geller.childUser", "geller.childPassword", true),
+		Vars: []string{
+			"geller.parentUser",
+			"geller.parentPassword",
+			"geller.childUser",
+			"geller.childPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkGellerLoginWithLacros",
+		Desc:     "Supervised Family Link user login with Geller account",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixtureLacros("geller.parentUser", "geller.parentPassword", "geller.childUser", "geller.childPassword", true, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
 		Vars: []string{
 			"geller.parentUser",
 			"geller.parentPassword",
@@ -192,6 +243,7 @@ type familyLinkFixture struct {
 	childUser      string
 	childPassword  string
 	isOwner        bool
+	isLacros       bool
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -247,9 +299,21 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		f.opts = append(f.opts, chrome.DisablePolicyKeyVerification())
 	}
 
+	opts := f.opts
+	if f.isLacros {
+		var err error
+		opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
+		if err != nil {
+			s.Fatal("Failed to get lacros options: ", err)
+		}
+		opts = append(opts, chrome.EnableFeatures("LacrosForSupervisedUsers"))
+		s.Log("Set up Lacros options")
+	}
+
 	if !f.isOwner {
 		func() {
 			// Log in and log out to create a user pod on the login screen.
+			// TODO how to ensure lacros working here
 			cr, err := chrome.New(ctx, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
 			if err != nil {
 				s.Fatal("Chrome login failed: ", err)
@@ -265,7 +329,7 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		f.opts = append(f.opts, chrome.KeepState())
 	}
 
-	cr, err := chrome.New(ctx, f.opts...)
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

@@ -271,7 +271,7 @@ func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, 
 
 	// Parse family link internals page.
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
-	rows := nodewith.Role(role.LayoutTableRow).Ancestor(nodewith.Role(role.WebView))
+	rows := nodewith.Role(role.LayoutTableRow)
 	if err := ui.WaitUntilExists(rows.First())(ctx); err != nil {
 		return errors.Wrap(err, "could not load family link user internals table")
 	}
