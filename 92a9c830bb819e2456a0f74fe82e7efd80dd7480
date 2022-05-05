@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ab1590_8d564acd",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-05T20:27:22Z",
+      "side": 1,
+      "message": "nit: reference - go/go-style/decisions#indent-error-flow (For readability can you please remove else if). Thanks",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "92a9c830bb819e2456a0f74fe82e7efd80dd7480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
