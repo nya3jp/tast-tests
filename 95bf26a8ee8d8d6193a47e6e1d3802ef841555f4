@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffba55e4_7024586d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollbacknetworks/supported_networks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-05T13:03:19Z",
+      "side": 1,
+      "message": "Discussed offline; added a short comment in the configuration list in case something happens in the future.",
+      "parentUuid": "ef227858_4e4565e0",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "95bf26a8ee8d8d6193a47e6e1d3802ef841555f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7512bf44_8a1d5f50",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-05T08:35:47Z",
       "side": 1,
       "message": "nit: switch order of these to have the same as in the mojo file",
+      "range": {
+        "startLine": 281,
+        "startChar": 14,
+        "endLine": 284,
+        "endChar": 26
+      },
+      "revId": "95bf26a8ee8d8d6193a47e6e1d3802ef841555f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41366b7_d483ec66",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-05T13:03:19Z",
+      "side": 1,
+      "message": "Good point, done!",
+      "parentUuid": "7512bf44_8a1d5f50",
       "range": {
         "startLine": 281,
         "startChar": 14,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52eb3677_08710f8a",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-05T13:03:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ccb577b_7b65c118",
+      "range": {
+        "startLine": 293,
+        "startChar": 12,
+        "endLine": 294,
+        "endChar": 27
+      },
+      "revId": "95bf26a8ee8d8d6193a47e6e1d3802ef841555f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80e12643_bbdf2f1e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-05T08:35:47Z",
       "side": 1,
       "message": "We\u0027re repeating this comment a lot now, maybe just explain the pointers once on top of the file? Most people skim any top comments before reading a file.",
+      "range": {
+        "startLine": 355,
+        "startChar": 22,
+        "endLine": 357,
+        "endChar": 0
+      },
+      "revId": "95bf26a8ee8d8d6193a47e6e1d3802ef841555f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "894bc6e1_ed4f77aa",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-05T13:03:19Z",
+      "side": 1,
+      "message": "I have moved the explanation to the top, it is true that it was being repeated too much.",
+      "parentUuid": "80e12643_bbdf2f1e",
       "range": {
         "startLine": 355,
         "startChar": 22,
@@ -139,6 +235,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e04f8df_71a8a4c4",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-05T13:03:19Z",
+      "side": 1,
+      "message": "The pointer should only be needed for the optional fields that are of the type struct. I have added a clarification in the comment as well.",
+      "parentUuid": "ec80e471_79f43cf6",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 22
+      },
+      "revId": "95bf26a8ee8d8d6193a47e6e1d3802ef841555f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3fc1042_d0b620ab",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-05T13:03:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730387ef_81a6170c",
+      "range": {
+        "startLine": 357,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 24
+      },
+      "revId": "95bf26a8ee8d8d6193a47e6e1d3802ef841555f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ace2a1b5_edba1abf",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-05-05T08:35:47Z",
       "side": 1,
       "message": "swap",
+      "range": {
+        "startLine": 367,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 35
+      },
+      "revId": "95bf26a8ee8d8d6193a47e6e1d3802ef841555f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c3bcdca_89750565",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-05T13:03:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace2a1b5_edba1abf",
       "range": {
         "startLine": 367,
         "startChar": 1,
