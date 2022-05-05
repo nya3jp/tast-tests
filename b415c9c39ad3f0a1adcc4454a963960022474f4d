@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c3c4e3_43795e53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-05T21:59:03Z",
+      "side": 1,
+      "message": "reserve time for cleanup here. Same for all other files.",
+      "revId": "b415c9c39ad3f0a1adcc4454a963960022474f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f41861_39f20fae",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-05T21:59:03Z",
+      "side": 1,
+      "message": "Just want to confirm how the mouse click reacts when the coords exceed the display resolution.\nI think we can test by adding a line such as `ui.MouseClickAtLocation(1, coords.Point{X: \u003csome big value\u003e, Y: \u003csome big value\u003e})` before to see if it ignores and moves on to the second random mouse click.",
+      "revId": "b415c9c39ad3f0a1adcc4454a963960022474f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
