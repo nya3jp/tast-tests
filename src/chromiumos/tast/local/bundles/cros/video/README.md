@@ -38,8 +38,8 @@ are:
 
   - [`video_decode_accelerator_tests`] and
 [`video_decode_accelerator_perf_tests`], wrapped by
-`video.DecodeAccel`/`video.ChromeStackDecoderLegacyPerf` and
-`video.DecodeAccelVD`/`video.ChromeStackDecoderPerf` respectively, see the [video
+`video.ChromeStackDecoderLegacy`/`video.ChromeStackDecoderLegacyPerf` and
+`video.ChromeStackDecoder`/`video.ChromeStackDecoderPerf` respectively, see the [video
 decoder integration tests](#Video-decoder-integration-tests) Section.
 
   - [`video_encode_accelerator_tests`], wrapped by
@@ -139,7 +139,7 @@ files can be left on the device by passing the `removeArtifacts` variable to tas
 
     tast run -var=videovars.removeArtifacts=false $HOST video.EncodeAccel.*
 
-## Video decoder integration tests (`video.DecodeAccel`)
+## Video decoder integration tests (`video.ChromeStackDecoder`)
 
 These tests validate video decoding at the **Chrome `//media`** level for
 several codecs and resolutions by running [`video_decode_accelerator_tests`].
@@ -148,11 +148,11 @@ addition there are tests using videos that change resolution during
 playback. Decoded frames are validated by comparing their checksums against
 expected values.
 
-The `DecodeAccelVD` tests utilize the direct VideoDecoder implementation (see
+The `ChromeStackDecoder` tests utilize the direct VideoDecoder implementation (see
 the [Direct Video Decoder](#direct-video-decoder) Section). To run the test use:
 
-    tast run $HOST video.DecodeAccel.*
-    tast run $HOST video.DecodeAccelVD.*
+    tast run $HOST video.ChromeStackDecoder.*
+    tast run $HOST video.ChromeStackDecoderLegacy.*
 
 ### Video decoder performance tests (`video.ChromeStackDecoderPerf`)
 
@@ -165,16 +165,17 @@ run these tests use:
     tast run $HOST video.ChromeStackDecoderPerf.*
     tast run $HOST video.ChromeStackDecoderLegacyPerf.*
 
-### Video decoder compliance tests (`video.DecodeCompliance`)
+### Video decoder compliance tests (`video.ChromeStackDecoderVerification`)
 
 These tests validate video decoding compliance by running
 [`video_decode_accelerator_tests`] with various video clips and
-`--gtest\_filter=VideoDecoderTest.FlushAtEndOfStream`. Unlike DecodeAccel and
-DecodeAccelVD tests, DecodeCompliance mostly targets specific codec features and
-is primarily concerned with the correctness of the produced frames. Currently,
-we only test AV1. To run the test use:
+`--gtest\_filter=VideoDecoderTest.FlushAtEndOfStream`. Unlike
+ChromeStackDecoderLegacy and ChromeStackDecoder tests,
+ChromeStackDecoderVerification mostly targets specific codec features and is
+primarily concerned with the correctness of the produced frames. To run the
+test use:
 
-    tast run $HOST video.DecodeCompliance.av1*
+    tast run $HOST video.ChromeStackDecoderVerification.*
 
 Please see [data/test_vectors/README.md] for details about the video clips used
 in this test.
