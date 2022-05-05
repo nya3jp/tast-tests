@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c347e8c_a4f83ee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-05T18:23:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "630d2988_cb9a924a",
+      "revId": "00def1bd90662c78b5e6b5763fcb8e67368857d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c48ec7f9_c3af7160",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "I found the bug was not due to late start of packet capture, it was because sometimes the 1024 beacon frames stop the DUT from sending probe requests, as shown in comment #4. Increasing beacon frame interval doesn\u0027t eliminate missing probe requests, so the only solution is run the test again.",
       "parentUuid": "c48ec7f9_c3af7160",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 43
+      },
+      "revId": "00def1bd90662c78b5e6b5763fcb8e67368857d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfffd8c7_c77a97aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-05T18:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96476573_84f65432",
       "range": {
         "startLine": 200,
         "startChar": 2,
