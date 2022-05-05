@@ -78,6 +78,8 @@ func MetricConfigs() []MetricConfig {
 		// Media Quality.
 		NewCustomMetricConfig("Cras.FetchDelayMilliSeconds", "ms", perf.SmallerIsBetter, []int64{0, 20}),
 		NewCustomMetricConfig("Cras.UnderrunsPerDevice", "count", perf.SmallerIsBetter, []int64{0, 10}),
+		NewCustomMetricConfig("Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter, []int64{1, 20}),
+		NewCustomMetricConfig("Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter, []int64{1, 20}),
 
 		// Others to monitor.
 		NewCustomMetricConfig("MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter, []int64{800, 1600}),
