@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397dd05e_50b96e91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-05T04:31:48Z",
+      "side": 1,
+      "message": "Spoke offline, all critical tests verified. Thanks Joel!",
+      "revId": "2b3f74b48c0e53fb0c024bdbd5e5014c034732bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
