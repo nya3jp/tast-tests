@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27150bcc_66043a5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-05T06:11:12Z",
+      "side": 1,
+      "message": "This should be made to the top of the function. Otherwise below scenario would fail if the default US-en was uninstalled during the test. e.g. Add Pinyin -\u003e Remove US English -\u003e Uninstall Pinyin",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 2
+      },
+      "revId": "34b4a213c803b05c91b8b8c768ffeed7bb095d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
