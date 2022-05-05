@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f59eaa_6c3bc8cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-05T17:05:34Z",
+      "side": 1,
+      "message": "Sorry, I am a bit confused. Is this test ONLY appliable to \"vell\"? If so, why don\u0027t we just use \n\n```\nHardwareDeps: hwdep.D(hwdep.Model([]string{\"vell\")),\n```\n\nIt will work with the \"vell\" DUT that are not in the labe.",
+      "parentUuid": "12623fef_733291be",
+      "revId": "a86bce7f63f08790541c7741978fa2b551406e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d9c5557_19ab4d5f",
