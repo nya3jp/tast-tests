@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -32,6 +33,20 @@ func NewFamilyLinkFixture(parentUser, parentPassword, childUser, childPassword s
 		childUser:      childUser,
 		childPassword:  childPassword,
 		isOwner:        isOwner,
+		isLacros:       false,
+	}
+}
+
+// NewFamilyLinkFixtureLacros creates a new implementation of the Family Link fixture for Lacros.
+func NewFamilyLinkFixtureLacros(parentUser, parentPassword, childUser, childPassword string, isOwner bool, opts ...chrome.Option) testing.FixtureImpl {
+	return &familyLinkFixture{
+		opts:           opts,
+		parentUser:     parentUser,
+		parentPassword: parentPassword,
+		childUser:      childUser,
+		childPassword:  childPassword,
+		isOwner:        isOwner,
+		isLacros:       true,
 	}
 }
 
@@ -78,6 +93,24 @@ func init() {
 		Desc:     "Supervised Family Link user login with Geller account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Impl:     NewFamilyLinkFixture("geller.parentUser", "geller.parentPassword", "geller.childUser", "geller.childPassword", true),
+		Vars: []string{
+			"geller.parentUser",
+			"geller.parentPassword",
+			"geller.childUser",
+			"geller.childPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkGellerLoginWithLacros",
+		Desc:     "Supervised Family Link user login with Geller account",
+		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixtureLacros("geller.parentUser", "geller.parentPassword", "geller.childUser", "geller.childPassword", true, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
 		Vars: []string{
 			"geller.parentUser",
 			"geller.parentPassword",
@@ -168,12 +201,14 @@ type familyLinkFixture struct {
 	cr             *chrome.Chrome
 	opts           []chrome.Option
 	fdms           *fakedms.FakeDMS
+	arc            *arc.ARC
 	policyUser     string
 	parentUser     string
 	parentPassword string
 	childUser      string
 	childPassword  string
 	isOwner        bool
+	isLacros       bool
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -189,6 +224,9 @@ type FixtData struct {
 
 	// PolicyUser is the user account used in the policy blob.
 	PolicyUser string
+
+	// TODO Comment
+	ARC *arc.ARC
 }
 
 func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -229,9 +267,20 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		f.opts = append(f.opts, chrome.DisablePolicyKeyVerification())
 	}
 
+	opts := f.opts
+	if f.isLacros {
+		var err error
+		opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
+		if err != nil {
+			s.Fatal("Failed to get lacros options: ", err)
+		}
+		s.Log("Set up Lacros options")
+	}
+
 	if !f.isOwner {
 		func() {
 			// Log in and log out to create a user pod on the login screen.
+			// TODO how to ensure lacros working here
 			cr, err := chrome.New(ctx, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
 			if err != nil {
 				s.Fatal("Chrome login failed: ", err)
@@ -247,7 +296,7 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		f.opts = append(f.opts, chrome.KeepState())
 	}
 
-	cr, err := chrome.New(ctx, f.opts...)
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -263,13 +312,21 @@ func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 		}
 	}
 
+	// Setup ARC.
+	var a *arc.ARC
+	if a, err = arc.New(ctx, s.OutDir()); err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+
 	f.cr = cr
 	f.fdms = fdms
+	f.arc = a
 	fixtData := &FixtData{
 		Chrome:     cr,
 		FakeDMS:    fdms,
 		TestConn:   tconn,
 		PolicyUser: f.policyUser,
+		ARC:        a,
 	}
 
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
@@ -288,6 +345,9 @@ func (f *familyLinkFixture) TearDown(ctx context.Context, s *testing.FixtState) 
 		s.Log("Failed to close Chrome connection: ", err)
 	}
 	f.cr = nil
+	if err := f.arc.Close(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to close ARC connection: ", err)
+	}
 }
 
 func (f *familyLinkFixture) Reset(ctx context.Context) error {
