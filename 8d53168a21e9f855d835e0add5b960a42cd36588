@@ -33,6 +33,23 @@
       "message": "Xiyuan, could you please take a look as well?",
       "revId": "8d53168a21e9f855d835e0add5b960a42cd36588",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1ca81a_31bd6d86",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-05T21:30:03Z",
+      "side": 1,
+      "message": "If the file exists, we should just write over it rather than append, right?",
+      "revId": "8d53168a21e9f855d835e0add5b960a42cd36588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
