@@ -80,6 +80,30 @@
       },
       "revId": "9599d11fac910e29e06d7903383a466dd0b4ecfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5e04e7_cbc1e781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_google_photos_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-05T15:46:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df3b41d6_8e89150e",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "9599d11fac910e29e06d7903383a466dd0b4ecfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
