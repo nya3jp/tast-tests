@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d22328cd_5de776b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-05T21:43:15Z",
+      "side": 1,
+      "message": "We already have intel rapl metrics collected as part of power metrics. What does `dump_intel_rapl_consumption` give in addition to our existing power metrics `rapl.go`/`rapl_power_metrics.go`?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/power/rapl.go\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/power/rapl_power_metrics.go\n",
+      "revId": "9f6ce54b8d2c75e309397ecb164120dd55be9be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
