@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e81d88_532cc83e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-05T06:41:18Z",
+      "side": 1,
+      "message": "Judy, thanks for the info showing that *-kernelnext are not run in the CQ. \n\nHowever, the test failed on altas board constantly so you have to fix the issue first. ",
+      "revId": "f589da5e6a843c561f7f2cf6dec008ee7719086f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
