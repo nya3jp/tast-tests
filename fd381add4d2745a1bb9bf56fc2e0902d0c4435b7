@@ -140,6 +140,30 @@
       },
       "revId": "fd381add4d2745a1bb9bf56fc2e0902d0c4435b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6694f3c2_ad1e66bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T07:58:39Z",
+      "side": 1,
+      "message": "Why not also create a map of the flags we got and use `\u003d\u003d` to compare them? Or compare them by sorting them?",
+      "parentUuid": "db042038_07f4c910",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "fd381add4d2745a1bb9bf56fc2e0902d0c4435b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
