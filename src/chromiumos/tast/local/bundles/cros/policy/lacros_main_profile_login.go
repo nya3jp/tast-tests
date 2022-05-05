@@ -56,14 +56,23 @@ func LacrosMainProfileLogin(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
+	welcomeButton := nodewith.Name("Let's go").Role(role.Button)
+	acceptSyncButton := nodewith.Name("Yes, I'm in").Role(role.Button)
+	if err := uiauto.Combine("accept sync",
+		ui.WaitUntilExists(welcomeButton),
+		ui.LeftClick(welcomeButton),
+		ui.WaitUntilExists(acceptSyncButton),
+		ui.LeftClick(acceptSyncButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to accept sync: ", err)
+	}
+
 	profileToolbarButton := nodewith.ClassName("AvatarToolbarButton").Role(role.Button).Focusable()
 	profileMenu := nodewith.NameStartingWith("Accounts and sync").Role(role.Menu)
 	loggedInUserEmail := nodewith.Name(cr.User()).Role(role.StaticText).Ancestor(profileMenu)
 	syncIsOnMessage := nodewith.Name("Sync is on").Role(role.StaticText).Ancestor(profileMenu)
-
-	if err := uiauto.Combine("open the toolbar and check that the user is logged in",
+	if err := uiauto.Combine("open the toolbar and check that the sync is on",
 		ui.WaitUntilExists(profileToolbarButton),
-		// Sync message may show an error in the beginning, but should change to 'sync is on'.
 		ui.WithTimeout(time.Minute).LeftClickUntil(profileToolbarButton,
 			uiauto.Combine("check that the user is logged in",
 				ui.Exists(loggedInUserEmail),
@@ -71,6 +80,6 @@ func LacrosMainProfileLogin(ctx context.Context, s *testing.State) {
 			),
 		),
 	)(ctx); err != nil {
-		s.Fatal("Failed to check that the user is logged in: ", err)
+		s.Fatal("Failed to check that the sync is on: ", err)
 	}
 }
