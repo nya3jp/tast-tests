@@ -7,18 +7,20 @@ package personalization
 
 import (
 	"fmt"
+	"math/rand"
 	"time"
 
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 )
 
 // OpenPersonalizationHub returns an action to open the personalization app.
 func OpenPersonalizationHub(ui *uiauto.Context) uiauto.Action {
 	setPersonalizationMenu := nodewith.Name("Personalize").Role(role.MenuItem)
 	return ui.RetryUntil(uiauto.Combine("open personalization hub",
-		ui.RightClick(nodewith.HasClass("WallpaperView")),
+		ui.MouseClickAtLocation(1, coords.Point{X: rand.Intn(200), Y: rand.Intn(200)}), // right click a random pixel
 		ui.WithInterval(300*time.Millisecond).LeftClickUntil(setPersonalizationMenu, ui.Gone(setPersonalizationMenu))),
 		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()))
 }
@@ -81,4 +83,11 @@ func NavigateHome(ui *uiauto.Context) uiauto.Action {
 		ui.WaitUntilExists(homeButton),
 		ui.LeftClick(homeButton),
 		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()))
+}
+
+// NavigateBreadcrumb returns an action to navigate to a desired page using breadcrumb.
+func NavigateBreadcrumb(breadcrumb string, ui *uiauto.Context) uiauto.Action {
+	breadcrumbButton := nodewith.Role(role.Button).Name(breadcrumb).HasClass("breadcrumb")
+	return uiauto.Combine(fmt.Sprintf("click breadcrumb button - %s", breadcrumb),
+		ui.LeftClick(breadcrumbButton))
 }
