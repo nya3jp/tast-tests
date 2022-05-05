@@ -7,6 +7,7 @@ package fixture
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -57,7 +58,7 @@ func init() {
 			"shengjun@chromium.org",
 			"essential-inputs-team@google.com",
 		},
-		Impl:            inputsFixture(notForced, true, false),
+		Impl:            inputsFixture(notForced, true, false, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
@@ -255,16 +256,29 @@ func inputsFixture(dm deviceMode, vkEnabled, reset bool, opts ...chrome.Option) 
 
 // resetIMEStatus resets IME input method and settings.
 func resetIMEStatus(ctx context.Context, tconn *chrome.TestConn) error {
-	// Reset input to default input method.
-	activeIME, err := ime.ActiveInputMethod(ctx, tconn)
+	// Uninstall all input methods except the default one.
+	installedIMEs, err := ime.InstalledInputMethods(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to get current ime")
+		return errors.Wrap(err, "failed to get installed ime list")
 	}
-	if !activeIME.Equal(ime.DefaultInputMethod) {
-		if err := ime.DefaultInputMethod.InstallAndActivate(tconn)(ctx); err != nil {
-			return errors.Wrapf(err, "failed to set ime to %q", ime.DefaultInputMethod)
+	prefix, err := ime.Prefix(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get ime prefix")
+	}
+	for _, installedIME := range installedIMEs {
+		if strings.TrimPrefix(installedIME.ID, prefix) == ime.DefaultInputMethod.ID {
+			continue
+		}
+		if err := ime.RemoveInputMethod(ctx, tconn, installedIME.ID); err != nil {
+			return errors.Wrapf(err, "failed to remove %s", installedIME.ID)
 		}
 	}
-
+	// Reset input to default input method.
+	if err := ime.DefaultInputMethod.InstallAndActivate(tconn)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to set ime to %q", ime.DefaultInputMethod)
+	}
+	if err := ime.DefaultInputMethod.ResetSettings(tconn)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to reset ime settings of the default ime %s", ime.DefaultInputMethod)
+	}
 	return nil
 }
