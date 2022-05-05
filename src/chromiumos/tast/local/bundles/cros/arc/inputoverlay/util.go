@@ -157,6 +157,11 @@ func SetupTestApp(ctx context.Context, s *testing.State, testFunc PerformTestFun
 	}
 }
 
+// RelaunchActivity opens the test application again.
+func RelaunchActivity(params *TestParams) (*arc.Activity, error) {
+	return arc.NewActivity(params.Arc, pkg, cls)
+}
+
 // MoveOverlayButton returns a function that takes in the given character corresponding
 // to a move keystroke and returns an error if tapping the keystroke did not result in
 // the correct feedback.
