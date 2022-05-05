@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2b86e3_a6559ae1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-05T15:09:09Z",
+      "side": 1,
+      "message": "Thanks for reviewing! :)",
+      "revId": "9599d11fac910e29e06d7903383a466dd0b4ecfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14e49560_fca69cff",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-05-05T12:22:40Z",
       "side": 1,
       "message": "if you depends on Chrome, I assume that you might need lacros variation of this test, don\u0027t you think so?",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "9599d11fac910e29e06d7903383a466dd0b4ecfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3b41d6_8e89150e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_google_photos_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-05T15:09:09Z",
+      "side": 1,
+      "message": "Good question! Right now the feature under test requires only Ash-Chrome. If Ash Web UI eventually moves to Lacros-Chrome we\u0027ll add a Lacros variant at that time :)",
+      "parentUuid": "14e49560_fca69cff",
       "range": {
         "startLine": 32,
         "startChar": 24,
