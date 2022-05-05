@@ -157,6 +157,18 @@ func SetupTestApp(ctx context.Context, s *testing.State, testFunc PerformTestFun
 	}
 }
 
+// RelaunchActivity opens the test application again.
+func RelaunchActivity(ctx context.Context, params *TestParams) (*arc.Activity, error) {
+	act, err := arc.NewActivity(params.Arc, pkg, cls)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a new ArcInputOverlayTest activity")
+	}
+	if err := act.StartWithDefaultOptions(ctx, params.TestConn); err != nil {
+		return nil, errors.Wrap(err, "failed to restart ArcInputOverlayTest")
+	}
+	return act, nil
+}
+
 // MoveOverlayButton returns a function that takes in the given character corresponding
 // to a move keystroke and returns an error if tapping the keystroke did not result in
 // the correct feedback.
