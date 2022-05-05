@@ -50,6 +50,15 @@ I:* If#=01 Alt= 0 #EPs= 0 Cls=0e(video) Sub=02 Prot=00 Driver=uvcvideo
 I:* If#= 2 Alt= 0 #EPs= 0 Cls=fe(app. ) Sub=01 Prot=01 Driver=(none)
 C:  #Ifs= 1 Cfg#= 2 Atr=e0 MxPwr=0mA
 I:  If#= 0 Alt= 0 #EPs= 1 Cls=09(hub  ) Sub=01 Prot=01 Driver=hub
+
+T:  Bus=03 Lev=01 Prnt=01 Port=08 Cnt=03 Dev#=  4 Spd=12   MxCh= 0
+D:  Ver= 2.01 Cls=00(>ifc ) Sub=00 Prot=00 MxPS=64 #Cfgs=  1
+P:  Vendor=1fc9 ProdID=5002 Rev= 6.45
+S:  Manufacturer=NXP
+S:  Product=Type-C Video Adapter
+S:  SerialNumber=0000074f7cb5
+C:* #Ifs= 1 Cfg#= 1 Atr=80 MxPwr=100mA
+I:* If#= 0 Alt= 0 #EPs= 0 Cls=fe(app. ) Sub=01 Prot=01 Driver=(none)
 `,
 }
 
@@ -126,6 +135,38 @@ Device Descriptor:
   iSerial                 1                               
   bNumConfigurations      1                               
 `,
+	"lsusb -v -d1fc9:5002": `Bus 003 Device 004: ID 1fc9:5002 NXP Semiconductors Type-C Video Adapter
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.01
+  bDeviceClass            0
+  bDeviceSubClass         0
+  bDeviceProtocol         0
+  bMaxPacketSize0        64
+  idVendor           0x1fc9 NXP Semiconductors
+  idProduct          0x5002
+  bcdDevice            6.45
+  iManufacturer           1 NXP
+  iProduct                2 Type-C Video Adapter
+  iSerial                 3 0000074f7cb5
+  bNumConfigurations      1
+`,
+	"fwupdmgr get-devices --show-all --json": `{
+  "Devices": [
+    {
+      "Name" : "Type-C Video Adapter",
+      "Guid" : [
+        "8964759e-69bc-5f6c-a4fa-c89c455d0228",
+        "a01d9cb7-dc1c-52dc-88ad-ba94f473681a"
+      ],
+      "Serial" : "0000074f7cb5",
+      "VendorId" : "USB:0x1FC9",
+      "Version" : "6.45",
+      "VersionFormat" : "bcd"
+    }
+  ]
+}`,
 }
 
 func ptr(s string) *string {
@@ -220,6 +261,28 @@ func TestExpectedDevices(t *testing.T) {
 					Protocol:        "01",
 					Driver:          nil,
 				},
+			},
+		},
+		Device{
+			VendorID:    "1fc9",
+			ProdID:      "5002",
+			VendorName:  "NXP Semiconductors",
+			ProductName: "Type-C Video Adapter",
+			Class:       "00",
+			SubClass:    "00",
+			Protocol:    "00",
+			Interfaces: []Interface{
+				Interface{
+					InterfaceNumber: 0,
+					Class:           "fe",
+					SubClass:        "01",
+					Protocol:        "01",
+					Driver:          nil,
+				},
+			},
+			FwupdFirmwareVersionInfo: &FwupdFirmwareVersionInfo{
+				Version:       "6.45",
+				VersionFormat: "bcd",
 			},
 		},
 	}

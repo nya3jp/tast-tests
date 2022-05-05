@@ -30,6 +30,8 @@ type busInfoTestParams struct {
 	checkThunderbolt bool
 	// Workaround for b/200837194 to skip checking PCI ProgIf field.
 	checkProgIf bool
+	// Whether to check usb firmware versions.
+	checkUSBFirmwareVersion bool
 }
 
 func init() {
@@ -48,15 +50,17 @@ func init() {
 		Params: []testing.Param{{
 			Fixture: "crosHealthdRunning",
 			Val: busInfoTestParams{
-				checkThunderbolt: false,
-				checkProgIf:      false,
+				checkThunderbolt:        false,
+				checkProgIf:             false,
+				checkUSBFirmwareVersion: false,
 			},
 		}, {
 			Name:      "thunderbolt",
 			ExtraAttr: []string{"informational"},
 			Val: busInfoTestParams{
-				checkThunderbolt: true,
-				checkProgIf:      false,
+				checkThunderbolt:        true,
+				checkProgIf:             false,
+				checkUSBFirmwareVersion: false,
 			},
 			ExtraData:         []string{"testcert.p12"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
@@ -65,8 +69,18 @@ func init() {
 			Name:      "progif",
 			ExtraAttr: []string{"informational"},
 			Val: busInfoTestParams{
-				checkThunderbolt: false,
-				checkProgIf:      true,
+				checkThunderbolt:        false,
+				checkProgIf:             true,
+				checkUSBFirmwareVersion: false,
+			},
+		}, {
+			// TODO(b/231667630): Remove this after the subtest is stable.
+			Name:      "usb_firmware_version",
+			ExtraAttr: []string{"informational"},
+			Val: busInfoTestParams{
+				checkThunderbolt:        false,
+				checkProgIf:             false,
+				checkUSBFirmwareVersion: true,
 			},
 		}},
 	})
@@ -171,7 +185,7 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 	if err := validatePCIDevices(ctx, pciDevs, testParam.checkProgIf); err != nil {
 		s.Fatal("PCI validation failed: ", err)
 	}
-	if err := validateUSBDevices(ctx, usbDevs); err != nil {
+	if err := validateUSBDevices(ctx, usbDevs, testParam.checkUSBFirmwareVersion); err != nil {
 		s.Fatal("USB validation failed: ", err)
 	}
 
@@ -216,7 +230,7 @@ func validatePCIDevices(ctx context.Context, devs []busDevice, checkProgIf bool)
 
 // validateUSBDevices validates the USB devices with the expected USB
 // devices extracted by the "usb-devices" and the "lsusb" commands.
-func validateUSBDevices(ctx context.Context, devs []busDevice) error {
+func validateUSBDevices(ctx context.Context, devs []busDevice, checkUSBFirmwareVersion bool) error {
 	var got []usb.Device
 	for _, d := range devs {
 		udIn := d.BusInfo.USBBusInfo
@@ -239,12 +253,26 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 				Driver:          ifc.Driver,
 			})
 		}
+		if udIn.FwupdFirmwareVersionInfo != nil {
+			udOut.FwupdFirmwareVersionInfo = &usb.FwupdFirmwareVersionInfo{
+				Version:       udIn.FwupdFirmwareVersionInfo.Version,
+				VersionFormat: udIn.FwupdFirmwareVersionInfo.VersionFormat,
+			}
+		}
+		if !checkUSBFirmwareVersion {
+			udOut.FwupdFirmwareVersionInfo = nil
+		}
 		got = append(got, udOut)
 	}
 	usb.Sort(got)
 	exp, err := usb.ExpectedDevices(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected devices")
+	}
+	if !checkUSBFirmwareVersion {
+		for i := range exp {
+			exp[i].FwupdFirmwareVersionInfo = nil
+		}
 	}
 	if d := cmp.Diff(exp, got); d != "" {
 		return errors.Errorf("unexpected USB device data, (-expected + got): %s", d)
@@ -348,12 +376,13 @@ type pciBusInfo struct {
 
 // usbBusInfo represents the UsbBusInfo in cros-healthd mojo interface.
 type usbBusInfo struct {
-	ClassID    uint8              `json:"class_id"`
-	SubClassID uint8              `json:"subclass_id"`
-	ProtocolID uint8              `json:"protocol_id"`
-	VendorID   uint16             `json:"vendor_id"`
-	ProductID  uint16             `json:"product_id"`
-	Interfaces []usbInterfaceInfo `json:"interfaces"`
+	ClassID                  uint8                     `json:"class_id"`
+	SubClassID               uint8                     `json:"subclass_id"`
+	ProtocolID               uint8                     `json:"protocol_id"`
+	VendorID                 uint16                    `json:"vendor_id"`
+	ProductID                uint16                    `json:"product_id"`
+	Interfaces               []usbInterfaceInfo        `json:"interfaces"`
+	FwupdFirmwareVersionInfo *fwupdFirmwareVersionInfo `json:"fwupd_firmware_version_info"`
 }
 
 // usbInterfaceInfo represents the UsbInterfaceInfo in cros-healthd mojo
@@ -364,6 +393,13 @@ type usbInterfaceInfo struct {
 	SubClassID      uint8   `json:"subclass_id"`
 	ProtocolID      uint8   `json:"protocol_id"`
 	Driver          *string `json:"driver"`
+}
+
+// fwupdFirmwareVersionInfo represents the FwupdFirmwareVersionInfo in
+// cros-healthd mojo interface.
+type fwupdFirmwareVersionInfo struct {
+	Version       string `json:"version"`
+	VersionFormat string `json:"version_format"`
 }
 
 // thunderboltInterfaceInfo represents the ThunderboltInterfaces in cros-healthd mojo
