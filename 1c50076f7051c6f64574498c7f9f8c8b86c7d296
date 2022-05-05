@@ -22,6 +22,30 @@
       },
       "revId": "1c50076f7051c6f64574498c7f9f8c8b86c7d296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f05332_2e7ea37d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T06:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2bb339_351676c1",
+      "range": {
+        "startLine": 231,
+        "startChar": 25,
+        "endLine": 231,
+        "endChar": 87
+      },
+      "revId": "1c50076f7051c6f64574498c7f9f8c8b86c7d296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
