@@ -16,7 +16,7 @@ func init() {
 		Func:         RecoveryCrypto,
 		Desc:         "Checks that cryptohome recovery process succeeds with fake/local mediation",
 		Contacts:     []string{"anastasiian@chromium.org", "cros-lurs@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"tpm"},
 	})
 }
