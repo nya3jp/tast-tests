@@ -58,6 +58,13 @@ func Pin(ctx context.Context, s *testing.State) {
 		// autosubmit works for pins with len<=12 only
 		pin = "654321"
 	}
+
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get virtual keyboard: ", err)
+	}
+	defer keyboard.Close()
+
 	func() {
 		var cr *chrome.Chrome
 		var err error
@@ -156,12 +163,12 @@ func Pin(ctx context.Context, s *testing.State) {
 		}
 
 		// Enter and submit the PIN to unlock the DUT.
-		if err := lockscreen.EnterPIN(ctx, tconn, pin); err != nil {
+		if err := lockscreen.EnterPIN(ctx, tconn, keyboard, pin); err != nil {
 			s.Fatal("Failed to enter in PIN: ", err)
 		}
 
 		if !autosubmit {
-			if err := lockscreen.SubmitPIN(ctx, tconn); err != nil {
+			if err := lockscreen.SubmitPINOrPassword(ctx, tconn); err != nil {
 				s.Fatal("Failed to submit PIN: ", err)
 			}
 		}
@@ -204,22 +211,17 @@ func Pin(ctx context.Context, s *testing.State) {
 		if err := lockscreen.WaitForPasswordField(ctx, tconn, cr.Creds().User, 20*time.Second); err != nil {
 			s.Fatal("Failed to wait for the password field: ", err)
 		}
-		keyboard, err := input.VirtualKeyboard(ctx)
-		if err != nil {
-			s.Fatal("Failed to get virtual keyboard: ", err)
-		}
-		defer keyboard.Close()
 		if err = lockscreen.EnterPassword(ctx, tconn, cr.Creds().User, cr.Creds().Pass, keyboard); err != nil {
 			s.Fatal("Failed to enter password: ", err)
 		}
 	} else {
 		// Enter and submit the PIN to unlock the DUT.
-		if err := lockscreen.EnterPIN(ctx, tconn, pin); err != nil {
+		if err := lockscreen.EnterPIN(ctx, tconn, keyboard, pin); err != nil {
 			s.Fatal("Failed to enter in PIN: ", err)
 		}
 
 		if !autosubmit {
-			if err := lockscreen.SubmitPIN(ctx, tconn); err != nil {
+			if err := lockscreen.SubmitPINOrPassword(ctx, tconn); err != nil {
 				s.Fatal("Failed to submit PIN: ", err)
 			}
 		}

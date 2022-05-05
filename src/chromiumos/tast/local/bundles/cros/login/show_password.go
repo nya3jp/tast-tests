@@ -130,19 +130,20 @@ func ShowPassword(ctx context.Context, s *testing.State) {
 func showAndHidePassword(ctx context.Context, tconn *chrome.TestConn, username, password string, pin bool) error {
 	hiddenPwd := strings.Repeat(hiddenPwdChar, len(password))
 
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer kb.Close()
+
 	if pin {
 		// Enter the PIN on login screen when PIN is enabled.
 		testing.ContextLog(ctx, "Entering PIN on \"PIN or password\" field of login screen")
-		if err := lockscreen.EnterPIN(ctx, tconn, password); err != nil {
+		if err := lockscreen.EnterPIN(ctx, tconn, kb, password); err != nil {
 			return errors.Wrap(err, "failed to enter in PIN")
 		}
 	} else {
 		// Enter password on login screen.
-		kb, err := input.Keyboard(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get keyboard")
-		}
-		defer kb.Close()
 
 		testing.ContextLog(ctx, "Entering password on login screen")
 		if err := lockscreen.TypePassword(ctx, tconn, username, password, kb); err != nil {

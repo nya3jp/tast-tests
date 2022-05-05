@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -64,6 +65,12 @@ func PinUnlockFail(ctx context.Context, s *testing.State) {
 		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 	}
 
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+	defer keyboard.Close()
+
 	// Enter the wrong PIN to trigger password field. Here we would
 	// try multiple times of the wrong password until pin pad
 	// disappears or that we had tried |maxNumberTry| times already.
@@ -71,10 +78,10 @@ func PinUnlockFail(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	for count < maxNumberTry && lockscreen.HasPinPad(ctx, tconn) {
 		// Enter and submit the PIN to unlock the DUT.
-		if err := lockscreen.EnterPIN(ctx, tconn, wrongPin); err != nil {
+		if err := lockscreen.EnterPIN(ctx, tconn, keyboard, wrongPin); err != nil {
 			s.Fatal("Failed to enter PIN: ", err)
 		}
-		if err := lockscreen.SubmitPIN(ctx, tconn); err != nil {
+		if err := lockscreen.SubmitPINOrPassword(ctx, tconn); err != nil {
 			s.Fatal("Failed to submit PIN: ", err)
 		}
 

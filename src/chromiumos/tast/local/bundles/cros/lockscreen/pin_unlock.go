@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -73,13 +74,19 @@ func PINUnlock(ctx context.Context, s *testing.State) {
 		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 	}
 
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+	defer keyboard.Close()
+
 	// Enter and submit the PIN to unlock the DUT.
-	if err := lockscreen.EnterPIN(ctx, tconn, PIN); err != nil {
+	if err := lockscreen.EnterPIN(ctx, tconn, keyboard, PIN); err != nil {
 		s.Fatal("Failed to enter in PIN: ", err)
 	}
 
 	if !autosubmit {
-		if err := lockscreen.SubmitPIN(ctx, tconn); err != nil {
+		if err := lockscreen.SubmitPINOrPassword(ctx, tconn); err != nil {
 			s.Fatal("Failed to submit PIN: ", err)
 		}
 	}

@@ -91,17 +91,17 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	}
 	defer closeBrowser(cleanupCtx)
 
-	tconn, err := util.SetUpUserPIN(ctx, cr, PIN, password, autosubmit)
-	if err != nil {
-		s.Fatal("Failed to set up PIN: ", err)
-	}
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
 	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
 	}
 	defer keyboard.Close()
+
+	tconn, err := util.SetUpUserPIN(ctx, cr, keyboard, PIN, password, autosubmit)
+	if err != nil {
+		s.Fatal("Failed to set up PIN: ", err)
+	}
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	authCallback := func(ctx context.Context, ui *uiauto.Context) error {
 		// Check if the UI is correct.
