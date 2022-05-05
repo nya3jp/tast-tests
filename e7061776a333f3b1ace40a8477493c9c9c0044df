@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d48984_51083f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:15:49Z",
+      "side": 1,
+      "message": "Don\u0027t need to close?",
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc537c0_c1a896fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:15:49Z",
+      "side": 1,
+      "message": "It is obvious that here returns a uint64. What is not obvious is why we can use unsafe.Pointer and cast directly. Document this instead of `return a uint64`.",
+      "range": {
+        "startLine": 153,
+        "startChar": 47,
+        "endLine": 153,
+        "endChar": 62
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f24c97e_36c9b29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:15:49Z",
+      "side": 1,
+      "message": "Can we use `ioutils.ReadFile` ?",
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd9be7f_6dddbcb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:15:49Z",
+      "side": 1,
+      "message": "Just assume that we only have one CPU.\n\nWe also need a check for this, so it raise error if this is nolonger true. Don\u0027t put it in this function (maybe at the beginning of this tast).",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f1b52e_f3b0c7d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:15:49Z",
+      "side": 1,
+      "message": "getExpectedCPUVirtualization",
+      "range": {
+        "startLine": 191,
+        "startChar": 5,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2111f769_5d2b2de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:15:49Z",
+      "side": 1,
+      "message": "Why not just use `_, ok :\u003d flags[\"vmx\"]; ok`",
+      "range": {
+        "startLine": 209,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 14
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212d2d5a_2f879a15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:15:49Z",
+      "side": 1,
+      "message": "This can be put in the above `if` block.",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 47
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "058482c4_3f1be158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:15:49Z",
+      "side": 1,
+      "message": "This should be `expectedFlags`",
+      "range": {
+        "startLine": 270,
+        "startChar": 65,
+        "endLine": 270,
+        "endChar": 78
+      },
+      "revId": "e7061776a333f3b1ace40a8477493c9c9c0044df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

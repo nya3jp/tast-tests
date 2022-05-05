@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e60be6ec_daa6fbe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T10:15:49Z",
+      "side": 1,
+      "message": "Not done.\n\nUse\n\n```\nconst (\n  ...\n)\n```",
+      "parentUuid": "8a8fac69_d59d3c70",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 43
+      },
+      "revId": "bd6e6d5a41e5e16b273469d219f58388dc3918f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a7ae1ab_11146df0",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
         "patchSetId": 3
