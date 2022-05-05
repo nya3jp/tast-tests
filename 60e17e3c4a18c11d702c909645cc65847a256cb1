@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94be0539_aa3e585e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-05T05:17:33Z",
+      "side": 1,
+      "message": "\u003e \"beacause\" is a possible misspelling of \"because\".\n\ndone",
+      "parentUuid": "2b8da5ad_f4024b69",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "60e17e3c4a18c11d702c909645cc65847a256cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
