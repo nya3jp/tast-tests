@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "575aed3c_1148b0d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-05-05T15:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595b593a_6695ac12",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "40ab1311a068bf88e70e46adc7718ecf273cd88d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40bb191a_ea14b1a5",
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b26512_3072430e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-05-05T15:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40bb191a_ea14b1a5",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "40ab1311a068bf88e70e46adc7718ecf273cd88d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7d0b9dc_b13dea74",
@@ -111,6 +159,30 @@
       "writtenOn": "2022-04-29T10:15:59Z",
       "side": 1,
       "message": "move these lines inside s.Run().\n1. No need to allocate cleanupCtx \n2. s.Run() has it\u0027s own context and we should use that context or derivative contextts",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "40ab1311a068bf88e70e46adc7718ecf273cd88d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a5b111_13b22a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-05-05T15:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7d0b9dc_b13dea74",
       "range": {
         "startLine": 59,
         "startChar": 0,
