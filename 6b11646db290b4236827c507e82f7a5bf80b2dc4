@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abfdea2a_45bd367f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T09:59:29Z",
+      "side": 1,
+      "message": "Don\u0027t add `else` if the previous `if` returns.",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 8
+      },
+      "revId": "6b11646db290b4236827c507e82f7a5bf80b2dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa4d4e9_bf9de9d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-05T09:59:29Z",
+      "side": 1,
+      "message": "This doesn\u0027t check if there is file not read by healthd. I think we should first check if all the files under the vulnerabilities directory exists in vulnerabilityInfo.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "6b11646db290b4236827c507e82f7a5bf80b2dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
