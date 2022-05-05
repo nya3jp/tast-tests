@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa4142f_2a485c10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-05T04:24:26Z",
+      "side": 1,
+      "message": "Similar issue to https://crrev.com/c/3622593 (blinking cursor breaking screenshot diffs).",
+      "revId": "813d2fe532d83a6d105c431bdef60053b25634f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
