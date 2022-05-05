@@ -58,7 +58,7 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	newInputMethods := []ime.InputMethod{ime.Japanese, ime.ChinesePinyin}
+	newInputMethods := []ime.InputMethod{ime.EnglishUK, ime.ChinesePinyin}
 
 	for _, newInputMethod := range newInputMethods {
 		if err := newInputMethod.Install(tconn)(ctx); err != nil {
