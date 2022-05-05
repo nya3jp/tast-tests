@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef36e19d_8a153069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-05-05T14:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "875ce2d4_fe3e871b",
+      "revId": "482e57c47bca2e93d29873504ee8bf85630f0ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4820056_4ced8f4e",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-28T11:30:19Z",
       "side": 1,
       "message": "I think Roman has mentioned that there is advance to the screen JS method available for tast tests, but I would rathe make helper function that could click through the OOBE screens until given screen. Something similar to oobe.Smoke",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "482e57c47bca2e93d29873504ee8bf85630f0ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc08045_223b2554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-05-05T14:55:09Z",
+      "side": 1,
+      "message": "Discarding as discussed offline, will add a separate task for this refactoring for the OOBE related tests.",
+      "parentUuid": "c4820056_4ced8f4e",
       "range": {
         "startLine": 62,
         "startChar": 1,
