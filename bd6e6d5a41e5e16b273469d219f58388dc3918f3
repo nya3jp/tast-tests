@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f330d1_39ccf87d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db58fc19_a1d1d1e9",
+      "revId": "bd6e6d5a41e5e16b273469d219f58388dc3918f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ac1496_6eab401c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-05T07:58:39Z",
       "side": 1,
       "message": "Use\n```\nconst (\n  IA32FeatureLocked \u003d ...\n  IA32FeatureEnableVmxInsideSmx \u003d ...\n  ...\n)\n```\n\nAlso you don\u0027t need to define type for them. Use the right literal type.\n\nAlso I think you need to use lower case for `IA32` for local variable naming in go.",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 43
+      },
+      "revId": "bd6e6d5a41e5e16b273469d219f58388dc3918f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8fac69_d59d3c70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ac1496_6eab401c",
       "range": {
         "startLine": 226,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d1970c_7bc942bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a7ae1ab_11146df0",
+      "range": {
+        "startLine": 245,
+        "startChar": 3,
+        "endLine": 247,
+        "endChar": 20
+      },
+      "revId": "bd6e6d5a41e5e16b273469d219f58388dc3918f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d369f1f1_0adfd7dc",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-05-05T07:58:39Z",
       "side": 1,
       "message": "Put this to const above.",
+      "range": {
+        "startLine": 262,
+        "startChar": 3,
+        "endLine": 264,
+        "endChar": 26
+      },
+      "revId": "bd6e6d5a41e5e16b273469d219f58388dc3918f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f23d49_8361e858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-05T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d369f1f1_0adfd7dc",
       "range": {
         "startLine": 262,
         "startChar": 3,
