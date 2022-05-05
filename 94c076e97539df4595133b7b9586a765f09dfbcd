@@ -241,6 +241,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22f5a23_ff8af120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1524917
+      },
+      "writtenOn": "2022-05-05T08:20:09Z",
+      "side": 1,
+      "message": "Okayyy! I added comments in the 4th patch.",
+      "parentUuid": "370c21f5_ecde38d8",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "94c076e97539df4595133b7b9586a765f09dfbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bed2872_b0b2df11",
