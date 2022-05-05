@@ -50,6 +50,8 @@ func init() {
 	})
 }
 
+var testCount int
+
 func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	const (
 		knownTestPrefix        = "wifi_CSDT"
@@ -129,7 +131,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		var err error
 		var probeReqPackets []gopacket.Packet
 		var pcapPath string
-		for testCount := 1; testCount <= maxRetries; testCount++ {
+		for testCount = 1; testCount <= maxRetries; testCount++ {
 			bssList, capturer, err = func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
 				s.Log("Configuring AP on router")
 				apOpts := append([]hostapd.Option{hostapd.Channel(tc.apChannel)}, tc.apOpts...)
@@ -365,6 +367,7 @@ func pollScan(ctx context.Context, dut *dut.DUT, iface string, freqs []int, poll
 	var scanResult *iw.TimedScanData
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
+		freqs = append(freqs, testCount)
 		scanResult, err = iwr.TimedScan(ctx, iface, freqs, nil)
 		if err != nil {
 			testing.ContextLogf(ctx, "Scan Failure (%v), Retrying", err)
