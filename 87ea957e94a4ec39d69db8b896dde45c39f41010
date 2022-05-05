@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d64ab6f7_ddebe751",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-05-05T01:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4abe21f2_5b3381d8",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "87ea957e94a4ec39d69db8b896dde45c39f41010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6a84abef_280c3ba8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-04T06:11:17Z",
       "side": 1,
       "message": "just to double check, you want to test it in the password input field?",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "87ea957e94a4ec39d69db8b896dde45c39f41010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "455718c0_0b636ba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-05-05T01:27:08Z",
+      "side": 1,
+      "message": "Correct, relevant bug only happens in P/W field for non managed account",
+      "parentUuid": "08b28d64_bec15c6b",
       "range": {
         "startLine": 113,
         "startChar": 4,

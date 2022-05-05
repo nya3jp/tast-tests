@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8dc40f_b47015f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-05-05T01:27:08Z",
+      "side": 1,
+      "message": "Abandoning this in favor of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3625753 which is on the correct branch :) ",
+      "revId": "3ba8b8fd979383ba230ccb479c9b49e880491a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
