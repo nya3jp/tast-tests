@@ -16,6 +16,24 @@
       "message": "Judy, thanks for the info showing that *-kernelnext are not run in the CQ. \n\nHowever, the test failed on altas board constantly so you have to fix the issue first. ",
       "revId": "f589da5e6a843c561f7f2cf6dec008ee7719086f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "001172b5_8f253969",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-05-05T07:14:18Z",
+      "side": 1,
+      "message": "Hi Dean,\n\nWhen I check the Exclude non critical build/board(s) option you can see the failure of atlas is not shown.\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-04-22\u0026last_date\u003d2022-05-05\u0026master_builder_name\u003d%5Emaster-release%24\u0026branch\u003d%5Emain%24\u0026test\u003d%5Etast%5C.audio%5C.CrasPlay%24\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dtrue\n\nIf we just click the failure log of atlas, it\u0027s actually testing on the atlas/kernel-next.\n\nI think I should put the stainless result in the first place.",
+      "parentUuid": "25e81d88_532cc83e",
+      "revId": "f589da5e6a843c561f7f2cf6dec008ee7719086f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
