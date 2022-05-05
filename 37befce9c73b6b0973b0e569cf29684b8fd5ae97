@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ec56d4_11d32033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-05T06:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b52b332_b73f6cb3",
+      "revId": "37befce9c73b6b0973b0e569cf29684b8fd5ae97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cf2d1d7_493139fe",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-04T11:15:22Z",
       "side": 1,
       "message": "nit: yesButton",
+      "revId": "37befce9c73b6b0973b0e569cf29684b8fd5ae97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d66ef96_db63f715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-05T06:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cf2d1d7_493139fe",
       "revId": "37befce9c73b6b0973b0e569cf29684b8fd5ae97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
