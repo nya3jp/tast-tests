@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bebcf7a9_b4bdb42a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-05-05T06:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "362d8583_ac7ae9c0",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "2ed733a6f124d6dafc21c4fd913e046edac90552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8729a1b_ac35f403",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-03T07:59:38Z",
       "side": 1,
       "message": "we should pass these via test api (see https://docs.google.com/document/d/1cxMLPQUNVVoa_i3dBfrAGhITQtdKV_HS1vdcM8BjKEE/edit?resourcekey\u003d0-TOcN57danKvOskgvJGpRJQ#heading\u003dh.v7qa4pg619lx)",
+      "range": {
+        "startLine": 110,
+        "startChar": 29,
+        "endLine": 110,
+        "endChar": 56
+      },
+      "revId": "2ed733a6f124d6dafc21c4fd913e046edac90552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb3f3ec_3fe40795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-05-05T06:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8729a1b_ac35f403",
       "range": {
         "startLine": 110,
         "startChar": 29,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "850c365d_de5408ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-05-05T06:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "351cebe3_0b04d73b",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "2ed733a6f124d6dafc21c4fd913e046edac90552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "897a9133_23014f3b",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-03T07:59:38Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 149,
+        "startChar": 21,
+        "endLine": 149,
+        "endChar": 25
+      },
+      "revId": "2ed733a6f124d6dafc21c4fd913e046edac90552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62cd269d_879f3eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-05-05T06:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "897a9133_23014f3b",
       "range": {
         "startLine": 149,
         "startChar": 21,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f95a3d_fe9a4e09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-05-05T06:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bc3a782_b66a64ef",
+      "range": {
+        "startLine": 182,
+        "startChar": 40,
+        "endLine": 182,
+        "endChar": 86
+      },
+      "revId": "2ed733a6f124d6dafc21c4fd913e046edac90552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6720713_ae60e886",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-03T07:59:38Z",
       "side": 1,
       "message": "the comment is confusing. Either extend it with the information about waiting for the ownership in the previous call, or remove ;) I think the calls itself are informative enough.",
+      "range": {
+        "startLine": 193,
+        "startChar": 27,
+        "endLine": 193,
+        "endChar": 55
+      },
+      "revId": "2ed733a6f124d6dafc21c4fd913e046edac90552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3660982f_878b4779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-05-05T06:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6720713_ae60e886",
       "range": {
         "startLine": 193,
         "startChar": 27,

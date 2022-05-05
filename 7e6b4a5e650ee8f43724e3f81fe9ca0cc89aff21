@@ -342,6 +342,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b46deb3_3b742986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1534702
+      },
+      "writtenOn": "2022-05-05T06:49:34Z",
+      "side": 1,
+      "message": "the method is updated based on the test_api link click.",
+      "parentUuid": "2b97b091_c566b275",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "7e6b4a5e650ee8f43724e3f81fe9ca0cc89aff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98196eac_1f1c5b4c",
