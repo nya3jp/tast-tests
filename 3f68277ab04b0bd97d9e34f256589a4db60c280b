@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f72fd2_02e3bed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-05-05T06:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6781df4_ce310c92",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38cb4a13_fbb418a2",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-03T17:12:44Z",
       "side": 1,
       "message": "nit: missing period at end.",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4ec459_16c1914c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-05-05T06:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38cb4a13_fbb418a2",
       "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bc74fc2_9bcede98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-05-05T06:27:30Z",
+      "side": 1,
+      "message": "To print the error message reply from CleanupP11TestToken().",
+      "parentUuid": "fb32001a_424efb7d",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c7318e7_8e60df8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
         "patchSetId": 2
@@ -82,6 +136,24 @@
       "writtenOn": "2022-05-03T17:12:44Z",
       "side": 1,
       "message": "nit: what is the (1) referring to?",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "207eae9f_7c3fe467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-05-05T06:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c7318e7_8e60df8a",
       "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0350b21_25bf789a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-05-05T06:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ecc89bc_39a80cf5",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b9a1fd6_9e9ca506",
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fb8294_10d839c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-05-05T06:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b9a1fd6_9e9ca506",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bd6b275_0f6a607e",
@@ -133,6 +241,24 @@
       "writtenOn": "2022-05-03T17:12:44Z",
       "side": 1,
       "message": "same as above, should you include the iteration if `s.Error` is intended?",
+      "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b30db88a_58d5f728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/tpm_evict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-05-05T06:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd6b275_0f6a607e",
       "revId": "3f68277ab04b0bd97d9e34f256589a4db60c280b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
