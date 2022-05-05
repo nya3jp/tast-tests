@@ -429,49 +429,23 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	configs := []cujrecorder.MetricConfig{
-		// Ash metrics config, always collected from ash-chrome.
+	configs := append(cujrecorder.MetricConfigs(),
 		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter, []int64{50, 80}),
+			"Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter,
+			[]int64{1, 20}),
 		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter, []int64{0, 3}),
+			"Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter,
+			[]int64{1, 20}))
 
-		// Browser metrics config, collected from ash-chrome or lacros-chrome
-		// depending on the browser being used.
-		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
-			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
-			perf.SmallerIsBetter, []int64{5, 10}, bTconn),
-	}
-	// Jank criteria for input event latencies. The 1st number is the
-	// threshold to be marked as jank and the 2nd one is to be marked
-	// very jank.
-	jankCriteria := []int64{80000, 400000}
-	if meet.docs {
-		configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
-			"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter,
-			jankCriteria, bTconn))
-	} else if meet.jamboard {
-		configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
-			"Event.Latency.EndToEnd.Mouse", "microsecond", perf.SmallerIsBetter,
-			jankCriteria, bTconn))
-	}
-
-	configs = append(configs, cujrecorder.NewCustomMetricConfig(
-		"Cras.FetchDelayMilliSeconds", "millisecond", perf.SmallerIsBetter,
-		[]int64{1, 20}))
-	configs = append(configs, cujrecorder.NewCustomMetricConfig(
-		"Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter,
-		[]int64{1, 20}))
-	configs = append(configs, cujrecorder.NewCustomMetricConfig(
-		"Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter,
-		[]int64{1, 20}))
-
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
+
+	if err := recorder.AddCollectedMetrics(bTconn, configs...); err != nil {
+		s.Fatal("Failed to add metrics to recorder: ", err)
+	}
+
 	if meet.tracing {
 		recorder.EnableTracing(s.OutDir())
 	}
