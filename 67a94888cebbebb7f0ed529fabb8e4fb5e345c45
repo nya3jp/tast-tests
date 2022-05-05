@@ -157,6 +157,24 @@
       "parentUuid": "a1397474_80bd9314",
       "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "814652c9_f89dda53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-05T13:31:53Z",
+      "side": 1,
+      "message": "I prefer the last one, because \n1. you don\u0027t bind ctx by reference\n2. function arg name ctx and it should not care whether received ctx is \"ctx\" or \"cleanupCtx\".",
+      "parentUuid": "8b7450b6_16e19e79",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

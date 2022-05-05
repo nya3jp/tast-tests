@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c641c9ef_c4d0a61a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-05T13:31:53Z",
+      "side": 1,
+      "message": "I am not sure if we have to introduce cleanupCtx for tests that didn\u0027t have it. It might affect test stability, because test will have less execution time. It feel like each test owner has to decide whether they need it.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "b8bb1df85e266e50aa0e8658cbbc33043fb1750a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
