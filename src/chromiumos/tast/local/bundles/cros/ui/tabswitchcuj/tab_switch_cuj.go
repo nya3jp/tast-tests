@@ -103,17 +103,11 @@ func waitUntilAllTabsLoaded(ctx context.Context, tconn *chrome.TestConn, timeout
 func Run(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
 
 	param := s.Param().(TabSwitchParam)
 	if param.BrowserType == browser.TypeAsh {
 		cr = s.PreValue().(*chrome.Chrome)
 		cs = cr
-
-		var err error
-		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get TestAPIConn: ", err)
-		}
 	} else {
 		var l *lacros.Lacros
 		var err error
@@ -122,10 +116,6 @@ func Run(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to initialize test: ", err)
 		}
 		defer lacros.CloseLacros(ctx, l)
-
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get lacros TestAPIConn: ", err)
-		}
 	}
 
 	// Shorten context a bit to allow for cleanup.
@@ -156,23 +146,7 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	configs := []cujrecorder.MetricConfig{
-		// Ash metrics config, always collected from ash-chrome.
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter, []int64{50, 80}),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter, []int64{0, 3}),
-
-		// Browser metrics config, collected from ash-chrome or lacros-chrome
-		// depending on the browser being used.
-		cujrecorder.NewCustomMetricConfigWithTestConn(
-			"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter,
-			[]int64{800, 1600}, bTconn),
-	}
-
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, cujrecorder.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
