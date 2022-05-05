@@ -39,6 +39,30 @@
       },
       "revId": "92a9c830bb819e2456a0f74fe82e7efd80dd7480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e59215_33af850b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-05T20:30:19Z",
+      "side": 1,
+      "message": "isVMEnabled can only be accessed inside the else clause since it is declared inside the if expression. I think the style guide example applies to cases when the else clause isn\u0027t necessarily tied to a condition and can be executed regardless.",
+      "parentUuid": "f7ab1590_8d564acd",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "92a9c830bb819e2456a0f74fe82e7efd80dd7480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
