@@ -110,13 +110,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// TODO(b/222729608): Add scroll metrics.
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
-			perf.SmallerIsBetter, []int64{4000, 5000}),
-		cujrecorder.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
-			perf.SmallerIsBetter, []int64{4000, 5000})}
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, cujrecorder.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}

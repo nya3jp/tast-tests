@@ -400,37 +400,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	// Set up the cujrecorder.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
-		cujrecorder.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
-		cujrecorder.NewSmoothnessMetricConfig("Ash.Homescreen.AnimationSmoothness"),
-		cujrecorder.NewLatencyMetricConfig("Ash.HotseatTransition.Drag.PresentationTime"),
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter, []int64{50, 80}),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter, []int64{0, 3}),
-	}
-	for _, suffix := range []string{"HideLauncherForWindow", "EnterFullscreenAllApps", "EnterFullscreenSearch", "FadeInOverview", "FadeOutOverview"} {
-		configs = append(configs, cujrecorder.NewSmoothnessMetricConfig(
-			"Apps.HomeLauncherTransition.AnimationSmoothness."+suffix))
-	}
-	for _, state := range []string{"Peeking", "Close", "Half"} {
-		configs = append(configs, cujrecorder.NewSmoothnessMetricConfig(
-			"Apps.StateTransition.AnimationSmoothness."+state+".ClamshellMode"))
-	}
-	for _, suffix := range []string{"SingleClamshellMode", "ClamshellMode", "TabletMode"} {
-		configs = append(configs,
-			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter."+suffix),
-			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit."+suffix),
-		)
-	}
-	for _, suffix := range []string{"TransitionToShownHotseat", "TransitionToExtendedHotseat", "TransitionToHiddenHotseat"} {
-		configs = append(configs,
-			cujrecorder.NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness."+suffix))
-	}
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, cujrecorder.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
