@@ -16,6 +16,92 @@
       "message": "+tast-owners for tast review. Thanks!",
       "revId": "fbc668457ddbeede18fe7853af54dde630cc89c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c639b8d_ebebb09f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-06T05:43:09Z",
+      "side": 1,
+      "message": "LGTM for network part.",
+      "revId": "fbc668457ddbeede18fe7853af54dde630cc89c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9f366b_5ceed2f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-06T05:43:09Z",
+      "side": 1,
+      "message": "Thanks. You might want to do a FYI announcement on the relevant Chat rooms to let other people know.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "fbc668457ddbeede18fe7853af54dde630cc89c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa47906_6ae26042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-06T05:43:09Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 26,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "fbc668457ddbeede18fe7853af54dde630cc89c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324204a4_b8ae31fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-06T05:43:09Z",
+      "side": 1,
+      "message": "not sure how easy it is, but it could be useful to make a more unique file name for instance:\n  - by adding a timestamp suffix\n  - by adding the caller package and function names as a suffix with https://pkg.go.dev/runtime#Caller",
+      "range": {
+        "startLine": 29,
+        "startChar": 42,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "fbc668457ddbeede18fe7853af54dde630cc89c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
