@@ -6,6 +6,9 @@ package dlp
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
 	"time"
 
 	"chromiumos/tast/common/policy/fakedms"
@@ -39,6 +42,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{"text_1.html", "text_2.html", "editable_text_box.html"},
 		Fixture:      "lacrosPolicyLoggedIn",
 		Timeout:      3 * time.Minute,
 	})
@@ -48,12 +52,16 @@ func DataLeakPreventionRulesListClipboardMixedTypeBrowsers(ctx context.Context, 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	dstURL := "source.chromium.org"
+	allowedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer allowedServer.Close()
 
-	// Reserve 10 seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
+	blockedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer blockedServer.Close()
+
+	dstServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer dstServer.Close()
+
+	dstURL := dstServer.URL + "/editable_text_box.html"
 
 	// Connect to Test API.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -77,39 +85,46 @@ func DataLeakPreventionRulesListClipboardMixedTypeBrowsers(ctx context.Context, 
 		{
 			name:           "blockedAshToLacros",
 			copyAllowed:    false,
-			srcURL:         "www.example.com",
+			srcURL:         blockedServer.URL + "/text_1.html",
 			srcBrowserType: browser.TypeAsh,
 			dstBrowserType: browser.TypeLacros,
 		},
 		{
 			name:           "blockedLacrosToAsh",
 			copyAllowed:    false,
-			srcURL:         "www.example.com",
+			srcURL:         blockedServer.URL + "/text_1.html",
 			srcBrowserType: browser.TypeLacros,
 			dstBrowserType: browser.TypeAsh,
 		},
 		{
 			name:           "allowedAshToLacros",
 			copyAllowed:    true,
-			srcURL:         "www.chromium.org",
+			srcURL:         allowedServer.URL + "/text_2.html",
 			srcBrowserType: browser.TypeAsh,
 			dstBrowserType: browser.TypeLacros,
 		},
 		{
 			name:           "allowedLacrosToAsh",
 			copyAllowed:    true,
-			srcURL:         "www.chromium.org",
+			srcURL:         allowedServer.URL + "/text_2.html",
 			srcBrowserType: browser.TypeLacros,
 			dstBrowserType: browser.TypeAsh,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Reserve time for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
 
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, policy.PopulateDLPPolicyForClipboard("example.com", dstURL)); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, policy.PopulateDLPPolicyForClipboard(blockedServer.URL, dstServer.URL)); err != nil {
 				s.Fatal("Failed to serve and verify the DLP policy: ", err)
 			}
 
@@ -125,9 +140,9 @@ func DataLeakPreventionRulesListClipboardMixedTypeBrowsers(ctx context.Context, 
 			}
 			defer closeSrcBrowser(cleanupCtx)
 
-			conn, err := srcBr.NewConn(ctx, "https://"+param.srcURL)
+			conn, err := srcBr.NewConn(ctx, param.srcURL)
 			if err != nil {
-				s.Fatal("Failed to open page: ", err)
+				s.Fatalf("Failed to open page %q: %v", param.srcURL, err)
 			}
 			defer conn.Close()
 
@@ -153,9 +168,9 @@ func DataLeakPreventionRulesListClipboardMixedTypeBrowsers(ctx context.Context, 
 			}
 			defer closeDstBrowser(cleanupCtx)
 
-			dstConn, err := dstBr.NewConn(ctx, "https://"+dstURL)
+			dstConn, err := dstBr.NewConn(ctx, dstURL)
 			if err != nil {
-				s.Fatal("Failed to open page: ", err)
+				s.Fatalf("Failed to open page %q: %v", dstURL, err)
 			}
 			defer dstConn.Close()
 
@@ -163,23 +178,21 @@ func DataLeakPreventionRulesListClipboardMixedTypeBrowsers(ctx context.Context, 
 				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", dstURL, err)
 			}
 
-			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
 			ui := uiauto.New(tconn)
 
-			searchNode := nodewith.Name("Search for code or files").Role(role.TextField).State(state.Editable, true).First()
-
-			if err := uiauto.Combine("pasting into search bar",
-				ui.WithTimeout(10*time.Second).WaitUntilExists(searchNode),
-				ui.WaitUntilExists(searchNode.State(state.Invisible, false)),
-				ui.LeftClick(searchNode),
+			textBoxNode := nodewith.Name("textarea").Role(role.TextField).State(state.Editable, true).First()
+			if err := uiauto.Combine("pasting into text box",
+				ui.WaitUntilExists(textBoxNode.Visible()),
+				ui.LeftClick(textBoxNode),
+				ui.WaitUntilExists(textBoxNode.Focused()),
 				keyboard.AccelAction("Ctrl+V"),
 			)(ctx); err != nil {
-				s.Fatal("Failed to paste into search bar: ", err)
+				s.Fatal("Failed to paste into text box: ", err)
 			}
 
 			// Verify notification bubble.
-			notifError := clipboard.CheckClipboardBubble(ctx, ui, param.srcURL)
+			parsedSrcURL, _ := url.Parse(blockedServer.URL)
+			notifError := clipboard.CheckClipboardBubble(ctx, ui, parsedSrcURL.Hostname())
 
 			if !param.copyAllowed && notifError != nil {
 				s.Error("Expected notification but found an error: ", notifError)
