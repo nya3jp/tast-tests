@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ae7469_fae71f7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-06T21:24:54Z",
+      "side": 1,
+      "message": "`.*`",
+      "range": {
+        "startLine": 13,
+        "startChar": 40,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "0c780cd0b42dfa6dabd49b9306cb2b6f3750caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d56326_c0986f51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-06T21:24:54Z",
+      "side": 1,
+      "message": "if err :\u003d dconnSafebrowsing.Eval(ctx, `document.getElementById(\"deep-scan-list\").rows.length`, \u0026numRows); err !\u003d nil {",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 17
+      },
+      "revId": "0c780cd0b42dfa6dabd49b9306cb2b6f3750caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a120412_7096042d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-06T21:24:54Z",
+      "side": 1,
+      "message": "`there`",
+      "range": {
+        "startLine": 269,
+        "startChar": 83,
+        "endLine": 269,
+        "endChar": 85
+      },
+      "revId": "0c780cd0b42dfa6dabd49b9306cb2b6f3750caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6e2402_5e9df589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-06T21:24:54Z",
+      "side": 1,
+      "message": "nit: `%d`",
+      "range": {
+        "startLine": 269,
+        "startChar": 106,
+        "endLine": 269,
+        "endChar": 108
+      },
+      "revId": "0c780cd0b42dfa6dabd49b9306cb2b6f3750caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3f18db_d1347baf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-06T21:24:54Z",
+      "side": 1,
+      "message": "nit: No need to multiply a value by 1.",
+      "range": {
+        "startLine": 272,
+        "startChar": 34,
+        "endLine": 272,
+        "endChar": 38
+      },
+      "revId": "0c780cd0b42dfa6dabd49b9306cb2b6f3750caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe54c43_e2ccb655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-06T21:24:54Z",
+      "side": 1,
+      "message": "Rename `EnsureNoDeepScanningVerdict` to `GetCleanDconnSafebrowsing` and make it return `dconnSafebrowsing` so you do not have to call `br.NewConn` directly from here.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 85
+      },
+      "revId": "0c780cd0b42dfa6dabd49b9306cb2b6f3750caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cfe3481_6d94e31b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-06T21:24:54Z",
+      "side": 1,
+      "message": "Rename `EnsureNoDeepScanningVerdict` to `GetCleanDconnSafebrowsing` and make it return `dconnSafebrowsing` so you do not have to call `br.NewConn` directly from here.",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 2
+      },
+      "revId": "0c780cd0b42dfa6dabd49b9306cb2b6f3750caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47e4197_cf20b14a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_file_attached.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-06T21:24:54Z",
+      "side": 1,
+      "message": "if err :\u003d dconn.Eval(ctx, `document.getElementsByTagName(\"input\")[0].files.length \u003d\u003d 0`, \u0026blocked); err !\u003d nil {",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 17
+      },
+      "revId": "0c780cd0b42dfa6dabd49b9306cb2b6f3750caba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
