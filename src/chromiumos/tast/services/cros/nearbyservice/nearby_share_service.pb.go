@@ -820,7 +820,7 @@ var file_nearby_share_service_proto_rawDesc = []byte{
 	0x53, 0x61, 0x76, 0x65, 0x4c, 0x6f, 0x67, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
 	0x20, 0x0a, 0x0c, 0x73, 0x61, 0x76, 0x65, 0x5f, 0x75, 0x69, 0x5f, 0x6c, 0x6f, 0x67, 0x73, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x73, 0x61, 0x76, 0x65, 0x55, 0x69, 0x4c, 0x6f, 0x67,
-	0x73, 0x32, 0xda, 0x0c, 0x0a, 0x12, 0x4e, 0x65, 0x61, 0x72, 0x62, 0x79, 0x53, 0x68, 0x61, 0x72,
+	0x73, 0x32, 0xe5, 0x0d, 0x0a, 0x12, 0x4e, 0x65, 0x61, 0x72, 0x62, 0x79, 0x53, 0x68, 0x61, 0x72,
 	0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x55, 0x0a, 0x0e, 0x4e, 0x65, 0x77, 0x43,
 	0x68, 0x72, 0x6f, 0x6d, 0x65, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x29, 0x2e, 0x74, 0x61, 0x73,
 	0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x6e, 0x65, 0x61, 0x72, 0x62, 0x79, 0x73, 0x65, 0x72,
@@ -921,11 +921,19 @@ var file_nearby_share_service_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x2f, 0x2e, 0x74, 0x61,
 	0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x6e, 0x65, 0x61, 0x72, 0x62, 0x79, 0x73, 0x65,
 	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x72, 0x4f, 0x53, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62,
-	0x75, 0x74, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x2d,
-	0x5a, 0x2b, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61, 0x73,
-	0x74, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73, 0x2f,
-	0x6e, 0x65, 0x61, 0x72, 0x62, 0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x75, 0x74, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x43,
+	0x0a, 0x0f, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x42, 0x6c, 0x75, 0x65, 0x74, 0x6f, 0x6f, 0x74,
+	0x68, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74,
+	0x79, 0x22, 0x00, 0x12, 0x44, 0x0a, 0x10, 0x44, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x42, 0x6c,
+	0x75, 0x65, 0x74, 0x6f, 0x6f, 0x74, 0x68, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a,
+	0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x42, 0x2d, 0x5a, 0x2b, 0x63, 0x68, 0x72,
+	0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61, 0x73, 0x74, 0x2f, 0x73, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73, 0x2f, 0x6e, 0x65, 0x61, 0x72, 0x62,
+	0x79, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -975,25 +983,29 @@ var file_nearby_share_service_proto_depIdxs = []int32{
 	12, // 14: tast.cros.nearbyservice.NearbyShareService.SaveLogs:input_type -> tast.cros.nearbyservice.SaveLogsRequest
 	13, // 15: tast.cros.nearbyservice.NearbyShareService.ClearTransferredFiles:input_type -> google.protobuf.Empty
 	13, // 16: tast.cros.nearbyservice.NearbyShareService.CrOSAttributes:input_type -> google.protobuf.Empty
-	13, // 17: tast.cros.nearbyservice.NearbyShareService.NewChromeLogin:output_type -> google.protobuf.Empty
-	13, // 18: tast.cros.nearbyservice.NearbyShareService.CloseChrome:output_type -> google.protobuf.Empty
-	13, // 19: tast.cros.nearbyservice.NearbyShareService.CrOSSetup:output_type -> google.protobuf.Empty
-	8,  // 20: tast.cros.nearbyservice.NearbyShareService.FilesHashes:output_type -> tast.cros.nearbyservice.CrOSFileHashResponse
-	4,  // 21: tast.cros.nearbyservice.NearbyShareService.PrepareFiles:output_type -> tast.cros.nearbyservice.CrOSPrepareFileResponse
-	13, // 22: tast.cros.nearbyservice.NearbyShareService.StartSend:output_type -> google.protobuf.Empty
-	10, // 23: tast.cros.nearbyservice.NearbyShareService.SelectShareTarget:output_type -> tast.cros.nearbyservice.CrOSShareTokenResponse
-	13, // 24: tast.cros.nearbyservice.NearbyShareService.StartHighVisibilityMode:output_type -> google.protobuf.Empty
-	13, // 25: tast.cros.nearbyservice.NearbyShareService.WaitForOnboardingFlow:output_type -> google.protobuf.Empty
-	13, // 26: tast.cros.nearbyservice.NearbyShareService.StartReceiving:output_type -> google.protobuf.Empty
-	10, // 27: tast.cros.nearbyservice.NearbyShareService.WaitForSenderAndAcceptShare:output_type -> tast.cros.nearbyservice.CrOSShareTokenResponse
-	13, // 28: tast.cros.nearbyservice.NearbyShareService.AcceptIncomingShareNotificationAndWaitForCompletion:output_type -> google.protobuf.Empty
-	13, // 29: tast.cros.nearbyservice.NearbyShareService.AcceptFastInitiationNotification:output_type -> google.protobuf.Empty
-	13, // 30: tast.cros.nearbyservice.NearbyShareService.StartLogging:output_type -> google.protobuf.Empty
-	13, // 31: tast.cros.nearbyservice.NearbyShareService.SaveLogs:output_type -> google.protobuf.Empty
-	13, // 32: tast.cros.nearbyservice.NearbyShareService.ClearTransferredFiles:output_type -> google.protobuf.Empty
-	11, // 33: tast.cros.nearbyservice.NearbyShareService.CrOSAttributes:output_type -> tast.cros.nearbyservice.CrOSAttributesResponse
-	17, // [17:34] is the sub-list for method output_type
-	0,  // [0:17] is the sub-list for method input_type
+	13, // 17: tast.cros.nearbyservice.NearbyShareService.EnableBluetooth:input_type -> google.protobuf.Empty
+	13, // 18: tast.cros.nearbyservice.NearbyShareService.DisableBluetooth:input_type -> google.protobuf.Empty
+	13, // 19: tast.cros.nearbyservice.NearbyShareService.NewChromeLogin:output_type -> google.protobuf.Empty
+	13, // 20: tast.cros.nearbyservice.NearbyShareService.CloseChrome:output_type -> google.protobuf.Empty
+	13, // 21: tast.cros.nearbyservice.NearbyShareService.CrOSSetup:output_type -> google.protobuf.Empty
+	8,  // 22: tast.cros.nearbyservice.NearbyShareService.FilesHashes:output_type -> tast.cros.nearbyservice.CrOSFileHashResponse
+	4,  // 23: tast.cros.nearbyservice.NearbyShareService.PrepareFiles:output_type -> tast.cros.nearbyservice.CrOSPrepareFileResponse
+	13, // 24: tast.cros.nearbyservice.NearbyShareService.StartSend:output_type -> google.protobuf.Empty
+	10, // 25: tast.cros.nearbyservice.NearbyShareService.SelectShareTarget:output_type -> tast.cros.nearbyservice.CrOSShareTokenResponse
+	13, // 26: tast.cros.nearbyservice.NearbyShareService.StartHighVisibilityMode:output_type -> google.protobuf.Empty
+	13, // 27: tast.cros.nearbyservice.NearbyShareService.WaitForOnboardingFlow:output_type -> google.protobuf.Empty
+	13, // 28: tast.cros.nearbyservice.NearbyShareService.StartReceiving:output_type -> google.protobuf.Empty
+	10, // 29: tast.cros.nearbyservice.NearbyShareService.WaitForSenderAndAcceptShare:output_type -> tast.cros.nearbyservice.CrOSShareTokenResponse
+	13, // 30: tast.cros.nearbyservice.NearbyShareService.AcceptIncomingShareNotificationAndWaitForCompletion:output_type -> google.protobuf.Empty
+	13, // 31: tast.cros.nearbyservice.NearbyShareService.AcceptFastInitiationNotification:output_type -> google.protobuf.Empty
+	13, // 32: tast.cros.nearbyservice.NearbyShareService.StartLogging:output_type -> google.protobuf.Empty
+	13, // 33: tast.cros.nearbyservice.NearbyShareService.SaveLogs:output_type -> google.protobuf.Empty
+	13, // 34: tast.cros.nearbyservice.NearbyShareService.ClearTransferredFiles:output_type -> google.protobuf.Empty
+	11, // 35: tast.cros.nearbyservice.NearbyShareService.CrOSAttributes:output_type -> tast.cros.nearbyservice.CrOSAttributesResponse
+	13, // 36: tast.cros.nearbyservice.NearbyShareService.EnableBluetooth:output_type -> google.protobuf.Empty
+	13, // 37: tast.cros.nearbyservice.NearbyShareService.DisableBluetooth:output_type -> google.protobuf.Empty
+	19, // [19:38] is the sub-list for method output_type
+	0,  // [0:19] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -1236,6 +1248,12 @@ type NearbyShareServiceClient interface {
 	ClearTransferredFiles(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	// CrOSAttributes gets device info for a chromebook used in remote tests.
 	CrOSAttributes(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*CrOSAttributesResponse, error)
+	// EnableBluetooth enables bluetooth on the chromebook. It is safe to assume
+	// bluetooth has been enabled when this RPC returns.
+	EnableBluetooth(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// DisableBluetooth disables bluetooth on the chromebook. It is safe to assume
+	// bluetooth has been disabled when this RPC returns.
+	DisableBluetooth(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type nearbyShareServiceClient struct {
@@ -1399,6 +1417,24 @@ func (c *nearbyShareServiceClient) CrOSAttributes(ctx context.Context, in *empty
 	return out, nil
 }
 
+func (c *nearbyShareServiceClient) EnableBluetooth(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.nearbyservice.NearbyShareService/EnableBluetooth", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *nearbyShareServiceClient) DisableBluetooth(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.nearbyservice.NearbyShareService/DisableBluetooth", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // NearbyShareServiceServer is the server API for NearbyShareService service.
 type NearbyShareServiceServer interface {
 	// NewChromeLogin logs into a Chrome session as a fake user with the Nearby
@@ -1443,6 +1479,12 @@ type NearbyShareServiceServer interface {
 	ClearTransferredFiles(context.Context, *empty.Empty) (*empty.Empty, error)
 	// CrOSAttributes gets device info for a chromebook used in remote tests.
 	CrOSAttributes(context.Context, *empty.Empty) (*CrOSAttributesResponse, error)
+	// EnableBluetooth enables bluetooth on the chromebook. It is safe to assume
+	// bluetooth has been enabled when this RPC returns.
+	EnableBluetooth(context.Context, *empty.Empty) (*empty.Empty, error)
+	// DisableBluetooth disables bluetooth on the chromebook. It is safe to assume
+	// bluetooth has been disabled when this RPC returns.
+	DisableBluetooth(context.Context, *empty.Empty) (*empty.Empty, error)
 }
 
 // UnimplementedNearbyShareServiceServer can be embedded to have forward compatible implementations.
@@ -1499,6 +1541,12 @@ func (*UnimplementedNearbyShareServiceServer) ClearTransferredFiles(context.Cont
 }
 func (*UnimplementedNearbyShareServiceServer) CrOSAttributes(context.Context, *empty.Empty) (*CrOSAttributesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CrOSAttributes not implemented")
+}
+func (*UnimplementedNearbyShareServiceServer) EnableBluetooth(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableBluetooth not implemented")
+}
+func (*UnimplementedNearbyShareServiceServer) DisableBluetooth(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableBluetooth not implemented")
 }
 
 func RegisterNearbyShareServiceServer(s *grpc.Server, srv NearbyShareServiceServer) {
@@ -1811,6 +1859,42 @@ func _NearbyShareService_CrOSAttributes_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _NearbyShareService_EnableBluetooth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NearbyShareServiceServer).EnableBluetooth(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.nearbyservice.NearbyShareService/EnableBluetooth",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NearbyShareServiceServer).EnableBluetooth(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NearbyShareService_DisableBluetooth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NearbyShareServiceServer).DisableBluetooth(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.nearbyservice.NearbyShareService/DisableBluetooth",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NearbyShareServiceServer).DisableBluetooth(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _NearbyShareService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.nearbyservice.NearbyShareService",
 	HandlerType: (*NearbyShareServiceServer)(nil),
@@ -1882,6 +1966,14 @@ var _NearbyShareService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CrOSAttributes",
 			Handler:    _NearbyShareService_CrOSAttributes_Handler,
+		},
+		{
+			MethodName: "EnableBluetooth",
+			Handler:    _NearbyShareService_EnableBluetooth_Handler,
+		},
+		{
+			MethodName: "DisableBluetooth",
+			Handler:    _NearbyShareService_DisableBluetooth_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
