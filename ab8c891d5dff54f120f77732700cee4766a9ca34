@@ -22,6 +22,30 @@
       },
       "revId": "ab8c891d5dff54f120f77732700cee4766a9ca34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2db9d9c_d7c0728f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/learn_more_wrong_password.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-05-06T09:33:01Z",
+      "side": 1,
+      "message": "Yes, you are right, they differ only in the last part of the test. Discarding the new a file and adding parameters do the existing auth_error.go.",
+      "parentUuid": "492688eb_9fd5a832",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "ab8c891d5dff54f120f77732700cee4766a9ca34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
