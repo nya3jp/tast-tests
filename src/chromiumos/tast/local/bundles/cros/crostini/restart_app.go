@@ -47,7 +47,7 @@ func RestartApp(ctx context.Context, s *testing.State) {
 
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to lauch terminal: ", err)
+		s.Fatal("Failed to launch terminal: ", err)
 	}
 
 	if err := terminalApp.ShutdownCrostini(cont)(ctx); err != nil {

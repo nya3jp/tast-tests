@@ -239,7 +239,7 @@ func (ta *TerminalApp) RestartCrostini(keyboard *input.KeyboardEventWriter, cont
 		// Start the VM and container.
 		ta, err := Launch(ctx, ta.tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to lauch terminal")
+			return errors.Wrap(err, "failed to launch terminal")
 		}
 
 		if err := cont.Connect(ctx, userName); err != nil {

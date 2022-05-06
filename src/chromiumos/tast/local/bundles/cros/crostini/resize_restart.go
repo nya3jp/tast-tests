@@ -73,7 +73,7 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 	// Shutdown Crostini.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to lauch terminal: ", err)
+		s.Fatal("Failed to launch terminal: ", err)
 	}
 	if err := terminalApp.ShutdownCrostini(cont)(ctx); err != nil {
 		s.Fatal("Failed to shutdown crostini: ", err)
@@ -91,7 +91,7 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 	}
 
 	if _, err := terminalapp.Launch(ctx, tconn); err != nil {
-		s.Fatal("Failed to lauch terminal: ", err)
+		s.Fatal("Failed to launch terminal: ", err)
 	}
 
 	if err := st.VerifyResizeResults(ctx, cont, sizeOnSlider, size); err != nil {

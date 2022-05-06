@@ -61,7 +61,7 @@ func RestartIcon(ctx context.Context, s *testing.State) {
 
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to lauch terminal: ", err)
+		s.Fatal("Failed to launch terminal: ", err)
 	}
 
 	if err := terminalApp.ShutdownCrostini(cont)(ctx); err != nil {
@@ -70,7 +70,7 @@ func RestartIcon(ctx context.Context, s *testing.State) {
 
 	terminalApp, err = terminalapp.LaunchThroughIcon(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to lauch terminal after shutdown: ", err)
+		s.Fatal("Failed to launch terminal after shutdown: ", err)
 	}
 
 }

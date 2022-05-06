@@ -89,7 +89,7 @@ func Restart(ctx context.Context, s *testing.State) {
 	for i := 0; i < numRestarts; i++ {
 		terminalApp, err := terminalapp.Launch(ctx, tconn)
 		if err != nil {
-			s.Fatal("Failed to lauch terminal: ", err)
+			s.Fatal("Failed to launch terminal: ", err)
 		}
 
 		s.Logf("Restart #%d, startup time was %v", i+1, startupTime)
