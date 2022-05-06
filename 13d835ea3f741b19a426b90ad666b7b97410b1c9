@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d56ba87_cc530a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "What is \"ofh\"?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 6
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd139bc8_b8ebf857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "Please add dmblack@google.com and tote-eng@google.com",
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a66ece_c8ec4025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "Do we need three separate data files? Since we are copying them, can\u0027t we just use the same source file for all three?",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 56
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6f0ac1_46fd5437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "Is this necessary? Didn\u0027t clicking the pinned file chip in the previous step already verify existence?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3660c756_2a8ef915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "This test is trying to do a lot. Seems like the download related steps might be better added as a parameterization of the existing holdingspace.Download.* test:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 4
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84655376_848f3bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "How do we know Gallery was ever opened?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 3
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81843514_cd8ccaa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/data/image01.png.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "Should we be adding our own files instead of depending on files from other features?",
+      "range": {
+        "startLine": 2,
+        "startChar": 54,
+        "endLine": 2,
+        "endChar": 94
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb4c235_ca2b0ca3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is a good stable identifier, I\u0027d probably omit this if it\u0027s not necessary",
+      "range": {
+        "startLine": 407,
+        "startChar": 55,
+        "endLine": 407,
+        "endChar": 84
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4433a3b_8685f049",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 47
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb29f7f_5ae980a6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "Is one right click not sufficient?",
+      "range": {
+        "startLine": 410,
+        "startChar": 2,
+        "endLine": 410,
+        "endChar": 22
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f7993b_323fa50e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-06T18:59:49Z",
+      "side": 1,
+      "message": "Is one left click not sufficient?",
+      "range": {
+        "startLine": 411,
+        "startChar": 2,
+        "endLine": 411,
+        "endChar": 21
+      },
+      "revId": "13d835ea3f741b19a426b90ad666b7b97410b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
