@@ -46,6 +46,7 @@ func init() {
 		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{
 			{
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
