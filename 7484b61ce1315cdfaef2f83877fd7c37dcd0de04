@@ -16,6 +16,23 @@
       "message": "DismissSortNudge now will click on the button to close it :D ",
       "revId": "7484b61ce1315cdfaef2f83877fd7c37dcd0de04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2690dd_5fa5b26b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-06T01:24:21Z",
+      "side": 1,
+      "message": "Nit: var testDocFileNames []string",
+      "revId": "7484b61ce1315cdfaef2f83877fd7c37dcd0de04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
