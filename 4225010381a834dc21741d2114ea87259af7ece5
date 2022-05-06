@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4c8994_6af90114",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-06T22:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c484a142_76e065c2",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "4225010381a834dc21741d2114ea87259af7ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e38b99d_0ff067a4",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-06T21:59:34Z",
       "side": 1,
       "message": "This can easily be stated in one sentence, like so: The wallpaper tast tests will open the wallpaper subpage from personalization hub, instead of running from the wallpaper app.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 48
+      },
+      "revId": "4225010381a834dc21741d2114ea87259af7ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba696ff9_9959351d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-06T22:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e38b99d_0ff067a4",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c465a4_d09bdf04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-06T22:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1539a581_d17a39a0",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "4225010381a834dc21741d2114ea87259af7ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a39c4502_562664bd",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-06T21:59:34Z",
       "side": 1,
       "message": "nit: `../tast/fast_build.sh -T`",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "4225010381a834dc21741d2114ea87259af7ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c17febf_872b63e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-06T22:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a39c4502_562664bd",
       "range": {
         "startLine": 18,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a46c18c_74526018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-06T22:34:34Z",
+      "side": 1,
+      "message": "Changed it back. Thanks for the pointer.",
+      "parentUuid": "e513ae6f_77402964",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "4225010381a834dc21741d2114ea87259af7ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19b82482_eb1de39c",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-06T21:59:34Z",
       "side": 1,
       "message": "For consistency with the others, put `.Name` before `.Role`.",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 77
+      },
+      "revId": "4225010381a834dc21741d2114ea87259af7ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13299f6a_e64eb422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-06T22:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b82482_eb1de39c",
       "range": {
         "startLine": 43,
         "startChar": 26,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae3ef55_7b7fa45b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-06T22:34:34Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "3954dc05_23998b44",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "4225010381a834dc21741d2114ea87259af7ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13c89b63_ea512616",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65954ef6_5cffd6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-06T22:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c89b63_ea512616",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "4225010381a834dc21741d2114ea87259af7ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68901072_cb571737",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-05-06T21:59:34Z",
       "side": 1,
       "message": "End with a `.`\nSee https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 86
+      },
+      "revId": "4225010381a834dc21741d2114ea87259af7ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "802e762f_7ea8fda3",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-06T22:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68901072_cb571737",
       "range": {
         "startLine": 88,
         "startChar": 0,
