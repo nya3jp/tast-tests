@@ -63,6 +63,30 @@
       },
       "revId": "cab4256a03cc9ed64573438de38f9bb9100172ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "529b0ae6_e23b6296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_iwlwifi_error.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-06T22:52:01Z",
+      "side": 1,
+      "message": "DONE. Also added the unit test in crash lib.",
+      "parentUuid": "71019995_23022562",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "cab4256a03cc9ed64573438de38f9bb9100172ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
