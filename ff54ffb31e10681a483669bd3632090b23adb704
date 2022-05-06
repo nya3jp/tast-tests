@@ -34,6 +34,24 @@
       "parentUuid": "e0d39e3a_fe39a55c",
       "revId": "ff54ffb31e10681a483669bd3632090b23adb704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3091b0ce_d2ccb7af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-06T06:51:02Z",
+      "side": 0,
+      "message": "If you create a separate CL to promote a test, it can be reverted without readding the old test.",
+      "parentUuid": "059ab5cd_7c9465fb",
+      "revId": "ff54ffb31e10681a483669bd3632090b23adb704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
