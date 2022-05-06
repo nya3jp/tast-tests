@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers"
 	"chromiumos/tast/local/chrome"
@@ -242,21 +243,17 @@ func testFileAttachedForBrowserAndFile(
 		}
 	}
 
+	err := helpers.EnsureNoDeepScanningVerdict(ctx, br, tconn)
+	if err != nil {
+		s.Fatal("Failed to ensure that there is no prior deep scanning verdict: ", err)
+	}
+
 	dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
 	if err != nil {
 		s.Fatal("Failed to connect to chrome: ", err)
 	}
 	defer dconnSafebrowsing.Close()
 	defer dconnSafebrowsing.CloseTarget(cleanupCtx)
-
-	var numRows int
-	err = dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").rows.length`, &numRows)
-	if err != nil {
-		s.Fatal("Could not verify numRows: ", err)
-	}
-	if numRows != 0 {
-		s.Fatal("There already exists a deep scanning verdict, even though it shouldn't. numRows: ", numRows)
-	}
 
 	dconn, err := br.NewConn(ctx, server.URL+"/file_input.html")
 	if err != nil {
@@ -298,20 +295,27 @@ func testFileAttachedForBrowserAndFile(
 
 	verifyUIForFileAttached(ctx, shouldBlockUpload, params, testParams, br, s, server, testDirPath, ui, tconn)
 
-	// Ensure file was or was not attached, by checking javascript output.
-	var blocked bool
-	err = dconn.Eval(ctx, `document.getElementsByTagName("input")[0].files.length == 0`, &blocked)
-	if err != nil {
-		s.Fatal("Failed to determine whether file was blocked: ", err)
-	}
-	if !testParams.AllowsImmediateDelivery && shouldBlockUpload {
-		if !blocked {
-			s.Fatal("File should have been blocked, but wasn't")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Ensure file was or was not attached, by checking javascript output.
+		var blocked bool
+		err = dconn.Eval(ctx, `document.getElementsByTagName("input")[0].files.length == 0`, &blocked)
+		if err != nil {
+			s.Fatal("Failed to determine whether file was blocked: ", err)
 		}
-	} else {
-		if blocked {
-			s.Fatal("File shouldn't have been blocked, but was")
+		if !testParams.AllowsImmediateDelivery && shouldBlockUpload {
+			if !blocked {
+				// If a file is attached even though it should have been blocked, this is an immediate error.
+				return testing.PollBreak(errors.New("file should have been blocked, but wasn't"))
+			}
+		} else {
+			if blocked {
+				// Sometimes it takes time to attach a file, so we do polling here.
+				return errors.New("file shouldn't have been blocked, but was")
+			}
 		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to verify whether file was correctly attached or blocked: ", err)
 	}
 
 	if testParams.ScansEnabled && !params.IsUnscannable {
@@ -389,7 +393,7 @@ func verifyUIForFileAttached(
 	} else {
 		// Check that no dialog will be opened.
 		scanningDialogFinder := nodewith.HasClass("DialogClientView")
-		err := ui.EnsureGoneFor(scanningDialogFinder, 1*time.Second)(ctx)
+		err := ui.EnsureGoneFor(scanningDialogFinder, 2*time.Second)(ctx)
 		if err != nil {
 			s.Error("Scanning dialog detected, but none was expected: ", err)
 		}

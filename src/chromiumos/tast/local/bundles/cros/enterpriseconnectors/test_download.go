@@ -203,21 +203,14 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
-			dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
+			err := helpers.EnsureNoDeepScanningVerdict(ctx, br, tconn)
 			if err != nil {
-				s.Fatal("Failed to connect to chrome: ", err)
+				s.Fatal("Failed to ensure that there is no prior deep scanning verdict: ", err)
 			}
+
+			dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
 			defer dconnSafebrowsing.Close()
 			defer dconnSafebrowsing.CloseTarget(cleanupCtx)
-
-			var numRows int
-			err = dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").rows.length`, &numRows)
-			if err != nil {
-				s.Fatal("Could not verify numRows: ", err)
-			}
-			if numRows != 0 {
-				s.Fatal("There already exists a deep scanning verdict, even though it shouldn't. numRows: ", numRows)
-			}
 
 			dlFileName := params.FileName
 

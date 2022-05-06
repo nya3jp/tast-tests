@@ -246,3 +246,31 @@ func GetSafeBrowsingExperimentEnabled(ctx context.Context, br *browser.Browser, 
 	err = dconnSafebrowsing.Eval(ctx, `Array.from(document.getElementById("experiments-list").children).find((obj) => obj.innerHTML.includes("`+experimentName+`")).innerHTML.includes("Enabled:")`, &experimentEnabled)
 	return experimentEnabled, err
 }
+
+// EnsureNoDeepScanningVerdict ensures that there is no deep scanning verdict on chrome://safe-browsing/#tab-deep-scan
+func EnsureNoDeepScanningVerdict(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+		defer cancel()
+		dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to connect to chrome"))
+		}
+		defer dconnSafebrowsing.Close()
+		defer dconnSafebrowsing.CloseTarget(cleanupCtx)
+
+		var numRows int
+		err = dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").rows.length`, &numRows)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not verify numRows"))
+		}
+		if numRows != 0 {
+			return errors.Errorf("there already exists a deep scanning verdict, even though it shouldn't. numRows: %v", numRows)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for empty safe browsing site")
+	}
+	return nil
+}
