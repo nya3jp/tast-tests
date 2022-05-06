@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99dc9008_e8c9e2db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_battery_charge_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T16:51:18Z",
+      "side": 1,
+      "message": "nit: i think it\u0027s better to don\u0027t put numbers in text in comments. You can to update comment each time to modify timeout. You can remove the exact amount of time from the comment.",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 15
+      },
+      "revId": "b6055ec11e7263b68511f79043ed480f564420dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91bf6cfa_69130582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_battery_charge_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T16:51:18Z",
+      "side": 1,
+      "message": "nit: we don\u0027t always need 10 seconds. I\u0027d prefer to don\u0027t try unity all cleanup contexts. Each test owner decide what is the best timeout.",
+      "range": {
+        "startLine": 73,
+        "startChar": 37,
+        "endLine": 73,
+        "endChar": 39
+      },
+      "revId": "b6055ec11e7263b68511f79043ed480f564420dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff484d6_5ce9e6cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/edit_bookmarks_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T16:51:18Z",
+      "side": 1,
+      "message": "It\u0027s better to don\u0027t pass 2 contexts. Just pass 1 and create \"cleanupCtx\" from \"ctx\"",
+      "range": {
+        "startLine": 167,
+        "startChar": 29,
+        "endLine": 167,
+        "endChar": 39
+      },
+      "revId": "b6055ec11e7263b68511f79043ed480f564420dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f13c1ce_d53ffbba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T16:51:18Z",
+      "side": 1,
+      "message": "i\u0027d remove it from here.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 17
+      },
+      "revId": "b6055ec11e7263b68511f79043ed480f564420dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1881a205_3aa8b158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_brightness_percent.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T16:51:18Z",
+      "side": 1,
+      "message": "nit: imho, this comment is a bit redundant, don\u0027t you think so?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "b6055ec11e7263b68511f79043ed480f564420dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2333e425_fe5ef3f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/wallpaper_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T16:51:18Z",
+      "side": 1,
+      "message": "nit: i think it makes sense to create cleanupCtx before the first use, i.e. before 135 line in your case.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 15
+      },
+      "revId": "b6055ec11e7263b68511f79043ed480f564420dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

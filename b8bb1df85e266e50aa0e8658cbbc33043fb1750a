@@ -46,6 +46,30 @@
       },
       "revId": "b8bb1df85e266e50aa0e8658cbbc33043fb1750a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db31d97a_b76c2625",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T16:51:18Z",
+      "side": 1,
+      "message": "re 1: I missed that this test actually had cleanupCtx. There might be some difference depending on where do you declare cleanup context.\n\nre 2: if some people don\u0027t have cleanup context, they probably don\u0027t need it. If their test is failing, they try to investigate what went wrong and maybe cleanup context will help in some situations. Basically, it\u0027s critical to have cleanup context to have a guarantee that you clear state and your failing test won\u0027t affect other tests. Or maybe you want to reserve some time to save state for debugging issue. I\u0027d say if you don\u0027t really need it, it\u0027s better to don\u0027t introduce one.",
+      "parentUuid": "62ab9175_a57a85dc",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "b8bb1df85e266e50aa0e8658cbbc33043fb1750a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
