@@ -31,6 +31,9 @@ import (
 type googleApplication string
 
 const (
+	// GoogleSlides is added temporarily.
+	GoogleSlides googleApplication = "Google Slides"
+
 	googleSlides googleApplication = "Google Slides"
 	googleDocs   googleApplication = "Google Docs"
 )
