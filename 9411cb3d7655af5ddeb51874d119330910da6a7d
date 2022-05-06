@@ -220,6 +220,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fac124d5_134ce83e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-05-06T03:07:35Z",
+      "side": 1,
+      "message": "I\u0027m stacking another CL on top of this so let me try to land this while we continue discussing naming. I can fix it in the next CL.\n\nAs this is not a package that will be accessed from other packages, and only meant to be used by tests in this folder, do we have to make the naming very specific? It\u0027s really just constants and helpers (that don\u0027t have much in common too), major reason of putting them together instead of individual tests is because those tests use similar setups and constants.\n\nI can use autoupdateutil, but if I use something more specific (like crossversiontest to refer to the main function that is shared, NToMTest), it won\u0027t be referring to all helpers/constants I shared anymore. Like crossversiontest.NewHwsecEnv doesn\u0027t make sense. I think the main conflict here is that I\u0027m just grouping shared code in the same test directory, instead of providing a library, and I thought that\u0027s fine because other packages can\u0027t access this anyway.",
+      "parentUuid": "cd77d9da_6080bec1",
+      "revId": "9411cb3d7655af5ddeb51874d119330910da6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8e48022_73ceb9fd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_chrome_login.go",
         "patchSetId": 1
