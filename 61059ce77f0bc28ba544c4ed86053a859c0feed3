@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53104b86_db04a2c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/data/configuration.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-06T13:49:12Z",
+      "side": 1,
+      "message": "14695?",
+      "revId": "61059ce77f0bc28ba544c4ed86053a859c0feed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
