@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -40,6 +41,16 @@ func connectADB(ctx context.Context) (*adb.Device, error) {
 		return nil, err
 	}
 	return device, device.WaitForState(ctx, adb.StateDevice, ctxutil.MaxTimeout)
+}
+
+// EnableVerboseLogging enables verbose logging for every tag specified.
+func (a *ARC) EnableVerboseLogging(ctx context.Context, tags ...string) error {
+	for _, tag := range tags {
+		if err := a.device.EnableVerboseLoggingForTag(ctx, tag); err != nil {
+			return errors.Wrapf(err, "failed to enable verbose logging for tag %v", tag)
+		}
+	}
+	return nil
 }
 
 // Install installs an APK file to the Android system.
