@@ -26,13 +26,18 @@ const (
 
 // List of fixture names for inputs.
 const (
-	AnyVK                 = "anyVK"
-	AnyVKInGuest          = "anyVKInGuest"
-	ClamshellVK           = "clamshellVK"
-	ClamshellNonVK        = "clamshellNonVK"
-	ClamshellNonVKInGuest = "clamshellNonVKInGuest"
-	TabletVK              = "tabletVK"
-	TabletVKInGuest       = "tabletVKInGuest"
+	AnyVK                              = "anyVK"
+	AnyVKInGuest                       = "anyVKInGuest"
+	ClamshellVK                        = "clamshellVK"
+	ClamshellVKWithAssistAutocorrect   = "clamshellVKWithAssistAutocorrect"
+	ClamshellNonVK                     = "clamshellNonVK"
+	ClamshellNonVKInGuest              = "clamshellNonVKInGuest"
+	ClamshellNonVKWithMultiwordSuggest = "clamshellNonVKWithMultiwordSuggest"
+	ClamshellNonVKWithGrammarCheck     = "clamshellNonVKWithGrammarCheck"
+	TabletVK                           = "tabletVK"
+	TabletVKInGuest                    = "tabletVKInGuest"
+	TabletVKWithAssistAutocorrect      = "tabletVKWithAssistAutocorrect"
+	TabletVKWithMultipasteSuggestion   = "tabletVKWithMultipasteSuggestion"
 )
 
 func init() {
@@ -79,6 +84,20 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: ClamshellVKWithAssistAutocorrect,
+		Desc: "Clamshell mode with A11y VK enabled  and assist autocorrect",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, true, false, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: ClamshellNonVK,
 		Desc: "Clamshell mode with VK disabled",
 		Contacts: []string{
@@ -87,6 +106,34 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(clamshellMode, false, false),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: ClamshellNonVKWithMultiwordSuggest,
+		Desc: "Clamshell mode with VK disabled and multiword suggest",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, false, chrome.ExtraArgs("--enable-features=AssistMultiWord")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: ClamshellNonVKWithGrammarCheck,
+		Desc: "Clamshell mode with VK disabled and grammar check",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, false, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
@@ -115,6 +162,34 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(tabletMode, true, false),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: TabletVKWithAssistAutocorrect,
+		Desc: "Tablet mode with VK enabled and assist autocorrect",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, false, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: TabletVKWithMultipasteSuggestion,
+		Desc: "Tablet mode with VK enabled and multipaste suggestion",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, false, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultipasteSuggestion")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
