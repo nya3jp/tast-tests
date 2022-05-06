@@ -39,6 +39,30 @@
       },
       "revId": "cc146856686b73ea558f57dd65b46a69fc6f944d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb12c95_ab1dbe0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-06T22:06:02Z",
+      "side": 1,
+      "message": "That make sense, the only issue here is that the log is not clean when the test runs on devices with Marvell WiFi.\n\nlog:\nhttps://paste.googleplex.com/5565750791110656",
+      "parentUuid": "86966493_42eb6a5f",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 13
+      },
+      "revId": "cc146856686b73ea558f57dd65b46a69fc6f944d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
