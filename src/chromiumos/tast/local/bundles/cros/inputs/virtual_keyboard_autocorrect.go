@@ -36,7 +36,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks that virtual keyboard can perform typing with autocorrects",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
