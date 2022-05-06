@@ -22,6 +22,244 @@
       },
       "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93bacc29_fba609b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "What is the purpose of this variable? If it\u0027s just for logging, add the logs directly, i.e.\n\ns.Logf(\"device in tablet mode\"), etc.",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ac91753_d1e8eeb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "This block seems the same in both the tablet, and clamshell mode. Can you pull it outside of this block so it\u0027s shared?",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed6004c_0bcb0ead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "nit: don\u0027t see the purpose of this variable - the information can be logged directly",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956ff18a_a4a206be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "similar to what Renuga mentioned, pulling this block into a `EnterPassword` function would make this easier to follow.",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f9e3f1_520a54d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "initialize ud with ImmediateScreenshot mode if that\u0027s all you plan on using. That will clean up the lines below.",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5ce35f_78a45a0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "nit: variable not needed",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f585566_fee4f54d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "Should this be s.Fatal? It\u0027s going to continue as is and then fail on the next step?",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e0c2e3_6924eed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "Should this be s.Fatal?",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75dd05f_b2ca09b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "A sleep isn\u0027t needed here, ud naturally polls and you can change the duration as needed. I.e.\n\n`\n\t\tuda.WithPollOpts(testing.PollOptions{\n\t\t\tTimeout:  2 * time.Minute,\n\t\t\tInterval: 15 * time.Second,\n\t\t}).WaitUntilExists(uidetection.Word(\"Flay\"))\n`",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3370eca2_35acc8ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "nit: A combine isn\u0027t needed here for just one action.",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d4af71_a682a25f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "s.Fatal?",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374c5e3f_5a173fd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "nit: it was already declared above. Also, initialize with `WithScreenShotStrategy(Immediate)` so you don\u0027t have to call it every time below.",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2304a655_070134c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "Please make []string{\"Suitch, \"Accounts\"} a variable at the top with a comment about why you\u0027re using \"Suitch\" vs \"Switch\" i.e. `// Detection library doesn\u0027t distinguish between w, and u well and matches better on Suitch in this case`. Otherwise it\u0027s confusing for later readers.",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "372eff83_0c90351d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-06T17:13:48Z",
+      "side": 1,
+      "message": "Same as above, pull out the string \"Do you want to ...\" to a variable and leave a comment about why you\u0027re using suitch vs switch.",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
