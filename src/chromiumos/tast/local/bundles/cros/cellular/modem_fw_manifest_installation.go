@@ -119,7 +119,7 @@ func ModemFWManifestInstallation(ctx context.Context, s *testing.State) {
 
 	for _, carrierID := range carrierIDs {
 		s.Logf("Force flashing for device %q and uuid %q", deviceID, carrierID)
-		options := map[string]string{"carrier_uuid": carrierID}
+		options := map[string]interface{}{"carrier_uuid": carrierID, "use_modems_fw_info": true}
 		if err := m.ForceFlash(ctx, deviceID, options); err != nil {
 			s.Fatal("Failed to flash fw: ", err)
 		}

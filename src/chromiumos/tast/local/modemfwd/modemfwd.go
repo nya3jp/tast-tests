@@ -47,16 +47,19 @@ func New(ctx context.Context) (*Modemfwd, error) {
 	return &Modemfwd{obj}, nil
 }
 
-// ForceFlash calls modemfwd's ForceFlash D-Bus method.
-func (m *Modemfwd) ForceFlash(ctx context.Context, device string, options map[string]string) error {
-	result := false
-	if err := m.Call(ctx, "ForceFlash", device, options).Store(&result); err != nil {
-		return err
+// ForceFlash calls modemfwd's ForceFlash D-Bus method and waits for the modem to reappear.
+func (m *Modemfwd) ForceFlash(ctx context.Context, device string, options map[string]interface{}) error {
+	forceFlash := func(ctx context.Context) error {
+		result := false
+		if err := m.Call(ctx, "ForceFlash", device, options).Store(&result); err != nil {
+			return err
+		}
+		if !result {
+			return errors.New("ForceFlash returned false")
+		}
+		return nil
 	}
-	if !result {
-		return errors.New("ForceFlash returned false")
-	}
-	return nil
+	return executeFunctionAndWaitForQuiescence(ctx, forceFlash)
 }
 
 // UpdateFirmwareCompletedSignal holds values created from the MemoryPressureChrome D-Bus
@@ -64,6 +67,34 @@ func (m *Modemfwd) ForceFlash(ctx context.Context, device string, options map[st
 type UpdateFirmwareCompletedSignal struct {
 	success bool
 	errStr  string
+}
+
+func executeFunctionAndWaitForQuiescence(ctx context.Context, function func(ctx context.Context) error) error {
+	watcher, err := WatchUpdateFirmwareCompleted(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to watch for UpdateFirmwareCompleted")
+	}
+	defer watcher.Close(ctx)
+
+	err = function(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to execute function")
+	}
+
+	// Map D-Bus signals into UpdateFirmwareCompletedSignal.
+	select {
+	case sig := <-watcher.Signals:
+		signal, err := parseUpdateFirmwareCompletedSignal(sig)
+		if err != nil {
+			return errors.Wrap(err, "signal returned error")
+		}
+		if signal.errStr != "" {
+			return errors.New("modemfwd returned failure: " + signal.errStr)
+		}
+		return nil
+	case <-ctx.Done():
+		return errors.Wrap(ctx.Err(), "didn't get UpdateFirmwareCompleted D-Bus signal")
+	}
 }
 
 func parseUpdateFirmwareCompletedSignal(sig *dbus.Signal) (UpdateFirmwareCompletedSignal, error) {
@@ -87,31 +118,14 @@ func parseUpdateFirmwareCompletedSignal(sig *dbus.Signal) (UpdateFirmwareComplet
 // StartAndWaitForQuiescence starts the modemfwd job and waits for the initial sequence to complete
 // or until an error is logged.
 func StartAndWaitForQuiescence(ctx context.Context) error {
-	watcher, err := WatchUpdateFirmwareCompleted(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to watch for UpdateFirmwareCompleted")
-	}
-	defer watcher.Close(ctx)
-
-	err = upstart.StartJob(ctx, JobName)
-	if err != nil {
-		return errors.Wrapf(err, "failed to start %q", JobName)
-	}
-
-	// Map D-Bus signals into UpdateFirmwareCompletedSignal.
-	select {
-	case sig := <-watcher.Signals:
-		signal, err := parseUpdateFirmwareCompletedSignal(sig)
+	startJob := func(ctx context.Context) error {
+		err := upstart.StartJob(ctx, JobName)
 		if err != nil {
-			return errors.Wrap(err, "signal returned error")
-		}
-		if signal.errStr != "" {
-			return errors.New("modemfwd started with failure: " + signal.errStr)
+			return errors.Wrapf(err, "failed to start %q", JobName)
 		}
 		return nil
-	case <-ctx.Done():
-		return errors.Wrap(ctx.Err(), "didn't get UpdateFirmwareCompleted D-Bus signal")
 	}
+	return executeFunctionAndWaitForQuiescence(ctx, startJob)
 }
 
 // WatchUpdateFirmwareCompleted returns a SignalWatcher to observe the
