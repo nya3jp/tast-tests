@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f6f4dc8_adf9044a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T12:37:56Z",
+      "side": 1,
+      "message": "nit: this function probably need to return error",
+      "range": {
+        "startLine": 35,
+        "startChar": 49,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "0be077692004dedb3727387aca31db05aeea4a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac6d63b_36b34705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T12:37:56Z",
+      "side": 1,
+      "message": "nit: it can be \"args ...string\", then the caller will be:\n\n```\nappendOutput(iptablesCmd, \"-L\", \"-x\", \"-v\", \"-t\", table)\n\nor simply\n\nappendOutput(\"/usr/local/lib/flimflam/test/list-profiles\")\n```",
+      "range": {
+        "startLine": 35,
+        "startChar": 34,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "0be077692004dedb3727387aca31db05aeea4a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a872293_78337926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T12:37:56Z",
+      "side": 1,
+      "message": "nit: maybe rename to smth like runCmdAndLog?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 13
+      },
+      "revId": "0be077692004dedb3727387aca31db05aeea4a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7ce2e5_703fcc7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T12:37:56Z",
+      "side": 1,
+      "message": "nit: don\u0027t ignore returned error. Same in other places.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "0be077692004dedb3727387aca31db05aeea4a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790a649d_39dbcb63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T12:37:56Z",
+      "side": 1,
+      "message": "nit: ipTablesCmd",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "0be077692004dedb3727387aca31db05aeea4a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c3f5876_48e5e202",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
         "patchSetId": 4
@@ -20,6 +135,23 @@
         "endLine": 70,
         "endChar": 42
       },
+      "revId": "0be077692004dedb3727387aca31db05aeea4a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba8b7ba_263a516e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-06T12:37:56Z",
+      "side": 1,
+      "message": "nit: don\u0027t ignore return error",
       "revId": "0be077692004dedb3727387aca31db05aeea4a40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
