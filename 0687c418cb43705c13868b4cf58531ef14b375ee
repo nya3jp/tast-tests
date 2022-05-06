@@ -16,6 +16,23 @@
       "message": "I\u0027ve asked for more details on the bug. I\u0027ll review this change once you\u0027ve provided that.",
       "revId": "0687c418cb43705c13868b4cf58531ef14b375ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b195dc33_79edc679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-06T06:19:30Z",
+      "side": 1,
+      "message": "This is not the right solution. Please see $BUG.",
+      "revId": "0687c418cb43705c13868b4cf58531ef14b375ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
