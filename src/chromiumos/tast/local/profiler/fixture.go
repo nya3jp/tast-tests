@@ -70,7 +70,7 @@ func (f *profilerFixture) newProfilers() ([]Profiler, error) {
 			profs = append(profs, Perf(PerfSchedOpts(&sched, "")))
 		case modeRecord:
 			f.modes = append(f.modes, modeRecord)
-			profs = append(profs, Perf(PerfRecordOpts()))
+			profs = append(profs, Perf(PerfRecordOpts("", nil, PerfRecordCallgraph)))
 		case modeStatRecord:
 			f.modes = append(f.modes, modeStatRecord)
 			profs = append(profs, Perf(PerfStatRecordOpts()))

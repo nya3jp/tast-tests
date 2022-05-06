@@ -84,7 +84,7 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 			Interval: topInterval,
 		}),
 		profiler.Perf(profiler.PerfStatOpts(&out, pid)),
-		profiler.Perf(profiler.PerfRecordOpts()),
+		profiler.Perf(profiler.PerfRecordOpts("", nil, profiler.PerfRecordCallgraph)),
 		profiler.Perf(profiler.PerfSchedOpts(&outSched, "cras")),
 	}
 

@@ -109,7 +109,7 @@ func Start(ctx context.Context, sDur, mDur time.Duration, outPrefix, outdir stri
 			return pv, nil
 		},
 		PerfRecord: func() (*perf.Values, error) {
-			return runProfiler(ctx, &pctx, PerfRecord, profiler.Perf(profiler.PerfRecordOpts()))
+			return runProfiler(ctx, &pctx, PerfRecord, profiler.Perf(profiler.PerfRecordOpts("", nil, profiler.PerfRecordCallgraph)))
 		},
 		Top: func() (*perf.Values, error) {
 			return runProfiler(ctx, &pctx, Top, profiler.Top(nil))
