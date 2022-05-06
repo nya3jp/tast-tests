@@ -179,6 +179,24 @@
       "parentUuid": "c2b1006f_ec5a41a7",
       "revId": "6b54036006425515d8dde4d39d9c67c18626a271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e149516_468291ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/focus_android_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-06T22:05:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b726d647_3bd0ff46",
+      "revId": "6b54036006425515d8dde4d39d9c67c18626a271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
