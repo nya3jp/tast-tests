@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e09b34ab_b1e5f421",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-06T14:30:41Z",
+      "side": 1,
+      "message": "IMHO logs are supposed to be spammy: otherwise they become useless for investigation. Moving stuff to other files does not make logs less spammy, it just adds an unnecessary step to find them. Regarding human consumption - IMHO policy blobs are rather short and can be easily read by humans.",
+      "parentUuid": "3a236f1f_10dd931f",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b585918f_ce5c5c47",
         "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
         "patchSetId": 3
@@ -324,6 +342,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f7e8ba3_2bfe213b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-06T14:30:41Z",
+      "side": 1,
+      "message": "Public accounts do not have GAIA ID by definition, so I suppose there is some workaround in Chrome that allows extensions to be downloaded despite this.\n\nUnfortunately, it appears unpacked extensions are not supported in public sessions: https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/device_local_account_management_policy_provider.cc;l\u003d832-880;drc\u003d91148c1c1e318eb5e5a4b9340fe59e036a3ed15f.",
+      "parentUuid": "1acc51fe_0c885e72",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c6bfaba_1ecb48fb",
@@ -420,6 +462,24 @@
       "side": 1,
       "message": "The js API is E2E, it is the API the extension calls to get policy values, not a testing one.",
       "parentUuid": "2a13b75a_3c230ca4",
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19ed8c2_48f43de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-06T14:30:41Z",
+      "side": 1,
+      "message": "I suppose that depends on who we consider our user: end user or extension author. The end users do not call any APIs: they just use extensions and expect them to work. The extension authors do and expect those APIs to work.\n\nMy reasoning was that by testing for end users we\u0027d also test for extension authors. OTH that would also require testing extensions that real users use and not some test extensions. But, given that we neither own nor can fix bugs in extension code, it is probably fine to only test for extension authors.",
+      "parentUuid": "b0719996_11d139e6",
       "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
