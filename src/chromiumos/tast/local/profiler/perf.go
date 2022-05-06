@@ -23,36 +23,45 @@ import (
 
 // perf represents the perf profiler.
 //
-// perf supports gathering profiler data using the
-// command "perf" with the perfType ("record", "stat record", or "stat") specified.
+// perf supports gathering profiler data using commands:
+// "record", "stat record", "stat", or "sched".
 type perf struct {
 	cmd    *testexec.Cmd
 	opts   *PerfOpts
 	outDir string
 }
 
-// perfType represents the type of perf that the users
-// want to use.
-type perfType int
-
-// Type of perf
 const (
-	// perfRecord runs "perf record -e cycles -g" on the DUT.
-	perfRecord perfType = iota
-	// perfStatRecord runs "perf stat record -a" on the DUT.
-	perfStatRecord
-	// perfStat runs "perf stat -a" on the DUT.
-	perfStat
-	// perfSched runs "perf sched record" on the DUT.
-	perfSched
-
 	perfRecordFileName     = "perf_record.data"
 	perfStatRecordFileName = "perf_stat_record.data"
 	perfStatFileName       = "perf_stat.data"
 	perfSchedFileName      = "perf_sched.data"
 
-	// Used in perfStat to get CPU cycle count on all processes.
+	// PerfAllProcs is used in perf stat to get CPU cycle count on all processes.
 	PerfAllProcs = 0
+)
+
+// PerfRecordSamplingType optionally adds extra information to samples.
+type PerfRecordSamplingType int
+
+// Type of sample.
+const (
+	PerfRecordDefault PerfRecordSamplingType = iota
+	// perf record -g
+	PerfRecordCallgraph
+	// perf record -b
+	PerfRecordBranchStack
+)
+
+// PerfRecordSamplingRateType defines the type of sampling rate.
+type PerfRecordSamplingRateType int
+
+// Type of sampling rate.
+const (
+	// perf record -F
+	PerfRecordFrequency PerfRecordSamplingRateType = iota
+	// perf record -c
+	PerfRecordPeriod
 )
 
 var (
@@ -72,24 +81,55 @@ type PerfSchedOutput struct {
 	MaxLatencyMs float64
 }
 
+// PerfRecordSamplingRate represents the rate of sampling.
+type PerfRecordSamplingRate struct {
+	RateType PerfRecordSamplingRateType
+	Value    int
+}
+
 // PerfOpts represents options for running perf.
 type PerfOpts struct {
-	// perfType indicates the type of profiler running ("record", "stat record", or "stat").
-	perfType perfType
+	// Exactly one of these fields is non-nil.
 
-	// Used in perfStat.
+	// Used to run "perf record -e <even>" on the DUT.
+	record *perfRecordOpts
+	// Used to run "perf stat record -a" on the DUT.
+	statRecord *perfStatRecordOpts
+	// Used to run "perf stat -a" on the DUT.
+	stat *perfStatOpts
+	// Used to run "perf sched record" on the DUT.
+	sched *perfSchedOpts
+}
+
+type perfRecordOpts struct {
+	// Used in perf record to specify event for sampling.
+	event string
+
+	// Used in perf record to specify period or frequency of sampling.
+	samplingRate *PerfRecordSamplingRate
+
+	// Appends data to samples.
+	// Examples can be: branch stack, callgraph, etc.
+	samplingType PerfRecordSamplingType
+}
+
+type perfStatRecordOpts struct {
+}
+
+type perfSchedOpts struct {
+	// Used to get stats of process.
+	procName string
+
+	// Used to provide output.
+	output *PerfSchedOutput
+}
+
+type perfStatOpts struct {
 	// Indicate the target process.
 	pid int
 
-	// Used in perfStat.
-	// A pointer to the output of perfStat.
-	perfStatOutput *PerfStatOutput
-
-	// Used in perf sched to get stats of process.
-	procName string
-
-	// Used in perf sched to provide output.
-	perfSchedOutput *PerfSchedOutput
+	// A pointer to the output of perf stat.
+	output *PerfStatOutput
 }
 
 // PerfStatOpts creates a PerfOpts for running "perf stat -a" on the DUT.
@@ -97,22 +137,25 @@ type PerfOpts struct {
 // on pid process after End() is called on RunningProf.
 // Set pid to PerfAllProcs to get cycle count for the whole system.
 func PerfStatOpts(out *PerfStatOutput, pid int) *PerfOpts {
-	return &PerfOpts{perfType: perfStat, pid: pid, perfStatOutput: out}
+	return &PerfOpts{stat: &perfStatOpts{pid: pid, output: out}}
 }
 
-// PerfRecordOpts creates a PerfOpts for running "perf record -e cycles -g" on the DUT.
-func PerfRecordOpts() *PerfOpts {
-	return &PerfOpts{perfType: perfRecord}
+// PerfRecordOpts creates PerfOpts for running "perf record -e <event> [-c <period>|-F <freq>] [-b|-g]" on DUT.
+// PerfRecordOpts("", nil, PerfRecordCallgraph) implies default options equivalent to former PerfRecordOpts().
+// PerfRecordOpts("instructions", &PerfRecordSamplingRate{RateType: PerfRecordFrequency, Value: 100}, PerfRecordBranchStack)
+// is equivalent to "perf record -e instructions -F 100 -b".
+func PerfRecordOpts(recordEvent string, samplingRate *PerfRecordSamplingRate, samplingType PerfRecordSamplingType) *PerfOpts {
+	return &PerfOpts{record: &perfRecordOpts{event: recordEvent, samplingRate: samplingRate, samplingType: samplingType}}
 }
 
 // PerfStatRecordOpts creates a PerfOpts for running "perf stat record -a" on the DUT.
 func PerfStatRecordOpts() *PerfOpts {
-	return &PerfOpts{perfType: perfStatRecord}
+	return &PerfOpts{statRecord: &perfStatRecordOpts{}}
 }
 
 // PerfSchedOpts creates a PerfOpts for running "perf sched record" on the DUT.
 func PerfSchedOpts(out *PerfSchedOutput, procName string) *PerfOpts {
-	return &PerfOpts{perfType: perfSched, procName: procName, perfSchedOutput: out}
+	return &PerfOpts{sched: &perfSchedOpts{procName: procName, output: out}}
 }
 
 // Perf creates a Profiler instance that constructs the profiler.
@@ -120,7 +163,7 @@ func PerfSchedOpts(out *PerfSchedOutput, procName string) *PerfOpts {
 func Perf(opts *PerfOpts) Profiler {
 	// Set default options if needed.
 	if opts == nil {
-		opts = PerfRecordOpts()
+		opts = PerfRecordOpts("", nil, PerfRecordCallgraph)
 	}
 	return func(ctx context.Context, outDir string) (instance, error) {
 		return newPerf(ctx, outDir, opts)
@@ -129,8 +172,8 @@ func Perf(opts *PerfOpts) Profiler {
 
 // newPerf creates and runs perf command to start recording perf.data with the options specified.
 func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, error) {
-	if opts.perfType == perfStat && opts.pid < 0 {
-		return nil, errors.Errorf("invalid pid %d for perfStat", opts.pid)
+	if opts.stat != nil && opts.stat.pid < 0 {
+		return nil, errors.Errorf("invalid pid for perf stat: %v", opts.stat.pid)
 	}
 
 	cmd, err := getCmd(ctx, outDir, opts)
@@ -167,25 +210,64 @@ func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, erro
 }
 
 func getCmd(ctx context.Context, outDir string, opts *PerfOpts) (*testexec.Cmd, error) {
-	switch opts.perfType {
-	case perfRecord:
+	perfArgs := make([]string, 0)
+	if opts.record != nil {
 		outputPath := filepath.Join(outDir, perfRecordFileName)
-		return testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath), nil
-	case perfStatRecord:
-		outputPath := filepath.Join(outDir, perfStatRecordFileName)
-		return testexec.CommandContext(ctx, "perf", "stat", "record", "-a", "--output", outputPath), nil
-	case perfStat:
-		outputPath := filepath.Join(outDir, perfStatFileName)
-		if (*opts).pid == PerfAllProcs {
-			return testexec.CommandContext(ctx, "perf", "stat", "-a", "-e", "cycles", "--output", outputPath), nil
+		// "-N" skips writing debug data to ~/.debug on DUT.
+		perfArgs = append(perfArgs, "record", "-N", "--output", outputPath)
+		var event string
+		if opts.record.event != "" {
+			event = opts.record.event
+		} else {
+			event = "cycles"
 		}
-		return testexec.CommandContext(ctx, "perf", "stat", "-a", "-p", strconv.Itoa(opts.pid), "-e", "cycles", "--output", outputPath), nil
-	case perfSched:
-		outputPath := filepath.Join(outDir, perfSchedFileName)
-		return testexec.CommandContext(ctx, "perf", "sched", "record", "--output", outputPath), nil
-	default:
-		return nil, errors.Errorf("invalid perf type: %v", opts.perfType)
+		perfArgs = append(perfArgs, "-e", event)
+		if opts.record.samplingRate != nil {
+			value := strconv.Itoa(opts.record.samplingRate.Value)
+			switch opts.record.samplingRate.RateType {
+			case PerfRecordPeriod:
+				perfArgs = append(perfArgs, "-c", value)
+			case PerfRecordFrequency:
+				perfArgs = append(perfArgs, "-F", value)
+			}
+		}
+		switch opts.record.samplingType {
+		case PerfRecordBranchStack:
+			perfArgs = append(perfArgs, "-b")
+		case PerfRecordCallgraph:
+			perfArgs = append(perfArgs, "-g")
+		case PerfRecordDefault:
+			// Default: no extra arguments in recording.
+		}
 	}
+	if opts.stat != nil {
+		if len(perfArgs) != 0 {
+			return nil, errors.Errorf("more than one command option was initialized: perf %v and stat", perfArgs[0])
+		}
+		outputPath := filepath.Join(outDir, perfStatFileName)
+		perfArgs = append(perfArgs, "stat", "-a", "-e", "cycles", "--output", outputPath)
+		if opts.stat.pid != PerfAllProcs {
+			perfArgs = append(perfArgs, "-p", strconv.Itoa(opts.stat.pid))
+		}
+	}
+	if opts.statRecord != nil {
+		if len(perfArgs) != 0 {
+			return nil, errors.Errorf("more than one command option was initialized: perf %v and stat record", perfArgs[0])
+		}
+		outputPath := filepath.Join(outDir, perfStatRecordFileName)
+		perfArgs = append(perfArgs, "stat", "record", "-a", "--output", outputPath)
+	}
+	if opts.sched != nil {
+		if len(perfArgs) != 0 {
+			return nil, errors.Errorf("more than one command option was initialized: perf %v and sched", perfArgs[0])
+		}
+		outputPath := filepath.Join(outDir, perfSchedFileName)
+		perfArgs = append(perfArgs, "sched", "record", "--output", outputPath)
+	}
+	if len(perfArgs) == 0 {
+		return nil, errors.New("none of the known perf options was initialized")
+	}
+	return testexec.CommandContext(ctx, "perf", perfArgs...), nil
 }
 
 // getMaxLatencyMs is for perf sched latency and parses Maximum latency from wake up to switch.
@@ -272,29 +354,28 @@ func (p *perf) handleStat() error {
 	if err != nil {
 		return errors.Wrap(err, "failed to parse stat file")
 	}
-	p.opts.perfStatOutput.CyclesPerSecond = cyclesPerSecond
+	p.opts.stat.output.CyclesPerSecond = cyclesPerSecond
 	return nil
 }
 
 func (p *perf) handleSched(ctx context.Context) error {
 	perfPath := filepath.Join(p.outDir, perfSchedFileName)
 
-	maxLatencyMs, err := getMaxLatencyMs(ctx, perfPath, p.opts.procName)
+	maxLatencyMs, err := getMaxLatencyMs(ctx, perfPath, p.opts.sched.procName)
 	if err != nil {
 		return errors.Wrap(err, "failed to parse sched file")
 	}
 
-	p.opts.perfSchedOutput.MaxLatencyMs = maxLatencyMs
+	p.opts.sched.output.MaxLatencyMs = maxLatencyMs
 	return nil
 }
 
 func (p *perf) handleOutput(ctx context.Context) error {
-	switch p.opts.perfType {
-	case perfStat:
+	if p.opts.stat != nil {
 		if err := p.handleStat(); err != nil {
 			return errors.Wrap(err, "failed to handle perf stat result")
 		}
-	case perfSched:
+	} else if p.opts.sched != nil {
 		if err := p.handleSched(ctx); err != nil {
 			return errors.Wrap(err, "failed to handle perf sched result")
 		}
