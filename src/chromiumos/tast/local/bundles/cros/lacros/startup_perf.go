@@ -101,6 +101,12 @@ type startupMetrics struct {
 	// this work stabilizes and we have a good understanding of the startup analysis.
 	windowRestoreTime time.Duration
 
+	// Time to load Lacros binary. The bulk of load time may be spent in mounting Lacros browser
+	// binary through squashfs in the component manager. If the user has explicitly specified a
+	// path for the Lacros browser binary though, load time will very likely be insignificant.
+	// Recorded by Ash (via ChromeOS.Lacros.LoadTime) each time the lacros binary is started.
+	lacrosLoadTime time.Duration
+
 	// Time to start the Lacros browser. It is the time between when the process is launched and
 	// the mojo connection is established between Ash and Lacros. This is recorded by Ash (via
 	// ChromeOS.Lacros.StartTime histogram metric) each time Lacros browser is started.
@@ -152,6 +158,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		// Record the metrics.
 		recordStartupPerf(pv, "login_time", v.loginTime)
 		recordStartupPerf(pv, "window_restore_time", v.windowRestoreTime)
+		recordStartupPerf(pv, "lacros_load_time", v.lacrosLoadTime)
 		recordStartupPerf(pv, "lacros_start_time", v.lacrosStartTime)
 	}
 
@@ -294,6 +301,12 @@ func performRegularLogin(ctx context.Context, browserType browser.Type, creds ch
 	testing.ContextLog(ctx, "StartupPerf: Got browser restore time")
 
 	if browserType == browser.TypeLacros {
+		v.lacrosLoadTime, err = histogramToDuration(ctx, tconn, "ChromeOS.Lacros.LoadTime")
+		if err != nil {
+			return v, errors.Wrap(err, "failed to get histogram")
+		}
+		testing.ContextLog(ctx, "StartupPerf: Got ChromeOS.Lacros.LoadTime")
+
 		v.lacrosStartTime, err = histogramToDuration(ctx, tconn, "ChromeOS.Lacros.StartTime")
 		if err != nil {
 			return v, errors.Wrap(err, "failed to get histogram")
