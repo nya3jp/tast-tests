@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ac7cf9_f4a3f6dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-06T05:58:11Z",
+      "side": 1,
+      "message": "Hi Kamil,\n\nThis CL should fix most failures on Tastboard. Please take a look!",
+      "revId": "5679fc6d073047b9a4fb55ee15a2b811b401c8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
