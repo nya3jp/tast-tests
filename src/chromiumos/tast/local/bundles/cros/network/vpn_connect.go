@@ -281,7 +281,9 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(cleanupCtx, 3*time.Second)
 	defer cancel()
 
-	conn, err := vpn.NewConnection(ctx, s.Param().(vpnTestParams).config)
+	config := s.Param().(vpnTestParams).config
+	config.CertStoreInfo = s.FixtValue().(*vpn.CertStoreInfo)
+	conn, err := vpn.NewConnection(ctx, config)
 	if err != nil {
 		s.Fatal("Failed to create connection object: ", err)
 	}

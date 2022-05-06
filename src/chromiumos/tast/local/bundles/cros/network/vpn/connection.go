@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -53,6 +52,15 @@ type Config struct {
 	// WGAutoGenKey indicates whether letting shill generate the private key for
 	// the client side.
 	WGAutoGenKey bool
+
+	CertStoreInfo *CertStoreInfo
+}
+
+type CertStoreInfo struct {
+	certStore *netcertstore.Store
+	certID    string
+	certSlot  string
+	certPin   string
 }
 
 // VPN types.
@@ -88,12 +96,6 @@ type Connection struct {
 	// Properties is the key values of D-Bus properties used for creating this VPN
 	// service.
 	Properties map[string]interface{}
-
-	// The following TPM-related fields will be set and used when config.AuthType
-	// is "cert".
-	certID   string
-	certSlot string
-	certPin  string
 }
 
 // NewConnection creates a new connection object. Notes:
@@ -144,10 +146,6 @@ func (c *Connection) setUpInternal(ctx context.Context, withSvc bool) error {
 	}
 	if _, err := c.manager.WaitForServiceProperties(ctx, props, 60*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for Ethernet online")
-	}
-
-	if err := c.prepareCertStore(ctx); err != nil {
-		return err
 	}
 
 	if err := c.startServer(ctx); err != nil {
@@ -230,29 +228,6 @@ func (c *Connection) Cleanup(ctx context.Context) error {
 	}
 
 	return lastErr
-}
-
-func (c *Connection) prepareCertStore(ctx context.Context) error {
-	if c.config.AuthType != AuthTypeCert {
-		return nil
-	}
-
-	var err error
-
-	runner := hwsec.NewCmdRunner()
-	if c.certStore, err = netcertstore.CreateStore(ctx, runner); err != nil {
-		return errors.Wrap(err, "failed to create cert store")
-	}
-
-	c.certSlot = fmt.Sprintf("%d", c.certStore.Slot())
-	c.certPin = c.certStore.Pin()
-	clientCred := certificate.TestCert1().ClientCred
-	c.certID, err = c.certStore.InstallCertKeyPair(ctx, clientCred.PrivateKey, clientCred.Cert)
-	if err != nil {
-		return errors.Wrap(err, "failed to insert cert key pair into cert store")
-	}
-
-	return nil
 }
 
 func (c *Connection) startServer(ctx context.Context) error {
@@ -377,9 +352,9 @@ func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error)
 	} else if c.config.AuthType == AuthTypeCert {
 		properties["Name"] = "test-vpn-l2tp-cert"
 		properties["L2TPIPsec.CACertPEM"] = []string{certificate.TestCert1().CACred.Cert}
-		properties["L2TPIPsec.ClientCertID"] = c.certID
-		properties["L2TPIPsec.ClientCertSlot"] = c.certSlot
-		properties["L2TPIPsec.PIN"] = c.certPin
+		properties["L2TPIPsec.ClientCertID"] = c.config.CertStoreInfo.certID
+		properties["L2TPIPsec.ClientCertSlot"] = c.config.CertStoreInfo.certSlot
+		properties["L2TPIPsec.PIN"] = c.config.CertStoreInfo.certPin
 	} else {
 		return nil, errors.Errorf("unexpected auth type %s for L2TP/IPsec", c.config.AuthType)
 	}
@@ -414,8 +389,8 @@ func (c *Connection) createIKEv2Properties() (map[string]interface{}, error) {
 	case AuthTypeCert:
 		properties["IKEv2.AuthenticationType"] = "Cert"
 		properties["IKEv2.CACertPEM"] = []string{certificate.TestCert1().CACred.Cert}
-		properties["IKEv2.ClientCertID"] = c.certID
-		properties["IKEv2.ClientCertSlot"] = c.certSlot
+		properties["IKEv2.ClientCertID"] = c.config.CertStoreInfo.certID
+		properties["IKEv2.ClientCertSlot"] = c.config.CertStoreInfo.certSlot
 		properties["IKEv2.RemoteIdentity"] = ikeServerIdentity
 	case AuthTypeEAP:
 		properties["IKEv2.AuthenticationType"] = "EAP"
@@ -437,8 +412,8 @@ func (c *Connection) createOpenVPNProperties() (map[string]interface{}, error) {
 		"Provider.Type":           "openvpn",
 		"Type":                    "vpn",
 		"OpenVPN.CACertPEM":       []string{certificate.TestCert1().CACred.Cert},
-		"OpenVPN.Pkcs11.ID":       c.certID,
-		"OpenVPN.Pkcs11.PIN":      c.certPin,
+		"OpenVPN.Pkcs11.ID":       c.config.CertStoreInfo.certID,
+		"OpenVPN.Pkcs11.PIN":      c.config.CertStoreInfo.certPin,
 		"OpenVPN.RemoteCertEKU":   "TLS Web Server Authentication",
 		"OpenVPN.TLSAuthContents": openvpnTLSAuthKey,
 		"OpenVPN.Verb":            "5",
