@@ -144,6 +144,10 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 		defer a.Close(ctx)
 
+		if err := a.EnableVerboseLogging(ctx, "Finsky"); err != nil {
+			return exit("enable verbose logging", err)
+		}
+
 		// Increase the logcat buffer size to 10MB.
 		if err := a.Command(ctx, "logcat", "-G", "10M").Run(testexec.DumpLogOnError); err != nil {
 			return exit("increase logcat buffer size", err)
