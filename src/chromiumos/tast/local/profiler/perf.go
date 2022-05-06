@@ -55,6 +55,18 @@ const (
 	PerfAllProcs = 0
 )
 
+// perfRecordSamplingType optionally adds extra information to samples.
+type perfRecordSamplingType int
+
+// Type of sample
+const (
+	PerfRecordDefault perfRecordSamplingType = iota
+	// perf record -g
+	PerfRecordCallgraph
+	// perf record -b
+	PerfRecordBranchStack
+)
+
 var (
 	noCyclesRegexp = regexp.MustCompile(`(?s)\s+\<not counted\>\s+cycles`)
 	cyclesRegexp   = regexp.MustCompile(`(?s)\s+(\d+)\s+cycles`)
@@ -90,6 +102,16 @@ type PerfOpts struct {
 
 	// Used in perf sched to provide output.
 	perfSchedOutput *PerfSchedOutput
+
+	// Used in perf record to specify event for sampling.
+	perfRecordEvent string
+
+	// Used in perf record to specify period of sampling.
+	perfRecordPeriod int
+
+	// Used in perf record to append data to samples.
+	// Examples can be: branch stack, callgraph, etc.
+	perfRecordSampling perfRecordSamplingType
 }
 
 // PerfStatOpts creates a PerfOpts for running "perf stat -a" on the DUT.
@@ -100,9 +122,11 @@ func PerfStatOpts(out *PerfStatOutput, pid int) *PerfOpts {
 	return &PerfOpts{perfType: perfStat, pid: pid, perfStatOutput: out}
 }
 
-// PerfRecordOpts creates a PerfOpts for running "perf record -e cycles -g" on the DUT.
-func PerfRecordOpts() *PerfOpts {
-	return &PerfOpts{perfType: perfRecord}
+// PerfRecordOpts creates PerfOpts for running "perf record -e <event> [-c <period>] [-b|-g]" on DUT.
+// PerfRecordOpts("", 0, PerfRecordCallgraph) implies default options equivalent to former PerfRecordOpts().
+func PerfRecordOpts(recordEvent string, samplePeriod int, samplingMode perfRecordSamplingType) *PerfOpts {
+	return &PerfOpts{perfType: perfRecord, perfRecordEvent: recordEvent,
+		perfRecordPeriod: samplePeriod, perfRecordSampling: samplingMode}
 }
 
 // PerfStatRecordOpts creates a PerfOpts for running "perf stat record -a" on the DUT.
@@ -120,7 +144,7 @@ func PerfSchedOpts(out *PerfSchedOutput, procName string) *PerfOpts {
 func Perf(opts *PerfOpts) Profiler {
 	// Set default options if needed.
 	if opts == nil {
-		opts = PerfRecordOpts()
+		opts = PerfRecordOpts("", 0, PerfRecordCallgraph)
 	}
 	return func(ctx context.Context, outDir string) (instance, error) {
 		return newPerf(ctx, outDir, opts)
@@ -170,7 +194,28 @@ func getCmd(ctx context.Context, outDir string, opts *PerfOpts) (*testexec.Cmd, 
 	switch opts.perfType {
 	case perfRecord:
 		outputPath := filepath.Join(outDir, perfRecordFileName)
-		return testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath), nil
+		perfArgs := make([]string, 0)
+		// "-N" skips writing debug data to ~/.debug on DUT.
+		perfArgs = append(perfArgs, "record", "-N", "--output", outputPath)
+		var event string
+		if opts.perfRecordEvent != "" {
+			event = opts.perfRecordEvent
+		} else {
+			event = "cycles"
+		}
+		perfArgs = append(perfArgs, "-e", event)
+		if opts.perfRecordPeriod > 0 {
+			perfArgs = append(perfArgs, "-c", strconv.Itoa(opts.perfRecordPeriod))
+		}
+		switch opts.perfRecordSampling {
+		case PerfRecordBranchStack:
+			perfArgs = append(perfArgs, "-b")
+		case PerfRecordCallgraph:
+			perfArgs = append(perfArgs, "-g")
+		case PerfRecordDefault:
+			// Default: no extra arguments in recording.
+		}
+		return testexec.CommandContext(ctx, "perf", perfArgs...), nil
 	case perfStatRecord:
 		outputPath := filepath.Join(outDir, perfStatRecordFileName)
 		return testexec.CommandContext(ctx, "perf", "stat", "record", "-a", "--output", outputPath), nil
