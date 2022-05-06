@@ -99,7 +99,9 @@ func DeviceTargetVersionPrefix(ctx context.Context, s *testing.State) {
 	if !ok {
 		s.Fatal("Failed to get board from "+etcLSBPath, err)
 	}
-	signedBoard := board + "-signed-mp-v2keys"
+	// Remove suffixes like -kernelnext and -arc-r.
+	split := strings.Split(board, "-")
+	signedBoard := split[0] + "-signed-mp-v2keys"
 	etcLSB[lsbrelease.Board] = signedBoard
 
 	// Modify OS version.
