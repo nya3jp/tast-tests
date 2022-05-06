@@ -144,7 +144,7 @@ func (ta *TerminalApp) DeleteSSHConnection(name string) uiauto.Action {
 	l := nodewith.Name(name).Role(role.Link)
 	return action.IfSuccessThen(ta.ui.WithTimeout(3*time.Second).WaitUntilExists(l),
 		uiauto.Combine("delete ssh link "+name,
-			ta.ui.LeftClick(nodewith.Name("Edit SSH").Role(role.Link)),
+			ta.ui.LeftClick(nodewith.Name("Edit SSH").Role(role.Button)),
 			ta.ui.LeftClick(nodewith.Name("Delete").Role(role.Button)),
 			ta.ui.WaitUntilGone(l),
 		))
