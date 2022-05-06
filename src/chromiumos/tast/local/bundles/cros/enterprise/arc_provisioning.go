@@ -97,7 +97,8 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 	// Indicates a failure in the core feature under test so the polling should stop.
 	exit := func(desc string, err error) error {
-		return testing.PollBreak(errors.Wrap(err, "failed to "+desc))
+		s.Fatalf("Failed to %s: %v", desc, err)
+		return nil
 	}
 
 	// Indicates that the error is retryable and unrelated to core feature under test.
@@ -169,19 +170,21 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return retry("launch Play Store", err)
 		}
 
-		waitForPackagesCtx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 60*time.Second)
 		defer cancel()
+		defer dumpBugReportOnError(cleanupCtx, s.HasError, a, filepath.Join(s.OutDir(), "bugreport.zip"))
+
 		// Note: if the user policy for the user is changed, the packages listed in
 		// credentials files must be updated.
-		if err := a.WaitForPackages(waitForPackagesCtx, packages); err != nil {
+		if err := a.WaitForPackages(ctx, packages); err != nil {
 			if chromeCrashed(ctx, sysLogReader) {
 				return retry("wait for packages", errors.Wrap(err, "Chrome process crashed"))
 			}
-			dumpBugReport(ctx, a, filepath.Join(s.OutDir(), "bugreport.zip"))
 			return exit("wait for packages", err)
 		}
 
-		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
+		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err == nil {
 			return exit("verify packages are uninstallable", err)
 		}
 
@@ -189,9 +192,6 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("launch asset browser", err)
 		}
 
-		cleanupCtx := ctx
-		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
-		defer cancel()
 		if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
 			faillog.DumpUITree(cleanupCtx, s.OutDir(), tconn)
 			return exit("verify Play Store is not empty", err)
@@ -219,7 +219,12 @@ func chromeCrashed(ctx context.Context, sysLogReader *syslog.LineReader) bool {
 	}
 }
 
-func dumpBugReport(ctx context.Context, a *arc.ARC, filePath string) {
+func dumpBugReportOnError(ctx context.Context, hasError func() bool, a *arc.ARC, filePath string) {
+	if !hasError() {
+		return
+	}
+
+	testing.ContextLog(ctx, "Dumping Bug Report")
 	if err := a.BugReport(ctx, filePath); err != nil {
 		testing.ContextLog(ctx, "Failed to get bug report: ", err)
 	}
