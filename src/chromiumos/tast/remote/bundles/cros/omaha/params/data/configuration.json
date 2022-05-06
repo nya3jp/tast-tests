@@ -13,12 +13,15 @@
 	  "93": 14092,
 	  "94": 14150,
 	  "96": 14268,
-	  "97": 14325,
+	  "97": 14324,
 	  "98": 14388,
-	  "99": 14474
+	  "99": 14469,
+	  "100": 14526,
+	  "101": 14588,
+	  "102": 14720
 	},
-	"CurrentStableChrome": 98,
-	"NextStableChrome": 99,
+	"CurrentStableChrome": 100,
+	"NextStableChrome": 101,
 	"CurrentChromeOSLTS": 96,
 	"CurrentChromeOSLTSMinor": 73
   }
