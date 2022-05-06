@@ -56,7 +56,7 @@ var (
 var searchInputFinder = nodewith.Name("Search").Role(role.TextField).Ancestor(RootFinder)
 
 // WaitForApp waits for the app to be shown and rendered.
-// It can be slow when the app is auto-lauched after OOBE.
+// It can be slow when the app is auto-launched after OOBE.
 func (hc *HelpContext) WaitForApp() uiauto.Action {
 	return hc.ui.WithTimeout(time.Minute).WaitUntilExists(RootFinder)
 }

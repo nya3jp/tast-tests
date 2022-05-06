@@ -78,7 +78,7 @@ func RemoveCancel(ctx context.Context, s *testing.State) {
 	// Launch Terminal to verify that Crostini still works.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to lauch terminal after cancel remove: ", err)
+		s.Fatal("Failed to launch terminal after cancel remove: ", err)
 	}
 	terminalApp.Close()(ctx)
 }

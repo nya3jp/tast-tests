@@ -98,7 +98,7 @@ func ShareFilesRestart(ctx context.Context, s *testing.State) {
 	// Restart Crostini.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to lauch terminal: ", err)
+		s.Fatal("Failed to launch terminal: ", err)
 	}
 	if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(ctx); err != nil {
 		s.Fatal("Failed to restart crostini: ", err)
