@@ -82,7 +82,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 
 	// Shorten the context to cleanup recorder.
 	cleanUpRecorderCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel = ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
 	testing.ContextLog(ctx, "Start recording actions")

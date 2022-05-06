@@ -104,9 +104,13 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 		out = &newOb.ro
 	}
 
+	testing.ContextLogf(ctx, "Start Eval of: [%s]", expr)
 	exc, err := c.co.Eval(ctx, expr, true, out)
+	testing.ContextLog(ctx, "End Eval")
 	if err != nil {
+		testing.ContextLog(ctx, "End Eval Error: ", err)
 		if exc != nil {
+			testing.ContextLog(ctx, "End Eval Error Stack Trace: ", exc.StackTrace)
 			c.lw.Report(time.Now(), "eval-error", err.Error(), exc.StackTrace)
 		}
 		return err
