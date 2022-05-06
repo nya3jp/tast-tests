@@ -67,7 +67,9 @@ func VirtualKeyboardMultipasteSuggestion(ctx context.Context, s *testing.State) 
 	}
 	defer touchCtx.Close()
 
-	ash.SetClipboard(ctx, tconn, text)
+	if err := ash.SetClipboard(ctx, tconn, text); err != nil {
+		s.Fatal("Failed to set clipboard: ", err)
+	}
 
 	actionName := "Input text through multipaste suggestion bar"
 	if err := uiauto.UserAction(
