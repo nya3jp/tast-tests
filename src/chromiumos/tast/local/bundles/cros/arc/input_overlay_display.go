@@ -1,0 +1,102 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/common/action"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/arc/testutil"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/uidetection"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         InputOverlayDisplay,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Test for gaming input overlay menu correctness",
+		Contacts:     []string{"pjlee@google.com", "cuicuiruan@google.com", "arc-app-dev@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Data:         []string{"input-overlay-menu-close.png", "input-overlay-menu-switch.png"},
+		Fixture:      "arcBootedWithInputOverlay",
+		Params: []testing.Param{
+			{
+				ExtraSoftwareDeps: []string{"android_p"},
+			}, {
+				Name:              "vm",
+				ExtraSoftwareDeps: []string{"android_vm"},
+			}},
+		Timeout: 20 * time.Minute,
+	})
+}
+
+func InputOverlayDisplay(ctx context.Context, s *testing.State) {
+	testutil.SetupTestApp(ctx, s, func(params testutil.TestParams) error {
+		// Start up keyboard.
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to open keyboard")
+		}
+		defer kb.Close()
+		// Start up UIAutomator.
+		ui := uiauto.New(params.TestConn).WithTimeout(time.Minute)
+		// Start up ACUITI.
+		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithScreenshotStrategy(uidetection.ImmediateScreenshot).WithTimeout(time.Minute)
+
+		// CUJ: Hide game overlay.
+		if err := uiauto.Combine("Hide game overlay",
+			// Open game controls.
+			ui.LeftClick(nodewith.Name("Game Control").HasClass("ImageButton")),
+			// Tap bottom menu switch.
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Below(uidetection.Word("Customize"))),
+			// Exit out of menu.
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-close.png")).Below(uidetection.Word("BUTTON"))),
+			// Poll UI elements no longer exist, but overlay is still responsive.
+			ui.Gone(nodewith.Name("m")),
+			testutil.TapOverlayButton(kb, "m", &params, testutil.TopTap),
+			ui.Gone(nodewith.Name("w")),
+			testutil.MoveOverlayButton(kb, "w", &params),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to verify game overlay hidden")
+		}
+
+		// CUJ: Disable game overlay.
+		if err := uiauto.Combine("Disable game overlay",
+			// Open game controls.
+			ui.LeftClick(nodewith.Name("Game Control").HasClass("ImageButton")),
+			// Tap top menu switch.
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Above(uidetection.Word("Customize"))),
+			// Exit out of menu.
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-close.png")).Below(uidetection.Word("BUTTON"))),
+			// Poll UI elements no longer exist, and overlay is unresponsive.
+			ui.Gone(nodewith.Name("m")),
+			not(testutil.TapOverlayButton(kb, "m", &params, testutil.TopTap)),
+			ui.Gone(nodewith.Name("w")),
+			not(testutil.MoveOverlayButton(kb, "w", &params)),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to verify game overlay disabled")
+		}
+
+		return nil
+	})
+}
+
+// not returns a function that returns an error if the given action did not return
+// an error, and returns nil if the given action resulted in an error.
+func not(a action.Action) action.Action {
+	return func(ctx context.Context) error {
+		if err := a(ctx); err == nil {
+			return errors.Wrap(err, "action succeeded unexpectedly")
+		}
+		return nil
+	}
+}
