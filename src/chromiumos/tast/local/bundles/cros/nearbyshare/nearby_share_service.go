@@ -397,3 +397,25 @@ func (n *NearbyService) CrOSAttributes(ctx context.Context, req *empty.Empty) (*
 	res.Attributes = string(jsonData)
 	return &res, nil
 }
+
+// EnableBluetooth enables bluetooth on the chromebook.
+func (n *NearbyService) EnableBluetooth(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if err := bluetooth.Enable(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to enable bluetooth")
+	}
+	if err := bluetooth.PollForBTEnabled(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for bluetooth to be enabled on the device")
+	}
+	return &empty.Empty{}, nil
+}
+
+// DisableBluetooth disables bluetooth on the chromebook.
+func (n *NearbyService) DisableBluetooth(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if err := bluetooth.Disable(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to disable bluetooth")
+	}
+	if err := bluetooth.PollForBTDisabled(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for bluetooth to be disabled on the device")
+	}
+	return &empty.Empty{}, nil
+}
