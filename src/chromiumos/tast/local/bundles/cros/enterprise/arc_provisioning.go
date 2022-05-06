@@ -47,7 +47,6 @@ func init() {
 		Contacts:     []string{"mhasank@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      13 * time.Minute,
 		VarDeps: []string{
 			loginPoolVar,
 			packagesVar,
@@ -56,21 +55,25 @@ func init() {
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               withRetries,
+				Timeout:           15 * time.Minute,
 			},
 			{
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               withRetries,
+				Timeout:           15 * time.Minute,
 			},
 			{
 				Name:              "unstable",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               withoutRetries,
+				Timeout:           10 * time.Minute,
 			},
 			{
 				Name:              "vm_unstable",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               withoutRetries,
+				Timeout:           10 * time.Minute,
 			}},
 	})
 }
@@ -168,7 +171,9 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 		waitForPackagesCtx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 		defer cancel()
-		if err := waitForPackages(waitForPackagesCtx, a, packages); err != nil {
+		// Note: if the user policy for the user is changed, the packages listed in
+		// credentials files must be updated.
+		if err := a.WaitForPackages(waitForPackagesCtx, packages); err != nil {
 			if chromeCrashed(ctx, sysLogReader) {
 				return retry("wait for packages", errors.Wrap(err, "Chrome process crashed"))
 			}
@@ -218,17 +223,6 @@ func dumpBugReport(ctx context.Context, a *arc.ARC, filePath string) {
 	if err := a.BugReport(ctx, filePath); err != nil {
 		testing.ContextLog(ctx, "Failed to get bug report: ", err)
 	}
-}
-
-// waitForPackages ensure that Android packages are force-installed by ARC policy.
-// Note: if the user policy for the user is changed, the packages listed in
-// credentials files must be updated.
-func waitForPackages(ctx context.Context, a *arc.ARC, packages []string) error {
-	timeout := 8 * time.Minute
-	ctx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
-
-	return a.WaitForPackages(ctx, packages)
 }
 
 // ensurePackagesUninstallable verifies that force-installed packages can't be uninstalled
