@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45af5bcc_af1b3f4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-06T01:04:32Z",
+      "side": 1,
+      "message": "I\u0027ve asked for more details on the bug. I\u0027ll review this change once you\u0027ve provided that.",
+      "revId": "0687c418cb43705c13868b4cf58531ef14b375ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
