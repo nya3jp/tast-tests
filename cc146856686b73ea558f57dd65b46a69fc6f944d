@@ -63,6 +63,30 @@
       },
       "revId": "cc146856686b73ea558f57dd65b46a69fc6f944d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe43fa0_6d0f07d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-06T22:20:43Z",
+      "side": 1,
+      "message": "That\u0027s becasue we have the Run option DumpLogOnError.\n\n\nI added if statement to only log errors if command is expected to pass.",
+      "parentUuid": "efb12c95_ab1dbe0b",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 13
+      },
+      "revId": "cc146856686b73ea558f57dd65b46a69fc6f944d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
