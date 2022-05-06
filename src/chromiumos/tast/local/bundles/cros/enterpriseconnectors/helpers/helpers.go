@@ -116,8 +116,7 @@ func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chr
 		return testing.PollBreak(errors.Wrap(err, "failed to close notifications"))
 	}
 
-	err = dconn.Eval(ctx, `document.getElementById("unknown_malware.zip").click()`, nil)
-	if err != nil {
+	if err := dconn.Eval(ctx, `document.getElementById("unknown_malware.zip").click()`, nil); err != nil {
 		return testing.PollBreak(errors.Wrap(err, "failed to click on link to download file"))
 	}
 
@@ -140,7 +139,7 @@ func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chr
 
 	var failedToGetToken bool
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		err := dconnSafebrowsing.Eval(ctx, `(async () => {
+		if err := dconnSafebrowsing.Eval(ctx, `(async () => {
 			const table = document.getElementById("deep-scan-list");
 			if (table.rows.length == 0) {
 				// If there is no entry, scanning is not yet complete.
@@ -159,8 +158,7 @@ func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chr
 				return true;
 			}
 			throw "Scanning not yet complete";
-			})()`, &failedToGetToken)
-		if err != nil {
+			})()`, &failedToGetToken); err != nil {
 			testing.ContextLog(ctx, "Polling: ", err)
 		}
 		return err
@@ -198,7 +196,7 @@ func WaitForDeepScanningVerdict(ctx context.Context, dconnSafebrowsing *browser.
 // VerifyDeepScanningVerdict verifies that the deep scanning verdict corresponds to shouldBlock.
 func VerifyDeepScanningVerdict(ctx context.Context, dconnSafebrowsing *browser.Conn, shouldBlock bool) error {
 	var isBlocked bool
-	err := dconnSafebrowsing.Eval(ctx, `(async () => {
+	if err := dconnSafebrowsing.Eval(ctx, `(async () => {
 		const table = document.getElementById("deep-scan-list");
 		if (table.rows.length == 0) {
 			// If there is no entry, scanning is not yet complete.
@@ -209,8 +207,7 @@ func VerifyDeepScanningVerdict(ctx context.Context, dconnSafebrowsing *browser.C
 		}
 		// We check if the last entry includes a block message.
 		return table.rows[table.rows.length - 1].cells[1].innerHTML.includes("BLOCK");
-		})()`, &isBlocked)
-	if err != nil {
+		})()`, &isBlocked); err != nil {
 		var tableHTML string
 		err2 := dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").outerHTML`, &tableHTML)
 		if err2 != nil {
@@ -220,8 +217,7 @@ func VerifyDeepScanningVerdict(ctx context.Context, dconnSafebrowsing *browser.C
 	}
 	if isBlocked != shouldBlock {
 		var tableHTML string
-		err := dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").outerHTML`, &tableHTML)
-		if err != nil {
+		if err := dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").outerHTML`, &tableHTML); err != nil {
 			return errors.Wrapf(err, "block state (%v) doesn't match expectation (%v). Failed to get html of table", isBlocked, shouldBlock)
 		}
 		return errors.Errorf("block state (%v) doesn't match expectation (%v). Html of table: %v", isBlocked, shouldBlock, tableHTML)
@@ -245,4 +241,39 @@ func GetSafeBrowsingExperimentEnabled(ctx context.Context, br *browser.Browser, 
 	var experimentEnabled bool
 	err = dconnSafebrowsing.Eval(ctx, `Array.from(document.getElementById("experiments-list").children).find((obj) => obj.innerHTML.includes("`+experimentName+`")).innerHTML.includes("Enabled:")`, &experimentEnabled)
 	return experimentEnabled, err
+}
+
+// GetCleanDconnSafebrowsing returns a Dconn to chrome://safe-browsing/#tab-deep-scan for which it is ensured that there is no prior deep scanning verdict.
+func GetCleanDconnSafebrowsing(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn) (*browser.Conn, error) {
+	var retDconn *browser.Conn
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+		defer cancel()
+		dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to connect to chrome"))
+		}
+
+		var numRows int
+		if err := dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").rows.length`, &numRows); err != nil {
+			dconnSafebrowsing.Close()
+			dconnSafebrowsing.CloseTarget(cleanupCtx)
+			return testing.PollBreak(errors.Wrap(err, "could not verify numRows"))
+		}
+		if numRows != 0 {
+			dconnSafebrowsing.Close()
+			dconnSafebrowsing.CloseTarget(cleanupCtx)
+			return errors.Errorf("there already exists a deep scanning verdict, even though there shouldn't. numRows: %d", numRows)
+		}
+		// This dconn is good, so set it!
+		retDconn = dconnSafebrowsing
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: 10 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for empty safe browsing site")
+	}
+	if retDconn == nil {
+		return nil, errors.New("failed to create clean dconn to safe-browsing page")
+	}
+	return retDconn, nil
 }
