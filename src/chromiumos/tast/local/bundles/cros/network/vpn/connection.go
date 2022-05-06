@@ -154,9 +154,7 @@ func (c *Connection) setUpInternal(ctx context.Context, withSvc bool) error {
 		return err
 	}
 
-	var err error
-	c.Properties, err = c.createProperties()
-	if err != nil {
+	if err := c.createProperties(); err != nil {
 		return err
 	}
 
@@ -302,6 +300,9 @@ func (c *Connection) configureService(ctx context.Context) error {
 // the service properties. The service created in the profile in this step will
 // be overwritten with the full properties after the server is created.
 func (c *Connection) generateWireGuardKey(ctx context.Context) (string, error) {
+	if err := c.createProperties(); err != nil {
+		return "", err
+	}
 	if err := c.configureService(ctx); err != nil {
 		return "", err
 	}
@@ -327,19 +328,21 @@ func (c *Connection) generateWireGuardKey(ctx context.Context) (string, error) {
 	return publicKey, nil
 }
 
-func (c *Connection) createProperties() (map[string]interface{}, error) {
+func (c *Connection) createProperties() error {
+	var err error
 	switch c.config.Type {
 	case TypeIKEv2:
-		return c.createIKEv2Properties()
+		c.Properties, err = c.createIKEv2Properties()
 	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
-		return c.createL2TPIPsecProperties()
+		c.Properties, err = c.createL2TPIPsecProperties()
 	case TypeOpenVPN:
-		return c.createOpenVPNProperties()
+		c.Properties, err = c.createOpenVPNProperties()
 	case TypeWireGuard:
-		return c.createWireGuardProperties(), nil
+		c.Properties = c.createWireGuardProperties()
 	default:
-		return nil, errors.Errorf("unexpected server type: got %s", c.config.Type)
+		return errors.Errorf("unexpected server type: got %s", c.config.Type)
 	}
+	return err
 }
 
 func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error) {
