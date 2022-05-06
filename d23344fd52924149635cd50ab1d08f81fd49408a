@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "277bc4cf_74c99641",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-06T19:09:44Z",
+      "side": 1,
+      "message": "Please review! This CL includes some of the files that I think will warrant a bit more discussion, including what to do with bTconn variable and what to do about variances in the jankCriteria.",
+      "revId": "d23344fd52924149635cd50ab1d08f81fd49408a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
