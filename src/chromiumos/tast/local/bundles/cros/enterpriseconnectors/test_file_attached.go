@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers"
 	"chromiumos/tast/local/chrome"
@@ -133,7 +134,7 @@ func TestFileAttached(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get files from Downloads directory")
 	}
 	for _, file := range files {
-		if err = os.RemoveAll(filepath.Join(filesapp.DownloadPath, file.Name())); err != nil {
+		if err := os.RemoveAll(filepath.Join(filesapp.DownloadPath, file.Name())); err != nil {
 			s.Fatal("Failed to remove file: ", file.Name())
 		}
 	}
@@ -194,8 +195,7 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 	// Need to wait for a valid dm token, i.e., the proper initialization of the enterprise connectors.
 	if testParams.ScansEnabled {
 		s.Log("Checking for dm token")
-		err = helpers.WaitForDMTokenRegistered(ctx, br, tconn, server)
-		if err != nil {
+		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconn, server); err != nil {
 			s.Fatal("Failed to wait for DM token: ", err)
 		}
 	}
@@ -242,21 +242,12 @@ func testFileAttachedForBrowserAndFile(
 		}
 	}
 
-	dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
+	dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, br, tconn)
 	if err != nil {
-		s.Fatal("Failed to connect to chrome: ", err)
+		s.Fatal("Failed to get clean safe browsing page: ", err)
 	}
 	defer dconnSafebrowsing.Close()
 	defer dconnSafebrowsing.CloseTarget(cleanupCtx)
-
-	var numRows int
-	err = dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").rows.length`, &numRows)
-	if err != nil {
-		s.Fatal("Could not verify numRows: ", err)
-	}
-	if numRows != 0 {
-		s.Fatal("There already exists a deep scanning verdict, even though it shouldn't. numRows: ", numRows)
-	}
 
 	dconn, err := br.NewConn(ctx, server.URL+"/file_input.html")
 	if err != nil {
@@ -276,52 +267,56 @@ func testFileAttachedForBrowserAndFile(
 
 	// Click on <input type="file">.
 	fileInputNodeFinder := nodewith.Name("Choose File").Role(role.Button).First()
-	err = ui.LeftClick(fileInputNodeFinder)(ctx)
-	if err != nil {
+	if err := ui.LeftClick(fileInputNodeFinder)(ctx); err != nil {
 		s.Fatal("Failed to press file input button: ", err)
 	}
 
 	files, err := filepicker.Find(ctx, tconn)
 	if err != nil {
-		s.Error("Failed to get window of picker: ", err)
+		s.Fatal("Failed to get window of picker: ", err)
 	}
 
 	// Open file in test_dir.
-	err = uiauto.Combine("open file",
+	if err := uiauto.Combine("open file",
 		files.OpenDir("test_dir"),
 		files.OpenFile(ulFileName),
-	)(ctx)
-	if err != nil {
-		s.Error("Failed to open file: ", err)
+	)(ctx); err != nil {
+		s.Fatal("Failed to open file: ", err)
 	}
-	err = ui.WaitUntilGone(nodewith.Name("Files").HasClass("WebContentsViewAura"))(ctx)
+	if err := ui.WithInterval(20 * time.Millisecond).WaitUntilGone(nodewith.Name("Files").HasClass("WebContentsViewAura"))(ctx); err != nil {
+		s.Error("Failed to wait for File picker to close: ", err)
+	}
 
 	verifyUIForFileAttached(ctx, shouldBlockUpload, params, testParams, br, s, server, testDirPath, ui, tconn)
 
-	// Ensure file was or was not attached, by checking javascript output.
-	var blocked bool
-	err = dconn.Eval(ctx, `document.getElementsByTagName("input")[0].files.length == 0`, &blocked)
-	if err != nil {
-		s.Fatal("Failed to determine whether file was blocked: ", err)
-	}
-	if !testParams.AllowsImmediateDelivery && shouldBlockUpload {
-		if !blocked {
-			s.Fatal("File should have been blocked, but wasn't")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Ensure file was or was not attached, by checking javascript output.
+		var blocked bool
+		if err := dconn.Eval(ctx, `document.getElementsByTagName("input")[0].files.length == 0`, &blocked); err != nil {
+			s.Fatal("Failed to determine whether file was blocked: ", err)
 		}
-	} else {
-		if blocked {
-			s.Fatal("File shouldn't have been blocked, but was")
+		if !testParams.AllowsImmediateDelivery && shouldBlockUpload {
+			if !blocked {
+				// If a file is attached even though it should have been blocked, this is an immediate error.
+				return testing.PollBreak(errors.New("file should have been blocked, but wasn't"))
+			}
+		} else {
+			if blocked {
+				// Sometimes it takes time to attach a file, so we do polling here.
+				return errors.New("file shouldn't have been blocked, but was")
+			}
 		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to verify whether file was correctly attached or blocked: ", err)
 	}
 
 	if testParams.ScansEnabled && !params.IsUnscannable {
 		// If scans are enabled and the content isn't unscannable, we check the deep scanning verdict.
-		err := helpers.WaitForDeepScanningVerdict(ctx, dconnSafebrowsing, helpers.ScanningTimeOut)
-		if err != nil {
+		if err := helpers.WaitForDeepScanningVerdict(ctx, dconnSafebrowsing, helpers.ScanningTimeOut); err != nil {
 			s.Fatal("Failed to wait for deep scanning verdict: ", err)
 		}
-		err = helpers.VerifyDeepScanningVerdict(ctx, dconnSafebrowsing, params.IsBad)
-		if err != nil {
+		if err := helpers.VerifyDeepScanningVerdict(ctx, dconnSafebrowsing, params.IsBad); err != nil {
 			s.Fatal("Failed to verify deep scanning verdict: ", err)
 		}
 	}
@@ -344,53 +339,46 @@ func verifyUIForFileAttached(
 		// Wait for scanning dialog to show and complete scanning.
 		scanningDialogFinder := nodewith.HasClass("DialogClientView").First()
 		scanningLabelFinder := nodewith.Role(role.StaticText).HasClass("Label").NameStartingWith("Checking").Ancestor(scanningDialogFinder)
-		err := uiauto.Combine("show scanning dialog",
+		if err := uiauto.Combine("show scanning dialog",
 			// 1. Wait until scanning started.
 			ui.WithTimeout(2*time.Second).WithInterval(10*time.Millisecond).WaitUntilExists(scanningLabelFinder),
 			// 2. Wait until scanning finished.
 			ui.WithTimeout(helpers.ScanningTimeOut).WaitUntilGone(scanningLabelFinder),
-		)(ctx)
-		if err != nil {
+		)(ctx); err != nil {
 			s.Error("Did not show scanning dialog: ", err)
 		}
 
 		if shouldBlockUpload {
 			// Check that a blocked verdict is shown.
 			blockedLabelTextFinder := nodewith.Role(role.StaticText).HasClass("Label").Ancestor(scanningDialogFinder).NameContaining(params.UlBlockLabel)
-			err = ui.WithTimeout(5 * time.Second).WaitUntilExists(blockedLabelTextFinder)(ctx)
-			if err != nil {
+			if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(blockedLabelTextFinder)(ctx); err != nil {
 				s.Error("Did not show scan blocked message: ", err)
 			}
 
 			// Close dialog.
 			closeButtonFinder := nodewith.Name("Close").Role(role.Button).Ancestor(scanningDialogFinder)
-			err = ui.WithTimeout(5 * time.Second).WaitUntilExists(closeButtonFinder)(ctx)
-			if err != nil {
+			if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(closeButtonFinder)(ctx); err != nil {
 				s.Error("Did not show close button for blocked dialog: ", err)
 			}
-			err = ui.LeftClick(closeButtonFinder)(ctx)
-			if err != nil {
+			if err := ui.LeftClick(closeButtonFinder)(ctx); err != nil {
 				s.Error("Failed to close dialog: ", err)
 			}
 		} else {
 			// Check that an allowed verdict is shown.
 			allowedLabelTextFinder := nodewith.Role(role.StaticText).HasClass("Label").Ancestor(scanningDialogFinder).NameContaining("file will be uploaded")
-			err = ui.WithTimeout(5 * time.Second).WithInterval(25 * time.Millisecond).WaitUntilExists(allowedLabelTextFinder)(ctx)
-			if err != nil {
+			if err := ui.WithTimeout(5 * time.Second).WithInterval(25 * time.Millisecond).WaitUntilExists(allowedLabelTextFinder)(ctx); err != nil {
 				s.Error("Did not show scan success message: ", err)
 			}
 			// For allowed, the dialog should be closed automatically.
 		}
 		// Check that the dialog is closed.
-		err = ui.WithTimeout(5 * time.Second).WaitUntilGone(scanningDialogFinder)(ctx)
-		if err != nil {
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilGone(scanningDialogFinder)(ctx); err != nil {
 			s.Error("Did not close scanning dialog: ", err)
 		}
 	} else {
 		// Check that no dialog will be opened.
 		scanningDialogFinder := nodewith.HasClass("DialogClientView")
-		err := ui.EnsureGoneFor(scanningDialogFinder, 1*time.Second)(ctx)
-		if err != nil {
+		if err := ui.EnsureGoneFor(scanningDialogFinder, 2*time.Second)(ctx); err != nil {
 			s.Error("Scanning dialog detected, but none was expected: ", err)
 		}
 	}
