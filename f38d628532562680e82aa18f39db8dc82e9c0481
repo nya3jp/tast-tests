@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7ab494_81792b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-06T07:50:08Z",
+      "side": 1,
+      "message": "The URL contains a keyword \"master\", and it will not pass the presubmit hook. To submit, I can either add `# nocheck` at the end of that particular line, or unblock the entire word in this project. Using `# nocheck` sounds like the more suitable option.\n\nhttps://chromium.googlesource.com/chromiumos/repohooks/+/HEAD/README.md#blocked-and-unblocked-word-list\n\nAn alternative is to not include the URL, but I think using `# nocheck` is the better option.",
+      "parentUuid": "4e9a953a_2a2d1734",
+      "range": {
+        "startLine": 158,
+        "startChar": 59,
+        "endLine": 158,
+        "endChar": 68
+      },
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5089037f_77b89d9a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-05T18:10:39Z",
       "side": 1,
       "message": "This can be `bytes.NewReader`",
+      "range": {
+        "startLine": 171,
+        "startChar": 29,
+        "endLine": 171,
+        "endChar": 69
+      },
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d85cbc9_7c9139db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-06T07:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5089037f_77b89d9a",
       "range": {
         "startLine": 171,
         "startChar": 29,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7386bd3c_fdad7cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-06T07:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d6458aa_a4689a1b",
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d3fb77c_a610bf30",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee9dab0_982df643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-06T07:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d3fb77c_a610bf30",
+      "range": {
+        "startLine": 404,
+        "startChar": 29,
+        "endLine": 404,
+        "endChar": 69
+      },
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c0dc1fb_3e5facfe",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-05-05T18:10:39Z",
       "side": 1,
       "message": "How about using the validate pattern here? I think we can just check if there is any `physical id` !\u003d `0`.\n\nAlso, this should be in another CL. So it is easy to be reverted if it break the current test.",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 2
+      },
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05cccb17_469271a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-06T07:50:08Z",
+      "side": 1,
+      "message": "This test will be deleted since we no longer operate on the single physical CPU assumption.",
+      "parentUuid": "9c0dc1fb_3e5facfe",
       "range": {
         "startLine": 422,
         "startChar": 1,
