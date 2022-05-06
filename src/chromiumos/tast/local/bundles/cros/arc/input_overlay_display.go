@@ -1,0 +1,119 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/common/action"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/arc/gio"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/uidetection"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         InputOverlayDisplay,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Test for gaming input overlay menu correctness",
+		Contacts:     []string{"pjlee@google.com", "cuicuiruan@google.com", "arc-app-dev@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Data:         []string{"input-overlay-menu-close.png", "input-overlay-menu-switch.png", "input-overlay-menu.png"},
+		Fixture:      "arcBootedWithInputOverlay",
+		Params: []testing.Param{
+			{
+				ExtraSoftwareDeps: []string{"android_p"},
+			}, {
+				Name:              "vm",
+				ExtraSoftwareDeps: []string{"android_vm"},
+			}},
+		Timeout: 5 * time.Minute,
+	})
+}
+
+func InputOverlayDisplay(ctx context.Context, s *testing.State) {
+	gio.SetupTestApp(ctx, s, func(params gio.TestParams) error {
+		// Start up keyboard.
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to open keyboard")
+		}
+		defer kb.Close()
+		// Start up UIAutomator.
+		ui := uiauto.New(params.TestConn).WithTimeout(time.Minute)
+		// Start up ACUITI.
+		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithScreenshotStrategy(uidetection.ImmediateScreenshot).WithTimeout(time.Minute)
+		// Obtain window surface bounds.
+		loc, err := params.Activity.SurfaceBounds(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to obtain activity window bounds")
+		}
+		appWidth := loc.BottomRight().X - loc.TopLeft().X
+		appHeight := loc.BottomRight().Y - loc.TopLeft().Y
+		params.WindowContentSize = coords.NewPoint(appWidth, appHeight)
+
+		// CUJ: Hide game overlay.
+		s.Log("Display CUJ #1: hide game overlay")
+		if err := uiauto.Combine("hide game overlay",
+			// Close educational dialog.
+			ui.LeftClick(nodewith.Name("Got it").HasClass("LabelButtonLabel")),
+			// Open game controls.
+			uda.LeftClick(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
+			// Tap bottom menu switch.
+			uda.LeftClick(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Below(uidetection.Word("Customize"))),
+			// Exit out of menu.
+			uda.LeftClick(uidetection.CustomIcon(s.DataPath("input-overlay-menu-close.png")).Below(uidetection.Word("BUTTON"))),
+			// Poll UI elements no longer exist, but overlay is still responsive.
+			ui.Gone(nodewith.Name("m")),
+			gio.TapOverlayButton(kb, "m", &params, gio.TopTap),
+			ui.Gone(nodewith.Name("w")),
+			gio.MoveOverlayButton(kb, "w", &params),
+		)(ctx); err != nil {
+			s.Error("Failed to verify game overlay hidden: ", err)
+			// Reset activity.
+			if err := gio.CloseAndRelaunchActivity(ctx, &params); err != nil {
+				s.Fatal("Failed to reset application after failed CUJ: ", err)
+			}
+		}
+
+		// CUJ: Disable game overlay.
+		s.Log("Display CUJ #2: disable game overlay")
+		if err := uiauto.Combine("disable game overlay",
+			// Open game controls.
+			ui.LeftClick(nodewith.Name("Game Control").HasClass("ImageButton")),
+			// Tap top menu switch.
+			uda.LeftClick(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Above(uidetection.Word("Customize"))),
+			// Exit out of menu.
+			uda.LeftClick(uidetection.CustomIcon(s.DataPath("input-overlay-menu-close.png")).Below(uidetection.Word("BUTTON"))),
+			// Poll UI elements no longer exist, and overlay is unresponsive.
+			ui.Gone(nodewith.Name("m")),
+			not(gio.TapOverlayButton(kb, "m", &params, gio.TopTap)),
+			ui.Gone(nodewith.Name("w")),
+			not(gio.MoveOverlayButton(kb, "w", &params)),
+		)(ctx); err != nil {
+			s.Error("Failed to verify game overlay disabled: ", err)
+		}
+
+		return nil
+	})
+}
+
+// not returns a function that returns an error if the given action did not return
+// an error, and returns nil if the given action resulted in an error.
+func not(a action.Action) action.Action {
+	return func(ctx context.Context) error {
+		if err := a(ctx); err == nil {
+			return errors.Wrap(err, "action succeeded unexpectedly")
+		}
+		return nil
+	}
+}
