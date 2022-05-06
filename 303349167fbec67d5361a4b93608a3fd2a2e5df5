@@ -16,6 +16,23 @@
       "message": "I won\u0027t be able to look over the changes in detail (before being OOO tomorrow), but the overall strategy SGTM.",
       "revId": "303349167fbec67d5361a4b93608a3fd2a2e5df5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e50f6546_741e4adb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-05-06T17:09:48Z",
+      "side": 1,
+      "message": "LGTM. I will leave +2 to someone more familiar with Tast/Go.",
+      "revId": "303349167fbec67d5361a4b93608a3fd2a2e5df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
