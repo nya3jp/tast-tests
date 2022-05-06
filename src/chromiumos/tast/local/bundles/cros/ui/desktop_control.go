@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -50,7 +51,12 @@ func init() {
 }
 
 func DesktopControl(ctx context.Context, s *testing.State) {
+	const openLauncherSmoothnessHistogram = "Apps.ClamshellLauncher.AnimationSmoothness.OpenAppsPage"
+	const closeLauncherSmoothnessHistogram = "Apps.ClamshellLauncher.AnimationSmoothness.Close"
+
 	expects := perfutil.CreateExpectations(ctx,
+		openLauncherSmoothnessHistogram,
+		closeLauncherSmoothnessHistogram,
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToCollapsed",
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded",
 	)
@@ -100,12 +106,53 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	r.Runs = 3
 	r.RunTracing = false
 
-	// TODO(crbug.com/1321838): After feature ProductivityLauncher is enabled by
-	// default, add a test that opens and closes the launcher and checks
-	// animation performance with the histograms:
-	// - Apps.ClamshellLauncher.AnimationSmoothness.OpenAppsPage
-	// - Apps.ClamshellLauncher.AnimationSmoothness.Close
-	// These will need to be added to `expects` above.
+	// Clamshell "bubble" launcher:
+	// - Open by pressing the Search key
+	// - Close by pressing the Search key again
+	s.Log("Open and close the bubble launcher")
+	r.RunMultiple(ctx, s, "launcher", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+		// Take a snapshot of the open launcher smoothness histogram.
+		histo, err := metrics.GetHistogram(ctx, tconn, openLauncherSmoothnessHistogram)
+		if err != nil {
+			return errors.Wrap(err, "couldn't get open histogram")
+		}
+		// Open the launcher with the keyboard.
+		if err := ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelSearch); err != nil {
+			return errors.Wrap(err, "failed to press Search")
+		}
+		ui := uiauto.New(tconn)
+		bubble := nodewith.ClassName(ash.AppListBubbleClassName)
+		if err := ui.WaitUntilExists(bubble)(ctx); err != nil {
+			return errors.Wrap(err, "could not open bubble by pressing Search key")
+		}
+		// The bubble is created before the animation completes. Wait for the
+		// smoothness histogram to update to ensure the bubble is fully open.
+		if _, err := metrics.WaitForHistogramUpdate(
+			ctx, tconn, openLauncherSmoothnessHistogram, histo, time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for open histogram")
+		}
+		// Take a snapshot of the close launcher smoothness histogram.
+		histo, err = metrics.GetHistogram(ctx, tconn, closeLauncherSmoothnessHistogram)
+		if err != nil {
+			return errors.Wrap(err, "couldn't get close histogram")
+		}
+		// Press the search key again to close the launcher.
+		if err := ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelSearch); err != nil {
+			return errors.Wrap(err, "failed to press Search again")
+		}
+		if err := ui.WaitUntilGone(bubble)(ctx); err != nil {
+			return errors.Wrap(err, "could not close bubble by pressing Search key")
+		}
+		// Wait for the close launcher smoothness histogram to update.
+		if _, err := metrics.WaitForHistogramUpdate(
+			ctx, tconn, closeLauncherSmoothnessHistogram, histo, time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for close histogram")
+		}
+		return nil
+	},
+		openLauncherSmoothnessHistogram,
+		closeLauncherSmoothnessHistogram,
+	), perfutil.StoreAllWithHeuristics(""))
 
 	// Controls of the quick settings:
 	// - open the quick settings
