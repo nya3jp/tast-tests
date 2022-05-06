@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14fde8a_a22b86a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-06T21:11:59Z",
+      "side": 1,
+      "message": "lgtm with nit, thanks!",
+      "revId": "cb50b63faffacd4371c88362c4f4de14c55d738f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19433498_c9682969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-06T21:11:59Z",
+      "side": 1,
+      "message": "use cleanupCtx for clean up functions",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "cb50b63faffacd4371c88362c4f4de14c55d738f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
