@@ -16,6 +16,63 @@
       "message": "PTAL",
       "revId": "0aac3b18de7a05283c5c38052b9ebf1443a2c8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf64737a_089ef690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-06T06:55:46Z",
+      "side": 1,
+      "message": "Is the test expected to be this slow?",
+      "revId": "0aac3b18de7a05283c5c38052b9ebf1443a2c8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b614b96_a0786980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputoverlay/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-06T06:55:46Z",
+      "side": 1,
+      "message": "Don\u0027t pass State to a helper.",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 55
+      },
+      "revId": "0aac3b18de7a05283c5c38052b9ebf1443a2c8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aed227f_142b0747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputoverlay/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-06T06:55:46Z",
+      "side": 1,
+      "message": "Instead of using a callback, just return the TestParams and use this function just for the Setup.\n\nTo handle cleanup, return a cleanup callback that the test calls in an defer.",
+      "revId": "0aac3b18de7a05283c5c38052b9ebf1443a2c8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
