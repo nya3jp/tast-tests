@@ -368,6 +368,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23c3390a_4655c501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-05-06T14:34:35Z",
+      "side": 1,
+      "message": "Unresolving, since the test is broken as it is now. In the code above, there is an exception for force-installed extensions, but if I try to add local extension into the ExtensionInstallForcelist, Chrome fails to install extension and occasionally crashes when logging into the public account.\n\nI have analyzed the above error a bit and came to a conclusion that Chrome tries to fetch extension update information from Chrome Web Store, but fails to do so since generated ID is not known to the server. ExtensionInstallForcelist does allow to specify an alternative update_url, so I am going to explore this option further. This, however, means that we\u0027ll need to host the update manifest and extension correctly, e.g. it will have to be packaged into a crx format.",
+      "parentUuid": "1f7e8ba3_2bfe213b",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "c3f75b770f1dd78288a428ecb8a719801008caf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c6bfaba_1ecb48fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_policies.go",
         "patchSetId": 3
