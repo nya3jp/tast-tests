@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f862203f_edd4f0a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-06T05:30:50Z",
+      "side": 1,
+      "message": "Overall, I\u0027m okay with this CL. Not sure if you want to create a subtest (informational) for testing fw version and skip it in the main test (critical).",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "b8c1070d906e6a7bdfc99ab82ce75e66d98231cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
