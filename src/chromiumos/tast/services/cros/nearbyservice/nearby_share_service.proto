@@ -79,6 +79,16 @@ service NearbyShareService {
 
   // CrOSAttributes gets device info for a chromebook used in remote tests.
   rpc CrOSAttributes(google.protobuf.Empty) returns (CrOSAttributesResponse) {}
+
+  // EnableBluetooth enables bluetooth on the chromebook. It is safe to assume
+  // bluetooth has been enabled when this RPC returns.
+  rpc EnableBluetooth(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+
+  // DisableBluetooth disables bluetooth on the chromebook. It is safe to assume
+  // bluetooth has been disabled when this RPC returns.
+  rpc DisableBluetooth(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
 }
 
 // CrOSLoginRequest to login to Chrome with configurable GAIA credentials.

@@ -214,6 +214,18 @@ func Enable(ctx context.Context) error {
 	return adapters[0].SetPowered(ctx, true)
 }
 
+// Disable powers off the bluetooth adapter.
+func Disable(ctx context.Context) error {
+	adapters, err := Adapters(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to get Bluetooth adapters")
+	}
+	if len(adapters) != 1 {
+		return errors.Errorf("failed to verify the number of Bluetooth adapters got %d, expected 1 ", len(adapters))
+	}
+	return adapters[0].SetPowered(ctx, false)
+}
+
 // PollForBTEnabled polls bluetooth adapter state till Adapter is powered on
 func PollForBTEnabled(ctx context.Context) error {
 	return PollForAdapterState(ctx, true)
