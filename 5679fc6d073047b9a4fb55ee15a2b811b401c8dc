@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d607ea_1a7bef11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-06T09:31:54Z",
+      "side": 1,
+      "message": "nit: Break the line at 80 chars. BTW, you can add that to vim to automatically split lines at set length.",
+      "revId": "5679fc6d073047b9a4fb55ee15a2b811b401c8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "33ac7cf9_f4a3f6dc",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-05-06T05:58:11Z",
       "side": 1,
       "message": "Hi Kamil,\n\nThis CL should fix most failures on Tastboard. Please take a look!",
+      "revId": "5679fc6d073047b9a4fb55ee15a2b811b401c8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e26baf3_2d66bd84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-06T09:31:54Z",
+      "side": 1,
+      "message": "LGTM % nit.\n\nPlease +1 on Verified. Did you manage to check that fix on the leased device?\n\n\nCCed Gabor concerning AU and its constraints on kernelnext boards.",
       "revId": "5679fc6d073047b9a4fb55ee15a2b811b401c8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
