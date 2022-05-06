@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df1af135_483c884e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-06T08:24:32Z",
+      "side": 1,
+      "message": "eh..I have not changed anything except the init() function. \n\nYou might want to use a text diff tool to compare the change between deleted physical_keyboard_emoji_informational and new physical_keyboard_emoji.",
+      "revId": "a3b03c96983a04da7a251a037dba1669b14352f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
