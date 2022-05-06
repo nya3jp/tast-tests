@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bfb2410_8e009a91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-05-06T23:50:51Z",
+      "side": 1,
+      "message": "Thanks for the review Victor-Gabriel and Miriam!",
+      "revId": "b642607551cc94adeff3131fdc5075ff223aae1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

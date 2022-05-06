@@ -52,6 +52,24 @@
       "parentUuid": "059ab5cd_7c9465fb",
       "revId": "ff54ffb31e10681a483669bd3632090b23adb704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98fb06ae_4d56ab51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-05-06T23:50:51Z",
+      "side": 0,
+      "message": "Which is exactly what I don\u0027t want. If one CL got reverted but not the other, we\u0027d have no test coverage at all...",
+      "parentUuid": "3091b0ce_d2ccb7af",
+      "revId": "ff54ffb31e10681a483669bd3632090b23adb704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

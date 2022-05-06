@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c33edf46_b9f41f85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-05-06T23:50:51Z",
+      "side": 1,
+      "message": "Thanks!\n\nFor https://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2022-05-06/4d6a07a4-0e61-4820-8c7b-632b42c630f8/autoserv_test/tast/results/tests/ui.ChromeCrashLoopV2.crashpad_mock_consent/, it looks like session_manager failed before the test could even get going, probably because Chrome was crashing rapidly. The V2 is intended to be more resilient to an unstable Chrome binary, but it still needs Chrome \u0026 session manager to stay up long enough that the test can perform set up.",
+      "parentUuid": "570c9fa3_d7fb3343",
+      "revId": "6fad4aa4cc0d56b3bca8d39d39b0534e6cc385b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "227ad758_44f29e5d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
