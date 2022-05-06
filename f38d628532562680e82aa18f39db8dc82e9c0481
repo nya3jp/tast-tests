@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2000dc37_2da013cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-06T08:06:10Z",
+      "side": 1,
+      "message": "You should use `HEAD` instead of master/main for the latest code.\n\nHowever, I think we should use a fixed commit and point out the line of the implementation.\n\nHow about https://github.com/intel/msr-tools/blob/eec71d977a83f8dc76bc3ccc6de5cbd3be378572/rdmsr.c#L235",
+      "parentUuid": "ed7ab494_81792b53",
+      "range": {
+        "startLine": 158,
+        "startChar": 59,
+        "endLine": 158,
+        "endChar": 68
+      },
+      "revId": "f38d628532562680e82aa18f39db8dc82e9c0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5089037f_77b89d9a",

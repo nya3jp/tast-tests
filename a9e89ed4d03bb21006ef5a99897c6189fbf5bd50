@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7908cb49_a1d48f83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-06T08:06:10Z",
+      "side": 1,
+      "message": "How about putting this in verifyPhysicalCPU (or another function)?\n\nYou can have a for loop and check if all the flags/virtualization are the same across all the physical CPU.\nAfter that, we can only verify the first cpu.\n\nAlso the part that checking all the CPU are the same should be under a flag and be another informational test. So we can disable it if that is no longer true (and don\u0027t need to disable the check of the first CPU at the same time).",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 92
+      },
+      "revId": "a9e89ed4d03bb21006ef5a99897c6189fbf5bd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9330a34_eb14c5a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-06T08:06:10Z",
+      "side": 1,
+      "message": "This is not ture.\n\nWe `only check the first physical cpu and assume all others are the same`",
+      "range": {
+        "startLine": 230,
+        "startChar": 16,
+        "endLine": 230,
+        "endChar": 50
+      },
+      "revId": "a9e89ed4d03bb21006ef5a99897c6189fbf5bd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
