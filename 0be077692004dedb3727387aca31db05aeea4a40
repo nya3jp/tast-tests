@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3f5876_48e5e202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-06T11:44:21Z",
+      "side": 1,
+      "message": "Nit: `-api` could provide more useful stats on established TCP connections (i.e. mss, bytes sent/received etc.).",
+      "range": {
+        "startLine": 70,
+        "startChar": 39,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "0be077692004dedb3727387aca31db05aeea4a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
