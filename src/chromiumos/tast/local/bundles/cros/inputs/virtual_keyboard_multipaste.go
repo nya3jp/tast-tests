@@ -79,8 +79,12 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 	}
 	defer touchCtx.Close()
 
-	ash.SetClipboard(ctx, tconn, text1)
-	ash.SetClipboard(ctx, tconn, text2)
+	if err := ash.SetClipboard(ctx, tconn, text1); err != nil {
+		s.Fatal("Failed to set text1 to clipboard: ", err)
+	}
+	if err := ash.SetClipboard(ctx, tconn, text2); err != nil {
+		s.Fatal("Failed to set text2 to clipboard: ", err)
+	}
 
 	actionName := "Input from VK multipaste clipboard"
 	if err := uiauto.UserAction(
