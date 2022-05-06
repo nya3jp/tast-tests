@@ -69,6 +69,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ba2fa9_6486c161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1422654
+      },
+      "writtenOn": "2022-05-06T02:47:42Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "bce7599c72826ebb909f1f09f53effafab53ad8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "205e0e0c_9739bd74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1422654
+      },
+      "writtenOn": "2022-05-06T02:47:42Z",
+      "side": 1,
+      "message": "Sg, I\u0027m waiting for PM response to confirm whether we should remove the pin pad in all \"PIN or password\" cases. If that\u0027s not the case, we should also verify the visibility of the PIN pad is correct. \n\nI\u0027ll take over this and fix the related tests, thank you for providing a fix!",
+      "parentUuid": "e140a5f3_11a8e0fb",
+      "revId": "bce7599c72826ebb909f1f09f53effafab53ad8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b86c528d_031d3276",
