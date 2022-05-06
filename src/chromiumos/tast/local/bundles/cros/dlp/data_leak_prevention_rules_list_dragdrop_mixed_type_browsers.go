@@ -6,6 +6,9 @@ package dlp
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
 	"time"
 
 	"chromiumos/tast/common/policy/fakedms"
@@ -40,6 +43,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{"text_1.html", "text_2.html", "editable_text_box.html"},
 		Fixture:      "lacrosPolicyLoggedIn",
 		Timeout:      3 * time.Minute,
 	})
@@ -49,9 +53,18 @@ func DataLeakPreventionRulesListDragdropMixedTypeBrowsers(ctx context.Context, s
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	dstURL := "google.com"
+	allowedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer allowedServer.Close()
 
-	// Reserve 10 seconds for cleanup.
+	blockedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer blockedServer.Close()
+
+	dstServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer dstServer.Close()
+
+	dstURL := dstServer.URL + "/editable_text_box.html"
+
+	// Reserve time for cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -93,32 +106,32 @@ func DataLeakPreventionRulesListDragdropMixedTypeBrowsers(ctx context.Context, s
 		{
 			name:           "blockedAshToLacros",
 			dropAllowed:    false,
-			srcURL:         "www.example.com",
-			srcContent:     "Example Domain",
+			srcURL:         blockedServer.URL + "/text_1.html",
+			srcContent:     "Sample text about random things.",
 			srcBrowserType: browser.TypeAsh,
 			dstBrowserType: browser.TypeLacros,
 		},
 		{
 			name:           "blockedLacrosToAsh",
 			dropAllowed:    false,
-			srcURL:         "www.example.com",
-			srcContent:     "Example Domain",
+			srcURL:         blockedServer.URL + "/text_1.html",
+			srcContent:     "Sample text about random things.",
 			srcBrowserType: browser.TypeLacros,
 			dstBrowserType: browser.TypeAsh,
 		},
 		{
 			name:           "allowedAshToLacros",
 			dropAllowed:    true,
-			srcURL:         "www.chromium.org",
-			srcContent:     "The Chromium Projects",
+			srcURL:         allowedServer.URL + "/text_2.html",
+			srcContent:     "Here is a random piece of text for testing things.",
 			srcBrowserType: browser.TypeAsh,
 			dstBrowserType: browser.TypeLacros,
 		},
 		{
 			name:           "allowedLacrosToAsh",
 			dropAllowed:    true,
-			srcURL:         "www.chromium.org",
-			srcContent:     "The Chromium Projects",
+			srcURL:         allowedServer.URL + "/text_2.html",
+			srcContent:     "Here is a random piece of text for testing things.",
 			srcBrowserType: browser.TypeLacros,
 			dstBrowserType: browser.TypeAsh,
 		},
@@ -129,7 +142,7 @@ func DataLeakPreventionRulesListDragdropMixedTypeBrowsers(ctx context.Context, s
 				s.Fatal("Failed to clean up: ", err)
 			}
 
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, policy.PopulateDLPPolicyForClipboard("example.com", dstURL)); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, policy.PopulateDLPPolicyForClipboard(blockedServer.URL, dstServer.URL)); err != nil {
 				s.Fatal("Failed to serve and verify the DLP policy: ", err)
 			}
 
@@ -166,7 +179,7 @@ func DataLeakPreventionRulesListDragdropMixedTypeBrowsers(ctx context.Context, s
 				s.Fatalf("Failed to snap the %s window to the right: %s", param.srcURL, err)
 			}
 
-			// Snap the google.com window to the left.
+			// Snap the destination window to the left.
 			_, err = snapFirstWindowInOverview(ctx, tconn, ash.WindowStateLeftSnapped)
 			if err != nil {
 				s.Fatal("Failed to snap the google.com window to the left: ", err)
@@ -188,7 +201,8 @@ func DataLeakPreventionRulesListDragdropMixedTypeBrowsers(ctx context.Context, s
 
 			s.Log("Checking notification")
 			ui := uiauto.New(tconn)
-			err = clipboard.CheckClipboardBubble(ctx, ui, param.srcURL)
+			parsedSrcURL, _ := url.Parse(blockedServer.URL)
+			err = clipboard.CheckClipboardBubble(ctx, ui, parsedSrcURL.Hostname())
 
 			if !param.dropAllowed && err != nil {
 				s.Error("Couldn't check for notification: ", err)
@@ -219,7 +233,7 @@ func openWebsite(ctx context.Context, fixture interface{}, brType browser.Type, 
 		return nil, nil, errors.Wrapf(err, "couldn't launch the %v browser", brType)
 	}
 
-	conn, err := br.NewConn(ctx, "https://"+url)
+	conn, err := br.NewConn(ctx, url)
 	if err != nil {
 		return closeBr, nil, err
 	}

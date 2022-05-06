@@ -6,6 +6,9 @@ package dlp
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -38,6 +41,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{"text_1.html", "text_2.html", "editable_text_box.html"},
 		Params: []testing.Param{{
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val:     browser.TypeAsh,
@@ -50,7 +54,7 @@ func init() {
 }
 
 func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) {
-	// Reserve five seconds for various cleanup.
+	// Reserve time for various cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
@@ -58,9 +62,17 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fakeDMS := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Set DLP policy with clipboard blocked restriction.
-	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.StandardDLPPolicyForClipboard()); err != nil {
-		s.Fatal("Failed to serve and verify: ", err)
+	allowedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer allowedServer.Close()
+
+	blockedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer blockedServer.Close()
+
+	destServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer destServer.Close()
+
+	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.PopulateDLPPolicyForClipboard(blockedServer.URL, destServer.URL)); err != nil {
+		s.Fatal("Failed to serve and verify the DLP policy: ", err)
 	}
 
 	// Connect to Test API.
@@ -93,20 +105,20 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 	for _, param := range []struct {
 		name        string
 		wantAllowed bool
-		url         string
+		srcURL      string
 		content     string
 	}{
 		{
 			name:        "dropBlocked",
 			wantAllowed: false,
-			url:         "www.example.com",
-			content:     "Example Domain",
+			srcURL:      blockedServer.URL + "/text_1.html",
+			content:     "Sample text about random things.",
 		},
 		{
 			name:        "dropAllowed",
 			wantAllowed: true,
-			url:         "www.chromium.org",
-			content:     "The Chromium Projects",
+			srcURL:      allowedServer.URL + "/text_2.html",
+			content:     "Here is a random piece of text for testing things.",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -122,24 +134,25 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 			defer closeBr(cleanupCtx)
 
-			dstConn, err := br.NewConn(ctx, "https://www.google.com/")
+			dstURL := destServer.URL + "/editable_text_box.html"
+			dstConn, err := br.NewConn(ctx, dstURL)
 			if err != nil {
-				s.Fatal("Failed to open page: ", err)
+				s.Fatalf("Failed to open page %q: %v", dstURL, err)
 			}
 			defer dstConn.Close()
 
 			if err := webutil.WaitForQuiescence(ctx, dstConn, 10*time.Second); err != nil {
-				s.Fatal("Failed to wait for google.com to achieve quiescence: ", err)
+				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", dstURL, err)
 			}
 
-			srcConn, err := br.NewConn(ctx, "https://"+param.url, browser.WithNewWindow())
+			srcConn, err := br.NewConn(ctx, param.srcURL, browser.WithNewWindow())
 			if err != nil {
 				s.Fatal("Failed to open page: ", err)
 			}
 			defer srcConn.Close()
 
 			if err := webutil.WaitForQuiescence(ctx, srcConn, 10*time.Second); err != nil {
-				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.url, err)
+				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.srcURL, err)
 			}
 
 			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
@@ -149,26 +162,26 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			// Snap the param.url window to the right.
 			w1, err := ash.FindFirstWindowInOverview(ctx, tconn)
 			if err != nil {
-				s.Fatalf("Failed to find the %s window in the overview mode: %s", param.url, err)
+				s.Fatalf("Failed to find the %s window in the overview mode: %s", param.srcURL, err)
 			}
 
 			if err := ash.SetWindowStateAndWait(ctx, tconn, w1.ID, ash.WindowStateRightSnapped); err != nil {
-				s.Fatalf("Failed to snap the %s window to the right: %s", param.url, err)
+				s.Fatalf("Failed to snap the %s window to the right: %s", param.srcURL, err)
 			}
 
-			// Snap the google.com window to the left.
+			// Snap the destination window to the left.
 			w2, err := ash.FindFirstWindowInOverview(ctx, tconn)
 			if err != nil {
-				s.Fatal("Failed to find the google.com window in the overview mode: ", err)
+				s.Fatal("Failed to find the source window in the overview mode: ", err)
 			}
 
 			if err := ash.SetWindowStateAndWait(ctx, tconn, w2.ID, ash.WindowStateLeftSnapped); err != nil {
-				s.Fatal("Failed to snap the google.com window to the left: ", err)
+				s.Fatal("Failed to snap the source window to the left: ", err)
 			}
 
-			// Activate the clipboard source (param.url) window.
+			// Activate the clipboard source (param.srcURL) window.
 			if err := w1.ActivateWindow(ctx, tconn); err != nil {
-				s.Fatalf("Failed to activate the %s window: %s", param.url, err)
+				s.Fatalf("Failed to activate the %s window: %s", param.srcURL, err)
 			}
 
 			if err = keyboard.Accel(ctx, "Ctrl+A"); err != nil {
@@ -184,7 +197,8 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			ui := uiauto.New(tconn)
 
 			// Verify notification bubble.
-			notifError := clipboard.CheckClipboardBubble(ctx, ui, param.url)
+			parsedSourceURL, _ := url.Parse(blockedServer.URL)
+			notifError := clipboard.CheckClipboardBubble(ctx, ui, parsedSourceURL.Hostname())
 
 			if !param.wantAllowed && notifError != nil {
 				s.Error("Expected notification but found an error: ", notifError)
