@@ -29,10 +29,10 @@ func DragDrop(ctx context.Context, tconn *chrome.TestConn, content string) error
 		return errors.Wrap(err, "failed to get locaton for content")
 	}
 
-	searchTab := nodewith.Name("Search").Role(role.TextFieldWithComboBox).State(state.Editable, true).First()
-	endLocation, err := ui.Location(ctx, searchTab)
+	textBoxNode := nodewith.Name("textarea").Role(role.TextField).State(state.Editable, true).First()
+	endLocation, err := ui.Location(ctx, textBoxNode)
 	if err != nil {
-		return errors.Wrap(err, "failed to get locaton for google search")
+		return errors.Wrap(err, "failed to get the location of destination text box")
 	}
 
 	if err := uiauto.Combine("Drag and Drop",
