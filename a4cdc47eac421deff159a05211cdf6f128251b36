@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea7ae89_823da0c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-06T01:54:25Z",
+      "side": 1,
+      "message": "I think from here to line 288 enters the email, password and sign, Can we make this as methods to make it more readable. (If it makes sense to combine apps with similar login screen).",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
