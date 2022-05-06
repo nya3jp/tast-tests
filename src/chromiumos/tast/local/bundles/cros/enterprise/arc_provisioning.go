@@ -166,30 +166,33 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return retry("launch Play Store", err)
 		}
 
-		waitForPackagesCtx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 60*time.Second)
 		defer cancel()
-		if err := waitForPackages(waitForPackagesCtx, a, packages); err != nil {
-			if chromeCrashed(ctx, sysLogReader) {
+
+		dumpBugReportAndExit := func(desc string, err error) error {
+			dumpBugReport(cleanupCtx, a, filepath.Join(s.OutDir(), "bugreport.zip"))
+			return exit(desc, err)
+		}
+
+		if err := waitForPackages(ctx, a, packages); err != nil {
+			if chromeCrashed(cleanupCtx, sysLogReader) {
 				return retry("wait for packages", errors.Wrap(err, "Chrome process crashed"))
 			}
-			dumpBugReport(ctx, a, filepath.Join(s.OutDir(), "bugreport.zip"))
-			return exit("wait for packages", err)
+			return dumpBugReportAndExit("wait for packages", err)
 		}
 
 		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
-			return exit("verify packages are uninstallable", err)
+			return dumpBugReportAndExit("verify packages are uninstallable", err)
 		}
 
 		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
 			return exit("launch asset browser", err)
 		}
 
-		cleanupCtx := ctx
-		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
-		defer cancel()
 		if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
 			faillog.DumpUITree(cleanupCtx, s.OutDir(), tconn)
-			return exit("verify Play Store is not empty", err)
+			return dumpBugReportAndExit("verify Play Store is not empty", err)
 		}
 
 		return nil
@@ -215,6 +218,7 @@ func chromeCrashed(ctx context.Context, sysLogReader *syslog.LineReader) bool {
 }
 
 func dumpBugReport(ctx context.Context, a *arc.ARC, filePath string) {
+	testing.ContextLog(ctx, "Dumping Bug Report")
 	if err := a.BugReport(ctx, filePath); err != nil {
 		testing.ContextLog(ctx, "Failed to get bug report: ", err)
 	}
