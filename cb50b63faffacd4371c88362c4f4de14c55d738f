@@ -39,6 +39,30 @@
       },
       "revId": "cb50b63faffacd4371c88362c4f4de14c55d738f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b033f29_c8299111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_selection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-06T21:28:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19433498_c9682969",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "cb50b63faffacd4371c88362c4f4de14c55d738f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
