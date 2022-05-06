@@ -16,6 +16,23 @@
       "message": "Thank you reviewers, all comments addressed.",
       "revId": "8f45e37654a6a9eeabde0a32effed438c9a78f60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2051ec1_62af601e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520537
+      },
+      "writtenOn": "2022-05-06T16:43:53Z",
+      "side": 1,
+      "message": "I happened to open this CL for other reasons and looked at the failure, and it appears to be related to the code in the CL rather than something retriable:\n\n`tast-remote-tests-cros-0.0.2-r10595: src/chromiumos/tast/local/bundles/cros/ui/timezone_editable.go:146:6: (*chromiumos/tast/internal/testing.globalMixin).Fatalf format %q has arg is24HourNow of wrong type bool` (from stdout on the failed nested step on the MILO UI for the build)",
+      "revId": "8f45e37654a6a9eeabde0a32effed438c9a78f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
