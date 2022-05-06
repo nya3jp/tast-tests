@@ -39,6 +39,30 @@
       },
       "revId": "726dcd2a2ea04debc3af33a7aa872e8022cf4495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7264354c_de4ab282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/data/pwa_manifest.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-06T12:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6754c007_d837c3cb",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "726dcd2a2ea04debc3af33a7aa872e8022cf4495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
