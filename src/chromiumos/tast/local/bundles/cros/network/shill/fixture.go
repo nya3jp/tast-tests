@@ -19,7 +19,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const resetShillTimeout = 30 * time.Second
+// ResetShillTimeout specifies the timeout value for a shill restart.
+const ResetShillTimeout = 30 * time.Second
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -30,9 +31,9 @@ func init() {
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},
-		PreTestTimeout:  resetShillTimeout + 5*time.Second,
+		PreTestTimeout:  ResetShillTimeout + 5*time.Second,
 		PostTestTimeout: 5 * time.Second,
-		TearDownTimeout: resetShillTimeout + 5*time.Second,
+		TearDownTimeout: ResetShillTimeout + 5*time.Second,
 		Impl:            &shillFixture{},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -42,17 +43,17 @@ func init() {
 			"cassiewang@chromium.org",         // fixture maintainer
 			"cros-networking-bugs@google.com", // platform networking team
 		},
-		PreTestTimeout:  resetShillTimeout + 5*time.Second,
+		PreTestTimeout:  ResetShillTimeout + 5*time.Second,
 		PostTestTimeout: 5 * time.Second,
-		TearDownTimeout: resetShillTimeout + 5*time.Second,
+		TearDownTimeout: ResetShillTimeout + 5*time.Second,
 		Impl:            &shillFixture{},
 		Parent:          "arcBooted",
 	})
 }
 
-// resetShill does a best effort removing any modifications to the shill
+// ResetShill does a best effort removing any modifications to the shill
 // configuration and resetting it in a known default state.
-func resetShill(ctx context.Context) []error {
+func ResetShill(ctx context.Context) []error {
 	var errs []error
 	if err := upstart.StopJob(ctx, "shill"); err != nil {
 		errs = append(errs, errors.Wrap(err, "failed to stop shill"))
@@ -77,7 +78,7 @@ func resetShill(ctx context.Context) []error {
 	expectProps := map[string]interface{}{
 		shillconst.ServicePropertyIsConnected: true,
 	}
-	if _, err := manager.WaitForServiceProperties(ctx, expectProps, resetShillTimeout); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, expectProps, ResetShillTimeout); err != nil {
 		errs = append(errs, errors.Wrap(err, "failed to wait for connected service"))
 	}
 
@@ -114,9 +115,9 @@ func (f *shillFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		}
 	}()
 
-	if errs := resetShill(ctx); len(errs) != 0 {
+	if errs := ResetShill(ctx); len(errs) != 0 {
 		for _, err := range errs {
-			s.Error("resetShill error: ", err)
+			s.Error("ResetShill error: ", err)
 		}
 		s.Fatal("Failed resetting shill in PreTest")
 	}
@@ -137,9 +138,9 @@ func (f *shillFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 		s.Error("Failed to restart ui: ", err)
 	}
 
-	if errs := resetShill(ctx); len(errs) != 0 {
+	if errs := ResetShill(ctx); len(errs) != 0 {
 		for _, err := range errs {
-			s.Error("resetShill error: ", err)
+			s.Error("ResetShill error: ", err)
 		}
 		s.Error("Failed resetting shill in TearDown")
 	}
