@@ -40,7 +40,7 @@ type USB struct {
 /:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=xhci_hcd/4p, 10000M
 /:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=xhci_hcd/1p, 480M
 */
-var re = regexp.MustCompile(`.*Class=([a-zA-Z_\s]+).*Driver=([a-zA-Z0-9_\-\/\s]+).*,.([a-zA-Z0-9_\/]+)`)
+var re = regexp.MustCompile(`.*Class=([a-zA-Z_\s]+).*Driver=([a-zA-Z0-9_\-\/\s]+).*,.([a-zA-Z0-9_\/.]+)`)
 
 // ListDevicesInfo returns the class, driver and speed for all the USB devices.
 func ListDevicesInfo(ctx context.Context) ([]USB, error) {
