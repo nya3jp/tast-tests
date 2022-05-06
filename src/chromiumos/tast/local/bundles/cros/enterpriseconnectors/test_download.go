@@ -184,8 +184,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 	// Need to wait for a valid dm token, i.e., the proper initialization of the enterprise connectors.
 	if testParams.ScansEnabled {
 		s.Log("Checking for dm token")
-		err = helpers.WaitForDMTokenRegistered(ctx, br, tconn, server)
-		if err != nil {
+		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconn, server); err != nil {
 			s.Fatal("Failed to wait for DM token: ", err)
 		}
 	}
@@ -203,21 +202,12 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
-			dconnSafebrowsing, err := br.NewConn(ctx, "chrome://safe-browsing/#tab-deep-scan")
+			dconnSafebrowsing, err := helpers.GetCleanDconnSafebrowsing(ctx, br, tconn)
 			if err != nil {
-				s.Fatal("Failed to connect to chrome: ", err)
+				s.Fatal("Failed to get clean safe browsing page: ", err)
 			}
 			defer dconnSafebrowsing.Close()
 			defer dconnSafebrowsing.CloseTarget(cleanupCtx)
-
-			var numRows int
-			err = dconnSafebrowsing.Eval(ctx, `document.getElementById("deep-scan-list").rows.length`, &numRows)
-			if err != nil {
-				s.Fatal("Could not verify numRows: ", err)
-			}
-			if numRows != 0 {
-				s.Fatal("There already exists a deep scanning verdict, even though it shouldn't. numRows: ", numRows)
-			}
 
 			dlFileName := params.FileName
 
@@ -244,15 +234,13 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			}
 
 			// The file name is also the ID of the link elements.
-			err = dconn.Eval(ctx, `document.getElementById('`+params.FileName+`').click()`, nil)
-			if err != nil {
+			if err := dconn.Eval(ctx, `document.getElementById('`+params.FileName+`').click()`, nil); err != nil {
 				s.Fatal("Failed to execute JS expression: ", err)
 			}
 
 			// Cleanup file
 			defer func() {
-				_, err = os.Stat(filesapp.DownloadPath + dlFileName)
-				if !os.IsNotExist(err) {
+				if _, err := os.Stat(filesapp.DownloadPath + dlFileName); !os.IsNotExist(err) {
 					if err := os.Remove(filesapp.DownloadPath + dlFileName); err != nil {
 						s.Error("Failed to remove ", dlFileName, ": ", err)
 					}
@@ -296,12 +284,10 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 
 			if testParams.ScansEnabled && !params.IsUnscannable {
 				// If scans are enabled and the content isn't unscannable, we check the deep scanning verdict.
-				err := helpers.WaitForDeepScanningVerdict(ctx, dconnSafebrowsing, helpers.ScanningTimeOut)
-				if err != nil {
+				if err := helpers.WaitForDeepScanningVerdict(ctx, dconnSafebrowsing, helpers.ScanningTimeOut); err != nil {
 					s.Fatal("Failed to wait for deep scanning verdict: ", err)
 				}
-				err = helpers.VerifyDeepScanningVerdict(ctx, dconnSafebrowsing, params.IsBad)
-				if err != nil {
+				if err := helpers.VerifyDeepScanningVerdict(ctx, dconnSafebrowsing, params.IsBad); err != nil {
 					s.Fatal("Failed to verify deep scanning verdict: ", err)
 				}
 			}
