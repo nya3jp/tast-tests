@@ -16,6 +16,24 @@
       "message": "Move this to a separate CL so it can easily be reverted independently.",
       "revId": "ff54ffb31e10681a483669bd3632090b23adb704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "059ab5cd_7c9465fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-05-06T02:00:23Z",
+      "side": 0,
+      "message": "That feels like the point of the CL? I\u0027m moving from V1 to V2. This is replacing ui,ChromeCrashLoop.crashpad_mock_consent which is currently critical. I\u0027m upgrading a critical test from flaky to a-lot-less-flaky.",
+      "parentUuid": "e0d39e3a_fe39a55c",
+      "revId": "ff54ffb31e10681a483669bd3632090b23adb704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
