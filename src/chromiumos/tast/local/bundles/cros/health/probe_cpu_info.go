@@ -5,11 +5,15 @@
 package health
 
 import (
+	"bufio"
+	"bytes"
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"reflect"
 	"strings"
+	"unsafe"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
@@ -133,7 +137,122 @@ func init() {
 	})
 }
 
-func verifyPhysicalCPU(physicalCPU *physicalCPUInfo) error {
+func readMsr(msrReg int64) (uint64, error) {
+	// msr read/write always comes at 8 bytes: https://man7.org/linux/man-pages/man4/msr.4.html
+	const msrSize = 8
+	bytes := make([]byte, msrSize)
+	// TODO(b/231673454): Read from a specified logical CPU instead of defaulting
+	// to cpu 0.
+	msrFile, err := os.Open(fmt.Sprintf("/dev/cpu/0/msr"))
+	if err != nil {
+		return 0, errors.New("could not open msr file")
+	}
+	defer msrFile.Close()
+	msrFile.Seek(msrReg, 0)
+	readSize, err := msrFile.Read(bytes)
+	if err != nil || readSize != msrSize {
+		return 0, errors.New("could not read msr file")
+	}
+
+	// As seen in the ReadMsr tool implementation, return value from reading the
+	// register is directly type-casted to uint64. We use pointer casting to
+	// achieve the same result.
+	//
+	// https://github.com/intel/msr-tools/blob/master/rdmsr.c # nocheck
+	return *(*uint64)(unsafe.Pointer(&bytes[0])), nil
+}
+
+func getFlags() (map[string]bool, error) {
+	cpuinfoContent, err := ioutil.ReadFile("/proc/cpuinfo")
+	if err != nil {
+		return nil, errors.New("could not read /proc/cpuinfo")
+	}
+
+	firstFlags := make(map[string]bool)
+	flagFound := false
+
+	// TODO(b/231673454): Change so that getFlags() accept a physical CPU id, and
+	// can get flag specific to that physical CPU.
+	//
+	// Until then, report error if flags differs between each CPU.
+	scanner := bufio.NewScanner(bytes.NewReader(cpuinfoContent))
+	for scanner.Scan() {
+		keyValue := strings.Split(scanner.Text(), ":")
+		keyValue[0] = strings.TrimSpace(keyValue[0])
+		if keyValue[0] == "flags" || keyValue[0] == "Features" {
+			// This is the first set of flags
+			if !flagFound {
+				flagValues := strings.Fields(keyValue[1])
+				for _, val := range flagValues {
+					firstFlags[val] = true
+				}
+			} else {
+				flagValues := strings.Fields(keyValue[1])
+				newFlags := make(map[string]bool)
+				for _, val := range flagValues {
+					newFlags[val] = true
+				}
+				if !reflect.DeepEqual(firstFlags, newFlags) {
+					return nil, errors.Errorf("Flags differ between CPUs: [%v] [%v]", firstFlags, newFlags)
+				}
+			}
+			flagFound = true
+		}
+	}
+
+	if !flagFound {
+		return nil, errors.New("no flags found in /proc/cpuinfo")
+	}
+
+	return firstFlags, nil
+}
+
+func getExpectedCPUVirtualization(flags map[string]bool) (*cpuVirtualizationInfo, error) {
+	var cpuVirtualization cpuVirtualizationInfo
+
+	const (
+		ia32FeatureLocked              = 1 << 0
+		ia32FeatureEnableVmxInsideSmx  = 1 << 1
+		ia32FeatureEnableVmxOutsideSmx = 1 << 2
+		vmCrLockedBit                  = 1 << 3
+		vmCrSvmeDisabledBit            = 1 << 4
+		// The msr address for IA32_FEATURE_CONTROL (0x3A), used to report vmx
+		// virtualization data.
+		vmxMsrReg = 0x3A
+		// The msr address for VM_CRl (C001_0114), used to report svm virtualization
+		// data.
+		svmMsrReg = 0xC0010114
+	)
+
+	// TODO(b/231673454): Read CPU virtualization data specific to a particular
+	// physical CPU.
+	//
+	// Until then, assume only one physical CPU exist and read from logical cpu0.
+	if _, vmxPresent := flags["vmx"]; vmxPresent {
+		cpuVirtualization.Type = "VMX"
+		val, err := readMsr(int64(vmxMsrReg))
+		if err != nil {
+			return nil, err
+		}
+		cpuVirtualization.IsLocked = uint(val&ia32FeatureLocked) > 0
+		cpuVirtualization.IsEnabled = uint(val&ia32FeatureEnableVmxInsideSmx) > 0 ||
+			uint(val&ia32FeatureEnableVmxOutsideSmx) > 0
+		return &cpuVirtualization, nil
+	}
+	if _, svmPresent := flags["svm"]; svmPresent {
+		cpuVirtualization.Type = "SVM"
+		val, err := readMsr(int64(svmMsrReg))
+		if err != nil {
+			return nil, err
+		}
+		cpuVirtualization.IsLocked = uint(val&vmCrLockedBit) > 0
+		cpuVirtualization.IsEnabled = !(uint(val&vmCrSvmeDisabledBit) > 0)
+		return &cpuVirtualization, nil
+	}
+	return nil, nil
+}
+
+func verifyPhysicalCPU(physicalCPU *physicalCPUInfo, checkCPUVirtualization bool) error {
 	if len(physicalCPU.LogicalCPUs) < 1 {
 		return errors.Errorf("invalid LogicalCPUs, got %d; want 1+", len(physicalCPU.LogicalCPUs))
 	}
@@ -146,6 +265,32 @@ func verifyPhysicalCPU(physicalCPU *physicalCPUInfo) error {
 
 	if *physicalCPU.ModelName == "" {
 		return errors.New("empty CPU model name")
+	}
+
+	if checkCPUVirtualization {
+		expectedFlags, err := getFlags()
+		if err != nil {
+			return err
+		}
+
+		receivedFlags := make(map[string]bool)
+		for _, flag := range physicalCPU.Flags {
+			receivedFlags[flag] = true
+		}
+
+		if !reflect.DeepEqual(receivedFlags, expectedFlags) {
+			return errors.Errorf("Flag reported incorrectly, expect: %v got: %v", expectedFlags, receivedFlags)
+		}
+
+		expectedPhysicalCPUVirtualization, err := getExpectedCPUVirtualization(expectedFlags)
+		if err != nil {
+			return err
+		}
+
+		if !reflect.DeepEqual(expectedPhysicalCPUVirtualization, physicalCPU.CPUVirtualization) {
+			return errors.Errorf("CPU virtualization reported incorrectly, expect: %v got: %v",
+				expectedPhysicalCPUVirtualization, physicalCPU.CPUVirtualization)
+		}
 	}
 
 	return nil
@@ -169,7 +314,7 @@ func verifyCState(cState cStateInfo) error {
 	return nil
 }
 
-func validateCPUData(info *cpuInfo) error {
+func validateCPUData(info *cpuInfo, checkCPUVirtualization bool) error {
 	// Every board should have at least one physical CPU
 	if len(info.PhysicalCPUs) < 1 {
 		return errors.Errorf("invalid PhysicalCPUs, got %d; want 1+", len(info.PhysicalCPUs))
@@ -183,7 +328,7 @@ func validateCPUData(info *cpuInfo) error {
 	}
 
 	for _, physicalCPU := range info.PhysicalCPUs {
-		if err := verifyPhysicalCPU(&physicalCPU); err != nil {
+		if err := verifyPhysicalCPU(&physicalCPU, checkCPUVirtualization); err != nil {
 			return errors.Wrap(err, "failed to verify physical CPU")
 		}
 	}
@@ -281,7 +426,7 @@ func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run telem command: ", err)
 	}
 
-	if err := validateCPUData(&info); err != nil {
+	if err := validateCPUData(&info, testParam.checkCPUVirtualization); err != nil {
 		s.Fatal("Failed to validate cpu data: ", err)
 	}
 
