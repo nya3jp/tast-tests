@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "386d23cd_e323e36f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-06T01:28:04Z",
+      "side": 1,
+      "message": "jchinlee@, tast-owners@ PTAL\n\nOthers FYI",
+      "revId": "36234e9e73b09e77dd7fce6e49e61c63e978d5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
