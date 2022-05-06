@@ -90,6 +90,16 @@ type PerfOpts struct {
 
 	// Used in perf sched to provide output.
 	perfSchedOutput *PerfSchedOutput
+
+	// Used in perf record to specify event for sampling.
+	perfRecordEvent string
+
+	// Used in perf record to specify period of sampling.
+	perfRecordPeriod int
+
+	// Used to record system-wide branch samples (lbr).
+	// The alternative is callgraph "-g".
+	perfRecordBranches bool
 }
 
 // PerfStatOpts creates a PerfOpts for running "perf stat -a" on the DUT.
@@ -100,9 +110,11 @@ func PerfStatOpts(out *PerfStatOutput, pid int) *PerfOpts {
 	return &PerfOpts{perfType: perfStat, pid: pid, perfStatOutput: out}
 }
 
-// PerfRecordOpts creates a PerfOpts for running "perf record -e cycles -g" on the DUT.
-func PerfRecordOpts() *PerfOpts {
-	return &PerfOpts{perfType: perfRecord}
+// PerfRecordOpts creates PerfOpts for running "perf record -e <event> [-c <period>] [-b -a]|[-g]" on DUT.
+// PerfRecordOpts("", 0, false) implies default options equivalent to former PerfRecordOpts().
+func PerfRecordOpts(recordEvent string, samplePeriod int, collectBranchSamples bool) *PerfOpts {
+	return &PerfOpts{perfType: perfRecord, perfRecordEvent: recordEvent,
+		perfRecordPeriod: samplePeriod, perfRecordBranches: collectBranchSamples}
 }
 
 // PerfStatRecordOpts creates a PerfOpts for running "perf stat record -a" on the DUT.
@@ -120,7 +132,7 @@ func PerfSchedOpts(out *PerfSchedOutput, procName string) *PerfOpts {
 func Perf(opts *PerfOpts) Profiler {
 	// Set default options if needed.
 	if opts == nil {
-		opts = PerfRecordOpts()
+		opts = PerfRecordOpts("", 0, false)
 	}
 	return func(ctx context.Context, outDir string) (instance, error) {
 		return newPerf(ctx, outDir, opts)
@@ -170,7 +182,24 @@ func getCmd(ctx context.Context, outDir string, opts *PerfOpts) (*testexec.Cmd, 
 	switch opts.perfType {
 	case perfRecord:
 		outputPath := filepath.Join(outDir, perfRecordFileName)
-		return testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath), nil
+		perfArgs := make([]string, 0)
+		// "-N" skips writing debug data to ~/.debug on DUT (which wastes rootfs space).
+		perfArgs = append(perfArgs, "record", "-N", "--output", outputPath)
+		if opts.perfRecordEvent != "" {
+			event := opts.perfRecordEvent
+		} else {
+			event := "cycles"
+		}
+		perfArgs = append(perfArgs, "-e", event)
+		if opts.perfRecordPeriod > 0 {
+			perfArgs = append(perfArgs, "-c", strconv.Itoa(opts.perfRecordPeriod))
+		}
+		if opts.perfRecordBranches {
+			perfArgs = append(perfArgs, "-b", "-a")
+		} else {
+			perfArgs = append(perfArgs, "-g")
+		}
+		return testexec.CommandContext(ctx, "perf", perfArgs...), nil
 	case perfStatRecord:
 		outputPath := filepath.Join(outDir, perfStatRecordFileName)
 		return testexec.CommandContext(ctx, "perf", "stat", "record", "-a", "--output", outputPath), nil

@@ -774,7 +774,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
+		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts("", 0, false)))
 		if err != nil {
 			return errors.Wrap(err, "failed to start the profiler")
 		}
