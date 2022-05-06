@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32baabd_2451a96e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-06T22:51:57Z",
+      "side": 1,
+      "message": "Thanks for working on this.",
+      "revId": "6f389ed5269b76cf99fd185d0851c9eebb34013a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05311611_2410b859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-06T22:51:57Z",
+      "side": 1,
+      "message": "nit: sharedScreencastLink",
+      "range": {
+        "startLine": 33,
+        "startChar": 14,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "6f389ed5269b76cf99fd185d0851c9eebb34013a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cfc0e6e_173bcdd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-06T22:51:57Z",
+      "side": 1,
+      "message": "Is this matching the text? Can we search by id which might be more reliable?",
+      "range": {
+        "startLine": 48,
+        "startChar": 40,
+        "endLine": 48,
+        "endChar": 51
+      },
+      "revId": "6f389ed5269b76cf99fd185d0851c9eebb34013a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a3e7328_918d16bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-06T22:51:57Z",
+      "side": 1,
+      "message": "Is this required in order to verify if screencasts are rendered? If not, maybe we don\u0027t need to include as part of tast test since it is flaky anyway.\n\nWe might want to see if there is a way to reset pref to have better testing or just rely on webdriver test.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "6f389ed5269b76cf99fd185d0851c9eebb34013a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0062651_ba43f41e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-06T22:51:57Z",
+      "side": 1,
+      "message": "nit: shared screencast title?",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "6f389ed5269b76cf99fd185d0851c9eebb34013a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
