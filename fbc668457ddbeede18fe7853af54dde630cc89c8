@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ca2ec6_5350b2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-06T05:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faa47906_6ae26042",
+      "range": {
+        "startLine": 26,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "fbc668457ddbeede18fe7853af54dde630cc89c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "324204a4_b8ae31fc",
@@ -94,6 +118,30 @@
       "writtenOn": "2022-05-06T05:43:09Z",
       "side": 1,
       "message": "not sure how easy it is, but it could be useful to make a more unique file name for instance:\n  - by adding a timestamp suffix\n  - by adding the caller package and function names as a suffix with https://pkg.go.dev/runtime#Caller",
+      "range": {
+        "startLine": 29,
+        "startChar": 42,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "fbc668457ddbeede18fe7853af54dde630cc89c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f557fa_5df41d88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-06T05:57:41Z",
+      "side": 1,
+      "message": "Thanks for the suggestions and link!\nThis file will be created in the folder for this specific test run, so I suppose this should be fine now. If we need this for multiple times in the same test later, I would prefer add a parameter of this function to specify the file name, then the caller could give a more meaningful name.",
+      "parentUuid": "324204a4_b8ae31fc",
       "range": {
         "startLine": 29,
         "startChar": 42,
