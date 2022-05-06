@@ -22,6 +22,30 @@
       },
       "revId": "b8bb1df85e266e50aa0e8658cbbc33043fb1750a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ab9175_a57a85dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-06T08:44:55Z",
+      "side": 1,
+      "message": "I see. I have two observations:\n- In the particular test you added this comment to, I just moved the `cleanupCtx` from outside of `s.Run` to the inside. This shouldn\u0027t affect the time the test has to run, or am I missing something?\n\n- I would think that most people that wrote policy tests did not deliberately make the decision to not use a `cleanupCtx`. From what I can tell, many people (including me) just copy paste from other policy tests to write their tests. Of course, you are the experts here, and I understand your point about tests that could now fail after the introduction of a `cleanupCtx`.",
+      "parentUuid": "c641c9ef_c4d0a61a",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "b8bb1df85e266e50aa0e8658cbbc33043fb1750a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -193,6 +193,24 @@
       "parentUuid": "814652c9_f89dda53",
       "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9bcbc6_437906d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-06T08:44:55Z",
+      "side": 1,
+      "message": "Thank you both! I\u0027ve removed all cleanupCtx uses from `defer cr.Close` and `defer fdms.Stop` within policy tests.",
+      "parentUuid": "0610d262_df2e3ecd",
+      "revId": "67a94888cebbebb7f0ed529fabb8e4fb5e345c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
