@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e4f177_63312b9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2022-05-06T15:02:44Z",
+      "side": 1,
+      "message": "Non-Google Chromium builds have slightly different layout on the settings page.",
+      "revId": "eab5f56c292ea5a07e33e99766356b2a49130ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
