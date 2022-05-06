@@ -22,6 +22,30 @@
       },
       "revId": "b8c1070d906e6a7bdfc99ab82ce75e66d98231cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb6236b9_aa81702f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-06T05:41:59Z",
+      "side": 1,
+      "message": "Note: This is not a hard requirement, I think we usually create a subtest when an issue happened before...",
+      "parentUuid": "f862203f_edd4f0a3",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "b8c1070d906e6a7bdfc99ab82ce75e66d98231cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
