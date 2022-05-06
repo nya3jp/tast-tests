@@ -46,6 +46,30 @@
       },
       "revId": "b8c1070d906e6a7bdfc99ab82ce75e66d98231cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c6e5fdc_dab1359e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1530527
+      },
+      "writtenOn": "2022-05-06T06:19:43Z",
+      "side": 1,
+      "message": "Added a new flag `checkUSBFirmwareVersion` to the `busInfoTestParams` and only enable usb firmware version validation in a new sub-test. Also created an issue (b/231667630) for promoting this sub-test to critical.",
+      "parentUuid": "fb6236b9_aa81702f",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "b8c1070d906e6a7bdfc99ab82ce75e66d98231cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
