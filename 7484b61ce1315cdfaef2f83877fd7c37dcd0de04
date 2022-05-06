@@ -33,6 +33,24 @@
       "message": "Nit: var testDocFileNames []string",
       "revId": "7484b61ce1315cdfaef2f83877fd7c37dcd0de04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92bb77da_d9019149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_continue_section_task.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-06T01:47:28Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "5a2690dd_5fa5b26b",
+      "revId": "7484b61ce1315cdfaef2f83877fd7c37dcd0de04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
