@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
@@ -31,15 +32,16 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.MultiwordEnabledModels...)),
 		SoftwareDeps: []string{"chrome"},
-		Pre:          pre.NonVKClamshellWithMultiwordSuggest,
+		Fixture:      fixture.ClamshellNonVKWithMultiwordSuggest,
 		Timeout:      5 * time.Minute,
 	})
 }
 
 func PhysicalKeyboardMultiwordSuggestion(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
+	uc := s.FixtValue().(fixture.FixtData).UserContext
+	uc.SetTestName(s.TestName())
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 

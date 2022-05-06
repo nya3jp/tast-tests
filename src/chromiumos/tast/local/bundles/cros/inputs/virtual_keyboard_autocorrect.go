@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/autocorrect"
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
@@ -41,8 +42,8 @@ func init() {
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Params: []testing.Param{
 			{
-				Name: "en_us_tablet",
-				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
+				Name:    "en_us_tablet",
+				Fixture: fixture.TabletVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "helol",
@@ -50,8 +51,8 @@ func init() {
 					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
 			}, {
-				Name: "en_us_a11y",
-				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
+				Name:    "en_us_a11y",
+				Fixture: fixture.ClamshellVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "helol",
@@ -59,8 +60,8 @@ func init() {
 					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
 			}, {
-				Name: "es_es_tablet",
-				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
+				Name:    "es_es_tablet",
+				Fixture: fixture.TabletVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.SpanishSpain,
 					MisspeltWord: "espanol",
@@ -68,8 +69,8 @@ func init() {
 					UndoMethod:   autocorrect.NotApplicable,
 				},
 			}, {
-				Name: "es_es_a11y",
-				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
+				Name:    "es_es_a11y",
+				Fixture: fixture.ClamshellVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.SpanishSpain,
 					MisspeltWord: "espanol",
@@ -77,8 +78,8 @@ func init() {
 					UndoMethod:   autocorrect.NotApplicable,
 				},
 			}, {
-				Name: "fr_fr_tablet",
-				Pre:  pre.VKEnabledTabletWithAssistAutocorrectReset,
+				Name:    "fr_fr_tablet",
+				Fixture: fixture.TabletVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.FrenchFrance,
 					MisspeltWord: "francais",
@@ -86,8 +87,8 @@ func init() {
 					UndoMethod:   autocorrect.NotApplicable,
 				},
 			}, {
-				Name: "fr_fr_a11y",
-				Pre:  pre.VKEnabledClamshellWithAssistAutocorrectReset,
+				Name:    "fr_fr_a11y",
+				Fixture: fixture.ClamshellVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.FrenchFrance,
 					MisspeltWord: "francais",
@@ -101,9 +102,10 @@ func init() {
 
 func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(autocorrect.TestCase)
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
+	uc := s.FixtValue().(fixture.FixtData).UserContext
+	uc.SetTestName(s.TestName())
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
