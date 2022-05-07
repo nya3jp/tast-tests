@@ -175,12 +175,13 @@ func (a *AndroidNearbyDevice) GetNearbySharingVersion(ctx context.Context) (stri
 
 // settingTimeoutSeconds is the time to wait for the Nearby Snippet to return settings values.
 // Only used by getDeviceName, getDataUsage, and getVisibility RPCs.
-const settingTimeoutSeconds = 10
+const settingTimeoutSeconds = 45
 
 // GetDeviceName retrieve's the Android device's display name for Nearby Share.
 func (a *AndroidNearbyDevice) GetDeviceName(ctx context.Context) (string, error) {
 	var name string
-	res, err := a.snippetClient.RPC(ctx, settingTimeoutSeconds*time.Second, "getDeviceName", settingTimeoutSeconds)
+	// Provide an additional second for the socket read so it does not time out before the RPC does.
+	res, err := a.snippetClient.RPC(ctx, (settingTimeoutSeconds+1)*time.Second, "getDeviceName", settingTimeoutSeconds)
 	if err != nil {
 		return name, err
 	}
@@ -193,7 +194,8 @@ func (a *AndroidNearbyDevice) GetDeviceName(ctx context.Context) (string, error)
 // GetDataUsage retrieve's the Android device's Nearby Share data usage setting.
 func (a *AndroidNearbyDevice) GetDataUsage(ctx context.Context) (DataUsage, error) {
 	var data DataUsage
-	res, err := a.snippetClient.RPC(ctx, settingTimeoutSeconds*time.Second, "getDataUsage", settingTimeoutSeconds)
+	// Provide an additional second for the socket read so it does not time out before the RPC does.
+	res, err := a.snippetClient.RPC(ctx, (settingTimeoutSeconds+1)*time.Second, "getDataUsage", settingTimeoutSeconds)
 	if err != nil {
 		return data, err
 	}
@@ -206,7 +208,8 @@ func (a *AndroidNearbyDevice) GetDataUsage(ctx context.Context) (DataUsage, erro
 // GetVisibility retrieve's the Android device's Nearby Share visibility setting.
 func (a *AndroidNearbyDevice) GetVisibility(ctx context.Context) (Visibility, error) {
 	var vis Visibility
-	res, err := a.snippetClient.RPC(ctx, settingTimeoutSeconds*time.Second, "getVisibility", settingTimeoutSeconds)
+	// Provide an additional second for the socket read so it does not time out before the RPC does.
+	res, err := a.snippetClient.RPC(ctx, (settingTimeoutSeconds+1)*time.Second, "getVisibility", settingTimeoutSeconds)
 	if err != nil {
 		return vis, err
 	}
