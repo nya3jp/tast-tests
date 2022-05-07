@@ -75,7 +75,7 @@ func init() {
 			unrootedAndroidUsername,
 			skipAndroidLogin,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -96,7 +96,7 @@ func init() {
 			unrootedAndroidUsername,
 			skipAndroidLogin,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -117,7 +117,7 @@ func init() {
 			unrootedAndroidUsername,
 			skipAndroidLogin,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -244,7 +244,9 @@ func (f *nearbyShareAndroidFixture) PostTest(ctx context.Context, s *testing.Fix
 // configureAndroidNearbySettings configures Nearby Share settings on an Android device.
 func configureAndroidNearbySettings(ctx context.Context, androidNearby *nearbysnippet.AndroidNearbyDevice, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) error {
 	// Ensure Nearby is disabled to avoid race conditions or starting up in an invalid state after the device is set up.
-	androidNearby.SetEnabled(ctx, false)
+	if err := androidNearby.SetEnabled(ctx, false); err != nil {
+		return errors.Wrap(err, "failed to disable Nearby Share")
+	}
 	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 		return errors.Wrap(err, "failed to sleep after setting Nearby disabld via snippets")
 	}
@@ -256,25 +258,25 @@ func configureAndroidNearbySettings(ctx context.Context, androidNearby *nearbysn
 	// androidNearby.SetupDevice is asynchronous, so we need to poll until the settings changes have taken effect.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if n, err := androidNearby.GetDeviceName(ctx); err != nil {
-			return testing.PollBreak(err)
+			return err
 		} else if n != name {
 			return errors.Errorf("current device name (%v) not yet updated to %v", n, name)
 		}
 
 		if v, err := androidNearby.GetVisibility(ctx); err != nil {
-			return testing.PollBreak(err)
+			return err
 		} else if v != visibility {
 			return errors.Errorf("current visibility (%v) not yet updated to %v", v, visibility)
 		}
 
 		if d, err := androidNearby.GetDataUsage(ctx); err != nil {
-			return testing.PollBreak(err)
+			return err
 		} else if d != dataUsage {
 			return errors.Errorf("current data usage (%v) not yet updated to %v", d, dataUsage)
 		}
 
 		return nil
-	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Interval: 2 * time.Second}); err != nil {
 		return errors.Wrap(err, "timed out waiting for Nearby Share settings to update")
 	}
 

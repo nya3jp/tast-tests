@@ -32,7 +32,7 @@ func addModulefoodAndroidFixtures() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent:          "nearbyShareGAIALoginAndroidAccount",
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -53,7 +53,7 @@ func addModulefoodAndroidFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -75,7 +75,7 @@ func addModulefoodAndroidFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -96,7 +96,7 @@ func addModulefoodAndroidFixtures() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent:          "nearbyShareGAIALogin",
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -121,7 +121,7 @@ func addModulefoodAndroidFixtures() {
 		Vars: []string{
 			customAndroidUsername,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -145,7 +145,7 @@ func addModulefoodAndroidFixtures() {
 		Vars: []string{
 			customAndroidUsername,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -169,7 +169,7 @@ func addModulefoodAndroidFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
