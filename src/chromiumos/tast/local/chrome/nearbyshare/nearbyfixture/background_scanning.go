@@ -28,7 +28,7 @@ func addBackgroundScanningFixtures() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent:          "nearbyShareGAIALoginBackgroundScanningEnabled",
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
