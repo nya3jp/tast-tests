@@ -18,6 +18,7 @@ import (
 	"time"
 
 	"github.com/docker/docker/api/types"
+	"github.com/docker/docker/api/types/filters"
 	"github.com/docker/docker/client"
 
 	"chromiumos/tast/common/testexec"
@@ -193,7 +194,7 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 		return nil, err
 	}
 
-	if pxy.hst == nil {
+	if pxy.hst == nil && !strings.Contains(host, "docker_servod") {
 		testing.ContextLogf(ctx, "Connecting to servod directly at %s:%d", host, port)
 		pxy.svo, err = New(ctx, host, port)
 		if err != nil {
@@ -206,10 +207,71 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 		if err != nil {
 			return nil, err
 		}
+		// b/227630721: For servod containers, create the XLMRpc connection using IP address instead of hostname.
+		ip, err := getServodContainerIP(ctx, pxy.dcl, host)
+		if err != nil {
+			return nil, err
+		}
+		testing.ContextLogf(ctx, "Connecting to servod container directly at %s:%d", ip, port)
+		pxy.svo, err = New(ctx, ip, port)
+		if err != nil {
+			return nil, err
+		}
+
 		pxy.sdc = host
 	}
 	toClose = nil // disarm cleanup
 	return &pxy, nil
+}
+
+// getServodContainerIP returns the IP addres of the given docker container name if it found,
+// otherwise it results a empty string and error.
+func getServodContainerIP(ctx context.Context, dcl *client.Client, name string) (ipaddr string, err error) {
+	// Check if docker client object is created, otherwise return an error.
+	if dcl == nil {
+		return "", errors.New("Docker client object is empty")
+	}
+	// Create filter to get container with given hostname and in running state.
+	f := filters.NewArgs()
+	f.Add("name", name)
+	f.Add("status", "running")
+	// Get thes list of containers based on the filter above.
+	containers, err := dcl.ContainerList(ctx, types.ContainerListOptions{Filters: f})
+	if err != nil {
+		testing.ContextLog(ctx, "Error occurred while getting the docker containers list.")
+		return "", err
+	}
+	// Return error if the container is not found or is not in running state.
+	if len(containers) <= 0 {
+		return "", fmt.Errorf("Container %s either not found or is not running.\n", name)
+	}
+	// Get the Docker network set to the container, this is set in the drone env variables.
+	// If not found then fall back to default network name.
+	cnet := os.Getenv("DOCKER_DEFAULT_NETWORK")
+	if cnet == "" {
+		cnet = "default_satlab"
+	}
+	for _, c := range containers {
+		if contains(c.Names, name) &&
+			c.NetworkSettings != nil {
+			sat_net := c.NetworkSettings.Networks[cnet]
+			if sat_net != nil {
+				return sat_net.IPAddress, nil
+			}
+			return "", fmt.Errorf("Could not find the '%s' network for the container '%s'. Found networks: [%v]\n", cnet, name, c.NetworkSettings.Networks)
+		}
+	}
+	return "", fmt.Errorf("Could not find IP address for the container '%s'\n", name)
+}
+
+// Function to check if a given string exists in a array of string.
+func contains(s []string, str string) bool {
+	for _, v := range s {
+		if strings.Contains(v, str) {
+			return true
+		}
+	}
+	return false
 }
 
 func (p *Proxy) connectSSH(ctx context.Context) (retErr error) {
