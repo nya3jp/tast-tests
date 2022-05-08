@@ -184,17 +184,21 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("wait for packages", err)
 		}
 
-		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
-			return exit("verify packages are uninstallable", err)
+		// Ensure that Andriod packages are set as not-uninstallable by ARC policy.
+		testing.ContextLog(ctx, "Waiting for packages being marked as not uninstallable")
+		if err := waitForBlockUninstall(ctx, cr, a, packages); err != nil {
+			return exit("verify packages as marked uninstallable", err)
 		}
 
-		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
-			return exit("launch asset browser", err)
-		}
-
-		if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
+		if err := ensurePlayStoreNotEmpty(ctx, tconn, a); err != nil {
 			faillog.DumpUITree(cleanupCtx, s.OutDir(), tconn)
 			return exit("verify Play Store is not empty", err)
+		}
+
+		// Delaying the validation of uninstall after Play Store UI has loaded to ensure
+		// that the configuration is loaded by Package Manager.
+		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
+			return exit("verify packages are uninstallable", err)
 		}
 
 		return nil
@@ -232,12 +236,6 @@ func dumpBugReportOnError(ctx context.Context, hasError func() bool, a *arc.ARC,
 
 // ensurePackagesUninstallable verifies that force-installed packages can't be uninstalled
 func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packages []string) error {
-	// Ensure that Andriod packages are set as not-uninstallable by ARC policy.
-	testing.ContextLog(ctx, "Waiting for packages being marked as not uninstallable")
-	if err := waitForBlockUninstall(ctx, cr, a, packages); err != nil {
-		return errors.Wrap(err, "failed to mark packages as not uninstallable")
-	}
-
 	// Try uninstalling packages with ADB, should fail.
 	testing.ContextLog(ctx, "Trying to uninstall packages")
 	for _, p := range packages {
@@ -250,7 +248,7 @@ func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.
 }
 
 // ensurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
-func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
+func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
@@ -265,20 +263,29 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 	defer d.Close(ctx)
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-			return errors.New("Play Store is empty")
-		}
-
-		if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
+		// TODO(b/231751280): View does not update when app is installed.
+		// When the bug is fixed and Play Store version is upreved on the
+		// system image, move this out of the loop.
+		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
 			return testing.PollBreak(err)
 		}
 
-		if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
-			return errors.Wrap(err, "Play Store UI screen not shown")
-		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+				return errors.New("Play Store is empty")
+			}
 
-		return nil
-	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 60 * time.Second})
+			if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
+				return testing.PollBreak(err)
+			}
+
+			if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
+				return errors.Wrap(err, "Play Store UI screen not shown")
+			}
+
+			return nil
+		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 5 * time.Second})
+	}, &testing.PollOptions{Timeout: 60 * time.Second})
 }
 
 // launchAssetBrowserActivity starts the activity that displays the available apps.
