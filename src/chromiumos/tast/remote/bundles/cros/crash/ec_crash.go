@@ -113,7 +113,7 @@ func ECCrash(ctx context.Context, s *testing.State) {
 
 	s.Log("Running crash command")
 	// This should reboot the device
-	if err := h.Servo.RunECCommand(ctx, "crash divzero"); err != nil {
+	if err := h.Servo.RunECCommand(ctx, "crash unaligned"); err != nil {
 		s.Fatal("Failed to run EC command: ", err)
 	}
 
