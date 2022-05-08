@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
@@ -176,20 +177,24 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("wait for packages", err)
 		}
 
-		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
-			return exit("verify packages are uninstallable", err)
-		}
-
-		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
-			return exit("launch asset browser", err)
+		// Ensure that Andriod packages are set as not-uninstallable by ARC policy.
+		testing.ContextLog(ctx, "Waiting for packages being marked as not uninstallable")
+		if err := waitForBlockUninstall(ctx, cr, a, packages); err != nil {
+			return exit("packages as marked uninstallable", err)
 		}
 
 		cleanupCtx := ctx
 		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
 		defer cancel()
-		if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
+		if err := ensurePlayStoreNotEmpty(ctx, tconn, a); err != nil {
 			faillog.DumpUITree(cleanupCtx, s.OutDir(), tconn)
 			return exit("verify Play Store is not empty", err)
+		}
+
+		// Delaying the validation of uninstall after Play Store UI has loaded to ensure
+		// that the configuration is loaded by Package Manager.
+		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
+			return exit("verify packages are uninstallable", err)
 		}
 
 		return nil
@@ -233,12 +238,6 @@ func waitForPackages(ctx context.Context, a *arc.ARC, packages []string) error {
 
 // ensurePackagesUninstallable verifies that force-installed packages can't be uninstalled
 func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packages []string) error {
-	// Ensure that Andriod packages are set as not-uninstallable by ARC policy.
-	testing.ContextLog(ctx, "Waiting for packages being marked as not uninstallable")
-	if err := waitForBlockUninstall(ctx, cr, a, packages); err != nil {
-		return errors.Wrap(err, "failed to mark packages as not uninstallable")
-	}
-
 	// Try uninstalling packages with ADB, should fail.
 	testing.ContextLog(ctx, "Trying to uninstall packages")
 	for _, p := range packages {
@@ -251,7 +250,7 @@ func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.
 }
 
 // ensurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
-func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
+func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
@@ -266,6 +265,16 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 	defer d.Close(ctx)
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
+		// TODO(b/231751280): View does not update when app is installed.
+		// When the bug is fixed and Play Store version is upreved on the
+		// system image, move this out of the loop.
+		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
+			return testing.PollBreak(err)
+		}
+
+		// Wait for view to load completely.
+		testing.Sleep(ctx, 2*time.Second)
+
 		if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
 			return errors.New("Play Store is empty")
 		}
@@ -284,12 +293,19 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 
 // launchAssetBrowserActivity starts the activity that displays the available apps.
 func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
+	const (
+		playStorePackage     = "com.android.vending"
+		assetBrowserActivity = "com.android.vending.AssetBrowserActivity"
+	)
+
 	if err := optin.ClosePlayStore(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to close Play Store")
 	}
 
+	ash.WaitForHidden(ctx, tconn, playStorePackage)
+
 	testing.ContextLog(ctx, "Starting Asset Browser activity")
-	act, err := arc.NewActivity(a, "com.android.vending", "com.android.vending.AssetBrowserActivity")
+	act, err := arc.NewActivity(a, playStorePackage, assetBrowserActivity)
 	if err != nil {
 		return errors.Wrap(err, "failed to create new activity")
 	}
@@ -354,6 +370,7 @@ func waitForBlockUninstall(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, p
 				len(notBlockedPackages),
 				strings.Join(makeList(notBlockedPackages), ", "))
 		}
+
 		return nil
 	}, nil)
 }
