@@ -21,6 +21,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// The msr address for IA32_FEATURE_CONTROL (0x3A), used to report vmx
+	// virtualization data.
+	vmxMsrReg = 0x3A
+	// The msr address for VM_CRl (C001_0114), used to report svm virtualization
+	// data.
+	svmMsrReg = 0xC0010114
+)
+
 type temperatureChannelInfo struct {
 	Label              *string `json:"label"`
 	TemperatureCelsius int32   `json:"temperature_celsius"`
@@ -209,12 +218,6 @@ func getExpectedCPUVirtualization(flags map[string]bool) (*cpuVirtualizationInfo
 		ia32FeatureEnableVmxOutsideSmx = 1 << 2
 		vmCrLockedBit                  = 1 << 3
 		vmCrSvmeDisabledBit            = 1 << 4
-		// The msr address for IA32_FEATURE_CONTROL (0x3A), used to report vmx
-		// virtualization data.
-		vmxMsrReg = 0x3A
-		// The msr address for VM_CRl (C001_0114), used to report svm virtualization
-		// data.
-		svmMsrReg = 0xC0010114
 	)
 
 	// TODO(b/231673454): Read CPU virtualization data specific to a particular
