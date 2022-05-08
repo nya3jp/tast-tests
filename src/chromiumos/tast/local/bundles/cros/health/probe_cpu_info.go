@@ -95,6 +95,8 @@ type cpuInfoTestParams struct {
 	checkVirtualization bool
 	// Whether to check cpu virtualization.
 	checkCPUVirtualization bool
+	// Whether to check if all cpus are equal.
+	checkCPUEquality bool
 }
 
 func init() {
@@ -117,6 +119,7 @@ func init() {
 				checkVulnerability:     false,
 				checkVirtualization:    false,
 				checkCPUVirtualization: false,
+				checkCPUEquality:       false,
 			},
 		}, {
 			Name: "vulnerability",
@@ -126,6 +129,7 @@ func init() {
 				checkVulnerability:     true,
 				checkVirtualization:    false,
 				checkCPUVirtualization: false,
+				checkCPUEquality:       false,
 			},
 		}, {
 			Name: "virtualization",
@@ -135,6 +139,7 @@ func init() {
 				checkVulnerability:     false,
 				checkVirtualization:    true,
 				checkCPUVirtualization: false,
+				checkCPUEquality:       false,
 			},
 		}, {
 			Name: "cpu_virtualization",
@@ -144,6 +149,17 @@ func init() {
 				checkVulnerability:     false,
 				checkVirtualization:    false,
 				checkCPUVirtualization: true,
+				checkCPUEquality:       false,
+			},
+		}, {
+			Name: "cpu_equality",
+			// TODO(b/231537546): Promote to critical once tests are stable.
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+				checkCPUEquality:       true,
 			},
 		}},
 	})
