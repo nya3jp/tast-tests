@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"reflect"
+	"strconv"
 	"strings"
 	"unsafe"
 
@@ -22,6 +23,15 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
+)
+
+const (
+	// The msr address for IA32_FEATURE_CONTROL (0x3A), used to report vmx
+	// virtualization data.
+	vmxMsrReg = 0x3A
+	// The msr address for VM_CRl (C001_0114), used to report svm virtualization
+	// data.
+	svmMsrReg = 0xC0010114
 )
 
 type temperatureChannelInfo struct {
@@ -89,6 +99,8 @@ type cpuInfoTestParams struct {
 	checkVirtualization bool
 	// Whether to check cpu virtualization.
 	checkCPUVirtualization bool
+	// Whether to check if all cpus are equal.
+	checkCPUEquality bool
 }
 
 func init() {
@@ -111,6 +123,7 @@ func init() {
 				checkVulnerability:     false,
 				checkVirtualization:    false,
 				checkCPUVirtualization: false,
+				checkCPUEquality:       false,
 			},
 		}, {
 			Name: "vulnerability",
@@ -120,6 +133,7 @@ func init() {
 				checkVulnerability:     true,
 				checkVirtualization:    false,
 				checkCPUVirtualization: false,
+				checkCPUEquality:       false,
 			},
 		}, {
 			Name: "virtualization",
@@ -129,6 +143,7 @@ func init() {
 				checkVulnerability:     false,
 				checkVirtualization:    true,
 				checkCPUVirtualization: false,
+				checkCPUEquality:       false,
 			},
 		}, {
 			Name: "cpu_virtualization",
@@ -138,6 +153,17 @@ func init() {
 				checkVulnerability:     false,
 				checkVirtualization:    false,
 				checkCPUVirtualization: true,
+				checkCPUEquality:       false,
+			},
+		}, {
+			Name: "cpu_equality",
+			// TODO(b/231537546): Promote to critical once tests are stable.
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+				checkCPUEquality:       true,
 			},
 		}},
 	})
@@ -215,12 +241,6 @@ func getExpectedCPUVirtualization(flags map[string]bool) (*cpuVirtualizationInfo
 		ia32FeatureEnableVmxOutsideSmx = 1 << 2
 		vmCrLockedBit                  = 1 << 3
 		vmCrSvmeDisabledBit            = 1 << 4
-		// The msr address for IA32_FEATURE_CONTROL (0x3A), used to report vmx
-		// virtualization data.
-		vmxMsrReg = 0x3A
-		// The msr address for VM_CRl (C001_0114), used to report svm virtualization
-		// data.
-		svmMsrReg = 0xC0010114
 	)
 
 	// TODO(b/231673454): Read CPU virtualization data specific to a particular
@@ -428,9 +448,85 @@ func validateVulnerabilities(gotVulnerabilities map[string]vulnerabilityInfo) er
 	return nil
 }
 
+func validateCPUEquality() error {
+	cpuinfoContent, err := ioutil.ReadFile("/proc/cpuinfo")
+	if err != nil {
+		return errors.Wrap(err, "could not read /proc/cpuinfo")
+	}
+
+	expectedFlags, err := getFlags()
+	if err != nil {
+		return err
+	}
+	maxLogicalID := 0
+
+	scanner := bufio.NewScanner(bytes.NewReader(cpuinfoContent))
+	for scanner.Scan() {
+		keyValue := strings.Split(scanner.Text(), ":")
+		keyValue[0] = strings.TrimSpace(keyValue[0])
+		if keyValue[0] == "flags" || keyValue[0] == "Features" {
+			flags := make(map[string]bool)
+			flagValues := strings.Fields(keyValue[1])
+			for _, val := range flagValues {
+				flags[val] = true
+			}
+			if !reflect.DeepEqual(flags, expectedFlags) {
+				return errors.Errorf("flags differs across CPU, expect: %v got: %v", expectedFlags, flags)
+			}
+		}
+		if keyValue[0] == "processor" {
+			logicalID, err := strconv.Atoi(strings.TrimSpace(keyValue[1]))
+			if err != nil {
+				return errors.Wrapf(err, "Processor ID cannot be turned into int: %v", keyValue[1])
+			}
+			if logicalID > maxLogicalID {
+				maxLogicalID = logicalID
+			}
+		}
+	}
+
+	var msrRegister int64
+	_, vmxPresent := expectedFlags["vmx"]
+	_, svmPresent := expectedFlags["svm"]
+	if vmxPresent {
+		msrRegister = vmxMsrReg
+	} else if svmPresent {
+		msrRegister = svmMsrReg
+	} else {
+		return nil
+	}
+
+	expectedMsrVal, err := readMsr(int64(msrRegister), 0)
+	if err != nil {
+		return err
+	}
+	for logicalID := 1; logicalID <= maxLogicalID; logicalID++ {
+		msrVal, err := readMsr(int64(msrRegister), logicalID)
+		if err != nil {
+			return err
+		}
+		if msrVal != expectedMsrVal {
+			return errors.Errorf("MSR values differs across CPU, expect: %v got: %v", expectedMsrVal, msrVal)
+		}
+	}
+
+	return nil
+}
+
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
 	testParam := s.Param().(cpuInfoTestParams)
+
+	// TODO(b/231673454): Delete this test once we can access each physical CPU
+	// separately.
+	//
+	// Until then, we check to see if all CPU report the same information (flags
+	// and msr).
+	if testParam.checkCPUEquality {
+		if err := validateCPUEquality(); err != nil {
+			s.Fatalf("CPU are not equal, err [%v]", err)
+		}
+	}
 
 	var info cpuInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
