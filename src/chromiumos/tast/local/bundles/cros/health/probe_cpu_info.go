@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"reflect"
+	"sort"
 	"strings"
 	"unsafe"
 
@@ -98,6 +99,8 @@ type cpuInfoTestParams struct {
 	checkVirtualization bool
 	// Whether to check cpu virtualization.
 	checkCPUVirtualization bool
+	// Whether to check if all cpus are equal.
+	checkCPUEquality bool
 }
 
 func init() {
@@ -120,6 +123,7 @@ func init() {
 				checkVulnerability:     false,
 				checkVirtualization:    false,
 				checkCPUVirtualization: false,
+				checkCPUEquality:       false,
 			},
 		}, {
 			Name: "vulnerability",
@@ -129,6 +133,7 @@ func init() {
 				checkVulnerability:     true,
 				checkVirtualization:    false,
 				checkCPUVirtualization: false,
+				checkCPUEquality:       false,
 			},
 		}, {
 			Name: "virtualization",
@@ -138,6 +143,7 @@ func init() {
 				checkVulnerability:     false,
 				checkVirtualization:    true,
 				checkCPUVirtualization: false,
+				checkCPUEquality:       false,
 			},
 		}, {
 			Name: "cpu_virtualization",
@@ -147,6 +153,17 @@ func init() {
 				checkVulnerability:     false,
 				checkVirtualization:    false,
 				checkCPUVirtualization: true,
+				checkCPUEquality:       false,
+			},
+		}, {
+			Name: "cpu_equality",
+			// TODO(b/231537546): Promote to critical once tests are stable.
+			ExtraAttr: []string{"informational"},
+			Val: cpuInfoTestParams{
+				checkVulnerability:     false,
+				checkVirtualization:    false,
+				checkCPUVirtualization: false,
+				checkCPUEquality:       true,
 			},
 		}},
 	})
@@ -423,6 +440,28 @@ func validateVulnerabilities(gotVulnerabilities map[string]vulnerabilityInfo) er
 	return nil
 }
 
+func validateCPUEquality(physicalCPUs []physicalCPUInfo) error {
+	// Compare each physical CPU for equality of flag and virtualization
+	if len(physicalCPUs) < 1 {
+		return errors.New("no physical CPU present on the device")
+	}
+	expectedFlag := physicalCPUs[0].Flags
+	sort.Strings(expectedFlag)
+	expectedCPUVirtualization := physicalCPUs[0].CPUVirtualization
+	for _, physicalCPU := range physicalCPUs {
+		gotFlag := physicalCPU.Flags
+		sort.Strings(gotFlag)
+		if !reflect.DeepEqual(gotFlag, expectedFlag) {
+			return errors.Errorf("flags different across CPU, expect: %v got: %v", expectedFlag, gotFlag)
+		}
+		if !reflect.DeepEqual(physicalCPU.CPUVirtualization, expectedCPUVirtualization) {
+			return errors.Errorf("CPU virtualization different across CPU, expect: %v got: %v", expectedCPUVirtualization, physicalCPU.CPUVirtualization)
+		}
+	}
+
+	return nil
+}
+
 func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryCPU}
 	testParam := s.Param().(cpuInfoTestParams)
@@ -430,6 +469,17 @@ func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	var info cpuInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &info); err != nil {
 		s.Fatal("Failed to run telem command: ", err)
+	}
+
+	// TODO(b/231673454): Delete this test once we can access each physical CPU
+	// separately.
+	//
+	// Until then, we check to see if all CPU report the same information (flags
+	// and msr).
+	if testParam.checkCPUEquality {
+		if err := validateCPUEquality(info.PhysicalCPUs); err != nil {
+			s.Fatalf("CPU are not equal, err [%v]", err)
+		}
 	}
 
 	if err := validateCPUData(&info, testParam.checkCPUVirtualization); err != nil {
