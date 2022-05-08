@@ -16,6 +16,92 @@
       "message": "Thank you so much Yichen! 😊",
       "revId": "41f95d4440457526fe4d88690fe4bc3ad875c634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f66f7840_4e359fa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-08T21:51:26Z",
+      "side": 1,
+      "message": "lgtm with nits for tast reviews.",
+      "revId": "41f95d4440457526fe4d88690fe4bc3ad875c634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1547450d_9e983f45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_selection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-08T21:51:26Z",
+      "side": 1,
+      "message": "please also add the `Timeout` field with a reasonable value.",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "41f95d4440457526fe4d88690fe4bc3ad875c634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c5e2aa_2c955257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_selection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-08T21:51:26Z",
+      "side": 1,
+      "message": "nit: HasClass, same to all others.",
+      "range": {
+        "startLine": 54,
+        "startChar": 38,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "41f95d4440457526fe4d88690fe4bc3ad875c634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ec21fc4_4f93479b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_selection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-08T21:51:26Z",
+      "side": 1,
+      "message": "this is unnecessary, `ac.LeftClick(firstCamera)` implicitly waits until the element exists.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "41f95d4440457526fe4d88690fe4bc3ad875c634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
