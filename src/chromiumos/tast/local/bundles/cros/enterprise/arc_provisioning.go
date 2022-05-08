@@ -180,14 +180,10 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("verify packages are uninstallable", err)
 		}
 
-		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
-			return exit("launch asset browser", err)
-		}
-
 		cleanupCtx := ctx
 		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
 		defer cancel()
-		if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
+		if err := ensurePlayStoreNotEmpty(ctx, tconn, a); err != nil {
 			faillog.DumpUITree(cleanupCtx, s.OutDir(), tconn)
 			return exit("verify Play Store is not empty", err)
 		}
@@ -239,6 +235,9 @@ func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.
 		return errors.Wrap(err, "failed to mark packages as not uninstallable")
 	}
 
+	// Wait for view to configuration to propagate.
+	testing.Sleep(ctx, 2*time.Second)
+
 	// Try uninstalling packages with ADB, should fail.
 	testing.ContextLog(ctx, "Trying to uninstall packages")
 	for _, p := range packages {
@@ -251,7 +250,7 @@ func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.
 }
 
 // ensurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
-func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
+func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
@@ -266,6 +265,16 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 	defer d.Close(ctx)
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
+		// TODO(b/231751280): View does not update when app is installed.
+		// When the bug is fixed and Play Store version is upreved on the
+		// system image, move this out of the loop.
+		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
+			return testing.PollBreak(err)
+		}
+
+		// Wait for view to load completely.
+		testing.Sleep(ctx, 2*time.Second)
+
 		if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
 			return errors.New("Play Store is empty")
 		}
