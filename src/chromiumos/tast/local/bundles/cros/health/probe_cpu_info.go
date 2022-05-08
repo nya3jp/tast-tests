@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"sort"
 	"strings"
 	"time"
 	"unsafe"
@@ -317,6 +318,17 @@ func validateCPUData(info *cpuInfo, checkCPUVirtualization bool) error {
 		return errors.New("empty architecture")
 	}
 
+	// TODO(b/231673454): Delete this test once we can access each physical CPU
+	// separately.
+	//
+	// Until then, we check to see if all CPU report the same information (flags
+	// and msr).
+	if checkCPUVirtualization {
+		if err := validateCPUEquality(info.PhysicalCPUs); err != nil {
+			return err
+		}
+	}
+
 	for _, physicalCPU := range info.PhysicalCPUs {
 		if err := verifyPhysicalCPU(&physicalCPU, checkCPUVirtualization); err != nil {
 			return errors.Wrap(err, "failed to verify physical CPU")
@@ -412,6 +424,28 @@ func validateVulnerabilities(gotVulnerabilities map[string]vulnerabilityInfo) er
 	for name, vulnerability := range gotVulnerabilities {
 		if vulnerability.Status == "Unrecognized" {
 			return errors.Errorf("unrecognized vulnerability status, name: %v message: %v", name, vulnerability.Message)
+		}
+	}
+
+	return nil
+}
+
+func validateCPUEquality(physicalCPUs []physicalCPUInfo) error {
+	// Compare each physical CPU for equality of flag and virtualization.
+	if len(physicalCPUs) < 1 {
+		return errors.New("no physical CPU present on the device")
+	}
+	expectedFlags := physicalCPUs[0].Flags
+	sort.Strings(expectedFlags)
+	expectedCPUVirtualization := physicalCPUs[0].CPUVirtualization
+	for _, physicalCPU := range physicalCPUs {
+		receivedFlags := physicalCPU.Flags
+		sort.Strings(receivedFlags)
+		if diff := cmp.Diff(receivedFlags, expectedFlags); diff != "" {
+			return errors.Errorf("flags different across CPU, : (-got +want) %s", diff)
+		}
+		if diff := cmp.Diff(physicalCPU.CPUVirtualization, expectedCPUVirtualization); diff != "" {
+			return errors.Errorf("CPU virtualization different across CPU, : (-got +want) %s", diff)
 		}
 	}
 
