@@ -16,6 +16,69 @@
       "message": "Thanks in advance.",
       "revId": "7de92cb91b5b0f26b0db15f1ca821b484f95ca9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c989ad2c_13012b49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-09T00:04:31Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "7de92cb91b5b0f26b0db15f1ca821b484f95ca9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18acbc1_fb5aae22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-09T00:04:31Z",
+      "side": 1,
+      "message": "nit: please do not ignore error handling.",
+      "range": {
+        "startLine": 200,
+        "startChar": 17,
+        "endLine": 200,
+        "endChar": 18
+      },
+      "revId": "7de92cb91b5b0f26b0db15f1ca821b484f95ca9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a7d127_65e15d94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop_mixed_type_browsers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-09T00:04:31Z",
+      "side": 1,
+      "message": "nit: please ignore any error handling.",
+      "range": {
+        "startLine": 204,
+        "startChar": 17,
+        "endLine": 204,
+        "endChar": 18
+      },
+      "revId": "7de92cb91b5b0f26b0db15f1ca821b484f95ca9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
