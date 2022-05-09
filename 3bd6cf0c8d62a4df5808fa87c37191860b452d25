@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f74a056d_f2b40e71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T10:08:15Z",
+      "side": 1,
+      "message": "please rename these two variables to increase readability, as they are not well-known variables like `s` for testing.State in Tast.",
+      "range": {
+        "startLine": 73,
+        "startChar": 44,
+        "endLine": 73,
+        "endChar": 48
+      },
+      "revId": "3bd6cf0c8d62a4df5808fa87c37191860b452d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9441e251_e91a34f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T10:08:15Z",
+      "side": 1,
+      "message": "\"Do not add a context member to a struct type. Instead, add a context parameter to each method on the type that needs to pass it along.\" (http://go/go-style/decisions#contexts)",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "3bd6cf0c8d62a4df5808fa87c37191860b452d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "957d1eb3_0764aba7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T10:08:15Z",
+      "side": 1,
+      "message": "It is better to rename this, `ui` is misleading, as we normally use it for the `uiauto` package in Tast.",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 8
+      },
+      "revId": "3bd6cf0c8d62a4df5808fa87c37191860b452d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
