@@ -40,9 +40,11 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
-			Name:    "ash",
-			Fixture: fixture.ChromePolicyLoggedIn,
-			Val:     browser.TypeAsh,
+			Name: "ash",
+			// TODO(b/231659658): Re-enable once this re-stabilizes.
+			ExtraAttr: []string{"informational"},
+			Fixture:   fixture.ChromePolicyLoggedIn,
+			Val:       browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			ExtraAttr:         []string{"informational"},
