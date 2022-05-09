@@ -33,6 +33,46 @@
       "message": "ping reviewers",
       "revId": "36234e9e73b09e77dd7fce6e49e61c63e978d5da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eeebc15_77342a7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_perf_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2022-05-09T18:53:06Z",
+      "side": 1,
+      "message": "Hm, maybe the genExtraData in platform_decoding_test.go could be renamed genExtraPlatformDecodingData and here instead genExtraChromeStackDecoderPerfData? That\u0027s quite a mouthful though... I don\u0027t feel especially strongly here, just thinking that if we anticipate more test generation, genExtraDataN might not scale well.",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "36234e9e73b09e77dd7fce6e49e61c63e978d5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c154e1_7dbe75f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_perf_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2022-05-09T18:53:06Z",
+      "side": 1,
+      "message": "Nit: is there a reason why for now we don\u0027t just\n\n return []string{file, file+\".json\"}\n\n?",
+      "revId": "36234e9e73b09e77dd7fce6e49e61c63e978d5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
