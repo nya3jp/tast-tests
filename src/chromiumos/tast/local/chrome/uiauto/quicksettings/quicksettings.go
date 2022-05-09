@@ -727,3 +727,20 @@ func SignOut(ctx context.Context, tconn *chrome.TestConn) error {
 	ui.LeftClick(SignoutButton)(ctx)
 	return nil
 }
+
+// TriggerAddingVPNDialog clicks VPN setting button in quick settings page
+// then clicking `+`` button to trigger ADD dialog.
+// Note: VPN setting button is not shown in quick settings if no VPN added in OS setting.
+func TriggerAddingVPNDialog(tconn *chrome.TestConn) uiauto.Action {
+	ui := uiauto.New(tconn)
+
+	return func(ctx context.Context) error {
+		if err := Show(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to open Uber tray")
+		}
+		return uiauto.Combine("trigger adding VPN",
+			ui.LeftClick(PodIconButton(SettingPodVPN)),
+			ui.LeftClick(nodewith.Name("Add connection")),
+		)(ctx)
+	}
+}

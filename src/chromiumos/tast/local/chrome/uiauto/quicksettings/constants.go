@@ -32,6 +32,9 @@ var ShutdownButton = nodewith.Name("Shut down").ClassName("IconButton")
 // SignoutButton is the finder for the 'Sign out' Quick Settings button.
 var SignoutButton = nodewith.Role(role.Button).Name("Sign out").ClassName("PillButton")
 
+// VPNButton is the finder for the 'VPN' Quick Settings button.
+var VPNButton = nodewith.Role(role.Button).Name("VPN").ClassName("PillButton")
+
 // SliderType represents the Quick Settings slider elements.
 type SliderType string
 
@@ -93,4 +96,5 @@ const (
 	SettingPodNearbyShare   SettingPod = "Nearby Share"
 	SettingPodKeyboard      SettingPod = "keyboard"
 	SettingPodScreenCapture SettingPod = "Screen capture"
+	SettingPodVPN           SettingPod = "VPN"
 )
