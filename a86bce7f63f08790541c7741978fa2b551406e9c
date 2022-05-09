@@ -212,6 +212,24 @@
       "message": "You are not skipping the test. You are making it pass.",
       "revId": "a86bce7f63f08790541c7741978fa2b551406e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef59fcea_ea30eaeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-05-09T16:13:01Z",
+      "side": 1,
+      "message": "I\u0027ve updated the test to use the hwdep added here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3631022",
+      "parentUuid": "6d9c5557_19ab4d5f",
+      "revId": "a86bce7f63f08790541c7741978fa2b551406e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
