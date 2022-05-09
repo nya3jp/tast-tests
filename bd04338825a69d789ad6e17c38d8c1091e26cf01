@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc22ac08_eed6f059",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-09T06:20:53Z",
+      "side": 1,
+      "message": "FYI this doesn\u0027t change the timeout for this one instance, it changes it for the entire `ui` object. Further calls to `ta.ui` will now have a 1 minute timeout. Is this intended?",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "bd04338825a69d789ad6e17c38d8c1091e26cf01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
