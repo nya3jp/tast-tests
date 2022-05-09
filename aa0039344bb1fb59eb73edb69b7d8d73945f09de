@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b02e405_76b7cb3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_lock_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-09T00:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43f05065_e073e662",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "aa0039344bb1fb59eb73edb69b7d8d73945f09de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fb2aa0f_c8438c0c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-08T23:40:58Z",
       "side": 1,
       "message": "cleanupCtx",
+      "range": {
+        "startLine": 66,
+        "startChar": 23,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "aa0039344bb1fb59eb73edb69b7d8d73945f09de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa4db460_80702601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_lock_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-09T00:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb2aa0f_c8438c0c",
       "range": {
         "startLine": 66,
         "startChar": 23,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41aa2aaf_f0584a5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_lock_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-09T00:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "717f2284_bed1bde0",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "aa0039344bb1fb59eb73edb69b7d8d73945f09de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e632bdf_ad64f424",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27254616_164c9a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_lock_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-09T00:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e632bdf_ad64f424",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "aa0039344bb1fb59eb73edb69b7d8d73945f09de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65f930a0_371775b7",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-05-08T23:40:58Z",
       "side": 1,
       "message": "nit: remove the space",
+      "range": {
+        "startLine": 732,
+        "startChar": 3,
+        "endLine": 732,
+        "endChar": 4
+      },
+      "revId": "aa0039344bb1fb59eb73edb69b7d8d73945f09de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da6eedc_4de504ee",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-09T00:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f930a0_371775b7",
       "range": {
         "startLine": 732,
         "startChar": 3,
