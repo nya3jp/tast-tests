@@ -30,7 +30,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "loggedInToCUJUser",
-		Timeout:      5 * time.Minute,
+		Timeout:      14 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -99,7 +99,7 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Sleep to simulate a user passively watching.
-		if err := testing.Sleep(ctx, time.Minute); err != nil {
+		if err := testing.Sleep(ctx, 10*time.Minute); err != nil {
 			return errors.Wrap(err, "failed to sleep")
 		}
 
