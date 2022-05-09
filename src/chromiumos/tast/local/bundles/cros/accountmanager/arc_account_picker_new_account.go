@@ -67,7 +67,7 @@ func ARCAccountPickerNewAccount(ctx context.Context, s *testing.State) {
 
 	defer func(ctx context.Context) {
 		s.Log("Running test cleanup")
-		if err := accountmanager.TestCleanup(ctx, tconn, cr, browser.TypeLacros); err != nil {
+		if err := accountmanager.TestCleanup(ctx, tconn, cr); err != nil {
 			s.Fatal("Failed to do cleanup: ", err)
 		}
 	}(cleanupCtx)

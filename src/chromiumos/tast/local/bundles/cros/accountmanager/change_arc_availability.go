@@ -61,7 +61,7 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 
 	defer func(ctx context.Context) {
 		s.Log("Running test cleanup")
-		if err := accountmanager.TestCleanup(ctx, tconn, cr, s.Param().(browser.Type)); err != nil {
+		if err := accountmanager.TestCleanup(ctx, tconn, cr); err != nil {
 			s.Fatal("Failed to do cleanup: ", err)
 		}
 	}(cleanupCtx)

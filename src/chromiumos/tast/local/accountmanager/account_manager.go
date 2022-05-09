@@ -293,7 +293,7 @@ func CheckIsAccountPresentInARCAction(tconn *chrome.TestConn, d *androidui.Devic
 }
 
 // RemoveAccountFromOSSettings removes a secondary account with provided email from OS Settings.
-func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, brType browser.Type, email string) error {
+func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, email string) error {
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
 	moreActionsButton := nodewith.Name("More actions, " + email).Role(role.Button)
 
@@ -307,7 +307,7 @@ func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, cr
 		return errors.Wrap(err, "failed to click More actions button")
 	}
 
-	if err := removeSelectedAccountFromOSSettings(ctx, tconn, brType); err != nil {
+	if err := removeSelectedAccountFromOSSettings(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to remove account from OS Settings")
 	}
 	return nil
@@ -315,7 +315,7 @@ func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, cr
 
 // removeSelectedAccountFromOSSettings removes a secondary account from OS Settings.
 // The "More actions" menu should be already open for that account.
-func removeSelectedAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, brType browser.Type) error {
+func removeSelectedAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	testing.ContextLog(ctx, "Removing account")
 
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
@@ -327,27 +327,13 @@ func removeSelectedAccountFromOSSettings(ctx context.Context, tconn *chrome.Test
 		return errors.Wrap(err, "failed to to click Remove account")
 	}
 
-	if err := ui.WaitUntilExists(nodewith.Name("Remove this account?").First())(ctx); err != nil {
-		if brType == browser.TypeLacros {
-			return errors.Wrap(err, "failed to find confirmation dialog on Lacros")
-		}
-	} else {
-		confirmRemoveButton := nodewith.Name("Remove").Role(role.Button)
-		if err := uiauto.Combine("Confirm account removal",
-			ui.WaitUntilExists(confirmRemoveButton),
-			ui.LeftClick(confirmRemoveButton),
-			ui.WaitUntilGone(confirmRemoveButton),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to click Remove account")
-		}
-	}
 	return nil
 }
 
 // TestCleanup removes all secondary accounts in-session. Should be called at
 // the beginning of the test, so that results of the previous test don't
 // interfere with the current test.
-func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, brType browser.Type) error {
+func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
 
 	if err := ui.Exists(AddAccountDialog())(ctx); err == nil {
@@ -394,7 +380,7 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome,
 			return errors.Wrap(err, "failed to click More actions button")
 		}
 
-		if err := removeSelectedAccountFromOSSettings(ctx, tconn, brType); err != nil {
+		if err := removeSelectedAccountFromOSSettings(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to remove account from OS Setting")
 		}
 

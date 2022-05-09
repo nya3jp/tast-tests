@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/accountmanager"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -73,7 +72,7 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 
 	defer func(ctx context.Context) {
 		s.Log("Running test cleanup")
-		if err := accountmanager.TestCleanup(ctx, tconn, cr, browser.TypeAsh); err != nil {
+		if err := accountmanager.TestCleanup(ctx, tconn, cr); err != nil {
 			s.Fatal("Failed to do cleanup: ", err)
 		}
 	}(cleanupCtx)
