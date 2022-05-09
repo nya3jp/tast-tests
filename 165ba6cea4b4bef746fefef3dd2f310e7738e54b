@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "450bf708_3ef88bda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-05-09T06:18:08Z",
+      "side": 1,
+      "message": "lgtm with a nit",
+      "revId": "165ba6cea4b4bef746fefef3dd2f310e7738e54b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219d7a94_eaffe0dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/auth_error.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-05-09T06:18:08Z",
+      "side": 1,
+      "message": "I think you could remove this line - covered by the parent attributes",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "165ba6cea4b4bef746fefef3dd2f310e7738e54b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
