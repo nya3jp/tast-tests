@@ -110,6 +110,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f9fe1c_2b32f336",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-09T16:07:36Z",
+      "side": 1,
+      "message": "nit: it is just a little wordy. How about: check that metrics defined in common_metrics.go appear in the output file recorder_histograms.json. Then maybe this whole `TEST` description can fit on only two lines.",
+      "range": {
+        "startLine": 10,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "0ecb6d0f11e05566e8990377a5acfd20a057b110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "153205aa_bbd0f58c",
