@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18be587a_c0248a29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-05-09T18:36:40Z",
+      "side": 1,
+      "message": "lgtm w/ one question",
+      "revId": "d02c7779e03de88b7f432807413056245702142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee20cd22_0119855e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-05-09T18:36:40Z",
+      "side": 1,
+      "message": "super nit: here and for variable `zeroAddDeskButton` change to new desk button, to match cc code name",
+      "range": {
+        "startLine": 115,
+        "startChar": 33,
+        "endLine": 115,
+        "endChar": 36
+      },
+      "revId": "d02c7779e03de88b7f432807413056245702142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44161445_5a13c216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-05-09T18:36:40Z",
+      "side": 1,
+      "message": "nit: here and above\n\ns.Fatal(\"sfadf: \", err) to match the others?",
+      "revId": "d02c7779e03de88b7f432807413056245702142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c17a0e_b88dfb24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-05-09T18:36:40Z",
+      "side": 1,
+      "message": "the window could also be invisible from things like minimize etc. Since all windows are opened on desk 2, would GetAllWindows count be a better indiciator? Or try FindWindow on all launched windows (incase there is a default window).",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 190,
+        "endChar": 44
+      },
+      "revId": "d02c7779e03de88b7f432807413056245702142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
