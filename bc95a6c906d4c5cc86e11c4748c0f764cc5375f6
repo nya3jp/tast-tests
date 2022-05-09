@@ -16,6 +16,103 @@
       "message": "deferring to Matt\u0027s review",
       "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "053fcedc_fd0a5fc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-09T07:18:04Z",
+      "side": 1,
+      "message": "```\nctx, cancel :\u003d ...\n```\nSo that you can omit the `var cancel...` line.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "583976b4_f351aa32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-09T07:18:04Z",
+      "side": 1,
+      "message": "This comment can be place after line 76. That\u0027s why itemsToUnpin is built this way.",
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857fe5bb_582de572",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-09T07:18:04Z",
+      "side": 1,
+      "message": "Would it be used for other tests? If not, maybe move it back to the test program.",
+      "range": {
+        "startLine": 956,
+        "startChar": 5,
+        "endLine": 956,
+        "endChar": 28
+      },
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf862714_dc710a84",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-09T07:18:04Z",
+      "side": 1,
+      "message": "Are all icons line up in only one row?",
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49946b7a_24bd9e6b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-09T07:18:04Z",
+      "side": 1,
+      "message": "Are all icons\u0027 size the same? If not, alignment left and right should check differently.",
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
