@@ -83,7 +83,7 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	}
 
 	// Ensure Linux tab is active and container is connected.
-	if err := ui.WaitUntilExists(linuxTab)(ctx); err != nil {
+	if err := ui.WithTimeout(1 * time.Minute).WaitUntilExists(linuxTab)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to find the Terminal App window")
 	}
 
@@ -232,9 +232,6 @@ func (ta *TerminalApp) RestartCrostini(keyboard *input.KeyboardEventWriter, cont
 		if err := ta.ShutdownCrostini(cont)(ctx); err != nil {
 			return errors.Wrap(err, "failed to shutdown crostini")
 		}
-		if err := ta.Close()(ctx); err != nil {
-			return errors.Wrap(err, "failed to close Terminal app after shutdown")
-		}
 
 		// Start the VM and container.
 		ta, err := Launch(ctx, ta.tconn)
@@ -259,6 +256,9 @@ func (ta *TerminalApp) ShutdownCrostini(cont *vm.Container) uiauto.Action {
 	return func(ctx context.Context) error {
 		if err := ta.ClickShelfMenuItem("Shut down Linux")(ctx); err != nil {
 			return errors.Wrap(err, "failed to shutdown crostini")
+		}
+		if err := ta.Close()(ctx); err != nil {
+			return errors.Wrap(err, "failed to close Terminal app after shutdown")
 		}
 
 		err := testing.Poll(ctx, func(ctx context.Context) error {
