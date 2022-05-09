@@ -16,6 +16,24 @@
       "message": "It is not clear that why we need this change. A CL should be simple to understand and should not avoid depends on another CL if possible.",
       "revId": "42d57f7e618144cc1a34f8022c67f65c24cb7060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92f2216_d62eb1c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-09T05:12:57Z",
+      "side": 1,
+      "message": "Agree, I think this can be merged with CL:3626599.",
+      "parentUuid": "61ffd864_19445c91",
+      "revId": "42d57f7e618144cc1a34f8022c67f65c24cb7060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
