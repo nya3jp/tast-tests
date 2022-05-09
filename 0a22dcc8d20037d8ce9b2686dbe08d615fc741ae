@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20cc0ef_954573b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-09T09:47:45Z",
+      "side": 1,
+      "message": "Removed one sleep by moving the validation of uninstall after Play Store is loaded (which gives it enough time to propagate the configuration)",
+      "parentUuid": "613e7092_3084ebde",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "0a22dcc8d20037d8ce9b2686dbe08d615fc741ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b1ba59e_29ec838a",
@@ -114,6 +138,24 @@
       "side": 1,
       "message": "I looked for APIs I can query but package manager (pm) command doesn\u0027t have any way to query package restrictions. Ref: http://adbcommand.com/adbshell/pm\n\nAnd if we attempt an uninstall and it succeeds, then we\u0027ve already removed the package so we can\u0027t do another attempt. Waiting seems to be the only suboptimal way of ensuring that the setting propagates.",
       "parentUuid": "4ac6fb0a_ff4cb19a",
+      "revId": "0a22dcc8d20037d8ce9b2686dbe08d615fc741ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f200c6_d5faacac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-09T09:47:45Z",
+      "side": 1,
+      "message": "Removed the sleep for uninstall by delaying the validation.",
+      "parentUuid": "efa898f5_1b7f49d3",
       "revId": "0a22dcc8d20037d8ce9b2686dbe08d615fc741ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
