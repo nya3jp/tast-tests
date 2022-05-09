@@ -79,7 +79,7 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 
 	defer func(ctx context.Context) {
 		s.Log("Running test cleanup")
-		if err := accountmanager.TestCleanup(ctx, tconn, cr, s.Param().(browser.Type)); err != nil {
+		if err := accountmanager.TestCleanup(ctx, tconn, cr); err != nil {
 			s.Fatal("Failed to do cleanup: ", err)
 		}
 	}(cleanupCtx)
@@ -138,7 +138,7 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check that account is present in ARC: ", err)
 	}
 
-	if err := accountmanager.RemoveAccountFromOSSettings(ctx, tconn, cr, s.Param().(browser.Type), username); err != nil {
+	if err := accountmanager.RemoveAccountFromOSSettings(ctx, tconn, cr, username); err != nil {
 		s.Fatal("Failed to remove account from OS Settings: ", err)
 	}
 
