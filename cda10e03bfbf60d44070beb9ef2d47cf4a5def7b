@@ -16,6 +16,23 @@
       "message": "deanliao@, please take another look. Thanks!",
       "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de89557d_7ef77a5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-09T02:06:12Z",
+      "side": 1,
+      "message": "deanliao@: Friendly ping :)",
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
