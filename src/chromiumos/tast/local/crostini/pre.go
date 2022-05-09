@@ -409,8 +409,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		if err != nil {
 			s.Fatal("keepState failed to launch Terminal. Try again, cryptohome will be cleared on the next run to reset to a good state: ", err)
 		}
-		if err = terminalApp.Exit(p.keyboard)(ctx); err != nil {
-			s.Fatal("Failed to exit Terminal window: ", err)
+		if err = terminalApp.Close()(ctx); err != nil {
+			s.Fatal("Failed to close Terminal window: ", err)
 		}
 	} else {
 		// Install Crostini.

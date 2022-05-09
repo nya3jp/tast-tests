@@ -261,7 +261,7 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 
 	if checkKeepState(s) && terminaDLCAvailable() {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
-		if err = f.launchExitTerminal(ctx); err != nil {
+		if err = f.launchCloseTerminal(ctx); err != nil {
 			s.Fatal("KeepState error: ", err)
 		}
 	} else {
@@ -376,13 +376,13 @@ func (f *crostiniFixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 	f.cr = nil
 }
 
-func (f *crostiniFixture) launchExitTerminal(ctx context.Context) error {
+func (f *crostiniFixture) launchCloseTerminal(ctx context.Context) error {
 	terminalApp, err := terminalapp.Launch(ctx, f.tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch Terminal")
 	}
-	if err = terminalApp.Exit(f.kb)(ctx); err != nil {
-		return errors.Wrap(err, "failed to exit Terminal window")
+	if err = terminalApp.Close()(ctx); err != nil {
+		return errors.Wrap(err, "failed to close Terminal window")
 	}
 	return nil
 }
