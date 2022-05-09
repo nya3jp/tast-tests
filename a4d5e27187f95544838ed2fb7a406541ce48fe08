@@ -16,6 +16,24 @@
       "message": "The recent failure in volteer/lilipop and nami/akali are real regression where the fail reason is \"arecord recognized no sound cards\" (arecord -l failed to list the sound card)",
       "revId": "a4d5e27187f95544838ed2fb7a406541ce48fe08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "237864f5_4a5026f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-09T03:33:13Z",
+      "side": 1,
+      "message": "Please attach the fix CL and where did it land. We shall observe more time to make sure the regression is fixed.",
+      "parentUuid": "38d3d319_dbb167bb",
+      "revId": "a4d5e27187f95544838ed2fb7a406541ce48fe08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

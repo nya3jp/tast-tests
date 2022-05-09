@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca180776_049a1c5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-09T03:33:13Z",
+      "side": 1,
+      "message": "Observed failure cases in recent build. If the regression was fixed, we shall wait for some green rounds to promote it.",
+      "revId": "dff3c52c1750487cfb843209c55e0f93c9164f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
