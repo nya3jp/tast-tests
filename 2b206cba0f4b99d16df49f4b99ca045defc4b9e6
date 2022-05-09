@@ -33,6 +33,98 @@
       "message": "shadow reviewer lgtm",
       "revId": "2b206cba0f4b99d16df49f4b99ca045defc4b9e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21318a9_2b22b069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T00:05:09Z",
+      "side": 1,
+      "message": "please also add the `Timeout` field with a reasonable value.",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "2b206cba0f4b99d16df49f4b99ca045defc4b9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f225c673_5fbc03de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T00:05:09Z",
+      "side": 1,
+      "message": "this is unnecessary, `LeftClick` implicitly involves `WaitUntilExists`.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "2b206cba0f4b99d16df49f4b99ca045defc4b9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab1ae1d4_bb1aa0e8",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T00:05:09Z",
+      "side": 1,
+      "message": "is adding this character intended?",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "2b206cba0f4b99d16df49f4b99ca045defc4b9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594eff6f_f7eac776",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T00:05:09Z",
+      "side": 1,
+      "message": "just `return ui.LeftClick(breadcrumbButton)`\n\n`LeftClick` implicitly involves `WaitUntilExists`",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "2b206cba0f4b99d16df49f4b99ca045defc4b9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
