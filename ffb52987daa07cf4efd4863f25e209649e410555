@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "507bb9c0_c89b8433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-09T23:04:40Z",
+      "side": 0,
+      "message": "I was wrong, there\u0027s been discussions on what I mentioned above here: b/227525974",
+      "parentUuid": "e8a302b4_19a5122f",
+      "revId": "ffb52987daa07cf4efd4863f25e209649e410555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85867dad_eaacadbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
         "patchSetId": 8
