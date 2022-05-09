@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64c45d61_3cb47a07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-09T05:32:09Z",
+      "side": 1,
+      "message": "Actually, we only assume that all the flags and virtualization values are the same. We doesn\u0027t assume that any other values are the same.\nThe commit message should be updated to align with this.",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "d5bccd2402634a44e21063b55036b91aa670aafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef4c5196_e14f1be8",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
         "patchSetId": 1
