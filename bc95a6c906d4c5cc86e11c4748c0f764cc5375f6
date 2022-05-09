@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fdca6d0_261d3645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-09T17:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "053fcedc_fd0a5fc1",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "583976b4_f351aa32",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-05-09T07:18:04Z",
       "side": 1,
       "message": "This comment can be place after line 76. That\u0027s why itemsToUnpin is built this way.",
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbaab087_2e90ecb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-09T17:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "583976b4_f351aa32",
       "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d28ab9f1_d679991a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-09T17:03:42Z",
+      "side": 1,
+      "message": "This function should be used for solving this issue (https://buganizer.corp.google.com/issues/200987018). That CL is under construction",
+      "parentUuid": "857fe5bb_582de572",
+      "range": {
+        "startLine": 956,
+        "startChar": 5,
+        "endLine": 956,
+        "endChar": 28
+      },
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf862714_dc710a84",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 6
@@ -100,6 +166,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d704f30_ad969edd",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-09T17:03:42Z",
+      "side": 1,
+      "message": "Yes, there will be only one row. Attach the screenshot of shelf icons in this comment: https://b.corp.google.com/issues/200987400#comment2",
+      "parentUuid": "bf862714_dc710a84",
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49946b7a_24bd9e6b",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 6
@@ -111,6 +195,24 @@
       "writtenOn": "2022-05-09T07:18:04Z",
       "side": 1,
       "message": "Are all icons\u0027 size the same? If not, alignment left and right should check differently.",
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ca3e78_1554bf3c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-09T17:03:42Z",
+      "side": 1,
+      "message": "Yes, all icons are the same size. Attach the screenshot of shelf icons in this comment: https://b.corp.google.com/issues/200987400#comment2",
+      "parentUuid": "49946b7a_24bd9e6b",
       "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
