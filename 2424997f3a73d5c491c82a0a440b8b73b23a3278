@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250ea7de_dc4f91eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-09T00:38:06Z",
+      "side": 1,
+      "message": "nit: Maybe rmaui or webui would be a better and less ambiguous name.",
+      "revId": "2424997f3a73d5c491c82a0a440b8b73b23a3278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e5dffe_a1f83b96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-09T00:38:06Z",
+      "side": 1,
+      "message": "Maybe you can make it `time.Duration`? And what will happen if it takes more than 10 seconds to reboot?",
+      "revId": "2424997f3a73d5c491c82a0a440b8b73b23a3278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
