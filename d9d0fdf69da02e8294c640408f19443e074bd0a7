@@ -16,6 +16,23 @@
       "message": "David, since the test parts are now in tast-tests-internal, this CL only includes the memory metrics I\u0027ve added to measure individual apps. Which might be useful on other tests.",
       "revId": "d9d0fdf69da02e8294c640408f19443e074bd0a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5540c32e_3f0565be",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-09T19:25:30Z",
+      "side": 1,
+      "message": "nit: not used?",
+      "revId": "d9d0fdf69da02e8294c640408f19443e074bd0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
