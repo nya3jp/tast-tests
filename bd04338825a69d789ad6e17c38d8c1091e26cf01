@@ -22,6 +22,30 @@
       },
       "revId": "bd04338825a69d789ad6e17c38d8c1091e26cf01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8577b46_4f9afc72",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-05-09T06:28:06Z",
+      "side": 1,
+      "message": "The code doesn\u0027t look that way to me.\n\nThe origin ui :\u003d uiauto.New() creates an object with 15s timeout.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d55;drc\u003dd428f9b2e638785598f0221b057d15765f6fd3b1\n\nWhen calling ui.WithTimeout(), it creates a new object and doesn\u0027t modify the lhs \u0027ui\u0027.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d66;drc\u003dd428f9b2e638785598f0221b057d15765f6fd3b1",
+      "parentUuid": "bc22ac08_eed6f059",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "bd04338825a69d789ad6e17c38d8c1091e26cf01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
