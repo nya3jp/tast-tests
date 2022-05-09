@@ -43,7 +43,10 @@ func Processes(execPath string) ([]*process.Process, error) {
 
 // Root returns Process instance for Chrome's root process (i.e. Browser process).
 func Root(execPath string) (*process.Process, error) {
-	ps, err := processes(execPath, func(p *process.Process) bool {
+	if !filepath.IsAbs(execPath) {
+		return nil, errors.Errorf("execPath %q must be abs path", execPath)
+	}
+	return procutil.FindUnique(procutil.And(procutil.ByExe(execPath), func(p *process.Process) bool {
 		// A browser process should not have --type= flag.
 		// This check alone is not enough to determine that proc is a browser process;
 		// it might be a brand-new process that just forked from the browser process.
@@ -74,19 +77,7 @@ func Root(execPath string) (*process.Process, error) {
 		// It is still possible that proc is not a browser process if the browser
 		// process exited immediately after it forked, but it is fairly unlikely.
 		return true
-	})
-	if err != nil {
-		return nil, err
-	}
-	if len(ps) == 0 {
-		return nil, errors.New("root not found")
-	}
-	if len(ps) != 1 {
-		// This is the case explained at the end of the filter function.
-		return nil, errors.Errorf("unexpected number of chrome root processes: got %d, want 1", len(ps))
-	}
-
-	return ps[0], nil
+	}))
 }
 
 // processesByArgs returns Chrome processes whose command line args match the given re.
