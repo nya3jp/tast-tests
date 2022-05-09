@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c5657a_31e1e144",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-09T19:16:38Z",
+      "side": 1,
+      "message": "Without the Attr: \"group:mainline\" these tests won\u0027t run in the lab. is that expected?",
+      "revId": "886923d1aafb8dfac4d74fb32795a895a2a04326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
