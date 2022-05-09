@@ -14,10 +14,11 @@ import (
 	"time"
 
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -638,14 +639,18 @@ func MediaTrackAdvancedControls(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	browserType := s.Param().(browser.Type)
-	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), browserType)
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-	defer lacros.CloseLacros(ctx, l)
+	defer closeBrowser(cleanupCtx)
 
-	conn, err := cr.NewConn(ctx, server.URL+"/media_track_advanced_controls.html")
+	conn, err := br.NewConn(ctx, server.URL+"/media_track_advanced_controls.html")
 	if err != nil {
 		s.Fatal("Failed to open testing page: ", err)
 	}
