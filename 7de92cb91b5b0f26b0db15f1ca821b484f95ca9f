@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "486468c1_07d19fb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-09T18:04:33Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "7de92cb91b5b0f26b0db15f1ca821b484f95ca9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c18acbc1_fb5aae22",
@@ -76,6 +93,29 @@
         "startChar": 17,
         "endLine": 204,
         "endChar": 18
+      },
+      "revId": "7de92cb91b5b0f26b0db15f1ca821b484f95ca9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b09c3203_f93f8ff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/dragdrop/dragdrop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-09T18:04:33Z",
+      "side": 1,
+      "message": "Please update",
+      "range": {
+        "startLine": 22,
+        "startChar": 67,
+        "endLine": 22,
+        "endChar": 85
       },
       "revId": "7de92cb91b5b0f26b0db15f1ca821b484f95ca9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
