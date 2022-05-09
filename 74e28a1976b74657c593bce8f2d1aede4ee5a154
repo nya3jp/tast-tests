@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22c28ab_1b925456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-05-09T18:32:35Z",
+      "side": 1,
+      "message": "This line needs a comment to explain where \"non-tablet\" is coming from. It should say that \"non-tablet\" is the powerd config which represents the same power mode as the \"notablet\" command argument.",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "74e28a1976b74657c593bce8f2d1aede4ee5a154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
