@@ -33,6 +33,40 @@
       "message": "Thanks Andre for your review. will be waiting for Georg or Gabor\u0027s review since this test uses policy.",
       "revId": "ccaceb08bb916973f6ba36817915227cf6ab04d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37dca719_10c7ebe6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-09T01:10:56Z",
+      "side": 1,
+      "message": "Unfortunately I\u0027m not a tast owner.",
+      "revId": "ccaceb08bb916973f6ba36817915227cf6ab04d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1689d811_97743896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/managed_device_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-09T01:10:56Z",
+      "side": 1,
+      "message": "This looks redundant, SetUpWithNewChrome already does this work.",
+      "revId": "ccaceb08bb916973f6ba36817915227cf6ab04d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
