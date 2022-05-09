@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad80fe49_482ef896",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-09T09:35:04Z",
+      "side": 1,
+      "message": "Jit, since you approved before and nothing about how I test the PWA changed, I\u0027ll submit this as it is.",
+      "revId": "0f3552ad4470a1df67219e9aac89725ba90cd870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
