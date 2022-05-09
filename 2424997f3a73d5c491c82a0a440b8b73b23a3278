@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4930b97d_f83c657c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-09T05:42:06Z",
+      "side": 1,
+      "message": "change to rmaweb.",
+      "parentUuid": "250ea7de_dc4f91eb",
+      "revId": "2424997f3a73d5c491c82a0a440b8b73b23a3278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5e5dffe_a1f83b96",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-09T00:38:06Z",
       "side": 1,
       "message": "Maybe you can make it `time.Duration`? And what will happen if it takes more than 10 seconds to reboot?",
+      "revId": "2424997f3a73d5c491c82a0a440b8b73b23a3278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631895c1_a4293409",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-09T05:42:06Z",
+      "side": 1,
+      "message": "Make it time.Duration now.\n\n\u003e And what will happen if it takes more than 10 seconds to reboot?\nTLDR: It doesn\u0027t matter. \nThe reason why we need to wait is Shimless RMA will automatically trigger reboot after we click some button in its UI. After reboot, we will try to establish connection again. If we don\u0027t wait, then there is a chance that we will establish connection before reboot and this connection will be invalid after reboot. In other words, as long as reboot happens within 10 seconds, we are all good. If reboot takes more than 10 seconds, our testing will wake up early and I have logic to wait for connection by `h.WaitConnect(ctx)`.",
+      "parentUuid": "e5e5dffe_a1f83b96",
       "revId": "2424997f3a73d5c491c82a0a440b8b73b23a3278",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

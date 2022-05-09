@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7c3cd7_bcbd7bfd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-09T05:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "897b5984_e71bc3c3",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 32
+      },
+      "revId": "7ca60f9d7e09e45dcb439234593efcfac9ee52ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16d36da1_50af726a",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a3c61d_b846f972",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-09T05:42:06Z",
+      "side": 1,
+      "message": "Unfortunately, the reboot is triggered automatically. However, I don\u0027t think it will increase flakiness. See this comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3596352/comments/e5e5dffe_a1f83b96",
+      "parentUuid": "8576f1d6_bfd77793",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "7ca60f9d7e09e45dcb439234593efcfac9ee52ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13f648b8_3cac201b",
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c0940cd_3524dc8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/web/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-09T05:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13f648b8_3cac201b",
+      "range": {
+        "startLine": 20,
+        "startChar": 65,
+        "endLine": 20,
+        "endChar": 91
+      },
+      "revId": "7ca60f9d7e09e45dcb439234593efcfac9ee52ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72654b19_b3192528",
@@ -107,6 +179,30 @@
       "writtenOn": "2022-04-25T23:55:08Z",
       "side": 1,
       "message": "The support packages should not call `s.Fatal`. Normally, they just return errors. \nsee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#support-packages\n\nIn general, avoid passing `s *testing.State` to helper packages.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "7ca60f9d7e09e45dcb439234593efcfac9ee52ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e7b1f4_b255c645",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/web/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-09T05:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72654b19_b3192528",
       "range": {
         "startLine": 106,
         "startChar": 2,
