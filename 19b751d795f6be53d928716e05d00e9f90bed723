@@ -16,6 +16,24 @@
       "message": "LGTM. Should we also mention that shill gets reset after all in TearDown() as well?",
       "revId": "19b751d795f6be53d928716e05d00e9f90bed723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf37cba_fd432b24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-09T08:08:49Z",
+      "side": 1,
+      "message": "Modified desc a little bit to make it more accurate. Thanks for the review and suggestion!",
+      "parentUuid": "259164ec_4db531e2",
+      "revId": "19b751d795f6be53d928716e05d00e9f90bed723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
