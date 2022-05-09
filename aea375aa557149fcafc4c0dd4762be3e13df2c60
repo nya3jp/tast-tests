@@ -118,6 +118,30 @@
       },
       "revId": "aea375aa557149fcafc4c0dd4762be3e13df2c60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d359d3_bb98b3c1",
+        "filename": "src/chromiumos/tast/services/cros/camera/cca_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-09T10:53:00Z",
+      "side": 1,
+      "message": "We tried reusing the functions in chrome_service but we were facing multiple challenges in passing the chrome object created using these functions to the cca_service functions.\n\nWhen we were exploring the other available services, all of them are having their own Chrome login services instead of using the chrome_service functions.\ne.g.; [webauthn_service.proto](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto;l\u003d16),\n[utils_service.proto](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/services/cros/firmware/utils_service.proto;l\u003d25),\n[screenlock_service](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/services/cros/ui/screenlock_service.proto;l\u003d25)",
+      "parentUuid": "9bbddf8a_82eec247",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 76
+      },
+      "revId": "aea375aa557149fcafc4c0dd4762be3e13df2c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
