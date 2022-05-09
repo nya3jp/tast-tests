@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67dc075_2ac04275",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-09T10:46:35Z",
+      "side": 1,
+      "message": "Removed the second sleep as well by doing a nested poll after re-launching the window.",
+      "parentUuid": "a20cc0ef_954573b8",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "0a22dcc8d20037d8ce9b2686dbe08d615fc741ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b1ba59e_29ec838a",
