@@ -178,14 +178,14 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	defer bc.Close()
 
 	var meetingCode string
-	{
+	func() {
 		sctx, cancel := context.WithTimeout(ctx, timeout)
 		defer cancel()
 		meetingCode, err = bc.CreateConference(sctx)
 		if err != nil {
 			s.Fatal("Failed to create a conference room: ", err)
 		}
-	}
+	}()
 	s.Log("Created a room with the code ", meetingCode)
 
 	sctx, cancel := context.WithTimeout(ctx, 30*time.Second)
