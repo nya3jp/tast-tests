@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc813f9b_efc0b2d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1512112
+      },
+      "writtenOn": "2022-05-09T19:16:01Z",
+      "side": 1,
+      "message": "I think it should kick up with crrev.com/3591357 and the lab runners should just run anything that matches [0]. Is there some config file I\u0027d need to edit too?\n\n[0] https://ci.chromium.org/ui/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm/b8815142945936741137/overview",
+      "parentUuid": "28b59207_886e75b5",
+      "revId": "b5a2582b8713e210dec6138d18f74189439b8d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7763084a_87428bfc",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-09T14:19:27Z",
       "side": 1,
       "message": "it\u0027s not your fault but it\u0027s so ugly. no way to make it nicer?",
+      "revId": "b5a2582b8713e210dec6138d18f74189439b8d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0f0dca_eb5a85a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1512112
+      },
+      "writtenOn": "2022-05-09T19:16:01Z",
+      "side": 1,
+      "message": "yeah agreed. WDYT now?",
+      "parentUuid": "7763084a_87428bfc",
       "revId": "b5a2582b8713e210dec6138d18f74189439b8d2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d59cbab_d520d7b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1512112
+      },
+      "writtenOn": "2022-05-09T19:16:01Z",
+      "side": 1,
+      "message": "So the scaffolding behind our build system is somewhat delicate. It could be easy for someone to intentionally / accidentally turn on VKMS for non-VM images at some point down the line, and I felt like preempting the confusion in the future is a friendly gift from the present. Likewise, if this warning is missing on VMs, it\u0027s a sign that something has gone horribly wrong as well.\n\nIt is pretty noisy, so I\u0027ll remove it for now.",
+      "parentUuid": "4bb653b4_44629e36",
+      "revId": "b5a2582b8713e210dec6138d18f74189439b8d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6162cfb6_72cc5405",
@@ -65,6 +119,30 @@
       "writtenOn": "2022-05-09T14:19:27Z",
       "side": 1,
       "message": "I think the flag name is a bit inaccurate. i think you mean `IsUsingVkms` ? cause it\u0027s not a flag that forces that test should use vkms, it\u0027s a flag indicating you\u0027re already on vkms? (assuming i properly understood vkms, is that it\u0027s smt like a driver you use rather than tools you use when you\u0027re running in a vm)",
+      "range": {
+        "startLine": 391,
+        "startChar": 5,
+        "endLine": 391,
+        "endChar": 18
+      },
+      "revId": "b5a2582b8713e210dec6138d18f74189439b8d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12578ef_310a276f",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1512112
+      },
+      "writtenOn": "2022-05-09T19:16:01Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6162cfb6_72cc5405",
       "range": {
         "startLine": 391,
         "startChar": 5,
