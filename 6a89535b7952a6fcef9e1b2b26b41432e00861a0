@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "afae007f_fa0f8fd6",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "KernelDevCDDir needs to be exported. It\u0027s used to check the validity of Intel FW dump mechanism. KernelDevCDName could be internal only.",
+      "parentUuid": "b16ee4ed_5fb09be6",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22c2cfeb_45423a6a",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-06T23:08:34Z",
       "side": 1,
       "message": "This is slightly hard for me to follow. Perhaps:\n\n  CleanupDevcoredump removes the devcoredump file, if any exists,\n  by writing \"0\"...",
+      "range": {
+        "startLine": 579,
+        "startChar": 22,
+        "endLine": 579,
+        "endChar": 78
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62dcbe1c_13c54b6e",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22c2cfeb_45423a6a",
       "range": {
         "startLine": 579,
         "startChar": 22,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ee0291_131ac327",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "998b4cb4_5e82a5d5",
+      "range": {
+        "startLine": 581,
+        "startChar": 20,
+        "endLine": 581,
+        "endChar": 31
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "836dd3a9_53f2daac",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-05-06T23:08:34Z",
       "side": 1,
       "message": "nit:\n  indicates that a devcoredump was created\n  shortly before",
+      "range": {
+        "startLine": 581,
+        "startChar": 47,
+        "endLine": 582,
+        "endChar": 17
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8845b763_f9af56ad",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "836dd3a9_53f2daac",
       "range": {
         "startLine": 581,
         "startChar": 47,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb46991_0a9d9144",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dbc4b736_e2398e47",
+      "range": {
+        "startLine": 582,
+        "startChar": 19,
+        "endLine": 584,
+        "endChar": 41
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f0dbf41_d4272854",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-05-06T23:08:34Z",
       "side": 1,
       "message": "I\u0027m not sure if this is the right choice for this function. We asked it to clean up the devcoredumps, and if /sys/class/devcoredump doesn\u0027t exist, there are no devcoredumps to clean up, so in a sense the function has done its job. \n\nWhat do you think about returning nil instead here?",
+      "range": {
+        "startLine": 591,
+        "startChar": 1,
+        "endLine": 596,
+        "endChar": 2
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bbabf8e_35dced7b",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "It a brilliant catch!",
+      "parentUuid": "6f0dbf41_d4272854",
       "range": {
         "startLine": 591,
         "startChar": 1,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96cddaa3_e2383720",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd5223c7_b5e2afdb",
+      "range": {
+        "startLine": 600,
+        "startChar": 4,
+        "endLine": 601,
+        "endChar": 58
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91ca9c0a_a50d61c2",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-05-06T23:08:34Z",
       "side": 1,
       "message": "nit: \"data\"",
+      "range": {
+        "startLine": 623,
+        "startChar": 46,
+        "endLine": 623,
+        "endChar": 50
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f2dce4_beca512d",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "91ca9c0a_a50d61c2",
       "range": {
         "startLine": 623,
         "startChar": 46,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbfe7945_24f420b0",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c88c65a_2e08dd05",
+      "range": {
+        "startLine": 577,
+        "startChar": 4,
+        "endLine": 577,
+        "endChar": 10
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f7638cc_f8ad67a4",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-05-06T23:08:34Z",
       "side": 1,
       "message": "Is this removal necessary? As far as I can tell, the code under test just writes 0 and exits -- it doesn\u0027t check that the data file was removed. If that\u0027s right, we can simplify this significantly by removing the goroutine and just checking that the data file contains \"0\" at the end of the test run.",
+      "range": {
+        "startLine": 593,
+        "startChar": 5,
+        "endLine": 605,
+        "endChar": 4
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602a6d25_435335a7",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-09T06:58:58Z",
+      "side": 1,
+      "message": "I\u0027m trying to mock as close as possible to devcoredump\u0027s behaviors, which remove the devcd%d directory once it reads \u00270\u0027. The clean up code relies on the existence of devcd%d directories to decide how long to poll. And writing to devcd/data will definitely remove the entire directory entry before the writing exit. That\u0027s the reason I explicitly remove the directory.",
+      "parentUuid": "9f7638cc_f8ad67a4",
       "range": {
         "startLine": 593,
         "startChar": 5,
