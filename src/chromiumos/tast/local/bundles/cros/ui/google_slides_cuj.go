@@ -33,7 +33,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      12 * time.Minute,
+		Timeout:      15 * time.Minute,
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
@@ -49,7 +49,7 @@ func init() {
 func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	const (
 		slidesURL           = "https://docs.google.com/presentation/d/1lItrhkgBqXF_bsP-tOqbjcbBFa86--m3DT5cLxegR2k/edit?usp=sharing&resourcekey=0-FmuN4N-UehRS2q4CdQzRXA"
-		slidesScrollTimeout = 7 * time.Minute
+		slidesScrollTimeout = 10 * time.Minute
 	)
 
 	// Shorten context a bit to allow for cleanup.
