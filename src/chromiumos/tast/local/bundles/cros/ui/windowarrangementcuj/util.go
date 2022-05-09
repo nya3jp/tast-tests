@@ -15,6 +15,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -73,6 +74,10 @@ type Connections struct {
 
 	// WithTestVideo provides the test video URI to ArcVideoActivity.
 	WithTestVideo arc.ActivityStartOption
+
+	// TextCantPlayThisVideo represents a view in ArcVideoActivity
+	// with the text "Can't play this video."
+	TextCantPlayThisVideo *ui.Object
 }
 
 // DragPoints holds three points, to signify a drag from the first point
@@ -182,7 +187,29 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		}
 		return firstErr
 	}
+
+	d, err := connection.ARC.NewUIDevice(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to initialize ARC UI automator")
+	}
+	oldCleanup4 := connection.Cleanup
+	connection.Cleanup = func(ctx context.Context) error {
+		var firstErr error
+		if err := d.Close(ctx); firstErr == nil && err != nil {
+			firstErr = errors.Wrap(err, "failed to close ARC UI automator")
+		}
+		if err := oldCleanup4(ctx); firstErr == nil && err != nil {
+			firstErr = err
+		}
+		return firstErr
+	}
+
 	connection.WithTestVideo = arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/shaka_720.webm", androidPort))
+	connection.TextCantPlayThisVideo = d.Object(
+		ui.Text("Can't play this video."),
+		ui.PackageName("org.chromium.arc.testapp.pictureinpicturevideo"),
+		ui.ClassName("android.widget.TextView"),
+	)
 
 	connection.TestConn, err = connection.Chrome.TestAPIConn(ctx)
 	if err != nil {

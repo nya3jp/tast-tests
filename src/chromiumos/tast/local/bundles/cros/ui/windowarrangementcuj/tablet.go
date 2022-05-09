@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -83,7 +84,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 // RunTablet runs window arrangement cuj for tablet. Since windows are always
 // maximized in tablet mode, we only test performance for tab dragging and split
 // view resizing.
-func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, act *arc.Activity, withTestVideo arc.ActivityStartOption) error {
+func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, act *arc.Activity, withTestVideo arc.ActivityStartOption, textCantPlayThisVideo *ui.Object) error {
 	const (
 		timeout           = 10 * time.Second
 		doubleTapInterval = 100 * time.Millisecond
@@ -185,6 +186,11 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	// Wait for location-change events to be completed.
 	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
+	}
+
+	// Wait until the video is playing, or at least there is no message that says "Can't play this video."
+	if err := textCantPlayThisVideo.WaitUntilGone(ctx, time.Minute); err != nil {
+		return errors.Wrap(err, "failed to wait for \"Can't play this video.\" message to be absent")
 	}
 
 	// Exercise split view resize functionality.
