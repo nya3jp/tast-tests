@@ -25,6 +25,7 @@ import (
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash/ashproc"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -229,7 +230,49 @@ func NewWithTimeout(ctx context.Context, outDir string, timeout time.Duration) (
 // newWithSyslogReaderAndTimeout waits for Android to finish booting until timeout expires.
 //
 // Give a syslog.Reader instantiated before chrome.New to allow diagnosing init failure.
-func newWithSyslogReaderAndTimeout(ctx context.Context, outDir string, reader *syslog.Reader, timeout time.Duration) (*ARC, error) {
+func newWithSyslogReaderAndTimeout(ctx context.Context, outDir string, reader *syslog.Reader, timeout time.Duration) (a *ARC, retErr error) {
+	defer func() {
+		if retErr == nil {
+			return
+		}
+
+		// We hit unexpected cases that we found two or more chrome root processes.
+		// To investigate the case, we dump the all processes here.
+		// TODO(b/231683759): Remove the dump when the problem is solved.
+		var err procutil.FoundTooManyProcessesError
+		if !errors.As(retErr, &err) {
+			// The error is different from what we're interested in.
+			return
+		}
+
+		outDir, ok := testing.ContextOutDir(ctx)
+		if !ok {
+			testing.ContextLog(ctx, "outdir not found")
+			return
+		}
+
+		var lines []string
+		for _, p := range err.All {
+			exe, err := p.Exe()
+			if err != nil {
+				testing.ContextLogf(ctx, "Exe not found for %v: %v", p.Pid, err)
+			}
+			cmdline, err := p.Cmdline()
+			if err != nil {
+				testing.ContextLogf(ctx, "Cmdline not found for %v: %v", p.Pid, err)
+			}
+			ppid, err := p.Ppid()
+			if err != nil {
+				testing.ContextLogf(ctx, "Ppid not found for %v: %v", p.Pid, err)
+			}
+			lines = append(lines, fmt.Sprintf("%v, %q, %q, %v\n", p.Pid, exe, cmdline, ppid))
+		}
+		path := filepath.Join(outDir, "chromeroot-ps.txt")
+		if err := os.WriteFile(path, []byte(strings.Join(lines, "")), 0644); err != nil {
+			testing.ContextLog(ctx, "Failed to dump chromeroot-ps.txt: ", err)
+		}
+	}()
+
 	ctx, st := timing.Start(ctx, "arc_new")
 	defer st.End()
 
