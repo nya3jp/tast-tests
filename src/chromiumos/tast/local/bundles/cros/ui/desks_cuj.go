@@ -6,6 +6,9 @@ package ui
 
 import (
 	"context"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -20,6 +23,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type desksCUJTestParam struct {
+	browserType browser.Type
+	extreme     bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DesksCUJ,
@@ -30,12 +38,23 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      2 * time.Hour,
 		Params: []testing.Param{{
-			Val:     browser.TypeAsh,
+			Val:     desksCUJTestParam{browserType: browser.TypeAsh},
 			Fixture: "loggedInToCUJUser",
 		}, {
+			Name:      "extreme",
+			Val:       desksCUJTestParam{browserType: browser.TypeAsh, extreme: true},
+			ExtraData: []string{"shaka_720.webm", "animation.js", "animation.html", "pip.html"},
+			Fixture:   "loggedInToCUJUser",
+		}, {
 			Name:              "lacros",
-			Val:               browser.TypeLacros,
+			Val:               desksCUJTestParam{browserType: browser.TypeLacros},
 			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "loggedInToCUJUserLacros",
+		}, {
+			Name:              "extreme_lacros",
+			Val:               desksCUJTestParam{browserType: browser.TypeLacros, extreme: true},
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{"shaka_720.webm", "animation.js", "animation.html", "pip.html"},
 			Fixture:           "loggedInToCUJUserLacros",
 		}},
 	})
@@ -43,8 +62,8 @@ func init() {
 
 func DesksCUJ(ctx context.Context, s *testing.State) {
 	const (
-		browserWindowsPerDesk = 8
-		docURL                = "https://docs.google.com/document/d/1MW7lAk9RZ-6zxpObNwF0r80nu-N1sXo5f7ORG4usrJQ/edit?disco=AAAAP6EbSF8"
+		docWindowsPerDesk = 8
+		docURL            = "https://docs.google.com/document/d/1MW7lAk9RZ-6zxpObNwF0r80nu-N1sXo5f7ORG4usrJQ/edit?disco=AAAAP6EbSF8"
 	)
 
 	// Reserve ten seconds for cleanup.
@@ -52,11 +71,11 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	bt := s.Param().(browser.Type)
+	param := s.Param().(desksCUJTestParam)
 	var cr *chrome.Chrome
 	var l *lacros.Lacros
 	var cs ash.ConnSource
-	switch bt {
+	switch param.browserType {
 	case browser.TypeAsh:
 		cr = s.FixtValue().(chrome.HasChrome).Chrome()
 		cs = cr
@@ -80,13 +99,27 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(cleanupCtx)
 
-	if err := ash.CreateWindows(ctx, tconn, cs, docURL, browserWindowsPerDesk); err != nil {
-		s.Fatal("Failed to create browser windows on first desk: ", err)
+	if err := ash.CreateWindows(ctx, tconn, cs, docURL, docWindowsPerDesk); err != nil {
+		s.Fatal("Failed to create doc windows on first desk: ", err)
 	}
 
-	if bt == browser.TypeLacros {
+	if param.browserType == browser.TypeLacros {
 		if err := l.Browser().CloseWithURL(ctx, chrome.NewTabURL); err != nil {
 			s.Fatal("Failed to close blank tab: ", err)
+		}
+	}
+
+	var srv *httptest.Server
+	if param.extreme {
+		srv = httptest.NewServer(http.FileServer(s.DataFileSystem()))
+		defer srv.Close()
+
+		for _, fileName := range []string{"pip.html", "animation.html"} {
+			conn, err := cs.NewConn(ctx, fmt.Sprintf("%s/%s", srv.URL, fileName), browser.WithNewWindow())
+			if err != nil {
+				s.Fatalf("Failed to open %s on first desk: %v", fileName, err)
+			}
+			defer conn.Close()
 		}
 	}
 
@@ -99,8 +132,18 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to switch to second desk: ", err)
 	}
 
-	if err := ash.CreateWindows(ctx, tconn, cs, docURL, browserWindowsPerDesk); err != nil {
-		s.Fatal("Failed to create browser windows on second desk: ", err)
+	if err := ash.CreateWindows(ctx, tconn, cs, docURL, docWindowsPerDesk); err != nil {
+		s.Fatal("Failed to create doc windows on second desk: ", err)
+	}
+
+	if param.extreme {
+		for _, fileName := range []string{"pip.html", "animation.html"} {
+			conn, err := cs.NewConn(ctx, fmt.Sprintf("%s/%s", srv.URL, fileName), browser.WithNewWindow())
+			if err != nil {
+				s.Fatalf("Failed to open %s on second desk: %v", fileName, err)
+			}
+			defer conn.Close()
+		}
 	}
 
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
