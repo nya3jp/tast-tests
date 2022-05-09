@@ -20,34 +20,56 @@ type Matcher func(p *process.Process) bool
 // found.
 var ErrNotFound = errors.New("process not found")
 
+// FoundTooManyProcessesError is returned by FindUnique, if there are two or more
+// processes are found.
+type FoundTooManyProcessesError struct {
+	// E allows this error to be a part of Tast's errors library.
+	*errors.E
+
+	// Found holds all found processes.
+	Found []*process.Process
+
+	// All holds all processes on checking.
+	All []*process.Process
+}
+
 // FindUnique returns a process.Process instance which is matched with the
 // given matcher. If not found, or multiple processes satisfy the matcher,
 // this returns an error. Specifically, on not found case, ErrNotFound is
 // returned.
 func FindUnique(m Matcher) (*process.Process, error) {
-	ps, err := FindAll(m)
+	found, all, err := findAllInternal(m)
 	if err != nil {
 		return nil, err
 	}
-	if len(ps) != 1 {
-		pids := make([]int32, len(ps))
-		for i, proc := range ps {
+	if len(found) != 1 {
+		pids := make([]int32, len(found))
+		for i, proc := range found {
 			pids[i] = proc.Pid
 		}
 		// Sort just for better human log readability.
 		sort.Slice(pids, func(i, j int) bool { return pids[i] < pids[j] })
-		return nil, errors.Errorf("too many processes are found: %v", pids)
+		return nil, &FoundTooManyProcessesError{
+			E:     errors.Errorf("too many processes are found: %v", pids),
+			Found: found,
+			All:   all,
+		}
 	}
-	return ps[0], nil
+	return found[0], nil
 }
 
 // FindAll returns a list of all process.Process instances which are matched with
 // the given mathcer.
 // If process it not found, this returns ErrNotFound.
 func FindAll(m Matcher) ([]*process.Process, error) {
+	found, _, err := findAllInternal(m)
+	return found, err
+}
+
+func findAllInternal(m Matcher) (found, all []*process.Process, err error) {
 	ps, err := process.Processes()
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	var ret []*process.Process
@@ -58,9 +80,9 @@ func FindAll(m Matcher) ([]*process.Process, error) {
 	}
 
 	if len(ret) == 0 {
-		return nil, ErrNotFound
+		return nil, nil, ErrNotFound
 	}
-	return ret, nil
+	return ret, ps, nil
 }
 
 // And is a utility to compose matchers into one matcher, which is satisfied
