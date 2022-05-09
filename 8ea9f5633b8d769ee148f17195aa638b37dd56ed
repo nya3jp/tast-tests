@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2180475f_48c3c41e",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T10:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "213f792b_9b46c3e9",
+      "revId": "8ea9f5633b8d769ee148f17195aa638b37dd56ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "323979b2_3b0fb92f",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-09T08:52:26Z",
       "side": 1,
       "message": "nit: outdir is confusing, as this is not directory path. logFile maybe?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "8ea9f5633b8d769ee148f17195aa638b37dd56ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e127c7_e3210548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T10:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "323979b2_3b0fb92f",
       "range": {
         "startLine": 32,
         "startChar": 1,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bafb33a_2ad66cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T10:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d896d43_d3c7409f",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "8ea9f5633b8d769ee148f17195aa638b37dd56ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d7a6778_b297a5fc",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afdb0750_a657eb13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T10:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7a6778_b297a5fc",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "8ea9f5633b8d769ee148f17195aa638b37dd56ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee3a01c9_6504b77f",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-05-09T08:52:26Z",
       "side": 1,
       "message": "could you use cmd.Kill() ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 6,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "8ea9f5633b8d769ee148f17195aa638b37dd56ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e951b5d6_d0aee4be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T10:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee3a01c9_6504b77f",
       "range": {
         "startLine": 48,
         "startChar": 6,
