@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f1a218_053785ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-09T08:45:36Z",
+      "side": 1,
+      "message": "Adding sleep is known to be a wrong way to \"fix\" test flakiness. I strongly recommend doing something else.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#Sleep",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "0a22dcc8d20037d8ce9b2686dbe08d615fc741ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b1ba59e_29ec838a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-09T08:45:36Z",
+      "side": 1,
+      "message": "Even if we can do nothing but sleeping, we should do it within waitForBlockUninstall, not here, because it is waitForBlockUninstall\u0027s responsibility to wait for the condition to be met.",
+      "revId": "0a22dcc8d20037d8ce9b2686dbe08d615fc741ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac6fb0a_ff4cb19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-09T08:45:36Z",
+      "side": 1,
+      "message": "So IIUC this function ensures package-restrictions.xml contains some entries but does not ensure it\u0027s loaded by the system server. Can we query the system server instead to know the actual state?",
+      "revId": "0a22dcc8d20037d8ce9b2686dbe08d615fc741ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
