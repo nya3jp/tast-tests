@@ -67,6 +67,24 @@
       "message": "This looks redundant, SetUpWithNewChrome already does this work.",
       "revId": "ccaceb08bb916973f6ba36817915227cf6ab04d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58947e94_0dee22a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/managed_device_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-09T15:52:17Z",
+      "side": 1,
+      "message": "Done. Thanks for the catch!",
+      "parentUuid": "1689d811_97743896",
+      "revId": "ccaceb08bb916973f6ba36817915227cf6ab04d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
