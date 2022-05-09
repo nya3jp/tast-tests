@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6033c767_5fc246ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/pin_unlock_fail.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-05-09T03:48:33Z",
+      "side": 1,
+      "message": "HasPinPad doesn\u0027t wait for any UI state, so this test might have some flakiness because it might not instantly appear at the moment the screen is locked (I encountered a similar situation with this API recently). You might want to add a WaitUntilPinPadExist or something like that.",
+      "revId": "14c2bb13059880448f26e7abb7cf63d6c6c9f0fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
