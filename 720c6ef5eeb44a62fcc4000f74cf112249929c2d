@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd0cdcc_4c0ee9f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-09T11:53:53Z",
+      "side": 1,
+      "message": "I think it would be better to combine these two in one test, but I think we cannot call chrome.New(...) inside the test because we call chrome.Lock() in the fixture.",
+      "revId": "720c6ef5eeb44a62fcc4000f74cf112249929c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
