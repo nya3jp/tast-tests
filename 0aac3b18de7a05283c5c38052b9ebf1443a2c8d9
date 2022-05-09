@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db9265a4_e46ea7b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-09T07:39:50Z",
+      "side": 1,
+      "message": "Use the default unless it takes longer than 1 minute.",
+      "parentUuid": "4f5805f7_cf50fec9",
+      "revId": "0aac3b18de7a05283c5c38052b9ebf1443a2c8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b614b96_a0786980",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputoverlay/util.go",
         "patchSetId": 2
@@ -100,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ed8eec6_dfac0aca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputoverlay/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-09T07:39:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae9653bb_5828971e",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 55
+      },
+      "revId": "0aac3b18de7a05283c5c38052b9ebf1443a2c8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4aed227f_142b0747",
@@ -131,6 +173,24 @@
       "side": 1,
       "message": "I don\u0027t feel strongly about using callbacks, but previously, I had written tast tests for automated game performance [1], where we used a similar callback function to set up the test [2]. \n\nIs there anything different about the nature of the gaming input overlay tast tests from the automated game performance tast tests that would make the use of callbacks and passing in states to helper functions inappropriate?\n\n[1] https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arcappgameperf/amongus_gpu_benchmark.go;l\u003d1\n\n[2] https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arcappgameperf/testutil/testutil.go?q\u003dPerformTest\u0026ss\u003dpiper%2FGoogle%2Fchromeos_internal:src%2Fplatform%2Ftast-tests-private%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcrosint%2Farcappgameperf%2Ftestutil%2F",
       "parentUuid": "4aed227f_142b0747",
+      "revId": "0aac3b18de7a05283c5c38052b9ebf1443a2c8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b94355_83707f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/inputoverlay/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-09T07:39:50Z",
+      "side": 1,
+      "message": "If it\u0027s consistent with other tests I\u0027m fine with it.\n\nPlease use testutil as the package name as well.",
+      "parentUuid": "eff711bb_ff6ca2c8",
       "revId": "0aac3b18de7a05283c5c38052b9ebf1443a2c8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
