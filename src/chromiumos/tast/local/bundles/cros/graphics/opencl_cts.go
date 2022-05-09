@@ -1378,8 +1378,9 @@ func init() {
 				Name: "basic_async_strided_copy_global_to_local",
 				Val: oclctsTest{
 					executable:   "test_basic",
-					args:         "async_strided_copy_global_to_local b/227132303",
+					args:         "async_strided_copy_global_to_local",
 					expectedPass: true,
+					buganizer:    "b/227132303",
 				},
 				Timeout: 10 * time.Minute,
 			},
@@ -1387,8 +1388,9 @@ func init() {
 				Name: "basic_async_strided_copy_local_to_global",
 				Val: oclctsTest{
 					executable:   "test_basic",
-					args:         "async_strided_copy_local_to_global b/227132303",
+					args:         "async_strided_copy_local_to_global",
 					expectedPass: true,
+					buganizer:    "b/227132303",
 				},
 				Timeout: 10 * time.Minute,
 			},
