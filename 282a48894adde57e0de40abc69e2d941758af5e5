@@ -1,0 +1,220 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db08fb0c_d06cacac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "My initial scan",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db26841_80c2e167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "No Attrs ? Where will this be run? Could you document?",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b599b33_f2d0cc03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "nit: \"const\"",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394fbb5f_3d305a2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "could you move this out from polling?",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 4
+      },
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dcaa80a_d175c580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "const",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d96e723d_48790779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "nit/optional/style: I\u0027d recommend to inline this at L120, and use rawFile.Path everywhere, to keep the source-of-truth unique.",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72231bde_72dab2a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "const",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "037e88c1_ba6df862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "should we ceiling?\nor, just calculate from stressDuration directly with checking no fractional part?",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e8ff3e_5f96ee9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "nit: could you iterate i :\u003d 0 to i \u003c iterHours, and instead use i+1 for logging?",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017079ce_d85e9a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "how about just waiting for the timeout?",
+      "range": {
+        "startLine": 170,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adeed677_3702d24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "it\u0027s recommended to avoid depending on the human readable name of UI.\nCould you identify the item by class or id?",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d9066b_6a1d8b16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-09T09:02:25Z",
+      "side": 1,
+      "message": "ditto. Any good machine-readable/stable way to identify the window?",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
