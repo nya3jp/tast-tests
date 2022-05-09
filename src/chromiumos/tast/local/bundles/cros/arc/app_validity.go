@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/testing"
 )
@@ -46,34 +45,34 @@ func AppValidity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install app: ", err)
 	}
 
-	cr := s.FixtValue().(*arc.PreData).Chrome
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	// cr := s.FixtValue().(*arc.PreData).Chrome
+	// tconn, err := cr.TestAPIConn(ctx)
+	// if err != nil {
+	// 	s.Fatal("Failed to create Test API connection: ", err)
+	// }
 
-	act, err := arc.NewActivity(a, pkg, cls)
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
-	}
-	defer act.Close()
+	// act, err := arc.NewActivity(a, pkg, cls)
+	// if err != nil {
+	// 	s.Fatal("Failed to create new activity: ", err)
+	// }
+	// defer act.Close()
 
-	s.Log("Starting app")
-	if err = act.StartWithDefaultOptions(ctx, tconn); err != nil {
-		s.Fatal("Failed to start app: ", err)
-	}
+	// s.Log("Starting app")
+	// if err = act.StartWithDefaultOptions(ctx, tconn); err != nil {
+	// 	s.Fatal("Failed to start app: ", err)
+	// }
 
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		bounds, err := act.SurfaceBounds(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get surface bounds")
-		}
-		if bounds.Width <= 0 || bounds.Height <= 0 {
-			return errors.Errorf("bounds should be positive but were %dx%d", bounds.Width, bounds.Height)
-		}
-		return nil
-	}, nil)
-	if err != nil {
-		s.Error("Failed waiting for app window: ", err)
-	}
+	// err = testing.Poll(ctx, func(ctx context.Context) error {
+	// 	bounds, err := act.SurfaceBounds(ctx)
+	// 	if err != nil {
+	// 		return errors.Wrap(err, "failed to get surface bounds")
+	// 	}
+	// 	if bounds.Width <= 0 || bounds.Height <= 0 {
+	// 		return errors.Errorf("bounds should be positive but were %dx%d", bounds.Width, bounds.Height)
+	// 	}
+	// 	return nil
+	// }, nil)
+	// if err != nil {
+	// 	s.Error("Failed waiting for app window: ", err)
+	// }
 }

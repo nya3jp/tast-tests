@@ -6,5 +6,5 @@ android_apk("ArcInstallAppWithAppListSortedTest") {
   manifest = "AndroidManifest.xml"
   source_dirs = ["src"]
   resource_dirs = ["res"]
-  target_sdk_version = "30"
+  target_sdk_version = "24"
 }

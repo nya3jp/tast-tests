@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -25,9 +26,10 @@ import (
 type rearrangmentTestType string
 
 const (
-	chromeAppTest rearrangmentTestType = "ChromeAppTest" // Verify the rearrangement behavior on a Chrome app.
-	fileAppTest   rearrangmentTestType = "FileAppTest"   // Verify the rearrangement behavior on the File app.
-	pwaAppTest    rearrangmentTestType = "PwaAppTest"    // Verify the rearrangement behavior on a PWA.
+	chromeAppTest  rearrangmentTestType = "ChromeAppTest"  // Verify the rearrangement behavior on a Chrome app.
+	fileAppTest    rearrangmentTestType = "FileAppTest"    // Verify the rearrangement behavior on the File app.
+	pwaAppTest     rearrangmentTestType = "PwaAppTest"     // Verify the rearrangement behavior on a PWA.
+	androidAppTest rearrangmentTestType = "AndroidAppTest" // Verify the rearrangement behavior on an Android app.
 )
 
 func init() {
@@ -42,23 +44,39 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      3 * time.Minute,
 		Data:         []string{"web_app_install_force_list_index.html", "web_app_install_force_list_manifest.json", "web_app_install_force_list_service-worker.js", "web_app_install_force_list_icon-192x192.png", "web_app_install_force_list_icon-512x512.png"},
 		Params: []testing.Param{
 			{
 				Name:    "rearrange_chrome_apps",
 				Val:     chromeAppTest,
 				Fixture: "install2Apps",
+				Timeout: 3 * time.Minute,
 			},
 			{
 				Name:    "rearrange_file_app",
 				Val:     fileAppTest,
 				Fixture: "chromeLoggedIn",
+				Timeout: 3 * time.Minute,
 			},
 			{
 				Name:    "rearrange_pwa_app",
 				Val:     pwaAppTest,
 				Fixture: fixture.ChromePolicyLoggedIn,
+				Timeout: 3 * time.Minute,
+			},
+			{
+				Name:              "rearrange_android_app_androidp",
+				Val:               androidAppTest,
+				Fixture:           "chromeEnrolledLoggedInARC",
+				ExtraSoftwareDeps: []string{"android_p"},
+				Timeout:           chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+			},
+			{
+				Name:              "rearrange_android_app_androidvm",
+				Val:               androidAppTest,
+				Fixture:           "chromeEnrolledLoggedInARC",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Timeout:           chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 			},
 		},
 	})
@@ -81,12 +99,23 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	case fileAppTest:
 		cr = s.FixtValue().(*chrome.Chrome)
 	case pwaAppTest:
+	case androidAppTest:
 		cr = s.FixtValue().(chrome.HasChrome).Chrome()
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
+	}
+
+	var a *arc.ARC
+	if testType == androidAppTest {
+		// Setup ARC.
+		a, err = arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
+		defer a.Close(ctx)
 	}
 
 	// Ensure that the device is in clamshell mode.
@@ -170,6 +199,19 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		defer cleanUp(cleanupCtx)
+
+	case androidAppTest:
+		// Install a mock Android app under temporary sort.
+		const apk = "ArcInstallAppWithAppListSortedTest.apk"
+		if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
+			s.Fatal("Failed installing app under temporary sort: ", err)
+		}
+
+		targetAppName = "InstallAppWithAppListSortedMockApp"
+		targetAppID, err = ash.WaitForChromeAppByNameInstalled(ctx, tconn, targetAppName, 1*time.Minute)
+		if err != nil {
+			s.Fatalf("Failed to wait until %s is installed: %v", targetAppName, err)
+		}
 	}
 
 	// Pin the target app.
