@@ -136,8 +136,12 @@ func DebianUpgradeAlert(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to shutdown crostini: ", err)
 	}
 
+	// Launch terminal and click 'penguin' link on home tab.
 	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
 		s.Fatal("Failed to restart terminal app: ", err)
+	}
+	if err := ui.LeftClick(nodewith.Name("penguin").Role(role.Link))(ctx); err != nil {
+		s.Fatal("Failed to click Terminal Home Linux: ", err)
 	}
 
 	// Reset automation to refresh the ui tree as ui tree can lag
