@@ -88,6 +88,7 @@ func init() {
 					lacrosfixt.ChromeOptions(chrome.GAIALogin(gaiaCreds)),
 					lacrosfixt.EnableChromeFRE()).Opts()
 			},
+			restartChromeOnReset: true,
 		},
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
