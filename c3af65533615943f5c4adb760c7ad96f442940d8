@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7acf5a7b_d78b1367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-09T03:34:16Z",
+      "side": 1,
+      "message": "Why is this declared so far away from where the variable is actually set?",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 3
+      },
+      "revId": "c3af65533615943f5c4adb760c7ad96f442940d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66280182_62720f80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-09T03:34:16Z",
+      "side": 1,
+      "message": "nit: copyFile",
+      "range": {
+        "startLine": 1049,
+        "startChar": 5,
+        "endLine": 1049,
+        "endChar": 15
+      },
+      "revId": "c3af65533615943f5c4adb760c7ad96f442940d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
