@@ -16,6 +16,24 @@
       "message": "I think it\u0027s ok to leave your name, as you\u0027ll be back in 6 mo...? Up to you, though.",
       "revId": "7dd972cc28e56c5e31db1469eaf5ebfa56300de8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1af6fe80_cdc4135b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2022-05-09T07:30:50Z",
+      "side": 1,
+      "message": "I\u0027ve been getting a pretty strong signal from other engineers that they\u0027d rather not have someone in OWNERS who\u0027s not going to be available for that long to avoid frustration about review delays, so I\u0027ll go ahead and remove myself.",
+      "parentUuid": "3edb7e8b_71f6b327",
+      "revId": "7dd972cc28e56c5e31db1469eaf5ebfa56300de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
