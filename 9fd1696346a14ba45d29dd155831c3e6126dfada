@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed812b0b_3822a8ff",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T07:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcd0e0a7_f1ce5395",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59ab5086_7ab43870",
@@ -113,6 +137,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5834bc_2beaba3a",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T07:45:03Z",
+      "side": 1,
+      "message": "ok ,thank you Hidehiko",
+      "parentUuid": "570bdf20_de3b5e3b",
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b440e8f_6cf17c83",
@@ -126,6 +168,24 @@
       "writtenOn": "2022-04-27T13:07:17Z",
       "side": 1,
       "message": "could you declare the variable at latest timing to use?\nyou can use \"pid :\u003d ...\" at L42.",
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0d5795_f6b3baaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T07:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b440e8f_6cf17c83",
       "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -147,6 +207,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f0c1fd_64f6bb39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T07:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d2a7a5_3194e350",
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e722595d_d1f635a3",
@@ -164,6 +242,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed83057_f4b0d45b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T07:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e722595d_d1f635a3",
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5683318_11ced081",
@@ -177,6 +273,24 @@
       "writtenOn": "2022-04-27T13:07:17Z",
       "side": 1,
       "message": "ditto. You can read the file and then search on memory.",
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a55b71c_150f8578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-09T07:45:03Z",
+      "side": 1,
+      "message": "Due to the log stored in the file is not complete at this point in time\nSo it is impossible to read the file to make sure the chart is ready\nI need to make sure the chart is ready by polling output",
+      "parentUuid": "e5683318_11ced081",
       "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
