@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3abdf4c_06d1e4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-09T23:38:25Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "417fc4b8_a3ca2fb0",
+      "revId": "ffb52987daa07cf4efd4863f25e209649e410555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85867dad_eaacadbb",
