@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ea9468_7e941d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-09T18:04:21Z",
+      "side": 1,
+      "message": "We should probably just add these metrics to comon_metrics? There are already 2 Cras metrics in common_metrics:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go;l\u003d114-116",
+      "revId": "ea47fcd320e5bc80ea89ba4bfdd00342114b75fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
