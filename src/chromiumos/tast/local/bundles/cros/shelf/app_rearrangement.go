@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -25,9 +26,10 @@ import (
 type rearrangmentTestType string
 
 const (
-	chromeAppTest rearrangmentTestType = "ChromeAppTest" // Verify the rearrangement behavior on a Chrome app.
-	fileAppTest   rearrangmentTestType = "FileAppTest"   // Verify the rearrangement behavior on the File app.
-	pwaAppTest    rearrangmentTestType = "PwaAppTest"    // Verify the rearrangement behavior on a PWA.
+	chromeAppTest  rearrangmentTestType = "ChromeAppTest"  // Verify the rearrangement behavior on a Chrome app.
+	fileAppTest    rearrangmentTestType = "FileAppTest"    // Verify the rearrangement behavior on the File app.
+	pwaAppTest     rearrangmentTestType = "PwaAppTest"     // Verify the rearrangement behavior on a PWA.
+	androidAppTest rearrangmentTestType = "AndroidAppTest" // Verify the rearrangement behavior on an Android app.
 )
 
 func init() {
@@ -60,6 +62,18 @@ func init() {
 				Val:     pwaAppTest,
 				Fixture: fixture.ChromePolicyLoggedIn,
 			},
+			{
+				Name:              "rearrange_android_app_androidp",
+				Val:               androidAppTest,
+				Fixture:           "arcBooted",
+				ExtraSoftwareDeps: []string{"android_p"},
+			},
+			{
+				Name:              "rearrange_android_app_androidvm",
+				Val:               androidAppTest,
+				Fixture:           "arcBooted",
+				ExtraSoftwareDeps: []string{"android_vm"},
+			},
 		},
 	})
 }
@@ -82,6 +96,8 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		cr = s.FixtValue().(*chrome.Chrome)
 	case pwaAppTest:
 		cr = s.FixtValue().(chrome.HasChrome).Chrome()
+	case androidAppTest:
+		cr = s.FixtValue().(*arc.PreData).Chrome
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -170,6 +186,20 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		defer cleanUp(cleanupCtx)
+
+	case androidAppTest:
+		// Install a mock Android app under temporary sort.
+		const apk = "ArcInstallAppWithAppListSortedTest.apk"
+		a := s.FixtValue().(*arc.PreData).ARC
+		if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
+			s.Fatal("Failed installing app under temporary sort: ", err)
+		}
+
+		targetAppName = "InstallAppWithAppListSortedMockApp"
+		targetAppID, err = ash.WaitForChromeAppByNameInstalled(ctx, tconn, targetAppName, 1*time.Minute)
+		if err != nil {
+			s.Fatalf("Failed to wait until %s is installed: %v", targetAppName, err)
+		}
 	}
 
 	// Pin the target app.
