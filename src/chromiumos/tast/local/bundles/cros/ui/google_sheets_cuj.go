@@ -35,7 +35,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      10 * time.Minute,
+		Timeout:      13 * time.Minute,
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
@@ -52,7 +52,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	const (
 		timeout       = 10 * time.Second
 		sheetURL      = "https://docs.google.com/spreadsheets/d/1I9jmmdWkBaH6Bdltc2j5KVSyrJYNAhwBqMmvTdmVOgM/edit?usp=sharing&resourcekey=0-60wBsoTfOkoQ6t4yx2w7FQ"
-		scrollTimeout = 7 * time.Minute
+		scrollTimeout = 10 * time.Minute
 	)
 
 	// Shorten context a bit to allow for cleanup.
