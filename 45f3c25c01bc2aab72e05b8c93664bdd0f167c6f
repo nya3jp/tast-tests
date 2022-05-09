@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1429be1_36f89766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-09T10:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7deb19a4_21490d82",
+      "range": {
+        "startLine": 226,
+        "startChar": 25,
+        "endLine": 226,
+        "endChar": 35
+      },
+      "revId": "45f3c25c01bc2aab72e05b8c93664bdd0f167c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb16a1b7_b0d74b21",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99561eee_00141212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-09T10:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb16a1b7_b0d74b21",
+      "range": {
+        "startLine": 290,
+        "startChar": 3,
+        "endLine": 290,
+        "endChar": 58
+      },
+      "revId": "45f3c25c01bc2aab72e05b8c93664bdd0f167c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13a73af3_044fd358",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-09T03:56:56Z",
       "side": 1,
       "message": "nit: Maybe we can follow the same pattern of Vulnerability like:\n```\nif err :\u003d validateVirtualization(info.Virtualization); err !\u003d nil {\n\ts.Fatal(\"Failed to validate cpu virtualization: \", err)\n}\n```",
+      "range": {
+        "startLine": 288,
+        "startChar": 2,
+        "endLine": 294,
+        "endChar": 3
+      },
+      "revId": "45f3c25c01bc2aab72e05b8c93664bdd0f167c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "044c4c0e_872b6045",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-09T10:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a73af3_044fd358",
       "range": {
         "startLine": 288,
         "startChar": 2,
