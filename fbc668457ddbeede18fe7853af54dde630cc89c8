@@ -150,6 +150,30 @@
       },
       "revId": "fbc668457ddbeede18fe7853af54dde630cc89c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1f1781_b2b63479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-09T09:55:16Z",
+      "side": 1,
+      "message": "There might be problem if you or someone else will call DumpNetworkInfo twice without checking this function implementation",
+      "parentUuid": "36f557fa_5df41d88",
+      "range": {
+        "startLine": 29,
+        "startChar": 42,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "fbc668457ddbeede18fe7853af54dde630cc89c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
