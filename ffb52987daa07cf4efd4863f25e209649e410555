@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fc0461d_6d277014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-09T19:22:51Z",
+      "side": 0,
+      "message": "We have a lacros variant and we need bTconn to pull those histograms. I think we should use AddCollectedMetrics[1] and deprecate the \u0027configs\u0027 parameter in NewRecorder, @alemate am i correct?\n\n[1]https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/ui/cujrecorder/recorder.go;l\u003d259?q\u003dcujrecorder\n[2]https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/ui/cujrecorder/recorder.go;l\u003d272?q\u003dcujrecorder",
+      "parentUuid": "875df7eb_0540f932",
+      "revId": "ffb52987daa07cf4efd4863f25e209649e410555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85867dad_eaacadbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
         "patchSetId": 8
