@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc24d58_616f7217",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-09T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cf071ed_fc1c1f35",
+      "revId": "aa3be1f279223ceba704436612449c76e91fcef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ae837ab_095fbafe",
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "1ecc9144_5597515a",
+      "revId": "aa3be1f279223ceba704436612449c76e91fcef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "783140e7_b31f2784",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-09T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10d5070b_abb3bd6b",
       "revId": "aa3be1f279223ceba704436612449c76e91fcef1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

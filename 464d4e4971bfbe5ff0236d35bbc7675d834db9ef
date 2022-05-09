@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1cb18d_60d47afa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-09T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0a2afc4_112c4453",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 20
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3465766a_9be1358b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-09T06:31:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc0e659d_9057fbe3",
+      "range": {
+        "startLine": 172,
+        "startChar": 21,
+        "endLine": 172,
+        "endChar": 40
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e33e83c_71d9e2e6",
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b9e25d_ddbea359",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-09T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e33e83c_71d9e2e6",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 6
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d6bad16_121c18e4",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-04T06:00:36Z",
       "side": 1,
       "message": "remove this, or only log it when there is an error",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 52
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb62ce11_a6d00aeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-09T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6bad16_121c18e4",
       "range": {
         "startLine": 109,
         "startChar": 1,
@@ -139,6 +235,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1869a2a1_dead2907",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-09T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe411bc6_96036d63",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba7ce57a_3bd7f145",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-09T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe13a8c2_7bfd684b",
+      "range": {
+        "startLine": 25,
+        "startChar": 56,
+        "endLine": 25,
+        "endChar": 67
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "510a3ecf_cfd40ed5",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-05-04T06:00:36Z",
       "side": 1,
       "message": "where is 1?",
+      "range": {
+        "startLine": 34,
+        "startChar": 37,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "464d4e4971bfbe5ff0236d35bbc7675d834db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a8193b_292cf538",
+        "filename": "src/chromiumos/tast/services/cros/hps/hps_setting_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-09T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "510a3ecf_cfd40ed5",
       "range": {
         "startLine": 34,
         "startChar": 37,
