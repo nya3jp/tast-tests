@@ -16,6 +16,40 @@
       "message": "Hi,\n\nCan you take a look please?\n\nThanks,\nYuta",
       "revId": "7679506969b51859c98658579ee98c0e501e233a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3bb43b_3d8c5fbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-09T00:53:36Z",
+      "side": 1,
+      "message": "Please mention the cookie thing here.",
+      "revId": "7679506969b51859c98658579ee98c0e501e233a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "044f11ef_6da0435e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-09T00:53:36Z",
+      "side": 1,
+      "message": "Do you need the prefix match?\n\nI think you can just do\n...split(\u0027; \u0027).includes(\"%s\")",
+      "revId": "7679506969b51859c98658579ee98c0e501e233a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
