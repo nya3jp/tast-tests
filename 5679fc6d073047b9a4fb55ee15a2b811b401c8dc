@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "75ee462b_33070f8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-09T03:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98d607ea_1a7bef11",
+      "revId": "5679fc6d073047b9a4fb55ee15a2b811b401c8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "33ac7cf9_f4a3f6dc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-06T09:31:54Z",
       "side": 1,
       "message": "LGTM % nit.\n\nPlease +1 on Verified. Did you manage to check that fix on the leased device?\n\n\nCCed Gabor concerning AU and its constraints on kernelnext boards.",
+      "revId": "5679fc6d073047b9a4fb55ee15a2b811b401c8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9c2062_a3d65450",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-09T03:52:38Z",
+      "side": 1,
+      "message": "\u003e LGTM % nit.\n\u003e \n\u003e Please +1 on Verified. Did you manage to check that fix on the leased device?\n\u003e \n\u003e \n\u003e CCed Gabor concerning AU and its constraints on kernelnext boards.\n\nI checked on my local DUT (eve) by overwriting BOARD in /etc/lsb-release and it was working. I guess this is good enough?",
+      "parentUuid": "5e26baf3_2d66bd84",
       "revId": "5679fc6d073047b9a4fb55ee15a2b811b401c8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
