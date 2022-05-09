@@ -190,7 +190,7 @@ func (cv *ChromeVoxConn) SetVoice(ctx context.Context, vd VoiceData) error {
 			// Wait for ChromeVox's current voice to update.
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				var actualVoicename string
-				if err := cv.Eval(ctx, "getCurrentVoice()", &actualVoicename); err != nil {
+				if err := cv.Eval(ctx, "ChromeVoxState.backgroundTts.currentVoice", &actualVoicename); err != nil {
 					return err
 				}
 
