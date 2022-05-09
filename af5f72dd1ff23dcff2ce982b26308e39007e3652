@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "792db7e2_6d95f3f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-09T16:27:31Z",
+      "side": 1,
+      "message": "Usually `[]` denote something optional whereas `DUT` is required and should be wrapped in `\u003c\u003e`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "af5f72dd1ff23dcff2ce982b26308e39007e3652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1c4eb0da_9ba5758c",

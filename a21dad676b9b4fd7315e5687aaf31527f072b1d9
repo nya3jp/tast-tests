@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f9de0c_dab492e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-09T16:27:31Z",
+      "side": 0,
+      "message": "It looks like the preexisting code always opens media_track_advanced_controls.html in Ash Chrome, and your CL fixes that bug, but the commit message makes it sound like you are just refactoring. If anything, the commit message should focus more on the fact that you are fixing this bug.",
+      "range": {
+        "startLine": 648,
+        "startChar": 14,
+        "endLine": 648,
+        "endChar": 16
+      },
+      "revId": "a21dad676b9b4fd7315e5687aaf31527f072b1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
