@@ -16,6 +16,115 @@
       "message": "Thanks for the review!",
       "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e36a60d_e4c320f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-09T17:06:19Z",
+      "side": 1,
+      "message": "if _, err :\u003d ash.WaitForNotification(ctx, tconn, timeout,\n\t\tash.WaitIDContains(\"notification-ui-manager\"),\n\t\tash.WaitMessageContains(\"unknown_malware.zip\"),\n\t); err !\u003d nil {",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 16
+      },
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b88c58_033bb22d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-09T17:06:19Z",
+      "side": 1,
+      "message": "nit: For simplicity, you can set `retDconn` immediately. You do not have to worry about a \"bad\" value of `retDconn` being used, because if you detect an error, then `GetCleanDconnSafebrowsing` will simply return an error.\n\t\tvar err error\n\t\tretDconn, err \u003d br.NewConn(ctx, \"chrome://safe-browsing/#tab-deep-scan\")\n\nThen you can rename `retDconn` to `dconnSafebrowsing`.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 84
+      },
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a3cd7b_16caa4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-09T17:06:19Z",
+      "side": 1,
+      "message": "For maintainability, the generally accepted way to handle cleanup in this case is to write\n\t\tsuccess :\u003d false\n\t\tdefer func() {\n\t\t\tif success {\n\t\t\t\treturn\n\t\t\t}\n\t\t\tif err :\u003d retDconn.CloseTarget(cleanupCtx); err !\u003d nil {\n\t\t\t\ttesting.ContextLog(cleanupCtx, \"Failed to close browser window: \", err)\n\t\t\t}\n\t\t\tif err :\u003d retDconn.Close(); err !\u003d nil {\n\t\t\t\ttesting.ContextLog(cleanupCtx, \"Failed to close dconn: \", err)\n\t\t\t}\n\t\t}\n\nand then set `success \u003d true` when you return nil.",
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7af0db_103c38a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-09T17:06:19Z",
+      "side": 1,
+      "message": "This is not something that needs to be checked here. Either `testing.Poll` will return an error, or we will have a valid `dconn`.",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 19
+      },
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443b0510_58c69be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-09T17:06:19Z",
+      "side": 1,
+      "message": "if _, err :\u003d os.Stat(filesapp.DownloadPath + dlFileName); !os.IsNotExist(err) {",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 28
+      },
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
