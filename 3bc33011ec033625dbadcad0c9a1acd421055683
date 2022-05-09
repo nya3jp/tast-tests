@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b40b0e_6992c1be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-09T06:22:45Z",
+      "side": 1,
+      "message": "`unrecognized vulnerability status`. Also, we should print the message for debugging.",
+      "range": {
+        "startLine": 228,
+        "startChar": 48,
+        "endLine": 228,
+        "endChar": 59
+      },
+      "revId": "3bc33011ec033625dbadcad0c9a1acd421055683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
