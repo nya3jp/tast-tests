@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8432a7a_997d8203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-09T05:11:53Z",
+      "side": 1,
+      "message": "I feel that we don\u0027t need `flagFound` to control the flow. I think we can return `flags` directly here.\n\nAnd after the `for` loop, return `errors.New(\"no flags found in /proc/cpuinfo\")` directly.",
+      "range": {
+        "startLine": 185,
+        "startChar": 7,
+        "endLine": 185,
+        "endChar": 16
+      },
+      "revId": "83615bbee2ba48f13acc234478dd7999227adc70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
