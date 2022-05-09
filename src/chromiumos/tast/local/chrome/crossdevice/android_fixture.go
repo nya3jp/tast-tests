@@ -55,6 +55,8 @@ const (
 	crossDevicePerBoxUsername5 = "crossdevice.PerBoxUser5"
 	crossDevicePerBoxUsername6 = "crossdevice.PerBoxUser6"
 	crossDevicePerBoxUsername7 = "crossdevice.PerBoxUser7"
+	crossDevicePerBoxUsername8 = "crossdevice.PerBoxUser8"
+	crossDevicePerBoxUsername9 = "crossdevice.PerBoxUser9"
 	crossDevicePerBoxPassword  = "crossdevice.PerBoxPassword"
 )
 
@@ -79,6 +81,8 @@ func init() {
 			crossDevicePerBoxUsername5,
 			crossDevicePerBoxUsername6,
 			crossDevicePerBoxUsername7,
+			crossDevicePerBoxUsername8,
+			crossDevicePerBoxUsername9,
 			crossDevicePerBoxPassword,
 		},
 		SetUpTimeout:    3 * time.Minute,
@@ -107,6 +111,8 @@ func init() {
 			crossDevicePerBoxUsername5,
 			crossDevicePerBoxUsername6,
 			crossDevicePerBoxUsername7,
+			crossDevicePerBoxUsername8,
+			crossDevicePerBoxUsername9,
 			crossDevicePerBoxPassword,
 		},
 		SetUpTimeout:    3 * time.Minute,
@@ -134,6 +140,8 @@ func init() {
 			crossDevicePerBoxUsername5,
 			crossDevicePerBoxUsername6,
 			crossDevicePerBoxUsername7,
+			crossDevicePerBoxUsername8,
+			crossDevicePerBoxUsername9,
 			crossDevicePerBoxPassword,
 		},
 		SetUpTimeout:    3 * time.Minute,
@@ -266,6 +274,12 @@ func GetLoginCredentials(ctx context.Context, s *testing.FixtState, feature Feat
 	// chromeos15-row3-metro4-unit1
 	case "172.27.212.253", "172.27.212.254":
 		username = crossDevicePerBoxUsername7
+	// chromeos15-row3-metro4-unit2
+	case "172.27.213.10", "172.27.213.11":
+		username = crossDevicePerBoxUsername8
+	// chromeos15-row3-metro1-unit1
+	case "100.115.21.2", "100.115.21.3":
+		username = crossDevicePerBoxUsername9
 	default:
 		switch feature.Name {
 		case SmartLock:
