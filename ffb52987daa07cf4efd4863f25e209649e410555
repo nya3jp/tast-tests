@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8a302b4_19a5122f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-09T22:17:50Z",
+      "side": 0,
+      "message": "I think crrev/c/3572476, which was supposed to collect metrics from both ash and lacros, got (probably unknowingly) overwritten by crrev/c/3574165. \nGiven the current code, it looks like you\u0027re right -- I\u0027ll update bTconn accordingly.\n\nLeaving this unresolved until @alemate can confirm.",
+      "parentUuid": "6fc0461d_6d277014",
+      "revId": "ffb52987daa07cf4efd4863f25e209649e410555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85867dad_eaacadbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
         "patchSetId": 8
@@ -49,6 +67,24 @@
       "writtenOn": "2022-05-09T18:04:21Z",
       "side": 0,
       "message": "same qn as before - don\u0027t we need this for lacros?",
+      "revId": "ffb52987daa07cf4efd4863f25e209649e410555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8031e63_aeb48fef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-09T22:17:50Z",
+      "side": 0,
+      "message": "Yes -- corrected based on Yichen\u0027s comment above",
+      "parentUuid": "85867dad_eaacadbb",
       "revId": "ffb52987daa07cf4efd4863f25e209649e410555",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
