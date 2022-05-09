@@ -41,8 +41,8 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:      "quick",
-			Val:       videoDuration{minutes: 5},
-			Timeout:   10 * time.Minute,
+			Val:       videoDuration{minutes: 4},
+			Timeout:   15 * time.Minute,
 			Fixture:   "chromeLoggedIn",
 			ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
@@ -139,7 +139,9 @@ func YoutubeAudioStress(ctx context.Context, s *testing.State) {
 	if err := ytbWeb.OpenAndPlayVideo(ctx); err != nil {
 		s.Fatalf("Failed to open %s: %v", videoSource.URL, err)
 	}
-
+	if err = ytbWeb.Play()(ctx); err != nil {
+		s.Fatal("Failed to play the video: ", err)
+	}
 	if err := ytbWeb.PerformFrameDropsTest(ctx); err != nil {
 		s.Error("Failed to play video without frame drops: ", err)
 	}
@@ -196,6 +198,9 @@ func YoutubeAudioStress(ctx context.Context, s *testing.State) {
 		}
 		if deviceName != devName {
 			return errors.Errorf("failed to route the audio through expected audio node: got %q; want %q", devName, deviceName)
+		}
+		if err := ytbWeb.PerformFrameDropsTest(ctx); err != nil {
+			return errors.Wrap(err, "failed to play video without frame drops")
 		}
 		elapsed := float64(time.Now().Unix() - startTime)
 		if elapsed < endTime {
