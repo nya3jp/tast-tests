@@ -22,6 +22,30 @@
       },
       "revId": "5258987e288961a273567ae0931bf8de9974a9b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "076f9608_0d78532d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-05-09T08:42:25Z",
+      "side": 1,
+      "message": "Covering cert in VPNUITest SGTM.",
+      "parentUuid": "34a51aee_d4bfd626",
+      "range": {
+        "startLine": 225,
+        "startChar": 5,
+        "endLine": 225,
+        "endChar": 34
+      },
+      "revId": "5258987e288961a273567ae0931bf8de9974a9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
