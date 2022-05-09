@@ -16,6 +16,24 @@
       "message": "Here you\u0027re still opening the page in Ash.\nPlease take a look at the guide for how to do in the browser indicated by browserType:\nhttps://docs.google.com/document/d/1MtkFEB5t5bWHLht_g7qk3oSq6EvAjyN_n-zWvQU9CiA/edit?resourcekey\u003d0-MFe2_R4LkfwXgHUZVUJzOQ#bookmark\u003did.oqcve93xlx54",
       "revId": "b2acb6c6f751a69b94a10d1cff5d2eb1fc6e6ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71fd0675_ca4700a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_track_advanced_controls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-09T02:33:41Z",
+      "side": 1,
+      "message": "Many thanks for catching this issue. Just uploaded https://crrev.com/c/3631395 to fix it.",
+      "parentUuid": "6fb8f0ee_7aa2c392",
+      "revId": "b2acb6c6f751a69b94a10d1cff5d2eb1fc6e6ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
