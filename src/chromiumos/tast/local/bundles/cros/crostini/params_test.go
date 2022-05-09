@@ -109,6 +109,10 @@ var perfTests = map[string]time.Duration{
 	"vim_compile.go":   12 * time.Minute,
 }
 
+var perfTestsExtraData = map[string][]string{
+	"vim_compile.go": {"vim.tar.gz"},
+}
+
 var mainlineExpensiveTests = map[string]time.Duration{
 	"backup_restore.go": 10 * time.Minute,
 	"fs_corruption.go":  10 * time.Minute,
@@ -122,6 +126,7 @@ func TestExpensiveParams(t *testing.T) {
 			MinimalSet:    true,
 			IsNotMainline: true,
 			UseFixture:    true,
+			ExtraData:     perfTestsExtraData[filename],
 		}})
 		genparams.Ensure(t, filename, params)
 	}
