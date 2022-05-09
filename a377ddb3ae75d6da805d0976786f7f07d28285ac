@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4eae03a_e27dca8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-09T03:59:42Z",
+      "side": 1,
+      "message": "This make sure that all the files in that directory are reported by cros_healthd.\n\nMaybe we should use `cmp.Diff()` to make it more clear. `cmp.Diff()` can ignore some fields (in this case we don\u0027t want to check the `Status` field). We can read all the files and compare it with the cros_healthd\u0027s result by `cmp.Diff()`.",
+      "parentUuid": "1a23d11e_17503d20",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "a377ddb3ae75d6da805d0976786f7f07d28285ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d7c511e_bcc2d62c",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
         "patchSetId": 9
