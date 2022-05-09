@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77f5bcc4_f2f7463c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-09T05:22:10Z",
+      "side": 1,
+      "message": "I don\u0027t get it. Do you mean \"The values are the same among all CPUs\"?",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "d5bccd2402634a44e21063b55036b91aa670aafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef4c5196_e14f1be8",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
         "patchSetId": 1
