@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "417fc4b8_a3ca2fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-09T23:10:37Z",
+      "side": 0,
+      "message": "\u003e Isn\u0027t this necessary for lacros? Do we have a lacros variant of this test?\n\nbTconn is now moved to AddCollectedMetrics() below and serves the same purpose. This was refactoring per tast owners request https://crrev.com/c/3574165/7..11/src/chromiumos/tast/local/ui/cujrecorder/recorder.go#b79",
+      "parentUuid": "507bb9c0_c89b8433",
+      "revId": "ffb52987daa07cf4efd4863f25e209649e410555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85867dad_eaacadbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
         "patchSetId": 8
