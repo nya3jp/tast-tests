@@ -73,7 +73,15 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 				} else {
 					// Dynamic devices support all modes, whereas static devices
 					// only support the specified mode.
-					supported = len(staticMode) == 0 || (len(staticMode) != 0 && mode == staticMode)
+					var currentMode string
+					// powerd config uses the name "non-tablet" which represents the same power mode as the "notablet"
+					// command argument.
+					if mode == "notablet" {
+						currentMode = "non-tablet"
+					} else {
+						currentMode = mode
+					}
+					supported = len(staticMode) == 0 || (len(staticMode) != 0 && currentMode == staticMode)
 				}
 
 				// Supported modes must not fail, and unsupported modes must not succeed.
