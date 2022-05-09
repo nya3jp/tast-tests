@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e28fb92_4558dcf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/change_device_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T09:49:27Z",
+      "side": 1,
+      "message": "add `Timeout`.",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "37835f729a5c73be8a1203905d677ec5cdfe4355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e60c265_6b9cd0fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/change_device_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T09:49:27Z",
+      "side": 1,
+      "message": "move `cr.Close(cleanupCtx)` here?",
+      "revId": "37835f729a5c73be8a1203905d677ec5cdfe4355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd18687c_dcef7009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/change_device_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T09:49:27Z",
+      "side": 1,
+      "message": "why do we need a sleep here?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "37835f729a5c73be8a1203905d677ec5cdfe4355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "053cd738_23680859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/change_device_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T09:49:27Z",
+      "side": 1,
+      "message": "\"sign-in profile Chrome\"? otherwise, it is identical with Line 36.",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "37835f729a5c73be8a1203905d677ec5cdfe4355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df26e73d_9396a4fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/change_device_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T09:49:27Z",
+      "side": 1,
+      "message": "\"sign-in profile test api\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 32,
+        "endLine": 73,
+        "endChar": 40
+      },
+      "revId": "37835f729a5c73be8a1203905d677ec5cdfe4355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e4101b8_5ab831b0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/language_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T09:49:27Z",
+      "side": 1,
+      "message": "Is this function used anywhere?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "37835f729a5c73be8a1203905d677ec5cdfe4355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a3bd3f_99ff6111",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/language_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-09T09:49:27Z",
+      "side": 1,
+      "message": "Reboot or Restart? IIUC, this is restarting UI, not rebooting the device, as rebooting the device disconnects the ssh connection thus cannot be put in the local tests.",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 50
+      },
+      "revId": "37835f729a5c73be8a1203905d677ec5cdfe4355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
