@@ -19,10 +19,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	chromeDefaultUsername = "testuser@gmail.com"
-)
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NToMChromeLogin,
@@ -85,7 +81,7 @@ func createUserAndCreateTestFile(ctx context.Context, env *util.HwsecEnv, conn *
 	}
 	defer cr.Close(ctx, &empty.Empty{})
 
-	if err := hwsec.WriteUserTestContent(ctx, env.Utility, env.CmdRunner, chromeDefaultUsername, util.TestFile, util.TestFileContent); err != nil {
+	if err := hwsec.WriteUserTestContent(ctx, env.Utility, env.CmdRunner, util.ChromeDefaultUsername, util.TestFile, util.TestFileContent); err != nil {
 		return errors.Wrap(err, "failed to write test content")
 	}
 
@@ -101,7 +97,7 @@ func loginUserAndReadTestFile(ctx context.Context, env *util.HwsecEnv, conn *grp
 	}
 	defer cr.Close(ctx, &empty.Empty{})
 
-	if content, err := hwsec.ReadUserTestContent(ctx, env.Utility, env.CmdRunner, chromeDefaultUsername, util.TestFile); err != nil {
+	if content, err := hwsec.ReadUserTestContent(ctx, env.Utility, env.CmdRunner, util.ChromeDefaultUsername, util.TestFile); err != nil {
 		return errors.Wrap(err, "failed to read test content")
 	} else if !bytes.Equal(content, []byte(util.TestFileContent)) {
 		return errors.Errorf("unexpected test file content: got %q, want %q", string(content), util.TestFileContent)

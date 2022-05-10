@@ -6,7 +6,9 @@ package util
 
 // This file contains some shared constants for autoupdate tests.
 const (
-	TestFile        = "compat_testing_file"
-	EncstatefulFile = "/mnt/stateful_partition/encrypted/file"
-	TestFileContent = "content"
+	TestFile              = "compat_testing_file"
+	EncstatefulFile       = "/mnt/stateful_partition/encrypted/file"
+	TestFileContent       = "content"
+	ChromeDefaultUsername = "testuser@gmail.com"
+	ChromeDefaultPassword = "testpass"
 )
