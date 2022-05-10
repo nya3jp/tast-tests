@@ -52,7 +52,7 @@ func init() {
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stablePkTests,
@@ -61,14 +61,17 @@ func init() {
 			Name:              "vm",
 			Val:               stablePkTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable",
 			Val:               unstablePkTests,
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable_vm",
 			Val:               unstablePkTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
