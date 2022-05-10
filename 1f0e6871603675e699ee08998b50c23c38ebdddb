@@ -33,6 +33,24 @@
       "message": "will this work if the histogram gets reported before we call this method?",
       "revId": "1f0e6871603675e699ee08998b50c23c38ebdddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a6ae24_1e9be717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-10T17:45:56Z",
+      "side": 1,
+      "message": "I had a similar concern initially. But it works. We took a snapshot at L115 into `histo` before `ash.TriggerLauncherStateChange`. `metrics.WaitForHistogramUpdate` compares against `histo`. If the metric is reported before the call, `metrics.WaitForHistogramUpdate` would stop after the first poll.",
+      "parentUuid": "7b5c79d2_8a6b829e",
+      "revId": "1f0e6871603675e699ee08998b50c23c38ebdddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
