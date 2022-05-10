@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
@@ -290,12 +291,19 @@ func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, a *arc
 
 // launchAssetBrowserActivity starts the activity that displays the available apps.
 func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
+	const (
+		playStorePackage     = "com.android.vending"
+		assetBrowserActivity = "com.android.vending.AssetBrowserActivity"
+	)
+
 	if err := optin.ClosePlayStore(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to close Play Store")
 	}
 
+	ash.WaitForHidden(ctx, tconn, playStorePackage)
+
 	testing.ContextLog(ctx, "Starting Asset Browser activity")
-	act, err := arc.NewActivity(a, "com.android.vending", "com.android.vending.AssetBrowserActivity")
+	act, err := arc.NewActivity(a, playStorePackage, assetBrowserActivity)
 	if err != nil {
 		return errors.Wrap(err, "failed to create new activity")
 	}
