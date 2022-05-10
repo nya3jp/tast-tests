@@ -247,7 +247,7 @@ func verifyScannedImage(ctx context.Context, scan string, pageSize scanapp.PageS
 }
 
 // getScannerURI runs `lorgnette_cli list` and parses the output to find the URI
-// for the scanner with `name`.
+// for the scanner with `name`. The function prefers HTTPS URIs over HTTP.
 func getScannerURI(ctx context.Context, name string) (string, error) {
 	out, err := testexec.CommandContext(ctx, "lorgnette_cli", "list").Output()
 	if err != nil {
@@ -259,7 +259,9 @@ func getScannerURI(ctx context.Context, name string) (string, error) {
 		return "", err
 	}
 
+	uri := ""
 	lines := strings.Split(string(out), "\n")
+Loop:
 	for _, line := range lines {
 		match := r.FindStringSubmatch(line)
 		if match == nil || len(match) < 2 {
@@ -268,12 +270,19 @@ func getScannerURI(ctx context.Context, name string) (string, error) {
 
 		for i, submatch := range r.SubexpNames() {
 			if submatch == "uri" {
-				return match[i], nil
+				uri = match[i]
+				if strings.HasPrefix(uri, "https") {
+					break Loop
+				}
 			}
 		}
 	}
 
-	return "", errors.Errorf("failed to parse output: %s", string(out))
+	if uri == "" {
+		return "", errors.Errorf("failed to parse output: %s", string(out))
+	}
+
+	return uri, nil
 }
 
 // getScannerStatus queries the ScannerStatus endpoint for the scanner with eSCL
