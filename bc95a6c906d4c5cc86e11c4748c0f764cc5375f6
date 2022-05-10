@@ -147,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3597654_59631182",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T01:49:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d28ab9f1_d679991a",
+      "range": {
+        "startLine": 956,
+        "startChar": 5,
+        "endLine": 956,
+        "endChar": 28
+      },
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf862714_dc710a84",
@@ -184,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d260a043_9ffda753",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T01:49:07Z",
+      "side": 1,
+      "message": "I see. You may add a comment in front of for-loop:\n\n// The shelf consists of one row of app icons and each icon\u0027s size are the same.",
+      "parentUuid": "7d704f30_ad969edd",
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49946b7a_24bd9e6b",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 6
@@ -213,6 +255,24 @@
       "side": 1,
       "message": "Yes, all icons are the same size. Attach the screenshot of shelf icons in this comment: https://b.corp.google.com/issues/200987400#comment2",
       "parentUuid": "49946b7a_24bd9e6b",
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d6876c_d7323c36",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T01:49:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "41ca3e78_1554bf3c",
       "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
