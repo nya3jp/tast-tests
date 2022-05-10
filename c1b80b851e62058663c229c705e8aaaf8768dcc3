@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0f63c7f_b118e2bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-10T16:31:59Z",
+      "side": 1,
+      "message": "I still see a `.` at the end of the subject. It is not supposed to be there.",
+      "parentUuid": "a5900af2_67123a3a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23601393_913fe6aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
         "patchSetId": 3
