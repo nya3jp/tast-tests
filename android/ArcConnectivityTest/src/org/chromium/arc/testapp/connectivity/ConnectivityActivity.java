@@ -23,7 +23,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Activity for Chrome OS ARC++/ARCVM tast tests which shows the ARC++ global
+ * Activity for ChromeOS ARC++/ARCVM tast tests which shows the ARC++ global
  * proxy and tests the connectivity through the proxy from an ARC app by
  * connecting to a remote target.
  * Note: Starting the network request and getting the result are two separate

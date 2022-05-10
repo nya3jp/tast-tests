@@ -11,7 +11,7 @@ import android.util.Log;
 import java.io.File;
 
 /**
- * Activity for Chrome OS ARCVM AEC audio tast.
+ * Activity for ChromeOS ARCVM AEC audio tast.
  */
 public class TestAECEffectActivity extends MainActivity {
 

@@ -1,7 +1,7 @@
 # Android projects used by Tast tests
 
 This directory contains Android projects that are used by Tast tests. They are
-built at the same time the Chrome OS test image is built, and not updated by
+built at the same time the ChromeOS test image is built, and not updated by
 tast run command automatically.
 
 ## Using an APK under the directory in Tast
