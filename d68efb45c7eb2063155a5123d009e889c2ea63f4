@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c78602a_b2d45d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T12:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ce507e3_d6cb72b3",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f0d90fa_4f102084",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-10T11:57:03Z",
       "side": 1,
       "message": "nit: missing .",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe25720_710e8615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T12:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f0d90fa_4f102084",
       "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8084ce1e_f9e68b12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T12:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d2496eb_d8d5a3e9",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d8010b3_97c687ff",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d00e39cf_c6a97f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T12:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d8010b3_97c687ff",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aac7a938_22989f68",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-05-10T11:57:03Z",
       "side": 1,
       "message": "nit: missing .",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98c715f3_ca6c6bf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T12:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aac7a938_22989f68",
       "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
