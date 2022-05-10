@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -35,7 +36,8 @@ func DragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, 
 	}
 
 	center := w.OverviewInfo.Bounds.CenterPoint()
-	target := info.Bounds.RightCenter()
+	// The possible x coord on a touchscreen is [0, info.Bounds.Width).
+	target := info.Bounds.RightCenter().Sub(coords.NewPoint(1, 0))
 	if primary {
 		target = info.Bounds.LeftCenter()
 	}
