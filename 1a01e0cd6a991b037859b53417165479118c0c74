@@ -134,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4853942f_e659af4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-10T23:19:47Z",
+      "side": 1,
+      "message": "Hmm, then we should change it to:\n\"\" /*conformationCode*/\nAnd if that doesn\u0027t work, maybe define an empty confirmationCode var.",
+      "parentUuid": "3b4398ef_b711de07",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9b1258d_ecf034e1",
