@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb0bb82_21b5cedb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-10T15:41:18Z",
+      "side": 1,
+      "message": "OK, then that\u0027s fine.",
+      "revId": "aea375aa557149fcafc4c0dd4762be3e13df2c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09bddccb_bade79b4",
