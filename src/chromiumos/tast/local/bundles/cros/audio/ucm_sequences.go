@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,6 +30,12 @@ func init() {
 		Contacts: []string{"aaronyu@google.com", "chromeos-audio-bugs@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Timeout:  1 * time.Minute,
+		HardwareDeps: hwdep.D(
+			// TODO(b/231276793): eve hotword broken.
+			hwdep.SkipOnModel("eve"),
+			// TODO(b/231671430): vilboz does not free PCM properly.
+			hwdep.SkipOnModel("vilboz", "vilboz14", "vilboz360"),
+		),
 		Params: []testing.Param{
 			{
 				Name: "section_verb",
