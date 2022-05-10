@@ -103,6 +103,24 @@
       "parentUuid": "c62f7836_02ddd6d5",
       "revId": "7e8a200f8334836061d8ae5e9516bfab02a21373",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6adbb957_d0e42add",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136302
+      },
+      "writtenOn": "2022-05-10T06:35:17Z",
+      "side": 1,
+      "message": "SetUpWithURL not working with chrome://newtab is a known issue. Does the page matter for you? If not, you can use chrome.BlankURL (about:blank) instead.",
+      "parentUuid": "cd3858fc_86733032",
+      "revId": "7e8a200f8334836061d8ae5e9516bfab02a21373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
