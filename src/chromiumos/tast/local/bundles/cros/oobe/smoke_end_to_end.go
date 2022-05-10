@@ -33,16 +33,28 @@ func init() {
 			"ui.signinProfileTestExtensionManifestKey",
 			"ui.gaiaPoolDefault",
 		},
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name: "polymer3",
+			Val:  true,
+		}},
 	})
 }
 
 func SmokeEndToEnd(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx,
+	polymer3 := s.Param().(bool)
+	options := []chrome.Option{
 		chrome.NoLogin(),
 		chrome.DontSkipOOBEAfterLogin(),
 		chrome.DeferLogin(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")))
+		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+	}
+	if polymer3 {
+		options = append(options, chrome.EnableFeatures("EnableOobePolymer3"))
+	}
+	cr, err := chrome.New(ctx, options...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -71,7 +83,7 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 	}
 
 	focusedButton := nodewith.State(state.Focused, true).Role(role.Button)
-	if err := uiauto.Combine("Click next on the welcome screen",
+	if err := uiauto.Combine("click next on the welcome screen",
 		ui.WaitUntilExists(focusedButton),
 		ui.LeftClick(focusedButton),
 	)(ctx); err != nil {
@@ -118,7 +130,7 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get eula next button name: ", err)
 		}
 		eulaScreenNextButton := nodewith.Role(role.Button).Name(eulaNextButton)
-		if err := uiauto.Combine("Click next on the EULA screen",
+		if err := uiauto.Combine("click next on the EULA screen",
 			// Button is not focused on the screen. We focus the webview with EULA by default.
 			ui.WaitUntilExists(eulaScreenNextButton.State(state.Focused, false)),
 			ui.LeftClickUntil(eulaScreenNextButton, ui.Gone(eulaScreenNextButton)),
@@ -132,7 +144,10 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the user creation screen to be visible: ", err)
 	}
 
-	if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+	if err := uiauto.Combine("click next on the user creation screen",
+		ui.WaitUntilExists(focusedButton),
+		ui.LeftClick(focusedButton),
+	)(ctx); err != nil {
 		s.Fatal("Failed to click user creation screen next button: ", err)
 	}
 
@@ -150,7 +165,10 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.SyncScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the sync creation screen to be visible: ", err)
 	}
-	if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+	if err := uiauto.Combine("click next on the sync screen",
+		ui.WaitUntilExists(focusedButton),
+		ui.LeftClick(focusedButton),
+	)(ctx); err != nil {
 		s.Fatal("Failed to continue on the sync screen: ", err)
 	}
 
@@ -167,7 +185,10 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for the fingerprint screen to be visible: ", err)
 		}
 
-		if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+		if err := uiauto.Combine("click next on the fingerprint screen",
+			ui.WaitUntilExists(focusedButton),
+			ui.LeftClick(focusedButton),
+		)(ctx); err != nil {
 			s.Fatal("Failed to skip on the fingerprint screen: ", err)
 		}
 	}
@@ -205,7 +226,10 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.MarketingOptInScreen.isVisible()"); err != nil {
 			s.Fatal("Failed to wait for the marketing opt-in screen to be visible: ", err)
 		}
-		if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+		if err := uiauto.Combine("click next on the marketing-optin screen",
+			ui.WaitUntilExists(focusedButton),
+			ui.LeftClick(focusedButton),
+		)(ctx); err != nil {
 			s.Fatal("Failed to continue on the marketing opt-in screen: ", err)
 		}
 	}
