@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0bea4bc_d631ad59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/change_device_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-10T01:34:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92fab7e8_6a092729",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "01eeffbfb57caabb70700ad14fa93aa9abf35238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1055c6e6_b4deda12",
@@ -132,6 +156,30 @@
       "writtenOn": "2022-05-10T01:19:45Z",
       "side": 1,
       "message": "it is better to create consts for this, and \"chinese\", \"Chinese (Simplified)\" at Line 56.",
+      "range": {
+        "startLine": 78,
+        "startChar": 60,
+        "endLine": 78,
+        "endChar": 62
+      },
+      "revId": "01eeffbfb57caabb70700ad14fa93aa9abf35238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3857846f_ab3c57fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/change_device_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-10T01:34:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1055c6e6_b4deda12",
       "range": {
         "startLine": 78,
         "startChar": 60,
