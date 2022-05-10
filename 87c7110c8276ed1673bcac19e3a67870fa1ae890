@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c92312ab_1422f0c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-10T03:02:48Z",
+      "side": 1,
+      "message": "I didn\u0027t check why. My guess is there is a race in the chrome code. As a user, either version (empty or not) makes sense to me.",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 61
+      },
+      "revId": "87c7110c8276ed1673bcac19e3a67870fa1ae890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
