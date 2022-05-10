@@ -1,0 +1,13 @@
+[
+	{
+		"driver": "devlink(t7xx)",
+		"boards": ["brya"],
+		"syscalls": [
+			"socket$nl_generic",
+			"syz_init_net_socket$nl_generic",
+			"syz_genetlink_get_family_id$devlink",
+			"sendmsg$DEVLINK_CMD_FLASH_UPDATE",
+			"sendmsg$DEVLINK_CMD_REGION_READ"
+		]
+	}
+]

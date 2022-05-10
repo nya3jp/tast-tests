@@ -94,6 +94,11 @@ type fuzzEnvConfig struct {
 	Syscalls []string `json:"syscalls"`
 }
 
+const (
+	enabledSyscallsBrya    string = "enabled_syscalls_brya.json"
+	enabledSyscallsNonBrya string = "enabled_syscalls.json"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Wrapper,
@@ -107,17 +112,21 @@ func init() {
 		// stopping. The overall test duration is 32 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
-		Data:    []string{"testing_rsa", "enabled_syscalls.json"},
+		Data:    []string{"testing_rsa"},
 		VarDeps: []string{"syzkaller.Wrapper.botoCredSection"},
 		Params: []testing.Param{
 			{
 				// This testcase should only run on brya devices.
 				Name:              "brya_cellular",
+				Val:               enabledSyscallsBrya,
+				ExtraData:         []string{enabledSyscallsBrya},
 				ExtraHardwareDeps: hwdep.D(hwdep.Cellular(), hwdep.Model(bryaModels()...)),
 			},
 			{
 				// This testcase should only run on non-brya devices.
 				Name:              "non_brya",
+				Val:               enabledSyscallsNonBrya,
+				ExtraData:         []string{enabledSyscallsNonBrya},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(bryaModels()...)),
 			},
 		},
@@ -198,8 +207,11 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to chmod sshkey to 0600: ", err)
 	}
 
+	param := s.Param().(string)
+	s.Log("Loading enabled syscalls from: ", param)
+
 	// Read enabled_syscalls.
-	drivers, enabledSyscalls, scriptContents, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.json"), board)
+	drivers, enabledSyscalls, scriptContents, err := loadEnabledSyscalls(s.DataPath(param), board)
 	if err != nil {
 		s.Fatal("Unable to load enabled syscalls: ", err)
 	}
