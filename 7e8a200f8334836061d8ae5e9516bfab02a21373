@@ -50,6 +50,24 @@
       "message": "Sorry, I was OOO. What were the issues you encountered with SetUpWithURL? It should work if it\u0027s passed chrome.NewTabURL (i.e. chrome://newtab/). If it doesn\u0027t work we definitely consider it a bug. IIRC SetUp also should make chrome://newtab/\n\nThanks!",
       "revId": "7e8a200f8334836061d8ae5e9516bfab02a21373",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac7c168_3f621583",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-10T06:06:46Z",
+      "side": 1,
+      "message": "By the way, feel free to submit for now to unbreak the test.",
+      "parentUuid": "7056f8ad_a00d71e7",
+      "revId": "7e8a200f8334836061d8ae5e9516bfab02a21373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
