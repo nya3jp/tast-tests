@@ -39,6 +39,30 @@
       },
       "revId": "6eec3de302e014a346bba0aa59c23300e740602e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa19806_54772c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-10T04:43:54Z",
+      "side": 1,
+      "message": "Go doesn\u0027t allow this spread of extraOpts as part of a variadic parameter list. Making it work would make it look more ugly I think, so I\u0027d rather keep it as is.",
+      "parentUuid": "30b24a7d_2e65af11",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 115
+      },
+      "revId": "6eec3de302e014a346bba0aa59c23300e740602e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
