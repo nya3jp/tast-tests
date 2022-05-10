@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5900af2_67123a3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e1d6090_3fb5b3a3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23601393_913fe6aa",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-03T18:28:26Z",
       "side": 1,
       "message": "No `,` here.",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf5e27b7_fee558c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23601393_913fe6aa",
       "range": {
         "startLine": 39,
         "startChar": 7,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e22872_51f8fe94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d6d679_291d4165",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5547768b_a744f7a3",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-03T18:28:26Z",
       "side": 1,
       "message": "Just `s.CliCmd` should work.",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c68443_602b2f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5547768b_a744f7a3",
       "range": {
         "startLine": 101,
         "startChar": 23,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c11638_3c1c8b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1acc092e_63cb7162",
+      "range": {
+        "startLine": 109,
+        "startChar": 23,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07ceeb12_1631a4f3",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c05217_df752994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ceeb12_1631a4f3",
+      "range": {
+        "startLine": 135,
+        "startChar": 25,
+        "endLine": 135,
+        "endChar": 40
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64e0f230_965698ab",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-05-03T18:28:26Z",
       "side": 1,
       "message": "if err :\u003d ap.Start(fullCtx); err !\u003d nil {",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 16
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41238cc2_abd2222f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64e0f230_965698ab",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -208,6 +376,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ac63b9_7b92b148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe29e84c_4d2253e8",
+      "range": {
+        "startLine": 30,
+        "startChar": 54,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13936a48_810f0123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b6b945e_542cf61f",
+      "range": {
+        "startLine": 30,
+        "startChar": 46,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09952422_1c21a13b",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-05-03T18:28:26Z",
       "side": 1,
       "message": "Should this be `authenticate`?",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd6a780_f725376c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09952422_1c21a13b",
       "range": {
         "startLine": 42,
         "startChar": 4,
@@ -277,6 +517,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe8c12dd_63e9a95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce6783b_7cecf213",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c574c0_fa29b5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42d7e204_6b090cdb",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d84610ec_c0859214",
@@ -290,6 +578,30 @@
       "writtenOn": "2022-05-03T18:28:26Z",
       "side": 1,
       "message": "nit:\n\tdefault:\n\t\treturn \"\", errors.Errorf(\"unsupported authentication method: %v\", c.Auth)\n\t}\n\nThis way, you can have no `return` statement after the `switch` statement, and then the compiler will effectively verify that every `case` of the `switch` statement returns something as it should.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 74
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a41870d_d16361ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d84610ec_c0859214",
       "range": {
         "startLine": 126,
         "startChar": 0,
@@ -323,6 +635,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0bdd17b_822c4002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17d43659_989ab6cd",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 14
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ca22833_0d3c13cd",
@@ -336,6 +672,30 @@
       "writtenOn": "2022-05-03T18:28:26Z",
       "side": 1,
       "message": "`interacting`",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f582b86_1ab7610e",
+        "filename": "src/chromiumos/tast/local/hostapd/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ca22833_0d3c13cd",
       "range": {
         "startLine": 6,
         "startChar": 3,
@@ -369,6 +729,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93be33b1_c9468f88",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c49f84e3_0b71a98e",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db432e7b_edc9fa67",
@@ -392,6 +776,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d57d071_d50a2917",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db432e7b_edc9fa67",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a701e967_abdc21f2",
@@ -405,6 +813,30 @@
       "writtenOn": "2022-05-03T18:28:26Z",
       "side": 1,
       "message": "Just write `nil` here, and get rid of the `stas` variable.",
+      "range": {
+        "startLine": 117,
+        "startChar": 9,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "c1b80b851e62058663c229c705e8aaaf8768dcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4aabb8_773510cb",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T07:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a701e967_abdc21f2",
       "range": {
         "startLine": 117,
         "startChar": 9,
