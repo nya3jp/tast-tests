@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef008599_f302f41d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-10T02:45:59Z",
+      "side": 1,
+      "message": "Capitalize it. And add a period in the end of this comment.",
+      "range": {
+        "startLine": 202,
+        "startChar": 6,
+        "endLine": 202,
+        "endChar": 7
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
