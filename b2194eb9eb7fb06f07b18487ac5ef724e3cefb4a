@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eadbeba_924f6d32",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2022-05-10T20:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a62774_bb87b9ba",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 44
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0fc2e13_6ada09e3",
@@ -189,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62abbe66_7b00a60f",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2022-05-10T20:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ebc4212_b5ba8237",
+      "range": {
+        "startLine": 267,
+        "startChar": 49,
+        "endLine": 267,
+        "endChar": 50
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eed81610_1206a950",
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "removed the function",
       "parentUuid": "eed81610_1206a950",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 30
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f12e93_8849f4b2",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2022-05-10T20:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55cc3207_b0c2f9e2",
       "range": {
         "startLine": 270,
         "startChar": 2,
