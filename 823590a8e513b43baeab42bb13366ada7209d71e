@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda0fbcd_f97cf58f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "282bf942_5031b7a0",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d23ef5a9_74ac9aa5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-04T07:36:40Z",
       "side": 1,
       "message": "nit: document what this means.",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8666365_78f099f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d23ef5a9_74ac9aa5",
       "range": {
         "startLine": 23,
         "startChar": 31,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6b07f44_2e81372d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5f47694_76a697c9",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e90dbb9c_9f3cb19d",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-04T07:36:40Z",
       "side": 1,
       "message": "Capital F",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87814962_5eb9c847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e90dbb9c_9f3cb19d",
       "range": {
         "startLine": 46,
         "startChar": 25,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e00fbb_48fc9f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5a9b5ec_c7a3179a",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b038bb35_34d90211",
@@ -127,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f611bd0_f6d32806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b038bb35_34d90211",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fa54a63_b953dcae",
@@ -140,6 +272,24 @@
       "writtenOn": "2022-05-04T07:36:40Z",
       "side": 1,
       "message": "nit: move inside if",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4b3cf0_08990064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fa54a63_b953dcae",
       "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +313,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "825b06d9_7b731115",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Actually that\u0027s the point. We want the defer to \"ReleaseInterface\" if and only if an error occurs later in the function.",
+      "parentUuid": "a942842f_7b60717c",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab2423cc_b9141667",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
         "patchSetId": 3
@@ -174,6 +342,30 @@
       "writtenOn": "2022-05-04T07:36:40Z",
       "side": 1,
       "message": "No need to rename err here, if introduces a new scope",
+      "range": {
+        "startLine": 94,
+        "startChar": 7,
+        "endLine": 94,
+        "endChar": 11
+      },
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3216e2e6_fba77f79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab2423cc_b9141667",
       "range": {
         "startLine": 94,
         "startChar": 7,
@@ -209,6 +401,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3677c161_387be54b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "If we reach there, we already called `Fatal()` (this `runtime.Goexit()`), just log an error seems to be enough to me.",
+      "parentUuid": "51c3b0a1_209508e0",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a632d45f_5e5411eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
         "patchSetId": 3
@@ -220,6 +436,24 @@
       "writtenOn": "2022-05-04T07:36:40Z",
       "side": 1,
       "message": "Same as above, you can collapse this into an if else if",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "004deb51_e3c83f6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a632d45f_5e5411eb",
       "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -241,6 +475,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06119cb9_a5ee56c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6eac418_5177b0ef",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b8cdfcb_b7afb6e0",
@@ -254,6 +506,24 @@
       "writtenOn": "2022-05-04T07:36:40Z",
       "side": 1,
       "message": "Land this test only when something can be tested.",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21cab38_c5f522ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:12:12Z",
+      "side": 1,
+      "message": "The idea was to show how the fixture is used (same for the hostapd package in the next patch) to ease the reviews. This \"fake\" test is dropped in the 3rd patch of the serie to be replaced by a real test.\nBut if that\u0027s a blocker for you, I can remove it.",
+      "parentUuid": "2b8cdfcb_b7afb6e0",
       "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
