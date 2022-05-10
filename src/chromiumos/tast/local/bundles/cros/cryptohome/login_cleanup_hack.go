@@ -20,7 +20,7 @@ func init() {
 		Desc: "Test that logging in removes large Chrome logs",
 		Contacts: []string{
 			"vsavu@google.com",     // Test author
-			"gwendal@chromium.com", // Lead for Chrome OS Storage
+			"gwendal@chromium.com", // Lead for ChromeOS Storage
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},

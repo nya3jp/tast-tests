@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FontSharing,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Test that font-sharing from Chrome OS to ARC works",
+		Desc:         "Test that font-sharing from ChromeOS to ARC works",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
@@ -61,12 +61,12 @@ func FontSharing(ctx context.Context, s *testing.State) {
 		}
 
 		// Font-sharing should be applied to large font files.
-		// These files must originate from Chrome OS.
+		// These files must originate from ChromeOS.
 		const fontSharingThresholdKB = 1024
 		securityContext := tokens[1]
 		if size >= fontSharingThresholdKB &&
 			securityContext != "u:object_r:cros_usr_dirs:s0" {
-			s.Fatal("Large font file with non-Chrome OS security context: ", line)
+			s.Fatal("Large font file with non-ChromeOS security context: ", line)
 		}
 	}
 }

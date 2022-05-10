@@ -2,5 +2,5 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package wifi contains local Tast tests that exercise the Chrome OS WiFi stack.
+// Package wifi contains local Tast tests that exercise the ChromeOS WiFi stack.
 package wifi

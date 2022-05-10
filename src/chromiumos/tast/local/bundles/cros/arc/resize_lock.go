@@ -615,9 +615,9 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 		{wm.PhoneResizeLockMode, wm.ResizableTogglableResizeLockMode},
 		{wm.ResizableTogglableResizeLockMode, wm.PhoneResizeLockMode},
 	} {
-		// Toggle the resizability state via the Chrome OS setting toggle.
+		// Toggle the resizability state via the ChromeOS setting toggle.
 		if err := wm.ToggleAppManagementSettingToggle(ctx, tconn, a, d, cr, activity, wm.ResizeLockAppName, test.currentMode, test.nextMode, method, keyboard); err != nil {
-			return errors.Wrapf(err, "failed to toggle the resizability state from %s to %s on the Chrome OS settings", test.currentMode, test.nextMode)
+			return errors.Wrapf(err, "failed to toggle the resizability state from %s to %s on the ChromeOS settings", test.currentMode, test.nextMode)
 		}
 	}
 

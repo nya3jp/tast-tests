@@ -92,7 +92,7 @@ func DownloadManager(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	// Check whether the downloaded file is accessible from Chrome OS.
+	// Check whether the downloaded file is accessible from ChromeOS.
 	original, err := ioutil.ReadFile(sourcePath)
 	if err != nil {
 		s.Fatalf("Failed to read %s: %v", sourcePath, err)
@@ -167,7 +167,7 @@ func waitForServerStart(ctx context.Context, localServerPort int) error {
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
-// downloadFileWithApp downloads a file from sourcePath in Chrome OS to
+// downloadFileWithApp downloads a file from sourcePath in ChromeOS to
 // targetPath in Android with an Android app via a local HTTP server.
 // It first sets up reverse port forwarding to connect the local server to an
 // Android port, triggers the download from the connected Android port, and then

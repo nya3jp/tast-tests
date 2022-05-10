@@ -629,7 +629,7 @@ func shiftViaTabAndEnter(ctx context.Context, tconn *chrome.TestConn, target *no
 
 // ToggleAppManagementSettingToggle opens the app-management page for the given app via the shelf icon, toggles the resize lock setting, and verifies the states of the app and the setting toggle.
 func ToggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, appName string, currentMode, nextMode ResizeLockMode, method InputMethodType, keyboard *input.KeyboardEventWriter) error {
-	// This check must be done before opening the Chrome OS settings page so it won't affect the screenshot taken in one of the checks.
+	// This check must be done before opening the ChromeOS settings page so it won't affect the screenshot taken in one of the checks.
 	if err := CheckResizeLockState(ctx, tconn, a, d, cr, activity, currentMode, false /* isSplashVisible */); err != nil {
 		return errors.Wrapf(err, "failed to verify resize lock state of %s", appName)
 	}
@@ -645,11 +645,11 @@ func ToggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestCon
 	switch method {
 	case InputMethodClick:
 		if err := toggleAppManagementSettingToggleViaClick(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to toggle the resize-lock setting toggle on the Chrome OS settings via click")
+			return errors.Wrap(err, "failed to toggle the resize-lock setting toggle on the ChromeOS settings via click")
 		}
 	case InputMethodKeyEvent:
 		if err := shiftViaTabAndEnter(ctx, tconn, nodewith.Name(AppManagementSettingToggleName).Role(role.ToggleButton), keyboard); err != nil {
-			return errors.Wrap(err, "failed to toggle the resize-lock setting toggle on the Chrome OS settings via keyboard")
+			return errors.Wrap(err, "failed to toggle the resize-lock setting toggle on the ChromeOS settings via keyboard")
 		}
 	}
 
@@ -661,7 +661,7 @@ func ToggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestCon
 		return errors.Wrapf(err, "failed to close the app management page of %s", appName)
 	}
 
-	// This check must be done after closing the Chrome OS settings page so it won't affect the screenshot taken in one of the checks.
+	// This check must be done after closing the ChromeOS settings page so it won't affect the screenshot taken in one of the checks.
 	if err := CheckResizeLockState(ctx, tconn, a, d, cr, activity, nextMode, false /* isSplashVisible */); err != nil {
 		return errors.Wrapf(err, "failed to verify resize lock state of %s", activity.ActivityName())
 	}

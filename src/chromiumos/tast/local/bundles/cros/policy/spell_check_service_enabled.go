@@ -127,7 +127,7 @@ func SpellCheckServiceEnabled(ctx context.Context, s *testing.State) {
 			}
 			defer closeBrowser(cleanupCtx)
 
-			// Inside Chrome OS settings, check that the button is restricted and set to the correct value.
+			// Inside ChromeOS settings, check that the button is restricted and set to the correct value.
 			if err := policyutil.SettingsPage(ctx, cr, br, "languages").
 				SelectNode(ctx, nodewith.
 					Role(role.RadioButton).

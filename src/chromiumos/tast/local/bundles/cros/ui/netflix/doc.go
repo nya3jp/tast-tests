@@ -2,5 +2,5 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package netflix provides gmail instance for cuj tests on Chrome OS.
+// Package netflix provides gmail instance for cuj tests on ChromeOS.
 package netflix

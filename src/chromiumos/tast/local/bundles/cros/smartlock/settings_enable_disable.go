@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package smartlock contains tests for the Smart Lock feature in Chrome OS.
+// Package smartlock contains tests for the Smart Lock feature in ChromeOS.
 package smartlock
 
 import (

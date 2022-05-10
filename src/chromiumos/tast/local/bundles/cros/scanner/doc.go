@@ -3,5 +3,5 @@
 // found in the LICENSE file.
 
 // Package scanner contains local Tast tests that exercise scanning
-// functionality for Chrome OS.
+// functionality for ChromeOS.
 package scanner

@@ -140,7 +140,7 @@ func ShowFullUrlsInAddressBar(ctx context.Context, s *testing.State) {
 			}
 
 			// The menu item "Always show full URLs" only shows up when the policy is not set and the
-			// device is not a managed Chrome OS device. Therefore we check that it is never in the menu.
+			// device is not a managed ChromeOS device. Therefore we check that it is never in the menu.
 			if fullURLItemShown := checkAlwaysShowFullURLItem(ctx, ui); fullURLItemShown {
 				s.Error("Unexpected shown menu item")
 			}

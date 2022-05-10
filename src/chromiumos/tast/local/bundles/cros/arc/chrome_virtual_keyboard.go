@@ -494,7 +494,7 @@ func chromeVirtualKeyboardRotationTest(
 		s.Fatal("Failed to wait for the virtual keyboard to be ready: ", err)
 	}
 
-	// Chrome OS virtual keyboard is shown and ready. Let's rotate the device.
+	// ChromeOS virtual keyboard is shown and ready. Let's rotate the device.
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get display info: ", err)

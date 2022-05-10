@@ -25,7 +25,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeOSPageInfo,
 		LacrosStatus: testing.LacrosVariantNeeded,
-		Desc:         "Check the chrome OS page shows enough information to user",
+		Desc:         "Check the ChromeOS page shows enough information to user",
 		Contacts: []string{
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
@@ -62,14 +62,14 @@ func ChromeOSPageInfo(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 	defer faillog.SaveScreenshotOnError(cleanupCtx, cr, s.OutDir(), s.HasError)
 
-	s.Log("Check Chrome OS version")
+	s.Log("Check ChromeOS version")
 	if err := checkVersion(settings)(ctx); err != nil {
-		s.Fatal("Failed to check Chrome OS version: ", err)
+		s.Fatal("Failed to check ChromeOS version: ", err)
 	}
 
 	s.Log("Check update")
 	if err := checkUpdate(settings)(ctx); err != nil {
-		s.Fatal("Failed to check update to Chrome OS: ", err)
+		s.Fatal("Failed to check update to ChromeOS: ", err)
 	}
 
 	s.Log("Check online help")

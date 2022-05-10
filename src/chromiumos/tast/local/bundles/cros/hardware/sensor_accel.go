@@ -17,7 +17,7 @@ func init() {
 		Func: SensorAccel,
 		Desc: "Tests that accelerometer sensors can be read and give valid data",
 		Contacts: []string{
-			"gwendal@chromium.com", // Chrome OS sensors point of contact
+			"gwendal@chromium.com", // ChromeOS sensors point of contact
 			"mathewk@chromium.org", // Test author
 			"chromeos-sensors-eng@google.com",
 		},

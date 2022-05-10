@@ -240,7 +240,7 @@ func dragFromCrostini(ctx context.Context, pre crostini.FixtureData, files *file
 	if isFile {
 		b, err := ioutil.ReadFile(crosPath)
 		if err != nil {
-			return errors.Wrap(err, "read the file in Chrome OS")
+			return errors.Wrap(err, "read the file in ChromeOS")
 		}
 		if string(b) != path {
 			return errors.Errorf("verify the content of the file: got %s, want %s", string(b), path)

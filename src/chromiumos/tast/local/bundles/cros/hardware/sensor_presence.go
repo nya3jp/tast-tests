@@ -17,7 +17,7 @@ func init() {
 		Func: SensorPresence,
 		Desc: "Tests that all sensors defined in model.yaml are present in the system",
 		Contacts: []string{
-			"gwendal@chromium.com", // Chrome OS sensors point of contact
+			"gwendal@chromium.com", // ChromeOS sensors point of contact
 			"mathewk@chromium.org", // Test author
 			"jettrink@chromium.org",
 			"chromeos-sensors-eng@google.com",

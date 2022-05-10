@@ -183,7 +183,7 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to create a folder in : ", err)
 		}
 
-		// Create a file in a temp directory in Chrome OS and push it to the container.
+		// Create a file in a temp directory in ChromeOS and push it to the container.
 		dir, err := ioutil.TempDir("", "tempDir")
 		if err != nil {
 			s.Fatal("Failed to create a temp directory: ", err)
@@ -192,7 +192,7 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 
 		filePath := filepath.Join(dir, testFile)
 		if err := ioutil.WriteFile(filePath, []byte(testString), 0644); err != nil {
-			s.Fatal("Failed to create file in Chrome OS: ", err)
+			s.Fatal("Failed to create file in ChromeOS: ", err)
 		}
 		defer os.Remove(filePath)
 		if err := cont.PushFile(ctx, filePath, filepath.Join(sharedfolders.MountPathDownloads, testFile)); err != nil {
@@ -206,10 +206,10 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to find the newly created files in Downloads: ", err)
 		}
 
-		// Check the content of the test file in Chrome OS.
+		// Check the content of the test file in ChromeOS.
 		b, err := ioutil.ReadFile(filepath.Join(filesapp.DownloadPath, testFile))
 		if err != nil {
-			s.Fatal("Failed to read the file in Chrome OS: ", err)
+			s.Fatal("Failed to read the file in ChromeOS: ", err)
 		}
 		if string(b) != testString {
 			s.Fatalf("Failed to verify the content of the file: got %s, want %s", string(b), testString)

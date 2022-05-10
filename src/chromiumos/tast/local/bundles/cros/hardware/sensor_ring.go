@@ -18,7 +18,7 @@ func init() {
 		Func: SensorRing,
 		Desc: "Tests that all sensors in the cros-ec-ring can be enabled and read at their max frequency",
 		Contacts: []string{
-			"gwendal@chromium.com", // Chrome OS sensors point of contact
+			"gwendal@chromium.com", // ChromeOS sensors point of contact
 			"mathewk@chromium.org", // Test author
 			"chromeos-sensors-eng@google.com",
 		},

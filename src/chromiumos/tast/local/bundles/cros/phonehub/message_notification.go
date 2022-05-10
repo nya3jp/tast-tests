@@ -60,7 +60,7 @@ func MessageNotification(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to generate Android message notification: ", err)
 	}
 
-	// Wait for the notification on Chrome OS.
+	// Wait for the notification on ChromeOS.
 	n, err := ash.WaitForNotification(ctx, tconn, 10*time.Second, ash.WaitTitle(title))
 	if err != nil {
 		s.Fatal("Failed waiting for the message notification to appear on CrOS: ", err)
