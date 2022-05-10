@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc82e586_5cde4b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T03:47:07Z",
+      "side": 1,
+      "message": "No longer necessary since equality test doesn\u0027t read MSR anymore.",
+      "parentUuid": "bcb3bc49_94cf99d0",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffbfbe4e_1f54fb1a",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b37eec40_f12fe933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T03:47:07Z",
+      "side": 1,
+      "message": "There is one of two ways to write this. Either we use `uint32`, which is the type used in intel\u0027s `rdmsr.c` and have the most consistency. Or we can use `int64`, which is the type that `file.seek(offset)` accepts, and can avoid type casting in the codebase here.\n\nWhich do you think makes more sense?",
+      "parentUuid": "ffbfbe4e_1f54fb1a",
+      "range": {
+        "startLine": 155,
+        "startChar": 20,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de64de98_2bf8f003",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
         "patchSetId": 10
@@ -60,6 +108,24 @@
       "writtenOn": "2022-05-10T02:58:28Z",
       "side": 1,
       "message": "Define as close as the first used of this.",
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9264b75_5a32ed5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T03:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de64de98_2bf8f003",
       "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -135,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f890faa0_d78b1650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T03:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eacad4f7_52383384",
+      "range": {
+        "startLine": 202,
+        "startChar": 6,
+        "endLine": 202,
+        "endChar": 7
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "216d0ba1_a227e42b",
@@ -148,6 +238,30 @@
       "writtenOn": "2022-05-10T02:58:28Z",
       "side": 1,
       "message": "Is this necessary?",
+      "range": {
+        "startLine": 228,
+        "startChar": 22,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6452960_89ae6741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T03:47:07Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "216d0ba1_a227e42b",
       "range": {
         "startLine": 228,
         "startChar": 22,
@@ -181,6 +295,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7df664_8a29069c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T03:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b104d3_035b8fc3",
+      "range": {
+        "startLine": 232,
+        "startChar": 31,
+        "endLine": 232,
+        "endChar": 35
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bfdc04a_176b50cf",
@@ -194,6 +332,30 @@
       "writtenOn": "2022-05-10T02:58:28Z",
       "side": 1,
       "message": "nit: How about using `cmp.Diff()` for better error messsage?",
+      "range": {
+        "startLine": 286,
+        "startChar": 3,
+        "endLine": 287,
+        "endChar": 69
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4012392_2af0e7fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T03:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bfdc04a_176b50cf",
       "range": {
         "startLine": 286,
         "startChar": 3,
