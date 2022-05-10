@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "69407538_2c1a588c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-10T16:24:24Z",
+      "side": 1,
+      "message": "`tast-tests:` or just leave this part out because the whole repository is tast-tests.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "bbb63afa41adae55241ba74bcf448e51d5fbe1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ee6c6332_9f1302c8",
@@ -48,6 +71,23 @@
       "writtenOn": "2022-05-10T13:26:51Z",
       "side": 1,
       "message": "Thanks, Renato! +tast-owners@",
+      "revId": "bbb63afa41adae55241ba74bcf448e51d5fbe1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00bb0a36_ffda18e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-10T16:24:24Z",
+      "side": 1,
+      "message": "Each name that you pass to `uiauto.Combine` should begin with a lower case letter because here is how it is used:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/action/action.go;drc\u003d80bfb06a760ce7fc91707bab45bac0718fbeb0be;l\u003d42",
       "revId": "bbb63afa41adae55241ba74bcf448e51d5fbe1ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
