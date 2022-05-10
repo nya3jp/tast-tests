@@ -224,6 +224,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22d36e7b_5f05639c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-10T03:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d260a043_9ffda753",
+      "revId": "bc95a6c906d4c5cc86e11c4748c0f764cc5375f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49946b7a_24bd9e6b",
