@@ -4,7 +4,7 @@
 
 // Package main implements the "cros" remote test bundle.
 //
-// This executable contains standard Chrome OS tests.
+// This executable contains standard ChromeOS tests.
 package main
 
 import (

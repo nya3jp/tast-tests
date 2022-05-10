@@ -142,7 +142,7 @@ func (p Paygen) FilterMilestone(milestone int) *Paygen {
 	return &filtered
 }
 
-// FindLatest returns the Delta with the highest Chrome OS Version value.
+// FindLatest returns the Delta with the highest ChromeOS Version value.
 func (p *Paygen) FindLatest() (*Delta, error) {
 	if len(p.Deltas) == 0 {
 		return nil, errors.New("emtpy input")
@@ -155,7 +155,7 @@ func (p *Paygen) FindLatest() (*Delta, error) {
 		newer := false
 		major, minor, patch, err := version(delta.ChromeOSVersion)
 		if err != nil {
-			continue // There are deltas without Chrome OS Version.
+			continue // There are deltas without ChromeOS Version.
 		}
 
 		if major > majorMax {
@@ -175,7 +175,7 @@ func (p *Paygen) FindLatest() (*Delta, error) {
 	}
 
 	if latest == nil {
-		return nil, errors.New("none of the deltas contained Chrome OS Version")
+		return nil, errors.New("none of the deltas contained ChromeOS Version")
 	}
 
 	return latest, nil

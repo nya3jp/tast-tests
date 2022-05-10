@@ -64,7 +64,7 @@ func PlayAudioWithDisplayOff(ctx context.Context, s *testing.State) {
 		}
 	}(ctxForCleanUp)
 
-	// Login to Chrome OS.
+	// Login to ChromeOS.
 	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)

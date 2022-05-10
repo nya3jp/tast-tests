@@ -83,7 +83,7 @@ func init() {
 	})
 }
 
-// CrosToCrosHighVis tests file sharing between Chrome OS devices.
+// CrosToCrosHighVis tests file sharing between ChromeOS devices.
 func CrosToCrosHighVis(ctx context.Context, s *testing.State) {
 	remoteFilePath := s.FixtValue().(*remotenearby.FixtData).RemoteFilePath
 	sender := s.FixtValue().(*remotenearby.FixtData).Sender

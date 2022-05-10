@@ -25,7 +25,7 @@ func init() {
 func RemoteArtifactFiles(ctx context.Context, s *testing.State) {
 	// Build artifacts can be used as an external data file and read with
 	// s.DataPath just similarly as internal data files or static external data files.
-	// However, this works for Chrome OS images built on official builders only;
+	// However, this works for ChromeOS images built on official builders only;
 	// on developer builds an error is raised.
 	if b, err := ioutil.ReadFile(s.DataPath("artifact_files_UPLOADED")); err != nil {
 		s.Error("Failed reading artifact external data file: ", err)

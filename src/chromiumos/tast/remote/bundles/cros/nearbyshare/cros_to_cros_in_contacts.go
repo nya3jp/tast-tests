@@ -75,7 +75,7 @@ func init() {
 	})
 }
 
-// CrosToCrosInContacts tests file sharing between Chrome OS devices where the users are contacts.
+// CrosToCrosInContacts tests file sharing between ChromeOS devices where the users are contacts.
 func CrosToCrosInContacts(ctx context.Context, s *testing.State) {
 	remoteFilePath := s.FixtValue().(*remotenearby.FixtData).RemoteFilePath
 	sender := s.FixtValue().(*remotenearby.FixtData).Sender
