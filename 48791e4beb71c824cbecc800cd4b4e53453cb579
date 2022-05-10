@@ -33,6 +33,74 @@
       "message": "shadow reviewer lgtm",
       "revId": "48791e4beb71c824cbecc800cd4b4e53453cb579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612dba26_887f6bb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-10T16:30:29Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "48791e4beb71c824cbecc800cd4b4e53453cb579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab828df1_5b76ca2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-10T16:30:29Z",
+      "side": 1,
+      "message": "Move this inside the if. err might be referencing something unexpected.",
+      "revId": "48791e4beb71c824cbecc800cd4b4e53453cb579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c7df64_341354bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-10T16:30:29Z",
+      "side": 1,
+      "message": "nit: add newline before",
+      "revId": "48791e4beb71c824cbecc800cd4b4e53453cb579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e52f75_210000a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-10T16:30:29Z",
+      "side": 1,
+      "message": "nit: add newline before",
+      "revId": "48791e4beb71c824cbecc800cd4b4e53453cb579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
