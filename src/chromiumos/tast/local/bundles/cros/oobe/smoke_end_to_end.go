@@ -132,7 +132,10 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the user creation screen to be visible: ", err)
 	}
 
-	if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+	if err := uiauto.Combine("Click next on the user creation screen",
+		ui.WaitUntilExists(focusedButton),
+		ui.LeftClick(focusedButton),
+	)(ctx); err != nil {
 		s.Fatal("Failed to click user creation screen next button: ", err)
 	}
 
@@ -150,7 +153,10 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.SyncScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the sync creation screen to be visible: ", err)
 	}
-	if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+	if err := uiauto.Combine("Click next on the sync screen",
+		ui.WaitUntilExists(focusedButton),
+		ui.LeftClick(focusedButton),
+	)(ctx); err != nil {
 		s.Fatal("Failed to continue on the sync screen: ", err)
 	}
 
@@ -167,7 +173,10 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for the fingerprint screen to be visible: ", err)
 		}
 
-		if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+		if err := uiauto.Combine("Click next on the fingerprint screen",
+			ui.WaitUntilExists(focusedButton),
+			ui.LeftClick(focusedButton),
+		)(ctx); err != nil {
 			s.Fatal("Failed to skip on the fingerprint screen: ", err)
 		}
 	}
@@ -205,7 +214,10 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.MarketingOptInScreen.isVisible()"); err != nil {
 			s.Fatal("Failed to wait for the marketing opt-in screen to be visible: ", err)
 		}
-		if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+		if err := uiauto.Combine("Click next on the marketing-optin screen",
+			ui.WaitUntilExists(focusedButton),
+			ui.LeftClick(focusedButton),
+		)(ctx); err != nil {
 			s.Fatal("Failed to continue on the marketing opt-in screen: ", err)
 		}
 	}
