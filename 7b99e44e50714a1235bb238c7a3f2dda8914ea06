@@ -34,6 +34,24 @@
       "parentUuid": "d10ab5bc_4b4ba40b",
       "revId": "7b99e44e50714a1235bb238c7a3f2dda8914ea06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b470e3_97d6713f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-10T04:31:07Z",
+      "side": 1,
+      "message": "Thanks!\n\n\u003e does preparing the cert store have to log the user out?\nMy understanding is yes, since it may restart ui.\n\n\u003e setting up a workaround\nKeep using the current shillReset fixture is also fine. The only difference is that this new fixture does not restart shill between tests.",
+      "parentUuid": "831d800f_5eba190a",
+      "revId": "7b99e44e50714a1235bb238c7a3f2dda8914ea06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
