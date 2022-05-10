@@ -218,11 +218,39 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 				"IKEv2.RemoteIdentity":     "remote-id",
 			},
 		},
-		// TODO(b/216386693): Add L2TPIPsec-cert, IKEv2-cert and OpenVPN subtests.
-		// Note that for L2TPIPsec-cert and IKEv2-cert, the NetworkCertMigrator
-		// class in Chrome will check if the configured cert exists on the device,
-		// we need to find a way to make this check happy in this test (e.g., really
-		// install the certs in the test).
+		{
+			subtest: "OpenVPN",
+			mojoProperties: `{
+				name: 'temp-openvpn',
+				typeConfig: {
+					vpn: {
+						host: 'host',
+						type: {value: chromeos.networkConfig.mojom.VpnType.kOpenVPN},
+						openVpn: {
+							clientCertType: 'PKCS11Id',
+							clientCertPkcs11Id: '1234',
+							extraHosts: ['host1', 'host2'],
+							password: 'password',
+							serverCaPems: ['pem1', 'pem2'],
+							username: 'username',
+							userAuthenticationType: 'Password',
+						}
+					}
+				}
+			}`,
+			providerProperties: map[string]interface{}{
+				"Host":               "host",
+				"Type":               "openvpn",
+				"OpenVPN.CACertPEM":  []string{"pem1", "pem2"},
+				"OpenVPN.Pkcs11.ID":  "1234",
+				"OpenVPN.ExtraHosts": []string{"host1", "host2"},
+				"OpenVPN.User":       "username",
+			},
+		},
+		// Note that for other cert-based VPN services (e.g., L2TP/IPsec-cert), the
+		// NetworkCertMigrator class in Chrome will check if the configured cert
+		// exists on the device, and thus they cannot be verified here without
+		// really importing a cert.
 	} {
 		s.Run(ctx, tc.subtest, func(ctx context.Context, s *testing.State) {
 			jsWrap := fmt.Sprintf(jsTemplate, tc.mojoProperties)
