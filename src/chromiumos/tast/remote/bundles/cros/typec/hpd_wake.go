@@ -226,7 +226,7 @@ func enumerateDP(ctx context.Context, svo *servo.Servo, d *dut.DUT, s *testing.S
 	return nil
 }
 
-// getWakeCount returns the number of wake ups from the Chrome OS EC device (through which HPD wakeups are passed).
+// getWakeCount returns the number of wake ups from the ChromeOS EC device (through which HPD wakeups are passed).
 // Uses the wakeup class object attached to the chromeos class cros_ec device in sysfs
 func getWakeCount(ctx context.Context, d *dut.DUT) (int64, error) {
 	base := "/sys/class/chromeos/cros_ec/"

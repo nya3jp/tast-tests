@@ -3,5 +3,5 @@
 // found in the LICENSE file.
 
 // Package apps contains remote Tast tests that exercise the app service,
-// which is used to remotely control apps on Chrome OS.
+// which is used to remotely control apps on ChromeOS.
 package apps

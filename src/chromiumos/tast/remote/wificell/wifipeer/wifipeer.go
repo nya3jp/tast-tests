@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package wifipeer builds and controls peer Chrome OS devices for Wi-Fi tests.
+// Package wifipeer builds and controls peer ChromeOS devices for Wi-Fi tests.
 package wifipeer
 
 import (

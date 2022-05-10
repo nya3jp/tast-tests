@@ -95,7 +95,7 @@ func (r *Response) ChromeVersion() (string, error) {
 	return action.ChromeVersion, nil
 }
 
-// ChromeOSVersion gets the Chrome OS version from an Omaha response.
+// ChromeOSVersion gets the ChromeOS version from an Omaha response.
 // Returns an error if not found.
 func (r *Response) ChromeOSVersion() (string, error) {
 	action, err := r.postInstallEvent()

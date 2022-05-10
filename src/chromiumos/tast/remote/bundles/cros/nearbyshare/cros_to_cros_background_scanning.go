@@ -43,7 +43,7 @@ func init() {
 	})
 }
 
-// CrosToCrosBackgroundScanning tests background scanning and file sharing between Chrome OS devices.
+// CrosToCrosBackgroundScanning tests background scanning and file sharing between ChromeOS devices.
 func CrosToCrosBackgroundScanning(ctx context.Context, s *testing.State) {
 	remoteFilePath := s.FixtValue().(*remotenearby.FixtData).RemoteFilePath
 	sender := s.FixtValue().(*remotenearby.FixtData).Sender

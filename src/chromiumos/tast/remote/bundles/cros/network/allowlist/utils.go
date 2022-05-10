@@ -13,7 +13,7 @@ import (
 )
 
 type allowlist struct {
-	// Hostnames required by Chrome OS for login, enrollemnt and system services.
+	// Hostnames required by ChromeOS for login, enrollemnt and system services.
 	Chromeos []string
 	// Hostnames required to install Chrome extensions and apps from the Chrome Web Store.
 	Extension []string

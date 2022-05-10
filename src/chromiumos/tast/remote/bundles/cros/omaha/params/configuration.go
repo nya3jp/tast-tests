@@ -17,15 +17,15 @@ type Configuration struct {
 	// update to the latest stable without any stepping stone.
 	OldVersion string
 
-	// ChromeOSVersionFromMilestone maps Chrome milestones to Chrome OS version prefixes.
+	// ChromeOSVersionFromMilestone maps Chrome milestones to ChromeOS version prefixes.
 	ChromeOSVersionFromMilestone map[int]int
 
-	// CurrentStableChrome is the current stable milestone of Chrome OS.
+	// CurrentStableChrome is the current stable milestone of ChromeOS.
 	CurrentStableChrome int
-	// CurrentStableChrome is the next stable milestone of Chrome OS.
+	// CurrentStableChrome is the next stable milestone of ChromeOS.
 	NextStableChrome int
 
-	// CurrentChromeOSLTS is the current Chrome OS LTS milestone.
+	// CurrentChromeOSLTS is the current ChromeOS LTS milestone.
 	CurrentChromeOSLTS int
 	// CurrentChromeOSLTSMinor is the first LTS only minor version.
 	CurrentChromeOSLTSMinor int

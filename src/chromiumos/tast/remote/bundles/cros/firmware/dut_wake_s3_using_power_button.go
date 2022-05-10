@@ -64,7 +64,7 @@ func DUTWakeS3UsingPowerButton(ctx context.Context, s *testing.State) {
 		powerdSuspendModeCmd  = "check_powerd_config --suspend_to_idle; echo $?"
 	)
 
-	// Login to chrome OS.
+	// Login to ChromeOS.
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)

@@ -83,7 +83,7 @@ func ExtensionConnectivity(ctx context.Context, s *testing.State) {
 	}
 
 	// The user account allowlist.ext_username/allowlist.ext_password belongs to the OU allowlist-tast-test-ext on the production DMServer.
-	// The OU is configured to force install the "Certificate Enrollment for Chrome OS" extension via the ExtensionInstallForceList policy.
+	// The OU is configured to force install the "Certificate Enrollment for ChromeOS" extension via the ExtensionInstallForceList policy.
 	if _, err := al.CheckExtensionInstalled(ctx, &network.CheckExtensionInstalledRequest{
 		ExtensionTitle: "Certificate Enrollment for Chrome OS",
 	}); err != nil {
