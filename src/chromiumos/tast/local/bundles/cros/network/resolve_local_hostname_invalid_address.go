@@ -18,11 +18,12 @@ func init() {
 		Func: ResolveLocalHostnameInvalidAddress,
 		Desc: "Verifies avahi logs when attempts to resolve .local mDNS hostnames fail",
 		Contacts: []string{
-			"batrapranav@chromium.org",
+			"bmgordon@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
 		Attr: []string{
 			"group:mainline",
+			"group:paper-io",
 		},
 	})
 }

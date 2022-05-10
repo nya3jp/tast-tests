@@ -20,11 +20,12 @@ func init() {
 		Func: ResolveLocalHostname,
 		Desc: "Verifies .local mDNS hostnames are resolved via avahi",
 		Contacts: []string{
-			"batrapranav@chromium.org",
+			"bmgordon@chromium.org",
 			"cros-printing-dev@chromium.org",
 		},
 		Attr: []string{
 			"group:mainline",
+			"group:paper-io",
 		},
 	})
 }
