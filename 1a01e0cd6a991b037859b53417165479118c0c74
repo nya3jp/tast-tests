@@ -33,6 +33,91 @@
       "message": "Sorry for the delay. LGTM! overall. I don\u0027t have a lot of experience with Tast so  deferring to others.",
       "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b81d64_5fbf1eb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-10T19:40:57Z",
+      "side": 1,
+      "message": "Generally looks good to me with a couple of comments.\n",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed103b9_4f7a9ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-10T19:40:57Z",
+      "side": 1,
+      "message": "/*confirmationCode\u003d*/\"\"",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b1258d_ecf034e1",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-10T19:40:57Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like this is used, except perhaps to hold a reference? If that\u0027s the case, we probably shouldn\u0027t export it (i.e. this should be named crconn).",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fba7a0c_ce3565c7",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-10T19:40:57Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like either Manager or Eid need to be exported? We should try to only export properties that we expect to be used outside of type methods. Arguably Eid might be useful outside of Euicc methods in the future, but probably not Manager.\n\nPlease check all type members for whether they need to be exported.",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1043485e_3041d5d7",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/js_wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-10T19:40:57Z",
+      "side": 1,
+      "message": "We should be consistent with using tabs vs spaces in strings.",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
