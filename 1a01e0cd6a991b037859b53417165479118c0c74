@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb07d11f_146942e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-05-10T20:45:40Z",
+      "side": 1,
+      "message": "Replace this with cros-connectivity@google.com",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ed103b9_4f7a9ee3",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
         "patchSetId": 3
@@ -99,6 +122,52 @@
       "writtenOn": "2022-05-10T19:40:57Z",
       "side": 1,
       "message": "It doesn\u0027t look like either Manager or Eid need to be exported? We should try to only export properties that we expect to be used outside of type methods. Arguably Eid might be useful outside of Euicc methods in the future, but probably not Manager.\n\nPlease check all type members for whether they need to be exported.",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4d569cc_751e6009",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-05-10T20:45:40Z",
+      "side": 1,
+      "message": "Use cros-connectivity@google.com instead",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af366110_30bb814e",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-05-10T20:45:40Z",
+      "side": 1,
+      "message": "Use cros-connectivity@google.com instead",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 35
+      },
       "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
