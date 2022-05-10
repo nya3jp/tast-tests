@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "283fea3f_c4e01e49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-05-10T23:50:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee20cd22_0119855e",
+      "range": {
+        "startLine": 115,
+        "startChar": 33,
+        "endLine": 115,
+        "endChar": 36
+      },
+      "revId": "d02c7779e03de88b7f432807413056245702142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44161445_5a13c216",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e89c8db_64b5f1bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-05-10T23:50:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44161445_5a13c216",
+      "revId": "d02c7779e03de88b7f432807413056245702142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2c17a0e_b88dfb24",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-05-09T18:36:40Z",
       "side": 1,
       "message": "the window could also be invisible from things like minimize etc. Since all windows are opened on desk 2, would GetAllWindows count be a better indiciator? Or try FindWindow on all launched windows (incase there is a default window).",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 190,
+        "endChar": 44
+      },
+      "revId": "d02c7779e03de88b7f432807413056245702142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d07ae87a_0d459950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-05-10T23:50:48Z",
+      "side": 1,
+      "message": "Updated test to use `ash.GetAllWindows`",
+      "parentUuid": "c2c17a0e_b88dfb24",
       "range": {
         "startLine": 190,
         "startChar": 25,
