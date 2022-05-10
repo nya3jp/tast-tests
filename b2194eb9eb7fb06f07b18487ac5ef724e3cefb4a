@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8392c396_3de1867f",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2022-05-10T01:05:16Z",
+      "side": 1,
+      "message": "This should only return 1. If 0, container exited. If more than 1, something else is wrong.",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 82
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206d19d9_2bad7bc7",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2022-05-10T01:05:16Z",
+      "side": 1,
+      "message": "This would not work within lxc container",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 44
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0fc2e13_6ada09e3",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2022-05-10T01:05:16Z",
+      "side": 1,
+      "message": "The array should only has 1.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 31
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75247fd6_4c87a1c5",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2022-05-10T01:05:16Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 267,
+        "startChar": 49,
+        "endLine": 267,
+        "endChar": 50
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed81610_1206a950",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2022-05-10T01:05:16Z",
+      "side": 1,
+      "message": "We need to use exact match",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 30
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
