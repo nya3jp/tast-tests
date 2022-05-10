@@ -39,6 +39,30 @@
       },
       "revId": "18a23af0293ebb5789673931c6c325073d503ebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e302dd_85eeb010",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-10T20:19:16Z",
+      "side": 1,
+      "message": "I like that plan in the long term, but we\u0027ll need to get something set up to make sure we\u0027re responsive to incoming bugs and reviews first.",
+      "parentUuid": "d858158b_9272e395",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "18a23af0293ebb5789673931c6c325073d503ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
