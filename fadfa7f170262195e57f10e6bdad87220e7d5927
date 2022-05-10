@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c8cc3cc_97ae6305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-10T16:40:43Z",
+      "side": 1,
+      "message": "Fixture failures will prevent the test from running.",
+      "parentUuid": "d2cb7e0e_4621c2a8",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4eb153a_b7c2384f",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 4

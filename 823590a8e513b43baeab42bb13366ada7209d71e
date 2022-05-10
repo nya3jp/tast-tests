@@ -331,6 +331,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21a497f0_02d6e7e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-10T16:40:43Z",
+      "side": 1,
+      "message": "Don\u0027t use err in that case. It\u0027s easy to get this wrong by writing a if err :\u003d ...; err !\u003d nil {...} which is the style appropriate way of checking for errors.\n\nInstead create a separate bool flag:\n\nsuccess :\u003d false\ndo the cleanup if success is false\nmake success \u003d true at the end of the function.",
+      "parentUuid": "825b06d9_7b731115",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab2423cc_b9141667",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
         "patchSetId": 3
@@ -413,6 +431,30 @@
       "side": 1,
       "message": "If we reach there, we already called `Fatal()` (this `runtime.Goexit()`), just log an error seems to be enough to me.",
       "parentUuid": "51c3b0a1_209508e0",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e859aea3_988717ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-10T16:40:43Z",
+      "side": 1,
+      "message": "I\u0027d still use Fatal in this case. This should still work if the surrounding code is chaned.",
+      "parentUuid": "3677c161_387be54b",
       "range": {
         "startLine": 109,
         "startChar": 6,
@@ -542,6 +584,24 @@
       "side": 1,
       "message": "Just curious for future reference: is still ok to breakdown the patches in this order for review purposes and submit the whole series at the same time ?",
       "parentUuid": "2b8cdfcb_b7afb6e0",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1083e095_06e715d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-10T16:40:43Z",
+      "side": 1,
+      "message": "I\u0027d avoid landing this fake test for now. Just add it when it\u0027s ready.",
+      "parentUuid": "85af5910_01416b63",
       "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
