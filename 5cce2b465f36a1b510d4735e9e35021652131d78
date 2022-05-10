@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f8fd6f_f240a614",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-10T01:01:20Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "5cce2b465f36a1b510d4735e9e35021652131d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d148bd_065dbb31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_shape_based_chinese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-10T01:01:20Z",
+      "side": 1,
+      "message": "nit: unfortunately fixture could read test name internally. It needs to be explicitly set.\n\nuc.SetTestName(s.TestName())",
+      "revId": "5cce2b465f36a1b510d4735e9e35021652131d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c1ba6e0_416d48ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_shape_based_chinese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-10T01:01:20Z",
+      "side": 1,
+      "message": "nit: defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, \"ui_tree\")",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 75
+      },
+      "revId": "5cce2b465f36a1b510d4735e9e35021652131d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
