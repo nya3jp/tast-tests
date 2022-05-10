@@ -70,6 +70,24 @@
       "parentUuid": "795dc6d2_f788c1ae",
       "revId": "ea47fcd320e5bc80ea89ba4bfdd00342114b75fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a49c2dc3_8abf887f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-10T05:53:07Z",
+      "side": 1,
+      "message": "Let\u0027s chat with Art about a contact for updating the spreadsheet with new metrics. We\u0027ll have to do this going forward anyway",
+      "parentUuid": "c7e1d8d5_c0e962db",
+      "revId": "ea47fcd320e5bc80ea89ba4bfdd00342114b75fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
