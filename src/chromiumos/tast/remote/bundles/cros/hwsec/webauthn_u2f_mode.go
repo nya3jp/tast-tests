@@ -6,6 +6,8 @@ package hwsec
 
 import (
 	"context"
+	"math/rand"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
@@ -48,6 +50,9 @@ func init() {
 
 func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 	const password = "testpass"
+
+	// We need truly random values for username strings so that different test runs don't affect each other.
+	rand.Seed(time.Now().UnixNano())
 
 	// Create hwsec helper.
 	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
@@ -197,7 +202,9 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 			}
 			defer cr.EndWebauthn(ctx, &empty.Empty{})
 
-			if _, err := cr.StartMakeCredential(ctx, &empty.Empty{}); err != nil {
+			username := randomUsername()
+
+			if _, err := cr.StartMakeCredential(ctx, &webauthnpb.StartMakeCredentialRequest{Username: username}); err != nil {
 				s.Fatal("Failed to perform MakeCredential flow: ", err)
 			}
 			if err := tc.authCallback(ctx); err != nil {
@@ -206,7 +213,7 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 			if _, err := cr.CheckMakeCredential(ctx, &empty.Empty{}); err != nil {
 				s.Fatal("Failed to complete MakeCredential: ", err)
 			}
-			if _, err := cr.StartGetAssertion(ctx, &empty.Empty{}); err != nil {
+			if _, err := cr.StartGetAssertion(ctx, &webauthnpb.StartGetAssertionRequest{Username: username}); err != nil {
 				s.Fatal("Failed to perform GetAssertion flow: ", err)
 			}
 			if err := tc.authCallback(ctx); err != nil {
@@ -223,4 +230,16 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 		}
 	}
 
+}
+
+// randomUsername returns a random username of length 10.
+func randomUsername() string {
+	const letters = "abcdefghijklmnopqrstuvwxyz0123456789"
+
+	ret := make([]byte, 10)
+	for i := range ret {
+		ret[i] = letters[rand.Intn(len(letters))]
+	}
+
+	return string(ret)
 }

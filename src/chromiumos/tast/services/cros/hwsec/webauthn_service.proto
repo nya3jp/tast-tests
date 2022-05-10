@@ -22,11 +22,11 @@ service WebauthnService {
 
   rpc EndWebauthn (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-  rpc StartMakeCredential (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc StartMakeCredential (StartMakeCredentialRequest) returns (google.protobuf.Empty) {}
 
   rpc CheckMakeCredential (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-  rpc StartGetAssertion (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc StartGetAssertion (StartGetAssertionRequest) returns (google.protobuf.Empty) {}
 
   rpc CheckGetAssertion (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
@@ -63,4 +63,12 @@ message StartWebauthnRequest {
   UserVerification user_verification = 1;
   AuthenticatorType authenticator_type = 2;
   bool has_dialog = 3;
+}
+
+message StartMakeCredentialRequest {
+  string username = 1;
+}
+
+message StartGetAssertionRequest {
+  string username = 1;
 }
