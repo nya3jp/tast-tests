@@ -151,11 +151,11 @@ window.Tast = class Tast {
   }
 
   /**
-   * Returns whether the target HTML element is exists.
+   * Returns whether the target HTML element exists.
    * @param {string} selector Selector for the target element.
    * @return {boolean}
    */
-  static isExist(selector) {
+  static exist(selector) {
     return document.querySelector(selector) !== null;
   }
 
