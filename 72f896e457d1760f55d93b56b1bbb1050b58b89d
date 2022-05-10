@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1827c8_33b8afa7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-10T16:07:11Z",
+      "side": 1,
+      "message": "Please switch these two things around. If both `Couldn\u0027t find any console-ramoops file` and `Failed to save eventlog` appear, they should be in the order in which these problems occurred.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 50
+      },
+      "revId": "72f896e457d1760f55d93b56b1bbb1050b58b89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
