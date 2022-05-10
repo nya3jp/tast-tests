@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcb3bc49_94cf99d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-10T02:58:28Z",
+      "side": 1,
+      "message": "Why this need to be global?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffbfbe4e_1f54fb1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-10T02:58:28Z",
+      "side": 1,
+      "message": "int64 or uint64?",
+      "range": {
+        "startLine": 155,
+        "startChar": 20,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de64de98_2bf8f003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-10T02:58:28Z",
+      "side": 1,
+      "message": "Define as close as the first used of this.",
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef008599_f302f41d",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
         "patchSetId": 10
@@ -43,6 +106,99 @@
         "startChar": 6,
         "endLine": 202,
         "endChar": 7
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacad4f7_52383384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-10T02:58:28Z",
+      "side": 1,
+      "message": "I think this has been mentioned at line 192 so maybe we can just remove this line.",
+      "parentUuid": "ef008599_f302f41d",
+      "range": {
+        "startLine": 202,
+        "startChar": 6,
+        "endLine": 202,
+        "endChar": 7
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "216d0ba1_a227e42b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-10T02:58:28Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 228,
+        "startChar": 22,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b104d3_035b8fc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-10T02:58:28Z",
+      "side": 1,
+      "message": "This is necessary? The same goes to others.",
+      "range": {
+        "startLine": 232,
+        "startChar": 31,
+        "endLine": 232,
+        "endChar": 35
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bfdc04a_176b50cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-10T02:58:28Z",
+      "side": 1,
+      "message": "nit: How about using `cmp.Diff()` for better error messsage?",
+      "range": {
+        "startLine": 286,
+        "startChar": 3,
+        "endLine": 287,
+        "endChar": 69
       },
       "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
