@@ -422,7 +422,7 @@ type AllowlistServiceClient interface {
 	// coming from a specified port are allowed.
 	SetupFirewall(ctx context.Context, in *SetupFirewallRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// GaiaLogin starts a new Chrome instance behind a proxy and performs
-	// Chrome OS login using the specified credentials.
+	// ChromeOS login using the specified credentials.
 	GaiaLogin(ctx context.Context, in *GaiaLoginRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// CheckArcAppInstalled verifies that a specified ARC app is installed.
 	CheckArcAppInstalled(ctx context.Context, in *CheckArcAppInstalledRequest, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -481,7 +481,7 @@ type AllowlistServiceServer interface {
 	// coming from a specified port are allowed.
 	SetupFirewall(context.Context, *SetupFirewallRequest) (*empty.Empty, error)
 	// GaiaLogin starts a new Chrome instance behind a proxy and performs
-	// Chrome OS login using the specified credentials.
+	// ChromeOS login using the specified credentials.
 	GaiaLogin(context.Context, *GaiaLoginRequest) (*empty.Empty, error)
 	// CheckArcAppInstalled verifies that a specified ARC app is installed.
 	CheckArcAppInstalled(context.Context, *CheckArcAppInstalledRequest) (*empty.Empty, error)

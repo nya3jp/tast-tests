@@ -19,7 +19,7 @@ service AllowlistService {
   rpc SetupFirewall(SetupFirewallRequest) returns (google.protobuf.Empty) {}
 
   // GaiaLogin starts a new Chrome instance behind a proxy and performs
-  // Chrome OS login using the specified credentials.
+  // ChromeOS login using the specified credentials.
   rpc GaiaLogin(GaiaLoginRequest) returns (google.protobuf.Empty) {}
 
   // CheckArcAppInstalled verifies that a specified ARC app is installed.
