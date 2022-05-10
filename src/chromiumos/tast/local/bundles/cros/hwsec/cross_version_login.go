@@ -132,9 +132,15 @@ func prefixToVersion(prefix string) ([3]int, error) {
 
 // testConfig verifies the login functionality of specific auth config from CrossVersionLoginConfig.
 func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.CryptohomeClient, config *util.CrossVersionLoginConfig) error {
+	const (
+		newPassword = "newPass"
+		newLabel    = "newLabel"
+	)
 	authConfig := config.AuthConfig
 	rsaKey := config.RsaKey
 	keyLabel := config.KeyLabel
+	username := authConfig.Username
+	password := authConfig.Password
 
 	if authConfig.AuthType == hwsec.ChallengeAuth {
 		dbusConn, err := dbusutil.SystemBus()
@@ -147,7 +153,7 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 		defer dbusConn.ReleaseName(authConfig.KeyDelegateName)
 
 		keyDelegate, err := util.NewCryptohomeKeyDelegate(
-			lf, dbusConn, authConfig.Username, authConfig.ChallengeAlg, rsaKey, authConfig.ChallengeSPKI)
+			lf, dbusConn, username, authConfig.ChallengeAlg, rsaKey, authConfig.ChallengeSPKI)
 		if err != nil {
 			return errors.Wrap(err, "failed to export D-Bus key delegate")
 		}
@@ -157,8 +163,20 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 	if _, err := cryptohome.CheckVault(ctx, keyLabel, &authConfig); err != nil {
 		return errors.Wrapf(err, "failed to check vault with auth type %d", authConfig.AuthType)
 	}
-	if _, err := cryptohome.ListVaultKeys(ctx, authConfig.Username); err != nil {
+	if _, err := cryptohome.ListVaultKeys(ctx, username); err != nil {
 		return errors.Wrapf(err, "failed to list vault keys with auth type %d", authConfig.AuthType)
+	}
+
+	if authConfig.AuthType == hwsec.PassAuth {
+		if err := cryptohome.AddVaultKey(ctx, username, password, config.KeyLabel, newPassword, newLabel, false); err != nil {
+			return errors.Wrap(err, "failed to add key")
+		}
+		if _, err := cryptohome.CheckVault(ctx, newLabel, hwsec.NewPassAuthConfig(username, newPassword)); err != nil {
+			return errors.Wrapf(err, "failed to check vault with auth type %d", authConfig.AuthType)
+		}
+		if err := cryptohome.RemoveVaultKey(ctx, username, password, newLabel); err != nil {
+			return errors.Wrap(err, "failed to remove key")
+		}
 	}
 	return nil
 }
