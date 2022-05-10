@@ -194,6 +194,12 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 		timeStr := time.Now().Format("20060102-150405.000000")
 		dst := filepath.Join(dir, "faillog", timeStr)
 
+		// Create the parent directory if it doesn't already exist.
+		if err := os.MkdirAll(dst, 0755); err != nil {
+			s.Logf("Failed to create directory %v: %v", dst, err)
+			return
+		}
+
 		// Transfer the file from DUT to host machine.
 		if err := linuxssh.GetFile(ctx, dut.Conn(), res.Path, dst, linuxssh.PreserveSymlinks); err != nil {
 			s.Logf("Failed to download %v from DUT to %v at local host: %v", res.Path, dst, err)
