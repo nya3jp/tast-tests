@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "83e00dc2_f30e3176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_shape_based_chinese_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-05-10T00:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3b088ac_c51f8e1e",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "77402915f4a9ea0e44733d21d6e2e007ceea8bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b38e381d_431fced7",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_shape_based_chinese_typing.go",
         "patchSetId": 1
@@ -77,6 +101,30 @@
       "writtenOn": "2022-04-20T12:13:17Z",
       "side": 1,
       "message": "Please also add the new input methods to the list.",
+      "range": {
+        "startLine": 341,
+        "startChar": 21,
+        "endLine": 341,
+        "endChar": 32
+      },
+      "revId": "77402915f4a9ea0e44733d21d6e2e007ceea8bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c3b280d_8dc78cbd",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-05-10T00:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9696c281_bbc46002",
       "range": {
         "startLine": 341,
         "startChar": 21,
