@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8663841_151840fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-10T22:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb07d11f_146942e4",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ed103b9_4f7a9ee3",
@@ -88,6 +112,24 @@
       "writtenOn": "2022-05-10T19:40:57Z",
       "side": 1,
       "message": "/*confirmationCode\u003d*/\"\"",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4398ef_b711de07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-10T22:31:54Z",
+      "side": 1,
+      "message": "Done - Note, gofmt moves the comma location",
+      "parentUuid": "0ed103b9_4f7a9ee3",
       "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +151,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "716315f6_25189f5b",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-10T22:31:54Z",
+      "side": 1,
+      "message": "Done - Removed JS from export \u0026 removed Crconn completely since it\u0027s not used anywhere.",
+      "parentUuid": "c9b1258d_ecf034e1",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fba7a0c_ce3565c7",
@@ -126,6 +186,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3abffdb6_e5e405c8",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-10T22:31:54Z",
+      "side": 1,
+      "message": "Done - removed \"Manager\" from export but left Iccid and Eid since it may be helpful to have them available.",
+      "parentUuid": "9fba7a0c_ce3565c7",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4d569cc_751e6009",
@@ -139,6 +217,30 @@
       "writtenOn": "2022-05-10T20:45:40Z",
       "side": 1,
       "message": "Use cros-connectivity@google.com instead",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f162d971_80a4e282",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-10T22:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4d569cc_751e6009",
       "range": {
         "startLine": 23,
         "startChar": 3,
@@ -172,6 +274,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92787b4b_cabb63d3",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-10T22:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af366110_30bb814e",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1043485e_3041d5d7",
@@ -185,6 +311,24 @@
       "writtenOn": "2022-05-10T19:40:57Z",
       "side": 1,
       "message": "We should be consistent with using tabs vs spaces in strings.",
+      "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35027a0b_6d3f31e8",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/js_wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-10T22:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1043485e_3041d5d7",
       "revId": "1a01e0cd6a991b037859b53417165479118c0c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
