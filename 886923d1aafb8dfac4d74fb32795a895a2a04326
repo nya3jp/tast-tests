@@ -16,6 +16,24 @@
       "message": "Without the Attr: \"group:mainline\" these tests won\u0027t run in the lab. is that expected?",
       "revId": "886923d1aafb8dfac4d74fb32795a895a2a04326",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee245efb_5dec56dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-10T05:26:33Z",
+      "side": 1,
+      "message": "Yes that\u0027s right. \nMoblab team instructed us that mainline tests can\u0027t be executed via Moblab, as it doesn\u0027t support servo yet. Hence we didn\u0027t add the mainline group for this test.\n\npartner bug: [200103202](https://partnerissuetracker.corp.google.com/issues/200103202)\n\nPlease suggest if we can add any other Attr group.",
+      "parentUuid": "a7c5657a_31e1e144",
+      "revId": "886923d1aafb8dfac4d74fb32795a895a2a04326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
