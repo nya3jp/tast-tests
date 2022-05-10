@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "757e6d49_d83aad03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-10T01:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74a056d_f2b40e71",
+      "range": {
+        "startLine": 73,
+        "startChar": 44,
+        "endLine": 73,
+        "endChar": 48
+      },
+      "revId": "3bd6cf0c8d62a4df5808fa87c37191860b452d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9441e251_e91a34f7",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "828f0859_04c0f200",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-10T01:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9441e251_e91a34f7",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "3bd6cf0c8d62a4df5808fa87c37191860b452d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "957d1eb3_0764aba7",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-09T10:08:15Z",
       "side": 1,
       "message": "It is better to rename this, `ui` is misleading, as we normally use it for the `uiauto` package in Tast.",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 8
+      },
+      "revId": "3bd6cf0c8d62a4df5808fa87c37191860b452d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3802e2c5_a8bf3b3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-10T01:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "957d1eb3_0764aba7",
       "range": {
         "startLine": 33,
         "startChar": 6,
