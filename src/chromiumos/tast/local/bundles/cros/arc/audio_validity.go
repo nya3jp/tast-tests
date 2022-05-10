@@ -53,6 +53,8 @@ func init() {
 			},
 			{
 				Name: "record_vm",
+				// TODO(b/232019938): Remove informational when the issue is fixed.
+				ExtraAttr: []string{"informational"},
 				Val: audio.TestParameters{
 					Permission: "android.permission.RECORD_AUDIO",
 					Class:      "org.chromium.arc.testapp.arcaudiotest.TestInputActivity",
