@@ -69,4 +69,10 @@ func PstoreConsoleRamoops(ctx context.Context, s *testing.State) {
 	}
 
 	s.Error("Couldn't find any console-ramoops file")
+
+	// Save eventlog for failure analysis
+	if err := d.GetFile(ctx, "/var/log/eventlog.txt",
+		filepath.Join(s.OutDir(), "eventlog.txt")); err != nil {
+		s.Log("Failed to save eventlog")
+	}
 }
