@@ -33,9 +33,10 @@ import (
 )
 
 type videoCUJTestParam struct {
-	bt      browser.Type
-	tablet  bool
-	tracing bool
+	bt       browser.Type
+	duration time.Duration // How long the overall test should take.
+	tablet   bool
+	tracing  bool
 }
 
 func init() {
@@ -58,7 +59,8 @@ func init() {
 			Name:    "clamshell",
 			Fixture: "loggedInToCUJUser",
 			Val: videoCUJTestParam{
-				bt: browser.TypeAsh,
+				bt:       browser.TypeAsh,
+				duration: 30 * time.Minute,
 			},
 		}, {
 			Name:    "clamshell_trace",
@@ -110,6 +112,13 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	testParam := s.Param().(videoCUJTestParam)
+
+	// Determines the overall test duration. Defaults to 10 minutes
+	// if the test does not specify a test duration.
+	testDuration := 10 * time.Minute
+	if testParam.duration != 0 {
+		testDuration = testParam.duration
+	}
 
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
@@ -454,6 +463,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enter fullscreen: ", err)
 	}
 
+	s.Log("Run test for ", testDuration)
 	if err := recorder.RunFor(ctx, func(ctx context.Context) error {
 		s.Log("Switch away from fullscreen video")
 		if tabletMode {
@@ -522,7 +532,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, 30*time.Minute); err != nil {
+	}, testDuration); err != nil {
 		s.Fatal("Failed: ", err)
 	}
 
