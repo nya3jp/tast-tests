@@ -1231,7 +1231,7 @@ func (a *App) EnableExpertMode(ctx context.Context) error {
 
 // CheckMetadataVisibility checks if metadata is shown/hidden on screen given enabled.
 func (a *App) CheckMetadataVisibility(ctx context.Context, enabled bool) error {
-	code := fmt.Sprintf("Tast.isVisible('#preview-exposure-time') === %t", enabled)
+	code := fmt.Sprintf("Tast.isVisible('expert-controls', 'expert-control-row[header=\"AE\"]') === %t", enabled)
 	if err := a.conn.WaitForExpr(ctx, code); err != nil {
 		return errors.Wrapf(err, "failed to wait for metadata visibility set to %v", enabled)
 	}

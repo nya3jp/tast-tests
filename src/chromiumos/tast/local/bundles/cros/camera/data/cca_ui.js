@@ -130,12 +130,23 @@ window.Tast = class Tast {
   /**
    * Returns whether the target HTML element is visible.
    * @param {string} selector Selector for the target element.
+   * @param {...string} selectors Recursive selectors for the target element in
+   * the custom element shadow root.
    * @return {boolean}
    */
-  static isVisible(selector) {
-    const element = document.querySelector(selector);
+  static isVisible(selector, ...selectors) {
+    let element = document.querySelector(selector);
     if (element === null) {
       return false;
+    }
+    for (const s of selectors) {
+      if (element.shadowRoot === null) {
+        return false;
+      }
+      element = element.shadowRoot.querySelector(s);
+      if (element === null) {
+        return false;
+      }
     }
     return Tast.isVisibleElement(element);
   }
