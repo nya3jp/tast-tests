@@ -121,6 +121,24 @@
       "parentUuid": "ccae745f_3644aa44",
       "revId": "da93e8d12534b51a13f98c08718c11e87928cdab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9496c69_dc135e02",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-10T01:55:17Z",
+      "side": 1,
+      "message": "Removed this in a separate CL that already landed, and now simplified this CL.",
+      "parentUuid": "3ad352cd_37f8afc3",
+      "revId": "da93e8d12534b51a13f98c08718c11e87928cdab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

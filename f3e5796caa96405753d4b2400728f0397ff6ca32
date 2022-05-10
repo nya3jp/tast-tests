@@ -33,6 +33,24 @@
       "message": "optional: how about \"allow all extensions\"?",
       "revId": "f3e5796caa96405753d4b2400728f0397ff6ca32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b23c44_78b42603",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-10T01:55:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "165469e8_458f4c39",
+      "revId": "f3e5796caa96405753d4b2400728f0397ff6ca32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
