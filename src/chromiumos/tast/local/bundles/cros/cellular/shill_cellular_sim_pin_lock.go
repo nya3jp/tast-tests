@@ -22,6 +22,7 @@ func init() {
 		Contacts: []string{"srikanthkumar@google.com", "chromeos-cellular-team@google.com"},
 		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_pinlock"},
 		Fixture:  "cellular",
+		Timeout:  5 * time.Minute,
 	})
 }
 
