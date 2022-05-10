@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f19521_d4fd37c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-10T01:15:03Z",
+      "side": 1,
+      "message": "you can simplify these to\n```\nif err:\u003daction.Combine(\"description\",\n     uiHelper.WelcomePageOperation,\n     uiHelper.ComponentsPageOperation,\n     ...,\n)(ctx); err!\u003dnil{\n...\n}\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "fe0868a4a8a63fb1d13319fa39cc9feb804e5809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971399f2_5dccd293",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-10T01:15:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 1
+      },
+      "revId": "fe0868a4a8a63fb1d13319fa39cc9feb804e5809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
