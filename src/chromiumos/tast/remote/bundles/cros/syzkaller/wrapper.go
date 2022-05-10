@@ -94,6 +94,16 @@ type fuzzEnvConfig struct {
 	Syscalls []string `json:"syscalls"`
 }
 
+type periodicConfig struct {
+	// Board against which Cmd need to be run periodically.
+	Board string `json:"board"`
+	// Periodicity specifies in seconds how often Cmd should run against
+	// the DUT.
+	Periodicity int `json:"periodicity"`
+	// Cmd to run against the DUT while fuzzing.
+	Cmd string `json:"cmd"`
+}
+
 const (
 	enabledSyscallsBrya    string = "enabled_syscalls_brya.json"
 	enabledSyscallsNonBrya string = "enabled_syscalls.json"
@@ -112,7 +122,7 @@ func init() {
 		// stopping. The overall test duration is 32 minutes.
 		Timeout: syzkallerRunDuration + 2*time.Minute,
 		Attr:    []string{"group:syzkaller"},
-		Data:    []string{"testing_rsa"},
+		Data:    []string{"testing_rsa", "periodic.json"},
 		VarDeps: []string{"syzkaller.Wrapper.botoCredSection"},
 		Params: []testing.Param{
 			{
@@ -218,6 +228,13 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	s.Log("Drivers: ", drivers)
 	s.Log("Enabled syscalls: ", enabledSyscalls)
 
+	// Load periodic commands.
+	pCmd, err := loadPeriodic(s.DataPath("periodic.json"), board)
+	if err != nil {
+		s.Fatal("Unable to load periodic cmds: ", err)
+	}
+	s.Log("Periodic cmds: ", pCmd)
+
 	// Create startup script.
 	startupScript := filepath.Join(syzkallerTastDir, "startup_script")
 	if err := ioutil.WriteFile(startupScript, []byte(scriptContents), 0755); err != nil {
@@ -283,6 +300,11 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		s.Fatal("Running syz-manager failed: ", err)
 	}
 
+	done := make(chan bool)
+	if pCmd != nil {
+		go runPeriodic(ctx, d, done, pCmd)
+	}
+
 	// Gracefully shut down syzkaller.
 	func() {
 		defer managerCmd.Wait()
@@ -294,6 +316,10 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 		managerCmd.Process.Signal(os.Interrupt)
 	}()
+
+	if pCmd != nil {
+		done <- true
+	}
 
 	// Copy the syzkaller stdout/stderr logfile and the working directory
 	// as part of the tast results directory.
@@ -428,4 +454,43 @@ func loadEnabledSyscalls(fpath, board string) (drivers, enabledSyscalls []string
 	}
 
 	return drivers, enabledSyscalls, scriptContents, nil
+}
+
+func loadPeriodic(fpath, board string) (*periodicConfig, error) {
+	contents, err := ioutil.ReadFile(fpath)
+	if err != nil {
+		return nil, err
+	}
+	var peconfig []*periodicConfig
+	err = json.Unmarshal([]byte(contents), &peconfig)
+	if err != nil {
+		return nil, err
+	}
+	for _, config := range peconfig {
+		if board == config.Board {
+			return config, nil
+		}
+	}
+	return nil, nil
+}
+
+func runPeriodic(ctx context.Context, d *dut.DUT, done chan bool, cfg *periodicConfig) {
+	for {
+		// Non-blocking check to see if we should stop running
+		// Cmd periodically.
+		select {
+		case <-done:
+			return
+		default:
+		}
+		// Do not fail the test if the command fails to execute, only log.
+		// Fuzzing can cause spurious device reboots.
+		cmd := []string{"bash", "-c", cfg.Cmd}
+		testing.ContextLog(ctx, "Going to run: ", cmd)
+		if err := d.Conn().CommandContext(ctx, cmd[0], cmd[1:]...).Run(); err != nil {
+			testing.ContextLogf(ctx, "Failed to run [%v]: %v", cmd, err)
+		}
+		// Poll is not used as device might reboot during fuzzing.
+		testing.Sleep(ctx, time.Duration(cfg.Periodicity)*time.Second)
+	}
 }
