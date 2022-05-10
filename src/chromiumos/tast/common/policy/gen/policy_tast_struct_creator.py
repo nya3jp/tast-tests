@@ -409,7 +409,7 @@ class Policy(object):
     self.id = p['id']
     # one_to_many: Indicates whether this is a legacy one_to_many policy.
     self.one_to_many = one_to_many
-    # cros_supported: Whether the policy is currently supported on Chrome OS.
+    # cros_supported: Whether the policy is currently supported on ChromeOS.
     self.cros_supported = False
     if 'supported_on' in p:
       for elt in p['supported_on']:
@@ -419,7 +419,7 @@ class Policy(object):
         if elt.startswith('chrome_os') and elt.endswith('-'):
           self.cros_supported = True
 
-    # cros_future: Whether the policy is planned to be supported on Chrome OS.
+    # cros_future: Whether the policy is planned to be supported on ChromeOS.
     self.cros_future = False
     if 'future_on' in p:
       if 'chrome_os' in p['future_on']:
@@ -747,12 +747,12 @@ UNMARSHAL_OVERRIDES = {
 def write_code(output_path, policies_by_id, schema_ids):
   """Write Go code to the given file."""
   with open(output_path, 'w') as fh:
-    # Write Chrome OS policy structs.
+    # Write ChromeOS policy structs.
     fh.write(HEADER)
     for i in sorted(policies_by_id.keys()):
       fh.write(policies_by_id[i].code)
 
-    # Append code for any reference values being used by Chrome OS policies.
+    # Append code for any reference values being used by ChromeOS policies.
     fh.write(REFERENCE_HEADER)
     for name in schema_ids:
       ref = schema_ids[name]
@@ -826,7 +826,7 @@ def main():
     except KeyError as e:
       errors.append('{}: {}'.format(p.name, e))
 
-  # Generate code for all valid Chrome OS policies, recording any errors.
+  # Generate code for all valid ChromeOS policies, recording any errors.
   supported_policies_by_id = {}
   for p in policies:
     if not (p.cros_supported or p.cros_future):

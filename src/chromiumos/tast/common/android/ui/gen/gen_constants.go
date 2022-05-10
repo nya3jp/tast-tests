@@ -40,7 +40,7 @@ func main() {
 	params := genutil.Params{
 		PackageName: "ui",
 		RepoName:    "Android frameworks/base",
-		PreludeCode: `// Assumes that Android repo is checked out at same folder level as Chrome OS. e.g: If Chrome OS sources are in:
+		PreludeCode: `// Assumes that Android repo is checked out at same folder level as ChromeOS. e.g: If ChromeOS sources are in:
 // ~/src/chromeos/, then Android sources should be in ~/src/android/
 //go:generate ` + goSh + ` run ` + thisFile + ` ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
 //go:generate ` + goSh + ` fmt generated_constants.go`,
