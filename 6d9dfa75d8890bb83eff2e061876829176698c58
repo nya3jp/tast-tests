@@ -16,6 +16,23 @@
       "message": "+tast-owners@ for tast review. Thanks!",
       "revId": "6d9dfa75d8890bb83eff2e061876829176698c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a624eb_bf4e98f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-10T08:21:08Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6d9dfa75d8890bb83eff2e061876829176698c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
