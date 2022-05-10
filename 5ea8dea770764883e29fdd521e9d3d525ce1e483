@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4386c22_dc29fb47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-10T12:46:19Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "5ea8dea770764883e29fdd521e9d3d525ce1e483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42aeb198_a5a8efeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-10T12:46:19Z",
+      "side": 1,
+      "message": "nit: end comment with .",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 69
+      },
+      "revId": "5ea8dea770764883e29fdd521e9d3d525ce1e483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
