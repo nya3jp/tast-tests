@@ -1,0 +1,285 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d4fd92_40d8f379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "is a toggle: true for tablet mode test.",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f5685e_f32fd351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "an regex string for ...",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f861b00_5c8f358b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "How about \"evtestPattern\" to",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929bc0bb_ec317129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "You can define \n```\nconst GB \u003d 1024 * 1024 * 1024\n```\nso that the fileSize is self-explanatory (no further comment).",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84de76fd_8e4500c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "Maybe make it a const:\n\n```\nconst typeAKeyboard \u003d `...`\n```",
+      "range": {
+        "startLine": 121,
+        "startChar": 16,
+        "endLine": 121,
+        "endChar": 64
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccfb0325_a5beeaed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "Hotplug - unplug iteration",
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f63db3_50781c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "} else if ...",
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "184d4507_329aed11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "} else if ...",
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "879c3253_437ff2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "What it does is just appending filenames of the given path. So \"filesInDir\" would be better.\n\nOtherwise, you may define `const mediaRemovable` in file scope and here you only ReadDir(mediaRemovable) without the input parameter.",
+      "range": {
+        "startLine": 377,
+        "startChar": 5,
+        "endLine": 377,
+        "endChar": 22
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d9a760_eb77a7c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "first new item in dirsAfterPlug not in dirsBeforePlug.",
+      "range": {
+        "startLine": 389,
+        "startChar": 28,
+        "endLine": 389,
+        "endChar": 52
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a151742_02d2bcf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "dirsBeforePlug",
+      "range": {
+        "startLine": 390,
+        "startChar": 33,
+        "endLine": 390,
+        "endChar": 47
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c50ac3f6_207f1975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "It returns error with empty speed slice when it encounters an error.",
+      "range": {
+        "startLine": 428,
+        "startChar": 3,
+        "endLine": 428,
+        "endChar": 48
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19582997_ecee7c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T15:57:09Z",
+      "side": 1,
+      "message": "It didn\u0027t return connection status. It only returns error when it fails to find a HID device with expected USB speed.\n\nHow about:\n\nverifyUSBHIDDevice only returns error when it fails to find a HID device with expected USB speed. Otherwise, it returns nil.",
+      "range": {
+        "startLine": 450,
+        "startChar": 21,
+        "endLine": 450,
+        "endChar": 47
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
