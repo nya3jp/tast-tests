@@ -16,17 +16,17 @@ import (
 // TestBinaryDirPath is the directory to store test binaries which run inside ARC.
 const TestBinaryDirPath = "/usr/local/libexec/arc-binary-tests"
 
-// PullFile copies a file in Android to Chrome OS with adb pull.
+// PullFile copies a file in Android to ChromeOS with adb pull.
 func (a *ARC) PullFile(ctx context.Context, src, dst string) error {
 	return a.device.PullFile(ctx, src, dst)
 }
 
-// PushFile copies a file in Chrome OS to Android with adb push.
+// PushFile copies a file in ChromeOS to Android with adb push.
 func (a *ARC) PushFile(ctx context.Context, src, dst string) error {
 	return a.device.PushFile(ctx, src, dst)
 }
 
-// PushFileToTmpDir copies a file in Chrome OS to Android temp directory.
+// PushFileToTmpDir copies a file in ChromeOS to Android temp directory.
 // The destination path within the ARC container is returned.
 func (a *ARC) PushFileToTmpDir(ctx context.Context, src string) (string, error) {
 	return a.device.PushFileToTmpDir(ctx, src)
