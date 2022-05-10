@@ -22,6 +22,30 @@
       },
       "revId": "7bb6214e56da045dcdecb2e5b32a332714a8c8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "449fc0c3_c24779fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-05-10T01:47:29Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s how it is on HEAD. I\u0027ll fix it in this CL.",
+      "parentUuid": "02a3d7a7_9d8bab7e",
+      "range": {
+        "startLine": 32,
+        "startChar": 82,
+        "endLine": 32,
+        "endChar": 111
+      },
+      "revId": "7bb6214e56da045dcdecb2e5b32a332714a8c8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
