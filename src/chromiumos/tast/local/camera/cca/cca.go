@@ -978,7 +978,7 @@ func (a *App) Mirrored(ctx context.Context) (bool, error) {
 
 func (a *App) selectorExist(ctx context.Context, selector string) (bool, error) {
 	var exist bool
-	if err := a.conn.Call(ctx, &exist, "Tast.isExist", selector); err != nil {
+	if err := a.conn.Call(ctx, &exist, "Tast.exist", selector); err != nil {
 		return false, errors.Wrapf(err, "failed to check selector %v exist", selector)
 	}
 	return exist, nil
