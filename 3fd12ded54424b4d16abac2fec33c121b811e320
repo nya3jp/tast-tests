@@ -16,6 +16,24 @@
       "message": "nit: internals should be plural",
       "revId": "3fd12ded54424b4d16abac2fec33c121b811e320",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6b506c_f1418843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/hps_setting_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-10T05:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b6c6158_46beff51",
+      "revId": "3fd12ded54424b4d16abac2fec33c121b811e320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
