@@ -47,8 +47,8 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
+		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
-			Fixture: "crosHealthdRunning",
 			Val: busInfoTestParams{
 				checkThunderbolt:        false,
 				checkProgIf:             false,
