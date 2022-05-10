@@ -139,6 +139,42 @@
       "parentUuid": "6adbb957_d0e42add",
       "revId": "7e8a200f8334836061d8ae5e9516bfab02a21373",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b9483e_e8247ac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-10T08:03:58Z",
+      "side": 1,
+      "message": "Thanks Eliot! I replied to the other comment thread.\n\n\u003e IIRC SetUp also should make chrome://newtab/\n\nRegarding the behavior of `SetUp`, however, it behaves differently depending on whether Lacros or Ash is used. For Lacros, it will open a window with a tab, but for Ash, it won\u0027t open any window -\u003e this caused the test to fail on Ash, while it worked on Lacros.",
+      "parentUuid": "fac7c168_3f621583",
+      "revId": "7e8a200f8334836061d8ae5e9516bfab02a21373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d224d5_36649306",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-10T08:03:58Z",
+      "side": 1,
+      "message": "Thank you both for your comments - I think when I tried to fix this bug using `SetUpWithURL`, I probably used `chrome://newtab` (no slash) and didn\u0027t realize that I had to add a trailing slash for it to work in both browsers. \nBut anyways, after further testing, `chrome.BlankURL` and `chrome.NewTabURL` both work just fine with `SetUpWithURL`. I updated the CL to use `SetUpWithUrl` with `chrome.BlankURL` and will submit it.",
+      "parentUuid": "7caa8cd4_b06a9e34",
+      "revId": "7e8a200f8334836061d8ae5e9516bfab02a21373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
