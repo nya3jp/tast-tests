@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1038901_9c3c78d8",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2022-05-10T20:52:22Z",
+      "side": 1,
+      "message": "Please use tast/errors package.",
+      "range": {
+        "startLine": 246,
+        "startChar": 13,
+        "endLine": 246,
+        "endChar": 24
+      },
+      "revId": "0dda77e196cf6143d31d315bb82b3c85684dff3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ed804f_9355c12c",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2022-05-10T20:52:22Z",
+      "side": 1,
+      "message": "Please use tast/errors.",
+      "range": {
+        "startLine": 259,
+        "startChar": 12,
+        "endLine": 259,
+        "endChar": 23
+      },
+      "revId": "0dda77e196cf6143d31d315bb82b3c85684dff3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015a962d_22fe6640",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2022-05-10T20:52:22Z",
+      "side": 1,
+      "message": "same as above.",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 22
+      },
+      "revId": "0dda77e196cf6143d31d315bb82b3c85684dff3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
