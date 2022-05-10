@@ -52,6 +52,24 @@
       "parentUuid": "831d800f_5eba190a",
       "revId": "7b99e44e50714a1235bb238c7a3f2dda8914ea06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f3c5d1_d0ef99d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-05-10T14:04:20Z",
+      "side": 1,
+      "message": "+7 seconds for running non-cert tests individually sounds like a reasonable tradeoff since most of the time we do run tests together.\n\nFor Cassie, do you want to log user out between each of your tests? If that\u0027s the case you might want to keep using the old shillReset (the new fixture only logout during fixture set up and tear down but not between tests).",
+      "parentUuid": "84b470e3_97d6713f",
+      "revId": "7b99e44e50714a1235bb238c7a3f2dda8914ea06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
