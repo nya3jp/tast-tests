@@ -16,6 +16,24 @@
       "message": "Some notes about this patch:\n1) This patch will increase the run time if we only run some non-cert tests (e.g., ikev2_psk), since we didn\u0027t use to set cert store for them, but do that now after this patch (cert store setup may need 7 seconds);\n2) To solve 1), one approach could be parameterize the vpn fixture and create two fixtures: one with cert and another without cert. My concern here is we will need to register two groups of tests in vpn_connect.go, it will make the code hard to maintain considering that we may need to pick up some of the tests to mark them critical (more groups will be needed).\n3) We will need the first step in 2) (parameterize the fixture) in the future. For example, tests with ARC may not want cert store operations since it will cause a UI restart (+cassiewang@ here), and we may need to add the interaction with chrome here for the VPNUI tests (I haven\u0027t verified if this works).",
       "revId": "7b99e44e50714a1235bb238c7a3f2dda8914ea06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "831d800f_5eba190a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-05-10T03:48:11Z",
+      "side": 1,
+      "message": "For my understanding (since I didn\u0027t dig into it much), does preparing the cert store have to log the user out? If not, I could take an AI to look into setting up a workaround just for the ARCVPN* tast tests",
+      "parentUuid": "d10ab5bc_4b4ba40b",
+      "revId": "7b99e44e50714a1235bb238c7a3f2dda8914ea06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
