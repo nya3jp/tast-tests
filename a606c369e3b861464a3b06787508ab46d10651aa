@@ -22,6 +22,30 @@
       },
       "revId": "a606c369e3b861464a3b06787508ab46d10651aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4701a05c_36c7445e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_cantonese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-05-10T00:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77f0b451_b896a5c6",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "a606c369e3b861464a3b06787508ab46d10651aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
