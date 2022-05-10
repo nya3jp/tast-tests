@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4461e2_b3c77e33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-10T11:57:03Z",
+      "side": 1,
+      "message": "LGTM % nits\n\nPlease also get +1 from a team member before submission as I can only review the CL from the tast perspective but not for its functionality.\n\nThanks for increasing our test coverage.",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce507e3_d6cb72b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-10T11:57:03Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0d90fa_4f102084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-10T11:57:03Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d2496eb_d8d5a3e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-10T11:57:03Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d8010b3_97c687ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-10T11:57:03Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac7a938_22989f68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-10T11:57:03Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "d68efb45c7eb2063155a5123d009e889c2ea63f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
