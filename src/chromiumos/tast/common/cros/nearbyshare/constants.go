@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package nearbyshare is used to control Chrome OS Nearby Share functionality.
+// Package nearbyshare is used to control ChromeOS Nearby Share functionality.
 package nearbyshare
 
 import (
@@ -44,7 +44,7 @@ const ChromeLog = "nearby_chrome"
 // MessageLog is the filename of the messages log that is saved for each test. It is saved automatically by tast for local tests. For remote tests we need to grab it within the test.
 const MessageLog = "nearby_messages"
 
-// BtsnoopLog is the filename of the Chrome OS btsnoop log that is saved for each test.
+// BtsnoopLog is the filename of the ChromeOS btsnoop log that is saved for each test.
 const BtsnoopLog = "nearby_btsnoop_cros.log"
 
 // NearbyLogDir is the dir that logs will be saved in temporarily on the DUT during remote tests before being pulled back to remote host.

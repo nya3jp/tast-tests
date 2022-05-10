@@ -2654,7 +2654,7 @@
   "fieldDescriptions": [
     {
       "field": "idpRedirectEnabled",
-      "description": "SAML-based single sign-on for Chrome OS devices. Please set up SSO for Google Workspace before using this policy: https://support.google.com/a/answer/60224.",
+      "description": "SAML-based single sign-on for ChromeOS devices. Please set up SSO for Google Workspace before using this policy: https://support.google.com/a/answer/60224.",
       "knownValueDescriptions": [
         {
           "value": "true",
@@ -5199,7 +5199,7 @@
       "knownValueDescriptions": [
         {
           "value": "UNSET",
-          "description": "Use the built-in DNS client on macOS, Android and Chrome OS. Allow the user to change the setting."
+          "description": "Use the built-in DNS client on macOS, Android and ChromeOS. Allow the user to change the setting."
         },
         {
           "value": "TRUE",

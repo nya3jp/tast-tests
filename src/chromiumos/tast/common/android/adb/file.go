@@ -19,17 +19,17 @@ import (
 // AndroidTmpDirPath is the path of tmp directory in Android.
 const AndroidTmpDirPath = "/data/local/tmp"
 
-// PullFile copies a file in Android to Chrome OS with adb pull.
+// PullFile copies a file in Android to ChromeOS with adb pull.
 func (d *Device) PullFile(ctx context.Context, src, dst string) error {
 	return d.Command(ctx, "pull", src, dst).Run(testexec.DumpLogOnError)
 }
 
-// PushFile copies a file in Chrome OS to Android with adb push.
+// PushFile copies a file in ChromeOS to Android with adb push.
 func (d *Device) PushFile(ctx context.Context, src, dst string) error {
 	return d.Command(ctx, "push", src, dst).Run(testexec.DumpLogOnError)
 }
 
-// PushFileToTmpDir copies a file in Chrome OS to Android temp directory.
+// PushFileToTmpDir copies a file in ChromeOS to Android temp directory.
 // The destination path within the Android is returned.
 func (d *Device) PushFileToTmpDir(ctx context.Context, src string) (string, error) {
 	dst := filepath.Join(AndroidTmpDirPath, filepath.Base(src))

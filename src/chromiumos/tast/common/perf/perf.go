@@ -237,9 +237,9 @@ func (p *Values) Set(s Metric, vs ...float64) {
 type Format int
 
 const (
-	// Crosbolt is used for Chrome OS infra dashboards (go/crosbolt).
+	// Crosbolt is used for ChromeOS infra dashboards (go/crosbolt).
 	Crosbolt Format = iota
-	// Chromeperf is used for Chrome OS infra dashboards (go/chromeperf).
+	// Chromeperf is used for ChromeOS infra dashboards (go/chromeperf).
 	Chromeperf
 )
 
