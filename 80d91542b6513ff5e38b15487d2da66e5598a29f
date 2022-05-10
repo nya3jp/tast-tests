@@ -33,6 +33,24 @@
       "message": "Instead of an early return, how about breaking out of the loop here?  Then the two return cases are handled consistently.",
       "revId": "80d91542b6513ff5e38b15487d2da66e5598a29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f88f1483_82021ddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-10T20:47:22Z",
+      "side": 1,
+      "message": "Breaking out of both inner and outer loops at the same time looks a little funky to me (patchset 2) - see which way you like better!",
+      "parentUuid": "c8acb3d0_08457b82",
+      "revId": "80d91542b6513ff5e38b15487d2da66e5598a29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
