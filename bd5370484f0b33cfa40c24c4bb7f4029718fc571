@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c6f218_815aa4f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-10T03:54:47Z",
+      "side": 1,
+      "message": "The type of the argument of `file.seek(offset)` SGTM.",
+      "parentUuid": "b37eec40_f12fe933",
+      "range": {
+        "startLine": 155,
+        "startChar": 20,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "bd5370484f0b33cfa40c24c4bb7f4029718fc571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de64de98_2bf8f003",
