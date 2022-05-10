@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7abd5262_89eeb251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-10T03:51:01Z",
+      "side": 1,
+      "message": "Check `checkCPUVirtualization`",
+      "range": {
+        "startLine": 319,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 2
+      },
+      "revId": "c7664b1077c12edeedda1ea9f7edae61b5adaf88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
