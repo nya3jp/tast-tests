@@ -22,6 +22,52 @@
       },
       "revId": "a1d3c579f9b79bfeb6587221b3ab8997eb840e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2db0c8_adfe9519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-10T09:46:40Z",
+      "side": 1,
+      "message": "Given this is a scoped var and you\u0027re not passing it anywhere, this will always be true right? is this required?",
+      "range": {
+        "startLine": 198,
+        "startChar": 26,
+        "endLine": 198,
+        "endChar": 41
+      },
+      "revId": "a1d3c579f9b79bfeb6587221b3ab8997eb840e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6fc9f69_9b70edc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-10T09:46:40Z",
+      "side": 1,
+      "message": "I wonder if this can be rewritten to avoid these var names.",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 201,
+        "endChar": 23
+      },
+      "revId": "a1d3c579f9b79bfeb6587221b3ab8997eb840e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
