@@ -34,6 +34,24 @@
       "parentUuid": "e3098d5c_bc67668a",
       "revId": "eae6f72852c94baa789cc0ed3d7ede2ccbdd5f58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5acf085_b6ef4154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2022-05-10T21:35:47Z",
+      "side": 0,
+      "message": "Test passed for me locally:\n\n2022-05-10T21:34:41.961176Z Completed test printer.TestPPDs in 8.703s with 0 error(s)\n2022-05-10T21:34:44.241984Z --------------------------------------------------------------------------------\n2022-05-10T21:34:44.242021Z printer.TestPPDs [ PASS ] \n2022-05-10T21:34:44.242039Z --------------------------------------------------------------------------------",
+      "parentUuid": "4d2aae3c_3da98ab0",
+      "revId": "eae6f72852c94baa789cc0ed3d7ede2ccbdd5f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
