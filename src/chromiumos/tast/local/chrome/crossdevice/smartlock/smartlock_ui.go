@@ -206,7 +206,7 @@ func CheckSmartLockVisibilityOnLockScreen(ctx context.Context, expectVisible boo
 	defer kb.Close()
 
 	if err := lockscreen.Lock(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to lock the screen on Chrome OS")
+		return errors.Wrap(err, "failed to lock the screen on ChromeOS")
 	}
 
 	if err = lockscreen.WaitForSmartLockVisible(ctx, expectVisible, tconn); err != nil {

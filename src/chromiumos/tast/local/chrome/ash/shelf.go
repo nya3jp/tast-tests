@@ -25,7 +25,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ShelfBehavior represents the different Chrome OS shelf behaviors.
+// ShelfBehavior represents the different ChromeOS shelf behaviors.
 type ShelfBehavior string
 
 // As defined in ShelfAutoHideBehavior here:
@@ -197,7 +197,7 @@ func UnpinApps(ctx context.Context, tconn *chrome.TestConn, appIDs []string) err
 	return PinAndUnpinApps(ctx, tconn, []string{}, appIDs)
 }
 
-// ShelfAlignment represents the different Chrome OS shelf alignments.
+// ShelfAlignment represents the different ChromeOS shelf alignments.
 type ShelfAlignment string
 
 // As defined in ShelfAlignment here:

@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// CrOSSetup enables Chrome OS Nearby Share and configures its settings using the nearby_share_settings
+// CrOSSetup enables ChromeOS Nearby Share and configures its settings using the nearby_share_settings
 // interface which is available through chrome://nearby. This allows tests to bypass onboarding.
 // If deviceName is empty, the device display name will not be set and the default will be used.
 func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, dataUsage nearbycommon.DataUsage, visibility nearbycommon.Visibility, deviceName string) error {
