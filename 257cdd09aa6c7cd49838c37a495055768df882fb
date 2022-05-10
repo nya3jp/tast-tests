@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c727a2d_0f8ef964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44272be7_42fc541c",
+      "revId": "257cdd09aa6c7cd49838c37a495055768df882fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a92f395_f3cb085e",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-03T16:30:45Z",
       "side": 1,
       "message": "nit: points",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "257cdd09aa6c7cd49838c37a495055768df882fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3014fccc_6c9bb646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a92f395_f3cb085e",
       "range": {
         "startLine": 26,
         "startChar": 19,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3276ac_654d9019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f558d3f5_27946ad2",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "257cdd09aa6c7cd49838c37a495055768df882fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc6fb0c_898d8d72",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-05-03T16:30:45Z",
       "side": 1,
       "message": "When cleanup fails you should also fail the test instead of just logging the failure. Otherwise this failure might go unnoticed and will affect tests that run after it as the cleanup didn\u0027t succeed.\n\nFor such a short function it\u0027s also better to declare it as a closure directly in line 166.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 1
+      },
+      "revId": "257cdd09aa6c7cd49838c37a495055768df882fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad98429_5d3264c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-10T09:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc6fb0c_898d8d72",
       "range": {
         "startLine": 240,
         "startChar": 0,
