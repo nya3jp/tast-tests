@@ -53,6 +53,8 @@ enum AuthenticatorType {
 message NewRequest {
   reserved 1 to 3;
   BrowserType browser_type = 4;
+  // KeepState controls whether to keep existing user profiles.
+  bool keep_state = 5;
 }
 
 message EnterPasswordRequest {
