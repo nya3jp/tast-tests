@@ -76,3 +76,8 @@ func PollForDim(ctx context.Context, brightness float64, timeout time.Duration, 
 	}
 	return nil
 }
+
+// WaitWithDelay return a 3s duration object
+func WaitWithDelay(timeLength time.Duration) {
+	testing.Sleep(3*time.Second + timeLength)
+}
