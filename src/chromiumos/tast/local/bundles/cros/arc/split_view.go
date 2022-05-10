@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -215,6 +216,10 @@ func SplitView(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for idle: ", err)
 		}
 	}
+
+	// We put this "defer" statement after setting the defer statements for cleaning up the apps
+	// so that we can capture the state *before* closing the apps when it fails.
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
