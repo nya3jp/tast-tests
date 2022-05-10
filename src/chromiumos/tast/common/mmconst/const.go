@@ -13,12 +13,13 @@ import "time"
 const (
 	ModemPropertyBearers        = "Bearers"
 	ModemPropertyDevice         = "Device"
+	ModemPropertyManufacturer   = "Manufacturer"
+	ModemPropertyOwnNumbers     = "OwnNumbers"
+	ModemPropertyPowered        = "PowerState"
+	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
 	ModemPropertySim            = "Sim"
 	ModemPropertySimSlots       = "SimSlots"
-	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
 	ModemPropertyState          = "State"
-	ModemPropertyPowered        = "PowerState"
-	ModemPropertyManufacturer   = "Manufacturer"
 )
 
 // ModemManager1.Modem.Modem3gpp properties
