@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de17011_2e144066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-10T15:17:25Z",
+      "side": 1,
+      "message": "LGTM but other connectivity reviewers should also take a look.",
+      "revId": "85b7123f73e750bbd4b4865b39b2d710d11699e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

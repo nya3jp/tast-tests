@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1094193f_f5773423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-10T15:17:25Z",
+      "side": 1,
+      "message": "needs \"\" ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbdd020_e254c0a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-10T15:17:25Z",
+      "side": 1,
+      "message": "\"device\" is a bit ambiguous here since in other places it refers to simulated or real wifi network interfaces. I would say \"load the driver into the host kernel\".",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4c29e1_6988e9f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-10T15:17:25Z",
+      "side": 1,
+      "message": "Just curious: is is preferable to check /sys/module or /proc/modules (the one used by lsmod) to check loaded drivers ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 58
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c498351b_acd878df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-10T15:17:25Z",
+      "side": 1,
+      "message": "For non connectivity people looking at a tast dashboard, it might not be immediately obvious that Passpoint is a WiFi feature. What about \"WiFi Passpoint functional tests\" ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2cb7e0e_4621c2a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-10T15:17:25Z",
+      "side": 1,
+      "message": "I am not familiar with what this abstraction allows, but can we return an actual go error if the fixture setup fails ? (instead of inferring from the internal state of |sim)\n\nOtherwise why not just return nil if an error happens (since this returns an interface{} type).",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4eb153a_b7c2384f",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-10T15:17:25Z",
+      "side": 1,
+      "message": "We need to explain what a shill claimer is here. Or simply point to the shill/doc/manager-api.txt doc.",
+      "range": {
+        "startLine": 439,
+        "startChar": 68,
+        "endLine": 439,
+        "endChar": 75
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -526,6 +526,24 @@
       "parentUuid": "2b8cdfcb_b7afb6e0",
       "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85af5910_01416b63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-10T15:17:25Z",
+      "side": 1,
+      "message": "Just curious for future reference: is still ok to breakdown the patches in this order for review purposes and submit the whole series at the same time ?",
+      "parentUuid": "2b8cdfcb_b7afb6e0",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
