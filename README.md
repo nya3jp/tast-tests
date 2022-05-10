@@ -14,7 +14,7 @@ This repository contains integration tests that are run by [Tast].
         *   [`bundles/`](src/chromiumos/tast/local/bundles/) - Local test
             bundles.
             *   [`cros/`](src/chromiumos/tast/local/bundles/cros/) - The
-                "cros" local test bundle, containing standard Chrome OS tests.
+                "cros" local test bundle, containing standard ChromeOS tests.
                 Tests are packaged by category.
         *   `...` - Packages used only by local tests.
     *   [`remote/`](src/chromiumos/tast/remote/) - Code related to remote
@@ -22,7 +22,7 @@ This repository contains integration tests that are run by [Tast].
         *   [`bundles/`](src/chromiumos/tast/remote/bundles/) - Remote test
             bundles.
             *   [`cros/`](src/chromiumos/tast/remote/bundles/cros/) - The
-                "cros" remote test bundle, containing standard Chrome OS
+                "cros" remote test bundle, containing standard ChromeOS
                 tests. Tests are packaged by category.
         *   `...` - Packages used only by remote tests.
 
