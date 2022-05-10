@@ -16,6 +16,23 @@
       "message": "Please help to review the Go codes on readability. Thanks.",
       "revId": "94fa00d7d400c01b8711ef23ac73a0a9b8c81327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f65f27_57555f94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-05-10T16:58:11Z",
+      "side": 1,
+      "message": "Tast Owners, please provide the Go readability review.",
+      "revId": "94fa00d7d400c01b8711ef23ac73a0a9b8c81327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
