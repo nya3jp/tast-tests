@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6e79d5_a46634fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-10T09:26:40Z",
+      "side": 1,
+      "message": "PTAL. I\u0027ve thought about printing the file list before/after in case of a difference but if there are lots of old crash reports (in a non-local directory) this becomes unreadable.",
+      "revId": "5a4ae571512726f18525fd84c862ad7f51453d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
