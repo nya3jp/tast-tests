@@ -76,3 +76,8 @@ func PollForDim(ctx context.Context, brightness float64, timeout time.Duration, 
 	}
 	return nil
 }
+
+// ExtraDelay return a 3s duration object
+func ExtraDelay() time.Duration {
+	return time.Duration(3) * time.Second
+}
