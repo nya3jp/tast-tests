@@ -127,7 +127,7 @@ func VPNUI(ctx context.Context, s *testing.State) {
 	// should be shown.
 	if err := uiauto.Combine("Forget VPN",
 		ui.LeftClick(nodewith.Name("Forget").Role(role.Button)),
-		ui.WaitUntilExists(nodewith.Name("Built-in VPN").Role(role.StaticText)),
+		ui.WaitUntilExists(nodewith.Name("VPN").Role(role.Heading)),
 		ui.Gone(nodewith.NameContaining(svcName)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to forget VPN: ", err)
