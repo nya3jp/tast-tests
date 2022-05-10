@@ -144,15 +144,27 @@ var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 	},
 }
 
-// NeedsRebootAfterFlashing returns true if device needs to be rebooted after flashing.
-// Zork cannot rebind cros-ec-uart after flashing, so an AP reboot is
-// needed to talk to FPMCU. See b/170213489.
-func NeedsRebootAfterFlashing(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
+// BoardTransportIsUART returns true if the device communicates with the FPMCU
+// using a UART transport
+func BoardTransportIsUART(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
+	var uartBoards = []string{"guybrush", "zork"}
 	hostBoard, err := reporters.New(d.DUT()).Board(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to query host board")
 	}
-	return hostBoard == "zork", nil
+	for i := range uartBoards {
+		if uartBoards[i] == hostBoard {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+// NeedsRebootAfterFlashing returns true if device needs to be rebooted after flashing.
+// For instance, devices using UART transport cannot rebind cros-ec-uart after flashing,
+// so an AP reboot is needed to talk to FPMCU. See b/170213489.
+func NeedsRebootAfterFlashing(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
+	return BoardTransportIsUART(ctx, d)
 }
 
 // getExpectedFwInfo returns expected firmware info for a given firmware file name.
