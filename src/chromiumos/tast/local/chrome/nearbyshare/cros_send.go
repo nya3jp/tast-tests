@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package nearbyshare is used to control Chrome OS Nearby Share functionality.
+// Package nearbyshare is used to control ChromeOS Nearby Share functionality.
 package nearbyshare
 
 import (
@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
-// SendSurface is used to control the Nearby Share sending flow on Chrome OS.
+// SendSurface is used to control the Nearby Share sending flow on ChromeOS.
 // The js object implements several Mojo APIs that allow tests to control Nearby Share very closely to how the UI does.
 type SendSurface struct {
 	conn *chrome.Conn

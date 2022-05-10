@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package filepicker supports controlling the file picker on Chrome OS.
+// Package filepicker supports controlling the file picker on ChromeOS.
 package filepicker
 
 import (

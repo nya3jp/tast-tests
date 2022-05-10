@@ -344,7 +344,7 @@ func RestrictARCCPU() Option {
 }
 
 // SkipForceOnlineSignInForTesting disables online sign-in enforcement in tast
-// tests, which allows to run Chrome OS login in a loop in a stable way.
+// tests, which allows to run ChromeOS login in a loop in a stable way.
 func SkipForceOnlineSignInForTesting() Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.SkipForceOnlineSignInForTesting = true
