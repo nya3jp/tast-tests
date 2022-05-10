@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc01dd5d_063780b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/change_device_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-10T01:27:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58de5b45_0a334212",
+      "range": {
+        "startLine": 24,
+        "startChar": 72,
+        "endLine": 24,
+        "endChar": 78
+      },
+      "revId": "01eeffbfb57caabb70700ad14fa93aa9abf35238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4886aab_c12e0ef9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-10T01:19:45Z",
       "side": 1,
       "message": "remove this? there already is a close at line 42",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "01eeffbfb57caabb70700ad14fa93aa9abf35238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7d56e7_692b1b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/change_device_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-10T01:27:09Z",
+      "side": 1,
+      "message": "cr is re-assigned to a new Chrome instance. \nso it needs to be closed again.\n\nThe earlier defer close function will no longer work after restart. It logs out a warning message.",
+      "parentUuid": "e4886aab_c12e0ef9",
       "range": {
         "startLine": 71,
         "startChar": 1,
