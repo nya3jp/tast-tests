@@ -15,7 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 /*
- * Activity for Chrome OS ARC++/ARCVM audio power performance tast.
+ * Activity for ChromeOS ARC++/ARCVM audio power performance tast.
  */
 public class PlaybackPerformanceActivity extends MainActivity {
 

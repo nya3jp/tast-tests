@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 /**
- * Activity for Chrome OS ARC++/ARCVM tast.
+ * Activity for ChromeOS ARC++/ARCVM tast.
  */
 public class MainActivity extends Activity {
 

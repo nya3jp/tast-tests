@@ -20,10 +20,10 @@ import java.io.IOException;
 
 /**
  * This is a simple activity that is used to open the "echo" MIDI device registered with ALSA on
- * Chrome OS and write a MIDI message to it.
+ * ChromeOS and write a MIDI message to it.
  *
- * <p>It is used as part of the Chrome OS ARC++ MIDI autotest, to ensure that ARC++ can access a
- * MIDI device made available through the Chrome OS MIDI daemon.
+ * <p>It is used as part of the ChromeOS ARC++ MIDI autotest, to ensure that ARC++ can access a
+ * MIDI device made available through the ChromeOS MIDI daemon.
  */
 public class MainActivity extends Activity {
 
