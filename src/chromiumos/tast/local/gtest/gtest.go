@@ -104,7 +104,7 @@ type GTest struct {
 	uid int
 
 	// a is ARC instance to run gtest executable in ARC.
-	// This is nil when gtest runs on Chrome OS host side.
+	// This is nil when gtest runs on ChromeOS host side.
 	a *arc.ARC
 }
 
@@ -209,7 +209,7 @@ type runner interface {
 	read(ctx context.Context, path string) ([]byte, error)
 }
 
-// crosRunner is the implementation of the runner for gtest execution on Chrome OS host environment.
+// crosRunner is the implementation of the runner for gtest execution on ChromeOS host environment.
 type crosRunner struct{}
 
 func (*crosRunner) mktemp(ctx context.Context, name string) (path string, retErr error) {

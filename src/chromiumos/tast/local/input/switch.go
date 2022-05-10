@@ -47,7 +47,7 @@ func querySwitch(ctx context.Context, ec EventCode) (switchState, error) {
 	defer f.Close()
 
 	// Internally, the kernel uses an array of longs and doesn't specify how endianness is handled.
-	// Chrome OS is little-endian-only and SW_MAX is unlikely to reach 32 anytime soon, so we just
+	// ChromeOS is little-endian-only and SW_MAX is unlikely to reach 32 anytime soon, so we just
 	// use a uint32 here to simplify the code (and since we don't currently have any way to test
 	// that big-endian or >uint32 code works even if it's added).
 	if kernelByteOrder != binary.LittleEndian {

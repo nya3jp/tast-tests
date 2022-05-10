@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// RunArcConnectivityApp tests ARC++ app connectivity through the system-proxy Chrome OS daemon using the following steps:
+// RunArcConnectivityApp tests ARC++ app connectivity through the system-proxy ChromeOS daemon using the following steps:
 // - installs a test ARC++ app;
 // - connects to `url` in the app;
 // - clicks on the system-proxy notification which informs the user that system-proxy requires credentials;
