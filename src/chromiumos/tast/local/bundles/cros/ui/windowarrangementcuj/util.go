@@ -15,6 +15,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -78,6 +79,18 @@ type Connections struct {
 // DragPoints holds three points, to signify a drag from the first point
 // to the second point, then the third point, and back to the first point.
 type DragPoints [3]coords.Point
+
+// sequenceActions performs two actions and returns the first non-nil error. The
+// second action is performed even if the first action returns a non-nil error.
+func sequenceActions(step1, step2 action.Action) action.Action {
+	return func(ctx context.Context) error {
+		firstErr := step1(ctx)
+		if err := step2(ctx); firstErr == nil {
+			firstErr = err
+		}
+		return firstErr
+	}
+}
 
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
 func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections, error) {
@@ -145,18 +158,16 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ARC activity")
 	}
-	oldCleanup1 := connection.Cleanup
-	connection.Cleanup = func(ctx context.Context) error {
+	connection.Cleanup = sequenceActions(func(ctx context.Context) error {
 		connection.ArcVideoActivity.Close()
-		return oldCleanup1(ctx)
-	}
+		return nil
+	}, connection.Cleanup)
 
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	oldCleanup2 := connection.Cleanup
-	connection.Cleanup = func(ctx context.Context) error {
+	connection.Cleanup = sequenceActions(func(ctx context.Context) error {
 		srv.Close()
-		return oldCleanup2(ctx)
-	}
+		return nil
+	}, connection.Cleanup)
 	connection.PipVideoTestURL = srv.URL + "/pip.html"
 
 	srvURL, err := url.Parse(srv.URL)
@@ -171,17 +182,9 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start reverse port forwarding")
 	}
-	oldCleanup3 := connection.Cleanup
-	connection.Cleanup = func(ctx context.Context) error {
-		var firstErr error
-		if err := connection.ARC.RemoveReverseTCP(ctx, androidPort); firstErr == nil && err != nil {
-			firstErr = errors.Wrap(err, "failed to stop reverse port forwarding")
-		}
-		if err := oldCleanup3(ctx); firstErr == nil && err != nil {
-			firstErr = err
-		}
-		return firstErr
-	}
+	connection.Cleanup = sequenceActions(func(ctx context.Context) error {
+		return connection.ARC.RemoveReverseTCP(ctx, androidPort)
+	}, connection.Cleanup)
 	connection.WithTestVideo = arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/shaka_720.webm", androidPort))
 
 	connection.TestConn, err = connection.Chrome.TestAPIConn(ctx)
