@@ -34,6 +34,24 @@
       "parentUuid": "a7c5657a_31e1e144",
       "revId": "886923d1aafb8dfac4d74fb32795a895a2a04326",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01601414_7e24e211",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-10T17:35:46Z",
+      "side": 1,
+      "message": "Thanks for the update.",
+      "parentUuid": "ee245efb_5dec56dd",
+      "revId": "886923d1aafb8dfac4d74fb32795a895a2a04326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
