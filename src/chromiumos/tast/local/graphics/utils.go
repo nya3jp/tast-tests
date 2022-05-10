@@ -211,7 +211,7 @@ func SupportedAPIs(glMajor, glMinor int, vulkan bool) []APIType {
 func DEQPExecutable(api APIType) (string, error) {
 	switch api {
 	case EGL:
-		return "", errors.New("cannot run DEQP/EGL on Chrome OS")
+		return "", errors.New("cannot run DEQP/EGL on ChromeOS")
 	case GLES2:
 		return filepath.Join(deqpBaseDir, "modules/gles2/deqp-gles2"), nil
 	case GLES3:

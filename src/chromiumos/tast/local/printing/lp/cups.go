@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package lp provides an API for interacting with the CUPS daemon on Chrome OS
+// Package lp provides an API for interacting with the CUPS daemon on ChromeOS
 // via lp/lpstat/lpamin/etc.
 package lp
 

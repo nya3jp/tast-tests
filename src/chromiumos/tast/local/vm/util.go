@@ -84,7 +84,7 @@ func UnmountComponent(ctx context.Context) error {
 	return nil
 }
 
-// getMilestone returns the Chrome OS milestone for this build.
+// getMilestone returns the ChromeOS milestone for this build.
 func getMilestone() (int, error) {
 	f, err := os.Open(lsbReleasePath)
 	if err != nil {
