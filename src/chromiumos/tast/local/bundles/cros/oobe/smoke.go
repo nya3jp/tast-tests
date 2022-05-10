@@ -22,11 +22,25 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name:      "polymer3",
+			Val:       true,
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 
 func Smoke(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.NoLogin())
+	polymer3 := s.Param().(bool)
+	options := []chrome.Option{
+		chrome.NoLogin(),
+	}
+	if polymer3 {
+		options = append(options, chrome.EnableFeatures("EnableOobePolymer3"))
+	}
+	cr, err := chrome.New(ctx, options...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
