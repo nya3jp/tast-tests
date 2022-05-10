@@ -953,8 +953,8 @@ func (ac *Activity) swipe(ctx context.Context, from, to coords.Point, t time.Dur
 	}
 	defer stw.Close()
 
-	// TODO(ricardoq): Fetch stableSize directly from Chrome OS, and not from Android.
-	// It is not clear whether Android can have a display bounds different than Chrome OS.
+	// TODO(ricardoq): Fetch stableSize directly from ChromeOS, and not from Android.
+	// It is not clear whether Android can have a display bounds different than ChromeOS.
 	// Using "non-rotated" display bounds for calculating the scale factor since
 	// touchscreen bounds are also "non-rotated".
 	dispSize, err := ac.disp.stableSize(ctx)

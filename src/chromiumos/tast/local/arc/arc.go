@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package arc supports interacting with the ARC framework, which is used to run Android applications on Chrome OS.
+// Package arc supports interacting with the ARC framework, which is used to run Android applications on ChromeOS.
 package arc
 
 import (
@@ -481,7 +481,7 @@ func (a *ARC) cleanUpLogcatFile() error {
 	return nil
 }
 
-// VMEnabled returns true if Chrome OS is running ARCVM.
+// VMEnabled returns true if ChromeOS is running ARCVM.
 func VMEnabled() (bool, error) {
 	installType, ok := Type()
 	if !ok {

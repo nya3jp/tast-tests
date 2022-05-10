@@ -3,6 +3,6 @@
 // found in the LICENSE file.
 
 // Package accountmanager provides common functionality for managing accounts on
-// Chrome OS in-session e.g. adding an account in the system account addition
+// ChromeOS in-session e.g. adding an account in the system account addition
 // dialog.
 package accountmanager

@@ -29,7 +29,7 @@ const (
 	GoogleTTSExtensionID  = "gjjabgpgjpampikjhjpfhneeoapjbjaf"
 )
 
-// Feature represents an accessibility feature in Chrome OS.
+// Feature represents an accessibility feature in ChromeOS.
 type Feature string
 
 // List of accessibility features.
