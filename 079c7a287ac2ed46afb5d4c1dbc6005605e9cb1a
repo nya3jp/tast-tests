@@ -16,6 +16,23 @@
       "message": "I changed an added test\u0027s API usage after rebase and the vote disappeared. Can you please vote again? Thanks.",
       "revId": "079c7a287ac2ed46afb5d4c1dbc6005605e9cb1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ffdd881_fa687d95",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-10T06:44:54Z",
+      "side": 1,
+      "message": "nit: reflow",
+      "revId": "079c7a287ac2ed46afb5d4c1dbc6005605e9cb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
