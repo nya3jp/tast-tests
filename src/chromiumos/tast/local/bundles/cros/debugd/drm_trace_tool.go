@@ -213,9 +213,9 @@ func testTraceSnapshot(ctx context.Context, d *debugd.Debugd) error {
 	}
 
 	// Read the snapshot.
-	matches, err := filepath.Glob("/var/log/display_debug/drm_trace.*")
+	matches, err := filepath.Glob("/var/log/display_debug/drm_trace_verbose.*")
 	if err != nil {
-		return errors.Wrapf(err, "failed to glob directory: %s", "/var/log/display_debug/drm_trace.*")
+		return errors.Wrapf(err, "failed to glob directory: %s", "/var/log/display_debug/drm_trace_verbose.*")
 	}
 	if len(matches) != 1 {
 		return errors.Errorf("unexpected number of glob matches: got %d want 1", len(matches))
