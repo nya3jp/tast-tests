@@ -7,7 +7,6 @@ package u2fd
 import (
 	"context"
 	"fmt"
-	"math/rand"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -58,9 +57,6 @@ type WebauthnService struct {
 }
 
 func (c *WebauthnService) New(ctx context.Context, req *hwsec.NewRequest) (*empty.Empty, error) {
-	// We need truly random values for username strings so that different test runs don't affect each other.
-	rand.Seed(time.Now().UnixNano())
-
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		return nil, errors.Wrap(err, "failed to restart ui job")
 	}
@@ -129,7 +125,7 @@ func (c *WebauthnService) EndWebauthn(ctx context.Context, req *empty.Empty) (*e
 	return &empty.Empty{}, nil
 }
 
-func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *hwsec.StartMakeCredentialRequest) (*empty.Empty, error) {
 	// Perform MakeCredential on the test website.
 
 	tconn, err := c.cr.TestAPIConn(ctx)
@@ -137,24 +133,8 @@ func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *empty.Em
 		return nil, errors.Wrap(err, "failed to get test API connection")
 	}
 
-	name := randomUsername()
-	testing.ContextLogf(ctx, "Username: %s", name)
-	// Use a random username because webauthn.io keeps state for each username for a period of time.
-	err = c.conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email').value = "%s"`, name), nil)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to execute JS expression to set username")
-	}
-
-	// Select "Authenticator Type".
-	err = c.conn.Eval(ctx, fmt.Sprintf(`document.getElementById('select-authenticator').value= "%s"`, authenticatorTypeToValue(c.cfg.authenticatorType)), nil)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to execute JS expression to select authenticator type")
-	}
-
-	// Select "User Verification".
-	err = c.conn.Eval(ctx, fmt.Sprintf(`document.getElementById('select-verification').value= "%s"`, userVerificationToValue(c.cfg.userVerification)), nil)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to execute JS expression to select user verification")
+	if err = setUsernameAndConfiguration(ctx, c.conn, req.GetUsername(), c.cfg); err != nil {
+		return nil, err
 	}
 
 	ui := uiauto.New(tconn)
@@ -209,12 +189,16 @@ func (c *WebauthnService) CheckMakeCredential(ctx context.Context, req *empty.Em
 	return &empty.Empty{}, nil
 }
 
-func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *hwsec.StartGetAssertionRequest) (*empty.Empty, error) {
 	// Perform GetAssertion on the test website.
 
 	tconn, err := c.cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get test API connection")
+	}
+
+	if err = setUsernameAndConfiguration(ctx, c.conn, req.GetUsername(), c.cfg); err != nil {
+		return nil, err
 	}
 
 	ui := uiauto.New(tconn)
@@ -288,14 +272,24 @@ func authenticatorTypeToValue(t hwsec.AuthenticatorType) string {
 	return "unknown"
 }
 
-// randomUsername returns a random username of length 10.
-func randomUsername() string {
-	const letters = "abcdefghijklmnopqrstuvwxyz0123456789"
-
-	ret := make([]byte, 10)
-	for i := range ret {
-		ret[i] = letters[rand.Intn(len(letters))]
+func setUsernameAndConfiguration(ctx context.Context, conn *chrome.Conn, name string, cfg webauthnConfig) error {
+	testing.ContextLogf(ctx, "Username: %s", name)
+	// Use a random username because webauthn.io keeps state for each username for a period of time.
+	err := conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email').value = "%s"`, name), nil)
+	if err != nil {
+		return errors.Wrap(err, "failed to execute JS expression to set username")
 	}
 
-	return string(ret)
+	// Select "Authenticator Type".
+	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('select-authenticator').value= "%s"`, authenticatorTypeToValue(cfg.authenticatorType)), nil)
+	if err != nil {
+		return errors.Wrap(err, "failed to execute JS expression to select authenticator type")
+	}
+
+	// Select "User Verification".
+	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('select-verification').value= "%s"`, userVerificationToValue(cfg.userVerification)), nil)
+	if err != nil {
+		return errors.Wrap(err, "failed to execute JS expression to select user verification")
+	}
+	return nil
 }
