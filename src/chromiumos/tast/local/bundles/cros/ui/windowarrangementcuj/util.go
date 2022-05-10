@@ -15,6 +15,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -83,8 +84,18 @@ type DragPoints [3]coords.Point
 func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections, error) {
 	testParam := s.Param().(TestParam)
 
+	var cleanupActionsInReverseOrder []action.Action
+
 	connection := &Connections{
-		Cleanup:       func(ctx context.Context) error { return nil },
+		Cleanup: func(ctx context.Context) error {
+			var firstErr error
+			for i := len(cleanupActionsInReverseOrder) - 1; i >= 0; i-- {
+				if err := cleanupActionsInReverseOrder[i](ctx); firstErr == nil {
+					firstErr = err
+				}
+			}
+			return firstErr
+		},
 		CloseBlankTab: func(ctx context.Context) error { return nil },
 	}
 	var l *lacros.Lacros
@@ -104,7 +115,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 			if connection.Chrome, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
 				return nil, errors.Wrap(err, "failed to init chrome")
 			}
-			connection.Cleanup = connection.Chrome.Close
+			cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, connection.Chrome.Close)
 			if connection.ARC, err = arc.New(ctx, s.OutDir()); err != nil {
 				return nil, errors.Wrap(err, "failed to init ARC")
 			}
@@ -125,10 +136,10 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to setup lacros")
 		}
-		connection.Cleanup = func(ctx context.Context) error {
+		cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, func(ctx context.Context) error {
 			lacros.CloseLacros(ctx, l)
 			return nil
-		}
+		})
 
 		if connection.BrowserTestConn, err = l.TestAPIConn(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
@@ -145,18 +156,16 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ARC activity")
 	}
-	oldCleanup1 := connection.Cleanup
-	connection.Cleanup = func(ctx context.Context) error {
+	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, func(ctx context.Context) error {
 		connection.ArcVideoActivity.Close()
-		return oldCleanup1(ctx)
-	}
+		return nil
+	})
 
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	oldCleanup2 := connection.Cleanup
-	connection.Cleanup = func(ctx context.Context) error {
+	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, func(ctx context.Context) error {
 		srv.Close()
-		return oldCleanup2(ctx)
-	}
+		return nil
+	})
 	connection.PipVideoTestURL = srv.URL + "/pip.html"
 
 	srvURL, err := url.Parse(srv.URL)
@@ -171,17 +180,9 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start reverse port forwarding")
 	}
-	oldCleanup3 := connection.Cleanup
-	connection.Cleanup = func(ctx context.Context) error {
-		var firstErr error
-		if err := connection.ARC.RemoveReverseTCP(ctx, androidPort); firstErr == nil && err != nil {
-			firstErr = errors.Wrap(err, "failed to stop reverse port forwarding")
-		}
-		if err := oldCleanup3(ctx); firstErr == nil && err != nil {
-			firstErr = err
-		}
-		return firstErr
-	}
+	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, func(ctx context.Context) error {
+		return connection.ARC.RemoveReverseTCP(ctx, androidPort)
+	})
 	connection.WithTestVideo = arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/shaka_720.webm", androidPort))
 
 	connection.TestConn, err = connection.Chrome.TestAPIConn(ctx)
