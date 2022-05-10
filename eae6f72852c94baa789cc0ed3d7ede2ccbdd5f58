@@ -16,6 +16,24 @@
       "message": "Seems unlikely that getting rid of the trailing space here would break anything, but wdyt? Might be worth running the test if it isn\u0027t covered by CQ",
       "revId": "eae6f72852c94baa789cc0ed3d7ede2ccbdd5f58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d2aae3c_3da98ab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2022-05-10T15:46:53Z",
+      "side": 0,
+      "message": "Ugh, looks like the IDE removed the trailing spaces. Thanks for catching this. I\u0027ll run this manually before submitting to CQ.",
+      "parentUuid": "e3098d5c_bc67668a",
+      "revId": "eae6f72852c94baa789cc0ed3d7ede2ccbdd5f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
