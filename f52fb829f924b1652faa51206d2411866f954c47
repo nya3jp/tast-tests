@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "679ec139_a9d80176",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-10T16:00:22Z",
+      "side": 1,
+      "message": "\"partially\" seems like a weird term here, maybe just replace this subject line with \"only flash FW if necessary\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "f52fb829f924b1652faa51206d2411866f954c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5aec0bf3_c0d87822",
