@@ -16,6 +16,24 @@
       "message": "Might want to pull this out into a separate CL?",
       "revId": "4eb7d771329bdd0e45a6fc99b4a7aa6fc1673223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd5d988_09598e81",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-10T16:51:54Z",
+      "side": 1,
+      "message": "Agreed -- I pulled out moving the metrics to here: crrev/c/3639103\n\nI am waiting on completing that cl based on our discussion probably with Art on how to handle both files.",
+      "parentUuid": "c6b77181_d125c892",
+      "revId": "4eb7d771329bdd0e45a6fc99b4a7aa6fc1673223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
