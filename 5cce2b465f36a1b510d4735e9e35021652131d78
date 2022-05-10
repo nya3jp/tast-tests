@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "305a4ef4_2833823f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_shape_based_chinese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-05-10T01:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3d148bd_065dbb31",
+      "revId": "5cce2b465f36a1b510d4735e9e35021652131d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c1ba6e0_416d48ca",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-10T01:01:20Z",
       "side": 1,
       "message": "nit: defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, \"ui_tree\")",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 75
+      },
+      "revId": "5cce2b465f36a1b510d4735e9e35021652131d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "977e3fe2_21b4607f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_shape_based_chinese_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-05-10T01:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c1ba6e0_416d48ca",
       "range": {
         "startLine": 100,
         "startChar": 1,
