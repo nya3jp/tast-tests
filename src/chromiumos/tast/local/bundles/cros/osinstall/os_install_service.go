@@ -33,11 +33,10 @@ func init() {
 }
 
 type osInstallService struct {
-	s      *testing.ServiceState
-	cr     *chrome.Chrome
-	tconn  *chrome.TestConn
-	ui     *uiauto.Context
-	outDir string
+	s     *testing.ServiceState
+	cr    *chrome.Chrome
+	tconn *chrome.TestConn
+	ui    *uiauto.Context
 }
 
 func (svc *osInstallService) StartChrome(ctx context.Context, req *osinstall.StartChromeRequest) (*empty.Empty, error) {
@@ -59,22 +58,22 @@ func (svc *osInstallService) StartChrome(ctx context.Context, req *osinstall.Sta
 		return nil, err
 	}
 
-	// Get output dir in which to store UI dump.
-	outDir, ok := testing.ContextOutDir(ctx)
-	if !ok {
-		return nil, errors.New("failed to get remote output directory")
-	}
-
 	svc.cr = cr
 	svc.tconn = tconn
 	svc.ui = uiauto.New(tconn)
-	svc.outDir = outDir
 
 	return &empty.Empty{}, nil
 }
 
 func (svc *osInstallService) DumpUITree(ctx context.Context) {
-	faillog.DumpUITree(ctx, svc.outDir, svc.tconn)
+	// Get output dir in which to store UI dump.
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		testing.ContextLog(ctx, "Failed to get remote output directory")
+		return
+	}
+
+	faillog.DumpUITree(ctx, outDir, svc.tconn)
 }
 
 func (svc *osInstallService) RunOsInstall(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
