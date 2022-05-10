@@ -91,7 +91,7 @@ const (
 )
 
 // Information about dynamic SAR tables and the relevant acronyms can be found on
-// the Chrome OS partner site:
+// the ChromeOS partner site:
 // https://chromeos.google.com/partner/dlm/docs/connectivity/wifidyntxpower.html
 
 // getWifiVendorID returns the vendor ID of the given wireless network interface,

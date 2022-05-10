@@ -47,8 +47,8 @@ func KeyboardDefaultToFunctionKeys(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	// Old Chrome OS keyboards send F1 and software maps it to "back".
-	// Wilco devices and newer Chrome OS keyboards directly send "back".
+	// Old ChromeOS keyboards send F1 and software maps it to "back".
+	// Wilco devices and newer ChromeOS keyboards directly send "back".
 	topRow, err := input.KeyboardTopRowLayout(ctx, kb)
 	if err != nil {
 		s.Fatal("Failed to obtain kayobard layout: ", err)

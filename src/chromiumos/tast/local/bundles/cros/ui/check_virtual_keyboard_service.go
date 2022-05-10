@@ -103,7 +103,7 @@ func (cvk *CheckVirtualKeyboardService) TouchChromeAddressBar(ctx context.Contex
 		return nil, errors.Wrap(err, "failed to create the touch context instance")
 	}
 	if err := tc.Tap(addressBarNode)(ctx); err != nil {
-		return nil, errors.Wrap(err, "unable to detect Chrome OS virtual keyboard")
+		return nil, errors.Wrap(err, "unable to detect ChromeOS virtual keyboard")
 	}
 
 	return &empty.Empty{}, nil
@@ -139,7 +139,7 @@ func (cvk *CheckVirtualKeyboardService) CheckVirtualKeyboardIsPresent(ctx contex
 			}, nil
 		}
 		saveLogsOnError(ctx, cvk, func() bool { return true }, "check")
-		return nil, errors.Wrap(err, "unable to detect Chrome OS virtual keyboard")
+		return nil, errors.Wrap(err, "unable to detect ChromeOS virtual keyboard")
 	}
 
 	exists = true

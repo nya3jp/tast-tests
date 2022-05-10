@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Validity,
-		Desc: "Set baseline expectations for hosting Chrome OS VM images",
+		Desc: "Set baseline expectations for hosting ChromeOS VM images",
 		Contacts: []string{
 			"pwang@chromium.org", // Original test author
 			"cros-containers-dev@google.com",

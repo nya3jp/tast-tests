@@ -113,7 +113,7 @@ type startupMetrics struct {
 	lacrosStartTime time.Duration
 }
 
-// StartupPerf measures Chrome OS from session start until the moment where the first browser
+// StartupPerf measures ChromeOS from session start until the moment where the first browser
 // window is shown. There are few metrics collected at the moment such as session start time,
 // browser restore time and others in order to provide optimization possibilities for the
 // developers.

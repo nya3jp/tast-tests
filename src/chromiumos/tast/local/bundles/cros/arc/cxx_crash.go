@@ -114,7 +114,7 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 		crash.MoveFilesToOut(ctx, s.OutDir(), metaFile)
 	}
 
-	// On ARC++ container, the Linux kernel is shared with ARC and Chrome OS. The kernel can
+	// On ARC++ container, the Linux kernel is shared with ARC and ChromeOS. The kernel can
 	// directly receive ARC's C++ binary crashes and no temporary files are created. On ARCVM,
 	// some temporary files are created as part of the crash handling and we want to clean it
 	// up.

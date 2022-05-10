@@ -6,7 +6,7 @@ which are run under a [hwsim-based test framework]. They rely on the
 `mac80211_hwsim` kernel module, which provides support for simulated client and
 AP devices. See the upstream project documentation for more info.
 
-The upstream test framework is integrated within Chrome OS to run via the
+The upstream test framework is integrated within ChromeOS to run via the
 [wifi.HostapHwsim] Tast test wrapper. This test has some limited software
 dependencies, which are installed via the `USE=wifi_hostap_test` feature flag.
 Currently, this `USE` flag is enabled only on `BOARD=amd64-generic` and those
@@ -14,7 +14,7 @@ that inherit from it. The easiest way to use the tests is via a VM target, like
 `BOARD=betty` (Google-only).
 
 See these [slides] (Google-only) for a rough primer on how and why they were
-integrated into Chrome OS.
+integrated into ChromeOS.
 
 ## HOWTO
 

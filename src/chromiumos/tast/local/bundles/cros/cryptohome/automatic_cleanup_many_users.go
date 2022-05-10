@@ -30,7 +30,7 @@ func init() {
 		Desc: "Test automatic disk cleanup",
 		Contacts: []string{
 			"vsavu@google.com",     // Test author
-			"gwendal@chromium.com", // Lead for Chrome OS Storage
+			"gwendal@chromium.com", // Lead for ChromeOS Storage
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Params: []testing.Param{{

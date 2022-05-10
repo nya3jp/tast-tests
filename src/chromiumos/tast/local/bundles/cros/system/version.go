@@ -54,7 +54,7 @@ func Version(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Report the Chrome OS build version.
+	// Report the ChromeOS build version.
 	if buildNumber, ok := lsb[lsbrelease.BuildNumber]; !ok {
 		s.Error("Failed to get ChromeOS Build number")
 	} else {

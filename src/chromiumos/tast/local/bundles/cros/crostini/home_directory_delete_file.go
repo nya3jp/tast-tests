@@ -101,7 +101,7 @@ func testDeleteFileFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesA
 		return errors.Wrap(err, "failed to create a file in the container")
 	}
 
-	// Delete the file from Chrome OS.
+	// Delete the file from ChromeOS.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if _, err := os.Stat(filePath); err != nil {
 			return errors.Wrapf(err, "file %s does not exist", filePath)
@@ -114,7 +114,7 @@ func testDeleteFileFromLinuxFiles(ctx context.Context, filesApp *filesapp.FilesA
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to delete the file in Chrome OS")
+		return errors.Wrap(err, "failed to delete the file in ChromeOS")
 	}
 
 	// Check the file has been deleted from the container.
@@ -133,12 +133,12 @@ func testDeleteFileFromContainer(ctx context.Context, tconn *chrome.TestConn, co
 		return errors.Wrap(err, "failed to create a file in the container")
 	}
 
-	// Check the newly created file in Chrome OS.
+	// Check the newly created file in ChromeOS.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := os.Stat(filePath)
 		return err
 	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to find the newly created file in Chrome OS")
+		return errors.Wrap(err, "failed to find the newly created file in ChromeOS")
 	}
 
 	// Delete the file in container.
@@ -146,7 +146,7 @@ func testDeleteFileFromContainer(ctx context.Context, tconn *chrome.TestConn, co
 		return errors.Wrapf(err, "failed to delete file %s in container", fileName)
 	}
 
-	// Check the deleted file does not exist in Chrome OS.
+	// Check the deleted file does not exist in ChromeOS.
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if _, err := os.Stat(filePath); !os.IsNotExist(err) {
 			return errors.Wrapf(err, "file %s still exists", filePath)

@@ -23,7 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UIToggleFromWIFISettings,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Enable and disable WiFi from Chrome OS Settings UI",
+		Desc:         "Enable and disable WiFi from ChromeOS Settings UI",
 		Contacts:     []string{"pathan.jilani@intel.com", "cros-network-health@google.com", "intel-chrome-system-automation-team@intel.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
@@ -31,7 +31,7 @@ func init() {
 	})
 }
 
-// UIToggleFromWIFISettings tests enabling/disabling WiFi from the WiFi settings UI in Chrome OS settings.
+// UIToggleFromWIFISettings tests enabling/disabling WiFi from the WiFi settings UI in ChromeOS settings.
 func UIToggleFromWIFISettings(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 

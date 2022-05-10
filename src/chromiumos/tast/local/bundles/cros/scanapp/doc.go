@@ -2,5 +2,5 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package scanapp contains tests for the Chrome OS Scan app.
+// Package scanapp contains tests for the ChromeOS Scan app.
 package scanapp

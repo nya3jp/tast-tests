@@ -192,7 +192,7 @@ func RootPartitionForTest(ctx context.Context) (string, error) {
 }
 
 func fixedDstDrive(ctx context.Context) (string, error) {
-	// Reading fixed drive device name as reported by Chrome OS test system scripts.
+	// Reading fixed drive device name as reported by ChromeOS test system scripts.
 	const command = ". /usr/sbin/write_gpt.sh;. /usr/share/misc/chromeos-common.sh;load_base_vars;get_fixed_dst_drive"
 	out, err := testexec.CommandContext(ctx, "sh", "-c", command).Output(testexec.DumpLogOnError)
 	if err != nil {

@@ -157,7 +157,7 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		"USER_NS",
 		// Security; perform additional validation of credentials.
 		"DEBUG_CREDENTIALS",
-		// Security; make sure the Chrome OS LSM is in use.
+		// Security; make sure the ChromeOS LSM is in use.
 		"SECURITY_CHROMIUMOS",
 
 		// Binary formats.

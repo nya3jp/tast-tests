@@ -27,7 +27,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EnableExternalStorage,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verifies ARC removable media can be enabled from Chrome OS Settings",
+		Desc:         "Verifies ARC removable media can be enabled from ChromeOS Settings",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com", "arc-storage@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
@@ -150,7 +150,7 @@ func EnableExternalStorage(ctx context.Context, s *testing.State) {
 		s.Fatal("Android exists: ", err)
 	}
 
-	// Enable External Storage Permission from Chrome OS Settings.
+	// Enable External Storage Permission from ChromeOS Settings.
 	ui := uiauto.New(tconn)
 	externalStoragePreferenceButton := nodewith.Name("External storage preferences").Role(role.Link)
 	myDiskButton := nodewith.Name(diskName).Role(role.ToggleButton)

@@ -84,7 +84,7 @@ func GetClientString(c Client) string {
 	}
 }
 
-// SetDoHMode updates Chrome OS setting to change DNS-over-HTTPS mode.
+// SetDoHMode updates ChromeOS setting to change DNS-over-HTTPS mode.
 func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, mode DoHMode, dohProvider string) error {
 	conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/osPrivacy")
 	if err != nil {

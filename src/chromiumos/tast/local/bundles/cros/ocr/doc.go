@@ -3,5 +3,5 @@
 // found in the LICENSE file.
 
 // Package ocr contains local Tast tests that exercise the Optical Character
-// Recognition Service for Chrome OS.
+// Recognition Service for ChromeOS.
 package ocr

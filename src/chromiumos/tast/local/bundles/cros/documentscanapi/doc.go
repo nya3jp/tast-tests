@@ -2,5 +2,5 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package documentscanapi contains tests for the Chrome OS Document Scan API.
+// Package documentscanapi contains tests for the ChromeOSDocument Scan API.
 package documentscanapi

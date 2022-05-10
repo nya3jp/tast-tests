@@ -70,7 +70,7 @@ func VmcExtraDisk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get CROS_USER_ID_HASH: ", err)
 	}
 
-	// Create a file in a temp directory in Chrome OS and push it to the container.
+	// Create a file in a temp directory in ChromeOS and push it to the container.
 	dir, err := ioutil.TempDir("", "tast.crostini.VmcExtraDisk")
 	if err != nil {
 		s.Fatal("Failed to create a temp directory: ", err)

@@ -104,7 +104,7 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 	// Log in, verify a production seed was fetched, and inject the test seed.
 	// The injected test seed will take effect on the next start of Chrome.
 	func() {
-		// Chrome OS test images always have "unknown" browser channel since they are on testimage-channel.
+		// ChromeOS test images always have "unknown" browser channel since they are on testimage-channel.
 		// Variations configs are typically not served to unknown channels, so we need to specify
 		// --fake-variations-channel to successfully fetch and apply variations configs.
 		// We will use beta as the default channel (corresponding to the hardcoded seed in data/),

@@ -500,7 +500,7 @@ func waitForARCStopped(ctx context.Context) error {
 	return nil
 }
 
-// chromeOSVersion returns the Chrome OS version string. (e.g. "12345.0.0")
+// chromeOSVersion returns the ChromeOS version string. (e.g. "12345.0.0")
 func chromeOSVersion() (string, error) {
 	m, err := lsbrelease.Load()
 	if err != nil {

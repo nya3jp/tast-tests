@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package apps contains functionality and test cases for Chrome OS essential Apps.
+// Package apps contains functionality and test cases for ChromeOS essential Apps.
 package apps
 
 import (

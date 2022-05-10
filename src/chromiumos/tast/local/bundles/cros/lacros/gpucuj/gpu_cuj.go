@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package gpucuj tests GPU CUJ tests on lacros Chrome and Chrome OS Chrome.
+// Package gpucuj tests GPU CUJ tests on lacros Chrome and ChromeOS Chrome.
 package gpucuj
 
 import (
