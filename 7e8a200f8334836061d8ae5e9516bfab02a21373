@@ -121,6 +121,24 @@
       "parentUuid": "cd3858fc_86733032",
       "revId": "7e8a200f8334836061d8ae5e9516bfab02a21373",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7caa8cd4_b06a9e34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-10T06:42:08Z",
+      "side": 1,
+      "message": "Yerp, but they are currently using chrome://newtab/ (note the trailing slash) which IIRC works. I\u0027ve asked in another comment what the issues they encountered were.",
+      "parentUuid": "6adbb957_d0e42add",
+      "revId": "7e8a200f8334836061d8ae5e9516bfab02a21373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
