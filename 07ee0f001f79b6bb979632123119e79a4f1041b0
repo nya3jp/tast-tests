@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9392f919_1232b04f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-10T12:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e36a60d_e4c320f5",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 16
+      },
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07b88c58_033bb22d",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-09T17:06:19Z",
       "side": 1,
       "message": "nit: For simplicity, you can set `retDconn` immediately. You do not have to worry about a \"bad\" value of `retDconn` being used, because if you detect an error, then `GetCleanDconnSafebrowsing` will simply return an error.\n\t\tvar err error\n\t\tretDconn, err \u003d br.NewConn(ctx, \"chrome://safe-browsing/#tab-deep-scan\")\n\nThen you can rename `retDconn` to `dconnSafebrowsing`.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 84
+      },
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6c31b2_6e0675d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-10T12:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07b88c58_033bb22d",
       "range": {
         "startLine": 253,
         "startChar": 0,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54952a1e_06e996e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-10T12:01:24Z",
+      "side": 1,
+      "message": "Thanks! I was wondering how to do this properly.\nI\u0027ll keep it in mind!",
+      "parentUuid": "b1a3cd7b_16caa4cf",
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf7af0db_103c38a2",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24b057a3_0d7cb156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-10T12:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf7af0db_103c38a2",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 19
+      },
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "443b0510_58c69be1",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-05-09T17:06:19Z",
       "side": 1,
       "message": "if _, err :\u003d os.Stat(filesapp.DownloadPath + dlFileName); !os.IsNotExist(err) {",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 28
+      },
+      "revId": "07ee0f001f79b6bb979632123119e79a4f1041b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7bcf42_c8ee91a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-05-10T12:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "443b0510_58c69be1",
       "range": {
         "startLine": 243,
         "startChar": 0,
