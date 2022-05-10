@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33496aea_bc16c32a",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2022-05-10T19:48:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8392c396_3de1867f",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 82
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "206d19d9_2bad7bc7",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3a62774_bb87b9ba",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2022-05-10T19:48:13Z",
+      "side": 1,
+      "message": "We\u0027ll have a followup CL to make passing this env to LXC container.",
+      "parentUuid": "206d19d9_2bad7bc7",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 44
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0fc2e13_6ada09e3",
         "filename": "src/chromiumos/tast/common/servo/proxy.go",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-10T01:05:16Z",
       "side": 1,
       "message": "The array should only has 1.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 31
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73c5f83_641160cc",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2022-05-10T19:48:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0fc2e13_6ada09e3",
       "range": {
         "startLine": 254,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ebc4212_b5ba8237",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2022-05-10T19:48:13Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "75247fd6_4c87a1c5",
+      "range": {
+        "startLine": 267,
+        "startChar": 49,
+        "endLine": 267,
+        "endChar": 50
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eed81610_1206a950",
         "filename": "src/chromiumos/tast/common/servo/proxy.go",
         "patchSetId": 3
@@ -106,6 +202,30 @@
       "writtenOn": "2022-05-10T01:05:16Z",
       "side": 1,
       "message": "We need to use exact match",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 30
+      },
+      "revId": "b2194eb9eb7fb06f07b18487ac5ef724e3cefb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cc3207_b0c2f9e2",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2022-05-10T19:48:13Z",
+      "side": 1,
+      "message": "removed the function",
+      "parentUuid": "eed81610_1206a950",
       "range": {
         "startLine": 270,
         "startChar": 2,
