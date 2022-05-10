@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c13213f_75f107ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-05-10T14:00:37Z",
+      "side": 1,
+      "message": "It seems like these tests are stable on eve board on ChromeOS (e.g. https://cros-health-prod.googleplex.com/test/crostini.AppAndroidStudio). They\u0027re failing only on chrome builders.\n\nThen, it would be probably better to disable is only on the chromium side? Like is this CL: https://chromium-review.googlesource.com/c/chromium/src/+/3557570",
+      "revId": "8fa7886c541b9b5c1310760915297899db2ee8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
