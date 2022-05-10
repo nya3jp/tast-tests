@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7bd307_962ee581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_cantonese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-05-10T01:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "addc4d3e_20521ab8",
+      "revId": "cdb3d72667c40b7373ed4c9dec544af289003406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d175499b_c7221935",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-10T00:59:25Z",
       "side": 1,
       "message": "defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, \"ui_tree\")",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 75
+      },
+      "revId": "cdb3d72667c40b7373ed4c9dec544af289003406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b175354d_9319273a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_cantonese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-05-10T01:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d175499b_c7221935",
       "range": {
         "startLine": 50,
         "startChar": 0,
