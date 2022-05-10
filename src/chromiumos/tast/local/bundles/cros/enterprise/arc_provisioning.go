@@ -148,7 +148,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 		defer a.Close(ctx)
 
-		if err := a.EnableVerboseLogging(ctx, "Finsky"); err != nil {
+		if err := a.EnableVerboseLogging(ctx, "Finsky", "Volley", "PlayCommon"); err != nil {
 			return exit("enable verbose logging", err)
 		}
 
