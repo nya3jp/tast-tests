@@ -94,6 +94,30 @@
       },
       "revId": "51f978626535efec840b0eeff3470e4ace093b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2412d509_6004699b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T10:22:34Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded a new patch. I think this is what you mean, but please correct me if this is still wrong.",
+      "parentUuid": "99fb48c4_ca308651",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 33
+      },
+      "revId": "51f978626535efec840b0eeff3470e4ace093b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
