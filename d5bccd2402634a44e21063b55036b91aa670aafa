@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0a54b8_1fd06ff4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T02:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64c45d61_3cb47a07",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "d5bccd2402634a44e21063b55036b91aa670aafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98309a9_4a026030",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T02:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77f5bcc4_f2f7463c",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "d5bccd2402634a44e21063b55036b91aa670aafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef4c5196_e14f1be8",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-05-09T03:37:19Z",
       "side": 1,
       "message": "Why don\u0027t you just compare the PhysicalCPUInfo from cros_healthd? If the first one is verified and all others are the same, you don\u0027t need to check the real value.\n\nOn the other hands, if you get the real values, why don\u0027t you just compare each of them with each PhysicalCPUInfo?",
+      "revId": "d5bccd2402634a44e21063b55036b91aa670aafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d00d25e_55ba1bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-10T02:27:38Z",
+      "side": 1,
+      "message": "I will go ahead and implement option 1. This is the simplest and still satisfies all of our needs.\n\nI can\u0027t compare the real values yet because I don\u0027t actually know which of the logical CPU belongs to which of the PhysicalCPUInfo. I could add even more logic to do that (read physical ID and such), it is doable but will be refactored soon once we report the logical ID in cros_healthd as well.",
+      "parentUuid": "ef4c5196_e14f1be8",
       "revId": "d5bccd2402634a44e21063b55036b91aa670aafa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
