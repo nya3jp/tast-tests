@@ -79,8 +79,11 @@ func (svc *osInstallService) DumpUITree(ctx context.Context) {
 func (svc *osInstallService) RunOsInstall(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	ui := svc.ui
 
-	// Advance to the install-or-try screen.
-	if err := ui.LeftClick(nodewith.Name("Get started").Role(role.Button))(ctx); err != nil {
+	// Advance to the install-or-try screen. Wait until the button is
+	// gone before proceeding because otherwise the test sometimes gets
+	// stuck on the initial screen.
+	getStarted := nodewith.Name("Get started").Role(role.Button)
+	if err := ui.LeftClickUntil(getStarted, ui.Gone(getStarted))(ctx); err != nil {
 		svc.DumpUITree(ctx)
 		return nil, err
 	}
