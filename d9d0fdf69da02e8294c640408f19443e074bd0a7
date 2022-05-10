@@ -33,6 +33,24 @@
       "message": "nit: not used?",
       "revId": "d9d0fdf69da02e8294c640408f19443e074bd0a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b1fa89_604d3d68",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-05-10T00:54:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5540c32e_3f0565be",
+      "revId": "d9d0fdf69da02e8294c640408f19443e074bd0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

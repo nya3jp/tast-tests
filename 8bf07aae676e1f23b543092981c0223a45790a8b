@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a01d57_cfaba77e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_royale_high_divinia_park.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-05-10T00:54:41Z",
+      "side": 1,
+      "message": "Test moved to private.",
+      "parentUuid": "93d32891_fec20bdd",
+      "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c25417c1_14301c74",

@@ -16,6 +16,24 @@
       "message": "The test now fails here. Looking at logcat I see that this should be `onAppReady: Home`, but maybe that\u0027s because I\u0027m using my own Roblox account.",
       "revId": "eb1aff920ecc9179652b44696b3ca6035ff91658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6632c2fd_6737fc19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-05-10T00:54:41Z",
+      "side": 1,
+      "message": "Test moved to private.",
+      "parentUuid": "2bf21f84_d8b6ab76",
+      "revId": "eb1aff920ecc9179652b44696b3ca6035ff91658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
