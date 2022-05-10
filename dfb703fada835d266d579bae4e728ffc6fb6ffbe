@@ -16,6 +16,69 @@
       "message": "Friendly ping :)",
       "revId": "dfb703fada835d266d579bae4e728ffc6fb6ffbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf91bc13_d7b1c74f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T06:18:22Z",
+      "side": 1,
+      "message": "Just curious, are those dependencies needed for this test?",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "dfb703fada835d266d579bae4e728ffc6fb6ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851c95e5_5dbd69a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T06:18:22Z",
+      "side": 1,
+      "message": "In this test, the pattern of clicking a button is everywhere. How about deduplicate them with an inner function?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "dfb703fada835d266d579bae4e728ffc6fb6ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1195582_4ea7622c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-10T06:18:22Z",
+      "side": 1,
+      "message": "TODO(crbug.com/1291153)",
+      "revId": "dfb703fada835d266d579bae4e728ffc6fb6ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
