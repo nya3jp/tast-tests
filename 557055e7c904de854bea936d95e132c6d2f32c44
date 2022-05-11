@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baed1423_414c10a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-11T03:43:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "341f01ba_b783f128",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "557055e7c904de854bea936d95e132c6d2f32c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce981ffd_e4b1b9ab",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-11T03:33:00Z",
       "side": 1,
       "message": "The window looks like it takes up most of the screen, does it help that much?\n\nI can\u0027t tell from your TEST\u003dline, did you get a repro case which consistently failed and this made it consistently pass or is it a speculative fix?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "557055e7c904de854bea936d95e132c6d2f32c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9572e2b_3eb357d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-11T03:43:34Z",
+      "side": 1,
+      "message": "yes, I was able to reproduce the VS code test failure in https://luci-milo.appspot.com/ui/inv/build-8814524288165593393/test-results?q\u003dcrostini.AppVscode, and the fix works. Also confirmed in http://go/acuiti-playground with the same image in the failed builder, selecting the window (ROI) is able to find the element. I will let the test run 20 times before submitting it.\n\nThe VS code in tablet mode also suffers from the screendiff issue, this will be tracked separatly: https://b/232166796",
+      "parentUuid": "ce981ffd_e4b1b9ab",
       "range": {
         "startLine": 13,
         "startChar": 0,
