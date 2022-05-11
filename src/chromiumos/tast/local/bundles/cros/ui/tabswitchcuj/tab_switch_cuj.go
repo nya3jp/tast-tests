@@ -172,7 +172,7 @@ func Run(ctx context.Context, s *testing.State) {
 			[]int64{800, 1600}, bTconn),
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, cs, nil, cujrecorder.RecorderOptions{}, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
