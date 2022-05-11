@@ -32,9 +32,10 @@ func waitForDocumentSaved(tconn *chrome.TestConn, appName string) action.Action 
 			if loadFileErr := ui.Exists(unableToLoadDialog)(ctx); loadFileErr == nil {
 				return errors.New("unable to load file")
 			}
-			return errors.Wrapf(err, "failed to wait for document saved within %v", longerUIWaitTime)
+			testing.ContextLog(ctx, "Failed to wait for document saved within ", longerUIWaitTime)
+		} else {
+			testing.ContextLog(ctx, "Saved to drive in ", time.Now().Sub(startTime))
 		}
-		testing.ContextLog(ctx, "Saved to drive in ", time.Now().Sub(startTime))
 		return nil
 	}
 }
