@@ -16,6 +16,29 @@
       "message": "Hi Aya, PTAL when able. This CL only splits the existing tests now, the next one will add tab sharing tests for Ash.",
       "revId": "2cb1ec7170ee2f256d30894a8122f1aacf5af5d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8043f66a_fea07f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_entire_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-11T12:13:56Z",
+      "side": 1,
+      "message": "I think it would be better to use s.Errorf here.\nIf the test fails to close a window then any test executed after it may fail because the window is interfering with it. If we have an error here it would be easier to pinpoint the real culprit in such instances.\n\nSame for the other test.",
+      "range": {
+        "startLine": 267,
+        "startChar": 3,
+        "endLine": 267,
+        "endChar": 62
+      },
+      "revId": "2cb1ec7170ee2f256d30894a8122f1aacf5af5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
