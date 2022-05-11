@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         InputKeyboardConnectAndDisconnect,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Connect a virtual keyboard on the diagnostics input page and than disconnect it",
+		Desc:         "Connect a virtual keyboard on the diagnostics input page and then disconnect it",
 		Contacts:     []string{"jeff.lin@cienet.com", "xliu@cienet.com", "cros-peripherals@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
@@ -46,7 +46,7 @@ func InputKeyboardConnectAndDisconnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	dxRootnode, err := da.Launch(ctx, tconn)
+	dxRootNode, err := da.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch diagnostics app: ", err)
 	}
@@ -54,7 +54,7 @@ func InputKeyboardConnectAndDisconnect(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	ui := uiauto.New(tconn)
-	inputTab := da.DxInput.Ancestor(dxRootnode)
+	inputTab := da.DxInput.Ancestor(dxRootNode)
 	virtualKeyboard := da.DxVirtualKeyboardHeading
 	if err := uiauto.Combine("check no virtual keyboard exists in input device list",
 		ui.LeftClick(inputTab),
@@ -63,7 +63,9 @@ func InputKeyboardConnectAndDisconnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check virtual keyboard: ", err)
 	}
 
-	vkb, err := input.VirtualKeyboard(ctx)
+	// Since virtual keyboard with BUS_USB (0x03) doesn't work yet, use BUS_I2C (0x18).
+	// See https://crrev.com/c/1407138 for more discussion.
+	vkb, err := input.VirtualKeyboardWithBusType(ctx, 0x18)
 	if err != nil {
 		s.Fatal("Failed to create a virtual keyboard: ", err)
 	}
