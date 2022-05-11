@@ -237,7 +237,7 @@ func testPrintingFromContextMenu(ctx context.Context, tconn *chrome.TestConn) (b
 func checkPrintMenuItemIsRestricted(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	// Find the printing menu item.
 	ui := uiauto.New(tconn)
-	menuItemNode := nodewith.Role(role.MenuItem).Name("Print… Ctrl+P")
+	menuItemNode := nodewith.Role(role.MenuItem).NameStartingWith("Print…")
 	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(menuItemNode)(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to find print menu item")
 	}
