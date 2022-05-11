@@ -144,6 +144,7 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		return err
 	}
 
+	saveAsWindow := nodewith.Name("Save As").HasClass("Widget").Role(role.Window)
 	// UI interaction to save file.
 	// File -> Save As -> Type file name -> Save.
 	// This corresponds to step 5 at https://testtracker.googleplex.com/testplans/testcase/detail/4163083?id=18920&revision=232.
@@ -151,10 +152,10 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		uda.LeftClick(uidetection.Word("File")),
 		// "Save Workspace As...", "Save", and "Save As..." match the criteria, choose the third one.
 		uda.LeftClick(uidetection.Word("Save").Nth(2)),
-		uda.WaitUntilExists(uidetection.Word("Desktop")),
+		uda.WaitUntilExists(uidetection.Word("Desktop").WithinA11yNode(saveAsWindow)),
 		keyboard.AccelAction("ctrl+A"),
 		keyboard.TypeAction(testSavedFile),
-		uda.LeftClick(uidetection.Word("Save")),
+		uda.LeftClick(uidetection.Word("Save").WithinA11yNode(saveAsWindow)),
 	)
 
 	// Open the VSCode again, this time, it won't open the Get Started tab.
