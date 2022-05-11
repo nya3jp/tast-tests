@@ -39,6 +39,30 @@
       },
       "revId": "580d67cf678076834fa0670efde04d4a5fcad400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e62d83_7fdac98e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_install_uninstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-11T07:40:04Z",
+      "side": 1,
+      "message": "Thank you. Done.",
+      "parentUuid": "4f42ecd2_a94c4b8c",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 1
+      },
+      "revId": "580d67cf678076834fa0670efde04d4a5fcad400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
