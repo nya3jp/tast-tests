@@ -42,7 +42,7 @@ func init() {
 		}, {
 			Name:    "clamshell_mode",
 			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
-			Fixture: "chromeLoggedInWith100FakeApps",
+			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
 			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
@@ -52,7 +52,7 @@ func init() {
 			Name:              "tablet_mode",
 			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-			Fixture:           "chromeLoggedInWith100FakeApps",
+			Fixture:           "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}},
 	})
 }
