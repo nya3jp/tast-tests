@@ -30,6 +30,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.PersistentLacros,
 	})
 
@@ -46,6 +47,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.PersistentLacros,
 	})
 
@@ -61,6 +63,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.PersistentLacros,
 	})
 
@@ -92,6 +95,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.PersistentLacros,
 		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
