@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c1d955_e3770d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "164eeb87_9796e3c7",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "818ea13f_e25c5f15",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-11T16:41:02Z",
       "side": 1,
       "message": "nit: This error is similar to the one above which may make it hard to distinguish if there are errors. Is the actual issue here: `Failed to confirm eSIM profile nickname, got: %v, want: %v`?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e599ae6e_e5487f9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "818ea13f_e25c5f15",
       "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be2aa82_5caf6fe6",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1857b46_cb947f3a",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "958fa6d1_2fa92536",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-05-11T16:41:02Z",
       "side": 1,
       "message": "`Get\u003c..\u003e` is discouraged in Go. Is `AvailableEuicc` an OK name?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458aaf04_89f59938",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "958fa6d1_2fa92536",
       "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cddce2b_43b57adc",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40414756_29bb4965",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d03b2c96_8e56b9f3",
@@ -116,6 +206,24 @@
       "writtenOn": "2022-05-11T16:41:02Z",
       "side": 1,
       "message": "`Get\u003c..\u003e` is discouraged in Go. Is `ProfileList` an OK name?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "707132d8_d7fc56a1",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03b2c96_8e56b9f3",
       "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60321eec_b60f220c",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4df6f0e0_8a71004a",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c53b171_e844a620",
@@ -150,6 +276,24 @@
       "writtenOn": "2022-05-11T16:41:02Z",
       "side": 1,
       "message": "`Get\u003c..\u003e` is discouraged in Go. Is `EidQRCode` an OK name?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93246a72_27f3e215",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c53b171_e844a620",
       "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -171,6 +315,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeba9c6c_ee54d451",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61ec73c6_08beb811",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ad36e72_130ff8ae",
@@ -188,6 +350,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb11812_53f57548",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad36e72_130ff8ae",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea92d5da_dce62866",
@@ -201,6 +381,24 @@
       "writtenOn": "2022-05-11T16:41:02Z",
       "side": 1,
       "message": "Error check on len of euiccs before grabbing the slot?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f19a68d_40ee0f41",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-05-11T17:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea92d5da_dce62866",
       "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
