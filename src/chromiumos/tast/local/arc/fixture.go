@@ -352,6 +352,28 @@ func init() {
 		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	// TODO(b/232144821): Remove this after the feature is launched.
+	// arcBootedWithProductivityLauncher is a fixture similar to arcBooted but with productivity launcher enabled.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithProductivityLauncher",
+		Desc: "ARC is booted with the productivity launcher enabled",
+		Contacts: []string{
+			"anasalazar@chromium.org",
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ARCEnabled(),
+				chrome.EnableFeatures("ProductivityLauncher"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 type bootedFixture struct {
