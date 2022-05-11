@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/chrome"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	localping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/testing"
 )
 
@@ -30,6 +32,20 @@ func init() {
 		// tests which is expensive.
 		Fixture:      "chromeLoggedIn",
 		LacrosStatus: testing.LacrosVariantUnneeded,
+		Params: []testing.Param{{
+			Name: "l2tp_ipsec_psk",
+			Val: vpn.Config{
+				Type:     vpn.TypeL2TPIPsec,
+				AuthType: vpn.AuthTypePSK,
+			},
+		}, {
+			Name: "wireguard",
+			Val: vpn.Config{
+				Type:     vpn.TypeWireGuard,
+				AuthType: vpn.AuthTypePSK,
+			},
+			ExtraSoftwareDeps: []string{"wireguard"},
+		}},
 	})
 }
 
@@ -54,10 +70,7 @@ func VPNUI(ctx context.Context, s *testing.State) {
 	defer ew.Close()
 
 	// Prepares VPN server.
-	config := vpn.Config{
-		Type:     vpn.TypeL2TPIPsec,
-		AuthType: vpn.AuthTypePSK,
-	}
+	config := s.Param().(vpn.Config)
 	vpnConn, err := vpn.NewConnection(ctx, config)
 	if err != nil {
 		s.Fatal("Failed to create VPN connection: ", err)
@@ -75,28 +88,17 @@ func VPNUI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open VPN dialog: ", err)
 	}
 
-	if err := uiauto.Combine("Select VPN type",
-		ui.LeftClick(nodewith.Name("Provider type").Role(role.PopUpButton)),
-		ui.LeftClick(nodewith.Name("L2TP/IPsec").Role(role.ListBoxOption)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to select VPN type: ", err)
+	// Inputs VPN properties via UI.
+	svcName := "vpn-test-" + config.Type
+	if len(config.AuthType) > 0 {
+		svcName += "-" + config.AuthType
 	}
 
-	// Inputs VPN properties via UI.
-	svcName := "vpn-test-" + vpn.TypeL2TPIPsec
-	var inputTextField = func(name, text string) {
-		if err := ui.FocusAndWait(nodewith.Name(name).Role(role.TextField))(ctx); err != nil {
-			s.Fatalf("Failed to focus %s: %v", name, err)
-		}
-		if err := ew.Type(ctx, text); err != nil {
-			s.Fatalf("Failed to input %s: %v", name, err)
-		}
+	// Configures service on the VPN dialog page.
+	v := vpnDialogConfigger{ui, ew, config, vpnConn, svcName}
+	if err := v.config(ctx); err != nil {
+		s.Fatal("Failed to configure on VPN dialog: ", err)
 	}
-	inputTextField("Service name", svcName)
-	inputTextField("Server hostname", vpnConn.Properties["Provider.Host"].(string))
-	inputTextField("Username", vpnConn.Properties["L2TPIPsec.User"].(string))
-	inputTextField("Password", vpnConn.Properties["L2TPIPsec.Password"].(string))
-	inputTextField("Pre-shared key", vpnConn.Properties["L2TPIPsec.PSK"].(string))
 
 	// Defers a cleanup to clear the profile in case of failure.
 	defer func() {
@@ -113,6 +115,14 @@ func VPNUI(ctx context.Context, s *testing.State) {
 		ui.WithTimeout(time.Second*5).WaitUntilExists(nodewith.Name("Connected").Role(role.StaticText)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to connect VPN: ", err)
+	}
+
+	// Pings server gateway to make sure VPN is connected. This is required since
+	// some VPN services (e.g., WireGuard) will show connected even if we have a
+	// wrong configuration.
+	pr := localping.NewLocalRunner()
+	if err := vpn.ExpectPingSuccess(ctx, pr, vpnConn.Server.OverlayIP); err != nil {
+		s.Fatalf("Failed to ping %s: %v", vpnConn.Server.OverlayIP, err)
 	}
 
 	// Clicks Disconnect and checks the "Not Connected" text on the page.
@@ -132,4 +142,98 @@ func VPNUI(ctx context.Context, s *testing.State) {
 	)(ctx); err != nil {
 		s.Fatal("Failed to forget VPN: ", err)
 	}
+}
+
+func vpnDialogConfig(ctx context.Context, ui *uiauto.Context, ew *input.KeyboardEventWriter, cfg vpn.Config, conn *vpn.Connection, svcName string) error {
+	v := vpnDialogConfigger{ui, ew, cfg, conn, svcName}
+	return v.config(ctx)
+}
+
+type vpnDialogConfigger struct {
+	ui      *uiauto.Context
+	ew      *input.KeyboardEventWriter
+	cfg     vpn.Config
+	conn    *vpn.Connection
+	svcName string
+}
+
+func (v *vpnDialogConfigger) inputTextField(ctx context.Context, name, value string) error {
+	if err := v.ui.FocusAndWait(nodewith.Name(name).Role(role.TextField))(ctx); err != nil {
+		return errors.Wrapf(err, "failed to focus %s", name)
+	}
+	if err := v.ew.Type(ctx, value); err != nil {
+		return errors.Wrapf(err, "failed to input %s", name)
+	}
+	return nil
+}
+
+func (v *vpnDialogConfigger) selectListOption(ctx context.Context, name, value string) error {
+	return uiauto.Combine("Select "+name,
+		v.ui.LeftClick(nodewith.Name(name).Role(role.PopUpButton)),
+		v.ui.LeftClick(nodewith.Name(value).Role(role.ListBoxOption)),
+	)(ctx)
+}
+
+func (v *vpnDialogConfigger) config(ctx context.Context) error {
+	if err := v.inputTextField(ctx, "Service name", v.svcName); err != nil {
+		return err
+	}
+	switch v.cfg.Type {
+	case vpn.TypeL2TPIPsec:
+		return v.configL2TPIPsec(ctx)
+	case vpn.TypeWireGuard:
+		return v.configWireGuard(ctx)
+	default:
+		return errors.Errorf("invalid VPN type %s", v.cfg.Type)
+	}
+}
+
+func (v *vpnDialogConfigger) configL2TPIPsec(ctx context.Context) error {
+	if err := v.selectListOption(ctx, "Provider type", "L2TP/IPsec"); err != nil {
+		return errors.Wrap(err, "failed to select VPN type")
+	}
+	if err := v.inputTextField(ctx, "Server hostname", v.conn.Properties["Provider.Host"].(string)); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Username", v.conn.Properties["L2TPIPsec.User"].(string)); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Password", v.conn.Properties["L2TPIPsec.Password"].(string)); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Pre-shared key", v.conn.Properties["L2TPIPsec.PSK"].(string)); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (v *vpnDialogConfigger) configWireGuard(ctx context.Context) error {
+	if err := v.selectListOption(ctx, "Provider type", "WireGuard"); err != nil {
+		return errors.Wrap(err, "failed to select VPN type")
+	}
+
+	staticIPConfig := v.conn.Properties["StaticIPConfig"].(map[string]interface{})
+	peer := v.conn.Properties["WireGuard.Peers"].([]map[string]string)[0]
+	if err := v.inputTextField(ctx, "Client IP address", staticIPConfig["Address"].(string)); err != nil {
+		return err
+	}
+	if err := v.selectListOption(ctx, "Key", "I have a keypair"); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Private key", v.conn.Properties["WireGuard.PrivateKey"].(string)); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Public key", peer["PublicKey"]); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Preshared key", peer["PresharedKey"]); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Endpoint", peer["Endpoint"]); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Allowed IPs", peer["AllowedIPs"]); err != nil {
+		return err
+	}
+	return nil
 }
