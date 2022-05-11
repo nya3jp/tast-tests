@@ -78,7 +78,6 @@ func (shimlessRMA *AppService) NewShimlessRMA(ctx context.Context,
 // CloseShimlessRMA closes and releases the resources obtained by New.
 func (shimlessRMA *AppService) CloseShimlessRMA(ctx context.Context,
 	req *empty.Empty) (*empty.Empty, error) {
-
 	// Ignore failure handle in this method,
 	// since we want to execute all of these anyway.
 	shimlessRMA.app.WaitForStateFileDeleted()(ctx)
@@ -145,5 +144,36 @@ func (shimlessRMA *AppService) LeftClickRadioButton(ctx context.Context,
 		return nil, errors.Wrapf(err, "failed to left click radio button: %s", req.Label)
 	}
 
+	return &empty.Empty{}, nil
+}
+
+// LeftClickLink clicks link.
+func (shimlessRMA *AppService) LeftClickLink(ctx context.Context,
+	req *pb.LeftClickLinkRequest) (*empty.Empty, error) {
+	if err := shimlessRMA.app.LeftClickLink(req.Label)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to left click link: %s", req.Label)
+	}
+
+	return &empty.Empty{}, nil
+}
+
+// RetrieveTextByPrefix returns the text with prefix.
+func (shimlessRMA *AppService) RetrieveTextByPrefix(ctx context.Context,
+	req *pb.RetrieveTextByPrefixRequest) (*pb.RetrieveTextByPrefixResponse, error) {
+	node, err := shimlessRMA.app.RetrieveTextByPrefix(ctx, req.Prefix)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find info with prefix: %s", req.Prefix)
+	}
+
+	return &pb.RetrieveTextByPrefixResponse{Value: node.Name}, nil
+}
+
+// EnterIntoTextInput enters content into text input.
+func (shimlessRMA *AppService) EnterIntoTextInput(ctx context.Context,
+	req *pb.EnterIntoTextInputRequest) (*empty.Empty, error) {
+
+	if err := shimlessRMA.app.EnterIntoTextInput(ctx, req.TextInputName, req.Content)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to enter content %s into text input", req.Content)
+	}
 	return &empty.Empty{}, nil
 }
