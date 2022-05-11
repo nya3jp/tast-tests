@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f42ecd2_a94c4b8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_install_uninstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-05-11T06:44:48Z",
+      "side": 1,
+      "message": "This would be simpler to be:\n\n  ta.WaitForPrompt()\n  ta.Exit(keyboard)\n  \nbut with error checking",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 1
+      },
+      "revId": "580d67cf678076834fa0670efde04d4a5fcad400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
