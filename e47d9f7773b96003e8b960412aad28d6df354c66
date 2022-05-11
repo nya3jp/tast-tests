@@ -16,6 +16,23 @@
       "message": "ptal - fixed another issue with finding page switcher buttons (that changed to iconbutton)",
       "revId": "e47d9f7773b96003e8b960412aad28d6df354c66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1230356_d298cb9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-05-11T19:33:02Z",
+      "side": 1,
+      "message": "still lgtm",
+      "revId": "e47d9f7773b96003e8b960412aad28d6df354c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
