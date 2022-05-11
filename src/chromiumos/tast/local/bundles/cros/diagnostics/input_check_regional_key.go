@@ -68,10 +68,14 @@ func InputCheckRegionalKey(ctx context.Context, s *testing.State) {
 
 	internalKeyboardTestButton, ok := da.DxInternalKeyboardTestButtons[regionCode]
 	if !ok {
-		s.Fatalf("Region code %v has not defined yet: ", regionCode)
+		s.Fatalf("Region code %v has not defined in test button map yet: ", regionCode)
 	}
+	inputTab, ok := da.DxInputButtons[regionCode]
+	if !ok {
+		s.Fatalf("Region code %v has not defined in input button map yet: ", regionCode)
+	}
+	inputTab = inputTab.Ancestor(dxRootNode)
 	ui := uiauto.New(tconn)
-	inputTab := da.DxInput.Ancestor(dxRootNode)
 	if err := uiauto.Combine("checks regional keys for region "+regionCode+" keyboard layout",
 		ui.LeftClick(inputTab),
 		ui.LeftClick(internalKeyboardTestButton),
