@@ -152,7 +152,6 @@ func bootTimeCalibration(ctx context.Context, soundCardID string) error {
 		"--id="+soundCardID,
 		"--conf="+config,
 		"--amp="+amp,
-		"--bypass_temperature_check",
 	).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to run sound_card_init")
 	}
