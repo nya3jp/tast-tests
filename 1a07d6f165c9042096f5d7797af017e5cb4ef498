@@ -22,6 +22,30 @@
       },
       "revId": "1a07d6f165c9042096f5d7797af017e5cb4ef498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf2135c_e385393b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T09:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55e36098_fee63629",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 44
+      },
+      "revId": "1a07d6f165c9042096f5d7797af017e5cb4ef498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
