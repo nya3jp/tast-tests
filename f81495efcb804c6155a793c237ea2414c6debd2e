@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1913d7e1_f7980d66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-11T01:12:57Z",
+      "side": 1,
+      "message": "Thanks, all.",
+      "revId": "f81495efcb804c6155a793c237ea2414c6debd2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57db7f66_e0d41f28",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-05-10T22:46:47Z",
       "side": 1,
       "message": "You could return here instead",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 15
+      },
+      "revId": "f81495efcb804c6155a793c237ea2414c6debd2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d53a926_99dd8fd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-11T01:12:57Z",
+      "side": 1,
+      "message": "Ben liked the break better, so let\u0027s keep it if you don\u0027t mind.",
+      "parentUuid": "57db7f66_e0d41f28",
       "range": {
         "startLine": 275,
         "startChar": 5,
