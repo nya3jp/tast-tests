@@ -1170,3 +1170,20 @@ func DismissSortNudgeIfExists(ctx context.Context, tconn *chrome.TestConn) error
 	}
 	return nil
 }
+
+// UninstallAppWithContextMenu uninstalls an app with the context menu in the apps grid.
+func UninstallAppWithContextMenu(ctx context.Context, tconn *chrome.TestConn, app *nodewith.Finder) error {
+	ui := uiauto.New(tconn)
+	confirmUninstall := nodewith.Name("Uninstall").ClassName("MdTextButton")
+	uninstallOption := nodewith.Name("Uninstall").ClassName("MenuItemView")
+	if err := uiauto.Combine("Uninstall app",
+		ui.Exists(app),
+		ui.RightClick(app),
+		ui.LeftClick(uninstallOption),
+		ui.WaitForLocation(confirmUninstall),
+		ui.LeftClick(confirmUninstall),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to remove the app on recent apps")
+	}
+	return nil
+}
