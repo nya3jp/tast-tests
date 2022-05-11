@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0abe0f70_4c2f708d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-11T16:13:51Z",
+      "side": 0,
+      "message": "clarification: does this mean that we are no longer going to save \u0027lacros.log\u0027 on every test run whether it succeeds or fails?",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 1
+      },
+      "revId": "469a585bab786f52457a156eb30c245733eb7394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
