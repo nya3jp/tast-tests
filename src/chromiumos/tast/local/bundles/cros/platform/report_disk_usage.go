@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/platform/fsinfo"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
 
@@ -121,8 +121,8 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 	}
 
 	// Report the lacros squashfs size, if it exists.
-	if _, err := os.Stat(lacrosfixt.LacrosSquashFSPath); err == nil {
-		metrics[lacrosfixt.LacrosSquashFSPath] = "bytes_rootfs_lacros"
+	if _, err := os.Stat(lacros.LacrosSquashFSPath); err == nil {
+		metrics[lacros.LacrosSquashFSPath] = "bytes_rootfs_lacros"
 	}
 
 	// Log the size of the individual files/directories inside |path|.
