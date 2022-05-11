@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "742c633f_37b13f1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-11T06:49:53Z",
+      "side": 1,
+      "message": "lgtm % defer to Joel\u0027s review",
+      "revId": "580d67cf678076834fa0670efde04d4a5fcad400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f42ecd2_a94c4b8c",
