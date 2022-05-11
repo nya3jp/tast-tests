@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a9b1976_bcc87e77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-11T02:54:27Z",
+      "side": 1,
+      "message": "reserve time for the cleanup task",
+      "range": {
+        "startLine": 73,
+        "startChar": 16,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "1f5d0d53bd1e8e92234fa340ac7ec10265fa8021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "169c2c86_95920d72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-11T02:54:27Z",
+      "side": 1,
+      "message": "Screen",
+      "range": {
+        "startLine": 136,
+        "startChar": 11,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "1f5d0d53bd1e8e92234fa340ac7ec10265fa8021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7da4b1f1_f4f136e6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
         "patchSetId": 2
