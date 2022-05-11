@@ -109,7 +109,7 @@ func verifySpellcheckForLanguage(ctx context.Context, s *testing.State, cr *chro
 	defer cancel()
 
 	// Open lacros browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeLacros)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browser.TypeLacros)
 	if err != nil {
 		return errors.Wrap(err, "failed to open the browser")
 	}

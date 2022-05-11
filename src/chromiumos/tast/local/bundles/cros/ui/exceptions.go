@@ -38,7 +38,8 @@ func init() {
 
 func Exceptions(ctx context.Context, s *testing.State) {
 	// Set up a browser.
-	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), s.Param().(browser.Type), chrome.BlankURL)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), chrome.BlankURL)
 	if err != nil {
 		s.Fatal("Failed to create renderer: ", err)
 	}

@@ -51,7 +51,7 @@ func MotionMark(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
-	conn, _, cleanup, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), bt, motionMarkURL)
+	conn, _, cleanup, err := browserfixt.SetUpWithURL(ctx, cr, bt, motionMarkURL)
 	if err != nil {
 		s.Fatal("Failed to set up browser: ", err)
 	}

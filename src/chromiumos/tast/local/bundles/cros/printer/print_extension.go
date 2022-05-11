@@ -105,7 +105,7 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to ash test API: ", err)
 	}
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), params.bt)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, params.bt)
 	if err != nil {
 		s.Fatal("Failed to launch browser: ", err)
 	}

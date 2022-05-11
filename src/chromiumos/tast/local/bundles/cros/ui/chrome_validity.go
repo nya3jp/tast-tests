@@ -14,6 +14,7 @@ import (
 	"golang.org/x/sync/errgroup"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
@@ -45,7 +46,8 @@ func init() {
 }
 
 func ChromeValidity(ctx context.Context, s *testing.State) {
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}

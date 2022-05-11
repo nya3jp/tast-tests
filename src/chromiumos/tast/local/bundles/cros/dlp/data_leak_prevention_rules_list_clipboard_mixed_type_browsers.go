@@ -134,7 +134,7 @@ func DataLeakPreventionRulesListClipboardMixedTypeBrowsers(ctx context.Context, 
 			}
 
 			// Setup source browser.
-			srcBr, closeSrcBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), param.srcBrowserType)
+			srcBr, closeSrcBrowser, err := browserfixt.SetUp(ctx, cr, param.srcBrowserType)
 			if err != nil {
 				s.Fatalf("Failed to open the %s source browser: %s", param.srcBrowserType, err)
 			}
@@ -162,7 +162,7 @@ func DataLeakPreventionRulesListClipboardMixedTypeBrowsers(ctx context.Context, 
 			}
 
 			// Setup destination browser.
-			dstBr, closeDstBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), param.dstBrowserType)
+			dstBr, closeDstBrowser, err := browserfixt.SetUp(ctx, cr, param.dstBrowserType)
 			if err != nil {
 				s.Fatalf("Failed to open the %s destination browser: %s", param.dstBrowserType, err)
 			}

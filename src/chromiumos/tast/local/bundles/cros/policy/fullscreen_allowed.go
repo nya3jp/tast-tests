@@ -87,7 +87,7 @@ func FullscreenAllowed(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), s.Param().(browser.Type), "about:blank")
+			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), "about:blank")
 			if err != nil {
 				s.Fatal("Failed to setup chrome: ", err)
 			}

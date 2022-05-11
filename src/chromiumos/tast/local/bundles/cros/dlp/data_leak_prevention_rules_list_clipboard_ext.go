@@ -146,7 +146,7 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}

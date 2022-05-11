@@ -57,7 +57,7 @@ func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
 
 	// Setup a browser.
 	bt := s.Param().(browser.Type)
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}

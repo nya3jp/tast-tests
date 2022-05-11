@@ -250,7 +250,7 @@ func useSystemSettings(ctx context.Context, s *testing.State,
 }
 
 func CertSettingsPage(ctx context.Context, s *testing.State) {
-	chrome := s.FixtValue().(chrome.HasChrome).Chrome()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	browserType := s.Param().(browser.Type)
 
 	// Reserve ten seconds for cleanup.
@@ -258,13 +258,13 @@ func CertSettingsPage(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	browser, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browserType)
+	browser, closeBrowser, err := browserfixt.SetUp(ctx, cr, browserType)
 	if err != nil {
 		s.Fatal("Failed to set up browser: ", err)
 	}
 	defer closeBrowser(cleanupCtx)
 
-	tconn, err := chrome.TestAPIConn(ctx)
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
@@ -284,5 +284,5 @@ func CertSettingsPage(ctx context.Context, s *testing.State) {
 	waitForClientCert(ctx, s)
 
 	createAndUseWebsite(ctx, s, browser, ui)
-	useSystemSettings(ctx, s, chrome, tconn)
+	useSystemSettings(ctx, s, cr, tconn)
 }
