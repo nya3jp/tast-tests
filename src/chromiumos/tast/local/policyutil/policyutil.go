@@ -192,3 +192,27 @@ func Refresh(ctx context.Context, tconn *chrome.TestConn) error {
 
 	return tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)()`, nil)
 }
+
+// SetUpFakePolicyServer creates a FakeDMS that enforces the provided policies.
+func SetUpFakePolicyServer(ctx context.Context, outdir, policyUser string, policies []policy.Policy) (fdms *fakedms.FakeDMS, retErr error) {
+	fdms, err := fakedms.New(ctx, outdir)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create fakedms")
+	}
+	defer func() {
+		if retErr != nil {
+			fdms.Stop(ctx)
+		}
+	}()
+
+	// Add the new policies to fmds.
+	blob := policy.NewBlob()
+	blob.PolicyUser = policyUser
+	if err := blob.AddPolicies(policies); err != nil {
+		return nil, errors.Wrap(err, "failed to add policy to policy blob")
+	}
+	if err := fdms.WritePolicyBlob(blob); err != nil {
+		return nil, errors.Wrap(err, "failed to write policy blob to fdms")
+	}
+	return fdms, nil
+}
