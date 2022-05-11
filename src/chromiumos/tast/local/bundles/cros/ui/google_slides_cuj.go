@@ -93,7 +93,7 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn),
 		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
 			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn)}
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, cs, nil, cujrecorder.RecorderOptions{}, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
