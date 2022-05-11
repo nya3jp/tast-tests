@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce08577f_b070813b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-11T06:35:45Z",
+      "side": 1,
+      "message": "Isn\u0027t this already done in https://crrev.com/c/3607111?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go;l\u003d68;drc\u003df7bb9204e453e75c4fbea6c18d330a211c0e6fd7",
+      "revId": "70366dffd8db856c9e3e4639e3454abae7a0cd92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
