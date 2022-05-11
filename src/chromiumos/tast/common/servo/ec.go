@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// These are the EC Servo controls which can be get/set with a string value.
+// These are the EC Servo controls which don't need special functions.
 const (
 	ECBoard            StringControl = "ec_board"
 	ECSystemPowerState StringControl = "ec_system_powerstate"
@@ -26,6 +26,7 @@ const (
 	ECChip             StringControl = "ec_chip"
 	ECFlashSize        StringControl = "ec_flash_size"
 	DUTPDDataRole      StringControl = "dut_pd_data_role"
+	ECFeatures         IntControl    = "ec_feat"
 )
 
 // These controls accept only "on" and "off" as values.
