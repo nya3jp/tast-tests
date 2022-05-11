@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4447089_499beeb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-11T01:44:16Z",
+      "side": 1,
+      "message": "What does \"cands\" represent for?\n\nMaybe `got` and `want`?",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4edca27_ba7042b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-11T01:44:16Z",
+      "side": 1,
+      "message": "Maybe we can have a function like `validateAdminPolicy`, otherwise this function is too big.",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b871ed97_604cc8e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-11T01:44:16Z",
+      "side": 1,
+      "message": "Same here, maybe `validateAdvertising`.",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 40
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
