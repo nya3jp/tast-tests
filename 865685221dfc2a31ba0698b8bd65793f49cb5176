@@ -16,6 +16,138 @@
       "message": "Eric, Please add team members for review as am not sure who are familiar with using and implementing tests with tast UI based packages.\n\nThanks.",
       "revId": "865685221dfc2a31ba0698b8bd65793f49cb5176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccfdf296_5da387d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-11T13:20:39Z",
+      "side": 1,
+      "message": "great! mostly small stuff",
+      "revId": "865685221dfc2a31ba0698b8bd65793f49cb5176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f01fba_750260e2",
+        "filename": "src/chromiumos/tast/local/cellular/ui_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-11T13:20:39Z",
+      "side": 1,
+      "message": "please remove these",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 97
+      },
+      "revId": "865685221dfc2a31ba0698b8bd65793f49cb5176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63443676_82fa5efd",
+        "filename": "src/chromiumos/tast/local/cellular/ui_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-11T13:20:39Z",
+      "side": 1,
+      "message": "any reason we return the time.Duration here? It doesn\u0027t look like it is ever used by the caller.",
+      "range": {
+        "startLine": 72,
+        "startChar": 58,
+        "endLine": 72,
+        "endChar": 71
+      },
+      "revId": "865685221dfc2a31ba0698b8bd65793f49cb5176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8408f573_b322a0f8",
+        "filename": "src/chromiumos/tast/local/cellular/ui_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-11T13:20:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 109,
+        "startChar": 77,
+        "endLine": 109,
+        "endChar": 90
+      },
+      "revId": "865685221dfc2a31ba0698b8bd65793f49cb5176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0a16ff_c5a4fb48",
+        "filename": "src/chromiumos/tast/local/cellular/ui_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-11T13:20:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 186,
+        "startChar": 83,
+        "endLine": 186,
+        "endChar": 96
+      },
+      "revId": "865685221dfc2a31ba0698b8bd65793f49cb5176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32dd19cd_38c97317",
+        "filename": "src/chromiumos/tast/local/cellular/ui_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-11T13:20:39Z",
+      "side": 1,
+      "message": "please remove these",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 66
+      },
+      "revId": "865685221dfc2a31ba0698b8bd65793f49cb5176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
