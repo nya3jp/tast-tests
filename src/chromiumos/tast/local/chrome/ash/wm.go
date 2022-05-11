@@ -11,6 +11,7 @@ import (
 	"sync"
 	"time"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"golang.org/x/sync/errgroup"
 
 	"chromiumos/tast/errors"
@@ -598,9 +599,30 @@ func FindAllWindows(ctx context.Context, tconn *chrome.TestConn, predicate func(
 	return matchingWindows, nil
 }
 
-// ConnSource is an interface which allows new chrome.Conn connections to be created.
+// ConnSource is an interface which allows new chrome.Conn connections to be created,
+// a new chrome.TestConn instance to be created, and the trace event collection to be
+// started/stopped.
 type ConnSource interface {
+	// NewConn creates a new Chrome renderer and returns a connection to it.
+	// If url is empty, an empty page (about:blank) is opened. Otherwise, the page
+	// from the specified URL is opened. You can assume that the page loading has
+	// been finished when this function returns.
 	NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error)
+
+	// TestAPIConn returns a new TestConn instance.
+	TestAPIConn(ctx context.Context) (*chrome.TestConn, error)
+
+	// StartTracing starts trace events collection for the selected categories. Android
+	// categories must be prefixed with "disabled-by-default-android ", e.g. for the
+	// gfx category, use "disabled-by-default-android gfx", including the space.
+	StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error
+
+	// StartSystemTracing starts trace events collection from the system tracing
+	// service using the marshaled binary protobuf trace config.
+	StartSystemTracing(ctx context.Context, perfettoConfig []byte) error
+
+	// StopTracing stops trace collection and returns the collected trace events.
+	StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)
 }
 
 // CountVisibleWindows returns number of visible windows

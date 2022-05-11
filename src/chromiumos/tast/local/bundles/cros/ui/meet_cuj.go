@@ -330,17 +330,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
+	var l *lacros.Lacros
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
 	if meet.useLacros {
-		// Launch lacros.
-		l, err := lacros.Launch(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to launch lacros: ", err)
+		var err error
+		if cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros); err != nil {
+			s.Fatal("Failed to initialize test: ", err)
 		}
-		defer l.Close(ctx)
-		cs = l
-
+		defer lacros.CloseLacros(closeCtx, l)
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
 			s.Fatal("Failed to get lacros TestAPIConn: ", err)
 		}
@@ -468,7 +466,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		"Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter,
 		[]int64{1, 20}))
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, cs, nil, cujrecorder.RecorderOptions{}, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

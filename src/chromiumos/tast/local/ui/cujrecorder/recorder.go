@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
 	perfSrc "chromiumos/tast/local/perf"
@@ -136,6 +137,7 @@ type record struct {
 // Recorder is a utility to measure various metrics for CUJ-style tests.
 type Recorder struct {
 	cr    *chrome.Chrome
+	cs    ash.ConnSource
 	tconn *chrome.TestConn
 
 	// Metrics names keyed by relevant chrome.TestConn pointer.
@@ -269,8 +271,8 @@ func (r *Recorder) AddCollectedMetrics(tconn *chrome.TestConn, configs ...Metric
 //
 // TODO(b/230676548): |configs| is deprecated, use
 // recorder.AddCollectedMetrics() instead.
-func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options RecorderOptions, configs ...MetricConfig) (*Recorder, error) {
-	r := &Recorder{cr: cr}
+func NewRecorder(ctx context.Context, cr *chrome.Chrome, cs ash.ConnSource, a *arc.ARC, options RecorderOptions, configs ...MetricConfig) (*Recorder, error) {
+	r := &Recorder{cr: cr, cs: cs}
 
 	var err error
 	r.tconn, err = cr.TestAPIConn(ctx)
@@ -482,14 +484,14 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 	}(ctx)
 
 	if r.traceDir != "" {
-		if err := r.cr.StartTracing(ctx,
+		if err := r.cs.StartTracing(ctx,
 			[]string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz", "memory-infra"},
 			browser.DisableSystrace()); err != nil {
 			testing.ContextLog(ctx, "Failed to start tracing: ", err)
 			return nil, errors.Wrap(err, "failed to start tracing")
 		}
 		stopTracing := func(ctx context.Context) error {
-			tr, err := r.cr.StopTracing(ctx)
+			tr, err := r.cs.StopTracing(ctx)
 			if err != nil {
 				testing.ContextLog(ctx, "Failed to stop tracing: ", err)
 				return errors.Wrap(err, "failed to stop tracing")
