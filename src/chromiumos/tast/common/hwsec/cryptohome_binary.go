@@ -29,7 +29,11 @@ func newCryptohomeBinary(r CmdRunner) *cryptohomeBinary {
 }
 
 func (c *cryptohomeBinary) call(ctx context.Context, args ...string) ([]byte, error) {
-	return c.runner.Run(ctx, "cryptohome", args...)
+	out, err := c.runner.Run(ctx, "cryptohome", args...)
+	if err != nil {
+		return nil, errors.Wrap(err, string(out))
+	}
+	return out, nil
 }
 
 func (c *cryptohomeBinary) tempFile(ctx context.Context, prefix string) (string, error) {
