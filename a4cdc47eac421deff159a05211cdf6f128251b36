@@ -41,6 +41,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e420f6_678b9447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "93bacc29_fba609b4",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cacd9ab7_9c70c2c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "yes, Skype also uses similar login flow. Created a separate \"loginutil\" file which will hold the similar login code for apps.",
+      "parentUuid": "eea7ae89_823da0c6",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ac91753_d1e8eeb9",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-05-06T17:13:48Z",
       "side": 1,
       "message": "This block seems the same in both the tablet, and clamshell mode. Can you pull it outside of this block so it\u0027s shared?",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e423522_ac3735a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ac91753_d1e8eeb9",
       "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +152,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e60bcc1_d94c7c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4ed6004c_0bcb0ead",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "059e30cb_e215ad0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "956ff18a_a4a206be",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74f9e3f1_520a54d7",
@@ -105,6 +201,24 @@
       "writtenOn": "2022-05-06T17:13:48Z",
       "side": 1,
       "message": "initialize ud with ImmediateScreenshot mode if that\u0027s all you plan on using. That will clean up the lines below.",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d90ba717_da9dfb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "74f9e3f1_520a54d7",
       "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d28da8_d3c02441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "af5ce35f_78a45a0b",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f585566_fee4f54d",
@@ -139,6 +271,24 @@
       "writtenOn": "2022-05-06T17:13:48Z",
       "side": 1,
       "message": "Should this be s.Fatal? It\u0027s going to continue as is and then fail on the next step?",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7605409_7b743aee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f585566_fee4f54d",
       "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -160,6 +310,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0597ab94_5d7f85b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98e0c2e3_6924eed0",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b75dd05f_b2ca09b8",
@@ -173,6 +341,24 @@
       "writtenOn": "2022-05-06T17:13:48Z",
       "side": 1,
       "message": "A sleep isn\u0027t needed here, ud naturally polls and you can change the duration as needed. I.e.\n\n`\n\t\tuda.WithPollOpts(testing.PollOptions{\n\t\t\tTimeout:  2 * time.Minute,\n\t\t\tInterval: 15 * time.Second,\n\t\t}).WaitUntilExists(uidetection.Word(\"Flay\"))\n`",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2677de88_cb2f83a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "As suggested tried using the code snippet,\n\n            playButton :\u003d uidetection.Word(\"Flay\")\n\tud :\u003d uidetection.NewDefault(tconn).WithScreenshotStrategy(uidetection.ImmediateScreenshot)\n\terr :\u003d ud.WithPollOpts(testing.PollOptions{\n\t\tTimeout:  2 * time.Minute,\n\t\tInterval: 15 * time.Second,\n\t}).WaitUntilExists(playButton)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to find play button: \", err)\n\t} \n\t                    \nTest failed with error message, \"Failed to find play button: 0x12d99e0\"",
+      "parentUuid": "b75dd05f_b2ca09b8",
       "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -194,6 +380,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63772a2_72dc56c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Tried without combine, test failed with error message \"Failed to find sign in button: 0x12d99e0\"\n\n     ud :\u003d uidetection.NewDefault(tconn).WithScreenshotStrategy(uidetection.ImmediateScreenshot)\n     signInPage :\u003d uidetection.TextBlock(strings.Split(\"Sign In\", \" \"))\n\terr :\u003d ud.WithPollOpts(testing.PollOptions{\n\t\tTimeout:  testutil.ShortUITimeout,\n\t\tInterval: 15 * time.Second}).WaitUntilExists(signInPage)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to find sign in button: \", err)\n\t}",
+      "parentUuid": "3370eca2_35acc8ee",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42d4af71_a682a25f",
@@ -207,6 +411,24 @@
       "writtenOn": "2022-05-06T17:13:48Z",
       "side": 1,
       "message": "s.Fatal?",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb2d2a80_cbfb8ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "If \"sign in\" page is displayed, then the app is signed out already when performing any of the common test cases. So the remaining code of sign out will not executed. \nIf \"sign in\" page is not displayed, it is not an error, just need to sign out the app. So use of log is needed.",
+      "parentUuid": "42d4af71_a682a25f",
       "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -228,6 +450,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ffb505_2acee956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "374c5e3f_5a173fd6",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2304a655_070134c6",
@@ -245,6 +485,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8481b9_c8c8c874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2304a655_070134c6",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "372eff83_0c90351d",
@@ -258,6 +516,24 @@
       "writtenOn": "2022-05-06T17:13:48Z",
       "side": 1,
       "message": "Same as above, pull out the string \"Do you want to ...\" to a variable and leave a comment about why you\u0027re using suitch vs switch.",
+      "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22d327cc_a6a5e1fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-11T16:25:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "372eff83_0c90351d",
       "revId": "a4cdc47eac421deff159a05211cdf6f128251b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
