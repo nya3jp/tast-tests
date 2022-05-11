@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55e36098_fee63629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-11T08:22:24Z",
+      "side": 1,
+      "message": "You set the allowed services in the middle of validation, is it correct? Because I don\u0027t think `info.Adapters[0].ServiceAllowList` will contain this policy.",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 44
+      },
+      "revId": "1a07d6f165c9042096f5d7797af017e5cb4ef498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
