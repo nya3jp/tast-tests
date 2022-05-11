@@ -20,6 +20,8 @@ import (
 
 	"chromiumos/tast/caller"
 	"chromiumos/tast/common/android/adb"
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	localadb "chromiumos/tast/local/android/adb"
@@ -843,4 +845,41 @@ func CheckNoDex2Oat(outDir string) error {
 	}
 
 	return nil
+}
+
+// SetupFakePolicyServer creates a FakeDMS that forces the provided policies.
+func SetupFakePolicyServer(ctx context.Context, outdir, policyUser string, policies []policy.Policy) (*fakedms.FakeDMS, error) {
+	fdms, err := fakedms.New(ctx, outdir)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create fakedms")
+	}
+
+	// Add the new policy to fmds
+	blob := policy.NewBlob()
+	blob.PolicyUser = policyUser
+	if err := blob.AddPolicies(policies); err != nil {
+		fdms.Stop(ctx)
+		return nil, errors.Wrap(err, "failed to add policy to policy blob")
+	}
+	if err := fdms.WritePolicyBlob(blob); err != nil {
+		fdms.Stop(ctx)
+		return nil, errors.Wrap(err, "failed to write policy blob to fdms")
+	}
+	return fdms, nil
+}
+
+// SetupManagedChrome creates a Chrome instance managed by the provided FakeDMS.
+func SetupManagedChrome(ctx context.Context, gaiaLogin chrome.Option, fdms *fakedms.FakeDMS) (*chrome.Chrome, error) {
+	// If fdms forces ARC opt-in, then ARC opt-in will start in background, right after chrome is created.
+	cr, err := chrome.New(ctx,
+		gaiaLogin,
+		chrome.DMSPolicy(fdms.URL),
+		chrome.ARCSupported(),
+		chrome.ExtraArgs(DisableSyncFlags()...))
+	if err != nil {
+		err = errors.Wrap(err, "failed to create Chrome")
+		return nil, err
+	}
+
+	return cr, nil
 }
