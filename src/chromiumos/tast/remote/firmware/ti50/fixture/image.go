@@ -136,7 +136,7 @@ func (i *imageImpl) downloadImage(ctx context.Context, gsOrDir string) error {
 	}
 
 	if gsOrDir[:len(gsPrefix)] == gsPrefix {
-		fullURL := gsPrefix + filepath.Join(gsOrDir[len(gsPrefix):], imageType, imageBin)
+		fullURL := gsPrefix + filepath.Join(gsOrDir[len(gsPrefix):], imageType+".tar.bz2", imageBin)
 
 		f, err := ioutil.TempFile("", imageType+"_")
 		if err != nil {
