@@ -20,6 +20,109 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c5d18a1_e08600b8",
+        "filename": "src/chromiumos/tast/local/bluetooth/admin_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T03:00:51Z",
+      "side": 1,
+      "message": "nit: nil",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7449cf68_04f9607d",
+        "filename": "src/chromiumos/tast/local/bluetooth/admin_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T03:00:51Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 19
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba4836be_56b913d1",
+        "filename": "src/chromiumos/tast/local/bluetooth/advertising.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T03:00:51Z",
+      "side": 1,
+      "message": "could you use the godoc style?",
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8348a9a_50e9c522",
+        "filename": "src/chromiumos/tast/local/bluetooth/advertising.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T03:00:51Z",
+      "side": 1,
+      "message": "should this be exported?",
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a32e8fe_5a2a23b0",
+        "filename": "src/chromiumos/tast/local/bluetooth/advertising.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T03:00:51Z",
+      "side": 1,
+      "message": "return Capabilities{\n   MaxAdvLen: maxAdvLen,\n   ...\n }, nil",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4447089_499beeb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
         "patchSetId": 5
@@ -31,6 +134,30 @@
       "writtenOn": "2022-05-11T01:44:16Z",
       "side": 1,
       "message": "What does \"cands\" represent for?\n\nMaybe `got` and `want`?",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b16ee6e_a16cf252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T03:00:51Z",
+      "side": 1,
+      "message": "set.DiffStringSlice is what you\u0027d like?",
+      "parentUuid": "e4447089_499beeb6",
       "range": {
         "startLine": 66,
         "startChar": 18,
@@ -59,6 +186,46 @@
         "startChar": 1,
         "endLine": 150,
         "endChar": 37
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a8f636_d3a5f841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T03:00:51Z",
+      "side": 1,
+      "message": "do you need dup check?",
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79c3b355_97d4c6c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T03:00:51Z",
+      "side": 1,
+      "message": "so what you\u0027d like to see is to create an AdminPolicy instance for the given adapters[0].Path(). How about introducing such an API, instead of creating instances and filtering afterwords?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
       },
       "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
