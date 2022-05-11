@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -236,11 +237,15 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	// and copies over lxc + container boot logs.
 	// Stolen verbatim from arc/pre.go
 	shouldClose := true
+	// Save time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*10)
+	defer cancel()
 	defer func() {
 		if shouldClose {
 			// TODO (jinrongwu): use FixtureData instead of PreData and modify RunCrostiniPostTest when deprecating pre.go.
-			RunCrostiniPostTest(ctx, PreData{f.cr, f.tconn, f.cont, f.kb, f.postData})
-			f.cleanUp(ctx, s)
+			RunCrostiniPostTest(cleanupCtx, PreData{f.cr, f.tconn, f.cont, f.kb, f.postData})
+			f.cleanUp(cleanupCtx, s)
 		}
 	}()
 
