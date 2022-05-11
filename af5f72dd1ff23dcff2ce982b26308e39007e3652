@@ -81,6 +81,24 @@
       "parentUuid": "1c4eb0da_9ba5758c",
       "revId": "af5f72dd1ff23dcff2ce982b26308e39007e3652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607c3996_d07ea941",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-11T04:04:04Z",
+      "side": 1,
+      "message": "And btw, I have run `repo sync \u0026\u0026 setup_board \u0026\u0026 build_packages`, and try to run `fast_build.sh` under platform/tast, but still hit the same issue.",
+      "parentUuid": "09c41169_460de22e",
+      "revId": "af5f72dd1ff23dcff2ce982b26308e39007e3652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
