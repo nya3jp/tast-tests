@@ -20,6 +20,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/benchmark"
 	_ "chromiumos/tast/local/bundles/cros/biod"
 	_ "chromiumos/tast/local/bundles/cros/bluetooth"
+	_ "chromiumos/tast/local/bundles/cros/calendar"
 	_ "chromiumos/tast/local/bundles/cros/camera"
 	_ "chromiumos/tast/local/bundles/cros/cellular"
 	_ "chromiumos/tast/local/bundles/cros/crash"
