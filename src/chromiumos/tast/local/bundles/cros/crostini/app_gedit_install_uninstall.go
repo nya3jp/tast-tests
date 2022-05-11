@@ -16,8 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/vmc"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
@@ -111,7 +109,6 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 	}
 
 	ud := uidetection.NewDefault(tconn)
-	ui := uiauto.New(tconn)
 	geditIcon := uidetection.CustomIcon(s.DataPath("logo_gedit.png"))
 	if err := ud.WaitUntilExists(geditIcon)(ctx); err != nil {
 		s.Fatal("Failed to find the Gedit icon in the shelf")
@@ -150,13 +147,9 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 	}
 
 	// Close terminal.
-	terminalNode := nodewith.NameRegex(regexp.MustCompile(`\@penguin\: `)).Role(role.Window).ClassName("BrowserFrame")
-	leaveButton := uidetection.Word("Leave").Nth(1)
 	if err := uiauto.Combine("close Terminal window",
-		ta.WaitForPrompt(),             // Wait until Gedit uninstall streams finish printing.
-		ta.ClickShelfMenuItem("Close"), // Closing terminal from the shelf throws up an alert dialogue.
-		ud.LeftClick(leaveButton),      // Dialogue has "Cancel" and "Leave buttons"
-		ui.WithTimeout(time.Minute).WaitUntilGone(terminalNode),
+		ta.WaitForPrompt(), // Wait until Gedit uninstall streams finish printing.
+		ta.Exit(keyboard),
 	)(ctx); err != nil {
 		s.Fatal("Failed to close terminal: ", err)
 	}
