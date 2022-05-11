@@ -196,13 +196,14 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 		}
 
 		if err := uiauto.Combine("enable DoH always on with a custom provider",
+			// Click use current service provider radio button.
+			ac.MouseClickAtLocation(0, rbLocation.CenterPoint()),
 			// Input a custom DoH provider.
 			ac.LeftClick(tf),
 			kb.AccelAction("Ctrl+A"),
 			kb.AccelAction("Backspace"),
 			kb.TypeAction(dohProvider),
-			// Click use current service provider radio button.
-			ac.MouseClickAtLocation(0, rbLocation.CenterPoint()),
+			kb.AccelAction("Enter"),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to enable DoH with a custom provider")
 		}
