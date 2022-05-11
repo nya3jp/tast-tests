@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
@@ -37,7 +38,7 @@ func init() {
 			Val:               browser.TypeLacros,
 			Fixture:           "lacrosPrimary",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraAttr: []string{"informational"},
+			ExtraAttr:         []string{"informational"},
 		}},
 		Data: []string{
 			"web_handwriting_recognition.html",
@@ -57,7 +58,8 @@ func WebHandwritingRecognition(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	// Open browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to set up browser: ", err)
 	}

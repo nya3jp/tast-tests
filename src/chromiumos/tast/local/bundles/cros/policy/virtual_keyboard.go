@@ -319,7 +319,7 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 
 			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
 			// Setup browser based on the chrome type.
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), tc.browserType)
+			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, tc.browserType)
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}

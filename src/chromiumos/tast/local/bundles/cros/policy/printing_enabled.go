@@ -136,7 +136,7 @@ func PrintingEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// TODO(crbug.com/1259615): This should be part of the fixture.
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), data.browserType)
+			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, data.browserType)
 			if err != nil {
 				s.Fatal("Failed to setup chrome: ", err)
 			}
