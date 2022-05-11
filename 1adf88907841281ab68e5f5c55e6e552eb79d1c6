@@ -16,6 +16,41 @@
       "message": "Hi Tony!\nIt looks like app uninstall with context menu is sometimes flaky for not finding the button in the confirmation dialog.\nWonder if we should uninstall with Settings or increase the timeout for L280",
       "revId": "1adf88907841281ab68e5f5c55e6e552eb79d1c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af38ccd_4665cab1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-11T02:11:07Z",
+      "side": 1,
+      "message": "does extending timeout actually work?",
+      "parentUuid": "9a099ebe_bed9a5e8",
+      "revId": "1adf88907841281ab68e5f5c55e6e552eb79d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f9d2b1_0f4d32c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-11T02:11:07Z",
+      "side": 1,
+      "message": "fix indent\n\nand I\u0027d change it to cws_tablet/cws_clamshell etc",
+      "revId": "1adf88907841281ab68e5f5c55e6e552eb79d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
