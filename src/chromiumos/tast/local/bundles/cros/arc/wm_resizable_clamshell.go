@@ -518,6 +518,11 @@ func wmRC13(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait until activity is ready")
 	}
 
+	// On small displays, the app gets launched in a maximized state although the test assumes the app is in a freeform mode.
+	if err := restoreARCWindowIfMaximized(ctx, tconn, wm.Pkg24); err != nil {
+		return errors.Wrap(err, "failed to restore window if maximized")
+	}
+
 	owInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window info")
@@ -690,6 +695,11 @@ func wmRC22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait for activity window updated")
 	}
 
+	// On small displays, the app gets launched in a maximized state although the test assumes the app is in a freeform mode.
+	if err := restoreARCWindowIfMaximized(ctx, tconn, wm.Pkg24); err != nil {
+		return errors.Wrap(err, "failed to restore window if maximized")
+	}
+
 	// Snap the activity to the left.
 	if err := leftClickDragCaptionButton(ctx, tconn, "Maximize", true); err != nil {
 		return errors.New("failed to left click and drag Maximize caption button")
@@ -801,6 +811,11 @@ func snapToHalfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 
 	if _, err := d.WaitForWindowUpdate(ctx, wm.Pkg24, time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for activity window updated")
+	}
+
+	// On small displays, the app gets launched in a maximized state although the test assumes the app is in a freeform mode.
+	if err := restoreARCWindowIfMaximized(ctx, tconn, wm.Pkg24); err != nil {
+		return errors.Wrap(err, "failed to restore window if maximized")
 	}
 
 	dInfo, err := display.GetPrimaryInfo(ctx, tconn)
@@ -1214,4 +1229,19 @@ func rcMaxRestoreTestHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.
 
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+func restoreARCWindowIfMaximized(ctx context.Context, tconn *chrome.TestConn, packageName string) error {
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName)
+	if err != nil {
+		return err
+	}
+
+	if window.State == ash.WindowStateMaximized {
+		if _, err := ash.SetARCAppWindowStateAndWait(ctx, tconn, packageName, ash.WindowStateNormal); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
