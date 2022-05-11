@@ -875,13 +875,13 @@ func WaitForAnyWindow(ctx context.Context, tconn *chrome.TestConn, p func(*Windo
 // WaitForAnyWindowWithTitle finds the first window whose title is title.
 func WaitForAnyWindowWithTitle(ctx context.Context, tconn *chrome.TestConn, title string) (*Window, error) {
 	return WaitForAnyWindow(ctx, tconn, func(w *Window) bool {
-		return strings.Contains(w.Title, "about:blank")
+		return strings.Contains(w.Title, title)
 	})
 }
 
 // WaitForAnyWindowWithoutTitle finds the first window whose title is not title.
 func WaitForAnyWindowWithoutTitle(ctx context.Context, tconn *chrome.TestConn, title string) (*Window, error) {
 	return WaitForAnyWindow(ctx, tconn, func(w *Window) bool {
-		return !strings.Contains(w.Title, "about:blank")
+		return !strings.Contains(w.Title, title)
 	})
 }
