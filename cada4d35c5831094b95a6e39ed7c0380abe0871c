@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9e86d5_d2eb997a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "LGTM % nits.",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "164eeb87_9796e3c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "nit: can you add a comment about what this is for?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "818ea13f_e25c5f15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_change_esim_nickname.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "nit: This error is similar to the one above which may make it hard to distinguish if there are errors. Is the actual issue here: `Failed to confirm eSIM profile nickname, got: %v, want: %v`?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1857b46_cb947f3a",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "nit: here and below for the enums comments, I don\u0027t think `\u003cValue\u003e : \u003cDesc\u003e` is standard. `\u003cValue\u003e \u003cDesc\u003e` is more in-line with other tast comments. I.e. \n\n`ProfileStatePending indicates the profile is not installed on the device`\n\netc.",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "958fa6d1_2fa92536",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "`Get\u003c..\u003e` is discouraged in Go. Is `AvailableEuicc` an OK name?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40414756_29bb4965",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "`Get\u003c..\u003e` is discouraged in Go. Is `Properties` an OK name?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d03b2c96_8e56b9f3",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "`Get\u003c..\u003e` is discouraged in Go. Is `ProfileList` an OK name?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4df6f0e0_8a71004a",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "nit: missing period at end of comment.",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c53b171_e844a620",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "`Get\u003c..\u003e` is discouraged in Go. Is `EidQRCode` an OK name?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ec73c6_08beb811",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "`Get\u003c..\u003e` is discouraged in Go. Is `Properties` an OK name?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad36e72_130ff8ae",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "nit: inline this since it\u0027s only used once, or give a more descriptive name `OsSettingsInternetUrl`",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea92d5da_dce62866",
+        "filename": "src/chromiumos/tast/local/cellular/esim/mojo/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-11T16:41:02Z",
+      "side": 1,
+      "message": "Error check on len of euiccs before grabbing the slot?",
+      "revId": "cada4d35c5831094b95a6e39ed7c0380abe0871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
