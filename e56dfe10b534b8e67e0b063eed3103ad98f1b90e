@@ -68,6 +68,24 @@
       "parentUuid": "20ca8bf2_35adfc20",
       "revId": "e56dfe10b534b8e67e0b063eed3103ad98f1b90e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b376c590_a075ca1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-11T03:31:28Z",
+      "side": 1,
+      "message": "nah fair, I just wanted to check. Thanks!",
+      "parentUuid": "4bbdf58f_f51bcf8f",
+      "revId": "e56dfe10b534b8e67e0b063eed3103ad98f1b90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
