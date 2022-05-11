@@ -339,7 +339,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 				lastError = err
 			}
 			if conference.IsParticipantError(err) {
-				testing.ContextLogf(ctx, "Wait %v and try to run meet scenario again", meet.RetryInterval)
+				testing.ContextLogf(ctx, "Wait %v and try to run meet scenario again; caused by error: %v", meet.RetryInterval, err)
 				return err
 			}
 			return testing.PollBreak(err) // Break if error is not participant number related.

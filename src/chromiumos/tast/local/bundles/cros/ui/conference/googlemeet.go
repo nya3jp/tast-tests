@@ -185,9 +185,11 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 				return nil
 			}, &testing.PollOptions{Timeout: shortUITimeout})
 		}
+		startTime := time.Now()
 		if err := ui.WithTimeout(longUITimeout).WaitUntilExists(joinButton)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to wait for the join button within %v", longUITimeout)
 		}
+		testing.ContextLogf(ctx, "The join button took %v to appear", time.Now().Sub(startTime))
 		return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
 			waitJoinNowButtonStable,
 			ui.RetryUntil(ui.DoDefault(joinButton), ui.WithTimeout(shortUITimeout).WaitUntilGone(joinButton)),
@@ -209,7 +211,8 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 			actions = append(actions,
 				// Make sure text area is focused before typing. This is especially necessary on low-end DUTs.
 				uiauto.NamedAction("click email field",
-					ui.LeftClickUntil(emailField, ui.WithTimeout(shortUITimeout).WaitUntilExists(emailField.Focused()))),
+					ui.WithTimeout(longUITimeout).LeftClickUntil(emailField,
+						ui.WithTimeout(shortUITimeout).WaitUntilExists(emailField.Focused()))),
 				uiauto.NamedAction("type account", kb.TypeAction(meetAccount)),
 			)
 		}
@@ -547,7 +550,7 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 			// If ui.LeftClick clicks the wrong coordinates, use ui.DoDefault to click more options.
 			uiauto.IfSuccessThen(ui.Gone(moreOptions.Focused()), ui.DoDefault(moreOptions)),
 			uiauto.NamedAction("wait for menu", ui.WithTimeout(longUITimeout).WaitUntilExists(menu)),
-			ui.RetryUntil(ui.WithTimeout(shortUITimeout).FocusAndWait(changeLayoutItem), ui.Exists(changeLayoutItem.Focused())),
+			ui.WithTimeout(longUITimeout).RetryUntil(ui.FocusAndWait(changeLayoutItem), ui.Exists(changeLayoutItem.Focused())),
 			uiauto.NamedAction("click change layout item", ui.LeftClick(changeLayoutItem)),
 			uiauto.NamedAction("wait for change layout panel", ui.WithTimeout(longUITimeout).WaitUntilExists(changeLayoutPanel)),
 		)))
@@ -687,6 +690,11 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		return uiauto.NamedAction("switch tab to "+tabName, conf.uiHandler.SwitchToChromeTabByName(tabName))
 	}
 	meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
+	alertDialog := nodewith.Name("Your screen is still visible to others").Role(role.Alert)
+	closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(alertDialog)
+	closeAlertDialog := uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(closeButton),
+		uiauto.NamedAction("close alert dialog", ui.LeftClick(closeButton)))
+
 	// shareScreen shares screen by "A Tab" and selects the tab which is going to present.
 	// If there is extended display, move conference to extended display.
 	shareScreen := func(ctx context.Context) error {
@@ -708,6 +716,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		shareButton := nodewith.Name("Share").Role(role.Button)
 		// There are two "Stop presenting" buttons on the screen with the same ancestor, role and name that we can't use unique finder.
 		stopSharing := nodewith.Name("Stop sharing").Role(role.Button).First()
+
 		// If another participant is presenting, wait for the presentation to stop.
 		checkPresentNowButton := func(ctx context.Context) error {
 			return testing.Poll(ctx, func(ctx context.Context) error {
@@ -731,6 +740,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 			ui.LeftClick(presentMode),
 			ui.LeftClick(presentTab),
 			ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
+			closeAlertDialog,
 			ui.WithTimeout(longUITimeout).WaitUntilExists(stopSharing),
 		))(ctx)
 	}
@@ -743,6 +753,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		testing.ContextLog(ctx, "Stop presenting")
 		return uiauto.Combine("stop presenting",
 			switchToTab("Meet"),
+			closeAlertDialog,
 			ui.LeftClickUntil(stopPresentingButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(stopPresentingButton)),
 		)(ctx)
 	}
