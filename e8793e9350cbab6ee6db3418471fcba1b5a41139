@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "058d1c59_8c0de3d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-11T21:28:42Z",
+      "side": 1,
+      "message": "I think we want to initialize tconn from the fixture chrome and use this tconn in this test even meet.useLacros is true?",
+      "parentUuid": "fda1c35c_c8067fd2",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 48
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4905574_e2e9dad5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 5
