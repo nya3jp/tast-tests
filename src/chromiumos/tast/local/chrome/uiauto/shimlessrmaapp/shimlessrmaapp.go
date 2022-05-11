@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -174,6 +175,26 @@ func (r *RMAApp) LeftClickRadioButton(label string) uiauto.Action {
 	// TODO(b/230692945): Can we add RadioButton as role?
 	radioGroup := nodewith.Role(role.RadioGroup)
 	return r.ui.LeftClick(nodewith.Name(label).Ancestor(radioGroup).First())
+}
+
+// LeftClickLink returns a function that clicks a link.
+func (r *RMAApp) LeftClickLink(label string) uiauto.Action {
+	return r.ui.LeftClick(nodewith.Name(label).Role(role.Link).Visible())
+}
+
+// RetrieveTextByPrefix returns a text which has a cerntian prefix.
+func (r *RMAApp) RetrieveTextByPrefix(ctx context.Context, prefix string) (*uiauto.NodeInfo, error) {
+	return r.ui.Info(ctx, nodewith.NameStartingWith(prefix).Role(role.StaticText))
+}
+
+// EnterIntoTextInput enters text into text input.
+func (r *RMAApp) EnterIntoTextInput(ctx context.Context, textInputName, content string) uiauto.Action {
+	keyboard, _ := input.Keyboard(ctx)
+	var textInputFinder = nodewith.Role(role.TextField)
+	return uiauto.Combine("type keyword to enter content to text input",
+		r.ui.LeftClickUntil(textInputFinder, r.ui.WaitUntilExists(textInputFinder.Focused())),
+		keyboard.TypeAction(content),
+	)
 }
 
 func getRmadUID() (int, error) {
