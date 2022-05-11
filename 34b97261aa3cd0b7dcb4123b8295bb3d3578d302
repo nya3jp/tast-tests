@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "446e18e8_05e0a2f3",
+        "filename": "src/chromiumos/tast/local/bluetooth/admin_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5d18a1_e08600b8",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7449cf68_04f9607d",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-11T03:00:51Z",
       "side": 1,
       "message": "nil",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 19
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8422050b_f4e4c849",
+        "filename": "src/chromiumos/tast/local/bluetooth/admin_policy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7449cf68_04f9607d",
       "range": {
         "startLine": 69,
         "startChar": 9,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44a4769_77402916",
+        "filename": "src/chromiumos/tast/local/bluetooth/advertising.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4836be_56b913d1",
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8348a9a_50e9c522",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbc1c17_8025a540",
+        "filename": "src/chromiumos/tast/local/bluetooth/advertising.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8348a9a_50e9c522",
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a32e8fe_5a2a23b0",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-05-11T03:00:51Z",
       "side": 1,
       "message": "return Capabilities{\n   MaxAdvLen: maxAdvLen,\n   ...\n }, nil",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91eb10e2_6d665667",
+        "filename": "src/chromiumos/tast/local/bluetooth/advertising.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a32e8fe_5a2a23b0",
       "range": {
         "startLine": 96,
         "startChar": 1,
@@ -168,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dba4928_60c09c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b16ee6e_a16cf252",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4edca27_ba7042b7",
@@ -181,6 +313,30 @@
       "writtenOn": "2022-05-11T01:44:16Z",
       "side": 1,
       "message": "Maybe we can have a function like `validateAdminPolicy`, otherwise this function is too big.",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60758798_cf9c6a79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4edca27_ba7042b7",
       "range": {
         "startLine": 150,
         "startChar": 1,
@@ -208,6 +364,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6803a09c_425a8339",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Removed, done.",
+      "parentUuid": "d9a8f636_d3a5f841",
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79c3b355_97d4c6c6",
@@ -221,6 +395,30 @@
       "writtenOn": "2022-05-11T03:00:51Z",
       "side": 1,
       "message": "so what you\u0027d like to see is to create an AdminPolicy instance for the given adapters[0].Path(). How about introducing such an API, instead of creating instances and filtering afterwords?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f284d9a_8cc9a095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c3b355_97d4c6c6",
       "range": {
         "startLine": 151,
         "startChar": 1,
@@ -254,6 +452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b43221d5_20aa5bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b223c49_3dd57e6a",
+      "range": {
+        "startLine": 165,
+        "startChar": 29,
+        "endLine": 165,
+        "endChar": 57
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b871ed97_604cc8e3",
@@ -267,6 +489,30 @@
       "writtenOn": "2022-05-11T01:44:16Z",
       "side": 1,
       "message": "Same here, maybe `validateAdvertising`.",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 40
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab36c41_52cfd53c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-11T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b871ed97_604cc8e3",
       "range": {
         "startLine": 171,
         "startChar": 1,
