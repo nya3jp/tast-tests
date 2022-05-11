@@ -38,15 +38,16 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedInWith100FakeApps",
 		Params: []testing.Param{
 			{
-				Name: "clamshell_mode",
-				Val:  false,
+				Name:    "clamshell_mode",
+				Val:     false,
+				Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 			},
 			{
-				Name: "tablet_mode",
-				Val:  true,
+				Name:    "tablet_mode",
+				Val:     true,
+				Fixture: "chromeLoggedInWith100FakeApps",
 			},
 		},
 		Timeout: 3 * time.Minute,
@@ -139,7 +140,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	ac := uiauto.New(tconn)
 	appsGridView := nodewith.ClassName("AppsGridView")
 	pageSwitcher := nodewith.ClassName("PageSwitcher")
-	pageButtons := nodewith.ClassName("Button").Ancestor(pageSwitcher)
+	pageButtons := nodewith.ClassName("IconButton").Ancestor(pageSwitcher)
 
 	buttonsInfo, err := ac.NodesInfo(ctx, pageButtons)
 	if err != nil {
@@ -198,8 +199,8 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the location of appsgridview: ", err)
 	}
 	// drag-up gesture positions; starting at a bottom part of the apps-grid (at
-	// 4/5 height), and moves the height of the apps-grid. The starting height
-	// shouldn't be very bottom of the apps-grid, since it may fall into the
+	// 4/5 height), and moves to the top of the apps grid bounds. The starting
+	// height shouldn't be very bottom of the apps-grid, since it may fall into the
 	// hotseat (the gesture won't cause page-switch in such case).
 	// The X position should not be the center of the width since it would fall
 	// into an app icon. For now, it just sets 2/5 width position to avoid app
@@ -207,7 +208,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	dragUpStart := coords.NewPoint(
 		appsGridLocation.Left+appsGridLocation.Width*2/5,
 		appsGridLocation.Top+appsGridLocation.Height*4/5)
-	dragUpEnd := coords.NewPoint(dragUpStart.X, dragUpStart.Y-appsGridLocation.Height)
+	dragUpEnd := coords.NewPoint(dragUpStart.X, appsGridLocation.Top+1)
 
 	// drag-down gesture positions; starting at the top of the apps-grid (but
 	// not at the edge), and moves to the bottom edge of the apps-grid. Same
