@@ -6,8 +6,13 @@ package lacros
 
 import "chromiumos/tast/testing"
 
-// UserDataDir is the directory that contains the user data of lacros.
-const UserDataDir = "/home/chronos/user/lacros/"
+const (
+	// UserDataDir is the directory that contains the user data of lacros.
+	UserDataDir = "/home/chronos/user/lacros/"
+
+	// LacrosSquashFSPath indicates the location of the rootfs lacros squashfs filesystem.
+	LacrosSquashFSPath = "/opt/google/lacros/lacros.squash"
+)
 
 // DeployedBinary describes the location of a lacros binary that has been
 // separately deployed to the device. For example, /usr/local/lacros-chrome.
