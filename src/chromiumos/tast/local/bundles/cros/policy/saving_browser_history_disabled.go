@@ -113,7 +113,7 @@ func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 
 			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
 			// Setup browser based on the chrome type.
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}

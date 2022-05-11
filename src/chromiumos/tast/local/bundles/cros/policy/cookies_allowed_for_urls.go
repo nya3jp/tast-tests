@@ -96,7 +96,7 @@ func CookiesAllowedForUrls(ctx context.Context, s *testing.State) {
 			}
 
 			// TODO(crbug.com/1259615): This should be part of the fixture.
-			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), s.Param().(browser.Type), url+"/cookies_test.html")
+			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), url+"/cookies_test.html")
 			if err != nil {
 				s.Fatal("Failed to setup chrome: ", err)
 			}

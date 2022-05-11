@@ -115,7 +115,7 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get base zram stats: ", err)
 	}
 
-	videoConn, br, cleanup, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), params.browserType, videocallURL)
+	videoConn, br, cleanup, err := browserfixt.SetUpWithURL(ctx, cr, params.browserType, videocallURL)
 	if err != nil {
 		s.Fatal("Failed to set up browser: ", err)
 	}

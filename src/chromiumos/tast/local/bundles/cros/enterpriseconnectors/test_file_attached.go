@@ -162,7 +162,8 @@ func TestFileAttached(ctx context.Context, s *testing.State) {
 func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserType browser.Type) {
 	testParams := s.Param().(helpers.TestParams)
 
-	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -178,7 +179,7 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 	defer cancel()
 
 	// Create Browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browserType)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browserType)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}
