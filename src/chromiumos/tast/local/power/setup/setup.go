@@ -122,46 +122,70 @@ const (
 type BatteryDischargeMode interface {
 	// fulfill implements the indicated battery discharge behavior.
 	fulfill(ctx context.Context, s *Setup)
+	//Err returns the battery discharge error, if any.
+	Err() error
 }
 
 // basicBatteryDischargeMode is for battery discharge modes representable as
 // constant values.
-type basicBatteryDischargeMode int
+type basicBatteryDischargeMode struct {
+	discharge bool
+	threshold float64
+	err       error
+}
 
-const (
+// DefaultDischargeThreshold is the default battery discharge threshold.
+const DefaultDischargeThreshold = 2.0
+
+var (
 	// NoBatteryDischarge option requests setup not to try
 	// forcing discharge of battery
-	NoBatteryDischarge basicBatteryDischargeMode = iota
+	NoBatteryDischarge = basicBatteryDischargeMode{discharge: false}
 	// ForceBatteryDischarge option requests setup to force
 	// discharging battery during a test
-	ForceBatteryDischarge
+	ForceBatteryDischarge = basicBatteryDischargeMode{
+		discharge: true, threshold: DefaultDischargeThreshold}
 )
 
 func (battery basicBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
-	if battery == ForceBatteryDischarge {
-		s.Add(SetBatteryDischarge(ctx, 2.0))
+	if battery.discharge {
+		var cleanup CleanupCallback
+		cleanup, battery.err = SetBatteryDischarge(ctx, battery.threshold)
+		s.Add(cleanup, battery.err)
 	}
+}
+
+func (battery basicBatteryDischargeMode) Err() error {
+	return battery.err
 }
 
 // advancedBatteryDischargeMode is for battery discharge modes constructed
 // from parameters.
-type advancedBatteryDischargeMode struct{ errp *error }
+type advancedBatteryDischargeMode struct {
+	err       error
+	threshold float64
+}
 
 // TryBatteryDischarge option requests setup to try battery discharge. If the
-// given pointer is nil, TryBatteryDischarge returns ForceBatteryDischarge.
-// Otherwise, the battery discharge error is omitted from the power test
-// setup and reported through the given pointer instead.
-func TryBatteryDischarge(errp *error) BatteryDischargeMode {
-	if errp == nil {
-		return ForceBatteryDischarge
+// ignoreErr flag is false, TryBatteryDischarge returns basicBatteryDischargeMode
+// which forces the discharge and will cause power test setup to fail on error.
+// Otherwise, the advancedBatteryDischargeMode is returned, with which the discharge
+// error is omitted from the power test setup but can be obtained via Err() interface.
+func TryBatteryDischarge(ignoreErr bool, threshold float64) BatteryDischargeMode {
+	if !ignoreErr {
+		return basicBatteryDischargeMode{discharge: true, threshold: threshold}
 	}
-	return advancedBatteryDischargeMode{errp: errp}
+	return advancedBatteryDischargeMode{threshold: threshold}
 }
 
 func (battery advancedBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
 	var cleanup CleanupCallback
-	cleanup, *battery.errp = SetBatteryDischarge(ctx, 2.0)
+	cleanup, battery.err = SetBatteryDischarge(ctx, battery.threshold)
 	s.Add(cleanup, nil)
+}
+
+func (battery advancedBatteryDischargeMode) Err() error {
+	return battery.err
 }
 
 // UpdateEngineMode indicates what update engine setup is needed for a test.

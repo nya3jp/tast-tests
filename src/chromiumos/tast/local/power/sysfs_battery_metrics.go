@@ -191,12 +191,18 @@ func ListSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 	return batteryPaths, nil
 }
 
+// ErrNoBattery is an error indicating no battery is found.
+var ErrNoBattery = errors.New("unexpected number of batteries: got 0; want 1")
+
 // SysfsBatteryPath returns a path of battery which supply power to the system
 // and has voltage_now and current_now attributes.
 func SysfsBatteryPath(ctx context.Context) (string, error) {
 	batteryPaths, err := ListSysfsBatteryPaths(ctx)
 	if err != nil {
 		return "", err
+	}
+	if len(batteryPaths) == 0 {
+		return "", ErrNoBattery
 	}
 	if len(batteryPaths) != 1 {
 		return "", errors.Errorf("unexpected number of batteries: got %d; want 1", len(batteryPaths))
