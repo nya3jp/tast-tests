@@ -110,7 +110,7 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 			}
 
 			// TODO(crbug.com/1259615): This should be part of the fixture.
-			_, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			_, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to setup chrome: ", err)
 			}

@@ -74,7 +74,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to set up browser: ", err)
 	}
