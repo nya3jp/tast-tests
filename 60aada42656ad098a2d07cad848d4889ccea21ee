@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb6ecee2_9bac840f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-11T01:33:20Z",
+      "side": 1,
+      "message": "oopsies, gotcha",
+      "parentUuid": "cd840324_016fb0df",
+      "revId": "60aada42656ad098a2d07cad848d4889ccea21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d62df4c_8db03d94",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-11T01:27:05Z",
       "side": 1,
       "message": "What\u0027s hostPaths[0]? What will happen if we update PersonPresentPageArchiveFilename contents? Can we use human-readable strings for the images we\u0027re showing on the tablet?",
+      "revId": "60aada42656ad098a2d07cad848d4889ccea21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2e6a54_50278d6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-11T01:33:20Z",
+      "side": 1,
+      "message": "0 as in 0 person presence file, they are saved in the order \n```\n\t\tfilepath.Join(dirPath, noPersonFile),\n\t\tfilepath.Join(dirPath, onePersonFile),\n\t\tfilepath.Join(dirPath, twoPeopleFile)}\n```\nI\u0027ll create a more straightforward name for this",
+      "parentUuid": "0d62df4c_8db03d94",
       "revId": "60aada42656ad098a2d07cad848d4889ccea21ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4920517_0f559160",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-11T01:33:20Z",
+      "side": 1,
+      "message": "Will do a reconstruction in a new CL",
+      "parentUuid": "85f47308_fa1ba416",
+      "revId": "60aada42656ad098a2d07cad848d4889ccea21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2985de60_43bbca4d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
         "patchSetId": 1
@@ -65,6 +119,24 @@
       "writtenOn": "2022-05-11T01:27:05Z",
       "side": 1,
       "message": "If we\u0027re waiting for a precise delays: could it cause flaky test failures?",
+      "revId": "60aada42656ad098a2d07cad848d4889ccea21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f28373_b6acc64d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-11T01:33:20Z",
+      "side": 1,
+      "message": "true, will update this",
+      "parentUuid": "2985de60_43bbca4d",
       "revId": "60aada42656ad098a2d07cad848d4889ccea21ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
