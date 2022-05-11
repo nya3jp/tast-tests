@@ -125,7 +125,7 @@ func init() {
 				}},
 			},
 			{
-				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ay network on channel 85, 41
+				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ax network on channel 85, 41 on the 6ghz band
 				Name: "80211axwpa6ghz",
 				Val: []axSimpleConnectTestcase{{
 					band:             ax.Ghz6,
@@ -141,7 +141,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ax6E()),
 			},
 			{
-				// Verifies that DUT can connect to a hidden wpa (AES) 802.11ay network on channel 85, 41
+				// Verifies that DUT can connect to a hidden wpa (AES) 802.11ax network on channel 85, 41 on the 6ghz band
 				Name: "80211axwpahidden6ghz",
 				Val: []axSimpleConnectTestcase{{
 					band:             ax.Ghz6,
@@ -157,8 +157,8 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ax6E()),
 			},
 			{
-				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ay with 40Mhz channel width on the 6ghz band
-				Name: "80211wpa40mhz6ghz",
+				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ax with 40Mhz channel width on the 6ghz band
+				Name: "80211axwpa40mhz6ghz",
 				Val: []axSimpleConnectTestcase{{
 					band:             ax.Ghz6,
 					apOpts:           []ax.Option{ax.Mode(ax.Mode80211ax), ax.SSID("googleTest0"), ax.Hidden(false), ax.ChanBandwidth(85, ax.Bw40)},
@@ -168,8 +168,8 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ax6E()),
 			},
 			{
-				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ay with 80Mhz channel width on the 6ghz band
-				Name: "80211wpa80mhz6ghz",
+				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ax with 80Mhz channel width on the 6ghz band
+				Name: "80211axwpa80mhz6ghz",
 				Val: []axSimpleConnectTestcase{{
 					band:             ax.Ghz6,
 					apOpts:           []ax.Option{ax.Mode(ax.Mode80211ax), ax.SSID("googleTest0"), ax.Hidden(false), ax.ChanBandwidth(85, ax.Bw80)},
@@ -179,8 +179,8 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ax6E()),
 			},
 			{
-				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ay with 40Mhz channel width on the 6ghz band
-				Name: "80211wpa160mhz6ghz",
+				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ax with 40Mhz channel width on the 6ghz band
+				Name: "80211axwpa160mhz6ghz",
 				Val: []axSimpleConnectTestcase{{
 					band:             ax.Ghz6,
 					apOpts:           []ax.Option{ax.Mode(ax.Mode80211ax), ax.SSID("googleTest0"), ax.Hidden(false), ax.ChanBandwidth(85, ax.Bw160)},
