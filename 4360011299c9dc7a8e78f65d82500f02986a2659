@@ -142,6 +142,24 @@
       "parentUuid": "ac4412fa_4e533222",
       "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f530e9_b67784de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2022-05-11T00:37:32Z",
+      "side": 1,
+      "message": "vapier@ is a good bash reviewer",
+      "parentUuid": "906c66b3_0852b4b2",
+      "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
