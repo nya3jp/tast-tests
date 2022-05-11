@@ -16,6 +16,24 @@
       "message": "There is a single failure for container variant in last 20 runs so I think this one can be promoted to stable and we can do the vm one later when we have 20 runs for that as well.",
       "revId": "7de32f32a9ced17a0944f64309803b979a535f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "625ed431_7e46f16f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-05-11T06:53:17Z",
+      "side": 0,
+      "message": "Both have passed for the last 20+ runs now.",
+      "parentUuid": "291d7a9d_e57b4687",
+      "revId": "7de32f32a9ced17a0944f64309803b979a535f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
