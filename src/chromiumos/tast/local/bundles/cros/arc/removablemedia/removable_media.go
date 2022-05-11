@@ -116,8 +116,8 @@ func Unmount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop string) error
 	return nil
 }
 
-// RunTest executes the testing scenario of arc.RemovableMedia.
-func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string) {
+// RunMountTest executes the testing scenario of arc.RemovableMedia.
+func RunMountTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string) {
 	const (
 		imageSize = 64 * 1024 * 1024
 		diskName  = "MyDisk"
@@ -192,5 +192,55 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 	uri := arc.VolumeProviderContentURIPrefix + path.Join(arc.RemovableMediaUUID, testFile)
 	if err := verify(uri, filepath.Join(s.OutDir(), testFile)); err != nil {
 		s.Fatalf("Failed to read the file via VolumeProvider using content URI %s: %v", uri, err)
+	}
+}
+
+// RunMountDisabledTest executes the testing scenario of arc.ExternalStorageDisabled.
+func RunMountDisabledTest(ctx context.Context, s *testing.State, a *arc.ARC) {
+	const (
+		imageSize = 64 * 1024 * 1024
+		diskName  = "MyDisk"
+	)
+
+	// Set up a filesystem image.
+	image, err := CreateZeroFile(imageSize, "vfat.img")
+	if err != nil {
+		s.Fatal("Failed to create image: ", err)
+	}
+	defer os.Remove(image)
+
+	devLoop, err := AttachLoopDevice(ctx, image)
+	if err != nil {
+		s.Fatal("Failed to attach loop device: ", err)
+	}
+	defer func() {
+		if err := DetachLoopDevice(ctx, devLoop); err != nil {
+			s.Error("Failed to detach from loop device: ", err)
+		}
+	}()
+	if err := FormatVFAT(ctx, devLoop); err != nil {
+		s.Fatal("Failed to format VFAT file system: ", err)
+	}
+
+	// Mount the image via CrosDisks. This should work even when the
+	// ExternalStorageDisabled policy is set to true since we does not make
+	// CrosDisks check the policy with Chrome here.
+	cd, err := crosdisks.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to find crosdisks D-Bus service: ", err)
+	}
+	_, err = Mount(ctx, cd, devLoop, diskName)
+	if err != nil {
+		s.Fatal("Failed to mount file system: ", err)
+	}
+	defer func() {
+		if err := Unmount(ctx, cd, devLoop); err != nil {
+			s.Error("Failed to unmount VFAT image: ", err)
+		}
+	}()
+
+	// Check that the image is not mounted on ARC.
+	if err := arc.WaitForARCRemovableMediaVolumeMount(ctx, a); err == nil {
+		s.Fatal("The volume is unexpectedly mounted in ARC: ", err)
 	}
 }

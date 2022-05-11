@@ -36,5 +36,5 @@ func init() {
 }
 
 func RemovableMedia(ctx context.Context, s *testing.State) {
-	removablemedia.RunTest(ctx, s, s.FixtValue().(*arc.PreData).ARC, "capybara.jpg")
+	removablemedia.RunMountTest(ctx, s, s.FixtValue().(*arc.PreData).ARC, "capybara.jpg")
 }
