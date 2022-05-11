@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb0ff5dd_9601b872",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-05-11T20:26:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afae007f_fa0f8fd6",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22c2cfeb_45423a6a",
@@ -349,6 +373,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd083a3c_7dd64382",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-05-11T20:26:37Z",
+      "side": 1,
+      "message": "This isn\u0027t yet resolved -- the comment is unchanged. Can you please update the comment and upload the most recent patch set?",
+      "parentUuid": "96cddaa3_e2383720",
+      "range": {
+        "startLine": 600,
+        "startChar": 4,
+        "endLine": 601,
+        "endChar": 58
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91ca9c0a_a50d61c2",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 4
@@ -478,6 +526,30 @@
       "side": 1,
       "message": "I\u0027m trying to mock as close as possible to devcoredump\u0027s behaviors, which remove the devcd%d directory once it reads \u00270\u0027. The clean up code relies on the existence of devcd%d directories to decide how long to poll. And writing to devcd/data will definitely remove the entire directory entry before the writing exit. That\u0027s the reason I explicitly remove the directory.",
       "parentUuid": "9f7638cc_f8ad67a4",
+      "range": {
+        "startLine": 593,
+        "startChar": 5,
+        "endLine": 605,
+        "endChar": 4
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee3eb7f_119a7dc3",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-05-11T20:26:37Z",
+      "side": 1,
+      "message": "The way I\u0027m reading the code under test, it looks like we:\n\n1. Check for existence of file\n2. If it exists, poll for 30s, checking if it still exists\n3. If it still exists after 30s, write \"0\"\n4. Return\n\nNotably, there\u0027s no check for existence after step 3, so I\u0027m not sure why this complexity is needed?",
+      "parentUuid": "602a6d25_435335a7",
       "range": {
         "startLine": 593,
         "startChar": 5,
