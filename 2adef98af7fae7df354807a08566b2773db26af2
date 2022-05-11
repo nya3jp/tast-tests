@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82a1775_df4bd72c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-11T14:42:14Z",
+      "side": 1,
+      "message": "nit: perhaps one of below?:\nnetwork:\nnetwork-dns:",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "2adef98af7fae7df354807a08566b2773db26af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "14be1bad_34be939b",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-05-11T01:45:48Z",
       "side": 1,
       "message": "PTAL, thanks!",
+      "revId": "2adef98af7fae7df354807a08566b2773db26af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e86259_ecf6d683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-11T14:42:14Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "2adef98af7fae7df354807a08566b2773db26af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
