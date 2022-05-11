@@ -42,7 +42,7 @@ func init() {
 		}, {
 			Name:    "clamshell_mode",
 			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
-			Fixture: "chromeLoggedInWith100FakeApps",
+			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}, {
 			Name:              "productivity_launcher_tablet_mode",
 			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
@@ -52,7 +52,7 @@ func init() {
 			Name:              "tablet_mode",
 			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-			Fixture:           "chromeLoggedInWith100FakeApps",
+			Fixture:           "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}},
 	})
 }
@@ -111,7 +111,7 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 	if !usingBubbleLauncher {
-		pageSwitcher := nodewith.ClassName("Button").Ancestor(nodewith.ClassName("PageSwitcher"))
+		pageSwitcher := nodewith.ClassName("IconButton").Ancestor(nodewith.ClassName("PageSwitcher"))
 		if err := ui.WithTimeout(5 * time.Second).LeftClick(pageSwitcher.Nth(0))(ctx); err != nil {
 			s.Fatal("Failed to switch launcher to first page: ", err)
 		}
