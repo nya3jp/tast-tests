@@ -118,7 +118,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wake display: ", err)
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, append(
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, cs, nil, cujrecorder.RecorderOptions{}, append(
 		cujrecorder.MetricConfigs(),
 		cujrecorder.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter, []int64{500, 2000}),
 		cujrecorder.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
