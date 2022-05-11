@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7abbc602_d8e30d5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2022-05-11T14:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767f4bd7_bd6a4758",
+      "range": {
+        "startLine": 182,
+        "startChar": 57,
+        "endLine": 182,
+        "endChar": 65
+      },
+      "revId": "f0e7b50f670af6adc6f7dcbf6bacdbf81bfc1d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d08b1978_59ca5641",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d9d19a_4c712dd9",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2022-05-11T14:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d08b1978_59ca5641",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 21
+      },
+      "revId": "f0e7b50f670af6adc6f7dcbf6bacdbf81bfc1d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c262fa64_6ddfbb21",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-05-11T08:35:50Z",
       "side": 1,
       "message": "nit: Maybe it\u0027s slightly easier to read by assiging connectors[len(connectors)-1] to a variable first.\n\n lastConnector :\u003d connectors[len(connectors)-1]\n lastConnector.Modes \u003d append(lastConnector.Modes, mode)",
+      "range": {
+        "startLine": 212,
+        "startChar": 3,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "f0e7b50f670af6adc6f7dcbf6bacdbf81bfc1d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6a824d_88de7c0d",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2022-05-11T14:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c262fa64_6ddfbb21",
       "range": {
         "startLine": 212,
         "startChar": 3,
