@@ -395,6 +395,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac85f9f5_2cda54cf",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-11T21:29:27Z",
+      "side": 1,
+      "message": "DONE. Sorry to forgot this comment in previous patch. I start to adopt upload-then-reply practice.",
+      "parentUuid": "bd083a3c_7dd64382",
+      "range": {
+        "startLine": 600,
+        "startChar": 4,
+        "endLine": 601,
+        "endChar": 58
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91ca9c0a_a50d61c2",
@@ -550,6 +574,30 @@
       "side": 1,
       "message": "The way I\u0027m reading the code under test, it looks like we:\n\n1. Check for existence of file\n2. If it exists, poll for 30s, checking if it still exists\n3. If it still exists after 30s, write \"0\"\n4. Return\n\nNotably, there\u0027s no check for existence after step 3, so I\u0027m not sure why this complexity is needed?",
       "parentUuid": "602a6d25_435335a7",
+      "range": {
+        "startLine": 593,
+        "startChar": 5,
+        "endLine": 605,
+        "endChar": 4
+      },
+      "revId": "6a89535b7952a6fcef9e1b2b26b41432e00861a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e310e95c_305af639",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-11T21:29:27Z",
+      "side": 1,
+      "message": "Agree with you. We should think of unit testing the expected behaviors of the function we jsut implemented. And test the system beyond this function by broader functional testing. Updated the patch.",
+      "parentUuid": "eee3eb7f_119a7dc3",
       "range": {
         "startLine": 593,
         "startChar": 5,
