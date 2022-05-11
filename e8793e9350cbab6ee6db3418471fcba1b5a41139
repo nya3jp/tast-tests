@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a25651_c9ba124f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-11T20:38:32Z",
+      "side": 1,
+      "message": "This Drive folder is shared only with the Chrome OS team, whereas the commit message will be visible publicly (including outside of Google). You might be bothered by random people requesting access to the Drive folder. Also, the commit message will be visible long after the Drive folder is gone.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 134
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda1c35c_c8067fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-11T20:38:32Z",
+      "side": 1,
+      "message": "As this value will actually be used only when `meet.useLacros` is false, I suggest handling `cr` consistently with `l`, `cs`, and `bTconn`: the way where you declare the variable above `if meet.useLacros` and assign it once in the `if` case and once in the `else` case.",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 48
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4905574_e2e9dad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-11T20:38:32Z",
+      "side": 1,
+      "message": "This belongs above because `lacros.CloseLacros` should be called even if `l.TestAPIConn` fails.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 39
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcfd27db_a92f0b3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-11T20:38:32Z",
+      "side": 1,
+      "message": "See comment on similar code in meet_cuj.go.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 48
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f79160c0_9cd2ad2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-11T20:38:32Z",
+      "side": 1,
+      "message": "See comment on similar code in meet_cuj.go.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 39
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc8cf57_6b64ebfa",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-11T20:38:32Z",
+      "side": 1,
+      "message": "This comment belongs inside the definition of `ConnSource` in wm.go.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b540f1b1_010bd4f0",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-11T20:38:32Z",
+      "side": 1,
+      "message": "This comment belongs inside the definition of `ConnSource` in wm.go.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2298a2c9_1eef3f77",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-11T20:38:32Z",
+      "side": 1,
+      "message": "This comment belongs inside the definition of `ConnSource` in wm.go.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 60
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e9c9ee_28d70dc8",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-11T20:38:32Z",
+      "side": 1,
+      "message": "This comment belongs inside the definition of `ConnSource` in wm.go.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 77
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
