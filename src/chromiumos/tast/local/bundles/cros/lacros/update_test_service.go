@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosproc"
 	lacrosservice "chromiumos/tast/services/cros/lacros"
 	"chromiumos/tast/testing"
 )
@@ -130,7 +131,7 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	} else {
 		// Verify without UI that the lacros process is running from the expected versioned path.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			pids, err := lacros.PidsFromPath(ctx, expectedLacrosPath)
+			pids, err := lacrosproc.PidsFromPath(ctx, expectedLacrosPath)
 			if err != nil {
 				return err
 			}
