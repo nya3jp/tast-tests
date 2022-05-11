@@ -114,7 +114,7 @@ func DataLeakPreventionRulesListClipboardHistory(ctx context.Context, s *testing
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Setup browser based on the chrome type.
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}

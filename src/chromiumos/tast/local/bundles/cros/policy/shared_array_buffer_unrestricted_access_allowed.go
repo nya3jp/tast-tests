@@ -96,7 +96,7 @@ func SharedArrayBufferUnrestrictedAccessAllowed(ctx context.Context, s *testing.
 			}
 
 			// Setup browser based on the chrome type.
-			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), browser.TypeLacros, nonIsolatedURL)
+			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, browser.TypeLacros, nonIsolatedURL)
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}

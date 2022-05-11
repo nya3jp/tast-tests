@@ -245,7 +245,7 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 		s.Fatal("Failed to remove screenshots: ", err)
 	}
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(screenshotTestParams).browserType)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(screenshotTestParams).browserType)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}

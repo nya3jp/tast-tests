@@ -89,7 +89,7 @@ func IsolatedAppsCrossOriginLinks(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeAsh)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browser.TypeAsh)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}

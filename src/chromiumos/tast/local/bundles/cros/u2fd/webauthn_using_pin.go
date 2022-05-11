@@ -85,7 +85,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to update policies: ", err)
 	}
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
 	if err != nil {
 		s.Fatalf("Failed to open the %v browser: %v", bt, err)
 	}
