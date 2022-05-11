@@ -51,6 +51,23 @@
       "parentUuid": "c235489f_14cefb57",
       "revId": "eae2135b667e8cdbaac367d74d3d61f811d682a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fc2b56b_b54300bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-11T08:24:55Z",
+      "side": 1,
+      "message": "I can confirm that this fixes the mentioned bug, which also seems to be the root cause of http://b/230818884.",
+      "revId": "eae2135b667e8cdbaac367d74d3d61f811d682a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
