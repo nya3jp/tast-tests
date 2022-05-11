@@ -16,6 +16,24 @@
       "message": "Optional. I\u0027d advise to put a explicit timeout to avoid unexpected timeout error.",
       "revId": "704cd1567fbd388776ee58456d1c90ff410e625f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3b470c_aa2eb4a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1537107
+      },
+      "writtenOn": "2022-05-11T02:57:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a7909e9_571e177f",
+      "revId": "704cd1567fbd388776ee58456d1c90ff410e625f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
