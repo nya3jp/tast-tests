@@ -22,6 +22,30 @@
       },
       "revId": "63429266a40fbf7ec842b124cbab713d76cd9b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f096e75_22f6dfa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-11T04:07:43Z",
+      "side": 1,
+      "message": "Thank you for your advice.\ncpu.WaitUntilIdle has a timeout of 120 * time.Second in the function.\nAnd PreTestTimeout also set to 2 * time.Minute.\nI don\u0027t think it will hang in this function.\nBut maybe it should increase the timeout of PreTestTimeout to log failure.",
+      "parentUuid": "01127ec2_442fb310",
+      "range": {
+        "startLine": 236,
+        "startChar": 29,
+        "endLine": 236,
+        "endChar": 32
+      },
+      "revId": "63429266a40fbf7ec842b124cbab713d76cd9b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
