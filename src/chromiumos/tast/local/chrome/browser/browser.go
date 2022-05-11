@@ -116,6 +116,12 @@ func (b *Browser) StartTracing(ctx context.Context, categories []string, opts ..
 	return b.sess.StartTracing(ctx, categories, opts...)
 }
 
+// StartSystemTracing starts trace events collection from the system tracing
+// service using the marshaled binary protobuf trace config.
+func (b *Browser) StartSystemTracing(ctx context.Context, perfettoConfig []byte) error {
+	return c.sess.StartSystemTracing(ctx, perfettoConfig)
+}
+
 // StopTracing stops trace collection and returns the collected trace events.
 func (b *Browser) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error) {
 	return b.sess.StopTracing(ctx)
