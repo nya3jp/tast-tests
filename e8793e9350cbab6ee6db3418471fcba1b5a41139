@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2ea318a_9d238f78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-11T20:51:03Z",
+      "side": 1,
+      "message": "It would be nicer to unzip/untar the trace.data.gz file\n\nI\u0027m only able to see the lacros trace. \n\nI was hoping we could collect the ash-chrome trace as well, and ideally in the same trace file. Not sure if this is possible? Not even sure if the ash-chrome trace is useful, but it might be in certain scenarios. Don\u0027t have to tackle in this CL",
+      "parentUuid": "6aebc0c1_2ebe0adf",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 134
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fda1c35c_c8067fd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 5
