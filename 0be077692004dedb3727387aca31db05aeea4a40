@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b6a8d28_7f1394c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-11T15:30:59Z",
+      "side": 1,
+      "message": "I asked about such error handling approach in our Munich Tast chat and here is vsavu@:\n\n```\nI would ask to log immediately once the error happened. If the function ever returns early, information will be lost.\n\nIt may make the code a bit longer, but it should be more future-proof.\n```\n\nI agree with Victor.",
+      "parentUuid": "a73ea9a4_5f31ae4d",
+      "range": {
+        "startLine": 35,
+        "startChar": 49,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "0be077692004dedb3727387aca31db05aeea4a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f7ce2e5_703fcc7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
         "patchSetId": 4
