@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ac01b5_1213f4ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-11T17:04:40Z",
+      "side": 1,
+      "message": "Sometimes, but I think waiting for a stable location was the  issue. A few runs and it does not seem to be flaky anymore",
+      "parentUuid": "6af38ccd_4665cab1",
+      "revId": "1adf88907841281ab68e5f5c55e6e552eb79d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3f9d2b1_0f4d32c7",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-05-11T02:11:07Z",
       "side": 1,
       "message": "fix indent\n\nand I\u0027d change it to cws_tablet/cws_clamshell etc",
+      "revId": "1adf88907841281ab68e5f5c55e6e552eb79d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "222d61c1_2991bf44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-11T17:04:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f9d2b1_0f4d32c7",
       "revId": "1adf88907841281ab68e5f5c55e6e552eb79d1c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
