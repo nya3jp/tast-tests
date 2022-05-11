@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a36475_01c8bc98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-11T01:47:20Z",
+      "side": 1,
+      "message": "I have no concern on the bluetooth libraries.",
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4447089_499beeb6",
@@ -42,6 +59,29 @@
         "startChar": 1,
         "endLine": 150,
         "endChar": 37
+      },
+      "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b223c49_3dd57e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-11T01:47:20Z",
+      "side": 1,
+      "message": "I think it\u0027s always an empty list in lab device? Do we consider to set the policy before the test, and clear the policy after that?",
+      "range": {
+        "startLine": 165,
+        "startChar": 29,
+        "endLine": 165,
+        "endChar": 57
       },
       "revId": "34b97261aa3cd0b7dcb4123b8295bb3d3578d302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
