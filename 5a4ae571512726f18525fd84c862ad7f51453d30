@@ -16,6 +16,40 @@
       "message": "PTAL. I\u0027ve thought about printing the file list before/after in case of a difference but if there are lots of old crash reports (in a non-local directory) this becomes unreadable.",
       "revId": "5a4ae571512726f18525fd84c862ad7f51453d30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3c6232_76f9cd3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T13:14:13Z",
+      "side": 1,
+      "message": "I think we should compare as if the slice is unordered set?\nset.DiffStringSlice is what you\u0027re interested in I think. WDTY?",
+      "revId": "5a4ae571512726f18525fd84c862ad7f51453d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f269e99a_45ab404d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T13:14:13Z",
+      "side": 1,
+      "message": "style: in go, we often avoid using getter prefixes, like get/is/has. this can be just crashFiles()",
+      "revId": "5a4ae571512726f18525fd84c862ad7f51453d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
