@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe17523_ee804a1d",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-11T22:21:30Z",
+      "side": 1,
+      "message": "DONE. created by kernel and cleared by crash_reporter",
+      "parentUuid": "aba39b92_df1b9b4f",
+      "range": {
+        "startLine": 600,
+        "startChar": 31,
+        "endLine": 600,
+        "endChar": 38
+      },
+      "revId": "f73ad6f81b71d7dbabd28003868ed0aa244fc64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7e22bd4_05426182",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-11T21:34:45Z",
       "side": 1,
       "message": "Should we check data \u003d\u003d []byte{\"0\"}? We don\u0027t want to pass if the code writes \"01234\" (for example), I don\u0027t think.",
+      "range": {
+        "startLine": 590,
+        "startChar": 4,
+        "endLine": 590,
+        "endChar": 36
+      },
+      "revId": "f73ad6f81b71d7dbabd28003868ed0aa244fc64d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a710193_463639e4",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-11T22:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7e22bd4_05426182",
       "range": {
         "startLine": 590,
         "startChar": 4,
