@@ -6,12 +6,15 @@
 package lacrosproc
 
 import (
+	"context"
 	"path/filepath"
+	"strings"
 
 	"github.com/shirou/gopsutil/v3/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/chromeproc"
+	"chromiumos/tast/local/procutil"
 )
 
 // LacrosLocation specifies how lacros has been deployed,
@@ -55,4 +58,23 @@ func Root(t LacrosLocation) (*process.Process, error) {
 		return chromeproc.Root(deployedLacrosExecPath)
 	}
 	return nil, errors.Errorf("unknown lacros type %d", t)
+}
+
+// ProcsFromPath returns the pids of all processes with a given path in their
+// command line. This is typically used to find all chrome-related binaries,
+// e.g. chrome, nacl_helper, etc. They typically share a path, even though their
+// binary names differ.
+// There may be a race condition between calling this method and using the pids
+// later. It's possible that one of the processes is killed, and possibly even
+// replaced with a process with the same pid.
+func ProcsFromPath(ctx context.Context, path string) ([]*process.Process, error) {
+	procs, err := procutil.FindAll(func(p *process.Process) bool {
+		exe, err := p.Exe()
+		return err == nil && strings.Contains(exe, path)
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return procs, nil
 }

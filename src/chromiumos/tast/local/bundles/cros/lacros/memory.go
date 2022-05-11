@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosproc"
 	"chromiumos/tast/testing"
 )
 
@@ -81,16 +82,16 @@ func findMatch(input []byte, stat string) (int, error) {
 //  2. It queries /proc/{pid}/{endpoint} for each process.
 //  3. It filters and sums across all statistics that match stat.
 func procSum(ctx context.Context, path, endpoint, stat string) (int, error) {
-	pids, err := lacros.PidsFromPath(ctx, path)
+	procs, err := lacrosproc.ProcsFromPath(ctx, path)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to get pids for "+path)
 	}
 
 	var total = 0
-	for _, pid := range pids {
+	for _, proc := range procs {
 		// Query /proc. Ignore errors reading the file because the
 		// process may no longer exist.
-		content, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/%s", pid, endpoint))
+		content, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/%s", proc.Pid, endpoint))
 		if err == nil {
 			value, err := findMatch(content, stat)
 			if err != nil {
