@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "675c6954fe129e521769eb08fd40af31085b3ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b12dc7_eb860e2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-11T03:37:26Z",
+      "side": 1,
+      "message": "Okay turns out this breaks the test since apparently lacros is not available on the first run of chrome.New. Let me abandon this for now, since this test already doesn\u0027t depend on the lacros fixture.",
+      "revId": "675c6954fe129e521769eb08fd40af31085b3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
