@@ -16,6 +16,46 @@
       "message": "go code lgtm",
       "revId": "8c00d2ea1618a20baa1d4fbf0a633b8026e3bea6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d828a61d_4357c8db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T02:50:15Z",
+      "side": 1,
+      "message": "LGTM with minro request.",
+      "revId": "8c00d2ea1618a20baa1d4fbf0a633b8026e3bea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8277a7fd_f1316e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T02:50:15Z",
+      "side": 1,
+      "message": "this is not needed as you\u0027re using fixture?",
+      "range": {
+        "startLine": 72,
+        "startChar": 23,
+        "endLine": 72,
+        "endChar": 64
+      },
+      "revId": "8c00d2ea1618a20baa1d4fbf0a633b8026e3bea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
