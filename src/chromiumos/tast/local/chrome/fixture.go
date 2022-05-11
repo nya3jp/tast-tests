@@ -189,6 +189,19 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithCalendarView",
+		Desc:     "Logged into a session with Gaia user where CalendarView is enabled",
+		Contacts: []string{"jiamingc@google.com"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{GAIALoginPool(s.RequiredVar("calendar.googleCalendarAccountPool")), EnableFeatures("CalendarView")}, nil
+		}),
+		Vars:            []string{"calendar.googleCalendarAccountPool"},
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInWithLegacyLauncher",
 		Desc:     "Logged into a user session with productivity launcher disabled",
 		Contacts: []string{"tbarzic@chromium.org"},
