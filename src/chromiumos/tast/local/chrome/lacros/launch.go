@@ -106,6 +106,9 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*Lacros, error) {
 // as a precondition.
 func LaunchWithURL(ctx context.Context, tconn *chrome.TestConn, url string) (*Lacros, error) {
 	l, err := Launch(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to launch Lacros")
+	}
 
 	// Get all pages.
 	ts, err := l.FindTargets(ctx, chrome.MatchAllPages())
