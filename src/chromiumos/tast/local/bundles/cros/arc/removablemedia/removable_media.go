@@ -116,6 +116,44 @@ func Unmount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop string) error
 	return nil
 }
 
+// CreateAndMountImage sets up a filesystem image and mount it via CrosDisks.
+func CreateAndMountImage(ctx context.Context, imageSize int64, diskName string) (string, func(context.Context), error) {
+	// Set up a filesystem image.
+	image, err := CreateZeroFile(imageSize, "vfat.img")
+	if err != nil {
+		return "", nil, errors.Wrap(err, "failed to create image")
+	}
+
+	devLoop, err := AttachLoopDevice(ctx, image)
+	if err != nil {
+		return "", nil, errors.Wrap(err, "failed to attach loop device")
+	}
+	if err := FormatVFAT(ctx, devLoop); err != nil {
+		return "", nil, errors.Wrap(err, "failed to format VFAT file system")
+	}
+
+	// Mount the image via CrosDisks.
+	cd, err := crosdisks.New(ctx)
+	if err != nil {
+		return "", nil, errors.Wrap(err, "failed to find crosdisks D-Bus service")
+	}
+	mountDir, err := Mount(ctx, cd, devLoop, diskName)
+	if err != nil {
+		return "", nil, errors.Wrap(err, "failed to mount file system")
+	}
+
+	cleanupFunc := func(ctx context.Context) {
+		if err := Unmount(ctx, cd, devLoop); err != nil {
+			testing.ContextLog(ctx, "Failed to unmount VFAT image: ", err)
+		}
+		if err := DetachLoopDevice(ctx, devLoop); err != nil {
+			testing.ContextLog(ctx, "Failed to detach from loop device: ", err)
+		}
+		os.Remove(image)
+	}
+	return mountDir, cleanupFunc, nil
+}
+
 // RunTest executes the testing scenario of arc.RemovableMedia.
 func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string) {
 	const (
@@ -127,40 +165,11 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC, testFile string)
 		s.Fatalf("Failed to read %s: %v", testFile, err)
 	}
 
-	// Set up a filesystem image.
-	image, err := CreateZeroFile(imageSize, "vfat.img")
+	mountDir, cleanupFunc, err := CreateAndMountImage(ctx, imageSize, diskName)
 	if err != nil {
-		s.Fatal("Failed to create image: ", err)
+		s.Fatal("Failed to set up loop device: ", err)
 	}
-	defer os.Remove(image)
-
-	devLoop, err := AttachLoopDevice(ctx, image)
-	if err != nil {
-		s.Fatal("Failed to attach loop device: ", err)
-	}
-	defer func() {
-		if err := DetachLoopDevice(ctx, devLoop); err != nil {
-			s.Error("Failed to detach from loop device: ", err)
-		}
-	}()
-	if err := FormatVFAT(ctx, devLoop); err != nil {
-		s.Fatal("Failed to format VFAT file system: ", err)
-	}
-
-	// Mount the image via CrosDisks.
-	cd, err := crosdisks.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to find crosdisks D-Bus service: ", err)
-	}
-	mountDir, err := Mount(ctx, cd, devLoop, diskName)
-	if err != nil {
-		s.Fatal("Failed to mount file system: ", err)
-	}
-	defer func() {
-		if err := Unmount(ctx, cd, devLoop); err != nil {
-			s.Error("Failed to unmount VFAT image: ", err)
-		}
-	}()
+	defer cleanupFunc(ctx)
 
 	if err := arc.WaitForARCRemovableMediaVolumeMount(ctx, a); err != nil {
 		s.Fatal("Failed to wait for the volume to be mounted in ARC: ", err)
