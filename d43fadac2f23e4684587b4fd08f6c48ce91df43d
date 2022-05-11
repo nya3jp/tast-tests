@@ -16,6 +16,46 @@
       "message": "PTAL. Thanks!",
       "revId": "d43fadac2f23e4684587b4fd08f6c48ce91df43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a9178cf_bc655480",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-05-11T02:06:59Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "d43fadac2f23e4684587b4fd08f6c48ce91df43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf686d7c_843f48b5",
+        "filename": "android/ArcLaunchIntentTest/src/org/chromium/arc/testapp/intent/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-05-11T02:06:59Z",
+      "side": 1,
+      "message": "super nit: I would use a different string from above.",
+      "range": {
+        "startLine": 33,
+        "startChar": 64,
+        "endLine": 33,
+        "endChar": 68
+      },
+      "revId": "d43fadac2f23e4684587b4fd08f6c48ce91df43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
