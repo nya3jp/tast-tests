@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0fa6101_552d5ec5",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-11T22:32:19Z",
+      "side": 1,
+      "message": "I wonder whether we can generate Ash test connection from the ash.ConnSource ?",
+      "range": {
+        "startLine": 274,
+        "startChar": 38,
+        "endLine": 274,
+        "endChar": 74
+      },
+      "revId": "f80659f42b593ebdb2dbc42c7b657065dbf69de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
