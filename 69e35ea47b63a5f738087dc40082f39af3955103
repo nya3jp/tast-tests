@@ -33,6 +33,24 @@
       "message": "This function seems pretty useful, so can we move this to some library? (like src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go)",
       "revId": "69e35ea47b63a5f738087dc40082f39af3955103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f37cea3_ac16bd8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-11T07:38:41Z",
+      "side": 1,
+      "message": "sg!",
+      "parentUuid": "27bf2208_3e3a8a0c",
+      "revId": "69e35ea47b63a5f738087dc40082f39af3955103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
