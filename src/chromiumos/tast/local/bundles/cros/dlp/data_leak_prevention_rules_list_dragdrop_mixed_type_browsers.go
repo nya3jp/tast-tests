@@ -139,7 +139,7 @@ func DataLeakPreventionRulesListDragdropMixedTypeBrowsers(ctx context.Context, s
 			}
 
 			// Setup destination browser.
-			closeDstBr, dstConn, err := openWebsite(ctx, s.FixtValue(), param.dstBrowserType, dstURL)
+			closeDstBr, dstConn, err := openWebsite(ctx, cr, param.dstBrowserType, dstURL)
 			if err != nil {
 				s.Fatalf("Failed to open %q: %v", dstURL, err)
 			}
@@ -147,7 +147,7 @@ func DataLeakPreventionRulesListDragdropMixedTypeBrowsers(ctx context.Context, s
 			defer dstConn.Close()
 
 			// Setup source browser.
-			closeSrcBr, srcConn, err := openWebsite(ctx, s.FixtValue(), param.srcBrowserType, param.srcURL)
+			closeSrcBr, srcConn, err := openWebsite(ctx, cr, param.srcBrowserType, param.srcURL)
 			if err != nil {
 				s.Fatalf("Failed to open %q: %v", param.srcURL, err)
 			}
@@ -213,8 +213,8 @@ func DataLeakPreventionRulesListDragdropMixedTypeBrowsers(ctx context.Context, s
 }
 
 // openWebsite opens a browser of |brType| and navigates to the |url|.
-func openWebsite(ctx context.Context, fixture interface{}, brType browser.Type, url string) (func(ctx context.Context), *chrome.Conn, error) {
-	br, closeBr, err := browserfixt.SetUp(ctx, fixture, brType)
+func openWebsite(ctx context.Context, cr *chrome.Chrome, brType browser.Type, url string) (func(ctx context.Context), *chrome.Conn, error) {
+	br, closeBr, err := browserfixt.SetUp(ctx, cr, brType)
 	if err != nil {
 		return nil, nil, errors.Wrapf(err, "couldn't launch the %v browser", brType)
 	}

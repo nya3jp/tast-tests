@@ -326,7 +326,7 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 	}
 	defer keyboard.Close()
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), params.browserType)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, params.browserType)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}

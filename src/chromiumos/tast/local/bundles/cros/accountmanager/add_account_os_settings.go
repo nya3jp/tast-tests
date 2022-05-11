@@ -65,7 +65,7 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(accountmanager.FixtureData).Chrome()
 
 	// Setup the browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}

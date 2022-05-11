@@ -218,7 +218,7 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 		s.Fatal("Failed to serve and refresh: ", err)
 	}
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(printingTestParams).browserType)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(printingTestParams).browserType)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}

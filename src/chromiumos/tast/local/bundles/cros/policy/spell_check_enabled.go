@@ -93,7 +93,7 @@ func SpellCheckEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Open lacros browser.
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeLacros)
+			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browser.TypeLacros)
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}
