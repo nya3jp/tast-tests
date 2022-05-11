@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1cd9c4c_876cba29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-11T03:25:18Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "e56dfe10b534b8e67e0b063eed3103ad98f1b90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20ca8bf2_35adfc20",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-05-11T03:16:53Z",
       "side": 1,
       "message": "nit: is it necessary to separately declare err here? (c.f. `:\u003d` )",
+      "revId": "e56dfe10b534b8e67e0b063eed3103ad98f1b90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbdf58f_f51bcf8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-11T03:25:18Z",
+      "side": 1,
+      "message": "f.certStore on L85 is not an identifier, so it seems that it can not use `:\u003d` on that line, thus `err` needs to be declared separately.\nIs there any other better approach for this case?",
+      "parentUuid": "20ca8bf2_35adfc20",
       "revId": "e56dfe10b534b8e67e0b063eed3103ad98f1b90e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
