@@ -30,8 +30,17 @@ service AppService {
   // Waits until a button enabled.
   rpc WaitUntilButtonEnabled (WaitUntilButtonEnabledRequest) returns (google.protobuf.Empty) {}
 
-  // Left clicks a Radion button
+  // Left clicks a Radio button.
   rpc LeftClickRadioButton (LeftClickRadioButtonRequest) returns (google.protobuf.Empty) {}
+
+  // Left clicks a link.
+  rpc LeftClickLink (LeftClickLinkRequest) returns (google.protobuf.Empty) {}
+
+  // Retrieve a text by prefix
+  rpc RetrieveTextByPrefix (RetrieveTextByPrefixRequest) returns (RetrieveTextByPrefixResponse) {}
+
+  // Enter the content into input box.
+  rpc EnterIntoTextInput(EnterIntoTextInputRequest) returns (google.protobuf.Empty) {}
 }
 
 message NewShimlessRMARequest {
@@ -64,4 +73,26 @@ message WaitUntilButtonEnabledRequest {
 message LeftClickRadioButtonRequest {
   // Provides the label of radio button.
   string label = 1;
+}
+
+message LeftClickLinkRequest {
+  // Label provides the label of link.
+  string label = 1;
+}
+
+message RetrieveTextByPrefixRequest {
+  // Prefix provides the prefix of text.
+  string prefix = 1;
+}
+
+message RetrieveTextByPrefixResponse {
+  // Value is the text with prefix.
+  string value = 1;
+}
+
+message EnterIntoTextInputRequest {
+  // TextInputName is the name of text input.
+  string textInputName = 1;
+  // Content is the text which will be entered into input.
+  string content = 2;
 }
