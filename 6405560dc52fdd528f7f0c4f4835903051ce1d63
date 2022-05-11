@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef986e44_8a140e6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_webauthn_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-05-11T07:08:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3bc259d_28aaf695",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "6405560dc52fdd528f7f0c4f4835903051ce1d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5471947f_484a5241",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-05-10T23:40:00Z",
       "side": 1,
       "message": "Does this test work on generic_tpm2?\nOtherwise we would need to use gsc/tpm1",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "6405560dc52fdd528f7f0c4f4835903051ce1d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c230be_8ce923c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_webauthn_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-05-11T07:08:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5471947f_484a5241",
       "range": {
         "startLine": 36,
         "startChar": 25,
