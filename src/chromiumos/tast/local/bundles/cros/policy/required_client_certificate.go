@@ -6,13 +6,11 @@ package policy
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -66,11 +64,11 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 	}
 	if browserType == browser.TypeLacros {
-		lacrosOpts, err := lacrosOptsForAsh()
+		var err error
+		chromeOpts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(chromeOpts...)).Opts()
 		if err != nil {
-			s.Fatal("Failed to get Chrome flags: ", err)
+			s.Fatal("Failed to compute Chrome options: ", err)
 		}
-		chromeOpts = append(chromeOpts, lacrosOpts...)
 	}
 
 	for _, param := range []struct {
@@ -173,19 +171,6 @@ func newPolicyBlobWithAffiliation() *policy.Blob {
 	pb.DeviceAffiliationIds = affiliationIds
 	pb.UserAffiliationIds = affiliationIds
 	return pb
-}
-
-func lacrosOptsForAsh() ([]chrome.Option, error) {
-	extDirs, err := chrome.DeprecatedPrepareExtensions()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare extensions")
-	}
-	extList := strings.Join(extDirs, ",")
-	return []chrome.Option{
-		chrome.EnableFeatures("LacrosSupport", "LacrosPrimary", "ForceProfileMigrationCompletion"),
-		chrome.ExtraArgs("--lacros-selection=rootfs", "--disable-lacros-keep-alive"),
-		chrome.LacrosExtraArgs("--remote-debugging-port=0"),
-		chrome.LacrosExtraArgs(lacrosfixt.ExtensionArgs(chrome.TestExtensionID, extList)...)}, nil
 }
 
 // checkCertificateVisibleInBrowserSettings does what its name suggests.
