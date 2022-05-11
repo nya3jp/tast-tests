@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
@@ -64,12 +65,13 @@ func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, accou
 }
 
 type runResources struct {
-	kb        *input.KeyboardEventWriter
-	topRow    *input.TopRowLayout
-	ui        *uiauto.Context
-	vh        *audio.Helper
-	uiHandler cuj.UIActionHandler
-	recorder  *cujrecorder.Recorder
+	kb          *input.KeyboardEventWriter
+	topRow      *input.TopRowLayout
+	ui          *uiauto.Context
+	vh          *audio.Helper
+	uiHandler   cuj.UIActionHandler
+	recorder    *cujrecorder.Recorder
+	browserName string
 }
 
 // Run runs the EverydayMultitaskingCUJ test.
@@ -156,6 +158,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 		}
 		tconns = append(tconns, bTconn)
 	}
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "could not find the Chrome app")
+	}
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
@@ -231,7 +237,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 		}
 	}
 
-	resources := &runResources{kb: kb, topRow: topRow, ui: ui, vh: vh, uiHandler: uiHandler, recorder: recorder}
+	resources := &runResources{kb: kb, topRow: topRow, ui: ui, vh: vh, uiHandler: uiHandler, recorder: recorder, browserName: browserApp.Name}
 
 	if err := openAndSwitchTabs(ctx, br, tconn, params, resources); err != nil {
 		return errors.Wrap(err, "failed to open and switch chrome tabs")
@@ -331,7 +337,7 @@ func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.T
 	}
 
 	// switchTabsAndChangeVolume changes the volume after switching tabs.
-	switchTabsAndChangeVolume := func(ctx context.Context, pages []string) error {
+	switchTabsAndChangeVolume := func(ctx context.Context, browserWinIdx int, pages []string) error {
 		if err := resources.vh.SetVolume(ctx, initialVolume); err != nil {
 			return errors.Wrapf(err, "failed to set volume to %d percent", initialVolume)
 		}
@@ -339,7 +345,14 @@ func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.T
 		for tabIdx := range pages {
 			testing.ContextLog(ctx, "Switching Chrome tab")
 			if err := resources.uiHandler.SwitchToChromeTabByIndex(tabIdx)(ctx); err != nil {
-				return errors.Wrap(err, "failed to switch tab")
+				// Sometimes, Spotify may pop up ads as active window.
+				// It should switch back to the browser window and try again.
+				if err := uiauto.Combine("switch back to browser and switch tab again",
+					resources.uiHandler.SwitchToAppWindowByIndex(resources.browserName, browserWinIdx),
+					resources.uiHandler.SwitchToChromeTabByIndex(tabIdx),
+				)(ctx); err != nil {
+					return err
+				}
 			}
 			testing.ContextLog(ctx, "Volume up")
 			if err := resources.vh.VerifyVolumeChanged(ctx, func() error {
@@ -377,12 +390,11 @@ func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.T
 			if err != nil {
 				return errors.Wrap(err, "failed to get active window")
 			}
-
-			if w.WindowType != ash.WindowTypeBrowser {
+			if w.WindowType != ash.WindowTypeBrowser && w.WindowType != ash.WindowTypeLacros {
 				continue
 			}
 			browserWinIdx++
-			if err := switchTabsAndChangeVolume(ctx, pageList[browserWinIdx]); err != nil {
+			if err := switchTabsAndChangeVolume(ctx, browserWinIdx, pageList[browserWinIdx]); err != nil {
 				return errors.Wrap(err, "failed to switch tabs")
 			}
 		}
@@ -439,7 +451,7 @@ func switchWindows(ctx context.Context, tconn *chrome.TestConn, params *RunParam
 						wIdx++
 					}
 				}
-				winName := "Chrome"
+				winName := resources.browserName
 				switchFunc := resources.uiHandler.SwitchToAppWindowByIndex(winName, wIdx)
 				for _, appName := range []string{HelloWorldAppName, SpotifyAppName} {
 					if strings.Contains(ws[i].Title, appName) {
