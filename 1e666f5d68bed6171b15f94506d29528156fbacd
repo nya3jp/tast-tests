@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5a7da889_ea845508",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-05-11T22:50:47Z",
+      "side": 1,
+      "message": "Thank you, Done",
+      "parentUuid": "c8c30f91_ec48744d",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "1e666f5d68bed6171b15f94506d29528156fbacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9b886866_9d2c7d5a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-11T17:28:40Z",
       "side": 1,
       "message": "nit: Uart -\u003e UART\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#initialisms",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 25
+      },
+      "revId": "1e666f5d68bed6171b15f94506d29528156fbacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6518fc5e_c06106db",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-05-11T22:50:47Z",
+      "side": 1,
+      "message": "Thank you, Done",
+      "parentUuid": "6fdd8f50_ee0e24e2",
       "range": {
         "startLine": 149,
         "startChar": 20,
