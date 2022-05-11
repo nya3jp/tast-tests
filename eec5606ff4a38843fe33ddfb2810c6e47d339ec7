@@ -33,6 +33,23 @@
       "message": "Very nice!",
       "revId": "eec5606ff4a38843fe33ddfb2810c6e47d339ec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de44e381_c8856003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T13:24:01Z",
+      "side": 1,
+      "message": "Chrome() is not needed to be called?\n\nbrowserfixt.SetUp(ctx, s.FixtValue().(chrome.HasChrome), ...)\n\nmaybe? Ditto for the same patterns below.",
+      "revId": "eec5606ff4a38843fe33ddfb2810c6e47d339ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
