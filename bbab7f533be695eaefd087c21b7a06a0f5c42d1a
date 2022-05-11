@@ -16,6 +16,24 @@
       "message": "I wonder if changing this to `max(1, dragUpStart.Y - appsGridLocation.Height)` would be a better idea (so the transition is more similar to the one before this change)",
       "revId": "bbab7f533be695eaefd087c21b7a06a0f5c42d1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9c96af_d689aed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-11T21:50:25Z",
+      "side": 1,
+      "message": "I am fine either way.\n\nIf we go with the current change that end the drag within apps grid, let\u0027s also update `moves the height of the apps-grid` part in the comment above to be consistent with code.",
+      "parentUuid": "a543045f_e8e58232",
+      "revId": "bbab7f533be695eaefd087c21b7a06a0f5c42d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
