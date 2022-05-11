@@ -191,12 +191,26 @@ func ListSysfsBatteryPaths(ctx context.Context) ([]string, error) {
 	return batteryPaths, nil
 }
 
+const noBatteryMsg = "unexpected number of batteries: got 0; want 1"
+
+// noBatteryError is an error indicating no battery is found.
+var noBatteryError = errors.New(noBatteryMsg)
+
+// IsNoBatteryError returns true if the given error is caused by noBatteryError.
+func IsNoBatteryError(err error) bool {
+	// Use string comparason because error loses its type after wrapping.
+	return strings.Contains(err.Error(), noBatteryMsg)
+}
+
 // SysfsBatteryPath returns a path of battery which supply power to the system
 // and has voltage_now and current_now attributes.
 func SysfsBatteryPath(ctx context.Context) (string, error) {
 	batteryPaths, err := ListSysfsBatteryPaths(ctx)
 	if err != nil {
 		return "", err
+	}
+	if len(batteryPaths) == 0 {
+		return "", noBatteryError
 	}
 	if len(batteryPaths) != 1 {
 		return "", errors.Errorf("unexpected number of batteries: got %d; want 1", len(batteryPaths))
