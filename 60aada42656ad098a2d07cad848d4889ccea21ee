@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10f4c37_a434966c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-11T06:35:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d4920517_0f559160",
+      "revId": "60aada42656ad098a2d07cad848d4889ccea21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2985de60_43bbca4d",
@@ -155,6 +173,24 @@
       "side": 1,
       "message": "true, will update this",
       "parentUuid": "2985de60_43bbca4d",
+      "revId": "60aada42656ad098a2d07cad848d4889ccea21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed631718_73628c25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-11T06:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34f28373_b6acc64d",
       "revId": "60aada42656ad098a2d07cad848d4889ccea21ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
