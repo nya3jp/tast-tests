@@ -56,3 +56,22 @@ func (s *Servo) RunCR50CommandGetOutput(ctx context.Context, cmd string, pattern
 	}
 	return ConvertToStringArrayArray(ctx, iList)
 }
+
+// CheckGSCBootMode verifies that the boot mode as reported by GSC's ec_comm command is as expected.
+// Set gscRequired to false to allow a missing GSC UART, and to true if that should be an error.
+func (s *Servo) CheckGSCBootMode(ctx context.Context, expectedMode string, gscRequired bool) error {
+	if ok, err := s.HasControl(ctx, string(CR50UARTCmd)); err != nil {
+		return errors.Wrap(err, "failed to check for GSC UART")
+	} else if ok {
+		output, err := s.RunCR50CommandGetOutput(ctx, "ec_comm", []string{`boot_mode\s*:\s*(\S+)\s`})
+		if err != nil {
+			return errors.Wrap(err, "failed to get boot mode")
+		}
+		if output[0][1] != expectedMode {
+			return errors.Wrapf(err, "incorrect boot mode, got %q want %q", output[0][1], expectedMode)
+		}
+	} else if gscRequired {
+		return errors.New("GSC UART not present")
+	}
+	return nil
+}

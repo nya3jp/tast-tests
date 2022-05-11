@@ -74,8 +74,6 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		if _, err := bs.ClearAndSetGBBFlags(ctx, &req); err != nil {
 			s.Fatal("Failed to clear gbb flag: ", err)
 		}
-
-		// TODO(b/194910957): old test does warm reset, seems unneeded
 	}
 
 	backup, err := bs.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
@@ -92,19 +90,25 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupContext)
 
+	s.Log("Checking preconditions")
 	// TODO(b/194910957): Old test checks that fw-a section does not have preamble flag PREAMBLE_USE_RO_NORMAL. this really needed?
 	// TODO(b/194910957): Old test unlocks CCD, is this needed?
 
-	// Check CR50 boot mode is NORMAL
-	output, err := h.Servo.RunCR50CommandGetOutput(ctx, "ec_comm", []string{`boot_mode\s*:\s*(\S+)\b`})
-	if err != nil {
-		s.Fatal("CR50 cmd failed: ", err)
+	// Reboot just in case the firmware version we backed up isn't the same one that software sync will restore.
+	if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+		s.Fatal("Failed to reboot: ", err)
 	}
-	if output[0][1] != "NORMAL" {
-		s.Fatalf("CR50 boot mode incorrect, got %q want %q", output[0][1], "NORMAL")
+	h.CloseRPCConnection(ctx)
+	if err := h.RequireBiosServiceClient(ctx); err != nil {
+		s.Fatal("Requiring BiosServiceClient: ", err)
+	}
+	bs = h.BiosServiceClient
+
+	// Check CR50 boot mode is NORMAL, if there is a CR50 Uart
+	if err := h.Servo.CheckGSCBootMode(ctx, "NORMAL", false); err != nil {
+		s.Fatal("Boot mode error: ", err)
 	}
 
-	s.Log("Corrupt EC firmware RW body")
 	activeCopy, err := h.Servo.GetString(ctx, "ec_active_copy")
 	if err != nil {
 		s.Fatal("EC active copy failed: ", err)
@@ -123,6 +127,9 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Corrupt the EC section: ", ecSection)
 	defer func(ctx context.Context) {
+		if err := h.EnsureDUTBooted(ctx); err != nil {
+			s.Fatal("Can't restore firmware, DUT is off: ", err)
+		}
 		if err := h.RequireBiosServiceClient(ctx); err != nil {
 			s.Fatal("Requiring BiosServiceClient: ", err)
 		}
@@ -130,9 +137,32 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, backup); err != nil {
 			s.Fatal("Failed to restore EC firmware: ", err)
 		}
+		// Reboot and check active copy after restore.
+		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+			s.Fatal("Failed to reboot: ", err)
+		}
+		activeCopy, err = h.Servo.GetString(ctx, "ec_active_copy")
+		if err != nil {
+			s.Fatal("EC active copy failed: ", err)
+		}
+		if !strings.HasPrefix(activeCopy, "RW") {
+			s.Fatalf("EC active copy incorrect, got %q want RW", activeCopy)
+		}
 	}(cleanupContext)
 	if _, err = bs.CorruptECSection(ctx, &pb.CorruptSection{Section: ecSection}); err != nil {
 		s.Fatal("Failed to corrupt EC: ", err)
+	}
+
+	// Tell the EC to recalculate the hash
+	if err := h.DUT.Conn().CommandContext(ctx, "ectool", "echash", "start", "rw").Run(ssh.DumpLogOnError); err != nil {
+		s.Fatal("EC hash start failed: ", err)
+	}
+	ecHashCorrupt, err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", hashCommand).Output()
+	if err != nil {
+		s.Fatal("Failed to get ec hash: ", err)
+	}
+	if bytes.Equal(ecHashCorrupt, ecHashBefore) {
+		s.Fatal("EC hash unchanged, corruption step failed")
 	}
 
 	s.Log("Reboot AP, check EC hash, and software sync it")
@@ -140,10 +170,6 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reboot: ", err)
 	}
 	h.CloseRPCConnection(ctx)
-	if err := h.RequireBiosServiceClient(ctx); err != nil {
-		s.Fatal("Requiring BiosServiceClient: ", err)
-	}
-	bs = h.BiosServiceClient
 
 	s.Log("Expect EC in RW and RW is restored")
 	ecHashAfter, err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", hashCommand).
@@ -162,5 +188,39 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		s.Fatalf("EC active copy incorrect, got %q want RW", activeCopy)
 	}
 
-	// TODO(b/194910957): run_test_corrupt_hash_in_cr50 if EC_FEATURE_EFS2
+	if features, err := h.DUT.Conn().CommandContext(ctx, "ectool", "inventory").Output(ssh.DumpLogOnError); err != nil {
+		s.Fatal("Failed to get features: ", err)
+	} else if bytes.Contains(features, []byte("\n38 ")) {
+		s.Log("Detected EFS2, corrupting ECRW hashcode in TPM kernel NV index")
+
+		if err := h.Servo.RunCR50Command(ctx, "ec_comm corrupt"); err != nil {
+			s.Fatal("Failed to corrupt ECRW hashcode: ", err)
+		}
+		s.Log("Reboot EC, verify RO, reboot AP, check hash")
+		if err := ms.ModeAwareReboot(ctx, firmware.APOff, firmware.VerifyECRO, firmware.VerifyGSCNoBoot, firmware.WaitSoftwareSync); err != nil {
+			s.Fatal("Failed to reboot: ", err)
+		}
+		h.CloseRPCConnection(ctx)
+
+		s.Log("Checking for NORMAL boot mode")
+		if err := h.Servo.CheckGSCBootMode(ctx, "NORMAL", true); err != nil {
+			s.Fatal("Incorrect boot mode: ", err)
+		}
+		s.Log("Expect EC in RW and RW is restored")
+		ecHashAfter, err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", hashCommand).
+			Output()
+		if err != nil {
+			s.Fatal("Failed to get ec hash: ", err)
+		}
+		if !bytes.Equal(ecHashAfter, ecHashBefore) {
+			s.Fatalf("EC hash wrong, got %s want %s", ecHashAfter, ecHashBefore)
+		}
+		activeCopy, err = h.Servo.GetString(ctx, "ec_active_copy")
+		if err != nil {
+			s.Fatal("EC active copy failed: ", err)
+		}
+		if !strings.HasPrefix(activeCopy, "RW") {
+			s.Fatalf("EC active copy incorrect, got %q want RW", activeCopy)
+		}
+	}
 }

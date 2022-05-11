@@ -75,6 +75,16 @@ const (
 	// boot mode check after resetting DUT. One instance where this can be useful is
 	// when verifying that FWMP prevents DUT from booting into dev mode.
 	SkipModeCheckAfterReboot ModeSwitchOption = iota
+
+	// VerifyECRO verifies that the EC is in RO after it boots up.
+	VerifyECRO ModeSwitchOption = iota
+
+	// VerifyGSCNoBoot verifies that the GSC's ec_comm command reports a boot mode of NO_BOOT.
+	// Should be used with reset type APOff.
+	VerifyGSCNoBoot ModeSwitchOption = iota
+
+	// WaitSoftwareSync causes the mode switcher to sleep the `SoftwareSyncUpdate` time before finishing the boot.
+	WaitSoftwareSync ModeSwitchOption = iota
 )
 
 // msOptsContain determines whether a slice of ModeSwitchOptions contains a specific Option.
@@ -382,6 +392,9 @@ const (
 	// It is identical to setting the power_state to off, then on.
 	// It also resets the EC, as by the 'cold_reset' signal.
 	ColdReset ResetType = "cold"
+
+	// APOff reboots the EC with the ap-off flag.
+	APOff ResetType = "ap-off"
 )
 
 // Each ResetType is associated with a particular servo.PowerStateValue.
@@ -428,13 +441,49 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 		}
 	}
 
-	// Reset DUT, and wait for it to be unreachable.
-	powerState, ok := resetTypePowerState[resetType]
-	if !ok {
-		return errors.Errorf("no power state associated with resetType %v", resetType)
+	// Reset DUT
+	if resetType == APOff {
+		if err := h.Servo.RunECCommand(ctx, "reboot ap-off"); err != nil {
+			return errors.Wrap(err, "failed to reboot EC")
+		}
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep")
+		}
+		if msOptsContain(opts, VerifyGSCNoBoot) {
+			if err := h.Servo.CheckGSCBootMode(ctx, "NO_BOOT", true); err != nil {
+				return errors.Wrap(err, "gsc boot mode")
+			}
+		}
+	} else {
+		powerState, ok := resetTypePowerState[resetType]
+		if !ok {
+			return errors.Errorf("no power state associated with resetType %v", resetType)
+		}
+		if err := h.Servo.SetPowerState(ctx, powerState); err != nil {
+			return err
+		}
 	}
-	if err := h.Servo.SetPowerState(ctx, powerState); err != nil {
-		return err
+
+	if msOptsContain(opts, VerifyECRO) {
+		if activeCopy, err := h.Servo.GetString(ctx, "ec_active_copy"); err != nil {
+			return errors.Wrap(err, "failed to get ec_active_copy")
+		} else if activeCopy != "RO" {
+			return errors.Errorf("EC active copy incorrect, got %q want RO", activeCopy)
+		}
+	}
+
+	// If AP off, finish booting
+	if resetType == APOff {
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurShortPress); err != nil {
+			return errors.Wrap(err, "failed to press powerkey")
+		}
+	}
+
+	if msOptsContain(opts, WaitSoftwareSync) {
+		testing.ContextLogf(ctx, "Sleeping %s (SoftwareSyncUpdate)", h.Config.SoftwareSyncUpdate)
+		if err := testing.Sleep(ctx, h.Config.SoftwareSyncUpdate); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (SoftwareSyncUpdate)", h.Config.SoftwareSyncUpdate)
+		}
 	}
 
 	// If in dev mode, bypass the TO_DEV screen.
