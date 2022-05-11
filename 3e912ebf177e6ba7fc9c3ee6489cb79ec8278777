@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9748830_af171d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-11T13:11:50Z",
+      "side": 1,
+      "message": "(optional) as not a regression, but I think we should not use string to represent a structured data. Instead, I\u0027d recommend to have a properly typed structured.",
+      "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
