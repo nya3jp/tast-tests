@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ceacb31_5194e658",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-11T22:19:11Z",
+      "side": 1,
+      "message": "Nice, this should eliminate a bunch of extra mdns queries.",
+      "revId": "8d0c03f58f3d09c584816930b388be471c1bb53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
