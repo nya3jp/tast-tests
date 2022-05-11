@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "958ace8d_6372b6e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-05-11T22:23:04Z",
+      "side": 1,
+      "message": "LGTM overall excepts confused names. Thanks!",
+      "revId": "0ed841d80e10251183e03ccb9d777be53e9b30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d0492f_712c6798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-05-11T22:23:04Z",
+      "side": 1,
+      "message": "Maybe name it moveMode?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "0ed841d80e10251183e03ccb9d777be53e9b30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9431a18_03326e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-05-11T22:23:04Z",
+      "side": 1,
+      "message": "pollTappedCorrectly sounds only for tap action. Maybe pollTouchCorrectly?",
+      "range": {
+        "startLine": 204,
+        "startChar": 5,
+        "endLine": 204,
+        "endChar": 24
+      },
+      "revId": "0ed841d80e10251183e03ccb9d777be53e9b30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1cd56c_142ab6b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-05-11T22:23:04Z",
+      "side": 1,
+      "message": "Maybe name it confirmApproximateLocation?",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 24
+      },
+      "revId": "0ed841d80e10251183e03ccb9d777be53e9b30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
