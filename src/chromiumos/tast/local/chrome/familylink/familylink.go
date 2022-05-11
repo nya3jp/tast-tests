@@ -321,3 +321,79 @@ func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, 
 	}
 	return nil
 }
+
+// AddExtensionSupervised runs through flow to add extension up to the point of actually adding it, but does not add to avoid interfering with future runs of the test.
+func AddExtensionSupervised(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, bt browser.Type, parentEmail, parentPassword string) error {
+	testing.ContextLog(ctx, "Adding extension as a supervised user")
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// Set up browser.
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
+	if err != nil {
+		return errors.Wrap(err, "failed to set up browser")
+	}
+	defer closeBrowser(cleanupCtx)
+
+	// Open webstore in browser.
+	const extensionID = "djflhoibgkdhkhhcedjiklpkjnoahfmg" // Arbitrary extension from Chrome Store.
+	const extensionURL = "https://chrome.google.com/webstore/detail/" + extensionID + "?hl=en"
+	conn, err := br.NewConn(ctx, extensionURL, browser.WithNewWindow())
+	if err != nil {
+		return errors.Wrap(err, "failed to open webstore")
+	}
+	defer conn.Close()
+
+	// Load page contents
+	ui := uiauto.New(tconn).WithTimeout(time.Minute)
+
+	// Install extension parent permission flow
+	testing.ContextLog(ctx, "Clicking add extension")
+	addButton := nodewith.Name("Add to Chrome").Role(role.Button).First()
+	if err := ui.WaitUntilExists(addButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to load page")
+	}
+	if err := ui.LeftClick(addButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click add extension")
+	}
+
+	testing.ContextLog(ctx, "Clicking ask parent")
+	askParentButton := nodewith.Name("Ask a parent").Role(role.Button)
+	// The "Ask parent" button may not immediately be clickable.
+	if err := ui.LeftClickUntil(askParentButton, ui.Gone(askParentButton))(ctx); err != nil {
+		return errors.Wrap(err, "failed to click ask parent")
+	}
+
+	testing.ContextLog(ctx, "Selecting parent email"+strings.ToLower(parentEmail))
+	parentEmailRadio := nodewith.Name(strings.ToLower(parentEmail)).Role(role.RadioButton)
+	parentEmailText := nodewith.Name(strings.ToLower(parentEmail))
+	if err := ui.LeftClick(parentEmailRadio)(ctx); err != nil {
+		// No parent email radio button, should indicate that there is only one parent.
+		if err := ui.Exists(parentEmailText)(ctx); err != nil {
+			return errors.Wrapf(err, "failed find parent email %q", parentEmail)
+		}
+	}
+
+	testing.ContextLog(ctx, "Clicking the parent password text field")
+	parentPasswordField := nodewith.Name("Enter password").Role(role.TextField)
+	if err := ui.LeftClick(parentPasswordField)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click parent password text")
+	}
+
+	testing.ContextLog(ctx, "Setting up keyboard")
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer kb.Close()
+
+	testing.ContextLog(ctx, "Typing the parent password")
+	if err := kb.Type(ctx, parentPassword); err != nil {
+		return errors.Wrap(err, "failed to type parent password")
+	}
+
+	return nil
+}
