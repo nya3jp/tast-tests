@@ -323,14 +323,9 @@ func getScannerStatus(uri string) (string, error) {
 	return scannerStatus.State, nil
 }
 
-// ensureScannerIdle ensure that the scanner with `name` reports Idle as its
+// ensureScannerIdle ensure that the scanner with URI `uri` reports Idle as its
 // status.
-func ensureScannerIdle(ctx context.Context, name string) error {
-	uri, err := getScannerURI(ctx, name)
-	if err != nil {
-		return errors.Wrap(err, "failed to get scanner URI")
-	}
-
+func ensureScannerIdle(ctx context.Context, uri string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		status, err := getScannerStatus(uri)
 		if err != nil {
@@ -509,8 +504,13 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
+	uri, err := getScannerURI(ctx, scanner.ScannerName)
+	if err != nil {
+		s.Fatal("Failed to get scanner URI: ", err)
+	}
+
 	// Make sure the scanner is idle so enumeration will succeed.
-	if err := ensureScannerIdle(ctx, scanner.ScannerName); err != nil {
+	if err := ensureScannerIdle(ctx, uri); err != nil {
 		s.Fatal("Scanner not idle: ", err)
 	}
 
@@ -603,7 +603,7 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 				s.Fatal("Failed to close notifications: ", err)
 			}
 
-			if err := ensureScannerIdle(ctx, scanner.ScannerName); err != nil {
+			if err := ensureScannerIdle(ctx, uri); err != nil {
 				s.Fatal("Scanner not idle: ", err)
 			}
 
