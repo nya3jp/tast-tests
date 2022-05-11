@@ -795,3 +795,19 @@ func WaitForArcAndAshWindowState(ctx context.Context, tconn *chrome.TestConn, d 
 
 	return nil
 }
+
+// RestoreARCWindowIfMaximized makes the given packageName app restored in a freeform state if it's in a maximized state.
+func RestoreARCWindowIfMaximized(ctx context.Context, tconn *chrome.TestConn, packageName string) error {
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName)
+	if err != nil {
+		return err
+	}
+
+	if window.State == ash.WindowStateMaximized {
+		if _, err := ash.SetARCAppWindowStateAndWait(ctx, tconn, packageName, ash.WindowStateNormal); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
