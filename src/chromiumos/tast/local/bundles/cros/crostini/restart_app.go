@@ -67,7 +67,11 @@ func launchGedit(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn
 
 	ui := uiauto.New(tconn)
 	appWindow := nodewith.NameRegex(regexp.MustCompile(`.* - gedit`)).Role(role.Window).First()
+	const crostiniRestartTimeout = 60 * time.Second
 	return uiauto.Combine("click and close Gedit",
+		// Gedit window takes a lot of time to appear because it has to restart Crostini.
+		ui.WithTimeout(crostiniRestartTimeout).WaitUntilExists(appWindow),
+
 		// Focus on the Gedit window.
 		ui.LeftClick(appWindow),
 
