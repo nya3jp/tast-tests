@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/crosdisks"
 	"chromiumos/tast/testing"
 )
 
@@ -76,41 +75,12 @@ func EnableExternalStorage(ctx context.Context, s *testing.State) {
 		androidPath = "/media/removable/MyDisk/Android"
 	)
 
-	// Set up a filesystem image.
-	image, err := removablemedia.CreateZeroFile(imageSize, "vfat.img")
+	// Set up a filesystem image and mount it via CrosDisks.
+	_, cleanupFunc, err := removablemedia.CreateAndMountImage(ctx, imageSize, diskName)
 	if err != nil {
-		s.Fatal("Failed to create image: ", err)
+		s.Fatal("Failed to set up the image: ", err)
 	}
-	defer os.Remove(image)
-
-	devLoop, err := removablemedia.AttachLoopDevice(ctx, image)
-	if err != nil {
-		s.Fatal("Failed to attach loop device: ", err)
-	}
-	defer func() {
-		if err := removablemedia.DetachLoopDevice(ctx, devLoop); err != nil {
-			s.Error("Failed to detach from loop device: ", err)
-		}
-	}()
-
-	if err := removablemedia.FormatVFAT(ctx, devLoop); err != nil {
-		s.Fatal("Failed to format VFAT file system: ", err)
-	}
-
-	// Mount the image via CrosDisks.
-	cd, err := crosdisks.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to find crosdisks D-Bus service: ", err)
-	}
-	_, err = removablemedia.Mount(ctx, cd, devLoop, diskName)
-	if err != nil {
-		s.Fatal("Failed to mount file system: ", err)
-	}
-	defer func() {
-		if err := removablemedia.Unmount(ctx, cd, devLoop); err != nil {
-			s.Error("Failed to unmount VFAT image: ", err)
-		}
-	}()
+	defer cleanupFunc(ctx)
 
 	if err := arc.WaitForARCRemovableMediaVolumeMount(ctx, a); err != nil {
 		s.Fatal("Failed to wait for the volume to be mounted in ARC: ", err)
