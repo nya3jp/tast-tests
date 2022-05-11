@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78691477_491a2b3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-11T11:17:56Z",
+      "side": 1,
+      "message": "I\u0027m thinking of skipping adding the wireguard test with generating key pair automatically here, since the standard user flow for that is different: a user needs to read the public key from the UI after service is connected (i.e., the first \"Connect\" actually does not work).",
+      "revId": "dd4ac6be8123f2fc824bc667e9f98a1c0e532c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
