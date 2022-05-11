@@ -151,11 +151,10 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 
 	// Close terminal.
 	terminalNode := nodewith.NameRegex(regexp.MustCompile(`\@penguin\: `)).Role(role.Window).ClassName("BrowserFrame")
-	leaveButton := uidetection.Word("Leave").Nth(1)
 	if err := uiauto.Combine("close Terminal window",
-		ta.WaitForPrompt(),             // Wait until Gedit uninstall streams finish printing.
-		ta.ClickShelfMenuItem("Close"), // Closing terminal from the shelf throws up an alert dialogue.
-		ud.LeftClick(leaveButton),      // Dialogue has "Cancel" and "Leave buttons"
+		ta.WaitForPrompt(),              // Wait until Gedit uninstall streams finish printing.
+		ta.RunCommand(keyboard, "exit"), // Exit terminal tab.
+		ta.ClickShelfMenuItem("Close"),  // Closing terminal from the shelf throws up an alert dialogue.
 		ui.WithTimeout(time.Minute).WaitUntilGone(terminalNode),
 	)(ctx); err != nil {
 		s.Fatal("Failed to close terminal: ", err)
