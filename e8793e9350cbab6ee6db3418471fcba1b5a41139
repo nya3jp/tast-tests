@@ -214,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a8243d_80a7a6f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-11T22:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4905574_e2e9dad5",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 39
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcfd27db_a92f0b3c",
@@ -284,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7925cde6_aa2bfbf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-11T22:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f79160c0_9cd2ad2a",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 39
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dc8cf57_6b64ebfa",
@@ -297,6 +345,30 @@
       "writtenOn": "2022-05-11T20:38:32Z",
       "side": 1,
       "message": "This comment belongs inside the definition of `ConnSource` in wm.go.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd663d0_328dadf6",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-11T22:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc8cf57_6b64ebfa",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -330,6 +402,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "557d1fcd_85f03686",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-11T22:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b540f1b1_010bd4f0",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2298a2c9_1eef3f77",
@@ -353,6 +449,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec94b906_7d8f3f5c",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-11T22:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2298a2c9_1eef3f77",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 60
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94e9c9ee_28d70dc8",
@@ -366,6 +486,30 @@
       "writtenOn": "2022-05-11T20:38:32Z",
       "side": 1,
       "message": "This comment belongs inside the definition of `ConnSource` in wm.go.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 77
+      },
+      "revId": "e8793e9350cbab6ee6db3418471fcba1b5a41139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a49e3f_415dd943",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-11T22:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e9c9ee_28d70dc8",
       "range": {
         "startLine": 125,
         "startChar": 0,
