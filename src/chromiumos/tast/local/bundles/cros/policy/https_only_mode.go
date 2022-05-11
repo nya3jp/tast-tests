@@ -122,7 +122,7 @@ func HTTPSOnlyMode(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeLacros)
+			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browser.TypeLacros)
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}
