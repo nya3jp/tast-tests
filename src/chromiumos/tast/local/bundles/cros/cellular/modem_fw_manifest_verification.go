@@ -103,6 +103,12 @@ func ModemFWManifestVerification(ctx context.Context, s *testing.State) {
 				if !fileExists(fullPath) {
 					missingFiles[fullPath] = true
 				}
+				for _, associatedFW := range mainFW.AssocFirmware {
+					fullPath := filepath.Join(modemFirmwarePath, associatedFW.Filename)
+					if !fileExists(fullPath) {
+						missingFiles[fullPath] = true
+					}
+				}
 			}
 			for _, oemFW := range device.OemFirmware {
 				fullPath := filepath.Join(modemFirmwarePath, oemFW.Filename)
