@@ -99,6 +99,24 @@
       "parentUuid": "09c41169_460de22e",
       "revId": "af5f72dd1ff23dcff2ce982b26308e39007e3652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f34ff20_ee80583b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-11T16:04:20Z",
+      "side": 1,
+      "message": "Tast unit test will compile all tests and run test\u0027s unit tests in addition to Tast Framework. I think your tast_test repo is out of sync with the rest. It will probably cause unexpected problems instead. \n\nPlease try one more time.\n\n1. cd to tast_tests repo and do \"git pull --rebase\"\n2. Inside chroot, update_chroot\n3. Inside chroot, run \"fast_build.sh -T\"\n\nI will give you +1 now. If it still does not work, you can still do CQ+2.\n\nThanks.",
+      "parentUuid": "607c3996_d07ea941",
+      "revId": "af5f72dd1ff23dcff2ce982b26308e39007e3652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
