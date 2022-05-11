@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -62,6 +63,8 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
+	bt := s.Param().(browser.Type)
+
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -69,27 +72,24 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
+	var l *lacros.Lacros
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
-	if s.Param().(bool) { // Lacros Chrome
-		// Launch lacros.
-		l, err := lacros.Launch(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to launch lacros: ", err)
+	switch bt {
+	case browser.TypeLacros:
+		var err error
+		if cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros); err != nil {
+			s.Fatal("Failed to initialize test: ", err)
 		}
-		defer l.Close(ctx)
-		cs = l
-
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
 			s.Fatal("Failed to get lacros TestAPIConn: ", err)
 		}
-	} else { // Ash Chrome
+		defer lacros.CloseLacros(closeCtx, l)
+	case browser.TypeAsh:
 		cs = cr
-
-		var err error
-		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get TestAPIConn: ", err)
-		}
+		bTconn = tconn
+	default:
+		s.Fatal("Unrecognized browser type: ", bt)
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
@@ -134,7 +134,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 			perf.SmallerIsBetter, []int64{50, 80}, bTconn),
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, cs, nil, cujrecorder.RecorderOptions{}, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

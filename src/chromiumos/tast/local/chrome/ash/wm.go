@@ -11,6 +11,7 @@ import (
 	"sync"
 	"time"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"golang.org/x/sync/errgroup"
 
 	"chromiumos/tast/errors"
@@ -598,9 +599,15 @@ func FindAllWindows(ctx context.Context, tconn *chrome.TestConn, predicate func(
 	return matchingWindows, nil
 }
 
-// ConnSource is an interface which allows new chrome.Conn connections to be created.
+// ConnSource is an interface which allows new chrome.Conn connections to be created,
+// a new chrome.TestConn instance to be created, and the trace event collection to be
+// started/stopped.
 type ConnSource interface {
 	NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error)
+	TestAPIConn(ctx context.Context) (*chrome.TestConn, error)
+	StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error
+	StartSystemTracing(ctx context.Context, perfettoConfig []byte) error
+	StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)
 }
 
 // CountVisibleWindows returns number of visible windows
