@@ -203,9 +203,15 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 	return count
 }
 
-// RecorderOptions indicates whether the services should not be changed.
-// The following options are allowed the status of which is determined based on the test.
+// RecorderOptions contains options to control the recorder setup.
+// The options are determined based on the test needs.
 type RecorderOptions struct {
+	// DischargeThreshold is the battery discharge threshold.
+	// If not set, defaultDischargeThreshold will be used.
+	DischargeThreshold *float64
+	// FailOnDischargeErr, if set, will cause test to fail on battery discharge error.
+	// NoBatteryError is not considered as dischage error, though.
+	FailOnDischargeErr   bool
 	DoNotChangeWifi      bool
 	DoNotChangePowerd    bool
 	DoNotChangeDPTF      bool
@@ -213,13 +219,17 @@ type RecorderOptions struct {
 	DoNotChangeBluetooth bool
 }
 
+var performanceCUJDischargeThreshold = 55.0
+
 // NewPerformanceCUJOptions indicates the power test settings for performance CUJs run by partners.
 func NewPerformanceCUJOptions() RecorderOptions {
 	return RecorderOptions{
-		DoNotChangeWifi:   true,
-		DoNotChangePowerd: true,
-		DoNotChangeDPTF:   true,
-		DoNotChangeAudio:  true,
+		DischargeThreshold: &performanceCUJDischargeThreshold,
+		FailOnDischargeErr: true,
+		DoNotChangeWifi:    true,
+		DoNotChangePowerd:  true,
+		DoNotChangeDPTF:    true,
+		DoNotChangeAudio:   true,
 	}
 }
 
@@ -279,9 +289,13 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	}
 
 	var batteryDischargeErr error
+	var dischargeThreshold = setup.DefaultDischargeThreshold
+	if options.DischargeThreshold != nil {
+		dischargeThreshold = *options.DischargeThreshold
+	}
 	powerTestOptions := setup.PowerTestOptions{
 		// The default for the following options is to disable these setting.
-		Battery:    setup.TryBatteryDischarge(&batteryDischargeErr),
+		Battery:    setup.TryBatteryDischarge(&batteryDischargeErr, dischargeThreshold),
 		Wifi:       setup.DisableWifiInterfaces,
 		NightLight: setup.DisableNightLight,
 		Powerd:     setup.DisablePowerd,
@@ -324,6 +338,10 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 			testing.ContextLog(ctx, "Failed to clean up power setup: ", err)
 		}
 	}(ctx)
+	// Check options.FailOnDischargeErr after the deferred function is set.
+	if batteryDischargeErr != nil && options.FailOnDischargeErr && !power.IsNoBatteryError(batteryDischargeErr) {
+		return nil, errors.Wrap(batteryDischargeErr, "battery discharge failed")
+	}
 
 	r.gpuDataSource = perfSrc.NewGPUDataSource(r.tconn)
 	r.tpsTimeline, err = perf.NewTimeline(ctx, []perf.TimelineDatasource{
