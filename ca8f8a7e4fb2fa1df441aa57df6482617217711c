@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c30694e7_35cad29c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T20:06:52Z",
+      "side": 1,
+      "message": "lgtm++",
+      "revId": "ca8f8a7e4fb2fa1df441aa57df6482617217711c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a79cb1d_b3710900",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T20:06:52Z",
+      "side": 1,
+      "message": "nit: s/With/Using",
+      "revId": "ca8f8a7e4fb2fa1df441aa57df6482617217711c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56be9c03_3e7f1437",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T20:06:52Z",
+      "side": 1,
+      "message": "can we use Role button instead of class name?",
+      "revId": "ca8f8a7e4fb2fa1df441aa57df6482617217711c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
