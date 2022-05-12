@@ -26,41 +26,45 @@ func init() {
 }
 
 func MonitorBluetoothEvent(ctx context.Context, s *testing.State) {
-	// The power is on by default, so we need to switch it back.
-	for _, action := range []string{"off", "on"} {
-		// Run monitor command in background.
-		var stdoutBuf, stderrBuf bytes.Buffer
-		monitorCmd := testexec.CommandContext(ctx, "cros-health-tool", "event", "--category=bluetooth", "--length_seconds=10")
-		monitorCmd.Stdout = &stdoutBuf
-		monitorCmd.Stderr = &stderrBuf
+	// Set the power off first.
+	b, err := testexec.CommandContext(ctx, "bluetoothctl", "power", "off").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal("Failed to trigger Bluetooth power off event: ", err)
+	}
+	s.Log("bluetoothctl: ", strings.Trim(string(b), "\n"))
 
-		if err := monitorCmd.Start(); err != nil {
-			s.Fatal("Failed to run healthd monitor command: ", err)
-		}
+	// Run monitor command in background.
+	var stdoutBuf, stderrBuf bytes.Buffer
+	monitorCmd := testexec.CommandContext(ctx, "cros-health-tool", "event", "--category=bluetooth", "--length_seconds=10")
+	monitorCmd.Stdout = &stdoutBuf
+	monitorCmd.Stderr = &stderrBuf
 
-		// Trigger Bluetooth event.
-		b, err := testexec.CommandContext(ctx, "bluetoothctl", "power", action).Output(testexec.DumpLogOnError)
-		if err != nil {
-			if cmdErr := monitorCmd.Kill(); cmdErr != nil {
-				s.Log(ctx, "Error killing healthd monitor command: ", cmdErr)
-			}
-			monitorCmd.Wait()
-			s.Fatal("Failed to trigger Bluetooth power ", action, " event: ", err)
-		}
-		s.Log("bluetoothctl: ", strings.Trim(string(b), "\n"))
+	if err := monitorCmd.Start(); err != nil {
+		s.Fatal("Failed to run healthd monitor command: ", err)
+	}
 
-		if err := monitorCmd.Wait(); err != nil {
-			s.Fatal("Failed to wait healthd monitor command: ", err)
+	// Trigger Bluetooth event.
+	b, err = testexec.CommandContext(ctx, "bluetoothctl", "power", "on").Output(testexec.DumpLogOnError)
+	if err != nil {
+		if cmdErr := monitorCmd.Kill(); cmdErr != nil {
+			s.Log(ctx, "Error killing healthd monitor command: ", cmdErr)
 		}
+		monitorCmd.Wait()
+		s.Fatal("Failed to trigger Bluetooth power on event: ", err)
+	}
+	s.Log("bluetoothctl: ", strings.Trim(string(b), "\n"))
 
-		stderr := string(stderrBuf.Bytes())
-		if stderr != "" {
-			s.Fatal("Failed to detect Bluetooth ", action, " event, stderr: ", stderr)
-		}
+	if err := monitorCmd.Wait(); err != nil {
+		s.Fatal("Failed to wait healthd monitor command: ", err)
+	}
 
-		stdout := string(stdoutBuf.Bytes())
-		if !strings.Contains(stdout, "Bluetooth event received") {
-			s.Fatal("Failed to detect Bluetooth ", action, " event, event output: ", stdout)
-		}
+	stderr := string(stderrBuf.Bytes())
+	if stderr != "" {
+		s.Fatal("Failed to detect Bluetooth on event, stderr: ", stderr)
+	}
+
+	stdout := string(stdoutBuf.Bytes())
+	if !strings.Contains(stdout, "Bluetooth event received") {
+		s.Fatal("Failed to detect Bluetooth on event, event output: ", stdout)
 	}
 }
