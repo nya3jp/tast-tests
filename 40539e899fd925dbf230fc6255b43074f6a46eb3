@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9049ea7_f283e638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-12T21:33:07Z",
+      "side": 1,
+      "message": "Done. For now let\u0027s keep using \"Wallpaper\" button in breadcrumb for verification purpose.",
+      "parentUuid": "1d69d0ac_c6e87dc1",
+      "revId": "40539e899fd925dbf230fc6255b43074f6a46eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d34dd6fb_28a89b8c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-12T17:55:20Z",
       "side": 1,
       "message": "After this search, I think we need to verify if Personalization is open too.\nMaybe we can use this?`ui.Exists(nodewith.NameContaining(\"Personalization\").Role(role.Window).First()))`",
+      "revId": "40539e899fd925dbf230fc6255b43074f6a46eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "265aefde_c3f737ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-12T21:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d34dd6fb_28a89b8c",
       "revId": "40539e899fd925dbf230fc6255b43074f6a46eb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
