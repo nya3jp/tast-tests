@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0851379d_9dd43b95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T00:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "050adbec_fa58d3b2",
+      "range": {
+        "startLine": 130,
+        "startChar": 33,
+        "endLine": 130,
+        "endChar": 34
+      },
+      "revId": "2744615526ace99e7f98c333cd0a0d5653020158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "785c52c6_141c2cd1",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-11T17:16:13Z",
       "side": 1,
       "message": "I\u0027d add steps that launch Files app, verify that the files app is the first recent app; then launch the test app and verify list of recent apps gets updated to have the test app at the first position\n\n\notherwise, this looks good",
+      "revId": "2744615526ace99e7f98c333cd0a0d5653020158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea25ecc_1838387c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T00:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "785c52c6_141c2cd1",
       "revId": "2744615526ace99e7f98c333cd0a0d5653020158",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
