@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9078c92b_ef502e01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-12T18:19:03Z",
+      "side": 1,
+      "message": "might be useful to `testing.ContextLog`",
+      "range": {
+        "startLine": 113,
+        "startChar": 47,
+        "endLine": 113,
+        "endChar": 60
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36de7a5c_6a6c58d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
         "patchSetId": 6
@@ -54,6 +77,110 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8579d669_4a4afad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-12T18:19:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "b8676be8_12f018b5",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1a40f0_479a3556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-12T18:19:03Z",
+      "side": 1,
+      "message": "This cleanup should probably be closer to the callsite of `CreateFakeUserProfile`. It won\u0027t be called if the other steps of `prepareSelectionTest` fail. Calling `CreateFakeUserProfile` from this level instead of within `prepareSelectionTest` is probably the simplest way to go, or alternatively having a deferred cleanup within `prepareSelectionTest` that removes the user profile if it returns an error.",
+      "range": {
+        "startLine": 313,
+        "startChar": 19,
+        "endLine": 313,
+        "endChar": 40
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeead37d_de7ff246",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-12T18:19:03Z",
+      "side": 1,
+      "message": "nit: combine into one line `if err :\u003d passpoint.RemoveFakeUserProfile(...); err !\u003d nil {...}`\n\nnot strictly necessary, but it seems to be the preferred style in my experience :)",
+      "range": {
+        "startLine": 313,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 17
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a143975_1ec3bd25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-12T18:19:03Z",
+      "side": 1,
+      "message": "same here, you can use the `if err :\u003d func(); err !\u003d nil {...}` pattern",
+      "range": {
+        "startLine": 320,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 16
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2f104a_2a97ba17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-12T18:19:03Z",
+      "side": 1,
+      "message": "same here and below",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c95a8996_f3277b03",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
         "patchSetId": 6
@@ -65,6 +192,24 @@
       "writtenOn": "2022-05-11T01:07:28Z",
       "side": 1,
       "message": "Nit: cleanupctx",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a0d4ca_ce045afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-12T18:19:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "c95a8996_f3277b03",
       "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
