@@ -44,10 +44,10 @@ type Store struct {
 }
 
 const (
-	// testUsername is the username of our test user whose vault will host the cert/keys.
-	testUsername = "test@example.com"
-	// testPassword is the password to the user above.
-	testPassword = "not_a_real_password"
+	// TestUsername is the username of our test user whose vault will host the cert/keys.
+	TestUsername = "test@example.com"
+	// TestPassword is the password to the user above.
+	TestPassword = "not_a_real_password"
 	// testKeyLabel is the key label for the vault key that belongs to the user above.
 	testKeyLabel = "password"
 	// Note that the credentials above are made up and isn't actual confidential information.
@@ -61,10 +61,10 @@ const (
 
 // cleanupVault removes the vault belonging to the test user.
 func cleanupVault(ctx context.Context, cryptohome *hwsec.CryptohomeClient) error {
-	if _, err := cryptohome.Unmount(ctx, testUsername); err != nil {
+	if _, err := cryptohome.Unmount(ctx, TestUsername); err != nil {
 		return errors.Wrap(err, "failed to unmount")
 	}
-	if _, err := cryptohome.RemoveVault(ctx, testUsername); err != nil {
+	if _, err := cryptohome.RemoveVault(ctx, TestUsername); err != nil {
 		return errors.Wrap(err, "failed to remove vault")
 	}
 	return nil
@@ -107,7 +107,7 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 	}
 
 	// Now create the vault.
-	if err := cryptohome.MountVault(ctx, testKeyLabel, hwsec.NewPassAuthConfig(testUsername, testPassword), true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, testKeyLabel, hwsec.NewPassAuthConfig(TestUsername, TestPassword), true, hwsec.NewVaultConfig()); err != nil {
 		return nil, errors.Wrap(err, "failed to mount vault")
 	}
 	defer func() {
@@ -118,12 +118,12 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 	}()
 
 	// Wait for the slot to be available.
-	if err := cryptohome.WaitForUserToken(ctx, testUsername); err != nil {
+	if err := cryptohome.WaitForUserToken(ctx, TestUsername); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for user token")
 	}
 
 	// Get the slot.
-	label, pin, slot, err := cryptohome.GetTokenInfoForUser(ctx, testUsername)
+	label, pin, slot, err := cryptohome.GetTokenInfoForUser(ctx, TestUsername)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get user token")
 	}
