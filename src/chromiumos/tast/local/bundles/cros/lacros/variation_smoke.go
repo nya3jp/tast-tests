@@ -102,28 +102,29 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 		// Close the lacros, close ash app first
 		defer ash.WaitForAppClosed(ctx, tconn, apps.Lacros.ID)
 		defer l.Close(ctx)
-
-		if err := testing.Poll(ctx, func(context.Context) error {
-			if _, err := readVariationsSeed(ctx); err != nil {
-				return errors.Wrap(err, "production variations seed not yet fetched")
-			}
-			return nil
-		}, &testing.PollOptions{Interval: time.Second, Timeout: time.Minute}); err != nil {
-			s.Fatal("Production variations seed not fetched: ", err)
-		}
-		if err := injectSeedInLocalState(ctx, &testSeed); err != nil {
-			s.Fatal("Failed to inject test seed: ", err)
-		}
-		// Ensure the seed was injected. There is no waiting time required because it will not download the seed.
-		currentSeed, err := readVariationsSeed(ctx)
-		if err != nil {
-			s.Fatal("Failed to read variations seed info")
-		}
-		if currentSeed.CompressedSeed != testSeed.CompressedSeed || currentSeed.SeedSignature != testSeed.SeedSignature {
-			s.Fatal("Local State has not updated with the test seed")
-		}
 	}()
 
+	if err := testing.Poll(ctx, func(context.Context) error {
+		if _, err := readVariationsSeed(ctx); err != nil {
+			return errors.Wrap(err, "production variations seed not yet fetched")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second, Timeout: time.Minute}); err != nil {
+		s.Fatal("Production variations seed not fetched: ", err)
+	}
+	if err := injectSeedInLocalState(ctx, &testSeed); err != nil {
+		s.Fatal("Failed to inject test seed: ", err)
+	}
+	// Ensure the seed was injected. There is no waiting time required because it will not download the seed.
+	currentSeed, err := readVariationsSeed(ctx)
+	if err != nil {
+		s.Fatal("Failed to read variations seed info")
+	}
+	if currentSeed.CompressedSeed != testSeed.CompressedSeed || currentSeed.SeedSignature != testSeed.SeedSignature {
+		s.Fatal("Local State has not updated with the test seed")
+	}
+	// TODO(https://crbug.com/1325136): remove this, this is only temperate fix for crbug.com/1316237
+	testing.Sleep(ctx, time.Second*5)
 	func() {
 		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
