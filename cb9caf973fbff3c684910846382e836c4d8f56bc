@@ -50,6 +50,24 @@
       "message": "Actually, what is better from the Tast/Golang perspective: put the (possibly multiline) stdout into the error, or just log stdout here?",
       "revId": "cb9caf973fbff3c684910846382e836c4d8f56bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e7a53b3_d05e1785",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-12T19:06:22Z",
+      "side": 1,
+      "message": "The official Tast perspective on this is to avoid multiline output in errors/logs:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\u003e In all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\nIf the stdout isn\u0027t too huge though, it\u0027s probably fine to log it only when an error happens. Otherwise I\u0027d follow the guidance and log it to a separate file (you can access the test results dir with `testing.ContextOutDir`).\n\nLogging the stdout instead of wrapping it in the error might look nicer in the logs, but I\u0027d be careful depending on how this function is used. Like if it\u0027s used within a `testing.Poll` and called many times in succession with consecutive errors, it could bloat the logs pretty quickly. For that reason it\u0027s probably better to stick with wrapping it in an `errors.Wrap` if you go this route.",
+      "parentUuid": "43c37ac4_3083908e",
+      "revId": "cb9caf973fbff3c684910846382e836c4d8f56bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
