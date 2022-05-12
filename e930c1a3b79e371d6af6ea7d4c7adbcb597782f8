@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd150ea_826d72c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-12T18:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb641819_58ca79ce",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "e930c1a3b79e371d6af6ea7d4c7adbcb597782f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b74692a2_fcb59cb1",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-12T03:16:53Z",
       "side": 1,
       "message": "Why doesn\u0027t it return the error?",
+      "range": {
+        "startLine": 585,
+        "startChar": 43,
+        "endLine": 585,
+        "endChar": 44
+      },
+      "revId": "e930c1a3b79e371d6af6ea7d4c7adbcb597782f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878be6c7_2bd99e06",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-05-12T18:53:01Z",
+      "side": 1,
+      "message": "The error is used for unit testing only. The caller tests can instead rely on context logs to tell what\u0027s going on during a failing test.",
+      "parentUuid": "b74692a2_fcb59cb1",
       "range": {
         "startLine": 585,
         "startChar": 43,
