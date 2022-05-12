@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b6a18f98_6c6eee2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1538558
+      },
+      "writtenOn": "2022-05-12T11:14:49Z",
+      "side": 1,
+      "message": "Oh, my mistake. Fixed.",
+      "parentUuid": "6930a59f_6f8cae93",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "9d17ee10848529700806fd8320efac6f5283966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8baba2d4_71429763",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
