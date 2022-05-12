@@ -16,6 +16,24 @@
       "message": "+xdai for the test owner\u0027s review\n+hidehiko for the lacros tast owner\u0027s review\n\nNote for reviewers:\nAs mentioned in the CL description, I realized that behavior of tapping the browser icon on the app-list has changed. It opens a new tab for ash-chrome, but a new window for lacros-chrome. \nI think this may potentially result in some discrepancies in perf metrics. Is it okay for this migration?\n",
       "revId": "65f6a06c79826ff0e3743d29f06bffa5c1a4bb8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eaffa6f_81884c09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-12T05:07:16Z",
+      "side": 1,
+      "message": "Reopening for feedback",
+      "parentUuid": "b08ca638_03ee513c",
+      "revId": "65f6a06c79826ff0e3743d29f06bffa5c1a4bb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
