@@ -22,6 +22,30 @@
       },
       "revId": "3e37714af1ac4c0332c7c449e24d8964eb746e00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65e7770_f544dbd7",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-05-12T10:40:21Z",
+      "side": 1,
+      "message": "approved, left this comment to your discretion.",
+      "parentUuid": "54ad8ee6_55f697ea",
+      "range": {
+        "startLine": 439,
+        "startChar": 1,
+        "endLine": 439,
+        "endChar": 10
+      },
+      "revId": "3e37714af1ac4c0332c7c449e24d8964eb746e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
