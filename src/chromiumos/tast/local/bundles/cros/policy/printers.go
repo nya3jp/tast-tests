@@ -114,6 +114,11 @@ func Printers(ctx context.Context, s *testing.State) {
 		ui.LeftClick(nodewith.Role(role.MenuItem).Name("See more destinations")),
 		ui.LeftClick(nodewith.Role(role.Cell).NameStartingWith(printerName)),
 		ui.LeftClick(nodewith.Role(role.Button).Name("Print")),
+		// Wait for the print preview window to close. Otherwise, the print preview
+		// may still be in the process of closing when we launch the print
+		// management app, and, once fully closed, steal focus from the print
+		// management app.
+		ui.WaitUntilGone(nodewith.Role(role.Window).Name("Print").ClassName("RootView")),
 	)(ctx); err != nil {
 		s.Fatal("Failed to select printer in print destination popup and print: ", err)
 	}
