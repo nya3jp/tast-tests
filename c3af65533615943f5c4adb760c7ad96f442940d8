@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5092cc4_9ef67025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-12T23:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7acf5a7b_d78b1367",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 3
+      },
+      "revId": "c3af65533615943f5c4adb760c7ad96f442940d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66280182_62720f80",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-09T03:34:16Z",
       "side": 1,
       "message": "nit: copyFile",
+      "range": {
+        "startLine": 1049,
+        "startChar": 5,
+        "endLine": 1049,
+        "endChar": 15
+      },
+      "revId": "c3af65533615943f5c4adb760c7ad96f442940d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aff07a9_729cbca5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-12T23:44:50Z",
+      "side": 1,
+      "message": "I would expect a function called `copyFile` to be consistent with commonplace functionality that copies a file, such as the Unix `cp` command:\n1. It would overwrite the destination file if it already exists.\n2. The copy would have the same file permissions as the original.\nThe name `outputFile` better reflects behaviors more appropriate for output files of a test:\n1. The destination file must not already exist (I use `os.O_EXCL`).\n2. The destination gets file permissions 0644.",
+      "parentUuid": "66280182_62720f80",
       "range": {
         "startLine": 1049,
         "startChar": 5,
