@@ -8,6 +8,7 @@ package videocuj
 import (
 	"context"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -33,6 +34,8 @@ const (
 	YoutubeWeb = "YoutubeWeb"
 	// YoutubeApp indicates to test against Youtube app.
 	YoutubeApp = "YoutubeApp"
+	// YoutubeWindowTitle indicates the title of the youtube web and app window.
+	YoutubeWindowTitle = "YouTube"
 )
 
 // TestResources holds the cuj test resources passed in from main test case.
@@ -331,9 +334,10 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	return nil
 }
 
-func waitWindowStateFullscreen(ctx context.Context, tconn *chrome.TestConn, winID int) error {
+func waitWindowStateFullscreen(ctx context.Context, tconn *chrome.TestConn, winTitle string) error {
+	testing.ContextLog(ctx, "Check if the window is in fullscreen state")
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-		return w.ID == winID && w.State == ash.WindowStateFullscreen
+		return strings.Contains(w.Title, winTitle) && w.State == ash.WindowStateFullscreen
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for fullscreen")
 	}
