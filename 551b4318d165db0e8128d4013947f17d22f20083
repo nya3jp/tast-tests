@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "384b8ca5_b91e9e0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-12T09:43:18Z",
+      "side": 1,
+      "message": "Nice one! Much better ergonomics 👍",
+      "range": {
+        "startLine": 20,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "551b4318d165db0e8128d4013947f17d22f20083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ebed23_6c6a5e36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-12T09:43:18Z",
+      "side": 1,
+      "message": "Nice patch! Make sure to land the tast-tests-private CL first",
+      "revId": "551b4318d165db0e8128d4013947f17d22f20083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b95897_2d55fd5f",
+        "filename": "src/chromiumos/tast/local/drivefs/extension_token_source.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-12T09:43:18Z",
+      "side": 1,
+      "message": "We had issues with these selectors, decided to use xpath\u0027s instead and search on text which made it easier to identify and update. Don\u0027t have to use it, just thought I\u0027d bring it up.\n\n```\ndocument.evaluate(\u0027//span[text()\u003d\\\"Continue\\\"]\u0027, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue\n```",
+      "range": {
+        "startLine": 107,
+        "startChar": 22,
+        "endLine": 107,
+        "endChar": 70
+      },
+      "revId": "551b4318d165db0e8128d4013947f17d22f20083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90c713d_86173400",
+        "filename": "src/chromiumos/tast/local/drivefs/extension_token_source.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-12T09:43:18Z",
+      "side": 1,
+      "message": "The idiomatic way of returning errors in go is to wrap them, e.g.\n```\nreturn errors.Wrap(err, \"failed to click profile element\")\n```",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 12
+      },
+      "revId": "551b4318d165db0e8128d4013947f17d22f20083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f2ecf2_d9b6f2d2",
+        "filename": "src/chromiumos/tast/local/drivefs/extension_token_source.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-12T09:43:18Z",
+      "side": 1,
+      "message": "What happens if this fails, like maybe the selector has updated or there\u0027s a flake? I imagine the error will return not being able to find the Approve button but we can\u0027t actually click the unverified app continue. Should we fail here?",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 71
+      },
+      "revId": "551b4318d165db0e8128d4013947f17d22f20083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
