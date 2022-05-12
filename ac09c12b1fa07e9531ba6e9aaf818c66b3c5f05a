@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3626bb9_4ba7f93b",
+        "filename": "src/chromiumos/tast/common/android/adb/logcat.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-12T16:31:48Z",
+      "side": 1,
+      "message": "The `shutil.EscapeSlice` function that\u0027s called in `ARC.Command` and subsequently in `d.ShellCommand` adds quotation marks to arguments after an indicator; in this case, it thinks that the \"|\" symbol is an argument to the \"-d\" flag, so `ARC.command` results in the following command: `/usr/bin/adb -s emulator-5554 shell exec logcat -d \u0027|\u0027 grep InputOverlayTest`.\n\nI\u0027ve had the same issue with another `adb shell` command I called to obtain SurfaceFlinger data: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3600070",
+      "parentUuid": "66b68257_0c3cf50e",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f7f010e_26c07c7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_touch_injector.go",
         "patchSetId": 12
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-12T07:20:24Z",
       "side": 1,
       "message": "this looks like a source of flakiness. Could you wait some condition you\u0027re looking for, instead?",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c977b886_fee5a1d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_touch_injector.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-12T16:31:48Z",
+      "side": 1,
+      "message": "I think it\u0027s less about waiting for a condition and more about making sure there are no \"race conditions\" with keyboard inputs, since the input overlay can accept two move commands at once for a diagonal move. Would the wait still be appropriate in this situation?",
+      "parentUuid": "5f7f010e_26c07c7c",
       "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae8dbf5c_d0f93cd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-12T16:31:48Z",
+      "side": 1,
+      "message": "I\u0027ve found in testing that, pretty randomly, if a key mapped to a move action is tapped too quickly by the device, there will be no resulting `ACTION_MOVE` action in the logs; the wait not only gives a little bit of a cushion, but is more closely related to user behavior.\n\nWould you consider this issue more to be a bug of the feature, or a bug of tast execution?",
+      "parentUuid": "e3179a52_03ee4045",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b53eeb7f_171cf457",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
         "patchSetId": 12
@@ -65,6 +119,24 @@
       "writtenOn": "2022-05-12T07:20:24Z",
       "side": 1,
       "message": "there\u0027s no guarantee this works, as you didn\u0027t check x[0]\u003d is at the beginning above. Maybe prefix check is what you\u0027d like todo?",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6bbc7a_89541361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-12T16:31:48Z",
+      "side": 1,
+      "message": "I believe I did check the existence of both \"x[0]\u003d\" and \"y[0]\u003d\" above.\n\nIf it wasn\u0027t clear, the argument passed in is not a string of the line, but rather, a slice of strings of the line, broken up by the space (\" \") character. The logic is to obtain the index of both \"x[0]\u003d\" and \"y[0]\u003d\" strings in the slice, and then removing those strings to obtain the coordinates of the touch event.",
+      "parentUuid": "b53eeb7f_171cf457",
       "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0839a32b_81256fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-12T16:31:48Z",
+      "side": 1,
+      "message": "I was mostly concerned about repeated calls to `Activity.SurfaceBounds` due to possible flakiness with the call and memoization. Is there any validity to these concerns?",
+      "parentUuid": "28ae7290_ce347215",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28704cfb_68ced8b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
         "patchSetId": 12
@@ -99,6 +189,24 @@
       "writtenOn": "2022-05-12T07:20:24Z",
       "side": 1,
       "message": "nit: () looks redundant?",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e019301_a1ee9630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-12T16:31:48Z",
+      "side": 1,
+      "message": "I have tried it without the parentheses, but a compilation error was thrown: https://paste.googleplex.com/6046905961283584",
+      "parentUuid": "28704cfb_68ced8b4",
       "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
