@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/input"
@@ -84,7 +84,7 @@ func Save(ctx context.Context, tconn *chrome.TestConn) {
 	run(filepath.Join(dir, "mount.txt"), "mount")
 
 	// Also check the dearchived files.
-	info, err := lacros.InfoSnapshot(ctx, tconn)
+	info, err := lacrosinfo.Snapshot(ctx, tconn)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to get lacros info: ", err)
 	} else {

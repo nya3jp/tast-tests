@@ -42,27 +42,3 @@ func CloseLacros(ctx context.Context, l *Lacros) {
 		l.Close(ctx) // Ignore error.
 	}
 }
-
-// Info represents the format returned from autotestPrivate.getLacrosInfo.
-type Info struct {
-	// True iff lacros is running.  Note that this information is a snapshot at a
-	// particular time. That is, even if the info says lacros is running, it
-	// doesn't necessarily mean lacros is still running at any particular time.
-	Running bool `json:"isRunning"`
-	// True iff lacros has keep-alive enabled..  Note that this information is a
-	// snapshot at a particular time.
-	KeepAlive bool `json:"isKeepAlive"`
-	// Contains the path to the lacros directory - this is where lacros will be
-	// executed from. Note that this may change over time if omaha is used (even
-	// during a test). This also may be empty is lacros is not running.
-	LacrosPath string `json:"lacrosPath"`
-}
-
-// InfoSnapshot gets the current lacros info from ash-chrome. The parameter tconn should be the ash TestConn.
-func InfoSnapshot(ctx context.Context, tconn *chrome.TestConn) (*Info, error) {
-	var info Info
-	if err := tconn.Call(ctx, &info, "tast.promisify(chrome.autotestPrivate.getLacrosInfo)"); err != nil {
-		return nil, err
-	}
-	return &info, nil
-}
