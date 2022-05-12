@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d935ca8e_e4899e49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-12T08:54:13Z",
+      "side": 1,
+      "message": "I have add some comment of this func. And unset the global config at the end.\nThanks for your review and suggestion.\nDone.",
+      "parentUuid": "d93682a4_65aff67a",
+      "revId": "fdfd760af157e34d481fb494b668ed5aee3c1840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "415486ff_e2601899",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-12T07:02:14Z",
       "side": 1,
       "message": "where does this \"3\" come from? Could you document, at least?",
+      "range": {
+        "startLine": 159,
+        "startChar": 36,
+        "endLine": 159,
+        "endChar": 37
+      },
+      "revId": "fdfd760af157e34d481fb494b668ed5aee3c1840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28267edf_82301579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-12T08:54:13Z",
+      "side": 1,
+      "message": "Added another global slice to describe the target allowed services.\nThe \u00273\u0027 comes from the size of this slice.\nDone.",
+      "parentUuid": "415486ff_e2601899",
       "range": {
         "startLine": 159,
         "startChar": 36,
