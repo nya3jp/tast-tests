@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84b8752a_70c8650b",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-12T17:32:59Z",
+      "side": 1,
+      "message": "go/go-errors-crash-course\n\nYou can use errors.Is to correctly compare errors (it handles unwrap for you).",
+      "parentUuid": "d4c0ff6a_48d12811",
+      "revId": "6eb79c685f3cf3259467bf4ee117af12bbcb6bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "973526b4_b38ecc02",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 1

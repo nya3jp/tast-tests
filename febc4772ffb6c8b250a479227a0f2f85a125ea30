@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c475c362_b015485f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-12T17:32:59Z",
+      "side": 1,
+      "message": "LGTM, but wait for the other reviewers as well.",
+      "revId": "febc4772ffb6c8b250a479227a0f2f85a125ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1489e0a2_64221de4",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-12T17:32:59Z",
+      "side": 1,
+      "message": "Why use a pointer to an interface?\n\nJust use error.",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 17
+      },
+      "revId": "febc4772ffb6c8b250a479227a0f2f85a125ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8bee619_984d4af1",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-12T17:32:59Z",
+      "side": 1,
+      "message": "Keep this inline",
+      "range": {
+        "startLine": 197,
+        "startChar": 30,
+        "endLine": 197,
+        "endChar": 42
+      },
+      "revId": "febc4772ffb6c8b250a479227a0f2f85a125ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
