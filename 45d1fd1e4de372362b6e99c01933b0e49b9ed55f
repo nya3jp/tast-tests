@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff1032e7_991c31fb",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/app_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2022-05-12T00:39:05Z",
+      "side": 1,
+      "message": "nit: radio",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "45d1fd1e4de372362b6e99c01933b0e49b9ed55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e61ea39_f68e6403",
         "filename": "src/chromiumos/tast/services/cros/shimlessrma/app_service.proto",
         "patchSetId": 1
