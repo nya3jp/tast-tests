@@ -34,6 +34,24 @@
       "parentUuid": "a9748830_af171d47",
       "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b526b038_b304304e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T08:34:57Z",
+      "side": 1,
+      "message": "making it into json can be done by encoding/json. Or, you can pass the structured data by Call().\n\n\u003e Anyway, let me submit this one now and will have another refactor patch if necessary\n\nSG, I can agree making this change is out of scope of this CL.",
+      "parentUuid": "504138bb_9fed953f",
+      "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
