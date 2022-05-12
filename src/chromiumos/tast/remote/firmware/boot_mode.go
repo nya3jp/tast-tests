@@ -337,7 +337,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := ms.Helper.DUT.WaitUnreachable(offCtx); err != nil {
 				return errors.Wrap(err, "waiting for DUT to be unreachable after reboot")
 			}
-			if err := ms.fwScreenToUSBDevMode(ctx); err != nil {
+			if err := ms.FwScreenToUSBDevMode(ctx); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to usb dev mode")
 			}
 		}
@@ -492,7 +492,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 			return errors.Wrap(err, "bypassing fw screen")
 		}
 	} else if fromMode == fwCommon.BootModeUSBDev {
-		if err := ms.fwScreenToUSBDevMode(ctx); err != nil {
+		if err := ms.FwScreenToUSBDevMode(ctx); err != nil {
 			return errors.Wrap(err, "bypassing fw screen")
 		}
 	} else {
@@ -706,10 +706,10 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitc
 	return nil
 }
 
-// fwScreenToUSBDevMode moves the DUT from the firmware bootup screen to USB Dev mode.
+// FwScreenToUSBDevMode moves the DUT from the firmware bootup screen to USB Dev mode.
 // This should be called immediately after powering on.
 // The actual behavior depends on the ModeSwitcherType.
-func (ms *ModeSwitcher) fwScreenToUSBDevMode(ctx context.Context) error {
+func (ms *ModeSwitcher) FwScreenToUSBDevMode(ctx context.Context) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
