@@ -22,6 +22,30 @@
       },
       "revId": "296e06ed2d7b8700d75e4387affa94d588c2229d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17af41c_5ec2e607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-12T04:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74d15e4a_3b82c4d1",
+      "range": {
+        "startLine": 161,
+        "startChar": 31,
+        "endLine": 161,
+        "endChar": 46
+      },
+      "revId": "296e06ed2d7b8700d75e4387affa94d588c2229d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
