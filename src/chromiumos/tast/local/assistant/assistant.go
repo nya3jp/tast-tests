@@ -157,6 +157,12 @@ func VerboseLoggingEnabled() testing.Precondition { return verboseLoggingPre }
 
 var verboseLoggingPre = chrome.NewPrecondition("verbose-logging", VerboseLogging())
 
+// LegacyLauncher creates a new precondition which can be shared by tests that requir
+// Chrome object with ProductivityLauncher feature enabled.
+func LegacyLauncher() testing.Precondition { return legacyLauncherPre }
+
+var legacyLauncherPre = chrome.NewPrecondition("legacy-launcher", chrome.ExtraArgs("--disable-features=ProductivityLauncher"))
+
 // Assistant tests use Google News as a test app.
 const (
 	// Apk name of a test apk (fake Google News app).

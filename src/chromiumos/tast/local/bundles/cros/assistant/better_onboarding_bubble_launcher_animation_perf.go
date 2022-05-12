@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -15,19 +15,21 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BetterOnboardingAnimationPerf,
+		Func:         BetterOnboardingBubbleLauncherAnimationPerf,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Measures animation smoothness of opening assistant with Better Onboarding enabled",
+		Desc:         "Measures animation smoothness of opening assistant in bubble launcher with Better Onboarding enabled",
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          assistant.LegacyLauncher(),
+		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{
 			{
 				Name:              "assistant_key",
@@ -43,11 +45,11 @@ func init() {
 	})
 }
 
-// BetterOnboardingAnimationPerf measures the performance of opening the Assistant UI
+// BetterOnboardingBubbleLauncherAnimationPerf measures the performance of opening the Assistant UI
 // for the first and second time in a session when Better Onboarding shows. It is believed
 // that loading Better Onboarding assets from disk on first launch causes a noticeable
 // animation smoothness performance hit.
-func BetterOnboardingAnimationPerf(ctx context.Context, s *testing.State) {
+func BetterOnboardingBubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	accel := s.Param().(assistant.Accelerator)
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
@@ -93,14 +95,22 @@ func BetterOnboardingAnimationPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	// Open and close Assistant UI for the first time in the session.
-	if err := recordAssistantToggleSmoothness(ctx, tconn, pv, "first_run", accel); err != nil {
-		s.Fatal("Failed to gather first run metrics: ", err)
+	// Open Assistant UI for the first time in the session.
+	if err := recordBubbleLauncherAssistantToggleSmoothness(ctx, tconn, pv, "first_run", accel, true); err != nil {
+		s.Fatal("Failed to gather first run open metrics: ", err)
+	}
+
+	// Close  Assistant UI for the first time in the session.
+	if err := recordBubbleLauncherAssistantToggleSmoothness(ctx, tconn, pv, "first_run", accel, false); err != nil {
+		s.Fatal("Failed to gather first run close metrics: ", err)
 	}
 
 	// Open and close Assistant UI again for comparison.
-	if err := recordAssistantToggleSmoothness(ctx, tconn, pv, "second_run", accel); err != nil {
-		s.Fatal("Failed to gather second run metrics: ", err)
+	if err := recordBubbleLauncherAssistantToggleSmoothness(ctx, tconn, pv, "second_run", accel, true); err != nil {
+		s.Fatal("Failed to gather second run open metrics: ", err)
+	}
+	if err := recordBubbleLauncherAssistantToggleSmoothness(ctx, tconn, pv, "second_run", accel, false); err != nil {
+		s.Fatal("Failed to gather second run close metrics: ", err)
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
@@ -108,18 +118,23 @@ func BetterOnboardingAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 }
 
-func recordAssistantToggleSmoothness(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, postfix string, accel assistant.Accelerator) error {
-	// Open the Assistant UI and gather metrics.
-	// TODO(b:178409604) add "Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode" when it is recorded properly.
+func recordBubbleLauncherAssistantToggleSmoothness(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, postfix string, accel assistant.Accelerator, show bool) error {
+	var targetHistogram string
+	if show {
+		targetHistogram = "Apps.ClamshellLauncher.AnimationSmoothness.Open"
+	} else {
+		targetHistogram = "Apps.ClamshellLauncher.AnimationSmoothness.Close"
+	}
+
+	// Open/Close the Assistant UI and gather metrics.
 	histograms, err := metrics.RunAndWaitAll(
 		ctx,
 		tconn,
 		3*time.Second,
 		func(ctx context.Context) error {
-			return toggleAssistantUI(ctx, tconn, accel)
+			return toggleBubbleLauncherAssistantUI(ctx, tconn, accel, show)
 		},
-		"Ash.Assistant.AnimationSmoothness.ResizeAssistantPageView",
-		"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
+		targetHistogram,
 	)
 	if err != nil {
 		return errors.Wrap(err, "failed to collect histogram")
@@ -142,25 +157,23 @@ func recordAssistantToggleSmoothness(ctx context.Context, tconn *chrome.TestConn
 	return nil
 }
 
-// toggleAssistantUI opens and then closes the Assistant UI via hotkey. Launcher
-// opens to Half state, rather than Peeking, because Better Onboarding requires extra space.
-func toggleAssistantUI(ctx context.Context, tconn *chrome.TestConn, accel assistant.Accelerator) error {
-	// Closed->Peeking.
+// toggleBubbleLauncherAssistantUI toggles the Assistant UI via hotkey. show indicates whether the launcher and
+// assistant UI is expected to be shown or hidden.
+func toggleBubbleLauncherAssistantUI(ctx context.Context, tconn *chrome.TestConn, accel assistant.Accelerator, show bool) error {
 	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
 		return errors.Wrap(err, "failed to open the embedded UI")
 	}
 
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Half); err != nil {
-		return errors.Wrap(err, "failed to switch the state to 'Half'")
-	}
-
-	// Peeking->Closed.
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
-		return errors.Wrap(err, "failed to close the embedded UI")
-	}
-
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		return errors.Wrap(err, "failed to switch the state to 'Closed'")
+	ui := uiauto.New(tconn)
+	bubble := nodewith.ClassName(ash.AppListBubbleClassName)
+	if show {
+		if err := ui.WaitUntilExists(bubble)(ctx); err != nil {
+			return errors.Wrap(err, "could not open launcher bubble by pressing assistant hotkey")
+		}
+	} else {
+		if err := ui.WaitUntilGone(bubble)(ctx); err != nil {
+			return errors.Wrap(err, "could not close launcher bubble by pressing assistant hotkey")
+		}
 	}
 
 	return nil
