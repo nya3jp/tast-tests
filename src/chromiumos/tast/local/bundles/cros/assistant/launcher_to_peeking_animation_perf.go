@@ -30,7 +30,7 @@ func init() {
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "assistantClamshell",
+		Fixture:      "assistantClamshellWithLegacyLauncher",
 		Params: []testing.Param{
 			{
 				Name:              "assistant_key",
