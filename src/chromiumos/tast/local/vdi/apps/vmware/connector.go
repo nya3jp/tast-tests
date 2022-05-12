@@ -89,7 +89,8 @@ func (c *Connector) SearchAndOpenApplication(ctx context.Context, k *input.Keybo
 		return uiauto.Combine("open "+appName+" application in Wmware",
 			k.TypeAction(appName),      // Focus is already on search field.
 			k.AccelAction("Shift+Tab"), // Cycle back to the applications.
-			k.AccelAction("Shift+Tab"), // Select the first result.
+			k.AccelAction("Shift+Tab"), // Select the first star bookmarking.
+			k.AccelAction("Shift+Tab"), // Select the first result icon.
 			k.AccelAction("Enter"),     // Launch first app.
 			checkIfOpened,
 		)(ctx)

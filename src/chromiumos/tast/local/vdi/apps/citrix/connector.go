@@ -86,8 +86,6 @@ func (c *Connector) SearchAndOpenApplication(ctx context.Context, k *input.Keybo
 			// go on the search field.
 			k.AccelAction("Tab"),
 			k.AccelAction("Tab"),
-			k.AccelAction("Tab"),
-			k.AccelAction("Tab"),
 			k.AccelAction("Tab"),   // Go to the search field.
 			k.AccelAction("Enter"), // Move focus to the search field.
 			k.TypeAction(appName),
