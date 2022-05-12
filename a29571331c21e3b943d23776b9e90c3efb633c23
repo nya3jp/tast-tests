@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d4af06_414b3c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-12T06:26:04Z",
+      "side": 1,
+      "message": "I have a question on this: All mainline tests are expected to run in CQ eventually. GoogleMap is a first party web application, the UI can change at any time. Do we want to make CQ dependent on an external application UI?\n\nIt is absolutely nice to have GoogleMap smoke test on ChromeOS. However, does it need to run all 100+ physical boards? It wastes a lot of resources if just want to check compatibility.\n\nMy personal suggestion is offload this test from mainline and find another pipeline to verify the compatibility of 1st \u0026 3rd party applications",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 40
+      },
+      "revId": "a29571331c21e3b943d23776b9e90c3efb633c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
