@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af616660_2423467c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-12T23:14:01Z",
+      "side": 1,
+      "message": "This would be better written as just\n`Add waiters for buttons in oobe.SmokeEndToEnd`\n\nIf it starts with `[oobe.SmokeEndToEnd]` then that is too inconsistent with other commit messages.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "e583bb223b2f79c4b2e225bcb06acf05e0aa8756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
