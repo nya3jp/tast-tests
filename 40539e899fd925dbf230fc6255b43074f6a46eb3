@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d69d0ac_c6e87dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-12T17:55:20Z",
+      "side": 1,
+      "message": "At this step, we are currently at Wallpaper subpage, breadcrumb list is Home \u003e Wallpaper.\nClick on Wallpaper would do nothing (stay on same page). Checking if Wallpaper breadcrumb node is there would be enough (doesn\u0027t need to click).\nhttps://source.chromium.org/chromium/chromium/src/+/main:ash/webui/personalization_app/resources/trusted/personalization_breadcrumb_element.ts;l\u003d249\n\nHowever, is there any other way to verify if we are at Wallpaper page? To differentiate when we are at Wallpaper subpage but not any other Wallpaper collections page?",
+      "revId": "40539e899fd925dbf230fc6255b43074f6a46eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34dd6fb_28a89b8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-12T17:55:20Z",
+      "side": 1,
+      "message": "After this search, I think we need to verify if Personalization is open too.\nMaybe we can use this?`ui.Exists(nodewith.NameContaining(\"Personalization\").Role(role.Window).First()))`",
+      "revId": "40539e899fd925dbf230fc6255b43074f6a46eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
