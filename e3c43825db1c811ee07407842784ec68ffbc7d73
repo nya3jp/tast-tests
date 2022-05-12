@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34c9f948_1c3bd9c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T18:22:02Z",
+      "side": 1,
+      "message": "optional: verify files app is first again",
+      "revId": "e3c43825db1c811ee07407842784ec68ffbc7d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc92716_e6a660d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T18:22:02Z",
+      "side": 1,
+      "message": "This also expects that items in orderedAppsNames are leading apps in the recent apps section.\n\nI\u0027d consider calling that out in the comment, and maybe renaming the method to\nverifyLeadingRecentApps",
+      "revId": "e3c43825db1c811ee07407842784ec68ffbc7d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
