@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16af3f9_1a0422ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T18:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a3cb330_e983ee24",
+      "revId": "4c2926b25804dadb856b7c2ae0343c7bf6d425d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4b24452_842b33a4",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a73c385_a65afd3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T18:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4b24452_842b33a4",
+      "revId": "4c2926b25804dadb856b7c2ae0343c7bf6d425d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2206a245_dbbf1a39",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-05-12T01:36:32Z",
       "side": 1,
       "message": "I\u0027d prefer not to use a third-party app in our tests :)",
+      "revId": "4c2926b25804dadb856b7c2ae0343c7bf6d425d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f860d639_57b61040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T18:17:34Z",
+      "side": 1,
+      "message": "Done. Was looking for one that would not open a chrome browser since chrome gets picked at first place instead of the app.",
+      "parentUuid": "2206a245_dbbf1a39",
       "revId": "4c2926b25804dadb856b7c2ae0343c7bf6d425d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
