@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b68257_0c3cf50e",
+        "filename": "src/chromiumos/tast/common/android/adb/logcat.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T07:20:24Z",
+      "side": 1,
+      "message": "ShellCommand should be used.\nBTW, does this work? specifically pipe should be handled as a command line argument, rather than a part of shell execution if we write this (if not it sounds a bug).",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f7f010e_26c07c7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_touch_injector.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T07:20:24Z",
+      "side": 1,
+      "message": "this looks like a source of flakiness. Could you wait some condition you\u0027re looking for, instead?",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3179a52_03ee4045",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T07:20:24Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53eeb7f_171cf457",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T07:20:24Z",
+      "side": 1,
+      "message": "there\u0027s no guarantee this works, as you didn\u0027t check x[0]\u003d is at the beginning above. Maybe prefix check is what you\u0027d like todo?",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ae7290_ce347215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T07:20:24Z",
+      "side": 1,
+      "message": "better to minimize the dependency. Could you take activity, and return windowContentSize, then assign it to params in caller? Ditto for below.",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28704cfb_68ced8b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T07:20:24Z",
+      "side": 1,
+      "message": "nit: () looks redundant?",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
