@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44618af_4fc2f13a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-12T16:53:58Z",
+      "side": 1,
+      "message": "Implementation document for context: go/gio-tast-tests",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66b68257_0c3cf50e",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "The `shutil.EscapeSlice` function that\u0027s called in `ARC.Command` and subsequently in `d.ShellCommand` adds quotation marks to arguments after an indicator; in this case, it thinks that the \"|\" symbol is an argument to the \"-d\" flag, so `ARC.command` results in the following command: `/usr/bin/adb -s emulator-5554 shell exec logcat -d \u0027|\u0027 grep InputOverlayTest`.\n\nI\u0027ve had the same issue with another `adb shell` command I called to obtain SurfaceFlinger data: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3600070",
       "parentUuid": "66b68257_0c3cf50e",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b45262_eb3e3609",
+        "filename": "src/chromiumos/tast/common/android/adb/logcat.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-12T16:53:58Z",
+      "side": 1,
+      "message": "As for whether this works, I can confirm that tests are passing, input overlay bugs nothwithstanding. Here\u0027s a log of a recent run: https://paste.googleplex.com/5361262297874432",
+      "parentUuid": "e3626bb9_4ba7f93b",
       "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
