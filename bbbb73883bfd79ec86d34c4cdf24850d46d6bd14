@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d8240d_d143cb87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-12T22:10:06Z",
+      "side": 1,
+      "message": "Nit: I think we can combine the search \u0026 validation. Same for personalization search.",
+      "revId": "bbbb73883bfd79ec86d34c4cdf24850d46d6bd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
