@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11614cb_07640af8",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-12T09:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a79bf886_f25756e1",
+      "revId": "83030332ee14cfc08a445c1c035367e36f10cfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "777eef33_590dfc84",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "777eef33_590dfc84",
+      "revId": "83030332ee14cfc08a445c1c035367e36f10cfd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f986ea86_ad1d312c",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-12T09:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d0a2c41_e66e0405",
       "revId": "83030332ee14cfc08a445c1c035367e36f10cfd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
