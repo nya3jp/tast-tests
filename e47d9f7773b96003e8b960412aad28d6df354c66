@@ -73,6 +73,30 @@
       },
       "revId": "e47d9f7773b96003e8b960412aad28d6df354c66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079bafe9_4f4e8ff3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/folder_drag_and_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T06:02:07Z",
+      "side": 1,
+      "message": "yes, it is - added a note to the cl description.",
+      "parentUuid": "62a18c55_b0250c05",
+      "range": {
+        "startLine": 114,
+        "startChar": 38,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "e47d9f7773b96003e8b960412aad28d6df354c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
