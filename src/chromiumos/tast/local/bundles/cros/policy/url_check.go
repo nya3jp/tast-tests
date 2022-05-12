@@ -68,20 +68,6 @@ func init() {
 						policies:    []policy.Policy{&policy.URLBlocklist{Val: []string{"example.com"}}},
 					},
 					{
-						name:        "chrome-policy",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{"chrome://policy"},
-						allowedURLs: []string{"http://google.com", "http://chromium.org", "chrome://about"},
-						policies:    []policy.Policy{&policy.URLBlocklist{Val: []string{"chrome://policy"}}},
-					},
-					{
-						name:        "wildcard-chrome",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{"chrome://about", "chrome://policy"},
-						allowedURLs: []string{"http://google.com", "http://chromium.org"},
-						policies:    []policy.Policy{&policy.URLBlocklist{Val: []string{"chrome://*"}}},
-					},
-					{
 						name:        "unset",
 						browserType: browser.TypeAsh,
 						blockedURLs: []string{},
