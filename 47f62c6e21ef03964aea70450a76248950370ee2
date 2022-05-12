@@ -16,6 +16,63 @@
       "message": "PTAL. Thanks!",
       "revId": "47f62c6e21ef03964aea70450a76248950370ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b30f8d_4c6a6d45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-12T11:02:45Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "47f62c6e21ef03964aea70450a76248950370ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92934633_6459e155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-12T11:02:45Z",
+      "side": 1,
+      "message": "nit: maybe be a bit more specific in the package name, e.g. dumputil?",
+      "revId": "47f62c6e21ef03964aea70450a76248950370ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641ae38c_b10498e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-12T11:02:45Z",
+      "side": 1,
+      "message": "nit: usually caller of DumpNetworkInfo will have error messages like: s.Fatal(\"Failed to run DumpNetworkInfo: %v\", err)\n\nCna you please change this error message to smth like:\n`Failed to run and log iptables`\n\nsame for other log messages.",
+      "range": {
+        "startLine": 55,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 51
+      },
+      "revId": "47f62c6e21ef03964aea70450a76248950370ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
