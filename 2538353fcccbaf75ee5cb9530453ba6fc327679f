@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ad1bfd_3945458b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-12T13:24:54Z",
+      "side": 1,
+      "message": "Please update the message that it also changes the tests to use local servers instead.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "2538353fcccbaf75ee5cb9530453ba6fc327679f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9624e71_f89c5664",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-12T13:24:54Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "2538353fcccbaf75ee5cb9530453ba6fc327679f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b0265d_d31a9e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_entire_screen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-12T13:24:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 49
+      },
+      "revId": "2538353fcccbaf75ee5cb9530453ba6fc327679f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877bdba1_d54312f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_window.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-12T13:24:54Z",
+      "side": 1,
+      "message": "nit: move above to line 131",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 49
+      },
+      "revId": "2538353fcccbaf75ee5cb9530453ba6fc327679f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
