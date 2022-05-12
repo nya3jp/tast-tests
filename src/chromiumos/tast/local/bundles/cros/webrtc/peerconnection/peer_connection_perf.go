@@ -281,12 +281,6 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if videoGridDimension > 1 {
-		if err := conn.Call(ctx, nil, "makeVideoGrid", videoGridDimension, videoURL); err != nil {
-			return errors.Wrap(err, "javascript error")
-		}
-	}
-
 	if err := conn.Call(ctx, nil, "start", profile, false, svc, streamWidth, streamHeight); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
@@ -306,6 +300,13 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 	if verifyHWEncoding == VerifySWEncoderUsed && hwEncoderUsed {
 		return errors.New("software encode wasn't used")
 	}
+    
+	if videoGridDimension > 1 {
+		if err := conn.Call(ctx, nil, "makeVideoGrid", videoGridDimension, videoURL); err != nil {
+			return errors.Wrap(err, "javascript error")
+		}
+	}
+
 	if err := measureRTCStats(shortCtx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to measure")
 	}
