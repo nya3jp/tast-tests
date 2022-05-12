@@ -25,6 +25,7 @@ const (
 	playerViewID    = youtubePkg + ":id/player_view"
 	optionsDialogID = youtubePkg + ":id/bottom_sheet_list_view"
 	uiWaitTime      = 3 * time.Second // this is for arc-obj, not for uiauto.Context
+	retryTimes      = 3
 )
 
 var appStartTime time.Duration
@@ -306,36 +307,34 @@ func (y *YtApp) checkYoutubeAppPIP(ctx context.Context) error {
 
 // EnterFullscreen switches youtube video to fullscreen.
 func (y *YtApp) EnterFullscreen(ctx context.Context) error {
-	testing.ContextLog(ctx, "Make Youtube app fullscreen")
+	// If the youtube app is already in fullscreen, skip the process to go fullscreen.
+	if err := ash.WaitForCondition(ctx, y.tconn, func(w *ash.Window) bool {
+		return w.Title == YoutubeWindowTitle && w.State == ash.WindowStateFullscreen
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err == nil {
+		return nil
+	}
+
+	waitWindowStateFullscreen := func(ctx context.Context) error {
+		return waitWindowStateFullscreen(ctx, y.tconn, YoutubeWindowTitle)
+	}
 
 	const fullscreenDesc = "Enter fullscreen"
-	const exitFullscreenDesc = "Exit fullscreen"
-
+	fsBtn := y.d.Object(androidui.Description(fullscreenDesc))
 	playerView := y.d.Object(androidui.ID(playerViewID))
 
 	startTime := time.Now()
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
-			return errors.Wrap(err, "failed to find/click the player view")
-		}
+	if err := uiauto.NamedAction("make Youtube app fullscreen",
+		uiauto.Retry(retryTimes, uiauto.Combine("enter fullscreen",
+			cuj.FindAndClick(playerView, uiWaitTime),
+			cuj.FindAndClick(fsBtn, uiWaitTime),
+			waitWindowStateFullscreen,
+		)),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to enter fullscreen")
+	}
 
-		fsBtn := y.d.Object(androidui.Description(fullscreenDesc))
-		if err := cuj.FindAndClick(fsBtn, 5*time.Second)(ctx); err != nil {
-			return errors.Wrap(err, "failed to find/click the fullscreen button")
-		}
-
-		testing.ContextLogf(ctx, "Elapsed time when doing enter fullscreen %.3f s", time.Since(startTime).Seconds())
-
-		// Check video playback is in fullscreen.
-		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
-			return errors.Wrap(err, "failed to find/click the player view")
-		}
-		exitFullscreenBtn := y.d.Object(androidui.Description(exitFullscreenDesc))
-		if err := exitFullscreenBtn.WaitForExists(ctx, uiWaitTime); err != nil {
-			return errors.Wrap(err, "failed to play video in fullscreen")
-		}
-		return nil
-	}, &testing.PollOptions{Interval: time.Second, Timeout: 15 * time.Second})
+	testing.ContextLogf(ctx, "Elapsed time when doing enter fullscreen %.3f s", time.Since(startTime).Seconds())
+	return nil
 }
 
 // PauseAndPlayVideo verifies video playback on youtube app.
