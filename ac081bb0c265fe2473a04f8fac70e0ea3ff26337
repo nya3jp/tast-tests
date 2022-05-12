@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "649d01db_15633140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T08:22:20Z",
+      "side": 1,
+      "message": "nit: could you check error?\n\nif err :\u003d testing.Sleep(...); err !\u003d nil {\n  ...\n}",
+      "revId": "ac081bb0c265fe2473a04f8fac70e0ea3ff26337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
