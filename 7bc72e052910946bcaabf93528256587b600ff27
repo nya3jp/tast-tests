@@ -16,6 +16,24 @@
       "message": "nit: end comments with a .",
       "revId": "7bc72e052910946bcaabf93528256587b600ff27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb02e03_8b7e8144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/ucm_sequences.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-05-12T10:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f88d064a_2c394c74",
+      "revId": "7bc72e052910946bcaabf93528256587b600ff27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
