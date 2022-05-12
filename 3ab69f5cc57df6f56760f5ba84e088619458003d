@@ -377,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64392431_8ec54f95",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-12T05:22:15Z",
+      "side": 1,
+      "message": "Fair enough. I finished the test implementation and squashed all the CLs. PTAL.",
+      "parentUuid": "4a6bc28a_91941d37",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "3ab69f5cc57df6f56760f5ba84e088619458003d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba8b5d3f_289af4c1",

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd532f2a_9d968341",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-12T05:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93d86aa2_f4445490",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "7c8bc7bbbdd89724f5f548000e3de5aade1ee692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c961a72_324cae8e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-05T13:22:46Z",
       "side": 1,
       "message": "nit: if !ok",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "7c8bc7bbbdd89724f5f548000e3de5aade1ee692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904cac48_4e8b3f04",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-12T05:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c961a72_324cae8e",
       "range": {
         "startLine": 50,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e68e6d_73064525",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-12T05:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d51743_22194ad3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "7c8bc7bbbdd89724f5f548000e3de5aade1ee692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85e2bdb2_b1a2a8b6",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-05T13:22:46Z",
       "side": 1,
       "message": "Can it differ from redrix feature set?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 7
+      },
+      "revId": "7c8bc7bbbdd89724f5f548000e3de5aade1ee692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13c1acd_2400f2a5",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-12T05:22:15Z",
+      "side": 1,
+      "message": "This is a real config data we copied from a real device, but we can change the name here for testing.",
+      "parentUuid": "85e2bdb2_b1a2a8b6",
       "range": {
         "startLine": 35,
         "startChar": 4,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee73e55_aafc01a3",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-12T05:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96a231d7_30af937b",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "7c8bc7bbbdd89724f5f548000e3de5aade1ee692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dc0782c_48ea1dd9",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-05T13:22:46Z",
       "side": 1,
       "message": "nit: %q",
+      "range": {
+        "startLine": 76,
+        "startChar": 46,
+        "endLine": 76,
+        "endChar": 47
+      },
+      "revId": "7c8bc7bbbdd89724f5f548000e3de5aade1ee692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ddf4e0_23423f6e",
+        "filename": "src/chromiumos/tast/local/camera/features/feature_control_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-12T05:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dc0782c_48ea1dd9",
       "range": {
         "startLine": 76,
         "startChar": 46,
