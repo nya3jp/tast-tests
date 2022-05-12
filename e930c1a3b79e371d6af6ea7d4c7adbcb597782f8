@@ -16,6 +16,52 @@
       "message": "Thanks for your patience and willingness to address my comments!",
       "revId": "e930c1a3b79e371d6af6ea7d4c7adbcb597782f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb641819_58ca79ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-12T03:16:53Z",
+      "side": 1,
+      "message": "nit: \nif _, err :\u003d ... ; err !\u003d nil {",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "e930c1a3b79e371d6af6ea7d4c7adbcb597782f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74692a2_fcb59cb1",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-12T03:16:53Z",
+      "side": 1,
+      "message": "Why doesn\u0027t it return the error?",
+      "range": {
+        "startLine": 585,
+        "startChar": 43,
+        "endLine": 585,
+        "endChar": 44
+      },
+      "revId": "e930c1a3b79e371d6af6ea7d4c7adbcb597782f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
