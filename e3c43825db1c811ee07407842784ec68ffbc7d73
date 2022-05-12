@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49b2985_b4e3e00a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34c9f948_1c3bd9c5",
+      "revId": "e3c43825db1c811ee07407842784ec68ffbc7d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddc92716_e6a660d7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-12T18:22:02Z",
       "side": 1,
       "message": "This also expects that items in orderedAppsNames are leading apps in the recent apps section.\n\nI\u0027d consider calling that out in the comment, and maybe renaming the method to\nverifyLeadingRecentApps",
+      "revId": "e3c43825db1c811ee07407842784ec68ffbc7d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5039153_fd922ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddc92716_e6a660d7",
       "revId": "e3c43825db1c811ee07407842784ec68ffbc7d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
