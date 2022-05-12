@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ae39a4_43f25738",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-12T01:13:11Z",
+      "side": 1,
+      "message": "nit: s/cerntian/certain/",
+      "revId": "de26d09671db76df6b249c15b2646bdfdc0c9422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
