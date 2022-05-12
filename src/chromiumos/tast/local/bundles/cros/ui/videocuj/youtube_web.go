@@ -211,7 +211,7 @@ func (y *YtWeb) EnterFullscreen(ctx context.Context) error {
 		return errors.Wrap(err, "failed to click fullscreen button")
 	}
 
-	if err := waitWindowStateFullscreen(ctx, y.tconn, y.ytWinID); err != nil {
+	if err := waitWindowStateFullscreen(ctx, y.tconn, YoutubeWindowTitle); err != nil {
 		return errors.Wrap(err, "failed to tap fullscreen button")
 	}
 
