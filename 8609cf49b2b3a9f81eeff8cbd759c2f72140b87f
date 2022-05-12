@@ -33,6 +33,69 @@
       "message": "LGTM\n\nplease wait for +1 from Aya before submitting",
       "revId": "8609cf49b2b3a9f81eeff8cbd759c2f72140b87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e283b2e_2b9b1f96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-12T09:15:00Z",
+      "side": 1,
+      "message": "Can you change them to use local server as this CL crrev.com/c/3630542?",
+      "revId": "8609cf49b2b3a9f81eeff8cbd759c2f72140b87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872bdb49_587acc9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_entire_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-12T09:15:00Z",
+      "side": 1,
+      "message": "if*",
+      "range": {
+        "startLine": 203,
+        "startChar": 57,
+        "endLine": 203,
+        "endChar": 60
+      },
+      "revId": "8609cf49b2b3a9f81eeff8cbd759c2f72140b87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a246b442_d29c31ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-05-12T09:15:00Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 203,
+        "startChar": 57,
+        "endLine": 203,
+        "endChar": 60
+      },
+      "revId": "8609cf49b2b3a9f81eeff8cbd759c2f72140b87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
