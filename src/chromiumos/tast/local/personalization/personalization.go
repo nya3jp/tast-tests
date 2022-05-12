@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 )
 
 // OpenPersonalizationHub returns an action to open the personalization app.
@@ -90,4 +91,15 @@ func NavigateBreadcrumb(breadcrumb string, ui *uiauto.Context) uiauto.Action {
 	breadcrumbButton := nodewith.Role(role.Button).Name(breadcrumb).HasClass("breadcrumb")
 	return uiauto.Combine(fmt.Sprintf("click breadcrumb button - %s", breadcrumb),
 		ui.LeftClick(breadcrumbButton))
+}
+
+// SearchForAppInLauncher returns an action to search and select result in launcher.
+func SearchForAppInLauncher(query, result string, kb *input.KeyboardEventWriter, ui *uiauto.Context) uiauto.Action {
+	searchResult := nodewith.Role("listBoxOption").NameContaining(result).HasClass("ui/app_list/SearchResultView").First()
+	return uiauto.Combine("search and select result in launcher",
+		kb.AccelAction("Search"),
+		ui.WaitUntilExists(nodewith.Role("textField").HasClass("Textfield")),
+		kb.TypeAction(query),
+		ui.LeftClick(searchResult),
+	)
 }
