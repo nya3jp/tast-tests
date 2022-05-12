@@ -16,6 +16,57 @@
       "message": "Ana, can you take a look at this one?",
       "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e967161c_e7e5cfc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T16:45:50Z",
+      "side": 1,
+      "message": "just skimmed through this - I\u0027ll leave more in depth review to anasalazar@",
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67729062_ccdc0f92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T16:45:50Z",
+      "side": 1,
+      "message": "can we add params to test tablet mode, and maybe use fixtures that force ProductivtiyLauncher feature state\n\n(something like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go;drc\u003d0a66dd87343da285f4f206a92eb6e0c765584141;l\u003d38)\n\nProductivityLauncher flag has recently been turned on by default, so I\u0027d be fine leaving out \"LegacyLauncher\" params out.",
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25abd21f_547d21aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T16:45:50Z",
+      "side": 1,
+      "message": "I think we have utility methods in launcher.go for opening closing launcher",
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
