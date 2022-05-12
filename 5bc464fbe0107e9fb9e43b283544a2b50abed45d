@@ -93,6 +93,30 @@
       },
       "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3718422_803629ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-12T08:18:02Z",
+      "side": 1,
+      "message": "touch.go is an example test to demonstrate usage of touch APIs. It\u0027s not good that it accesses the internet, but might be okay. Citing the comment:\n\n```\n// TODO(ricardoq): This page might change/break in the future. If so, a built-in\n// HTML page that accepts drawing should be used. Additionally, Kleki seems to ignore\n// the 2nd \u0026 last events when drawing splines. But for the purpose of showing how\n// to use the API is good enough.\n```\n\nFor real tests we should avoid that.",
+      "parentUuid": "defd8e1f_d46e36af",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
