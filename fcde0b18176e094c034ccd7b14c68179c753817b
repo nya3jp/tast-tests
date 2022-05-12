@@ -16,6 +16,24 @@
       "message": "LGTM, but please also get +1/+2 from a team member with context into this particular change.",
       "revId": "fcde0b18176e094c034ccd7b14c68179c753817b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8288ec43_5aabbcbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-12T05:33:44Z",
+      "side": 1,
+      "message": "Please wait for review from thuongphan@.",
+      "parentUuid": "d8224ecc_5c758fc0",
+      "revId": "fcde0b18176e094c034ccd7b14c68179c753817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
