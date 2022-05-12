@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed29e892_24015f4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-12T23:11:22Z",
+      "side": 1,
+      "message": "\"Normal\" \u003cvideo\u003e playback should never instantiate more than the\ndecoder it\u0027s going to use. RTCPeerConnection is known to create\nHW video decoders to make sure they can indeed be created. In \nthe past this was even worse because it created e.g. a VP8, a\nVP9.0, a VP9.2, and a number of H.264 (b/177851868), and TTBOMK\nthis was fixed, but it seems like it isn\u0027t fully so. So I\u0027d \nexpect WebRTC to be the root cause of the flake, and not \u003cvideo\u003e.",
+      "parentUuid": "6c455c98_8ad009ca",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "27a1accf1ed6cf24218f244b05868c3336a2a9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "929b6c45_42735a6a",
