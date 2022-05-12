@@ -22,6 +22,30 @@
       },
       "revId": "007907e6774e39187ec2cfe569cd27fe88ac17e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ee1020_e924f2d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_long_sms.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-12T19:47:41Z",
+      "side": 1,
+      "message": "OwnNumbers returning array, reason for array of strings.\n\nYeah all this is due to \u0027OwnNumbers\u0027 property not populated on trogdor dut sometimes. - Will change to fail as it fails to read ownnumbers property.",
+      "parentUuid": "ee6ae447_47f8e664",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "007907e6774e39187ec2cfe569cd27fe88ac17e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
