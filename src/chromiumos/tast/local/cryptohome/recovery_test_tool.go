@@ -31,6 +31,8 @@ const (
 	recoverySecretDecryptedFile = "secr_decr"
 	customRAPTFile              = "custom_rapt"
 	customEpochResponseFile     = "custom_epoch_response"
+	epochResponseFile           = "epoch_response"
+	mediatorPubKeyFile          = "mediator_pub_key"
 )
 
 // RecoveryTestTool is a command line test tool for cryptohome recovery testing.
@@ -88,6 +90,15 @@ func (c *RecoveryTestTool) getFileParam(param, file string) string {
 func (c *RecoveryTestTool) writeFileHexEncoded(fileName string, content []byte) error {
 	filePath := c.getFullFilePath(fileName)
 	if err := ioutil.WriteFile(filePath, []byte(hex.EncodeToString(content)), 0644); err != nil {
+		return errors.Wrapf(err, "failed to write file %q", filePath)
+	}
+	return nil
+}
+
+// writeFile saves a file with provided fileName.
+func (c *RecoveryTestTool) writeFile(fileName string, content []byte) error {
+	filePath := c.getFullFilePath(fileName)
+	if err := ioutil.WriteFile(filePath, content, 0644); err != nil {
 		return errors.Wrapf(err, "failed to write file %q", filePath)
 	}
 	return nil
@@ -216,4 +227,69 @@ func (c *RecoveryTestTool) Validate(ctx context.Context) error {
 		return errors.Errorf("Created %v, decrypted %v", string(recoverySecretCreatedData), string(recoverySecretDecrypedData))
 	}
 	return nil
+}
+
+// FakeMediateWithRequest calls "--action=recovery_crypto_mediate" step.
+func (c *RecoveryTestTool) FakeMediateWithRequest(ctx context.Context, requestHex string) (string, error) {
+	if !c.useFakeMediator {
+		return "", errors.New("cannot use fake mediator")
+	}
+
+	if err := c.writeFile(recoveryRequestFile, []byte(requestHex)); err != nil {
+		return "", errors.Wrapf(err, "could not write the recovery request file (%s)", recoveryRequestFile)
+	}
+
+	if err := c.call(ctx,
+		"--action=recovery_crypto_mediate",
+		c.getFileParam("recovery_request_in_file", recoveryRequestFile),
+		c.getFileParam("recovery_response_out_file", recoveryResponseFile),
+	); err != nil {
+		return "", errors.Wrap(err, "could not perform recovery_crypto_mediate")
+	}
+
+	responseHex, err := ioutil.ReadFile(c.getFullFilePath(recoveryResponseFile))
+	if err != nil {
+		return "", errors.Wrapf(err, "could not read the recovery response file (%s)", recoveryResponseFile)
+	}
+	return string(responseHex), nil
+}
+
+// GetFakeEpochResponseHex calls "--action=get_epoch_response".
+func (c *RecoveryTestTool) GetFakeEpochResponseHex(ctx context.Context) (string, error) {
+	if !c.useFakeMediator {
+		return "", errors.New("cannot use fake mediator")
+	}
+
+	if err := c.call(ctx,
+		"--action=get_epoch_response",
+		c.getFileParam("epoch_response_out_file", epochResponseFile),
+	); err != nil {
+		return "", errors.Wrap(err, "could not perform get_epoch_response")
+	}
+
+	responseHex, err := ioutil.ReadFile(c.getFullFilePath(epochResponseFile))
+	if err != nil {
+		return "", errors.Wrapf(err, "could not read the epoch response file (%s)", epochResponseFile)
+	}
+	return string(responseHex), nil
+}
+
+// GetFakeMediatorPubKeyHex calls "--action=get_mediator_pub_key".
+func (c *RecoveryTestTool) GetFakeMediatorPubKeyHex(ctx context.Context) (string, error) {
+	if !c.useFakeMediator {
+		return "", errors.New("cannot use fake mediator")
+	}
+
+	if err := c.call(ctx,
+		"--action=get_mediator_pub_key",
+		c.getFileParam("mediator_pub_key_out_file", mediatorPubKeyFile),
+	); err != nil {
+		return "", errors.Wrap(err, "could not perform get_mediator_pub_key")
+	}
+
+	mediatorPubKeyHex, err := ioutil.ReadFile(c.getFullFilePath(mediatorPubKeyFile))
+	if err != nil {
+		return "", errors.Wrapf(err, "could not read the mediator pub key file (%s)", mediatorPubKeyHex)
+	}
+	return string(mediatorPubKeyHex), nil
 }

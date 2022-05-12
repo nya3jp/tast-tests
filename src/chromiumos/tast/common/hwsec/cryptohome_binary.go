@@ -295,6 +295,12 @@ func (c *cryptohomeBinary) authenticatePinAuthFactor(ctx context.Context, authSe
 	return c.call(ctx, args...)
 }
 
+// authenticateRecoveryAuthFactor calls "cryptohome --action=authenticate_auth_factor --recovery_epoch_response=<epochResponseHex> --recovery_response=<recoveryResponseHex>".
+func (c *cryptohomeBinary) authenticateRecoveryAuthFactor(ctx context.Context, authSessionID, label, epochResponseHex, recoveryResponseHex string) ([]byte, error) {
+	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--recovery_epoch_response=" + epochResponseHex, "--recovery_response=" + recoveryResponseHex}
+	return c.call(ctx, args...)
+}
+
 // updateCredentialWithAuthSession calls "cryptohome --action=update_credential".
 // password is ignored if publicMount is set to true.
 func (c *cryptohomeBinary) updateCredentialWithAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) ([]byte, error) {
@@ -328,6 +334,12 @@ func (c *cryptohomeBinary) addAuthFactor(ctx context.Context, authSessionID, lab
 // addPinAuthFactor calls "cryptohome --action=add_auth_factor --pin=<pin>".
 func (c *cryptohomeBinary) addPinAuthFactor(ctx context.Context, authSessionID, label, pin string) ([]byte, error) {
 	args := []string{"--action=add_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--pin=" + pin}
+	return c.call(ctx, args...)
+}
+
+// addCryptohomeRecoveryAuthFactor calls "cryptohome --action=add_auth_factor --recovery".
+func (c *cryptohomeBinary) addCryptohomeRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKey string) ([]byte, error) {
+	args := []string{"--action=add_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--recovery_mediator_pub_key=" + mediatorPubKey}
 	return c.call(ctx, args...)
 }
 
@@ -375,5 +387,12 @@ func (c *cryptohomeBinary) mountWithAuthSession(ctx context.Context, authSession
 // password is ignored if publicMount is set to true.
 func (c *cryptohomeBinary) invalidateAuthSession(ctx context.Context, authSessionID string) ([]byte, error) {
 	args := []string{"--action=invalidate_auth_session", "--auth_session_id=" + authSessionID}
+	return c.call(ctx, args...)
+}
+
+// getRecoveryRequest calls "cryptohome --action=get_recovery_request".
+// password is ignored if publicMount is set to true.
+func (c *cryptohomeBinary) getRecoveryRequest(ctx context.Context, authSessionID, label, epochResponse string) ([]byte, error) {
+	args := []string{"--action=get_recovery_request", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--recovery_epoch_response=" + epochResponse}
 	return c.call(ctx, args...)
 }
