@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7948e20d_9ee27750",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T01:04:42Z",
+      "side": 1,
+      "message": "These are heavily based on BetterOnboardingAnimationPerf and EmbeddedUIOpenAndCloseAnimationTest (setup is the same, but it uses different methods to detect launcher state, and tracks different metrics - also histograms for showing and closing are tracked separately to make sure tests don\u0027t attempt to close the launcher before \"open\" histograms have been recorded).",
+      "revId": "d987d70ce492dee7d87510cc3e81c86d7ab10389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
