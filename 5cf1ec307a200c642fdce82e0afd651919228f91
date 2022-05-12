@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de176968_341bacb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-12T03:10:00Z",
+      "side": 1,
+      "message": "Please describe what\u0027s wrong with b/232322920, thanks.",
+      "revId": "5cf1ec307a200c642fdce82e0afd651919228f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
