@@ -85,8 +85,12 @@ func PinWeaverWithAuthFactor(ctx context.Context, s *testing.State) {
 
 	// Enable the UserSecretStash experiment for the duration of the test by
 	// creating a flag file that's checked by cryptohomed.
-	cmdRunner.Run(ctx, "mkdir -p /var/lib/cryptohome")
-	cmdRunner.Run(ctx, "touch", ussFlagFile)
+	if _, err := cmdRunner.Run(ctx, "mkdir", "-p", "/var/lib/cryptohome"); err != nil {
+		s.Fatal("Failed to create USS flag dir: ", err)
+	}
+	if _, err := cmdRunner.Run(ctx, "touch", ussFlagFile); err != nil {
+		s.Fatal("Failed to create USS flag file: ", err)
+	}
 	defer cmdRunner.Run(ctx, "rm", ussFlagFile)
 
 	// Setup a user for testing. This user will be locked out and re-authed to ensure the pin is unlocked.
@@ -140,9 +144,6 @@ func getLeCredsFromDisk(ctx context.Context, r *hwsecremote.CmdRunnerRemote) ([]
 // setupUserWithPin sets up a user with a password and a pin auth factor.
 func setupUserWithPin(ctx, ctxForCleanUp context.Context, userName string, cmdRunner *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, s *testing.State) {
 	cryptohomeHelper := helper.CryptohomeClient()
-	// These are to ensure the machine is in a proper state.
-	// Error is not check from these calls because the machine could have no users or le creds yet.
-	cmdRunner.Run(ctx, "rm -rf /home/.shadow/low_entropy_creds")
 
 	// Start an Auth session and get an authSessionID.
 	authSessionID, err := cryptohomeHelper.StartAuthSession(ctx, userName /*ephemeral=*/, false)
