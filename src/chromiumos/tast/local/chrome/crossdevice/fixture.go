@@ -136,7 +136,7 @@ func init() {
 			customCrOSPassword,
 			KeepStateVar,
 		},
-		SetUpTimeout:    4 * time.Minute,
+		SetUpTimeout:    10 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,

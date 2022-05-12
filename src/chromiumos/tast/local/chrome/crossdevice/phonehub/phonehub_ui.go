@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -48,6 +49,8 @@ const (
 
 // Enable enables Phone Hub from OS Settings using JS. Assumes a connected device has already been paired.
 // Hide should be called afterwards to close the Phone Hub tray. It is left open here so callers can capture the UI state upon error if needed.
+// Note: it can take up to 5 minutes for an Android device to successfully pair with the Chromebook.
+// To account for this, the deadline of the passed in context should expire no sooner than 5 minutes from when this function is called.
 func Enable(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
 	_, err := ossettings.Launch(ctx, tconn)
 	if err != nil {
@@ -59,12 +62,36 @@ func Enable(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) erro
 	}
 	defer settingsConn.Close()
 
-	// Use JS to wait for a phone to be connected.
+	// Use JS to wait for a phone to be connected. If we are stuck waiting for the
+	// "Connected devices" toggle to become visible (i.e. waiting for verification)
+	// for more than 5 minutes, attempt to force a sync through the debug page.
+	if ctxutil.DeadlineBefore(ctx, time.Now().Add(5*time.Minute)) {
+		d, _ := ctx.Deadline()
+		t := d.Sub(time.Now())
+		return errors.Errorf("insufficient time remaining before the context reaches its deadline. need at least 5 minutes, only %v remain", t)
+	}
+	testing.ContextLog(ctx, "Waiting up to 5 minutes for the devices to be paired")
 	if err := settingsConn.WaitForExpr(ctx, multidevicePageJS); err != nil {
 		return errors.Wrap(err, "failed waiting for \"Connected devices\" subpage to load")
 	}
-	if err := settingsConn.WaitForExpr(ctx, connectedDeviceToggleVisibleJS); err != nil {
-		return errors.Wrap(err, "failed to wait for the \"Connected devices\" toggle is visible")
+	if err := settingsConn.WaitForExprWithTimeout(ctx, connectedDeviceToggleVisibleJS, 5*time.Minute); err != nil {
+		// Force a sync with the chrome://proximity-auth sync button and keep waiting.
+		testing.ContextLog(ctx, "Devices did not pair within 5 minutes. Attempting to force a sync through the debug page")
+		conn, err := cr.NewConn(ctx, "chrome://proximity-auth")
+		if err != nil {
+			return errors.Wrap(err, "failed to open chrome://proximity-auth")
+		}
+		defer conn.Close()
+		syncBtn := `document.getElementById("force-device-sync")`
+		if err := conn.WaitForExpr(ctx, syncBtn); err != nil {
+			return errors.Wrap(err, "failed waiting for chrome://proximity-auth 'Sync' button to load")
+		}
+		if err := conn.Eval(ctx, syncBtn+`.click()`, nil); err != nil {
+			return errors.Wrap(err, "failed to click chrome://proximity-auth 'Sync' button")
+		}
+		if err := settingsConn.WaitForExpr(ctx, connectedDeviceToggleVisibleJS); err != nil {
+			return errors.Wrap(err, "'Connected devices' subpage not available after forcing device sync")
+		}
 	}
 
 	// Turn on Phone Hub in the "Connected devices" subpage. The easiest way to get there is to reopen OS Settings on that specific page.
