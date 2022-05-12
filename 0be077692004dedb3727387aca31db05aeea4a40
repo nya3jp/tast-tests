@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08900941_6668c47b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-12T04:10:18Z",
+      "side": 1,
+      "message": "Sure, thank you very much for the confirmation.\nChanged the outer function to log immediately instead of logging together in the end.\nAlso used lastErr instead since here is no difference to return the first one or the last one.",
+      "parentUuid": "3b6a8d28_7f1394c6",
+      "range": {
+        "startLine": 35,
+        "startChar": 49,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "0be077692004dedb3727387aca31db05aeea4a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f7ce2e5_703fcc7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
         "patchSetId": 4

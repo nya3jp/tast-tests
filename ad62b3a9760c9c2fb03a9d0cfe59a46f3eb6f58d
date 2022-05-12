@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc73086_f21e1b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-12T04:10:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "29d877a8_fb8b42e5",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "ad62b3a9760c9c2fb03a9d0cfe59a46f3eb6f58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ee64b8a_f90a1e91",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-11T15:30:59Z",
       "side": 1,
       "message": "nit: a bit strange will be to ignore execErr if it isn\u0027t nil",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 67
+      },
+      "revId": "ad62b3a9760c9c2fb03a9d0cfe59a46f3eb6f58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96c87a4_4fc2f239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-12T04:10:18Z",
+      "side": 1,
+      "message": "Changed the code to return execErr directly. It does not add too much value (we can read its failure from test log file) compared with the downside to complicate the code.",
+      "parentUuid": "5ee64b8a_f90a1e91",
       "range": {
         "startLine": 53,
         "startChar": 0,
