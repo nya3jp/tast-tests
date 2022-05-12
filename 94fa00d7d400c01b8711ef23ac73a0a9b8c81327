@@ -33,6 +33,29 @@
       "message": "Tast Owners, please provide the Go readability review.",
       "revId": "94fa00d7d400c01b8711ef23ac73a0a9b8c81327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3523f642_c1a0935f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-12T19:04:20Z",
+      "side": 1,
+      "message": "I think this should be \"failed to connect\" for the second loop on plugin action. Would it be better to change to a more generic message that covers both unplug and plug?",
+      "range": {
+        "startLine": 202,
+        "startChar": 38,
+        "endLine": 202,
+        "endChar": 48
+      },
+      "revId": "94fa00d7d400c01b8711ef23ac73a0a9b8c81327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
