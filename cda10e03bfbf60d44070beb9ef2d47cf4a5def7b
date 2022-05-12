@@ -33,6 +33,138 @@
       "message": "deanliao@: Friendly ping :)",
       "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d10008a6_b6a7ac31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-12T09:05:43Z",
+      "side": 1,
+      "message": "Sorry that I missed the CL for a week since I was out sick last week.",
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f231ce5_5db53a91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-12T09:05:43Z",
+      "side": 1,
+      "message": "changes to primary snapped",
+      "range": {
+        "startLine": 89,
+        "startChar": 61,
+        "endLine": 89,
+        "endChar": 67
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb492c2f_5ad98552",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-12T09:05:43Z",
+      "side": 1,
+      "message": "changes to secondary snapped",
+      "range": {
+        "startLine": 96,
+        "startChar": 61,
+        "endLine": 96,
+        "endChar": 67
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26fda251_7a10c665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-12T09:05:43Z",
+      "side": 1,
+      "message": "unsnap\n\nCurious why you capitalize the word.",
+      "range": {
+        "startLine": 104,
+        "startChar": 37,
+        "endLine": 104,
+        "endChar": 43
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41971e4_af655ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-12T09:05:43Z",
+      "side": 1,
+      "message": "changes to unsnapped state",
+      "range": {
+        "startLine": 107,
+        "startChar": 61,
+        "endLine": 107,
+        "endChar": 67
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c31f9d_7d3602b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-12T09:05:43Z",
+      "side": 1,
+      "message": "changes to unsnapped state",
+      "range": {
+        "startLine": 114,
+        "startChar": 61,
+        "endLine": 114,
+        "endChar": 67
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

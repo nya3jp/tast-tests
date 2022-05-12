@@ -119,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d37ccf3_27f8e00f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-12T09:05:43Z",
+      "side": 1,
+      "message": "My question is: since line 85 and line 103 call the same function with the same parameter, how can we know that line 85 action will snap the window and line 103 action will unsnap the window?",
+      "parentUuid": "2c5cdfe3_e5c4e854",
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "090b15c9_d833df48",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -130,6 +148,24 @@
       "writtenOn": "2022-04-29T08:23:21Z",
       "side": 1,
       "message": "Same here.",
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92b4628_89d21cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-12T09:05:43Z",
+      "side": 1,
+      "message": "compare line 92 and line 110.",
+      "parentUuid": "090b15c9_d833df48",
       "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
