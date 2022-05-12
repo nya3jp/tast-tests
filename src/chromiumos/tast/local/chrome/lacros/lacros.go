@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
 	"chromiumos/tast/testing"
 )
 
@@ -81,7 +82,7 @@ func (l *Lacros) Close(ctx context.Context) error {
 		return errors.Wrap(err, "failed to query for all targets")
 	}
 
-	info, err := InfoSnapshot(ctx, l.ctconn)
+	info, err := lacrosinfo.Snapshot(ctx, l.ctconn)
 	if err != nil {
 		return testing.PollBreak(errors.Wrap(err, "failed to get lacros info"))
 	}
@@ -108,7 +109,7 @@ func (l *Lacros) Close(ctx context.Context) error {
 	// closed browser. So, poll to make sure lacros actually closes.
 	if !info.KeepAlive {
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			info, err := InfoSnapshot(ctx, l.ctconn)
+			info, err := lacrosinfo.Snapshot(ctx, l.ctconn)
 			if err != nil {
 				return testing.PollBreak(errors.Wrap(err, "failed to get lacros info"))
 			}
