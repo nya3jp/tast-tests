@@ -46,6 +46,30 @@
       },
       "revId": "007907e6774e39187ec2cfe569cd27fe88ac17e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c9cf51_2a609509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_long_sms.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-12T21:13:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ee1020_e924f2d1",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "007907e6774e39187ec2cfe569cd27fe88ac17e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
