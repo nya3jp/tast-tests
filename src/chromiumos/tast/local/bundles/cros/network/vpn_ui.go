@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -28,11 +27,15 @@ func init() {
 		Contacts:     []string{"jiejiang@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		// Do not use shillReset since we will need to also reset Chrome between
-		// tests which is expensive.
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "vpnShillResetWithChromeLoggedIn",
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Params: []testing.Param{{
+			Name: "l2tp_ipsec_cert",
+			Val: vpn.Config{
+				Type:     vpn.TypeL2TPIPsec,
+				AuthType: vpn.AuthTypeCert,
+			},
+		}, {
 			Name: "l2tp_ipsec_psk",
 			Val: vpn.Config{
 				Type:     vpn.TypeL2TPIPsec,
@@ -50,7 +53,7 @@ func init() {
 }
 
 func VPNUI(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(vpn.FixtureEnv).Cr
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -196,8 +199,20 @@ func (v *vpnDialogConfigger) configL2TPIPsec(ctx context.Context) error {
 	if err := v.inputTextField(ctx, "Password", v.conn.Properties["L2TPIPsec.Password"].(string)); err != nil {
 		return err
 	}
-	if err := v.inputTextField(ctx, "Pre-shared key", v.conn.Properties["L2TPIPsec.PSK"].(string)); err != nil {
-		return err
+
+	switch v.cfg.AuthType {
+	case vpn.AuthTypeCert:
+		if err := v.selectListOption(ctx, "Authentication type", "User certificate"); err != nil {
+			return errors.Wrap(err, "failed to select authentication type")
+		}
+		// User cert and server CA should be selected by default.
+	case vpn.AuthTypePSK:
+		// Authentication type is default to "Pre-shared key".
+		if err := v.inputTextField(ctx, "Pre-shared key", v.conn.Properties["L2TPIPsec.PSK"].(string)); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("unknown cert type %s", v.cfg.AuthType)
 	}
 	return nil
 }
