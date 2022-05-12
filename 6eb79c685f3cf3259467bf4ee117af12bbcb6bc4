@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4c0ff6a_48d12811",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-12T16:25:39Z",
+      "side": 1,
+      "message": "Thanks for the review!\n\nDo you mean use type assertion? If we define a new error type and return it, it\u0027s caller could change its type with errors.Wrap(), and then finally we cannot user type assertion to check its type. This is why string comparison is used.",
+      "parentUuid": "36354698_fcd5bfab",
+      "revId": "6eb79c685f3cf3259467bf4ee117af12bbcb6bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "973526b4_b38ecc02",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-12T08:12:10Z",
       "side": 1,
       "message": "Use a shared constant to make sure the values don\u0027t go out of sync.",
+      "revId": "6eb79c685f3cf3259467bf4ee117af12bbcb6bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f6043f_9ad84b14",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-12T16:25:39Z",
+      "side": 1,
+      "message": "Changed.",
+      "parentUuid": "973526b4_b38ecc02",
       "revId": "6eb79c685f3cf3259467bf4ee117af12bbcb6bc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-05-12T08:12:10Z",
       "side": 1,
       "message": "Maybe use a *float to not compare floating point values?",
+      "revId": "6eb79c685f3cf3259467bf4ee117af12bbcb6bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b8319a_c4fa796b",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-12T16:25:39Z",
+      "side": 1,
+      "message": "This is a better solution. Thanks!",
+      "parentUuid": "c31eaeb0_629c628f",
       "revId": "6eb79c685f3cf3259467bf4ee117af12bbcb6bc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
