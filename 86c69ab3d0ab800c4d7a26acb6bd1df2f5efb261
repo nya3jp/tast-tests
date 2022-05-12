@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64aeffad_d5a7e49f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-05-12T11:55:36Z",
+      "side": 1,
+      "message": "Hello Jeremy, please have a look to the bios services changes. ",
+      "revId": "86c69ab3d0ab800c4d7a26acb6bd1df2f5efb261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
