@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df20b2d6_dd5ff5df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-12T11:38:18Z",
+      "side": 1,
+      "message": "No code change in this patchset. Will update the code together later.",
+      "revId": "47f62c6e21ef03964aea70450a76248950370ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92934633_6459e155",
@@ -48,6 +65,24 @@
       "writtenOn": "2022-05-12T11:02:45Z",
       "side": 1,
       "message": "nit: maybe be a bit more specific in the package name, e.g. dumputil?",
+      "revId": "47f62c6e21ef03964aea70450a76248950370ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bab333_d360389b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-12T11:38:18Z",
+      "side": 1,
+      "message": "Don\u0027t know about the idomatic way in go, I suppose this package can hold multiple util functions in the future (no clear idea on what will be added atm though), but not only limited to dumputil. Does it make sense in go?\n\nOr should I also change the file path to `.../dumputil/dumputil.go` together with the package name?",
+      "parentUuid": "92934633_6459e155",
       "revId": "47f62c6e21ef03964aea70450a76248950370ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
