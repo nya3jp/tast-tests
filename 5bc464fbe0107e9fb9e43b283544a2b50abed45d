@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b5456c_a42fabb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-12T06:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29c09e79_117d33a8",
+      "range": {
+        "startLine": 79,
+        "startChar": 19,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0cd57cb_647e1049",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-02T07:30:12Z",
       "side": 1,
       "message": "We have to be extremely careful on accessing an external website from tests; tests might cause traffic spikes to the website, and also the test might get flaky due to Internet connection issues or website downtime.\n\nCan we serve a page locally and access it?",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "defd8e1f_d46e36af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-12T06:00:55Z",
+      "side": 1,
+      "message": "We are adopting this website from the default [touch.go](https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/example/touch.go#:~:text\u003d(ctx%2C%20%22http%3A//kleki.com%22))\n\nAnd I\u0027m not sure if we can locally access it. Can you please suggest, if we can add the same TODO here?",
+      "parentUuid": "a0cd57cb_647e1049",
       "range": {
         "startLine": 135,
         "startChar": 31,
