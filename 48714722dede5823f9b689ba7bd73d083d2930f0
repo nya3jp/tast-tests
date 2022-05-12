@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd730bd_c580eabc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2022-05-12T14:19:59Z",
+      "side": 1,
+      "message": "igt.go lgtm\nyou might need owner approvals on the rest tho.",
+      "revId": "48714722dede5823f9b689ba7bd73d083d2930f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
