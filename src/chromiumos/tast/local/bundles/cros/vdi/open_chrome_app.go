@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OpenChromeApp,
-		Desc: "Test opens Google Chrome application in VDI sessions in user session, Kiosk and MGS",
+		Func:         OpenChromeApp,
+		LacrosStatus: testing.LacrosVariantNeeded,
+		Desc:         "Test opens Google Chrome application in VDI sessions in user session, Kiosk and MGS",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
 			"cros-engprod-muc@google.com",
@@ -86,14 +87,15 @@ func OpenChromeApp(ctx context.Context, s *testing.State) {
 					return strings.Contains(w.Title, appToOpen)
 				},
 				&testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-				s.Fatal("Failed to find window for: ", err)
+				s.Fatalf("Failed to find %s window: %v", appToOpen, err)
 			}
 		}
 
 		// Use First() as in VMWare mouse hovers over the tab showing its ballon
 		// tip containing "New tab".
-		if err := uidetector.WaitUntilExists(uidetection.TextBlock([]string{"New", "tab"}).First())(ctx); err != nil {
-			s.Fatal("Did not find text block confirming Chrome has started: ", err)
+		textBlock := []string{"New", "tab"}
+		if err := uidetector.WaitUntilExists(uidetection.TextBlock(textBlock).First())(ctx); err != nil {
+			s.Fatalf("Did not find text block %v confirming %s has started: %v", textBlock, appToOpen, err)
 		}
 		return nil
 	}
