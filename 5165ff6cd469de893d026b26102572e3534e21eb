@@ -63,6 +63,30 @@
       },
       "revId": "5165ff6cd469de893d026b26102572e3534e21eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18273d8b_de096159",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-12T23:47:52Z",
+      "side": 1,
+      "message": "Then use `cmdRunner.RunWithCombinedOutput`.",
+      "parentUuid": "90fa0787_527603b3",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "5165ff6cd469de893d026b26102572e3534e21eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
