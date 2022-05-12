@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c29357_e158afed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-12T11:13:14Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "dcb89ecf577b4aa4518a158c3cc30f68a1a2a28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5ad9691_c620cd40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-12T11:13:14Z",
+      "side": 1,
+      "message": "nit: better to print out the variable name and original value.",
+      "range": {
+        "startLine": 190,
+        "startChar": 12,
+        "endLine": 190,
+        "endChar": 33
+      },
+      "revId": "dcb89ecf577b4aa4518a158c3cc30f68a1a2a28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c39979_8cf2948e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-12T11:13:14Z",
+      "side": 1,
+      "message": "nit: return y.ensureVideoPlaying(ctx, playerView, playBtn)\n\nThe wrapped message does not add extra information.",
+      "range": {
+        "startLine": 413,
+        "startChar": 2,
+        "endLine": 416,
+        "endChar": 12
+      },
+      "revId": "dcb89ecf577b4aa4518a158c3cc30f68a1a2a28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
