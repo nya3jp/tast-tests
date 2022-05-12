@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f8b4ce_0c698486",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-12T06:45:03Z",
+      "side": 1,
+      "message": "Prefer to wait for a few round to make sure volteer/lilipop and nami/akali are fine.",
+      "revId": "d5247ab85d8c8575848f40f228bd3cb482aa9002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
