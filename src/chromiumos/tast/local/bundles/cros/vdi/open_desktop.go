@@ -27,8 +27,9 @@ type desktopData struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OpenDesktop,
-		Desc: "Test opens Desktop in VDI sessions in user session, Kiosk and MGS",
+		Func:         OpenDesktop,
+		LacrosStatus: testing.LacrosVariantNeeded,
+		Desc:         "Test opens Desktop in VDI sessions in user session, Kiosk and MGS",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
 			"cros-engprod-muc@google.com",
@@ -43,7 +44,7 @@ func init() {
 				Name:    "citrix",
 				Fixture: fixture.CitrixLaunched,
 				Val: desktopData{
-					DesktopName:   "On-Prem Desktop EMEA",
+					DesktopName:   "WindowsServer2019",
 					RunDialogKeys: "Search+R",
 				},
 			},
@@ -59,7 +60,7 @@ func init() {
 				Name:    "mgs_citrix",
 				Fixture: fixture.MgsCitrixLaunched,
 				Val: desktopData{
-					DesktopName:   "On-Prem Desktop EMEA",
+					DesktopName:   "WindowsServer2019",
 					RunDialogKeys: "Search+R",
 				},
 			},
