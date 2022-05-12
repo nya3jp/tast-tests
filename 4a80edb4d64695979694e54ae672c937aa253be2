@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5e1f8f_9c0f6bc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/loginutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-12T00:57:26Z",
+      "side": 1,
+      "message": "Now we have this common method. Any other app other than Minecraft can use this?",
+      "revId": "4a80edb4d64695979694e54ae672c937aa253be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
