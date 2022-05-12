@@ -46,7 +46,7 @@ func init() {
 			"chromeos-kiosk-eng+TAST@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "auto_update_stable"},
 		Fixture:      fixture.ChromeEnrolledLoggedIn,
 		// TODO(b/230317245): Add variant with real DPanel server after go/tape-tast
 		//                    is implemented and available.
@@ -99,9 +99,7 @@ func DeviceTargetVersionPrefix(ctx context.Context, s *testing.State) {
 	if !ok {
 		s.Fatal("Failed to get board from "+etcLSBPath, err)
 	}
-	// Remove suffixes like -kernelnext and -arc-r.
-	split := strings.Split(board, "-")
-	signedBoard := split[0] + "-signed-mp-v2keys"
+	signedBoard := board + "-signed-mp-v2keys"
 	etcLSB[lsbrelease.Board] = signedBoard
 
 	// Modify OS version.
