@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c16172d_f483179a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-12T03:12:07Z",
+      "side": 1,
+      "message": "nit: This prefix is not needed, because the entire repository is for tast. If you want to prefix something, maybe `launcher: ` ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "12287338c58bdc0cee7eb5d063f12705b67af3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3757dff1_e75e47fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/exit_search_show_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-12T03:12:07Z",
+      "side": 1,
+      "message": "nit: you can inline the type definition, and even subtests.\n\n```\nfor _, subtest :\u003d [] struct {\n  ..\n} {\n  {\n    name: ...\n    ...\n  },\n  ...\n} {\n  s.Run(...)\n}\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 90,
+        "endChar": 41
+      },
+      "revId": "12287338c58bdc0cee7eb5d063f12705b67af3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64b7471_1177f64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/exit_search_show_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-12T03:12:07Z",
+      "side": 1,
+      "message": "nit: name\nsubtest.subtestName looks redundant.",
+      "revId": "12287338c58bdc0cee7eb5d063f12705b67af3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f33279fe_a1479fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/exit_search_show_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-12T03:12:07Z",
+      "side": 1,
+      "message": "not needed?",
+      "range": {
+        "startLine": 111,
+        "startChar": 93,
+        "endLine": 111,
+        "endChar": 99
+      },
+      "revId": "12287338c58bdc0cee7eb5d063f12705b67af3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
