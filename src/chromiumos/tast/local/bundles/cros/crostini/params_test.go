@@ -18,7 +18,6 @@ import (
 )
 
 var testFilesFix = []string{
-	"app_gedit_install_uninstall.go",
 	"audio_basic.go",
 	"audio_playback_configurations.go",
 	"basic.go",
@@ -114,9 +113,10 @@ var perfTestsExtraData = map[string][]string{
 }
 
 var mainlineExpensiveTests = map[string]time.Duration{
-	"backup_restore.go": 10 * time.Minute,
-	"fs_corruption.go":  10 * time.Minute,
-	"oom_event.go":      10 * time.Minute,
+	"backup_restore.go":              10 * time.Minute,
+	"fs_corruption.go":               10 * time.Minute,
+	"oom_event.go":                   10 * time.Minute,
+	"app_gedit_install_uninstall.go": 12 * time.Minute,
 }
 
 func TestExpensiveParams(t *testing.T) {
