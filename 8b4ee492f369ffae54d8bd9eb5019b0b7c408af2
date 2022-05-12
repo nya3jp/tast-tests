@@ -22,6 +22,30 @@
       },
       "revId": "8b4ee492f369ffae54d8bd9eb5019b0b7c408af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0d1ab2_cd759cfa",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-12T06:30:05Z",
+      "side": 1,
+      "message": "I use retrieve instead.",
+      "parentUuid": "35b58219_33f1a9d1",
+      "range": {
+        "startLine": 186,
+        "startChar": 17,
+        "endLine": 186,
+        "endChar": 32
+      },
+      "revId": "8b4ee492f369ffae54d8bd9eb5019b0b7c408af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
