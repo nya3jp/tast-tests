@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a59d6a_914187c0",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-12T19:00:10Z",
+      "side": 1,
+      "message": "Thanks for sharing. Removed this IsNoBatteryError() func, and the caller uses errors.Is to compare with the exposed ErrNoBattery.",
+      "parentUuid": "84b8752a_70c8650b",
+      "revId": "6eb79c685f3cf3259467bf4ee117af12bbcb6bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "973526b4_b38ecc02",

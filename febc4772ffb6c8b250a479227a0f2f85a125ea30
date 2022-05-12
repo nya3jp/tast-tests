@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf9848e_968d55b3",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-12T19:00:10Z",
+      "side": 1,
+      "message": "Because the test wants to know the discharge error by passing in a pointer at line 164 (TryBatteryDischarge)\n\nI did refactor so the error can be returned with Err() interface.",
+      "parentUuid": "1489e0a2_64221de4",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 17
+      },
+      "revId": "febc4772ffb6c8b250a479227a0f2f85a125ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8bee619_984d4af1",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-12T17:32:59Z",
       "side": 1,
       "message": "Keep this inline",
+      "range": {
+        "startLine": 197,
+        "startChar": 30,
+        "endLine": 197,
+        "endChar": 42
+      },
+      "revId": "febc4772ffb6c8b250a479227a0f2f85a125ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d161fd9d_d6caad0e",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-12T19:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8bee619_984d4af1",
       "range": {
         "startLine": 197,
         "startChar": 30,
