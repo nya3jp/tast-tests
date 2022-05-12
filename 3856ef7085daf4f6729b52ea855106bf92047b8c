@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ae3e09_7ab1b3bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/shortcut_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-12T23:33:58Z",
+      "side": 1,
+      "message": "wrong@ I wonder if we could adjust scoring here  - I\u0027d expect shortcut to open launcher to have higher priority, though on another hand it\u0027s a but less obscure :)",
+      "revId": "3856ef7085daf4f6729b52ea855106bf92047b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
