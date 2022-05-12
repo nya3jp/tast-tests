@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "8609cf49b2b3a9f81eeff8cbd759c2f72140b87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80918de5_86488908",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-12T08:15:37Z",
+      "side": 1,
+      "message": "LGTM\n\nplease wait for +1 from Aya before submitting",
+      "revId": "8609cf49b2b3a9f81eeff8cbd759c2f72140b87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
