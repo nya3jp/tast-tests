@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4124995_9ce62c39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T17:23:37Z",
+      "side": 1,
+      "message": "Have a cl on https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3639807 for a different test case. Since some functionality is shared within the new test, this one and search_installed_apps.go, would be worth moving common functionality to launcher.go",
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67729062_ccdc0f92",
@@ -48,6 +65,121 @@
       "writtenOn": "2022-05-12T16:45:50Z",
       "side": 1,
       "message": "can we add params to test tablet mode, and maybe use fixtures that force ProductivtiyLauncher feature state\n\n(something like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go;drc\u003d0a66dd87343da285f4f206a92eb6e0c765584141;l\u003d38)\n\nProductivityLauncher flag has recently been turned on by default, so I\u0027d be fine leaving out \"LegacyLauncher\" params out.",
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50914c5d_28b29b38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T17:23:37Z",
+      "side": 1,
+      "message": "probably would be nice to defer the uninstall of the app through ossettings.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go;l\u003d177-193?q\u003dinstalled_apps.go#:~:text\u003d176-,177,-178",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc08dfde_e05f21c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T17:23:37Z",
+      "side": 1,
+      "message": "Once we uninstall the app, it should be removed as well from the app list, so I don\u0027t think we need to reopen the launcher",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 63
+      },
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fbe99d_3e73cab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T17:23:37Z",
+      "side": 1,
+      "message": "nit: still remains.",
+      "range": {
+        "startLine": 147,
+        "startChar": 23,
+        "endLine": 147,
+        "endChar": 38
+      },
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f2ad990_95825a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T17:23:37Z",
+      "side": 1,
+      "message": "This method will be useful in other tests. Consider moving to launcher.go",
+      "range": {
+        "startLine": 187,
+        "startChar": 5,
+        "endLine": 187,
+        "endChar": 27
+      },
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b80382_a1b08440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-05-12T17:23:37Z",
+      "side": 1,
+      "message": "why would we need to click the confirm button more than once?",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 79
+      },
       "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
