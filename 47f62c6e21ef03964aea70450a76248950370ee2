@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "053df74a_ec96a41d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-12T12:36:23Z",
+      "side": 1,
+      "message": "yeah, that makes sense in Go and other languages to split utils into many small specific packages.\n\nYes, please change file path as well.",
+      "parentUuid": "a4bab333_d360389b",
+      "revId": "47f62c6e21ef03964aea70450a76248950370ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "641ae38c_b10498e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/util/util.go",
         "patchSetId": 8
