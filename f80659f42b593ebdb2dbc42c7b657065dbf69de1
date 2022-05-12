@@ -46,6 +46,30 @@
       },
       "revId": "f80659f42b593ebdb2dbc42c7b657065dbf69de1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd7959d_cc214d62",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-12T00:40:14Z",
+      "side": 1,
+      "message": "I would avoid passing browser/lacros handles to the constructor because it would imply that we have them at that moment. Which is not necessary true because we may be trying to run the lacros login test.\n\nCould we do something like:\n1) We always expect to get Ash conn handles when we construct the Recorder.\n2) We can add lacros tracing separately if we need.\n\nI think that we should get ash trace and lacros trace separately and probably at the same time, so that we could enable tracing of Ash for all the tests by default, and add lacros tracing for all lacrossified tests.\n\nWDYT?",
+      "parentUuid": "57a22263_0a458f57",
+      "range": {
+        "startLine": 274,
+        "startChar": 38,
+        "endLine": 274,
+        "endChar": 74
+      },
+      "revId": "f80659f42b593ebdb2dbc42c7b657065dbf69de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
