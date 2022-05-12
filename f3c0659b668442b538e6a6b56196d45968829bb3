@@ -33,6 +33,41 @@
       "message": "lgtm, thanks for the help on the lacros variant tests!",
       "revId": "f3c0659b668442b538e6a6b56196d45968829bb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a46a34_1f5722d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-12T18:07:29Z",
+      "side": 1,
+      "message": "+hidehiko for the lacros tast owner\u0027s review.\n\nBy the way, this test needs 103.0.5058.0 to be uprevved for the fix that makes this test pass. Strangely, uprev seems to keep failing for a while and sit on 103.0.5045.0.",
+      "revId": "f3c0659b668442b538e6a6b56196d45968829bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22807122_33176480",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-12T18:07:29Z",
+      "side": 1,
+      "message": "Happy to help!",
+      "parentUuid": "9e573f2d_e09d16fa",
+      "revId": "f3c0659b668442b538e6a6b56196d45968829bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
