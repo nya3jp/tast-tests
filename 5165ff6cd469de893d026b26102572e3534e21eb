@@ -16,6 +16,29 @@
       "message": "LGTM for cryptohome ",
       "revId": "5165ff6cd469de893d026b26102572e3534e21eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d885d0e_37968275",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-12T23:26:24Z",
+      "side": 1,
+      "message": "If `cmdRunner.Run` fails, this code will report the error, but I think the output (the first return value, where you have written `_`) is likely to be more informative. I think that you should report both return values of `cmdRunner.Run` when it fails.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "5165ff6cd469de893d026b26102572e3534e21eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
