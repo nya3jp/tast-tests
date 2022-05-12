@@ -16,6 +16,24 @@
       "message": "(optional) as not a regression, but I think we should not use string to represent a structured data. Instead, I\u0027d recommend to have a properly typed structured.",
       "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "504138bb_9fed953f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-12T01:31:32Z",
+      "side": 1,
+      "message": "Thanks for the suggestion!\nTo check my understanding, since this will actually be used as a part of some js code (L41), do you mean we\u0027d better have a struct and find a way to stringify it when using it?\n\nAnyway, let me submit this one now and will have another refactor patch if necessary",
+      "parentUuid": "a9748830_af171d47",
+      "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
