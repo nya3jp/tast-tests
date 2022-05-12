@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae97eb3e_b7f4ea7c",
+        "filename": "src/chromiumos/tast/local/bluetooth/advertising.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T07:02:14Z",
+      "side": 1,
+      "message": "nit: could you inline Capabilities for error cases? output does not make sense to use, because it is not \"output\".",
+      "revId": "02a4cfadf564ada2e7212d73dbef0d71e7605521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

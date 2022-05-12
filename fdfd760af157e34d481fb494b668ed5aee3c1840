@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d93682a4_65aff67a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T07:02:14Z",
+      "side": 1,
+      "message": "could you document what this does and its background?\n\nAlso, you configured global bt set up. Do you need to unset?",
+      "revId": "fdfd760af157e34d481fb494b668ed5aee3c1840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415486ff_e2601899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-12T07:02:14Z",
+      "side": 1,
+      "message": "where does this \"3\" come from? Could you document, at least?",
+      "range": {
+        "startLine": 159,
+        "startChar": 36,
+        "endLine": 159,
+        "endChar": 37
+      },
+      "revId": "fdfd760af157e34d481fb494b668ed5aee3c1840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
