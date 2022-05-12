@@ -71,8 +71,12 @@ func init() {
 
 				// dedede
 				"boten",
+				"lantis",
+				"madoo",
+				"magolor",
 				"metaknight",
 				"sasuke",
+				"storo",
 				"storo360",
 
 				// grunt
@@ -132,6 +136,7 @@ func init() {
 				"berknip",
 				"dirinboz",
 				"ezkinil",
+				"gumboz",
 				"morphius",
 				"vilboz",
 				"vilboz14",
