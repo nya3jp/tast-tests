@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "604936d5_4f1a4742",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-05-12T17:40:00Z",
+      "side": 1,
+      "message": "Hi Bob, Alfred,\nSince it is a new test and it requires some account setup, can I ask you a favor of taking a quick screenrecording, through code / just by a cell phone, so we have a better understanding of the e2e flow.\nThanks,\nJonathan",
+      "revId": "8357fca3b77d25dda3ce686d700c721612292cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7278b6a5_b114c7e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-05-12T17:40:00Z",
+      "side": 1,
+      "message": "typo reqest",
+      "revId": "8357fca3b77d25dda3ce686d700c721612292cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
