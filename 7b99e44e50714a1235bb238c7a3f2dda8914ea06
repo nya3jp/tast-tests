@@ -70,6 +70,24 @@
       "parentUuid": "84b470e3_97d6713f",
       "revId": "7b99e44e50714a1235bb238c7a3f2dda8914ea06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95c9741_f38d5eed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-05-12T00:28:29Z",
+      "side": 1,
+      "message": "\u003e For Cassie, do you want to log user out between each of your tests?\n\nARCVPN* tests just require an adb connection to issue some commands to verify the adb state - which for now means the user needs to be logged in. The tests are using the old shillReset fixture, but uses a specific host VPN that doesn\u0027t require cert setup so the setup doesn\u0027t log the user out.",
+      "parentUuid": "a3f3c5d1_d0ef99d8",
+      "revId": "7b99e44e50714a1235bb238c7a3f2dda8914ea06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
