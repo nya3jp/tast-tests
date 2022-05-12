@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6ae447_47f8e664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_long_sms.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-12T13:20:22Z",
+      "side": 1,
+      "message": "Any reason why this is a [2]string when it seems like we only ever use index 0?\n\nAlso, shouldn\u0027t we just fail when the OwnNumbers property doesn\u0027t exist, instead of using a default? If we skip the block below on a lab DUT then this test will almost certainly fail as the DUT will have a US (+1) number.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "007907e6774e39187ec2cfe569cd27fe88ac17e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
