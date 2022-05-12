@@ -16,6 +16,52 @@
       "message": "Hello Jeremy, please have a look to the bios services changes. ",
       "revId": "86c69ab3d0ab800c4d7a26acb6bd1df2f5efb261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b748c9a_dc229f84",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-12T15:52:47Z",
+      "side": 1,
+      "message": "This logic seems a little complex, when the caller knows which situation we are in.\n\nPerhaps this method should be split into:\n\nWriteSingleSection (-i sec:path) and WriteFullImageSections (-i sec -w path)",
+      "range": {
+        "startLine": 231,
+        "startChar": 2,
+        "endLine": 252,
+        "endChar": 3
+      },
+      "revId": "86c69ab3d0ab800c4d7a26acb6bd1df2f5efb261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ae813a_76e28228",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-12T15:52:47Z",
+      "side": 1,
+      "message": "futility can do this also. It might unarchive to a temp file for all I know, but might be a more reliable choice.\n\nfutility --archive \u003cpath\u003e ...\n\nIf you do have to unpack it yourself, can you at least only extract the files you need?",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 422,
+        "endChar": 0
+      },
+      "revId": "86c69ab3d0ab800c4d7a26acb6bd1df2f5efb261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
