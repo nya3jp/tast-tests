@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3d9d6f_62afb2a3",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-12T22:42:57Z",
+      "side": 1,
+      "message": "use `role.TextField`. https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/role/constants.go",
+      "revId": "32e464bd6f21bbdd480ca4dbcb4296553443429f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
