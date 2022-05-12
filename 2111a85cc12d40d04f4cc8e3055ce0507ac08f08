@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59db68a_44d1b68e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-12T09:27:40Z",
+      "side": 1,
+      "message": "thanks to hidehiko san spending time to discuss with me for better implementation ",
+      "revId": "2111a85cc12d40d04f4cc8e3055ce0507ac08f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
