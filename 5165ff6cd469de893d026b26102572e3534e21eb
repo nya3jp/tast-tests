@@ -87,6 +87,30 @@
       },
       "revId": "5165ff6cd469de893d026b26102572e3534e21eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca671cdb_a3d1b87d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_factor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-12T23:51:01Z",
+      "side": 1,
+      "message": "That did the trick. Thanks a lot!",
+      "parentUuid": "18273d8b_de096159",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "5165ff6cd469de893d026b26102572e3534e21eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
