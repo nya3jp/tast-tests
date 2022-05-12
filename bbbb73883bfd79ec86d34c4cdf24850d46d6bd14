@@ -16,6 +16,24 @@
       "message": "Nit: I think we can combine the search \u0026 validation. Same for personalization search.",
       "revId": "bbbb73883bfd79ec86d34c4cdf24850d46d6bd14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c65e1e_b4eef953",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-12T22:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88d8240d_d143cb87",
+      "revId": "bbbb73883bfd79ec86d34c4cdf24850d46d6bd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
