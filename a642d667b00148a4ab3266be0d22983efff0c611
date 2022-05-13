@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6dea46f_6eb096d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-05-13T16:14:53Z",
+      "side": 1,
+      "message": "note that your tests likely have a problem if they _rely_ on a previous test cleaning up properly like this. you really can\u0027t guarantee the cleanup will succeed, so you need to try your best to clean things at the start too",
+      "revId": "a642d667b00148a4ab3266be0d22983efff0c611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
