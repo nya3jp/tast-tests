@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85375cc_2649ddd5",
+        "filename": "src/chromiumos/tast/local/hostapd/conf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "071ca7fc_c8a797c6",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52764b93_794f873c",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-05-12T07:42:27Z",
       "side": 1,
       "message": "In that case we should call this as an address, ctrlSocketPath.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7480efb6_d722ff70",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52764b93_794f873c",
       "range": {
         "startLine": 33,
         "startChar": 4,
@@ -115,6 +163,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc0ccc67_79c2a2e8",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e80850_f51dd7e1",
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af0442eb_e4cbdb44",
@@ -128,6 +194,24 @@
       "writtenOn": "2022-05-10T16:49:47Z",
       "side": 1,
       "message": "Check this in NewServer and panic (this is not expected).",
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37bba02_7f209aee",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af0442eb_e4cbdb44",
       "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -157,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "217f3fae_a50da98c",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "The doc of `ioutil.TempDir()` says `It is the caller\u0027s responsibility\nto remove the directory when no longer needed.`, so I guess I still have to remove it on failure 😊",
+      "parentUuid": "5a3267a4_02daff32",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 4
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d19cd86a_ae794e3b",
         "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
         "patchSetId": 5
@@ -168,6 +276,30 @@
       "writtenOn": "2022-05-12T07:42:27Z",
       "side": 1,
       "message": "We should maybe document what these options do",
+      "range": {
+        "startLine": 90,
+        "startChar": 38,
+        "endLine": 91,
+        "endChar": 32
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2f9569_653a83c4",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d19cd86a_ae794e3b",
       "range": {
         "startLine": 90,
         "startChar": 38,
@@ -203,6 +335,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7ec4d3d_d8daebbd",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "Actually I don\u0027t know, this package is a small refactor of the former `wiredhostapd` package, I re-used most of the code.",
+      "parentUuid": "d3bc2404_12e059ce",
+      "range": {
+        "startLine": 92,
+        "startChar": 34,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0b7e586_432359c2",
         "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
         "patchSetId": 5
@@ -214,6 +370,30 @@
       "writtenOn": "2022-05-10T16:49:47Z",
       "side": 1,
       "message": "Is this context required?",
+      "range": {
+        "startLine": 101,
+        "startChar": 22,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc23dd96_9f91d6d2",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "No it\u0027s not :)",
+      "parentUuid": "e0b7e586_432359c2",
       "range": {
         "startLine": 101,
         "startChar": 22,
@@ -255,6 +435,24 @@
       "side": 1,
       "message": "Just curious: is there another way to stop hostapd for instance through the control domain socket (by closing it, or sending a shutdown command) ?",
       "parentUuid": "b6d3a860_c3f5ba5c",
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36e8354_f2ed91c8",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "@vsavu as said before, the package is a small refactor of `wiredhostapd` package and I don\u0027t know why SIGTERM is used instead of SIGKILL.\n\n@hugobenichi I looked for it but I found nothing.",
+      "parentUuid": "30d30a1b_8a14abd3",
       "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -313,6 +511,30 @@
       "side": 1,
       "message": "Is it standard to use \"STA\" for WiFi station interfaces.",
       "parentUuid": "252b45b8_572f2c91",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed69790_79b97732",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b23637e_35e1cf5d",
       "range": {
         "startLine": 126,
         "startChar": 17,
