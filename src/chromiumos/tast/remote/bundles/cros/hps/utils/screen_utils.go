@@ -16,14 +16,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// This will be updated to be read from system (s)
+// Settings name for LoL and SPA.
 const (
-	QuickDimTime         = 6 * time.Second
-	QuickLockTime        = 126 * time.Second
-	QuickDimDisableTime  = 420 * time.Second
-	QuickLockDisableTime = 90 * time.Second
-	PresentQuickDimTime  = 840 * time.Second
-	PresentQuickLockTime = 90 * time.Second
+	LockOnLeave       = "Lock-on-leave"
+	SecondPersonAlert = "Viewing protection"
 )
 
 // GetBrightness gets the current brightness of the dut

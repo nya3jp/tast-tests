@@ -12,9 +12,9 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
-	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/common/hps/hpsutil"
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/hps/utils"
 	"chromiumos/tast/rpc"
@@ -41,37 +41,28 @@ func init() {
 }
 
 func CameraboxPresence(ctx context.Context, s *testing.State) {
-	// Connecting to DUT with HPS
 	d := s.DUT()
-	cl, err := rpc.Dial(ctx, d, s.RPCHint())
-	if err != nil {
-		s.Fatal("Failed to connect to the DUT: ", err)
-	}
-	defer cl.Close(ctx)
 
-	archive := s.DataPath(hpsutil.PersonPresentPageArchiveFilename)
-	if err != nil {
-		s.Fatal("Tmp dir creation failed on DUT")
-	}
-	filePaths, err := utils.UntarImages(ctx, archive)
-
-	// Creating hps context. No need for powercycle as it's testing builtin hps
+	// Creating hps context.
 	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), d.Conn())
 	if err != nil {
 		s.Fatal("Error creating HpsContext: ", err)
 	}
 
-	// Connecting to the other tablet that will render the picture
-	var chartAddr string
-	if altAddr, ok := s.Var("tablet"); ok {
-		chartAddr = altAddr
-	}
-	c, hostPaths, err := chart.New(ctx, d, chartAddr, s.OutDir(), filePaths)
-
+	// Connecting to the other tablet that will render the picture.
+	hostPaths, c, err := utils.SetupDisplay(ctx, s)
 	if err != nil {
-		s.Fatal("Put picture failed: ", err)
+		s.Fatal("Error setting up display: ", err)
 	}
-	testing.ContextLog(ctx, "hostPaths: ", hostPaths)
+
+	// Connecting to Taeko.
+	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+	cl, err := rpc.Dial(ctx, d, s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to setup DUT: ", err)
+	}
+	defer cl.Close(cleanupCtx)
 
 	bindKernelDriver(ctx, d.Conn(), false)
 
