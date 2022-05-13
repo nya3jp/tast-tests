@@ -97,6 +97,30 @@
       },
       "revId": "94fa00d7d400c01b8711ef23ac73a0a9b8c81327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d73b19_f1beacdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-13T16:39:53Z",
+      "side": 1,
+      "message": "Yes that sounds good. I think we can do the same for dock1PersistentSettingsStep7 too.",
+      "parentUuid": "a107e701_e4f59134",
+      "range": {
+        "startLine": 202,
+        "startChar": 38,
+        "endLine": 202,
+        "endChar": 48
+      },
+      "revId": "94fa00d7d400c01b8711ef23ac73a0a9b8c81327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
