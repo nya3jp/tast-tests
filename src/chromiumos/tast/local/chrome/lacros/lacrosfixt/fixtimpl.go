@@ -161,9 +161,15 @@ func init() {
 		Name:     "lacrosVariationEnabled",
 		Desc:     "Lacros with variation service enabled",
 		Contacts: []string{"yjt@google.com", "lacros-team@google.com"},
+		Vars:     []string{"fakeVariationsChannel"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			channel := "beta"
+			if val, ok := s.Var("fakeVariationsChannel"); ok {
+				s.Log("Setting fake-variations-channel to ", val)
+				channel = val
+			}
 			return NewConfig(Mode(lacros.LacrosPrimary), ChromeOptions(
-				chrome.LacrosExtraArgs("--fake-variations-channel=beta"),
+				chrome.LacrosExtraArgs("--fake-variations-channel="+channel),
 				chrome.LacrosExtraArgs("--variations-server-url=https://clients4.google.com/chrome-variations/seed"))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
