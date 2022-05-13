@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212464da_ad755f82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "nit: We can use %v to use the default format of a variable unless what you want is not the default one\n\nRef: https://pkg.go.dev/fmt#hdr-Printing",
+      "range": {
+        "startLine": 75,
+        "startChar": 40,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59fab4d7_3faaa993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "nit: Use a cleanup ctx which lives longer than the ctx for running tests",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 19
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06110437_854d7fdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "stableDuration",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 15
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e310d06_2501a75a",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t find any variable named `featureConf`. Is it renamed?",
+      "range": {
+        "startLine": 89,
+        "startChar": 57,
+        "endLine": 89,
+        "endChar": 68
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94058558_74bb4ab8",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "nit: Maybe just `output :\u003d conf`",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 19
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad06939_9eefeb1c",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "Maybe we can have different sizes of `FeatureSet` for models, like 4 for kano and 5 for redrix4es. So that if `NewModelConfigFromJSON()` parses it from the wrong model we can tell.",
+      "range": {
+        "startLine": 69,
+        "startChar": 33,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d5c9f13_7dabbb6a",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "Since it might be caused by \"err !\u003d nil\", we might want to show the `err` in the error message as well",
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895eea25_2cc32c6d",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "It seems these lines are duplicated with L73-L85.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe3484a_80982f85",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "If it is caused by `!ok`, maybe we should have a different error message",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 69
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c75ea4_111c5da2",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "Duplicated?",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 98
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7df379d_753508b7",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "nit: We might need to check the returned err from testing.Sleep(). Same to the following usages.",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33fa3f35_d32173bc",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-13T05:05:06Z",
+      "side": 1,
+      "message": "These lines are identical to the \"PerfRecord\" but only with different profiler. How about extracting these lines into a function and pass the profiler in?",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 18
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
