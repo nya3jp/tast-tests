@@ -88,6 +88,14 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			s.Fatal("While determining charger state: ", err)
 		}
 
+		// For debugging purposes, log kernal output to check if hibernation is supported,
+		// prior to suspending DUT.
+		memSleep, err := h.DUT.Conn().CommandContext(ctx, "cat", "/sys/power/mem_sleep").Output()
+		if err != nil {
+			s.Log("Failed to read from '/sys/power/mem_sleep': ", err)
+		}
+		s.Logf("Output from '/sys/power/mem_sleep': %s", strings.TrimSpace(string(memSleep)))
+
 		s.Log("Suspending DUT")
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend")
@@ -170,7 +178,8 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 
 		// For debugging purposes, also log information from the base file that
 		// 'power_supply_info' derives battery state from.
-		if err := checkBatteryFromBaseFile(ctx, h); err != nil {
+		batteryBaseFile, err := checkBatteryFromBaseFile(ctx, h)
+		if err != nil {
 			s.Fatal("Could not determine battery status from base file: ", err)
 		}
 
@@ -194,7 +203,19 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			}
 			return nil
 		}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 2 * time.Minute}); err != nil {
-			s.Fatal("While verifying battery information: ", err)
+			// In case that power_supply_info did not update as expected, validate battery state
+			// based on the information found from the battery device path.
+			s.Logf("While verifying battery information: %v. Attempting to check against base file", err)
+			switch hasPluggedAC {
+			case true:
+				if batteryBaseFile != "Full" && batteryBaseFile != "Charging" {
+					s.Fatalf("Found unexpected battery state from base file when AC plugged: %s", batteryBaseFile)
+				}
+			case false:
+				if batteryBaseFile != "Discharging" {
+					s.Fatalf("Found unexpected battery state from base file when AC unplugged: %s", batteryBaseFile)
+				}
+			}
 		}
 	}
 }
@@ -240,12 +261,12 @@ func checkBatteryInfo(ctx context.Context, h *firmware.Helper, pattern string) (
 
 // checkBatteryFromBaseFile returns battery state reported by the base file,
 // which the host command 'power_supply_info' depends on.
-func checkBatteryFromBaseFile(ctx context.Context, h *firmware.Helper) error {
+func checkBatteryFromBaseFile(ctx context.Context, h *firmware.Helper) (string, error) {
 	// Find the battery device path from 'power_supply_info'.
 	reBatteryDevicePath := `Device: (Battery\n.*path:\s*\S*)`
 	batteryDevicePath, err := checkBatteryInfo(ctx, h, reBatteryDevicePath)
 	if err != nil {
-		return errors.Wrap(err, "unable to find battery device path")
+		return "", errors.Wrap(err, "unable to find battery device path")
 	}
 
 	// Information on battery status can usually be found under 'batteryDevicePath/status'.
@@ -256,8 +277,8 @@ func checkBatteryFromBaseFile(ctx context.Context, h *firmware.Helper) error {
 	testing.ContextLogf(ctx, "Checking battery information from %s", statusPath)
 	batteryBaseFile, err := h.Reporter.CatFile(ctx, statusPath)
 	if err != nil {
-		return errors.Wrap(err, "could not determine battery status")
+		return "", errors.Wrap(err, "could not determine battery status")
 	}
 	testing.ContextLogf(ctx, "Battery state from base file: %s", batteryBaseFile)
-	return nil
+	return batteryBaseFile, nil
 }
