@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ea7c9e_f5e10b91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-05-13T13:05:24Z",
+      "side": 1,
+      "message": "slgtm. Thanks for adding the Polymer3 version!",
+      "revId": "59b2d22502acb81ae5098736431b69753e0db008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
