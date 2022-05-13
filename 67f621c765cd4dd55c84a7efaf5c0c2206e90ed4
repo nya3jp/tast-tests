@@ -67,6 +67,24 @@
       "message": "See also https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3645948/ which is doing a similar thing, but has a longer timeout for uninstallation so I reckon we prefer that one.",
       "revId": "67f621c765cd4dd55c84a7efaf5c0c2206e90ed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb95103_3dfd6aa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-05-13T00:28:58Z",
+      "side": 1,
+      "message": "makes sense.\n\ncan y\u0027all look at https://b.corp.google.com/issues/232105954 too?\n\nand update Contacts? https://b.corp.google.com/issues/232105954#comment13",
+      "parentUuid": "87110ab1_b9335a42",
+      "revId": "67f621c765cd4dd55c84a7efaf5c0c2206e90ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
