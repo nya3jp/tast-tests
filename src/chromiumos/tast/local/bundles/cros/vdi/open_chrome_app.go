@@ -34,16 +34,18 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:    "citrix",
-				Fixture: fixture.CitrixLaunched,
+				Name:      "citrix",
+				Fixture:   fixture.CitrixLaunched,
+				ExtraAttr: []string{"group:mainline", "informational"},
 			},
 			{
 				Name:    "vmware",
 				Fixture: fixture.VmwareLaunched,
 			},
 			{
-				Name:    "kiosk_citrix",
-				Fixture: fixture.KioskCitrixLaunched,
+				Name:      "kiosk_citrix",
+				Fixture:   fixture.KioskCitrixLaunched,
+				ExtraAttr: []string{"group:mainline", "informational"},
 			},
 			// b/207122370
 			// Vmware in Kiosk mode does not receive Ctrl+w to close tab.
@@ -52,8 +54,9 @@ func init() {
 				Fixture: fixture.KioskVmwareLaunched,
 			},
 			{
-				Name:    "mgs_citrix",
-				Fixture: fixture.MgsCitrixLaunched,
+				Name:      "mgs_citrix",
+				Fixture:   fixture.MgsCitrixLaunched,
+				ExtraAttr: []string{"group:mainline", "informational"},
 			},
 			{
 				Name:    "mgs_vmware",
