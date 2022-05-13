@@ -444,7 +444,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 	// Even if the window already appears to be in normal state, it may actually be in the Default state. So always set to normal.
 	windowState, err := ash.SetWindowState(ctx, d.tconn, window.ID, ash.WMEventNormal, true /* waitForStateChange */)
 	if err != nil {
-		return testArgs, err
+		return testArgs, errors.Wrap(err, "failed to set window state")
 	}
 
 	// .First() ensures it selects the outermost window element.
@@ -474,7 +474,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 		for i := 0; i < 3 && windowBoundsDP != requestedBounds; i++ {
 			_, displayID, err := ash.SetWindowBounds(ctx, d.tconn, window.ID, requestedBounds, window.DisplayID)
 			if err != nil {
-				return testArgs, err
+				return testArgs, errors.Wrap(err, "failed to set window bounds")
 			} else if displayID != window.DisplayID {
 				return testArgs, errors.New("Unable to move window to correct display")
 			}
@@ -482,7 +482,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 			// trustworthy because it waits for stability.
 			loc, err := ui.Location(ctx, windowFinder)
 			if err != nil {
-				return testArgs, err
+				return testArgs, errors.Wrap(err, "failed to wait for window location")
 			}
 			windowBoundsDP = *loc
 		}
@@ -501,7 +501,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 		return testArgs, errors.Errorf("screenshot has already been taken for %s, please give this screenshot a unique name", screenshotName)
 	}
 	if err := os.Mkdir(dir, 0755); err != nil {
-		return testArgs, err
+		return testArgs, errors.Wrapf(err, "failed to create dir %q", dir)
 	}
 
 	if d.config.OutputUITrees {
@@ -542,7 +542,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 	for _, subelement := range options.RemoveElements {
 		nodes, err := ui.NodesInfo(ctx, subelement.Ancestor(windowFinder))
 		if err != nil {
-			return testArgs, err
+			return testArgs, errors.Wrap(err, "failed to retrieve node info")
 		}
 		for _, node := range nodes {
 			removedRect := coords.ConvertBoundsFromDPToPX(node.Location, d.uiScale)
@@ -561,7 +561,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 		// This screenshot isn't used anywhere, but is useful for context to devs.
 		f, err := os.Create(filepath.Join(dir, wholeScreenFile))
 		if err != nil {
-			return nil, err
+			return nil, errors.Wrapf(err, "failed to create file %q", wholeScreenFile)
 		}
 		png.Encode(f, img)
 
@@ -575,7 +575,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 
 		f, err = os.Create(filepath.Join(dir, screenshotFile))
 		if err != nil {
-			return nil, err
+			return nil, errors.Wrapf(err, "failed to create file %q", screenshotFile)
 		}
 		png.Encode(f, cropped)
 		return cropped, nil
@@ -583,7 +583,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 
 	screenshot, err := takeScreenshot()
 	if err != nil {
-		return testArgs, err
+		return testArgs, errors.Wrap(err, "failed to take screenshot")
 	}
 	var lastScreenshot *image.RGBA
 	if options.Retries > 1 {
@@ -603,7 +603,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 
 		screenshot, err = takeScreenshot()
 		if err != nil {
-			return err
+			return errors.Wrap(err, "failed to take screenshot")
 		}
 		for y := screenshot.Bounds().Min.Y; y < screenshot.Bounds().Max.Y; y++ {
 			for x := screenshot.Bounds().Min.X; x < screenshot.Bounds().Max.X; x++ {
