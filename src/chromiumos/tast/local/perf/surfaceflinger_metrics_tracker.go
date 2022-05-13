@@ -129,6 +129,7 @@ func (f *SurfaceFlingerMetrics) recentFrames(ctx context.Context) error {
 	   the activity's main window are not updated when the main web content is
 	   composited into a SurfaceView.
 	*/
+	// TODO(b/232537114): Change to "ARC.command" after logic is made more robust.
 	out, err := f.arc.SurfaceFlingerLatencyCommand(ctx, f.surfaceName).Output()
 	if err != nil {
 		return errors.Wrap(err, "failed to execute SurfaceFlinger start command")
