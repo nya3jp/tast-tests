@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c8de6f_25802bc7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-13T01:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b907d2f2_ed4f1301",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "f0f67212c5baa15869962122812c14f9acc1b972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ed42ae5_554868b6",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-12T01:27:49Z",
       "side": 1,
       "message": "Should we increase the polling duration here as well?",
+      "revId": "f0f67212c5baa15869962122812c14f9acc1b972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "978da90f_5c96b165",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on_mix_presence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-13T01:15:43Z",
+      "side": 1,
+      "message": "It\u0027s increased within the function PollForDim:\n```\n\u0026testing.PollOptions{\n\t\tInterval: 100 * time.Millisecond,\n\t\tTimeout:  timeout + 3*time.Second,\n```",
+      "parentUuid": "9ed42ae5_554868b6",
       "revId": "f0f67212c5baa15869962122812c14f9acc1b972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
