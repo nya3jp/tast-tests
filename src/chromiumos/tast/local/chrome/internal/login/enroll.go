@@ -245,7 +245,7 @@ func performGAIAEnrollment(ctx context.Context, cfg *config.Config, sess *driver
 		return errors.Wrap(err, "no Internet connectivity, cannot perform GAIA enrollment")
 	}
 
-	if err := conn.Call(ctx, nil, "Oobe.skipToLoginForTesting"); err != nil {
+	if err := conn.Call(ctx, nil, "OobeAPI.skipToLoginForTesting"); err != nil {
 		return err
 	}
 
