@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3fffeb4_aea41400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-13T21:34:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9798e41_f67113fc",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53939196_b369947f",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1084ea41_0f038f79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-13T21:34:22Z",
+      "side": 1,
+      "message": "It looks like quick settings will collapse after a left click on PodIconButton. \nFor example, Quick Settings is open before the loop, click on the 1st page, click on pod icon button, it will close. So we need to reopen Quick Settings again to select the second page, then click on the pod icon button (where dark theme button really appears). Not sure if it\u0027s the case for all DUTs, but I think it\u0027s safe to check if Quick Settings still opens before continue.\nquicksettings.Shown() is to check if Quick Settings already opens, we won\u0027t expand/reopen it again.",
+      "parentUuid": "53939196_b369947f",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef9eec31_4b8a69aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
         "patchSetId": 1
@@ -77,6 +125,30 @@
       "writtenOn": "2022-05-13T20:55:37Z",
       "side": 1,
       "message": "same here. We only need to expand once.",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 57
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2534ba87_bd0ca6ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-13T21:34:22Z",
+      "side": 1,
+      "message": "refer to the above comment :)",
+      "parentUuid": "ef9eec31_4b8a69aa",
       "range": {
         "startLine": 138,
         "startChar": 3,
