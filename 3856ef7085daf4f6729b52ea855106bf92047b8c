@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "089a797d_a920083c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/shortcut_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-13T04:07:58Z",
+      "side": 1,
+      "message": "yeah, good point - removed \"isFirstResult\"\n\n(I\u0027d argue that testing whether something is first result may make sense in certain situations, but here search queries are likely a bit too generic )",
+      "parentUuid": "526b1f8e_72dc61bd",
+      "revId": "3856ef7085daf4f6729b52ea855106bf92047b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a6044aa_c9c98ce1",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-05-13T03:01:59Z",
       "side": 1,
       "message": "similar to above comment, WDYT about changing to be an exact substring match? e.g. query \"incognito\". I\u0027m not 100% sure that this test case will hold up under all possible revisions of the search algorithm, but an exact substring match has a much better chance of always being correct.",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 32
+      },
+      "revId": "3856ef7085daf4f6729b52ea855106bf92047b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "217315a1_eab69b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/shortcut_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-13T04:07:58Z",
+      "side": 1,
+      "message": "oh yeah - I meant this to be \"new incognito window\", and forgot to remove \"new\" after removing \"window\"",
+      "parentUuid": "6a6044aa_c9c98ce1",
       "range": {
         "startLine": 121,
         "startChar": 19,
