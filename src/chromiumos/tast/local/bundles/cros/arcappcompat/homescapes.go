@@ -104,10 +104,16 @@ func launchAppForHomescapes(ctx context.Context, s *testing.State, tconn *chrome
 	const (
 		gmailAccountPageID = "com.google.android.gms:id/account_picker"
 		okButtonText       = "OK"
+		notNowButtonText   = "Not now"
 	)
 
-	// Click on cancel button to install google play games.
-	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Click on not now button.
+	notNowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+notNowButtonText))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("notNowButton doesn't exists: ", err)
+	} else if err := notNowButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on notNowButton: ", err)
+	}
 
 	// Wait for Gmail account page.
 	gmailAccountPage := d.Object(ui.ID(gmailAccountPageID))
@@ -135,9 +141,10 @@ func launchAppForHomescapes(ctx context.Context, s *testing.State, tconn *chrome
 	}
 
 	// Check for launch verifier.
-	launchVerifier := d.Object(ui.PackageName(appPkgName))
-	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
-		s.Fatal("launchVerifier doesn't exists: ", err)
+	if currentAppPkg, err := testutil.CurrentAppPackage(ctx, d, s); err != nil {
+		s.Fatal("Failed to get current app package: ", err)
+	} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
+		s.Fatalf("Failed to launch after login: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 	}
+	testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }

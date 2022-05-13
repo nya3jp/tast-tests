@@ -191,7 +191,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 
 			// Close the app between iterations.
 			defer func(ctx context.Context) {
-				if appPkgName == asphaltPkgName || appPkgName == homescapesPkgName {
+				if appPkgName == asphaltPkgName {
 					HandleDialogBoxes(ctx, s, d, appPkgName)
 				}
 				if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
