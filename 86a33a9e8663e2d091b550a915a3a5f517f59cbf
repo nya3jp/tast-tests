@@ -359,6 +359,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7a00974_ddae2262",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-13T15:47:33Z",
+      "side": 1,
+      "message": "File a bug + add a TODO to check this.",
+      "parentUuid": "c7ec4d3d_d8daebbd",
+      "range": {
+        "startLine": 92,
+        "startChar": 34,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0b7e586_432359c2",
         "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
         "patchSetId": 5
@@ -453,6 +477,24 @@
       "side": 1,
       "message": "@vsavu as said before, the package is a small refactor of `wiredhostapd` package and I don\u0027t know why SIGTERM is used instead of SIGKILL.\n\n@hugobenichi I looked for it but I found nothing.",
       "parentUuid": "30d30a1b_8a14abd3",
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e290fb5_0502f59b",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-13T15:47:33Z",
+      "side": 1,
+      "message": "File a bug + add a TODO to check this.",
+      "parentUuid": "a36e8354_f2ed91c8",
       "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
