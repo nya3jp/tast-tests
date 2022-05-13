@@ -254,8 +254,8 @@ func (f *tastFixtureImpl) recoverUnhealthyDUT(ctx context.Context, s *testing.Fi
 	return nil
 }
 
-func (f *tastFixtureImpl) enrollChrome(ctx context.Context, s *testing.FixtState) error {
-	pc := policy.NewPolicyServiceClient(f.tf.rpc.Conn)
+func (f *tastFixtureImpl) enrollChrome(ctx context.Context, s *testing.FixtState, dutIdx int) error {
+	pc := policy.NewPolicyServiceClient(f.tf.duts[dutIdx].rpc.Conn)
 	pJSON, err := json.Marshal(policyBlob.NewBlob())
 	if err != nil {
 		return errors.Wrap(err, "failed to serialize policies")
@@ -384,9 +384,11 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	f.tf = tf
 
-	if f.features&TFFeaturesEnroll != 0 {
-		if err := f.enrollChrome(ctx, s); err != nil {
-			s.Fatal("Failed to enroll Chrome: ", err)
+	for i := range f.tf.duts {
+		if f.features&TFFeaturesEnroll != 0 {
+			if err := f.enrollChrome(ctx, s, i); err != nil {
+				s.Fatal("Failed to enroll Chrome: ", err)
+			}
 		}
 	}
 
@@ -400,16 +402,18 @@ func (f *tastFixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 		s.Fatal("Failed to recover unhealthy DUT: ", err)
 	}
 
-	if f.features&TFFeaturesEnroll != 0 {
-		pc := policy.NewPolicyServiceClient(f.tf.rpc.Conn)
+	for i := range f.tf.duts {
+		if f.features&TFFeaturesEnroll != 0 {
+			pc := policy.NewPolicyServiceClient(f.tf.duts[i].rpc.Conn)
 
-		if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
-			s.Error("Failed to close Chrome instance and Fake DMS: ", err)
-		}
+			if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
+				s.Error("Failed to close Chrome instance and Fake DMS: ", err)
+			}
 
-		// Reset DUT TPM and system state to leave it in a good state post test.
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
-			s.Error("Failed to reset TPM: ", err)
+			// Reset DUT TPM and system state to leave it in a good state post test.
+			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+				s.Error("Failed to reset TPM: ", err)
+			}
 		}
 	}
 

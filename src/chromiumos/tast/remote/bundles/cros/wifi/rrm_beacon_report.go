@@ -237,7 +237,7 @@ func RRMBeaconReport(ctx context.Context, s *testing.State) {
 			var wpaMonitor *wificell.WPAMonitor
 			if params.Mode != hostapd.ModeTable {
 				var stop func()
-				wpaMonitor, stop, ctx, err = tf.StartWPAMonitor(ctx)
+				wpaMonitor, stop, ctx, err = tf.StartWPAMonitor(ctx, wificell.DefaultDUT)
 				if err != nil {
 					return errors.Wrap(err, "failed to start wpa monitor")
 				}
