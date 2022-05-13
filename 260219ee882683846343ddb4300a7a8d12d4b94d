@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1f5bf25b_f1dbda6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-05-13T07:16:32Z",
+      "side": 1,
+      "message": "I also think it\u0027s ideal to have load-limiting mechanism elsewhere or use dedicated test accounts that doesn\u0027t hit the limit. It is because hwdep is designed for real hardware dependency of hardware features.\n\nI think this is somewhat relevant case.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3475721\n\n\u003e Can we use SkipOnModel() in this case?\nI think we can and we would need to do, as this workaround for now.\n\nFYI, here is the discussion about deprecating SkipOnPlatform.\nhttps://b.corp.google.com/issues/216651709#comment2",
+      "parentUuid": "61989df1_28003531",
+      "range": {
+        "startLine": 67,
+        "startChar": 30,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "260219ee882683846343ddb4300a7a8d12d4b94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e1444da3_ae2eccc2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
         "patchSetId": 2
