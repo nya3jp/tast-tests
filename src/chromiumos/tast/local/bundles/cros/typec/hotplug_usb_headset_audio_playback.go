@@ -28,7 +28,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cswitch"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -41,15 +40,22 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"volumeDown.txt", "volumeUp.txt"},
 		Vars:         []string{"typec.cSwitchPort", "typec.domainIP"},
-		// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
-		HardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel", "redrix", "brya")),
 		Fixture:      "chromeLoggedIn",
-		Timeout:      5 * time.Minute,
-	})
+		Params: []testing.Param{{
+			Name:    "type_c",
+			Val:     "USB",
+			Timeout: 5 * time.Minute,
+		}, {
+			Name:    "type_a",
+			Val:     "USB2.0",
+			Timeout: 5 * time.Minute,
+		},
+		}})
 }
 
 // HotplugUSBHeadsetAudioPlayback test requires the following H/W topology to run.
-// DUT ------> C-Switch(device that performs hot plug-unplug) ----> USB Headset.
+// 1. DUT ------> C-Switch(device that performs hot plug-unplug) ----> USB-C Headset.
+// 2. DUT ------> C-Switch(device that performs hot plug-unplug) ----> typec adapter ----> USB-A Headset.
 func HotplugUSBHeadsetAudioPlayback(ctx context.Context, s *testing.State) {
 	// Shorten deadline to leave time for cleanup.
 	cleanupCtx := ctx
@@ -124,7 +130,8 @@ func HotplugUSBHeadsetAudioPlayback(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get DUT volume info before volume down: ", err)
 	}
 
-	if err := usbHeadsetEvents(ctx, s.DataPath(usbVolumeDownFile)); err != nil {
+	usbReString := s.Param().(string)
+	if err := usbHeadsetEvents(ctx, s.DataPath(usbVolumeDownFile), usbReString); err != nil {
 		s.Fatal("Failed to perform volume-down with USB headset volumeDown button: ", err)
 	}
 
@@ -137,7 +144,7 @@ func HotplugUSBHeadsetAudioPlayback(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to volume down with USB headset button press")
 	}
 
-	if err := usbHeadsetEvents(ctx, s.DataPath(usbVolumeUpFile)); err != nil {
+	if err := usbHeadsetEvents(ctx, s.DataPath(usbVolumeUpFile), usbReString); err != nil {
 		s.Fatal("Failed to perform volume-up with USB headset volumeUp button: ", err)
 	}
 
@@ -258,11 +265,11 @@ func usbHeadsetDetection(ctx context.Context, audioOutputNode string) error {
 }
 
 // usbHeadsetEvents will handle evtest events for connected USB speaker.
-func usbHeadsetEvents(ctx context.Context, usbKeyFile string) error {
+func usbHeadsetEvents(ctx context.Context, usbKeyFile, usbReString string) error {
 	usbKeyPlay := "evemu-play --insert-slot0 /dev/input/event"
-	testing.ContextLogf(ctx, "Pressing USB headset Key : %s", strings.Split(filepath.Base(usbKeyFile), ".")[0])
+	testing.ContextLogf(ctx, "Pressing USB headset Key: %s", strings.Split(filepath.Base(usbKeyFile), ".")[0])
 	out, _ := exec.Command("evtest").CombinedOutput()
-	re := regexp.MustCompile(`(?i)/dev/input/event([0-9]+):.*(USB).*`)
+	re := regexp.MustCompile(fmt.Sprintf(`(?i)/dev/input/event([0-9]+):.*(%s).*`, usbReString))
 	result := re.FindStringSubmatch(string(out))
 	usbHSEventNum := ""
 	if len(result) > 0 {
