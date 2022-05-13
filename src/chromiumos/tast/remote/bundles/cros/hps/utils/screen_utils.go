@@ -16,14 +16,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// This will be updated to be read from system (s)
+// Settings name for LoL and SPA.
 const (
-	QuickDimTime         = 6 * time.Second
-	QuickLockTime        = 126 * time.Second
-	QuickDimDisableTime  = 420 * time.Second
-	QuickLockDisableTime = 90 * time.Second
-	PresentQuickDimTime  = 840 * time.Second
-	PresentQuickLockTime = 90 * time.Second
+	LockOnLeave       = "Lock-on-leave"
+	SecondPersonAlert = "Viewing protection"
 )
 
 // GetBrightness gets the current brightness of the dut
@@ -50,9 +46,12 @@ func GetBrightness(ctx context.Context, conn *ssh.Conn) (float64, error) {
 }
 
 // PollForDim is to see if the screen will dim during a designated amount of time
-func PollForDim(ctx context.Context, brightness float64, timeout time.Duration, conn *ssh.Conn) error {
+func PollForDim(ctx context.Context, brightness float64, timeout time.Duration, checkForDark bool, conn *ssh.Conn) error {
+	counter := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		autodimBrightness, err := GetBrightness(ctx, conn)
+		counter++
+
 		if err != nil {
 			return err
 		}
@@ -60,16 +59,18 @@ func PollForDim(ctx context.Context, brightness float64, timeout time.Duration, 
 			return errors.Errorf("Auto dim failed. Before human presence: %f, After human presence: %f", brightness, autodimBrightness)
 		}
 		if autodimBrightness == 0 {
-			return errors.New("Screen is completely dark")
+			if !checkForDark {
+				return errors.New("Screen goes dark unexpectedly")
+			}
+			return nil
 		}
 
-		if autodimBrightness < brightness && autodimBrightness != 0 {
-			testing.ContextLog(ctx, "Brightness changed to: ", autodimBrightness)
+		if autodimBrightness < brightness && autodimBrightness != 0 && !checkForDark {
 			return nil
 		}
 		return errors.New("Brightness not changed")
 	}, &testing.PollOptions{
-		Interval: 100 * time.Millisecond,
+		Interval: 1 * time.Second,
 		Timeout:  timeout + 3*time.Second,
 	}); err != nil {
 		return errors.Wrap(err, "unexpected brightness change")

@@ -12,7 +12,6 @@ import (
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/common/hps/hpsutil"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
@@ -42,48 +41,39 @@ func init() {
 }
 
 func CameraboxLoLOnMixPresence(ctx context.Context, s *testing.State) {
-	d := s.DUT()
-	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
-	defer cancel()
+	dut := s.DUT()
 
-	archive := s.DataPath(hpsutil.PersonPresentPageArchiveFilename)
-	filePaths, err := utils.UntarImages(ctx, archive)
-	if err != nil {
-		s.Fatal("Tmp dir creation failed on DUT")
-	}
 	// Creating hps context.
-	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), d.Conn())
+	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), dut.Conn())
 	if err != nil {
 		s.Fatal("Error creating HpsContext: ", err)
 	}
 
-	// Connecting to the other tablet that will render the picture.
-	var chartAddr string
-	if altAddr, ok := s.Var("tablet"); ok {
-		chartAddr = altAddr
-	}
-	c, hostPaths, err := chart.New(ctx, d, chartAddr, s.OutDir(), filePaths)
+	hostPaths, displayChart, err := utils.SetupDisplay(ctx, s)
 	if err != nil {
-		s.Fatal("Failed to send the files: ", err)
+		s.Fatal("Error setting up display: ", err)
 	}
-	c.Display(ctx, hostPaths[0])
+
+	displayChart.Display(ctx, hostPaths[utils.ZeroPresence])
 
 	// Connecting to Taeko.
-	cl, err := rpc.Dial(ctx, d, s.RPCHint())
+	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
-		s.Fatal("Failed to connect to the DUT: ", err)
+		s.Fatal("Failed to setup grpc: ", err)
 	}
 	defer cl.Close(cleanupCtx)
 
 	// Wait for Dbus to be available.
 	client := pb.NewHpsServiceClient(cl.Conn)
-	if _, err := client.WaitForDbus(hctx.Ctx, &empty.Empty{}); err != nil {
+	if _, err := client.WaitForDbus(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to wait for dbus command to be available: ", err)
 	}
 
 	// Enable LoL in setting.
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
-		Setting: "Lock on Leave",
+		Setting: utils.LockOnLeave,
 		Enable:  true,
 	}
 	if _, err := client.StartUIWithCustomScreenPrivacySetting(hctx.Ctx, req, grpc.WaitForReady(true)); err != nil {
@@ -99,7 +89,7 @@ func CameraboxLoLOnMixPresence(ctx context.Context, s *testing.State) {
 		s.Fatal("Error getting delay settings: ", err)
 	}
 
-	brightness, err := utils.GetBrightness(hctx.Ctx, d.Conn())
+	brightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error failed to get brightness: ", err)
 	}
@@ -109,12 +99,12 @@ func CameraboxLoLOnMixPresence(ctx context.Context, s *testing.State) {
 		s.Fatal("Error open hps-internals")
 	}
 
-	if err := utils.PollForDim(ctx, brightness, quickDimMetrics.DimDelay.AsDuration(), d.Conn()); err != nil {
+	if err := utils.PollForDim(ctx, brightness, quickDimMetrics.DimDelay.AsDuration(), false, dut.Conn()); err != nil {
 		s.Fatal("Error when polling for brightness: ", err)
 	}
 
-	c.Display(ctx, hostPaths[1])
-	newBrightness, err := utils.GetBrightness(hctx.Ctx, d.Conn())
+	displayChart.Display(ctx, hostPaths[utils.OnePresence])
+	newBrightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error failed to get brightness: ", err)
 	}
@@ -124,19 +114,13 @@ func CameraboxLoLOnMixPresence(ctx context.Context, s *testing.State) {
 	}
 
 	// Simulate user leaving again
-	c.Display(ctx, hostPaths[0])
-	if err := utils.PollForDim(ctx, brightness, quickDimMetrics.DimDelay.AsDuration(), d.Conn()); err != nil {
+	displayChart.Display(ctx, hostPaths[utils.ZeroPresence])
+	if err := utils.PollForDim(ctx, brightness, quickDimMetrics.DimDelay.AsDuration(), false, dut.Conn()); err != nil {
 		s.Fatal("Error when polling for brightness: ", err)
 	}
 
-	// It should not lock after quick dim delay.
-	utils.WaitWithDelay(ctx, quickDimMetrics.ScreenOffDelay.AsDuration())
-	newBrightness, err = utils.GetBrightness(hctx.Ctx, d.Conn())
-	if err != nil {
-		s.Fatal("Error when getting brightness: ", err)
-	}
-	if newBrightness != 0 {
-		s.Fatal("Screen not off")
+	if err := utils.PollForDim(ctx, brightness, quickDimMetrics.ScreenOffDelay.AsDuration(), true, dut.Conn()); err != nil {
+		s.Fatal("Error when polling for brightness: ", err)
 	}
 
 	utils.WaitWithDelay(ctx, quickDimMetrics.LockDelay.AsDuration())

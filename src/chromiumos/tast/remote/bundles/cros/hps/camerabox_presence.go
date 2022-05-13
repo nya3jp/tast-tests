@@ -12,9 +12,9 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
-	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/common/hps/hpsutil"
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/hps/utils"
 	"chromiumos/tast/rpc"
@@ -41,54 +41,49 @@ func init() {
 }
 
 func CameraboxPresence(ctx context.Context, s *testing.State) {
-	// Connecting to DUT with HPS
-	d := s.DUT()
-	cl, err := rpc.Dial(ctx, d, s.RPCHint())
-	if err != nil {
-		s.Fatal("Failed to connect to the DUT: ", err)
-	}
-	defer cl.Close(ctx)
+	dut := s.DUT()
 
-	archive := s.DataPath(hpsutil.PersonPresentPageArchiveFilename)
-	if err != nil {
-		s.Fatal("Tmp dir creation failed on DUT")
-	}
-	filePaths, err := utils.UntarImages(ctx, archive)
-
-	// Creating hps context. No need for powercycle as it's testing builtin hps
-	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), d.Conn())
+	// Creating hps context.
+	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), dut.Conn())
 	if err != nil {
 		s.Fatal("Error creating HpsContext: ", err)
 	}
 
-	// Connecting to the other tablet that will render the picture
-	var chartAddr string
-	if altAddr, ok := s.Var("tablet"); ok {
-		chartAddr = altAddr
-	}
-	c, hostPaths, err := chart.New(ctx, d, chartAddr, s.OutDir(), filePaths)
-
+	// Connecting to the other tablet that will render the picture.
+	hostPaths, displayChart, err := utils.SetupDisplay(ctx, s)
 	if err != nil {
-		s.Fatal("Put picture failed: ", err)
+		s.Fatal("Error setting up display: ", err)
 	}
-	testing.ContextLog(ctx, "hostPaths: ", hostPaths)
 
-	bindKernelDriver(ctx, d.Conn(), false)
+	// Connecting to Taeko.
+	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to setup DUT: ", err)
+	}
+	defer cl.Close(cleanupCtx)
+
+	bindKernelDriver(ctx, dut.Conn(), false)
 
 	for i := 0; i < 2; i++ {
 		// for no person
-		c.Display(ctx, hostPaths[0])
+		displayChart.Display(ctx, hostPaths[utils.ZeroPresence])
 		if err := numPersonDetect(hctx, strconv.Itoa(i)); err != nil {
 			s.Fatal("Failed to run N presence ops: ", err)
 		}
 
 		// for one/two person present
-		c.Display(ctx, hostPaths[i+1])
+		var presenceNum string
+		if presenceNum = utils.OnePresence; i != 0 {
+			presenceNum = utils.TwoPresence
+		}
+		displayChart.Display(ctx, hostPaths[presenceNum])
 		if err := numPersonDetect(hctx, strconv.Itoa(i)); err != nil {
 			s.Fatal("Failed to run N presence ops: ", err)
 		}
 	}
-	bindKernelDriver(ctx, d.Conn(), true)
+	bindKernelDriver(ctx, dut.Conn(), true)
 }
 
 func numPersonDetect(hctx *hpsutil.HpsContext, feature string) error {

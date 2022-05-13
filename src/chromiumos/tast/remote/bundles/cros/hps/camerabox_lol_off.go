@@ -12,9 +12,9 @@ import (
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/common/hps/hpsutil"
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/bundles/cros/hps/utils"
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/hps"
@@ -42,45 +42,39 @@ func init() {
 
 func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 
-	d := s.DUT()
+	dut := s.DUT()
 
-	archive := s.DataPath(hpsutil.PersonPresentPageArchiveFilename)
-	filePaths, err := utils.UntarImages(ctx, archive)
-	if err != nil {
-		s.Fatal("Tmp dir creation failed on DUT")
-	}
 	// Creating hps context.
-	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), d.Conn())
+	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), dut.Conn())
 	if err != nil {
 		s.Fatal("Error creating HpsContext: ", err)
 	}
 
 	// Connecting to the other tablet that will render the picture.
-	var chartAddr string
-	if altAddr, ok := s.Var("tablet"); ok {
-		chartAddr = altAddr
-	}
-	c, hostPaths, err := chart.New(ctx, d, chartAddr, s.OutDir(), filePaths)
+	hostPaths, displayChart, err := utils.SetupDisplay(ctx, s)
 	if err != nil {
-		s.Fatal("Failed to send the files: ", err)
+		s.Fatal("Error setting up display: ", err)
 	}
-	c.Display(ctx, hostPaths[0])
+
+	displayChart.Display(ctx, hostPaths[utils.ZeroPresence])
 
 	// Connecting to Taeko.
-	cl, err := rpc.Dial(ctx, d, s.RPCHint())
+	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
-		s.Fatal("Failed to connect to the DUT: ", err)
+		s.Fatal("Failed to setup grpc: ", err)
 	}
-	defer cl.Close(ctx)
+	defer cl.Close(cleanupCtx)
 
 	// Wait for Dbus to be available.
 	client := pb.NewHpsServiceClient(cl.Conn)
-	if _, err := client.WaitForDbus(hctx.Ctx, &empty.Empty{}); err != nil {
+	if _, err := client.WaitForDbus(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to wait for dbus command to be available: ", err)
 	}
 
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
-		Setting: "Lock on Leave",
+		Setting: utils.LockOnLeave,
 		Enable:  true,
 	}
 	// Change the setting to true so that we can get the quickdim delay time.
@@ -102,7 +96,7 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to change setting: ", err)
 	}
 
-	brightness, err := utils.GetBrightness(hctx.Ctx, d.Conn())
+	brightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error failed to get brightness: ", err)
 	}
@@ -113,7 +107,7 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 	}
 	// It should not dim after 10s.
 	testing.Sleep(ctx, quickDimMetrics.DimDelay.AsDuration())
-	newBrightness, err := utils.GetBrightness(hctx.Ctx, d.Conn())
+	newBrightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error when getting brightness: ", err)
 	}
@@ -123,12 +117,11 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 
 	// It should not lock after quick dim delay.
 	testing.Sleep(ctx, quickDimMetrics.ScreenOffDelay.AsDuration())
-	newBrightness, err = utils.GetBrightness(hctx.Ctx, d.Conn())
+	newBrightness, err = utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error when getting brightness: ", err)
 	}
 	if newBrightness != brightness {
 		s.Fatal("Unexpected brightness change")
 	}
-
 }
