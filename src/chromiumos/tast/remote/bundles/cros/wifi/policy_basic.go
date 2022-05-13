@@ -264,7 +264,7 @@ func PolicyBasic(ctx context.Context, s *testing.State) {
 			ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 			defer cancel()
 
-			if err := tf.WaitWifiConnected(ctx, deviceGUID); err != nil {
+			if err := tf.WaitWifiConnected(ctx, wificell.DefaultDUT, deviceGUID); err != nil {
 				s.Fatal("DUT failed to connect to AP with device Wi-Fi policy: ", err)
 			}
 
@@ -286,7 +286,7 @@ func PolicyBasic(ctx context.Context, s *testing.State) {
 				s.Fatal(err, "failed to login")
 			}
 
-			if err := tf.WaitWifiConnected(ctx, userGUID); err != nil {
+			if err := tf.WaitWifiConnected(ctx, wificell.DefaultDUT, userGUID); err != nil {
 				s.Fatal("DUT failed to connect to AP with user Wi-Fi policy: ", err)
 			}
 
