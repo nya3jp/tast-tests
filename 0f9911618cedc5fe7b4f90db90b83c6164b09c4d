@@ -51,6 +51,23 @@
       "parentUuid": "ded62da7_4dc73ff2",
       "revId": "0f9911618cedc5fe7b4f90db90b83c6164b09c4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "983ac143_7c181493",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-05-13T18:58:27Z",
+      "side": 1,
+      "message": "Add tbarzic@ in CC as this CL would conflict with https://crrev.com/c/3643259. If your CL gets submitted before this CL, I\u0027ll rebase this CL on top of yours. If my CL gets submitted before your CL, feel free to submit your CL with using pre. I can migrate it to fixture later.",
+      "revId": "0f9911618cedc5fe7b4f90db90b83c6164b09c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
