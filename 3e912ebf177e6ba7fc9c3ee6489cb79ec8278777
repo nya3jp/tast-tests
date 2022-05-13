@@ -70,6 +70,24 @@
       "parentUuid": "b526b038_b304304e",
       "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8c1ec0_fe7ad371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-05-13T18:38:47Z",
+      "side": 1,
+      "message": "+1 To using the struct and defining the data structure hierarchy. It would be a bit of work for the first test but once it is defined it can be reused for later tests.",
+      "parentUuid": "b7720947_a1ef4063",
+      "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
