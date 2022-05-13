@@ -103,6 +103,24 @@
       "message": "This needs at least one more contact and ideally a group alias.",
       "revId": "a814234071533b6454483379be167ba390231d0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "331f4306_4a62e749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/embedded_ui_bubble_launcher_open_and_close_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-13T22:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15926e13_7766f70d",
+      "revId": "a814234071533b6454483379be167ba390231d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
