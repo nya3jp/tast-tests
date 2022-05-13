@@ -7,6 +7,7 @@ package lacros
 import (
 	"context"
 	"os"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -113,7 +114,8 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 		ui.LeftClick(addButton1),
 		// The "Add extension" button may not immediately be clickable.
 		ui.LeftClickUntil(addButton2, ui.Gone(addButton2)),
-		ui.WaitUntilExists(removeButton),
+		// TODO(crbug.com/1326398): Remove tab reload when this bug is fixed.
+		ui.RetryUntil(cr.Browser().ReloadActiveTab, ui.WithTimeout(7*time.Second).WaitUntilExists(removeButton)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to install: ", err)
 	}
@@ -195,13 +197,13 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	ui := uiauto.New(tconn)
 	bookmarkedButton := nodewith.Name(bookmarkName).Role(role.Button)
 	if err = ui.WaitUntilExists(bookmarkedButton)(ctx); err != nil {
-		s.Error("Failed to find bookmark: ", err)
+		s.Fatal("Failed to find bookmark: ", err)
 	}
 
 	// Check that the shortcut is present.
 	shortcutLink := nodewith.Name(shortcutName).Role(role.Link)
 	if err := ui.WaitUntilExists(shortcutLink)(ctx); err != nil {
-		s.Error("Failed to find shortcut: ", err)
+		s.Fatal("Failed to find shortcut: ", err)
 	}
 
 	// Check that the browsing history contains the Alphabet page.
@@ -213,7 +215,7 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		defer conn.Close()
 		alphabetLink := nodewith.Name(titleOfAlphabetPage).Role(role.Link)
 		if err := ui.WaitUntilExists(alphabetLink)(ctx); err != nil {
-			s.Error("Failed to find Alphabet history entry: ", err)
+			s.Fatal("Failed to find Alphabet history entry: ", err)
 		}
 		if err := kb.Accel(ctx, "Ctrl+w"); err != nil {
 			s.Fatal("Failed to close tab: ", err)
@@ -234,7 +236,7 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	// Check that the download page shows the previous download (of itself).
 	downloadedFile := nodewith.Name(titleOfDownloadsPage + ".mhtml").Role(role.Link)
 	if err = ui.WaitUntilExists(downloadedFile)(ctx); err != nil {
-		s.Error("Failed to find download: ", err)
+		s.Fatal("Failed to find download: ", err)
 	}
 
 	// Check that going back in history once brings us to the Alphabet page.
@@ -258,7 +260,7 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 			ui.WaitUntilExists(extensionText),
 			ui.Exists(onText),
 		)(ctx); err != nil {
-			s.Error("Failed: ", err)
+			s.Fatal("Failed: ", err)
 		}
 	}()
 }
