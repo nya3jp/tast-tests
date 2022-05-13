@@ -41,6 +41,7 @@ type Config struct {
 	OpenVPNCertVeirfyWrongSubject bool
 	OpenVPNCertVerifyWrongCN      bool
 	OpenVPNCertVerifyCNOnly       bool
+	OpenVPNTLSAuth                bool
 
 	// Parameters for a WireGuard connection.
 	// WGTwoPeers indicates whether the connection will use one peer or two
@@ -225,7 +226,7 @@ func (c *Connection) startServer(ctx context.Context) error {
 	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
 		c.Server, err = StartL2TPIPsecServer(ctx, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
 	case TypeOpenVPN:
-		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword)
+		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword, c.config.OpenVPNTLSAuth)
 	case TypeWireGuard:
 		clientKey := wgClientPublicKey
 		if c.config.WGAutoGenKey {
@@ -394,21 +395,24 @@ func (c *Connection) createIKEv2Properties() (map[string]interface{}, error) {
 
 func (c *Connection) createOpenVPNProperties() (map[string]interface{}, error) {
 	properties := map[string]interface{}{
-		"Name":                    "test-vpn-openvpn",
-		"Provider.Host":           c.Server.UnderlayIP,
-		"Provider.Type":           "openvpn",
-		"Type":                    "vpn",
-		"OpenVPN.CACertPEM":       []string{certificate.TestCert1().CACred.Cert},
-		"OpenVPN.Pkcs11.ID":       c.config.CertVals.id,
-		"OpenVPN.Pkcs11.PIN":      c.config.CertVals.pin,
-		"OpenVPN.RemoteCertEKU":   "TLS Web Server Authentication",
-		"OpenVPN.TLSAuthContents": openvpnTLSAuthKey,
-		"OpenVPN.Verb":            "5",
+		"Name":                  "test-vpn-openvpn",
+		"Provider.Host":         c.Server.UnderlayIP,
+		"Provider.Type":         "openvpn",
+		"Type":                  "vpn",
+		"OpenVPN.CACertPEM":     []string{certificate.TestCert1().CACred.Cert},
+		"OpenVPN.Pkcs11.ID":     c.config.CertVals.id,
+		"OpenVPN.Pkcs11.PIN":    c.config.CertVals.pin,
+		"OpenVPN.RemoteCertEKU": "TLS Web Server Authentication",
+		"OpenVPN.Verb":          "5",
 	}
 
 	if c.config.OpenVPNUseUserPassword {
 		properties["OpenVPN.User"] = openvpnUsername
 		properties["OpenVPN.Password"] = openvpnPassword
+	}
+
+	if c.config.OpenVPNTLSAuth {
+		properties["OpenVPN.TLSAuthContents"] = openvpnTLSAuthKey
 	}
 
 	if c.config.OpenVPNCertVerify {
