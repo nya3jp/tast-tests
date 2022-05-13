@@ -131,7 +131,7 @@ func (as *AudioService) KeyboardAccel(ctx context.Context, req *ui.AudioServiceR
 	if as.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	kb, err := input.VirtualKeyboard(ctx)
+	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find keyboard")
 	}
