@@ -110,6 +110,30 @@
       },
       "revId": "e930c1a3b79e371d6af6ea7d4c7adbcb597782f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8073232_da0b2a46",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-13T00:21:27Z",
+      "side": 1,
+      "message": "I see, could you just leave it as a comment?",
+      "parentUuid": "878be6c7_2bd99e06",
+      "range": {
+        "startLine": 585,
+        "startChar": 43,
+        "endLine": 585,
+        "endChar": 44
+      },
+      "revId": "e930c1a3b79e371d6af6ea7d4c7adbcb597782f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
