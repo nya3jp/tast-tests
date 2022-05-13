@@ -16,6 +16,23 @@
       "message": "LGTM, I guess you need owner approval still.",
       "revId": "85f164489696b99a3d966fc6c25735cad4033921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba99596_c539ff27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-05-13T12:55:53Z",
+      "side": 1,
+      "message": "I need approval from Eric",
+      "revId": "85f164489696b99a3d966fc6c25735cad4033921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
