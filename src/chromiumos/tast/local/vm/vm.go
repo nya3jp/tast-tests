@@ -9,7 +9,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 	"github.com/golang/protobuf/proto"
 
 	spb "chromiumos/system_api/seneschal_proto"   // protobufs for seneschal

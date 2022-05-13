@@ -11,7 +11,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management

@@ -7,7 +7,7 @@ package hwsec
 import (
 	"context"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 
 	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/errors"

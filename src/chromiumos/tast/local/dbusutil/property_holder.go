@@ -7,7 +7,7 @@ package dbusutil
 import (
 	"context"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 )
 
 // PropertyHolder provides methods to access properties of a DBus object.

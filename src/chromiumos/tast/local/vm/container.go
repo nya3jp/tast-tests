@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	conciergepb "chromiumos/system_api/vm_concierge_proto"

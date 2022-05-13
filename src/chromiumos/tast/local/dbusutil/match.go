@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 )
 
 // MatchSpec specifies messages that should be received by a D-Bus client.

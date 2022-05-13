@@ -10,7 +10,7 @@ package shillconst
 import (
 	"time"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 )
 
 // Timeout constants for shill tests.

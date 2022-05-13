@@ -8,7 +8,7 @@ import (
 	"context"
 	"regexp"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
