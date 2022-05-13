@@ -16,6 +16,47 @@
       "message": "wrong@ I wonder if we could adjust scoring here  - I\u0027d expect shortcut to open launcher to have higher priority, though on another hand it\u0027s a but less obscure :)",
       "revId": "3856ef7085daf4f6729b52ea855106bf92047b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526b1f8e_72dc61bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/shortcut_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-05-13T03:01:59Z",
+      "side": 1,
+      "message": "Yeah I think we will revisit shortcut scoring because the string match algorithm doesn\u0027t always work as expected. \n\nNote that this also means \"isFirstResult\" may not be robust for a Tast test. We\u0027ve had a lot of trouble in the past with Tast tests that fail after a ranking change, which I think is usually indicative that the wrong thing is being tested - ranking/matching is liable to change at any point, so Tast should only check something that we expect to *always* happen in the launcher. WDYT about removing \"isFirstResult\" from the tests?",
+      "parentUuid": "43ae3e09_7ab1b3bc",
+      "revId": "3856ef7085daf4f6729b52ea855106bf92047b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6044aa_c9c98ce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/shortcut_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-05-13T03:01:59Z",
+      "side": 1,
+      "message": "similar to above comment, WDYT about changing to be an exact substring match? e.g. query \"incognito\". I\u0027m not 100% sure that this test case will hold up under all possible revisions of the search algorithm, but an exact substring match has a much better chance of always being correct.",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 32
+      },
+      "revId": "3856ef7085daf4f6729b52ea855106bf92047b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
