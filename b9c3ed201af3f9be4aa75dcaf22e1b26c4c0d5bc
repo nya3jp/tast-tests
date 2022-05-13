@@ -16,6 +16,23 @@
       "message": "thanks, test cases lgtm!",
       "revId": "b9c3ed201af3f9be4aa75dcaf22e1b26c4c0d5bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22ba23b_1b27b212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-13T21:40:15Z",
+      "side": 1,
+      "message": "Please run tast unit test, fast_build.sh -T\nThen, add this to commit log\nTEST\u003dtast unit test passed.\n\nThanks.\n",
+      "revId": "b9c3ed201af3f9be4aa75dcaf22e1b26c4c0d5bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
