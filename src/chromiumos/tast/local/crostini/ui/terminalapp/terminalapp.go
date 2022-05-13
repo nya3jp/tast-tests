@@ -28,11 +28,12 @@ import (
 const uiTimeout = 15 * time.Second
 
 var (
-	linuxLink  = nodewith.Name("penguin").Role(role.Link)
-	linuxTab   = nodewith.NameContaining("@penguin: ").Role(role.Window).ClassName("BrowserFrame")
-	rootWindow = nodewith.NameStartingWith("Terminal").Role(role.Window).ClassName("BrowserFrame")
-	homeTab    = nodewith.Name("Terminal").Role(role.Window).ClassName("BrowserFrame")
-	sshWebArea = nodewith.Name("chronos@localhost:~").Role(role.RootWebArea)
+	linuxLink           = nodewith.Name("penguin").Role(role.Link)
+	linuxTab            = nodewith.NameContaining("@penguin: ").Role(role.Window).ClassName("BrowserFrame")
+	rootWindow          = nodewith.NameStartingWith("Terminal").Role(role.Window).ClassName("BrowserFrame")
+	homeTab             = nodewith.Name("Terminal").Role(role.Window).ClassName("BrowserFrame")
+	sshWebArea          = nodewith.Name("chronos@localhost:~").Role(role.RootWebArea)
+	terminalLeaveButton = nodewith.Name("Leave").Role(role.Button).HasClass("MdTextButton")
 )
 
 // TerminalApp represents an instance of the Terminal App.
@@ -77,7 +78,7 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 
 	// If this is Home tab with Linux link, open Linux tab.
 	if err = ui.Exists(linuxLink)(ctx); err == nil {
-		if err := ui.LeftClick(linuxLink)(ctx); err != nil {
+		if err := ui.DoDefault(linuxLink)(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to click Terminal Home Linux")
 		}
 	}
@@ -299,5 +300,12 @@ func (ta *TerminalApp) Exit(keyboard *input.KeyboardEventWriter) uiauto.Action {
 func (ta *TerminalApp) Close() uiauto.Action {
 	return uiauto.Combine("close Terminal window",
 		ta.ClickShelfMenuItem("Close"),
+		uiauto.IfSuccessThen(
+			ta.ui.WithTimeout(time.Second).WaitUntilExists(terminalLeaveButton),
+			ta.ui.LeftClickUntil(
+				terminalLeaveButton,
+				ta.ui.WithTimeout(time.Second).WaitUntilGone(rootWindow),
+			),
+		),
 		ta.ui.WithTimeout(time.Minute).WaitUntilGone(rootWindow))
 }
