@@ -46,6 +46,30 @@
       },
       "revId": "3e37714af1ac4c0332c7c449e24d8964eb746e00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9326185_c46249a8",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-05-13T02:49:45Z",
+      "side": 1,
+      "message": "I didn\u0027t even know that syntax. Done.",
+      "parentUuid": "c65e7770_f544dbd7",
+      "range": {
+        "startLine": 439,
+        "startChar": 1,
+        "endLine": 439,
+        "endChar": 10
+      },
+      "revId": "3e37714af1ac4c0332c7c449e24d8964eb746e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
