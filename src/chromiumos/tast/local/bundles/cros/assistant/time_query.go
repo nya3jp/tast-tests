@@ -15,7 +15,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/assistant"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -27,26 +26,18 @@ func init() {
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org", "assistive-eng@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          assistant.VerboseLoggingEnabled(),
+		Fixture:      "assistant",
 	})
 }
 
 func TimeQuery(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	fixtData := s.FixtValue().(*assistant.FixtData)
+	cr := fixtData.Chrome
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	// Enable the Assistant and wait for the ready signal.
-	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Assistant: ", err)
-	}
-	defer func() {
-		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
-			s.Fatal("Failed to disable Assistant: ", err)
-		}
-	}()
 
 	s.Log("Sending time query to the Assistant")
 	queryStatus, err := assistant.SendTextQuery(ctx, tconn, "what time is it in UTC?")

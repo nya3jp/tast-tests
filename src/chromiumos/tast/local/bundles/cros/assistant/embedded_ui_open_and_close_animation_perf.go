@@ -29,7 +29,7 @@ func init() {
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "assistantClamshell",
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -72,31 +72,13 @@ func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn, accel a
 
 func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) {
 	accel := s.Param().(assistant.Accelerator)
-	cr := s.PreValue().(*chrome.Chrome)
+
+	fixtData := s.FixtValue().(*assistant.FixtData)
+	cr := fixtData.Chrome
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
-	}
-
-	if err := assistant.Enable(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Assistant: ", err)
-	}
-	defer func() {
-		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
-			s.Fatal("Failed to disable Assistant: ", err)
-		}
-	}()
-
-	const IsTabletMode = false
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, IsTabletMode)
-	if err != nil {
-		s.Fatal("Failed to put into Clamshell mode: ", err)
-	}
-	defer cleanup(ctx)
-
-	// If a DUT switches from Tablet mode to Clamshell mode, it can take a while until launcher gets settled down.
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		s.Fatal("Failed to wait the launcher state Closed: ", err)
 	}
 
 	// Enables the "Related Info" setting for Assistant.

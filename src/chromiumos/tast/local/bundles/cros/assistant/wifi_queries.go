@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/assistant"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -30,23 +29,19 @@ func init() {
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "meilinw@chromium.org", "assistive-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "shill-wifi"},
-		Pre:          assistant.VerboseLoggingEnabled(),
+		Fixture:      "assistant",
 	})
 }
 
 // WifiQueries tests that Assistant queries can be used to toggle WiFi on/off
 func WifiQueries(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	fixtData := s.FixtValue().(*assistant.FixtData)
+	cr := fixtData.Chrome
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	// Enable the Assistant and wait for the ready signal.
-	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Assistant: ", err)
-	}
-	defer assistant.Disable(ctx, tconn)
 
 	// Open the Settings window, where we can verify Wifi button status
 	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
