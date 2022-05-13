@@ -8,9 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/assistant"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 )
@@ -23,17 +21,8 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Contacts:     []string{"yawano@google.com", "assistive-eng@google.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		VarDeps:      []string{"assistant.username", "assistant.password"},
-		Pre: arc.NewPrecondition("assistant",
-			&arc.GaiaVars{
-				UserVar: "assistant.username",
-				PassVar: "assistant.password",
-			},
-			nil,   // Gaia login pool
-			false, // Whether crosvm to use O_DIRECT
-			"--arc-disable-app-sync",
-		),
-		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 3*time.Minute,
+		Fixture:      "assistantWithArc",
+		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -48,23 +37,14 @@ func AndroidAndWeb(ctx context.Context, s *testing.State) {
 		QueryOpenGoogleNews = "Open Google News"
 	)
 
-	predata := s.PreValue().(arc.PreData)
-	cr := predata.Chrome
-	a := predata.ARC
+	fixtData := s.FixtValue().(*assistant.FixtData)
+	cr := fixtData.Chrome
+	a := fixtData.ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-
-	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Assistant: ", err)
-	}
-	defer func() {
-		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
-			s.Fatal("Failed to disable Assistant: ", err)
-		}
-	}()
 
 	if _, err := assistant.SendTextQuery(ctx, tconn, QueryOpenGoogleNews); err != nil {
 		s.Fatal("Failed to send Assistant text query: ", err)
