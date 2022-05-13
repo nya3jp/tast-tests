@@ -155,6 +155,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a8f48f9_b889f359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-13T07:01:44Z",
+      "side": 1,
+      "message": "Understood. Then my question would be: how can you make sure that before testSnapLeftRightViaKeyboardShortcut() is called, the window is unsnapped?",
+      "parentUuid": "b8f01cbe_5faab75c",
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "090b15c9_d833df48",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -184,6 +202,24 @@
       "side": 1,
       "message": "compare line 92 and line 110.",
       "parentUuid": "090b15c9_d833df48",
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e33a8ef_798323ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-13T07:01:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e92b4628_89d21cb7",
       "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
