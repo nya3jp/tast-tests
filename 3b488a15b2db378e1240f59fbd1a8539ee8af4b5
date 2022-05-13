@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9d2161_46305cd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "212464da_ad755f82",
+      "range": {
+        "startLine": 75,
+        "startChar": 40,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59fab4d7_3faaa993",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-13T05:05:06Z",
       "side": 1,
       "message": "nit: Use a cleanup ctx which lives longer than the ctx for running tests",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 19
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfcb39ac_13e5f15e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59fab4d7_3faaa993",
       "range": {
         "startLine": 102,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "918610ed_7da16cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06110437_854d7fdc",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 15
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e310d06_2501a75a",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-13T05:05:06Z",
       "side": 1,
       "message": "Hmm, I don\u0027t find any variable named `featureConf`. Is it renamed?",
+      "range": {
+        "startLine": 89,
+        "startChar": 57,
+        "endLine": 89,
+        "endChar": 68
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f82395_cbaf14f7",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Yes! This should be `conf`.",
+      "parentUuid": "4e310d06_2501a75a",
       "range": {
         "startLine": 89,
         "startChar": 57,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41009f43_aa576317",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94058558_74bb4ab8",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 19
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ad06939_9eefeb1c",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-13T05:05:06Z",
       "side": 1,
       "message": "Maybe we can have different sizes of `FeatureSet` for models, like 4 for kano and 5 for redrix4es. So that if `NewModelConfigFromJSON()` parses it from the wrong model we can tell.",
+      "range": {
+        "startLine": 69,
+        "startChar": 33,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de95d45b_aba80644",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ad06939_9eefeb1c",
       "range": {
         "startLine": 69,
         "startChar": 33,
@@ -156,6 +300,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad5aa8d9_3f139c33",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d5c9f13_7dabbb6a",
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "895eea25_2cc32c6d",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-05-13T05:05:06Z",
       "side": 1,
       "message": "It seems these lines are duplicated with L73-L85.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6e3f26_8867554c",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Removed the code above.",
+      "parentUuid": "895eea25_2cc32c6d",
       "range": {
         "startLine": 129,
         "startChar": 1,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3653900f_4d6a6458",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe3484a_80982f85",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 69
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38c75ea4_111c5da2",
@@ -215,6 +425,30 @@
       "writtenOn": "2022-05-13T05:05:06Z",
       "side": 1,
       "message": "Duplicated?",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 98
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b01b1d2_0c946c30",
+        "filename": "src/chromiumos/tast/local/camera/features/control_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38c75ea4_111c5da2",
       "range": {
         "startLine": 175,
         "startChar": 2,
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "591d0fc9_3b0c8310",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7df379d_753508b7",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33fa3f35_d32173bc",
@@ -261,6 +519,30 @@
       "writtenOn": "2022-05-13T05:05:06Z",
       "side": 1,
       "message": "These lines are identical to the \"PerfRecord\" but only with different profiler. How about extracting these lines into a function and pass the profiler in?",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 18
+      },
+      "revId": "3b488a15b2db378e1240f59fbd1a8539ee8af4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4bed9c9_8a6ef633",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-13T05:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33fa3f35_d32173bc",
       "range": {
         "startLine": 108,
         "startChar": 3,
