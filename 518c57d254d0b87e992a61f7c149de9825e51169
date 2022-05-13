@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd57714d_5fe6464f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-13T17:40:52Z",
+      "side": 1,
+      "message": "nit: `|` instead of `/`\nSee https://publib.boulder.ibm.com/tividd/td/tec/SC32-1232-00/en_US/HTML/ecormst15.htm",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "518c57d254d0b87e992a61f7c149de9825e51169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "513f68dd_5c3bd4e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-13T17:40:52Z",
+      "side": 1,
+      "message": "if err :\u003d rightClickOmnibox(ctx, tconn, param.sourceURL, param.wantAllowed); err !\u003d nil {",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 18
+      },
+      "revId": "518c57d254d0b87e992a61f7c149de9825e51169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20568640_b0f259f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-13T17:40:52Z",
+      "side": 1,
+      "message": "You are not supposed to do that, according to\nhttps://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "518c57d254d0b87e992a61f7c149de9825e51169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a040b0_6fe98a86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-13T17:40:52Z",
+      "side": 1,
+      "message": "if err :\u003d pasteOmnibox(ctx, tconn, keyboard, parsedSourceURL.Hostname(), param.wantAllowed); err !\u003d nil {",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 18
+      },
+      "revId": "518c57d254d0b87e992a61f7c149de9825e51169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83176b0d_ed9fff96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-13T17:40:52Z",
+      "side": 1,
+      "message": "You are not supposed to do that, according to\nhttps://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "518c57d254d0b87e992a61f7c149de9825e51169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
