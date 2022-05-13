@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "76694807_eddc9a18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2022-05-13T13:39:54Z",
+      "side": 1,
+      "message": "I\u0027m not aware of such difference, and my guess is that it\u0027s just not implemented yet, or overlooked. Can you file a bug and assign to hidehiko@, cc to me?",
+      "parentUuid": "cfe67851_51f70022",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "65f6a06c79826ff0e3743d29f06bffa5c1a4bb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b08ca638_03ee513c",
