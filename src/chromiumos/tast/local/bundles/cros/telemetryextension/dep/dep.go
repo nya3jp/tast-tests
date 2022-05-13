@@ -37,10 +37,6 @@ var targetModelList = []string{
 	"jinlon",
 	"stormfly",
 
-	// "jacuzzi" board:
-	"esche",
-	"kappa",
-
 	// "kip" board:
 	"kip",
 	"kip14",
@@ -107,6 +103,12 @@ var allAllowlistedOEMModels = []string{
 	"jinlon",
 	"stormcutter",
 	"stormfly",
+
+	// "jacuzzi" board:
+	"burnet",
+	"esche",
+	"giygas",
+	"kappa",
 
 	// "keeby" board:
 	"habokay",
