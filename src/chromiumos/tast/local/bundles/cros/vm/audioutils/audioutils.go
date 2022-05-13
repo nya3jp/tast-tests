@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	cgroupPath string = "/sys/fs/cgroup/cpu/vms/termina/tasks"
+	cgroupPath string = "/sys/fs/cgroup/cpu/termina/tasks"
 )
 
 // Config includes all the params needed to setup crosvm for vm audio tests.
