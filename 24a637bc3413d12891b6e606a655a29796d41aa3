@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "247a23f9_00bd2254",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Nearby share cell does have a phone, though? So it will be too much. I can add this as an option.",
+      "parentUuid": "cf320495_73043d39",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "94e3003c_3392a628",
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f131ad7_c93d1d42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Do you think we should create a new group then? I\u0027m kind or reluctant to add this to group:nearby-share, as the test is in the wifi bundle and TDLS can support more than nearby.",
+      "parentUuid": "ee4a3f5f_b95194e7",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "094b7891_b27971b6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 4
@@ -104,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06b18a4_2be3a2fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de0f3ae3_394c9843",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32fa419a_93b4c31e",
@@ -117,6 +171,24 @@
       "writtenOn": "2022-04-22T01:28:59Z",
       "side": 1,
       "message": "The same function is used on both cases. I think you only need one extra subtest here.",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f24919_6dffa2a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "The same function, but with different parameters (\"reverse\" means calling from peer DUT to main DUT).",
+      "parentUuid": "32fa419a_93b4c31e",
       "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3a9a00_94eadf9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c1822cb_6ff33177",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1729c36e_44840d01",
@@ -161,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "232e874a_4c4dc6d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "I prefer to start from 802.11g, so modern devices negotiate better standard for TDLS (e.g. .11n), which may trigger errors unseen otherwise.\nDone",
+      "parentUuid": "1729c36e_44840d01",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "642b9279_9fc34a6f",
@@ -174,6 +288,30 @@
       "writtenOn": "2022-04-22T01:28:59Z",
       "side": 1,
       "message": "I think you can use this to add the second peer device:\nsrc/platform/tast-tests/src/chromiumos/tast/remote/wificell/wifipeer/wifipeer.go",
+      "range": {
+        "startLine": 112,
+        "startChar": 10,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "461c4243_38c75c89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "642b9279_9fc34a6f",
       "range": {
         "startLine": 112,
         "startChar": 10,
@@ -207,6 +345,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f1506f_1d1ab0df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "OK, I needed it for retries (which would obviously fail when not copied), but after refactoring I need it no more.",
+      "parentUuid": "bba600b5_25a381da",
+      "range": {
+        "startLine": 46,
+        "startChar": 44,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "654372e0_35eee695",
@@ -220,6 +382,30 @@
       "writtenOn": "2022-04-22T05:18:43Z",
       "side": 1,
       "message": "It\u0027s almost always wrong to compare CombinedOutput result:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#CombinedOutput",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b910278a_732d7797",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "654372e0_35eee695",
       "range": {
         "startLine": 50,
         "startChar": 17,
@@ -254,6 +440,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d350c2_b41f32f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Whole function has been removed.",
+      "parentUuid": "c6864bef_f97f5eed",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06bd14e0_7d8b34a0",
@@ -267,6 +477,30 @@
       "writtenOn": "2022-04-22T05:18:43Z",
       "side": 1,
       "message": "As I commented in another place, ssh.Cmd is not safe to copy.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5af8ef_81a7456c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06bd14e0_7d8b34a0",
       "range": {
         "startLine": 67,
         "startChar": 2,
@@ -300,6 +534,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "896e20d2_052d278d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Refactored out.",
+      "parentUuid": "6b7549ab_d9087dec",
+      "range": {
+        "startLine": 74,
+        "startChar": 61,
+        "endLine": 74,
+        "endChar": 66
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e288262_726be861",
@@ -323,6 +581,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3bc3bc_249f96e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Refactored out.",
+      "parentUuid": "8e288262_726be861",
+      "range": {
+        "startLine": 79,
+        "startChar": 25,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "102a4392_0349f354",
@@ -336,6 +618,30 @@
       "writtenOn": "2022-04-22T05:18:43Z",
       "side": 1,
       "message": "nit: WPACLI?\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a0b69db_2f3f9754",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-13T19:44:20Z",
+      "side": 1,
+      "message": "Refactored out",
+      "parentUuid": "102a4392_0349f354",
       "range": {
         "startLine": 91,
         "startChar": 5,
