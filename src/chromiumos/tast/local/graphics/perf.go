@@ -140,6 +140,14 @@ func collectGPUPerformanceCounters(ctx context.Context, interval time.Duration) 
 // what perf and collectGPUPerformanceCounters() would do.
 // TODO(b/181352867): Remove this method when AMD implements perf counters.
 func collectAMDBusyCounter(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, megaPeriods int64, err error) {
+	// Check if context deadline allows collecting data for the given interval.
+	deadLine, ok := ctx.Deadline()
+	if ok {
+		contextInteval := deadLine.Sub(time.Now())
+		if contextInteval < interval {
+			return nil, 0, errors.Errorf("context interval %v is less than the collecting interval %v", contextInteval, interval)
+		}
+	}
 
 	const amdBusyGPUFile = "/sys/class/drm/card0/device/gpu_busy_percent"
 	if _, err = os.Stat(amdBusyGPUFile); err != nil {
@@ -149,7 +157,13 @@ func collectAMDBusyCounter(ctx context.Context, interval time.Duration) (counter
 	accuBusy := int64(0)
 	const samplePeriod = 10 * time.Millisecond
 	numSamples := int(interval / samplePeriod)
+	actualSamples := 0
 	for i := 0; i < numSamples; i++ {
+		// Check if enough time is left for the next sampling cycle before reaching the ctx deadline.
+		deadLine, ok := ctx.Deadline()
+		if ok && deadLine.Sub(time.Now()) <= samplePeriod {
+			break
+		}
 		if err := testing.Sleep(ctx, samplePeriod); err != nil {
 			return nil, 0, errors.Wrap(err, "error sleeping")
 		}
@@ -163,12 +177,13 @@ func collectAMDBusyCounter(ctx context.Context, interval time.Duration) (counter
 			return nil, 0, errors.Wrapf(err, "error converting %s", string(v))
 		}
 		accuBusy += busy
+		actualSamples++
 	}
 
 	counters = make(map[string]time.Duration)
 	// Divide accuBusy by hundred to remove the percentage.
-	counters["rcs"] = time.Duration(float64(accuBusy) / 100.0 * float64(time.Second))
-	counters["total"] = time.Duration(numSamples * int(time.Second))
+	counters["rcs"] = time.Duration(float64(accuBusy) / 100.0 * float64(samplePeriod))
+	counters["total"] = time.Duration(actualSamples * int(samplePeriod))
 	return counters, 0, nil
 }
 
