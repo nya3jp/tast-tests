@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1010a15_792246d2",
+        "filename": "src/chromiumos/tast/common/android/adb/logcat.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-13T21:40:29Z",
+      "side": 1,
+      "message": "Done\n\nTODOs added in the SurfaceFlinger code: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3646131",
+      "parentUuid": "15a34671_6374b5fd",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f7f010e_26c07c7c",
@@ -160,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b20dfa8_7a2236e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_touch_injector.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-13T21:40:29Z",
+      "side": 1,
+      "message": "The sleep here is actually unnecessary, I\u0027ll remove it",
+      "parentUuid": "7971fa28_98c27bdb",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3179a52_03ee4045",
@@ -209,6 +245,24 @@
       "side": 1,
       "message": "It depends. What\u0027s the actual spec? If the spec of the feature requires some certain waiting, then it\u0027s worth commented here.\n\nSleep needs to be used very carefully, and for all usage, we have to understand what we do in very precise.\n\"Practically wait looks working\" does not sound a way to go to me.",
       "parentUuid": "ae8dbf5c_d0f93cd9",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c38061b5_4d036536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-13T21:40:29Z",
+      "side": 1,
+      "message": "Is it ok if I add reasoning as a comment in the code? I talked with the engineers who developed the feature, and they have reiterated that the wait time here is important to simulate user behavior.",
+      "parentUuid": "79f91aa1_3ab4a359",
       "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -266,6 +320,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49d61d14_2c001f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-13T21:40:29Z",
+      "side": 1,
+      "message": "Done, sorry for the misunderstanding",
+      "parentUuid": "ee8b0722_23aed87f",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28ae7290_ce347215",
@@ -315,6 +387,24 @@
       "side": 1,
       "message": "It sounds caller\u0027s responsibility.",
       "parentUuid": "0839a32b_81256fe5",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9685b79_0c03aa16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-13T21:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef8e9a3f_2e300eae",
       "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
