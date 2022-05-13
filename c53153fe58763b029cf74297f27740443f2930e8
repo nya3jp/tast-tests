@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5668898_39393ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_coexistence.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-13T17:00:52Z",
+      "side": 1,
+      "message": "not relate to this CL:\ni\u0027d recommend to don\u0027t pass 2 contexts. Instead create cleanupCtx inside each function from ctx.\n\ncleanupCtx that you pass here is actually derived from ctx you receive in CCAUICoexistence, but ctx in this function you receive in s.Run function.",
+      "range": {
+        "startLine": 75,
+        "startChar": 38,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e42d997_c926311c",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-13T17:00:52Z",
+      "side": 1,
+      "message": "Don\u0027t store context in structs, pass directly to functions.\nhttps://pkg.go.dev/context",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3713a89_57f997ca",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-13T17:00:52Z",
+      "side": 1,
+      "message": "Maybe instead of introducing new Profiler, you can figure out how to run graphics.MeasureCPUUsageAndPower using existing \"profiler\" package?",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a048acb_af5af44a",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-13T17:00:52Z",
+      "side": 1,
+      "message": "Don\u0027t ignore error.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 14
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8be0071_afb80a54",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-13T17:00:52Z",
+      "side": 1,
+      "message": "Maybe use cpu.WaitUntilIdle instead?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/graphics/perf.go;l\u003d524?q\u003dgraphics.MeasureCPUUsageAndPower",
+      "range": {
+        "startLine": 144,
+        "startChar": 25,
+        "endLine": 144,
+        "endChar": 47
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf5777c_a86e512b",
+        "filename": "src/chromiumos/tast/local/camera/testpage/camera_page.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-13T17:00:52Z",
+      "side": 1,
+      "message": "nit: no need to give a name for this error",
+      "range": {
+        "startLine": 78,
+        "startChar": 70,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "120dc801_5b9e5c0e",
+        "filename": "src/chromiumos/tast/local/camera/testpage/camera_page.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-13T17:00:52Z",
+      "side": 1,
+      "message": "retErr already might be not nil, so please log all errors. Usually function returns firstErr, not last error\n\n```\nif err :\u003d w.trackState.Release(ctx); err !\u003d nil {\n  testing.ContextLog(\"Failed to ...\", err)\n  if firstErr \u003d\u003d nil {\n    firstErr \u003d err\n  }\n}\n```",
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c51ed3b_473144af",
+        "filename": "src/chromiumos/tast/local/camera/testpage/data/camera_page.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-13T17:00:52Z",
+      "side": 1,
+      "message": "nit: 2022?",
+      "range": {
+        "startLine": 2,
+        "startChar": 15,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
