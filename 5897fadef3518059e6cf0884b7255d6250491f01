@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3cef81f_90851381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:15Z",
+      "side": 1,
+      "message": "When the environment is correct, we expect an error (no profile to pop and remove). So, should we log errors (the expected situation) or when there\u0027s no error (thus, no info to print) ?\nThat\u0027s mostly why I decided to log nothing.",
+      "parentUuid": "9078c92b_ef502e01",
+      "range": {
+        "startLine": 113,
+        "startChar": 47,
+        "endLine": 113,
+        "endChar": 60
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36de7a5c_6a6c58d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
         "patchSetId": 6
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fec09ff_d596fb7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:15Z",
+      "side": 1,
+      "message": "Yes we want to cleanup. Actually an error here is not a test failure. `CreateFakeUserProfile()` is a helper to create a fake Shill user profile for tests that need it. When a failure occurs here, it means we\u0027re not able to create the fake profile correctly, then we want to cleanup.",
+      "parentUuid": "36de7a5c_6a6c58d2",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77affd4f_742bc4e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
         "patchSetId": 6
@@ -54,6 +96,24 @@
       "writtenOn": "2022-05-11T01:07:28Z",
       "side": 1,
       "message": "Same here",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fef0260_59e9eba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "77affd4f_742bc4e5",
       "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -93,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a882fb5_75b7fd8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8579d669_4a4afad0",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db1a40f0_479a3556",
@@ -106,6 +184,30 @@
       "writtenOn": "2022-05-12T18:19:03Z",
       "side": 1,
       "message": "This cleanup should probably be closer to the callsite of `CreateFakeUserProfile`. It won\u0027t be called if the other steps of `prepareSelectionTest` fail. Calling `CreateFakeUserProfile` from this level instead of within `prepareSelectionTest` is probably the simplest way to go, or alternatively having a deferred cleanup within `prepareSelectionTest` that removes the user profile if it returns an error.",
+      "range": {
+        "startLine": 313,
+        "startChar": 19,
+        "endLine": 313,
+        "endChar": 40
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0484941d_8d3f6faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db1a40f0_479a3556",
       "range": {
         "startLine": 313,
         "startChar": 19,
@@ -139,6 +241,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bbf030e_9ed8e018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeead37d_de7ff246",
+      "range": {
+        "startLine": 313,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 17
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a143975_1ec3bd25",
@@ -162,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a99ebe4_55b04b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a143975_1ec3bd25",
+      "range": {
+        "startLine": 320,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 16
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c2f104a_2a97ba17",
@@ -175,6 +325,24 @@
       "writtenOn": "2022-05-12T18:19:03Z",
       "side": 1,
       "message": "same here and below",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df93dff6_7f8c099f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c2f104a_2a97ba17",
       "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -210,6 +378,24 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "c95a8996_f3277b03",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b97f23_4d38a4e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a0d4ca_ce045afe",
       "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
