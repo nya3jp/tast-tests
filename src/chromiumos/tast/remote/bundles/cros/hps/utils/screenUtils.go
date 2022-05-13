@@ -18,12 +18,11 @@ import (
 
 // This will be updated to be read from system (s)
 const (
-	QuickDimTime         = 6 * time.Second
-	QuickLockTime        = 126 * time.Second
-	QuickDimDisableTime  = 420 * time.Second
-	QuickLockDisableTime = 90 * time.Second
-	PresentQuickDimTime  = 840 * time.Second
-	PresentQuickLockTime = 90 * time.Second
+	ZeroPresence      = 0
+	OnePresence       = 1
+	TwoPresence       = 2
+	LockOnLeave       = "Lock-on-leave"
+	SecondPersonAlert = "Viewing protection"
 )
 
 // GetBrightness gets the current brightness of the dut

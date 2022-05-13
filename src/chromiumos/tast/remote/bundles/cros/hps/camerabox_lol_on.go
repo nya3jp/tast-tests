@@ -12,7 +12,6 @@ import (
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/common/hps/hpsutil"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
@@ -60,47 +59,38 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	presenceNo := s.Param().(numPresenceParams)
 
 	d := s.DUT()
-	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
-	defer cancel()
 
-	archive := s.DataPath(hpsutil.PersonPresentPageArchiveFilename)
-	filePaths, err := utils.UntarImages(ctx, archive)
-	if err != nil {
-		s.Fatal("Tmp dir creation failed on DUT")
-	}
 	// Creating hps context.
 	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), d.Conn())
 	if err != nil {
 		s.Fatal("Error creating HpsContext: ", err)
 	}
 
-	// Connecting to the other tablet that will render the picture.
-	var chartAddr string
-	if altAddr, ok := s.Var("tablet"); ok {
-		chartAddr = altAddr
-	}
-	c, hostPaths, err := chart.New(ctx, d, chartAddr, s.OutDir(), filePaths)
+	hostPaths, c, err := utils.SetupDisplay(ctx, s)
 	if err != nil {
-		s.Fatal("Failed to send the files: ", err)
+		s.Fatal("Error setting up display: ", err)
 	}
+
 	c.Display(ctx, hostPaths[presenceNo.numOfPerson])
 
 	// Connecting to Taeko.
+	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
 	cl, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
-		s.Fatal("Failed to connect to the DUT: ", err)
+		s.Fatal("Failed to setup grpc: ", err)
 	}
 	defer cl.Close(cleanupCtx)
 
 	// Wait for Dbus to be available.
 	client := pb.NewHpsServiceClient(cl.Conn)
-	if _, err := client.WaitForDbus(hctx.Ctx, &empty.Empty{}); err != nil {
+	if _, err := client.WaitForDbus(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to wait for dbus command to be available: ", err)
 	}
 
 	// Enable LoL in setting.
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
-		Setting: "Lock-on-leave",
+		Setting: utils.LockOnLeave,
 		Enable:  true,
 	}
 	if _, err := client.StartUIWithCustomScreenPrivacySetting(hctx.Ctx, req, grpc.WaitForReady(true)); err != nil {
