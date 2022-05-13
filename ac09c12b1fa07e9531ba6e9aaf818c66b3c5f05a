@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15a34671_6374b5fd",
+        "filename": "src/chromiumos/tast/common/android/adb/logcat.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-13T13:26:51Z",
+      "side": 1,
+      "message": "If this works, it\u0027s not looks ideal. Fixing the code sounds like out of scope of this CL, but could you add comment, TODO and possibly file a bug to fix the behavior?",
+      "parentUuid": "04b45262_eb3e3609",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f7f010e_26c07c7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_touch_injector.go",
         "patchSetId": 12
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "I think it\u0027s less about waiting for a condition and more about making sure there are no \"race conditions\" with keyboard inputs, since the input overlay can accept two move commands at once for a diagonal move. Would the wait still be appropriate in this situation?",
       "parentUuid": "5f7f010e_26c07c7c",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7971fa28_98c27bdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_touch_injector.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-13T13:26:51Z",
+      "side": 1,
+      "message": "They why do you need sleep?",
+      "parentUuid": "c977b886_fee5a1d7",
       "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79f91aa1_3ab4a359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-13T13:26:51Z",
+      "side": 1,
+      "message": "It depends. What\u0027s the actual spec? If the spec of the feature requires some certain waiting, then it\u0027s worth commented here.\n\nSleep needs to be used very carefully, and for all usage, we have to understand what we do in very precise.\n\"Practically wait looks working\" does not sound a way to go to me.",
+      "parentUuid": "ae8dbf5c_d0f93cd9",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b53eeb7f_171cf457",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
         "patchSetId": 12
@@ -172,6 +226,24 @@
       "side": 1,
       "message": "I believe I did check the existence of both \"x[0]\u003d\" and \"y[0]\u003d\" above.\n\nIf it wasn\u0027t clear, the argument passed in is not a string of the line, but rather, a slice of strings of the line, broken up by the space (\" \") character. The logic is to obtain the index of both \"x[0]\u003d\" and \"y[0]\u003d\" strings in the slice, and then removing those strings to obtain the coordinates of the touch event.",
       "parentUuid": "b53eeb7f_171cf457",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8b0722_23aed87f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-13T13:26:51Z",
+      "side": 1,
+      "message": "\u003e I believe I did check the existence of both \"x[0]\u003d\" and \"y[0]\u003d\" above.\n\nNo. \n\n\"foobar x[0]\u003d 10\"\n\nis a bad example. If x[0]\u003d is ensured at the beginning of the line, please check so.",
+      "parentUuid": "cf6bbc7a_89541361",
       "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +285,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef8e9a3f_2e300eae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-13T13:26:51Z",
+      "side": 1,
+      "message": "It sounds caller\u0027s responsibility.",
+      "parentUuid": "0839a32b_81256fe5",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28704cfb_68ced8b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
         "patchSetId": 12
@@ -242,6 +332,24 @@
       "side": 1,
       "message": "I have tried it without the parentheses, but a compilation error was thrown: https://paste.googleplex.com/6046905961283584",
       "parentUuid": "28704cfb_68ced8b4",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db8cea8_ace3d0cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-13T13:26:51Z",
+      "side": 1,
+      "message": "Oh, I see. Sorry for confusion.",
+      "parentUuid": "2e019301_a1ee9630",
       "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
