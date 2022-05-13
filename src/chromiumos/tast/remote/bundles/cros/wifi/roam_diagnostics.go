@@ -210,7 +210,7 @@ func executeRoamDiagnosticsTest(ctx context.Context, s *testing.State, ap0Params
 	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
 	defer cancel()
 
-	wpaMonitor, stop, ctx, err := tf.StartWPAMonitor(ctx)
+	wpaMonitor, stop, ctx, err := tf.StartWPAMonitor(ctx, wificell.DefaultDUT)
 	if err != nil {
 		s.Fatal("Failed to start wpa monitor")
 	}
