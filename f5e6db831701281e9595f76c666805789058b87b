@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18fe168_b90bf35c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-13T18:28:14Z",
+      "side": 1,
+      "message": "Searching in settings is a new feature merged last week. If the ToT DUT is running an earlier build then the test will fail.",
+      "parentUuid": "9583e071_62b0e074",
+      "revId": "f5e6db831701281e9595f76c666805789058b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fd3b62d_01df60ac",
