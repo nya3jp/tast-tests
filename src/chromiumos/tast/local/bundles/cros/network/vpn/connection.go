@@ -41,6 +41,7 @@ type Config struct {
 	OpenVPNCertVeirfyWrongSubject bool
 	OpenVPNCertVerifyWrongCN      bool
 	OpenVPNCertVerifyCNOnly       bool
+	OpenVPNNoTLSAuth              bool
 
 	// Parameters for a WireGuard connection.
 	// WGTwoPeers indicates whether the connection will use one peer or two
@@ -225,7 +226,7 @@ func (c *Connection) startServer(ctx context.Context) error {
 	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
 		c.Server, err = StartL2TPIPsecServer(ctx, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
 	case TypeOpenVPN:
-		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword)
+		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword, !c.config.OpenVPNNoTLSAuth)
 	case TypeWireGuard:
 		clientKey := wgClientPublicKey
 		if c.config.WGAutoGenKey {

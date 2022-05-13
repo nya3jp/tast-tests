@@ -30,6 +30,27 @@ func init() {
 		Fixture:      "vpnShillResetWithChromeLoggedIn",
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Params: []testing.Param{{
+			Name: "ikev2_cert",
+			Val: vpn.Config{
+				Type:     vpn.TypeIKEv2,
+				AuthType: vpn.AuthTypeCert,
+			},
+			ExtraSoftwareDeps: []string{"ikev2"},
+		}, {
+			Name: "ikev2_eap",
+			Val: vpn.Config{
+				Type:     vpn.TypeIKEv2,
+				AuthType: vpn.AuthTypeEAP,
+			},
+			ExtraSoftwareDeps: []string{"ikev2"},
+		}, {
+			Name: "ikev2_psk",
+			Val: vpn.Config{
+				Type:     vpn.TypeIKEv2,
+				AuthType: vpn.AuthTypePSK,
+			},
+			ExtraSoftwareDeps: []string{"ikev2"},
+		}, {
 			Name: "l2tp_ipsec_cert",
 			Val: vpn.Config{
 				Type:     vpn.TypeL2TPIPsec,
@@ -40,6 +61,14 @@ func init() {
 			Val: vpn.Config{
 				Type:     vpn.TypeL2TPIPsec,
 				AuthType: vpn.AuthTypePSK,
+			},
+		}, {
+			Name: "openvpn",
+			Val: vpn.Config{
+				Type:                   vpn.TypeOpenVPN,
+				AuthType:               vpn.AuthTypeCert,
+				OpenVPNUseUserPassword: true,
+				OpenVPNNoTLSAuth:       true, // not configurable via UI
 			},
 		}, {
 			Name: "wireguard",
@@ -102,13 +131,6 @@ func VPNUI(ctx context.Context, s *testing.State) {
 	if err := v.config(ctx); err != nil {
 		s.Fatal("Failed to configure on VPN dialog: ", err)
 	}
-
-	// Defers a cleanup to clear the profile in case of failure.
-	defer func() {
-		if err != vpn.RemoveVPNProfile(ctx, svcName) {
-			s.Fatal("Failed to remove VPN service in cleanup: ", err)
-		}
-	}()
 
 	// Clicks Connect and checks the "Connected" text on the VPN detail page.
 	if err := uiauto.Combine("Connect VPN",
@@ -177,13 +199,63 @@ func (v *vpnDialogConfigger) config(ctx context.Context) error {
 		return err
 	}
 	switch v.cfg.Type {
+	case vpn.TypeIKEv2:
+		return v.configIKEv2(ctx)
 	case vpn.TypeL2TPIPsec:
 		return v.configL2TPIPsec(ctx)
+	case vpn.TypeOpenVPN:
+		return v.configOpenVPN(ctx)
 	case vpn.TypeWireGuard:
 		return v.configWireGuard(ctx)
 	default:
 		return errors.Errorf("invalid VPN type %s", v.cfg.Type)
 	}
+}
+
+func (v *vpnDialogConfigger) configIKEv2(ctx context.Context) error {
+	if err := v.selectListOption(ctx, "Provider type", "IPsec (IKEv2)"); err != nil {
+		return errors.Wrap(err, "failed to select VPN type")
+	}
+	if err := v.inputTextField(ctx, "Server hostname", v.conn.Properties["Provider.Host"].(string)); err != nil {
+		return err
+	}
+	switch v.cfg.AuthType {
+	case vpn.AuthTypeCert:
+		// User cert and server CA are selected by default.
+		if err := v.selectListOption(ctx, "Authentication type", "User certificate"); err != nil {
+			return errors.Wrap(err, "failed to select authentication type")
+		}
+		if err := v.inputTextField(ctx, "Remote identity (optional)", v.conn.Properties["IKEv2.RemoteIdentity"].(string)); err != nil {
+			return err
+		}
+	case vpn.AuthTypeEAP:
+		// Server CA is selected by default.
+		if err := v.selectListOption(ctx, "Authentication type", "Username and password"); err != nil {
+			return errors.Wrap(err, "failed to select authentication type")
+		}
+		if err := v.inputTextField(ctx, "Username", v.conn.Properties["EAP.Identity"].(string)); err != nil {
+			return err
+		}
+		if err := v.inputTextField(ctx, "Password", v.conn.Properties["EAP.Password"].(string)); err != nil {
+			return err
+		}
+	case vpn.AuthTypePSK:
+		if err := v.selectListOption(ctx, "Authentication type", "Pre-shared key"); err != nil {
+			return errors.Wrap(err, "failed to select authentication type")
+		}
+		if err := v.inputTextField(ctx, "Pre-shared key", v.conn.Properties["IKEv2.PSK"].(string)); err != nil {
+			return err
+		}
+		if err := v.inputTextField(ctx, "Local identity (optional)", v.conn.Properties["IKEv2.LocalIdentity"].(string)); err != nil {
+			return err
+		}
+		if err := v.inputTextField(ctx, "Remote identity (optional)", v.conn.Properties["IKEv2.RemoteIdentity"].(string)); err != nil {
+			return err
+		}
+	default:
+		return errors.Errorf("unknown auth type %s", v.cfg.AuthType)
+	}
+	return nil
 }
 
 func (v *vpnDialogConfigger) configL2TPIPsec(ctx context.Context) error {
@@ -213,6 +285,28 @@ func (v *vpnDialogConfigger) configL2TPIPsec(ctx context.Context) error {
 		}
 	default:
 		return errors.Errorf("unknown auth type %s", v.cfg.AuthType)
+	}
+	return nil
+}
+
+func (v *vpnDialogConfigger) configOpenVPN(ctx context.Context) error {
+	if err := v.selectListOption(ctx, "Provider type", "OpenVPN"); err != nil {
+		return errors.Wrap(err, "failed to select VPN type")
+	}
+	if err := v.inputTextField(ctx, "Server hostname", v.conn.Properties["Provider.Host"].(string)); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Username", v.conn.Properties["OpenVPN.User"].(string)); err != nil {
+		return err
+	}
+	if err := v.inputTextField(ctx, "Password", v.conn.Properties["OpenVPN.Password"].(string)); err != nil {
+		return err
+	}
+
+	// Server CA is selected by default. Only need to select user cert.
+	certName := "chromelab-wifi-testbed-root.mtv.google.com [chromelab-wifi-testbed-client.mtv.google.com]"
+	if err := v.selectListOption(ctx, "User certificate", certName); err != nil {
+		return errors.Wrap(err, "failed to select VPN type")
 	}
 	return nil
 }
