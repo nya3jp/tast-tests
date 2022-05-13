@@ -94,6 +94,30 @@
       },
       "revId": "5cca952511d87464d8809d57d5416e842112b0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b242f6cb_3bb075a4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-13T07:33:53Z",
+      "side": 1,
+      "message": "Got it, thanks. I allocated 10 seconds for both to be on the safe side.",
+      "parentUuid": "ca639289_ae8bbf27",
+      "range": {
+        "startLine": 195,
+        "startChar": 37,
+        "endLine": 195,
+        "endChar": 48
+      },
+      "revId": "5cca952511d87464d8809d57d5416e842112b0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
