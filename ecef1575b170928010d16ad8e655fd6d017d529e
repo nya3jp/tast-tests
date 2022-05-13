@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3946fe1_8733cf86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-13T08:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa0571ba_64afd874",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41f4d8df_05a7eb50",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-02T03:32:14Z",
       "side": 1,
       "message": "nit: maybe USBDevice is a clearer name?",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b80826_110d04eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-13T08:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41f4d8df_05a7eb50",
       "range": {
         "startLine": 18,
         "startChar": 5,
@@ -116,6 +164,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27271657_15ac5d7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-13T08:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0df2187a_48c996a7",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "400fc8ed_4241085c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-13T08:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98490897_4cc6a411",
+      "range": {
+        "startLine": 41,
+        "startChar": 84,
+        "endLine": 41,
+        "endChar": 85
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "576673f7_0d00c72a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-13T08:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4be95fe2_6aa66c57",
+      "range": {
+        "startLine": 41,
+        "startChar": 51,
+        "endLine": 41,
+        "endChar": 53
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60a10845_3444bc98",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-02T03:32:14Z",
       "side": 1,
       "message": "Maybe add an explanation of the format of the result, as a string is a somewhat unusual way of representing a speed.\n\nIf there is a limited number of possible speeds, you might consider defining an enumeration of possible speed values and parsing any speeds into that enumeration. This will make this library easier to use by tests.",
+      "range": {
+        "startLine": 66,
+        "startChar": 26,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519e505e_5326dd57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-13T08:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a10845_3444bc98",
       "range": {
         "startLine": 66,
         "startChar": 26,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5138d9_6b7ee7be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-13T08:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f802a9d7_519d805c",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 124
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e17f31a_9b6808c4",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2d1b10_fafeddb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/powerutils/device_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-13T08:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e17f31a_9b6808c4",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c43e8aa2_4f44c5af",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-05-02T03:32:14Z",
       "side": 1,
       "message": "clar: How can the same test, with no difference in hardware dependencies, find both one and two connected devices? I think this deserves at least a comment.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "ecef1575b170928010d16ad8e655fd6d017d529e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a0e0a5_9d102650",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_device_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-13T08:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c43e8aa2_4f44c5af",
       "range": {
         "startLine": 39,
         "startChar": 0,
