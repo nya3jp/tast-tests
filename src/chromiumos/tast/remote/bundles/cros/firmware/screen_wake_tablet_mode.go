@@ -212,6 +212,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	// Declare a rpc service for detecting touchscreen.
 	touchscreen := inputs.NewTouchscreenServiceClient(h.RPCClient.Conn)
 
+	s.Log("Sleeping for a few seconds before starting a new Chrome")
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		s.Fatal("Failed to sleep for a few seconds: ", err)
+	}
+
 	// Start a logged-in Chrome session, which is required prior to TouchscreenTap in the screenWake function.
 	if _, err := touchscreen.NewChrome(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to start a new Chrome for the touchscreen service: ", err)
