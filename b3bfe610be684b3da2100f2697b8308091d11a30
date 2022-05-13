@@ -16,6 +16,75 @@
       "message": "PTAL",
       "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9798e41_f67113fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-05-13T20:55:37Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53939196_b369947f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-05-13T20:55:37Z",
+      "side": 1,
+      "message": "why do we need to call this in the for loop? It should only be called once.",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9eec31_4b8a69aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-05-13T20:55:37Z",
+      "side": 1,
+      "message": "same here. We only need to expand once.",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 57
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
