@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4ca69f0_c5d3c6e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_touch_injector.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1501332
+      },
+      "writtenOn": "2022-05-13T18:06:44Z",
+      "side": 1,
+      "message": "In this case the sleep is being used to produce behavior closer to what a real user would input. Users can press and release on the same frame. There is always a small amount of time between these events.",
+      "parentUuid": "7971fa28_98c27bdb",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3179a52_03ee4045",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
         "patchSetId": 12
