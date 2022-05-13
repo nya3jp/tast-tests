@@ -311,9 +311,14 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 		return errors.Wrap(err, "failed to measure")
 	}
 
-	var gpuErr, cStateErr, cpuErr error
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to test API")
+	}
+
+	var gpuErr, cStateErr, cpuErr, batErr error
 	var wg sync.WaitGroup
-	wg.Add(3)
+	wg.Add(4)
 	go func() {
 		defer wg.Done()
 		gpuErr = graphics.MeasureGPUCounters(ctx, gpuMeasuring, p)
@@ -326,6 +331,10 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 		defer wg.Done()
 		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, cpuStabilization, cpuMeasuring, p)
 	}()
+	go func() {
+		defer wg.Done()
+		batErr = graphics.MeasureSystemPowerConsumption(ctx, tconn, cpuMeasuring, p)
+	}()
 	wg.Wait()
 	if gpuErr != nil {
 		return errors.Wrap(gpuErr, "failed to measure GPU counters")
@@ -335,6 +344,9 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 	}
 	if cpuErr != nil {
 		return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
+	}
+	if batErr != nil {
+		return errors.Wrap(batErr, "failed to measure system power consumption")
 	}
 
 	testing.ContextLogf(ctx, "Metric: %+v", p)
