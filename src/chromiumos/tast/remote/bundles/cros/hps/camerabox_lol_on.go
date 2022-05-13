@@ -12,7 +12,6 @@ import (
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/common/hps/hpsutil"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
@@ -23,7 +22,7 @@ import (
 )
 
 type numPresenceParams struct {
-	numOfPerson int
+	numOfPerson string
 }
 
 func init() {
@@ -38,19 +37,19 @@ func init() {
 			"chromeos-hps-swe@google.com",
 		},
 		Attr:         []string{"group:camerabox", "group:hps", "hps_perbuild"},
-		Timeout:      40 * time.Minute,
+		Timeout:      50 * time.Minute,
 		SoftwareDeps: []string{"hps", "chrome", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.hps.HpsService"},
 		Vars:         []string{"tablet"},
 		Params: []testing.Param{{
 			Name: "no_presence",
 			Val: numPresenceParams{
-				numOfPerson: 0,
+				numOfPerson: utils.ZeroPresence,
 			},
 		}, {
 			Name: "one_presence",
 			Val: numPresenceParams{
-				numOfPerson: 1,
+				numOfPerson: utils.OnePresence,
 			},
 		}},
 	})
@@ -59,48 +58,39 @@ func init() {
 func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 	presenceNo := s.Param().(numPresenceParams)
 
-	d := s.DUT()
-	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
-	defer cancel()
+	dut := s.DUT()
 
-	archive := s.DataPath(hpsutil.PersonPresentPageArchiveFilename)
-	filePaths, err := utils.UntarImages(ctx, archive)
-	if err != nil {
-		s.Fatal("Tmp dir creation failed on DUT")
-	}
 	// Creating hps context.
-	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), d.Conn())
+	hctx, err := hpsutil.NewHpsContext(ctx, "", hpsutil.DeviceTypeBuiltin, s.OutDir(), dut.Conn())
 	if err != nil {
 		s.Fatal("Error creating HpsContext: ", err)
 	}
 
-	// Connecting to the other tablet that will render the picture.
-	var chartAddr string
-	if altAddr, ok := s.Var("tablet"); ok {
-		chartAddr = altAddr
-	}
-	c, hostPaths, err := chart.New(ctx, d, chartAddr, s.OutDir(), filePaths)
+	hostPaths, displayChart, err := utils.SetupDisplay(ctx, s)
 	if err != nil {
-		s.Fatal("Failed to send the files: ", err)
+		s.Fatal("Error setting up display: ", err)
 	}
-	c.Display(ctx, hostPaths[presenceNo.numOfPerson])
+
+	displayChart.Display(ctx, hostPaths[presenceNo.numOfPerson])
 
 	// Connecting to Taeko.
-	cl, err := rpc.Dial(ctx, d, s.RPCHint())
+	cleanupCtx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
-		s.Fatal("Failed to connect to the DUT: ", err)
+		s.Fatal("Failed to setup grpc: ", err)
 	}
 	defer cl.Close(cleanupCtx)
 
 	// Wait for Dbus to be available.
 	client := pb.NewHpsServiceClient(cl.Conn)
-	if _, err := client.WaitForDbus(hctx.Ctx, &empty.Empty{}); err != nil {
+	if _, err := client.WaitForDbus(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to wait for dbus command to be available: ", err)
 	}
 
 	// Enable LoL in setting.
 	req := &pb.StartUIWithCustomScreenPrivacySettingRequest{
-		Setting: "Lock-on-leave",
+		Setting: utils.LockOnLeave,
 		Enable:  true,
 	}
 	if _, err := client.StartUIWithCustomScreenPrivacySetting(hctx.Ctx, req, grpc.WaitForReady(true)); err != nil {
@@ -109,7 +99,7 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 
 	// Get the delays for the quick dim.
 	delayReq := &wrappers.BoolValue{
-		Value: presenceNo.numOfPerson == 0,
+		Value: presenceNo.numOfPerson == utils.ZeroPresence,
 	}
 	quickDimMetrics, err := client.RetrieveDimMetrics(hctx.Ctx, delayReq)
 	dimDelay, screenOffDelay, lockDelay := delayForPresence(presenceNo.numOfPerson, quickDimMetrics)
@@ -117,7 +107,7 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 		s.Fatal("Error getting delay settings: ", err)
 	}
 
-	brightness, err := utils.GetBrightness(hctx.Ctx, d.Conn())
+	brightness, err := utils.GetBrightness(hctx.Ctx, dut.Conn())
 	if err != nil {
 		s.Fatal("Error failed to get brightness: ", err)
 	}
@@ -127,17 +117,15 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 		s.Fatal("Error open hps-internals")
 	}
 
-	if err := utils.PollForDim(ctx, brightness, dimDelay, d.Conn()); err != nil {
+	// It takes around 10s for hps sensor to start having proper results.
+	testing.Sleep(ctx, time.Second*10)
+
+	if err := utils.PollForDim(ctx, brightness, dimDelay, false, dut.Conn()); err != nil {
 		s.Fatal("Error when polling for brightness: ", err)
 	}
 
-	utils.WaitWithDelay(ctx, screenOffDelay)
-	newBrightness, err := utils.GetBrightness(ctx, d.Conn())
-	if err != nil {
-		s.Fatal("Error failed to get brightness: ", err)
-	}
-	if newBrightness != 0 {
-		s.Fatal("Screen not turned off")
+	if err := utils.PollForDim(ctx, brightness, screenOffDelay, true, dut.Conn()); err != nil {
+		s.Fatal("Error when polling for brightness: ", err)
 	}
 
 	utils.WaitWithDelay(ctx, lockDelay)
@@ -148,9 +136,10 @@ func CameraboxLoLOn(ctx context.Context, s *testing.State) {
 }
 
 // delayForPresence returns the expected dim time depending on the human presence.
-func delayForPresence(numPresence int, dimSettings *pb.RetrieveDimMetricsResponse) (time.Duration, time.Duration, time.Duration) {
-	if numPresence == 0 {
+func delayForPresence(numPresence string, dimSettings *pb.RetrieveDimMetricsResponse) (time.Duration, time.Duration, time.Duration) {
+	if numPresence == utils.ZeroPresence {
 		return dimSettings.DimDelay.AsDuration(), dimSettings.ScreenOffDelay.AsDuration(), dimSettings.LockDelay.AsDuration()
 	}
-	return dimSettings.DimDelay.AsDuration() * 2, dimSettings.ScreenOffDelay.AsDuration(), dimSettings.LockDelay.AsDuration()
+	// When a human is present, the screen off delay is 30s from dim, and screen lock is 1min from screen off.
+	return dimSettings.DimDelay.AsDuration() * 2, 30 * time.Second, time.Minute
 }
