@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009ab7bb_2237f490",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-05-13T07:33:44Z",
+      "side": 1,
+      "message": "Is resizing required for Acuiti or is it a workaround (possibly short-term) for these specific tests?",
+      "revId": "27379aa5b6ffae6a11d88720ca2d9c0387731888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
