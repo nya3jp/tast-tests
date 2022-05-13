@@ -10,8 +10,8 @@ import (
 	"chromiumos/tast/common/policy"
 )
 
-// RestrictiveDLPPolicyForClipboard returns clipboard policy restricting all destinations.
-func RestrictiveDLPPolicyForClipboard() []policy.Policy {
+// RestrictiveDLPPolicyForClipboard returns a clipboard policy blocking clipboard from source to all destination urls.
+func RestrictiveDLPPolicyForClipboard(source string) []policy.Policy {
 	return []policy.Policy{&policy.DataLeakPreventionRulesList{
 		Val: []*policy.DataLeakPreventionRulesListValue{
 			{
@@ -19,7 +19,7 @@ func RestrictiveDLPPolicyForClipboard() []policy.Policy {
 				Description: "User should not be able to copy and paste confidential content in any destination",
 				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
-						"example.com",
+						source,
 					},
 				},
 				Destinations: &policy.DataLeakPreventionRulesListValueDestinations{
