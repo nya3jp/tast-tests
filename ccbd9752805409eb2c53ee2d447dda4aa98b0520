@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88eedda_506c4fa8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-05-13T16:48:13Z",
+      "side": 1,
+      "message": "nit: it would be easier to link the CL, instead. You may use crrev/c/{cl_id} format to link a CL with {cl_id}.",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "ccbd9752805409eb2c53ee2d447dda4aa98b0520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "634231ed_848ffdb5",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-05-13T14:32:34Z",
       "side": 1,
       "message": "LGTM, thanks!",
+      "revId": "ccbd9752805409eb2c53ee2d447dda4aa98b0520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53eb544e_a6e6ec64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-05-13T16:48:13Z",
+      "side": 1,
+      "message": "LGTM % nit. Thanks!",
       "revId": "ccbd9752805409eb2c53ee2d447dda4aa98b0520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
