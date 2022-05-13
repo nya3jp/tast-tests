@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f67c825_6ba3cd1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61315c54_6da106e1",
+      "range": {
+        "startLine": 34,
+        "startChar": 37,
+        "endLine": 34,
+        "endChar": 120
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9b6a44b_acfb1c93",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-13T17:27:22Z",
       "side": 1,
       "message": "In the future, if we have more Tast tests related to `CalendarView`, it may be a good idea to create a fixture for it. See this example: https://source.corp.google.com/h/chromium/chromiumos/platform/tast-tests/+/a642d667b00148a4ab3266be0d22983efff0c611:src/chromiumos/tast/local/chrome/fixture.go;l\u003d179;bpv\u003d1;bpt\u003d0;drc\u003d6648c2cdb757c48e7f940391de499fe390f687c4",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac95e5cf_0b38efa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Thanks for the example. I\u0027m going to add owned test account to the login pool and make a fixture for the calendar view in the next cl:] This account is just set up ready today.",
+      "parentUuid": "f9b6a44b_acfb1c93",
       "range": {
         "startLine": 39,
         "startChar": 1,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "745b7972_7b83daf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94727e2c_6ad8afa4",
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30fb339d_f3507b4f",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-05-13T17:27:22Z",
       "side": 1,
       "message": "nit: Failed?",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24ebe81_f66785bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30fb339d_f3507b4f",
       "range": {
         "startLine": 54,
         "startChar": 11,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00d478b_dddb448a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a459e3bd_d297d4b9",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 23
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "916eb5c8_eb199db8",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-05-13T17:27:22Z",
       "side": 1,
       "message": "nit: is it a typo?",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 14
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0366f55_35e4b35d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "916eb5c8_eb199db8",
       "range": {
         "startLine": 80,
         "startChar": 1,
@@ -175,6 +313,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcbed63a_89496f89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done.\n\nGo back to today\u0027s animation has no location change. I used\n`ui.WaitUntilGone(previousYearLabel)` to make sure the old label is gone and then\n`ui.WaitUntilExists(todayYearLabel)` to check the new label is shown.",
+      "parentUuid": "ebec6e52_b01b3d86",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3736480f_06dcfa70",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
         "patchSetId": 5
@@ -186,6 +348,30 @@
       "writtenOn": "2022-05-13T16:59:01Z",
       "side": 1,
       "message": "you can remove \u0027for\u0027",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed7b8fe_e1b065c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3736480f_06dcfa70",
       "range": {
         "startLine": 101,
         "startChar": 27,
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0c9b3b_94f3ac75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dcabb7b_6aa42b09",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 51
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e224e948_0fc95e7b",
@@ -232,6 +442,30 @@
       "writtenOn": "2022-05-13T17:27:22Z",
       "side": 1,
       "message": "This line\u0027s error message is exactly the same as the message in the line 98. Please avoid it. Otherwise, if somehow an error occurs in either the line 98 or the line 116, it will be hard to tell which line of code causes the error.\n\nSimilar issues with the line 113",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 73
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1925ade3_c453c641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e224e948_0fc95e7b",
       "range": {
         "startLine": 116,
         "startChar": 0,
@@ -265,6 +499,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "254f7efe_9c7c7b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f4b6ea_0075b62c",
+      "range": {
+        "startLine": 119,
+        "startChar": 55,
+        "endLine": 119,
+        "endChar": 60
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd6b6096_53b59f62",
@@ -288,6 +546,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "238b0c13_5d68431d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd6b6096_53b59f62",
+      "range": {
+        "startLine": 134,
+        "startChar": 29,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c112a337_856354c8",
@@ -301,6 +583,24 @@
       "writtenOn": "2022-05-13T17:27:22Z",
       "side": 1,
       "message": "Please ensure to close the calendar view at the end of the test. Otherwise, it could affect other tests.",
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e96ba5_0d493ed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-13T23:23:19Z",
+      "side": 1,
+      "message": "The calendar view is closed when the settings page is up. I added another click to close the settings page.",
+      "parentUuid": "c112a337_856354c8",
       "revId": "1c57ec16464729d8eb241a615332ab524f209292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
