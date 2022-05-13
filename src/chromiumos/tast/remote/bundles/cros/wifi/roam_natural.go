@@ -216,7 +216,7 @@ func executeRoamNaturalTest(ctx context.Context, s *testing.State, apAllParams [
 	ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap1)
 	defer cancel()
 
-	wpaMonitor, stop, ctx, err := tf.StartWPAMonitor(ctx)
+	wpaMonitor, stop, ctx, err := tf.StartWPAMonitor(ctx, wificell.DefaultDUT)
 	if err != nil {
 		s.Fatal("Faled to start wpa monitor")
 	}
@@ -253,7 +253,7 @@ func executeRoamNaturalTest(ctx context.Context, s *testing.State, apAllParams [
 			}
 
 			for offsetRangeIdx, offsetRange := range offsetRanges {
-				err = tf.ClearBSSIDIgnoreDUT(ctx)
+				err = tf.ClearBSSIDIgnoreDUT(ctx, wificell.DefaultDUT)
 				if err != nil {
 					s.Fatal("Failed to clear wpa BSSID_IGNORE: ", err)
 				}

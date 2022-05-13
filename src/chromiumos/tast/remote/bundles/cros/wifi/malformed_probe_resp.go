@@ -162,7 +162,7 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	if err := tf.AssertNoDisconnect(ctx, runOnce); err != nil {
+	if err := tf.AssertNoDisconnect(ctx, wificell.DefaultDUT, runOnce); err != nil {
 		s.Fatal("Scan failed: ", err)
 	}
 }

@@ -235,8 +235,8 @@ func (f *tastFixtureImpl) dutHealthCheck(ctx context.Context, d *dut.DUT, rpcHin
 
 // recoverUnhealthyDUT checks if the DUT is healthy. If not, try to recover it
 // with reboot.
-func (f *tastFixtureImpl) recoverUnhealthyDUT(ctx context.Context, s *testing.FixtState) error {
-	if err := f.dutHealthCheck(ctx, s.DUT(), s.RPCHint()); err != nil {
+func (f *tastFixtureImpl) recoverUnhealthyDUT(ctx context.Context, d *dut.DUT, s *testing.FixtState) error {
+	if err := f.dutHealthCheck(ctx, d, s.RPCHint()); err != nil {
 		testing.ContextLog(ctx, "Rebooting the DUT due to health check err: ", err)
 		// As reboot will at least break tf.rpc, no reason to keep
 		// the existing p.tf. Close it before reboot.
@@ -247,15 +247,15 @@ func (f *tastFixtureImpl) recoverUnhealthyDUT(ctx context.Context, s *testing.Fi
 			}
 			f.tf = nil
 		}
-		if err := s.DUT().Reboot(ctx); err != nil {
+		if err := d.Reboot(ctx); err != nil {
 			return errors.Wrap(err, "reboot failed")
 		}
 	}
 	return nil
 }
 
-func (f *tastFixtureImpl) enrollChrome(ctx context.Context, s *testing.FixtState) error {
-	pc := policy.NewPolicyServiceClient(f.tf.rpc.Conn)
+func (f *tastFixtureImpl) enrollChrome(ctx context.Context, s *testing.FixtState, dutIdx int) error {
+	pc := policy.NewPolicyServiceClient(f.tf.duts[dutIdx].rpc.Conn)
 	pJSON, err := json.Marshal(policyBlob.NewBlob())
 	if err != nil {
 		return errors.Wrap(err, "failed to serialize policies")
@@ -283,7 +283,7 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 		}
 	}
 
-	if err := f.recoverUnhealthyDUT(ctx, s); err != nil {
+	if err := f.recoverUnhealthyDUT(ctx, s.DUT(), s); err != nil {
 		s.Fatal("Failed to recover unhealthy DUT: ", err)
 	}
 
@@ -376,6 +376,9 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 			s.Fatal("Failed to get companion DUT cd1")
 		}
 		ops = append(ops, TFCompanionDUT(cd))
+		if err := f.recoverUnhealthyDUT(ctx, cd, s); err != nil {
+			s.Fatal("Failed to recover unhealthy DUT: ", err)
+		}
 	}
 
 	tf, err := NewTestFixture(ctx, s.FixtContext(), s.DUT(), s.RPCHint(), ops...)
@@ -385,8 +388,10 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 	f.tf = tf
 
 	if f.features&TFFeaturesEnroll != 0 {
-		if err := f.enrollChrome(ctx, s); err != nil {
-			s.Fatal("Failed to enroll Chrome: ", err)
+		for i := range f.tf.duts {
+			if err := f.enrollChrome(ctx, s, i); err != nil {
+				s.Fatal("Failed to enroll Chrome: ", err)
+			}
 		}
 	}
 
@@ -394,28 +399,31 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 }
 
 func (f *tastFixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
-	// Ensure DUT is healthy here again, so that we don't leave with
-	// bad state to later tests/tasks.
-	if err := f.recoverUnhealthyDUT(ctx, s); err != nil {
-		s.Fatal("Failed to recover unhealthy DUT: ", err)
-	}
+	duts := f.tf.duts // Make a copy of the slice to iterate over.
+	for _, d := range duts {
+		if f.features&TFFeaturesEnroll != 0 {
+			pc := policy.NewPolicyServiceClient(d.rpc.Conn)
 
-	if f.features&TFFeaturesEnroll != 0 {
-		pc := policy.NewPolicyServiceClient(f.tf.rpc.Conn)
+			if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
+				s.Error("Failed to close Chrome instance and Fake DMS: ", err)
+			}
 
-		if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
-			s.Error("Failed to close Chrome instance and Fake DMS: ", err)
+			// Reset DUT TPM and system state to leave it in a good state post test.
+			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d.dut); err != nil {
+				s.Error("Failed to reset TPM: ", err)
+			}
 		}
-
-		// Reset DUT TPM and system state to leave it in a good state post test.
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
-			s.Error("Failed to reset TPM: ", err)
+		// Ensure DUT is healthy here again, so that we don't leave with
+		// bad state to later tests/tasks.
+		if err := f.recoverUnhealthyDUT(ctx, d.dut, s); err != nil {
+			s.Fatal("Failed to recover unhealthy DUT: ", err)
 		}
 	}
 
 	if f.tf == nil {
 		return
 	}
+
 	if err := f.tf.Close(ctx); err != nil {
 		s.Log("Failed to tear down test fixture, err: ", err)
 	}
