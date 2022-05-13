@@ -16,6 +16,24 @@
       "message": "Is resizing required for Acuiti or is it a workaround (possibly short-term) for these specific tests?",
       "revId": "27379aa5b6ffae6a11d88720ca2d9c0387731888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65afa8e5_f85358b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-13T09:10:51Z",
+      "side": 1,
+      "message": "No, resizing is not required for ACUITI. \n\nThis is a workaround for tests that are using screendiff, as resizing is needed for screendiff, see http://b/232166796. Any tests that will use screendiff have to be in clamshell mode, unless we have some other ways to validate the UI render (ACUITI may be potentially able to do some UI verification tasks, and I will need explore this).",
+      "parentUuid": "009ab7bb_2237f490",
+      "revId": "27379aa5b6ffae6a11d88720ca2d9c0387731888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
