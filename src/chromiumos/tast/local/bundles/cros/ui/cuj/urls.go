@@ -69,10 +69,10 @@ const (
 	WikipediaHelpURL = "https://en.wikipedia.org/wiki/Help:Contents"
 	// WikipediaPandemicURL specifies the URL for Wikipedia's pandemic page.
 	WikipediaPandemicURL = "https://en.wikipedia.org/wiki/COVID-19_pandemic"
-	// YahooOriginalsURL specifies the URL for Yahoo's originals page.
-	YahooOriginalsURL = "https://news.yahoo.com/originals/"
 	// YahooScienceURL specifies the URL for Yahoo's science page.
 	YahooScienceURL = "https://news.yahoo.com/science/"
+	// YahooFinanaceWatchlistURL specifies the URL for Yahoo's finance page.
+	YahooFinanaceWatchlistURL = "https://finance.yahoo.com/watchlists/"
 	// YahooUsURL specifies the URL for Yahoo's US page.
 	YahooUsURL = "https://news.yahoo.com/us/"
 	// YahooWorldURL specifies the URL for Yahoo's world page.
