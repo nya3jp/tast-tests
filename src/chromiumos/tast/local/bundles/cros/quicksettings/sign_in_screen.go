@@ -86,7 +86,7 @@ func SignInScreen(ctx context.Context, s *testing.State) {
 	}
 	defer oobeConn.Close()
 
-	if err := oobeConn.Eval(ctx, "Oobe.skipToLoginForTesting()", nil); err != nil {
+	if err := oobeConn.Eval(ctx, "OobeAPI.skipToLoginForTesting()", nil); err != nil {
 		s.Fatal("Failed to skip to login: ", err)
 	}
 

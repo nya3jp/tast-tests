@@ -110,7 +110,7 @@ func MatchSignInGAIAWebView(ctx context.Context, sess *driver.Session) cdputil.T
 // This function is heavily based on NavigateGaiaLogin() in Catapult's
 // telemetry/telemetry/internal/backends/chrome/oobe.py.
 func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Session, oobeConn *driver.Conn) error {
-	if err := oobeConn.Call(ctx, nil, "Oobe.skipToLoginForTesting"); err != nil {
+	if err := oobeConn.Call(ctx, nil, "OobeAPI.skipToLoginForTesting"); err != nil {
 		return err
 	}
 
