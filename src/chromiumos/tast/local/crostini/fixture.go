@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -103,7 +104,7 @@ func init() {
 		Desc:            "Install Crostini with Buster",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBuster},
-		SetUpTimeout:    installationTimeout,
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
@@ -120,7 +121,7 @@ func init() {
 		Desc:            "Install Crostini with Bullseye",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
-		SetUpTimeout:    installationTimeout,
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
@@ -134,7 +135,7 @@ func init() {
 		Desc:            "Install Crostini with Buster in Chrome logged in with Gaia",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBuster},
-		SetUpTimeout:    installationTimeout,
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
@@ -148,7 +149,7 @@ func init() {
 		Desc:            "Install Crostini with Bullseye in Chrome logged in with Gaia",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
-		SetUpTimeout:    installationTimeout,
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
@@ -162,7 +163,7 @@ func init() {
 		Desc:            "Install Crostini with Bullseye in large container with apps installed",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBusterLC},
-		SetUpTimeout:    installationTimeout,
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
@@ -176,7 +177,7 @@ func init() {
 		Desc:            "Install Crostini with Bullseye and enable Lacros",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
-		SetUpTimeout:    installationTimeout,
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
@@ -232,6 +233,10 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	f.postData = &PostTestData{}
 	f.cr = s.ParentValue().(chrome.HasChrome).Chrome()
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, uninstallationTimeout)
+	defer cancel()
+
 	// If initialization fails, this defer is used to clean-up the partially-initialized pre
 	// and copies over lxc + container boot logs.
 	// Stolen verbatim from arc/pre.go
@@ -239,8 +244,8 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	defer func() {
 		if shouldClose {
 			// TODO (jinrongwu): use FixtureData instead of PreData and modify RunCrostiniPostTest when deprecating pre.go.
-			RunCrostiniPostTest(ctx, PreData{f.cr, f.tconn, f.cont, f.kb, f.postData})
-			f.cleanUp(ctx, s)
+			RunCrostiniPostTest(cleanupCtx, PreData{f.cr, f.tconn, f.cont, f.kb, f.postData})
+			f.cleanUp(cleanupCtx, s)
 		}
 	}()
 
