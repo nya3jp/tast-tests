@@ -212,6 +212,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	// Declare a rpc service for detecting touchscreen.
 	touchscreen := inputs.NewTouchscreenServiceClient(h.RPCClient.Conn)
 
+	s.Log("Sleeping for a few seconds before starting a new Chrome")
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		s.Fatal("Failed to sleep for a few seconds: ", err)
+	}
+
 	// Start a logged-in Chrome session, which is required prior to TouchscreenTap in the screenWake function.
 	if _, err := touchscreen.NewChrome(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to start a new Chrome for the touchscreen service: ", err)
@@ -330,9 +335,21 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	// The verifyScreenState function uses checkDisplay to verify if the screen behaves as expected.
-	var screenIsOn bool
+	// The verifyScreenState function uses checkDisplay to verify if the screen behaves as expected,
+	// and logs relevant gpio value if one exists.
+	var (
+		screenIsOn bool
+		screenGpio string
+	)
 	verifyScreenState := func(ctx context.Context, value screenState) error {
+		// Log gpio value relevant to the screen.
+		if screenGpio != "" {
+			screenGpioVal, err := h.DUT.Conn().CommandContext(ctx, "ectool", "gpioget", screenGpio).Output()
+			if err != nil {
+				s.Logf("Unable to read from %s: %v", screenGpio, err)
+			}
+			s.Logf("Found %s", strings.TrimSpace(string(screenGpioVal)))
+		}
 		switch value {
 		case "off":
 			err := checkDisplay(ctx)
@@ -510,7 +527,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			}
 
 			// Delay for some time to ensure lid was properly opened.
-			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 				return errors.Wrap(err, "failed to sleep")
 			}
 		}
@@ -535,6 +552,23 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			return errors.Wrapf(err, "after enforcing the screenWakeTrigger: %q", option)
 		}
 		return nil
+	}
+
+	// Check from a list of names that might be relevant to DUT's screen based on
+	// the ec code, and if one exists, save it for future use in verifying screen state.
+	possibleNames := []firmware.GpioName{firmware.ECEDPBLEN, firmware.BLDISABLEL, firmware.ENBLOD, firmware.ENABLEBACKLIGHT, firmware.ENABLEBACKLIGHTL}
+	cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+	foundNames, err := cmd.FindBaseGpio(ctx, possibleNames)
+	if err != nil {
+		s.Logf("While looking for %q: %v", possibleNames, err)
+	} else {
+		str := &screenGpio
+		for _, name := range possibleNames {
+			if _, ok := foundNames[name]; ok {
+				*str = string(name)
+				break
+			}
+		}
 	}
 
 	for _, device := range []evtestEvent{evKeyboard, evTouchpad, evTouchscreen} {
