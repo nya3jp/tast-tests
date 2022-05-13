@@ -152,12 +152,16 @@ func TFHostUsers(hostUsers map[string]string) TFOption {
 // TFCompanionDUT sets the companion DUT to use in the test fixture.
 func TFCompanionDUT(cd *dut.DUT) TFOption {
 	return func(tf *TestFixture) {
-		tf.peer = cd
+		tf.duts = append(tf.duts, &dutData{dut: cd})
 	}
 }
 
-// TFServiceName is the service needed by TestFixture.
-const TFServiceName = "tast.cros.wifi.ShillService"
+const (
+	// TFServiceName is the service needed by TestFixture.
+	TFServiceName = "tast.cros.wifi.ShillService"
+	// DefaultDUT is the default DUT index (0).
+	DefaultDUT = 0
+)
 
 type routerData struct {
 	target string
@@ -165,16 +169,23 @@ type routerData struct {
 	object router.Base
 }
 
+type dutData struct {
+	dut              *dut.DUT
+	rpc              *rpc.Client
+	wifiClient       *WifiClient
+	originalLogLevel int
+	originalLogTags  []string
+
+	// netCertStore is initialized lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests need it.
+	netCertStore *netcertstore.Store
+}
+
+// DutIdx is the type used for DUT Index.
+type DutIdx int
+
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
-	dut        *dut.DUT
-	rpc        *rpc.Client
-	wifiClient *WifiClient
-
-	peer           *dut.DUT
-	peerRpc        *rpc.Client
-	peerWifiClient *WifiClient
-
+	duts       []*dutData
 	hostUsers  map[string]string
 	routers    []routerData
 	routerType support.RouterType
@@ -187,11 +198,9 @@ type TestFixture struct {
 	attenuatorTarget string
 	attenuator       *attenuator.Attenuator
 
-	setLogging       bool
-	logLevel         int
-	logTags          []string
-	originalLogLevel int
-	originalLogTags  []string
+	setLogging bool
+	logLevel   int
+	logTags    []string
 
 	// Group simple option flags here as they started to grow.
 	option struct {
@@ -205,17 +214,15 @@ type TestFixture struct {
 
 	// aps is a set of APs useful for deconfiguring all APs, which some tests require.
 	aps map[*APIface]struct{}
-
-	// netCertStore is initialized lazily in ConnectWifi() when needed because it takes about 7 seconds to set up and only a few tests need it.
-	netCertStore *netcertstore.Store
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
 func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, retryDNSNotFound bool) (*ssh.Conn, error) {
 	var sopt ssh.Options
 	ssh.ParseTarget(hostname, &sopt)
-	sopt.KeyDir = tf.dut.KeyDir()
-	sopt.KeyFile = tf.dut.KeyFile()
+	// Assumption is, that the key will be shared between DUTs.
+	sopt.KeyDir = tf.duts[DefaultDUT].dut.KeyDir()
+	sopt.KeyFile = tf.duts[DefaultDUT].dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
 
 	var conn *ssh.Conn
@@ -246,27 +253,27 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, re
 }
 
 // setupNetCertStore sets up tf.netCertStore for EAP-related tests.
-func (tf *TestFixture) setupNetCertStore(ctx context.Context) error {
-	if tf.netCertStore != nil {
+func (tf *TestFixture) setupNetCertStore(ctx context.Context, dutIdx DutIdx) error {
+	if tf.duts[dutIdx].netCertStore != nil {
 		// Nothing to do if it was set up.
 		return nil
 	}
 
-	runner := hwsec.NewCmdRunner(tf.dut)
+	runner := hwsec.NewCmdRunner(tf.duts[dutIdx].dut)
 	var err error
-	tf.netCertStore, err = netcertstore.CreateStore(ctx, runner)
+	tf.duts[dutIdx].netCertStore, err = netcertstore.CreateStore(ctx, runner)
 	return err
 }
 
 // resetNetCertStore nullifies tf.netCertStore.
-func (tf *TestFixture) resetNetCertStore(ctx context.Context) error {
-	if tf.netCertStore == nil {
+func (tf *TestFixture) resetNetCertStore(ctx context.Context, dutIdx DutIdx) error {
+	if tf.duts[dutIdx].netCertStore == nil {
 		// Nothing to do if it was not set up.
 		return nil
 	}
 
-	err := tf.netCertStore.Cleanup(ctx)
-	tf.netCertStore = nil
+	err := tf.duts[dutIdx].netCertStore.Cleanup(ctx)
+	tf.duts[dutIdx].netCertStore = nil
 	return err
 }
 
@@ -287,7 +294,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	defer st.End()
 
 	tf := &TestFixture{
-		dut:       d,
+		duts:      []*dutData{{dut: d}},
 		capturers: make(map[*APIface]*pcap.Capturer),
 		aps:       make(map[*APIface]struct{}),
 		// Set the router's default router type.
@@ -317,39 +324,28 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	defer cancel()
 
 	var err error
-	tf.rpc, err = rpc.Dial(daemonCtx, tf.dut, rpcHint)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect rpc")
-	}
-	tf.wifiClient = &WifiClient{
-		ShillServiceClient: wifi.NewShillServiceClient(tf.rpc.Conn),
-	}
-
-	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
-	if _, err := tf.wifiClient.InitDUT(ctx, &wifi.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
-		return nil, errors.Wrap(err, "failed to InitDUT")
-	}
-
-	if tf.peer != nil {
-		tf.peerRpc, err = rpc.Dial(daemonCtx, tf.peer, rpcHint)
+	for _, d := range tf.duts {
+		d.rpc, err = rpc.Dial(daemonCtx, d.dut, rpcHint)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to connect companion DUT's rpc")
+			return nil, errors.Wrap(err, "failed to connect rpc")
 		}
-		tf.peerWifiClient = &WifiClient{
-			ShillServiceClient: wifi.NewShillServiceClient(tf.peerRpc.Conn),
+		d.wifiClient = &WifiClient{
+			ShillServiceClient: wifi.NewShillServiceClient(d.rpc.Conn),
 		}
-		if _, err := tf.peerWifiClient.InitDUT(ctx, &wifi.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
-			return nil, errors.Wrap(err, "failed to init companion DUT")
-		}
-	}
 
-	if tf.setLogging {
-		tf.originalLogLevel, tf.originalLogTags, err = tf.getLoggingConfig(ctx)
-		if err != nil {
-			return nil, err
+		// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
+		if _, err := d.wifiClient.InitDUT(ctx, &wifi.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
+			return nil, errors.Wrap(err, "failed to InitDUT")
 		}
-		if err := tf.setLoggingConfig(ctx, tf.logLevel, tf.logTags); err != nil {
-			return nil, err
+
+		if tf.setLogging {
+			d.originalLogLevel, d.originalLogTags, err = tf.getLoggingConfig(ctx, d.wifiClient)
+			if err != nil {
+				return nil, err
+			}
+			if err := setLoggingConfig(ctx, d.wifiClient, tf.logLevel, tf.logTags); err != nil {
+				return nil, err
+			}
 		}
 	}
 
@@ -357,7 +353,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	// to handle case when the fixture is created from outside of the precondition.
 	if len(tf.routers) == 0 {
 		testing.ContextLog(ctx, "Using default router name")
-		name, err := tf.dut.CompanionDeviceHostname(dut.CompanionSuffixRouter)
+		name, err := tf.duts[DefaultDUT].dut.CompanionDeviceHostname(dut.CompanionSuffixRouter)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to synthesize default router name")
 		}
@@ -399,7 +395,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	useDefaultPcap := false
 	if tf.pcapTarget == "" {
 		testing.ContextLog(ctx, "Using default pcap name")
-		tf.pcapTarget, err = tf.dut.CompanionDeviceHostname(dut.CompanionSuffixPcap)
+		tf.pcapTarget, err = tf.duts[DefaultDUT].dut.CompanionDeviceHostname(dut.CompanionSuffixPcap)
 		if err != nil {
 			// DUT might be specified with IP. As the routers are available,
 			// fallback to use router as pcap in this case.
@@ -466,6 +462,21 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	return tf, nil
 }
 
+// NumberOfDUTs returns number of DUTs handled by this fixture.
+func (tf *TestFixture) NumberOfDUTs() int {
+	return len(tf.duts)
+}
+
+// DUT returns particular DUT.
+func (tf *TestFixture) DUT(dutIdx DutIdx) *dut.DUT {
+	return tf.duts[dutIdx].dut
+}
+
+// DUTConn returns connection object to particular DUT.
+func (tf *TestFixture) DUTConn(dutIdx DutIdx) *ssh.Conn {
+	return tf.duts[dutIdx].dut.Conn()
+}
+
 // ReserveForClose returns a shorter ctx and cancel function for tf.Close().
 func (tf *TestFixture) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
 	return ctxutil.Shorten(ctx, 10*time.Second)
@@ -502,8 +513,10 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	defer cancel()
 
 	var firstErr error
-	if err := tf.resetNetCertStore(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset the NetCertStore"))
+	for i := range tf.duts {
+		if err := tf.resetNetCertStore(ctx, DutIdx(i)); err != nil {
+			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset the NetCertStore"))
+		}
 	}
 
 	if tf.attenuator != nil {
@@ -549,33 +562,23 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		}
 		router.host = nil
 	}
-	if tf.wifiClient != nil {
-		if tf.setLogging {
-			if err := tf.setLoggingConfig(ctx, tf.originalLogLevel, tf.originalLogTags); err != nil {
+	for _, d := range tf.duts {
+		if d.wifiClient != nil {
+			if tf.setLogging {
+				if err := setLoggingConfig(ctx, d.wifiClient, d.originalLogLevel, d.originalLogTags); err != nil {
+					wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
+				}
+			}
+			if _, err := d.wifiClient.TearDown(ctx, &empty.Empty{}); err != nil {
 				wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
 			}
+			d.wifiClient = nil
 		}
-		if _, err := tf.wifiClient.TearDown(ctx, &empty.Empty{}); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
+		if d.rpc != nil {
+			// Ignore the error of rpc.Close as aborting rpc daemon will always have error.
+			d.rpc.Close(ctx)
+			d.rpc = nil
 		}
-		tf.wifiClient = nil
-	}
-	if tf.peerWifiClient != nil {
-		if _, err := tf.peerWifiClient.TearDown(ctx, &empty.Empty{}); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to tear down test state"))
-		}
-		tf.peerWifiClient = nil
-	}
-
-	if tf.rpc != nil {
-		// Ignore the error of rpc.Close as aborting rpc daemon will always have error.
-		tf.rpc.Close(ctx)
-		tf.rpc = nil
-	}
-	if tf.peerRpc != nil {
-		// Ignore the error of rpc.Close as aborting rpc daemon will always have error.
-		tf.peerRpc.Close(ctx)
-		tf.peerRpc = nil
 	}
 
 	// Do not close DUT, it'll be closed by the framework.
@@ -729,9 +732,9 @@ const wpaMonitorStopTimeout = 10 * time.Second
 
 // StartWPAMonitor configures and starts wpa_supplicant events monitor
 // newCtx is ctx shortened for the stop function, which should be deferred by the caller.
-func (tf *TestFixture) StartWPAMonitor(ctx context.Context) (wpaMonitor *WPAMonitor, stop func(), newCtx context.Context, retErr error) {
+func (tf *TestFixture) StartWPAMonitor(ctx context.Context, dutIdx DutIdx) (wpaMonitor *WPAMonitor, stop func(), newCtx context.Context, retErr error) {
 	wpaMonitor = new(WPAMonitor)
-	if err := wpaMonitor.Start(ctx, tf.dut.Conn()); err != nil {
+	if err := wpaMonitor.Start(ctx, tf.duts[dutIdx].dut.Conn()); err != nil {
 		return nil, nil, ctx, err
 	}
 	sCtx, sCancel := ctxutil.Shorten(ctx, wpaMonitorStopTimeout)
@@ -752,8 +755,14 @@ func (tf *TestFixture) Capturer(ap *APIface) (*pcap.Capturer, bool) {
 	return capturer, ok
 }
 
-// ConnectWifi asks the DUT to connect to the specified WiFi.
+// ConnectWifi is backwards-compatible version of ConnectWifiFromDUT. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
+	return tf.ConnectWifiFromDUT(ctx, DefaultDUT, ssid, options...)
+}
+
+// ConnectWifiFromDUT asks the DUT #dutIdx to connect to the specified WiFi.
+func (tf *TestFixture) ConnectWifiFromDUT(ctx context.Context, dutIdx DutIdx, ssid string, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
 	c := &dutcfg.ConnConfig{
 		Ssid:    ssid,
 		SecConf: &base.Config{},
@@ -766,11 +775,11 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 
 	// Setup the NetCertStore only for EAP-related tests.
 	if c.SecConf.NeedsNetCertStore() {
-		if err := tf.setupNetCertStore(ctx); err != nil {
+		if err := tf.setupNetCertStore(ctx, dutIdx); err != nil {
 			return nil, errors.Wrap(err, "failed to set up the NetCertStore")
 		}
 
-		if err := c.SecConf.InstallClientCredentials(ctx, tf.netCertStore); err != nil {
+		if err := c.SecConf.InstallClientCredentials(ctx, tf.duts[dutIdx].netCertStore); err != nil {
 			return nil, errors.Wrap(err, "failed to install client credentials")
 		}
 	}
@@ -798,25 +807,31 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 		Security:   c.SecConf.Class(),
 		Shillprops: propsEnc,
 	}
-	response, err := tf.wifiClient.Connect(ctx, request)
+	response, err := tf.duts[dutIdx].wifiClient.Connect(ctx, request)
 	if err != nil {
 		return nil, errors.Wrapf(err, "client failed to connect to WiFi network with SSID %q", c.Ssid)
 	}
 	return response, nil
 }
 
-// ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
-func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
+// ConnectWifiAPFromDUT asks the given DUT to connect to the WiFi provided by the given AP.
+func (tf *TestFixture) ConnectWifiAPFromDUT(ctx context.Context, dutIdx DutIdx, ap *APIface, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
 	conf := ap.Config()
 	opts := append([]dutcfg.ConnOption{dutcfg.ConnHidden(conf.Hidden), dutcfg.ConnSecurity(conf.SecurityConfig)}, options...)
-	return tf.ConnectWifi(ctx, conf.SSID, opts...)
+	return tf.ConnectWifiFromDUT(ctx, dutIdx, conf.SSID, opts...)
 }
 
-func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) error {
+// ConnectWifiAP is backwards-compatible version of ConnectWifiAPFromDUT. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
+func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
+	return tf.ConnectWifiAPFromDUT(ctx, DefaultDUT, ap, options...)
+}
+
+func (tf *TestFixture) disconnectWifi(ctx context.Context, dutIdx DutIdx, removeProfile bool) error {
 	ctx, st := timing.Start(ctx, "tf.disconnectWifi")
 	defer st.End()
 
-	resp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	resp, err := tf.duts[dutIdx].wifiClient.SelectedService(ctx, &empty.Empty{})
 	if err != nil {
 		return errors.Wrap(err, "failed to get selected service")
 	}
@@ -830,20 +845,32 @@ func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) e
 		ServicePath:   resp.ServicePath,
 		RemoveProfile: removeProfile,
 	}
-	if _, err := tf.wifiClient.Disconnect(ctx, req); err != nil {
+	if _, err := tf.duts[dutIdx].wifiClient.Disconnect(ctx, req); err != nil {
 		return errors.Wrap(err, "failed to disconnect")
 	}
 	return nil
 }
 
-// DisconnectWifi asks the DUT to disconnect from current WiFi service.
+// DisconnectWifi is backwards-compatible version of DisconnectDUTFromWifi. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
-	return tf.disconnectWifi(ctx, false)
+	return tf.disconnectWifi(ctx, DefaultDUT, false)
 }
 
-// CleanDisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
+// CleanDisconnectWifi is backwards-compatible version of CleanDisconnectDUTFromWifi. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) CleanDisconnectWifi(ctx context.Context) error {
-	return tf.disconnectWifi(ctx, true)
+	return tf.disconnectWifi(ctx, DefaultDUT, true)
+}
+
+// DisconnectDUTFromWifi asks the given DUT to disconnect from current WiFi service.
+func (tf *TestFixture) DisconnectDUTFromWifi(ctx context.Context, dutIdx DutIdx) error {
+	return tf.disconnectWifi(ctx, dutIdx, false)
+}
+
+// CleanDisconnectDUTFromWifi asks the given DUT to disconnect from current WiFi service and removes the configuration.
+func (tf *TestFixture) CleanDisconnectDUTFromWifi(ctx context.Context, dutIdx DutIdx) error {
+	return tf.disconnectWifi(ctx, dutIdx, true)
 }
 
 // ReserveForDisconnect returns a shorter ctx and cancel function for tf.DisconnectWifi.
@@ -851,11 +878,21 @@ func (tf *TestFixture) ReserveForDisconnect(ctx context.Context) (context.Contex
 	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
-// PingFromDUT tests the connectivity between DUT and target IP.
+// PingFromDUT is backwards-compatible version of PingFromSpecificDUT. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ...ping.Option) error {
+	res, err := tf.PingFromSpecificDUT(ctx, DefaultDUT, targetIP, opts...)
+	if err != nil {
+		return err
+	}
+	return VerifyPingResults(res, pingLossThreshold)
+}
+
+// PingFromSpecificDUT tests the connectivity between the given DUT and a target IP.
+func (tf *TestFixture) PingFromSpecificDUT(ctx context.Context, dutIdx DutIdx, targetIP string, opts ...ping.Option) (*ping.Result, error) {
 	iface, err := tf.ClientInterface(ctx)
 	if err != nil {
-		return errors.Wrap(err, "DUT: failed to get the client WiFi interface")
+		return nil, errors.Wrap(err, "DUT: failed to get the client WiFi interface")
 	}
 
 	// Bind ping used in all WiFi Tests to WiFiInterface. Otherwise if the
@@ -866,14 +903,19 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ..
 	ctx, st := timing.Start(ctx, "tf.PingFromDUT")
 	defer st.End()
 
-	pr := remoteping.NewRemoteRunner(tf.dut.Conn())
+	pr := remoteping.NewRemoteRunner(tf.duts[dutIdx].dut.Conn())
 	res, err := pr.Ping(ctx, targetIP, opts...)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
+	return res, nil
+}
 
-	if res.Loss > pingLossThreshold {
+// VerifyPingResults checks if ping results are within acceptable range.
+func VerifyPingResults(res *ping.Result, lossThreshold float64) error {
+
+	if res.Loss > lossThreshold {
 		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
 	}
 
@@ -882,7 +924,7 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ..
 
 // PingFromRouterID tests the connectivity between DUT and router through currently connected WiFi service.
 func (tf *TestFixture) PingFromRouterID(ctx context.Context, idx int, opts ...ping.Option) error {
-	ctx, st := timing.Start(ctx, "tf.PingFromServer")
+	ctx, st := timing.Start(ctx, "tf.PingFromRouterID")
 	defer st.End()
 
 	addrs, err := tf.ClientIPv4Addrs(ctx)
@@ -897,11 +939,7 @@ func (tf *TestFixture) PingFromRouterID(ctx context.Context, idx int, opts ...pi
 	}
 	testing.ContextLogf(ctx, "ping statistics=%+v", res)
 
-	if res.Loss > pingLossThreshold {
-		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
-	}
-
-	return nil
+	return VerifyPingResults(res, pingLossThreshold)
 }
 
 // PingFromServer calls PingFromRouterID for router 0.
@@ -910,8 +948,14 @@ func (tf *TestFixture) PingFromServer(ctx context.Context, opts ...ping.Option) 
 	return tf.PingFromRouterID(ctx, 0, opts...)
 }
 
-// ArpingFromDUT tests that DUT can send the broadcast packets to server.
+// ArpingFromDUT is backwards-compatible version of ArpingFromSpecificDUT. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) ArpingFromDUT(ctx context.Context, serverIP string, ops ...arping.Option) error {
+	return tf.ArpingFromSpecificDUT(ctx, DefaultDUT, serverIP, ops...)
+}
+
+// ArpingFromSpecificDUT tests that the given DUT can send the broadcast packets to server.
+func (tf *TestFixture) ArpingFromSpecificDUT(ctx context.Context, dutIdx DutIdx, serverIP string, ops ...arping.Option) error {
 	ctx, st := timing.Start(ctx, "tf.ArpingFromDUT")
 	defer st.End()
 
@@ -920,7 +964,7 @@ func (tf *TestFixture) ArpingFromDUT(ctx context.Context, serverIP string, ops .
 		return errors.Wrap(err, "failed to get the client WiFi interface")
 	}
 
-	runner := remotearping.NewRemoteRunner(tf.dut.Conn())
+	runner := remotearping.NewRemoteRunner(tf.duts[dutIdx].dut.Conn())
 	res, err := runner.Arping(ctx, serverIP, iface, ops...)
 	if err != nil {
 		return errors.Wrap(err, "arping failed")
@@ -962,9 +1006,15 @@ func (tf *TestFixture) ArpingFromServer(ctx context.Context, serverIface string,
 	return tf.ArpingFromRouterID(ctx, 0, serverIface, ops...)
 }
 
-// ClientIPv4Addrs returns the IPv4 addresses for the network interface.
+// ClientIPv4Addrs is backwards-compatible version of DUTIPv4Addrs. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) ClientIPv4Addrs(ctx context.Context) ([]net.IP, error) {
-	iface, err := tf.ClientInterface(ctx)
+	return tf.DUTIPv4Addrs(ctx, DefaultDUT)
+}
+
+// DUTIPv4Addrs returns the IPv4 addresses for the network interface.
+func (tf *TestFixture) DUTIPv4Addrs(ctx context.Context, dutIdx DutIdx) ([]net.IP, error) {
+	iface, err := tf.DUTClientInterface(ctx, dutIdx)
 	if err != nil {
 		return nil, errors.Wrap(err, "DUT: failed to get the client WiFi interface")
 	}
@@ -972,7 +1022,7 @@ func (tf *TestFixture) ClientIPv4Addrs(ctx context.Context) ([]net.IP, error) {
 	netIface := &wifi.GetIPv4AddrsRequest{
 		InterfaceName: iface,
 	}
-	addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, netIface)
+	addrs, err := tf.DUTWifiClient(dutIdx).GetIPv4Addrs(ctx, netIface)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the IPv4 addresses")
 	}
@@ -988,31 +1038,38 @@ func (tf *TestFixture) ClientIPv4Addrs(ctx context.Context) ([]net.IP, error) {
 	return ret, nil
 }
 
-// ClientHardwareAddr returns the HardwareAddr for the network interface.
+// ClientHardwareAddr is backwards-compatible version of DUTHardwareAddr. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) ClientHardwareAddr(ctx context.Context) (string, error) {
-	iface, err := tf.ClientInterface(ctx)
+	mac, err := tf.DUTHardwareAddr(ctx, DefaultDUT)
+	return mac.String(), err
+}
+
+// DUTHardwareAddr returns the HardwareAddr for the network interface.
+func (tf *TestFixture) DUTHardwareAddr(ctx context.Context, dutIdx DutIdx) (net.HardwareAddr, error) {
+	iface, err := tf.DUTClientInterface(ctx, dutIdx)
 	if err != nil {
-		return "", errors.Wrap(err, "DUT: failed to get the client WiFi interface")
+		return nil, errors.Wrap(err, "DUT: failed to get the client WiFi interface")
 	}
 
 	netIface := &wifi.GetHardwareAddrRequest{
 		InterfaceName: iface,
 	}
-	resp, err := tf.WifiClient().GetHardwareAddr(ctx, netIface)
+	resp, err := tf.DUTWifiClient(dutIdx).GetHardwareAddr(ctx, netIface)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to get the HardwareAddr")
+		return nil, errors.Wrap(err, "failed to get the HardwareAddr")
 	}
 
-	return resp.HwAddr, nil
+	return net.ParseMAC(resp.HwAddr)
 }
 
 // AssertNoDisconnect runs the given routine and verifies that no disconnection event
 // is captured in the same duration.
-func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Context) error) error {
+func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, dutIdx DutIdx, f func(context.Context) error) error {
 	ctx, st := timing.Start(ctx, "tf.AssertNoDisconnect")
 	defer st.End()
 
-	el, err := iw.NewEventLogger(ctx, tf.dut)
+	el, err := iw.NewEventLogger(ctx, tf.duts[dutIdx].dut)
 	if err != nil {
 		return errors.Wrap(err, "failed to start iw.EventLogger")
 	}
@@ -1123,14 +1180,26 @@ func (tf *TestFixture) Attenuator() *attenuator.Attenuator {
 	return tf.attenuator
 }
 
-// WifiClient returns the gRPC ShillServiceClient of the DUT.
+// WifiClient is a backwards-compatible version of DUTWifiClient. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) WifiClient() *WifiClient {
-	return tf.wifiClient
+	return tf.DUTWifiClient(DefaultDUT)
 }
 
-// RPC returns the gRPC connection of the DUT.
+// DUTWifiClient returns the gRPC ShillServiceClient of the given DUT.
+func (tf *TestFixture) DUTWifiClient(dutIdx DutIdx) *WifiClient {
+	return tf.duts[dutIdx].wifiClient
+}
+
+// RPC returns the gRPC connection of the default DUT. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) RPC() *rpc.Client {
-	return tf.rpc
+	return tf.DUTRPC(DefaultDUT)
+}
+
+// DUTRPC returns the gRPC connection of the given DUT.
+func (tf *TestFixture) DUTRPC(dutIdx DutIdx) *rpc.Client {
+	return tf.duts[dutIdx].rpc
 }
 
 // DefaultOpenNetworkAPOptions returns the Options for an common 802.11n open wifi.
@@ -1149,20 +1218,31 @@ func (tf *TestFixture) DefaultOpenNetworkAP(ctx context.Context) (*APIface, erro
 	return tf.ConfigureAP(ctx, DefaultOpenNetworkAPOptions(), nil)
 }
 
-// ClientInterface returns the client interface name.
+// ClientInterface is a backwards-compatible version of DUTClientInterface. Deprecated.
 func (tf *TestFixture) ClientInterface(ctx context.Context) (string, error) {
-	return tf.WifiClient().Interface(ctx)
+	return tf.DUTWifiClient(DefaultDUT).Interface(ctx)
 }
 
-// VerifyConnection verifies that the AP is reachable by pinging, and we have the same frequency and subnet as AP's.
+// DUTClientInterface returns the client interface name of the given DUT.
+func (tf *TestFixture) DUTClientInterface(ctx context.Context, dutIdx DutIdx) (string, error) {
+	return tf.DUTWifiClient(dutIdx).Interface(ctx)
+}
+
+// VerifyConnection is backwards-compatible version of VerifyConnectionFromDUT. Deprecated.
+// TODO(b/234845693): remove after stabilizing period.
 func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error {
-	iface, err := tf.ClientInterface(ctx)
+	return tf.VerifyConnectionFromDUT(ctx, 0, ap)
+}
+
+// VerifyConnectionFromDUT verifies that the AP is reachable from a specific DUT by pinging, and we have the same frequency and subnet as AP's.
+func (tf *TestFixture) VerifyConnectionFromDUT(ctx context.Context, dutIdx DutIdx, ap *APIface) error {
+	iface, err := tf.DUTClientInterface(ctx, dutIdx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get interface from the DUT")
 	}
 
 	// Check frequency.
-	service, err := tf.WifiClient().QueryService(ctx)
+	service, err := tf.DUTWifiClient(dutIdx).QueryService(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to query shill service information")
 	}
@@ -1176,7 +1256,7 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	}
 
 	// Check subnet.
-	addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, &wifi.GetIPv4AddrsRequest{InterfaceName: iface})
+	addrs, err := tf.DUTWifiClient(dutIdx).GetIPv4Addrs(ctx, &wifi.GetIPv4AddrsRequest{InterfaceName: iface})
 	if err != nil {
 		return errors.Wrap(err, "failed to get client ipv4 addresses")
 	}
@@ -1197,16 +1277,20 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 	}
 
 	// Perform ping.
-	if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
+	res, err := tf.PingFromSpecificDUT(ctx, dutIdx, ap.ServerIP().String())
+	if err != nil {
 		return errors.Wrap(err, "failed to ping from the DUT")
+	}
+	if err := VerifyPingResults(res, pingLossThreshold); err != nil {
+		return errors.Wrap(err, "ping verification failed")
 	}
 
 	return nil
 }
 
 // ClearBSSIDIgnoreDUT clears the BSSID_IGNORE list on DUT.
-func (tf *TestFixture) ClearBSSIDIgnoreDUT(ctx context.Context) error {
-	wpar := remotewpacli.NewRemoteRunner(tf.dut.Conn())
+func (tf *TestFixture) ClearBSSIDIgnoreDUT(ctx context.Context, dutIdx DutIdx) error {
+	wpar := remotewpacli.NewRemoteRunner(tf.duts[dutIdx].dut.Conn())
 
 	err := wpar.ClearBSSIDIgnore(ctx)
 	if err != nil {
@@ -1217,7 +1301,7 @@ func (tf *TestFixture) ClearBSSIDIgnoreDUT(ctx context.Context) error {
 }
 
 // SendChannelSwitchAnnouncement sends a CSA frame and waits for Client_Disconnection, or Channel_Switch event.
-func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap *APIface, maxRetry, alternateChannel int) error {
+func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, dutIdx DutIdx, ap *APIface, maxRetry, alternateChannel int) error {
 	ctxForCloseFrameSender := ctx
 	r, ok := tf.Router().(support.FrameSender)
 	if !ok {
@@ -1236,7 +1320,7 @@ func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap *AP
 		return nil
 	}(ctxForCloseFrameSender)
 
-	ew, err := iw.NewEventWatcher(ctx, tf.dut)
+	ew, err := iw.NewEventWatcher(ctx, tf.duts[dutIdx].dut)
 	if err != nil {
 		return errors.Wrap(err, "failed to start iw.EventWatcher")
 	}
@@ -1269,8 +1353,8 @@ func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap *AP
 }
 
 // DisablePowersaveMode disables power saving mode (if it's enabled) and return a function to restore it's initial mode.
-func (tf *TestFixture) DisablePowersaveMode(ctx context.Context) (shortenCtx context.Context, restore func() error, err error) {
-	iwr := iw.NewRemoteRunner(tf.dut.Conn())
+func (tf *TestFixture) DisablePowersaveMode(ctx context.Context, dutIdx DutIdx) (shortenCtx context.Context, restore func() error, err error) {
+	iwr := iw.NewRemoteRunner(tf.duts[dutIdx].dut.Conn())
 	iface, err := tf.ClientInterface(ctx)
 	if err != nil {
 		return ctx, nil, errors.Wrap(err, "failed to get the client interface")
@@ -1303,15 +1387,15 @@ func (tf *TestFixture) DisablePowersaveMode(ctx context.Context) (shortenCtx con
 }
 
 // setLoggingConfig configures the logging setting with the specified values (level and tags).
-func (tf *TestFixture) setLoggingConfig(ctx context.Context, level int, tags []string) error {
+func setLoggingConfig(ctx context.Context, wc *WifiClient, level int, tags []string) error {
 	testing.ContextLogf(ctx, "Configuring logging level: %d, tags: %v", level, tags)
-	_, err := tf.WifiClient().SetLoggingConfig(ctx, &wifi.SetLoggingConfigRequest{DebugLevel: int32(level), DebugTags: tags})
+	_, err := wc.SetLoggingConfig(ctx, &wifi.SetLoggingConfigRequest{DebugLevel: int32(level), DebugTags: tags})
 	return err
 }
 
 // getLoggingConfig returns the current DUT's logging setting (level and tags).
-func (tf *TestFixture) getLoggingConfig(ctx context.Context) (int, []string, error) {
-	currentConfig, err := tf.WifiClient().GetLoggingConfig(ctx, &empty.Empty{})
+func (tf *TestFixture) getLoggingConfig(ctx context.Context, wc *WifiClient) (int, []string, error) {
+	currentConfig, err := wc.GetLoggingConfig(ctx, &empty.Empty{})
 	if err != nil {
 		return 0, nil, err
 	}
@@ -1377,29 +1461,29 @@ func resolveRouterTypeFromHost(ctx context.Context, host *ssh.Conn) (support.Rou
 }
 
 // WaitWifiConnected waits until WiFi is connected to the SHILL profile with specific GUID.
-func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error {
-	testing.ContextLog(ctx, "Waiting for WiFi to be connected to profile with GUID: "+guid)
+func (tf *TestFixture) WaitWifiConnected(ctx context.Context, dutIdx DutIdx, guid string) error {
+	testing.ContextLogf(ctx, "Waiting for WiFi to be connected from DUT #%v to profile with GUID: %s", dutIdx, guid)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		req := &wifi.RequestScansRequest{Count: 1}
-		if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
+		if _, err := tf.DUTWifiClient(dutIdx).RequestScans(ctx, req); err != nil {
 			errors.Wrap(err, "failed to request scan")
 		}
 
-		serInfo, err := tf.WifiClient().QueryService(ctx)
+		serInfo, err := tf.DUTWifiClient(dutIdx).QueryService(ctx)
 		if err != nil {
-			return errors.Wrap(err, "failed to get the WiFi service information from DUT")
+			return errors.Wrapf(err, "failed to get the WiFi service information from DUT #%v", dutIdx)
 		}
 
 		if guid == serInfo.Guid && serInfo.IsConnected {
-			iface, err := tf.ClientInterface(ctx)
+			iface, err := tf.DUTClientInterface(ctx, dutIdx)
 			if err != nil {
-				return errors.Wrap(err, "failed to get interface from the DUT")
+				return errors.Wrapf(err, "failed to get interface from the DUT #%v", dutIdx)
 			}
 
-			addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, &wifi.GetIPv4AddrsRequest{InterfaceName: iface})
+			addrs, err := tf.DUTWifiClient(dutIdx).GetIPv4Addrs(ctx, &wifi.GetIPv4AddrsRequest{InterfaceName: iface})
 			if err != nil {
-				return errors.Wrap(err, "failed to get client IPv4 addresses")
+				return errors.Wrapf(err, "failed to get client #%v IPv4 addresses", dutIdx)
 			}
 			if len(addrs.Ipv4) > 0 {
 				return nil
