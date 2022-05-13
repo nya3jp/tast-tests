@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "516932eb_80f22c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-13T18:30:33Z",
+      "side": 1,
+      "message": "I was thinking about errors that could occur outside of the expected one when there is no profile. Like if the profile exists, but the commands to remove it fail for some reason. In such a case the error would not be surfaced and could be hard to track down.\n\nIs it possible to check for the profile and only clear it if it exists? I saw a `Profiles` function, but not sure if it works for your use case: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/shill/manager.go;l\u003d102\n\nI think the best way to go would be to check for the profile first, and handle all the errors when calling the functions to remove it if possible. Ignoring errors generally goes against Tast/golang conventions: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "parentUuid": "f3cef81f_90851381",
+      "range": {
+        "startLine": 113,
+        "startChar": 47,
+        "endLine": 113,
+        "endChar": 60
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36de7a5c_6a6c58d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
         "patchSetId": 6
