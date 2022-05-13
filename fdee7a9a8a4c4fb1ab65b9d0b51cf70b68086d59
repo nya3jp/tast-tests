@@ -173,6 +173,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0f37866_cc07da15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-13T07:09:34Z",
+      "side": 1,
+      "message": "Before testSnapLeftRightViaKeyboardShortcut() we don\u0027t touch window states so two windows are in \"default state\" (normal or maximized) and both states are categorized as unsnapped state.\n\nI think checking whether \"a window is in the default state by default\" is a bit too much in this split view test, but I\u0027m happy to do it if you suggest it.",
+      "parentUuid": "1a8f48f9_b889f359",
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "090b15c9_d833df48",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
