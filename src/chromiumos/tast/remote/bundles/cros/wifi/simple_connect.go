@@ -1392,7 +1392,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			return tf.PingFromDUT(ctx, apIface.ServerIP().String(), pingOps...)
 		}
 
-		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
+		if err := tf.AssertNoDisconnect(ctx, wificell.DefaultDUT, ping); err != nil {
 			s.Fatal("Failed to ping from DUT, err: ", err)
 		}
 
