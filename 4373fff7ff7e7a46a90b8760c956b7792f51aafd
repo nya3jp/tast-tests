@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509c3a56_89871946",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-13T12:04:44Z",
+      "side": 1,
+      "message": "Hi, the tests are failing because of the workaround. This fix prevents the test from failing. I will add the corresponding check when it is safe to do so.",
+      "revId": "4373fff7ff7e7a46a90b8760c956b7792f51aafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
