@@ -50,6 +50,23 @@
       "message": "per the CQ runs, I think this isn\u0027t actually quite enough. it might improve the situation, but maybe some of the steps take longer than 10 seconds?",
       "revId": "67f621c765cd4dd55c84a7efaf5c0c2206e90ed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87110ab1_b9335a42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-05-13T00:22:50Z",
+      "side": 1,
+      "message": "See also https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3645948/ which is doing a similar thing, but has a longer timeout for uninstallation so I reckon we prefer that one.",
+      "revId": "67f621c765cd4dd55c84a7efaf5c0c2206e90ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
