@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ac6eb6_cfa6dffc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-13T07:52:49Z",
+      "side": 1,
+      "message": "nit:\nStart Commit message with either\nlauncher:\nor\ntast-tests:",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "011bbb1fb31b7d2ebc3ef05d3608aaec3bef22ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9421657_01a0dc8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-13T07:52:49Z",
+      "side": 1,
+      "message": "Mention about adding a new fixture.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "011bbb1fb31b7d2ebc3ef05d3608aaec3bef22ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad4641e_e3b15544",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-13T07:52:49Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "011bbb1fb31b7d2ebc3ef05d3608aaec3bef22ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a36710_55c2bb21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-13T07:52:49Z",
+      "side": 1,
+      "message": "nit: Not sure if that would be later useful, during forensic if test fails but perhaps you want to have a log here indicating that the app is already installed.",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 2
+      },
+      "revId": "011bbb1fb31b7d2ebc3ef05d3608aaec3bef22ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa28d668_78262b6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-13T07:52:49Z",
+      "side": 1,
+      "message": "nit: Similarly here - do you want to make future self life easier by putting a log here?",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 2
+      },
+      "revId": "011bbb1fb31b7d2ebc3ef05d3608aaec3bef22ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5bd1c52_6cc522d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-13T07:52:49Z",
+      "side": 1,
+      "message": "nit: End comment with .",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 128
+      },
+      "revId": "011bbb1fb31b7d2ebc3ef05d3608aaec3bef22ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9623e4c_42f16b88",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-13T07:52:49Z",
+      "side": 1,
+      "message": "I am not aware about what is the expectation of an initial state of the functions launcher exposes. \nIt would be good to indicate in the documentation/comment whether this should be called from the desktop or while having already app grid opened.",
+      "range": {
+        "startLine": 1175,
+        "startChar": 5,
+        "endLine": 1175,
+        "endChar": 34
+      },
+      "revId": "011bbb1fb31b7d2ebc3ef05d3608aaec3bef22ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
