@@ -7,7 +7,7 @@ package hps
 import (
 	"context"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 
 	pb "chromiumos/system_api/hps_proto"
 	"chromiumos/tast/local/dbusutil"

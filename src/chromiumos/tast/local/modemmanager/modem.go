@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/errors"
