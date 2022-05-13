@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6fb5905_67f3959c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537082
+      },
+      "writtenOn": "2022-05-13T08:15:20Z",
+      "side": 1,
+      "message": "Hi, Won Chung \n\nPlease check this\nThank you",
+      "revId": "94fa00d7d400c01b8711ef23ac73a0a9b8c81327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3523f642_c1a0935f",
@@ -48,6 +65,30 @@
       "writtenOn": "2022-05-12T19:04:20Z",
       "side": 1,
       "message": "I think this should be \"failed to connect\" for the second loop on plugin action. Would it be better to change to a more generic message that covers both unplug and plug?",
+      "range": {
+        "startLine": 202,
+        "startChar": 38,
+        "endLine": 202,
+        "endChar": 48
+      },
+      "revId": "94fa00d7d400c01b8711ef23ac73a0a9b8c81327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a107e701_e4f59134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1537082
+      },
+      "writtenOn": "2022-05-13T08:15:20Z",
+      "side": 1,
+      "message": "Won Chung, you are right. Should be \"failed to connect\" for the second loop.I think the better way as below:\n\npart - 1: \nreturn errors.Wrap(\"failed to %s ext-display\",action)\n\npart - 2:\nfunc (a ActionState) String() string {\n\tswitch a {\n\tcase ActionUnplug:\n\t\treturn \"Unplug\"\n\tcase ActionPlugin:\n\t\treturn \"Plug in\"\n\tcase ActionFlip:\n\t\treturn \"Flip\"\n\tdefault:\n\t\treturn fmt.Sprintf(\"Unknown action state: %d\", a)\n\t}\n}\n\nWould this help?",
+      "parentUuid": "3523f642_c1a0935f",
       "range": {
         "startLine": 202,
         "startChar": 38,
