@@ -144,6 +144,16 @@ const (
 	ENPP3300POGO GpioName = "EN_PP3300_POGO"
 	// ENBASE for the 'ectool gpioget EN_BASE' cmd.
 	ENBASE GpioName = "EN_BASE"
+	// ECEDPBLEN for the 'ectool gpioget EC_EDP_BL_EN' cmd.
+	ECEDPBLEN GpioName = "EC_EDP_BL_EN"
+	// BLDISABLEL for the 'ectool gpioget BL_DISABLE_L' cmd.
+	BLDISABLEL GpioName = "BL_DISABLE_L"
+	// ENBLOD for the 'ectool gpioget EN_BL_OD' cmd.
+	ENBLOD GpioName = "EN_BL_OD"
+	// ENABLEBACKLIGHT for the 'ectool gpioget ENABLE_BACKLIGHT' cmd.
+	ENABLEBACKLIGHT GpioName = "ENABLE_BACKLIGHT"
+	// ENABLEBACKLIGHTL for the 'ectool gpioget ENABLE_BACKLIGHT_L' cmd.
+	ENABLEBACKLIGHTL GpioName = "ENABLE_BACKLIGHT_L"
 )
 
 // FindBaseGpio iterates through a passed in list of gpios, relevant to control on a detachable base,
