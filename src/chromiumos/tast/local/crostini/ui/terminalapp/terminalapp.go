@@ -28,11 +28,12 @@ import (
 const uiTimeout = 15 * time.Second
 
 var (
-	linuxLink  = nodewith.Name("penguin").Role(role.Link)
-	linuxTab   = nodewith.NameContaining("@penguin: ").Role(role.Window).ClassName("BrowserFrame")
-	rootWindow = nodewith.NameStartingWith("Terminal").Role(role.Window).ClassName("BrowserFrame")
-	homeTab    = nodewith.Name("Terminal").Role(role.Window).ClassName("BrowserFrame")
-	sshWebArea = nodewith.Name("chronos@localhost:~").Role(role.RootWebArea)
+	linuxLink           = nodewith.Name("penguin").Role(role.Link)
+	linuxTab            = nodewith.NameContaining("@penguin: ").Role(role.Window).ClassName("BrowserFrame")
+	rootWindow          = nodewith.NameStartingWith("Terminal").Role(role.Window).ClassName("BrowserFrame")
+	homeTab             = nodewith.Name("Terminal").Role(role.Window).ClassName("BrowserFrame")
+	sshWebArea          = nodewith.Name("chronos@localhost:~").Role(role.RootWebArea)
+	terminalLeaveButton = nodewith.Name("Leave").Role(role.Button).HasClass("MdTextButton")
 )
 
 // TerminalApp represents an instance of the Terminal App.
@@ -64,26 +65,20 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	ui := uiauto.New(tconn)
 
-	// Find either Linux tab or Home tab with Linux link.
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := ui.Exists(linuxTab)(ctx); err == nil {
-			return nil
-		}
+	// Find Linux tab.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// If find Home tab with Linux link, click the Linux link to switch to
+		// the Linux tab.
 		if err := ui.Exists(linuxLink)(ctx); err == nil {
-			return nil
+			if err := ui.DoDefault(linuxLink)(ctx); err != nil {
+				return errors.Wrap(err, "failed to click Terminal Home Linux")
+			}
 		}
-		return errors.New("waiting for Linux tab, or home tab with Linux link")
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
-
-	// If this is Home tab with Linux link, open Linux tab.
-	if err = ui.Exists(linuxLink)(ctx); err == nil {
-		if err := ui.LeftClick(linuxLink)(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to click Terminal Home Linux")
+		if err := ui.Exists(linuxTab)(ctx); err != nil {
+			return err
 		}
-	}
-
-	// Ensure Linux tab is active and container is connected.
-	if err := ui.WithTimeout(1 * time.Minute).WaitUntilExists(linuxTab)(ctx); err != nil {
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		return nil, errors.Wrap(err, "failed to find the Terminal App window")
 	}
 
@@ -299,5 +294,12 @@ func (ta *TerminalApp) Exit(keyboard *input.KeyboardEventWriter) uiauto.Action {
 func (ta *TerminalApp) Close() uiauto.Action {
 	return uiauto.Combine("close Terminal window",
 		ta.ClickShelfMenuItem("Close"),
+		uiauto.IfSuccessThen(
+			ta.ui.WithTimeout(time.Second).WaitUntilExists(terminalLeaveButton),
+			ta.ui.LeftClickUntil(
+				terminalLeaveButton,
+				ta.ui.WithTimeout(time.Second).WaitUntilGone(rootWindow),
+			),
+		),
 		ta.ui.WithTimeout(time.Minute).WaitUntilGone(rootWindow))
 }
