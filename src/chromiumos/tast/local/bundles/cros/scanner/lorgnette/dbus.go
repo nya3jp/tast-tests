@@ -8,7 +8,7 @@ package lorgnette
 import (
 	"context"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 	"github.com/golang/protobuf/proto"
 
 	lpb "chromiumos/system_api/lorgnette_proto"
