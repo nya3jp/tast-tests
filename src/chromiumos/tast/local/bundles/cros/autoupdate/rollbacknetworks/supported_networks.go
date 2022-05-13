@@ -164,12 +164,13 @@ func peapVerification(ctx context.Context, peapExp *nc.EAPConfigProperties, peap
 	// constant value if a password is configured. Only check for non-empty.
 	// Only check for non-empty for ClientCertType (see b/227740677).
 	// TODO(crisguerrero): Add check of Eap.Inner when b/227605505 is fixed.
+	// TODO(crisguerrero): Add check of Eap.ClientCertType when b/227734735 and
+	// b/227740677 are fixed.
 	if peapSet.AnonymousIdentity.ActiveValue != peapExp.AnonymousIdentity ||
 		peapSet.Identity.ActiveValue != peapExp.Identity ||
 		peapSet.Outer.ActiveValue != peapExp.Outer ||
 		peapSet.Password.ActiveValue == "" ||
 		peapSet.SaveCredentials.ActiveValue != peapExp.SaveCredentials ||
-		peapSet.ClientCertType.ActiveValue == "" ||
 		peapSet.UseSystemCAs.ActiveValue != peapExp.UseSystemCAs {
 		// Log details about set and expected configuration for debugging.
 		testing.ContextLogf(ctx, "PEAP set: %+v", peapSet)
@@ -178,7 +179,6 @@ func peapVerification(ctx context.Context, peapExp *nc.EAPConfigProperties, peap
 		testing.ContextLogf(ctx, "PEAP.Outer set: %+v", peapSet.Outer.ActiveValue)
 		testing.ContextLogf(ctx, "PEAP.Password set: %+v", peapSet.Password.ActiveValue)
 		testing.ContextLogf(ctx, "PEAP.SaveCredentials set: %+v", peapSet.SaveCredentials.ActiveValue)
-		testing.ContextLogf(ctx, "PEAP.ClientCertType set: %+v", peapSet.ClientCertType.ActiveValue)
 		testing.ContextLogf(ctx, "PEAP.UseSystemCAs set: %+v", peapSet.UseSystemCAs.ActiveValue)
 		testing.ContextLogf(ctx, "PEAP expected: %+v", peapExp)
 		return false
