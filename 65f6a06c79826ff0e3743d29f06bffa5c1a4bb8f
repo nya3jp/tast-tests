@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe67851_51f70022",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-13T06:08:16Z",
+      "side": 1,
+      "message": "It seems to be the same in tast and in production. The best way to test it side by side would be putting a DUT in \u0027lacros primary\u0027, then tapping \u0027lacros\u0027 vs. \u0027chrome\u0027 icon in the app-list.",
+      "parentUuid": "2d6e03b7_2417c39d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "65f6a06c79826ff0e3743d29f06bffa5c1a4bb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b08ca638_03ee513c",
