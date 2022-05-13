@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f03022c_07f7dad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-05-13T17:57:11Z",
+      "side": 1,
+      "message": "see also some discussion in chat; it\u0027s not clear if this is a ToT OS or ToT Chrome issue, but it\u0027s more important to get a Chrome uprev through",
+      "revId": "aba5f78fcafca6ce928d4b5a65585db2f3959a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
