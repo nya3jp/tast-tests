@@ -22,6 +22,30 @@
       },
       "revId": "5cca952511d87464d8809d57d5416e842112b0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1887dd5_e4e9238a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-13T07:10:58Z",
+      "side": 1,
+      "message": "This cleanup is shared between two methods: `s.Close` and `faillog.DumpUITreeAndScreenshot` .\n`s.Close` in the worst case will take about 15 seconds (default configuration) looking for an element and likely short time to execute a chrome API.\nI don\u0027t have an estimate for `faillog.DumpUITreeAndScreenshot` duration and it seems to be barely used in the codebase. However, a similar method `faillog.DumpUITreeWithScreenshotOnError` is usually called with a 1 minute cleanup context. I thought, it was unlikely, that both cleanup methods would time out, so I picked the largest of the two.\n\nWhat would be the usual practice for picking cleanup context duration in tast?",
+      "parentUuid": "d8915d94_2a6e34a5",
+      "range": {
+        "startLine": 195,
+        "startChar": 37,
+        "endLine": 195,
+        "endChar": 48
+      },
+      "revId": "5cca952511d87464d8809d57d5416e842112b0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
