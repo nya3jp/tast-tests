@@ -543,6 +543,30 @@
       },
       "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea4aeb11_9da46ef3",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-05-13T15:46:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b23637e_35e1cf5d",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
