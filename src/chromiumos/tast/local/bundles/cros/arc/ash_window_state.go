@@ -6,7 +6,9 @@ package arc
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
@@ -40,18 +42,17 @@ func AshWindowState(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	// Restore tablet mode to its original state on exit.
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
-	}
-	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
 
 	// Force Chrome to be in clamshell mode to test window state related functionalities.
 	// TODO(xdai): Test window state functionalities in tablet mode as well.
-	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
 		s.Fatal("Failed to disable tablet mode: ", err)
 	}
+	defer cleanup(cleanupCtx)
 
 	// Start the Settings app.
 	const pkg = "com.android.settings"
