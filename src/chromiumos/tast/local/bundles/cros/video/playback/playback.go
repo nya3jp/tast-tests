@@ -157,9 +157,9 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 	}
 
 	var roughness float64
-	var gpuErr, cStateErr, cpuErr, fdErr, dramErr, roughnessErr error
+	var gpuErr, cStateErr, cpuErr, fdErr, dramErr, batErr, roughnessErr error
 	var wg sync.WaitGroup
-	wg.Add(5)
+	wg.Add(6)
 	go func() {
 		defer wg.Done()
 		gpuErr = graphics.MeasureGPUCounters(ctx, measurementDuration, p)
@@ -179,6 +179,10 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 	go func() {
 		defer wg.Done()
 		dramErr = graphics.MeasureDRAMBandwidth(ctx, measurementDuration, p)
+	}()
+	go func() {
+		defer wg.Done()
+		batErr = graphics.MeasureSystemPowerConsumption(ctx, tconn, measurementDuration, p)
 	}()
 	if measureRoughness {
 		wg.Add(1)
@@ -205,6 +209,9 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 	}
 	if dramErr != nil {
 		return errors.Wrap(dramErr, "failed to measure DRAM bandwidth consumption")
+	}
+	if batErr != nil {
+		return errors.Wrap(batErr, "failed to measure system power consumption")
 	}
 	if roughnessErr != nil {
 		return errors.Wrap(roughnessErr, "failed to measure playback roughness")

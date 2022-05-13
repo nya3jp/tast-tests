@@ -26,6 +26,8 @@ import (
 	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )
 
@@ -555,6 +557,63 @@ func MeasurePackageCStateCounters(ctx context.Context, t time.Duration, p *perf.
 	c0Percent := 100 * float64(counters["tsc"]-accu) / float64(counters["tsc"])
 	testing.ContextLogf(ctx, "c0: %f%%", c0Percent)
 	reportMetric("c0", "percent", c0Percent, perf.SmallerIsBetter, p)
+
+	return nil
+}
+
+// MeasureSystemPowerConsumption samples the battery power consumption every so
+// often during an interval t using sysfs [1], and reports its average over
+// that time. To provide accurate readings, the battery needs to be configured
+// to discharge, if that fails (perhaps due to low battery charge), this
+// function returns nil (i.e.no error).
+// [1] https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power
+func MeasureSystemPowerConsumption(ctx context.Context, c *chrome.TestConn, t time.Duration, p *perf.Values) error {
+	cleanup, err := setup.PowerTest(ctx, c, setup.PowerTestOptions{
+		Battery:    setup.ForceBatteryDischarge,
+		NightLight: setup.DisableNightLight})
+	if err != nil {
+		// This is not really an error: sometimes powerd is down or lost and setting
+		// up the power test fails. Just don't provide any metric.
+		testing.ContextLog(ctx, "Skipping measurement, something went wrong during test set up: ", err)
+		return nil
+	}
+	defer cleanup(ctx)
+
+	// We don't use power.SysfsBatteryMetrics because we want to reject zero
+	// readings below.
+	battery, err := power.SysfsBatteryPath(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to find a battery")
+	}
+
+	accuPower := float64(0)
+	numReadings := float64(0)
+	const samplePeriod = 100 * time.Millisecond
+	numSamples := int(t / samplePeriod)
+	for i := 0; i < numSamples; i++ {
+		// Check whether enough time is left for the next sampling cycle before reaching the ctx deadline.
+		if deadLine, ok := ctx.Deadline(); ok && deadLine.Sub(time.Now()) <= samplePeriod {
+			testing.ContextLog(ctx, "Finishing system power consumption measurement because context deadline is about to reach")
+			break
+		}
+
+		if err := testing.Sleep(ctx, samplePeriod); err != nil {
+			return errors.Wrap(err, "error sleeping")
+		}
+
+		power, err := power.ReadSystemPower(battery)
+		if err != nil {
+			return err
+		}
+		if power == 0.0 {
+			continue
+		}
+		accuPower += power
+		numReadings++
+	}
+
+	testing.ContextLogf(ctx, "Average system power consumption: %fW", accuPower/numReadings)
+	reportMetric("system_power", "W", accuPower/numReadings, perf.SmallerIsBetter, p)
 
 	return nil
 }
