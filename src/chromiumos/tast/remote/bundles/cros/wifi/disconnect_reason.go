@@ -102,7 +102,7 @@ func DisconnectReason(ctx context.Context, s *testing.State) {
 		// cannot receive the action frame and the test will fail.
 		// Turn off power saving mode to replicate the behavior of Autotest in
 		// this test for now.
-		shortenCtx, restore, err := tf.DisablePowersaveMode(ctx)
+		shortenCtx, restore, err := tf.DisablePowersaveMode(ctx, wificell.DefaultDUT)
 		if err != nil {
 			s.Fatal("Failed to disable power saving mode: ", err)
 		}
@@ -199,7 +199,7 @@ func DisconnectReason(ctx context.Context, s *testing.State) {
 	case dtAPSendChannelSwitch:
 		wCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
-		if err := tf.SendChannelSwitchAnnouncement(wCtx, ap1, maxRetry, alternateChannel); err != nil {
+		if err := tf.SendChannelSwitchAnnouncement(wCtx, wificell.DefaultDUT, ap1, maxRetry, alternateChannel); err != nil {
 			s.Fatal("Failed to send channel switch announcement: ", err)
 		}
 	case dtDeauthClient:
