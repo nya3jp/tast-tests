@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8f01cbe_5faab75c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-13T01:54:31Z",
+      "side": 1,
+      "message": "wm.ToggleSnapViaKeyboardShortcut() actually \"toggles\" the snap state. So if it\u0027s snapped, the method unsnap it and vice versa.\n\nAnd testUnsnapLeftRightViaKeyboardShortcut() literally assumes that the windows are snapped already as it\u0027s named, and tests that we can correctly unsnap them.",
+      "parentUuid": "6d37ccf3_27f8e00f",
+      "revId": "fdee7a9a8a4c4fb1ab65b9d0b51cf70b68086d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "090b15c9_d833df48",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1

@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09ed933_57e8a6cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-13T01:54:31Z",
+      "side": 1,
+      "message": "No worries, please take care!",
+      "parentUuid": "d10008a6_b6a7ac31",
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f231ce5_5db53a91",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-05-12T09:05:43Z",
       "side": 1,
       "message": "changes to primary snapped",
+      "range": {
+        "startLine": 89,
+        "startChar": 61,
+        "endLine": 89,
+        "endChar": 67
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c2565cc_9e1c8ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-13T01:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f231ce5_5db53a91",
       "range": {
         "startLine": 89,
         "startChar": 61,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb9934de_4e86af61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-13T01:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb492c2f_5ad98552",
+      "range": {
+        "startLine": 96,
+        "startChar": 61,
+        "endLine": 96,
+        "endChar": 67
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26fda251_7a10c665",
@@ -111,6 +177,30 @@
       "writtenOn": "2022-05-12T09:05:43Z",
       "side": 1,
       "message": "unsnap\n\nCurious why you capitalize the word.",
+      "range": {
+        "startLine": 104,
+        "startChar": 37,
+        "endLine": 104,
+        "endChar": 43
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ed141f_e82ce783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-13T01:54:31Z",
+      "side": 1,
+      "message": "haha I don\u0027t know either😂 Fixed.",
+      "parentUuid": "26fda251_7a10c665",
       "range": {
         "startLine": 104,
         "startChar": 37,
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb284cb_9bc16392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-13T01:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b41971e4_af655ed1",
+      "range": {
+        "startLine": 107,
+        "startChar": 61,
+        "endLine": 107,
+        "endChar": 67
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03c31f9d_7d3602b1",
@@ -157,6 +271,30 @@
       "writtenOn": "2022-05-12T09:05:43Z",
       "side": 1,
       "message": "changes to unsnapped state",
+      "range": {
+        "startLine": 114,
+        "startChar": 61,
+        "endLine": 114,
+        "endChar": 67
+      },
+      "revId": "cda10e03bfbf60d44070beb9ef2d47cf4a5def7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46f2c72f_e7efbd54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-13T01:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c31f9d_7d3602b1",
       "range": {
         "startLine": 114,
         "startChar": 61,
