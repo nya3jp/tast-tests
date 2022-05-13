@@ -126,6 +126,51 @@ func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
 	}, nil
 }
 
+// IPv4 returns the IPv4 address of the interface.
+func (r *Runner) IPv4(ctx context.Context, iface string) (net.IP, *net.IPNet, error) {
+	fields, err := r.showAddr(ctx, iface)
+	if err != nil {
+		return nil, nil, err
+	}
+	return net.ParseCIDR(fields[2])
+}
+
+// IPv6 returns the IPv6 address of the interface.
+func (r *Runner) IPv6(ctx context.Context, iface string) (net.IP, *net.IPNet, error) {
+	fields, err := r.showAddr(ctx, iface)
+	if err != nil {
+		return nil, nil, err
+	}
+	return net.ParseCIDR(fields[3])
+}
+
+// showAddr runs `ip -br addr show <iface>` then splits and validity-checks the output.
+func (r *Runner) showAddr(ctx context.Context, iface string) ([]string, error) {
+	// Let ip print brief output so that we can have less assumption on
+	// the output format.
+	// The brief format:
+	// <iface> <operstate> <v4_address> <v6_address>
+	// Example:
+	// wlan0            UP             192.168.0.99/24 fe80::daf3:bcff:fe27:abc7/64
+	output, err := r.cmd.Output(ctx, "ip", "-br", "addr", "show", iface)
+	if err != nil {
+		return nil, errors.Wrapf(err, `failed to run "ip addr show %s"`, iface)
+	}
+	content := strings.TrimSpace(string(output))
+	lines := strings.Split(content, "\n")
+	if len(lines) != 1 {
+		return nil, errors.Errorf("unexpected lines of results: got %d, want 1", len(lines))
+	}
+	fields := strings.Fields(lines[0])
+	if len(fields) < 4 {
+		return nil, errors.Errorf(`invalid "ip -br addr show" output: %q`, lines[0])
+	}
+	if fields[0] != iface {
+		return nil, errors.Errorf("unmatched interface name, got %s, want %s", fields[0], iface)
+	}
+	return fields, nil
+}
+
 // SetMAC sets MAC address of iface with command "ip link set $iface address $mac.
 func (r *Runner) SetMAC(ctx context.Context, iface string, mac net.HardwareAddr) error {
 	if err := r.cmd.Run(ctx, "ip", "link", "set", iface, "address", mac.String()); err != nil {

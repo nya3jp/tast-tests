@@ -7,6 +7,7 @@ package wifi
 import (
 	"context"
 	"fmt"
+	"net"
 	"time"
 
 	"chromiumos/tast/common/network/wpacli"
@@ -57,6 +58,13 @@ func init() {
 					name:     "Discover: passive",
 					testFunc: tdlsDiscover,
 					reverse:  true,
+				}, {
+					name:     "Setup/Teardown: active",
+					testFunc: tdlsSetupTeardown,
+				}, {
+					name:     "Setup/Teardown: passive",
+					testFunc: tdlsSetupTeardown,
+					reverse:  true,
 				}},
 			},
 		}})
@@ -73,6 +81,86 @@ func tdlsDiscover(ctx context.Context, tc *tdlsTestcase, peer1Conn, peer2Conn *s
 	err = r.TDLSCmd(ctx, "tdls_discover", peer2Addr.String())
 	if err != nil {
 		return errors.Wrap(err, "failed TDLS Discover, err")
+	}
+	testing.ContextLog(ctx, "Success")
+	return nil
+}
+
+// tdlsSetupTeardown tests support for TDLS Setup and Teardown messages.
+func tdlsSetupTeardown(ctx context.Context, tc *tdlsTestcase, peer1Conn, peer2Conn *ssh.Conn) error {
+	// Get the necessry addresses and data.
+	peer1MAC, err := wifiutil.GetMAC(ctx, peer1Conn, ifName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get peer 1 MAC address, err")
+	}
+	testing.ContextLogf(ctx, "Peer 1 MAC: %s", peer1MAC.String())
+	peer2MAC, err := wifiutil.GetMAC(ctx, peer2Conn, ifName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get peer 2 MAC address, err")
+	}
+	testing.ContextLogf(ctx, "Peer 2 MAC: %s", peer2MAC.String())
+	peer2IP, err := wifiutil.GetIPv4(ctx, peer2Conn, ifName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get peer IP address, err")
+	}
+	testing.ContextLogf(ctx, "Peer IP: %s", peer2IP)
+
+	freqOpts, err := tc.ap.Config().PcapFreqOptions()
+	if err != nil {
+		return errors.Wrap(err, "failed to get Freq Opts, err")
+	}
+
+	result, err := wifiutil.PingFromHost(ctx, peer1Conn, peer2IP)
+	if err != nil {
+		return err
+	}
+	if result.Received == 0 {
+		return errors.New("no traffic passed through in initial test")
+	}
+	if result.Sent != result.Received {
+		testing.ContextLogf(ctx, "WARNING: packets lost during transmission: %v<%v", result.Received, result.Sent)
+	}
+
+	// Run ping and check Receiver address match Destination (packets in tunnel).
+	pcapPath, err := wifiutil.CollectPcapForAction(ctx, tc.pcap, wifiutil.UniqueAPName(), tc.ap.Config().Channel, freqOpts,
+		func(ctx context.Context) error {
+			// Setup TDLS tunnel
+			r := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: peer1Conn})
+			err := r.TDLSCmd(ctx, "tdls_setup", peer2MAC.String())
+			if err != nil {
+				return errors.Wrap(err, "failed TDLS Setup, err")
+			}
+			testing.ContextLog(ctx, "Setup success")
+
+			result, err := wifiutil.PingFromHost(ctx, peer1Conn, peer2IP)
+			if err != nil {
+				return err
+			}
+			if result.Received == 0 {
+				return errors.New("no traffic passed through")
+			}
+			if result.Sent != result.Received {
+				testing.ContextLogf(ctx, "WARNING: packets lost during transmission: %v<%v", result.Received, result.Sent)
+			}
+			// Teardown the tunnel.
+			err = r.TDLSCmd(ctx, "tdls_teardown", peer2MAC.String())
+			if err != nil {
+				return errors.Wrap(err, "failed TDLS Teardown, err")
+			}
+			testing.ContextLog(ctx, "Teardown success")
+			return nil
+		})
+	if err != nil {
+		return errors.Wrap(err, "failed to collect pcap or perform action, err")
+	}
+
+	pkts, err := wifiutil.FindNonTDLSPackets(pcapPath, []net.HardwareAddr{peer1MAC, peer2MAC})
+	if err != nil {
+		return errors.Wrap(err, "failed to fiter packets, err")
+	} else if len(pkts) > 0 {
+		// Better to log offending packets once than to return them with error which gets printed multiple times.
+		testing.ContextLogf(ctx, "Found invalid packets:%s", wifiutil.DumpPkts(pkts))
+		return errors.New("invalid packets spotted")
 	}
 	testing.ContextLog(ctx, "Success")
 	return nil
