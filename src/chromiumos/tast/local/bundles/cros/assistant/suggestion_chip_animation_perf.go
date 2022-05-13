@@ -37,7 +37,7 @@ func init() {
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          assistant.VerboseLoggingEnabled(),
+		Fixture:      "assistant",
 		Params: []testing.Param{
 			{
 				Name:              "assistant_key",
@@ -58,20 +58,14 @@ func init() {
 // suggestions.
 func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
 	accel := s.Param().(assistant.Accelerator)
-	cr := s.PreValue().(*chrome.Chrome)
+
+	fixtData := s.FixtValue().(*assistant.FixtData)
+	cr := fixtData.Chrome
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Assistant: ", err)
-	}
-	defer func() {
-		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
-			s.Fatal("Failed to disable Assistant: ", err)
-		}
-	}()
 
 	if err := assistant.SetBetterOnboardingEnabled(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to disable better onboarding: ", err)

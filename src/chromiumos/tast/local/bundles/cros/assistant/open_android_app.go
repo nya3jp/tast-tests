@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -26,8 +25,8 @@ func init() {
 		Contacts:     []string{"updowndota@chromium.org", "xiaohuic@chromium.org", "assistive-eng@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		VarDeps:      []string{"assistant.username", "assistant.password"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 3*time.Minute,
+		Fixture:      "assistantWithArc",
+		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -39,39 +38,13 @@ func init() {
 
 // OpenAndroidApp tests the open Android apps feature of the Assistant.
 func OpenAndroidApp(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(
-		ctx,
-		chrome.ARCEnabled(),
-		chrome.GAIALogin(chrome.Creds{
-			User: s.RequiredVar("assistant.username"),
-			Pass: s.RequiredVar("assistant.password"),
-		}),
-		chrome.EnableFeatures("AssistantAppSupport"),
-		chrome.ExtraArgs(
-			"--arc-disable-app-sync",
-			"--arc-disable-locale-sync",
-			"--arc-play-store-auto-update=off"),
-		assistant.VerboseLogging(),
-	)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	fixtData := s.FixtValue().(*assistant.FixtData)
+	cr := fixtData.Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	// Enable the Assistant and wait for the ready signal.
-	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Assistant: ", err)
-	}
-	defer func() {
-		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
-			s.Fatal("Failed to disable Assistant: ", err)
-		}
-	}()
 
 	s.Log("Waiting for ARC package list initial refreshed")
 	if err := waitForArcPackageListInitialRefreshed(ctx, s, tconn); err != nil {

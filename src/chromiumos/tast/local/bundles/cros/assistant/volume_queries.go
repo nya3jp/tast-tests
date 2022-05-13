@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/audio"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -27,26 +26,18 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.Speaker()),
-		Pre:          assistant.VerboseLoggingEnabled(),
+		Fixture:      "assistant",
 	})
 }
 
 func VolumeQueries(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	fixtData := s.FixtValue().(*assistant.FixtData)
+	cr := fixtData.Chrome
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	// Enable the Assistant and wait for the ready signal.
-	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Assistant: ", err)
-	}
-	defer func() {
-		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
-			s.Fatal("Failed to disable Assistant: ", err)
-		}
-	}()
 
 	// Verifies the output stream nodes exist and are active before testing the volume queries.
 	if err := audio.WaitForDevice(ctx, audio.OutputStream); err != nil {
