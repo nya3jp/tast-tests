@@ -61,7 +61,7 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 	fakeDMS := s.FixtValue().(*fakedms.FakeDMS)
 
 	// DLP policy with all clipboard blocked restriction.
-	policyDLP := policy.RestrictiveDLPPolicyForClipboard()
+	policyDLP := policy.RestrictiveDLPPolicyForClipboard("example.com")
 
 	// Update the policy blob.
 	pb := policyBlob.NewBlob()
