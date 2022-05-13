@@ -305,7 +305,7 @@ var (
 			"proto udp\n" +
 			"server 10.11.12.0 255.255.255.0\n" +
 			"status /{{.status_file}}\n" +
-			"tls-auth /{{.tls_auth_file}}\n" +
+			"{{if .tls_auth_file}} tls-auth /{{.tls_auth_file}}\n {{end}}" +
 			"verb 5\n" +
 			"writepid /{{.pid_file}}\n" +
 			"tmp-dir /tmp\n" +
@@ -498,7 +498,7 @@ func StartIKEv2Server(ctx context.Context, authType string) (*Server, error) {
 }
 
 // StartOpenVPNServer starts an OpenVPN server.
-func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, error) {
+func StartOpenVPNServer(ctx context.Context, useUserPassword, useTLSAuth bool) (*Server, error) {
 	chro := chroot.NewNetworkChroot()
 	server := &Server{
 		netChroot:    chro,
@@ -519,12 +519,14 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword bool) (*Server, err
 		"server_cert":                  openvpnServerCertFile,
 		"server_key":                   openvpnServerKeyFile,
 		"status_file":                  openvpnStatusFile,
-		"tls_auth_file":                openvpnTLSAuthFile,
 		"username":                     openvpnUsername,
 		"log_file":                     openvpnLogFile,
 	}
 	if useUserPassword {
 		configValues["optional_user_verification"] = fmt.Sprintf("auth-user-pass-verify /%s via-file\nscript-security 2", openvpnAuthScript)
+	}
+	if useTLSAuth {
+		configValues["tls_auth_file"] = openvpnTLSAuthFile
 	}
 
 	chro.AddConfigValues(configValues)
