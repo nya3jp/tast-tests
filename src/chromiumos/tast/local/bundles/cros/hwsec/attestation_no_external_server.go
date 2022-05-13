@@ -97,7 +97,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to call Enroll D-Bus API: ", err)
 	}
 	if *enrollReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
-		s.Fatal("Faild to enroll: ", enrollReply.Status.String())
+		s.Fatal("Failed to enroll: ", enrollReply.Status.String())
 	}
 
 	if err := cryptohome.MountVault(ctx, "fake_label", hwsec.NewPassAuthConfig(username, "testpass"), true /* create */, hwsec.NewVaultConfig()); err != nil {
@@ -142,7 +142,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to call D-Bus API to get certificate: ", err)
 			}
 			if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
-				s.Fatal("Faild to get certificate: ", certReply.Status.String())
+				s.Fatal("Failed to get certificate: ", certReply.Status.String())
 			}
 
 			// TODO(b/165426637): Enable it after we inject the fake device policy with customer ID.
@@ -196,7 +196,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 					s.Fatalf("Failed to create certificate request for label %q: %v", label, err)
 				}
 				if *certReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
-					s.Fatalf("Faild to get certificate for label %q: %v", label, certReply.Status.String())
+					s.Fatalf("Failed to get certificate for label %q: %v", label, certReply.Status.String())
 				}
 				_, err = attestation.GetPublicKey(ctx, username, label)
 				if err != nil {
