@@ -52,6 +52,24 @@
       "parentUuid": "504138bb_9fed953f",
       "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7720947_a1ef4063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-13T10:59:48Z",
+      "side": 1,
+      "message": "I took a look at using struct to represent the data. It seems to me that we have to define a lot of structs here since 1) this property is nested several times and 2) the deepest structs are not the same between each test cases (since each VPN type has its own format). I think anonymous struct does not work well for these case, so defining these structs seems a little overkill to me...\nDo you have any suggestion on this? Or does using a `map[string]interface{}` sounds good to you? \nThanks!",
+      "parentUuid": "b526b038_b304304e",
+      "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
