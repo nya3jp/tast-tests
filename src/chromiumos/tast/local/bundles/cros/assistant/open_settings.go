@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/assistant"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -29,27 +28,19 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          assistant.VerboseLoggingEnabled(),
+		Fixture:      "assistant",
 	})
 }
 
 // OpenSettings tests that the Settings app can be opened by the Assistant
 func OpenSettings(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	fixtData := s.FixtValue().(*assistant.FixtData)
+	cr := fixtData.Chrome
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	// Enable the Assistant and wait for the ready signal.
-	if err := assistant.EnableAndWaitForReady(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Assistant: ", err)
-	}
-	defer func() {
-		if err := assistant.Cleanup(ctx, s.HasError, cr, tconn); err != nil {
-			s.Fatal("Failed to disable Assistant: ", err)
-		}
-	}()
 
 	// Run query to open the Settings window.
 	// assistant.SendTextQuery returns an error even when Settings launches successfully,
