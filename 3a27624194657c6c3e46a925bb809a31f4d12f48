@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0611ef0_ae033254",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-13T03:50:15Z",
+      "side": 1,
+      "message": "\u003e \"swtich\" is a possible misspelling of \"switch\".\n\nPlease fix.",
+      "parentUuid": "ab5352b1_bc459fa5",
+      "range": {
+        "startLine": 70,
+        "startChar": 63,
+        "endLine": 70,
+        "endChar": 69
+      },
+      "revId": "3a27624194657c6c3e46a925bb809a31f4d12f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
