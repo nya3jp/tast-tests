@@ -6,6 +6,9 @@ package dlp
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -37,6 +40,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
+		Data:         []string{"text_1.html", "text_2.html"},
 		Params: []testing.Param{{
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val:     browser.TypeAsh,
@@ -58,9 +62,14 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Set DLP policy with all clipboard blocked restriction.
-	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.RestrictiveDLPPolicyForClipboard()); err != nil {
-		s.Fatal("Failed to serve and verify: ", err)
+	allowedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer allowedServer.Close()
+
+	blockedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer blockedServer.Close()
+
+	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.RestrictiveDLPPolicyForClipboard(blockedServer.URL)); err != nil {
+		s.Fatal("Failed to serve and verify the DLP policy: ", err)
 	}
 
 	// Connect to Test API.
@@ -82,18 +91,18 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 
 	for _, param := range []struct {
 		name        string
-		url         string
 		wantAllowed bool
+		sourceURL   string
 	}{
 		{
 			name:        "wantDisallowed",
-			url:         "www.example.com",
 			wantAllowed: false,
+			sourceURL:   blockedServer.URL + "/text_1.html",
 		},
 		{
 			name:        "wantAllowed",
-			url:         "www.chromium.org",
 			wantAllowed: true,
+			sourceURL:   allowedServer.URL + "/text_2.html",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -109,14 +118,14 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 			}
 			defer closeBrowser(cleanupCtx)
 
-			conn, err := br.NewConn(ctx, "https://"+param.url)
+			conn, err := br.NewConn(ctx, param.sourceURL)
 			if err != nil {
-				s.Fatal("Failed to open page: ", err)
+				s.Fatalf("Failed to open page %q: %v", param.sourceURL, err)
 			}
 			defer conn.Close()
 
 			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-				s.Fatalf("Failed to wait for %q to be loaded and achieve quiescence: %s", param.url, err)
+				s.Fatalf("Failed to wait for %q to be loaded and achieve quiescence: %s", param.sourceURL, err)
 			}
 
 			if err := uiauto.Combine("copy all text from source website",
@@ -125,7 +134,7 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 				s.Fatal("Failed to copy text from source browser: ", err)
 			}
 
-			err = rightClickOmnibox(ctx, tconn, param.url, param.wantAllowed)
+			err = rightClickOmnibox(ctx, tconn, param.sourceURL, param.wantAllowed)
 			if err != nil {
 				s.Fatal("Failed to right click omni box: ", err)
 			}
@@ -137,7 +146,8 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 				s.Fatal("Failed to press Ctrl+T to open a new tab: ", err)
 			}
 
-			err = pasteOmnibox(ctx, tconn, keyboard, param.url, param.wantAllowed)
+			parsedSourceURL, _ := url.Parse(blockedServer.URL)
+			err = pasteOmnibox(ctx, tconn, keyboard, parsedSourceURL.Hostname(), param.wantAllowed)
 			if err != nil {
 				s.Fatal("Failed to paste content in omni box: ", err)
 			}

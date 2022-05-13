@@ -6,6 +6,9 @@ package dlp
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -39,6 +42,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
+		Data:         []string{"text_1.html", "text_2.html"},
 		Params: []testing.Param{{
 			Name: "ash",
 			// TODO(b/231659658): Re-enable once this re-stabilizes.
@@ -63,8 +67,14 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	allowedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer allowedServer.Close()
+
+	blockedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer blockedServer.Close()
+
 	// Set DLP policy with all clipboard blocked restriction.
-	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.RestrictiveDLPPolicyForClipboard()); err != nil {
+	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.RestrictiveDLPPolicyForClipboard(blockedServer.URL)); err != nil {
 		s.Fatal("Failed to serve and verify: ", err)
 	}
 
@@ -93,18 +103,18 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 
 	for _, param := range []struct {
 		name        string
-		url         string
 		wantAllowed bool
+		sourceURL   string
 	}{
 		{
 			name:        "wantDisallowed",
-			url:         "www.example.com",
 			wantAllowed: false,
+			sourceURL:   blockedServer.URL + "/text_1.html",
 		},
 		{
 			name:        "wantAllowed",
-			url:         "www.chromium.org",
 			wantAllowed: true,
+			sourceURL:   allowedServer.URL + "/text_2.html",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -120,14 +130,14 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 			}
 			defer closeBrowser(cleanupCtx)
 
-			conn, err := br.NewConn(ctx, "https://"+param.url)
+			conn, err := br.NewConn(ctx, param.sourceURL)
 			if err != nil {
 				s.Fatal("Failed to open page: ", err)
 			}
 			defer conn.Close()
 
 			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-				s.Fatalf("Failed to wait for %q to be loaded and achieve quiescence: %s", param.url, err)
+				s.Fatalf("Failed to wait for %q to be loaded and achieve quiescence: %s", param.sourceURL, err)
 			}
 
 			if err := uiauto.Combine("copy all text from source website",
@@ -145,13 +155,14 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 				s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 			}
 
+			parsedSourceURL, _ := url.Parse(blockedServer.URL)
 			s.Log("Right clicking shelf box")
-			if err := rightClickShelfbox(ctx, tconn, param.url, param.wantAllowed); err != nil {
+			if err := rightClickShelfbox(ctx, tconn, parsedSourceURL.Hostname(), param.wantAllowed); err != nil {
 				s.Error("Failed to right click shelf box: ", err)
 			}
 
 			s.Log("Pasting content in shelf box")
-			if err := pasteShelfbox(ctx, tconn, keyboard, param.url, param.wantAllowed); err != nil {
+			if err := pasteShelfbox(ctx, tconn, keyboard, parsedSourceURL.Hostname(), param.wantAllowed); err != nil {
 				s.Error("Failed to paste content in shelf box: ", err)
 			}
 		})
