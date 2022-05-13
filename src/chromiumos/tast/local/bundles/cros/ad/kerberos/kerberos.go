@@ -9,7 +9,7 @@ import (
 	"context"
 	"os"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 	"github.com/golang/protobuf/proto"
 
 	kp "chromiumos/system_api/kerberos_proto"

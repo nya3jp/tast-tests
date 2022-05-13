@@ -11,7 +11,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosdisks"

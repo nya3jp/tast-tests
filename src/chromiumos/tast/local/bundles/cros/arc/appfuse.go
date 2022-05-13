@@ -8,7 +8,7 @@ import (
 	"context"
 	"syscall"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/sysutil"

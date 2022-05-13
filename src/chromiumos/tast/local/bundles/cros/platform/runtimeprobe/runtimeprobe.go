@@ -12,7 +12,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 	"github.com/golang/protobuf/proto"
 
 	rppb "chromiumos/system_api/runtime_probe_proto"

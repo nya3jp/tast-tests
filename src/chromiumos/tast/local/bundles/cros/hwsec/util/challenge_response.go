@@ -10,7 +10,7 @@ import (
 	"crypto/sha1"
 	"reflect"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbus/v5"
 	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/cryptohome_proto"
