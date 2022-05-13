@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c12a5f4c_6ce1fe47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-13T19:10:30Z",
+      "side": 1,
+      "message": "Adding launcher as well. My team generally uses this prefix so I would prefer to keep it.",
+      "parentUuid": "1c16172d_f483179a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "12287338c58bdc0cee7eb5d063f12705b67af3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3757dff1_e75e47fe",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-12T03:12:07Z",
       "side": 1,
       "message": "nit: you can inline the type definition, and even subtests.\n\n```\nfor _, subtest :\u003d [] struct {\n  ..\n} {\n  {\n    name: ...\n    ...\n  },\n  ...\n} {\n  s.Run(...)\n}\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 90,
+        "endChar": 41
+      },
+      "revId": "12287338c58bdc0cee7eb5d063f12705b67af3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a45ca5_17e63e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/exit_search_show_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-13T19:10:30Z",
+      "side": 1,
+      "message": "Couldn\u0027t find this pattern in code search: keeping this for consistency.",
+      "parentUuid": "3757dff1_e75e47fe",
       "range": {
         "startLine": 90,
         "startChar": 15,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1934aad2_f96d89bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/exit_search_show_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-13T19:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c64b7471_1177f64f",
+      "revId": "12287338c58bdc0cee7eb5d063f12705b67af3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f33279fe_a1479fad",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-05-12T03:12:07Z",
       "side": 1,
       "message": "not needed?",
+      "range": {
+        "startLine": 111,
+        "startChar": 93,
+        "endLine": 111,
+        "endChar": 99
+      },
+      "revId": "12287338c58bdc0cee7eb5d063f12705b67af3a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7576855_7d993bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/exit_search_show_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-13T19:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f33279fe_a1479fad",
       "range": {
         "startLine": 111,
         "startChar": 93,
