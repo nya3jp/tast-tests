@@ -51,6 +51,24 @@
       "message": "I think we don\u0027t need username and pwd.",
       "revId": "f5e6db831701281e9595f76c666805789058b87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b27fe55e_fe8d6fd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-13T06:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fd3b62d_01df60ac",
+      "revId": "f5e6db831701281e9595f76c666805789058b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
