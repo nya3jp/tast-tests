@@ -100,5 +100,6 @@ const (
 	SettingPodKeyboard          SettingPod = "keyboard"
 	SettingPodScreenCapture     SettingPod = "Screen capture"
 	SettingPodVPN               SettingPod = "VPN"
+	SettingPodDarkTheme         SettingPod = "Toggle Dark theme"
 	SettingPodDarkThemeSettings SettingPod = "dark theme settings"
 )
