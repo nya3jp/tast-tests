@@ -410,5 +410,7 @@ func generateChromeOpts(s *testing.FixtState) []chrome.Option {
 		opts = append(opts, chrome.KeepState())
 	}
 
+	opts = append(opts, chrome.EnableFeatures("CrostiniUseLxd4"))
+
 	return opts
 }
