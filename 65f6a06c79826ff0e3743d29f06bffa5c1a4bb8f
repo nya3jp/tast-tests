@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7baba75b_bbfc9f8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-13T15:39:51Z",
+      "side": 1,
+      "message": "https://crbug.com/1325339 sure, here you go",
+      "parentUuid": "76694807_eddc9a18",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "65f6a06c79826ff0e3743d29f06bffa5c1a4bb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b08ca638_03ee513c",
@@ -151,6 +175,24 @@
       "side": 1,
       "message": "Reopening for feedback",
       "parentUuid": "b08ca638_03ee513c",
+      "revId": "65f6a06c79826ff0e3743d29f06bffa5c1a4bb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49213400_6463a3d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-13T15:39:51Z",
+      "side": 1,
+      "message": "Marking as resolved to merge this discussion to the open comment thread above.",
+      "parentUuid": "7eaffa6f_81884c09",
       "revId": "65f6a06c79826ff0e3743d29f06bffa5c1a4bb8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
