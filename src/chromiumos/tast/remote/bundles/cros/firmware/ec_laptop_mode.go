@@ -303,7 +303,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			}
 
 			// Wait for a short delay.
-			if err := testing.Sleep(ctx, time.Second); err != nil {
+			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
 				s.Fatal("Failed to sleep: ", err)
 			}
 
@@ -313,13 +313,23 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		s.Log("Pressing and holding the power button for 1 second to turn on the power menu")
+		s.Log("Pressing and holding the power button to bring up the power menu")
+		powerMenuDur := 1 * time.Second
+		i := 0
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+			s.Logf("Pressing for %q", powerMenuDur)
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(powerMenuDur)); err != nil {
 				return errors.Wrap(err, "failed to press and hold on the power button for 1 second")
 			}
+			// On Stainless, power menu was reported to be absent on some DUTs.
+			// Increment the press duration by 100 millisecond during each retry till
+			// a total of 1.8 seconds is reached.
+			i++
+			if i <= 8 {
+				powerMenuDur += 100 * time.Millisecond
+			}
 			// Wait for a short delay.
-			if err := testing.Sleep(ctx, time.Second); err != nil {
+			if err := testing.Sleep(ctx, 2*time.Second); err != nil {
 				return errors.Wrap(err, "failed to sleep")
 			}
 			// Check that pressing the power button for 1 second brings up the power menu.
@@ -327,7 +337,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to check the power menu")
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 3 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 40 * time.Second, Interval: 2 * time.Second}); err != nil {
 			s.Fatal("Power menu was absent following a 1 second press on the power button: ", err)
 		}
 
