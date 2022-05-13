@@ -16,6 +16,40 @@
       "message": "Updated, Removed default initializatoin and failing if property not found.",
       "revId": "c44b15a5ebfabf44e8551e3b26c842647b11e751",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7956d2_f738b953",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_long_sms.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-13T17:30:41Z",
+      "side": 1,
+      "message": "This err might be nil here if value is nil; we should probably check err first and then if value is nil report \"OwnNumbers does not exist\" separately",
+      "revId": "c44b15a5ebfabf44e8551e3b26c842647b11e751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052dc7fc_8fbf3fa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_long_sms.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-13T17:30:41Z",
+      "side": 1,
+      "message": "This will only be true if the type conversion fails, I think. We should check the length of the array as well.",
+      "revId": "c44b15a5ebfabf44e8551e3b26c842647b11e751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
