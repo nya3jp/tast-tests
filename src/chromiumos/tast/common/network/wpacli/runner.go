@@ -109,3 +109,18 @@ func (r *Runner) run(ctx context.Context, expected string, opts ...string) error
 func (r *Runner) TDLSDiscover(ctx context.Context, mac string) error {
 	return r.run(ctx, "OK", "tdls_discover", mac)
 }
+
+// TDLSSetup runs tdls_setup command.
+func (r *Runner) TDLSSetup(ctx context.Context, mac string) error {
+	return r.run(ctx, "OK", "tdls_setup", mac)
+}
+
+// TDLSTeardown runs tdls_teardown command.
+func (r *Runner) TDLSTeardown(ctx context.Context, mac string) error {
+	return r.run(ctx, "OK", "tdls_teardown", mac)
+}
+
+// TDLSLinkStatus runs tdls_link_status command.
+func (r *Runner) TDLSLinkStatus(ctx context.Context, mac string) error {
+	return r.run(ctx, "TDLS link status: connected", "tdls_link_status", mac)
+}
