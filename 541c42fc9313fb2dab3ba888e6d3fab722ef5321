@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e56687_8c3a69e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-13T06:22:02Z",
+      "side": 1,
+      "message": "ltgm with nits",
+      "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7f8138_3cf81bb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-13T06:22:02Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 7
+      },
+      "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289195cf_456272a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_presence.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-13T06:22:02Z",
+      "side": 1,
+      "message": "nit: cleanupCtx",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a3cbda9_c845f55d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-13T06:22:02Z",
+      "side": 1,
+      "message": "remove this line.",
+      "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
