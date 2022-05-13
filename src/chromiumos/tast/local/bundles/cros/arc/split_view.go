@@ -91,7 +91,7 @@ func waitForStableWindowBounds(ctx context.Context, tconn *chrome.TestConn, pack
 	checkIfChanging := func(ctx context.Context) error {
 		if window, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName); err != nil {
 			return testing.PollBreak(err)
-		} else if window.BoundsInRoot.Equals(previousBounds) {
+		} else if !window.BoundsInRoot.Equals(previousBounds) {
 			previousBounds = window.BoundsInRoot
 			return errors.New("the window bounds is still changing")
 		}
