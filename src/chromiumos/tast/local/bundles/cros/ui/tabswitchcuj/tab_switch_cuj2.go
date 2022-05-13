@@ -73,16 +73,17 @@ const (
 type webType string
 
 const (
-	wikipedia webType = "Wikipedia"
-	reddit    webType = "Reddit"
-	medium    webType = "Medium"
-	yahooNews webType = "YahooNews"
-	cnn       webType = "CNN"
-	espn      webType = "ESPN"
-	hulu      webType = "Hulu"
-	pinterest webType = "Pinterest"
-	youtube   webType = "Youtube"
-	netflix   webType = "Netflix"
+	wikipedia    webType = "Wikipedia"
+	reddit       webType = "Reddit"
+	medium       webType = "Medium"
+	yahooNews    webType = "YahooNews"
+	yahooFinance webType = "YahooFinance"
+	cnn          webType = "CNN"
+	espn         webType = "ESPN"
+	hulu         webType = "Hulu"
+	pinterest    webType = "Pinterest"
+	youtube      webType = "Youtube"
+	netflix      webType = "Netflix"
 )
 
 // webPageInfo records a Chrome page's information, including the current browsing page
@@ -308,8 +309,8 @@ var allTargets = []struct {
 
 	{cuj.YahooUsURL, newPageInfo(Basic, yahooNews, `/us/`, `/politics/`)},
 	{cuj.YahooWorldURL, newPageInfo(Basic, yahooNews, `/world/`, `/health/`)},
-	{cuj.YahooScienceURL, newPageInfo(Plus, yahooNews, `/science/`, `/tagged/skullduggery/`)},
-	{cuj.YahooOriginalsURL, newPageInfo(Premium, yahooNews, `/originals/`, `/videos`)},
+	{cuj.YahooScienceURL, newPageInfo(Plus, yahooNews, `/science/`, `/originals/`)},
+	{cuj.YahooFinanaceWatchlistURL, newPageInfo(Premium, yahooFinance, `/watchlists/`, `/news/`)},
 
 	{cuj.CnnWorldURL, newPageInfo(Plus, cnn, `/world`, `/africa`)},
 	{cuj.CnnAmericasURL, newPageInfo(Plus, cnn, `/americas`, `/asia`)},
