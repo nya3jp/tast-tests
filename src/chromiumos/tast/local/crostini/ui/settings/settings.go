@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -190,9 +191,12 @@ func OpenLinuxInstallerAndClickNext(ctx context.Context, tconn *chrome.TestConn,
 	}
 
 	s := &Settings{tconn: tconn, ui: ui}
-	defer s.Close(ctx)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	defer s.Close(cleanupCtx)
 
-	if err := ui.WaitUntilExists(DevelopersButton); err == nil {
+	if err := ui.WaitUntilExists(DevelopersButton)(ctx); err == nil {
 		// Linux has been installed already, uninstall it.
 		if err := ui.LeftClick(DevelopersButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to go to linux subpage")
@@ -203,7 +207,7 @@ func OpenLinuxInstallerAndClickNext(ctx context.Context, tconn *chrome.TestConn,
 		}
 	}
 
-	defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "crostini_installer", retErr) }()
+	defer func() { faillog.DumpUITreeAndScreenshot(cleanupCtx, tconn, "crostini_installer", retErr) }()
 	installButton := nodewith.Name("Install").Role(role.Button)
 	if err := uiauto.Combine("open Install and click button Next",
 		ui.LeftClickUntil(TurnOnButton, ui.WaitUntilExists(nextButton)),
