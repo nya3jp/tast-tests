@@ -347,6 +347,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "391ee836_610b1c5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21a497f0_02d6e7e2",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab2423cc_b9141667",
@@ -455,6 +473,30 @@
       "side": 1,
       "message": "I\u0027d still use Fatal in this case. This should still work if the surrounding code is chaned.",
       "parentUuid": "3677c161_387be54b",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d55d0e9_9c9442f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e859aea3_988717ca",
       "range": {
         "startLine": 109,
         "startChar": 6,
@@ -602,6 +644,24 @@
       "side": 1,
       "message": "I\u0027d avoid landing this fake test for now. Just add it when it\u0027s ready.",
       "parentUuid": "85af5910_01416b63",
+      "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd0a5d51_90b3000d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1083e095_06e715d4",
       "revId": "823590a8e513b43baeab42bb13366ada7209d71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

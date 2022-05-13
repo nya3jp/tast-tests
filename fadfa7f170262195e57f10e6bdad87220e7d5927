@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2bb09de_417ea27c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1094193f_f5773423",
+      "range": {
+        "startLine": 21,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5887158e_231ab51c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acbdd020_e254c0a8",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e4c29e1_6988e9f4",
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20086810_d9c2725b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:46:54Z",
+      "side": 1,
+      "message": "I have no idea",
+      "parentUuid": "8e4c29e1_6988e9f4",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 58
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c498351b_acd878df",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
         "patchSetId": 4
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-10T15:17:25Z",
       "side": 1,
       "message": "For non connectivity people looking at a tast dashboard, it might not be immediately obvious that Passpoint is a WiFi feature. What about \"WiFi Passpoint functional tests\" ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6240e90c_43b8ff20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c498351b_acd878df",
       "range": {
         "startLine": 17,
         "startChar": 9,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "254242e9_e5223127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c8cc3cc_97ae6305",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4eb153a_b7c2384f",
@@ -153,6 +273,30 @@
       "writtenOn": "2022-05-10T15:17:25Z",
       "side": 1,
       "message": "We need to explain what a shill claimer is here. Or simply point to the shill/doc/manager-api.txt doc.",
+      "range": {
+        "startLine": 439,
+        "startChar": 68,
+        "endLine": 439,
+        "endChar": 75
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a02ab2f9_ca58fe4d",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-13T14:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4eb153a_b7c2384f",
       "range": {
         "startLine": 439,
         "startChar": 68,
