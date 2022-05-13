@@ -91,13 +91,14 @@ type SettingPod string
 // List of quick setting names, derived from the corresponding pod icon button node names.
 // Character case in the names should exactly match the pod icon button node Name attribute.
 const (
-	SettingPodAccessibility SettingPod = "accessibility"
-	SettingPodBluetooth     SettingPod = "Bluetooth"
-	SettingPodDoNotDisturb  SettingPod = "Do not disturb"
-	SettingPodNetwork       SettingPod = "network"
-	SettingPodNightLight    SettingPod = "Night Light"
-	SettingPodNearbyShare   SettingPod = "Nearby Share"
-	SettingPodKeyboard      SettingPod = "keyboard"
-	SettingPodScreenCapture SettingPod = "Screen capture"
-	SettingPodVPN           SettingPod = "VPN"
+	SettingPodAccessibility     SettingPod = "accessibility"
+	SettingPodBluetooth         SettingPod = "Bluetooth"
+	SettingPodDoNotDisturb      SettingPod = "Do not disturb"
+	SettingPodNetwork           SettingPod = "network"
+	SettingPodNightLight        SettingPod = "Night Light"
+	SettingPodNearbyShare       SettingPod = "Nearby Share"
+	SettingPodKeyboard          SettingPod = "keyboard"
+	SettingPodScreenCapture     SettingPod = "Screen capture"
+	SettingPodVPN               SettingPod = "VPN"
+	SettingPodDarkThemeSettings SettingPod = "dark theme settings"
 )
