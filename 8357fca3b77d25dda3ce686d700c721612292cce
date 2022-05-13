@@ -51,6 +51,24 @@
       "message": "typo reqest",
       "revId": "8357fca3b77d25dda3ce686d700c721612292cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4754ffd_a402fcd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-13T10:18:33Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7278b6a5_b114c7e8",
+      "revId": "8357fca3b77d25dda3ce686d700c721612292cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
