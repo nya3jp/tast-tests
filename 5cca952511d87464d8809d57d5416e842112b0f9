@@ -46,6 +46,30 @@
       },
       "revId": "5cca952511d87464d8809d57d5416e842112b0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26dfbe9c_d3b4bf91",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-13T07:18:35Z",
+      "side": 1,
+      "message": "It depends on the specific cleanup tasks in the tests, and is up to the writer\u0027s judgement. \n\n`faillog.DumpUITreeWithScreenshotOnError` shouldn\u0027t take more than 5 seconds. If that\u0027s the only cleanup task, I normally reserve 5 seconds for it.",
+      "parentUuid": "a1887dd5_e4e9238a",
+      "range": {
+        "startLine": 195,
+        "startChar": 37,
+        "endLine": 195,
+        "endChar": 48
+      },
+      "revId": "5cca952511d87464d8809d57d5416e842112b0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
