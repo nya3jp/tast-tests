@@ -10,6 +10,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -35,12 +36,14 @@ func init() {
 		Fixture:      "lacrosVariationEnabled",
 		Timeout:      5 * time.Minute,
 		Data:         []string{"variation_seed.json"},
+		Vars:         []string{"fakeVariationsChannel", "useSeedOnDisk"},
 	})
 }
 
 // Constants for the path to CrOS' Lacros Local State file and the pref names for controlling the variations config.
 const (
-	localStatePath = lacros.UserDataDir + "/Local State"
+	localStatePath  = lacros.UserDataDir + "/Local State"
+	lacrosDeployDir = "/usr/local/lacros-chrome"
 )
 
 // readVariationsSeed reads the current variations seed from the Local State file.
@@ -77,7 +80,19 @@ func injectSeedInLocalState(ctx context.Context, seed *variations.SeedData) erro
 
 func VariationSmoke(ctx context.Context, s *testing.State) {
 	// Prepare the test seed.
-	testSeedFile, err := os.Open(s.DataPath("variation_seed.json"))
+	seedPath := s.DataPath("variation_seed.json")
+	// If useSeedOnDisk is set to True, the test will use the seed on the device instead of
+	// test directory cros/lacros/data/variation_seed.json.
+	if val, ok := s.Var("useSeedOnDisk"); ok {
+		b, err := strconv.ParseBool(val)
+		if err != nil {
+			s.Fatal("Unable to convert useSeedOnDisk var to bool: ", err)
+		}
+		if b {
+			seedPath = lacrosDeployDir + "/variations_seed.txt"
+		}
+	}
+	testSeedFile, err := os.Open(seedPath)
 	if err != nil {
 		s.Fatal("Failed to open test seed file: ", err)
 	}
@@ -123,7 +138,6 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 			s.Fatal("Local State has not updated with the test seed")
 		}
 	}()
-
 	func() {
 		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
