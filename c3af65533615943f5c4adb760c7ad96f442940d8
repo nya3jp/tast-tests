@@ -93,6 +93,30 @@
       },
       "revId": "c3af65533615943f5c4adb760c7ad96f442940d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7f256b_d973b11a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-13T01:22:52Z",
+      "side": 1,
+      "message": "I don\u0027t think `outputFile` is good name for this function because it is not obvious that `output` is a verb. I think it\u0027s much more common to interpret this as \u0027output (adjective) file (noun)\u0027 (i.e. in the sense of a commandline flag `--output\u003dFILE : specify the output file of the command`). When I first skimmed the code, I assumed that `outputFile` produced the full path for the output file. It took me a second to realize that didn\u0027t make sense given the arguments, and then I had to go read the function to see what it actually did.\n\nI also think your comment documenting the function aligns with my confusion as well. Rather than saying \"outputFile outputs a file for test results\", you said \"outputFile copies a files for test results\".\n\nThat said, it\u0027s just an internal helper function, so I don\u0027t think it\u0027s terribly important. I\u0027ll leave the naming decision to you.",
+      "parentUuid": "8aff07a9_729cbca5",
+      "range": {
+        "startLine": 1049,
+        "startChar": 5,
+        "endLine": 1049,
+        "endChar": 15
+      },
+      "revId": "c3af65533615943f5c4adb760c7ad96f442940d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
