@@ -55,7 +55,7 @@ func init() {
 				Fixture:           fixture.ClamshellVK,
 				Val:               []ime.InputMethod{ime.EnglishUK, ime.AlphanumericWithJapaneseKeyboard, ime.Arabic},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
 			},
 			{
 				Name:              "informational",
