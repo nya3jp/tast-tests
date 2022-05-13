@@ -16,6 +16,23 @@
       "message": "I branched your CL and tried to run it, but ran into errors. Does your tast test pass on your machine?",
       "revId": "f5e6db831701281e9595f76c666805789058b87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd3b62d_01df60ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-13T04:58:30Z",
+      "side": 1,
+      "message": "I think we don\u0027t need username and pwd.",
+      "revId": "f5e6db831701281e9595f76c666805789058b87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
