@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f69bc62_4d88e2f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-05-13T18:53:33Z",
+      "side": 1,
+      "message": "Curious if we want to cut down the number of sites to 3, as it might not yield too much more signals.",
+      "revId": "8525b7444170e09a7cd3bfc4c48d322f9be4d853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
