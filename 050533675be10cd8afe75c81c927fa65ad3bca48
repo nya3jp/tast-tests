@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5ea438_a0636262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-13T15:37:31Z",
+      "side": 1,
+      "message": "Really good all around, just minor nits",
+      "revId": "050533675be10cd8afe75c81c927fa65ad3bca48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33df249e_e64ac7b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-13T15:37:31Z",
+      "side": 1,
+      "message": "You\u0027re just using uiauto.Combine to name the action here?\n\nI think that in case of an error, this might make the error message look a bit odd as it is going to list the failure twice.",
+      "revId": "050533675be10cd8afe75c81c927fa65ad3bca48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d95162b_652a6733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-13T15:37:31Z",
+      "side": 1,
+      "message": "nit: \"Unexpected number of windows: got %v, want 0\"",
+      "revId": "050533675be10cd8afe75c81c927fa65ad3bca48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
