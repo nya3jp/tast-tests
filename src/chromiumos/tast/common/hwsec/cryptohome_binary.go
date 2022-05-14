@@ -296,6 +296,14 @@ func (c *cryptohomeBinary) authenticatePinWithAuthSession(ctx context.Context, p
 	return c.call(ctx, args...)
 }
 
+// authenticateChallengeCredentialWithAuthSession calls "cryptohome --action=authenticate_auth_session".
+// with additional flags for challenge credentials.
+func (c *cryptohomeBinary) authenticateChallengeCredentialWithAuthSession(ctx context.Context, authSessionID string, extraFlags []string) ([]byte, error) {
+	args := []string{"--action=authenticate_auth_session", "--auth_session_id=" + authSessionID, "--key_label=fake_label"}
+	args = append(args, extraFlags...)
+	return c.call(ctx, args...)
+}
+
 // authenticateAuthFactor calls "cryptohome --action=authenticate_auth_factor".
 func (c *cryptohomeBinary) authenticateAuthFactor(ctx context.Context, authSessionID, label, password string) ([]byte, error) {
 	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--password=" + password}
@@ -343,6 +351,14 @@ func (c *cryptohomeBinary) addCredentialsWithAuthSession(ctx context.Context, us
 func (c *cryptohomeBinary) addPinCredentialsWithAuthSession(ctx context.Context, label, pin, authSessionID string) ([]byte, error) {
 	args := []string{"--action=add_credentials", "--auth_session_id=" + authSessionID}
 	args = append(args, "--key_label="+label, "--key_policy=le", "--password="+pin)
+	return c.call(ctx, args...)
+}
+
+// addChallengeCredentialsWithAuthSession calls "cryptohome --action=add_credentials".
+// with additional flags for challenge credentials.
+func (c *cryptohomeBinary) addChallengeCredentialsWithAuthSession(ctx context.Context, user, authSessionID string, extraFlags []string) ([]byte, error) {
+	args := []string{"--action=add_credentials", "--auth_session_id=" + authSessionID, "--key_label=fake_label"}
+	args = append(args, extraFlags...)
 	return c.call(ctx, args...)
 }
 
