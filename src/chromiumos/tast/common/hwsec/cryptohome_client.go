@@ -844,6 +844,12 @@ func (u *CryptohomeClient) AuthenticateAuthSession(ctx context.Context, password
 	return err
 }
 
+func (u *CryptohomeClient) AuthenticateAuthSessionWithChallengeCredential(ctx context.Context, authSessionID string, publicMount bool, authConfig *AuthConfig) error {
+	extraFlags := authConfigToExtraFlags(authConfig)
+	_, err := u.binary.authenticateAuthSessionWithChallengeCredential(ctx, authSessionID, publicMount, extraFlags)
+	return err
+}
+
 // UpdateCredentialWithAuthSession updated a credential using an AuthSession with a given authSessionID.
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) UpdateCredentialWithAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) error {
@@ -867,6 +873,14 @@ func (u *CryptohomeClient) AuthenticatePinAuthFactor(ctx context.Context, authSe
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
 	_, err := u.binary.addCredentialsWithAuthSession(ctx, user, password, authSessionID, publicMount)
+	return err
+}
+
+// AddCredentialsWithAuthSession creates the credentials for the user with given password.
+// password is ignored if publicMount is set to true.
+func (u *CryptohomeClient) AddCredentialsAuthSessionWithChallengeCredential(ctx context.Context, user, authSessionID string, publicMount bool, authConfig *AuthConfig) error {
+	extraFlags := authConfigToExtraFlags(authConfig)
+	_, err := u.binary.addCredentialsAuthSessionWithChallengeCredential(ctx, user, authSessionID, publicMount, extraFlags)
 	return err
 }
 

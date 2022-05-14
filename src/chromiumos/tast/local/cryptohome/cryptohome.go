@@ -419,6 +419,36 @@ func CreateUserWithAuthSession(ctx context.Context, username, password string, i
 	return nil
 }
 
+// CreateUserWithAuthSession creates a persistent user via auth session API.
+func CreateUserAuthSessionWithChallengeCredential(ctx context.Context, username string, isKioskUser bool, authConfig *hwsec.AuthConfig) error {
+	cmdRunner := hwseclocal.NewCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := cryptohome.StartAuthSession(ctx, username /*ephemeral=*/, false)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Auth session")
+	}
+	// defer cryptohome.InvalidateAuthSession(ctx, auth_session_id)
+	testing.ContextLog(ctx, "Auth session ID: ", authSessionID)
+
+	if err := cryptohome.AddCredentialsAuthSessionWithChallengeCredential(ctx, username, authSessionID, isKioskUser, authConfig); err != nil {
+		return errors.Wrap(err, "failed to add credentials with AuthSession")
+	}
+	testing.ContextLog(ctx, "Added credentials successfully")
+	if err := cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, authSessionID, isKioskUser, authConfig); err != nil {
+		return errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
+	testing.ContextLog(ctx, "User authenticated successfully")
+
+	// This is a no-op for now since AddCredentials.. above will already create
+	// the user.
+	if err := cryptohome.CreatePersistentUser(ctx, authSessionID); err != nil {
+		return errors.Wrap(err, "failed to create persistent user")
+	}
+	return nil
+}
+
 // CreateAndMountUserWithAuthSession creates a persistent user via auth session API.
 func CreateAndMountUserWithAuthSession(ctx context.Context, username, password string, isKioskUser bool) error {
 	cmdRunner := hwseclocal.NewCmdRunner()
@@ -464,6 +494,28 @@ func AuthenticateWithAuthSession(ctx context.Context, username, password string,
 	// Authenticate the same AuthSession using authSessionID.
 	// If we cannot authenticate, do not proceed with mount and unmount.
 	if err := cryptohome.AuthenticateAuthSession(ctx, password, authSessionID, isKioskUser); err != nil {
+		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
+	testing.ContextLog(ctx, "User authenticated successfully")
+
+	return authSessionID, nil
+}
+
+// AuthenticatehAuthSessionWithChallengeCredentials authenticates an existing user via auth session API.
+func AuthenticateAuthSessionWithChallengeCredential(ctx context.Context, username string, isEphemeral, isKioskUser bool, authConfig *hwsec.AuthConfig) (string, error) {
+	cmdRunner := hwseclocal.NewCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := cryptohome.StartAuthSession(ctx, username, isEphemeral)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to start Auth session")
+	}
+	testing.ContextLog(ctx, "Auth session ID: ", authSessionID)
+
+	// Authenticate the same AuthSession using authSessionID.
+	// If we cannot authenticate, do not proceed with mount and unmount.
+	if err := cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, authSessionID, isKioskUser, authConfig); err != nil {
 		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 	testing.ContextLog(ctx, "User authenticated successfully")
