@@ -844,6 +844,14 @@ func (u *CryptohomeClient) AuthenticateAuthSession(ctx context.Context, password
 	return err
 }
 
+// AuthenticateAuthSessionWithChallengeCredential authenticates an AuthSession with a given authSessionID,
+// using a Challenge-Credential based backend dependent on flags provided through extraFlags.
+func (u *CryptohomeClient) AuthenticateAuthSessionWithChallengeCredential(ctx context.Context, authSessionID string, authConfig *AuthConfig) error {
+	extraFlags := authConfigToExtraFlags(authConfig)
+	_, err := u.binary.authenticateAuthSessionWithChallengeCredential(ctx, authSessionID, extraFlags)
+	return err
+}
+
 // UpdateCredentialWithAuthSession updated a credential using an AuthSession with a given authSessionID.
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) UpdateCredentialWithAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) error {
@@ -867,6 +875,14 @@ func (u *CryptohomeClient) AuthenticatePinAuthFactor(ctx context.Context, authSe
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
 	_, err := u.binary.addCredentialsWithAuthSession(ctx, user, password, authSessionID, publicMount)
+	return err
+}
+
+// AddCredentialsAuthSessionWithChallengeCredential creates the credentials for the user,
+// using a Challenge-Credential based backend dependent on flags provided through extraFlags.
+func (u *CryptohomeClient) AddCredentialsAuthSessionWithChallengeCredential(ctx context.Context, user, authSessionID string, authConfig *AuthConfig) error {
+	extraFlags := authConfigToExtraFlags(authConfig)
+	_, err := u.binary.addCredentialsAuthSessionWithChallengeCredential(ctx, user, authSessionID, extraFlags)
 	return err
 }
 
