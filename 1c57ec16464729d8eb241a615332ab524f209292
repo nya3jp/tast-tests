@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d4b43d1_77c61b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-14T01:27:25Z",
+      "side": 1,
+      "message": "Done. \n\nI just added the OTA in the fixture. And this cl can be submitted after: https://chrome-internal-review.git.corp.google.com/c/chromeos/platform/tast-tests-private/+/4752082 is in.",
+      "parentUuid": "ac95e5cf_0b38efa9",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94727e2c_6ad8afa4",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
         "patchSetId": 5
