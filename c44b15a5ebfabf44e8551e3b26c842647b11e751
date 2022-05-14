@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1975226_347ef468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_long_sms.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-14T00:03:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b7956d2_f738b953",
+      "revId": "c44b15a5ebfabf44e8551e3b26c842647b11e751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "052dc7fc_8fbf3fa2",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-13T17:30:41Z",
       "side": 1,
       "message": "This will only be true if the type conversion fails, I think. We should check the length of the array as well.",
+      "revId": "c44b15a5ebfabf44e8551e3b26c842647b11e751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0977920d_528c77ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/ui_ota_long_sms.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-14T00:03:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "052dc7fc_8fbf3fa2",
       "revId": "c44b15a5ebfabf44e8551e3b26c842647b11e751",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
