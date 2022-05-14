@@ -5,6 +5,7 @@
 package util
 
 import (
+	"context"
 	"crypto"
 	"crypto/rsa"
 	"crypto/sha1"
@@ -15,10 +16,20 @@ import (
 
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/session"
 )
 
 // LogFunc represent the type of logging function, such as `s.Logf`.
 type LogFunc func(string, ...interface{})
+
+// ClearDevicePolicy clears any existing policy for a given device, ensures
+// ephemeral users don't have a policy on-device.
+func ClearDevicePolicy(ctx context.Context) error {
+	if err := session.SetUpDevice(ctx); err != nil {
+		return errors.Wrap(err, "failed resetting device ownership")
+	}
+	return nil
+}
 
 // CryptohomeKeyDelegate is a testing implementation of the
 // CryptohomeKeyDelegate D-Bus object defined here:

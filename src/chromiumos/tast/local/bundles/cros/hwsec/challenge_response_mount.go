@@ -12,11 +12,9 @@ import (
 
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	"chromiumos/tast/local/dbusutil"
 	hwseclocal "chromiumos/tast/local/hwsec"
-	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
 
@@ -31,13 +29,6 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"tpm"},
 	})
-}
-
-func clearDevicePolicy(ctx context.Context) error {
-	if err := session.SetUpDevice(ctx); err != nil {
-		return errors.Wrap(err, "failed resetting device ownership")
-	}
-	return nil
 }
 
 func ChallengeResponseMount(ctx context.Context, s *testing.State) {
@@ -69,7 +60,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 
 	// Make sure the ephemeral users device policy is not set.
 	// TODO(crbug.com/1054004); Remove after Tast starts to guarantee that.
-	if err := clearDevicePolicy(ctx); err != nil {
+	if err := util.ClearDevicePolicy(ctx); err != nil {
 		s.Fatal("Failed to clear device policy: ", err)
 	}
 
