@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b38ce51b_6f4eede9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-15T23:27:36Z",
+      "side": 1,
+      "message": "You may also need to add a person (yourself?) contact here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "eb4044bc43d4451aa10590b6a9b89fa58b90d06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd767b3_359dc9ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-15T23:27:36Z",
+      "side": 1,
+      "message": "clamshell",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "eb4044bc43d4451aa10590b6a9b89fa58b90d06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806a64cb_0c1c629d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-15T23:27:36Z",
+      "side": 1,
+      "message": "```\nchromeOpts :\u003d []chrome.Option{\n\t\tchrome.NoLogin(),\n\t\tchrome.KeepState(),\n \nchrome.LoadSigninProfileExtension(s.RequiredVar(\"ui.signinProfileTestExtensionManifestKey\")),\n}\n\nif isTabletVK {\n\tchromeOpts \u003d append(chromeOpts, chrome.ExtraArgs(\"--force-tablet-mode\u003dtouch_view\"), chrome.VKEnabled())\n} else {\n\tchromeOpts \u003d append(chromeOpts, chrome.ExtraArgs(\"--force-tablet-mode\u003dclamshell\"))\n\t}\n\ncr, err \u003d chrome.New(ctx, chromeOpts...)\n```",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "eb4044bc43d4451aa10590b6a9b89fa58b90d06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
