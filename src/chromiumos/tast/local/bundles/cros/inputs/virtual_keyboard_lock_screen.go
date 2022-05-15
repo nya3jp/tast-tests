@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -29,7 +30,7 @@ func init() {
 		Func:         VirtualKeyboardLockScreen,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the virtual keyboard works on lock screen",
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "informational"},
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
@@ -89,11 +90,22 @@ func VirtualKeyboardLockScreen(ctx context.Context, s *testing.State) {
 
 	// Using a misspell word to validate that auto-correction does not engage.
 	tapKeys := "helol"
-	if err := uiauto.Combine("Verify VK input",
-		vkbCtx.ClickUntilVKShown(serviceNameInputFieldFinder),
-		vkbCtx.TapKeysIgnoringCase(strings.Split(tapKeys, "")),
-		vkbCtx.TapKeyIgnoringCase("Space"),
-		util.WaitForFieldTextToBeIgnoringCase(tconn, serviceNameInputFieldFinder, tapKeys+" "),
+
+	if err := uiauto.UserAction("VK typing input",
+		uiauto.Combine("Verify VK input",
+			vkbCtx.ClickUntilVKShown(serviceNameInputFieldFinder),
+			vkbCtx.TapKeysIgnoringCase(strings.Split(tapKeys, "")),
+			vkbCtx.TapKeyIgnoringCase("Space"),
+			util.WaitForFieldTextToBeIgnoringCase(tconn, serviceNameInputFieldFinder, tapKeys+" "),
+		),
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: "Use VK on lock screen",
+				useractions.AttributeInputField:   "Text field on lock screen",
+				useractions.AttributeFeature:      useractions.FeatureVKTyping,
+			},
+		},
 	)(ctx); err != nil {
 		s.Fatalf("Failed to verify VK input in %v field: %v", serviceNameInputFieldFinder, err)
 	}
