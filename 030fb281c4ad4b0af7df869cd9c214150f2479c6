@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70a4608_c5414ffc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-16T06:09:25Z",
+      "side": 1,
+      "message": "Is it the case that we only want to close this if there was no other error? Wouldn\u0027t we want to close this even if e.g. br.NewConn fails - we will still have the http server running.\n\nSimilar comment for other instances of this.",
+      "revId": "030fb281c4ad4b0af7df869cd9c214150f2479c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4c7e9c_fc00b2b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-16T06:09:25Z",
+      "side": 1,
+      "message": "Do we consider this completed for lacros now? If yes, maybe update this to exists.",
+      "revId": "030fb281c4ad4b0af7df869cd9c214150f2479c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
