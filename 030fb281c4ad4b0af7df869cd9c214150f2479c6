@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fdfab05_ea19649c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-16T06:23:21Z",
+      "side": 1,
+      "message": "Actually it is the opposite way, we only want to close this if there was other error or the function returns a error (this `err` is the returning value defined at Line 238). In the same example, if br.NewConn fails, the server should be closed.",
+      "parentUuid": "f70a4608_c5414ffc",
+      "revId": "030fb281c4ad4b0af7df869cd9c214150f2479c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db4c7e9c_fc00b2b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-16T06:09:25Z",
       "side": 1,
       "message": "Do we consider this completed for lacros now? If yes, maybe update this to exists.",
+      "revId": "030fb281c4ad4b0af7df869cd9c214150f2479c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf90871b_097721d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-16T06:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db4c7e9c_fc00b2b7",
       "revId": "030fb281c4ad4b0af7df869cd9c214150f2479c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
