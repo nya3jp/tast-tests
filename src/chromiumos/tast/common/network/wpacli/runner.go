@@ -321,3 +321,68 @@ func (r *Runner) P2PAddGONetwork(ctx context.Context, ssid, passphrase string) e
 
 	return nil
 }
+
+// StartSoftAP creates a soft AP on DUT.
+func (r *Runner) StartSoftAP(ctx context.Context, freq uint32, ssid, key_mgmt, psk string) error {
+	id, err := r.addNetwork(ctx)
+	if err != nil {
+		return err
+	}
+
+	// mode: IEEE 802.11 operation mode, 0 = infrastructure, 1 = IBSS, 2 = AP
+	if err := r.setNetwork(ctx, id, "mode", "2"); err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network mode")
+	}
+	if err := r.setNetwork(ctx, id, "frequency", strconv.FormatUint(uint64(freq), 10)); err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network frequency")
+	}
+	if err := r.setNetwork(ctx, id, "ssid", fmt.Sprintf("\"%s\"", ssid)); err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network ssid")
+	}
+	if err := r.setNetwork(ctx, id, "key_mgmt", key_mgmt); err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network key_mgmt")
+	}
+
+	if psk != "" {
+		if err := r.setNetwork(ctx, id, "psk", psk); err != nil {
+			return errors.Wrap(err, "failed running wpa_cli set_network psk")
+		}
+
+		// WPA2-PSK and WPA3-SAE both use RSN protocol.
+		if err := r.setNetwork(ctx, id, "proto", "RSN"); err != nil {
+			return errors.Wrap(err, "failed running wpa_cli set_network proto")
+		}
+	}
+
+	if err := r.run(ctx, "OK", "select_network", strconv.Itoa(id)); err != nil {
+		return errors.Wrap(err, "failed running wpa_cli select_network")
+	}
+
+	if err := r.waitForStatus(ctx, "COMPLETE"); err != nil {
+		return errors.Wrap(err, "cannot start soft AP")
+	}
+
+	return nil
+}
+
+// StopSoftAP stops the soft AP on DUT.
+func (r *Runner) StopSoftAP(ctx context.Context) error {
+	if err := r.RemoveAllNetworks(ctx); err != nil {
+		return errors.Wrap(err, "failed running wpa_cli remove_network")
+	}
+
+	if err := r.waitForStatus(ctx, "INACTIVE"); err != nil {
+		return errors.Wrap(err, "cannot stop soft AP")
+	}
+
+	return nil
+}
+
+func (r *Runner) waitForStatus(ctx context.Context, status string) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return r.run(ctx, "wpa_state="+status, "status")
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return err
+	}
+	return nil
+}
