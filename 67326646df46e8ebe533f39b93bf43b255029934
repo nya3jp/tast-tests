@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "822bee71_a72909a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-16T08:33:43Z",
+      "side": 1,
+      "message": "It is auto formatted by IDE. Interestingly, the timeout set above does have space in between.",
+      "parentUuid": "3c20820e_076ab7f4",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "67326646df46e8ebe533f39b93bf43b255029934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2719e6bc_6edd3fe8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e2bd7b_0dc6eb75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-16T08:33:43Z",
+      "side": 1,
+      "message": "This is a common syntax used in golang. In the case, err\u0027s lifecycle is only the `if` block.",
+      "parentUuid": "2719e6bc_6edd3fe8",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 9
+      },
+      "revId": "67326646df46e8ebe533f39b93bf43b255029934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f56c7c61_a2628ad0",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-16T04:25:31Z",
       "side": 1,
       "message": "should this be \"a\"? since we shifted in the line before?",
+      "range": {
+        "startLine": 118,
+        "startChar": 17,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "67326646df46e8ebe533f39b93bf43b255029934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d820bf6_3da8d4f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-16T08:33:43Z",
+      "side": 1,
+      "message": "It should be A. After pressing `shift` key, the VK is shifted and A is displayed.",
+      "parentUuid": "f56c7c61_a2628ad0",
       "range": {
         "startLine": 118,
         "startChar": 17,
