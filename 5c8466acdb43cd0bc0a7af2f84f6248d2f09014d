@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9d32d268_62f10bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-16T06:26:25Z",
+      "side": 1,
+      "message": "revsed the browser type in another CL. Optimizing other boolean parameters will be addressed in future CLs as it is out of the scope here. \n\nThanks for pointing this out!",
+      "parentUuid": "e5a45ffc_ab221318",
+      "range": {
+        "startLine": 251,
+        "startChar": 19,
+        "endLine": 251,
+        "endChar": 32
+      },
+      "revId": "5c8466acdb43cd0bc0a7af2f84f6248d2f09014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e72a2ea6_1044adf8",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2022-05-16T06:06:50Z",
       "side": 1,
       "message": "You could also store browser type in the fixture value and this code would be a bit simpler.",
+      "revId": "5c8466acdb43cd0bc0a7af2f84f6248d2f09014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6756be1e_b3163ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-16T06:26:25Z",
+      "side": 1,
+      "message": "thanks, updated this in another CL.",
+      "parentUuid": "e72a2ea6_1044adf8",
       "revId": "5c8466acdb43cd0bc0a7af2f84f6248d2f09014d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
