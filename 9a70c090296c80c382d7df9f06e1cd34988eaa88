@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05317cb7_bc48f004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-device-play.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-05-16T07:06:05Z",
+      "side": 1,
+      "message": "I think it is already correct. $$ seems to refer to the current process ID, and this script is passed in the \"init\" param of \"crosvm run\", so this script should be the init process.",
+      "parentUuid": "c17e4a59_c086a3a8",
+      "revId": "9a70c090296c80c382d7df9f06e1cd34988eaa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f839767_4b8eef88",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/device_play.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-16T05:41:03Z",
       "side": 1,
       "message": "Nit: line",
+      "revId": "9a70c090296c80c382d7df9f06e1cd34988eaa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "703a8d38_c8d741ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/device_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-05-16T07:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f839767_4b8eef88",
       "revId": "9a70c090296c80c382d7df9f06e1cd34988eaa88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
