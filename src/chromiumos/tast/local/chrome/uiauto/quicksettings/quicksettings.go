@@ -503,7 +503,7 @@ func focusSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.Keyboard
 		return errors.Wrap(err, "failed to press tab key")
 	}
 
-	if err := ui.WithTimeout(uiTimeout).FocusAndWait(s)(ctx); err != nil {
+	if err := ui.WithTimeout(uiTimeout).EnsureFocused(s)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to focus the %v slider", slider)
 	}
 	return nil
@@ -597,6 +597,7 @@ func MicEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	ui := uiauto.New(tconn)
 	// Scroll the mic toggle into view.
 	kb, err := input.Keyboard(ctx)
+	defer kb.Close()
 	if err != nil {
 		return false, errors.Wrap(err, "failed to setup keyboard")
 	}
