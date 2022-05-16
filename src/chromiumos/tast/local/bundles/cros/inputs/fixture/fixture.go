@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
@@ -39,6 +40,19 @@ const (
 	TabletVKInGuest                    = "tabletVKInGuest"
 	TabletVKWithAssistAutocorrect      = "tabletVKWithAssistAutocorrect"
 	TabletVKWithMultipasteSuggestion   = "tabletVKWithMultipasteSuggestion"
+	// Lacros fixtures.
+	LacrosAnyVK                              = "lacrosAnyVK"
+	LacrosAnyVKInGuest                       = "lacrosAnyVKInGuest"
+	LacrosClamshellVK                        = "lacrosClamshellVK"
+	LacrosClamshellVKWithAssistAutocorrect   = "lacrosClamshellVKWithAssistAutocorrect"
+	LacrosClamshellNonVK                     = "lacrosClamshellNonVK"
+	LacrosClamshellNonVKInGuest              = "lacrosClamshellNonVKInGuest"
+	LacrosClamshellNonVKWithMultiwordSuggest = "lacrosClamshellNonVKWithMultiwordSuggest"
+	LacrosClamshellNonVKWithGrammarCheck     = "lacrosClamshellNonVKWithGrammarCheck"
+	LacrosTabletVK                           = "lacrosTabletVK"
+	LacrosTabletVKInGuest                    = "lacrosTabletVKInGuest"
+	LacrosTabletVKWithAssistAutocorrect      = "lacrosTabletVKWithAssistAutocorrect"
+	LacrosTabletVKWithMultipasteSuggestion   = "lacrosTabletVKWithMultipasteSuggestion"
 )
 
 func init() {
@@ -210,6 +224,176 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	//--------------Lacros Fixtures--------------------------------------------
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosAnyVK,
+		Desc: "Lacros variant: any mode with VK enabled",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(notForced, true, false, browser.TypeLacros),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosAnyVKInGuest,
+		Desc: "Lacros variant: any mode in guest login with VK enabled",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(notForced, true, false, browser.TypeLacros, chrome.GuestLogin()),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosClamshellVK,
+		Desc: "Lacros variant: clamshell mode with A11y VK enabled",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeLacros),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosClamshellVKWithAssistAutocorrect,
+		Desc: "Lacros variant: clamshell mode with A11y VK enabled  and assist autocorrect",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosClamshellNonVK,
+		Desc: "Lacros variant: clamshell mode with VK disabled",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosClamshellNonVKWithMultiwordSuggest,
+		Desc: "Lacros variant: clamshell mode with VK disabled and multiword suggest",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=AssistMultiWord")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosClamshellNonVKWithGrammarCheck,
+		Desc: "Lacros variant: clamshell mode with VK disabled and grammar check",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosClamshellNonVKInGuest,
+		Desc: "Lacros variant: clamshell mode in guest login with VK disabled",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.GuestLogin()),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosTabletVK,
+		Desc: "Lacros variant: tablet mode with VK enabled",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosTabletVKWithAssistAutocorrect,
+		Desc: "Lacros variant: tablet mode with VK enabled and assist autocorrect",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosTabletVKWithMultipasteSuggestion,
+		Desc: "Lacros variant: tablet mode with VK enabled and multipaste suggestion",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultipasteSuggestion")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosTabletVKInGuest,
+		Desc: "Lacros variant: tablet mode in guest login with VK enabled",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.GuestLogin()),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 // FixtData is the data returned by SetUp and passed to tests.
@@ -217,6 +401,7 @@ type FixtData struct {
 	Chrome      *chrome.Chrome
 	TestAPIConn *chrome.TestConn
 	UserContext *useractions.UserContext
+	BrowserType browser.Type
 }
 
 // deviceMode describes the device UI mode it boots in.
@@ -254,6 +439,14 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 		opts = append(opts, chrome.ExtraArgs("--force-tablet-mode=clamshell"))
 	}
 
+	if f.browserType == browser.TypeLacros {
+		lacrosOpts, err := lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
+		if err != nil {
+			s.Fatal("Failed to get lacros options: ", err)
+		}
+		opts = append(opts, lacrosOpts...)
+	}
+
 	if f.vkEnabled && f.dm != clamshellMode {
 		// Force enable tablet VK by default. Even the device is actually in clamshell mode but not explicitly mentioned.
 		opts = append(opts, chrome.VKEnabled())
@@ -284,7 +477,7 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 	}
 
 	chrome.Lock()
-	return FixtData{f.cr, f.tconn, uc}
+	return FixtData{f.cr, f.tconn, uc, f.browserType}
 }
 
 func (f *inputsFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
