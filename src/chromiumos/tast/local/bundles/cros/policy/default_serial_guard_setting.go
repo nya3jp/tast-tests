@@ -33,10 +33,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr: []string{
-			"group:mainline",
-			"informational",
-		},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{
 			{
 				Fixture: fixture.ChromePolicyLoggedIn,
@@ -46,6 +43,7 @@ func init() {
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				Val:               browser.TypeLacros,
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 		Data: []string{serial.SerialTestPage},
