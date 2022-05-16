@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4033ec_d7a333a6",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-16T23:47:36Z",
+      "side": 1,
+      "message": "nit: Drop the word \"cryptohome\"? Or add it to \"authenticateRecoveryAuthFactor()\" (also I think lengthy names aren\u0027t in favor in Golang).\n\nDitto in cryptohome_client.go.",
+      "range": {
+        "startLine": 341,
+        "startChar": 30,
+        "endLine": 341,
+        "endChar": 40
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89d2546_e5d5a4a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-16T23:47:36Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s safe to omit \"UserSecretStash\" here, since USS will become the default in (some) future, and also since it\u0027s not the primary intent of the test. Also let\u0027s disambiguate from the stateful recovery.\n\nSo what about calling it just \"CryptohomeRecovery\"?",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55291d66_3211d1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-16T23:47:36Z",
+      "side": 1,
+      "message": "PinWeaver isn\u0027t needed for recovery. Reboot also doesn\u0027t seem to be used.\n\nA real dependency is \"tpm\" I think (IIRC we decided to not use a fake TPM backend even in the test tool, but I might be mistaken).",
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2fbfc6_1939a31e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-16T23:47:36Z",
+      "side": 1,
+      "message": "Wondering if we can extract this piece of code (copied here for the 3rd time) as a reusable component; maybe a fixture?.. I\u0027m not a Tast expert though.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd202700_f9e3babc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-16T23:47:36Z",
+      "side": 1,
+      "message": "From the real user setup flow perspective, I believe this should happen before the \"Write a test file\" step.",
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1917d5_fd7fab35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-16T23:47:36Z",
+      "side": 1,
+      "message": "nit: The test adds no pin.",
+      "range": {
+        "startLine": 116,
+        "startChar": 72,
+        "endLine": 116,
+        "endChar": 85
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81be7310_aa03f7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-16T23:47:36Z",
+      "side": 1,
+      "message": "Just wondering: why do we do this only after unmounting and remounting the user\u0027s cryptohome? Is there any advantage of performing these extra steps, as opposed to adding the recovery factor directly after the user creation above?",
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af5775b_6e0e5904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-16T23:47:36Z",
+      "side": 1,
+      "message": "nit: \"add recovery auth factor\"",
+      "range": {
+        "startLine": 152,
+        "startChar": 21,
+        "endLine": 152,
+        "endChar": 43
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
