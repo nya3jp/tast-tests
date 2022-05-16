@@ -111,10 +111,11 @@ var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 // GAIA-based login with a pool of GAIA account credentials.
 //
 // creds is a string containing multiple credentials separated by newlines:
-//  user1:pass1
-//  user2:pass2
-//  user3:pass3
-//  ...
+//
+//	user1:pass1
+//	user2:pass2
+//	user3:pass3
+//	...
 //
 // This option randomly picks one credentials. A chosen one is written to
 // logs in chrome.New, as well as available via Chrome.Creds.
@@ -495,6 +496,14 @@ func EnableFilesAppSWA() Option {
 func TestExtOAuthClientID(clientID string) Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.TestExtOAuthClientID = clientID
+		return nil
+	}
+}
+
+// DisablePersonalizationHub returns an Option that disables the Personalization Hub.
+func DisablePersonalizationHub() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EnablePersonalizationHub = false
 		return nil
 	}
 }
