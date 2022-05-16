@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "819300a7_7458eed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-05-16T22:31:03Z",
+      "side": 1,
+      "message": "Replaced this with simpler `pc.Click`.",
+      "parentUuid": "33df249e_e64ac7b5",
+      "revId": "050533675be10cd8afe75c81c927fa65ad3bca48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d95162b_652a6733",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-13T15:37:31Z",
       "side": 1,
       "message": "nit: \"Unexpected number of windows: got %v, want 0\"",
+      "revId": "050533675be10cd8afe75c81c927fa65ad3bca48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "772ca92c_a293f8d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-05-16T22:31:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d95162b_652a6733",
       "revId": "050533675be10cd8afe75c81c927fa65ad3bca48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
