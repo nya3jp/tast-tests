@@ -16,6 +16,40 @@
       "message": "PTAL",
       "revId": "e074f0715c354d9eea8a92061fddbc911eecf80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88332b6_13bd5477",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-16T10:11:44Z",
+      "side": 1,
+      "message": "LGTM with a request.",
+      "revId": "e074f0715c354d9eea8a92061fddbc911eecf80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd31c69_7981ef43",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-16T10:11:44Z",
+      "side": 1,
+      "message": "nit/style: can this be merged into LacrosPrimary section below?",
+      "revId": "e074f0715c354d9eea8a92061fddbc911eecf80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
