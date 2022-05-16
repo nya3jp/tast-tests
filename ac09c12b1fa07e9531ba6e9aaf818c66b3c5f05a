@@ -269,6 +269,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f59aa56_e49a7d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-16T09:53:21Z",
+      "side": 1,
+      "message": "If this means to emulate the actual user behavior, sure I\u0027m ok with comments.\nThough, it\u0027s a bit risk of flakiness, if the feature (not this test) depends on the duration of press/release combination, I guess.",
+      "parentUuid": "c38061b5_4d036536",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b53eeb7f_171cf457",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
         "patchSetId": 12
