@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fbfdeb_f0705299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-16T17:44:50Z",
+      "side": 1,
+      "message": "This seems like a simplified form of `src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go`\n\nUltimately this isn\u0027t going to work with a CCD servo because the lid closed emulation happens in the EC, and if you hibernate it, then you can\u0027t send the lid open command.\n\nSo you need to require c2d2 or servo micro.",
+      "revId": "cfa67225866b01da2d403a0b98c18e14091ab7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2d9c2ce_66c065a1",
