@@ -461,6 +461,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3672a149_f9f02df1",
+        "filename": "src/chromiumos/tast/local/camera/testpage/camera_page.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-05-16T04:40:21Z",
+      "side": 1,
+      "message": "The intention here is to make sure all the cleanup tasks are executed even if there is any error happens. And I agree that we should return the first error instead of the last one. As a result, maybe we can have a helper function to log the new error  if the `retErr` is already filled. Something like:\n```\nfunc firstError(ctx context, Context, first, second error) error {\n  if first \u003d\u003d nil {\n    return second\n  }\n\n  if second !\u003d nil {\n    testing.ContextLog(ctx, second)\n  }\n  return first\n}\n\nif err :\u003d doCleanup1(); err !\u003d nil {\n  retErr \u003d firstError(ctx, retErr, err)\n}\n\nif err :\u003d doCleanup2(); err !\u003d nil {\n  retErr \u003d secondError(ctx, retErr, err)\n}\n\n// ...\n```",
+      "parentUuid": "a10273d2_ca61caa8",
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c51ed3b_473144af",
         "filename": "src/chromiumos/tast/local/camera/testpage/data/camera_page.html",
         "patchSetId": 6
