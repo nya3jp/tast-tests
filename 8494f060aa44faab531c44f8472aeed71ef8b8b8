@@ -34,6 +34,24 @@
       "parentUuid": "64e7e531_71f204cf",
       "revId": "8494f060aa44faab531c44f8472aeed71ef8b8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb585f8f_0f8af8d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-16T04:11:25Z",
+      "side": 1,
+      "message": "Something like this:\n```\ntype HpsTestPatterns struct {\n  ZeroPresencePath string\n  OnePresencePath string\n  TwoPresencePath string\n}\n\n// might need to return a pointer to struct here, since it\u0027s optional\nfunc UntarImages(ctx context.Context, originPath string) (HpsTestPatterns, error) {\n  ...\n}\n```",
+      "parentUuid": "cc350372_8ed408e7",
+      "revId": "8494f060aa44faab531c44f8472aeed71ef8b8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
