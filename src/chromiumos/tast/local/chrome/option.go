@@ -489,3 +489,11 @@ func EnableFilesAppSWA() Option {
 		return nil
 	}
 }
+
+// EnablePersonalizationHub returns an Option that enables the Personalization Hub.
+func EnablePersonalizationHub(enabled bool) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EnablePersonalizationHub = enabled
+		return nil
+	}
+}
