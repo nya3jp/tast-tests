@@ -18,10 +18,15 @@ import (
 
 const c0State = "C0"
 
+type cpuIdleFile struct {
+	cpu  string
+	idle string // probably call this idleTime?
+}
+
 // computeCpuidleStateFiles returns a mapping from cpuidle states to files
 // containing the corresponding residency information.
-func computeCpuidleStateFiles(ctx context.Context) (map[string][]string, int, error) {
-	ret := make(map[string][]string)
+func computeCpuidleStateFiles(ctx context.Context) (map[string][]cpuIdleFile, int, error) {
+	ret := make(map[string][]cpuIdleFile)
 	numCpus := 0
 
 	const cpusDir = "/sys/devices/system/cpu/"
@@ -71,7 +76,10 @@ func computeCpuidleStateFiles(ctx context.Context) (map[string][]string, int, er
 				continue
 			}
 
-			ret[name] = append(ret[name], path.Join(cpuDir, cpuidle.Name(), "time"))
+			ret[name] = append(ret[name], cpuIdleFile{
+				cpu:  cpuInfo.Name(),
+				idle: path.Join(cpuDir, cpuidle.Name(), "time"),
+			})
 		}
 	}
 
@@ -85,7 +93,7 @@ func computeCpuidleStateFiles(ctx context.Context) (map[string][]string, int, er
 // they generally may be greater than the time the CPU actually spends in the
 // corresponding cstate, as the hardware may enter shallower states than requested.
 type CpuidleStateMetrics struct {
-	cpuidleFiles map[string][]string
+	cpuidleFiles map[string][]cpuIdleFile
 	numCpus      int
 	lastTime     time.Time
 	lastStats    map[string]int64
@@ -112,16 +120,17 @@ func (cs *CpuidleStateMetrics) Setup(ctx context.Context, prefix string) error {
 }
 
 // readCpuidleStateTimes reads the cpuidle timings.
-func readCpuidleStateTimes(cpuidleFiles map[string][]string) (map[string]int64, time.Time, error) {
+func readCpuidleStateTimes(cpuidleFiles map[string][]cpuIdleFile) (map[string]int64, time.Time, error) {
 	ret := make(map[string]int64)
 	for cpuidle, files := range cpuidleFiles {
 		ret[cpuidle] = 0
 		for _, file := range files {
-			t, err := readInt64(file)
+			t, err := readInt64(file.idle)
 			if err != nil {
 				return nil, time.Time{}, errors.Wrap(err, "failed to read cpuidle timing")
 			}
 			ret[cpuidle] += t
+			ret[file.cpu+cpuidle] = t
 		}
 	}
 	return ret, time.Now(), nil
