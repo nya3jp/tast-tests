@@ -16,6 +16,23 @@
       "message": "You may need to add task-owners as a reviewer to kick-off the code review on Tast code",
       "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f025e949_f91f4c5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-16T18:11:28Z",
+      "side": 1,
+      "message": "A small suggestion: we should add tast-owners@google.com to the reviewer list instead of adding a specific reviewer. See the doc: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
