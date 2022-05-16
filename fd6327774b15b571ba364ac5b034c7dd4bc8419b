@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdd9b43_f4d5518e",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T21:45:27Z",
+      "side": 1,
+      "message": "sp: list_sta",
+      "range": {
+        "startLine": 141,
+        "startChar": 45,
+        "endLine": 141,
+        "endChar": 53
+      },
+      "revId": "fd6327774b15b571ba364ac5b034c7dd4bc8419b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
