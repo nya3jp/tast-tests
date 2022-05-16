@@ -32,23 +32,18 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// logsToCollect is the list of files on router to collect.
-var logsToCollect = []string{
-	"/var/log/messages",
-}
-
 // Router controls an OpenWrt router and stores the router state.
 type Router struct {
-	host           *ssh.Conn
-	name           string
-	routerType     support.RouterType
-	logCollectors  map[string]*log.Collector // map from log path to its collector.
-	iwr            *remoteIw.Runner
-	ipr            *remoteIp.Runner
-	uci            *uci.Runner
-	phys           map[int]*iw.Phy // map from phy idx to iw.Phy.
-	im             *common.IfaceManager
-	activeServices activeServices
+	host             *ssh.Conn
+	name             string
+	routerType       support.RouterType
+	syslogdCollector *log.SyslogdCollector
+	iwr              *remoteIw.Runner
+	ipr              *remoteIp.Runner
+	uci              *uci.Runner
+	phys             map[int]*iw.Phy // map from phy idx to iw.Phy.
+	im               *common.IfaceManager
+	activeServices   activeServices
 }
 
 // activeServices keeps a record of what services have been started and not yet
@@ -74,7 +69,6 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		host:           host,
 		name:           name,
 		routerType:     support.OpenWrtT,
-		logCollectors:  make(map[string]*log.Collector),
 		iwr:            remoteIw.NewRemoteRunner(host),
 		ipr:            remoteIp.NewRemoteRunner(host),
 		uci:            uci.NewRemoteRunner(host),
@@ -95,6 +89,21 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		}
 	}
 
+	// Start collecting system logs and save logs already in the buffer to a file.
+	// The daemonCtx is used for the log collector as it should live longer than
+	// the current stage when we are in precondition.
+	var err error
+	if r.syslogdCollector, err = log.StartSyslogdCollector(daemonCtx, host); err != nil {
+		err = errors.Wrap(err, "failed to start syslogd log collector")
+		closeBeforeErrorReturn(err)
+		return nil, err
+	}
+	if err := common.CollectSyslogdLogs(daemonCtx, r, r.syslogdCollector, "pre_setup"); err != nil {
+		err = errors.Wrap(err, "failed to collect syslogd logs before setup actions")
+		closeBeforeErrorReturn(err)
+		return nil, err
+	}
+
 	// Set up working dir.
 	if err := r.host.CommandContext(shortCtx, "rm", "-rf", r.workDir()).Run(); err != nil {
 		err = errors.Wrapf(err, "failed to remove workdir %q", r.workDir())
@@ -103,15 +112,6 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 	}
 	if err := r.host.CommandContext(shortCtx, "mkdir", "-p", r.workDir()).Run(); err != nil {
 		err = errors.Wrapf(err, "failed to create workdir %q", r.workDir())
-		closeBeforeErrorReturn(err)
-		return nil, err
-	}
-
-	// Start log collectors with daemonCtx as it should live longer than current
-	// stage when we are in precondition.
-	var err error
-	if r.logCollectors, err = common.StartLogCollectors(daemonCtx, r.host, logsToCollect, false); err != nil {
-		err = errors.Wrap(err, "failed to start loggers")
 		closeBeforeErrorReturn(err)
 		return nil, err
 	}
@@ -133,6 +133,13 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		return nil, err
 	}
 
+	// Save logs collected from setup actions.
+	if err := common.CollectSyslogdLogs(daemonCtx, r, r.syslogdCollector, "post_setup"); err != nil {
+		err = errors.Wrap(err, "failed to collect syslogd logs after setup actions")
+		closeBeforeErrorReturn(err)
+		return nil, err
+	}
+
 	testing.ContextLogf(ctx, "Created new OpenWrt router controller for router %q", r.name)
 	return r, nil
 }
@@ -145,6 +152,11 @@ func (r *Router) Close(ctx context.Context) error {
 	testing.ContextLogf(ctx, "Closing OpenWrt router controller for router %q", r.name)
 
 	var firstErr error
+
+	// Collect closing log to facilitate debugging.
+	if err := common.CollectSyslogdLogs(ctx, r, r.syslogdCollector, "pre_close"); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect syslogd logs before close actions"))
+	}
 
 	// Remove the interfaces that we created.
 	for _, nd := range r.im.Available {
@@ -173,17 +185,17 @@ func (r *Router) Close(ctx context.Context) error {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reload configs using backup configs"))
 	}
 
-	// Collect closing log to facilitate debugging.
-	if err := common.CollectLogs(ctx, r, r.logCollectors, logsToCollect, ".close"); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect closing logs"))
-	}
-	if err := common.StopLogCollectors(ctx, r.logCollectors); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop loggers"))
-	}
-
 	// Clean working dir.
 	if err := r.host.CommandContext(ctx, "rm", "-rf", r.workDir()).Run(); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
+	}
+
+	// Collect closing log to facilitate debugging.
+	if err := common.CollectSyslogdLogs(ctx, r, r.syslogdCollector, "post_close"); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect syslogd logs after close actions"))
+	}
+	if err := r.syslogdCollector.Close(); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop syslogd log collector"))
 	}
 
 	testing.ContextLogf(ctx, "Closed OpenWrt router controller for router %q", r.name)
@@ -230,9 +242,9 @@ func (r *Router) workDir() string {
 	return common.WorkingDir
 }
 
-// CollectLogs downloads log files from router to OutDir.
+// CollectLogs dumps collected syslogd logs to a file.
 func (r *Router) CollectLogs(ctx context.Context) error {
-	return common.CollectLogs(ctx, r, r.logCollectors, logsToCollect, "")
+	return common.CollectSyslogdLogs(ctx, r, r.syslogdCollector, "")
 }
 
 // killHostapdDHCP forcibly kills any hostapd and dhcp processes.

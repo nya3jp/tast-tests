@@ -6,7 +6,11 @@ package common
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
+	"regexp"
+	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
@@ -79,4 +83,45 @@ func CollectLogs(ctx context.Context, r support.Router, logCollectors map[string
 		testing.ContextLogf(ctx, "Dumped captured router %q logs from %q to local chroot file %q", r.RouterName(), src, absDstPath)
 	}
 	return firstErr
+}
+
+// CollectSyslogdLogs writes the collected syslogd logs to a log file. An
+// optional logName may be specified.
+func CollectSyslogdLogs(ctx context.Context, r support.Router, logCollector *log.SyslogdCollector, logName string) error {
+	ctx, st := timing.Start(ctx, "collectLogs")
+	defer st.End()
+	// Prepare output file.
+	dstLogFilename := buildLogFilename("syslogd", logName)
+	dstFilePath := filepath.Join("debug", r.RouterName(), dstLogFilename)
+	f, err := fileutil.PrepareOutDirFile(ctx, dstFilePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to prepare output dir file %q", dstFilePath)
+	}
+	// Dump buffer of collected logs to file.
+	if err := logCollector.Dump(f); err != nil {
+		return errors.Wrapf(err, "failed to dump syslogd logs to %q", dstFilePath)
+	}
+	// Log path to log file.
+	absDstPath, err := filepath.Abs(f.Name())
+	if err != nil {
+		return errors.Wrapf(err, "failed to get absolute file path of destination log file %q", dstFilePath)
+	}
+	testing.ContextLogf(ctx, "Dumped captured router %q syslogd logs to local chroot file %q", r.RouterName(), absDstPath)
+	return nil
+}
+
+// buildLogFilename builds a log filename with a minimal timestamp prefix, all
+// the name parts in the middle delimited by "_" with non-word characters
+// replaced with underscores, and a ".log" file extension.
+//
+// Example result: "20220523-122753_syslogd_pre_setup"
+func buildLogFilename(nameParts ...string) string {
+	// Build timestamp prefix.
+	timestamp := time.Now().Format("20060102-150405")
+	// Join and sanitize name parts.
+	name := strings.Join(nameParts, "_")
+	name = regexp.MustCompile("\\W").ReplaceAllString(name, "_")
+	name = regexp.MustCompile("_+").ReplaceAllString(name, "_")
+	// Combine timestamp, name, and extension.
+	return fmt.Sprintf("%s_%s.log", timestamp, name)
 }
