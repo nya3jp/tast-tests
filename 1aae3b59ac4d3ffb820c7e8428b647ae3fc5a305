@@ -16,6 +16,24 @@
       "message": "LGTM to avoid another cross time-zone iteration.\n(pls add comment as you said before submitting :-).",
       "revId": "1aae3b59ac4d3ffb820c7e8428b647ae3fc5a305",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bad660e6_cf138d8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-16T16:43:42Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "92eb56e4_2812a528",
+      "revId": "1aae3b59ac4d3ffb820c7e8428b647ae3fc5a305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

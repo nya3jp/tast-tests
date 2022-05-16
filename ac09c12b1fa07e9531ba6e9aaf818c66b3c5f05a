@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d9f5cc_7d27a042",
+        "filename": "src/chromiumos/tast/common/android/adb/logcat.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-16T16:43:42Z",
+      "side": 1,
+      "message": "By the way, who should I assign this bug to?",
+      "parentUuid": "f1010a15_792246d2",
+      "revId": "ac09c12b1fa07e9531ba6e9aaf818c66b3c5f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f7f010e_26c07c7c",
