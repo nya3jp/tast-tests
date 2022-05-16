@@ -129,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f876715c_5f371ebb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-16T02:55:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60f49d06_4786eb45",
+      "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a3cbda9_c845f55d",
@@ -177,6 +195,24 @@
       "writtenOn": "2022-05-16T02:45:15Z",
       "side": 1,
       "message": "snake_case",
+      "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094d43bb_57fa7b27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-16T02:55:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c63ebc94_e3e804e9",
       "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

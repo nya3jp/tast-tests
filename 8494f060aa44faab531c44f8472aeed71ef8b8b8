@@ -16,6 +16,24 @@
       "message": "This is better, but I think that we should use struct with three string fields to have strong guarantees about changing the order of files in the array.",
       "revId": "8494f060aa44faab531c44f8472aeed71ef8b8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc350372_8ed408e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-16T02:55:42Z",
+      "side": 1,
+      "message": "You mean this? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go;drc\u003dbf29b9f3563aefb9ca0492c9a1215ef65c1281a8;l\u003d18\n\nAnd https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go;drc\u003dbf29b9f3563aefb9ca0492c9a1215ef65c1281a8;l\u003d35",
+      "parentUuid": "64e7e531_71f204cf",
+      "revId": "8494f060aa44faab531c44f8472aeed71ef8b8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
