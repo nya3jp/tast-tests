@@ -47,7 +47,15 @@ var PreparedArchives = []string{
 	"crosdisks/Nested.zip",
 	"crosdisks/Strict Password.zip",
 	"crosdisks/Symlinks.zip",
+	"crosdisks/Unicode.iso",
 	"crosdisks/Unicode.zip",
+	"crosdisks/Unicode.7z",
+	"crosdisks/Unicode.crx",
+	"crosdisks/Unicode.tar",
+	"crosdisks/Unicode.tar.bz2",
+	"crosdisks/Unicode.tar.gz",
+	"crosdisks/Unicode.tar.lzma",
+	"crosdisks/Unicode.tar.xz",
 	"crosdisks/MacOS UTF-8 Bug 903664.zip",
 	"crosdisks/SJIS Bug 846195.zip",
 	"crosdisks/archive.rar",
@@ -167,15 +175,29 @@ func verifyUnicodeArchives(ctx context.Context, cd *crosdisks.CrosDisks, archive
 	if err := verifyArchiveContent(ctx, cd, filepath.Join(archiveDir, "Format V4.rar"), nil, expectedContent); err != nil {
 		return err
 	}
-	// Test RAR v5 and ZIP with both Unicode BMP and non-BMP characters in file and directory names.
+
+	// Test RAR v5 and other archive formats with both Unicode BMP and non-BMP characters in file and directory names.
 	expectedContent["Dir 1F601 \U0001F601/File 1F602 \U0001F602.txt"] = FileItem{Data: []byte("Char U+1F602 is \U0001F602 FACE WITH TEARS OF JOY\n")}
 	expectedContent["File 1F600 \U0001F600.txt"] = FileItem{Data: []byte("Char U+1F600 is \U0001F600 GRINNING FACE\n")}
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(archiveDir, "Format V5.rar"), nil, expectedContent); err != nil {
-		return err
+
+	for _, archive := range []string{
+		"Format V5.rar",
+		"Unicode.iso",
+		"Unicode.zip",
+		"Unicode.7z",
+		"Unicode.crx",
+		"Unicode.tar",
+		"Unicode.tar.bz2",
+		"Unicode.tar.gz",
+		"Unicode.tar.lzma",
+		"Unicode.tar.xz",
+	} {
+		archivePath := filepath.Join(archiveDir, archive)
+		if err := verifyArchiveContent(ctx, cd, archivePath, nil, expectedContent); err != nil {
+			return errors.Wrapf(err, "Test failed for %q", archive)
+		}
 	}
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(archiveDir, "Unicode.zip"), nil, expectedContent); err != nil {
-		return err
-	}
+
 	return nil
 }
 
