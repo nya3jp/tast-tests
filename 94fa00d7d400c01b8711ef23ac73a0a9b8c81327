@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d82162_3665d606",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537082
+      },
+      "writtenOn": "2022-05-16T06:28:07Z",
+      "side": 1,
+      "message": "Yeah, those both are the same.\n\nDo I need to update code? \nIf yes, Which way shall I do, \"git commit\" or \"git commit --amend\"?\n",
+      "revId": "94fa00d7d400c01b8711ef23ac73a0a9b8c81327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3523f642_c1a0935f",
