@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e7e2d5_6b250c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-16T16:46:45Z",
+      "side": 1,
+      "message": "Hi Ahmed,\n\nWe are writing a tast test to toggle Dark theme from Quick Settings (required #dark-light-mode feature enabled to see this button). However, the Dark theme PodIconButton won\u0027t be shown in a specific page in Quick Settings, we will need to navigate to different page to find it so that LeftClick action would really works. Currently, we need to loop through all the pages and LeftClick on the button to make sure the button is toggled. Please help review the toggleDarkThemeFromQuickSettings() function in the tast test and let us know your opinion. Thank you!",
+      "revId": "7959bba43eeb9e2a9d39446e841f63c5b009375a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
