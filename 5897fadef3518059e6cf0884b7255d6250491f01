@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49cd5545_e7619b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-16T00:58:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2fec09ff_d596fb7a",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77affd4f_742bc4e5",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "77affd4f_742bc4e5",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa7165f_cf2410a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-16T00:58:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6fef0260_59e9eba6",
       "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
