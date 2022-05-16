@@ -6,7 +6,9 @@ package common
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
@@ -79,4 +81,35 @@ func CollectLogs(ctx context.Context, r support.Router, logCollectors map[string
 		testing.ContextLogf(ctx, "Dumped captured router %q logs from %q to local chroot file %q", r.RouterName(), src, absDstPath)
 	}
 	return firstErr
+}
+
+// CollectSyslogdLogs writes the collected syslogd logs to a log file. An
+// optional logName may be specified.
+func CollectSyslogdLogs(ctx context.Context, r support.Router, logCollector *log.SyslogdCollector, logName string) error {
+	ctx, st := timing.Start(ctx, "collectLogs")
+	defer st.End()
+	// Resolve output file name
+	var dstLogFilename string
+	if logName == "" {
+		dstLogFilename = fmt.Sprintf("%d_syslogd.log", time.Now().Unix())
+	} else {
+		dstLogFilename = fmt.Sprintf("%d_syslogd_%s.log", time.Now().Unix(), logName)
+	}
+	// Prepare output file.
+	dstFilePath := filepath.Join("debug", r.RouterName(), dstLogFilename)
+	f, err := fileutil.PrepareOutDirFile(ctx, dstFilePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to prepare output dir file %q", dstFilePath)
+	}
+	// Dump buffer of collected logs to file.
+	if err := logCollector.Dump(f); err != nil {
+		return errors.Wrapf(err, "failed to dump syslogd logs to %q", dstFilePath)
+	}
+	// Log path to log file.
+	absDstPath, err := filepath.Abs(f.Name())
+	if err != nil {
+		return errors.Wrapf(err, "failed to get absolute file path of destination log file %q", dstFilePath)
+	}
+	testing.ContextLogf(ctx, "Dumped captured router %q syslogd logs to local chroot file %q", r.RouterName(), absDstPath)
+	return nil
 }
