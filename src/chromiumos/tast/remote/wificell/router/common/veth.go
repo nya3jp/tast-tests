@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/network/ip"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/testing"
 )
@@ -21,11 +22,15 @@ const (
 	// VethPrefix is the prefix for the veth interface.
 	VethPrefix = "vethA"
 	// VethPeerPrefix is the prefix for the peer's veth interface.
+	// Note: OpenWrt does not support setting the peer's veth interface name and
+	// will always be "vethN", where N increments by 1 if vethN already exists,
+	// starting at "veth0".
 	VethPeerPrefix = "vethB"
 )
 
 // NewVethPair returns a veth pair for tests to use. Note that the caller is responsible to call ReleaseVethPair.
-func NewVethPair(ctx context.Context, ipr *ip.Runner, vethID int) (_, _ string, retErr error) {
+// The resolveIfaceNames parameter must be false for legacy routers.
+func NewVethPair(ctx context.Context, ipr *ip.Runner, vethID int, resolveIfaceNames bool) (_, _ string, retErr error) {
 	veth := fmt.Sprintf("%s%d", VethPrefix, vethID)
 	vethPeer := fmt.Sprintf("%s%d", VethPeerPrefix, vethID)
 	if err := ipr.AddLink(ctx, veth, "veth", "peer", "name", vethPeer); err != nil {
@@ -38,6 +43,18 @@ func NewVethPair(ctx context.Context, ipr *ip.Runner, vethID int) (_, _ string, 
 			}
 		}
 	}()
+
+	if resolveIfaceNames {
+		// The veth peer name may not have stuck depending on the ip implementation,
+		// so resolve them.
+		resolvedVeth, resolvedVethPeer, err := ResolveVethIfaceNames(ctx, ipr, veth)
+		if err != nil {
+			return "", "", errors.Wrap(err, "failed to resolve iface name of veth peer after adding link")
+		}
+		veth = resolvedVeth
+		vethPeer = resolvedVethPeer
+	}
+
 	if err := ipr.SetLinkUp(ctx, veth); err != nil {
 		return "", "", err
 	}
@@ -49,12 +66,23 @@ func NewVethPair(ctx context.Context, ipr *ip.Runner, vethID int) (_, _ string, 
 
 // ReleaseVethPair release the veth pair.
 // Note that each side of the pair can be passed to this method, but the test should only call the method once for each pair.
-func ReleaseVethPair(ctx context.Context, ipr *ip.Runner, veth string) error {
-	// If it is a peer side veth name, change it to another side.
-	if strings.HasPrefix(veth, VethPeerPrefix) {
-		veth = VethPrefix + veth[len(VethPeerPrefix):]
+// The resolveIfaceNames parameter must be false for legacy routers.
+func ReleaseVethPair(ctx context.Context, ipr *ip.Runner, vethEnd string, resolveIfaceNames bool) error {
+	var veth, vethPeer string
+	if resolveIfaceNames {
+		var err error
+		veth, vethPeer, err = ResolveVethIfaceNames(ctx, ipr, vethEnd)
+		if err != nil {
+			return errors.Wrap(err, "failed to resolve iface name of veth peer after adding link")
+		}
+	} else {
+		// If it is a peer side veth name, change it to another side.
+		veth = vethEnd
+		if strings.HasPrefix(veth, VethPeerPrefix) {
+			veth = VethPrefix + veth[len(VethPeerPrefix):]
+		}
+		vethPeer = VethPeerPrefix + veth[len(VethPrefix):]
 	}
-	vethPeer := VethPeerPrefix + veth[len(VethPrefix):]
 
 	var firstErr error
 	wifiutil.CollectFirstErr(ctx, &firstErr, ipr.FlushIP(ctx, veth))
@@ -64,6 +92,26 @@ func ReleaseVethPair(ctx context.Context, ipr *ip.Runner, veth string) error {
 	// Note that we only need to delete one side.
 	wifiutil.CollectFirstErr(ctx, &firstErr, ipr.DeleteLink(ctx, veth))
 	return firstErr
+}
+
+// ResolveVethIfaceNames will return the veth and veth peer iface names, in that
+// order, when given either the veth or veth peer iface name. This assumes that
+// the veth iface starts with the VethPrefix and the veth peer iface does not.
+//
+// Note: This is not supported with legacy routers since its "ip link show"
+// output format does show iface aliases.
+func ResolveVethIfaceNames(ctx context.Context, ipr *ip.Runner, vethEnd string) (string, string, error) {
+	vethEndAlias, err := ipr.IfaceAlias(ctx, vethEnd)
+	if err != nil {
+		return "", "", errors.Wrapf(err, "failed to get alias of iface %q", vethEnd)
+	}
+	if strings.HasPrefix(vethEnd, VethPrefix) {
+		return vethEnd, vethEndAlias, nil
+	}
+	if !strings.HasPrefix(vethEndAlias, VethPrefix) {
+		return "", "", errors.Wrapf(err, "unable to determine which end of the veth pair with interfaces %q and %q is the peer", vethEnd, vethEndAlias)
+	}
+	return vethEndAlias, vethEnd, nil
 }
 
 // BindVethToBridge binds the veth to bridge.
