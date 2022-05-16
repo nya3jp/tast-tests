@@ -88,6 +88,24 @@
       "parentUuid": "b7720947_a1ef4063",
       "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e31d9e_b7594ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-16T05:03:51Z",
+      "side": 1,
+      "message": "Thanks for the input!\nJust found another issue: the expected output is actually not a json object, but only a js obejct -- it contains some identitifers, e.g., the value in the following line:\n```\ntype: {value: chromeos.networkConfig.mojom.VpnType.kWireGuard}\n```\nDo you have any suggestion to handle this? String replacement after stringify the json dict?",
+      "parentUuid": "1d8c1ec0_fe7ad371",
+      "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
