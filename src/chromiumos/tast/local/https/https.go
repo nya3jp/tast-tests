@@ -131,15 +131,15 @@ func ConfigureChromeToAcceptCertificate(ctx context.Context, config ServerConfig
 	// Add the certificate in the certificate settings.
 	policyutil.SettingsPage(ctx, cr, br, "certificates")
 	ui := uiauto.New(tconn)
-	authorities := nodewith.NameContaining("Authorities").Role(role.Tab)
+	authorities := nodewith.Name("Authorities").Role(role.Tab)
 	authTabText := nodewith.Name("You have certificates on file that identify these certificate authorities").Role(role.StaticText)
-	importButton := nodewith.NameContaining("Import").Role(role.Button)
-	certFileItem := nodewith.NameContaining(caCertFileName).First()
-	openButton := nodewith.NameContaining("Open").Role(role.Button)
+	importButton := nodewith.Name("Import").Role(role.Button)
+	certFileItem := nodewith.Name(caCertFileName).First()
+	openButton := nodewith.Name("Open").Role(role.Button)
 	trust1Checkbox := nodewith.NameContaining("Trust this certificate for identifying websites").Role(role.CheckBox)
 	trust2Checkbox := nodewith.NameContaining("Trust this certificate for identifying email users").Role(role.CheckBox)
 	trust3Checkbox := nodewith.NameContaining("Trust this certificate for identifying software makers").Role(role.CheckBox)
-	okButton := nodewith.NameContaining("OK").Role(role.Button)
+	okButton := nodewith.Name("OK").Role(role.Button).ClassName("action-button")
 
 	if err := uiauto.Combine("set_cerficate",
 		ui.WaitUntilExists(authorities),
