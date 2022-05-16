@@ -29,6 +29,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network"
+	"chromiumos/tast/local/network/cmd"
 	network_iface "chromiumos/tast/local/network/iface"
 	local_ping "chromiumos/tast/local/network/ping"
 	localwpacli "chromiumos/tast/local/network/wpacli"
@@ -2885,4 +2886,100 @@ func (s *ShillService) WatchDarkResume(_ *empty.Empty, sender wifi.ShillService_
 			return errors.Errorf("unexpected signal name: %s", signalName)
 		}
 	}
+}
+
+// StartTethering attempts to start a tethering session.
+// This is the implementation of wifi.ShillService/StartTethering gRPC.
+func (s *ShillService) StartTethering(ctx context.Context, request *wifi.TetheringRequest) (*wifi.TetheringResponse, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	ctx, st := timing.Start(ctx, "wifi_service.StartTethering")
+	defer st.End()
+	testing.ContextLog(ctx, "Attempting to start tethering with config: ", request)
+
+	// TODO(b/235758932): Change to use Shill dbus call instead of wpa_supplicant when tethering support in Shill is ready.
+	channel, err := s.startSoftAP(ctx, request)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start SoftAP")
+	}
+
+	if err := s.startDHCPServer(ctx); err != nil {
+		s.stopDHCPServer(ctx)
+		return nil, errors.Wrap(err, "failed to start DHCP server")
+	}
+
+	return &wifi.TetheringResponse{DownlinkTech: "WiFi", Channel: channel}, nil
+}
+
+// StopTethering attempts to stop the tethering session.
+// This is the implementation of wifi.ShillService/StopTethering gRPC.
+func (s *ShillService) StopTethering(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	ctx, st := timing.Start(ctx, "wifi_service.StopTethering")
+	defer st.End()
+	testing.ContextLog(ctx, "Attempting to stop the tethering session")
+
+	// TODO(b/235758932): Change to use Shill dbus call instead of wpa_supplicant when tethering support in Shill is ready.
+	if err := localwpacli.NewLocalRunner().StopSoftAP(ctx); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to stop soft AP in wpa_supplicant")
+	}
+
+	s.stopDHCPServer(ctx)
+
+	return &empty.Empty{}, nil
+}
+
+func (s *ShillService) startSoftAP(ctx context.Context, request *wifi.TetheringRequest) (uint32, error) {
+	var freq uint32 = 2437
+	var channel uint32 = 6
+	if request.Band == "5GHz" {
+		freq = 5180
+		channel = 36
+	}
+
+	key_mgmt := "NONE"
+	if request.Security == shillconst.SoftAPSecurityWPA2 {
+		key_mgmt = "WPA-PSK"
+	} else if request.Security == shillconst.SoftAPSecurityWPA3 {
+		key_mgmt = "SAE"
+	} else if request.Security == shillconst.SoftAPSecurityWPA2WPA3 {
+		key_mgmt = "WPA-PSK SAE"
+	}
+
+	if err := localwpacli.NewLocalRunner().StartSoftAP(ctx, freq, string(request.Ssid), key_mgmt, string(request.Psk)); err != nil {
+		return 0, errors.Wrap(err, "failed to start soft AP in wpa_supplicant")
+	}
+
+	return channel, nil
+}
+
+func (s *ShillService) startDHCPServer(ctx context.Context) error {
+	r := &cmd.LocalCmdRunner{}
+
+	_ = r.Run(ctx, "killall", "dnsmasq")
+
+	if err := r.Run(ctx, "ip", "addr", "add", "192.168.50.1/24", "dev", "wlan0"); err != nil {
+		return errors.Wrap(err, "failed to assign IPv4 address on wlan0")
+	}
+
+	if err := r.Run(ctx, "iptables", "-I", "INPUT", "-p", "udp", "-i", "wlan0", "--dport", "67", "-j", "ACCEPT"); err != nil {
+		return errors.Wrap(err, "failed to set DHCP iptable rule on wlan0")
+	}
+
+	if err := r.Run(ctx, "dnsmasq", "--interface=wlan0", "--port=0", "--dhcp-range=192.168.50.100,192.168.50.150,255.255.255.0,6h", "--dhcp-option=3,192.168.50.1"); err != nil {
+		return errors.Wrap(err, "failed to start dnsmasq on wlan0")
+	}
+
+	return nil
+}
+
+func (s *ShillService) stopDHCPServer(ctx context.Context) {
+	r := &cmd.LocalCmdRunner{}
+
+	r.Run(ctx, "killall", "dnsmasq")
+	r.Run(ctx, "iptables", "-D", "INPUT", "-p", "udp", "-i", "wlan0", "--dport", "67", "-j", "ACCEPT")
+	r.Run(ctx, "ip", "addr", "del", "192.168.50.1/24", "dev", "wlan0")
 }
