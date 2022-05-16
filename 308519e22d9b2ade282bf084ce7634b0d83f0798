@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d41941_2c036b39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-05-16T11:46:07Z",
+      "side": 1,
+      "message": "Does this trigger a shill reset as well?",
+      "range": {
+        "startLine": 173,
+        "startChar": 11,
+        "endLine": 173,
+        "endChar": 32
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1e9abb_7ddb4a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-05-16T11:46:07Z",
+      "side": 1,
+      "message": "Do we want to verify this?",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 59
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
