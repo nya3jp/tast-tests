@@ -97,3 +97,56 @@ func (c *Collector) Close() error {
 	_ = c.cmd.Wait()
 	return nil
 }
+
+// SyslogdCollector collects messages in syslogd's circular log buffer using the
+// logread command.
+type SyslogdCollector struct {
+	host *ssh.Conn
+	buf  buffer
+	cmd  *ssh.Cmd
+}
+
+// StartSyslogdCollector spawns a log collector on the host.
+func StartSyslogdCollector(ctx context.Context, host *ssh.Conn) (*SyslogdCollector, error) {
+	c := &SyslogdCollector{
+		host: host,
+	}
+	if err := c.start(ctx); err != nil {
+		return nil, err
+	}
+	return c, nil
+}
+
+// start spawns the logread process to begin reading syslogd logs as they are
+// reported, as well as collect the existing logs in the syslogd circular log
+// buffer.
+func (c *SyslogdCollector) start(ctx context.Context) error {
+	// Collect logs in syslogd buffer.
+	cmd := c.host.CommandContext(ctx, "logread")
+	cmd.Stdout = &c.buf
+	if err := cmd.Run(); err != nil {
+		return errors.Wrap(err, "failed to run logread")
+	}
+
+	// Start collecting new logs as they are reported.
+	cmd = c.host.CommandContext(ctx, "logread", "-f")
+	cmd.Stdout = &c.buf
+	if err := cmd.Start(); err != nil {
+		return errors.Wrap(err, "failed to start logread -f")
+	}
+	c.cmd = cmd
+	return nil
+}
+
+// Dump copies the contents collected to w and resets the buffer.
+func (c *SyslogdCollector) Dump(w io.Writer) error {
+	return c.buf.Dump(w)
+}
+
+// Close stops the collector.
+func (c *SyslogdCollector) Close() error {
+	c.cmd.Abort()
+	// Ignore the error as wait always has error on aborted command.
+	_ = c.cmd.Wait()
+	return nil
+}

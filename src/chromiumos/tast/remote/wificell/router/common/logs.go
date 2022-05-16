@@ -80,3 +80,27 @@ func CollectLogs(ctx context.Context, r support.Router, logCollectors map[string
 	}
 	return firstErr
 }
+
+// CollectSyslogdLogs writes the collected syslogd logs to a target file.
+func CollectSyslogdLogs(ctx context.Context, r support.Router, logCollector *log.SyslogdCollector, dstLogFilename string) error {
+	ctx, st := timing.Start(ctx, "collectLogs")
+	defer st.End()
+
+	// Prepare output file.
+	dstFilePath := filepath.Join("debug", r.RouterName(), dstLogFilename)
+	f, err := fileutil.PrepareOutDirFile(ctx, dstFilePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to prepare output dir file %q", dstFilePath)
+	}
+	// Dump buffer of collected logs to file.
+	if err := logCollector.Dump(f); err != nil {
+		return errors.Wrapf(err, "failed to dump syslogd logs to %q", dstFilePath)
+	}
+	// Log path to log file.
+	absDstPath, err := filepath.Abs(f.Name())
+	if err != nil {
+		return errors.Wrapf(err, "failed to get absolute file path of destination log file %q", dstFilePath)
+	}
+	testing.ContextLogf(ctx, "Dumped captured router %q syslogd logs to local chroot file %q", r.RouterName(), absDstPath)
+	return nil
+}
