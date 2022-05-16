@@ -687,13 +687,13 @@ func (r *Router) ReleaseBridge(ctx context.Context, br string) error {
 func (r *Router) NewVethPair(ctx context.Context) (string, string, error) {
 	vethID := r.nextVethID
 	r.nextVethID++
-	return common.NewVethPair(ctx, r.ipr, vethID)
+	return common.NewVethPair(ctx, r.ipr, vethID, false)
 }
 
 // ReleaseVethPair release the veth pair.
 // Note that each side of the pair can be passed to this method, but the test should only call the method once for each pair.
 func (r *Router) ReleaseVethPair(ctx context.Context, veth string) error {
-	return common.ReleaseVethPair(ctx, r.ipr, veth)
+	return common.ReleaseVethPair(ctx, r.ipr, veth, false)
 }
 
 // BindVethToBridge binds the veth to bridge.

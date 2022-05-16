@@ -44,6 +44,8 @@ type Router struct {
 	phys             map[int]*iw.Phy // map from phy idx to iw.Phy.
 	im               *common.IfaceManager
 	activeServices   activeServices
+	nextBridgeID     int
+	nextVethID       int
 }
 
 // activeServices keeps a record of what services have been started and not yet
@@ -131,6 +133,16 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		return nil, err
 	}
 
+	// Clean up any lingering bridge and veth ifaces.
+	if err := common.RemoveAllBridgeIfaces(ctx, r.ipr); err != nil {
+		closeBeforeErrorReturn(err)
+		return nil, err
+	}
+	if err := common.RemoveAllVethIfaces(ctx, r.ipr); err != nil {
+		closeBeforeErrorReturn(err)
+		return nil, err
+	}
+
 	// Save logs collected from setup actions.
 	if err := common.CollectSyslogdLogs(daemonCtx, r, r.syslogdCollector, "syslogd_2_start.log"); err != nil {
 		err = errors.Wrap(err, "failed to save syslogd logs after start actions")
@@ -167,6 +179,14 @@ func (r *Router) Close(ctx context.Context) error {
 	// Stop any services that were not manually stopped already.
 	if err := r.closeActiveServices(ctx); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop still active services"))
+	}
+
+	// Clean up any lingering bridge and veth ifaces.
+	if err := common.RemoveAllBridgeIfaces(ctx, r.ipr); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, err)
+	}
+	if err := common.RemoveAllVethIfaces(ctx, r.ipr); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, err)
 	}
 
 	// Reset modified uci configs back to their previous states.
@@ -245,8 +265,17 @@ func (r *Router) killHostapdDHCP(ctx context.Context) error {
 	shortCtx, st := timing.Start(ctx, "killHostapdDHCP")
 	defer st.End()
 	var firstErr error
+	if err := r.host.CommandContext(shortCtx, "/etc/init.d/dnsmasq", "stop").Run(); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop dnsmasq service which manages core OpenWrt DHCP servers"))
+	}
+	if err := r.host.CommandContext(shortCtx, "/etc/init.d/dnsmasq", "disable").Run(); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to disable dnsmasq service which manages core OpenWrt DHCP servers"))
+	}
 	if err := r.host.CommandContext(shortCtx, "/etc/init.d/wpad", "stop").Run(); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop wpad service which manages core OpenWrt hostapd processes"))
+	}
+	if err := r.host.CommandContext(shortCtx, "/etc/init.d/wpad", "disable").Run(); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to disable wpad service which manages core OpenWrt hostapd processes"))
 	}
 	if err := hostapd.KillAll(shortCtx, r.host); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to kill all hostapd processes"))
@@ -658,6 +687,41 @@ func (r *Router) SetAPIfaceDown(ctx context.Context, iface string) error {
 // MAC returns the MAC address of iface on this router.
 func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
 	return r.ipr.MAC(ctx, iface)
+}
+
+// NewBridge returns a bridge name for tests to use. Note that the caller is responsible to call ReleaseBridge.
+func (r *Router) NewBridge(ctx context.Context) (string, error) {
+	bridgeID := r.nextBridgeID
+	r.nextBridgeID++
+	return common.NewBridge(ctx, r.ipr, bridgeID)
+}
+
+// ReleaseBridge releases the bridge.
+func (r *Router) ReleaseBridge(ctx context.Context, br string) error {
+	return common.ReleaseBridge(ctx, r.ipr, br)
+}
+
+// NewVethPair returns a veth pair for tests to use. Note that the caller is responsible to call ReleaseVethPair.
+func (r *Router) NewVethPair(ctx context.Context) (string, string, error) {
+	vethID := r.nextVethID
+	r.nextVethID++
+	return common.NewVethPair(ctx, r.ipr, vethID, true)
+}
+
+// ReleaseVethPair release the veth pair.
+// Note that each side of the pair can be passed to this method, but the test should only call the method once for each pair.
+func (r *Router) ReleaseVethPair(ctx context.Context, veth string) error {
+	return common.ReleaseVethPair(ctx, r.ipr, veth, true)
+}
+
+// BindVethToBridge binds the veth to bridge.
+func (r *Router) BindVethToBridge(ctx context.Context, veth, br string) error {
+	return common.BindVethToBridge(ctx, r.ipr, veth, br)
+}
+
+// UnbindVeth unbinds the veth to any other interface.
+func (r *Router) UnbindVeth(ctx context.Context, veth string) error {
+	return common.UnbindVeth(ctx, r.ipr, veth)
 }
 
 // HostIsOpenWrtRouter determines whether the remote host is an OpenWrt router.
