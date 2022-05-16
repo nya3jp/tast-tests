@@ -109,14 +109,28 @@ func TestShowLink(t *testing.T) {
 			out: `2: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
     link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
     altname enp2s0`,
-			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>"},
+			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>", ""},
 		},
 		{
 			shouldFail: false,
 			out: `2: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
     link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
 `,
-			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>"},
+			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>", ""},
+		},
+		{
+			shouldFail: false,
+			out: `2: wlan0@: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+`,
+			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>", ""},
+		},
+		{
+			shouldFail: false,
+			out: `2: wlan0@someAlias: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+`,
+			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>", "someAlias"},
 		},
 	}
 	stub := &stubCmdRunner{}
