@@ -25,7 +25,7 @@ import (
 const (
 	endpoint         = "https://bond-pa.sandbox.googleapis.com"
 	hangoutEndpoints = "https://hangouts.googleapis.com/hangouts/v1_meetings/"
-	meetingEndpoints = "https://meetings.googleapis.com"
+	meetingEndpoints = "https://preprod-meetings.googleapis.com"
 
 	scope = "https://www.googleapis.com/auth/meetings"
 
