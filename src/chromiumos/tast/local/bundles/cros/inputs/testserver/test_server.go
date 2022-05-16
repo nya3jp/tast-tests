@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -211,6 +212,54 @@ func LaunchInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 	if err = pc.Navigate(ctx, server.URL+"/"+urlPath); err != nil {
 		return nil, errors.Wrapf(err, "failed to navigate to %q", server.URL)
 	}
+
+	if err = webutil.WaitForQuiescence(ctx, pc, 10*time.Second); err != nil {
+		return nil, errors.Wrap(err, "failed to load test page")
+	}
+
+	ui := uiauto.New(tconn)
+	// Even document is ready, target is not yet in a11y tree.
+	if err = ui.WaitUntilExists(pageRootFinder)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to render test page")
+	}
+
+	return &InputsTestServer{
+		server: server,
+		cr:     cr,
+		tconn:  tconn,
+		pc:     pc,
+		ui:     ui,
+	}, nil
+}
+
+// LaunchBrowser launches a local web server to serve inputs testing on
+// different type of input fields.
+// It opens either a Ash browser or a Lacros browser based on the arguments.
+func LaunchBrowser(ctx context.Context, br *browser.Browser, cr *chrome.Chrome, tconn *chrome.TestConn) (its *InputsTestServer, err error) {
+	// URL path needs to be in the allowlist to enable some features.
+	// https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/input_method/assistive_suggester.cc.
+	const urlPath = "e14s-test"
+	testing.ContextLog(ctx, "Start a local server to test inputs")
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Content-Type", "text/html")
+		io.WriteString(w, html)
+	}))
+	defer func() {
+		if err != nil {
+			server.Close()
+		}
+	}()
+
+	pc, err := br.NewConn(ctx, server.URL+"/"+urlPath)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to connect to browser and open %q", server.URL)
+	}
+	defer func() {
+		if err != nil {
+			pc.Close()
+		}
+	}()
 
 	if err = webutil.WaitForQuiescence(ctx, pc, 10*time.Second); err != nil {
 		return nil, errors.Wrap(err, "failed to load test page")
