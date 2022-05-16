@@ -9,7 +9,10 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -34,7 +37,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosVariationEnabled",
 		Timeout:      5 * time.Minute,
-		Data:         []string{"variation_seed.json"},
+		Data:         []string{"variation_seed.json", "variation_test_index.html", "logo_chrome_color_1x_web_32dp.png"},
 	})
 }
 
@@ -123,7 +126,6 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 			s.Fatal("Local State has not updated with the test seed")
 		}
 	}()
-
 	func() {
 		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
@@ -139,6 +141,9 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 			text    string
 			content string
 		}
+		// Use a local http server to reduce dependencies on the network and external webpage contents.
+		server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+		defer server.Close()
 		tests := []tc{
 			{
 				//data:text/html,<h1 id="success">Success</h1>
@@ -147,10 +152,9 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 				content: "<h1 id=\"success\">Success</h1>",
 			},
 			{
-				// TODO(crbug.com/1234165): Make tests hermetic by using a test http server.
-				url:     "https://chromium.org/",
+				url:     filepath.Join(server.URL, "variation_test_index.html"),
 				text:    "The Chromium Projects",
-				content: "<h2>The Chromium Projects</h2>",
+				content: "<h2><a href=\"https://www.chromium.org/\" dir=\"ltr\" id=\"sites-chrome-userheader-title\">The Chromium Projects</a></h2>",
 			},
 		}
 
