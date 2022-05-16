@@ -906,20 +906,24 @@ func (cl *ClamshellActionHandler) switchToLRUWindowThroughKeyEvent(ctx context.C
 }
 
 // switchToLRUWindowThroughOverview switches the window to least recently used one through overview.
-func (cl *ClamshellActionHandler) switchToLRUWindowThroughOverview(ctx context.Context) error {
-	// Ensure overview is shown.
-	if err := ash.SetOverviewModeAndWait(ctx, cl.tconn, true); err != nil {
-		return errors.Wrap(err, "failed to show overview")
-	}
-	// Ensure overview is hidden even if an error occur.
-	defer ash.SetOverviewModeAndWait(ctx, cl.tconn, false)
+func (cl *ClamshellActionHandler) switchToLRUWindowThroughOverview(ctx context.Context) (err error) {
+	var targetWindowFinder *nodewith.Finder
+	if err := uiauto.Retry(retryTimes, func(ctx context.Context) error {
+		// Ensure overview is shown.
+		if err := ash.SetOverviewModeAndWait(ctx, cl.tconn, true); err != nil {
+			return errors.Wrap(err, "failed to show overview")
+		}
 
-	targetWindowFinder, err := overviewLRUWindowFinder(ctx, cl.ui)
-	if err != nil {
-		return errors.Wrap(err, "failed to get LRU window finder")
+		targetWindowFinder, err = overviewLRUWindowFinder(ctx, cl.ui)
+		if err != nil {
+			return errors.Wrap(err, "failed to get LRU window finder")
+		}
+		return nil
+	})(ctx); err != nil {
+		return err
 	}
 
-	return cl.ui.LeftClickUntil(targetWindowFinder, cl.ui.Gone(targetWindowFinder))(ctx)
+	return cl.ui.LeftClickUntil(targetWindowFinder, cl.ui.WithTimeout(3*time.Second).WaitUntilGone(targetWindowFinder))(ctx)
 }
 
 // SwitchToNextChromeTab returns a function which switches to the next Chrome tab by key event.
