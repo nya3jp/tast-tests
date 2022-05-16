@@ -266,6 +266,9 @@ func (c *Config) EphemeralUser() bool { return c.m.EphemeralUser }
 // TODO(b/207576612): Remove this config item once Files app SWA is fully launched.
 func (c *Config) EnableFilesAppSWA() bool { return c.m.EnableFilesAppSWA }
 
+// EnablePersonalizationHub returns true if the Personalization Hub is enabled.
+func (c *Config) EnablePersonalizationHub() bool { return c.m.EnablePersonalizationHub }
+
 // UseSandboxGaia returns true if the sandbox instance of Gaia should be used.
 func (c *Config) UseSandboxGaia() bool { return c.m.UseSandboxGaia }
 
@@ -325,6 +328,7 @@ type MutableConfig struct {
 	ForceLaunchBrowser              bool       `reuse_match:"true"`
 	EphemeralUser                   bool       `reuse_match:"true"`
 	EnableFilesAppSWA               bool       `reuse_match:"true"`
+	EnablePersonalizationHub        bool       `reuse_match:"true"`
 	UseSandboxGaia                  bool       `reuse_match:"true"`
 	TestExtOAuthClientID            string     `reuse_match:"true"`
 }
@@ -361,6 +365,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			ForceLaunchBrowser:              false,
 			EphemeralUser:                   false,
 			EnableFilesAppSWA:               false,
+			EnablePersonalizationHub:        true,
 			UseSandboxGaia:                  false,
 		},
 	}
