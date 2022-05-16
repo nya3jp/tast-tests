@@ -355,12 +355,14 @@ type EthernetConfigProperties struct {
 // Currently only Ethernet and Wifi are supported.
 type NetworkTypeConfigProperties struct {
 	Ethernet *EthernetConfigProperties `json:"ethernet,omitempty"`
+	VPN      *VPNConfigProperties      `json:"vpn,omitempty"`
 	Wifi     *WiFiConfigProperties     `json:"wifi,omitempty"`
 }
 
 // ConfigProperties is passed to SetProperties or ConfigureNetwork to configure
 // a new network or augment an existing one.
 type ConfigProperties struct {
+	Name       string                      `json:"name"`
 	TypeConfig NetworkTypeConfigProperties `json:"typeConfig"`
 }
 
@@ -435,4 +437,80 @@ type DeviceStateProperties struct {
 	DeviceState             DeviceStateType `json:"devicestate"`
 	Type                    NetworkType     `json:"type"`
 	ManagedNetworkAvailable bool            `json:"managednetworkavailable"`
+}
+
+// VPNConfigProperties is used to create new VPN services or augment existing
+// ones.
+type VPNConfigProperties struct {
+	Host      string                     `json:"host"`
+	Type      VPNTypeConfig              `json:"type"`
+	IPsec     *IPsecConfigProperties     `json:"ipSec"`
+	L2TP      *L2TPConfigProperties      `json:"l2tp"`
+	OpenVPN   *OpenVPNConfigProperties   `json:"openVpn"`
+	WireGuard *WireGuardConfigProperties `json:"wireguard"`
+}
+
+// VPNType is the type of a VPN service.
+type VPNType int
+
+// VPN types.
+const (
+	VPNTypeIKEv2 VPNType = iota
+	VPNTypeL2TPIPsec
+	VPNTypeOpenVPN
+	VPNTypeWireGuard
+	VPNTypeExtension
+	VPNTypeARC
+)
+
+// VPNTypeConfig represents the type of a VPN service.
+type VPNTypeConfig struct {
+	Value VPNType `json:"value"`
+}
+
+// IPsecConfigProperties contains the properties to config IPsec tunnel for a VPN
+// service.
+type IPsecConfigProperties struct {
+	AuthType     string               `json:"authenticationType"`
+	EAP          *EAPConfigProperties `json:"eap,omitempty"`
+	IKEVersion   int                  `json:"ikeVersion"`
+	LocalID      string               `json:"localIdentity"`
+	PSK          string               `json:"psk"`
+	RemoteID     string               `json:"remoteIdentity"`
+	ServerCAPEMs []string             `json:"serverCaPems"`
+}
+
+// L2TPConfigProperties contains the properties to config L2TP tunnel for a VPN
+// service.
+type L2TPConfigProperties struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+// OpenVPNConfigProperties contains the properties to config a OpenVPN service.
+type OpenVPNConfigProperties struct {
+	ClientCertType         string   `json:"clientCertType"`
+	ClientCertPkcs11Id     string   `json:"clientCertPkcs11Id"`
+	ExtraHosts             []string `json:"extraHosts"`
+	Password               string   `json:"password"`
+	ServerCAPEMs           []string `json:"serverCaPems"`
+	Username               string   `json:"username"`
+	UserAuthenticationType string   `json:"userAuthenticationType"`
+}
+
+// WireGuardConfigProperties contains the properties to config a WireGuard
+// service.
+type WireGuardConfigProperties struct {
+	PrivateKey *string                   `json:"privateKey,omitempty"`
+	Peers      []WireGuardPeerProperties `json:"peers"`
+}
+
+// WireGuardPeerProperties contains the properties to config a peer in WireGuard
+// services.
+type WireGuardPeerProperties struct {
+	PublicKey    string  `json:"publicKey"`
+	PresharedKey *string `json:"presharedKey,omitempty"`
+	AllowedIPs   string  `json:"allowedIps"`
+	Endpoint     string  `json:"endpoint"`
+	KeepAlive    int     `json:"persistentKeepAlive"`
 }
