@@ -106,6 +106,24 @@
       "parentUuid": "1d8c1ec0_fe7ad371",
       "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9405f5a4_0fce108c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-05-16T17:50:53Z",
+      "side": 1,
+      "message": "You can follow this pattern of defining the mojo data structures as Go struct and const\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go;l\u003d62-77\n\nThe mojo data structures are defined here https://source.chromium.org/chromium/chromium/src/+/main:chromeos/services/network_config/public/mojom/cros_network_config.mojom;l\u003d69-79",
+      "parentUuid": "f6e31d9e_b7594ed3",
+      "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
