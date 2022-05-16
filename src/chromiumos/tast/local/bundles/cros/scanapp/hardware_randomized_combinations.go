@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Hardware,
-		Desc: "Tests that the Scan app can be used on real hardware",
+		Func:         HardwareRandomizedCombinations,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Tests that the Scan app can be used on real hardware with randomized combinations",
 		Contacts: []string{
 			"cros-peripherals@google.com",
 			"project-bolton@google.com",
@@ -58,7 +59,7 @@ func init() {
 	})
 }
 
-func Hardware(ctx context.Context, s *testing.State) {
+func HardwareRandomizedCombinations(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	fileContents, err := ioutil.ReadFile(s.DataPath(s.Param().(string)))
@@ -72,5 +73,5 @@ func Hardware(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to unmarshal scanner descriptor file: ", err)
 	}
 
-	scanning.RunHardwareTests(ctx, s, cr, scanner)
+	scanning.RunHardwareTests(ctx, s, cr, scanner, scanning.HardwareTestRunRandomizedCombinations)
 }
