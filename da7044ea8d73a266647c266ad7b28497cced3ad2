@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73fcdc3_bf59e05f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-16T15:48:47Z",
+      "side": 1,
+      "message": "nit: I know it is a trivial change but we could run at least compilation/unit tests to make sure syntax it okay and no comma or curly braces is missing.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "da7044ea8d73a266647c266ad7b28497cced3ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad5a0d79_c6ffa0b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-16T15:48:47Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "da7044ea8d73a266647c266ad7b28497cced3ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
