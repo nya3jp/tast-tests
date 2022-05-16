@@ -34,6 +34,24 @@
       "parentUuid": "79860ceb_4ad0e3b8",
       "revId": "1f8705249799d6c90af0a02844b026c77820ac05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c75181e_d93c2b6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-16T10:11:03Z",
+      "side": 1,
+      "message": "Looks not done. s/chrome.HasChrome/*chrome.Chrome/",
+      "parentUuid": "c5167afe_56c87022",
+      "revId": "1f8705249799d6c90af0a02844b026c77820ac05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

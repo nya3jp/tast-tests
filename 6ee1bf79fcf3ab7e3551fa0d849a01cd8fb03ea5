@@ -16,6 +16,23 @@
       "message": "PTAL, file set changed",
       "revId": "6ee1bf79fcf3ab7e3551fa0d849a01cd8fb03ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6321ea75_901d8f1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-16T10:11:03Z",
+      "side": 1,
+      "message": "slgtm with comments.",
+      "revId": "6ee1bf79fcf3ab7e3551fa0d849a01cd8fb03ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
