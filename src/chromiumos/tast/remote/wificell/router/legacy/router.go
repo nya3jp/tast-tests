@@ -54,8 +54,8 @@ type Router struct {
 	board         string
 	phys          map[int]*iw.Phy // map from phy idx to iw.Phy.
 	im            *common.IfaceManager
-	bridgeID      int
-	vethID        int
+	nextBridgeID  int
+	nextVethID    int
 	iwr           *iw.Runner
 	ipr           *ip.Runner
 	logCollectors map[string]*log.Collector // map from log path to its collector.
@@ -662,8 +662,8 @@ func (r *Router) workDir() string {
 
 // NewBridge returns a bridge name for tests to use. Note that the caller is responsible to call ReleaseBridge.
 func (r *Router) NewBridge(ctx context.Context) (_ string, retErr error) {
-	br := fmt.Sprintf("%s%d", common.BridgePrefix, r.bridgeID)
-	r.bridgeID++
+	br := fmt.Sprintf("%s%d", common.BridgePrefix, r.nextBridgeID)
+	r.nextBridgeID++
 	if err := r.ipr.AddLink(ctx, br, "bridge"); err != nil {
 		return "", err
 	}
@@ -682,64 +682,30 @@ func (r *Router) NewBridge(ctx context.Context) (_ string, retErr error) {
 
 // ReleaseBridge releases the bridge.
 func (r *Router) ReleaseBridge(ctx context.Context, br string) error {
-	var firstErr error
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, br))
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, br))
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.DeleteLink(ctx, br))
-	return firstErr
+	return common.ReleaseBridge(ctx, r.ipr, br)
 }
 
 // NewVethPair returns a veth pair for tests to use. Note that the caller is responsible to call ReleaseVethPair.
-func (r *Router) NewVethPair(ctx context.Context) (_, _ string, retErr error) {
-	veth := fmt.Sprintf("%s%d", common.VethPrefix, r.vethID)
-	vethPeer := fmt.Sprintf("%s%d", common.VethPeerPrefix, r.vethID)
-	r.vethID++
-	if err := r.ipr.AddLink(ctx, veth, "veth", "peer", "name", vethPeer); err != nil {
-		return "", "", err
-	}
-	defer func() {
-		if retErr != nil {
-			if err := r.ipr.DeleteLink(ctx, veth); err != nil {
-				testing.ContextLogf(ctx, "Failed to delete the veth %s while NewVethPair has failed", veth)
-			}
-		}
-	}()
-	if err := r.ipr.SetLinkUp(ctx, veth); err != nil {
-		return "", "", err
-	}
-	if err := r.ipr.SetLinkUp(ctx, vethPeer); err != nil {
-		return "", "", err
-	}
-	return veth, vethPeer, nil
+func (r *Router) NewVethPair(ctx context.Context) (string, string, error) {
+	vethID := r.nextVethID
+	r.nextVethID++
+	return common.NewVethPair(ctx, r.ipr, vethID)
 }
 
 // ReleaseVethPair release the veth pair.
 // Note that each side of the pair can be passed to this method, but the test should only call the method once for each pair.
 func (r *Router) ReleaseVethPair(ctx context.Context, veth string) error {
-	// If it is a peer side veth name, change it to another side.
-	if strings.HasPrefix(veth, common.VethPeerPrefix) {
-		veth = common.VethPrefix + veth[len(common.VethPeerPrefix):]
-	}
-	vethPeer := common.VethPeerPrefix + veth[len(common.VethPrefix):]
-
-	var firstErr error
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, veth))
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, veth))
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.FlushIP(ctx, vethPeer))
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, vethPeer))
-	// Note that we only need to delete one side.
-	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.DeleteLink(ctx, veth))
-	return firstErr
+	return common.ReleaseVethPair(ctx, r.ipr, veth)
 }
 
 // BindVethToBridge binds the veth to bridge.
 func (r *Router) BindVethToBridge(ctx context.Context, veth, br string) error {
-	return r.ipr.SetBridge(ctx, veth, br)
+	return common.BindVethToBridge(ctx, r.ipr, veth, br)
 }
 
 // UnbindVeth unbinds the veth to any other interface.
 func (r *Router) UnbindVeth(ctx context.Context, veth string) error {
-	return r.ipr.UnsetBridge(ctx, veth)
+	return common.UnbindVeth(ctx, r.ipr, veth)
 }
 
 // Utilities for resource control.
