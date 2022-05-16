@@ -7,10 +7,14 @@ package wpacli
 import (
 	"context"
 	"fmt"
+	"regexp"
+	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/network/cmd"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Runner contains methods involving wpa_cli command.
@@ -89,6 +93,111 @@ func (r *Runner) Set(ctx context.Context, prop Property, val string) error {
 	}
 	if !strings.Contains(string(cmdOut), "OK") {
 		return errors.Errorf("failed to get 'OK' in wpa_cli set output: %s", string(cmdOut))
+	}
+	return nil
+}
+
+// StartSoftAP creates a soft AP on DUT.
+func (r *Runner) StartSoftAP(ctx context.Context, freq uint32, ssid string, key_mgmt string, psk string) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("add_network")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli add_network")
+	}
+	re := regexp.MustCompile(`(?m)^(\d+)`)
+	substr := re.FindStringSubmatch(string(cmdOut))
+	if len(substr) < 2 {
+		return errors.New("no network id found")
+	}
+	id := substr[1]
+
+	cmdOut, err = r.cmd.Output(ctx, "sudo", sudoWPACLI("set_network", id, "mode", "2")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network mode")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli set_network mode output: %s", string(cmdOut))
+	}
+
+	cmdOut, err = r.cmd.Output(ctx, "sudo", sudoWPACLI("set_network", id, "frequency", strconv.FormatUint(uint64(freq), 10))...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network frequency")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli set_network frequency output: %s", string(cmdOut))
+	}
+
+	cmdOut, err = r.cmd.Output(ctx, "sudo", sudoWPACLI("set_network", id, "ssid", fmt.Sprintf("\"%s\"", ssid))...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network ssid")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli set_network ssid output: %s", string(cmdOut))
+	}
+
+	cmdOut, err = r.cmd.Output(ctx, "sudo", sudoWPACLI("set_network", id, "key_mgmt", key_mgmt)...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network key_mgmt")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli set_network key_mgmt output: %s", string(cmdOut))
+	}
+
+	if psk != "" {
+		cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("set_network", id, "psk", psk)...)
+		if err != nil {
+			return errors.Wrap(err, "failed running wpa_cli set_network psk")
+		}
+		if !strings.Contains(string(cmdOut), "OK") {
+			return errors.Errorf("failed to expect 'OK' in wpa_cli set_network psk output: %s", string(cmdOut))
+		}
+	}
+
+	cmdOut, err = r.cmd.Output(ctx, "sudo", sudoWPACLI("select_network", id)...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli select_network")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli select_network output: %s", string(cmdOut))
+	}
+
+	err = r.waitForStatus(ctx, "COMPLETE")
+	if err != nil {
+		return errors.Wrap(err, "cannot start soft AP")
+	}
+
+	return nil
+}
+
+// StopSoftAP stops the soft AP on DUT.
+func (r *Runner) StopSoftAP(ctx context.Context) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("remove_network", "all")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli remove_network")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli remove_network output: %s", string(cmdOut))
+	}
+
+	err = r.waitForStatus(ctx, "INACTIVE")
+	if err != nil {
+		return errors.Wrap(err, "cannot stop soft AP")
+	}
+
+	return nil
+}
+
+func (r *Runner) waitForStatus(ctx context.Context, status string) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("status")...)
+		if err != nil {
+			return errors.Wrap(err, "failed running wpa_cli status")
+		}
+		if strings.Contains(string(cmdOut), "wpa_state="+status) {
+			return nil // success
+		}
+		return errors.Errorf("wpa_supplicant does not match expected status %s", status)
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return err
 	}
 	return nil
 }

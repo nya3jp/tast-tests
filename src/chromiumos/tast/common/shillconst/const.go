@@ -306,6 +306,13 @@ const (
 	WakeOnWiFiReasonUnknown    = "Unknown"
 )
 
+// Tethering Soft AP security options defined in dbus-constants.h
+const (
+	SoftAPSecurityWPA2 = "wpa2"
+	SoftAPSecurityWPA3 = "wpa3"
+	SoftAPSecurityNone = "none"
+)
+
 // DBus Errors
 const (
 	ErrorMatchingServiceNotFound = "Matching service was not found"
