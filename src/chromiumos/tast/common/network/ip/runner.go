@@ -72,7 +72,7 @@ func (r *Runner) Flags(ctx context.Context, iface string) ([]string, error) {
 }
 
 // showLink runs `ip link show <iface>` and parses out the interface name,
-// state, mac address, and flags from the output.
+// state, mac address, flags, and any iface alias from the output.
 //
 // Example "ip link show" output:
 // 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
@@ -89,12 +89,22 @@ func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
 		return nil, errors.Errorf("unexpected lines of results: got %d, want at least 2", len(lines))
 	}
 
-	// Parse first line for iface, flags, and state.
+	// Parse first line for iface, iface alias, flags, and state.
 	fields := strings.Fields(lines[0])
 	if len(fields) < 5 {
 		return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
 	}
-	outputIface := strings.TrimSuffix(fields[1], ":")
+	outputIfaceWithPossibleAlias := strings.TrimSuffix(fields[1], ":")
+	aliasDividerIndex := strings.Index(outputIfaceWithPossibleAlias, "@")
+	var outputIface, ifaceAlias string
+	if aliasDividerIndex == -1 {
+		outputIface = outputIfaceWithPossibleAlias
+	} else {
+		outputIface = outputIfaceWithPossibleAlias[:aliasDividerIndex]
+		if len(outputIfaceWithPossibleAlias) > (aliasDividerIndex + 1) {
+			ifaceAlias = outputIfaceWithPossibleAlias[(aliasDividerIndex + 1):]
+		}
+	}
 	if outputIface != iface {
 		return nil, errors.Errorf("unmatched interface name, got %s, want %s", outputIface, iface)
 	}
@@ -123,6 +133,7 @@ func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
 		state,
 		MAC,
 		flags,
+		ifaceAlias,
 	}, nil
 }
 
@@ -260,4 +271,18 @@ func (r *Runner) LinkWithPrefix(ctx context.Context, prefix string) ([]string, e
 		}
 	}
 	return ret, nil
+}
+
+// IfaceAlias will return the alias of the iface as returned from running
+// "ip link show <iface>". If no alias exists, an error will be returned.
+func (r *Runner) IfaceAlias(ctx context.Context, iface string) (string, error) {
+	linkParts, err := r.showLink(ctx, iface)
+	if err != nil {
+		return "", err
+	}
+	alias := linkParts[4]
+	if alias == "" {
+		return "", errors.Errorf("no alias found for iface %q", iface)
+	}
+	return alias, nil
 }
