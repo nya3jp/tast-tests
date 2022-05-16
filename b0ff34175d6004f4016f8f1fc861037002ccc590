@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7589bf8_6790d3cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-16T17:54:28Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "d9bcf747_d8816278",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "b0ff34175d6004f4016f8f1fc861037002ccc590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce7caf46_5438db0e",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
         "patchSetId": 1
