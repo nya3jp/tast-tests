@@ -37,13 +37,27 @@ const (
 	LinkStateUnknown LinkState = "UNKNOWN"
 )
 
+// showLinkIfaceResult is a collection of sections of the output of an
+// "ip link show <iface>" call.
+//
+// Example output:
+// 1: lo@veth1: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+//    link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+type showLinkIfaceResult struct {
+	name  string // "lo" in example.
+	alias string // "veth1" in example. Will only be set if an alias is present.
+	state string // "UNKNOWN" in example
+	MAC   string // "00:00:00:00:00:00" in example.
+	flags string // "<LOOPBACK,UP,LOWER_UP>" in example.
+}
+
 // State returns the operation state of the interface.
 func (r *Runner) State(ctx context.Context, iface string) (LinkState, error) {
-	fields, err := r.showLink(ctx, iface)
+	ifaceLink, err := r.showLink(ctx, iface)
 	if err != nil {
 		return "", err
 	}
-	switch state := LinkState(fields[1]); state {
+	switch state := LinkState(ifaceLink.state); state {
 	case LinkStateUp, LinkStateDown, LinkStateUnknown:
 		// Expected state.
 		return state, nil
@@ -54,30 +68,30 @@ func (r *Runner) State(ctx context.Context, iface string) (LinkState, error) {
 
 // MAC returns the MAC address of the interface.
 func (r *Runner) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
-	fields, err := r.showLink(ctx, iface)
+	ifaceLink, err := r.showLink(ctx, iface)
 	if err != nil {
 		return nil, err
 	}
-	return net.ParseMAC(fields[2])
+	return net.ParseMAC(ifaceLink.MAC)
 }
 
 // Flags returns the flags of the interface.
 func (r *Runner) Flags(ctx context.Context, iface string) ([]string, error) {
-	fields, err := r.showLink(ctx, iface)
+	ifaceLink, err := r.showLink(ctx, iface)
 	if err != nil {
 		return nil, err
 	}
-	flags := strings.Split(strings.Trim(fields[3], "<>"), ",")
+	flags := strings.Split(strings.Trim(ifaceLink.flags, "<>"), ",")
 	return flags, nil
 }
 
 // showLink runs `ip link show <iface>` and parses out the interface name,
-// state, mac address, and flags from the output.
+// state, mac address, flags, and any iface alias from the output.
 //
 // Example "ip link show" output:
 // 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
 //    link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
-func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
+func (r *Runner) showLink(ctx context.Context, iface string) (*showLinkIfaceResult, error) {
 	// Run command and get output lines.
 	output, err := r.cmd.Output(ctx, "ip", "link", "show", iface)
 	if err != nil {
@@ -88,42 +102,39 @@ func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
 	if len(lines) < 2 {
 		return nil, errors.Errorf("unexpected lines of results: got %d, want at least 2", len(lines))
 	}
-
-	// Parse first line for iface, flags, and state.
+	// Parse first line for iface, iface alias, and flags.
+	ifaceLink := &showLinkIfaceResult{}
 	fields := strings.Fields(lines[0])
 	if len(fields) < 5 {
 		return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
 	}
-	outputIface := strings.TrimSuffix(fields[1], ":")
-	if outputIface != iface {
-		return nil, errors.Errorf("unmatched interface name, got %s, want %s", outputIface, iface)
+	outputIfaceWithPossibleAlias := strings.TrimSuffix(fields[1], ":")
+	ifaceNames := strings.Split(outputIfaceWithPossibleAlias, "@")
+	if len(ifaceNames) > 1 {
+		ifaceLink.alias = ifaceNames[1]
 	}
-	flags := fields[2]
-	var state string
+	ifaceLink.name = ifaceNames[0]
+	if ifaceLink.name != iface {
+		return nil, errors.Errorf("unmatched interface name, got %s, want %s", ifaceLink.name, iface)
+	}
+	ifaceLink.flags = fields[2]
+	// Parse the state from the next field after the "state" key.
 	for i := 3; i < (len(fields) - 1); i += 2 {
 		if fields[i] == "state" {
-			state = fields[i+1]
+			ifaceLink.state = fields[i+1]
 			break
 		}
 	}
-	if state == "" {
+	if ifaceLink.state == "" {
 		return nil, errors.Errorf(`failed to parse state from "ip link show" output: %q`, output)
 	}
-
 	// Parse second line for MAC.
 	fields = strings.Fields(lines[1])
 	if len(fields) < 2 {
 		return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
 	}
-	MAC := fields[1]
-
-	// Return values in the same order as the return of showLinkBrief.
-	return []string{
-		outputIface,
-		state,
-		MAC,
-		flags,
-	}, nil
+	ifaceLink.MAC = fields[1]
+	return ifaceLink, nil
 }
 
 // SetMAC sets MAC address of iface with command "ip link set $iface address $mac.
@@ -260,4 +271,17 @@ func (r *Runner) LinkWithPrefix(ctx context.Context, prefix string) ([]string, e
 		}
 	}
 	return ret, nil
+}
+
+// IfaceAlias will return the alias of the iface as returned from running
+// "ip link show <iface>". If no alias exists, an error will be returned.
+func (r *Runner) IfaceAlias(ctx context.Context, iface string) (string, error) {
+	ifaceLink, err := r.showLink(ctx, iface)
+	if err != nil {
+		return "", err
+	}
+	if ifaceLink.alias == "" {
+		return "", errors.Errorf("no alias found for iface %q", iface)
+	}
+	return ifaceLink.alias, nil
 }
