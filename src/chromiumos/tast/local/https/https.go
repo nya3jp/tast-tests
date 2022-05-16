@@ -139,7 +139,7 @@ func ConfigureChromeToAcceptCertificate(ctx context.Context, config ServerConfig
 	trust1Checkbox := nodewith.NameContaining("Trust this certificate for identifying websites").Role(role.CheckBox)
 	trust2Checkbox := nodewith.NameContaining("Trust this certificate for identifying email users").Role(role.CheckBox)
 	trust3Checkbox := nodewith.NameContaining("Trust this certificate for identifying software makers").Role(role.CheckBox)
-	okButton := nodewith.NameContaining("OK").Role(role.Button)
+	okButton := nodewith.Name("OK").Role(role.Button).ClassName("action-button")
 
 	if err := uiauto.Combine("set_cerficate",
 		ui.WaitUntilExists(authorities),
