@@ -33,6 +33,24 @@
       "message": "A small suggestion: we should add tast-owners@google.com to the reviewer list instead of adding a specific reviewer. See the doc: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
       "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c78ac40c_3eeae9b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-16T18:25:06Z",
+      "side": 1,
+      "message": "Got it! Added. Thanks!",
+      "parentUuid": "f025e949_f91f4c5c",
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
