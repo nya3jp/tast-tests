@@ -23,6 +23,10 @@ service HpsService {
 
   // DimMetrics gets the quick dim/lock delays after the lol is enabled/disabled.
   rpc RetrieveDimMetrics(google.protobuf.BoolValue) returns (RetrieveDimMetricsResponse){}
+
+  // CheckSPAEyeIcon checks if the eye icon is at the right bottom side of the screen when there is spa alert.
+  rpc CheckSPAEyeIcon(google.protobuf.Empty) returns (google.protobuf.BoolValue) {}
+
 }
 
 message StartUIWithCustomScreenPrivacySettingRequest {
