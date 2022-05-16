@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796f6fc4_ffb2e4ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T23:41:25Z",
+      "side": 1,
+      "message": "I imagine there\u0027s a better way to do this than polling (see wpa_monitor.go for a wpa_supplicant example). Can you check if we get some kind of signal through the control interface that would allow us to avoid polling?",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2b66d4_d845ccbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T23:41:25Z",
+      "side": 1,
+      "message": "Popping a profile that\u0027s not the topmost profile doesn\u0027t actually do anything. Can you just pop everything except the default?",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3743ca2e_70680931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T23:41:25Z",
+      "side": 1,
+      "message": "Does it make sense to do negative tests here, expecting no connection if e.g. credentials don\u0027t match? I don\u0027t understand the details too well, so maybe there aren\u0027t any edge cases, specifications for this.",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef0a3d76_94d1b361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T23:41:25Z",
+      "side": 1,
+      "message": "does it make sense to randomize this to avoid any potential collision just in case? we do this for SSIDs as well.",
+      "range": {
+        "startLine": 309,
+        "startChar": 76,
+        "endLine": 309,
+        "endChar": 87
+      },
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba51ce2_30d0f6d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T23:41:25Z",
+      "side": 1,
+      "message": "I\u0027d prefer a more explicit way to ensure that a connection happens. AIUI, this assumes behavior about scanning regularity, so if we don\u0027t scan in the next 30 seconds, this will fail (correct me if I\u0027m wrong). Instead, it would be better if we asked for a scan, for example.",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
