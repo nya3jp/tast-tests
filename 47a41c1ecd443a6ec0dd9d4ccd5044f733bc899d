@@ -54,6 +54,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "473d2254_2416b735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T23:16:56Z",
+      "side": 1,
+      "message": "sp: as",
+      "range": {
+        "startLine": 28,
+        "startChar": 44,
+        "endLine": 28,
+        "endChar": 45
+      },
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5748426c_f4e228d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T23:16:56Z",
+      "side": 1,
+      "message": "I think we can also technically support multiple Clients as well (and we may need to use this in the future for e.g. WiFi Direct, Tethering, etc. Can we make this an array as well?",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "643ec909_2ce7e077",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
         "patchSetId": 7
