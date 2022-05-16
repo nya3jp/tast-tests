@@ -23,18 +23,6 @@ const (
 	WorkingDir = "/tmp/tast-test/"
 )
 
-const (
-	// NOTE: shill does not manage (i.e., run a dhcpcd on) the device with prefix "veth".
-	// See kIgnoredDeviceNamePrefixes in http://cs/chromeos_public/src/platform2/shill/device_info.cc
-
-	// VethPrefix is the prefix for the veth interface.
-	VethPrefix = "vethA"
-	// VethPeerPrefix is the prefix for the peer's veth interface.
-	VethPeerPrefix = "vethB"
-	// BridgePrefix is the prefix for the bridge interface.
-	BridgePrefix = "tastbr"
-)
-
 // RouterCloseContextDuration is a shorter context.Context duration is used for
 // running things before Router.Close to reserve time for it to run.
 const RouterCloseContextDuration = 5 * time.Second
