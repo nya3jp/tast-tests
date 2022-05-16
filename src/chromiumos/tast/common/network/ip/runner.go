@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"regexp"
 	"strings"
 
 	"chromiumos/tast/common/network/cmd"
@@ -255,22 +256,25 @@ func (r *Runner) UnsetBridge(ctx context.Context, dev string) error {
 
 // LinkWithPrefix shows the device names that start with prefix.
 func (r *Runner) LinkWithPrefix(ctx context.Context, prefix string) ([]string, error) {
-	output, err := r.cmd.Output(ctx, "ip", "-brief", "link", "show")
+	output, err := r.cmd.Output(ctx, "ip", "link", "show")
 	if err != nil {
-		return nil, errors.Wrap(err, `failed to run "ip -brief link show"`)
+		return nil, errors.Wrap(err, `failed to run "ip link show"`)
 	}
 	content := strings.TrimSpace(string(output))
-	var ret []string
+	var ifaceNamesMatchingPrefix []string
+	ifaceNameMatcher := regexp.MustCompile("^\\d+:\\s+([^@:]+)(?:@[^:]*)?:")
 	for _, line := range strings.Split(content, "\n") {
-		fields := strings.Fields(line)
-		if len(fields) == 0 {
-			return nil, errors.New(`failed to parse the output of "ip -brief link show": unexpected empty line`)
+		ifaceNameMatch := ifaceNameMatcher.FindStringSubmatch(line)
+		if ifaceNameMatch == nil {
+			// This line does not have an iface name, so move on.
+			continue
 		}
-		if strings.HasPrefix(fields[0], prefix) {
-			ret = append(ret, fields[0])
+		ifaceName := ifaceNameMatch[1]
+		if strings.HasPrefix(ifaceName, prefix) {
+			ifaceNamesMatchingPrefix = append(ifaceNamesMatchingPrefix, ifaceName)
 		}
 	}
-	return ret, nil
+	return ifaceNamesMatchingPrefix, nil
 }
 
 // IfaceAlias will return the alias of the iface as returned from running

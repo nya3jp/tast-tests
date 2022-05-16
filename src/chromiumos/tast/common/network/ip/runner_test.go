@@ -154,3 +154,103 @@ func TestShowLink(t *testing.T) {
 		}
 	}
 }
+
+func TestLinkWithPrefix(t *testing.T) {
+	testcases := []struct {
+		prefix string
+		out    string
+		expect []string
+	}{
+		{
+			prefix: "somePrefix",
+			out:    "",
+			expect: []string{},
+		},
+		{
+			prefix: "somePrefix",
+			out:    "wlan0             UP             01:02:03:04:05:06 <BROADCAST,MULTICAST,UP,LOWER_UP> \n",
+			expect: []string{}, // Brief format not expected.
+		},
+		{
+			prefix: "somePrefix",
+			out: `2: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
+			expect: []string{}, // No matches.
+		},
+		{
+			prefix: "somePrefix",
+			out: `2: somePrefix: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
+			expect: []string{"somePrefix"}, // Name matches exactly.
+		},
+		{
+			prefix: "somePrefix",
+			out: `2: somePrefix123: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
+			expect: []string{"somePrefix123"}, // Name matches with prefix.
+		},
+		{
+			prefix: "somePrefix",
+			out: `2: somePrefix123@: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
+			expect: []string{"somePrefix123"}, // Can match even with empty alias.
+		},
+		{
+			prefix: "somePrefix",
+			out: `2: somePrefix123@someAlias: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
+			expect: []string{"somePrefix123"}, // Can match even with an alias.
+		},
+		{
+			prefix: "veth",
+			out: `
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: veth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 brd ff:ff:ff:ff:ff:ff
+    altname enp2s0
+3: eno2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 brd ff:ff:ff:ff:ff:ff
+    altname enp0s31f6
+`,
+			expect: []string{"veth1"}, // Can match with multiple interfaces.
+		},
+		{
+			prefix: "veth",
+			out: `
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: veth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 brd ff:ff:ff:ff:ff:ff
+    altname enp2s0
+3: veth2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 brd ff:ff:ff:ff:ff:ff
+    altname enp0s31f6
+`,
+			expect: []string{"veth1", "veth2"}, // Can match multiple ifaces.
+		},
+	}
+	stub := &stubCmdRunner{}
+	r := NewRunner(stub)
+	for i, tc := range testcases {
+		stub.out = []byte(tc.out)
+		// Test showLink function.
+		got, err := r.LinkWithPrefix(context.Background(), tc.prefix)
+		if err != nil {
+			t.Errorf("case#%d failed with err=%v", i, err)
+			continue
+		}
+		if len(tc.expect) == 0 {
+			if len(got) != 0 {
+				t.Errorf("case#%d got: %v, want: %v", i, got, tc.expect)
+			}
+		} else if !reflect.DeepEqual(got, tc.expect) {
+			t.Errorf("case#%d got: %v, want: %v", i, got, tc.expect)
+		}
+	}
+}
