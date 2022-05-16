@@ -104,6 +104,8 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 			button *nodewith.Finder
 		}{
 			{"dismiss permission prompt", dismissButton, dismissButton},
+			// Some DUTs show allow notifications first. Some don't.
+			{"allow notifications", notiPerm, allowButton.Ancestor(notiPerm)},
 			{"allow microphone and camera", avPerm, allowButton.Ancestor(avPerm)},
 			{"allow notifications", notiPerm, allowButton.Ancestor(notiPerm)},
 		} {
@@ -319,16 +321,18 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		}
 		return nil
 	}
-
+	meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
 	// Checks the number of participants in the conference that
 	// for different tiers testing would ask for different size.
 	checkParticipantsNum := func(ctx context.Context) error {
-		meetWebArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
 		participant := nodewith.NameRegex(regexp.MustCompile(`^[\d]+$`)).Role(role.StaticText).Ancestor(meetWebArea)
-		// Some DUT models have poor performance. When joining
-		// a large conference (over 15 participants), it would take much time
-		// to render DOM elements. Set a longer timer here.
-		if err := ui.WithTimeout(2 * time.Minute).WaitUntilExists(participant)(ctx); err != nil {
+		if err := uiauto.Combine("wait for the meet page to load participant",
+			conf.closeNotifDialog(),
+			// Some DUT models have poor performance. When joining
+			// a large conference (over 15 participants), it would take much time
+			// to render DOM elements. Set a longer timer here.
+			ui.WithTimeout(longUITimeout).WaitUntilExists(participant),
+		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait participant info")
 		}
 		participantInfo, err := ui.Info(ctx, participant)
@@ -366,6 +370,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		}
 		return nil
 	}
+
 	targetMeetAccount := nodewith.Name(conf.account).Role(role.StaticText)
 	return uiauto.Combine("join conference",
 		openConference,
@@ -375,6 +380,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		uiauto.IfSuccessThen(ui.Gone(targetMeetAccount), switchUser),
 		changeBackgroundToBlur,
 		joinConf,
+		ui.WithTimeout(longUITimeout).WaitUntilExists(meetWebArea),
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
 		// Add retry to get the correct participants number.
 		ui.WithInterval(time.Second).Retry(5, checkParticipantsNum),
@@ -420,6 +426,7 @@ func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
 		return nil
 	}
 	return uiauto.Combine("toggle video and audio",
+		conf.closeNotifDialog(),
 		// Remain in the state for 5 seconds after each action.
 		toggleVideo, uiauto.Sleep(viewingTime),
 		toggleVideo, uiauto.Sleep(viewingTime),
@@ -605,6 +612,7 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 		modeNode := nodewith.Name(mode).Role(role.RadioButton)
 		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(changeLayoutPanel)
 		return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
+			conf.closeNotifDialog(),
 			openLayout,
 			uiauto.NamedAction("click layout "+mode,
 				ui.WithTimeout(mediumUITimeout).LeftClickUntil(modeNode,
@@ -793,6 +801,13 @@ func (conf *GoogleMeetConference) LostNetworkCount() int {
 // DisplayAllParticipantsTime returns the loading time for displaying all participants.
 func (conf *GoogleMeetConference) DisplayAllParticipantsTime() time.Duration {
 	return conf.displayAllParticipantsTime
+}
+
+func (conf *GoogleMeetConference) closeNotifDialog() action.Action {
+	notiPerm := nodewith.NameContaining("Show notifications").ClassName("RootView").Role(role.AlertDialog)
+	allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(notiPerm)
+	// Allow notifications if it popup the dialog.
+	return uiauto.IfSuccessThen(conf.ui.Exists(allowButton), conf.ui.LeftClick(allowButton))
 }
 
 var _ Conference = (*GoogleMeetConference)(nil)
