@@ -16,6 +16,24 @@
       "message": "could you fix build break?",
       "revId": "a26c22def8989d8576a0e2c26b40b786b2ff5d7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a24f85_9078e66d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2022-05-16T10:05:49Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nI do not have access to CQ build logs so I am waiting for someone (usually Manoj) to share the failure with me. I will try to fix the breakage ASAP once I have some information.\n\nI also do not have access to the private overlays so if changes are required in a private overlay, I need some help to fix it. I can only work with the public ChromiumOS (not ChromeOS) sources.\n\nThanks,\nAdrian",
+      "parentUuid": "6151c155_ce6bd991",
+      "revId": "a26c22def8989d8576a0e2c26b40b786b2ff5d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
