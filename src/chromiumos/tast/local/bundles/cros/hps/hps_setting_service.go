@@ -64,7 +64,7 @@ func (hss *SettingService) WaitForDbus(ctx context.Context, req *empty.Empty) (*
 func (hss *SettingService) StartUIWithCustomScreenPrivacySetting(ctx context.Context, req *pb.StartUIWithCustomScreenPrivacySettingRequest) (*empty.Empty, error) {
 	// If user is logged in already, then no need to start again within the same test.
 	if hss.cr == nil {
-		cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=QuickDim"))
+		cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=QuickDim,SnoopingProtection"))
 		hss.cr = cr
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to start UI")
@@ -114,7 +114,7 @@ func (hss *SettingService) CheckForLockScreen(ctx context.Context, req *empty.Em
 		return nil, errors.Wrap(err, "error getting test conn")
 	}
 
-	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 2*time.Second); err != nil {
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, time.Minute); err != nil {
 		return nil, errors.Wrapf(err, "waiting for screen to be locked failed (last status %+v)", st)
 	}
 	return &empty.Empty{}, nil
@@ -126,6 +126,25 @@ func (hss *SettingService) OpenHPSInternalsPage(ctx context.Context, req *empty.
 		return nil, errors.Wrap(err, "error rendring hps-internals")
 	}
 	return &empty.Empty{}, nil
+}
+
+// CheckSPAEyeIcon checks if the eye icon is at the right bottom side of the screen when there is spa alert.
+func (hss *SettingService) CheckSPAEyeIcon(ctx context.Context, req *empty.Empty) (*wrappers.BoolValue, error) {
+	tconn, err := hss.cr.TestAPIConn(ctx)
+
+	if err != nil {
+		return nil, errors.Wrap(err, "error getting test conn")
+	}
+	ui := uiauto.New(tconn)
+	hpsNotifyView := nodewith.ClassName("SnoopingProtectionView")
+
+	if err := ui.Exists(hpsNotifyView)(ctx); err != nil {
+		if strings.Contains(err.Error(), "failed to find node with properties") {
+			return &wrappers.BoolValue{Value: false}, nil
+		}
+		return nil, err
+	}
+	return &wrappers.BoolValue{Value: true}, nil
 }
 
 // RetrieveDimMetrics gets the quick dim/lock delays after the lol is enabled/disabled.
