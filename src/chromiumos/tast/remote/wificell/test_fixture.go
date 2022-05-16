@@ -19,8 +19,10 @@ import (
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/pkcs11/netcertstore"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
+	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -39,6 +41,7 @@ import (
 	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/remote/wificell/router/legacy"
 	"chromiumos/tast/remote/wificell/router/openwrt"
+	"chromiumos/tast/remote/wificell/tethering"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/wifi"
@@ -753,8 +756,8 @@ func (tf *TestFixture) Capturer(ap *APIface) (*pcap.Capturer, bool) {
 	return capturer, ok
 }
 
-// ConnectWifi asks the DUT to connect to the specified WiFi.
-func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
+// connectWifi asks the DUT or companion DUT to connect to the specified WiFi.
+func (tf *TestFixture) connectWifi(ctx context.Context, useCompanionDUT bool, ssid string, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
 	c := &dutcfg.ConnConfig{
 		Ssid:    ssid,
 		SecConf: &base.Config{},
@@ -762,11 +765,11 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 	for _, op := range options {
 		op(c)
 	}
-	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
+	ctx, st := timing.Start(ctx, "tf.connectWifi")
 	defer st.End()
 
-	// Setup the NetCertStore only for EAP-related tests.
-	if c.SecConf.NeedsNetCertStore() {
+	// Setup the NetCertStore on DUT only for EAP-related tests.
+	if c.SecConf.NeedsNetCertStore() && useCompanionDUT == false {
 		if err := tf.setupNetCertStore(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to set up the NetCertStore")
 		}
@@ -799,11 +802,21 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 		Security:   c.SecConf.Class(),
 		Shillprops: propsEnc,
 	}
-	response, err := tf.wifiClient.Connect(ctx, request)
+
+	wifiClient := tf.wifiClient
+	if useCompanionDUT {
+		wifiClient = tf.peerWifiClient
+	}
+	response, err := wifiClient.Connect(ctx, request)
 	if err != nil {
 		return nil, errors.Wrapf(err, "client failed to connect to WiFi network with SSID %q", c.Ssid)
 	}
 	return response, nil
+}
+
+// ConnectWifi asks the DUT to connect to the specified WiFi.
+func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
+	return tf.connectWifi(ctx, false /*useCompanionDUT*/, ssid, options...)
 }
 
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
@@ -813,11 +826,15 @@ func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface, options .
 	return tf.ConnectWifi(ctx, conf.SSID, opts...)
 }
 
-func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) error {
+func (tf *TestFixture) disconnectWifi(ctx context.Context, useCompanionDUT bool, removeProfile bool) error {
 	ctx, st := timing.Start(ctx, "tf.disconnectWifi")
 	defer st.End()
 
-	resp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	wifiClient := tf.wifiClient
+	if useCompanionDUT {
+		wifiClient = tf.peerWifiClient
+	}
+	resp, err := wifiClient.SelectedService(ctx, &empty.Empty{})
 	if err != nil {
 		return errors.Wrap(err, "failed to get selected service")
 	}
@@ -831,7 +848,7 @@ func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) e
 		ServicePath:   resp.ServicePath,
 		RemoveProfile: removeProfile,
 	}
-	if _, err := tf.wifiClient.Disconnect(ctx, req); err != nil {
+	if _, err := wifiClient.Disconnect(ctx, req); err != nil {
 		return errors.Wrap(err, "failed to disconnect")
 	}
 	return nil
@@ -839,12 +856,12 @@ func (tf *TestFixture) disconnectWifi(ctx context.Context, removeProfile bool) e
 
 // DisconnectWifi asks the DUT to disconnect from current WiFi service.
 func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
-	return tf.disconnectWifi(ctx, false)
+	return tf.disconnectWifi(ctx, false /*useCompanionDUT*/, false /*removeProfile*/)
 }
 
 // CleanDisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
 func (tf *TestFixture) CleanDisconnectWifi(ctx context.Context) error {
-	return tf.disconnectWifi(ctx, true)
+	return tf.disconnectWifi(ctx, false /*useCompanionDUT*/, true /*removeProfile*/)
 }
 
 // ReserveForDisconnect returns a shorter ctx and cancel function for tf.DisconnectWifi.
@@ -1418,5 +1435,102 @@ func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error
 	}
 
 	testing.ContextLog(ctx, "WiFi connected")
+	return nil
+}
+
+// StartTethering configures the DUT to provide a tethering session with the options specified.
+func (tf *TestFixture) StartTethering(ctx context.Context, ops []tethering.Option) (*tethering.Config, *wifi.TetheringResponse, error) {
+	ctx, st := timing.Start(ctx, "tf.StartTethering")
+	defer st.End()
+
+	c, err := tethering.NewConfig(ops...)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to create tethering config")
+	}
+
+	request := &wifi.TetheringRequest{
+		NoUplink:          c.NoUL,
+		AutoDisableMinute: c.AutoDisableMin,
+		Ssid:              []byte(c.SSID),
+		Band:              c.GetBand(),
+	}
+
+	if c.SecConf.Class() == shillconst.SecurityPSK {
+		request.Psk = c.PSK
+		if c.SecMode == wpa.ModePureWPA2 {
+			request.Security = shillconst.SoftAPSecurityWPA2
+		} else if c.SecMode == wpa.ModePureWPA3 {
+			request.Security = shillconst.SoftAPSecurityWPA3
+		}
+		if c.SecMode == wpa.ModeMixedWPA3 {
+			request.Security = strings.Join([]string{shillconst.SoftAPSecurityWPA2, shillconst.SoftAPSecurityWPA3}, " ")
+		}
+	} else if c.SecConf.Class() == shillconst.SecurityNone {
+		request.Security = shillconst.SoftAPSecurityNone
+	}
+
+	resp, err := tf.wifiClient.StartTethering(ctx, request)
+	if err != nil {
+		return nil, nil, errors.Wrapf(err, "client failed to start tethering session with SSID %q", c.SSID)
+	}
+
+	return c, resp, nil
+}
+
+func (tf *TestFixture) StopTethering(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "tf.StopTethering")
+	defer st.End()
+
+	_, err := tf.wifiClient.StopTethering(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "client failed to stop tethering session")
+	}
+
+	return nil
+}
+
+// ReserveForStopTethering returns a shorter ctx and cancel function for tf.StopTethering().
+func (tf *TestFixture) ReserveForStopTethering(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 10*time.Second)
+}
+
+// CompanionDUTConnectWifi asks the companion DUT to connect to the specified WiFi.
+func (tf *TestFixture) CompanionDUTConnectWifi(ctx context.Context, ssid string, options ...dutcfg.ConnOption) (*wifi.ConnectResponse, error) {
+	return tf.connectWifi(ctx, true /*useCompanionDUT*/, ssid, options...)
+}
+
+// CompanionDUTCleanDisconnectWifi asks the companion DUT to disconnect from current WiFi service and removes the configuration.
+func (tf *TestFixture) CompanionDUTCleanDisconnectWifi(ctx context.Context) error {
+	return tf.disconnectWifi(ctx, true /*useCompanionDUT*/, true /*removeProfile*/)
+}
+
+// PingFromCompanionDUT tests the connectivity between companion DUT and DUT through currently connected WiFi service.
+func (tf *TestFixture) PingFromCompanionDUT(ctx context.Context, opts ...ping.Option) error {
+	ctx, st := timing.Start(ctx, "tf.PingFromCompanionDUT")
+	defer st.End()
+
+	addrs, err := tf.ClientIPv4Addrs(ctx)
+	if err != nil || len(addrs) == 0 {
+		return errors.Wrap(err, "failed to get the IP address")
+	}
+
+	iface, err := tf.peerWifiClient.Interface(ctx)
+	if err != nil {
+		return errors.Wrap(err, "DUT: failed to get the companion DUT WiFi interface")
+	}
+
+	opts = append(opts, ping.BindAddress(true), ping.SourceIface(iface))
+
+	pr := remoteping.NewRemoteRunner(tf.peer.Conn())
+	res, err := pr.Ping(ctx, addrs[0].String(), opts...)
+	if err != nil {
+		return err
+	}
+	testing.ContextLogf(ctx, "ping statistics=%+v", res)
+
+	if res.Loss > pingLossThreshold {
+		return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
+	}
+
 	return nil
 }
