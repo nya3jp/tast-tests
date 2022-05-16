@@ -83,6 +83,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/qemu"
 	_ "chromiumos/tast/local/bundles/cros/quickanswers"
 	_ "chromiumos/tast/local/bundles/cros/quicksettings"
+	_ "chromiumos/tast/local/bundles/cros/robloxexternal"
 	_ "chromiumos/tast/local/bundles/cros/scanapp"
 	_ "chromiumos/tast/local/bundles/cros/scanner"
 	_ "chromiumos/tast/local/bundles/cros/sched"
@@ -112,7 +113,8 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/wilco"
 	_ "chromiumos/tast/local/bundles/cros/wmp"
 
-	// import fixtures for arc game performance testing.
+	// import fixtures for Roblox external automated game testing.
+	_ "chromiumos/tast/local/bundles/cros/robloxexternal/fixtures"
 	// imports kioskLoggedIn fixtures. It is not referenced by tests as it
 	// returns FixtData type from policyutil/fixtures.
 	_ "chromiumos/tast/local/kioskmode/fixtures"
