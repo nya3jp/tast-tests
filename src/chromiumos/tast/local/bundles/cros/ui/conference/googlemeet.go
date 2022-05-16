@@ -538,19 +538,15 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 		ui := conf.ui
 		// Close all notifications to prevent them from covering the print button.
 		if err := ash.CloseNotifications(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to close otifications")
+			return errors.Wrap(err, "failed to close notifications")
 		}
-		moreOptions := nodewith.Name("More options").First()
-		menu := nodewith.Name("Call options").Role(role.Menu)
+		moreOptions := nodewith.Name("More options").Role(role.PopUpButton)
 		changeLayoutItem := nodewith.Name("Change layout").Role(role.MenuItem)
 		changeLayoutPanel := nodewith.Name("Change layout").Role(role.Dialog)
-		openLayout := ui.Retry(3, uiauto.NamedAction("open layout", uiauto.Combine("open layout",
-			uiauto.NamedAction("click call options", ui.LeftClick(moreOptions)),
-			// Sometimes ui.LeftClick click the wrong coordinates in Lacros.
-			// If ui.LeftClick clicks the wrong coordinates, use ui.DoDefault to click more options.
-			uiauto.IfSuccessThen(ui.Gone(moreOptions.Focused()), ui.DoDefault(moreOptions)),
-			uiauto.NamedAction("wait for menu", ui.WithTimeout(longUITimeout).WaitUntilExists(menu)),
-			ui.WithTimeout(longUITimeout).RetryUntil(ui.FocusAndWait(changeLayoutItem), ui.Exists(changeLayoutItem.Focused())),
+		openLayout := uiauto.NamedAction("open layout", ui.Retry(3, uiauto.Combine("open layout",
+			ui.WaitForLocation(moreOptions),
+			ui.WithTimeout(mediumUITimeout).RetryUntil(ui.DoDefault(moreOptions), ui.WaitUntilExists(changeLayoutItem)),
+			ui.RetryUntil(ui.WithTimeout(shortUITimeout).FocusAndWait(changeLayoutItem), ui.Exists(changeLayoutItem.Focused())),
 			uiauto.NamedAction("click change layout item", ui.LeftClick(changeLayoutItem)),
 			uiauto.NamedAction("wait for change layout panel", ui.WithTimeout(longUITimeout).WaitUntilExists(changeLayoutPanel)),
 		)))
