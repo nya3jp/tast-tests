@@ -66,6 +66,20 @@ const (
 	MMPerInch = 25.4
 )
 
+// HardwareTestMode controls how the hardware tests are run.
+type HardwareTestMode int
+
+const (
+	// Test each combination of color mode, page size and resolution.
+	HardwareTestRunAllCombinations HardwareTestMode = iota
+	// Test the minimal number of combinations necessary to test each color
+	// mode, page size and resolution at least once. Combinations will be
+	// randomized each run.
+	HardwareTestRunRandomizedCombinations
+	// Test only the largest and smallest resolutions with each color mode.
+	HardwareTestRunCriticalCombinations
+)
+
 // identifyOutputRegex parses out the width, height and colorspace from the
 // output of `identify someImage`.
 var identifyOutputRegex = regexp.MustCompile(`^.+ PNG (?P<width>[0-9]+)x(?P<height>[0-9]+).+ 8-bit (?P<colorspace>sRGB|Gray 256c|Gray 2c)`)
@@ -102,18 +116,48 @@ func RemoveScans(pattern string) error {
 
 // calculateNumScans returns the minimum number of scans necessary to test each
 // option at least once.
-func calculateNumScans(numColorModes, numPageSizes, numResolutions int) int {
-	numScans := numColorModes
+func calculateNumScans(mode HardwareTestMode, numColorModes, numPageSizes, numResolutions int) (int, error) {
+	switch mode {
+	case HardwareTestRunAllCombinations:
+		return numColorModes * numPageSizes * numResolutions, nil
+	case HardwareTestRunRandomizedCombinations:
+		numScans := numColorModes
 
-	if numPageSizes > numScans {
-		numScans = numPageSizes
+		if numPageSizes > numScans {
+			numScans = numPageSizes
+		}
+
+		if numResolutions > numScans {
+			numScans = numResolutions
+		}
+
+		return numScans, nil
+	case HardwareTestRunCriticalCombinations:
+		// TODO: Do this.
+		return 0, nil
+	default:
+		return -1, errors.Errorf("Unknown HardwareTestMode: %d", mode)
+	}
+}
+
+// TODO: Comment.
+func getNextScanCombination(numScan int, colorModes []scanapp.ColorMode, pageSizes []scanapp.ColorMode, resolutions []scanapp.Resolution, mode HardwareTestMode) (colorMode scanapp.ColorMode, pageSize scanapp.PageSize, resolution scanapp.resolution, err error) {
+	switch mode {
+	case HardwareTestRunAllCombinations:
+		colorMode = colorModes[numScan/(len(pageSizes)*len(resolutions))]
+		pageSize = pageSizes[(numScan/len(resolutions))%len(pageSizes)]
+		resolution = resolutions[numScan%len(resolutions)]
+	case HardwareTestRunRandomizedCombinations:
+		colorMode = colorModes[numScan%len(colorModes)]
+		pageSize = pageSizes[numScan%len(pageSizes)]
+		resolution = resolutions[numScan%len(resolutions)]
+	case HardwareTestRunCriticalCombinations:
+		// TODO: Do this.
+	default:
+		err = errors.Errorf("Unknown HardwareTestMode: %d", mode)
 	}
 
-	if numResolutions > numScans {
-		numScans = numResolutions
-	}
-
-	return numScans
+	return
 }
 
 // toIdentifyColorspace converts from `colorMode` to the colorspace output by
@@ -499,7 +543,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 // RunHardwareTests tests that the scan app can select each of the options
 // provided by `scanner`. This function is intended to be run on real hardware,
 // not the virtual USB printer.
-func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, scanner ScannerDescriptor) {
+func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, scanner ScannerDescriptor, mode HardwareTestMode) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
@@ -536,7 +580,9 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		s.Fatal("Failed to sleep after selecting scanner: ", err)
 	}
 
-	rand.Seed(time.Now().UnixNano())
+	if mode == HardwareTestRunRandomizedCombinations {
+		rand.Seed(time.Now().UnixNano())
+	}
 
 	for _, source := range scanner.SupportedSources {
 		s.Log("Testing source: ", source.SourceType)
@@ -576,7 +622,11 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 			source.SupportedResolutions[i], source.SupportedResolutions[j] = source.SupportedResolutions[j], source.SupportedResolutions[i]
 		})
 
-		numScans := calculateNumScans(len(source.SupportedColorModes), len(source.SupportedPageSizes), len(source.SupportedResolutions))
+		numScans, err := calculateNumScans(mode, len(source.SupportedColorModes), len(source.SupportedPageSizes), len(source.SupportedResolutions))
+		if err != nil {
+			s.Fatal("Failed to calculate number of scans: ", err)
+		}
+
 		for i := 0; i < numScans; i++ {
 			colorMode := source.SupportedColorModes[i%len(source.SupportedColorModes)]
 			if err := app.SelectColorMode(colorMode)(ctx); err != nil {
