@@ -1,0 +1,28 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.power;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/power";
+
+// BatteryService allows basic remote operations for Battery.
+service BatteryService {
+  // New logs into a Chrome session as a fake user. Close must be called later
+  // to clean up the associated resources.
+  rpc New (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // DrainBattery drains DUT battery to specific percentage.
+  rpc DrainBattery (BatteryRequest) returns (google.protobuf.Empty) {}
+}
+
+message BatteryRequest {
+    float maxPercentage = 1;
+  }
