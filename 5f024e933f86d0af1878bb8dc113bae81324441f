@@ -16,6 +16,24 @@
       "message": "Is the deletion of the this line intentional? I didn\u0027t see it mentioned in the commit log. Please let me know. Thanks.",
       "revId": "5f024e933f86d0af1878bb8dc113bae81324441f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d866df_09d5f65d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-16T21:51:54Z",
+      "side": 0,
+      "message": "I\u0027m not sure how additions/removals are calculated, but this \"deletion\" is just the move of this line further down to line 31.",
+      "parentUuid": "8b1aeafb_5ad82c3e",
+      "revId": "5f024e933f86d0af1878bb8dc113bae81324441f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
