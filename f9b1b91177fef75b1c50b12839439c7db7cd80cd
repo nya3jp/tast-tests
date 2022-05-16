@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db404677_83d2e88b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-16T16:29:14Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f9b1b91177fef75b1c50b12839439c7db7cd80cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b13693_44dd485f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-16T16:29:14Z",
+      "side": 1,
+      "message": "I think it would be nicer to define the syncButton and syncMessage finder here and populate them according to the test case instead of using those if clauses.\n\nsyncButton *nodewith.Finder\nsyncMessage *nodewith.Finder",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "f9b1b91177fef75b1c50b12839439c7db7cd80cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961a302e_162ce7b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-16T16:29:14Z",
+      "side": 1,
+      "message": "syncButton: nodewith.Name(\"Yes, I\u0027m in\").Role(role.Button)\nsyncMessage: nodewith.Name(\"Sync is on\").Role(role.StaticText).Ancestor(profileMenu)",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "f9b1b91177fef75b1c50b12839439c7db7cd80cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5ada15_8b95c9a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-05-16T16:29:14Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "f9b1b91177fef75b1c50b12839439c7db7cd80cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
