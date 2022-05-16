@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64e7e531_71f204cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-16T02:45:15Z",
+      "side": 1,
+      "message": "This is better, but I think that we should use struct with three string fields to have strong guarantees about changing the order of files in the array.",
+      "revId": "8494f060aa44faab531c44f8472aeed71ef8b8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -114,6 +114,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60f49d06_4786eb45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-16T02:45:15Z",
+      "side": 1,
+      "message": "Go has a file name convention: files should be snake_cased.",
+      "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a3cbda9_c845f55d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/fileUtils.go",
         "patchSetId": 2
@@ -143,6 +160,23 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "7a3cbda9_c845f55d",
+      "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63ebc94_e3e804e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/utils/screenUtils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-16T02:45:15Z",
+      "side": 1,
+      "message": "snake_case",
       "revId": "541c42fc9313fb2dab3ba888e6d3fab722ef5321",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
