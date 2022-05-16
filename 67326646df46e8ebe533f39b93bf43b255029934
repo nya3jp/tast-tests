@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c20820e_076ab7f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2022-05-16T04:25:31Z",
+      "side": 1,
+      "message": "nit: Fix spaces here for formatting",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "67326646df46e8ebe533f39b93bf43b255029934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2719e6bc_6edd3fe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2022-05-16T04:25:31Z",
+      "side": 1,
+      "message": "Can this just be:\n```\nerr :\u003d uiauto.Combine(\"trigger A11y VK\",vkbCtx.EnableA11yVirtualKeyboard(true), vkbCtx.ClickUntilVKShown(nodewith.NameContaining(\"Password\").Role(role.TextField)),\n)(ctx);\n\t\t\nif err !\u003d nil {\n...",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 9
+      },
+      "revId": "67326646df46e8ebe533f39b93bf43b255029934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56c7c61_a2628ad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_login_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2022-05-16T04:25:31Z",
+      "side": 1,
+      "message": "should this be \"a\"? since we shifted in the line before?",
+      "range": {
+        "startLine": 118,
+        "startChar": 17,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "67326646df46e8ebe533f39b93bf43b255029934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
