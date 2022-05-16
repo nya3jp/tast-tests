@@ -597,6 +597,7 @@ func MicEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	ui := uiauto.New(tconn)
 	// Scroll the mic toggle into view.
 	kb, err := input.Keyboard(ctx)
+	defer kb.Close()
 	if err != nil {
 		return false, errors.Wrap(err, "failed to setup keyboard")
 	}
@@ -610,6 +611,7 @@ func MicEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get the pod icon button info")
 	}
+
 	return info.Checked == checked.True, nil
 }
 
