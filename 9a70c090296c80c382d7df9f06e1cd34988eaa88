@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17e4a59_c086a3a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-device-play.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-16T05:41:03Z",
+      "side": 1,
+      "message": "This seems incorrect. If I\u0027m not mistaken, $$ is the process ID of the parent, not the current process, and PID 1 is reserved for the init process.\n\nMaybe \"This script is meant to be executed directly by the init process (PID 1)\"",
+      "revId": "9a70c090296c80c382d7df9f06e1cd34988eaa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f839767_4b8eef88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/device_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-16T05:41:03Z",
+      "side": 1,
+      "message": "Nit: line",
+      "revId": "9a70c090296c80c382d7df9f06e1cd34988eaa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
