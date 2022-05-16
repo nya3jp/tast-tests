@@ -16,6 +16,24 @@
       "message": "What about storing browser type instead?",
       "revId": "c30d04199a6cd6f5dd8c2211752fc5b788801666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f7f182_8ea682d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-16T06:24:12Z",
+      "side": 1,
+      "message": "Good point! Revised to browser type, thanks.",
+      "parentUuid": "4c94794a_00357dcf",
+      "revId": "c30d04199a6cd6f5dd8c2211752fc5b788801666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
