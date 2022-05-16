@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e36855f_f657f67a",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-16T13:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24a4fbfc_b089d4ce",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0602d886_c8d84965",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a383a89_01a739b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-16T13:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0602d886_c8d84965",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cec88ff5_1b713798",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-16T01:44:15Z",
       "side": 1,
       "message": "As we discussed in our sync last week, if these domain names are standard documentary examples in Passpoint specs this is worth putting a note in the block comment above.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a6a8e3_c5f548fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/const.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-16T13:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cec88ff5_1b713798",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -131,6 +203,30 @@
       "side": 1,
       "message": "I was thinking about errors that could occur outside of the expected one when there is no profile. Like if the profile exists, but the commands to remove it fail for some reason. In such a case the error would not be surfaced and could be hard to track down.\n\nIs it possible to check for the profile and only clear it if it exists? I saw a `Profiles` function, but not sure if it works for your use case: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/shill/manager.go;l\u003d102\n\nI think the best way to go would be to check for the profile first, and handle all the errors when calling the functions to remove it if possible. Ignoring errors generally goes against Tast/golang conventions: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
       "parentUuid": "f3cef81f_90851381",
+      "range": {
+        "startLine": 113,
+        "startChar": 47,
+        "endLine": 113,
+        "endChar": 60
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc8a5f93_822c80a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-16T13:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "516932eb_80f22c5a",
       "range": {
         "startLine": 113,
         "startChar": 47,
@@ -542,6 +638,30 @@
       "writtenOn": "2022-05-16T01:44:15Z",
       "side": 1,
       "message": "We should maybe specify:\n  - which DBus method is used on which shill DBus service\n  - where are defined the key names for the dictionary arg.",
+      "range": {
+        "startLine": 451,
+        "startChar": 27,
+        "endLine": 451,
+        "endChar": 76
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8208fe3_4502e0fe",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-16T13:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7872a430_9b3223d0",
       "range": {
         "startLine": 451,
         "startChar": 27,

@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b0c85b6_955e85ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-16T13:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa151ef8_fe4ae647",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 42
+      },
+      "revId": "5d274c9773ba635bed129fb7f5677e3b878452ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0af2137b_71dffcf2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-16T01:44:15Z",
       "side": 1,
       "message": "It could be nice to add an expectedMatchType field as well to check what matches as HOME and what matches as ROAMING.",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 27
+      },
+      "revId": "5d274c9773ba635bed129fb7f5677e3b878452ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d4de33_ec4b7df4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-16T13:16:43Z",
+      "side": 1,
+      "message": "Actually for now we have no way to check what kind of match occurred (Shill does not expose the information). Instead we enforce the association to a specific access point: we expect an association to the best match.",
+      "parentUuid": "0af2137b_71dffcf2",
       "range": {
         "startLine": 293,
         "startChar": 0,
