@@ -329,6 +329,24 @@
       "parentUuid": "875bcb46_4316dd9f",
       "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1997200_a8a851d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-16T03:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d1cdcc4_f4aadee7",
+      "revId": "9fd1696346a14ba45d29dd155831c3e6126dfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
