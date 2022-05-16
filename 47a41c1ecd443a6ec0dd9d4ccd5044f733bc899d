@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ce3ee2_b54164f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T21:01:19Z",
+      "side": 1,
+      "message": "mostly lgtm",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35caa123_13cb00c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T21:01:19Z",
+      "side": 1,
+      "message": "can we also check that it\u0027s not already loaded?",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e34582_236ab5ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T21:01:19Z",
+      "side": 1,
+      "message": "super nit: can we also check that it\u0027s a directory?",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643ec909_2ce7e077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T21:01:19Z",
+      "side": 1,
+      "message": "can we also add a comment here that the below command will also return an error if there are multiple WiFi interfaces, but that\u0027s not something we support at the moment?",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180f8975_db2360d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T21:01:19Z",
+      "side": 1,
+      "message": "Do we need to do anything with the AP interfaces in shill? Should we also make sure they aren\u0027t managed?",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9046c30_738ec90a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-16T21:01:19Z",
+      "side": 1,
+      "message": "/sys/module is how wpa_supplicant hwsim tests check.",
+      "parentUuid": "5089960c_98ff8cb0",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 58
+      },
+      "revId": "fadfa7f170262195e57f10e6bdad87220e7d5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c498351b_acd878df",
