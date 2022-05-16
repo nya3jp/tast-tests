@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0589f64_b3968a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-16T22:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e85de56d_33d8b643",
+      "range": {
+        "startLine": 277,
+        "startChar": 8,
+        "endLine": 277,
+        "endChar": 9
+      },
+      "revId": "4c55374694b2272bd741b9009ac51baf40b62c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a68cccb3_a6cada24",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebb053cc_00adc335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-16T22:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a68cccb3_a6cada24",
+      "range": {
+        "startLine": 283,
+        "startChar": 8,
+        "endLine": 283,
+        "endChar": 9
+      },
+      "revId": "4c55374694b2272bd741b9009ac51baf40b62c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c312525f_c02b56f2",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-05-16T10:09:28Z",
       "side": 1,
       "message": "could you check errors and log at least?",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 22
+      },
+      "revId": "4c55374694b2272bd741b9009ac51baf40b62c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c23e36_6f8378e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-16T22:11:41Z",
+      "side": 1,
+      "message": "Done, only one cleanup task returns errors.",
+      "parentUuid": "c312525f_c02b56f2",
       "range": {
         "startLine": 301,
         "startChar": 1,
