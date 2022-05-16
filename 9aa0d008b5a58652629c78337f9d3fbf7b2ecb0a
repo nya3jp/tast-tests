@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30fd8c62_499d8d6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-16T00:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e04bec23_85cdb1b3",
+      "revId": "9aa0d008b5a58652629c78337f9d3fbf7b2ecb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "334eb9f9_32e9d4eb",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5478648_ddd12b74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/loop_device_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-16T00:12:36Z",
+      "side": 1,
+      "message": "Yes and no. On one side, yes, code deduplication and so on. On the other hand, in case of detach it is a single line being duplicated, not much savings for a logical jump, and creation logic is a bit cusdtomized in certain cases, os reconciling that would be extra effort for an unknown gain. In summary, I\u0027d say the code snippet is short and isolated enough so its duplication doesn\u0027t cause any maintenance hurdle, especially since it just calls into some shell command which is very unlikely to change its interface, and if we are to change how we create loopdevice across the board, we would need to go and do the unification anyway, but given it is unlikely, doesn\u0027t worth the effort IMO",
+      "parentUuid": "334eb9f9_32e9d4eb",
+      "revId": "9aa0d008b5a58652629c78337f9d3fbf7b2ecb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e63e52a_dd3a4e10",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-05-03T19:04:42Z",
       "side": 1,
       "message": "To meet go logic, does it make sense [ab]use the defer callbacks and do check for the loop device while you unwind the loop object?",
+      "revId": "9aa0d008b5a58652629c78337f9d3fbf7b2ecb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c33a61_35c87da5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/loop_device_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-16T00:12:36Z",
+      "side": 1,
+      "message": "not sure what you mean. prepareLoopDeviceState prepares the intended state of the loop device - i.e. that it should be unopenable once detached and the backing file is of a certain format. This is not a cleanup",
+      "parentUuid": "5e63e52a_dd3a4e10",
       "revId": "9aa0d008b5a58652629c78337f9d3fbf7b2ecb0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
