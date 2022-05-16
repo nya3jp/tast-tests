@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cff7e5b0_55a49d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1333747
+      },
+      "writtenOn": "2022-05-16T18:23:31Z",
+      "side": 1,
+      "message": "This isn\u0027t expected behavior. The only time the quick settings bubble is closed is if a pod button leads to an external end point (for example the screen capture button will close the bubble and open the screen capture tool). We should be able to toggle between dark / light mode without the bubble closing.",
+      "parentUuid": "5200723b_394344ab",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef9eec31_4b8a69aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
         "patchSetId": 1
