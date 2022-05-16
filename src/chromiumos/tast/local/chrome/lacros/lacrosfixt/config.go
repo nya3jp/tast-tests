@@ -164,7 +164,10 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 
 	// Set required options based on lacros.Mode.
 	switch cfg.mode {
-	case lacros.NotSpecified, lacros.LacrosSideBySide:
+	case lacros.NotSpecified:
+		// If not specified, use lacros primary.
+		opts = append(opts, chrome.EnableFeatures("LacrosPrimary"))
+	case lacros.LacrosSideBySide:
 		// No-op since it's the system default for now.
 	case lacros.LacrosPrimary:
 		opts = append(opts, chrome.EnableFeatures("LacrosPrimary"))
