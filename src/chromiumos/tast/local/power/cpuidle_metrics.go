@@ -18,10 +18,15 @@ import (
 
 const c0State = "C0"
 
-// computeCpuidleStateFiles returns a mapping from cpuidle states to files
-// containing the corresponding residency information.
-func computeCpuidleStateFiles(ctx context.Context) (map[string][]string, int, error) {
-	ret := make(map[string][]string)
+type cpuidleTimeFile struct {
+	stateName string
+	path      string
+}
+
+// computeCpuidleStateFiles returns a mapping from cpus to files
+// containing the total time spent in the idle states.
+func computeCpuidleStateFiles(ctx context.Context) (map[string][]cpuidleTimeFile, int, error) {
+	ret := make(map[string][]cpuidleTimeFile)
 	numCpus := 0
 
 	const cpusDir = "/sys/devices/system/cpu/"
@@ -54,7 +59,7 @@ func computeCpuidleStateFiles(ctx context.Context) (map[string][]string, int, er
 				continue
 			}
 
-			name, err := readFirstLine(path.Join(cpuDir, cpuidle.Name(), "name"))
+			stateName, err := readFirstLine(path.Join(cpuDir, cpuidle.Name(), "name"))
 			if err != nil {
 				return nil, 0, errors.Wrap(err, "failed to read cpuidle name")
 			}
@@ -63,7 +68,7 @@ func computeCpuidleStateFiles(ctx context.Context) (map[string][]string, int, er
 				return nil, 0, errors.Wrap(err, "failed to read cpuidle latency")
 			}
 
-			if latency == "0" && name == "POLL" {
+			if latency == "0" && stateName == "POLL" {
 				// C0 state. Kernel stats aren't right, so calculate by
 				// subtracting all other states from total time (using epoch
 				// timer since we calculate differences in the end anyway).
@@ -71,7 +76,10 @@ func computeCpuidleStateFiles(ctx context.Context) (map[string][]string, int, er
 				continue
 			}
 
-			ret[name] = append(ret[name], path.Join(cpuDir, cpuidle.Name(), "time"))
+			ret[cpuInfo.Name()] = append(ret[cpuInfo.Name()], cpuidleTimeFile{
+				stateName: stateName,
+				path:      path.Join(cpuDir, cpuidle.Name(), "time"),
+			})
 		}
 	}
 
@@ -85,11 +93,11 @@ func computeCpuidleStateFiles(ctx context.Context) (map[string][]string, int, er
 // they generally may be greater than the time the CPU actually spends in the
 // corresponding cstate, as the hardware may enter shallower states than requested.
 type CpuidleStateMetrics struct {
-	cpuidleFiles map[string][]string
-	numCpus      int
-	lastTime     time.Time
-	lastStats    map[string]int64
-	metrics      map[string]perf.Metric
+	cpuidleTimeFiles map[string][]cpuidleTimeFile
+	numCpus          int
+	lastTime         time.Time
+	lastStats        map[string](map[string]int64)
+	metrics          map[string]perf.Metric
 }
 
 // Assert that CpuidleStateMetrics can be used in perf.Timeline.
@@ -102,26 +110,29 @@ func NewCpuidleStateMetrics() *CpuidleStateMetrics {
 
 // Setup determines what C-states are supported and which CPUs should be queried.
 func (cs *CpuidleStateMetrics) Setup(ctx context.Context, prefix string) error {
-	cpuidleFiles, numCpus, err := computeCpuidleStateFiles(ctx)
+	cpuidleTimeFiles, numCpus, err := computeCpuidleStateFiles(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error finding cpuidles")
 	}
-	cs.cpuidleFiles = cpuidleFiles
+	cs.cpuidleTimeFiles = cpuidleTimeFiles
 	cs.numCpus = numCpus
 	return nil
 }
 
-// readCpuidleStateTimes reads the cpuidle timings.
-func readCpuidleStateTimes(cpuidleFiles map[string][]string) (map[string]int64, time.Time, error) {
-	ret := make(map[string]int64)
-	for cpuidle, files := range cpuidleFiles {
-		ret[cpuidle] = 0
+// readCpuidleStateTimes reads the cpuidle timings and return a mapping from cpu idle states and cpu names
+// to the time spent in the state & cpu pairs so far.
+func readCpuidleStateTimes(cpuidleTimeFiles map[string][]cpuidleTimeFile) (map[string](map[string]int64), time.Time, error) {
+	ret := make(map[string](map[string]int64))
+	for cpuName, files := range cpuidleTimeFiles {
 		for _, file := range files {
-			t, err := readInt64(file)
+			t, err := readInt64(file.path)
 			if err != nil {
 				return nil, time.Time{}, errors.Wrap(err, "failed to read cpuidle timing")
 			}
-			ret[cpuidle] += t
+			if _, isPresent := ret[cpuName]; !isPresent {
+				ret[cpuName] = make(map[string]int64)
+			}
+			ret[cpuName][file.stateName] = t
 		}
 	}
 	return ret, time.Now(), nil
@@ -134,16 +145,35 @@ func (cs *CpuidleStateMetrics) Start(ctx context.Context) error {
 		return nil
 	}
 
-	stats, statTime, err := readCpuidleStateTimes(cs.cpuidleFiles)
+	stats, statTime, err := readCpuidleStateTimes(cs.cpuidleTimeFiles)
 	if err != nil {
 		return errors.Wrap(err, "failed to collect initial metrics")
 	}
-	for name := range stats {
-		cs.metrics[name] = perf.Metric{Name: "cpu-" + name, Unit: "percent",
-			Direction: perf.SmallerIsBetter, Multiple: true}
-	}
+
 	cs.metrics[c0State] = perf.Metric{Name: "cpu-" + c0State, Unit: "percent",
 		Direction: perf.SmallerIsBetter, Multiple: true}
+
+	for cpuName, perCPUStats := range stats {
+
+		// Per-cpu stats
+		cs.metrics[cpuName+"-"+c0State] = perf.Metric{Name: cpuName + "-" + c0State, Unit: "percent",
+			Direction: perf.SmallerIsBetter, Multiple: true}
+
+		for stateName := range perCPUStats {
+			// Per-cpu stats
+			cs.metrics[cpuName+"-"+stateName] = perf.Metric{Name: cpuName + "-" + stateName, Unit: "percent",
+				Direction: perf.SmallerIsBetter, Multiple: true}
+
+			if _, isPresent := cs.metrics[stateName]; !isPresent {
+				// Aggregated metrics of all the cpus
+				cs.metrics[stateName] = perf.Metric{Name: "cpu-" + stateName, Unit: "percent",
+					Direction: perf.SmallerIsBetter, Multiple: true}
+
+			}
+		}
+
+	}
+
 	cs.lastStats = stats
 	cs.lastTime = statTime
 	return nil
@@ -156,21 +186,39 @@ func (cs *CpuidleStateMetrics) Snapshot(ctx context.Context, values *perf.Values
 		return nil
 	}
 
-	stats, statTime, err := readCpuidleStateTimes(cs.cpuidleFiles)
+	stats, statTime, err := readCpuidleStateTimes(cs.cpuidleTimeFiles)
 	if err != nil {
 		return errors.Wrap(err, "failed to collect metrics")
 	}
 
-	diffs := make(map[string]int64)
-	for name, stat := range stats {
-		diffs[name] = stat - cs.lastStats[name]
+	diffs := make(map[string](map[string]int64))
+	for cpuName, perCPUStats := range stats {
+		diffs[cpuName] = make(map[string]int64)
+		for stateName, stat := range perCPUStats {
+			diffs[cpuName][stateName] = stat - cs.lastStats[cpuName][stateName]
+		}
 	}
 
-	total := statTime.Sub(cs.lastTime).Microseconds() * int64(cs.numCpus)
+	timeSlice := statTime.Sub(cs.lastTime).Microseconds()
+	total := timeSlice * int64(cs.numCpus)
 	c0Residency := total
-	for name, diff := range diffs {
-		values.Append(cs.metrics[name], float64(diff)/float64(total))
-		c0Residency -= diff
+	// Total time spent in a state by all the cpus
+	totalResidency := make(map[string]int64)
+
+	for cpuName, perCPUDiffs := range diffs {
+		perCPUC0Residency := timeSlice
+		for stateName, diff := range perCPUDiffs {
+			values.Append(cs.metrics[cpuName+"-"+stateName], float64(diff)/float64(timeSlice))
+			c0Residency -= diff
+			perCPUC0Residency -= diff
+
+			totalResidency[stateName] += diff
+		}
+		values.Append(cs.metrics[cpuName+"-"+c0State], float64(perCPUC0Residency)/float64(timeSlice))
+	}
+
+	for stateName, diff := range totalResidency {
+		values.Append(cs.metrics[stateName], float64(diff)/float64(total))
 	}
 	values.Append(cs.metrics[c0State], float64(c0Residency)/float64(total))
 
