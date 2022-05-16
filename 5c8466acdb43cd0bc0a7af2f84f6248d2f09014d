@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6763053_1b1b6f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-16T06:06:50Z",
+      "side": 1,
+      "message": "lgtm in general but I have some nits",
+      "revId": "5c8466acdb43cd0bc0a7af2f84f6248d2f09014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a45ffc_ab221318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-16T06:06:50Z",
+      "side": 1,
+      "message": "I would recommend creating a struct to hold these options to avoid random boolean parameters.",
+      "range": {
+        "startLine": 251,
+        "startChar": 19,
+        "endLine": 251,
+        "endChar": 32
+      },
+      "revId": "5c8466acdb43cd0bc0a7af2f84f6248d2f09014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e72a2ea6_1044adf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-16T06:06:50Z",
+      "side": 1,
+      "message": "You could also store browser type in the fixture value and this code would be a bit simpler.",
+      "revId": "5c8466acdb43cd0bc0a7af2f84f6248d2f09014d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
