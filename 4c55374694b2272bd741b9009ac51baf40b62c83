@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96448fec_056a2e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-16T10:09:28Z",
+      "side": 1,
+      "message": "minor requests only.",
+      "revId": "4c55374694b2272bd741b9009ac51baf40b62c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e85de56d_33d8b643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-16T10:09:28Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 277,
+        "startChar": 8,
+        "endLine": 277,
+        "endChar": 9
+      },
+      "revId": "4c55374694b2272bd741b9009ac51baf40b62c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68cccb3_a6cada24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-16T10:09:28Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 283,
+        "startChar": 8,
+        "endLine": 283,
+        "endChar": 9
+      },
+      "revId": "4c55374694b2272bd741b9009ac51baf40b62c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c312525f_c02b56f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-16T10:09:28Z",
+      "side": 1,
+      "message": "could you check errors and log at least?",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 22
+      },
+      "revId": "4c55374694b2272bd741b9009ac51baf40b62c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
