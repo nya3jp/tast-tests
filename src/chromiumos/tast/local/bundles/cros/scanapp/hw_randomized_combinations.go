@@ -17,8 +17,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Hardware,
-		Desc: "Tests that the Scan app can be used on real hardware",
+		Func: HWRandomizedCombinations,
+		Desc: "Tests that the Scan app can be used on real hardware with randomized combinations",
 		Contacts: []string{
 			"cros-peripherals@google.com",
 			"project-bolton@google.com",
@@ -58,7 +58,7 @@ func init() {
 	})
 }
 
-func Hardware(ctx context.Context, s *testing.State) {
+func HWRandomizedCombinations(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	fileContents, err := ioutil.ReadFile(s.DataPath(s.Param().(string)))
@@ -72,5 +72,5 @@ func Hardware(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to unmarshal scanner descriptor file: ", err)
 	}
 
-	scanning.RunHardwareTests(ctx, s, cr, scanner)
+	scanning.RunHardwareTests(ctx, s, cr, scanner, scanning.HardwareTestRunRandomizedCombinations)
 }
