@@ -263,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f251a8b5_60f05fae",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T00:56:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "217f3fae_a50da98c",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 4
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d19cd86a_ae794e3b",
@@ -371,6 +395,30 @@
       "side": 1,
       "message": "File a bug + add a TODO to check this.",
       "parentUuid": "c7ec4d3d_d8daebbd",
+      "range": {
+        "startLine": 92,
+        "startChar": 34,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b4b048_c29d0f3c",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T00:56:57Z",
+      "side": 1,
+      "message": "No need to. I checked the content of the file and this is just some openssl configuration options that needs to be used on ChromeOS. Code search reveals this env variable is used in multiple places like VPN.",
+      "parentUuid": "d7a00974_ddae2262",
       "range": {
         "startLine": 92,
         "startChar": 34,
