@@ -36,6 +36,7 @@ const (
 	ClamshellVKWithAssistAutocorrect   = "clamshellVKWithAssistAutocorrect"
 	ClamshellNonVK                     = "clamshellNonVK"
 	ClamshellNonVKInGuest              = "clamshellNonVKInGuest"
+	ClamshellNonVKInGuestNonHub        = "clamshellNonVKInGuestNonHub"
 	ClamshellNonVKWithMultiwordSuggest = "clamshellNonVKWithMultiwordSuggest"
 	ClamshellNonVKWithGrammarCheck     = "clamshellNonVKWithGrammarCheck"
 	TabletVK                           = "tabletVK"
@@ -180,6 +181,21 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.GuestLogin()),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: ClamshellNonVKInGuestNonHub,
+		Desc: "Clamshell mode in guest login with VK and Personalization Hub disabled",
+		Contacts: []string{
+			"pzliu@google.com",
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.GuestLogin(), chrome.DisablePersonalizationHub()),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
