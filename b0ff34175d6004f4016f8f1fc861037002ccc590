@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c021dc0_2f4cc34a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-05-16T22:31:15Z",
+      "side": 1,
+      "message": "Thanks, fixed.",
+      "parentUuid": "d7589bf8_6790d3cf",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "b0ff34175d6004f4016f8f1fc861037002ccc590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce7caf46_5438db0e",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-05-16T17:11:31Z",
       "side": 1,
       "message": "Does it need any validation on this value? or is it just safe to assume that any text passed in is valid?",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 11
+      },
+      "revId": "b0ff34175d6004f4016f8f1fc861037002ccc590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b509c2_86c765c3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-05-16T22:31:15Z",
+      "side": 1,
+      "message": "We could assume fakeVariationsChannel is safe and valid. This variable is passed from the file https://source.corp.google.com/piper///depot/google3/googledata/googleclient/chrome/finch/guitar/BUILD;l\u003d92-118",
+      "parentUuid": "ce7caf46_5438db0e",
       "range": {
         "startLine": 169,
         "startChar": 4,
