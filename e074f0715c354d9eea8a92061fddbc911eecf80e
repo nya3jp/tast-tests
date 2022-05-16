@@ -50,6 +50,29 @@
       "message": "nit/style: can this be merged into LacrosPrimary section below?",
       "revId": "e074f0715c354d9eea8a92061fddbc911eecf80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e135e44_08cee913",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-16T17:16:53Z",
+      "side": 1,
+      "message": "(This could be in a follow up, shouldn\u0027t be blocking this at all) Wouldn\u0027t it be a good time to implement LacrosOnly mode now that it defaults to LacrosPrimary? It is helpful for any experiment tests that want to check its behavior with LacrosOnly early on.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 66
+      },
+      "revId": "e074f0715c354d9eea8a92061fddbc911eecf80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
