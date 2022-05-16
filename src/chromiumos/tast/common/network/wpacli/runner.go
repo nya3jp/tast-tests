@@ -7,10 +7,14 @@ package wpacli
 import (
 	"context"
 	"fmt"
+	"regexp"
+	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/network/cmd"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Runner contains methods involving wpa_cli command.
@@ -123,4 +127,81 @@ func (r *Runner) TDLSTeardown(ctx context.Context, mac string) error {
 // TDLSLinkStatus runs tdls_link_status command.
 func (r *Runner) TDLSLinkStatus(ctx context.Context, mac string) error {
 	return r.run(ctx, "TDLS link status: connected", "tdls_link_status", mac)
+}
+
+// StartSoftAP creates a soft AP on DUT.
+func (r *Runner) StartSoftAP(ctx context.Context, freq uint32, ssid string, key_mgmt string, psk string) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("add_network")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli add_network")
+	}
+	re := regexp.MustCompile(`(?m)^(\d+)`)
+	substr := re.FindStringSubmatch(string(cmdOut))
+	if len(substr) < 2 {
+		return errors.New("no network id found")
+	}
+	id := substr[1]
+
+	err = r.run(ctx, "OK", "set_network", id, "mode", "2")
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network mode")
+	}
+
+	err = r.run(ctx, "OK", "set_network", id, "frequency", strconv.FormatUint(uint64(freq), 10))
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network frequency")
+	}
+
+	err = r.run(ctx, "OK", "set_network", id, "ssid", fmt.Sprintf("\"%s\"", ssid))
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network ssid")
+	}
+
+	err = r.run(ctx, "OK", "set_network", id, "key_mgmt", key_mgmt)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli set_network key_mgmt")
+	}
+
+	if psk != "" {
+		err := r.run(ctx, "OK", "set_network", id, "psk", psk)
+		if err != nil {
+			return errors.Wrap(err, "failed running wpa_cli set_network psk")
+		}
+	}
+
+	err = r.run(ctx, "OK", "select_network", id)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli select_network")
+	}
+
+	err = r.waitForStatus(ctx, "COMPLETE")
+	if err != nil {
+		return errors.Wrap(err, "cannot start soft AP")
+	}
+
+	return nil
+}
+
+// StopSoftAP stops the soft AP on DUT.
+func (r *Runner) StopSoftAP(ctx context.Context) error {
+	err := r.run(ctx, "OK", "remove_network", "all")
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli remove_network")
+	}
+
+	err = r.waitForStatus(ctx, "INACTIVE")
+	if err != nil {
+		return errors.Wrap(err, "cannot stop soft AP")
+	}
+
+	return nil
+}
+
+func (r *Runner) waitForStatus(ctx context.Context, status string) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return r.run(ctx, "wpa_state="+status, "status")
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return err
+	}
+	return nil
 }

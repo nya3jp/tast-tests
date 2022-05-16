@@ -18,8 +18,10 @@ import (
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/pkcs11/netcertstore"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
+	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -38,6 +40,7 @@ import (
 	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/remote/wificell/router/legacy"
 	"chromiumos/tast/remote/wificell/router/openwrt"
+	"chromiumos/tast/remote/wificell/tethering"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/wifi"
@@ -775,7 +778,7 @@ func (tf *TestFixture) ConnectWifiFromDUT(ctx context.Context, dutIdx DutIdx, ss
 	for _, op := range options {
 		op(c)
 	}
-	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
+	ctx, st := timing.Start(ctx, "tf.ConnectWifiFromDUT")
 	defer st.End()
 
 	// Setup the NetCertStore only for EAP-related tests.
@@ -895,7 +898,7 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ..
 
 // PingFromSpecificDUT tests the connectivity between the given DUT and a target IP.
 func (tf *TestFixture) PingFromSpecificDUT(ctx context.Context, dutIdx DutIdx, targetIP string, opts ...ping.Option) (*ping.Result, error) {
-	iface, err := tf.ClientInterface(ctx)
+	iface, err := tf.DUTClientInterface(ctx, dutIdx)
 	if err != nil {
 		return nil, errors.Wrap(err, "DUT: failed to get the client WiFi interface")
 	}
@@ -905,7 +908,7 @@ func (tf *TestFixture) PingFromSpecificDUT(ctx context.Context, dutIdx DutIdx, t
 	// interface. Also see b/225205611 for details.
 	opts = append(opts, ping.BindAddress(true), ping.SourceIface(iface))
 
-	ctx, st := timing.Start(ctx, "tf.PingFromDUT")
+	ctx, st := timing.Start(ctx, "tf.PingFromSpecificDUT")
 	defer st.End()
 
 	pr := remoteping.NewRemoteRunner(tf.duts[dutIdx].dut.Conn())
@@ -961,10 +964,10 @@ func (tf *TestFixture) ArpingFromDUT(ctx context.Context, serverIP string, ops .
 
 // ArpingFromSpecificDUT tests that the given DUT can send the broadcast packets to server.
 func (tf *TestFixture) ArpingFromSpecificDUT(ctx context.Context, dutIdx DutIdx, serverIP string, ops ...arping.Option) error {
-	ctx, st := timing.Start(ctx, "tf.ArpingFromDUT")
+	ctx, st := timing.Start(ctx, "tf.ArpingFromSpecificDUT")
 	defer st.End()
 
-	iface, err := tf.ClientInterface(ctx)
+	iface, err := tf.DUTClientInterface(ctx, dutIdx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the client WiFi interface")
 	}
@@ -984,7 +987,7 @@ func (tf *TestFixture) ArpingFromSpecificDUT(ctx context.Context, dutIdx DutIdx,
 
 // ArpingFromRouterID tests that DUT can receive the broadcast packets from server.
 func (tf *TestFixture) ArpingFromRouterID(ctx context.Context, idx int, serverIface string, ops ...arping.Option) error {
-	ctx, st := timing.Start(ctx, "tf.ArpingFromServer")
+	ctx, st := timing.Start(ctx, "tf.ArpingFromRouterID")
 	defer st.End()
 
 	addrs, err := tf.ClientIPv4Addrs(ctx)
@@ -1507,4 +1510,60 @@ func (tf *TestFixture) WaitWifiConnected(ctx context.Context, dutIdx DutIdx, gui
 
 	testing.ContextLog(ctx, "WiFi connected")
 	return nil
+}
+
+// StartTethering configures the specific DUT to provide a tethering session with the options specified.
+func (tf *TestFixture) StartTethering(ctx context.Context, dutIdx DutIdx, ops []tethering.Option) (*tethering.Config, *wifi.TetheringResponse, error) {
+	ctx, st := timing.Start(ctx, "tf.StartTethering")
+	defer st.End()
+
+	c, err := tethering.NewConfig(ops...)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to create tethering config")
+	}
+
+	request := &wifi.TetheringRequest{
+		NoUplink:          c.NoUL,
+		AutoDisableMinute: c.AutoDisableMin,
+		Ssid:              []byte(c.SSID),
+		Band:              c.Band.String(),
+	}
+
+	if c.SecConf.Class() == shillconst.SecurityPSK {
+		request.Psk = c.PSK
+		if c.SecMode == wpa.ModePureWPA2 {
+			request.Security = shillconst.SoftAPSecurityWPA2
+		} else if c.SecMode == wpa.ModePureWPA3 {
+			request.Security = shillconst.SoftAPSecurityWPA3
+		}
+		if c.SecMode == wpa.ModeMixedWPA3 {
+			request.Security = strings.Join([]string{shillconst.SoftAPSecurityWPA2, shillconst.SoftAPSecurityWPA3}, " ")
+		}
+	} else if c.SecConf.Class() == shillconst.SecurityNone {
+		request.Security = shillconst.SoftAPSecurityNone
+	}
+
+	resp, err := tf.duts[dutIdx].wifiClient.StartTethering(ctx, request)
+	if err != nil {
+		return nil, nil, errors.Wrapf(err, "client failed to start tethering session with SSID %q", c.SSID)
+	}
+
+	return c, resp, nil
+}
+
+func (tf *TestFixture) StopTethering(ctx context.Context, dutIdx DutIdx) error {
+	ctx, st := timing.Start(ctx, "tf.StopTethering")
+	defer st.End()
+
+	_, err := tf.duts[dutIdx].wifiClient.StopTethering(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "client failed to stop tethering session")
+	}
+
+	return nil
+}
+
+// ReserveForStopTethering returns a shorter ctx and cancel function for tf.StopTethering().
+func (tf *TestFixture) ReserveForStopTethering(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 10*time.Second)
 }
