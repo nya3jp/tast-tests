@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2091db2_e214a02a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-16T18:57:09Z",
+      "side": 1,
+      "message": "@Ahmed, pls refer to the recording on my DUT https://drive.google.com/file/d/1vfdu4w-FHKA7XymS7iuCKTigunH77kXo/view?usp\u003dsharing\n(0:14 - 0:20).\nAfter the first page indicator view is clicked on, `ui.LeftClick(darkThemePodIconButton))` does nothing (I\u0027m not sure if it really clicks on somewhere) then the bubble is closed. \nNote that the dark theme button exists in second page for my DUT; however, darkThemePodIconButton is available in ui_tree.txt since we expand Quick Settings.\nIf there is any way we can navigate to the correct location of dark theme button without checking in all the pages, it would be very helpful.",
+      "parentUuid": "cff7e5b0_55a49d4a",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef9eec31_4b8a69aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
         "patchSetId": 1
