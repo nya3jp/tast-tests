@@ -49,31 +49,40 @@ var typingTestMessages = []data.Message{data.TypingMessageHello}
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardTypingIME,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that virtual keyboard works in different input methods",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Fixture:      fixture.TabletVK,
 		Timeout:      time.Duration(len(typingTestIMEs)+len(typingTestIMEsUpstream)) * time.Duration(len(typingTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				Val:               typingTestIMEs,
+				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "upstream",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				Val:               typingTestIMEsUpstream,
+				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				Val:               append(typingTestIMEs, typingTestIMEsUpstream...),
+				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "lacros",
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				Val:               typingTestIMEs,
+				Fixture:           fixture.LacrosTabletVK,
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -85,13 +94,18 @@ func VirtualKeyboardTypingIME(ctx context.Context, s *testing.State) {
 	uc := s.FixtValue().(fixture.FixtData).UserContext
 	uc.SetTestName(s.TestName())
 
+	cleanupCtx := ctx
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 	inputField := testserver.TextAreaNoCorrectionInputField
 	subtest := func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State) {
 		return func(ctx context.Context, s *testing.State) {
