@@ -6,11 +6,11 @@ package network
 
 import (
 	"context"
-	"fmt"
 	"reflect"
 
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/network/netconfig"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -30,22 +30,6 @@ func init() {
 	})
 }
 
-// configureNetworkResult holds the return value of
-// chromeos.networkConfig.mojom.CrosNetworkConfig.configureNetwork().
-type configureNetworkResult struct {
-	GUID         string `json:"guid"`
-	ErrorMessage string `json:"errorMessage"`
-}
-
-// JavaScript wrapper to call CrosNetworkConfig.configureNetwork().
-const jsTemplate = `
-async function() {
-	const networkConfig = chromeos.networkConfig.mojom.CrosNetworkConfig.getRemote();
-	const properties = %s;
-	return await networkConfig.configureNetwork(properties, false);
-}
-`
-
 func VPNMojoConf(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx)
 	if err != nil {
@@ -53,21 +37,26 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	// Load network configuration page to get access to networkConfig mojom component.
-	conn, err := cr.NewConn(ctx, "chrome://network")
+	networkConfig, err := netconfig.NewCrosNetworkConfig(ctx, cr)
 	if err != nil {
-		s.Fatal("Failed to load network configuration page: ", err)
+		s.Fatal("Failed to create CrosNetworkConfig: ", err)
 	}
-	defer conn.Close()
 
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed to create shill manager proxy: ", err)
 	}
 
+	// Constants used in the following tests. Cannot make them const since we need
+	// to get address of some of them. Keys are generated randomly, only for test
+	// purposes.
+	emptyStr := ""
+	pubKey := "xLwB3ayvpYqvRrkyiEfK1YtipzpZKAdLJBP9ikHJbhg="
+	privKey := "wHyvoCjtnN/jFnOl1M9kDTWkWgdV6Nh1fawQm9NvOm0="
+
 	for _, tc := range []struct {
 		subtest        string
-		mojoProperties string
+		mojoProperties netconfig.ConfigProperties
 		// |providerProperties| contains all the expected properties in the Provider
 		// property, while |serviceProperties| contains all the expected properties
 		// except for Provider. Most VPN properties are held in the Provider
@@ -77,31 +66,32 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 	}{
 		{
 			subtest: "WireGuard",
-			mojoProperties: `{
-				name: 'temp-wg1',
-				typeConfig: {
-					vpn: {
-						host: 'wireguard',
-						type: {value: chromeos.networkConfig.mojom.VpnType.kWireGuard},
-						wireguard: {
-							peers:[{
-								publicKey: 'xLwB3ayvpYqvRrkyiEfK1YtipzpZKAdLJBP9ikHJbhg=',
-								presharedKey: '',
-								endpoint: '2.2.2.2:30000',
-								allowedIps: '0.0.0.0/0',
-							}],
-							privateKey: 'wHyvoCjtnN/jFnOl1M9kDTWkWgdV6Nh1fawQm9NvOm0=',
+			mojoProperties: netconfig.ConfigProperties{
+				Name: "temp-wg1",
+				TypeConfig: netconfig.NetworkTypeConfigProperties{
+					VPN: &netconfig.VPNConfigProperties{
+						Host: "wireguard",
+						Type: netconfig.VPNTypeConfig{Value: netconfig.VPNTypeWireGuard},
+						WireGuard: &netconfig.WireGuardConfigProperties{
+							Peers: []netconfig.WireGuardPeerProperties{
+								netconfig.WireGuardPeerProperties{
+									PublicKey:    pubKey,
+									PresharedKey: &emptyStr,
+									Endpoint:     "2.2.2.2:30000",
+									AllowedIPs:   "0.0.0.0/0",
+								}},
+							PrivateKey: &privKey,
 						},
 					},
 				},
-			}`,
+			},
 			providerProperties: map[string]interface{}{
 				"Host": "wireguard",
 				"Type": "wireguard",
 				// PSK and private key are not exposed so they cannot be verified.
 				"WireGuard.Peers": []map[string]string{
 					{
-						"PublicKey":           "xLwB3ayvpYqvRrkyiEfK1YtipzpZKAdLJBP9ikHJbhg=",
+						"PublicKey":           pubKey,
 						"Endpoint":            "2.2.2.2:30000",
 						"AllowedIPs":          "0.0.0.0/0",
 						"PersistentKeepalive": "",
@@ -111,47 +101,48 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 		},
 		{
 			subtest: "WireGuard-NoPrivateKey",
-			mojoProperties: `{
-				name: 'temp-wg2',
-				typeConfig: {
-					vpn: {
-						host: 'wireguard',
-						type: {value: chromeos.networkConfig.mojom.VpnType.kWireGuard},
-						wireguard: {
-							peers:[{
-								publicKey: 'xLwB3ayvpYqvRrkyiEfK1YtipzpZKAdLJBP9ikHJbhg=',
-								presharedKey: '',
-								endpoint: '2.2.2.2:30000',
-								allowedIps: '0.0.0.0/0',
-							}],
-							privateKey: '',
+			mojoProperties: netconfig.ConfigProperties{
+				Name: "temp-wg2",
+				TypeConfig: netconfig.NetworkTypeConfigProperties{
+					VPN: &netconfig.VPNConfigProperties{
+						Host: "wireguard",
+						Type: netconfig.VPNTypeConfig{Value: netconfig.VPNTypeWireGuard},
+						WireGuard: &netconfig.WireGuardConfigProperties{
+							Peers: []netconfig.WireGuardPeerProperties{
+								netconfig.WireGuardPeerProperties{
+									PublicKey:    pubKey,
+									PresharedKey: &emptyStr,
+									Endpoint:     "2.2.2.2:30000",
+									AllowedIPs:   "0.0.0.0/0",
+								}},
+							PrivateKey: &emptyStr,
 						},
 					},
 				},
-			}`,
+			},
 			// This subtest has the same peer struct as the previous one, so skip the
 			// property verification.
 		},
 		{
 			subtest: "L2TPIPsec-PSK",
-			mojoProperties: `{
-				name: 'temp-l2tpipsec-psk',
-				typeConfig: {
-					vpn: {
-						host:'host',
-						type: {value: chromeos.networkConfig.mojom.VpnType.kL2TPIPsec},
-						ipSec: {
-							authenticationType: 'PSK',
-							ikeVersion: 1,
-							psk: 'psk',
+			mojoProperties: netconfig.ConfigProperties{
+				Name: "temp-l2tpipsec-psk",
+				TypeConfig: netconfig.NetworkTypeConfigProperties{
+					VPN: &netconfig.VPNConfigProperties{
+						Host: "host",
+						Type: netconfig.VPNTypeConfig{Value: netconfig.VPNTypeL2TPIPsec},
+						IPsec: &netconfig.IPsecConfigProperties{
+							AuthType:   "PSK",
+							IKEVersion: 1,
+							PSK:        "psk",
 						},
-						l2tp: {
-							password: 'password',
-							username: 'username',
+						L2TP: &netconfig.L2TPConfigProperties{
+							Password: "password",
+							Username: "username",
 						},
-					}
-				}
-			}`,
+					},
+				},
+			},
 			providerProperties: map[string]interface{}{
 				"Host":           "host",
 				"Type":           "l2tpipsec",
@@ -160,27 +151,27 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 		},
 		{
 			subtest: "IKEv2-EAP",
-			mojoProperties: `{
-				name: 'temp-ikev2-eap',
-				typeConfig: {
-					vpn: {
-						host:'host',
-						type: {value: chromeos.networkConfig.mojom.VpnType.kIKEv2},
-						ipSec: {
-							authenticationType: 'EAP',
-							ikeVersion: 2,
-							serverCaPems: ['1234'],
-							eap: {
-								domainSuffixMatch: [],
-								identity: 'eap-identity',
-								outer: 'MSCHAPv2',
-								password: 'eap-password',
-								subjectAltNameMatch: [],
-							}
+			mojoProperties: netconfig.ConfigProperties{
+				Name: "temp-ikev2-eap",
+				TypeConfig: netconfig.NetworkTypeConfigProperties{
+					VPN: &netconfig.VPNConfigProperties{
+						Host: "host",
+						Type: netconfig.VPNTypeConfig{Value: netconfig.VPNTypeIKEv2},
+						IPsec: &netconfig.IPsecConfigProperties{
+							AuthType:     "EAP",
+							IKEVersion:   2,
+							ServerCAPEMs: []string{"1234"},
+							EAP: &netconfig.EAPConfigProperties{
+								DomainSuffixMatch:   []string{},
+								Identity:            "eap-identity",
+								Outer:               "MSCHAPv2",
+								Password:            "eap-password",
+								SubjectAltNameMatch: []netconfig.SubjectAltName{},
+							},
 						},
-					}
-				}
-			}`,
+					},
+				},
+			},
 			providerProperties: map[string]interface{}{
 				"Host":                     "host",
 				"Type":                     "ikev2",
@@ -194,22 +185,22 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 		},
 		{
 			subtest: "IKEv2-PSK",
-			mojoProperties: `{
-				name: 'temp-ikev2-psk',
-				typeConfig: {
-					vpn: {
-						host:'host',
-						type: {value: chromeos.networkConfig.mojom.VpnType.kIKEv2},
-						ipSec: {
-							authenticationType: 'PSK',
-							ikeVersion: 2,
-							psk: 'psk',
-							localIdentity: 'local-id',
-							remoteIdentity: 'remote-id',
+			mojoProperties: netconfig.ConfigProperties{
+				Name: "temp-ikev2-psk",
+				TypeConfig: netconfig.NetworkTypeConfigProperties{
+					VPN: &netconfig.VPNConfigProperties{
+						Host: "host",
+						Type: netconfig.VPNTypeConfig{Value: netconfig.VPNTypeIKEv2},
+						IPsec: &netconfig.IPsecConfigProperties{
+							AuthType:   "PSK",
+							IKEVersion: 2,
+							PSK:        "psk",
+							LocalID:    "local-id",
+							RemoteID:   "remote-id",
 						},
-					}
-				}
-			}`,
+					},
+				},
+			},
 			providerProperties: map[string]interface{}{
 				"Host":                     "host",
 				"Type":                     "ikev2",
@@ -220,24 +211,24 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 		},
 		{
 			subtest: "OpenVPN",
-			mojoProperties: `{
-				name: 'temp-openvpn',
-				typeConfig: {
-					vpn: {
-						host: 'host',
-						type: {value: chromeos.networkConfig.mojom.VpnType.kOpenVPN},
-						openVpn: {
-							clientCertType: 'PKCS11Id',
-							clientCertPkcs11Id: '1234',
-							extraHosts: ['host1', 'host2'],
-							password: 'password',
-							serverCaPems: ['pem1', 'pem2'],
-							username: 'username',
-							userAuthenticationType: 'Password',
-						}
-					}
-				}
-			}`,
+			mojoProperties: netconfig.ConfigProperties{
+				Name: "temp-openvpn",
+				TypeConfig: netconfig.NetworkTypeConfigProperties{
+					VPN: &netconfig.VPNConfigProperties{
+						Host: "host",
+						Type: netconfig.VPNTypeConfig{Value: netconfig.VPNTypeOpenVPN},
+						OpenVPN: &netconfig.OpenVPNConfigProperties{
+							ClientCertType:         "PKCS11Id",
+							ClientCertPkcs11Id:     "1234",
+							ExtraHosts:             []string{"host1", "host2"},
+							Password:               "password",
+							ServerCAPEMs:           []string{"pem1", "pem2"},
+							Username:               "username",
+							UserAuthenticationType: "Password",
+						},
+					},
+				},
+			},
 			providerProperties: map[string]interface{}{
 				"Host":               "host",
 				"Type":               "openvpn",
@@ -253,19 +244,14 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 		// really importing a cert.
 	} {
 		s.Run(ctx, tc.subtest, func(ctx context.Context, s *testing.State) {
-			jsWrap := fmt.Sprintf(jsTemplate, tc.mojoProperties)
-			var result configureNetworkResult
-			if err := conn.Call(ctx, &result, jsWrap); err != nil {
-				s.Fatal("Failed to call configureNetwork(): ", err)
+			guid, err := networkConfig.ConfigureNetwork(ctx, tc.mojoProperties, false)
+			if err != nil {
+				s.Fatal("Failed to call ConfigureNetwork(): ", err)
 			}
-			if result.ErrorMessage != "" {
-				s.Fatal("configureNetwork() returns error: ", result.ErrorMessage)
-			} else {
-				testing.ContextLog(ctx, "configureNetwork() returns guid ", result.GUID)
-			}
+			testing.ContextLog(ctx, "ConfigureNetwork() returns guid ", guid)
 
 			// Verifies that service is created in shill.
-			svc, err := vpn.FindVPNService(ctx, m, result.GUID)
+			svc, err := vpn.FindVPNService(ctx, m, guid)
 			if err != nil {
 				s.Fatalf("Failed to verify %s VPN service: %v", tc.subtest, err)
 			}
