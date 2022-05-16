@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fcdcc8_f55386de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-16T04:35:28Z",
+      "side": 1,
+      "message": "Miguel, can you check this proposed change? Thanks!",
+      "revId": "4c4de9c19c774386eb0948287dc8f19f11e4cf44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53f20a6_c28cfef9",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-16T04:35:28Z",
+      "side": 1,
+      "message": "I think samplePeriod should be used here. Please check if this is correct.",
+      "range": {
+        "startLine": 185,
+        "startChar": 69,
+        "endLine": 185,
+        "endChar": 81
+      },
+      "revId": "4c4de9c19c774386eb0948287dc8f19f11e4cf44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4722c4ae_a75ec05c",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-16T04:35:28Z",
+      "side": 1,
+      "message": "Total time is actualSamples * samplePeriod. Please check if this correct.",
+      "range": {
+        "startLine": 186,
+        "startChar": 35,
+        "endLine": 186,
+        "endChar": 68
+      },
+      "revId": "4c4de9c19c774386eb0948287dc8f19f11e4cf44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
