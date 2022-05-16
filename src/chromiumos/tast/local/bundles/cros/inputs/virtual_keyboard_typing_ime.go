@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
@@ -54,26 +55,35 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Fixture:      fixture.TabletVK,
 		Timeout:      time.Duration(len(typingTestIMEs)+len(typingTestIMEsUpstream)) * time.Duration(len(typingTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				Val:               typingTestIMEs,
+				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "upstream",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				Val:               typingTestIMEsUpstream,
+				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				Val:               append(typingTestIMEs, typingTestIMEsUpstream...),
+				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "lacros",
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				Val:               typingTestIMEs,
+				Fixture:           fixture.LacrosTabletVK,
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -85,9 +95,20 @@ func VirtualKeyboardTypingIME(ctx context.Context, s *testing.State) {
 	uc := s.FixtValue().(fixture.FixtData).UserContext
 	uc.SetTestName(s.TestName())
 
+	cleanupCtx := ctx
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.FixtValue().(fixture.FixtData).BrowserType)
+	if err != nil {
+		s.Fatal("Failed to set up browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, br, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
