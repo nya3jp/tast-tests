@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b681112_337e1b6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-16T19:14:17Z",
+      "side": 1,
+      "message": "nit: mention that it is only Ash version that goes to CQ.",
+      "revId": "e588980e0f90e7eb9dd20efc3eafb1feb2800ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed9a8c3c_be6fb051",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-16T19:14:17Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "e588980e0f90e7eb9dd20efc3eafb1feb2800ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
