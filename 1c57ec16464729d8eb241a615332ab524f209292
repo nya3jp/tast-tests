@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "113aaccf_cbe5b21a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-16T16:44:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d4b43d1_77c61b70",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94727e2c_6ad8afa4",
@@ -349,6 +373,30 @@
       "side": 1,
       "message": "Done.\n\nGo back to today\u0027s animation has no location change. I used\n`ui.WaitUntilGone(previousYearLabel)` to make sure the old label is gone and then\n`ui.WaitUntilExists(todayYearLabel)` to check the new label is shown.",
       "parentUuid": "ebec6e52_b01b3d86",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50e75d8_4d688118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-16T16:44:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fcbed63a_89496f89",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -625,6 +673,24 @@
       "side": 1,
       "message": "The calendar view is closed when the settings page is up. I added another click to close the settings page.",
       "parentUuid": "c112a337_856354c8",
+      "revId": "1c57ec16464729d8eb241a615332ab524f209292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3188d9e8_111eaf43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-16T16:44:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5e96ba5_0d493ed9",
       "revId": "1c57ec16464729d8eb241a615332ab524f209292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
