@@ -35,6 +35,10 @@ var (
 	// authSessionIDRegexp matches the auth session ID.
 	// It would match "auth_session_id:*"
 	authSessionIDRegexp = regexp.MustCompile(`(auth_session_id:)(.+)(\n)`)
+
+	// recoveryRequestRegexp matches the recovery request value.
+	// It would match "recovery_request:*"
+	recoveryRequestRegexp = regexp.MustCompile(`(recovery_request:)(.+)(\n)`)
 )
 
 func getLastLine(s string) string {
@@ -863,6 +867,12 @@ func (u *CryptohomeClient) AuthenticatePinAuthFactor(ctx context.Context, authSe
 	return err
 }
 
+// AuthenticateRecoveryAuthFactor authenticates an AuthSession with a given authSessionID via recovery auth factor.
+func (u *CryptohomeClient) AuthenticateRecoveryAuthFactor(ctx context.Context, authSessionID, label, epochResponseHex, recoveryResponseHex string) error {
+	_, err := u.binary.authenticateRecoveryAuthFactor(ctx, authSessionID, label, epochResponseHex, recoveryResponseHex)
+	return err
+}
+
 // AddCredentialsWithAuthSession creates the credentials for the user with given password.
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
@@ -879,6 +889,12 @@ func (u *CryptohomeClient) AddAuthFactor(ctx context.Context, authSessionID, lab
 // AddPinAuthFactor creates an auth factor for the user with given password.
 func (u *CryptohomeClient) AddPinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
 	_, err := u.binary.addPinAuthFactor(ctx, authSessionID, label, pin)
+	return err
+}
+
+// AddCryptohomeRecoveryAuthFactor creates a recovery auth factor for the user.
+func (u *CryptohomeClient) AddCryptohomeRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) error {
+	_, err := u.binary.addCryptohomeRecoveryAuthFactor(ctx, authSessionID, label, mediatorPubKeyHex)
 	return err
 }
 
@@ -922,4 +938,18 @@ func (u *CryptohomeClient) MountWithAuthSession(ctx context.Context, authSession
 func (u *CryptohomeClient) InvalidateAuthSession(ctx context.Context, authSessionID string) error {
 	_, err := u.binary.invalidateAuthSession(ctx, authSessionID)
 	return err
+}
+
+// GetRecoveryRequest creates recovery request, returns the value of the request.
+func (u *CryptohomeClient) GetRecoveryRequest(ctx context.Context, authSessionID, label, epochResponseHex string) (string, error) {
+	response, err := u.binary.getRecoveryRequest(ctx, authSessionID, label, epochResponseHex)
+	if err != nil {
+		return "", errors.Wrap(err, "GetRecoveryRequest failed")
+	}
+
+	m := recoveryRequestRegexp.FindSubmatch(response)
+	if m == nil {
+		return "", errors.Errorf("didn't find recovery request in output %q", string(response))
+	}
+	return strings.TrimSpace(string(m[2])), nil
 }
