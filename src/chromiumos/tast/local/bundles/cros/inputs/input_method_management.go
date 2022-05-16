@@ -29,7 +29,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
-		Fixture:      fixture.ClamshellNonVKInGuest,
+		Fixture:      fixture.ClamshellNonVKInGuestNonHub,
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
