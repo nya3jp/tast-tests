@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24a4fbfc_b089d4ce",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T01:44:15Z",
+      "side": 1,
+      "message": "Should we bite the bullet and resort that list alphabetically at some point ?\n\nSince everytime we add a property that impacts the indenting, all lines need to be modified anyway, there is not much loss in term of git history.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0602d886_c8d84965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T01:44:15Z",
+      "side": 1,
+      "message": "Just to confirm after our discussion from our last sync: a network advertise multiple OIs right ? But here you only need 1 because of the tests wrote so far. We could add a note/todo to add support for more when needed later.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec88ff5_1b713798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/const.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T01:44:15Z",
+      "side": 1,
+      "message": "As we discussed in our sync last week, if these domain names are standard documentary examples in Passpoint specs this is worth putting a note in the block comment above.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9078c92b_ef502e01",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
         "patchSetId": 6
@@ -456,6 +525,29 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "80a0d4ca_ce045afe",
+      "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7872a430_9b3223d0",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T01:44:15Z",
+      "side": 1,
+      "message": "We should maybe specify:\n  - which DBus method is used on which shill DBus service\n  - where are defined the key names for the dictionary arg.",
+      "range": {
+        "startLine": 451,
+        "startChar": 27,
+        "endLine": 451,
+        "endChar": 76
+      },
       "revId": "5897fadef3518059e6cf0884b7255d6250491f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

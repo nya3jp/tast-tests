@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b06cee7_84bee614",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T01:44:15Z",
+      "side": 1,
+      "message": "LGTM. Only minor comments.",
+      "revId": "5d274c9773ba635bed129fb7f5677e3b878452ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa151ef8_fe4ae647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T01:44:15Z",
+      "side": 1,
+      "message": "I believe strconv.FormatUint() would be preferred here",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 42
+      },
+      "revId": "5d274c9773ba635bed129fb7f5677e3b878452ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af2137b_71dffcf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T01:44:15Z",
+      "side": 1,
+      "message": "It could be nice to add an expectedMatchType field as well to check what matches as HOME and what matches as ROAMING.",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 27
+      },
+      "revId": "5d274c9773ba635bed129fb7f5677e3b878452ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
