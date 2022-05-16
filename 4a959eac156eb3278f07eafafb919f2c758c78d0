@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2818f3bf_2f899156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T01:53:02Z",
+      "side": 1,
+      "message": "This change should be in the previous patch where the code is defined first.",
+      "range": {
+        "startLine": 169,
+        "startChar": 42,
+        "endLine": 169,
+        "endChar": 47
+      },
+      "revId": "4a959eac156eb3278f07eafafb919f2c758c78d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc3da88_08a70945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-16T01:53:02Z",
+      "side": 1,
+      "message": "I am not quite sure I understand what is tested here exactly ? Is there some specific assert or check to do between connecting to a different APs ? Also why stopping the current AP first at linneno 206 before moving on to the next AP ?",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 21
+      },
+      "revId": "4a959eac156eb3278f07eafafb919f2c758c78d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
