@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ec1185_08e52d39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-17T08:02:48Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ae6ffeec75f52ce9dd667ad90b54e892f3300b52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2772a439_2dacb0ec",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-17T08:02:48Z",
+      "side": 1,
+      "message": "nit: I am not an expert on regex but maybe for the maintenance, an example of what that matches would be a good move or an explanation of this regex as it is bound bound to the output of \"ip link show\"",
+      "range": {
+        "startLine": 265,
+        "startChar": 40,
+        "endLine": 265,
+        "endChar": 72
+      },
+      "revId": "ae6ffeec75f52ce9dd667ad90b54e892f3300b52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
