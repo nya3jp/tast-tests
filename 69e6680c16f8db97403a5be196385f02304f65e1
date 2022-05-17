@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c984dd8_e3169f5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-17T18:16:35Z",
+      "side": 1,
+      "message": "I understand that we are disabling the features on these tests. But that kind of dissolves the purpose of test coverage for what\u0027s there on the field. Instead can we update these tests inline with latest feature launch for coverage?.",
+      "revId": "69e6680c16f8db97403a5be196385f02304f65e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
