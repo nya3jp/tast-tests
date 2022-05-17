@@ -185,6 +185,44 @@ func init() {
 		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInForCrostiniLxdNext",
+		Desc:     "Logged into a session (with LXD 4.0)",
+		Contacts: []string{"sidereal@google.com", "cros-containers-dev@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			opts := generateChromeOpts(s)
+			// Enable ARC++ if it is supported. We do this on every
+			// supported device because some tests rely on it and this
+			// lets us reduce the number of distinct fixture. If
+			// your test relies on ARC++ you should add an appropriate
+			// software dependency.
+			if arc.Supported() {
+				opts = append(opts, chrome.ARCEnabled())
+				opts = append(opts, chrome.ExtraArgs(arc.DisableSyncFlags()...))
+			} else {
+				opts = append(opts, chrome.ARCDisabled())
+			}
+			opts = append(opts, chrome.EnableFeatures("CrostiniUseLxd4"))
+			return opts, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{"keepState"},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseyeWithLxdNext",
+		Desc:            "Install Crostini with Bullseye and LXD 4.0",
+		Contacts:        []string{"sidereal@google.com", "cros-containers-dev@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBullseye},
+		SetUpTimeout:    installationTimeout,
+		ResetTimeout:    checkContainerTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostiniLxdNext",
+		Vars:            []string{"keepState"},
+		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
+	})
 }
 
 // preTestData contains the data to set up the fixture.
