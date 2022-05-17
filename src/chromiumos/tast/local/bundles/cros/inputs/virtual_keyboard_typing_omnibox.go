@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -30,7 +31,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardTypingOmnibox,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that the virtual keyboard works in Chrome browser omnibox",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
@@ -64,6 +65,30 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosTabletVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				Val:               []ime.InputMethod{ime.EnglishUS, ime.Japanese, ime.ChinesePinyin},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:              "guest_lacros",
+				Fixture:           fixture.LacrosTabletVKInGuest,
+				Val:               []ime.InputMethod{ime.EnglishUSWithInternationalKeyboard, ime.JapaneseWithUSKeyboard, ime.Korean},
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:              "a11y_lacros",
+				Fixture:           fixture.LacrosClamshellVK,
+				Val:               []ime.InputMethod{ime.EnglishUK, ime.AlphanumericWithJapaneseKeyboard, ime.Arabic},
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
 		},
 	})
 }
@@ -94,22 +119,26 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
+			br := apps.Chrome
+			if s.FixtValue().(fixture.FixtData).BrowserType == browser.TypeLacros {
+				br = apps.Lacros
+			}
 			// Warning: Please do not launch Browser via cr.NewConn(ctx, "")
 			// to test omnibox typing. It might be indeterminate whether default url string
 			// "about:blank" is highlighted or not.
 			// In that case, typing test can either replace existing url or insert into it.
 			// A better way to do it is launching Browser from launcher, url is empty by default.
-			if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
+			if err := apps.Launch(ctx, tconn, br.ID); err != nil {
 				s.Fatalf("Failed to launch %s: %s", apps.Chrome.Name, err)
 			}
 			defer func(ctx context.Context) {
-				if err := apps.Close(ctx, tconn, apps.Chrome.ID); err != nil {
+				if err := apps.Close(ctx, tconn, br.ID); err != nil {
 					testing.ContextLog(ctx, "Failed to close Chrome browser: ", err)
 				}
 			}(cleanupCtx)
 
-			if err := ash.WaitForApp(ctx, tconn, apps.Chrome.ID, time.Minute); err != nil {
-				s.Fatalf("%s did not appear in shelf after launch: %s", apps.Chrome.Name, err)
+			if err := ash.WaitForApp(ctx, tconn, br.ID, time.Minute); err != nil {
+				s.Fatalf("%s did not appear in shelf after launch: %s", br.Name, err)
 			}
 
 			omniboxFinder := nodewith.Role(role.TextField).Attribute("inputType", "url")
