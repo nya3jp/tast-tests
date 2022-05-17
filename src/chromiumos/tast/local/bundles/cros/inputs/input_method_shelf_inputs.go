@@ -36,22 +36,29 @@ var testMessages = []data.Message{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         InputMethodShelfInputs,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test input functions triggered from IME tray",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		Data:         data.ExtractExternalFiles(testMessages, []ime.InputMethod{ime.DefaultInputMethod}),
 		Timeout:      5 * time.Minute,
-		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{
 			{
+				Fixture:           fixture.ClamshellNonVK,
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 			{
 				Name:              "informational",
+				Fixture:           fixture.ClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -74,17 +81,17 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to load Aloop: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	if err := imesettings.EnableInputOptionsInShelf(uc, true)(ctx); err != nil {
 		s.Fatal("Failed to show input options in shelf: ", err)
 	}
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	ui := uiauto.New(tconn)
 	inputField := testserver.TextAreaInputField

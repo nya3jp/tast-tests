@@ -25,22 +25,30 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardChangeInput,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that changing input method in different ways on physical keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Fixture:      fixture.ClamshellNonVK,
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
 			{
+				Fixture:           fixture.ClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
+				Fixture:           fixture.ClamshellNonVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
@@ -66,11 +74,11 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	// Retrieve all installed input methods via Chrome API.
 	// Then parse it into ime.InputMethod struct and append to installedInputMethods list.
