@@ -16,6 +16,125 @@
       "message": "Please review",
       "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d94af1a_94e65e33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T06:37:46Z",
+      "side": 1,
+      "message": "Thanks for this change. This is really helpful for supporting multiple-DUTs in the wificell test fixture.",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c596e6ca_ed056498",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T06:37:46Z",
+      "side": 1,
+      "message": "I would suggest to recover all the DUTs in Setup and TearDown. How do you think?",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad13e6b_25927c16",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T06:37:46Z",
+      "side": 1,
+      "message": "For Chrome enroll, it is for enterprise policy tests. The enroll is needed only on the DUT rather than all the companion DUTs. I think you can remove the for loop here and just enroll the default DUT. We can add this later if new case requires all the DUTs be enrolled.",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea33e3fa_be02d8f9",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T06:37:46Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e24660f_5012f0b1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T06:37:46Z",
+      "side": 1,
+      "message": "This should be per DUT so should be in dutData structure.",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9465f5f1_c56123e1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T06:37:46Z",
+      "side": 1,
+      "message": "tf.netCertStore should be per DUT.",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1937a8d4_3a11d9bf",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T06:37:46Z",
+      "side": 1,
+      "message": "nit, how about `for _, d :\u003d range tf.duts`?",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
