@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d726b3a5_1a336c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-17T22:47:56Z",
+      "side": 1,
+      "message": "I think we can have an allowlist of boards to test on. But that would require the list to be constantly updated for future new boards. Do you think that would be better than testing on every board with kernel 5.10 or higher?",
+      "parentUuid": "a5ba51db_10213c75",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 71
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbefce6c_58f3b0f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-17T17:38:02Z",
       "side": 1,
       "message": "Have you used `repo upload` to upload your CL? The linter should have caught that this function is lacking a comment/description.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 58
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77fa35d_1ab74d46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-17T22:47:56Z",
+      "side": 1,
+      "message": "Yes I used `repo upload` but it seems that the linter does not require the main test function to have a comment so was passed. Added a new comment for `SymlinkToUSB`.",
+      "parentUuid": "dbefce6c_58f3b0f7",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb0a094_0ea6af4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-17T22:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87cb9a84_d120548c",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c7b5fd9_0d50f688",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-17T17:38:02Z",
       "side": 1,
       "message": "These 2 blocks (this one along with L79-L88) seem very similar, and a candidate for refactoring into a separate function.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "619c2508_e88190de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-17T22:47:56Z",
+      "side": 1,
+      "message": "Added this logic to a new function `checkUsbPortDir`",
+      "parentUuid": "9c7b5fd9_0d50f688",
       "range": {
         "startLine": 67,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "343c232e_122e67ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-17T22:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5da095a_a41284b1",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 38
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "720116ce_5a3c912f",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-17T17:38:02Z",
       "side": 1,
       "message": "Just checking, are you sure this is not the opposite? Here you are returning if there *is* a symlink.",
+      "range": {
+        "startLine": 106,
+        "startChar": 6,
+        "endLine": 106,
+        "endChar": 15
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f14fd17c_b3e7f7e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-17T22:47:56Z",
+      "side": 1,
+      "message": "You are right this should be the opposite. There seems to be an issue with this code, so I removed `isSymlink` and added `filepath.EvalSymlinks` instead to get an absolute path.",
+      "parentUuid": "720116ce_5a3c912f",
       "range": {
         "startLine": 106,
         "startChar": 6,
