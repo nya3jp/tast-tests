@@ -16,6 +16,23 @@
       "message": "Thanks! Looks much cleaner now.",
       "revId": "f04ddaba64c6bb83ba5b019ed87a3aca7ca94873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f3b175_40bdf08d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-05-17T10:55:54Z",
+      "side": 1,
+      "message": "LGTM, thanks!",
+      "revId": "f04ddaba64c6bb83ba5b019ed87a3aca7ca94873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
