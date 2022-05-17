@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6834d5f_8ed23833",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-17T18:34:00Z",
+      "side": 1,
+      "message": "If the feature is experimental i.e. there is a chance of it not being rolled out then perhaps we can add a variation with the feature enabled. I think the change in logic should be minor. It just needs to skip screens or press more buttons right?",
+      "parentUuid": "8c984dd8_e3169f5c",
+      "revId": "69e6680c16f8db97403a5be196385f02304f65e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8db9f095_0a89b85a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
         "patchSetId": 2
