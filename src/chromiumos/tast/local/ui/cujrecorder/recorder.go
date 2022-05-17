@@ -6,10 +6,12 @@
 package cujrecorder
 
 import (
+	"compress/gzip"
 	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path"
 	"path/filepath"
 	"time"
@@ -19,11 +21,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
 	perfSrc "chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )
 
@@ -41,6 +43,8 @@ const (
 )
 
 const checkInterval = 5 * time.Second
+
+const SystemTraceConfigFile = "perfetto/system_trace_config.pbtxt"
 
 // MetricConfig is the configuration for the recorder.
 type MetricConfig struct {
@@ -144,7 +148,8 @@ type Recorder struct {
 	// Metric records keyed by metric name.
 	records map[string]*record
 
-	traceDir string
+	traceDir        string
+	perfettoCfgPath string
 
 	// duration is the total running time of the recorder.
 	duration time.Duration
@@ -446,9 +451,10 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	return r, nil
 }
 
-// EnableTracing enables tracing when the recorder running test scenario.
-func (r *Recorder) EnableTracing(traceDir string) {
+// EnableSystemTracing enables system tracing when the recorder is running a test scenario.
+func (r *Recorder) EnableTracing(traceDir, perfettoCfgPath string) {
 	r.traceDir = traceDir
+	r.perfettoCfgPath = perfettoCfgPath
 }
 
 // Close clears states for all trackers.
@@ -501,28 +507,50 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 		r.mr = nil
 	}(ctx)
 
-	if r.traceDir != "" {
-		if err := r.cr.StartTracing(ctx,
-			[]string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz", "memory-infra"},
-			browser.DisableSystrace()); err != nil {
-			testing.ContextLog(ctx, "Failed to start tracing: ", err)
+	if r.traceDir != "" && r.perfettoCfgPath != "" {
+		sess, err := tracing.StartSession(ctx, r.perfettoCfgPath)
+		if err != nil {
 			return nil, errors.Wrap(err, "failed to start tracing")
 		}
 		stopTracing := func(ctx context.Context) error {
-			tr, err := r.cr.StopTracing(ctx)
-			if err != nil {
-				testing.ContextLog(ctx, "Failed to stop tracing: ", err)
+			if err := sess.Stop(); err != nil {
 				return errors.Wrap(err, "failed to stop tracing")
 			}
-			if tr == nil || len(tr.Packet) == 0 {
-				testing.ContextLog(ctx, "No trace data is collected")
-				return errors.New("no trace data is collected")
+
+			data, err := ioutil.ReadAll(sess.TraceResultFile)
+			if err != nil {
+				return errors.Wrap(err, "failed to read from the temp file of trace result")
 			}
+
 			filename := "trace.data.gz"
-			if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(r.traceDir, filename)); err != nil {
-				testing.ContextLog(ctx, "Failed to save trace to file: ", err)
-				return errors.Wrap(err, "failed to save trace to file")
+			file, err := os.OpenFile(filepath.Join(r.traceDir, filename), os.O_CREATE|os.O_RDWR, 0644)
+			if err != nil {
+				return errors.Wrap(err, "could not open file")
 			}
+			defer func() {
+				if err := file.Close(); err != nil {
+					testing.ContextLog(ctx, "Failed to close file: ", err)
+				}
+			}()
+
+			writer := gzip.NewWriter(file)
+			defer func() {
+				if err := writer.Close(); err != nil {
+					testing.ContextLog(ctx, "Failed to close gzip writer: ", err)
+				}
+			}()
+
+			if _, err := writer.Write(data); err != nil {
+				return errors.Wrap(err, "could not write the data")
+			}
+
+			if err := writer.Flush(); err != nil {
+				return errors.Wrap(err, "could not flush the gzip writer")
+			}
+
+			// The temporary file of trace data is no longer needed when returned.
+			sess.RemoveTraceResultFile()
+
 			return nil
 		}
 		cancel = func(ctx context.Context) error {
