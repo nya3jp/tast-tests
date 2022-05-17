@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e429e78_804c9f15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-05-17T10:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd1a3577_fb37f136",
+      "revId": "03feab2205ccdfd8f522c20255ff2e2f42c576ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7f961e4_d9871dcd",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-05-17T09:52:59Z",
       "side": 1,
       "message": "nit: is it possible to pass `url` as parameter as well, so we don\u0027t have this if condition? If it\u0027s not a big change, as I see the params are a separate class used also in other tests?",
+      "revId": "03feab2205ccdfd8f522c20255ff2e2f42c576ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d39c9f1d_d997e99f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-05-17T10:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f961e4_d9871dcd",
       "revId": "03feab2205ccdfd8f522c20255ff2e2f42c576ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
