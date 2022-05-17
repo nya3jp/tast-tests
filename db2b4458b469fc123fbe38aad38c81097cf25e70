@@ -18,6 +18,97 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39473180_bd651e96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-17T13:30:44Z",
+      "side": 1,
+      "message": "LGTM with requesting fixes.",
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "533b0823_c9d323ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/basic_lxd_next.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-17T13:30:44Z",
+      "side": 1,
+      "message": "This can be moved into SoftwareDeps, and removed this from here and below.\nSame for Fixture and Timeout.",
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979cd392_b9f8e3ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/basic_lxd_next.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-17T13:30:44Z",
+      "side": 1,
+      "message": "duplicated so you can drop this.",
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d593dc_a17039df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/basic_lxd_next.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-17T13:30:44Z",
+      "side": 1,
+      "message": "nit/style: could you remove \"else\" as s.Fatal() just above line effectively returns from the function.",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "483337e8_b28ba552",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-17T13:30:44Z",
+      "side": 1,
+      "message": "nit: s/ARC++/ARC/g",
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eedb3204_117914c9",
