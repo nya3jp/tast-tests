@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f35bd3_ed5ab57c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-17T03:07:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48328454_232ba76b",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "04b733dc02b7520bbc1c40e4b921fe9d0777ec5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cd3d3df_5cd91992",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-16T10:03:28Z",
       "side": 1,
       "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "04b733dc02b7520bbc1c40e4b921fe9d0777ec5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9896c1b4_945544e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-05-17T03:07:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cd3d3df_5cd91992",
       "range": {
         "startLine": 50,
         "startChar": 9,
