@@ -62,6 +62,21 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	// lacrosWith100FakeAppsLegacyLauncher is the same as lacrosWith100FakeApps
+	// but disables productivity launcher feature in ash-chrome.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosWith100FakeAppsLegacyLauncher",
+		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed and productivity launcher disabled",
+		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(ChromeOptions(chrome.DisableFeatures("ProductivityLauncher"))).Opts()
+		}),
+		Parent:          "install100Apps",
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
 	// lacrosForceComposition is the same as lacros but
 	// forces composition for ash-chrome.
 	testing.AddFixture(&testing.Fixture{

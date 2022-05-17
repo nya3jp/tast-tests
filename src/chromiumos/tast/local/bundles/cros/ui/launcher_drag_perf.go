@@ -40,13 +40,13 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Fixture: "chromeLoggedInWith100FakeApps",
+			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}, {
 			Name:    "skia_renderer",
-			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
+			Fixture: "chromeLoggedInWith100FakeAppsSkiaRendererAndLegacyLauncher",
 		}, {
 			Name:    "double_buffer_compositing",
-			Fixture: "chromeLoggedInWith100FakeAppsDoubleBuffering",
+			Fixture: "chromeLoggedInWith100FakeAppsDoubleBufferingAndLegacyLauncher",
 		}},
 		Data: []string{"animation.html", "animation.js"},
 	})

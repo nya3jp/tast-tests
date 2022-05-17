@@ -40,15 +40,15 @@ func init() {
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
-			Fixture: "chromeLoggedInWith100FakeApps",
+			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}, {
 			Name:    "skia_renderer",
 			Val:     browser.TypeAsh,
-			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
+			Fixture: "chromeLoggedInWith100FakeAppsSkiaRendererAndLegacyLauncher",
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
-			Fixture:           "lacrosWith100FakeApps",
+			Fixture:           "lacrosWith100FakeAppsLegacyLauncher",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 		Data: []string{"animation.html", "animation.js"},
