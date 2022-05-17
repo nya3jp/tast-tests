@@ -38,11 +38,11 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "tablet",
-				Fixture: fixture.TabletVK,
+				Fixture: fixture.TabletVKRestart,
 			},
 			{
 				Name:    "clamshell",
-				Fixture: fixture.ClamshellVK,
+				Fixture: fixture.ClamshellVKRestart,
 			},
 		},
 	})
