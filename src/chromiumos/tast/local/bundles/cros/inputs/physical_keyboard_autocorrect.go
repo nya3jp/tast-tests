@@ -29,32 +29,59 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardAutocorrect,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that physical keyboard can perform typing with autocorrects",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		HardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...)),
-		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{
 			{
-				Name: "en_us_1",
+				Name:    "en_us_1",
+				Fixture: fixture.ClamshellNonVK,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "helol",
 					CorrectWord:  "hello",
 					UndoMethod:   autocorrect.ViaPopupUsingPK,
 				},
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
-				Name: "en_us_2",
+				Name:    "en_us_2",
+				Fixture: fixture.ClamshellNonVK,
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.EnglishUS,
 					MisspeltWord: "wrold",
 					CorrectWord:  "world",
 					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:              "en_us_1_lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: autocorrect.TestCase{
+					InputMethod:  ime.EnglishUS,
+					MisspeltWord: "helol",
+					CorrectWord:  "hello",
+					UndoMethod:   autocorrect.ViaPopupUsingPK,
+				},
+				ExtraAttr: []string{"informational"},
+			},
+			{
+				Name:              "en_us_2_lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: autocorrect.TestCase{
+					InputMethod:  ime.EnglishUS,
+					MisspeltWord: "wrold",
+					CorrectWord:  "world",
+					UndoMethod:   autocorrect.ViaPopupUsingMouse,
+				},
+				ExtraAttr: []string{"informational"},
 			},
 			// Test cases for other input methods can be added once the framework
 			// supports more than just US-Qwerty layout.
@@ -90,11 +117,11 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	defer func(ctx context.Context) {
 		if err := inputMethod.ResetSettings(tconn)(ctx); err != nil {
