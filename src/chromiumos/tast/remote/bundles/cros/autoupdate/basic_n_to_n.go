@@ -27,7 +27,7 @@ func init() {
 			"gabormagda@google.com", // Test author
 		},
 		Attr:         []string{"group:autoupdate"},
-		SoftwareDeps: []string{"reboot", "chrome"},
+		SoftwareDeps: []string{"reboot", "chrome", "auto_update_stable"},
 		ServiceDeps: []string{
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.UpdateService",
