@@ -24,19 +24,26 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardInputFields,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that physical keyboard works on different input fields",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Fixture:      fixture.ClamshellNonVK,
 		Timeout:      5 * time.Minute,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Params: []testing.Param{
 			{
 				Name:      "us_en",
+				Fixture:   fixture.ClamshellNonVK,
 				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val:       ime.EnglishUS,
+			},
+			{
+				Name:              "us_en_lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraAttr:         []string{"informational"},
+				Val:               ime.EnglishUS,
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -69,11 +76,11 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	var subtests []testserver.FieldInputEval
 
