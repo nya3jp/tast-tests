@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61ab9d0_2302acb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-17T07:53:34Z",
+      "side": 1,
+      "message": "nit: mention that promotion is only for the Ash browser.",
+      "revId": "16454398abb64a7dcf9671648a4f9d2237cadf00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae44003_d68e5cea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-17T07:53:34Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "16454398abb64a7dcf9671648a4f9d2237cadf00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
