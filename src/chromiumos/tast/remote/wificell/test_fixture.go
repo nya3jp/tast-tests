@@ -166,6 +166,14 @@ type routerData struct {
 	object router.Base
 }
 
+// P2P group owner types.
+const (
+	P2PGroupOwnerDUT = "P2PGroupOwnerDUT"
+	P2PGroupOwnerPeer = "P2PGroupOwnerPeer"
+)
+
+var ValidP2PGOTypes = []string{P2PGroupOwnerDUT, P2PGroupOwnerPeer}
+
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
 	dut        *dut.DUT
@@ -193,6 +201,10 @@ type TestFixture struct {
 	logTags          []string
 	originalLogLevel int
 	originalLogTags  []string
+	p2pGOType        string
+	p2pGOIface       string
+	p2pClientIface   string
+
 
 	// Group simple option flags here as they started to grow.
 	option struct {
@@ -1418,5 +1430,103 @@ func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error
 	}
 
 	testing.ContextLog(ctx, "WiFi connected")
+	return nil
+}
+
+
+// P2PConfigureGO configures a p2p group owner.
+func (tf *TestFixture) P2PConfigureGO(ctx context.Context, GO string) error {
+	if GO == P2PGroupOwnerDUT {
+		tf.p2pGOType = GO
+		wpa := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: tf.dut.Conn()})
+		iwr := iw.NewRemoteRunner(tf.dut.Conn())
+		// Check if a p2p GO interface already exists.
+		netDevs, err := iwr.ListInterfaces(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the network interface")
+		}
+		// Remove all P2P interfaces if exists.
+		for _, dev := range netDevs {
+			if dev.IfType == "P" {
+				err = wpa.P2PGroupRemove(ctx, dev.IfName)
+				if err != nil {
+					return err
+				}
+			}
+		}
+		// Add a p2p group owner.
+		err = wpa.P2PGroupAdd(ctx)
+		if err != nil {
+			return err
+		}
+		// Wait for the P2P interface.
+		p2pIfaceTimeout := 60
+		pollingIntervalSeconds := 0.5
+		err = testing.Poll(ctx, func(ctx context.Context) error {
+			// Check if a p2p GO interface already exists.
+			netDevs, err := iwr.ListInterfaces(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to get the network interface")
+			}
+			// Remove all P2P interfaces if exists.
+			for _, dev := range netDevs {
+				if dev.IfType == "P" {
+					tf.p2pGOIface = dev.IfName
+					return nil
+				}
+			}
+			return errors.Errorf("failed to find the P2P GO interface")
+		}, &testing.PollOptions{Timeout: p2pIfaceTimeout, Interval: pollingIntervalSeconds})
+		if err != nil {
+			return err
+		}
+	} else if GO == P2PGroupOwnerPeer {
+		tf.p2pGOType = GO
+		wpa := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: tf.peer.Conn()})
+		iwr := iw.NewRemoteRunner(tf.peer.Conn())
+		// Check if a p2p GO interface already exists.
+		netDevs, err := iwr.ListInterfaces(ctx)
+		if err != nil {
+			return ctx, nil, errors.Wrap(err, "failed to get the network interface")
+		}
+		// Remove all P2P interfaces if exists.
+		for _, dev := range netDevs {
+			if dev.IfType == "P" {
+				err = wpa.P2PGroupRemove(ctx, dev.IfName)
+				if err != nil {
+					return err
+				}
+			}
+		}
+		// Add a p2p group owner.
+		err = wpa.P2PGroupAdd(ctx)
+		if err != nil {
+			return err
+		}
+		// Wait for the P2P interface.
+		p2pIfaceTimeout := 60
+		pollingIntervalSeconds := 0.5
+		err = testing.Poll(ctx, func(ctx context.Context) error {
+			// Check if a p2p GO interface already exists.
+			netDevs, err := iwr.ListInterfaces(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to get the network interface")
+			}
+			// Remove all P2P interfaces if exists.
+			for _, dev := range netDevs {
+				if dev.IfType == "P" {
+					tf.p2pGOIface = dev.IfName
+					return nil
+				}
+			}
+			return errors.Errorf("failed to find the P2P GO interface")
+		}, &testing.PollOptions{Timeout: p2pIfaceTimeout, Interval: pollingIntervalSeconds})
+		if err != nil {
+			return err
+		}
+	} else {
+		return errors.Errorf("Unexpected GO type: want: {%v}, got: %s", ValidP2PGOTypes, GO)
+	}
+
 	return nil
 }
