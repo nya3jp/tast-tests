@@ -22,11 +22,12 @@ func init() {
 		Desc:         "Verifies that host has network connectivity via cellular interface",
 		Contacts:     []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
-		Timeout:      1 * time.Minute,
+		Timeout:      4 * time.Minute,
 	})
 }
 
 func HostCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
+
 	if _, err := modemmanager.NewModemWithSim(ctx); err != nil {
 		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
 	}
@@ -41,7 +42,7 @@ func HostCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read APN info: ", err)
 	}
 
-	s.Log("ip-type:", ipType)
+	s.Log("ip-type: ", ipType)
 	verifyHostIPConnectivity := func(ctx context.Context) error {
 		if err := cellular.VerifyIPConnectivity(ctx, testexec.CommandContext, ipType, "/bin"); err != nil {
 			return errors.Wrap(err, "failed connectivity test")
