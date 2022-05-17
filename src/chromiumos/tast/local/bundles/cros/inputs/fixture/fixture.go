@@ -32,12 +32,14 @@ const (
 	AnyVK                              = "anyVK"
 	AnyVKInGuest                       = "anyVKInGuest"
 	ClamshellVK                        = "clamshellVK"
+	ClamshellVKRestart                 = "clamshellVKRestart"
 	ClamshellVKWithAssistAutocorrect   = "clamshellVKWithAssistAutocorrect"
 	ClamshellNonVK                     = "clamshellNonVK"
 	ClamshellNonVKInGuest              = "clamshellNonVKInGuest"
 	ClamshellNonVKWithMultiwordSuggest = "clamshellNonVKWithMultiwordSuggest"
 	ClamshellNonVKWithGrammarCheck     = "clamshellNonVKWithGrammarCheck"
 	TabletVK                           = "tabletVK"
+	TabletVKRestart                    = "tabletVKRestart"
 	TabletVKInGuest                    = "tabletVKInGuest"
 	TabletVKWithAssistAutocorrect      = "tabletVKWithAssistAutocorrect"
 	TabletVKWithMultipasteSuggestion   = "tabletVKWithMultipasteSuggestion"
@@ -94,6 +96,20 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeAsh),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: ClamshellVKRestart,
+		Desc: "Clamshell mode with A11y VK enabled, restarting chrome session for every test",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, true, true, browser.TypeAsh),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
@@ -178,6 +194,20 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: TabletVKRestart,
+		Desc: "Tablet mode with VK enabled, restarting chrome session for every test",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, true, browser.TypeAsh),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
@@ -419,7 +449,7 @@ type inputsFixtureImpl struct {
 	cr          *chrome.Chrome  // Underlying Chrome instance
 	dm          deviceMode      // Device ui mode to test
 	vkEnabled   bool            // Whether virtual keyboard is force enabled
-	reset       bool            // Whether clean & restart Chrome before test
+	restart     bool            // Whether clean & restart Chrome before test
 	browserType browser.Type    // Whether Ash or Lacros is used for test
 	fOpts       []chrome.Option // Options that are passed to chrome.New
 	tconn       *chrome.TestConn
@@ -495,6 +525,9 @@ func (f *inputsFixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestSta
 }
 
 func (f *inputsFixtureImpl) Reset(ctx context.Context) error {
+	if f.restart {
+		return errors.New("Intended error to trigger fixture restart")
+	}
 	if err := f.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
@@ -516,11 +549,11 @@ func (f *inputsFixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) 
 	f.tconn = nil
 }
 
-func inputsFixture(dm deviceMode, vkEnabled, reset bool, browserType browser.Type, opts ...chrome.Option) testing.FixtureImpl {
+func inputsFixture(dm deviceMode, vkEnabled, restart bool, browserType browser.Type, opts ...chrome.Option) testing.FixtureImpl {
 	return &inputsFixtureImpl{
 		dm:          dm,
 		vkEnabled:   vkEnabled,
-		reset:       reset,
+		restart:     restart,
 		browserType: browserType,
 		fOpts:       opts,
 	}
