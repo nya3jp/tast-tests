@@ -44,48 +44,69 @@ var hwTestIMEsUpstream = []ime.InputMethod{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardHandwriting,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		Data:         data.ExtractExternalFiles(hwTestMessages, append(hwTestIMEs, hwTestIMEsUpstream...)),
-		Fixture:      fixture.AnyVK,
 		Timeout:      2 * time.Duration(len(hwTestIMEs)+len(hwTestIMEsUpstream)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "docked",
+				Fixture:           fixture.AnyVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val:               hwTestIMEs,
 			},
 			{
 				Name:              "docked_upstream",
+				Fixture:           fixture.AnyVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
 				Val:               hwTestIMEsUpstream,
 			},
 			{
 				Name:              "docked_informational",
+				Fixture:           fixture.AnyVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
 			},
 			{
 				Name:              "floating",
+				Fixture:           fixture.AnyVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 				Val:               hwTestIMEs,
 			},
 			{
 				Name:              "floating_upstream",
+				Fixture:           fixture.AnyVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 				Val:               hwTestIMEsUpstream,
 			},
 			{
 				Name:              "floating_informational",
+				Fixture:           fixture.AnyVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
+				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
+			},
+			{
+				Name:              "docked_lacros",
+				Fixture:           fixture.LacrosAnyVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
+			},
+			{
+				Name:              "floating_lacros",
+				Fixture:           fixture.LacrosAnyVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
 				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
 			},
@@ -108,11 +129,11 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Launch inputs test web server.
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	// Select the input field being tested.
 	inputField := testserver.TextAreaInputField
