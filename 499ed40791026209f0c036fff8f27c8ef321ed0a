@@ -16,6 +16,98 @@
       "message": "PTAL",
       "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72bc1ab3_6d3db264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-17T07:39:32Z",
+      "side": 1,
+      "message": "As we are using our own custom app and doesn\u0027t involve Play Store installation, 5 min should be enough?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23d6f0ba_9e761558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-17T07:39:32Z",
+      "side": 1,
+      "message": "Do we need ACUITI here?. Can UI automator be used to check the text display?. Just trying to understand.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 109
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26560b2_848f4e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-17T07:39:32Z",
+      "side": 1,
+      "message": "It might be a better idea to have sub-tests instead of sequencing CUJs for easy monitoring and triaging failure.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 52
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5221b0e0_99aa6cdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-17T07:39:32Z",
+      "side": 1,
+      "message": "This is named testutil, but IIUC this is specific to GIO and not common to other arc++ tests. Hence can we have the testutil and tests of GIO under folder gio.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
