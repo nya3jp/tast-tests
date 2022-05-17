@@ -34,6 +34,7 @@ func init() {
 		Contacts:     []string{"xiyuan@chromium.org", "yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      cuj.CPUStablizationTimeout + idleDuration,
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
@@ -90,7 +91,7 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 	if tracing {
-		recorder.EnableTracing(s.OutDir())
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {

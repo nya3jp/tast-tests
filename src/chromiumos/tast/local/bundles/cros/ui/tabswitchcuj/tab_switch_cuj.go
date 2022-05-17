@@ -166,7 +166,7 @@ func Run(ctx context.Context, s *testing.State) {
 	}
 
 	if param.Tracing {
-		recorder.EnableTracing(s.OutDir())
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
 	defer recorder.Close(closeCtx)
 
