@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
@@ -26,20 +27,31 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardMultipaste,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test multipaste virtual keyboard functionality",
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
-		Fixture:      fixture.TabletVK,
-		Params: []testing.Param{{
-			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			ExtraAttr:         []string{"group:input-tools-upstream"},
-		}, {
-			Name:              "informational",
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels, hwdep.SkipOnPlatform("puff", "fizz")),
-			ExtraAttr:         []string{"informational"},
-		}},
+		Params: []testing.Param{
+			{
+				Fixture:           fixture.TabletVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:              "informational",
+				Fixture:           fixture.TabletVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels, hwdep.SkipOnPlatform("puff", "fizz")),
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosTabletVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+		},
 	})
 }
 
@@ -55,14 +67,19 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 	uc := s.FixtValue().(fixture.FixtData).UserContext
 	uc.SetTestName(s.TestName())
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Launch inputs test web server.
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
