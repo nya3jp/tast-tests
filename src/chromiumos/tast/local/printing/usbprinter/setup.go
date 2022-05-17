@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/printing/lp"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -256,6 +257,12 @@ func launchPrinter(ctx context.Context, op config) (cmd *testexec.Cmd, err error
 // Start creates a new Printer and starts the underlying
 // virtual-usb-printer process.
 func Start(ctx context.Context, opts ...Option) (pr *Printer, err error) {
+	// Debugd needs to be running before the USB device shows up so Chrome can add the printer.
+	if err := upstart.EnsureJobRunning(ctx, "debugd"); err != nil {
+		testing.ContextLogf(ctx, "debugd not running: %q", err)
+		return nil, err
+	}
+
 	op := config{
 		args: []string{"-o0", "virtual-usb-printer"},
 	}
