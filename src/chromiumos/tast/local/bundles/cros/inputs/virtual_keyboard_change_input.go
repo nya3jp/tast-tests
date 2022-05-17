@@ -28,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardChangeInput,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that changing input method in different ways",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
@@ -52,6 +52,20 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				Fixture:           fixture.TabletVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			},
+			{
+				Name:              "tablet_lacros",
+				Fixture:           fixture.LacrosTabletVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:              "a11y_lacros",
+				Fixture:           fixture.LacrosClamshellVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -79,11 +93,11 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to install input method %q: %v", inputMethod, err)
 	}
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	ui := uiauto.New(tconn)
 	vkbctx := vkb.NewContext(cr, tconn)

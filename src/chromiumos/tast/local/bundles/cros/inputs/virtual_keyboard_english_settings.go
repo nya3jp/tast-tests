@@ -27,22 +27,30 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardEnglishSettings,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that the input settings works in Chrome",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Fixture:      fixture.TabletVK,
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
+				Fixture:           fixture.TabletVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
+				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosTabletVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -59,20 +67,20 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Revert settings to default after testing.
-	defer func() {
-		if err := tconn.Eval(cleanupCtx, `chrome.inputMethodPrivate.setSettings(
+	defer func(ctx context.Context) {
+		if err := tconn.Eval(ctx, `chrome.inputMethodPrivate.setSettings(
 			"xkb:us::eng",
 			{"virtualKeyboardEnableCapitalization": true,
 			"virtualKeyboardAutoCorrectionLevel": 1})`, nil); err != nil {
 			s.Log("Failed to revert language settings")
 		}
-	}()
+	}(cleanupCtx)
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	// Use text input field as testing target.
 	inputField := testserver.TextInputField

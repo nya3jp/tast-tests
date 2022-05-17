@@ -33,10 +33,10 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardAutocorrect,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that virtual keyboard can perform typing with autocorrects",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
@@ -50,7 +50,9 @@ func init() {
 					CorrectWord:  "hello",
 					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
-			}, {
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
 				Name:    "en_us_a11y",
 				Fixture: fixture.ClamshellVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
@@ -59,7 +61,9 @@ func init() {
 					CorrectWord:  "hello",
 					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
-			}, {
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
 				Name:    "es_es_tablet",
 				Fixture: fixture.TabletVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
@@ -68,7 +72,9 @@ func init() {
 					CorrectWord:  "español",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
-			}, {
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
 				Name:    "es_es_a11y",
 				Fixture: fixture.ClamshellVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
@@ -77,7 +83,9 @@ func init() {
 					CorrectWord:  "español",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
-			}, {
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
 				Name:    "fr_fr_tablet",
 				Fixture: fixture.TabletVKWithAssistAutocorrect,
 				Val: autocorrect.TestCase{
@@ -86,9 +94,84 @@ func init() {
 					CorrectWord:  "français",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
-			}, {
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
 				Name:    "fr_fr_a11y",
 				Fixture: fixture.ClamshellVKWithAssistAutocorrect,
+				Val: autocorrect.TestCase{
+					InputMethod:  ime.FrenchFrance,
+					MisspeltWord: "francais",
+					CorrectWord:  "français",
+					UndoMethod:   autocorrect.NotApplicable,
+				},
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:              "en_us_tablet_lacros",
+				Fixture:           fixture.LacrosTabletVKWithAssistAutocorrect,
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: autocorrect.TestCase{
+					InputMethod:  ime.EnglishUS,
+					MisspeltWord: "helol",
+					CorrectWord:  "hello",
+					UndoMethod:   autocorrect.ViaPopupUsingMouse,
+				},
+			},
+			{
+				Name:              "en_us_a11y_lacros",
+				Fixture:           fixture.LacrosClamshellVKWithAssistAutocorrect,
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: autocorrect.TestCase{
+					InputMethod:  ime.EnglishUS,
+					MisspeltWord: "helol",
+					CorrectWord:  "hello",
+					UndoMethod:   autocorrect.ViaPopupUsingMouse,
+				},
+			},
+			{
+				Name:              "es_es_tablet_lacros",
+				Fixture:           fixture.LacrosTabletVKWithAssistAutocorrect,
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: autocorrect.TestCase{
+					InputMethod:  ime.SpanishSpain,
+					MisspeltWord: "espanol",
+					CorrectWord:  "español",
+					UndoMethod:   autocorrect.NotApplicable,
+				},
+			},
+			{
+				Name:              "es_es_a11y_lacros",
+				Fixture:           fixture.LacrosClamshellVKWithAssistAutocorrect,
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: autocorrect.TestCase{
+					InputMethod:  ime.SpanishSpain,
+					MisspeltWord: "espanol",
+					CorrectWord:  "español",
+					UndoMethod:   autocorrect.NotApplicable,
+				},
+			},
+			{
+				Name:              "fr_fr_tablet_lacros",
+				Fixture:           fixture.LacrosTabletVKWithAssistAutocorrect,
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: autocorrect.TestCase{
+					InputMethod:  ime.FrenchFrance,
+					MisspeltWord: "francais",
+					CorrectWord:  "français",
+					UndoMethod:   autocorrect.NotApplicable,
+				},
+			},
+			{
+				Name:              "fr_fr_a11y_lacros",
+				Fixture:           fixture.LacrosClamshellVKWithAssistAutocorrect,
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
 				Val: autocorrect.TestCase{
 					InputMethod:  ime.FrenchFrance,
 					MisspeltWord: "francais",
@@ -122,11 +205,11 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 
 	vkbCtx := vkb.NewContext(cr, tconn)
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	if err := imesettings.SetVKAutoCapitalization(uc, inputMethod, false)(ctx); err != nil {
 		s.Fatal("Failed to disable auto-capitalization in IME settings: ", err)
