@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0176f2_0185c400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T23:37:03Z",
+      "side": 1,
+      "message": "Interesting! Thanks for the clarification 😊",
+      "parentUuid": "b3f84b01_a6eee632",
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6197f56e_c2005d20",
@@ -178,6 +196,24 @@
       "side": 1,
       "message": "Right. All the `Nested.*` archives contain all the `Unicode.*` archives, including the ones that are getting added in this CL.",
       "parentUuid": "28ee1f3c_76551a05",
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39e8285_59d47c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/crosdisks/Nested.rar",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T23:37:03Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "192875b4_622caa3b",
       "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
