@@ -7,6 +7,7 @@ package cellular
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
 	"math/rand"
 	"os"
@@ -29,12 +30,43 @@ import (
 
 const defaultTimeout = shillconst.DefaultTimeout
 
+// ModemInfo Gets modem info from host_info_labels.
+type ModemInfo struct {
+	Type           string
+	Imei           string
+	SupportedBands string
+	SimCount       int
+}
+
+// SIMProfileInfo Gets profile info from host_info_labels.
+type SIMProfileInfo struct {
+	Iccid       string
+	SimPin      string
+	SimPuk      string
+	CarrierName string
+}
+
+// SIMInfo Gets SIM info from host_info_labels.
+type SIMInfo struct {
+	SlotID      int
+	Type        string
+	Eid         string
+	TestEsim    bool
+	ProfileInfo []*SIMProfileInfo
+}
+
+// LabelMap is the type label map.
+type LabelMap map[string][]string
+
 // Helper fetches Cellular Device and Service properties.
 type Helper struct {
 	Manager            *shill.Manager
 	Device             *shill.Device
 	enableEthernetFunc func(ctx context.Context)
 	enableWifiFunc     func(ctx context.Context)
+	Labels             []string
+	modemInfo          *ModemInfo
+	simInfo            []*SIMInfo
 }
 
 // NewHelper creates a Helper object and ensures that a Cellular Device is present.
@@ -72,6 +104,20 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 		return nil, errors.Wrap(err, "unable to start DBus log capture")
 	}
 	return &helper, nil
+}
+
+// NewHelperWithLabels creates a Helper object and populates label info from host_info_labels, ensuring that a Cellular Device is present.
+func NewHelperWithLabels(ctx context.Context, cmd func(name string) (val string, ok bool)) (*Helper, error) {
+	helper, err := NewHelper(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := helper.GetHostInfoLabels(ctx, cmd); err != nil {
+		return nil, errors.Wrap(err, "unable to read labels")
+	}
+
+	return helper, nil
 }
 
 // WaitForEnabledState polls for the specified enable state for cellular.
@@ -856,6 +902,25 @@ func (h *Helper) getCellularServiceDictProperty(ctx context.Context, propertyNam
 	return dictProp, nil
 }
 
+// getCellularServiceProperty gets a shill service dictionary property
+func (h *Helper) getCellularServiceProperty(ctx context.Context, propertyName string) (string, error) {
+	// Verify that a connectable Cellular service exists and ensure it is connected.
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "unable to find Cellular Service for Device")
+	}
+	props, err := service.GetShillProperties(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "error getting Service properties")
+	}
+	info, err := props.GetString(propertyName)
+	if err != nil {
+		return "", errors.Wrapf(err, "error getting property %q", propertyName)
+	}
+
+	return info, nil
+}
+
 // GetCellularLastAttachAPN gets Cellular.LastAttachAPN dictionary from shill properties.
 func (h *Helper) GetCellularLastAttachAPN(ctx context.Context) (map[string]string, error) {
 	return h.getCellularServiceDictProperty(ctx, shillconst.ServicePropertyCellularLastAttachAPN)
@@ -878,6 +943,11 @@ func (h *Helper) GetCurrentIPType(ctx context.Context) (string, error) {
 		return ipType, nil
 	}
 	return "ipv4", nil
+}
+
+// GetCurrentICCID get current ICCID
+func (h *Helper) GetCurrentICCID(ctx context.Context) (string, error) {
+	return h.getCellularServiceProperty(ctx, shillconst.ServicePropertyCellularICCID)
 }
 
 // disableNonCellularInterfaceforTesting disable all non cellular interfaces
@@ -930,4 +1000,70 @@ func (h *Helper) RunTestOnCellularInterface(ctx context.Context, testBody func(c
 	}
 	defer h.enablePreviouslyDisabledNonCellularInterfaceforTesting(ctx)
 	return testBody(ctx)
+}
+
+// PrintHostInfoLabels prints the host info labels
+func (h *Helper) PrintHostInfoLabels(ctx context.Context) {
+	for _, label := range h.Labels {
+		testing.ContextLog(ctx, "Labels :", label)
+	}
+}
+
+// PrintModemInfo prints modem details
+func (h *Helper) PrintModemInfo(ctx context.Context) {
+	testing.ContextLog(ctx, "Modem Type : ", h.modemInfo.Type)
+	testing.ContextLog(ctx, "Modem IMEI : ", h.modemInfo.Imei)
+	testing.ContextLog(ctx, "Modem Supported Bands : ", h.modemInfo.SupportedBands)
+	testing.ContextLog(ctx, "Modem SIM Count : ", h.modemInfo.SimCount)
+}
+
+// PrintSIMInfo prints SIM details
+func (h *Helper) PrintSIMInfo(ctx context.Context) {
+	for _, s := range h.simInfo {
+		testing.ContextLog(ctx, "SIM Slot id   : ", s.SlotID)
+		testing.ContextLog(ctx, "SIM Type      : ", s.Type)
+		testing.ContextLog(ctx, "SIM Test eSIM : ", s.TestEsim)
+		testing.ContextLog(ctx, "SIM EID       : ", s.Eid)
+		for _, p := range s.ProfileInfo {
+			testing.ContextLog(ctx, "SIM Profile ICCID : ", p.Iccid)
+			testing.ContextLog(ctx, "SIM Profile PIN : ", p.SimPin)
+			testing.ContextLog(ctx, "SIM Profile PUK : ", p.SimPuk)
+			testing.ContextLog(ctx, "SIM Profile Carrier Name : ", p.CarrierName)
+		}
+	}
+}
+
+// GetHostInfoLabels reads the labels from autotest_host_info_labels
+func (h *Helper) GetHostInfoLabels(ctx context.Context, cmd func(name string) (val string, ok bool)) error {
+	labelsStr, ok := cmd("autotest_host_info_labels")
+	if !ok {
+		return errors.New("failed to read autotest_host_info_labels")
+	}
+
+	var labels []string
+	if err := json.Unmarshal([]byte(labelsStr), &labels); err != nil {
+		return errors.Wrap(err, "failed to unmarshal label string")
+	}
+
+	dims := make(LabelMap)
+	for _, label := range labels {
+		val := strings.SplitN(label, ":", 2)
+		dims[val[0]] = append(dims[val[0]], val[1])
+	}
+	h.Labels = labels
+	h.modemInfo = GetModemInfoFromHostInfoLabels(ctx, dims)
+	h.simInfo = GetSIMInfoFromHostInfoLabels(ctx, dims)
+	return nil
+}
+
+// GetPINAndPUKForICCID returns the pin and puk info for the given iccid from host_info_label
+func (h *Helper) GetPINAndPUKForICCID(ctx context.Context, iccid string) (string, string, error) {
+	for _, s := range h.simInfo {
+		for _, p := range s.ProfileInfo {
+			if p.Iccid == iccid {
+				return p.SimPin, p.SimPuk, nil
+			}
+		}
+	}
+	return "", "", nil
 }
