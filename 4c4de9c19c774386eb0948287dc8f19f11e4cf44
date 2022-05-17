@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec4a024c_7f9de070",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-17T21:32:49Z",
+      "side": 1,
+      "message": "This LGTM - but I\u0027d like pwang@ to review since he\u0027s provided\ngreat feedback before when I tried to doing timed samplings,\nplease wait for his feedback.  Thanks for the CL!!",
+      "revId": "4c4de9c19c774386eb0948287dc8f19f11e4cf44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b53f20a6_c28cfef9",
@@ -41,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be195e5_f241dd46",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-17T21:32:49Z",
+      "side": 1,
+      "message": "Please see the next reply.",
+      "parentUuid": "b53f20a6_c28cfef9",
+      "range": {
+        "startLine": 185,
+        "startChar": 69,
+        "endLine": 185,
+        "endChar": 81
+      },
+      "revId": "4c4de9c19c774386eb0948287dc8f19f11e4cf44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4722c4ae_a75ec05c",
@@ -54,6 +95,30 @@
       "writtenOn": "2022-05-16T04:35:28Z",
       "side": 1,
       "message": "Total time is actualSamples * samplePeriod. Please check if this correct.",
+      "range": {
+        "startLine": 186,
+        "startChar": 35,
+        "endLine": 186,
+        "endChar": 68
+      },
+      "revId": "4c4de9c19c774386eb0948287dc8f19f11e4cf44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08064fc_88011eb3",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-17T21:32:49Z",
+      "side": 1,
+      "message": "Actually we don\u0027t need |samplePeriod| because the logic below will\ntrack |rcs|/|total|, so |samplePeriod| will be factored out, and\ndoesn\u0027t need to go neither in l.185 nor here.",
+      "parentUuid": "4722c4ae_a75ec05c",
       "range": {
         "startLine": 186,
         "startChar": 35,
