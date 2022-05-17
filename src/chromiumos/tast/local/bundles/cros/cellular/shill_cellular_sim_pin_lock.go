@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cellular"
-	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
 )
 
@@ -23,28 +22,34 @@ func init() {
 		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_pinlock"},
 		Fixture:  "cellular",
 		Timeout:  5 * time.Minute,
+		Vars:     []string{"autotest_host_info_labels"},
 	})
 }
 
 // ShillCellularSimPinLock tests enabling sim lock and locking the sim with pin-lock.
 func ShillCellularSimPinLock(ctx context.Context, s *testing.State) {
 	// Gather Shill Device sim properties.
-	helper, err := cellular.NewHelper(ctx)
+	labels, err := cellular.GetLabelsAsStringArray(ctx, s.Var, "autotest_host_info_labels")
+	if err != nil {
+		s.Fatal("Failed to read autotest_host_info_labels: ", err)
+	}
+
+	helper, err := cellular.NewHelperWithLabels(ctx, labels)
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
 
-	modem, err := modemmanager.NewModemWithSim(ctx)
+	iccid, err := helper.GetCurrentICCID(ctx)
 	if err != nil {
-		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
+		s.Fatal("Could not get current ICCID: ", err)
 	}
-
-	currentPin := mmconst.DefaultSimPin
-	if currentPuk, err := modem.GetActiveSimPuk(ctx); err != nil {
-		s.Fatal("Failed to get active sim puk: ", err)
-	} else if currentPuk == "" {
+	currentPin, currentPuk, err := helper.GetPINAndPUKForICCID(ctx, iccid)
+	if err != nil {
+		s.Fatal("Could not get Pin and Puk : ", err)
+	}
+	if currentPuk == "" {
 		// Do graceful exit, not to run tests on unknown puk duts.
-		s.Log("Skipped on this dut as could not find mapping PUK code for ICCID on dut")
+		s.Logf("Unable to find PUK code for ICCID : %s, skipping the test", iccid)
 		return
 	}
 

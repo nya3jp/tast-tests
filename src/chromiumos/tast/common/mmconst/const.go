@@ -118,7 +118,7 @@ const (
 
 // Default SIM pin
 const (
-	DefaultSimPin = "1234"
+	DefaultSimPin = "1111"
 	TempSimPin    = "1600"
 )
 
