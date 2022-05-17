@@ -26,22 +26,39 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardJapaneseTyping,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that Japanese physical keyboard works",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Fixture:      fixture.ClamshellNonVK,
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name: "us",
-				Val:  ime.JapaneseWithUSKeyboard,
+				Name:      "us",
+				Fixture:   fixture.ClamshellNonVK,
+				Val:       ime.JapaneseWithUSKeyboard,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
-				Name: "jp",
-				Val:  ime.Japanese,
+				Name:      "jp",
+				Fixture:   fixture.ClamshellNonVK,
+				Val:       ime.Japanese,
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:              "us_lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				Val:               ime.JapaneseWithUSKeyboard,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "jp_lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				Val:               ime.Japanese,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
@@ -81,11 +98,11 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	inputField := testserver.TextAreaInputField
 
