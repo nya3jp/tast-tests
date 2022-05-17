@@ -128,9 +128,9 @@ func SpellCheckServiceEnabled(ctx context.Context, s *testing.State) {
 			defer closeBrowser(cleanupCtx)
 
 			// Inside ChromeOS settings, check that the button is restricted and set to the correct value.
-			if err := policyutil.SettingsPage(ctx, cr, br, "languages").
+			if err := policyutil.SettingsPage(ctx, cr, br, "syncSetup").
 				SelectNode(ctx, nodewith.
-					Role(role.RadioButton).
+					Role(role.ToggleButton).
 					NameStartingWith("Enhanced spell check")).
 				Restriction(param.wantRestriction).
 				Checked(param.wantSettingsCheck).
@@ -139,15 +139,11 @@ func SpellCheckServiceEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			if param.wantRestriction == restriction.Disabled {
-				// Check for the enterprise icon. It is next to the RadioButton that is actually selected.
-				imageLabel := "Enhanced spell check"
-				if param.wantSettingsCheck == checked.False {
-					imageLabel = "Basic spell check"
-				}
-				if err := policyutil.SettingsPage(ctx, cr, br, "languages").
+				// Check for the enterprise icon.
+				if err := policyutil.SettingsPage(ctx, cr, br, "syncSetup").
 					SelectNode(ctx, nodewith.
 						Role(role.Image).
-						NameStartingWith(imageLabel)).
+						NameStartingWith("Enhanced spell check")).
 					Verify(); err != nil {
 					s.Error("Unexpected OS settings state: ", err)
 				}
