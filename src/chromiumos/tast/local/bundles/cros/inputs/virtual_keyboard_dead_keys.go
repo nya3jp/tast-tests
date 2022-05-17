@@ -38,7 +38,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardDeadKeys,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that dead keys on the virtual keyboard work",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
@@ -87,7 +87,6 @@ func init() {
 					// "Catalan keyboard" input method is no-frills. Dead keys are
 					// implemented differently from those of a decoder-backed input method.
 					inputMethod: ime.Catalan,
-
 					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
 					// based on Shift and Caps states, then add Shift and Caps related
 					// typing sequences to the test case.
@@ -100,6 +99,30 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Fixture:           fixture.TabletVK,
+				Val: deadKeysTestCase{
+					inputMethod:          ime.Catalan,
+					typingKeys:           []string{acuteAccent, "a"},
+					expectedTypingResult: "á",
+				},
+			},
+			{
+				Name:              "french_lacros",
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				Fixture:           fixture.LacrosClamshellVK,
+				Val: deadKeysTestCase{
+					inputMethod:          ime.FrenchFrance,
+					typingKeys:           []string{circumflex, "a"},
+					expectedTypingResult: "â",
+				},
+			},
+			{
+				Name:              "catalan_lacros",
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				Fixture:           fixture.LacrosTabletVK,
 				Val: deadKeysTestCase{
 					inputMethod:          ime.Catalan,
 					typingKeys:           []string{acuteAccent, "a"},
@@ -124,11 +147,11 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	inputMethod := testCase.inputMethod
 	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
