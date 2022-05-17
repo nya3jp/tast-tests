@@ -22,6 +22,115 @@
       },
       "revId": "21f5790e3cd1027870475a8793d8d463de5d6f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54260068_e61bdd57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-17T20:59:36Z",
+      "side": 1,
+      "message": "Data:         []string{cujrecorder.SystemTraceConfigFile},",
+      "revId": "21f5790e3cd1027870475a8793d8d463de5d6f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c3c310_102c84a5",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-17T20:59:36Z",
+      "side": 1,
+      "message": "`is running a`",
+      "range": {
+        "startLine": 434,
+        "startChar": 64,
+        "endLine": 434,
+        "endChar": 71
+      },
+      "revId": "21f5790e3cd1027870475a8793d8d463de5d6f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9872d2_a71ddff3",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-17T20:59:36Z",
+      "side": 1,
+      "message": "`marshal`",
+      "range": {
+        "startLine": 496,
+        "startChar": 35,
+        "endLine": 496,
+        "endChar": 43
+      },
+      "revId": "21f5790e3cd1027870475a8793d8d463de5d6f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "191fdb5d_01443e38",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-17T20:59:36Z",
+      "side": 1,
+      "message": "`Unmarshal`",
+      "range": {
+        "startLine": 496,
+        "startChar": 5,
+        "endLine": 496,
+        "endChar": 15
+      },
+      "revId": "21f5790e3cd1027870475a8793d8d463de5d6f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e8a49a_8e4d0900",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-17T20:59:36Z",
+      "side": 1,
+      "message": "If all this code is commented out, then why put it in the CL at all?",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 0
+      },
+      "revId": "21f5790e3cd1027870475a8793d8d463de5d6f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
