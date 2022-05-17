@@ -873,7 +873,7 @@ func newNetDev(phyHeader, ifHeader, ifBody string) (*NetDev, error) {
 	ifName := m[0]
 
 	// Parse ifType.
-	m, err = extractMatch(`(?m)^\s*type ([a-zA-Z]+)$`, ifBody)
+	m, err = extractMatch(`(?m)^\s*type ([a-zA-Z1-2-]+)$`, ifBody)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to parse ifType")
 	}
