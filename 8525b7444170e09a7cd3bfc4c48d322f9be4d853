@@ -16,6 +16,24 @@
       "message": "Curious if we want to cut down the number of sites to 3, as it might not yield too much more signals.",
       "revId": "8525b7444170e09a7cd3bfc4c48d322f9be4d853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e305be47_4dac28e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-17T11:19:14Z",
+      "side": 1,
+      "message": "Done, the number of websites is down to 3.",
+      "parentUuid": "2f69bc62_4d88e2f2",
+      "revId": "8525b7444170e09a7cd3bfc4c48d322f9be4d853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
