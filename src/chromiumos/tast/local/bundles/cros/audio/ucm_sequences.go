@@ -33,8 +33,6 @@ func init() {
 		HardwareDeps: hwdep.D(
 			// TODO(b/231276793): eve hotword broken.
 			hwdep.SkipOnModel("eve"),
-			// TODO(b/231671430): vilboz does not free PCM properly.
-			hwdep.SkipOnModel("vilboz", "vilboz14", "vilboz360"),
 		),
 		Params: []testing.Param{
 			{
@@ -145,7 +143,10 @@ func UCMSequences(ctx context.Context, s *testing.State) {
 	if err := upstart.StopJob(ctx, "cras"); err != nil {
 		s.Fatal("Cannot stop cras: ", err)
 	}
-	testing.Sleep(ctx, time.Second)
+	// Sleep required for pm_runtime_set_autosuspend_delay(&pdev->dev, 10000)
+	// https://source.chromium.org/chromium/chromiumos/third_party/kernel/+/HEAD:sound/soc/amd/acp-pcm-dma.c;l=1271;drc=662fb3efe7ee835f0eeba6bc63b81e82a97fc312
+	s.Log("Sleeping 11 seconds to wait for audio device to be ready")
+	testing.Sleep(ctx, 11*time.Second)
 
 	param := s.Param().(ucmSequencesParam)
 
