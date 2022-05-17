@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c744797_2c498177",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-17T20:33:35Z",
+      "side": 1,
+      "message": "Presumably we also tested with an openwrt router too?",
+      "range": {
+        "startLine": 17,
+        "startChar": 46,
+        "endLine": 17,
+        "endChar": 60
+      },
+      "revId": "53cb314011353ec36d2f539868c1ba262b4cb5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76247594_428e3715",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-17T20:33:35Z",
+      "side": 1,
+      "message": "LGTM: minor nit in commit msg.",
+      "revId": "53cb314011353ec36d2f539868c1ba262b4cb5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
