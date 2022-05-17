@@ -27,14 +27,23 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardCantoneseTyping,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that Cantonese physical keyboard works",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.ClamshellNonVK,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{
+			{
+				Fixture: fixture.ClamshellNonVK,
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+		},
 	})
 }
 
@@ -64,11 +73,11 @@ func PhysicalKeyboardCantoneseTyping(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	inputField := testserver.TextAreaInputField
 

@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardAccentKeyAutocorrect,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that physical keyboard with accent keys can perform typing with autocorrects",
 		Contacts: []string{
 			"vivian.tsai@cienet.com", // Author
@@ -37,14 +37,23 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{
 			{
+				Fixture:           fixture.ClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			}, {
+			},
+			{
 				Name:              "informational",
+				Fixture:           fixture.ClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-			}},
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+		},
 	})
 }
 
@@ -72,11 +81,11 @@ func PhysicalKeyboardAccentKeyAutocorrect(ctx context.Context, s *testing.State)
 	}
 	defer kb.Close()
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	defer func(ctx context.Context) {
 		if err := inputMethod.ResetSettings(tconn)(ctx); err != nil {
