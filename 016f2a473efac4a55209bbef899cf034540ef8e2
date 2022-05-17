@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ae9083_2830d6f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-17T11:14:38Z",
+      "side": 1,
+      "message": "Done, split as 2 separate tests: \n- launcher.SearchWeb\n- launcher.SearchGoogleDocument",
+      "parentUuid": "814fb020_271ef99d",
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "140d7831_b32d0467",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-19T17:01:50Z",
       "side": 1,
       "message": "isn\u0027t this more or less launcher.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 0
+      },
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e057a99_ddf2e29c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-17T11:14:38Z",
+      "side": 1,
+      "message": "We refactored the logic, and should make more sense now.",
+      "parentUuid": "140d7831_b32d0467",
       "range": {
         "startLine": 159,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15831100_900d5e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-17T11:14:38Z",
+      "side": 1,
+      "message": "The expected is not an app, so launcher.SearchAndLaunchWithQuery and other similar functions do not work.\n\nExtra comments are added to further explain it.",
+      "parentUuid": "405c2b40_16daae9a",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f769d3b_72e5ff8a",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3adec176_2566a422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-17T11:14:38Z",
+      "side": 1,
+      "message": "We refactored the logic, and should make more sense now.",
+      "parentUuid": "6f769d3b_72e5ff8a",
+      "range": {
+        "startLine": 179,
+        "startChar": 7,
+        "endLine": 179,
+        "endChar": 22
+      },
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba65480_23b4488c",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-04-19T17:01:50Z",
       "side": 1,
       "message": "we only need this wait for drive search, correct?",
+      "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a11b057_200f6af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-17T11:14:38Z",
+      "side": 1,
+      "message": "Yes, this CL now contains 2 separate tests: `launcher.SearchWeb` and `launcher.SearchGoogleDocument`.\n\nThe “wait for drive” part has been refactored and moved to `launcher.SearchGoogleDocument`.",
+      "parentUuid": "eba65480_23b4488c",
       "revId": "016f2a473efac4a55209bbef899cf034540ef8e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

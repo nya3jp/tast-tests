@@ -253,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d712f5e6_b14396dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-17T11:14:38Z",
+      "side": 1,
+      "message": "Done, the test will only handle the files it creates.",
+      "parentUuid": "79f43318_2a113f8b",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f7e9b98_c14919a4",
@@ -496,6 +514,24 @@
       "side": 1,
       "message": "Might be a good idea to use parameterized tests in this case. You can specify fixtures for individual params. The driveFsStarted fixture uses a real user login to whenever we can avoid doing this, saves additional bandwidth for the other tests.",
       "parentUuid": "e76a9777_bcc6b8d6",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64496c08_8221c681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-17T11:14:38Z",
+      "side": 1,
+      "message": "We split the test to 2 separate tests per suggestion: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3406368/comments/814fb020_271ef99d\n\nPlease let us know if using parameterized tests for this case is preferred.",
+      "parentUuid": "87a2f5d0_462072b5",
       "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

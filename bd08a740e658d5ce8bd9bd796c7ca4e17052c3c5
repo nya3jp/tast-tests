@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40eb43b6_f1f14b6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-17T11:14:38Z",
+      "side": 1,
+      "message": "Hello reviewers, \nsorry for the delay, and sorry for such big changes.\n\nWe refactored the test logic and split as two separate tests. Hopefully it would make more sense.",
+      "revId": "bd08a740e658d5ce8bd9bd796c7ca4e17052c3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
