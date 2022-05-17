@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77f1ec41_76bbc923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-17T16:47:58Z",
+      "side": 1,
+      "message": "I can go over it more in the input overlay meeting today, but I\u0027ve been having trouble with UI automator, and I found this bug that may explain why: b/231097154",
+      "parentUuid": "23d6f0ba_9e761558",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 109
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d26560b2_848f4e8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
         "patchSetId": 14
