@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9712d634_120efa4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_lol_on.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-17T07:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09a7b5fc_aad6ef16",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "d359e6e5c8103a87c01200db6866a59cb02be05d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81241a50_6eabd9af",
