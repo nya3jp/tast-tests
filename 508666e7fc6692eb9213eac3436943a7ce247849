@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba1acff_d862cb9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-05-17T07:06:39Z",
+      "side": 1,
+      "message": "Add Tast Owners as reviewer because Victor-Gabriel is OOO.",
+      "revId": "508666e7fc6692eb9213eac3436943a7ce247849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
