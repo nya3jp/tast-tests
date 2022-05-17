@@ -33,17 +33,17 @@ type pkShapeBasedChineseTestCase struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardShapeBasedChineseTyping,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that shape-based Chinese physical keyboard works",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.ClamshellNonVK,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name: "array",
+				Name:    "array",
+				Fixture: fixture.ClamshellNonVK,
 				Val: pkShapeBasedChineseTestCase{
 					inputMethod:    ime.ChineseArray,
 					typingKeys:     "aaa lbj mc gds exxw pf alpe ajr .aad ame ",
@@ -51,7 +51,8 @@ func init() {
 				},
 			},
 			{
-				Name: "cangjie",
+				Name:    "cangjie",
+				Fixture: fixture.ClamshellNonVK,
 				Val: pkShapeBasedChineseTestCase{
 					inputMethod:    ime.ChineseCangjie,
 					typingKeys:     "a jwj yrhhi hui hxyc oiar grmbc ",
@@ -59,7 +60,8 @@ func init() {
 				},
 			},
 			{
-				Name: "dayi",
+				Name:    "dayi",
+				Fixture: fixture.ClamshellNonVK,
 				Val: pkShapeBasedChineseTestCase{
 					inputMethod:    ime.ChineseDayi,
 					typingKeys:     "1 j 123 asox db/ ",
@@ -67,7 +69,8 @@ func init() {
 				},
 			},
 			{
-				Name: "quick",
+				Name:    "quick",
+				Fixture: fixture.ClamshellNonVK,
 				Val: pkShapeBasedChineseTestCase{
 					inputMethod:    ime.ChineseQuick,
 					typingKeys:     "a jw yr an is ",
@@ -75,12 +78,63 @@ func init() {
 				},
 			},
 			{
-				Name: "wubi",
+				Name:    "wubi",
+				Fixture: fixture.ClamshellNonVK,
 				Val: pkShapeBasedChineseTestCase{
 					inputMethod:    ime.ChineseWubi,
 					typingKeys:     "yge yygy ggll yygt gg tt ",
 					expectedResult: "请文一方五笔",
 				},
+			},
+			{
+				Name:    "array_lacros",
+				Fixture: fixture.LacrosClamshellNonVK,
+				Val: pkShapeBasedChineseTestCase{
+					inputMethod:    ime.ChineseArray,
+					typingKeys:     "aaa lbj mc gds exxw pf alpe ajr .aad ame ",
+					expectedResult: "三節外也關由面再行列",
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:    "cangjie_lacros",
+				Fixture: fixture.LacrosClamshellNonVK,
+				Val: pkShapeBasedChineseTestCase{
+					inputMethod:    ime.ChineseCangjie,
+					typingKeys:     "a jwj yrhhi hui hxyc oiar grmbc ",
+					expectedResult: "日車謝鬼與倉頡",
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:    "dayi_lacros",
+				Fixture: fixture.LacrosClamshellNonVK,
+				Val: pkShapeBasedChineseTestCase{
+					inputMethod:    ime.ChineseDayi,
+					typingKeys:     "1 j 123 asox db/ ",
+					expectedResult: "言月詐做易",
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:    "quick_lacros",
+				Fixture: fixture.LacrosClamshellNonVK,
+				Val: pkShapeBasedChineseTestCase{
+					inputMethod:    ime.ChineseQuick,
+					typingKeys:     "a jw yr an is ",
+					expectedResult: "日富這門成",
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:    "wubi_lacros",
+				Fixture: fixture.LacrosClamshellNonVK,
+				Val: pkShapeBasedChineseTestCase{
+					inputMethod:    ime.ChineseWubi,
+					typingKeys:     "yge yygy ggll yygt gg tt ",
+					expectedResult: "请文一方五笔",
+				},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -114,11 +168,11 @@ func PhysicalKeyboardShapeBasedChineseTyping(ctx context.Context, s *testing.Sta
 	}
 	defer kb.Close()
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
-		s.Fatal("Fail to launch inputs test server: ", err)
+		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	inputField := testserver.TextAreaInputField
 
