@@ -49,6 +49,31 @@ func init() {
 	})
 }
 
+/*
+Definitions from 802.11 standards:
+ProbeDelay: Delay to be used prior to transmitting a Probe frame during active
+scanning.
+MinChannelTime: The minimum time to spend on each channel when scanning.
+MaxChannelTime: The maximum time to spend on each channel when scanning.
+These values are integers, and MinChannelTime<=MaxChannelTime. They are set in
+the driver, and different chips may have different values.
+
+In an active scan, the station waits for either an indication of an incoming
+frame or for the ProbeDelay timer to expire. Then it sends a probe request and
+waits for MinChannelTime to elapse.
+    a. If the medium is never busy, move to the next channel;
+    b. If the medium is busy during the MinChannelTime interval, wait until
+	MaxChannelTime and process any probe response.
+
+In this test, the DUT performs an active scan on each channel. dwellTime is
+the time the DUT spends on each channel collecting beacon frames. The AP sends
+beacon frames every |delayInterval|, |numBSS| beacon frames in total. Since the
+medium is busy, the DUT will stay on each channel until MaxChannelTime has
+elapsed. dwellTime is calculated based on the timestamps of the first and the
+last beacon frames received during the active scan. The purpose of this test is
+to verify that |minDwellTime| <= dwellTime (MaxChannelTime) <= |maxDwellTime|.
+*/
+
 func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	const (
 		knownTestPrefix        = "wifi_CSDT"
@@ -113,12 +138,6 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Error("Failed to release WiFi interface: ", err)
 		}
 	}(cleanupCtx)
-
-	ipr := remoteip.NewRemoteRunner(s.DUT().Conn())
-	dutMAC, err := ipr.MAC(ctx, clientIface)
-	if err != nil {
-		s.Fatal("Failed to get MAC of WiFi interface: ", err)
-	}
 
 	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) {
 		ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
@@ -211,61 +230,25 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Fatal("No Beacons Found")
 		}
 
-		// Find the first probe request from the DUT.
-		// If there are no probe requests, fail.
-		probeReqFilter := []pcap.Filter{
-			pcap.TypeFilter(layers.LayerTypeDot11MgmtProbeReq, nil),
-			pcap.TransmitterAddress(dutMAC),
-		}
-		probeReqPackets, err := pcap.ReadPackets(pcapPath, probeReqFilter...)
-		if err != nil {
-			s.Fatal("Failed to read probe requests from packet capture: ", err)
-		}
-		s.Logf("Received %d probe requests", len(probeReqPackets))
-		if len(probeReqPackets) == 0 {
-			s.Fatal("No probe requests in packet capture")
-		}
-		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
-		s.Log("Probe Request Time: ", probeReqTimestamp)
-
-		// Find the first test beacon after the first probe request.
-		// Note that beacons arriving *before* the probe request should not be counted.
 		beaconFilter := pcap.TypeFilter(layers.LayerTypeDot11MgmtBeacon, nil)
 		beaconPackets, err := pcap.ReadPackets(pcapPath, beaconFilter)
 		if err != nil {
 			s.Fatal("Failed to read beacons from packet capture: ", err)
 		}
-		beaconFirst := ""
-		for _, packet := range beaconPackets {
-
-			// If we've already found the first beacon, we're done
-			if beaconFirst != "" {
-				break
-			}
-
-			// Check to see if the beacon is before the probe.
-			// If the beacon follows the probe and matches the prefix, we're done.
-			if packet.Metadata().Timestamp.Before(probeReqTimestamp) {
-				continue
-			}
-			for _, layer := range packet.Layers() {
-				if elem, ok := layer.(*layers.Dot11InformationElement); ok {
-					if elem.ID == layers.Dot11InformationElementIDSSID {
-						ssid := string(elem.Info)
-						if strings.HasPrefix(ssid, ssidPrefix) {
-							beaconFirst = ssid
-							s.Log("First beacon found: ", ssid)
-							break
-						}
-					}
-				}
-			}
-		}
-		if beaconFirst == "" {
-			s.Fatalf("Could not find beacon after probe request (ssid prefix %s)", ssidPrefix)
-		}
 
 		// Analyze scan results.
+		// This test originally defined |beaconFirst| as the first test beacon
+		// frame after the probe request, but the captures occasionally missed
+		// the probe requests either due to collision with the beacon frames or
+		// the DUT failing to send the probe request, and this would cause the
+		// test to fail. b/225073589 shows that the flake rate is about 5%.
+		// Instead, we now define |beaconFirst| as the first beacon frame
+		// received during the active scan, which may be received before sending
+		// the probe request. This introduces an error of no more than
+		// |delayInterval|, as the DUT sends the probe request immediately after
+		// receiving a beacon frame.
+
+		beaconFirst := ssids[0]
 		beaconCount := len(ssids)
 		beaconFinal := ssids[len(ssids)-1]
 		beaconFirstIdx, err := ssidIndex(beaconFirst)
