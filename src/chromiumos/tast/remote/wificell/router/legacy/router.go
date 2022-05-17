@@ -117,12 +117,11 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		r.Close(shortCtx)
 		return nil, err
 	}
-	if err := r.removeDevicesWithPrefix(shortCtx, common.BridgePrefix); err != nil {
+	if err := common.RemoveAllBridgeIfaces(shortCtx, r.ipr); err != nil {
 		r.Close(shortCtx)
 		return nil, err
 	}
-	// Note that we only need to remove one side of each veth pair.
-	if err := r.removeDevicesWithPrefix(shortCtx, common.VethPrefix); err != nil {
+	if err := common.RemoveAllVethIfaces(shortCtx, r.ipr); err != nil {
 		r.Close(shortCtx)
 		return nil, err
 	}
@@ -300,12 +299,11 @@ func (r *Router) Close(ctx context.Context) error {
 		}
 	}
 
-	if err := r.removeDevicesWithPrefix(ctx, common.BridgePrefix); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to remove devices with prefix %q", common.BridgePrefix))
+	if err := common.RemoveAllBridgeIfaces(ctx, r.ipr); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, err)
 	}
-	// Note that we only need to remove one side of each veth pair.
-	if err := r.removeDevicesWithPrefix(ctx, common.VethPrefix); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to remove devices with prefix %q", common.VethPrefix))
+	if err := common.RemoveAllVethIfaces(ctx, r.ipr); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, err)
 	}
 
 	// Collect closing log to facilitate debugging for error occurs in
@@ -814,20 +812,6 @@ func (r *Router) claimBridge(ctx context.Context, br string) error {
 	}
 
 	return r.ipr.SetLinkUp(ctx, br)
-}
-
-// removeDevicesWithPrefix removes the devices whose names start with the given prefix.
-func (r *Router) removeDevicesWithPrefix(ctx context.Context, prefix string) error {
-	devs, err := r.ipr.LinkWithPrefix(ctx, prefix)
-	if err != nil {
-		return err
-	}
-	for _, dev := range devs {
-		if err := r.ipr.DeleteLink(ctx, dev); err != nil {
-			return err
-		}
-	}
-	return nil
 }
 
 // cloneMAC clones the MAC address of src to dst.
