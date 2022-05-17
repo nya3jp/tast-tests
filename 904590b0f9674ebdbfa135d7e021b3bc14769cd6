@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "928f29a7_5ecf5524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-17T13:32:29Z",
+      "side": 1,
+      "message": "optional (as this is not a regression...): can we come up with something other than \"informational\"? Why this is informational? Maybe just unstable?",
+      "revId": "904590b0f9674ebdbfa135d7e021b3bc14769cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
