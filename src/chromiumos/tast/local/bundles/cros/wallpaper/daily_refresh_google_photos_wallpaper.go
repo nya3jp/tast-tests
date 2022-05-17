@@ -20,13 +20,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type setGooglePhotosWallpaperParams struct {
-	album string
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SetGooglePhotosWallpaper,
+		Func:         DailyRefreshGooglePhotosWallpaper,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test setting Google Photos wallpapers in the wallpaper app",
 		Contacts: []string{
@@ -40,21 +36,10 @@ func init() {
 			"wallpaper.googlePhotosAccountPool",
 		},
 		Timeout: 5 * time.Minute,
-		Params: []testing.Param{{
-			Name: "from_album",
-			Val: setGooglePhotosWallpaperParams{
-				album: constants.GooglePhotosWallpaperAlbum,
-			},
-		}, {
-			Name: "from_photos",
-			Val: setGooglePhotosWallpaperParams{
-				album: "",
-			},
-		}},
 	})
 }
 
-func SetGooglePhotosWallpaper(ctx context.Context, s *testing.State) {
+func DailyRefreshGooglePhotosWallpaper(ctx context.Context, s *testing.State) {
 	// Setting Google Photos wallpapers requires that Chrome be logged in with
 	// a user from an account pool which has been preconditioned to have a
 	// Google Photos library with specific photos/albums present. Note that sync
@@ -85,56 +70,32 @@ func SetGooglePhotosWallpaper(ctx context.Context, s *testing.State) {
 	// ample time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
-	album := s.Param().(setGooglePhotosWallpaperParams).album
-
-	if err := uiauto.Combine("Set a new wallpaper and minimize wallpaper picker",
-		wallpaper.OpenWallpaperPicker(ui),
-		wallpaper.SelectCollection(ui, constants.GooglePhotosWallpaperCollection),
-		func(ctx context.Context) error {
-			if len(album) == 0 {
-				return nil
-			}
-			return uiauto.Combine("Select album",
-				ui.LeftClick(constants.GooglePhotosWallpaperAlbumsButton),
-				wallpaper.SelectGooglePhotosAlbum(ui, album),
-			)(ctx)
-		},
-		wallpaper.SelectGooglePhotosPhoto(ui, constants.GooglePhotosWallpaperPhoto),
-		wallpaper.MinimizeWallpaperPicker(ui),
-	)(ctx); err != nil {
-		s.Fatal("Failed to set new wallpaper: ", err)
-	}
-
-	// The expected percentage takes into account that the center cropped image is
-	// similar to the filled one.
-	const expectedPercent = 70
-	if err := wallpaper.ValidateBackground(cr,
-		constants.GooglePhotosWallpaperColor, expectedPercent)(ctx); err != nil {
-		s.Error("Failed to validate wallpaper background: ", err)
-	}
-
 	// Take a screenshot of the current wallpaper.
 	screenshot1, err := screenshot.GrabScreenshot(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to grab screenshot: ", err)
 	}
 
-	if err := uiauto.Combine("Choose new layout and minimize wallpaper picker",
+	if err := uiauto.Combine("Enable daily refresh and minimize wallpaper picker",
 		wallpaper.OpenWallpaperPicker(ui),
 		wallpaper.SelectCollection(ui, constants.GooglePhotosWallpaperCollection),
-		ui.LeftClick(constants.CenterButton),
+		ui.LeftClick(constants.GooglePhotosWallpaperAlbumsButton),
+		wallpaper.SelectGooglePhotosAlbum(ui, constants.GooglePhotosWallpaperAlbum),
+		ui.LeftClick(constants.ChangeDailyButton),
+		ui.WaitUntilExists(constants.RefreshButton),
 		wallpaper.MinimizeWallpaperPicker(ui),
 	)(ctx); err != nil {
-		s.Fatal("Failed to set new wallpaper: ", err)
+		s.Fatal("Failed to enable daily refresh: ", err)
 	}
 
-	// Take a screenshot of the wallpaper with new layout.
+	// Take a screenshot of the current wallpaper.
 	screenshot2, err := screenshot.GrabScreenshot(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to grab screenshot: ", err)
 	}
 
 	// Verify that the wallpaper has indeed changed.
+	const expectedPercent = 90
 	if err = wallpaper.ValidateDiff(screenshot1, screenshot2, expectedPercent); err != nil {
 		screenshot1Path := filepath.Join(s.OutDir(), "screenshot_1.png")
 		screenshot2Path := filepath.Join(s.OutDir(), "screenshot_2.png")
@@ -143,6 +104,39 @@ func SetGooglePhotosWallpaper(ctx context.Context, s *testing.State) {
 		}
 		if err := imgcmp.DumpImageToPNG(ctx, &screenshot2, screenshot2Path); err != nil {
 			s.Errorf("Failed to dump image to %s: %v", screenshot2Path, err)
+		}
+		s.Fatal("Failed to validate wallpaper difference: ", err)
+	}
+
+	if err := uiauto.Combine("Manually refresh and minimize wallpaper picker",
+		wallpaper.OpenWallpaperPicker(ui),
+		wallpaper.SelectCollection(ui, constants.GooglePhotosWallpaperCollection),
+		ui.LeftClick(constants.GooglePhotosWallpaperAlbumsButton),
+		wallpaper.SelectGooglePhotosAlbum(ui, constants.GooglePhotosWallpaperAlbum),
+		ui.LeftClick(constants.RefreshButton),
+
+		// NOTE: The refresh button will be hidden while updating the wallpaper so
+		// use its reappearance as a proxy to know when the wallpaper has finished
+		// updating.
+		ui.WaitUntilGone(constants.RefreshButton),
+		ui.WaitUntilExists(constants.RefreshButton),
+
+		wallpaper.MinimizeWallpaperPicker(ui),
+	)(ctx); err != nil {
+		s.Fatal("Failed to manually refresh: ", err)
+	}
+
+	// Take a screenshot of the current wallpaper.
+	screenshot3, err := screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to grab screenshot: ", err)
+	}
+
+	// Verify that the wallpaper has indeed changed.
+	if err = wallpaper.ValidateDiff(screenshot2, screenshot3, expectedPercent); err != nil {
+		screenshot3Path := filepath.Join(s.OutDir(), "screenshot_3.png")
+		if err := imgcmp.DumpImageToPNG(ctx, &screenshot3, screenshot3Path); err != nil {
+			s.Errorf("Failed to dump image to %s: %v", screenshot3Path, err)
 		}
 		s.Fatal("Failed to validate wallpaper difference: ", err)
 	}
