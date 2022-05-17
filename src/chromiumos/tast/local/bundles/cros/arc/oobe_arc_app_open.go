@@ -6,33 +6,54 @@ package arc
 
 import (
 	"context"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/oobeutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
+
+type oobeArcAppOpenTestOptions struct {
+	consolidatedConsentEnabled bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OobeArcAppOpen,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Launch ARC App post the OOBE Flow Setup Complete",
-		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
+		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com", "cros-oac@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val: oobeArcAppOpenTestOptions{
+				consolidatedConsentEnabled: false,
+			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: oobeArcAppOpenTestOptions{
+				consolidatedConsentEnabled: false,
+			},
+		}, {
+			Name:              "p_consolidated_consent",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val: oobeArcAppOpenTestOptions{
+				consolidatedConsentEnabled: true,
+			},
+		}, {
+			Name:              "vm_consolidated_consent",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: oobeArcAppOpenTestOptions{
+				consolidatedConsentEnabled: true,
+			},
 		}},
 		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 20*time.Minute,
 		VarDeps: []string{"arc.parentUser", "arc.parentPassword"},
@@ -49,10 +70,19 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	username := s.RequiredVar("arc.parentUser")
 	password := s.RequiredVar("arc.parentPassword")
 
-	cr, err := chrome.New(ctx,
+	testOptions := s.Param().(oobeArcAppOpenTestOptions)
+	chromeOptions := []chrome.Option{
 		chrome.DontSkipOOBEAfterLogin(),
 		chrome.ARCSupported(),
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+	}
+	if testOptions.consolidatedConsentEnabled {
+		chromeOptions = append(chromeOptions, chrome.EnableFeatures("OobeConsolidatedConsent", "PerUserMetricsConsent"))
+	} else {
+		chromeOptions = append(chromeOptions, chrome.DisableFeatures("OobeConsolidatedConsent", "PerUserMetricsConsent"))
+	}
+
+	cr, err := chrome.New(ctx, chromeOptions...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -65,31 +95,17 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)
 
-	skip := nodewith.Name("Skip").Role(role.StaticText)
-	noThanks := nodewith.Name("No thanks").Role(role.Button)
-	getStarted := nodewith.Name("Get started").Role(role.Button)
-
-	if err := uiauto.Combine("go through the oobe flow",
-		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(
-			"Accept and continue|Got it")).Role(role.Button)),
-		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
-		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
-		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
-		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
-		uiauto.IfSuccessThen(ui.WithTimeout(20*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
-		ui.LeftClick(getStarted),
-	)(ctx); err != nil {
-		s.Fatal("Failed to go through the oobe flow: ", err)
+	if testOptions.consolidatedConsentEnabled {
+		if err := oobeutil.CompleteConsolidatedConsentOnboardingFlow(ctx, ui); err != nil {
+			s.Fatal("Failed to go through the oobe flow: ", err)
+		}
+	} else {
+		if err := oobeutil.CompleteRegularOnboardingFlow(ctx, ui /*reviewArcOptions=*/, false); err != nil {
+			s.Fatal("Failed to go through the oobe flow: ", err)
+		}
 	}
 
-	next := nodewith.Name("Next").Role(role.Button)
-	if err := uiauto.Combine("go through the tablet specific flow",
-		uiauto.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
-		uiauto.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
-		uiauto.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
-		uiauto.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(getStarted), ui.LeftClick(getStarted)),
-	)(ctx); err != nil {
+	if err := oobeutil.CompleteTabletOnboarding(ctx, ui); err != nil {
 		s.Fatal("Failed to test oobe Arc tablet flow: ", err)
 	}
 
