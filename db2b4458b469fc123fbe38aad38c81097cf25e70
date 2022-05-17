@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ac92ac_75bea669",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521413
+      },
+      "writtenOn": "2022-05-17T03:54:31Z",
+      "side": 1,
+      "message": "I don\u0027t have OWNERS.",
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eedb3204_117914c9",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1521413
+      },
+      "writtenOn": "2022-05-17T03:54:31Z",
+      "side": 1,
+      "message": "How does this one get the CrostiniUseLxd4 flag?",
+      "range": {
+        "startLine": 213,
+        "startChar": 9,
+        "endLine": 213,
+        "endChar": 19
+      },
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
