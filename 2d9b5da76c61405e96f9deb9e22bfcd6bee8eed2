@@ -16,6 +16,24 @@
       "message": "Mohamed, I have found another issue with the test and had to add a workaround for it. PTAL",
       "revId": "2d9b5da76c61405e96f9deb9e22bfcd6bee8eed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432d0365_fd52c226",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-05-17T18:39:21Z",
+      "side": 1,
+      "message": "LGTM, thanks for the fix!",
+      "parentUuid": "fd1c7649_27af64c9",
+      "revId": "2d9b5da76c61405e96f9deb9e22bfcd6bee8eed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
