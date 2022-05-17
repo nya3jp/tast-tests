@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c180df2_5d8b56ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-17T23:33:24Z",
+      "side": 1,
+      "message": "overall looks good, just one q - if we are to rely on this test, how me make sure the test is actually run and not skipped?",
+      "revId": "dcb396948b69fc20262eccae31fa398de37f0c78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24f9f22f_2c030cb0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
         "patchSetId": 1
