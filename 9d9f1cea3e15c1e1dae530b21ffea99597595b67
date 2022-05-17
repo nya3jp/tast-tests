@@ -16,6 +16,40 @@
       "message": "This is TDLS Setup/Teardown test. Please review.",
       "revId": "9d9f1cea3e15c1e1dae530b21ffea99597595b67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f823488_51d163ed",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:05:02Z",
+      "side": 1,
+      "message": "Already supported in shill service. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/services/cros/wifi/shill_service.proto;l\u003d40?q\u003dGetIPv4Addrs\u0026ss\u003dchromiumos",
+      "revId": "9d9f1cea3e15c1e1dae530b21ffea99597595b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2f9382_4914ff4c",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:05:02Z",
+      "side": 1,
+      "message": "Better extent this in shill service like GetIPv4Addrs so that it could be reused by other modules.",
+      "revId": "9d9f1cea3e15c1e1dae530b21ffea99597595b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
