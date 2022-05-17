@@ -172,28 +172,37 @@ func (s *Spotify) loginIfRequired(ctx context.Context) error {
 		return errors.Wrap(err, `failed to dismiss "This app is designed for mobile" prompt`)
 	}
 
-	logIn := s.d.Object(ui.Text("Log in"))
-	if err := logIn.WaitForExists(ctx, shortUITimeout); err != nil {
-		testing.ContextLog(ctx, "Already signed in to Spotify")
-		return nil
-	}
-
-	testing.ContextLog(ctx, "Signing into Spotify")
-
-	signInWithGoogle := s.d.Object(ui.Text("Continue with Google"))
-	// Two different UIs are found for Spotify's login page. Therefore, an extra logic is added here
-	// to check which UI is currently shown.
-	// In first UI, the "Log in" button needs to be clicked before having the option to "Continue with
-	// Google". In another UI, the option to "Continue with Google" is readily availble after
-	// launching Spotify.
-	if err := signInWithGoogle.WaitForExists(ctx, shortUITimeout); err != nil {
-		testing.ContextLog(ctx, `"Continue with Google" button not found, click "Log in" to continue`)
-		if err := logIn.Click(ctx); err != nil {
-			return errors.Wrap(err, `failed to click "Log in" button`)
+	// The new version of Spotify has two kinds of login pages, both must be checked.
+	continueWithGoogleButton := s.d.Object(ui.DescriptionContains("Continue with Google"))
+	if err := continueWithGoogleButton.WaitForExists(ctx, shortUITimeout); err == nil {
+		testing.ContextLog(ctx, `Start to click "Continue with Google" button`)
+		if err := continueWithGoogleButton.Click(ctx); err != nil {
+			return errors.Wrap(err, `failed to click "Continue with Google" button`)
 		}
-	}
-	if err := signInWithGoogle.Click(ctx); err != nil {
-		return errors.Wrap(err, `failed to click "Continue with Google" button`)
+	} else {
+		logIn := s.d.Object(ui.Text("Log in"))
+		if err := logIn.WaitForExists(ctx, shortUITimeout); err != nil {
+			testing.ContextLog(ctx, "Already signed in to Spotify")
+			return nil
+		}
+
+		testing.ContextLog(ctx, "Signing into Spotify")
+
+		signInWithGoogle := s.d.Object(ui.Text("Continue with Google"))
+		// Two different UIs are found for Spotify's login page. Therefore, an extra logic is added here
+		// to check which UI is currently shown.
+		// In first UI, the "Log in" button needs to be clicked before having the option to "Continue with
+		// Google". In another UI, the option to "Continue with Google" is readily availble after
+		// launching Spotify.
+		if err := signInWithGoogle.WaitForExists(ctx, shortUITimeout); err != nil {
+			testing.ContextLog(ctx, `"Continue with Google" button not found, click "Log in" to continue`)
+			if err := logIn.Click(ctx); err != nil {
+				return errors.Wrap(err, `failed to click "Log in" button`)
+			}
+		}
+		if err := signInWithGoogle.Click(ctx); err != nil {
+			return errors.Wrap(err, `failed to click "Continue with Google" button`)
+		}
 	}
 	accountButton := s.d.Object(ui.Text(s.account))
 	if err := cuj.FindAndClick(accountButton, shortUITimeout)(ctx); err != nil {
