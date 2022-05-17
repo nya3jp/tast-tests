@@ -45,6 +45,54 @@
       },
       "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "209bf917_21ab3a30",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T21:31:13Z",
+      "side": 1,
+      "message": "It\u0027s the same regex, but the regex is represented in a string so you have to escape `\\` with another `\\` to include it in the regex string to get `\\d`.",
+      "parentUuid": "8b2182b3_61b23db2",
+      "range": {
+        "startLine": 265,
+        "startChar": 42,
+        "endLine": 265,
+        "endChar": 44
+      },
+      "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b3dc92_004edb57",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T21:31:13Z",
+      "side": 1,
+      "message": "The key here is that last `:` character. It can either look like `2: iface:` or `2: iface@alias:` so this non-capturing optional group allows for `@alias` to exist between `iface` and `:`. While the final `:` is not captured, it is used to match against the line as if it was just looking for `\\d+:\\s+([^@:]+)[@:]` it\u0027s a little less specific and I want to make sure we get the correct line.",
+      "parentUuid": "cedea76d_03bf0b03",
+      "range": {
+        "startLine": 265,
+        "startChar": 59,
+        "endLine": 265,
+        "endChar": 71
+      },
+      "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
