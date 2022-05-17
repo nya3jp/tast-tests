@@ -46,7 +46,7 @@ func init() {
 			"chromeos-storage@google.com",
 		},
 		Attr:         []string{"group:autoupdate"},
-		SoftwareDeps: []string{"tpm", "reboot", "chrome"},
+		SoftwareDeps: []string{"tpm", "reboot", "chrome", "auto_update_stable"},
 		ServiceDeps: []string{
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.UpdateService",
