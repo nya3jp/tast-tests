@@ -26,10 +26,17 @@ const (
 	ScreenshareResumedIDContains = "screen_share_dlp_resumed-"
 )
 
+// Different paths used for testing.
+const (
+	UnrestrictedPath = "/text_1.html"
+	RestrictedPath   = "/text_2.html"
+)
+
 // The TestParams struct contains parameters for different screenshare tests.
 type TestParams struct {
 	Name        string
 	Restriction restrictionlevel.RestrictionLevel
+	Path        string
 	BrowserType browser.Type
 }
 
@@ -42,7 +49,7 @@ func GetScreenshareBlockPolicy(serverURL string) []policy.Policy {
 				Description: "User should not be able to share the screen with confidential content visible",
 				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
-						serverURL + "/text_2.html",
+						serverURL + RestrictedPath,
 					},
 				},
 				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
@@ -66,7 +73,7 @@ func GetScreenshareWarnPolicy(serverURL string) []policy.Policy {
 				Description: "User should be warned before sharing the screen with confidential content visible",
 				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
-						serverURL + "/text_2.html",
+						serverURL + RestrictedPath,
 					},
 				},
 				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
