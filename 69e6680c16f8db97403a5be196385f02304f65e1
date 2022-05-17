@@ -16,6 +16,40 @@
       "message": "I understand that we are disabling the features on these tests. But that kind of dissolves the purpose of test coverage for what\u0027s there on the field. Instead can we update these tests inline with latest feature launch for coverage?.",
       "revId": "69e6680c16f8db97403a5be196385f02304f65e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db9f095_0a89b85a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-17T18:31:36Z",
+      "side": 1,
+      "message": "Can you please update the owners and include your team in this?",
+      "revId": "69e6680c16f8db97403a5be196385f02304f65e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1354a4f1_09bb558e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-17T18:31:36Z",
+      "side": 1,
+      "message": "Can you please add a TODO that links to the bug, in order to update this test when the experimental feature is rolled out completely?",
+      "revId": "69e6680c16f8db97403a5be196385f02304f65e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
