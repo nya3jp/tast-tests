@@ -8,13 +8,11 @@ package netlisten
 import (
 	"context"
 	"fmt"
-	"os"
 	"strings"
 
 	"github.com/shirou/gopsutil/v3/net"
 	"github.com/shirou/gopsutil/v3/process"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/testing"
@@ -29,11 +27,6 @@ func CheckPorts(ctx context.Context, s *testing.State, expected map[string]strin
 	stats, err := net.Connections("tcp")
 	if err != nil {
 		s.Fatal("Failed to list connections: ", err)
-	}
-
-	tastSSHPID, err := sshSessionProc(int32(os.Getpid()))
-	if err != nil {
-		s.Fatal("Failed to find the SSH process corresponding to the current test process: ", err)
 	}
 
 	for _, st := range stats {
@@ -55,11 +48,6 @@ func CheckPorts(ctx context.Context, s *testing.State, expected map[string]strin
 			continue
 		}
 
-		sshPID, err := sshSessionProc(st.Pid)
-		if err != nil {
-			sshPID = -1
-		}
-
 		// The original security_NetworkListeners Autotest test ignored any listening sockets that were owned by
 		// (as reported by lsof) "autotest" commands on any address or "python" commands on 127.0.0.1. Apparently
 		// Autotest also sometimes passes (or at least passed) open sockets to e.g. "sed" or "bash" child processes.
@@ -67,7 +55,7 @@ func CheckPorts(ctx context.Context, s *testing.State, expected map[string]strin
 		// exclude all Python and Autotest executables -- note that Python is only installed on dev and test images.
 		if strings.HasPrefix(exe, "/usr/local/bin/python") || strings.HasPrefix(exe, "/usr/local/autotest/") {
 			s.Logf("%v is listening at %v (probably dev- or test-related)", exe, realAddrPort)
-		} else if sshPID == tastSSHPID {
+		} else if isUnderSSHDTree(st.Pid) {
 			s.Logf("%v is listening at %v (Tast-related)", exe, realAddrPort)
 		} else if expExe, expOpen := expected[addrPort]; !expOpen {
 			s.Errorf("%v is listening at %v", exe, realAddrPort)
@@ -79,6 +67,30 @@ func CheckPorts(ctx context.Context, s *testing.State, expected map[string]strin
 	}
 }
 
+// isUnderSSHDTree returns whether pid is under the sshd process.
+// It returns false for the sshd daemon process itself.
+func isUnderSSHDTree(pid int32) bool {
+	for pid != 0 {
+		proc, err := process.NewProcess(pid)
+		if err != nil {
+			return false
+		}
+		exe, err := proc.Exe()
+		if err != nil {
+			return false
+		}
+		ppid, err := proc.Ppid()
+		if err != nil {
+			return false
+		}
+		if exe == "/usr/sbin/sshd" {
+			return ppid != 1
+		}
+		pid = ppid
+	}
+	return false
+}
+
 // getExe returns the executable path corresponding to the supplied PID.
 // An error may be returned if the process exits before it is examined.
 func getExe(pid int32) (string, error) {
@@ -87,32 +99,6 @@ func getExe(pid int32) (string, error) {
 		return "", err
 	}
 	return proc.Exe()
-}
-
-// sshSessionProc returns the PID of an sshd process corresponding to the SSH
-// session that a given process belongs to. It returns an error if a given
-// process is not under the sshd process tree. It also returns an error if a
-// given process is the root sshd process from which per-session sshd forks.
-func sshSessionProc(pid int32) (int32, error) {
-	for pid != 0 {
-		proc, err := process.NewProcess(pid)
-		if err != nil {
-			return 0, err
-		}
-		exe, err := proc.Exe()
-		if err != nil {
-			return 0, err
-		}
-		ppid, err := proc.Ppid()
-		if err != nil {
-			return 0, err
-		}
-		if exe == "/usr/sbin/sshd" && ppid != 1 {
-			return pid, nil
-		}
-		pid = ppid
-	}
-	return 0, errors.New("not an SSH session process")
 }
 
 // Common returns well-known network listeners shared between all security.NetworkListeners* tests.
