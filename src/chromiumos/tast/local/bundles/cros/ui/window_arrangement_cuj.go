@@ -42,7 +42,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars:         []string{"record"},
 		Timeout:      10*time.Minute + cuj.CPUStablizationTimeout,
-		Data:         []string{"shaka_720.webm", "pip.html"},
+		Data:         []string{"shaka_720.webm", "pip.html", cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -203,7 +203,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 	if testParam.Tracing {
-		recorder.EnableTracing(s.OutDir())
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
 	defer recorder.Close(closeCtx)
 
