@@ -9,6 +9,7 @@ import (
 	"fmt"
 
 	"chromiumos/tast/common/network/ip"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/testing"
 )
@@ -38,4 +39,12 @@ func ReleaseBridge(ctx context.Context, ipr *ip.Runner, br string) error {
 	wifiutil.CollectFirstErr(ctx, &firstErr, ipr.SetLinkDown(ctx, br))
 	wifiutil.CollectFirstErr(ctx, &firstErr, ipr.DeleteLink(ctx, br))
 	return firstErr
+}
+
+// RemoveAllBridgeIfaces will delete any existing ifaces starting with BridgePrefix.
+func RemoveAllBridgeIfaces(ctx context.Context, ipr *ip.Runner) error {
+	if err := RemoveDevicesWithPrefix(ctx, ipr, BridgePrefix); err != nil {
+		return errors.Wrapf(err, "failed to remove all bridge interfaces with prefix %q", BridgePrefix)
+	}
+	return nil
 }
