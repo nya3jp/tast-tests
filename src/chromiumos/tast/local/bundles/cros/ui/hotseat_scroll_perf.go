@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
@@ -194,11 +195,6 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 	isInTabletMode := mode == inTabletMode
 	isLauncherVisible := state == launcherIsVisible
 
-	launcherTargetState := ash.Closed
-	if isLauncherVisible {
-		launcherTargetState = ash.FullscreenAllApps
-	}
-
 	if state == overviewIsVisible {
 		// Hide notifications before testing overview, so notifications are not shown over the hotseat in  tablet mode.
 		if err := ash.CloseNotifications(ctx, tconn); err != nil {
@@ -241,16 +237,13 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 			return cleanupAll, errors.Wrap(err, "failed to test the in-app shelf")
 		}
 	} else if !isInTabletMode && isLauncherVisible {
-		// Show launcher fullscreen.
-		if err := ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelShiftSearch); err != nil {
-			return cleanupAll, errors.Wrap(err, "failed to switch to fullscreen")
-		}
 		cleanupFuncs = append(cleanupFuncs, func(ctx context.Context) error {
 			return ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelSearch)
 		})
-		// Verify the launcher's state.
-		if err := ash.WaitForLauncherState(ctx, tconn, launcherTargetState); err != nil {
-			return cleanupAll, errors.Wrapf(err, "failed to switch the state to %s", launcherTargetState)
+
+		// Show launcher.
+		if err := launcher.Open(tconn)(ctx); err != nil {
+			return cleanupAll, errors.Wrap(err, "failed to open launcher")
 		}
 	}
 
