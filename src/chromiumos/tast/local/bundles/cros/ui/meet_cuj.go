@@ -321,7 +321,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if meet.docs && meet.jamboard {
 		s.Fatal("Tried to open both Google Docs and Jamboard at the same time")
 	}
-
 	// Determines the meet call duration. Use the meet duration specified in
 	// test param if there is one. Otherwise, default to 10 minutes.
 	meetTimeout := 10 * time.Minute
@@ -342,6 +341,20 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
+
+	// Sets the display zoom factor to minimum, to ensure that all
+	// meeting participants' video can be shown simultaneously.
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+	zoomInitial := info.DisplayZoomFactor
+	zoomMin := info.AvailableDisplayZoomFactors[0]
+	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
+		s.Fatalf("Failed to set display zoom factor to minimum %f: %v", zoomMin, err)
+	}
+
+	defer display.SetDisplayProperties(closeCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
 
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
@@ -533,19 +546,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close the meeting: ", err)
 		}
 	}()
-
-	// Sets the display zoom factor to minimum, to ensure that all
-	// meeting participants' video can be shown simultaneously.
-	info, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the primary display info: ", err)
-	}
-	zoomInitial := info.DisplayZoomFactor
-	zoomMin := info.AvailableDisplayZoomFactors[0]
-	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
-		s.Fatalf("Failed to set display zoom factor to minimum %f: %v", zoomMin, err)
-	}
-	defer display.SetDisplayProperties(closeCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
 
 	inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	s.Logf("Is in tablet-mode: %t", inTabletMode)
