@@ -85,6 +85,7 @@ func init() {
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		SoftwareDeps: []string{"chrome", "arc"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Vars: []string{
 			"mute",
 			"record",
@@ -460,7 +461,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	if meet.tracing {
-		recorder.EnableTracing(s.OutDir())
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
 	defer func() {
 		if err := recorder.Close(closeCtx); err != nil {
