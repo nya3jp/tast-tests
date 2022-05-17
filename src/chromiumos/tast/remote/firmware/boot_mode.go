@@ -34,7 +34,7 @@ const (
 	PowerStateInterval = 250 * time.Millisecond
 
 	// reconnectTimeout is the timeout to wait to reconnect to the DUT after rebooting.
-	reconnectTimeout = 3 * time.Minute
+	reconnectTimeout = 5 * time.Minute
 
 	// usbVisibleTime is the time to wait after making the USB stick visible to DUT
 	usbVisibleTime = 5 * time.Second
@@ -450,7 +450,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 			return errors.Wrap(err, "failed to sleep")
 		}
 		if msOptsContain(opts, VerifyGSCNoBoot) {
-			if err := h.Servo.CheckGSCBootMode(ctx, "NO_BOOT", true); err != nil {
+			if err := h.Servo.CheckGSCBootMode(ctx, "NO_BOOT"); err != nil {
 				return errors.Wrap(err, "gsc boot mode")
 			}
 		}

@@ -81,9 +81,12 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not backup EC firmware: ", err)
 	}
 	cleanupContext := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 60*time.Second)
 	defer cancel()
 	defer func(ctx context.Context) {
+		if err := h.EnsureDUTBooted(ctx); err != nil {
+			s.Fatal("Can't delete temp file, DUT is off: ", err)
+		}
 		s.Log("Deleting temp file")
 		if err := h.DUT.Conn().CommandContext(ctx, "rm", "-f", backup.Path).Run(ssh.DumpLogOnError); err != nil {
 			s.Fatal("Failed to delete firmware backup: ", err)
@@ -103,11 +106,6 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		s.Fatal("Requiring BiosServiceClient: ", err)
 	}
 	bs = h.BiosServiceClient
-
-	// Check CR50 boot mode is NORMAL, if there is a CR50 Uart
-	if err := h.Servo.CheckGSCBootMode(ctx, "NORMAL", false); err != nil {
-		s.Fatal("Boot mode error: ", err)
-	}
 
 	activeCopy, err := h.Servo.GetString(ctx, "ec_active_copy")
 	if err != nil {
@@ -166,14 +164,14 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Reboot AP, check EC hash, and software sync it")
-	if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+	if err := ms.ModeAwareReboot(ctx, firmware.WarmReset, firmware.WaitSoftwareSync); err != nil {
 		s.Fatal("Failed to reboot: ", err)
 	}
 	h.CloseRPCConnection(ctx)
 
 	s.Log("Expect EC in RW and RW is restored")
 	ecHashAfter, err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", hashCommand).
-		Output()
+		Output(ssh.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to get ec hash: ", err)
 	}
@@ -191,8 +189,12 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 	if features, err := h.DUT.Conn().CommandContext(ctx, "ectool", "inventory").Output(ssh.DumpLogOnError); err != nil {
 		s.Fatal("Failed to get features: ", err)
 	} else if bytes.Contains(features, []byte("\n38 ")) {
-		s.Log("Detected EFS2, corrupting ECRW hashcode in TPM kernel NV index")
+		s.Log("Checking for NORMAL boot mode")
+		if err := h.Servo.CheckGSCBootMode(ctx, "NORMAL"); err != nil {
+			s.Fatal("Incorrect boot mode: ", err)
+		}
 
+		s.Log("Corrupting ECRW hashcode in TPM kernel NV index")
 		if err := h.Servo.RunCR50Command(ctx, "ec_comm corrupt"); err != nil {
 			s.Fatal("Failed to corrupt ECRW hashcode: ", err)
 		}
@@ -203,7 +205,7 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		h.CloseRPCConnection(ctx)
 
 		s.Log("Checking for NORMAL boot mode")
-		if err := h.Servo.CheckGSCBootMode(ctx, "NORMAL", true); err != nil {
+		if err := h.Servo.CheckGSCBootMode(ctx, "NORMAL"); err != nil {
 			s.Fatal("Incorrect boot mode: ", err)
 		}
 		s.Log("Expect EC in RW and RW is restored")
