@@ -184,6 +184,9 @@ func PinAndUnpinApps(ctx context.Context, tconn *chrome.TestConn, appIDsToPin, a
 		params = append(params, ShelfIconPinUpdateParam{appID, false})
 	}
 
+	if params == nil {
+		return nil
+	}
 	return setPinState(ctx, tconn, params)
 }
 
