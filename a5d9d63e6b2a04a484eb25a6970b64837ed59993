@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4c28be0_8f620751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-17T01:31:45Z",
+      "side": 1,
+      "message": "Yes, there is no direct way to set default values in struct in go. One way to do that is having a \"constructor\" function for the struct.\n\nBut back to this case, we don\u0027t need to have it default to true here -- we can turn it on in one (some) of the OpenVPN tests in VPNConnect. Note that this field is added in https://crrev.com/c/3429124\n\nDo you have preference here?",
+      "parentUuid": "6508f975_be3f6961",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "a5d9d63e6b2a04a484eb25a6970b64837ed59993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6f46799_9cea2cbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-16T11:49:53Z",
       "side": 1,
       "message": "Is this value somewhere available in net_cert_store.go? Or, do we want to add it there?",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 104
+      },
+      "revId": "a5d9d63e6b2a04a484eb25a6970b64837ed59993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41f924f6_13304794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-17T01:31:45Z",
+      "side": 1,
+      "message": "\u003e Is this value somewhere available in net_cert_store.go?\nNo, this is something that can be parsed from the PEM string, using the raw string could be easier in the test.\n\n\u003e Or, do we want to add it there?\nCurrently, we don\u0027t need this elsewhere, I think we can add the constants in the vpn package though, WDYT?",
+      "parentUuid": "b6f46799_9cea2cbb",
       "range": {
         "startLine": 307,
         "startChar": 1,
