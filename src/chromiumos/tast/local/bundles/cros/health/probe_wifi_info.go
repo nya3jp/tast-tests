@@ -65,11 +65,12 @@ func ProbeWifiInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to execute 'iw dev' command: ", err)
 	}
 
-	// Check whether 'Interface wlan0' is presented or not.
-	want := "Interface wlan0"
-	if got := string(out); strings.Contains(got, want) {
+	// Check whether 'Interface wlan0' or "Interface mlan0" is presented or not.
+	wlanWant := "Interface wlan0"
+	mlanWant := "Interface mlan0"
+	if strings.Contains(string(out), wlanWant) || strings.Contains(string(out), mlanWant) {
 		for _, ifc := range wifi.NetworkInterfaces {
-			if ifc.WirelessInterfaces.InterfaceName != "wlan0" {
+			if ifc.WirelessInterfaces.InterfaceName != "wlan0" && ifc.WirelessInterfaces.InterfaceName != "mlan0" {
 				s.Fatal("Failed to get InterfaceName")
 			}
 			if _, err := os.Stat("/sys/module/iwlmvm/parameters/power_scheme"); !os.IsNotExist(err) {
@@ -87,7 +88,7 @@ func ProbeWifiInfo(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to execute iwconfig command: ", err)
 			}
 			// Check whether 'Access Point: Not-Associated' is presented or not.
-			want = "Access Point: Not-Associated"
+			want := "Access Point: Not-Associated"
 			isRouterConnected := !strings.Contains(string(iwconfigOut), want)
 			if !isRouterConnected {
 				if ifc.WirelessInterfaces.LinkInfo != nil {
