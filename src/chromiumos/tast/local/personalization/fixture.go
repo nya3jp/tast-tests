@@ -67,4 +67,19 @@ func init() {
 			"ambient.password",
 		},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "personalizationWithRgbKeyboard",
+		Desc: "Login with Personalization Hub and RGB Keyboard enabled",
+		Contacts: []string{
+			"thuongphan@google.com",
+			"chromeos-sw-engprod@google.com",
+			"assistive-eng@google.com",
+		},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("PersonalizationHub", "RgbKeyboard")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
