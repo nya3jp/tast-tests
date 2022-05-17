@@ -139,8 +139,7 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.searchTerm)
 
 			ui := uiauto.New(tconn)
-			searchResultView := nodewith.ClassName("SearchResultPageView")
-			result := nodewith.NameStartingWith(tc.searchResult).Ancestor(searchResultView).First()
+			result := launcher.SearchResultListItemFinder.NameStartingWith(tc.searchResult).First()
 			if err := uiauto.Combine("search for result in launcher",
 				launcher.Open(tconn),
 				launcher.Search(tconn, kb, tc.searchTerm),
