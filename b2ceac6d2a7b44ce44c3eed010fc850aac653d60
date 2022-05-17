@@ -16,6 +16,46 @@
       "message": "Updated with additional refactor of showLink returns.",
       "revId": "b2ceac6d2a7b44ce44c3eed010fc850aac653d60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d7346de_767c26c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-17T20:26:11Z",
+      "side": 1,
+      "message": "LGTM: minor nit.",
+      "revId": "b2ceac6d2a7b44ce44c3eed010fc850aac653d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e69640_7b7de779",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-17T20:26:11Z",
+      "side": 1,
+      "message": "I would add a comment to say that this loop is scanning for the \"state\" string in the fields and just extracting the next string afterwards. I think the hardcoded indexes are a bit hard to read if not for the example you provided in the method comment.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "b2ceac6d2a7b44ce44c3eed010fc850aac653d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
