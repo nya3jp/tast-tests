@@ -194,7 +194,7 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return tf.VerifyConnection(ctx, ap2)
 	}, &testing.PollOptions{
-		Timeout:  20 * time.Second,
+		Timeout:  1200 * time.Second,
 		Interval: time.Second,
 	}); err != nil {
 		s.Fatal("Failed to verify connection: ", err)
