@@ -285,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ade98143_d06204ac",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-17T10:05:33Z",
+      "side": 1,
+      "message": "Can you introduce a new method in the profiler package to create \"universal\"/\"custom\" profiler?\n\n- That profiler takes a function (with context and outdir args) as argument\n- Profiler runs that function in a Go-routine with a new context and stores that cancel callback for the new context.\n- Profiler stops Go-routines via calling cancel callback and waits Go-routine to finish using waiting group.\n\nwdyt?",
+      "parentUuid": "d9af1a34_f1cd532e",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a048acb_af5af44a",
         "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
         "patchSetId": 6
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "The stabilize duration here is for the camera workload itself to settle. `cpu.WaitUntilIdle` doesn\u0027t work very well here because we start the profiler after the camera workload. I think what we can do is to add a `cpu.WaitUntilIdle` at the very beginning of the test to kind of make sure the system isn\u0027t busy with something else when we run the test.",
       "parentUuid": "f8be0071_afb80a54",
+      "range": {
+        "startLine": 144,
+        "startChar": 25,
+        "endLine": 144,
+        "endChar": 47
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe12217_8208a259",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-17T10:05:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aeb31e82_470411fc",
       "range": {
         "startLine": 144,
         "startChar": 25,
@@ -473,6 +521,24 @@
       "side": 1,
       "message": "The intention here is to make sure all the cleanup tasks are executed even if there is any error happens. And I agree that we should return the first error instead of the last one. As a result, maybe we can have a helper function to log the new error  if the `retErr` is already filled. Something like:\n```\nfunc firstError(ctx context, Context, first, second error) error {\n  if first \u003d\u003d nil {\n    return second\n  }\n\n  if second !\u003d nil {\n    testing.ContextLog(ctx, second)\n  }\n  return first\n}\n\nif err :\u003d doCleanup1(); err !\u003d nil {\n  retErr \u003d firstError(ctx, retErr, err)\n}\n\nif err :\u003d doCleanup2(); err !\u003d nil {\n  retErr \u003d secondError(ctx, retErr, err)\n}\n\n// ...\n```",
       "parentUuid": "a10273d2_ca61caa8",
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6aaf2f0_732eea3d",
+        "filename": "src/chromiumos/tast/local/camera/testpage/camera_page.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-17T10:05:33Z",
+      "side": 1,
+      "message": "there are few problems:\n1. usually you need to wrap error\n2. error message and log message are not equal, because log message must start with capital letter, error message must not start with capital letter.\n\nSo i\u0027d suggest to explicitly handle everything without additional helper function.",
+      "parentUuid": "3672a149_f9f02df1",
       "revId": "c53153fe58763b029cf74297f27740443f2930e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
