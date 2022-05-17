@@ -22,6 +22,30 @@
       },
       "revId": "7aac46a87d984f540c95f8e8da50460cf0121999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b15098_bf73a5c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-17T22:28:32Z",
+      "side": 1,
+      "message": "Good catch. I missed this.\n\nRevised to only run non-lacros tests in g3 uprev.",
+      "parentUuid": "be6195f2_2079a014",
+      "range": {
+        "startLine": 39,
+        "startChar": 65,
+        "endLine": 39,
+        "endChar": 91
+      },
+      "revId": "7aac46a87d984f540c95f8e8da50460cf0121999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
