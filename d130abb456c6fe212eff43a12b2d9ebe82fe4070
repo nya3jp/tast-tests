@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ba51db_10213c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T17:38:02Z",
+      "side": 1,
+      "message": "What prevents this test from running on every device in the hardware CQ labs?\n\nI don\u0027t think a runtime check of kernel version is sufficient.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 71
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbefce6c_58f3b0f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T17:38:02Z",
+      "side": 1,
+      "message": "Have you used `repo upload` to upload your CL? The linter should have caught that this function is lacking a comment/description.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 58
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87cb9a84_d120548c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T17:38:02Z",
+      "side": 1,
+      "message": "This can be folded into the same line as L47.\n\n if matched, err :\u003d regexp.MatchString(...); err !\u003d  nil {\n     ...\n } else if !matched {\n     ...\n }",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7b5fd9_0d50f688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T17:38:02Z",
+      "side": 1,
+      "message": "These 2 blocks (this one along with L79-L88) seem very similar, and a candidate for refactoring into a separate function.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5da095a_a41284b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T17:38:02Z",
+      "side": 1,
+      "message": "use the following to save a level of indentation:\n if connector.Name() !\u003d \"connector {\n     continue\n }\n ...",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 38
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720116ce_5a3c912f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T17:38:02Z",
+      "side": 1,
+      "message": "Just checking, are you sure this is not the opposite? Here you are returning if there *is* a symlink.",
+      "range": {
+        "startLine": 106,
+        "startChar": 6,
+        "endLine": 106,
+        "endChar": 15
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
