@@ -14,12 +14,14 @@ import (
 	"path/filepath"
 	"time"
 
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
+	"github.com/golang/protobuf/proto"
+
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
 	perfSrc "chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power"
@@ -41,6 +43,8 @@ const (
 )
 
 const checkInterval = 5 * time.Second
+
+const SystemTraceConfigFile = "perfetto/system_trace_config.pbtxt"
 
 // MetricConfig is the configuration for the recorder.
 type MetricConfig struct {
@@ -144,7 +148,8 @@ type Recorder struct {
 	// Metric records keyed by metric name.
 	records map[string]*record
 
-	traceDir string
+	traceDir        string
+	perfettoCfgPath string
 
 	// duration is the total running time of the recorder.
 	duration time.Duration
@@ -426,9 +431,10 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	return r, nil
 }
 
-// EnableTracing enables tracing when the recorder running test scenario.
-func (r *Recorder) EnableTracing(traceDir string) {
+// EnableSystemTracing enables system tracing when the recorder running test scenario.
+func (r *Recorder) EnableTracing(traceDir string, perfettoCfgPath string) {
 	r.traceDir = traceDir
+	r.perfettoCfgPath = perfettoCfgPath
 }
 
 // Close clears states for all trackers.
@@ -481,12 +487,23 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 		r.mr = nil
 	}(ctx)
 
-	if r.traceDir != "" {
-		if err := r.cr.StartTracing(ctx,
-			[]string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz", "memory-infra"},
-			browser.DisableSystrace()); err != nil {
-			testing.ContextLog(ctx, "Failed to start tracing: ", err)
-			return nil, errors.Wrap(err, "failed to start tracing")
+	if r.traceDir != "" && r.perfettoCfgPath != "" {
+		// Create the binary protobuf TraceConfig: unmarshal from pbtxt and then marshal to binary protobuf.
+		configTxt, err := ioutil.ReadFile(r.perfettoCfgPath)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to read the trace config")
+		}
+		// Unmarshall the pbtxt and then marshall to binary protobuf.
+		config := &perfetto_proto.TraceConfig{}
+		if err := proto.UnmarshalText(string(configTxt), config); err != nil {
+			return nil, errors.Wrap(err, "failed to unmarshal perfetto config")
+		}
+		configPb, err := proto.Marshal(config)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to marshal perfetto config")
+		}
+		if err := r.cr.StartSystemTracing(ctx, configPb); err != nil {
+			return nil, errors.Wrap(err, "failed to start system tracing")
 		}
 		stopTracing := func(ctx context.Context) error {
 			tr, err := r.cr.StopTracing(ctx)
@@ -511,6 +528,55 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 			return err
 		}
 	}
+
+	// if r.traceDir != "" && r.perfettoCfgPath != "" {
+	// 	// Create the binary protobuf TraceConfig: unmarshal from pbtxt and then marshal to binary protobuf.
+	// 	configTxt, err := ioutil.ReadFile(r.perfettoCfgPath)
+	// 	if err != nil {
+	// 		return nil, errors.Wrap(err, "failed to read the trace config")
+	// 	}
+	// 	// Unmarshall the pbtxt and then marshall to binary protobuf.
+	// 	config := &perfetto_proto.TraceConfig{}
+	// 	if err := proto.UnmarshalText(string(configTxt), config); err != nil {
+	// 		return nil, errors.Wrap(err, "failed to unmarshal perfetto config")
+	// 	}
+	// 	configPb, err := proto.Marshal(config)
+	// 	if err != nil {
+	// 		return nil, errors.Wrap(err, "failed to marshal perfetto config")
+	// 	}
+	// 	if err := r.cr.StartSystemTracing(ctx, configPb); err != nil {
+	// 		return nil, errors.Wrap(err, "failed to start system tracing")
+	// 	}
+
+	// 	if err := r.cr.StartTracing(ctx,
+	// 		[]string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz", "memory-infra"},
+	// 		browser.DisableSystrace()); err != nil {
+	// 		testing.ContextLog(ctx, "Failed to start tracing: ", err)
+	// 		return nil, errors.Wrap(err, "failed to start tracing")
+	// 	}
+	// 	stopTracing := func(ctx context.Context) error {
+	// 		tr, err := r.cr.StopTracing(ctx)
+	// 		if err != nil {
+	// 			testing.ContextLog(ctx, "Failed to stop tracing: ", err)
+	// 			return errors.Wrap(err, "failed to stop tracing")
+	// 		}
+	// 		if tr == nil || len(tr.Packet) == 0 {
+	// 			testing.ContextLog(ctx, "No trace data is collected")
+	// 			return errors.New("no trace data is collected")
+	// 		}
+	// 		filename := "trace.data.gz"
+	// 		if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(r.traceDir, filename)); err != nil {
+	// 			testing.ContextLog(ctx, "Failed to save trace to file: ", err)
+	// 			return errors.Wrap(err, "failed to save trace to file")
+	// 		}
+	// 		return nil
+	// 	}
+	// 	cancel = func(ctx context.Context) error {
+	// 		err := stopTracing(ctx)
+	// 		cancelRunCtx()
+	// 		return err
+	// 	}
+	// }
 
 	// Starts metrics record per browser test connection.
 	r.mr = make(map[*chrome.TestConn]*metrics.Recorder)

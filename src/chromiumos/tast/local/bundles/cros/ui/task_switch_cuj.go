@@ -46,6 +46,7 @@ func init() {
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      8 * time.Minute,
 		Vars:         []string{"mute"},
 		Params: []testing.Param{
@@ -435,7 +436,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 	if testParam.tracing {
-		recorder.EnableTracing(s.OutDir())
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
 	defer recorder.Close(closeCtx)
 
