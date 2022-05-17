@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4899479_3e81a3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-05-17T04:30:36Z",
+      "side": 1,
+      "message": "I see. Looks like I misunderstood the flow here - Reset() returning a non-nil error will trigger TearDown() where shill is reset. It LGTM then.",
+      "parentUuid": "30555fa8_d6d9a1ea",
+      "range": {
+        "startLine": 173,
+        "startChar": 11,
+        "endLine": 173,
+        "endChar": 32
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f1e9abb_7ddb4a8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
         "patchSetId": 4
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Since connect will fail if this is not selected / selected wrongly, it can be caught if there is a bug, and we can see the screenshot in the log to understand what happens.",
       "parentUuid": "3f1e9abb_7ddb4a8e",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 59
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dda5f1f_4710fb32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-05-17T04:30:36Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "1d83c541_33528fec",
       "range": {
         "startLine": 208,
         "startChar": 2,
