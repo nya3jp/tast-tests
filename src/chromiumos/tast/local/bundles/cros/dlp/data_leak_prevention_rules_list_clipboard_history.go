@@ -40,7 +40,7 @@ func init() {
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Data:         []string{"text_1.html", "text_2.html", "editable_text_box.html"},
 		Params: []testing.Param{{
 			Name:    "ash",
@@ -49,6 +49,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
 		}},
