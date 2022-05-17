@@ -29,15 +29,25 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardAutoShift,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that auto shift feature of virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		// Auto-shift is primarily designed for tablet mode.
-		Fixture:      fixture.TabletVK,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{
+			{
+				// Auto-shift is primarily designed for tablet mode.
+				Fixture: fixture.TabletVK,
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosTabletVK,
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+		},
 	})
 }
 
@@ -53,11 +63,11 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	vkbCtx := vkb.NewContext(cr, tconn)
 
