@@ -69,6 +69,24 @@
       "parentUuid": "cfc7f78a_a4203607",
       "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "511bf8b3_54770ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-17T00:34:01Z",
+      "side": 1,
+      "message": "To be clearer: by not immediately clickable I mean that for a short window of time clicks have no effect.",
+      "parentUuid": "bc3cb4af_47ff4243",
+      "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
