@@ -115,6 +115,15 @@ func MetricConfigs(tconns []*chrome.TestConn) []cujrecorder.MetricConfig {
 	result = append(result, NewCustomMetricConfigWithTestConns("Cras.FetchDelayMilliSeconds", "ms", perf.SmallerIsBetter, []int64{0, 20}, tconns)...)
 	result = append(result, NewCustomMetricConfigWithTestConns("Cras.UnderrunsPerDevice", "count", perf.SmallerIsBetter, []int64{0, 10}, tconns)...)
 
+	// ARC App Kill Metrics
+	result = append(result, NewCustomMetricConfigWithTestConns("Arc.App.LowMemoryKills.LMKD.CachedCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}, tconns)...)
+	result = append(result, NewCustomMetricConfigWithTestConns("Arc.App.LowMemoryKills.LMKD.ForegroundCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}, tconns)...)
+	result = append(result, NewCustomMetricConfigWithTestConns("Arc.App.LowMemoryKills.LMKD.PerceptibleCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}, tconns)...)
+	result = append(result, NewCustomMetricConfigWithTestConns("Arc.App.LowMemoryKills.Pressure.CachedCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}, tconns)...)
+	result = append(result, NewCustomMetricConfigWithTestConns("Arc.App.LowMemoryKills.Pressure.ForegroundCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}, tconns)...)
+	result = append(result, NewCustomMetricConfigWithTestConns("Arc.App.LowMemoryKills.Pressure.PerceptibleCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}, tconns)...)
+	result = append(result, NewCustomMetricConfigWithTestConns("Arc.App.LowMemoryKills.LinuxOOMCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}, tconns)...)
+
 	// Others to monitor.
 	result = append(result, NewCustomMetricConfigWithTestConns("MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter, []int64{800, 1600}, tconns)...)
 	result = append(result, NewCustomMetricConfigWithTestConns("PageLoad.InteractiveTiming.FirstInputDelay4", "ms", perf.SmallerIsBetter, []int64{800, 1600}, tconns)...)
