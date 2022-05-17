@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a6c9de_2b669d30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T22:50:18Z",
+      "side": 1,
+      "message": "What is the plan for future devices? It\u0027s fine to keep a board list for now, but it\u0027s not scalable in the long term.\n\nPlease add a TODO, with a bug, listing out what your plan is to run this in a more scalable fashion than a device list.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "950abe76_6788cfe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T22:50:18Z",
+      "side": 1,
+      "message": "Please use `repo upload` when uploading these CLs. It ensures they are properly linted and format checked. In any case, the test function should have a comment explaining what\u0027s happening in this test.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ee0bc3_4f8601a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T22:50:18Z",
+      "side": 1,
+      "message": "You should wrap this error and return it (why did ReadDir() fail?). Currently it is just getting dropped at this level.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 75
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "354df4ae_6ef9e04a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T22:50:18Z",
+      "side": 1,
+      "message": "Same here. Please wrap errors.",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 59
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c04dab3_bb36548c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-17T22:50:18Z",
+      "side": 1,
+      "message": "Please sanitize data so that you don\u0027t have to include escape characters in your equality checks.",
+      "range": {
+        "startLine": 73,
+        "startChar": 48,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
