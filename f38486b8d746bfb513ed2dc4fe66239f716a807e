@@ -16,6 +16,23 @@
       "message": "Please resolve merge conflict first.",
       "revId": "f38486b8d746bfb513ed2dc4fe66239f716a807e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33cbaf1f_1025fffd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-05-17T02:03:36Z",
+      "side": 1,
+      "message": "Okay I found the simple revert is hard as some followup changes landed after the original change.\nI give up reverting and will fix the actual issue. ",
+      "revId": "f38486b8d746bfb513ed2dc4fe66239f716a807e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
