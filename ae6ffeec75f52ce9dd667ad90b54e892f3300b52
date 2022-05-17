@@ -39,6 +39,30 @@
       },
       "revId": "ae6ffeec75f52ce9dd667ad90b54e892f3300b52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf9b76d_a13fdec0",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T20:10:26Z",
+      "side": 1,
+      "message": "I added a comment explaining the point of the regex. The test cases should cover further parsing questions.",
+      "parentUuid": "2772a439_2dacb0ec",
+      "range": {
+        "startLine": 265,
+        "startChar": 40,
+        "endLine": 265,
+        "endChar": 72
+      },
+      "revId": "ae6ffeec75f52ce9dd667ad90b54e892f3300b52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
