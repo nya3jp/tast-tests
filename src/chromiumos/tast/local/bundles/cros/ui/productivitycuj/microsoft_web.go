@@ -917,7 +917,7 @@ func (app *MicrosoftWebOffice) selectRange(ctx context.Context) error {
 	// In the clamshell mode, the "Name Box" can be focused with just click.
 	if !app.tabletMode {
 		testing.ContextLog(ctx, `Selecting range by focus on "Name Box"`)
-		nameBox := nodewith.Name("Name Box").Role(role.TextFieldWithComboBox).Editable()
+		nameBox := nodewith.NameContaining("Name Box").Role(role.TextFieldWithComboBox).Editable()
 		nameBoxFocused := nameBox.Focused()
 		return app.uiHdl.ClickUntil(nameBox, app.ui.Exists(nameBoxFocused))(ctx)
 	}
