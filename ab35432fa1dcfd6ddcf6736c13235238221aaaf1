@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d20e12f9_969d9230",
+        "filename": "src/chromiumos/tast/remote/wificell/log/collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T20:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a4e5df9_19ba7977",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97e72755_6881e8e4",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-17T18:13:37Z",
       "side": 1,
       "message": "nit: I\u0027d add a comment saying somnething like: `// Caching cmd so that it can be killed when the process closes`... or something like that",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 12
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0180b59e_526af218",
+        "filename": "src/chromiumos/tast/remote/wificell/log/collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T20:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97e72755_6881e8e4",
       "range": {
         "startLine": 137,
         "startChar": 1,
@@ -111,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "460f5b6c_f64e6325",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T20:09:28Z",
+      "side": 1,
+      "message": "I did this in order to keep the files in alpha order while browsing. After taking another look at this I decided to refactor it to just specify the name, and then the filename is formatted within the common function. Now instead of an arbitrary number the unix timestamp is used to both guarantee file uniqueness as well as collection order. Thanks for bringing this to my attention.\n\nI also added another log, pre_stop, as to clearly differentiate uncollected logs that are the result of test actions from close actions.",
+      "parentUuid": "142b7e5c_f74c0463",
+      "range": {
+        "startLine": 99,
+        "startChar": 80,
+        "endLine": 99,
+        "endChar": 81
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8cb3985_7fdb26ec",
@@ -124,6 +196,30 @@
       "writtenOn": "2022-05-17T16:23:21Z",
       "side": 1,
       "message": "You deleted the comment explaining why the code is using daemonCtx here, can you add it back?",
+      "range": {
+        "startLine": 135,
+        "startChar": 37,
+        "endLine": 135,
+        "endChar": 46
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d6ddc42_6ac0993d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T20:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8cb3985_7fdb26ec",
       "range": {
         "startLine": 135,
         "startChar": 37,
