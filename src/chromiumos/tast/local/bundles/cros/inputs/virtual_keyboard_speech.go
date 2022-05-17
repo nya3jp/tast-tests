@@ -43,29 +43,40 @@ var voiceTestIMEsNewData = []ime.InputMethod{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardSpeech,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test voice input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		Data:         data.ExtractExternalFiles(voiceTestMessages, append(voiceTestIMEs, voiceTestIMEsNewData...)),
-		Fixture:      fixture.TabletVK,
 		Timeout:      time.Duration(len(voiceTestIMEs)+len(voiceTestIMEsNewData)) * time.Duration(len(voiceTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
+				Fixture:           fixture.TabletVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				Val:               voiceTestIMEs,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "newdata", // This test will be merged into CQ once it is proved to be stable.
+				Fixture:           fixture.TabletVK,
 				Val:               voiceTestIMEsNewData,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
+				Fixture:           fixture.TabletVK,
 				Val:               append(voiceTestIMEs, voiceTestIMEsNewData...),
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosTabletVK,
+				Val:               append(voiceTestIMEs, voiceTestIMEsNewData...),
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
 			},
 		},
@@ -80,19 +91,24 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 
 	testIMEs := s.Param().([]ime.InputMethod)
 
+	cleanupCtx := ctx
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// Setup CRAS Aloop for audio test.
 	cleanup, err := voice.EnableAloop(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to load Aloop: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	// Launch inputs test web server.
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	// Select the input field being tested.
 	inputField := testserver.TextAreaInputField

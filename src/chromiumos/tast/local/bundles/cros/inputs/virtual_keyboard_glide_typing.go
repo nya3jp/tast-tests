@@ -32,43 +32,89 @@ type glideTypingTestParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardGlideTyping,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      time.Duration(3 * time.Minute),
 		Params: []testing.Param{
 			{
-				Name:    "tablet_docked",
-				Fixture: fixture.TabletVK,
+				Name:      "tablet_docked",
+				Fixture:   fixture.TabletVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: false,
 					inputMethod: ime.EnglishUS,
 				},
-			}, {
-				Name:    "tablet_floating",
-				Fixture: fixture.TabletVK,
+			},
+			{
+				Name:      "tablet_floating",
+				Fixture:   fixture.TabletVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: true,
 					inputMethod: ime.EnglishUSWithInternationalKeyboard,
 				},
-			}, {
-				Name:    "clamshell_a11y_docked",
-				Fixture: fixture.ClamshellVK,
+			},
+			{
+				Name:      "clamshell_a11y_docked",
+				Fixture:   fixture.ClamshellVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: false,
 					inputMethod: ime.Swedish,
 				},
 			},
 			{
-				Name:    "clamshell_a11y_floating",
-				Fixture: fixture.ClamshellVK,
+				Name:      "clamshell_a11y_floating",
+				Fixture:   fixture.ClamshellVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: true,
 					inputMethod: ime.EnglishUS,
 				},
+			},
+			{
+				Name:    "tablet_docked_lacros",
+				Fixture: fixture.LacrosTabletVK,
+				Val: glideTypingTestParam{
+					floatLayout: false,
+					inputMethod: ime.EnglishUS,
+				},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:    "tablet_floating_lacros",
+				Fixture: fixture.LacrosTabletVK,
+				Val: glideTypingTestParam{
+					floatLayout: true,
+					inputMethod: ime.EnglishUSWithInternationalKeyboard,
+				},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:    "clamshell_a11y_docked_lacros",
+				Fixture: fixture.LacrosClamshellVK,
+				Val: glideTypingTestParam{
+					floatLayout: false,
+					inputMethod: ime.Swedish,
+				},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+			{
+				Name:    "clamshell_a11y_floating_lacros",
+				Fixture: fixture.LacrosClamshellVK,
+				Val: glideTypingTestParam{
+					floatLayout: true,
+					inputMethod: ime.EnglishUS,
+				},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -95,11 +141,11 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
 
 	// Launch inputs test web server.
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	// Select the input field being tested.
 	vkbCtx := vkb.NewContext(cr, tconn)
