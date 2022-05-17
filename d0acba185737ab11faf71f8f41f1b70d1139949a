@@ -16,6 +16,159 @@
       "message": "Please review.\nThe test underwent substantial refactoring. I will add you to all of its pieces.",
       "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61cf2d47_57295f5a",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:00:20Z",
+      "side": 1,
+      "message": "Error message not correct",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b7a0c8_51438319",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:00:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d2c6b7f_f99c46a6",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:00:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0bbcae_1a73a48b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:00:20Z",
+      "side": 1,
+      "message": "Would be better to fetch this during run time rather than use a compile time const. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go;l\u003d1154?q\u003dClientInterface\u0026sq\u003d\u0026ss\u003dchromiumos",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b79eda_c7269ff4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:00:20Z",
+      "side": 1,
+      "message": "Use `wificell_func` will trigger this test in wificell which might not have dual DUT in it for CQ. Need to start another attribute to put this test into correct pool.",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b7bc6e_9d55685b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:00:20Z",
+      "side": 1,
+      "message": "With `-companiondut\u003dcd1:$PEER_HOST`, do you still need `peer` variable?",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70af5ce2_6c18c9e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:00:20Z",
+      "side": 1,
+      "message": "How about extend ListPhys to support TDLS parsing? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/network/iw/runner.go;l\u003d275?q\u003dListPhys\u0026sq\u003d\u0026ss\u003dchromiumos\n\nExample use: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/caps.go;l\u003d37?q\u003dwifi%2Fcaps.go\u0026ss\u003dchromiumos",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed7a35a_43056b72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:00:20Z",
+      "side": 1,
+      "message": "Already supported in shill service https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/services/cros/wifi/shill_service.proto;l\u003d43?q\u003dGetHardwareAddr\u0026sq\u003d\u0026ss\u003dchromiumos\n\nExample use: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go;l\u003d993?q\u003dClientHardwareAddr\u0026ss\u003dchromiumos",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de19f175_44ea6fa9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-17T08:00:20Z",
+      "side": 1,
+      "message": "Put this to hwdep.go? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d1?q\u003dhwdep.go\u0026ss\u003dchromiumos",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
