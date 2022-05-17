@@ -5,19 +5,33 @@
 // Package constants contains values used across wallpaper tests.
 package constants
 
-import "image/color"
+import (
+	"image/color"
+
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+)
+
+// ChangeDailyButton is a finder for the "Change Daily" toggle button node.
+var ChangeDailyButton = nodewith.Name("Change wallpaper image daily").Role(role.ToggleButton)
+
+// GooglePhotosWallpaperAlbumsButton is a finder for the Google Photos "Albums" toggle button node.
+var GooglePhotosWallpaperAlbumsButton = nodewith.Name("Albums").Role(role.ToggleButton)
 
 // GooglePhotosWallpaperAlbum is the name of an album in the GooglePhotosWallpaperCollection.
-const GooglePhotosWallpaperAlbum = "wallpaper.SetGooglePhotosWallpaper"
+const GooglePhotosWallpaperAlbum = "Album 01"
 
 // GooglePhotosWallpaperCollection is the name of the Google Photos wallpaper collection.
 const GooglePhotosWallpaperCollection = "Google Photos"
 
 // GooglePhotosWallpaperPhoto is the name of a photo in the GooglePhotosWallpaperAlbum.
-const GooglePhotosWallpaperPhoto = "wallpaper.SetGooglePhotosWallpaper"
+const GooglePhotosWallpaperPhoto = "Photo 01"
 
 // GooglePhotosWallpaperColor is the color of the GooglePhotosWallpaperPhoto.
-var GooglePhotosWallpaperColor = color.RGBA{255, 203, 198, 255}
+var GooglePhotosWallpaperColor = color.RGBA{0, 0, 255, 255}
+
+// RefreshButton is a finder for the "Refresh" button node.
+var RefreshButton = nodewith.Name("Refresh the current wallpaper image").Role(role.Button)
 
 // SolidColorsCollection is the name of a wallpaper collection of solid colors.
 const SolidColorsCollection = "Solid colors"
