@@ -56,6 +56,30 @@
       },
       "revId": "e588980e0f90e7eb9dd20efc3eafb1feb2800ed3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1810ac66_64029d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-05-17T09:26:50Z",
+      "side": 1,
+      "message": "Yes, that\u0027s true. the Atrr is for all the params, and here we have ExtraAttr which is extra/",
+      "parentUuid": "4475e7c9_11e56b3b",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "e588980e0f90e7eb9dd20efc3eafb1feb2800ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
