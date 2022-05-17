@@ -345,6 +345,10 @@ func (conf *ZoomConference) TypingInChat(ctx context.Context) error {
 		actionName = "open chat window and type"
 		message    = "Hello! How are you?"
 	)
+	// Close all notifications to prevent them from covering the chat text field.
+	if err := ash.CloseNotifications(ctx, conf.tconn); err != nil {
+		return errors.Wrap(err, "failed to close otifications")
+	}
 	chatButton := nodewith.Name("open the chat pane").Role(role.Button)
 	chatTextField := nodewith.Name("Type message here ...").Role(role.TextField)
 	messageText := nodewith.Name(message).Role(role.StaticText).First()
