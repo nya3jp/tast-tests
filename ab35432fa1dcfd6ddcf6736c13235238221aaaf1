@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a4e5df9_19ba7977",
+        "filename": "src/chromiumos/tast/remote/wificell/log/collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-17T18:13:37Z",
+      "side": 1,
+      "message": "huge nit: I\u0027d add \"... existing...\"  to clarify the difference between `logread` vs `logread -f`",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e72755_6881e8e4",
+        "filename": "src/chromiumos/tast/remote/wificell/log/collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-17T18:13:37Z",
+      "side": 1,
+      "message": "nit: I\u0027d add a comment saying somnething like: `// Caching cmd so that it can be killed when the process closes`... or something like that",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 12
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "142b7e5c_f74c0463",
         "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
         "patchSetId": 1
@@ -31,6 +77,30 @@
       "writtenOn": "2022-05-17T16:23:21Z",
       "side": 1,
       "message": "Not sure about the numbering of the logs, it\u0027s not clear what it means compared to naming logs with a name that describes what they include.\n\nFor example:\nsyslogd_inital_state.log\nsyslogd_pre_start.log\nsyslogd_post_stop.log",
+      "range": {
+        "startLine": 99,
+        "startChar": 80,
+        "endLine": 99,
+        "endChar": 81
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c1b90df_13308d2f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-17T18:13:37Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "142b7e5c_f74c0463",
       "range": {
         "startLine": 99,
         "startChar": 80,
