@@ -8,7 +8,7 @@ sometimes necessary to bisect lacros revisions manually.
 
 | Label       | Paths, files, and commands           |
 |-------------|--------------------------------------|
-|  (cros)     | inside the Chromium OS chroot        |
+|  (cros)     | inside the ChromiumOS chroot         |
 |  (chrm)     | inside the Chromium source directory |
 
 ## Bisect setup
@@ -42,7 +42,7 @@ First, build lacros Chrome at the current bisect version, and deploy it:
 (chrm) ./third_party/chromite/bin/deploy_chrome --build-dir=$LACROS_DIR -d $DUT --lacros --nostrip
 ```
 
-Optionally, you may have to deploy the Chromium OS Chromium version as well:
+Optionally, you may have to deploy the ChromiumOS Chromium version as well:
 
 ```sh
 (chrm) export BOARD=<your board>
