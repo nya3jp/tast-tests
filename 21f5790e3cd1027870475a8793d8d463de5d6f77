@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777129ae_b122597c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/perfetto/system_trace_config.pbtxt",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-17T11:26:29Z",
+      "side": 1,
+      "message": "We can either register the data and pass it to the recorder, or we can just add it to constants.go as a constant like a default config https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/ui/constants.go? wdty?\n\nI am not sure how to get the data path from cujrecorder without a testing.State, that\u0027s why I\u0027m passing the data path from the test to the recorder. Please let me know if you know how to do it in tast tests?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "21f5790e3cd1027870475a8793d8d463de5d6f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
