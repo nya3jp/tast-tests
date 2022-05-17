@@ -6,6 +6,9 @@ package dgapi2
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -84,12 +87,35 @@ func (f *playBillingDgapi2Fixture) PreTest(ctx context.Context, s *testing.FixtT
 }
 
 func (f *playBillingDgapi2Fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	trySaveLogs(ctx, f.TestApp)
+
 	if err := f.TestApp.SignOut(ctx); err != nil {
 		s.Fatal("Failed to sign out of test app: ", err)
 	}
 
 	if err := f.TestApp.Close(ctx); err != nil {
 		s.Fatal("Failed to close Dgapi2 test app: ", err)
+	}
+}
+
+func trySaveLogs(ctx context.Context, testApp *TestAppDgapi2) {
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		testing.ContextLog(ctx, "Failed to get name of an out directory")
+		return
+	}
+
+	logs, err := testApp.GetLogs(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get logs: ", err)
+		return
+	}
+
+	path := filepath.Join(dir, "testapp_logs.txt")
+	err = ioutil.WriteFile(path, []byte(strings.Join(logs, "\n")), 0644)
+	if err != nil {
+		testing.ContextLog(ctx, "Error writing logs to the file: ", err)
+		return
 	}
 }
 

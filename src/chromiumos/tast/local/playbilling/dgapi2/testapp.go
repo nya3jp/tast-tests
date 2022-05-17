@@ -186,11 +186,20 @@ func (ta *TestAppDgapi2) SignOut(ctx context.Context) error {
 	)(ctx)
 }
 
+// GetLogs retrieves logs.
+func (ta *TestAppDgapi2) GetLogs(ctx context.Context) ([]string, error) {
+	var logs []string
+	if err := ta.appconn.Eval(ctx, logBoxLogLinesJS, &logs); err != nil {
+		return nil, errors.Wrap(err, "failed to retrieve logs")
+	}
+	return logs, nil
+}
+
 // verifyLogs retrieves logs, executes verifyFn on them and returns the result.
 func (ta *TestAppDgapi2) verifyLogs(ctx context.Context, verifyFn func(logs []string) error) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		var logs []string
-		if err := ta.appconn.Eval(ctx, logBoxLogLinesJS, &logs); err != nil {
+		logs, err := ta.GetLogs(ctx)
+		if err != nil {
 			return errors.Wrap(err, "failed to retrieve logs")
 		}
 
@@ -224,7 +233,7 @@ func (ta *TestAppDgapi2) VerifyDetailsLogs(ctx context.Context) error {
 		}
 
 		if foundEntry == "" {
-			return errors.Errorf(`failed to find a log entry starting with "getDetails returned ", received: %q`, logs)
+			return errors.Errorf(`failed to find a log entry starting with %q, received: %q`, getDetailsPrefix, logs)
 		}
 
 		var detailsResult []skuDetails

@@ -20,7 +20,7 @@ const (
 	profileMenuSignInJS   = profileMenuJS + "._requestSignIn()"
 	profileMenuSignOutJS  = profileMenuJS + "._requestSignOut()"
 	logBoxJS              = "document.getElementById('log-box')"
-	logBoxLogLinesJS      = logBoxJS + `.innerHTML.replace(/<br>\s*$/, '').split('    ')`
+	logBoxLogLinesJS      = logBoxJS + `.innerHTML.replace(/<br>\s*$/, '').split(/\s{4,}/)`
 	itemListJS            = "document.getElementById('items-to-buy')"
 	itemsJS               = itemListJS + ".shadowRoot.querySelectorAll('sku-holder')"
 	oneTimePurchaseType   = "onetime"
