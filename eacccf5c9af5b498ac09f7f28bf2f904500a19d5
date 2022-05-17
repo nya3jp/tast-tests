@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50717ee8_46dcb572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-17T09:05:34Z",
+      "side": 1,
+      "message": "LGTM, but I am afraid that some policy might be broken after turning on personalization hub. Adding test author to take a look on a problem.",
+      "revId": "eacccf5c9af5b498ac09f7f28bf2f904500a19d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "778b175b_ad93ffa5",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-17T09:05:34Z",
+      "side": 1,
+      "message": "nit: since by default personalization hub is enabled, this option can be just DisablePersonalizationHub, because there is no need to enable it.",
+      "range": {
+        "startLine": 503,
+        "startChar": 5,
+        "endLine": 503,
+        "endChar": 29
+      },
+      "revId": "eacccf5c9af5b498ac09f7f28bf2f904500a19d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a25c37_21cdb7b1",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-17T09:05:34Z",
+      "side": 1,
+      "message": "nit: use introduced chrome.EnablePersonalizationHub(false) option.",
+      "range": {
+        "startLine": 46,
+        "startChar": 27,
+        "endLine": 46,
+        "endChar": 71
+      },
+      "revId": "eacccf5c9af5b498ac09f7f28bf2f904500a19d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
