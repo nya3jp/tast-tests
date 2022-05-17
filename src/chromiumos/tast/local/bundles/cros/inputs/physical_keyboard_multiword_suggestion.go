@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
@@ -26,14 +27,23 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardMultiwordSuggestion,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks on device multiword suggestions with physical keyboard typing",
 		Contacts:     []string{"curtismcmullan@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.MultiwordEnabledModels...)),
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.ClamshellNonVKWithMultiwordSuggest,
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{
+			{
+				Fixture: fixture.ClamshellNonVKWithMultiwordSuggest,
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosClamshellNonVKWithMultiwordSuggest,
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+		},
 	})
 }
 
@@ -43,7 +53,12 @@ func PhysicalKeyboardMultiwordSuggestion(ctx context.Context, s *testing.State) 
 	uc := s.FixtValue().(fixture.FixtData).UserContext
 	uc.SetTestName(s.TestName())
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+	cleanupCtx := ctx
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// PK multiword suggestion only works in English(US).
 	inputMethod := ime.EnglishUS
@@ -55,11 +70,11 @@ func PhysicalKeyboardMultiwordSuggestion(ctx context.Context, s *testing.State) 
 	}
 	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
