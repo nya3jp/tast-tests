@@ -90,7 +90,7 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 	if tracing {
-		recorder.EnableTracing(s.OutDir())
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
