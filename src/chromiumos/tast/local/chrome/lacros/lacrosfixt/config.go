@@ -137,6 +137,9 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 	opts = append(opts, chrome.LacrosExtraArgs("--force-color-profile=srgb"))
 	opts = append(opts, chrome.LacrosExtraArgs("--force-raster-color-profile=srgb"))
 
+        // Enable hangout service extension to allow for Meet screen sharing.
+        opts = append(opts, chrome.LacrosExtraArgs("--enable-hangout-services-extension-for-testing"))
+
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
 	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()

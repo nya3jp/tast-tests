@@ -281,6 +281,21 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
+		}, {
+			// Lacros 4p with presenting and notes split
+			Name:    "lacros_4p_present_notes_split",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:       3,
+				layout:    meetLayoutTiled,
+				present:   true,
+				docs:      true,
+				split:     true,
+				cam:       true,
+				browserType: browser.TypeLacros,
+			},
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
 }
