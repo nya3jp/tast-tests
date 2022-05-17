@@ -50,6 +50,7 @@ func Change(ctx context.Context, s *testing.State) {
 		ui.WithInterval(time.Second).LeftClickUntil(personalizeMenu, ui.Gone(personalizeMenu)),
 		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()),
 		ui.LeftClick(changeWallpaperButton),
+		ui.WaitUntilExists(solidColorsMenu),
 		ui.MakeVisible(solidColorsMenu),
 		ui.LeftClick(solidColorsMenu),
 		ui.LeftClick(nodewith.Name("Deep Purple").Role(role.ListBoxOption)),
