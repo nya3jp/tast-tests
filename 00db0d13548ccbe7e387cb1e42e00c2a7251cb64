@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82ecbd38_e6a062f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-17T01:58:46Z",
+      "side": 1,
+      "message": "Can you include a more detailed description of the test in a comment? I\u0027m trying to establish better documentation among wifi tests since all of our tests are currently only documented via the Desc field below (in one sentence).",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3743ca2e_70680931",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
         "patchSetId": 8
