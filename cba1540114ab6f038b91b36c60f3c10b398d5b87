@@ -16,6 +16,40 @@
       "message": "LGTM",
       "revId": "cba1540114ab6f038b91b36c60f3c10b398d5b87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "137cc46f_38f2579c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-17T02:11:34Z",
+      "side": 1,
+      "message": "Same as previous CL, description in a comment would be great.",
+      "revId": "cba1540114ab6f038b91b36c60f3c10b398d5b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a08531_fcda5b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_roaming.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-17T02:11:34Z",
+      "side": 1,
+      "message": "Same comment as the previous CL, can we do a scan here? It might actually be better if we just use the DiscoverService functionality to guarantee that we see it.",
+      "revId": "cba1540114ab6f038b91b36c60f3c10b398d5b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
