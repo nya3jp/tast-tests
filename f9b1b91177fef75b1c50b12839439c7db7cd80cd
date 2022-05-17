@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4baa2b2_cb337e80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-17T11:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1b13693_44dd485f",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "f9b1b91177fef75b1c50b12839439c7db7cd80cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "961a302e_162ce7b9",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23d09ed_4ea4b644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-17T11:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "961a302e_162ce7b9",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "f9b1b91177fef75b1c50b12839439c7db7cd80cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e5ada15_8b95c9a1",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-05-16T16:29:14Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "f9b1b91177fef75b1c50b12839439c7db7cd80cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7799e612_1dc3d56b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-17T11:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5ada15_8b95c9a1",
       "range": {
         "startLine": 82,
         "startChar": 3,
