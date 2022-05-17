@@ -124,6 +124,24 @@
       "parentUuid": "f6e31d9e_b7594ed3",
       "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f70f811_f39519b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-17T02:00:57Z",
+      "side": 1,
+      "message": "Thanks! Didn\u0027t know there is already a package for this. Will add VPN fields to that.",
+      "parentUuid": "9405f5a4_0fce108c",
+      "revId": "3e912ebf177e6ba7fc9c3ee6489cb79ec8278777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
