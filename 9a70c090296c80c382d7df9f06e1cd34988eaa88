@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cff12fb_deb212dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-device-play.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-17T00:43:45Z",
+      "side": 1,
+      "message": "$$ *may* be the same as the current process ID, or it may be the parent, depending on execution context. Please replace $$ with $BASHPID if you intend to get the current process ID.\n\nhttps://stackoverflow.com/questions/21063765/why-is-returning-the-same-id-as-the-parent-process",
+      "parentUuid": "05317cb7_bc48f004",
+      "revId": "9a70c090296c80c382d7df9f06e1cd34988eaa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f839767_4b8eef88",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/device_play.go",
         "patchSetId": 1
