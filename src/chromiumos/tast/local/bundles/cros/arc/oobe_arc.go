@@ -44,7 +44,8 @@ func OobeArc(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.DontSkipOOBEAfterLogin(),
 		chrome.ARCSupported(),
-		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.DisableFeatures("OobeConsolidatedConsent", "PerUserMetricsConsent"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
