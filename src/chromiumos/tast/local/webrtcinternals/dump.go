@@ -8,9 +8,9 @@ package webrtcinternals
 
 // Dump represents the entire contents of webrtc_internals_dump.txt.
 type Dump struct {
-	GetUserMedia    []GetUserMediaEntry       `json:"getUserMedia,omitempty"`
-	PeerConnections map[string]PeerConnection `json:"PeerConnections,omitempty"`
-	UserAgent       string                    `json:"UserAgent,omitempty"`
+	GetUserMedia    []GetUserMediaEntry                 `json:"getUserMedia,omitempty"`
+	PeerConnections map[PeerConnectionID]PeerConnection `json:"PeerConnections,omitempty"`
+	UserAgent       string                              `json:"UserAgent,omitempty"`
 }
 
 // GetUserMediaEntry represents an entry in the GetUserMedia field of Dump.
