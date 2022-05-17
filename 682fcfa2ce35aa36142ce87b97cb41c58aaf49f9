@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "678fd973_b850ad3f",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T20:10:00Z",
+      "side": 1,
+      "message": "Yeah that\u0027s better. I\u0027m surprised I didn\u0027t think of that, I must still be getting used to go string utils.",
+      "parentUuid": "379ea537_f17d1fd2",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "682fcfa2ce35aa36142ce87b97cb41c58aaf49f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a336f08_a6d38f9e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-17T00:14:01Z",
       "side": 1,
       "message": "I think we should also check slice size before performing this access to make sure it can succeed in case of an index out of bounds issue.",
+      "range": {
+        "startLine": 283,
+        "startChar": 10,
+        "endLine": 283,
+        "endChar": 22
+      },
+      "revId": "682fcfa2ce35aa36142ce87b97cb41c58aaf49f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be632eba_0a907372",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T20:10:00Z",
+      "side": 1,
+      "message": "I didn\u0027t really like this string list return logic, I\u0027ve refactored it to just return a struct with these items and updated usage accordingly.",
+      "parentUuid": "1a336f08_a6d38f9e",
       "range": {
         "startLine": 283,
         "startChar": 10,
