@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ce6d6b26_36b7a55c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T20:37:00Z",
+      "side": 1,
+      "message": "Technically not in this commit, as support for OpenWrt using this support was added in the next CL. It was tested altogether in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3651555/5.",
+      "parentUuid": "3c744797_2c498177",
+      "range": {
+        "startLine": 17,
+        "startChar": 46,
+        "endLine": 17,
+        "endChar": 60
+      },
+      "revId": "53cb314011353ec36d2f539868c1ba262b4cb5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "76247594_428e3715",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
