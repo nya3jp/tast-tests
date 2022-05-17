@@ -34,12 +34,11 @@ func init() {
 	// TODO(b/213799105): Add 'group:input-tools-upstream' once system PK transliteration is enabled by default.
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardTransliterationTyping,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that Transliteration physical keyboard works",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.ClamshellNonVK,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
@@ -50,6 +49,8 @@ func init() {
 					typingKeys:          "ellinika",
 					expectedComposition: "Ελληνικά",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "gu",
@@ -58,6 +59,8 @@ func init() {
 					typingKeys:          "gujarati",
 					expectedComposition: "ગુજરાતી",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "hi",
@@ -66,6 +69,8 @@ func init() {
 					typingKeys:          "hindee",
 					expectedComposition: "हिंदी",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "kn",
@@ -74,6 +79,8 @@ func init() {
 					typingKeys:          "kannada",
 					expectedComposition: "ಕನ್ನಡ",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "ml",
@@ -82,6 +89,8 @@ func init() {
 					typingKeys:          "malayalam",
 					expectedComposition: "മലയാളം",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "mr",
@@ -90,6 +99,8 @@ func init() {
 					typingKeys:          "marathi",
 					expectedComposition: "मराठी",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "ne",
@@ -98,6 +109,8 @@ func init() {
 					typingKeys:          "nepali",
 					expectedComposition: "नेपाली",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "or",
@@ -106,6 +119,8 @@ func init() {
 					typingKeys:          "odia",
 					expectedComposition: "ଓଡ଼ିଆ",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "fa",
@@ -114,6 +129,8 @@ func init() {
 					typingKeys:          "farsi",
 					expectedComposition: "فارسی",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "pa",
@@ -122,6 +139,8 @@ func init() {
 					typingKeys:          "pajabi",
 					expectedComposition: "ਪੰਜਾਬੀ",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "sa",
@@ -130,6 +149,8 @@ func init() {
 					typingKeys:          "samskrtam",
 					expectedComposition: "संस्कृतम्",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "ta",
@@ -138,6 +159,8 @@ func init() {
 					typingKeys:          "tamil",
 					expectedComposition: "தமிழ்",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "te",
@@ -146,6 +169,8 @@ func init() {
 					typingKeys:          "telugu",
 					expectedComposition: "తెలుగు",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name: "ur",
@@ -154,6 +179,163 @@ func init() {
 					typingKeys:          "urdu",
 					expectedComposition: "اردو",
 				},
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			// ------lacros variants below---------------
+			{
+				Name: "el_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.GreekTransliteration,
+					typingKeys:          "ellinika",
+					expectedComposition: "Ελληνικά",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "gu_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Gujarati,
+					typingKeys:          "gujarati",
+					expectedComposition: "ગુજરાતી",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "hi_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Hindi,
+					typingKeys:          "hindee",
+					expectedComposition: "हिंदी",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "kn_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Kannada,
+					typingKeys:          "kannada",
+					expectedComposition: "ಕನ್ನಡ",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "ml_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Malayalam,
+					typingKeys:          "malayalam",
+					expectedComposition: "മലയാളം",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "mr_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Marathi,
+					typingKeys:          "marathi",
+					expectedComposition: "मराठी",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "ne_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.NepaliTransliteration,
+					typingKeys:          "nepali",
+					expectedComposition: "नेपाली",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "or_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Odia,
+					typingKeys:          "odia",
+					expectedComposition: "ଓଡ଼ିଆ",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "fa_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.PersianTransliteration,
+					typingKeys:          "farsi",
+					expectedComposition: "فارسی",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "pa_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Punjabi,
+					typingKeys:          "pajabi",
+					expectedComposition: "ਪੰਜਾਬੀ",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "sa_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Sanskrit,
+					typingKeys:          "samskrtam",
+					expectedComposition: "संस्कृतम्",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "ta_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Tamil,
+					typingKeys:          "tamil",
+					expectedComposition: "தமிழ்",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "te_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Telugu,
+					typingKeys:          "telugu",
+					expectedComposition: "తెలుగు",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name: "ur_lacros",
+				Val: pkTransliterationTestCase{
+					inputMethod:         ime.Urdu,
+					typingKeys:          "urdu",
+					expectedComposition: "اردو",
+				},
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
@@ -173,11 +355,11 @@ func PhysicalKeyboardTransliterationTyping(ctx context.Context, s *testing.State
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	inputMethod := testCase.inputMethod
 	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
