@@ -33,6 +33,29 @@
       "message": "LGTM % nit.",
       "revId": "e588980e0f90e7eb9dd20efc3eafb1feb2800ed3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4475e7c9_11e56b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fullscreen_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-17T07:52:47Z",
+      "side": 1,
+      "message": "Just to confirm - the \"lacros\" subtest inherits the attribute \"group:mainline\" and adds this one \"informational\" to it, right?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "e588980e0f90e7eb9dd20efc3eafb1feb2800ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
