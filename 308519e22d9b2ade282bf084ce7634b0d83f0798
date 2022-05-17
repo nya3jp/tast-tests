@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30555fa8_d6d9a1ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-17T01:16:06Z",
+      "side": 1,
+      "message": "Seems no. \"ResetState attempts to reset Chrome\u0027s state (e.g. by closing all pages).\" according to its comment.",
+      "parentUuid": "60d41941_2c036b39",
+      "range": {
+        "startLine": 173,
+        "startChar": 11,
+        "endLine": 173,
+        "endChar": 32
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f1e9abb_7ddb4a8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-16T11:46:07Z",
       "side": 1,
       "message": "Do we want to verify this?",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 59
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d83c541_33528fec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-17T01:16:06Z",
+      "side": 1,
+      "message": "Since connect will fail if this is not selected / selected wrongly, it can be caught if there is a bug, and we can see the screenshot in the log to understand what happens.",
+      "parentUuid": "3f1e9abb_7ddb4a8e",
       "range": {
         "startLine": 208,
         "startChar": 2,
