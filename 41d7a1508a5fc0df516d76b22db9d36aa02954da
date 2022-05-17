@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7319760e_6f70fea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-17T19:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a699ff7c_bfa9c151",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 15
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5df9bff2_f134e186",
@@ -101,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "323b5907_c428693a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-17T19:38:14Z",
+      "side": 1,
+      "message": "This is only the year label, which means the month is not included.",
+      "parentUuid": "5df9bff2_f134e186",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6721ce7f_bedd5a8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
         "patchSetId": 10
@@ -112,6 +160,30 @@
       "writtenOn": "2022-05-17T00:15:01Z",
       "side": 1,
       "message": "nit: buttonIterations. Alternatively, something like \u0027numMonths\u0027 could be more informative.",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3631680_6f9680d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-17T19:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6721ce7f_bedd5a8f",
       "range": {
         "startLine": 99,
         "startChar": 7,
@@ -147,6 +219,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b0dddff_d28f0aee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-17T19:38:14Z",
+      "side": 1,
+      "message": "Good catch! I removed the extra one click.",
+      "parentUuid": "61f6d13d_b97af2df",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bdd1666_6d50d4e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
         "patchSetId": 10
@@ -158,6 +254,30 @@
       "writtenOn": "2022-05-17T00:15:01Z",
       "side": 1,
       "message": "This should go on line 153, as soon as we know conn is properly initialized.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 19
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00599af0_e1805b26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-17T19:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bdd1666_6d50d4e7",
       "range": {
         "startLine": 159,
         "startChar": 0,
