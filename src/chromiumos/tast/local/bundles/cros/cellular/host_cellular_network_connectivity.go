@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/cellular/cellularlabels"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
@@ -23,10 +24,12 @@ func init() {
 		Contacts:     []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		Timeout:      1 * time.Minute,
+		Vars:         []string{"autotest_host_info_labels"},
 	})
 }
 
 func HostCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
+
 	if _, err := modemmanager.NewModemWithSim(ctx); err != nil {
 		s.Fatal("Could not find MM dbus object with a valid sim: ", err)
 	}
@@ -35,6 +38,12 @@ func HostCellularNetworkConnectivity(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create cellular.Helper: ", err)
 	}
+
+	labels, err := cellularlabels.GetHostInfoLabels(ctx, s)
+	if err != nil {
+		s.Log("Failed to read labels: ", err)
+	}
+	cellularlabels.PrintHostInfoLabels(ctx, labels)
 
 	ipType, err := helper.GetCurrentIPType(ctx)
 	if err != nil {
