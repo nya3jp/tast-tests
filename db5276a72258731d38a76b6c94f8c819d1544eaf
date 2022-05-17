@@ -33,6 +33,24 @@
       "message": "Sorry if this is a dumb question, my understanding of OpenWRT is super limited. Are we confident that Syslogd behavior is common across all OpenWRT routers? And are we confident that all of these commands will work across different OpenWRT routers? Is it necessary to test this against different OpenWRT rotuers, and if so, have you?",
       "revId": "db5276a72258731d38a76b6c94f8c819d1544eaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee2b2b55_5494ef32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-17T21:40:51Z",
+      "side": 1,
+      "message": "I am confident that this syslogd functionality is present on any recent version of OpenWrt, and the devices should not matter as the point of OpenWrt is to normalize the OS across different routers. This has been tested on our primary test OpenWrt device, Ubiquiti Unfi Lite 6, and other router devices are expected to be approved for general use on a case by case basis. Stuff like this will be covered by running the test suite against a new router and noting differences in test results.\n\nThe logread functionality is documented on OpenWrt\u0027s wiki as the simplest and default log behavior, making it a great option to use that requires zero additional configuration:\nhttps://openwrt.org/docs/guide-user/base-system/log.essentials#logread",
+      "parentUuid": "0341ea5f_3c09ab55",
+      "revId": "db5276a72258731d38a76b6c94f8c819d1544eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
