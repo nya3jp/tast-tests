@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5146dfa4_555b26e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T07:11:04Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954e0a31_2c78f519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T07:11:04Z",
+      "side": 1,
+      "message": "nit: lowercase when wrapping errors",
+      "range": {
+        "startLine": 195,
+        "startChar": 29,
+        "endLine": 195,
+        "endChar": 30
+      },
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d35a4ba5_0803bdcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T07:11:04Z",
+      "side": 1,
+      "message": "Curious: why do we treat rarv4 differently to this? I wonder if a small comment outlining the difference.",
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6197f56e_c2005d20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T07:11:04Z",
+      "side": 1,
+      "message": "nit: same as above, lower case here.",
+      "range": {
+        "startLine": 231,
+        "startChar": 29,
+        "endLine": 231,
+        "endChar": 30
+      },
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ee1f3c_76551a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/crosdisks/Nested.rar",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T07:11:04Z",
+      "side": 1,
+      "message": "Just wanted to bring attention to the Nested.rar and Nested.zip file being updated, if intentional all good!",
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
