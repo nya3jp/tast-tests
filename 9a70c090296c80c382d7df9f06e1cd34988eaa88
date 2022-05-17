@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dcd0f8d_f5e3e54e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-device-play.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-05-17T03:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cff12fb_deb212dc",
+      "revId": "9a70c090296c80c382d7df9f06e1cd34988eaa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f839767_4b8eef88",
