@@ -22,6 +22,6 @@ const (
 // be written by crash_reporter at initialization.
 func ExpectedCorePattern() string {
 	// %f is a new format string since Linux kernel 5.9+. It means the
-	// file name of the executable. All Chromium OS kernels also support it.
+	// file name of the executable. All ChromiumOS kernels also support it.
 	return fmt.Sprintf("|%s --user=%%P:%%s:%%u:%%g:%%f", CrashReporterPath)
 }
