@@ -51,6 +51,121 @@
       "parentUuid": "f025e949_f91f4c5c",
       "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a699ff7c_bfa9c151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-17T00:15:01Z",
+      "side": 1,
+      "message": "It\u0027s not necessary to shorten the context like this if the original context isn\u0027t used in any defered cleanup.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 15
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df9bff2_f134e186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-17T00:15:01Z",
+      "side": 1,
+      "message": "I might not be understanding the test correctly, but it seems like this will fail if the test is run in January.",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6721ce7f_bedd5a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-17T00:15:01Z",
+      "side": 1,
+      "message": "nit: buttonIterations. Alternatively, something like \u0027numMonths\u0027 could be more informative.",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f6d13d_b97af2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-17T00:15:01Z",
+      "side": 1,
+      "message": "We already clicked once, so 11 clicks should be sufficient here.",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bdd1666_6d50d4e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-17T00:15:01Z",
+      "side": 1,
+      "message": "This should go on line 153, as soon as we know conn is properly initialized.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 19
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
