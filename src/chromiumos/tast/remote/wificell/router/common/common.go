@@ -9,6 +9,7 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/network/ip"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
@@ -68,4 +69,18 @@ func HostTestPath(ctx context.Context, host *ssh.Conn, testFlag, remotePath stri
 		return false, errors.Wrapf(err, "failed to run 'test %q %q' on remote host", testFlag, remotePath)
 	}
 	return true, nil
+}
+
+// RemoveDevicesWithPrefix removes the devices whose names start with the given prefix.
+func RemoveDevicesWithPrefix(ctx context.Context, ipr *ip.Runner, prefix string) error {
+	devs, err := ipr.LinkWithPrefix(ctx, prefix)
+	if err != nil {
+		return err
+	}
+	for _, dev := range devs {
+		if err := ipr.DeleteLink(ctx, dev); err != nil {
+			return err
+		}
+	}
+	return nil
 }
