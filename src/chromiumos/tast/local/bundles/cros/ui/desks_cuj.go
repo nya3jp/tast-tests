@@ -28,6 +28,7 @@ func init() {
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      2 * time.Hour,
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
@@ -128,7 +129,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(cleanupCtx)
 
-	recorder.EnableTracing(s.OutDir())
+	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 
 	if err := recorder.RunFor(ctx, func(ctx context.Context) error {
 		if err := ash.ActivateDeskAtIndex(ctx, tconn, 0); err != nil {

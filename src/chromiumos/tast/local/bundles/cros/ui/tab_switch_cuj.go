@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -25,6 +26,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      22*time.Minute + cuj.CPUStablizationTimeout,
 		Vars:         []string{"mute"},
 		Params: []testing.Param{{
