@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2182b3_61b23db2",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-05-17T21:17:42Z",
+      "side": 1,
+      "message": "Obviously the unit test cases pass so I must be missing something, but why are we using two \"\\\" symbols here instead of one? AFAIK, \"\\\\\" represents the literal character \"\\\", while \"\\d\" represents a decimal character. \"\\\\d\" would be a literal \"\\\" followed by a literal \"d\". Is this a different regex version or regex settings than I\u0027m used to?",
+      "range": {
+        "startLine": 265,
+        "startChar": 42,
+        "endLine": 265,
+        "endChar": 44
+      },
+      "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cedea76d_03bf0b03",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-05-17T21:17:42Z",
+      "side": 1,
+      "message": "Is this segment actually doing anything for us? The \"?\" at the end means that it isn\u0027t useful for filtering out non-matches, and it\u0027s a non-capturing sub-group so we aren\u0027t using the contents for anything. Plugging this regex into an online calculator supports my assertion, since it gives the same submatches with or without this bit. I think that the regex just correctly ignores anything past the \"@\" symbol without this stuff.",
+      "range": {
+        "startLine": 265,
+        "startChar": 59,
+        "endLine": 265,
+        "endChar": 71
+      },
+      "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
