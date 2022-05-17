@@ -62,7 +62,7 @@ func SetGooglePhotosWallpaper(ctx context.Context, s *testing.State) {
 	// Google Photos library with specific photos/albums present.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("wallpaper.googlePhotosAccountPool")),
-		chrome.EnableFeatures("WallpaperGooglePhotosIntegration", "PersonalizationHub"))
+		chrome.EnableFeatures("WallpaperGooglePhotosIntegration"))
 	if err != nil {
 		s.Fatal("Failed to log in to Chrome: ", err)
 	}
