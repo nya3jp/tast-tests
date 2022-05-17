@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9e5e5017_7821415a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-17T23:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954e0a31_2c78f519",
+      "range": {
+        "startLine": 195,
+        "startChar": 29,
+        "endLine": 195,
+        "endChar": 30
+      },
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d35a4ba5_0803bdcf",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
         "patchSetId": 6
@@ -54,6 +78,24 @@
       "writtenOn": "2022-05-17T07:11:04Z",
       "side": 1,
       "message": "Curious: why do we treat rarv4 differently to this? I wonder if a small comment outlining the difference.",
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f84b01_a6eee632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-17T23:34:55Z",
+      "side": 1,
+      "message": "RAR V4 cannot store full Unicode filenames. This is one of the reasons why the RAR V5 format was created.",
+      "parentUuid": "d35a4ba5_0803bdcf",
       "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6187ac_83a26a20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-17T23:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6197f56e_c2005d20",
+      "range": {
+        "startLine": 231,
+        "startChar": 29,
+        "endLine": 231,
+        "endChar": 30
+      },
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28ee1f3c_76551a05",
@@ -94,6 +160,24 @@
       "writtenOn": "2022-05-17T07:11:04Z",
       "side": 1,
       "message": "Just wanted to bring attention to the Nested.rar and Nested.zip file being updated, if intentional all good!",
+      "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "192875b4_622caa3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/crosdisks/Nested.rar",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-17T23:34:55Z",
+      "side": 1,
+      "message": "Right. All the `Nested.*` archives contain all the `Unicode.*` archives, including the ones that are getting added in this CL.",
+      "parentUuid": "28ee1f3c_76551a05",
       "revId": "95fd944dfaf437b46b1acc4d44684c2dbd3aea8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
