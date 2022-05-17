@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5729be2e_e3800e95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/basic_lxd_next.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-05-17T23:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "533b0823_c9d323ae",
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "979cd392_b9f8e3ca",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-05-17T13:30:44Z",
       "side": 1,
       "message": "duplicated so you can drop this.",
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62fdde9_1dc7f19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/basic_lxd_next.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-05-17T23:54:00Z",
+      "side": 1,
+      "message": "At some point I\u0027m going to want to make this test critical, but the \"unstable\" variant still shouldn\u0027t be. I\u0027m going to leave the duplicate line as a reminder of that.",
+      "parentUuid": "979cd392_b9f8e3ca",
       "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1926da15_32a3da54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/basic_lxd_next.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-05-17T23:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d593dc_a17039df",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "483337e8_b28ba552",
@@ -105,6 +165,24 @@
       "writtenOn": "2022-05-17T13:30:44Z",
       "side": 1,
       "message": "nit: s/ARC++/ARC/g",
+      "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e17fd95_ae8334e3",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-05-17T23:54:00Z",
+      "side": 1,
+      "message": "I decided to drop that bit, since the usual justification doesn\u0027t apply to this instance of the fixture.",
+      "parentUuid": "483337e8_b28ba552",
       "revId": "db2b4458b469fc123fbe38aad38c81097cf25e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
