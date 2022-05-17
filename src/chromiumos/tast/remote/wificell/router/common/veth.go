@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/network/ip"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/testing"
 )
@@ -74,4 +75,14 @@ func BindVethToBridge(ctx context.Context, ipr *ip.Runner, veth, br string) erro
 // UnbindVeth unbinds the veth to any other interface.
 func UnbindVeth(ctx context.Context, ipr *ip.Runner, veth string) error {
 	return ipr.UnsetBridge(ctx, veth)
+}
+
+// RemoveAllVethIfaces will delete any existing ifaces starting with VethPrefix.
+// The veth peer ifaces do not need to be deleted manually, as they will be
+// deleted along with the other end of the pair.
+func RemoveAllVethIfaces(ctx context.Context, ipr *ip.Runner) error {
+	if err := RemoveDevicesWithPrefix(ctx, ipr, VethPrefix); err != nil {
+		return errors.Wrapf(err, "failed to remove all veth interfaces with prefix %q", VethPrefix)
+	}
+	return nil
 }
