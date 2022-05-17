@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da6d15c5_3b674019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-17T04:52:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b51ae607_0c41d2c9",
+      "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfc7f78a_a4203607",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Can it wait for that it becomes clickable then?",
       "parentUuid": "511bf8b3_54770ce2",
+      "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75260784_e9fd1ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-17T04:52:36Z",
+      "side": 1,
+      "message": "How?",
+      "parentUuid": "13c0dbf8_3508c382",
       "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
