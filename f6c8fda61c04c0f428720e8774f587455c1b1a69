@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6f5fa36_ec1270bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_google_document.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T23:46:48Z",
+      "side": 1,
+      "message": "nit: take",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "f6c8fda61c04c0f428720e8774f587455c1b1a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd797ed_6c897fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_google_document.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T23:46:48Z",
+      "side": 1,
+      "message": "nit: Files app",
+      "range": {
+        "startLine": 30,
+        "startChar": 65,
+        "endLine": 30,
+        "endChar": 73
+      },
+      "revId": "f6c8fda61c04c0f428720e8774f587455c1b1a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b224877f_c6ed059e",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_google_document.go",
         "patchSetId": 8
@@ -19,6 +65,52 @@
         "startChar": 53,
         "endLine": 87,
         "endChar": 57
+      },
+      "revId": "f6c8fda61c04c0f428720e8774f587455c1b1a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324db28a_afd9a3b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_google_document.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T23:46:48Z",
+      "side": 1,
+      "message": "nit: waits for the specified file to exist in Files app.",
+      "range": {
+        "startLine": 104,
+        "startChar": 26,
+        "endLine": 104,
+        "endChar": 70
+      },
+      "revId": "f6c8fda61c04c0f428720e8774f587455c1b1a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c68552_0c4e1ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_google_document.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-17T23:46:48Z",
+      "side": 1,
+      "message": "This is not ideal, Files app is currently undergoing a switch to System Web App which changes the URL and connection, this is happening right now and these tests may break.\n\nOne alternative (outside from interacting with the files app) is to watch the mount point for the new file and only then open up Files app and verify the file. e.g.\n\n```\ndrivePath :\u003d filepath.Join(s.FixtValue().(*drivefs.FixtureData).MountPath, \"root\", fileName + \".gdoc\")\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\tif _, err :\u003d os.Stat(drivePath); errors.Is(err, os.ErrNotExist) {\n\t\treturn err\n\t} else {\n\t\treturn testing.PollBreak(err)\n\t}\n\treturn nil\n}, \u0026testing.PollOptions{Timeout: time.Minute}); err !\u003d nil {\n\ts.Fatal(\"Failed to wait for file %q to be available: %v\", drivePath, err)\n}\n```",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 114
       },
       "revId": "f6c8fda61c04c0f428720e8774f587455c1b1a69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
