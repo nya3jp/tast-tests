@@ -43,7 +43,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify whether virtual keyboard window is present during change in tablet mode",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_detachable"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.ui.CheckVirtualKeyboardService", "tast.cros.firmware.UtilsService", "tast.cros.ui.ChromeUIService"},
 		Fixture:      fixture.NormalMode,
