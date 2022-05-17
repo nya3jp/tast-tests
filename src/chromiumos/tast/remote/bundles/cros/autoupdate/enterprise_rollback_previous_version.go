@@ -42,7 +42,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:autoupdate"},
-		SoftwareDeps: []string{"reboot", "chrome"},
+		SoftwareDeps: []string{"reboot", "chrome", "auto_update_stable"},
 		ServiceDeps: []string{
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.RollbackService",
@@ -102,10 +102,9 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	filtered := paygen.FilterBoard(board).FilterDeltaType("OMAHA").FilterMilestone(milestoneM)
 	latest, err := filtered.FindLatest()
 	if err != nil {
-		// For unreleased boards, e.g. -kernelnext it's expected that there is no
-		// image available. Mark the test as successful and skip it.
-		s.Logf("Skipping test; Failed to find the latest release for milestone %d and board %s: %v", milestoneM, board, err)
-		return
+		// Unreleased boards are filtered with auto_update_stable, so there should
+		// be an available image.
+		s.Fatalf("Failed to find the latest release for milestone %d and board %s: %v", milestoneM, board, err)
 	}
 
 	rollbackVersion := latest.ChromeOSVersion
