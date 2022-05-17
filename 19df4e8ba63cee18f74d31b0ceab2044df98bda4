@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb060161_8d68aa4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-17T04:46:45Z",
+      "side": 1,
+      "message": "One more question.",
+      "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93022186_f8746dda",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "Sometimes after installing the extension, the page still shows the \"Add extension\" button. When that happens, reloading the page will show the correct button (remove). Whether that is a bug or just the way these web apps work I do not know.",
       "parentUuid": "93022186_f8746dda",
+      "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b51ae607_0c41d2c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-17T04:46:45Z",
+      "side": 1,
+      "message": "Sounds like an issue anyways. Could you file a P3 bug?",
+      "parentUuid": "8d3a1bee_22690ec8",
       "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -85,6 +120,24 @@
       "side": 1,
       "message": "To be clearer: by not immediately clickable I mean that for a short window of time clicks have no effect.",
       "parentUuid": "bc3cb4af_47ff4243",
+      "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c0dbf8_3508c382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-17T04:46:45Z",
+      "side": 1,
+      "message": "Can it wait for that it becomes clickable then?",
+      "parentUuid": "511bf8b3_54770ce2",
       "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
