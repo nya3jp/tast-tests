@@ -44,6 +44,7 @@ const (
 	usbManufacturer = "Tast"
 	usbProduct      = "VirtualTestUSBDrive"
 	usbSerialNumber = "12345"
+	waitTime        = 5
 )
 
 func UsbAttachToArcvm(ctx context.Context, s *testing.State) {
@@ -143,7 +144,9 @@ func attachUsbDeviceToARCVM(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 	return uiauto.Combine("Manage USB",
 		ui.FocusAndWait(playStoreButton),
 		ui.LeftClick(playStoreButton),
+		ui.FocusAndWait(nodewith.Name("Manage USB devices").Role(role.Link)),
 		ui.LeftClick(nodewith.Name("Manage USB devices").Role(role.Link)),
+		ui.FocusAndWait(nodewith.Name(usbProduct).Role(role.ToggleButton)),
 		ui.LeftClick(nodewith.Name(usbProduct).Role(role.ToggleButton)),
 	)(ctx)
 }
@@ -174,5 +177,5 @@ func checkUsbDeviceStatus(ctx context.Context, host, vm bool) error {
 			return errors.Wrap(err, "unexpected usb status in vm")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Second})
+	}, &testing.PollOptions{Timeout: waitTime * time.Second})
 }
