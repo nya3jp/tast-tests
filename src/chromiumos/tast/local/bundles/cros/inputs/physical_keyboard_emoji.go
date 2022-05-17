@@ -26,21 +26,33 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardEmoji,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that right click input field and select emoji with physical keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "jopalmer@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.ClamshellNonVK,
-		Params: []testing.Param{{
-			ExtraAttr:         []string{"group:input-tools-upstream"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kodama", "kefka")),
-		}, {
-			Name:      "informational",
-			ExtraAttr: []string{"informational"},
-			// Skip on grunt & zork boards due to b/213400835.
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels, hwdep.SkipOnPlatform("grunt", "zork")),
-		}}})
+		Params: []testing.Param{
+			{
+				Fixture:           fixture.ClamshellNonVK,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kodama", "kefka")),
+			},
+			{
+				Name:      "informational",
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"informational"},
+				// Skip on grunt & zork boards due to b/213400835.
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels, hwdep.SkipOnPlatform("grunt", "zork")),
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kodama", "kefka")),
+			},
+		},
+	})
 }
 
 func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
@@ -61,11 +73,11 @@ func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	inputField := testserver.TextAreaInputField
 	inputEmoji := "😂"

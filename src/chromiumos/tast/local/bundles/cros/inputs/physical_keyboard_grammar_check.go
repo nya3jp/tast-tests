@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
@@ -27,13 +28,24 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardGrammarCheck,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks on device grammar check with physical keyboard typing",
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.GrammarEnabledModels...)),
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.ClamshellNonVKWithGrammarCheck,
+		Params: []testing.Param{
+			{
+				Fixture:   fixture.ClamshellNonVKWithGrammarCheck,
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosClamshellNonVKWithGrammarCheck,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+		},
 	})
 }
 
@@ -48,13 +60,18 @@ func PhysicalKeyboardGrammarCheck(ctx context.Context, s *testing.State) {
 	uc := s.FixtValue().(fixture.FixtData).UserContext
 	uc.SetTestName(s.TestName())
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+	cleanupCtx := ctx
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
-	its, err := testserver.Launch(ctx, cr, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
+
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
-	defer its.Close()
+	defer its.CloseAll(cleanupCtx)
 
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
