@@ -10,9 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/inputs/fixture"
+	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -37,12 +38,12 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:    "tablet",
-				Fixture: fixture.TabletVK,
+				Name: "tablet",
+				Val:  true, // Tablet VK.
 			},
 			{
-				Name:    "clamshell",
-				Fixture: fixture.ClamshellVK,
+				Name: "clamshell",
+				Val:  false, // Clamshell a11y VK.
 			},
 		},
 	})
@@ -54,10 +55,30 @@ func VirtualKeyboardLockScreen(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(fixture.FixtData).Chrome
-	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
-	uc := s.FixtValue().(fixture.FixtData).UserContext
-	uc.SetTestName(s.TestName())
+	var chromeOpts []chrome.Option
+	isTabletVK := s.Param().(bool)
+	if isTabletVK {
+		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--force-tablet-mode=touch_view"), chrome.VKEnabled())
+	} else {
+		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--force-tablet-mode=clamshell"))
+	}
+	cr, err := chrome.New(ctx, chromeOpts...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get test API connection: ", err)
+	}
+
+	if !isTabletVK {
+		// Enable a11y virtual keyboard in clamshell mode.
+		if err := vkb.NewContext(cr, tconn).EnableA11yVirtualKeyboard(true)(ctx); err != nil {
+			s.Fatal("Failed to enable a11y virtual keyboard: ", err)
+		}
+	}
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, s.TestName())
 
@@ -90,6 +111,11 @@ func VirtualKeyboardLockScreen(ctx context.Context, s *testing.State) {
 
 	// Using a misspell word to validate that auto-correction does not engage.
 	tapKeys := "helol"
+
+	uc, err := inputactions.NewInputsUserContext(ctx, s, cr, tconn, nil)
+	if err != nil {
+		s.Fatal("Failed to create user context: ", err)
+	}
 
 	if err := uiauto.UserAction("VK typing input",
 		uiauto.Combine("Verify VK input",
