@@ -16,6 +16,23 @@
       "message": "Updated with new filename logic and a new log file.",
       "revId": "db5276a72258731d38a76b6c94f8c819d1544eaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0341ea5f_3c09ab55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-05-17T21:26:17Z",
+      "side": 1,
+      "message": "Sorry if this is a dumb question, my understanding of OpenWRT is super limited. Are we confident that Syslogd behavior is common across all OpenWRT routers? And are we confident that all of these commands will work across different OpenWRT routers? Is it necessary to test this against different OpenWRT rotuers, and if so, have you?",
+      "revId": "db5276a72258731d38a76b6c94f8c819d1544eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
