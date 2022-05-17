@@ -70,6 +70,30 @@
       },
       "revId": "f80659f42b593ebdb2dbc42c7b657065dbf69de1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75536efc_4d27b26a",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-17T11:21:07Z",
+      "side": 1,
+      "message": "Hi alex, if we want to get ash/lacros trace at the same time, we can also do it while collecting system trace. Please see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3651662, thanks!\n\nI will abandon this cl if we are fine with the system tracing.",
+      "parentUuid": "4bd7959d_cc214d62",
+      "range": {
+        "startLine": 274,
+        "startChar": 38,
+        "endLine": 274,
+        "endChar": 74
+      },
+      "revId": "f80659f42b593ebdb2dbc42c7b657065dbf69de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
