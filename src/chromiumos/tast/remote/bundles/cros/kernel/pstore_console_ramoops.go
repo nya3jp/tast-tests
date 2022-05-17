@@ -75,4 +75,14 @@ func PstoreConsoleRamoops(ctx context.Context, s *testing.State) {
 		filepath.Join(s.OutDir(), "eventlog.txt")); err != nil {
 		s.Log("Failed to save eventlog")
 	}
+
+	// Save coreboot log for failure analysis
+	out, err := d.Conn().CommandContext(ctx, "cbmem", "-1").Output()
+	if err != nil {
+		s.Log("Failed to execute cbmem -1")
+	} else {
+		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "bios_log.txt"), out, 0666); err != nil {
+			s.Log("Failed to write bios log")
+		}
+	}
 }
