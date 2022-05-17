@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7874876_5ea928e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-17T12:56:49Z",
+      "side": 1,
+      "message": "Good call, will do that :)",
+      "parentUuid": "bbb136a9_26c2cc53",
+      "revId": "dcb396948b69fc20262eccae31fa398de37f0c78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24f9f22f_2c030cb0",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-17T12:48:08Z",
       "side": 1,
       "message": "I\u0027m guessing this will cause some failures for now, e.g. if a certain milestone was skipped on a model. It\u0027s still worth reporting those as fatal again in my opinion",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 27
+      },
+      "revId": "dcb396948b69fc20262eccae31fa398de37f0c78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94d13040_d7bf3789",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-17T12:56:49Z",
+      "side": 1,
+      "message": "Agree. Hopefully we won\u0027t run into many of those failures",
+      "parentUuid": "24f9f22f_2c030cb0",
       "range": {
         "startLine": 105,
         "startChar": 2,
