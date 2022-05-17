@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379ea537_f17d1fd2",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-17T00:14:01Z",
+      "side": 1,
+      "message": "nit: I think this behavior is best accomplished with strings.Split\n\n```\n\tvar outputIface, ifaceAlias string\n\tstr :\u003d strings.Split(outputIfaceWithPossibleAlias, \"@\")\n\tif len(str) \u003e 1 {\n\t\tifaceAlias \u003d str[1]\n\t}\n\toutputIface \u003d str[0]\n```\nWDYT?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "682fcfa2ce35aa36142ce87b97cb41c58aaf49f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a336f08_a6d38f9e",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-17T00:14:01Z",
+      "side": 1,
+      "message": "I think we should also check slice size before performing this access to make sure it can succeed in case of an index out of bounds issue.",
+      "range": {
+        "startLine": 283,
+        "startChar": 10,
+        "endLine": 283,
+        "endChar": 22
+      },
+      "revId": "682fcfa2ce35aa36142ce87b97cb41c58aaf49f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
