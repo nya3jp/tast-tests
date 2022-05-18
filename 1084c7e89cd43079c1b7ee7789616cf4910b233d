@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b27ce29_b6f8def3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T04:12:46Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure, what is usually the recommended time?",
+      "parentUuid": "887766c7_1fcf035b",
+      "range": {
+        "startLine": 75,
+        "startChar": 44,
+        "endLine": 75,
+        "endChar": 55
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aaf5b327_6ad884b5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-18T01:59:57Z",
       "side": 1,
       "message": "Is there any other way to avoid the use of `testing.Sleep`? like checking some conditions.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b124fe7_d0ebb76a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T04:12:46Z",
+      "side": 1,
+      "message": "This one might not be necessary, I\u0027ll double check",
+      "parentUuid": "aaf5b327_6ad884b5",
       "range": {
         "startLine": 97,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1659b777_24378fb0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T04:12:46Z",
+      "side": 1,
+      "message": "There\u0027s no ideal way that won\u0027t interact with hps internally to do this, which we don\u0027t really want, therefore hps team gave a estimate number of how long this will take for hps sensor to function as expected.",
+      "parentUuid": "007f598c_8e83d0c4",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5de562d_ebfa0e44",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
         "patchSetId": 2
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9adb735b_f6fe5664",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T04:12:46Z",
+      "side": 1,
+      "message": "Similar reason, there is a buffer time for the hps sensor to update the status.",
+      "parentUuid": "c5de562d_ebfa0e44",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7a11e72_6102555b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
         "patchSetId": 2
@@ -106,6 +202,30 @@
       "writtenOn": "2022-05-18T01:59:57Z",
       "side": 1,
       "message": "better to check `if err!\u003d nil`",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "184fa0da_faae99c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T04:12:46Z",
+      "side": 1,
+      "message": "gotcha",
+      "parentUuid": "e7a11e72_6102555b",
       "range": {
         "startLine": 112,
         "startChar": 2,
