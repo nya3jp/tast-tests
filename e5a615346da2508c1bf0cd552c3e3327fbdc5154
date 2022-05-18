@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c9120c_c45dbcbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-18T15:34:58Z",
+      "side": 1,
+      "message": "Seems a bit odd that we depend on debugd for printing...",
+      "revId": "e5a615346da2508c1bf0cd552c3e3327fbdc5154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
