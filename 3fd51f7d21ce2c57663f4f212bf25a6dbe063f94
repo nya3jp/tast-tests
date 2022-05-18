@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc6e006b_5a333075",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-18T04:41:43Z",
+      "side": 1,
+      "message": "Nice, thanks for doing this! I\u0027d like this to be a little clearer and a little more detailed. For example, I don\u0027t really understand what \"maxChannelTime\" is since that\u0027s not a variable in the test. In addition, \"The AP keeps sending beacon frames\" is not that specific. Something like \"The AP sends beacons every millisecond for |x| milliseconds\" makes more sense to me.",
+      "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57ae5d57_dd245b82",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
         "patchSetId": 16
@@ -37,6 +54,40 @@
         "endLine": 56,
         "endChar": 98
       },
+      "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8baf7366_a7efd766",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-18T04:41:43Z",
+      "side": 1,
+      "message": "This needs to be updated to explain why we are counting it now, and how counting it doesn\u0027t introduce that large a margin of error.",
+      "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160921b8_8eedbc98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-18T04:41:43Z",
+      "side": 1,
+      "message": "This is not that clear, include bug number and explain why probe request may be missing (maybe include an approximate percentage).",
       "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
