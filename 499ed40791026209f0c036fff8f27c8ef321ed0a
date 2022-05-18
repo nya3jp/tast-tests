@@ -88,6 +88,76 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1099ea_e6f4d1e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-18T18:49:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "77f1ec41_76bbc923",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 109
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8d7e4a_6603beff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-18T18:49:44Z",
+      "side": 1,
+      "message": "Each name that you pass to  uiauto.Combine should begin with a lower case letter because here is how it is used:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/action/action.go;drc\u003d80bfb06a760ce7fc91707bab45bac0718fbeb0be;l\u003d42",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab8b84e_0d3b107e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-18T18:49:44Z",
+      "side": 1,
+      "message": "Replace it with s.Error so that tests proceed further in case this fails",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d26560b2_848f4e8a",
@@ -130,6 +200,99 @@
         "startChar": 0,
         "endLine": 92,
         "endChar": 52
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67b22e0_a7c8bb5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-18T18:49:44Z",
+      "side": 1,
+      "message": "Understand the test has to be changed completely for going with approach#1.Lets keep the test structure same but can we add s.Log for start of all 4 CUJs for easy triaging when test fails",
+      "parentUuid": "b45ab38c_ae9b470b",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 52
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f2ed663_17a74cd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-18T18:49:44Z",
+      "side": 1,
+      "message": "Same as above Lower Case and all below cases as well.",
+      "range": {
+        "startLine": 93,
+        "startChar": 28,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3378be9_11311ae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-18T18:49:44Z",
+      "side": 1,
+      "message": "Replace it with s.Error so that tests proceed further in case this fails",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 63
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "266829c6_348620c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-18T18:49:44Z",
+      "side": 1,
+      "message": "Replace it with s.Fatal as test shouldn\u0027t proceed further (Next CUJ depends on this CUJ).",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 62
       },
       "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
