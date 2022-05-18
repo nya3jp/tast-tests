@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4950042_a7589a7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T16:40:20Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with revision to error message",
+      "revId": "c309b3c78a361a729576ce85570b3bb0f6bd7888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a8ddc5_06456e69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/wake_from_hibernation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T16:40:20Z",
+      "side": 1,
+      "message": "`log in` (two words) because the word login is a noun, not a verb.",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "c309b3c78a361a729576ce85570b3bb0f6bd7888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
