@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3886fe8c_89cffcca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-18T01:22:22Z",
+      "side": 1,
+      "message": "I feel it is post test. At least it should be postTest",
+      "range": {
+        "startLine": 452,
+        "startChar": 32,
+        "endLine": 452,
+        "endChar": 74
+      },
+      "revId": "d3862376d80e4e012239f1a0893f2e2fcf692f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
