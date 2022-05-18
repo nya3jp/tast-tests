@@ -15,7 +15,7 @@ import (
 
 var (
 	// NetworkDetailedView is the detailed Network view within the Quick Settings.
-	NetworkDetailedView = nodewith.HasClass("NetworkListView").Ancestor(RootFinder)
+	NetworkDetailedView = nodewith.HasClass("DetailedViewContainer").Ancestor(RootFinder)
 
 	// NetworkDetailedViewRevamp is the detailed Network view within Quick
 	// Settings with QuickSettingsNetworkRevamp enabled.
@@ -27,6 +27,9 @@ var (
 
 	// networkSettingsButton is the button shown on the Network detailed view.
 	networkSettingsButton = nodewith.HasClass("IconButton").Name("Network settings").Ancestor(RootFinder)
+
+	// ethernetSettingButton is the Ethernet button shown on the Network detailed view.
+	ethernetSettingButton = nodewith.HasClass("NetworkListNetworkItemView").Name("Open settings for Ethernet").Role(role.Button).Ancestor(RootFinder)
 
 	// NetworkDetailedViewWifiToggleButtonRevamp is the WiFi toggle within the Network
 	// detailed view with QuickSettingsNetworkRevamp flag enabled.
@@ -67,10 +70,11 @@ func NavigateToNetworkDetailedView(ctx context.Context, tconn *chrome.TestConn, 
 func OpenNetworkSettings(ctx context.Context, tconn *chrome.TestConn, revampEnabled bool) error {
 	ui := uiauto.New(tconn)
 
+	// TODO(b/249164846): Remove revampEnabled check once the flag `revampEnabled` no longer exists.
 	if revampEnabled {
-		return uiauto.Combine("click the Network settings",
-			ui.LeftClick(networkSettingsButton),
-			ui.WaitUntilGone(NetworkDetailedViewRevamp),
+		return uiauto.Combine("click Ethernet setting",
+			ui.LeftClick(ethernetSettingButton),
+			ui.WaitUntilGone(NetworkDetailedView),
 		)(ctx)
 	}
 
