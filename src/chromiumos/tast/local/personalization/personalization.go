@@ -6,10 +6,12 @@
 package personalization
 
 import (
+	"context"
 	"fmt"
 	"math/rand"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -53,6 +55,18 @@ func openSubpage(subpageButton string, ui *uiauto.Context) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("click subpage button - %s", subpageButton),
 		ui.WaitUntilExists(changeSubpageButton),
 		ui.LeftClick(changeSubpageButton))
+}
+
+// ClosePersonalizationHub returns an action to close the personalization hub via the Ctrl+W shortcut.
+func ClosePersonalizationHub() uiauto.Action {
+	return func(ctx context.Context) error {
+		kb, err := input.VirtualKeyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get virtual keyboard")
+		}
+		defer kb.Close()
+		return kb.Accel(ctx, "Ctrl+W")
+	}
 }
 
 // ToggleLightMode returns an action to enable light color mode.
