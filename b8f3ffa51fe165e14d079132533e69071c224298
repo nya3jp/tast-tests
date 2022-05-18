@@ -93,6 +93,54 @@
       },
       "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707b5190_85efaaf6",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-05-18T20:20:45Z",
+      "side": 1,
+      "message": "I still think the non-capturing group is unnecessary complexity. The whole non-capturing group `(?:@[^:]*)?` just means \"find a bunch of characters that starts with `@` until you reach `:`\". Except the previous matching group terminates on `@` or `:`, so it\u0027s actually known that the first character of this group (if it exists) must be `@` or `:`. Then, the `:` at means that we can just use a pattern with a `*` symbol and it will always end when it reaches a `:`, so we don\u0027t actually need the `[^:]`. My assertion is that the non-capturing group can be simplified to `.*` and it remains functionally equivalent, with the full regex being `^\\d+:\\s+([^@:]+).*:`. You could even upgrade it to use `^\\d+:\\s+([^@:]+)\\S*:` so it doesn\u0027t allow white-space in the alias any more. IMO this ends up being easier to understand because it avoids redundancy and avoids some regex jargon with the non-capturing group.\n\nSorry if this feels super nit-picky, but I think that regex in particular can be very difficult to understand for future readers, and it\u0027s worthwhile to simplify it to the maximum extent possible.",
+      "parentUuid": "70b3dc92_004edb57",
+      "range": {
+        "startLine": 265,
+        "startChar": 59,
+        "endLine": 265,
+        "endChar": 71
+      },
+      "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eae260f7_606444cc",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-05-18T20:20:45Z",
+      "side": 1,
+      "message": "Ah, simple enough.",
+      "parentUuid": "209bf917_21ab3a30",
+      "range": {
+        "startLine": 265,
+        "startChar": 42,
+        "endLine": 265,
+        "endChar": 44
+      },
+      "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
