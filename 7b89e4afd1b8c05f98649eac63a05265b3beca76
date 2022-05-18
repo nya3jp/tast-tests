@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f9be36_66bd1a73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-18T08:45:15Z",
+      "side": 1,
+      "message": "LGTM from tast-owners perspective. Just FYI we usually wait for an area owner to LGTM before we review, wait for LGTM from Billy before landing pls",
+      "revId": "7b89e4afd1b8c05f98649eac63a05265b3beca76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
