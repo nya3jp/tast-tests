@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d9756a_477494a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-18T21:13:43Z",
+      "side": 1,
+      "message": "\u003e The way the test is currently written isn\u0027t testing a normal online state, it\u0027s testing an unconnected state.\n\nMy mistake, Steven clarified above.",
+      "parentUuid": "2acd1907_719bfcf5",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "452218ea_8dd4c0a1",
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "We should actually be testing online. (Since this is testing Ethernet, it should always be online, but we should also verify that in the test).",
       "parentUuid": "38cfb648_fc28ab73",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d831bdf_3bec2a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-18T21:13:43Z",
+      "side": 1,
+      "message": "Oops, I missed that. Yes, let\u0027s verify the Service state.",
+      "parentUuid": "54ff0e3e_30ec6190",
       "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
