@@ -16,6 +16,7 @@ import (
 	"path/filepath"
 	"strings"
 	"syscall"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosdisks"
@@ -83,6 +84,7 @@ var PreparedArchives = []string{
 	"crosdisks/archive.tar",
 	"crosdisks/archive.tar.gz",
 	"crosdisks/archive.zip",
+	"crosdisks/b1238564.gz",
 }
 
 func withMountedArchiveDo(ctx context.Context, cd *crosdisks.CrosDisks, archivePath string, options []string, f func(ctx context.Context, mountPath string) error) error {
@@ -426,6 +428,59 @@ func testDuplicateFilenamesInArchives(ctx context.Context, s *testing.State, cd 
 	}
 }
 
+func testCancellation(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
+	// Set MountCompleted event watcher.
+	watcher, err := cd.WatchMountCompleted(ctx)
+	if err != nil {
+		s.Error("Cannot watch mount completed events: ", err)
+		return
+	}
+
+	defer watcher.Close(ctx)
+
+	archivePath := filepath.Join(dataDir, "b1238564.gz")
+
+	// Use a short timeount of 2 seconds while mounting the archive.
+	ctxForMounting, _ := context.WithTimeout(ctx, time.Second*2)
+	if err = cd.Mount(ctxForMounting, archivePath, ".gz", []string{}); err != nil {
+		s.Errorf("Cannot mount %q: %v", archivePath, err)
+		return
+	}
+
+	// This is a slow mounter, and we shouldn't get the mount completed signal
+	// within the 2-second timeout. Instead we should get a deadline exceeded
+	// error.
+	if _, err = watcher.Wait(ctxForMounting); !errors.Is(err, context.DeadlineExceeded) {
+		s.Errorf("Unexpected error: got %v want %v", err, context.DeadlineExceeded)
+	}
+
+	// Unmounting by passing the original archive path should cancel the mount
+	// operation in progress.
+	status, err := cd.Unmount(ctx, archivePath, []string{})
+	if err != nil {
+		s.Errorf("Cannot unmount %q: %v", archivePath, err)
+		return
+	}
+	if status != crosdisks.MountErrorNone {
+		s.Errorf("Cannot unmount %q: got error %v", archivePath, status)
+		return
+	}
+
+	// Wait for MountCompleted event.
+	event, err := watcher.Wait(ctx)
+	if err != nil {
+		s.Error("Cannot wait for MountCompleted event: ", err)
+		return
+	}
+
+	// The MountCompleted event should indicate a cancellation.
+	if event.Status != crosdisks.MountErrorCancelled {
+		s.Errorf(
+			"Unexpected mount completion status: got %v want MountErrorCancelled (%v)",
+			event.Status, crosdisks.MountErrorCancelled)
+	}
+}
+
 // copyFile copies a file. Sadly fsutil.CopyFile is unsuitable for copying into FAT filesystem. This is an adaptation of it.
 func copyFile(src, dst string) error {
 	sf, err := os.Open(src)
@@ -519,6 +574,9 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 			})
 			s.Run(ctx, "DuplicateFilenames", func(ctx context.Context, state *testing.State) {
 				testDuplicateFilenamesInArchives(ctx, state, cd, mountPath)
+			})
+			s.Run(ctx, "CancelMounting", func(ctx context.Context, state *testing.State) {
+				testCancellation(ctx, state, cd, mountPath)
 			})
 			return nil
 		})
