@@ -141,6 +141,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34ad97af_7d6d70e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-18T07:26:23Z",
+      "side": 1,
+      "message": "what do you mean by just passing in s.DataPath? It needs the registered file to get the data path. \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/state.go;l\u003d516?q\u003dDataPath\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2F\u0026start\u003d1",
+      "parentUuid": "4f24e55f_4e7ed4cd",
+      "range": {
+        "startLine": 132,
+        "startChar": 36,
+        "endLine": 132,
+        "endChar": 81
+      },
+      "revId": "33f6bbb7e9686b0fc61c22c9a55865819c6db91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4adf0dd6_0d09d945",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 7
