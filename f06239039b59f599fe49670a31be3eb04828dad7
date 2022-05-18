@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "909e12b1_4229d7e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/perfetto/system_trace_config.pbtxt",
+        "patchSetId": 12
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-18T16:36:40Z",
+      "side": 1,
+      "message": "Let\u0027s include `sched/sched_switch` and `exceptions/page_fault_user` as well. These two plus `sched/sched_waking` are the 3 that we plan to collect from the field.",
+      "revId": "f06239039b59f599fe49670a31be3eb04828dad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce998b6d_33f797e7",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 12
