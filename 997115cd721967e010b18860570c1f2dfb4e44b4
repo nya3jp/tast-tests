@@ -248,6 +248,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "505a3f4a_1db99499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-18T21:40:50Z",
+      "side": 1,
+      "message": "Ack, sorry missed that too.",
+      "parentUuid": "2df163db_1f91c886",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633dd651_49739120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-18T21:40:50Z",
+      "side": 1,
+      "message": "Most of these properties don\u0027t return to their default value unless you explicitly set it or restart shill, leaving the test vulnerable to flaking if other tests touch those properties.",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d9dee8e_05338d5a",
