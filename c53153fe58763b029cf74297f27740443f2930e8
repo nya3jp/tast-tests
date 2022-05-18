@@ -309,6 +309,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac0587b4_c30e6b38",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-18T06:46:10Z",
+      "side": 1,
+      "message": "I might be missing something here. My concern here is that `graphics.MeasureCPUUsangeAndPower` and `graphics.MeasureGPUCounters` are designed to take a measurement duration, collect data for the duration, and then do post-processing to report the metrics. Wrapping the functions in a Go-routine with a cancellable ctx doesn\u0027t seem to be necessary.\n\nIf we want to run the two functions indefinitely and stop them on-demand (e.g. with cancellable ctx), we have to refactor the existing code so that it can gracefully handle the cancel signal, then process and report all the data they collected during the period. It\u0027s doable, but I don\u0027t see a need in this CL since all the existing use-cases work fine.\n\nAlso the Profiler I\u0027m adding here also handles other tasks like applying custom prefix to metric names and merging perf metrics from different sources, which the existing profiler package doesn\u0027t handle.",
+      "parentUuid": "ade98143_d06204ac",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a048acb_af5af44a",
         "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
         "patchSetId": 6
@@ -539,6 +563,24 @@
       "side": 1,
       "message": "there are few problems:\n1. usually you need to wrap error\n2. error message and log message are not equal, because log message must start with capital letter, error message must not start with capital letter.\n\nSo i\u0027d suggest to explicitly handle everything without additional helper function.",
       "parentUuid": "3672a149_f9f02df1",
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b11bd40_14a96faa",
+        "filename": "src/chromiumos/tast/local/camera/testpage/camera_page.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-18T06:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6aaf2f0_732eea3d",
       "revId": "c53153fe58763b029cf74297f27740443f2930e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
