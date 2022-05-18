@@ -333,6 +333,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfce4d32_27ce4128",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T09:19:37Z",
+      "side": 1,
+      "message": "If we cannot extend existing profiler, maybe we can introduce a new profiler interface and make this package more extensible?\n\n\n```\ntype onFinish func() (*perf.Values, error)\n\ntype Profiler interface {\n  start(ctx context.Context, callback onFinish)\n}\n\ntype ProfileRunner {\n  ...\n}\n\nfunc NewProfileRunner(\n    ctx context.Context, profilers ...Profiler) (*ProfileRunner, error) {\n  ...\n}\n\nfunc (p *ProfileRunner) Wait(*perf.Values, error) {\n  ...\n}\n\n```\n\n\nThe current approach is hard to extend, a lot of things are hardcoded and in some places its error prone.\n\n\nThis way it will be possible to cover ProfileRunner by unit tests including merging metrics.",
+      "parentUuid": "ac0587b4_c30e6b38",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a048acb_af5af44a",
         "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
         "patchSetId": 6

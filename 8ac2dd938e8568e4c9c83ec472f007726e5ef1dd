@@ -16,6 +16,29 @@
       "message": "LGTM. Defer +2 to Oleh.",
       "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51757bf7_91c3a27f",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T09:19:37Z",
+      "side": 1,
+      "message": "this is error prone if only at runtime you will see that there is no such profiler, it\u0027s also pretty easy to ignore that error.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 52
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
