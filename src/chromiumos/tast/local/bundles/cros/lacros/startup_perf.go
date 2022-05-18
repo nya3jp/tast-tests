@@ -136,15 +136,16 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect session_manager: ", err)
 	}
 
+	// Start UI, open a browser and leave a window opened in 'server.URL'.
+	creds, err := performInitialLogin(ctx, param.bt, cfg, s.RequiredVar("ui.gaiaPoolDefault"), s.OutDir(), s.HasError, server.URL)
+	if err != nil {
+		s.Fatal("Failed to do initial login: ", err)
+	}
+
 	const iterationCount = 7
 	pv := perf.NewValues()
 	for i := 0; i < iterationCount; i++ {
 		testing.ContextLogf(ctx, "StartupPerf: Running iteration %d/%d", i+1, iterationCount)
-		// Start UI, open a browser and leave a window opened in 'server.URL'.
-		creds, err := performInitialLogin(ctx, param.bt, cfg, s.RequiredVar("ui.gaiaPoolDefault"), s.OutDir(), s.HasError, server.URL)
-		if err != nil {
-			s.Fatal("Failed to do initial login: ", err)
-		}
 
 		// Start to collect data, restart UI, wait for browser window to be opened and get the
 		// metrics.
