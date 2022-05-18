@@ -16,6 +16,40 @@
       "message": "Thanks!",
       "revId": "2ad8b9e72bb2b01211e9334c0f320f06196d3564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753febfb_f05e582f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T16:44:50Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with blank line",
+      "revId": "2ad8b9e72bb2b01211e9334c0f320f06196d3564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e5fc54c_bb0496d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T16:44:50Z",
+      "side": 1,
+      "message": "There should be a blank line between `}` and `s.Log`.",
+      "revId": "2ad8b9e72bb2b01211e9334c0f320f06196d3564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
