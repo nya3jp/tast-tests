@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72998e8_53b52bc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/perfetto/system_trace_config.pbtxt",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-18T07:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9071e4c_33436ca4",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "33f6bbb7e9686b0fc61c22c9a55865819c6db91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad153219_48182e22",
