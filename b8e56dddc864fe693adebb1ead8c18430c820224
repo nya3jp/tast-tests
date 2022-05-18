@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2520b430_a5e71659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "080d613b_d7b889af",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f74c7c4_ca11f1f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-18T14:00:01Z",
       "side": 1,
       "message": "nit: add a comment that you are a Test author",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13698eeb_d33ae1c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f74c7c4_ca11f1f8",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d4516d_ee285ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b39f036d_1a243dd3",
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4ebbc18_0152adbe",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-05-18T14:00:01Z",
       "side": 1,
       "message": "nit: this might be a double in JS:\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/common/chromeos/extensions/api/telemetry.idl;l\u003d62?q\u003dtelemetry.idl\n\ncheck other fields",
+      "range": {
+        "startLine": 71,
+        "startChar": 28,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5d5de9_34995a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Ahh, I didn\u0027t see that. Is there a lint for such things?",
+      "parentUuid": "b4ebbc18_0152adbe",
       "range": {
         "startLine": 71,
         "startChar": 28,
@@ -133,6 +223,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "195cea75_5ed01d91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b2e6c2d_76e84d60",
+      "range": {
+        "startLine": 77,
+        "startChar": 35,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0734453_29b5565c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9a399e6_09472240",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "704bdf18_51ff7a7d",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-05-18T14:00:01Z",
       "side": 1,
       "message": "nit: maybe drop it if you don\u0027t need it?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172b418e_e8e3d4dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Mh yeah, makes sense. The structs get a lot thinner, but at same time it feels weird not to represent the whole structure. But I think it makes sense for a test.",
+      "parentUuid": "704bdf18_51ff7a7d",
       "range": {
         "startLine": 112,
         "startChar": 0,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0b2610_38d1b754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8b3e9e8_535e8ba1",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c738b735_1d119971",
@@ -192,6 +378,30 @@
       "writtenOn": "2022-05-18T14:00:01Z",
       "side": 1,
       "message": "nit: maybe rename this variable to wantResp and resp to gotResp?",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 8
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0afc5bc2_9467527b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c738b735_1d119971",
       "range": {
         "startLine": 121,
         "startChar": 1,
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "629e2e2d_8aa748d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5c01f61_3640b0d9",
+      "range": {
+        "startLine": 140,
+        "startChar": 54,
+        "endLine": 140,
+        "endChar": 55
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a61a773_40a4b635",
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6389e487_9620ac04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a61a773_40a4b635",
+      "range": {
+        "startLine": 153,
+        "startChar": 24,
+        "endLine": 153,
+        "endChar": 42
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f6ca0d6_1e8178de",
@@ -261,6 +519,30 @@
       "writtenOn": "2022-05-18T14:00:01Z",
       "side": 1,
       "message": "nit: JSON",
+      "range": {
+        "startLine": 199,
+        "startChar": 65,
+        "endLine": 199,
+        "endChar": 69
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88dbde4_1c91fe7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-18T14:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f6ca0d6_1e8178de",
       "range": {
         "startLine": 199,
         "startChar": 65,
