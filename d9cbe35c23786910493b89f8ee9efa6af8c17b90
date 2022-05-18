@@ -22,6 +22,54 @@
       },
       "revId": "d9cbe35c23786910493b89f8ee9efa6af8c17b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80b892c_3b16f822",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-18T19:31:41Z",
+      "side": 1,
+      "message": "This change together with option.go is enforced by the repohooks: https://crsrc.org/o/src/repohooks/pre-upload.py In other word, I need to run `tast-lint -fix` before `repo upload`.",
+      "parentUuid": "ede804b5_d5069e2f",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "d9cbe35c23786910493b89f8ee9efa6af8c17b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f3bd09_a0b31ef9",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-18T19:31:41Z",
+      "side": 1,
+      "message": "It is enforced by the repohooks:",
+      "parentUuid": "ede804b5_d5069e2f",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "d9cbe35c23786910493b89f8ee9efa6af8c17b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
