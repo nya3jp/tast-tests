@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1cd36b_9c8d98b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T06:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "532a4085_b6f2ce89",
+      "range": {
+        "startLine": 75,
+        "startChar": 44,
+        "endLine": 75,
+        "endChar": 55
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaf5b327_6ad884b5",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "This one might not be necessary, I\u0027ll double check",
       "parentUuid": "aaf5b327_6ad884b5",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32265c09_4ae4f12e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T06:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b124fe7_d0ebb76a",
       "range": {
         "startLine": 97,
         "startChar": 1,
@@ -192,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d8ecbb6_edb38c09",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T06:17:47Z",
+      "side": 1,
+      "message": "yes but it\u0027s a webpage color change, I could investigate more in a later CL.",
+      "parentUuid": "5098c1d5_79d6dd0b",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5de562d_ebfa0e44",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
         "patchSetId": 2
@@ -227,6 +299,30 @@
       "side": 1,
       "message": "Similar reason, there is a buffer time for the hps sensor to update the status.",
       "parentUuid": "c5de562d_ebfa0e44",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52af5d9a_4f968cbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T06:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9adb735b_f6fe5664",
       "range": {
         "startLine": 110,
         "startChar": 2,
@@ -274,6 +370,30 @@
       "side": 1,
       "message": "gotcha",
       "parentUuid": "e7a11e72_6102555b",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7abf86f_31976444",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-18T06:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "184fa0da_faae99c5",
       "range": {
         "startLine": 112,
         "startChar": 2,
