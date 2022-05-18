@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package testutil contains functions and structs used for testing the gaming input overlay.
-package testutil
+// Package gio contains functions and structs used for testing the gaming input overlay.
+package gio
 
 import (
 	"context"

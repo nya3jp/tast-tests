@@ -566,6 +566,8 @@ func (f *bootedFixture) Reset(ctx context.Context) error {
 			return errors.Wrap(err, "failed to reset chrome")
 		}
 	}
+	// Clear input overlay files.
+	os.RemoveAll("/home/chronos/user/google_gio")
 	return f.init.Restore(ctx, f.arc)
 }
 
