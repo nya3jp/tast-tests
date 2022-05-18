@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b185c541_1a3ae4f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-18T09:31:37Z",
+      "side": 1,
+      "message": "The tastboard should show the results where the test is run. The flag filters out boards with a \"-\" suffix (see https://crrev.com/c/3640700), so if you rely on testing any of those, the flag should not be added to your test. Please, let me know before I submit (and in that case please confirm from which test or tests I should remove it from).",
+      "parentUuid": "4c180df2_5d8b56ca",
+      "revId": "dcb396948b69fc20262eccae31fa398de37f0c78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24f9f22f_2c030cb0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
         "patchSetId": 1
