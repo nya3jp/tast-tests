@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f29856e_a42f76f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-18T08:12:52Z",
+      "side": 1,
+      "message": "I guess the CL significantly changes after addressing Jintao\u0027s comments, so let me wait for the next update.\n",
+      "revId": "9d9f1cea3e15c1e1dae530b21ffea99597595b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f823488_51d163ed",
