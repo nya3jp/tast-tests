@@ -13,17 +13,19 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/personalization"
-	"chromiumos/tast/local/session"
 )
 
 // const for ambient topic sources.
 const (
 	GooglePhotos = "Google Photos"
 	ArtGallery   = "Art gallery"
+	OnStatus     = "On"
+	OffStatus    = "Off"
 )
 
 // Timeouts contains durations to configure Ambient mode timeouts.
@@ -77,6 +79,17 @@ func SetTimeouts(
 	return nil
 }
 
+// OpenAmbientSubpage returns an action to open Ambient subpage from Personalization Hub.
+func OpenAmbientSubpage(ctx context.Context, ui *uiauto.Context) error {
+	if err := uiauto.Combine("open Ambient Subpage",
+		personalization.OpenPersonalizationHub(ui),
+		personalization.OpenScreensaverSubpage(ui),
+		ui.WaitUntilExists(nodewith.Role(role.Button).HasClass("breadcrumb").Name("Screensaver")))(ctx); err != nil {
+		return errors.Wrap(err, "failed to open Ambient subpage")
+	}
+	return nil
+}
+
 // toggleAmbientMode returns an action to toggle ambient mode in ambient subpage.
 func toggleAmbientMode(currentMode string, ui *uiauto.Context) uiauto.Action {
 	toggleAmbientButton := nodewith.Role(role.ToggleButton).Name(currentMode)
@@ -85,13 +98,24 @@ func toggleAmbientMode(currentMode string, ui *uiauto.Context) uiauto.Action {
 		ui.LeftClick(toggleAmbientButton))
 }
 
-// EnableAmbientMode returns an action to open ambient subpage from
-// personalization hub then enable ambient mode.
-func EnableAmbientMode(ui *uiauto.Context) uiauto.Action {
-	return uiauto.Combine("Open screensaver subpage and enable ambient mode",
-		personalization.OpenPersonalizationHub(ui),
-		personalization.OpenScreensaverSubpage(ui),
-		toggleAmbientMode("Off", ui))
+// ambientModeEnabled checks whether ambient mode is on.
+func ambientModeEnabled(ctx context.Context, ui *uiauto.Context) (bool, error) {
+	return ui.IsNodeFound(ctx, nodewith.Role(role.ToggleButton).Name(OnStatus))
+}
+
+// EnableAmbientMode enables ambient mode in Personalization Hub from Ambient Subpage.
+// If ambient mode is already enabled, it does nothing.
+func EnableAmbientMode(ctx context.Context, ui *uiauto.Context) error {
+	ambientMode, err := ambientModeEnabled(ctx, ui)
+	if err != nil {
+		return errors.Wrap(err, "failed to check ambient mode status")
+	}
+	if !ambientMode {
+		if err := toggleAmbientMode(OffStatus, ui)(ctx); err != nil {
+			return errors.Wrap(err, "failed to enable ambient mode")
+		}
+	}
+	return nil
 }
 
 // waitForPhotoTransitions blocks until the desired number of photo transitions
@@ -119,16 +143,43 @@ func TestLockScreenIdle(
 	tconn *chrome.TestConn,
 	ui *uiauto.Context,
 ) error {
-	sm, err := session.NewSessionManager(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get session manager")
-	}
 	return uiauto.Combine("start, hide, and restart ambient mode",
-		sm.LockScreen,
+		lockScreen(ctx, tconn),
 		waitForAmbientStart(tconn, ui),
-		hideAmbientMode(tconn, sm, ui),
+		hideAmbientMode(tconn, ui),
 		waitForAmbientStart(tconn, ui),
 	)(ctx)
+}
+
+// lockScreen returns an action to lock screen.
+func lockScreen(ctx context.Context, tconn *chrome.TestConn) uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := lockscreen.Lock(ctx, tconn); err != nil {
+			errors.Wrap(err, "failed to lock the screen")
+		}
+		if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
+			errors.Errorf("failed to wait for screen to be locked: %v (last status %+v)", err, st)
+		}
+		return nil
+	}
+}
+
+// UnlockScreen enters the password to unlock screen.
+func UnlockScreen(ctx context.Context, tconn *chrome.TestConn, username, password string) error {
+	// Open a keyboard device.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open keyboard device")
+	}
+	defer kb.Close()
+
+	if err := lockscreen.EnterPassword(ctx, tconn, username, password, kb); err != nil {
+		return errors.Wrap(err, "failed to unlock the screen")
+	}
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
+		return errors.Errorf("failed to wait for screen to be unlocked: %v (last status %+v)", err, st)
+	}
+	return nil
 }
 
 // waitForAmbientStart returns an action to wait for ambient mode to start and validate
@@ -154,7 +205,6 @@ func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context) uiauto.Acti
 // and return to lockscreen.
 func hideAmbientMode(
 	tconn *chrome.TestConn,
-	sm *session.SessionManager,
 	ui *uiauto.Context,
 ) uiauto.Action {
 	return func(ctx context.Context) error {
@@ -180,45 +230,10 @@ func hideAmbientMode(
 			return errors.Wrap(err, "failed to ensure ambient container dismissed")
 		}
 
-		if err := ensureScreenLocked(ctx, sm); err != nil {
-			return err
+		if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
+			errors.Errorf("failed to wait for screen to be locked: %v (last status %+v)", err, st)
 		}
 
 		return nil
 	}
-}
-
-// UnlockScreen enters the password to unlock screen.
-func UnlockScreen(ctx context.Context, password string) error {
-	sm, err := session.NewSessionManager(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get session manager")
-	}
-
-	if err := ensureScreenLocked(ctx, sm); err != nil {
-		return errors.Wrap(err, "expected screen to be locked before unlocking it")
-	}
-
-	// Enter password to unlock screen.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to open keyboard device")
-	}
-	defer kb.Close()
-
-	if err := kb.Type(ctx, password+"\n"); err != nil {
-		return errors.Wrap(err, "failed to type password")
-	}
-
-	return nil
-}
-
-func ensureScreenLocked(ctx context.Context, sm *session.SessionManager) error {
-	// Session should be locked.
-	if isLocked, err := sm.IsScreenLocked(ctx); err != nil {
-		return errors.Wrap(err, "failed to get screen lock state")
-	} else if !isLocked {
-		return errors.New("expected screen to be locked")
-	}
-	return nil
 }

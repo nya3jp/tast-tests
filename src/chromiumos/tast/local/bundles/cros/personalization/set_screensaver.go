@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/testing"
 )
 
@@ -33,7 +34,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ambient.username", "ambient.password"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      2 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Fixture:      "personalizationWithGaiaLogin",
 		Params: []testing.Param{
 			{
@@ -66,7 +67,11 @@ func SetScreensaver(ctx context.Context, s *testing.State) {
 	// time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
-	if err := ambient.EnableAmbientMode(ui)(ctx); err != nil {
+	if err := ambient.OpenAmbientSubpage(ctx, ui); err != nil {
+		s.Fatal("Failed to open Ambient Subpage: ", err)
+	}
+
+	if err := ambient.EnableAmbientMode(ctx, ui); err != nil {
 		s.Fatal("Failed to enable ambient mode: ", err)
 	}
 
@@ -78,7 +83,7 @@ func SetScreensaver(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start ambient mode: ", err)
 	}
 
-	if err := ambient.UnlockScreen(ctx, s.RequiredVar("ambient.password")); err != nil {
+	if err := ambient.UnlockScreen(ctx, tconn, s.RequiredVar("ambient.username"), s.RequiredVar("ambient.password")); err != nil {
 		s.Fatal("Failed to unlock screen: ", err)
 	}
 }
@@ -132,6 +137,11 @@ func prepareScreensaver(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.
 		}
 	} else {
 		return errors.Errorf("topicSource - %v is invalid", topicSource)
+	}
+
+	// Close Personalization Hub after ambient mode setup is finished.
+	if err := personalization.ClosePersonalizationHub(ui)(ctx); err != nil {
+		return errors.Wrap(err, "failed to close Personalization Hub")
 	}
 
 	if err := ambient.SetTimeouts(
