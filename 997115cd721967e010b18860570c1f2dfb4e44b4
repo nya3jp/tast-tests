@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1e44d66_9a784837",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-18T21:32:30Z",
+      "side": 1,
+      "message": "Do you mean that you want the manager properties to be with the manager values? By the looks of the current setup of shillconst, they separated the Property names from the potential values.",
+      "parentUuid": "452218ea_8dd4c0a1",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf2df5ea_dbd5c513",
         "filename": "src/chromiumos/tast/common/shillconst/const.go",
         "patchSetId": 1
