@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb7e154a_eece2b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-05-18T09:54:53Z",
+      "side": 1,
+      "message": "nit: timeout",
+      "range": {
+        "startLine": 443,
+        "startChar": 16,
+        "endLine": 443,
+        "endChar": 24
+      },
+      "revId": "7b6ab1cf55a6403d555a157ec2e0c4a0c56eebac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
