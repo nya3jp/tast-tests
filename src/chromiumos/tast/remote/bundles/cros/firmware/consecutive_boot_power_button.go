@@ -1,0 +1,147 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package firmware
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/common/servo"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/remote/firmware/reporters"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
+
+type argsForConsecutiveBoot struct {
+	bootMode string
+	numIters int
+}
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         ConsecutiveBootPowerButton,
+		Desc:         "Test DUT shuts down and boots to ChromeOS with the power key over many iterations",
+		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Params: []testing.Param{
+			{
+				Name:    "normal_mode_10",
+				Fixture: fixture.NormalMode,
+				Timeout: 20 * time.Minute,
+				Val: argsForConsecutiveBoot{
+					bootMode: "normal",
+					numIters: 3,
+				},
+			},
+			{
+				Name:    "dev_mode_10",
+				Fixture: fixture.DevModeGBB,
+				Timeout: 20 * time.Minute,
+				Val: argsForConsecutiveBoot{
+					bootMode: "developer",
+					numIters: 10,
+				},
+			},
+			{
+				Name:    "normal_mode_100",
+				Fixture: fixture.NormalMode,
+				Timeout: 250 * time.Minute,
+				Val: argsForConsecutiveBoot{
+					bootMode: "normal",
+					numIters: 100,
+				},
+			},
+			{
+				Name:    "dev_mode_100",
+				Fixture: fixture.DevModeGBB,
+				Timeout: 250 * time.Minute,
+				Val: argsForConsecutiveBoot{
+					bootMode: "developer",
+					numIters: 100,
+				},
+			},
+		},
+	})
+}
+
+func ConsecutiveBootPowerButton(ctx context.Context, s *testing.State) {
+	h := s.FixtValue().(*fixture.Value).Helper
+	testArgs := s.Param().(argsForConsecutiveBoot)
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+	if err := h.RequireConfig(ctx); err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+
+	verifyBootMode := func(mode string) error {
+		if mainfwType, err := h.Reporter.CrossystemParam(ctx, reporters.CrossystemParamMainfwType); err != nil {
+			return errors.Wrap(err, "failed to get crossystem mainfw_type")
+		} else if mainfwType != testArgs.bootMode {
+			return errors.Errorf("expected mainfw_type to be %s, got %q", testArgs.bootMode, mainfwType)
+		}
+		return nil
+	}
+
+	for i := 0; i < testArgs.numIters; i++ {
+		s.Logf("Running iteration %d out of %d ", i+1, testArgs.numIters)
+		s.Log("Verifying boot mode is ", testArgs.bootMode)
+		if err := verifyBootMode(testArgs.bootMode); err != nil {
+			s.Fatal("Failed boot mode check: ", err)
+		}
+
+		bootID, err := h.Reporter.BootID(ctx)
+		if err != nil {
+			s.Fatal("Failed to get boot id: ", err)
+		}
+
+		s.Log("Pressing power key until device shuts down")
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
+			s.Fatal("Failed to press power key: ", err)
+		}
+
+		s.Logf("Sleep for %s so shutdown completes", h.Config.Shutdown)
+		if err := testing.Sleep(ctx, h.Config.Shutdown); err != nil {
+			s.Fatal("Failed to sleep waiting for shutdown: ", err)
+		}
+
+		s.Log("Check for G3 powerstate")
+		if err := h.WaitForPowerStates(ctx, 1*time.Second, 30*time.Second, "G3"); err != nil {
+			s.Fatal("Failed to get G3 powerstate: ", err)
+		}
+
+		s.Log("Pressing power key until device boots")
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOn)); err != nil {
+			s.Fatal("Failed to press power key: ", err)
+		}
+
+		s.Log("Check for S0 powerstate")
+		if err := h.WaitForPowerStates(ctx, 1*time.Second, 60*time.Second, "S0"); err != nil {
+			s.Fatal("Failed to get S0 powerstate: ", err)
+		}
+
+		s.Log("Check for S0 powerstate")
+		if err := h.WaitConnect(ctx); err != nil {
+			s.Fatal("Failed to wait for device to connect: ", err)
+		}
+
+		s.Log("Verifying boot mode is ", testArgs.bootMode)
+		if err := verifyBootMode(testArgs.bootMode); err != nil {
+			s.Fatal("Failed boot mode check: ", err)
+		}
+
+		s.Log("Verifying boot id changed over reboot")
+		newBootID, err := h.Reporter.BootID(ctx)
+		if err != nil {
+			s.Fatal("Failed to get boot id: ", err)
+		}
+		if newBootID == bootID {
+			s.Fatal("Unexpectedly got same boot id over reboot")
+		}
+	}
+}
