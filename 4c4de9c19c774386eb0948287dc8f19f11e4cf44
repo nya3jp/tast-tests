@@ -127,6 +127,30 @@
       },
       "revId": "4c4de9c19c774386eb0948287dc8f19f11e4cf44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91f6b9f1_56c10131",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-18T00:40:53Z",
+      "side": 1,
+      "message": "Thanks for the explanation Miguel. Using either time.Sedond or samplePeriod can work if the caller want to get a ration. I guess we can keep the samplePeriod in this function for easy understanding with its actual meaning.",
+      "parentUuid": "f08064fc_88011eb3",
+      "range": {
+        "startLine": 186,
+        "startChar": 35,
+        "endLine": 186,
+        "endChar": 68
+      },
+      "revId": "4c4de9c19c774386eb0948287dc8f19f11e4cf44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
