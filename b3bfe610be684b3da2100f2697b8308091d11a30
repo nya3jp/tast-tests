@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77f0557f_1783203e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1333747
+      },
+      "writtenOn": "2022-05-18T19:55:27Z",
+      "side": 1,
+      "message": "I think ui.LeftClick(darkThemePodIconButton) results in a click outside the bubble bounds. Which causes the bubble to close. Can you perhaps check if the darkThemePodIconButton is on the currently selected page before trying to click on it?",
+      "parentUuid": "d2091db2_e214a02a",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef9eec31_4b8a69aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
         "patchSetId": 1
