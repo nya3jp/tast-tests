@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb09d8a6_d09aede6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-18T08:09:37Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "a6eeedbe667e1133b499342ca1fec9008e5ee065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bae90c2_8a9aadc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-18T08:09:37Z",
+      "side": 1,
+      "message": "Hahah, thanks for adding this 👍",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 51
+      },
+      "revId": "a6eeedbe667e1133b499342ca1fec9008e5ee065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
