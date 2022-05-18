@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e45aff_ad991cc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-18T08:10:29Z",
+      "side": 1,
+      "message": "Sorry for delayed reply. I only have minor comments from general Tast review perspective, but will take another look after your next update of the CL after Jintao\u0027s great comments.\n",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61cf2d47_57295f5a",
@@ -116,6 +133,75 @@
       "writtenOn": "2022-05-17T08:00:20Z",
       "side": 1,
       "message": "With `-companiondut\u003dcd1:$PEER_HOST`, do you still need `peer` variable?",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f93ffc_bbd7a053",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-18T08:10:29Z",
+      "side": 1,
+      "message": "nit: typically the test failure message doesn\u0027t contain \"err: \" but simply concatenates the error message, such as:\n\n s.Fatal(\"Failed to configure ap: \", err)",
+      "range": {
+        "startLine": 92,
+        "startChar": 33,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77caf840_99912f6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-18T08:10:29Z",
+      "side": 1,
+      "message": "nit: unnecessary \": \"",
+      "range": {
+        "startLine": 131,
+        "startChar": 73,
+        "endLine": 131,
+        "endChar": 76
+      },
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f5c089_54522ce2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-18T08:10:29Z",
+      "side": 1,
+      "message": "ditto\n\n errors.Wrap(err, \"failed to call command\")",
+      "range": {
+        "startLine": 36,
+        "startChar": 56,
+        "endLine": 36,
+        "endChar": 61
+      },
       "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
