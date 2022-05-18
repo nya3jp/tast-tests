@@ -26,7 +26,7 @@ func init() {
 		Func:     UCMSequences,
 		Desc:     "Exercise UCM config enable/disable sequences",
 		Contacts: []string{"aaronyu@google.com", "chromeos-audio-bugs@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Timeout:  1 * time.Minute,
 		HardwareDeps: hwdep.D(
 			// TODO(b/231276793): eve hotword broken.
