@@ -1,0 +1,48 @@
+// Copyright 2022 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.network;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/network";
+
+// ProxySettingService allows to remotely start, configure and verify proxy settings
+// on the DUT.
+service ProxySettingService {
+    // NewRequest starts up a new proxy setting service instance.
+    // Close must be called later to clean up the associated resources.
+    rpc New(NewRequest) returns (google.protobuf.Empty) {}
+
+    // Close releases the resources obtained by New.
+    rpc Close(CloseRequest) returns (google.protobuf.Empty) {}
+
+    // Setup sets up proxy values.
+    rpc Setup(ProxyConfigs) returns (google.protobuf.Empty) {}
+
+    // FetchConfigurations returns proxy hosts and ports.
+    rpc FetchConfigurations(google.protobuf.Empty) returns (ProxyConfigs) {}
+}
+
+message NewRequest {
+    // ManifestKey is the key used to create testing connection while in OOBE.
+    string ManifestKey = 1;
+    // ClearProxySettings specifies if clearing the proxy settings is needed.
+    bool ClearProxySettings = 2;
+}
+
+message CloseRequest {
+    bool Cleanup = 1;
+}
+
+message ProxyConfigs {
+    string HttpHost = 1;
+    string HttpPort = 2;
+    string HttpsHost = 3;
+    string HttpsPort = 4;
+    string SocksHost = 5;
+    string SocksPort = 6;
+}

@@ -15,7 +15,7 @@ import (
 
 var (
 	// NetworkDetailedView is the detailed Network view within the Quick Settings.
-	NetworkDetailedView = nodewith.HasClass("NetworkListView").Ancestor(RootFinder)
+	NetworkDetailedView = nodewith.HasClass("DetailedViewContainer").Ancestor(RootFinder)
 
 	// NetworkDetailedViewRevamp is the detailed Network view within Quick
 	// Settings with QuickSettingsNetworkRevamp enabled.
@@ -67,6 +67,7 @@ func NavigateToNetworkDetailedView(ctx context.Context, tconn *chrome.TestConn, 
 func OpenNetworkSettings(ctx context.Context, tconn *chrome.TestConn, revampEnabled bool) error {
 	ui := uiauto.New(tconn)
 
+	// TODO(b/249164846): Remove revampEnabled check once the flag `revampEnabled` no longer exists.
 	if revampEnabled {
 		return uiauto.Combine("click the Network settings",
 			ui.LeftClick(networkSettingsButton),
