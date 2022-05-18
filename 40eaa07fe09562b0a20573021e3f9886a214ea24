@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "17ba0c0c_6d3fdc65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-18T00:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e9efcb_9e1d1ff0",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "40eaa07fe09562b0a20573021e3f9886a214ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a989187a_1248851f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-18T00:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89972e16_245d859c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "40eaa07fe09562b0a20573021e3f9886a214ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a12ff431_ca41f0ec",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -77,6 +125,24 @@
       "writtenOn": "2022-05-17T23:02:31Z",
       "side": 1,
       "message": "Can you also reproduce the problem manually? It seems like this CL works around a bug which is worth filing against Lacros.",
+      "revId": "40eaa07fe09562b0a20573021e3f9886a214ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48278dd8_a546498c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-18T00:02:26Z",
+      "side": 1,
+      "message": "I agree. I do think that adjusting the zoom prior to opening windows makes sense from a \"setup of test\" point of view though.\n\nBug filed here: crbug/1326718",
+      "parentUuid": "3d7b454b_65f9ba5b",
       "revId": "40eaa07fe09562b0a20573021e3f9886a214ea24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
