@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2acd1907_719bfcf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-18T20:58:03Z",
+      "side": 1,
+      "message": "Okay, that makes sense. Can you include a few more details in the commit message?\n\n\u003e The purpose is to define what the captive portal properties look like in a normal online state.\n\nThe way the test is currently written isn\u0027t testing a normal online state, it\u0027s testing an unconnected state.\n\n\u003e Are we not clearing them on a successful result?\n\nAFAICT, we only set it after failing portal detection, so looks like the answer is no.",
+      "parentUuid": "c09754c4_3c793ae3",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "452218ea_8dd4c0a1",
@@ -101,6 +119,23 @@
       "writtenOn": "2022-05-18T18:31:08Z",
       "side": 1,
       "message": "Let\u0027s use something more descriptive than \u0027Base\u0027. \nI could also see this evolving to have the test take a setup function (for \u0027online\u0027, \u0027no-internet\u0027, \u0027portal-suspected\u0027, or \u0027redirect-found\u0027) and a parameterized list of manager and service properties to test.\nSo maybe ShillCativePortalProperties ?",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38cfb648_fc28ab73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-18T20:58:03Z",
+      "side": 1,
+      "message": "Can we clarify that this is when the device is in an unconnected state?",
       "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
