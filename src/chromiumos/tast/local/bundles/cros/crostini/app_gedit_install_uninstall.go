@@ -106,10 +106,11 @@ func AppGeditInstallUninstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find Gedit window: ", err)
 	}
 
+	geditSaveAsWindow := nodewith.Name("Save As").Role(role.Window).First()
 	if err := uiauto.Combine("edit file and save",
 		keyboard.TypeAction("Hello, gedit!"),
 		keyboard.AccelAction("ctrl+S"), // Bring up the save window
-		ud.LeftClick(uidetection.Word("Save")),
+		ud.LeftClick(uidetection.Word("Save").WithinA11yNode(geditSaveAsWindow)),
 		// Press ctrl+W twice to exit window.
 		keyboard.AccelAction("ctrl+W"),
 		keyboard.AccelAction("ctrl+W"),
