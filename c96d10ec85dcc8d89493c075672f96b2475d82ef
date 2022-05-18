@@ -16,6 +16,40 @@
       "message": "PTAL",
       "revId": "c96d10ec85dcc8d89493c075672f96b2475d82ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68c80c2_f111b867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-18T21:20:08Z",
+      "side": 1,
+      "message": "it\u0027s not clear why this is necessary. Maybe we can move the mouse creation into `ambient.OpenAmbientSubpage` and add a comment explaining why we should create a `input.Mouse`?\n\nAlso want to hear tast reviewer thoughts on this when you add one.\n\nSummary of the problem: running the `google_photos` and `art_gallery` tests individually works, but running them sequentially, the second one always fails. We suspect it\u0027s a mouse initialization problem - the second test cannot right click until `input.Mouse(ctx)` is called. Any ideas?",
+      "revId": "c96d10ec85dcc8d89493c075672f96b2475d82ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "344d4ae4_f58da2c1",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-18T21:20:08Z",
+      "side": 1,
+      "message": "This will actually close whatever the current focused window is. Can we find the window with the correct name and close that some other way?",
+      "revId": "c96d10ec85dcc8d89493c075672f96b2475d82ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
