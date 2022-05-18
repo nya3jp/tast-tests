@@ -435,3 +435,7 @@ func (m *Manager) GetDebugLevel(ctx context.Context) (int, error) {
 func (m *Manager) RecheckPortal(ctx context.Context) error {
 	return m.Call(ctx, "RecheckPortal").Err
 }
+
+func (m *Manager) ClaimInterface(ctx context.Context, claimer, ifname string) error {
+	return m.Call(ctx, "ClaimInterface", claimer, ifname).Err
+}
