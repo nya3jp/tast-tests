@@ -31,6 +31,20 @@ func genDataPath(codec, resolution, frameRate string) string {
 	return fmt.Sprintf("perf/%s/%sp_%sfps_%sframes.%s", codec, resolution, frameRate, numFrames, extension)
 }
 
+func fillSwDeps(codec, resolution, frameRate string) []string {
+	swDeps := []string{fmt.Sprintf("autotest-capability:hw_dec_%s_%s_%s", codec, resolution, frameRate)}
+
+	if codec == "h264" || codec == "hevc" {
+		swDeps = append(swDeps, "proprietary_codecs")
+	}
+	// TODO(b/221247444, b/232255167): Remove this provision when ChromeOS
+	// supports HEVC clear video playback.
+	if codec == "hevc" {
+		swDeps = append(swDeps, "protected_content")
+	}
+	return swDeps
+}
+
 func TestChromeStackDecoderPerfParams(t *testing.T) {
 	type paramData struct {
 		Name                    string
@@ -54,7 +68,7 @@ func TestChromeStackDecoderPerfParams(t *testing.T) {
 				param := paramData{
 					Name:         fmt.Sprintf("%s_%sp_%sfps", codec, resolution, frameRate),
 					File:         dataPath,
-					SoftwareDeps: []string{fmt.Sprintf("autotest-capability:hw_dec_%s_%s_%s", codec, resolution, frameRate)},
+					SoftwareDeps: fillSwDeps(codec, resolution, frameRate),
 					Metadata:     []string{dataPath, dataPath + ".json"},
 					Attr:         []string{"graphics_video_decodeaccel"},
 				}
@@ -73,7 +87,7 @@ func TestChromeStackDecoderPerfParams(t *testing.T) {
 			Name:               fmt.Sprintf("%s_%sp_%sfps_concurrent", codec, resolution, frameRate),
 			File:               dataPath,
 			ConcurrentDecoders: true,
-			SoftwareDeps:       []string{fmt.Sprintf("autotest-capability:hw_dec_%s_%s_%s", codec, resolution, frameRate), "thread_safe_libva_backend"},
+			SoftwareDeps:       append(fillSwDeps(codec, resolution, frameRate), "thread_safe_libva_backend"),
 			Metadata:           []string{dataPath, dataPath + ".json"},
 			Attr:               []string{"graphics_video_decodeaccel"},
 		}
@@ -91,7 +105,7 @@ func TestChromeStackDecoderPerfParams(t *testing.T) {
 			File:                    dataPath,
 			ConcurrentDecoders:      true,
 			GlobalVAAPILockDisabled: true,
-			SoftwareDeps:            []string{fmt.Sprintf("autotest-capability:hw_dec_%s_%s_%s", codec, resolution, frameRate), "thread_safe_libva_backend"},
+			SoftwareDeps:            append(fillSwDeps(codec, resolution, frameRate), "thread_safe_libva_backend"),
 			Metadata:                []string{dataPath, dataPath + ".json"},
 			Attr:                    []string{"graphics_video_decodeaccel"},
 		}
@@ -128,7 +142,7 @@ func TestChromeStackDecoderPerfParams(t *testing.T) {
 				param := paramData{
 					Name:         fmt.Sprintf("%s_%sp_%sfps", codec, resolution, frameRate),
 					File:         dataPath,
-					SoftwareDeps: []string{fmt.Sprintf("autotest-capability:hw_dec_%s_%s_%s", codec, resolution, frameRate)},
+					SoftwareDeps: fillSwDeps(codec, resolution, frameRate),
 					Metadata:     []string{dataPath, dataPath + ".json"},
 					Attr:         []string{"graphics_video_decodeaccel"},
 				}
