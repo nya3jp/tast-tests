@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b29c20f9_230b6168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-18T08:33:09Z",
+      "side": 1,
+      "message": "Not really, it will be cleaned by certStore.Cleanup(), which is called in TearDown() (I suppose a TearDown will always be called paired with a SetUp IIUC).",
+      "parentUuid": "2470e421_11ecf919",
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2421d13_21e68040",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-17T13:27:03Z",
       "side": 1,
       "message": "So do you need to reset shill here, which looks not done?",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb38f636_10c8d4d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-18T08:33:09Z",
+      "side": 1,
+      "message": "Sorry maybe I didn\u0027t make it clear, I meant we need to reset shill when this happen, but the easiest way to do that here is failing the fixture to do a full reset.",
+      "parentUuid": "b2421d13_21e68040",
       "range": {
         "startLine": 161,
         "startChar": 4,
