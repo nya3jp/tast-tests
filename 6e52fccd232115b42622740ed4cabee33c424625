@@ -33,6 +33,29 @@
       "message": "redirecting to Matt",
       "revId": "6e52fccd232115b42622740ed4cabee33c424625",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "077327db_1ae53a35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_scroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-05-18T20:18:39Z",
+      "side": 1,
+      "message": "Can this be simplified to use errors.Errorf()?",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 226,
+        "endChar": 25
+      },
+      "revId": "6e52fccd232115b42622740ed4cabee33c424625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
