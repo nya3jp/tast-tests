@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fc5f4bd_a9632b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-18T23:59:30Z",
+      "side": 1,
+      "message": "I think if we keep a device list, we need to keep updating the list for future boards like this:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast/+/HEAD:src/chromiumos/tast/internal/crosbundle/software_defs.go;l\u003d49;drc\u003d397d5154134adfd78e18fef7d1f1ae5c5da118ee\n\nI think it can be better to target specific kernel versions (5.10 and 5.15) since 5.10 or later should support physical location. So keeping a list of target kernel versions like this:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast/+/HEAD:src/chromiumos/tast/internal/crosbundle/software_defs.go;l\u003d187;drc\u003d397d5154134adfd78e18fef7d1f1ae5c5da118ee\n\nOr we can keep blocklist of older kernel versions like 4.4, 4.14, 4.19, 5.4 that do not support physical location. This way, newer kernel versions do not need to be added to the list in the future. E.g:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast/+/HEAD:src/chromiumos/tast/internal/crosbundle/software_defs.go;l\u003d228;drc\u003d397d5154134adfd78e18fef7d1f1ae5c5da118ee\n\nI think this is more scalable and makes more sense because sysfs support depends on the kernel, not the board. What do you think?",
+      "parentUuid": "94a6c9de_2b669d30",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "950abe76_6788cfe8",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
         "patchSetId": 8
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-17T22:50:18Z",
       "side": 1,
       "message": "Please use `repo upload` when uploading these CLs. It ensures they are properly linted and format checked. In any case, the test function should have a comment explaining what\u0027s happening in this test.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa42f9eb_4d1fe79d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-18T23:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "950abe76_6788cfe8",
       "range": {
         "startLine": 29,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc2d6cbf_c14a3499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-18T23:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22ee0bc3_4f8601a8",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 75
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "354df4ae_6ef9e04a",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fce9785_654156f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-18T23:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "354df4ae_6ef9e04a",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 59
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c04dab3_bb36548c",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-05-17T22:50:18Z",
       "side": 1,
       "message": "Please sanitize data so that you don\u0027t have to include escape characters in your equality checks.",
+      "range": {
+        "startLine": 73,
+        "startChar": 48,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ca91bb_3f3f8da3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-18T23:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c04dab3_bb36548c",
       "range": {
         "startLine": 73,
         "startChar": 48,
