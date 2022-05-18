@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96683e31_8411d132",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-05-18T18:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb17f45_cbbf125e",
+      "revId": "6f285872867b862fc33cfa41203da313087562e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32811041_a6ffbf6c",
