@@ -88,6 +88,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bd875ab_c32608ec",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-18T08:19:14Z",
+      "side": 1,
+      "message": "I recommend changing this to []*dutData. See my another comment for details.",
+      "range": {
+        "startLine": 183,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 21
+      },
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e24660f_5012f0b1",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -133,6 +156,24 @@
       "writtenOn": "2022-05-17T06:37:46Z",
       "side": 1,
       "message": "nit, how about `for _, d :\u003d range tf.duts`?",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8893cb32_398a71cb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-18T08:19:14Z",
+      "side": 1,
+      "message": "It doesn\u0027t work as is since d would be a copy of dutData.\n\nI recommend changing the type of tf.duts from []dutData to []*dutData. Except for immutable types, slices of non-pointer structs are often difficult to work with.",
+      "parentUuid": "1937a8d4_3a11d9bf",
       "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
