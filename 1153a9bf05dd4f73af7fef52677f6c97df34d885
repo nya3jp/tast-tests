@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e16e9a03_f31d740d",
+        "filename": "src/chromiumos/tast/local/webrtcinternals/dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-18T05:27:50Z",
+      "side": 1,
+      "message": "nit: just want to double check it is PeerConnections not peerConnections?",
+      "range": {
+        "startLine": 12,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 65
+      },
+      "revId": "1153a9bf05dd4f73af7fef52677f6c97df34d885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
