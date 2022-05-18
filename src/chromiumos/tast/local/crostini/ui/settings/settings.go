@@ -320,7 +320,7 @@ func (s *Settings) ClickRemove() uiauto.Action {
 func (s *Settings) Remove() uiauto.Action {
 	return uiauto.Combine("remove Linux",
 		s.ClickRemove(),
-		s.ui.WithInterval(time.Second).LeftClickUntil(RemoveConfirmDialog.Delete, s.ui.WaitUntilExists(RemoveLinuxAlert)),
+		s.ui.WithInterval(time.Second).LeftClickUntil(RemoveConfirmDialog.Delete, s.ui.Exists(RemoveLinuxAlert)),
 		s.ui.WithTimeout(time.Minute).WaitUntilGone(RemoveLinuxAlert),
 		s.ui.WaitUntilExists(TurnOnButton))
 }
@@ -542,7 +542,7 @@ func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWrit
 	return sizeOnSlider, size, nil
 }
 
-//VerifyResizeResults verifies the disk after resizing, both on the Settings page and container.
+// VerifyResizeResults verifies the disk after resizing, both on the Settings page and container.
 func (s *Settings) VerifyResizeResults(ctx context.Context, cont *vm.Container, sizeOnSlider string, size uint64) error {
 	// Check the disk size on the Settings app.
 	sizeOnSettings, err := s.GetDiskSize(ctx)
