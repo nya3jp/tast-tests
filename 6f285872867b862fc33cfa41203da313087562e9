@@ -86,6 +86,24 @@
       "message": "use errors.Errorf",
       "revId": "6f285872867b862fc33cfa41203da313087562e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a3c196_5ce5595d",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-05-18T18:43:59Z",
+      "side": 1,
+      "message": "```\nHook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors can be automatically modified:\n        src/chromiumos/tast/local/modemfwd/modemfwd.go:91:11: Use errors.New(\"\u003cmsg\u003e\") instead of errors.Errorf(\"\u003cmsg\u003e\")\n```",
+      "parentUuid": "32811041_a6ffbf6c",
+      "revId": "6f285872867b862fc33cfa41203da313087562e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
