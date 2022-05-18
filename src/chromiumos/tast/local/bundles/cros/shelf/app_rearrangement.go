@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -53,7 +54,7 @@ func init() {
 			{
 				Name:    "rearrange_file_app",
 				Val:     fileAppTest,
-				Fixture: "chromeLoggedIn",
+				Fixture: "install2Apps",
 			},
 			{
 				Name:    "rearrange_pwa_app",
@@ -71,15 +72,15 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	testType := s.Param().(rearrangmentTestType)
 	switch testType {
 	case chromeAppTest:
+		fallthrough
+	case fileAppTest:
 		var err error
 		cr, err = chrome.New(ctx, s.FixtValue().([]chrome.Option)...)
 
 		if err != nil {
 			s.Fatal("Failed to start chrome: ", err)
 		}
-		defer cr.Close(ctx)
-	case fileAppTest:
-		cr = s.FixtValue().(*chrome.Chrome)
+		// defer cr.Close(ctx)
 	case pwaAppTest:
 		cr = s.FixtValue().(chrome.HasChrome).Chrome()
 	}
@@ -125,43 +126,59 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to unpin apps %v: %v", itemsToUnpin, err)
 	}
 
-	// Pin an extra app to create a more complex scenario for testing.
-	if err := ash.PinApps(ctx, tconn, []string{apps.Settings.ID}); err != nil {
-		s.Fatal("Failed to pin Settings to shelf")
-	}
+	// The ids of the apps to pin.
+	var appIDsToPin []string
 
-	// Calculate the name and the ID of the target app which is the app that is going to be dragged and dropped on the shelf.
-	var targetAppName string
+	// The id of the app that is going to be moved around the shelf.
 	var targetAppID string
+
+	// The pinned app ids in app visual order before any drag-and-drop operation.
+	var defaultAppIDsInOrder []string
+
+	// The updated app ids in order after dragging the target app from the last slot to the first slot.
+	var updatedAppIDsInOrder []string
+
+	// Update appIDsToPin based on the test type.
 	switch testType {
 	case chromeAppTest:
-		installedApps, err := ash.ChromeApps(ctx, tconn)
+		fakeAppIDs, err := getFakeAppIDs(ctx, tconn)
 		if err != nil {
-			s.Fatal("Failed to get the installed apps: ", err)
+			s.Fatal("Failed to get fake app names when the test type is ChromeAppTest: ", err)
 		}
 
-		// Use a fake app as the target app.
-		for _, app := range installedApps {
-			if strings.Contains(app.Name, "fake") {
-				targetAppID = app.AppID
-				targetAppName = app.Name
-				break
-			}
-		}
-		if targetAppID == "" {
-			s.Fatal("Failed to find the fake app")
-		}
+		// Use a fake chrome app as the target app.
+		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], fakeAppIDs[0]}
+		targetAppID = fakeAppIDs[0]
+
+		defaultAppIDsInOrder = []string{chromeApp.ID, apps.Settings.ID, fakeAppIDs[1], targetAppID}
+		updatedAppIDsInOrder = []string{targetAppID, chromeApp.ID, apps.Settings.ID, fakeAppIDs[1]}
+
 	case fileAppTest:
+		fakeAppIDs, err := getFakeAppIDs(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get fake app names when the test type is FileAppTest: ", err)
+		}
+
 		// Use the File app as the target app.
+		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], apps.Files.ID}
 		targetAppID = apps.Files.ID
-		targetAppName = apps.Files.Name
+
+		defaultAppIDsInOrder = []string{chromeApp.ID, apps.Settings.ID, fakeAppIDs[1], targetAppID}
+		updatedAppIDsInOrder = []string{targetAppID, chromeApp.ID, apps.Settings.ID, fakeAppIDs[1]}
 	case pwaAppTest:
 		fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 		var cleanUp func(ctx context.Context) error
-		targetAppID, targetAppName, cleanUp, err = policyutil.InstallPwaAppByPolicy(ctx, tconn, cr, fdms, s.DataFileSystem())
+		pwaAppID, _, cleanUp, err := policyutil.InstallPwaAppByPolicy(ctx, tconn, cr, fdms, s.DataFileSystem())
 		if err != nil {
 			s.Fatal("Failed to install PWA: ", err)
 		}
+
+		// Use the pwa app as the target app.
+		appIDsToPin = []string{apps.Settings.ID, apps.Files.ID, pwaAppID}
+		targetAppID = pwaAppID
+
+		defaultAppIDsInOrder = []string{chromeApp.ID, apps.Settings.ID, apps.Files.ID, targetAppID}
+		updatedAppIDsInOrder = []string{targetAppID, chromeApp.ID, apps.Settings.ID, apps.Files.ID}
 
 		// Use a shortened context for test operations to reserve time for cleanup.
 		cleanupCtx := ctx
@@ -172,43 +189,106 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		defer cleanUp(cleanupCtx)
 	}
 
-	// Pin the target app.
-	if err := ash.PinApps(ctx, tconn, []string{targetAppID}); err != nil {
-		s.Fatalf("Failed to pin %s(%s) to shelf: %v", targetAppName, targetAppID, err)
+	// Pin additional apps to create a more complex scenario for testing.
+	if err := ash.PinApps(ctx, tconn, appIDsToPin); err != nil {
+		s.Fatalf("Failed to pin %v to shelf: %v", appIDsToPin, err)
 	}
 
 	if err := ash.WaitUntilShelfIconAnimationFinish(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for shelf icon animation to finish: ", err)
+		s.Fatal("Failed to wait for shelf icon animation to finish after pinning additional apps: ", err)
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID}); err != nil {
-		s.Fatal("Failed to verify shelf icon indices: ", err)
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, defaultAppIDsInOrder); err != nil {
+		s.Fatal("Failed to verify shelf icon indices before any drag-and-drop operations: ", err)
 	}
 
-	var info *ash.ScrollableShelfInfoClass
-	info, err = ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
+	defaultPinnedAppNamesInOrder, err := ash.ShelfItemTitleFromID(ctx, tconn, defaultAppIDsInOrder)
 	if err != nil {
-		s.Fatal("Failed to fetch the scrollable shelf info")
+		s.Fatalf("Failed to get the app names of default pinned apps %v: %v", defaultAppIDsInOrder, err)
+	}
+	targetAppName := defaultPinnedAppNamesInOrder[len(defaultPinnedAppNamesInOrder)-1]
+
+	ui := uiauto.New(tconn)
+	if err := ash.VerifyShelfAppBounds(ctx, tconn, ui, defaultPinnedAppNamesInOrder, true); err != nil {
+		s.Fatal("Failed to verify shelf app bounds: ", err)
 	}
 
-	moveStartLocation := info.IconsBoundsInScreen[2].CenterPoint()
-	moveEndLocation := info.IconsBoundsInScreen[0].CenterPoint()
-
-	// Verify that app rearrangement works for a pinned shelf app.
-	if err := getDragAndDropAction(tconn, "move the target app from the third slot to the first slot", moveStartLocation, moveEndLocation)(ctx); err != nil {
-		s.Fatal("Failed to move the target app from the third slot to the first slot: ", err)
+	shelfAppBounds, err := ash.GetShelfAppBoundsFromNames(ctx, tconn, ui, defaultPinnedAppNamesInOrder)
+	if err != nil {
+		s.Fatal("Failed to get shelf app bounds: ", err)
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{targetAppID, chromeApp.ID, apps.Settings.ID}); err != nil {
-		s.Fatal("Failed to verify shelf icon indices: ", err)
+	firstSlotCenter := shelfAppBounds[0].CenterPoint()
+	lastSlotCenter := shelfAppBounds[len(shelfAppBounds)-1].CenterPoint()
+
+	const middleAppIndex = 2
+	middleSlotBounds := shelfAppBounds[middleAppIndex]
+	middleSlotCenter := middleSlotBounds.CenterPoint()
+	middleAppName := defaultPinnedAppNamesInOrder[middleAppIndex]
+
+	if err := getStartDragAction(tconn, "start dragging on the target app from the last slot", lastSlotCenter)(ctx); err != nil {
+		s.Fatal("Failed to start dragging on the target app before moving to the middle point from the last slot: ", err)
 	}
 
-	if err := getDragAndDropAction(tconn, "move the target app from the first slot to the third slot", moveEndLocation, moveStartLocation)(ctx); err != nil {
-		s.Fatal("Failed to move the target app from the first slot to the third slot")
+	if err := uiauto.Combine("move to the middle part of shelf from the last slot",
+		mouse.Move(tconn, middleSlotCenter, 1*time.Second),
+		uiauto.Sleep(time.Second))(ctx); err != nil {
+		s.Fatal("Failed to move the target app to the middle slot from the last slot: ", err)
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID}); err != nil {
-		s.Fatal("Failed to verify shelf icon indices: ", err)
+	updatedMiddleAppBounds, err := ash.GetShelfAppBoundsFromNames(ctx, tconn, ui, []string{middleAppName})
+	if err != nil {
+		s.Fatal("Failed to get shelf app bounds after moving the target app from the last slot to the middle location: ", err)
+	}
+
+	// Expect that the app icon previously located on moveMiddleLocation moves rightward.
+	if updatedMiddleAppBounds[0].Left <= middleSlotBounds.Right() {
+		s.Fatalf("Failed to check the app movement: expect %s to move rightward; actually it does not move or moves leftward", middleAppName)
+	}
+
+	if err := uiauto.Combine("move to the first slot then release", mouse.Move(tconn, firstSlotCenter, time.Second),
+		mouse.Release(tconn, mouse.LeftButton), uiauto.Sleep(time.Second))(ctx); err != nil {
+		s.Fatalf("Failed to move %s to the first slot: %v", targetAppName, err)
+	}
+
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, updatedAppIDsInOrder); err != nil {
+		s.Fatalf("Failed to verify shelf icon indices to be %v: %v", updatedAppIDsInOrder, err)
+	}
+
+	// Update middleAppName after drag-and-drop.
+	updatedPinnedAppNamesInOrder, err := ash.ShelfItemTitleFromID(ctx, tconn, updatedAppIDsInOrder)
+	if err != nil {
+		s.Fatalf("Failed to get the app names of the updated pinned apps %v: %v", updatedAppIDsInOrder, err)
+	}
+	middleAppName = updatedPinnedAppNamesInOrder[middleAppIndex]
+
+	if err := getStartDragAction(tconn, "start dragging on the target app from the first slot", firstSlotCenter)(ctx); err != nil {
+		s.Fatal("Failed to start dragging on the target app before moving to the middle point from the first slot: ", err)
+	}
+
+	if err := uiauto.Combine("move to the middle slot of shelf from the first slot",
+		mouse.Move(tconn, middleSlotCenter, 1*time.Second),
+		uiauto.Sleep(time.Second))(ctx); err != nil {
+		s.Fatal("Failed to move the target app to the middle slot from the first slot: ", err)
+	}
+
+	updatedMiddleAppBounds, err = ash.GetShelfAppBoundsFromNames(ctx, tconn, ui, []string{middleAppName})
+	if err != nil {
+		s.Fatal("Failed to get shelf app bounds after moving the target app from the first slot to the middle location: ", err)
+	}
+
+	// Expect that the app icon previously located on moveMiddleLocation moves leftward.
+	if updatedMiddleAppBounds[0].Right() >= middleSlotBounds.Left {
+		s.Fatalf("Failed to check the app movement: expect %s to move leftward; actually it does not move or moves rightward", middleAppName)
+	}
+
+	if err := uiauto.Combine("move to the last slot then release", mouse.Move(tconn, lastSlotCenter, time.Second),
+		mouse.Release(tconn, mouse.LeftButton), uiauto.Sleep(time.Second))(ctx); err != nil {
+		s.Fatalf("Failed to move %s to the last slot: %v", targetAppName, err)
+	}
+
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, defaultAppIDsInOrder); err != nil {
+		s.Fatal("Failed to verify shelf icon indices before launching the target app: ", err)
 	}
 
 	// Launch the target app.
@@ -216,42 +296,34 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to launch %s(%s) from the shelf: %v", targetAppName, targetAppID, err)
 	}
 
-	info, err = ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
-	if err != nil {
-		s.Fatal("Failed to fetch the scrollable shelf info")
-	}
-
-	moveStartLocation = info.IconsBoundsInScreen[2].CenterPoint()
-	moveEndLocation = info.IconsBoundsInScreen[0].CenterPoint()
-
 	// Verify that app rearrangement works for a pinned shelf app with the activated window.
-	if err := getDragAndDropAction(tconn, "move the target app with the activated window from the third slot to the first slot", moveStartLocation, moveEndLocation)(ctx); err != nil {
-		s.Fatal("Failed to move the target app with the activated window from the third slot to the first slot: ", err)
+	if err := getDragAndDropAction(tconn, "move the target app with the activated window from the last slot to the first slot", lastSlotCenter, firstSlotCenter)(ctx); err != nil {
+		s.Fatal("Failed to move the target app with the activated window from the last slot to the first slot: ", err)
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{targetAppID, chromeApp.ID, apps.Settings.ID}); err != nil {
-		s.Fatal("Failed to verify shelf icon indices: ", err)
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, updatedAppIDsInOrder); err != nil {
+		s.Fatal("Failed to verify shelf icon indices after moving the target app with the activated window from the last slot to the first slot: ", err)
 	}
 
-	if err := getDragAndDropAction(tconn, "move the target app with the activated window from the first slot to the third slot", moveEndLocation, moveStartLocation)(ctx); err != nil {
-		s.Fatal("Failed to move the target app with the activated window from the first slot to the third slot")
+	if err := getDragAndDropAction(tconn, "move the target app with the activated window from the first slot to the last slot", firstSlotCenter, lastSlotCenter)(ctx); err != nil {
+		s.Fatal("Failed to move the target app with the activated window from the first slot to the last slot")
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID}); err != nil {
-		s.Fatal("Failed to verify shelf icon indices: ", err)
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, defaultAppIDsInOrder); err != nil {
+		s.Fatal("Failed to verify shelf icon indices after moving the target app with the activated window from the first slot to the last slot: ", err)
 	}
 
 	if err := ash.UnpinApps(ctx, tconn, []string{targetAppID}); err != nil {
 		s.Fatalf("Failed to unpin %s(%s): %v", targetAppName, targetAppID, err)
 	}
 
-	// Verify that an unpinned app with the activated window should not be able to be placed in front of the pinned apps.
-	if err := getDragAndDropAction(tconn, "move the unpinned app with the activated window from the third slot to the first slot", moveStartLocation, moveEndLocation)(ctx); err != nil {
-		s.Fatal("Failed to move the unpinned app from the third slot to the first slot: ", err)
+	if err := getDragAndDropAction(tconn, "move the unpinned app with the activated window from the last slot to the first slot", lastSlotCenter, firstSlotCenter)(ctx); err != nil {
+		s.Fatal("Failed to move the unpinned app from the last slot to the first slot: ", err)
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID}); err != nil {
-		s.Fatal("Failed to verify shelf icon indices: ", err)
+	// Verify that an unpinned app with the activated window should not be able to be placed in front of the pinned apps.
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, defaultAppIDsInOrder); err != nil {
+		s.Fatal("Failed to verify shelf icon indices after the unpinned app is dragged then dropped: ", err)
 	}
 
 	// Cleanup.
@@ -262,6 +334,32 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	if err := activeWindow.CloseWindow(ctx, tconn); err != nil {
 		s.Fatalf("Failed to close the window(%s): %v", activeWindow.Name, err)
 	}
+}
+
+func getFakeAppIDs(ctx context.Context, tconn *chrome.TestConn) ([]string, error) {
+	fakeAppIDs := make([]string, 0)
+	installedApps, err := ash.ChromeApps(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the installed apps")
+	}
+	for _, app := range installedApps {
+		if strings.Contains(app.Name, "fake") {
+			fakeAppIDs = append(fakeAppIDs, app.AppID)
+		}
+	}
+	if len(fakeAppIDs) != 2 {
+		return nil, errors.Wrapf(err, "failed to find all fake apps: expect to have 2; actually %q: ", len(fakeAppIDs))
+	}
+
+	return fakeAppIDs, nil
+}
+
+func getStartDragAction(tconn *chrome.TestConn, actionName string, dragStartLocation coords.Point) uiauto.Action {
+	return uiauto.Combine(actionName,
+		mouse.Move(tconn, dragStartLocation, 0),
+		// Drag in tablet mode starts with a long press.
+		mouse.Press(tconn, mouse.LeftButton),
+		uiauto.Sleep(time.Second))
 }
 
 func getDragAndDropAction(tconn *chrome.TestConn, actionName string, startLocation, endLocation coords.Point) uiauto.Action {
