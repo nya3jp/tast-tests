@@ -217,7 +217,7 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 
 	reader, err := syslog.NewReader(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to open syslog reader")
+		s.Fatal("Failed to open syslog reader: ", err)
 	}
 	defer reader.Close()
 
@@ -231,7 +231,7 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 	if p.extraOptsFunc != nil {
 		extraOpts, err := p.extraOptsFunc(ctx, s)
 		if err != nil {
-			return errors.Wrap(err, "failed to get extra options")
+			s.Fatal("Failed to get extra options: ", err)
 		}
 		opts = append(opts, extraOpts...)
 	}
