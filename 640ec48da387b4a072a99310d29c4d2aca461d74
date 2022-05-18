@@ -22,6 +22,30 @@
       },
       "revId": "640ec48da387b4a072a99310d29c4d2aca461d74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4cf562_1cca212d",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-18T03:41:14Z",
+      "side": 0,
+      "message": "There is no specific reasons, I generated chrome data source config from perfetto UI and memory-infra seems not to be one of the most important categories on perfetto UI.",
+      "parentUuid": "562859d4_edc7d74c",
+      "range": {
+        "startLine": 486,
+        "startChar": 81,
+        "endLine": 486,
+        "endChar": 95
+      },
+      "revId": "640ec48da387b4a072a99310d29c4d2aca461d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
