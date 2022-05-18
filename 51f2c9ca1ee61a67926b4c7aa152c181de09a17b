@@ -16,6 +16,40 @@
       "message": "PTAL",
       "revId": "51f2c9ca1ee61a67926b4c7aa152c181de09a17b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d819b7c0_f05ddc6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501332
+      },
+      "writtenOn": "2022-05-18T15:38:56Z",
+      "side": 1,
+      "message": "Generally LGTM with one minor comment.",
+      "revId": "51f2c9ca1ee61a67926b4c7aa152c181de09a17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94362a3_0f7cb437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/robloxexternal/cold_minigame_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1501332
+      },
+      "writtenOn": "2022-05-18T15:38:56Z",
+      "side": 1,
+      "message": "This seems like a really long timeout. If it can be shorter that is better for efficient use of lab devices.",
+      "revId": "51f2c9ca1ee61a67926b4c7aa152c181de09a17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
