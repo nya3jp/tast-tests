@@ -24,6 +24,8 @@ import (
 const (
 	GooglePhotos = "Google Photos"
 	ArtGallery   = "Art gallery"
+	OnStatus     = "On"
+	OffStatus    = "Off"
 )
 
 // Timeouts contains durations to configure Ambient mode timeouts.
@@ -77,6 +79,23 @@ func SetTimeouts(
 	return nil
 }
 
+// OpenAmbientSubpage returns an action to open Ambient subpage from Personalization Hub.
+func OpenAmbientSubpage(ctx context.Context, ui *uiauto.Context) error {
+	mouse, err := input.Mouse(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get mouse")
+	}
+	defer mouse.Close()
+
+	if err := uiauto.Combine("open Ambient Subpage",
+		personalization.OpenPersonalizationHub(ui),
+		personalization.OpenScreensaverSubpage(ui),
+		ui.WaitUntilExists(nodewith.Role(role.Button).HasClass("breadcrumb").Name("Screensaver")))(ctx); err != nil {
+		return errors.Wrap(err, "failed to open Ambient subpage")
+	}
+	return nil
+}
+
 // toggleAmbientMode returns an action to toggle ambient mode in ambient subpage.
 func toggleAmbientMode(currentMode string, ui *uiauto.Context) uiauto.Action {
 	toggleAmbientButton := nodewith.Role(role.ToggleButton).Name(currentMode)
@@ -85,13 +104,24 @@ func toggleAmbientMode(currentMode string, ui *uiauto.Context) uiauto.Action {
 		ui.LeftClick(toggleAmbientButton))
 }
 
-// EnableAmbientMode returns an action to open ambient subpage from
-// personalization hub then enable ambient mode.
-func EnableAmbientMode(ui *uiauto.Context) uiauto.Action {
-	return uiauto.Combine("Open screensaver subpage and enable ambient mode",
-		personalization.OpenPersonalizationHub(ui),
-		personalization.OpenScreensaverSubpage(ui),
-		toggleAmbientMode("Off", ui))
+// ambientModeEnabled checks whether ambient mode is on.
+func ambientModeEnabled(ctx context.Context, ui *uiauto.Context) (bool, error) {
+	return ui.IsNodeFound(ctx, nodewith.Role(role.ToggleButton).Name(OnStatus))
+}
+
+// EnableAmbientMode enables ambient mode in Personalization Hub from Ambient Subpage.
+// If ambient mode is already enabled, it does nothing.
+func EnableAmbientMode(ctx context.Context, ui *uiauto.Context) error {
+	ambientMode, err := ambientModeEnabled(ctx, ui)
+	if err != nil {
+		return errors.Wrap(err, "failed to check ambient mode status")
+	}
+	if !ambientMode {
+		if err := toggleAmbientMode(OffStatus, ui)(ctx); err != nil {
+			return errors.Wrap(err, "failed to enable ambient mode")
+		}
+	}
+	return nil
 }
 
 // waitForPhotoTransitions blocks until the desired number of photo transitions
