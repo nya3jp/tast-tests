@@ -34,6 +34,24 @@
       "parentUuid": "6151c155_ce6bd991",
       "revId": "a26c22def8989d8576a0e2c26b40b786b2ff5d7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f7c5e08_d20acb49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-18T11:52:15Z",
+      "side": 1,
+      "message": "Yes, it\u0027s internal bot.\n\nWho do you work with in Google? I think he/she should be the contact person how to do with internal bots.",
+      "parentUuid": "e4a24f85_9078e66d",
+      "revId": "a26c22def8989d8576a0e2c26b40b786b2ff5d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
