@@ -401,6 +401,31 @@ func ChromeAppInstalled(ctx context.Context, tconn *chrome.TestConn, appID strin
 	return false, nil
 }
 
+// ShelfItemTitleFromID returns an array of shelf item titles corresponding to the given id array.
+func ShelfItemTitleFromID(ctx context.Context, tconn *chrome.TestConn, idArray []string) ([]string, error) {
+	s, err := ShelfItems(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get shelf item titles")
+	}
+
+	m := make(map[string]string)
+	for _, item := range s {
+		m[item.AppID] = item.Title
+	}
+
+	titleArray := make([]string, len(idArray))
+	for idx, id := range idArray {
+		title, found := m[id]
+		if !found {
+			return nil, errors.Errorf("failed to find the title for id %s", id)
+		}
+
+		titleArray[idx] = title
+	}
+
+	return titleArray, nil
+}
+
 // WaitForChromeAppInstalled waits for the app specified by appID to appear in installed apps.
 func WaitForChromeAppInstalled(ctx context.Context, tconn *chrome.TestConn, appID string, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
@@ -488,22 +513,20 @@ func FetchHotseatInfo(ctx context.Context, c *chrome.TestConn) (*HotseatInfoClas
 	return &shelfInfo.HotseatInfo, nil
 }
 
-// WaitUntilShelfIconAnimationFinish waits for the shelf icon animation to finish.
-func WaitUntilShelfIconAnimationFinish(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
-		if err != nil {
-			return errors.Wrap(err, "failed to fetch scrollable shelf's information")
-		}
-		if info.IconsUnderAnimation {
-			return errors.New("unexpected shelf icon animation status: got true; want false")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to wait shelf icon animation to be idle")
+// WaitUntilShelfIconAnimationFinishAction returns an action to wait for the shelf icon animation to finish.
+func WaitUntilShelfIconAnimationFinishAction(tconn *chrome.TestConn) func(ctx context.Context) error {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
+			if err != nil {
+				return errors.Wrap(err, "failed to fetch scrollable shelf's information")
+			}
+			if info.IconsUnderAnimation {
+				return errors.New("unexpected shelf icon animation status: got true; want false")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 2 * time.Second})
 	}
-
-	return nil
 }
 
 // ScrollShelfAndWaitUntilFinish triggers the scroll animation by mouse click then waits the animation to finish.
@@ -650,6 +673,49 @@ func VerifyShelfIconIndices(ctx context.Context, tconn *chrome.TestConn, expecte
 	for index, item := range items {
 		if expectedApps[index] != item.AppID {
 			return errors.Errorf("unexpected icon at the index(%d) on the shelf: got %s; want %s", index, item.AppID, expectedApps[index])
+		}
+	}
+
+	return nil
+}
+
+// ShelfAppBoundsForNames returns the screen bounds of the apps specified by appNames.
+func ShelfAppBoundsForNames(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, appNames []string) ([]*coords.Rect, error) {
+	boundsArray := make([]*coords.Rect, len(appNames))
+	for index, appName := range appNames {
+		appButton := nodewith.ClassName(ShelfIconClassName).Name(appName)
+		bounds, err := ui.Location(ctx, appButton)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to get bounds for %s", appName)
+		}
+		boundsArray[index] = bounds
+	}
+
+	return boundsArray, nil
+}
+
+// VerifyShelfAppBounds verifies that shelf apps are horizontally or vertically ordered. In detail, it checks that the screen bounds
+// of shelf apps specified by `appNames` satisfy the following conditions:
+// 1. The screen bounds do not overlap with each other; and
+// 2. If isHorizontal is true, the app view specified by appNames[index] should be behind the one specified by appNames[index-1]; or
+// 3. If isHorizontal is false, the app view specified by appNames[index] should be below the one specified by appNames[index-1].
+func VerifyShelfAppBounds(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, appNames []string, isHorizontal bool) error {
+	boundsArray, err := ShelfAppBoundsForNames(ctx, tconn, ui, appNames)
+	if err != nil {
+		return errors.Wrap(err, "failed to get shelf app bounds")
+	}
+
+	for index, bounds := range boundsArray {
+		if index == 0 {
+			continue
+		}
+
+		if isHorizontal && bounds.Left <= boundsArray[index-1].Right() {
+			return errors.Errorf("got: %s is in front of %s; want: %s is behind %s", appNames[index], appNames[index-1], appNames[index], appNames[index-1])
+		}
+
+		if !isHorizontal && bounds.Top <= boundsArray[index-1].Bottom() {
+			return errors.Errorf("got: %s is below %s; want: %s is above %s", appNames[index], appNames[index-1], appNames[index], appNames[index-1])
 		}
 	}
 
