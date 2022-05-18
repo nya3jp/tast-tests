@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/webutil"
@@ -31,6 +32,11 @@ import (
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+type testParams struct {
+	Options     []chrome.Option
+	BrowserType browser.Type
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -47,18 +53,24 @@ func init() {
 		Data:         []string{"manifest.json", "background.js", "content.js"},
 		Params: []testing.Param{{
 			Name:    "ash",
-			Fixture: fixture.ChromePolicyLoggedIn,
-			Val:     browser.TypeAsh,
+			Fixture: fixture.FakeDMS,
+			Val: testParams{
+				BrowserType: browser.TypeAsh,
+			},
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			Fixture:           fixture.LacrosPolicyLoggedIn,
-			Val:               browser.TypeLacros,
+			Fixture:           fixture.FakeDMS,
+			Val: testParams{
+				Options:     lacrosfixt.NewConfig(),
+				BrowserType: browser.TypeLacros,
+			},
 		}},
 	})
 }
 func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.State) {
 	fakeDMS := s.FixtValue().(*fakedms.FakeDMS)
+	p := s.Param().(testParams)
 
 	// DLP policy with all clipboard blocked restriction.
 	policyDLP := policy.RestrictiveDLPPolicyForClipboard()
@@ -86,7 +98,8 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 	cr, err := chrome.New(ctx,
 		chrome.UnpackedExtension(extDir),
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-		chrome.DMSPolicy(fakeDMS.URL))
+		chrome.DMSPolicy(fakeDMS.URL),
+		p.Options)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
