@@ -49,7 +49,7 @@ func OpenAvatarSubpage(ui *uiauto.Context) uiauto.Action {
 
 // openSubpage returns an action to open a subpage from personalization hub main page.
 func openSubpage(subpageButton string, ui *uiauto.Context) uiauto.Action {
-	changeSubpageButton := nodewith.Role(role.Button).Name(subpageButton)
+	changeSubpageButton := nodewith.Name(subpageButton).HasClass("tast-open-subpage")
 	return uiauto.Combine(fmt.Sprintf("click subpage button - %s", subpageButton),
 		ui.WaitUntilExists(changeSubpageButton),
 		ui.LeftClick(changeSubpageButton))
