@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0b52d7_8eb79754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-18T15:34:25Z",
+      "side": 1,
+      "message": "nit: do we need this newline here?",
+      "revId": "9b03d0f701ad1419f7b7e3007e0b295c2e63661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e2caeb_ca4fb056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-18T15:34:25Z",
+      "side": 1,
+      "message": "What are we actually doing with this?\n\nIf anything, should this go in the environment verification test?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "9b03d0f701ad1419f7b7e3007e0b295c2e63661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
