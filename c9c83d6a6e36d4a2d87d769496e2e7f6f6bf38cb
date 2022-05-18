@@ -51,6 +51,23 @@
       "message": "Matthew is OOO. Need a new reviewers.",
       "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f87f99e7_c8ae18db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-18T03:58:24Z",
+      "side": 1,
+      "message": "This change is very big. Could you consider splitting the change to smaller ones? As https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#self_review-checklist says\n\"If you are working on a large test, don\u0027t send the entire test out as a single, gigantic change. Split your changes into smaller changes that can be submitted separately.\" .\nIt looks like there are multiple steps in the test, so one option is to create a patch for each step.",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
