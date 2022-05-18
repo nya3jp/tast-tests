@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02bd1b4c_68e55599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-18T09:14:50Z",
+      "side": 1,
+      "message": "Agree with you. Hence removing the lid close/open part from this code.",
+      "parentUuid": "f4fbfdeb_f0705299",
+      "revId": "cfa67225866b01da2d403a0b98c18e14091ab7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2d9c2ce_66c065a1",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-16T17:28:20Z",
       "side": 1,
       "message": "Put this at the very beginning of the `WakeFromHibernation` function.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "cfa67225866b01da2d403a0b98c18e14091ab7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "debb9404_bc429a28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/wake_from_hibernation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-18T09:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2d9c2ce_66c065a1",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccadd717_e0d33846",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/wake_from_hibernation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-18T09:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "285a4793_3eefe621",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "cfa67225866b01da2d403a0b98c18e14091ab7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dce3dc81_cc8103a4",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dde2d82_07f03762",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/wake_from_hibernation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-18T09:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce3dc81_cc8103a4",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "cfa67225866b01da2d403a0b98c18e14091ab7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d981d75_a6e4f6da",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-05-16T17:28:20Z",
       "side": 1,
       "message": "Put this cleanup in a `defer` statement right after `h.SetDUTPower(ctx, false)` succeeds.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "cfa67225866b01da2d403a0b98c18e14091ab7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b4d0fe8_6cf5d5e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/wake_from_hibernation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-18T09:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d981d75_a6e4f6da",
       "range": {
         "startLine": 68,
         "startChar": 0,
