@@ -56,6 +56,30 @@
       },
       "revId": "6e52fccd232115b42622740ed4cabee33c424625",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb4ab81_18eae374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_scroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-05-18T21:18:27Z",
+      "side": 1,
+      "message": "Yep! Done.",
+      "parentUuid": "077327db_1ae53a35",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 226,
+        "endChar": 25
+      },
+      "revId": "6e52fccd232115b42622740ed4cabee33c424625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
