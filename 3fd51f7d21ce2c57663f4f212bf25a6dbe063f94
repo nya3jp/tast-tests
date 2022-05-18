@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42cba260_71ba731e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T03:43:22Z",
+      "side": 1,
+      "message": "tast review with nits",
+      "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ae5d57_dd245b82",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T03:43:22Z",
+      "side": 1,
+      "message": "reformat the comments to \u003c80 chars per line.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 98
+      },
+      "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
