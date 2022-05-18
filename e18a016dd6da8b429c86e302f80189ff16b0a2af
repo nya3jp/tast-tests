@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9c0fd3_10db9911",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-18T03:44:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4bc336e_d16c4737",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "e18a016dd6da8b429c86e302f80189ff16b0a2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c12b77d_530727f4",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-17T23:18:45Z",
       "side": 1,
       "message": "\"Get\" is generally a forbidden prefix for method names in Go. http://go/go-style/decisions#getters\n\nMaybe `DgapiLog` or something similar?",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 190,
+        "endChar": 32
+      },
+      "revId": "e18a016dd6da8b429c86e302f80189ff16b0a2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcfb1100_ca99fd47",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-18T03:44:31Z",
+      "side": 1,
+      "message": "Changed to `Dgapi2Logs`, thanks for pointing it out.",
+      "parentUuid": "8c12b77d_530727f4",
       "range": {
         "startLine": 190,
         "startChar": 25,
