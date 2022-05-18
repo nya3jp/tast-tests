@@ -7,6 +7,7 @@ package lacros
 import (
 	"context"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -84,9 +85,26 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*Lacros, error) {
 		return nil, errors.New("failed to launch lacros since app is already running. close before launch")
 	}
 
-	testing.ContextLog(ctx, "Launch lacros")
-	if err := apps.Launch(ctx, tconn, apps.Lacros.ID); err != nil {
-		return nil, errors.Wrap(err, "failed to launch lacros")
+	testing.ContextLog(ctx, "Launching lacros")
+	// Poll to make sure lacros actually runs. This is specially important to avoid the case where
+	// lacros binary is still loading when launch is triggered and it's assumed that launching
+	// lacros on login is disabled (--disable-login-lacros-opening).
+	// TODO(crbug.com/1316237): This may be unnecessary if BrowserManager wouldn't drop requests.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := apps.Launch(ctx, tconn, apps.Lacros.ID); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to launch lacros"))
+		}
+
+		info, err := InfoSnapshot(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get lacros info"))
+		}
+		if !info.Running {
+			return errors.Wrap(err, "re-trying to launch lacros")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 120 * time.Second, Interval: 1 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "failed to run lacros")
 	}
 
 	testing.ContextLog(ctx, "Wait for Lacros window")
