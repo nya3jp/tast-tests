@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b99581f_72f592d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T21:31:17Z",
+      "side": 1,
+      "message": "`TEST\u003dtast run \u003cDUT\u003e autoupdate.*`",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "dcb396948b69fc20262eccae31fa398de37f0c78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bbb136a9_26c2cc53",
@@ -67,6 +90,23 @@
       "side": 1,
       "message": "The tastboard should show the results where the test is run. The flag filters out boards with a \"-\" suffix (see https://crrev.com/c/3640700), so if you rely on testing any of those, the flag should not be added to your test. Please, let me know before I submit (and in that case please confirm from which test or tests I should remove it from).",
       "parentUuid": "4c180df2_5d8b56ca",
+      "revId": "dcb396948b69fc20262eccae31fa398de37f0c78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea584028_640af6e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T21:31:17Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with simplified `TEST` line in commit message",
       "revId": "dcb396948b69fc20262eccae31fa398de37f0c78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
