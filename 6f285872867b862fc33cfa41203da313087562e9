@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "884f4a40_c350df0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-05-18T18:29:46Z",
+      "side": 1,
+      "message": "Don\u0027t the presubmit checks take care of this?",
+      "parentUuid": "2d2da917_1eb825a8",
+      "revId": "6f285872867b862fc33cfa41203da313087562e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cb17f45_cbbf125e",
