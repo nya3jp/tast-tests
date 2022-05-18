@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2da917_1eb825a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-18T17:50:21Z",
+      "side": 1,
+      "message": "I have a few minor comments. Also, please run tast unit test: fast_build.sh -T\n\nThen add \nTEST\u003dtast unit test passed\n\nto commit log.\n\nThanks.\n",
+      "revId": "6f285872867b862fc33cfa41203da313087562e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb17f45_cbbf125e",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-18T17:50:21Z",
+      "side": 1,
+      "message": "if err :\u003d function(ctx); err !\u003d nil {",
+      "revId": "6f285872867b862fc33cfa41203da313087562e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32811041_a6ffbf6c",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-18T17:50:21Z",
+      "side": 1,
+      "message": "use errors.Errorf",
+      "revId": "6f285872867b862fc33cfa41203da313087562e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
