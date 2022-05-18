@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f9a978_c7b8aa33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-18T17:01:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc6e006b_5a333075",
+      "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57ae5d57_dd245b82",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-18T03:43:22Z",
       "side": 1,
       "message": "reformat the comments to \u003c80 chars per line.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 98
+      },
+      "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898eb759_341c0c58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-18T17:01:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "57ae5d57_dd245b82",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52b2033_06ce5168",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-18T17:01:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8baf7366_a7efd766",
+      "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "160921b8_8eedbc98",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-05-18T04:41:43Z",
       "side": 1,
       "message": "This is not that clear, include bug number and explain why probe request may be missing (maybe include an approximate percentage).",
+      "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278cb72a_e128292d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-18T17:01:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "160921b8_8eedbc98",
       "revId": "3fd51f7d21ce2c57663f4f212bf25a6dbe063f94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
