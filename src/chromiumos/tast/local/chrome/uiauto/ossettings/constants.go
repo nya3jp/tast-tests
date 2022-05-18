@@ -167,7 +167,7 @@ var (
 
 	proxyDropDownNameRegex = regexp.MustCompile(`(C|c)onnection type`)
 	// ProxyDropDownMenu is the finder for the proxy drop down menu.
-	ProxyDropDownMenu = nodewith.HasClass("md-select").NameRegex(proxyDropDownNameRegex).Role(role.PopUpButton)
+	ProxyDropDownMenu = nodewith.HasClass("md-select").NameRegex(proxyDropDownNameRegex).Role(role.ComboBoxSelect)
 
 	// ManualProxyOption is the finder for the "Manual proxy configuration" option in the proxy drop down menu.
 	ManualProxyOption = nodewith.Name("Manual proxy configuration").Role(role.ListBoxOption)
