@@ -14,11 +14,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/crosconfig"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -34,6 +32,7 @@ func init() {
 			// TODO(b/231276793): eve hotword broken.
 			hwdep.SkipOnModel("eve"),
 		),
+		Fixture: "crasStopped",
 		Params: []testing.Param{
 			{
 				Name: "section_verb",
@@ -133,21 +132,6 @@ func (p listCommander) commands(ctx context.Context, ucmName string) ([]alsaucmC
 }
 
 func UCMSequences(ctx context.Context, s *testing.State) {
-	// Restart CRAS after running the test.
-	clearUpCtx := ctx
-	ctx, cancel := ctxutil.Shorten(clearUpCtx, 5*time.Second)
-	defer cancel()
-	defer audio.RestartCras(clearUpCtx)
-
-	// Stop cras and sleep to get exclusive access to audio devices.
-	if err := upstart.StopJob(ctx, "cras"); err != nil {
-		s.Fatal("Cannot stop cras: ", err)
-	}
-	// Sleep required for pm_runtime_set_autosuspend_delay(&pdev->dev, 10000)
-	// https://source.chromium.org/chromium/chromiumos/third_party/kernel/+/HEAD:sound/soc/amd/acp-pcm-dma.c;l=1271;drc=662fb3efe7ee835f0eeba6bc63b81e82a97fc312
-	s.Log("Sleeping 11 seconds to wait for audio device to be ready")
-	testing.Sleep(ctx, 11*time.Second)
-
 	param := s.Param().(ucmSequencesParam)
 
 	cards, err := audio.GetSoundCards()
