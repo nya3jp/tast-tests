@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f89d21a_47ba8108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-18T21:09:40Z",
+      "side": 1,
+      "message": "Oh, and since this test is just using Ethernet (not veth), maybe make this:\nShillCativePortalPropertiesEthernet\n\nThis one won\u0027t be very interesting, but will serve as a template for a more interesting Veth version.",
+      "parentUuid": "77de6c52_eacf883f",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38cfb648_fc28ab73",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
         "patchSetId": 1
@@ -136,6 +154,24 @@
       "writtenOn": "2022-05-18T20:58:03Z",
       "side": 1,
       "message": "Can we clarify that this is when the device is in an unconnected state?",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ff0e3e_30ec6190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-18T21:09:40Z",
+      "side": 1,
+      "message": "We should actually be testing online. (Since this is testing Ethernet, it should always be online, but we should also verify that in the test).",
+      "parentUuid": "38cfb648_fc28ab73",
       "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
