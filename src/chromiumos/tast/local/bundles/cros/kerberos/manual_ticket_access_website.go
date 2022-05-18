@@ -36,7 +36,7 @@ func init() {
 			"chromeos-commercial-identity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
 		Fixture:      fixture.FakeDMS,
 	})
@@ -92,22 +92,39 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 
 	// The website does not have a valid certificate. We accept the warning and
 	// proceed to the content.
-	clickAdvance := fmt.Sprintf("document.getElementById(%q).click()", "details-button")
-	if err := conn.Eval(ctx, clickAdvance, nil); err != nil {
-		s.Fatal("Failed to click Advance button: ", err)
-	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		clickAdvance := fmt.Sprintf("document.getElementById(%q).click()", "details-button")
+		if err := conn.Eval(ctx, clickAdvance, nil); err != nil {
+			s.Fatal("Failed to click Advance button: ", err)
+			return errors.Wrap(err, "failed to click Advance button")
+		}
 
-	clickProceed := fmt.Sprintf("document.getElementById(%q).click()", "proceed-link")
-	if err := conn.Eval(ctx, clickProceed, nil); err != nil {
-		s.Fatal("Failed to click Advance button: ", err)
+		clickProceed := fmt.Sprintf("document.getElementById(%q).click()", "proceed-link")
+		if err := conn.Eval(ctx, clickProceed, nil); err != nil {
+			return errors.Wrap(err, "failed to click Proceed button")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		s.Error("Could not accept the certificate warning")
 	}
 
 	// Check that title is 401 - unauthorized.
 	var websiteTitle string
-	if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
-		s.Error("Failed to get the website title: ", err)
-	}
-	if strings.Contains(websiteTitle, "401") {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
+			return errors.Wrap(err, "failed to get the website title")
+		}
+		if websiteTitle == "" || !strings.Contains(websiteTitle, "401") {
+			return errors.New("website title is still empty")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
 		s.Error("Website title did not contain error 401")
 	}
 
