@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd29b45_c4dd1dcf",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-18T04:43:11Z",
+      "side": 1,
+      "message": "Let me know if having capture in Launch is sufficient or if you\u0027d like it at the scope of LaunchWithURL as well.",
+      "revId": "4ffa35556a10d4eabc00308d1c8b28cff785686a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
