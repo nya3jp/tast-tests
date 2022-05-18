@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed92765_ae95f775",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T16:33:11Z",
+      "side": 1,
+      "message": "Please also try a test with multiple calls to `cujrecorder.Recorder.Run`, such as ui.TabSwitchCUJ (because [1] is inside a `for` loop). Check that when the test finishes, the output directory contains trace data for all the calls to `cujrecorder.Recorder.Run`.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go;drc\u003d651966fa5e335d7e75128e297685d9512c13ac3b;l\u003d239",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "f06239039b59f599fe49670a31be3eb04828dad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce998b6d_33f797e7",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T16:33:11Z",
+      "side": 1,
+      "message": "There should not be a blank line here.",
+      "revId": "f06239039b59f599fe49670a31be3eb04828dad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
