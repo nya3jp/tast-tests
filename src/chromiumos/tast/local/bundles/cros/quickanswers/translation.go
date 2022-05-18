@@ -51,7 +51,7 @@ func Translation(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	bt := s.Param().(browser.Type)
-	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(lacrosfixt.EnableChromeFRE()),
 		chrome.GAIALogin(chrome.Creds{
 			User: s.RequiredVar("quickanswers.username"),
 			Pass: s.RequiredVar("quickanswers.password"),
@@ -67,6 +67,22 @@ func Translation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	ui := uiauto.New(tconn)
+
+	if bt == browser.TypeLacros {
+		// Accept sync.
+		welcomeButton := nodewith.Name("Let's go").Role(role.Button)
+		syncButton := nodewith.Name("Yes, I'm in").Role(role.Button)
+		if err := uiauto.Combine("accept sync",
+			ui.WaitUntilExists(welcomeButton),
+			ui.LeftClick(welcomeButton),
+			ui.WaitUntilExists(syncButton),
+			ui.LeftClick(syncButton),
+		)(ctx); err != nil {
+			s.Fatal("Failed to accept sync: ", err)
+		}
+	}
+
 	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.quick_answers.enabled", true); err != nil {
 		s.Fatal("Failed to enable Quick Answers: ", err)
 	}
@@ -80,7 +96,6 @@ func Translation(ctx context.Context, s *testing.State) {
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	ui := uiauto.New(tconn)
 	// Wait for the query word to appear.
 	query := nodewith.Name(queryWord).Role(role.StaticText).First()
 	if err := ui.WaitUntilExists(query)(ctx); err != nil {
