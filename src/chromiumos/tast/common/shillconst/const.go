@@ -109,25 +109,31 @@ const (
 	ManagerPropertyGlobalFTEnabled        = "WiFi.GlobalFTEnabled"
 	ManagerPropertyScanAllowRoam          = "WiFi.ScanAllowRoam"
 	ManagerPropertyDOHProviders           = "DNSProxyDOHProviders"
+	ManagerPropertyCheckPortalList        = "CheckPortalList"
 )
 
 // Service property names defined in dbus-constants.h .
 const (
 	// Service property names.
-	ServicePropertyConnectable    = "Connectable"
-	ServicePropertyDevice         = "Device"
-	ServicePropertyError          = "Error"
-	ServicePropertyName           = "Name"
-	ServicePropertyType           = "Type"
-	ServicePropertyIsConnected    = "IsConnected"
-	ServicePropertyMode           = "Mode"
-	ServicePropertyState          = "State"
-	ServicePropertyStaticIPConfig = "StaticIPConfig"
-	ServicePropertyStrength       = "Strength"
-	ServicePropertyVisible        = "Visible"
-	ServicePropertyAutoConnect    = "AutoConnect"
-	ServicePropertyGUID           = "GUID"
-	ServicePropertyProvider       = "Provider"
+	ServicePropertyConnectable                     = "Connectable"
+	ServicePropertyDevice                          = "Device"
+	ServicePropertyError                           = "Error"
+	ServicePropertyName                            = "Name"
+	ServicePropertyType                            = "Type"
+	ServicePropertyIsConnected                     = "IsConnected"
+	ServicePropertyMode                            = "Mode"
+	ServicePropertyState                           = "State"
+	ServicePropertyStaticIPConfig                  = "StaticIPConfig"
+	ServicePropertyStrength                        = "Strength"
+	ServicePropertyVisible                         = "Visible"
+	ServicePropertyAutoConnect                     = "AutoConnect"
+	ServicePropertyGUID                            = "GUID"
+	ServicePropertyProvider                        = "Provider"
+	ServicePropertyCheckPortal                     = "CheckPortal"
+	ServicePropertyPortalDetectionFailedPhase      = "PortalDetectionFailedPhase"
+	ServicePropertyPortalDetectionFailedStatus     = "PortalDetectionFailedStatus"
+	ServicePropertyPortalDetectionFailedStatusCode = "PortalDetectionFailedStatusCode"
+	ServicePropertyProbeURL                        = "ProbeUrl"
 
 	// Cellular service property names.
 	ServicePropertyCellularICCID         = "Cellular.ICCID"
@@ -169,6 +175,20 @@ const (
 	ServicePropertyEAPUseSystemCAs                = "EAP.UseSystemCAs"
 	ServicePropertyEAPSubjectAlternativeNameMatch = "EAP.SubjectAlternativeNameMatch"
 	ServicePropertyEAPDomainSuffixMatch           = "EAP.DomainSuffixMatch"
+)
+
+// Manager portal values
+const (
+	ManagerCheckPortalListNone = ""
+)
+
+// Service portal values
+const (
+	ServiceCheckPortalAuto                     = "auto"
+	ServicePortalDetectionFailedPhaseNone      = ""
+	ServicePortalDetectionFailedStatusNone     = ""
+	ServicePortalDetectionFailedStatusCodeZero = 0
+	ServiceProbeURLNone                        = ""
 )
 
 // Service Error values
