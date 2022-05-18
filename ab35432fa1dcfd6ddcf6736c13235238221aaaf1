@@ -207,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02bcb651_0edf34ce",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-18T19:33:19Z",
+      "side": 1,
+      "message": "I\u0027d like to keep the timestamp in the filename to ensure that logs don\u0027t get overwritten. For example, if the fixture gets recreated during a test because one test failed, it would override previous fixture logs. With the timestamp it also helps us get a clear timeline of log files if we needed to debug in more granular detail. Yeah the log itself has times in it, but this makes it easier IMO because in our editors it will always be sorted by time and we won\u0027t have to think about it.",
+      "parentUuid": "3b0909bd_c0f08124",
+      "range": {
+        "startLine": 99,
+        "startChar": 80,
+        "endLine": 99,
+        "endChar": 81
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8cb3985_7fdb26ec",
