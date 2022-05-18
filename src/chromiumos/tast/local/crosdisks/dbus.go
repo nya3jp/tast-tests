@@ -119,6 +119,8 @@ const (
 	MountErrorPathNotMounted     uint32 = 6
 	MountErrorMountProgramFailed uint32 = 12
 	MountErrorNeedPassword       uint32 = 13
+	MountErrorInProgress         uint32 = 14
+	MountErrorCancelled          uint32 = 15
 	MountErrorInvalidDevicePath  uint32 = 100
 )
 
