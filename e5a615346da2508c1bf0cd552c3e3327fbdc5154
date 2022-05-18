@@ -16,6 +16,24 @@
       "message": "Seems a bit odd that we depend on debugd for printing...",
       "revId": "e5a615346da2508c1bf0cd552c3e3327fbdc5154",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeeebe60_bb957cd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-18T16:11:02Z",
+      "side": 1,
+      "message": "Agreed :) This was before I joined, but apparently debugd was the best place to add a dbus call that could run system commands inside a sandbox back in 2016 when this was added.  Not sure if that would still be true if we were starting today, but it hasn\u0027t been enough of a concern to move the functionality out of debugd up to now.",
+      "parentUuid": "e4c9120c_c45dbcbb",
+      "revId": "e5a615346da2508c1bf0cd552c3e3327fbdc5154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
