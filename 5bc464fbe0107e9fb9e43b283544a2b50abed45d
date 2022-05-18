@@ -117,6 +117,30 @@
       },
       "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53cb653d_62b2f9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-18T10:03:12Z",
+      "side": 1,
+      "message": "Hi, \n\nWe understand accessing an external website from tests in not a good approach.\nCan we use the Google\u0027s Canvas URL (https://canvas.apps.chrome/) in our test?\n\nAlso, we are not sure on serving a page locally. Can you please share some more info. on how we can do that?",
+      "parentUuid": "c3718422_803629ff",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
