@@ -38,23 +38,49 @@ func init() {
 		Desc:         "Tests lacros memory usage",
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "lacros",
 		Timeout:      60 * time.Minute,
 		Params: []testing.Param{{
-			Name: "blank",
-			Val:  testParams{mode: openURLMode, url: "about:blank"},
+			Name:    "blank",
+			Fixture: "lacros",
+			Val:     testParams{mode: openURLMode, url: "about:blank"},
 		}, {
-			Name: "docs",
-			Val:  testParams{mode: openURLMode, url: "https://docs.google.com/document/d/1_WmgE1F5WUrhwkPqJis3dWyOiUmQKvpXp5cd4w86TvA/edit"},
+			Name:    "docs",
+			Fixture: "lacros",
+			Val:     testParams{mode: openURLMode, url: "https://docs.google.com/document/d/1_WmgE1F5WUrhwkPqJis3dWyOiUmQKvpXp5cd4w86TvA/edit"},
 		}, {
-			Name: "reddit",
-			Val:  testParams{mode: openURLMode, url: "https://old.reddit.com/"},
+			Name:    "reddit",
+			Fixture: "lacros",
+			Val:     testParams{mode: openURLMode, url: "https://old.reddit.com/"},
 		}, {
-			Name: "youtube",
-			Val:  testParams{mode: openURLMode, url: "https://www.youtube.com/watch?v=uS33jC2VYNU"},
+			Name:    "youtube",
+			Fixture: "lacros",
+			Val:     testParams{mode: openURLMode, url: "https://www.youtube.com/watch?v=uS33jC2VYNU"},
 		}, {
-			Name: "twentytabs",
-			Val:  testParams{mode: openTabMode, numTabs: 20},
+			Name:    "twentytabs",
+			Fixture: "lacros",
+			Val:     testParams{mode: openTabMode, numTabs: 20},
+		}, {
+			// TODO(crbug.com/1253280): Remove tests when LacrosResourcesFileSharing is
+			// enabled by default or abandoned. Same for tests below.
+			Name:    "blank_with_resources_file_sharing",
+			Fixture: "lacrosResourcesFileSharing",
+			Val:     testParams{mode: openURLMode, url: "about:blank"},
+		}, {
+			Name:    "docs_with_resources_file_sharing",
+			Fixture: "lacrosResourcesFileSharing",
+			Val:     testParams{mode: openURLMode, url: "https://docs.google.com/document/d/1_WmgE1F5WUrhwkPqJis3dWyOiUmQKvpXp5cd4w86TvA/edit"},
+		}, {
+			Name:    "reddit_with_resources_file_sharing",
+			Fixture: "lacrosResourcesFileSharing",
+			Val:     testParams{mode: openURLMode, url: "https://old.reddit.com/"},
+		}, {
+			Name:    "youtube_with_resources_file_sharing",
+			Fixture: "lacrosResourcesFileSharing",
+			Val:     testParams{mode: openURLMode, url: "https://www.youtube.com/watch?v=uS33jC2VYNU"},
+		}, {
+			Name:    "twentytabs_with_resources_file_sharing",
+			Fixture: "lacrosResourcesFileSharing",
+			Val:     testParams{mode: openTabMode, numTabs: 20},
 		},
 		},
 	})
@@ -262,7 +288,7 @@ func Memory(ctx context.Context, s *testing.State) {
 // blank tab to the given url.
 func navigateSingleTabToURLLacros(ctx context.Context, url string, l *lacros.Lacros) error {
 	// Open a new tab and navigate to url.
-	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL("about:blank"))
+	conn, err := l.NewConnForTarget(ctx, chrome.MatchAllPages())
 	if err != nil {
 		return errors.Wrap(err, "failed to find an about:blank tab")
 	}

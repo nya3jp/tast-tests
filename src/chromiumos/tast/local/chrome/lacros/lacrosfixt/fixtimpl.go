@@ -139,6 +139,22 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	// lacrosResourcesFileSharing is the same as lacros but has some special flags
+	// for resources file sharing tests.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosResourcesFileSharing",
+		Desc:     "Lacros Chrome with resources file sharing feature",
+		Contacts: []string{"elkurin@chromium.org", "hidehiko@chromium.org"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(ChromeOptions(
+				chrome.ExtraArgs("--enable-features=LacrosResourcesFileSharing"),
+			)).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
 	// lacrosUIKeepAlive is similar to lacros but should be used
 	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
 	// of by command line, and this test assuming that Lacros will be keep alive
