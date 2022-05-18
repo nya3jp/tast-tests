@@ -147,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5690e679_9b0c6e0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-18T00:15:32Z",
+      "side": 1,
+      "message": "If the current month is January 2023, then the previous month would be December 2022. This code didn\u0027t account for the change in year. Although it looks like this check was merged into the subsequent loop, so it\u0027s not a problem anymore.",
+      "parentUuid": "323b5907_c428693a",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6721ce7f_bedd5a8f",
@@ -231,6 +255,30 @@
       "side": 1,
       "message": "Good catch! I removed the extra one click.",
       "parentUuid": "61f6d13d_b97af2df",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "41d7a1508a5fc0df516d76b22db9d36aa02954da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98671b8_c1ebd90c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-18T00:15:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7b0dddff_d28f0aee",
       "range": {
         "startLine": 102,
         "startChar": 5,
