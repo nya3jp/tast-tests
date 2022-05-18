@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab51e5c_02ebcee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/onscreen_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-18T15:41:08Z",
+      "side": 1,
+      "message": "Any reason we need to defer this? It\u0027s going to run first of all the deferred functions, so it\u0027s equivalent to just doing this work inline.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "1f1b63ccf886b8f665b500d251ed26ea5c7aeab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e245ee6_ff417c8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/onscreen_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-18T15:41:08Z",
+      "side": 1,
+      "message": "nit: do we need this blank line?",
+      "revId": "1f1b63ccf886b8f665b500d251ed26ea5c7aeab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
