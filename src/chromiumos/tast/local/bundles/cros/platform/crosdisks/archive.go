@@ -46,6 +46,12 @@ var PreparedArchives = []string{
 	"crosdisks/Nested.rar",
 	"crosdisks/Nested.zip",
 	"crosdisks/Nested.tar.gz",
+	"crosdisks/Smile 😀.txt.bz2",
+	"crosdisks/Smile 😀.txt.gz",
+	"crosdisks/Smile 😀.txt.lzma",
+	"crosdisks/Smile 😀.txt.xz",
+	"crosdisks/Smile 😀.txt.Z",
+	"crosdisks/Smile 😀.txt.zst",
 	"crosdisks/Strict Password.zip",
 	"crosdisks/Symlinks.zip",
 	"crosdisks/Unicode.7z",
@@ -179,7 +185,7 @@ func testNestedArchives(ctx context.Context, s *testing.State, cd *crosdisks.Cro
 
 func verifyUnicodeArchives(ctx context.Context, cd *crosdisks.CrosDisks, archiveDir string) error {
 	// Test RAR V4 with Unicode BMP characters in file and directory names.
-	expectedContent := DirectoryContents{
+	want := DirectoryContents{
 		"File D79F \uD79F.txt": {Data: []byte("Char U+D79F is \uD79F HANGUL SYLLABLE HIC\n")},
 		" Space Oddity ":       {Data: []byte("Mind the gap\n")},
 		"Level 1/Empty":        {Data: []byte{}},
@@ -188,17 +194,18 @@ func verifyUnicodeArchives(ctx context.Context, cd *crosdisks.CrosDisks, archive
 		"Level 1/Level 2/Big":  {Data: []byte(strings.Repeat("a", 65536))},
 	}
 
+	// RAR v4 does not support full Unicode filenames.
 	{
 		archive := "Format V4.rar"
 		archivePath := filepath.Join(archiveDir, archive)
-		if err := verifyArchiveContent(ctx, cd, archivePath, nil, expectedContent); err != nil {
+		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
 			return errors.Wrapf(err, "test failed for %q", archive)
 		}
 	}
 
 	// Test RAR v5 and other archive formats with both Unicode BMP and non-BMP characters in file and directory names.
-	expectedContent["Dir 1F601 \U0001F601/File 1F602 \U0001F602.txt"] = FileItem{Data: []byte("Char U+1F602 is \U0001F602 FACE WITH TEARS OF JOY\n")}
-	expectedContent["File 1F600 \U0001F600.txt"] = FileItem{Data: []byte("Char U+1F600 is \U0001F600 GRINNING FACE\n")}
+	want["Dir 1F601 😁/File 1F602 😂.txt"] = FileItem{Data: []byte("Char U+1F602 is 😂 FACE WITH TEARS OF JOY\n")}
+	want["File 1F600 😀.txt"] = FileItem{Data: []byte("Char U+1F600 is 😀 GRINNING FACE\n")}
 
 	for _, archive := range []string{
 		"Format V5.rar",
@@ -227,7 +234,35 @@ func verifyUnicodeArchives(ctx context.Context, cd *crosdisks.CrosDisks, archive
 		"Unicode.zip",
 	} {
 		archivePath := filepath.Join(archiveDir, archive)
-		if err := verifyArchiveContent(ctx, cd, archivePath, nil, expectedContent); err != nil {
+		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
+			return errors.Wrapf(err, "test failed for %q", archive)
+		}
+	}
+
+	// Test single-file archives.
+	// TODO (crbug.com/1326765) Fix the name of the embedded file.
+	want = DirectoryContents{
+		"data": {Data: []byte("Don't forget to smile 😀!\n")},
+	}
+	for _, archive := range []string{
+		"Smile 😀.txt.bz2",
+		"Smile 😀.txt.lzma",
+		"Smile 😀.txt.xz",
+		"Smile 😀.txt.Z",
+		"Smile 😀.txt.zst",
+	} {
+		archivePath := filepath.Join(archiveDir, archive)
+		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
+			return errors.Wrapf(err, "test failed for %q", archive)
+		}
+	}
+
+	want = DirectoryContents{
+		"Smile 😀.txt": {Data: []byte("Don't forget to smile 😀!\n")},
+	}
+	for _, archive := range []string{"Smile 😀.txt.gz"} {
+		archivePath := filepath.Join(archiveDir, archive)
+		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
 			return errors.Wrapf(err, "test failed for %q", archive)
 		}
 	}
