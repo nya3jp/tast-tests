@@ -33,6 +33,23 @@
       "message": "LGTM, thanks!",
       "revId": "f04ddaba64c6bb83ba5b019ed87a3aca7ca94873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3c8545_be62e113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare_tab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-05-18T08:53:40Z",
+      "side": 1,
+      "message": "[optional] Fixtures for all the parameterized tests are the same. Can it be set outside the Params?\nThough I think it\u0027s fine to keep them as-is, especially if there\u0027s a plan to add more parameter sets with different Fixtures.",
+      "revId": "f04ddaba64c6bb83ba5b019ed87a3aca7ca94873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
