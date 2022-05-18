@@ -24,9 +24,6 @@ import (
 
 const defaultRPCTimeout = 10 * time.Second
 
-// maxRPCTimeout is very long, because some of the servo calls are really slow
-const maxRPCTimeout = 90 * time.Second
-
 // XMLRpc holds the XML-RPC information.
 type XMLRpc struct {
 	host string
@@ -281,10 +278,6 @@ func serializeMethodCall(cl Call) ([]byte, error) {
 // to the context's deadline.
 func getTimeout(ctx context.Context, cl Call) time.Duration {
 	timeout := cl.timeout
-	if timeout > maxRPCTimeout {
-		timeout = maxRPCTimeout
-		testing.ContextLog(ctx, "Using max timeout ", timeout)
-	}
 	if dl, ok := ctx.Deadline(); ok {
 		newTimeout := dl.Sub(time.Now())
 		if newTimeout < timeout {
