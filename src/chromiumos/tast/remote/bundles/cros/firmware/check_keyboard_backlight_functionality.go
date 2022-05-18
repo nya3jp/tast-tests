@@ -7,6 +7,7 @@ package firmware
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/services/cros/baserpc"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -31,7 +33,7 @@ func init() {
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.ui.ChromeUIService"},
+		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.ui.ScreenRecorderService", "tast.cros.baserpc.FaillogService"},
 		HardwareDeps: hwdep.D(
 			hwdep.ChromeEC(),
 			hwdep.KeyboardBacklight(),
@@ -55,14 +57,57 @@ func CheckKeyboardBacklightFunctionality(ctx context.Context, s *testing.State) 
 		s.Fatal("Failed to get config: ", err)
 	}
 
+	// Perform a hard reset on DUT to ensure removal of any
+	// old settings that might potentially have an impact on
+	// this test.
+	if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+		s.Fatal("Failed to cold reset DUT at the beginning of test: ", err)
+	}
+
 	if err := h.RequireRPCClient(ctx); err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 
-	serviceClient := pb.NewChromeUIServiceClient(h.RPCClient.Conn)
-	if _, err := serviceClient.EnsureLoginScreen(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to restart ui at login screen: ", err)
+	// Temporary sleep would help prevent the streaming RPC call error.
+	s.Log("Sleeping for a few seconds before starting a new Chrome")
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		s.Fatal("Failed to sleep for a few seconds: ", err)
 	}
+
+	s.Log("Starting a new Chrome")
+	chromeRequest := pb.NewRequest{
+		LoginMode: pb.LoginMode_LOGIN_MODE_GUEST_LOGIN,
+	}
+	chromeService := pb.NewChromeServiceClient(h.RPCClient.Conn)
+	if _, err := chromeService.New(ctx, &chromeRequest); err != nil {
+		s.Fatal("Failed to create new Chrome at login: ", err)
+	}
+	defer chromeService.Close(ctx, &empty.Empty{})
+
+	// Create a temporary directory to save screen recording.
+	faillogService := baserpc.NewFaillogServiceClient(h.RPCClient.Conn)
+	outDir, err := faillogService.Create(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed to create a new directory for faillog: ", err)
+	}
+	filePath := filepath.Join(outDir.Path, "kblightRecord.webm")
+
+	s.Log("Screen recorder started")
+	startRequest := pb.StartRequest{
+		FileName: filePath,
+	}
+	screenRecorder := pb.NewScreenRecorderServiceClient(h.RPCClient.Conn)
+	if _, err := screenRecorder.Start(ctx, &startRequest); err != nil {
+		s.Fatal("Failed to start recording: ", err)
+	}
+	defer func() {
+		res, err := screenRecorder.Stop(ctx, &empty.Empty{})
+		if err != nil {
+			s.Log("Unable to save the recording: ", err)
+		} else {
+			s.Logf("Screen recording saved to %s", res.FileName)
+		}
+	}()
 
 	// Current hardware depencies might miss out on DUTs that actually don't
 	// support keyboard backlight. "EC_KB_BL_EN" and "KB_BL_EN" appear to be
