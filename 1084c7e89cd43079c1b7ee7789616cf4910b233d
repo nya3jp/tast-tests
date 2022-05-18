@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "532a4085_b6f2ce89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T04:16:19Z",
+      "side": 1,
+      "message": "It is up to the specific cleanup tasks. If your case, cl.Close seems to be the only one. Normally, a close should not take more than a few seconds.",
+      "parentUuid": "0b27ce29_b6f8def3",
+      "range": {
+        "startLine": 75,
+        "startChar": 44,
+        "endLine": 75,
+        "endChar": 55
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aaf5b327_6ad884b5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "There\u0027s no ideal way that won\u0027t interact with hps internally to do this, which we don\u0027t really want, therefore hps team gave a estimate number of how long this will take for hps sensor to function as expected.",
       "parentUuid": "007f598c_8e83d0c4",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5098c1d5_79d6dd0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T04:16:19Z",
+      "side": 1,
+      "message": "Is there a UI change that you can wait on?",
+      "parentUuid": "1659b777_24378fb0",
       "range": {
         "startLine": 105,
         "startChar": 1,
