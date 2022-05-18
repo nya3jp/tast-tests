@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887766c7_1fcf035b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T01:59:57Z",
+      "side": 1,
+      "message": "Is this long cleanup time needed?",
+      "range": {
+        "startLine": 75,
+        "startChar": 44,
+        "endLine": 75,
+        "endChar": 55
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf5b327_6ad884b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T01:59:57Z",
+      "side": 1,
+      "message": "Is there any other way to avoid the use of `testing.Sleep`? like checking some conditions.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "007f598c_8e83d0c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T01:59:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5de562d_ebfa0e44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T01:59:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a11e72_6102555b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T01:59:57Z",
+      "side": 1,
+      "message": "better to check `if err!\u003d nil`",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
