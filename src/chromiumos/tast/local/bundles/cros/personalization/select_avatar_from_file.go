@@ -49,7 +49,7 @@ func selectFromGoogleDrive(ctx context.Context, ui *uiauto.Context) error {
 	googleDriveText := nodewith.Role(role.StaticText).Name(googleDrive)
 	newAvatarIcon := nodewith.Role(role.StaticText).Name(newAvatarFileName)
 	OpenButton := nodewith.Role(role.Button).NameContaining("Open").HasClass("ok primary")
-	selectedAvatarOption := nodewith.Role(role.ListBoxOption).NameContaining(existingPhotoFromText).HasClass("selected-last-external-image")
+	selectedAvatarOption := nodewith.Role(role.ListBoxOption).NameContaining(existingPhotoFromText).HasClass("tast-selected-last-external-image")
 
 	return uiauto.Combine("choose a file from Google Drive",
 		ui.WaitUntilExists(chooseFromFileButton),
@@ -66,7 +66,7 @@ func selectFromGoogleDrive(ctx context.Context, ui *uiauto.Context) error {
 
 func selectProfileImage(ctx context.Context, ui *uiauto.Context) error {
 	googleProfilePhotoContainer := nodewith.Role(role.ListBoxOption).Name(googleProfilePhoto).HasClass("image-container")
-	selectedAvatarOption := nodewith.Role(role.ListBoxOption).NameContaining(googleProfilePhoto).HasClass("selected-profile-image")
+	selectedAvatarOption := nodewith.Role(role.ListBoxOption).NameContaining(googleProfilePhoto).HasClass("tast-selected-profile-image")
 
 	return uiauto.Combine("change avatar back to Google profile photo",
 		ui.WaitUntilExists(googleProfilePhotoContainer),
