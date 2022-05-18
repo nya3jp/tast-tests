@@ -10,6 +10,8 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/testing"
 )
 
@@ -25,13 +27,28 @@ func init() {
 	})
 }
 
-func MonitorBluetoothEvent(ctx context.Context, s *testing.State) {
+func initiateBluetoothStatus(ctx context.Context, s *testing.State) error {
 	// Set the power off first.
 	b, err := testexec.CommandContext(ctx, "bluetoothctl", "power", "off").Output(testexec.DumpLogOnError)
 	if err != nil {
-		s.Fatal("Failed to trigger Bluetooth power off event: ", err)
+		return errors.Wrapf(err, "failed to trigger Bluetooth power off: %s", string(b))
 	}
 	s.Log("bluetoothctl: ", strings.Trim(string(b), "\n"))
+
+	return nil
+}
+
+func MonitorBluetoothEvent(ctx context.Context, s *testing.State) {
+	if adapters, err := bluetooth.Adapters(ctx); err != nil {
+		s.Fatal("Failed to get bluetooth adapters, err: ", err)
+	} else if len(adapters) == 0 {
+		// If D-Bus report no adapters, skip the test.
+		return
+	}
+
+	if err := initiateBluetoothStatus(ctx, s); err != nil {
+		s.Fatal("Failed to initiate bluetooth status, err: ", err)
+	}
 
 	// Run monitor command in background.
 	var stdoutBuf, stderrBuf bytes.Buffer
@@ -44,7 +61,7 @@ func MonitorBluetoothEvent(ctx context.Context, s *testing.State) {
 	}
 
 	// Trigger Bluetooth event.
-	b, err = testexec.CommandContext(ctx, "bluetoothctl", "power", "on").Output(testexec.DumpLogOnError)
+	b, err := testexec.CommandContext(ctx, "bluetoothctl", "power", "on").Output(testexec.DumpLogOnError)
 	if err != nil {
 		if cmdErr := monitorCmd.Kill(); cmdErr != nil {
 			s.Log(ctx, "Error killing healthd monitor command: ", cmdErr)
