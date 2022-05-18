@@ -7,6 +7,7 @@ package testutil
 
 import (
 	"context"
+	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -125,6 +126,9 @@ func SetupTestApp(ctx context.Context, s *testing.State, testFunc PerformTestFun
 			captureScreenshot(ctx, s, cr, "failed-launch-test.png")
 		}
 	}(cleanupCtx)
+
+	// Clear input overlay files.
+	defer os.RemoveAll("/home/chronos/user/google_gio")
 
 	act, err := arc.NewActivity(a, pkg, cls)
 	if err != nil {
