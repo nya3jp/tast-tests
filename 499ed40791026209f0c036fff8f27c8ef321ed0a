@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69687d41_a2c30adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-18T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72bc1ab3_6d3db264",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23d6f0ba_9e761558",
@@ -135,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be20e28_4a35cf97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-18T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e8d7e4a_6603beff",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ab8b84e_0d3b107e",
@@ -148,6 +196,30 @@
       "writtenOn": "2022-05-18T18:49:44Z",
       "side": 1,
       "message": "Replace it with s.Error so that tests proceed further in case this fails",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f7059a_e9b5eadd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-18T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab8b84e_0d3b107e",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -229,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "766721a7_6f330d93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-18T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f67b22e0_a7c8bb5c",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 52
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f2ed663_17a74cd9",
@@ -242,6 +338,30 @@
       "writtenOn": "2022-05-18T18:49:44Z",
       "side": 1,
       "message": "Same as above Lower Case and all below cases as well.",
+      "range": {
+        "startLine": 93,
+        "startChar": 28,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "069bebcc_3e6b74e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-18T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f2ed663_17a74cd9",
       "range": {
         "startLine": 93,
         "startChar": 28,
@@ -277,6 +397,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64bd4930_39c5621c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-18T21:19:45Z",
+      "side": 1,
+      "message": "I forgot to mention this, but because each test carries over from the last, it assumes that the screen is at the initial input overlay screen - is it fine if I relaunch the activity here (and wherever `s.Error` is called) after an error, since the test is supposed to keep going?",
+      "parentUuid": "d3378be9_11311ae0",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 63
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "266829c6_348620c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
         "patchSetId": 14
@@ -288,6 +432,30 @@
       "writtenOn": "2022-05-18T18:49:44Z",
       "side": 1,
       "message": "Replace it with s.Fatal as test shouldn\u0027t proceed further (Next CUJ depends on this CUJ).",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 62
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5c7383_1bdaac2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-18T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "266829c6_348620c7",
       "range": {
         "startLine": 121,
         "startChar": 0,
@@ -311,6 +479,30 @@
       "writtenOn": "2022-05-17T07:39:32Z",
       "side": 1,
       "message": "This is named testutil, but IIUC this is specific to GIO and not common to other arc++ tests. Hence can we have the testutil and tests of GIO under folder gio.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f470b065_148381c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/testutil/testutil.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-18T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5221b0e0_99aa6cdb",
       "range": {
         "startLine": 6,
         "startChar": 8,
