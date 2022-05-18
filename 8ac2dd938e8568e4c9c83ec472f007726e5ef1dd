@@ -18,6 +18,299 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67736d57_2982fed2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "sorry for slow review, this is pretty big CL. Here are few more comments.",
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a8cf20_94db3f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "nit: same: move inside function",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b8267b_ee406382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "nit: maybe inline constants that used just once to don\u0027t clutter package namespace",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9bac4e4_e1ac3f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "can this be moved inside HDRnetPerf?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200c22fe_128b7f2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "nit: this is used just once, maybe inline it instead?\n\nsame for other constants",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 23
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f351eb8e_d42ebebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "nit: if it\u0027s possible that ProfilerCtx will be nil, then Start() should return error as well",
+      "range": {
+        "startLine": 222,
+        "startChar": 7,
+        "endLine": 222,
+        "endChar": 18
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149261c1_80d3cf6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "nit: usually cancel() callback is running in the defer statement.",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 11
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb8e950_769190a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "nit: same: don\u0027t ignore error",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 20
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b865f71_ec71da67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "nit: don\u0027t ignore returned error",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 11
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a28ccb9_e0e0472b",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "I think I already did a similar comment about jsonInput being nil",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 23
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b68230d0_a682d702",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "if you was not able to overwrite and wanted to, don\u0027t you think you should return error here?",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 54
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a43e8f52_ef0c22a0",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "Don\u0027t use log package. Instead use testing.ContextLog",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e53afe6_31bbac4a",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T11:39:51Z",
+      "side": 1,
+      "message": "this might return error",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 12
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51757bf7_91c3a27f",
