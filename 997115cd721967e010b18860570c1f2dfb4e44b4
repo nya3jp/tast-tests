@@ -177,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc0409b7_086feba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-18T22:24:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f89d21a_47ba8108",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38cfb648_fc28ab73",
@@ -285,6 +303,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8be7a575_45ac9a59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-18T22:24:02Z",
+      "side": 1,
+      "message": "Interesting. Is it common to restart shill in between tests to reset the state? Or would you recommend against that?",
+      "parentUuid": "633dd651_49739120",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d9dee8e_05338d5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
         "patchSetId": 1
@@ -296,6 +332,24 @@
       "writtenOn": "2022-05-18T18:31:08Z",
       "side": 1,
       "message": "These are all very similar, maybe add helper for testing properties, e,g, \n```\nverifyStringProperty(managerProps, \n    shillconst.ManagerPropertyCheckPortalList, \n    shillconst.ManagerCheckPortalListNone)\n```",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2816b780_b48d209d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-18T22:24:02Z",
+      "side": 1,
+      "message": "Done. After taking a second look at it, I could probably put all the properties to test against in an anonymous struct and then just loop through. LMK if that sounds like a good idea",
+      "parentUuid": "4d9dee8e_05338d5a",
       "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
