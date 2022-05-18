@@ -17,13 +17,15 @@ import (
 	"chromiumos/tast/local/input"
 )
 
+var personalizationHubWindow = nodewith.NameContaining("Personalization").Role(role.Window).First()
+
 // OpenPersonalizationHub returns an action to open the personalization app.
 func OpenPersonalizationHub(ui *uiauto.Context) uiauto.Action {
 	setPersonalizationMenu := nodewith.Name("Personalize").Role(role.MenuItem)
 	return ui.RetryUntil(uiauto.Combine("open personalization hub",
 		ui.MouseClickAtLocation(1, coords.Point{X: rand.Intn(200), Y: rand.Intn(200)}), // right click a random pixel
 		ui.WithInterval(300*time.Millisecond).LeftClickUntil(setPersonalizationMenu, ui.Gone(setPersonalizationMenu))),
-		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()))
+		ui.Exists(personalizationHubWindow))
 }
 
 // OpenWallpaperSubpage returns an action to open the wallpaper subpage.
@@ -55,6 +57,14 @@ func openSubpage(subpageButton string, ui *uiauto.Context) uiauto.Action {
 		ui.LeftClick(changeSubpageButton))
 }
 
+// ClosePersonalizationHub returns an action to close the personalization hub by clicking on Close button.
+func ClosePersonalizationHub(ui *uiauto.Context) uiauto.Action {
+	closeButton := nodewith.Role(role.Button).Name("Close")
+	return uiauto.Combine("close Personalization Hub",
+		ui.LeftClick(closeButton),
+		ui.WaitUntilGone(personalizationHubWindow))
+}
+
 // ToggleLightMode returns an action to enable light color mode.
 // Reference: aria-label="$i18n{ariaLabelEnableLightColorMode}"
 // ash/webui/personalization_app/resources/trusted/personalization_theme_element.html
@@ -83,7 +93,7 @@ func NavigateHome(ui *uiauto.Context) uiauto.Action {
 	return uiauto.Combine("click home button",
 		ui.WaitUntilExists(homeButton),
 		ui.LeftClick(homeButton),
-		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()))
+		ui.Exists(personalizationHubWindow))
 }
 
 // NavigateBreadcrumb returns an action to navigate to a desired page using breadcrumb.
