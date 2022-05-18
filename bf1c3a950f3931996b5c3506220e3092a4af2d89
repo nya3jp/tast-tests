@@ -16,6 +16,23 @@
       "message": "lgtm\n\nThis would help me to land the finch test config CL:3590524. Thanks.",
       "revId": "bf1c3a950f3931996b5c3506220e3092a4af2d89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d21fd168_6d8040b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-18T23:59:01Z",
+      "side": 1,
+      "message": "David didn\u0027t reply within a day, so skipping shadow review.",
+      "revId": "bf1c3a950f3931996b5c3506220e3092a4af2d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
