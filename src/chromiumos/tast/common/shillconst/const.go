@@ -114,20 +114,21 @@ const (
 // Service property names defined in dbus-constants.h .
 const (
 	// Service property names.
-	ServicePropertyConnectable    = "Connectable"
-	ServicePropertyDevice         = "Device"
-	ServicePropertyError          = "Error"
-	ServicePropertyName           = "Name"
-	ServicePropertyType           = "Type"
-	ServicePropertyIsConnected    = "IsConnected"
-	ServicePropertyMode           = "Mode"
-	ServicePropertyState          = "State"
-	ServicePropertyStaticIPConfig = "StaticIPConfig"
-	ServicePropertyStrength       = "Strength"
-	ServicePropertyVisible        = "Visible"
-	ServicePropertyAutoConnect    = "AutoConnect"
-	ServicePropertyGUID           = "GUID"
-	ServicePropertyProvider       = "Provider"
+	ServicePropertyConnectable       = "Connectable"
+	ServicePropertyDevice            = "Device"
+	ServicePropertyError             = "Error"
+	ServicePropertyName              = "Name"
+	ServicePropertyType              = "Type"
+	ServicePropertyIsConnected       = "IsConnected"
+	ServicePropertyMode              = "Mode"
+	ServicePropertyState             = "State"
+	ServicePropertyStaticIPConfig    = "StaticIPConfig"
+	ServicePropertyStrength          = "Strength"
+	ServicePropertyVisible           = "Visible"
+	ServicePropertyAutoConnect       = "AutoConnect"
+	ServicePropertyGUID              = "GUID"
+	ServicePropertyProvider          = "Provider"
+	ServicePropertyEphemeralPriority = "EphemeralPriority"
 
 	// Cellular service property names.
 	ServicePropertyCellularICCID         = "Cellular.ICCID"
@@ -284,8 +285,9 @@ const (
 // Device background scan methods.
 // The values are from wpa_supplicant + "none" for no background scan.
 // See:
-//   https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
-//   platform2/shill/supplicant/wpa_supplicant.cc
+//
+//	https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+//	platform2/shill/supplicant/wpa_supplicant.cc
 const (
 	DeviceBgscanMethodSimple = "simple"
 	DeviceBgscanMethodLearn  = "learn"
