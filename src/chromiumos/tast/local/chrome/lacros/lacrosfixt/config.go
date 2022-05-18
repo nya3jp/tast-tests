@@ -169,7 +169,7 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 	case lacros.LacrosPrimary:
 		opts = append(opts, chrome.EnableFeatures("LacrosPrimary"))
 	case lacros.LacrosOnly:
-		return nil, errors.New("options for LacrosOnly not implemented")
+		opts = append(opts, chrome.EnableFeatures("LacrosPrimary", "LacrosOnly"))
 	}
 
 	if !cfg.keepAlive {
