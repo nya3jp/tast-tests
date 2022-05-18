@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37759f28_066f2a7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T22:51:46Z",
+      "side": 1,
+      "message": "Now I have added a Stainless link on the bug.",
+      "parentUuid": "d67184dd_eee87e6c",
+      "revId": "1153a9bf05dd4f73af7fef52677f6c97df34d885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e16e9a03_f31d740d",
@@ -131,6 +149,30 @@
       "side": 1,
       "message": "When you download a dump from chrome://webrtc-internals, these are `\"getUserMedia\"`, `\"PeerConnections\"`, and `\"UserAgent\"`. You can easily verify this yourself if you look up ui.MeetCUJ.* test results on Stainless and download webrtc-internals.json.",
       "parentUuid": "cc6cac76_d634e60a",
+      "range": {
+        "startLine": 12,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 65
+      },
+      "revId": "1153a9bf05dd4f73af7fef52677f6c97df34d885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5544e0bc_ca2544f6",
+        "filename": "src/chromiumos/tast/local/webrtcinternals/dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T22:51:46Z",
+      "side": 1,
+      "message": "For your convenience, now I have added a webrtc-internals.json example Stainless link on the bug.",
+      "parentUuid": "a3ca586b_3ab36ee7",
       "range": {
         "startLine": 12,
         "startChar": 50,
