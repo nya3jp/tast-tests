@@ -22,6 +22,30 @@
       },
       "revId": "d3862376d80e4e012239f1a0893f2e2fcf692f2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "628b4f1a_b883c504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-18T01:43:57Z",
+      "side": 1,
+      "message": "Revised to \"after each test\".",
+      "parentUuid": "3886fe8c_89cffcca",
+      "range": {
+        "startLine": 452,
+        "startChar": 32,
+        "endLine": 452,
+        "endChar": 74
+      },
+      "revId": "d3862376d80e4e012239f1a0893f2e2fcf692f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
