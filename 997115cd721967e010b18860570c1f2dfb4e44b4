@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aaac5c0c_003ad404",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-18T23:12:59Z",
+      "side": 1,
+      "message": "Sorry, that wasn\u0027t clear. Let\u0027s move this section below the `// Manager property names` section.",
+      "parentUuid": "a1e44d66_9a784837",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf2df5ea_dbd5c513",
         "filename": "src/chromiumos/tast/common/shillconst/const.go",
         "patchSetId": 1
@@ -138,6 +156,24 @@
       "writtenOn": "2022-05-18T18:31:08Z",
       "side": 1,
       "message": "Same with service properties, just place the comment above the properties like for \u0027EAP service property names\u0027.",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134d5b38_fbd51e32",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-18T23:12:59Z",
+      "side": 1,
+      "message": "This is fine.",
+      "parentUuid": "cf2df5ea_dbd5c513",
       "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -321,6 +357,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86a5ec00_64f3b2b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-18T23:12:59Z",
+      "side": 1,
+      "message": "Let\u0027s avoid restarting Shill, it\u0027s slow and risky. If we don\u0027t clear these, let\u0027s not test them for \u0027online\u0027.",
+      "parentUuid": "8be7a575_45ac9a59",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d9dee8e_05338d5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
         "patchSetId": 1
@@ -350,6 +404,24 @@
       "side": 1,
       "message": "Done. After taking a second look at it, I could probably put all the properties to test against in an anonymous struct and then just loop through. LMK if that sounds like a good idea",
       "parentUuid": "4d9dee8e_05338d5a",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3712a7_8c60bb2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-18T23:12:59Z",
+      "side": 1,
+      "message": "I think that eventually we will pass them in as test parameters. If you want to get a head start on that, you can look at diag_fail_dns_resolver_present.go for an example.",
+      "parentUuid": "2816b780_b48d209d",
       "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
