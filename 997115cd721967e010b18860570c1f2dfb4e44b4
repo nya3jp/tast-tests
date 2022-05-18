@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd419f3_1d77f7c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-18T19:38:03Z",
+      "side": 1,
+      "message": "It\u0027s always helpful to have a baseline.\nAre we not clearing them on a successful result?\nIf not, we can modify the test to just check the State for now, then add other properties for non online states later.",
+      "parentUuid": "30f711bf_ede807b9",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "452218ea_8dd4c0a1",
