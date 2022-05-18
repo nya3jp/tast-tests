@@ -22,6 +22,30 @@
       },
       "revId": "1d48602d9ebbdcd5a341be54de659acc82bd19e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d858943f_bccf4485",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-18T16:12:52Z",
+      "side": 1,
+      "message": "I think it corresponds to the definition \"to bring together and order in an appropriate or effective way\" here:\nhttps://www.merriam-webster.com/dictionary/marshal\nThe word is listed as \"marshal\" with \"variants: or less commonly marshall\"",
+      "parentUuid": "0ba37aed_3e74dfb0",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "1d48602d9ebbdcd5a341be54de659acc82bd19e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
