@@ -234,6 +234,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d35bab56_de8aafc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-18T21:00:54Z",
+      "side": 1,
+      "message": "oh I just realized that it shows `state\u003d{\"offscreen\": true}` for the page the button is not in. Will update if I can check this info before click on the button.\n`node id\u003d722 role\u003dtoggleButton state\u003d{\"focusable\":true,\"offscreen\":true} parentID\u003d769 childIds\u003d[] name\u003dToggle Dark theme. Dark theme is off className\u003dFeaturePodIconButton`",
+      "parentUuid": "b03eb832_edfe4cae",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef9eec31_4b8a69aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
         "patchSetId": 1
