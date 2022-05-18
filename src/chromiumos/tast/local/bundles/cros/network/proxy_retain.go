@@ -6,20 +6,15 @@ package network
 
 import (
 	"context"
-	"fmt"
+	"reflect"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/network/proxysettings"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
-	"chromiumos/tast/local/chrome/uiauto/quicksettings"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -87,25 +82,27 @@ type proxyRetainResource struct {
 	manifestKey string
 }
 
-// proxyValues defines the proxy UI text box field and its value.
-type proxyValues map[string]struct {
-	// node is the proxy UI node on the proxy section. (e.g., "nodewith.Name("HTTP Proxy - Host").Role(role.TextField)")
-	node *nodewith.Finder
-	// value is the expected value of the proxy UI text box field. (e.g., "localhost")
-	value string
-}
-
 // ProxyRetain verifies proxy settings will be retained.
 func ProxyRetain(ctx context.Context, s *testing.State) {
 	param := s.Param().(*proxyRetainTestParam)
+
 	// proxyValues holds proxy hosts and ports for http, https and socks.
-	proxyValues := proxyValues{
-		"http host":  {ossettings.HTTPHostTextField, "localhost"},
-		"http port":  {ossettings.HTTPPortTextField, "123"},
-		"https host": {ossettings.HTTPSHostTextField, "localhost"},
-		"https port": {ossettings.HTTPSPortTextField, "456"},
-		"socks host": {ossettings.SocksHostTextField, "socks5://localhost"},
-		"socks port": {ossettings.SocksPortTextField, "8080"},
+	proxyValues := []*proxysettings.Config{
+		{
+			Protocol: proxysettings.HTTP,
+			Host:     "localhost",
+			Port:     "123",
+		},
+		{
+			Protocol: proxysettings.HTTPS,
+			Host:     "localhost",
+			Port:     "456",
+		},
+		{
+			Protocol: proxysettings.Socks,
+			Host:     "socks5://localhost",
+			Port:     "8080",
+		},
 	}
 
 	kb, err := input.Keyboard(ctx)
@@ -134,11 +131,11 @@ func ProxyRetain(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close Chrome instance: ", err)
 	}
 
-	if err := param.test.preparationAtLoginScreen(ctx, resources, proxyValues); err != nil {
+	if err := param.test.preparationAtLoginScreen(ctx, cr, resources, proxyValues); err != nil {
 		s.Fatalf("Failed to set proxy at login screen for test %q: %v", param.description, err)
 	}
 
-	if err := param.test.preparationAfterLoggedIn(ctx, resources, proxyValues); err != nil {
+	if err := param.test.preparationAfterLoggedIn(ctx, cr, resources, proxyValues); err != nil {
 		s.Fatalf("Failed to set proxy after logged in for test %q: %v", param.description, err)
 	}
 
@@ -154,18 +151,20 @@ func ProxyRetain(ctx context.Context, s *testing.State) {
 			}
 			defer cr.Close(cleanupCtx)
 
-			if err := launchProxySection(ctx, resources); err != nil {
-				s.Fatal("Failed to launch proxy section: ", err)
+			ps, err := proxysettings.Collect(ctx, resources.tconn)
+			if err != nil {
+				s.Fatal("Failed to launch proxy settings instance: ", err)
 			}
-			defer apps.Close(cleanupCtx, resources.tconn, apps.Settings.ID)
-			defer faillog.DumpUITreeOnErrorToFile(cleanupCtx, s.OutDir(), s.HasError, resources.tconn, "before_close_ossettings_ui_dump")
+			defer ps.Close(cleanupCtx, kb)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "before_close_ossettings_ui_dump")
 
-			if err := expandProxyOption(ctx, resources); err != nil {
-				s.Fatal("Failed to expand proxy option: ", err)
-			}
-
-			if err := verifyProxy(ctx, resources.ui, proxyValues); err != nil {
-				s.Fatal("Failed to complete test: ", err)
+			// Verify proxy values.
+			for _, pv := range proxyValues {
+				if resultPv, err := ps.Content(ctx, pv); err != nil {
+					s.Fatalf("Failed to get proxy value for %q: %v", pv.HostName(), err)
+				} else if !reflect.DeepEqual(resultPv, pv) {
+					s.Fatalf("Failed to verify proxy value for %q: got %q, want %q", pv.HostName(), resultPv, pv)
+				}
 			}
 		}()
 	}
@@ -217,106 +216,18 @@ func startChrome(ctx context.Context, res *proxyRetainResource, isNoLogin, isKee
 	return cr, nil
 }
 
-// launchProxySection launches a proxy section via Quick Settings.
-// The Quick Settings can launch the current network setup page directly,
-// without knowing which wifi and / or ethernet is currently connecting, therefore, the OS Settings wasn't used.
-func launchProxySection(ctx context.Context, res *proxyRetainResource) (retErr error) {
-	if err := quicksettings.NavigateToNetworkDetailedView(ctx, res.tconn, false); err != nil {
-		return errors.Wrap(err, "failed to navigate to network detailed view")
-	}
-
-	if err := quicksettings.OpenNetworkSettings(ctx, res.tconn, false); err != nil {
-		return errors.Wrap(err, "failed to open network settings")
-	}
-	return nil
-}
-
-// setupProxy sets up proxy values.
-func setupProxy(ctx context.Context, res *proxyRetainResource, pv proxyValues) (retErr error) {
-	if err := uiauto.Combine("setup proxy to 'Manual proxy configuration'",
-		res.ui.LeftClickUntil(ossettings.ProxyDropDownMenu, res.ui.Exists(ossettings.ManualProxyOption)),
-		res.ui.LeftClick(ossettings.ManualProxyOption),
-		res.ui.WaitUntilGone(ossettings.ManualProxyOption),
-	)(ctx); err != nil {
-		return err
-	}
-
-	for fieldName, content := range pv {
-		testing.ContextLogf(ctx, "Setting proxy value %q to field %q", content.value, fieldName)
-		if err := uiauto.Combine(fmt.Sprintf("replace and type text %q to field %q", content.value, fieldName),
-			res.ui.EnsureFocused(content.node),
-			res.kb.AccelAction("ctrl+a"),
-			res.kb.AccelAction("backspace"),
-			res.kb.TypeAction(content.value),
-		)(ctx); err != nil {
-			return err
-		}
-	}
-
-	saveButton := ossettings.WindowFinder.HasClass("action-button").Name("Save").Role(role.Button)
-	return uiauto.Combine("save proxy settings",
-		// Save changes.
-		res.ui.MakeVisible(saveButton),
-		res.ui.LeftClick(saveButton),
-	)(ctx)
-}
-
-// expandProxyOption expands the proxy option on Settings.
-// Settings app must be launched and direct to internet page in advance.
-func expandProxyOption(ctx context.Context, res *proxyRetainResource) error {
-	if err := res.ui.WaitUntilExists(ossettings.ShowProxySettingsTab)(ctx); err != nil {
-		return errors.Wrap(err, "failed to find 'Shared networks' toggle button")
-	}
-
-	if err := uiauto.Combine("expand 'Proxy' section",
-		res.ui.LeftClick(ossettings.ShowProxySettingsTab),
-		res.ui.WaitForLocation(ossettings.SharedNetworksToggleButton),
-	)(ctx); err != nil {
-		return err
-	}
-
-	if toggleInfo, err := res.ui.Info(ctx, ossettings.SharedNetworksToggleButton); err != nil {
-		return errors.Wrap(err, "failed to get toggle button info")
-	} else if toggleInfo.Checked == checked.True {
-		testing.ContextLog(ctx, "'Allow proxies for shared networks' is already turned on")
-		return nil
-	}
-
-	return uiauto.Combine("turn on 'Allow proxies for shared networks' option",
-		res.ui.LeftClick(ossettings.SharedNetworksToggleButton),
-		res.ui.LeftClick(ossettings.ConfirmButton),
-	)(ctx)
-}
-
-// verifyProxy verifies proxy values.
-func verifyProxy(ctx context.Context, ui *uiauto.Context, pv proxyValues) (retErr error) {
-	for fieldName, content := range pv {
-		testing.ContextLogf(ctx, "Verify if the value of the field %q is %q", fieldName, content.value)
-		if err := ui.EnsureFocused(content.node)(ctx); err != nil {
-			return errors.Wrap(err, "failed to ensure node exists and is shown on the screen")
-		}
-
-		if info, err := ui.Info(ctx, content.node); err != nil {
-			return errors.Wrap(err, "failed to get node info")
-		} else if info.Value != content.value {
-			return errors.Errorf("expected value %q for field %q, but got %q", content.value, fieldName, info.Value)
-		}
-	}
-	return nil
-}
-
 type proxyRetainTest interface {
 	// preparationAtLoginScreen prepares the test environment at the login screen.
-	preparationAtLoginScreen(context.Context, *proxyRetainResource, proxyValues) error
+	preparationAtLoginScreen(context.Context, *chrome.Chrome, *proxyRetainResource, []*proxysettings.Config) error
 
 	// preparationAfterLoggedIn prepares the test environment after logged in.
-	preparationAfterLoggedIn(context.Context, *proxyRetainResource, proxyValues) error
+	preparationAfterLoggedIn(context.Context, *chrome.Chrome, *proxyRetainResource, []*proxysettings.Config) error
 }
 
 // retainAfterLoginTest is a test case structure for the proxy retain after login.
 type retainAfterLoginTest struct{}
 
-func (t *retainAfterLoginTest) preparationAtLoginScreen(ctx context.Context, res *proxyRetainResource, pv proxyValues) (retErr error) {
+func (t *retainAfterLoginTest) preparationAtLoginScreen(ctx context.Context, cr *chrome.Chrome, res *proxyRetainResource, pvs []*proxysettings.Config) (retErr error) {
 	testing.ContextLog(ctx, "Setting up proxy at login screen")
 
 	cleanupCtx := ctx
@@ -329,30 +240,34 @@ func (t *retainAfterLoginTest) preparationAtLoginScreen(ctx context.Context, res
 	}
 	defer cr.Close(cleanupCtx)
 
-	if err := launchProxySection(ctx, res); err != nil {
-		return errors.Wrap(err, "failed to launch proxy section")
+	ps, err := proxysettings.CollectFromSigninScreen(ctx, res.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to create proxy settings instance")
 	}
-	defer apps.Close(cleanupCtx, res.tconn, apps.Settings.ID)
+	defer ps.Close(cleanupCtx, res.kb)
 	defer faillog.DumpUITreeOnErrorToFile(cleanupCtx, res.outDir, func() bool { return retErr != nil }, res.tconn, "before_close_ossettings_ui_dump")
 
-	if err := setupProxy(ctx, res, pv); err != nil {
-		return errors.Wrap(err, "failed to setup proxy")
+	for _, pv := range pvs {
+		if err := ps.Setup(ctx, cr, res.kb, pv); err != nil {
+			return errors.Wrapf(err, "failed to set proxy fields for %s", pv.HostName())
+		}
 	}
+
 	return nil
 }
 
-func (t *retainAfterLoginTest) preparationAfterLoggedIn(ctx context.Context, res *proxyRetainResource, pv proxyValues) error {
+func (t *retainAfterLoginTest) preparationAfterLoggedIn(ctx context.Context, cr *chrome.Chrome, res *proxyRetainResource, pvs []*proxysettings.Config) error {
 	return nil
 }
 
 // retainAcrossUsersTest is a test case structure for the proxy retain across users.
 type retainAcrossUsersTest struct{}
 
-func (t *retainAcrossUsersTest) preparationAtLoginScreen(ctx context.Context, res *proxyRetainResource, pv proxyValues) error {
+func (t *retainAcrossUsersTest) preparationAtLoginScreen(ctx context.Context, cr *chrome.Chrome, res *proxyRetainResource, pvs []*proxysettings.Config) error {
 	return nil
 }
 
-func (t *retainAcrossUsersTest) preparationAfterLoggedIn(ctx context.Context, res *proxyRetainResource, pv proxyValues) (retErr error) {
+func (t *retainAcrossUsersTest) preparationAfterLoggedIn(ctx context.Context, cr *chrome.Chrome, res *proxyRetainResource, pvs []*proxysettings.Config) (retErr error) {
 	testing.ContextLog(ctx, "Setting up proxy after logged in")
 
 	cleanupCtx := ctx
@@ -365,18 +280,18 @@ func (t *retainAcrossUsersTest) preparationAfterLoggedIn(ctx context.Context, re
 	}
 	defer cr.Close(cleanupCtx)
 
-	if err := launchProxySection(ctx, res); err != nil {
-		return errors.Wrap(err, "failed to launch proxy section")
+	ps, err := proxysettings.Collect(ctx, res.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to create proxy settings instance")
 	}
-	defer apps.Close(cleanupCtx, res.tconn, apps.Settings.ID)
+	defer ps.Close(cleanupCtx, res.kb)
 	defer faillog.DumpUITreeOnErrorToFile(cleanupCtx, res.outDir, func() bool { return retErr != nil }, res.tconn, "before_close_ossettings_ui_dump")
 
-	if err := expandProxyOption(ctx, res); err != nil {
-		return errors.Wrap(err, "failed to expand proxy option")
+	for _, pv := range pvs {
+		if err := ps.Setup(ctx, cr, res.kb, pv); err != nil {
+			return errors.Wrapf(err, "failed to set proxy fields for %s", pv.HostName())
+		}
 	}
 
-	if err := setupProxy(ctx, res, pv); err != nil {
-		return errors.Wrap(err, "failed to setup proxy")
-	}
 	return nil
 }
