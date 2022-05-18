@@ -114,6 +114,52 @@
       "message": "nit: extra space",
       "revId": "33f6bbb7e9686b0fc61c22c9a55865819c6db91c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f24e55f_4e7ed4cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-18T07:20:54Z",
+      "side": 1,
+      "message": "Do we need to pass this in as an arg? Maybe we should just pass in s.DataPath?",
+      "range": {
+        "startLine": 132,
+        "startChar": 36,
+        "endLine": 132,
+        "endChar": 81
+      },
+      "revId": "33f6bbb7e9686b0fc61c22c9a55865819c6db91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4adf0dd6_0d09d945",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-18T07:20:54Z",
+      "side": 1,
+      "message": "don\u0027t have to, but should we just do a normal chrome trace if perfetto cfg is not provided?",
+      "range": {
+        "startLine": 490,
+        "startChar": 21,
+        "endLine": 490,
+        "endChar": 41
+      },
+      "revId": "33f6bbb7e9686b0fc61c22c9a55865819c6db91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
