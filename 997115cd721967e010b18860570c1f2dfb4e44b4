@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09754c4_3c793ae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-18T19:38:40Z",
+      "side": 1,
+      "message": "The purpose is to define what the captive portal properties look like in a normal online state. Once we start adding tests that include our captive portal server and some pre-determined scenario for what the captive portal server will do, we can test against these same properties in shill to make sure they change as expected.",
+      "parentUuid": "30f711bf_ede807b9",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "452218ea_8dd4c0a1",
