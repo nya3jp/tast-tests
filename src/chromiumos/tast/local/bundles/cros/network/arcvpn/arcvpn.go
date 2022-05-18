@@ -40,6 +40,7 @@ func SetUpHostVPN(ctx, cleanupCtx context.Context) (*vpn.Connection, func() erro
 	config := vpn.Config{
 		Type:     vpn.TypeL2TPIPsecSwanctl,
 		AuthType: vpn.AuthTypePSK,
+		// Type: vpn.TypeWireGuard,
 	}
 	conn, err := vpn.NewConnection(ctx, config)
 	if err != nil {

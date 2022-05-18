@@ -97,6 +97,25 @@ func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (
 		args = []string{cfg.user, "-c", userCmd}
 	}
 
+	/// cassiewang START OUTPUT =================
+
+	// ifconfigCmd := "ifconfig"
+	// ifconfigOutput, ifconfigCmdErr := r.cmd.Output(ctx, ifconfigCmd)
+	// if ifconfigCmdErr != nil {
+	// 	return nil, ifconfigCmdErr
+	// }
+	// testing.ContextLogf(ctx, "ifconfig output: %s", ifconfigOutput)
+
+	// ipCmd := "ip"
+	// args = []string{"link", "list"}
+	// ipCmdOutput, ipCmdErr := r.cmd.Output(ctx, ipCmd, args...)
+	// if ipCmdErr != nil {
+	// 	return nil, ipCmdErr
+	// }
+	// testing.ContextLogf(ctx, "ip link list output: %s", ipCmdOutput)
+
+	/// cassiewang END OUTPUT =================
+
 	output, cmdErr := r.cmd.Output(ctx, command, args...)
 
 	// Save output regardless of command error.

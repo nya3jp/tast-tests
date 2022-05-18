@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	patchpanel "chromiumos/tast/local/network/patchpanel_client"
+	"chromiumos/tast/testing"
 )
 
 // Subset of bindRootDirectories that should be mounted writable.
@@ -89,6 +90,8 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 	n.netnsLifelineFD = fd
 	n.netnsName = resp.NetnsName
 
+	// testing.ContextLog(ctx, "===== cassiewang netns name: ", resp.NetnsName)
+
 	if err := n.makeChroot(ctx); err != nil {
 		return "", errors.Wrap(err, "failed making the chroot")
 	}
@@ -111,6 +114,8 @@ func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
 
 // Shutdown remove the chroot filesystem in which the VPN server was running.
 func (n *NetworkChroot) Shutdown(ctx context.Context) error {
+	testing.ContextLog(ctx, "==== cassiewang shutting down networkchroot ====")
+
 	// Delete the network namespace.
 	if n.netnsLifelineFD != nil {
 		n.netnsLifelineFD.Close()
