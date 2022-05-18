@@ -453,6 +453,31 @@ func ShelfItems(ctx context.Context, tconn *chrome.TestConn) ([]*ShelfItem, erro
 	return s, nil
 }
 
+// ShelfItemTitleFromID returns an array of shelf item titles corresponding to the given id array.
+func ShelfItemTitleFromID(ctx context.Context, tconn *chrome.TestConn, idArray []string) ([]string, error) {
+	s, err := ShelfItems(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get shelf item titles")
+	}
+
+	m := make(map[string]string)
+	for _, item := range s {
+		m[item.AppID] = item.Title
+	}
+
+	titleArray := make([]string, len(idArray))
+	for idx, id := range idArray {
+		title, found := m[id]
+		if !found {
+			return nil, errors.Errorf("failed to find the title for id %s", id)
+		}
+
+		titleArray[idx] = title
+	}
+
+	return titleArray, nil
+}
+
 func fetchShelfInfoForState(ctx context.Context, c *chrome.TestConn, state *ShelfState) (*ShelfInfo, error) {
 	var s ShelfInfo
 
