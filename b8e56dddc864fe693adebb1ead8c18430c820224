@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcf48e69_70b8c908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-18T15:32:11Z",
+      "side": 1,
+      "message": "Nope, I don\u0027t think so.\n\nThe problem is that when the number is small, it looks like integer, but when it\u0027s bigger than MAX_SAFE_INTEGER (2^53-1), it will be double.",
+      "parentUuid": "1e5d5de9_34995a53",
+      "range": {
+        "startLine": 71,
+        "startChar": 28,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9a399e6_09472240",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
         "patchSetId": 4
