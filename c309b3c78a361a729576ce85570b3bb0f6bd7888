@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ecac390_e8a6d7f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-18T16:56:30Z",
+      "side": 1,
+      "message": "Is this test any different than firmware.ECWakeOnCharge ?",
+      "revId": "c309b3c78a361a729576ce85570b3bb0f6bd7888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73a8ddc5_06456e69",
