@@ -22,6 +22,30 @@
       },
       "revId": "6232d05079327b97914711281a335c1dc1953644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07dfdc72_947b62c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/loginutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-05-18T15:04:53Z",
+      "side": 1,
+      "message": "It is not specific to Minecraft. It can be used to login to Skype as well.",
+      "parentUuid": "22258318_9f3dfd0e",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "6232d05079327b97914711281a335c1dc1953644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
