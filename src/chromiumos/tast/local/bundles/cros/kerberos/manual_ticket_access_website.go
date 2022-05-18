@@ -36,7 +36,7 @@ func init() {
 			"chromeos-commercial-identity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
 		Fixture:      fixture.FakeDMS,
 	})
@@ -104,10 +104,18 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 
 	// Check that title is 401 - unauthorized.
 	var websiteTitle string
-	if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
-		s.Error("Failed to get the website title: ", err)
-	}
-	if strings.Contains(websiteTitle, "401") {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
+			return errors.Wrap(err, "failed to get the website title")
+		}
+		if websiteTitle == "" || !strings.Contains(websiteTitle, "401") {
+			return errors.New("website title is still empty")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
 		s.Error("Website title did not contain error 401")
 	}
 
