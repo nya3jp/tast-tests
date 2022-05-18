@@ -3,6 +3,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1139521_ee5efc92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/cellularlabels/labels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-18T16:05:51Z",
+      "side": 1,
+      "message": "Can we have if (len(labels) \u003c\u003d0) { //skip }",
+      "range": {
+        "startLine": 17,
+        "startChar": 23,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "9b03d0f701ad1419f7b7e3007e0b295c2e63661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b83ed1b_7c31b416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/cellularlabels/labels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-18T16:05:51Z",
+      "side": 1,
+      "message": "nitpick: space after \"Labels: \",",
+      "range": {
+        "startLine": 18,
+        "startChar": 33,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "9b03d0f701ad1419f7b7e3007e0b295c2e63661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47acace_e208f088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/cellularlabels/labels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-18T16:05:51Z",
+      "side": 1,
+      "message": "s.Var(\"autotest_host_info_labels\") should be as string value to function, as passing testing.State will complain at pre checks for usage in subpackages.",
+      "revId": "9b03d0f701ad1419f7b7e3007e0b295c2e63661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9047c2_0a33fc63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-18T16:05:51Z",
+      "side": 1,
+      "message": "Can be atleast 4 minutes as cellular connection might take sometimes more than a minute(network searching timeout) and if any slot switches happening.",
+      "revId": "9b03d0f701ad1419f7b7e3007e0b295c2e63661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d0b52d7_8eb79754",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
         "patchSetId": 1
@@ -36,6 +116,46 @@
         "startChar": 0,
         "endLine": 46,
         "endChar": 48
+      },
+      "revId": "9b03d0f701ad1419f7b7e3007e0b295c2e63661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7679b091_f1ea1bc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-18T16:05:51Z",
+      "side": 1,
+      "message": "nitpick: space after \": \" to match other log lines.\ns.Log(\"ip-type:  \", ipType)",
+      "revId": "9b03d0f701ad1419f7b7e3007e0b295c2e63661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "983dabe0_19a31852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-18T16:05:51Z",
+      "side": 1,
+      "message": "Can we check for nil before calling to RunTestOnCellularInterface, or resulting error will make it fail here with right error message!",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 25
       },
       "revId": "9b03d0f701ad1419f7b7e3007e0b295c2e63661f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
