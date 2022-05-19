@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1e8e66d_eaa3217a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-19T20:49:41Z",
+      "side": 1,
+      "message": "Hi Tast Owners,\nCould you please check the above issue? Thank you!",
+      "parentUuid": "e68c80c2_f111b867",
+      "revId": "c96d10ec85dcc8d89493c075672f96b2475d82ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "344d4ae4_f58da2c1",
         "filename": "src/chromiumos/tast/local/personalization/personalization.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-18T21:20:08Z",
       "side": 1,
       "message": "This will actually close whatever the current focused window is. Can we find the window with the correct name and close that some other way?",
+      "revId": "c96d10ec85dcc8d89493c075672f96b2475d82ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476e0b51_ea9f37b8",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-19T20:49:41Z",
+      "side": 1,
+      "message": "I\u0027m not able to find a way to close a specific window. However, I updated to the closePersonalizationHub function by clicking on Close button and check again if Personalization Hub window is gone.",
+      "parentUuid": "344d4ae4_f58da2c1",
       "revId": "c96d10ec85dcc8d89493c075672f96b2475d82ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
