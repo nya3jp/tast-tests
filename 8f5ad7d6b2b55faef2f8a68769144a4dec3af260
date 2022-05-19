@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69736b94_1ef3bb27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542263
+      },
+      "writtenOn": "2022-05-19T06:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea59fc4a_16efe08c",
+      "revId": "8f5ad7d6b2b55faef2f8a68769144a4dec3af260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "440db791_cd838b04",
@@ -59,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "383a0327_62f99604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1542263
+      },
+      "writtenOn": "2022-05-19T06:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "440db791_cd838b04",
+      "range": {
+        "startLine": 26,
+        "startChar": 36,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "8f5ad7d6b2b55faef2f8a68769144a4dec3af260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13c53e05_a9e4ec38",
@@ -72,6 +114,24 @@
       "writtenOn": "2022-05-19T02:30:53Z",
       "side": 1,
       "message": "could be just `run-arecord.sh`",
+      "revId": "8f5ad7d6b2b55faef2f8a68769144a4dec3af260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c64c52_28e32666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-audio-arecord.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542263
+      },
+      "writtenOn": "2022-05-19T06:37:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c53e05_a9e4ec38",
       "revId": "8f5ad7d6b2b55faef2f8a68769144a4dec3af260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
