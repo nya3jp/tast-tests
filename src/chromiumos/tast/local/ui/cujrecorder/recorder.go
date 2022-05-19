@@ -91,6 +91,33 @@ type record struct {
 	Buckets []metrics.HistogramBucket `json:"buckets"`
 }
 
+// accumulate accumulates the histogram into an existing record.
+func (rec *record) accumulate(hist *metrics.Histogram) {
+	rec.totalCount += hist.TotalCount()
+	rec.Sum += hist.Sum
+	rec.Buckets = append(rec.Buckets, hist.Buckets...)
+}
+
+// combine combines another record into an existing one.
+func (rec *record) combine(newRec *record) {
+	rec.totalCount += newRec.totalCount
+	rec.Sum += newRec.Sum
+	rec.Buckets = append(rec.Buckets, newRec.Buckets...)
+}
+
+// saveMetric records the metric into the perf values.
+func (rec *record) saveMetric(pv *perf.Values, name string) {
+	if rec.totalCount == 0 {
+		return
+	}
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      rec.config.unit,
+		Variant:   "average",
+		Direction: rec.config.direction,
+	}, float64(rec.Sum)/float64(rec.totalCount))
+}
+
 // Recorder is a utility to measure various metrics for CUJ-style tests.
 type Recorder struct {
 	cr    *chrome.Chrome
@@ -99,8 +126,9 @@ type Recorder struct {
 	// Metrics names keyed by relevant chrome.TestConn pointer.
 	names map[*chrome.TestConn][]string
 
-	// Metric records keyed by metric name.
-	records map[string]*record
+	// Metric records keyed by relevant chrome.TestConn pointer.
+	// Its value is a map keyed by metric name.
+	records map[*chrome.TestConn]map[string]*record
 
 	traceDir        string
 	perfettoCfgPath string
@@ -183,7 +211,10 @@ func (r *Recorder) AddCollectedMetrics(tconn *chrome.TestConn, configs ...Metric
 			return errors.Errorf("invalid histogram name: %s", config.histogramName)
 		}
 		r.names[tconn] = append(r.names[tconn], config.histogramName)
-		r.records[config.histogramName] = &record{config: config}
+		if _, ok := r.records[tconn]; !ok {
+			r.records[tconn] = make(map[string]*record)
+		}
+		r.records[tconn][config.histogramName] = &record{config: config}
 	}
 	return nil
 }
@@ -301,7 +332,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	r.loginEventRecorder = perfSrc.NewLoginEventRecorder(tpsMetricPrefix)
 
 	r.names = make(map[*chrome.TestConn][]string)
-	r.records = make(map[string]*record)
+	r.records = make(map[*chrome.TestConn]map[string]*record)
 
 	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
@@ -506,34 +537,26 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 	r.startedAtTm = time.Time{} // Reset to zero.
 
 	// Collects metrics per browser test connection.
-	var hists []*metrics.Histogram
+	tHists := make(map[*chrome.TestConn][]*metrics.Histogram)
 	for tconn, rr := range r.mr {
 		h, err := rr.Histogram(runCtx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to collect metrics")
 		}
-		connName := "lacros-Chrome"
-		// Check if the tconn uses the same underlying session connection with r.tconn.
-		// We compare the value of the two pointers.
-		if *tconn == *r.tconn {
-			connName = "ash-Chrome"
-		}
-		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v", connName, histsWithSamples(h))
-		hists = append(hists, h...)
+		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v",
+			getTconnName(tconn, r.tconn), histsWithSamples(h))
+		tHists[tconn] = append(tHists[tconn], h...)
 	}
 	// Reset recorders and context.
 	r.mr = nil
 
-	for _, hist := range hists {
-		if hist.TotalCount() == 0 {
-			continue
+	for tconn, hists := range tHists {
+		for _, hist := range hists {
+			if hist.TotalCount() == 0 {
+				continue
+			}
+			r.records[tconn][hist.Name].accumulate(hist)
 		}
-		record := r.records[hist.Name]
-		record.totalCount += hist.TotalCount()
-		record.Sum += hist.Sum
-
-		// Concatenate buckets.
-		record.Buckets = append(record.Buckets, hist.Buckets...)
 	}
 	return nil
 }
@@ -651,23 +674,39 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		return errors.Wrap(err, "failed to get display info")
 	}
 
-	var crasUnderruns float64
-	for name, record := range r.records {
-		if record.totalCount == 0 {
-			continue
+	var allRecords = make(map[string]*record) // Combined records from all tconns.
+
+	// Record records by tconn.
+	for tconn, records := range r.records {
+		connName := getTconnName(tconn, r.tconn)
+		for name, rec := range records {
+			if rec.totalCount == 0 {
+				continue
+			}
+			// Append metric name with connName as the new metric name, for example:
+			// - EventLatency.TotalLatency_ash-Chrome,
+			// - PageLoad.InteractiveTiming.InputDelay3_lacros-Chrome
+			rec.saveMetric(pv, name+"_"+connName)
+			// Combine the record.
+			if _, ok := allRecords[name]; !ok {
+				allRecords[name] = &record{config: rec.config}
+			}
+			allRecords[name].combine(rec)
 		}
+	}
+	var crasUnderruns float64
+	// Record combined records from all tconns.
+	for name, rec := range allRecords {
 		if name == "Cras.UnderrunsPerDevice" {
-			crasUnderruns = float64(record.Sum)
+			crasUnderruns = float64(rec.Sum)
 			// We are not interested in reporting Cras.UnderrunsPerDevice but will use this value
 			// to derive UnderrunsPerDevicePerMinute. Continue the loop.
 			continue
 		}
-		pv.Set(perf.Metric{
-			Name:      name,
-			Unit:      record.config.unit,
-			Variant:   "average",
-			Direction: record.config.direction,
-		}, float64(record.Sum)/float64(record.totalCount))
+		// Metric name recorded is the original histogram name. For example:
+		// - EventLatency.TotalLatency
+		// - PageLoad.InteractiveTiming.InputDelay3
+		rec.saveMetric(pv, name)
 	}
 
 	// Derive Cras.UnderrunsPerDevicePerMinute. Ideally, the audio playing time and number of CRAS audio device
@@ -714,12 +753,39 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 // SaveHistograms saves histogram raw data to a given directory in a
 // file named "recorder_histograms.json" by marshal the recorders.
 func (r *Recorder) SaveHistograms(outDir string) error {
-	filePath := path.Join(outDir, "recorder_histograms.json")
-	j, err := json.MarshalIndent(r.records, "", "  ")
-	if err != nil {
-		return err
+	saveJSONFile := func(fileName string, records map[string]*record) error {
+		filePath := path.Join(outDir, fileName+".json")
+		j, err := json.MarshalIndent(records, "", "  ")
+		if err != nil {
+			return errors.Wrapf(err, "failed to marshall data for %s json file: %v", fileName, records)
+		}
+		if err := ioutil.WriteFile(filePath, j, 0644); err != nil {
+			return errors.Wrapf(err, "failed to write %s json file", fileName)
+		}
+		return nil
 	}
-	return ioutil.WriteFile(filePath, j, 0644)
+
+	histogramFileName := "recorder_histograms"
+	var allRecords = make(map[string]*record) // Combined records from all tconns.
+
+	for tconn, records := range r.records {
+		// File for tconn based histogram will be appended with the tconn name.
+		// For example:
+		//   - recorder_histograms_ash-Chrome.json
+		//   - recorder_histograms_lacros-Chrome.json
+		fileName := histogramFileName + "_" + getTconnName(tconn, r.tconn)
+		if err := saveJSONFile(fileName, records); err != nil {
+			return err
+		}
+		for name, rec := range records {
+			if _, ok := allRecords[name]; !ok {
+				allRecords[name] = &record{config: rec.config}
+			}
+			// Combine the record.
+			allRecords[name].combine(rec)
+		}
+	}
+	return saveJSONFile(histogramFileName, allRecords)
 }
 
 // histsWithSamples returns the names of the histograms that have at least one sample.
@@ -731,4 +797,16 @@ func histsWithSamples(hists []*metrics.Histogram) []string {
 		}
 	}
 	return histNames
+}
+
+// getTconnName return the name of the browser that the bConn is connected to.
+// tconn is the ash-Chrome connection that is used for comparision.
+func getTconnName(bConn, tconn *chrome.TestConn) string {
+	connName := "lacros-Chrome"
+	// Check if the bConn uses the same underlying session connection with tconn.
+	// The values of the two pointers are compared.
+	if *bConn == *tconn {
+		connName = "ash-Chrome"
+	}
+	return connName
 }
