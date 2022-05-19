@@ -26,11 +26,35 @@ const (
 	ArtGallery   = "Art gallery"
 )
 
+// const for ambient themes.
+const (
+	SlideShow     = "Slide show"
+	FeelTheBreeze = "Feel the breeze"
+	FloatOnBy     = "Float on by"
+)
+
+// Default values for TestParams' fields.
+const (
+	AmbientStartSlideShowDefaultTimeout = 15 * time.Second
+	AmbientStartAnimationDefaultTimeout = 30 * time.Second
+	SlideShowDefaultPlaybackSpeed       = 1
+	AnimationDefaultPlaybackSpeed       = 20
+)
+
+// TestParams for each test case.
+type TestParams struct {
+	TopicSource            string
+	Theme                  string
+	AnimationPlaybackSpeed float32
+	AnimationStartTimeout  time.Duration
+}
+
 // Timeouts contains durations to configure Ambient mode timeouts.
 type Timeouts struct {
-	LockScreenIdle       time.Duration
-	BackgroundLockScreen time.Duration
-	PhotoRefreshInterval time.Duration
+	LockScreenIdle         time.Duration
+	BackgroundLockScreen   time.Duration
+	PhotoRefreshInterval   time.Duration
+	AnimationPlaybackSpeed float32
 }
 
 func toNearestSecond(d time.Duration) int {
@@ -70,6 +94,16 @@ func SetTimeouts(
 		`tast.promisify(chrome.settingsPrivate.setPref)`,
 		"ash.ambient.photo_refresh_interval",
 		toNearestSecond(timeouts.PhotoRefreshInterval),
+	); err != nil {
+		return errors.Wrap(err, "failed to set photo refresh interval")
+	}
+
+	if err := tconn.Call(
+		ctx,
+		nil,
+		`tast.promisify(chrome.settingsPrivate.setPref)`,
+		"ash.ambient.animation_playback_speed",
+		timeouts.AnimationPlaybackSpeed,
 	); err != nil {
 		return errors.Wrap(err, "failed to set photo refresh interval")
 	}
@@ -118,6 +152,7 @@ func TestLockScreenIdle(
 	cr *chrome.Chrome,
 	tconn *chrome.TestConn,
 	ui *uiauto.Context,
+	ambientStartTimeout time.Duration,
 ) error {
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
@@ -125,9 +160,9 @@ func TestLockScreenIdle(
 	}
 	return uiauto.Combine("start, hide, and restart ambient mode",
 		sm.LockScreen,
-		waitForAmbientStart(tconn, ui),
+		waitForAmbientStart(tconn, ui, ambientStartTimeout),
 		hideAmbientMode(tconn, sm, ui),
-		waitForAmbientStart(tconn, ui),
+		waitForAmbientStart(tconn, ui, ambientStartTimeout),
 	)(ctx)
 }
 
@@ -135,13 +170,13 @@ func TestLockScreenIdle(
 // the number of photo transitions during ambient mode.
 // Relax photo transitions timeout to 15 seconds to reserve enough time for the animation
 // as lockscreen can happen for few minutes.
-func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context) uiauto.Action {
+func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context, timeout time.Duration) uiauto.Action {
 	return func(ctx context.Context) error {
 		if err := waitForPhotoTransitions(
 			ctx,
 			tconn,
 			2,
-			15*time.Second,
+			timeout,
 		); err != nil {
 			return errors.Wrap(err, "failed to wait for photo transitions")
 		}

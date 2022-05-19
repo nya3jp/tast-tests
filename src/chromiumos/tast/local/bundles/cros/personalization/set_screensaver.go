@@ -38,18 +38,46 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "google_photos",
-				Val:  ambient.GooglePhotos,
+				Val: ambient.TestParams{
+					TopicSource:            ambient.GooglePhotos,
+					Theme:                  ambient.SlideShow,
+					AnimationPlaybackSpeed: ambient.SlideShowDefaultPlaybackSpeed,
+					AnimationStartTimeout:  ambient.AmbientStartSlideShowDefaultTimeout,
+				},
 			},
 			{
 				Name: "art_gallery",
-				Val:  ambient.ArtGallery,
+				Val: ambient.TestParams{
+					TopicSource:            ambient.ArtGallery,
+					Theme:                  ambient.SlideShow,
+					AnimationPlaybackSpeed: ambient.SlideShowDefaultPlaybackSpeed,
+					AnimationStartTimeout:  ambient.AmbientStartSlideShowDefaultTimeout,
+				},
+			},
+			{
+				Name: "feel_the_breeze",
+				Val: ambient.TestParams{
+					TopicSource:            ambient.ArtGallery,
+					Theme:                  ambient.FeelTheBreeze,
+					AnimationPlaybackSpeed: ambient.AnimationDefaultPlaybackSpeed,
+					AnimationStartTimeout:  ambient.AmbientStartAnimationDefaultTimeout,
+				},
+			},
+			{
+				Name: "float_on_by",
+				Val: ambient.TestParams{
+					TopicSource:            ambient.ArtGallery,
+					Theme:                  ambient.FloatOnBy,
+					AnimationPlaybackSpeed: ambient.AnimationDefaultPlaybackSpeed,
+					AnimationStartTimeout:  ambient.AmbientStartAnimationDefaultTimeout,
+				},
 			},
 		},
 	})
 }
 
 func SetScreensaver(ctx context.Context, s *testing.State) {
-	topicSource := s.Param().(string)
+	testParams := s.Param().(ambient.TestParams)
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	cleanupCtx := ctx
@@ -70,11 +98,11 @@ func SetScreensaver(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable ambient mode: ", err)
 	}
 
-	if err := prepareScreensaver(ctx, tconn, ui, topicSource); err != nil {
-		s.Fatalf("Failed to prepare %v screensaver: %v", topicSource, err)
+	if err := prepareScreensaver(ctx, tconn, ui, testParams); err != nil {
+		s.Fatalf("Failed to prepare %v screensaver: %v", testParams.TopicSource, err)
 	}
 
-	if err := ambient.TestLockScreenIdle(ctx, cr, tconn, ui); err != nil {
+	if err := ambient.TestLockScreenIdle(ctx, cr, tconn, ui, testParams.AnimationStartTimeout); err != nil {
 		s.Fatal("Failed to start ambient mode: ", err)
 	}
 
@@ -83,26 +111,33 @@ func SetScreensaver(ctx context.Context, s *testing.State) {
 	}
 }
 
-func prepareScreensaver(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, topicSource string) error {
-	topicSourceContainer := nodewith.Role(role.GenericContainer).NameContaining(topicSource)
+func prepareScreensaver(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, testParams ambient.TestParams) error {
+	themeContainer := nodewith.Role(role.ListBoxOption).Name(testParams.Theme)
+	if err := uiauto.Combine("Choose animation theme",
+		ui.FocusAndWait(themeContainer),
+		ui.LeftClick(themeContainer))(ctx); err != nil {
+		return errors.Wrapf(err, "failed to select %v", testParams.Theme)
+	}
+
+	topicSourceContainer := nodewith.Role(role.GenericContainer).NameContaining(testParams.TopicSource)
 	albumsFinder := nodewith.Role(role.GenericContainer).HasClass("album")
 
 	if err := uiauto.Combine("Choose topic source",
 		ui.FocusAndWait(topicSourceContainer),
 		ui.LeftClick(topicSourceContainer),
 		ui.WaitUntilExists(albumsFinder.First()))(ctx); err != nil {
-		return errors.Wrapf(err, "failed to select %v", topicSource)
+		return errors.Wrapf(err, "failed to select %v", testParams.TopicSource)
 	}
 
 	albums, err := ui.NodesInfo(ctx, albumsFinder)
 	if err != nil {
-		return errors.Wrapf(err, "failed to find %v albums", topicSource)
+		return errors.Wrapf(err, "failed to find %v albums", testParams.TopicSource)
 	}
 	if len(albums) < 2 {
-		return errors.Errorf("at least 2 %v albums expected", topicSource)
+		return errors.Errorf("at least 2 %v albums expected", testParams.TopicSource)
 	}
 
-	if topicSource == ambient.GooglePhotos {
+	if testParams.TopicSource == ambient.GooglePhotos {
 		// Select all Google Photos albums.
 		for i, album := range albums {
 			if strings.Contains(album.ClassName, "album-selected") {
@@ -116,7 +151,7 @@ func prepareScreensaver(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.
 				return errors.Wrapf(err, "failed to select Google Photos album %d", i)
 			}
 		}
-	} else if topicSource == ambient.ArtGallery {
+	} else if testParams.TopicSource == ambient.ArtGallery {
 		// Turn off all but one art gallery album.
 		for i, album := range albums[1:] {
 			if !strings.Contains(album.ClassName, "album-selected") {
@@ -131,16 +166,17 @@ func prepareScreensaver(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.
 			}
 		}
 	} else {
-		return errors.Errorf("topicSource - %v is invalid", topicSource)
+		return errors.Errorf("topicSource - %v is invalid", testParams.TopicSource)
 	}
 
 	if err := ambient.SetTimeouts(
 		ctx,
 		tconn,
 		ambient.Timeouts{
-			LockScreenIdle:       1 * time.Second,
-			BackgroundLockScreen: 2 * time.Second,
-			PhotoRefreshInterval: 1 * time.Second,
+			LockScreenIdle:         1 * time.Second,
+			BackgroundLockScreen:   2 * time.Second,
+			PhotoRefreshInterval:   1 * time.Second,
+			AnimationPlaybackSpeed: testParams.AnimationPlaybackSpeed,
 		},
 	); err != nil {
 		return errors.Wrap(err, "failed to configure ambient timeouts")
