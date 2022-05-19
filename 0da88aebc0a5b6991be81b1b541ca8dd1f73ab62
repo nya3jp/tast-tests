@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a33d6033_2d452763",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-19T20:38:18Z",
+      "side": 1,
+      "message": "LGTM from tast side.",
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9785c627_1c3b1687",
@@ -71,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c46135d_961960a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-19T20:38:18Z",
+      "side": 1,
+      "message": "Sorry I missed that unsolved comment. Thanks",
+      "parentUuid": "ad216b79_e55dc2bd",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 10
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1450123_129b6397",
@@ -108,6 +149,30 @@
       "side": 1,
       "message": "See above",
       "parentUuid": "c1450123_129b6397",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc0543f5_a811297e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-19T20:38:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "81f3dec8_d97166a5",
       "range": {
         "startLine": 113,
         "startChar": 4,

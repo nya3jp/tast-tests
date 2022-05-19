@@ -419,6 +419,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "338c3437_da3534a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-19T20:38:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "64bd4930_39c5621c",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 63
+      },
+      "revId": "499ed40791026209f0c036fff8f27c8ef321ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "266829c6_348620c7",
