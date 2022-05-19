@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "233d2875_a474b76e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-05-19T15:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea7373e1_384a024e",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 90
+      },
+      "revId": "91f9bcbfcb5d4df88c0518d76bcd28b5b7538ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed590e95_c48da4dc",
@@ -105,6 +129,30 @@
       "writtenOn": "2022-05-18T22:17:00Z",
       "side": 1,
       "message": "I\u0027d suggest using `apps.ChromeOrChromium`[1], and the `App` struct\u0027s `Name` field to get this string if possible. This will help with future CQ promotion since CQ tests need to be able to run on amd64-generic builds.\n\n[1]https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go;l\u003d423?q\u003dchromeorchromium",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 34
+      },
+      "revId": "91f9bcbfcb5d4df88c0518d76bcd28b5b7538ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b17afe9_fe42e67f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-05-19T15:28:37Z",
+      "side": 1,
+      "message": "Thanks for the link to the code! Done.",
+      "parentUuid": "ed590e95_c48da4dc",
       "range": {
         "startLine": 77,
         "startChar": 26,
