@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	fmpb "chromiumos/tast/services/cros/filemanager"
 	"chromiumos/tast/testing"
 )
@@ -77,9 +78,14 @@ func (f *FreezeFUSEService) TestMountZipAndSuspend(ctx context.Context, request 
 		"-c",
 		script)
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get users Downloads path")
+	}
+
 	// Copy the zip file to Downloads folder.
 	zipFile := "100000_files_in_one_folder.zip"
-	zipPath := path.Join(filesapp.DownloadPath, zipFile)
+	zipPath := path.Join(downloadsPath, zipFile)
 	if err := fsutil.CopyFile(request.GetZipDataPath(), zipPath); err != nil {
 		return nil, errors.Wrapf(err, "error copying ZIP file to %q", zipPath)
 	}
