@@ -39,6 +39,30 @@
       },
       "revId": "67ebb4cecad8e4974261df68e8926b20113d08bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f05043_f1d9c17c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-19T21:28:52Z",
+      "side": 1,
+      "message": "Yes, it\u0027s because lacros tast tests are to be shared with the Browser team where they are possibly run against both internal (google-branded chrome) and public browser builds (chromium).",
+      "parentUuid": "5c58bcd4_cd016b76",
+      "range": {
+        "startLine": 262,
+        "startChar": 34,
+        "endLine": 262,
+        "endChar": 50
+      },
+      "revId": "67ebb4cecad8e4974261df68e8926b20113d08bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
