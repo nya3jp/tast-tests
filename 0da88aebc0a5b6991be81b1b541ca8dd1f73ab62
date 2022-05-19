@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad216b79_e55dc2bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-19T20:29:30Z",
+      "side": 1,
+      "message": "As I said in my unresolved comment, each CUJ that follows from the first assumes that the first screen is the initial input overlay screen; from that, if a test encounters an error in the middle of the action sequence, the screen could be in the key mapping customization screen, which would throw off action sequences for future CUJs, since we want to continue tests in spite of errors. \n\nThus I added the `CloseAndRelaunchActivity` function to reset the screen by closing and reopening the test app in case of errors that occur during a previous test. Of course, closing and reopening the activity can have its own set of errors too, and I was thinking that, if this step fails, there is no point with continuing on with the test - hence the `s.Fatal` call here.\n\nIf it\u0027s not completely clear what I\u0027m thinking about here, we can schedule another quick sync to hash this out.",
+      "parentUuid": "26a30bcc_434d6e75",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 10
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1450123_129b6397",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
         "patchSetId": 15
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-19T20:18:13Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f3dec8_d97166a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-19T20:29:30Z",
+      "side": 1,
+      "message": "See above",
+      "parentUuid": "c1450123_129b6397",
       "range": {
         "startLine": 113,
         "startChar": 4,
