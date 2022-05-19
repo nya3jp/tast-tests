@@ -25,8 +25,11 @@ import (
 // Config contains the parameters (for both client and server) to configure a
 // VPN connection.
 type Config struct {
-	Type     string
-	AuthType string
+	Type          string
+	AuthType      string
+	MTU           int
+	Metered       bool
+	SearchDomains []string
 
 	// Parameters for an L2TP/IPsec VPN connection.
 	IPsecUseXauth         bool
@@ -95,15 +98,21 @@ type Connection struct {
 
 // NewConnection creates a new connection object. Notes:
 // - It is the responsibility of the caller to call Cleanup() when the VPN
-//   connection is no longer needed.
+//
+//	connection is no longer needed.
+//
 // - During connection, we need to modify the profile of shill to configure the
-//   VPN client. So the "resetShill" fixture is suggested to make sure that we
-//   have a clean shill setup before and after the test.
+//
+//	VPN client. So the "resetShill" fixture is suggested to make sure that we
+//	have a clean shill setup before and after the test.
+//
 // Example: the following code can be used to set up a basic L2TP/IPsec VPN
 // connection:
-//     vpn.NewConnection(ctx, vpn.Config{
-//         Type: vpn.TypeL2TPIPsec, AuthType: vpn.AuthTypePSK,
-//     })
+//
+//	vpn.NewConnection(ctx, vpn.Config{
+//	    Type: vpn.TypeL2TPIPsec, AuthType: vpn.AuthTypePSK,
+//	})
+//
 // Also see vpn_connect.go for a typical usage for this struct.
 func NewConnection(ctx context.Context, config Config) (*Connection, error) {
 	manager, err := shill.NewManager(ctx)
@@ -291,20 +300,37 @@ func (c *Connection) generateWireGuardKey(ctx context.Context) (string, error) {
 }
 
 func (c *Connection) createProperties() error {
+	var properties map[string]interface{}
 	var err error
+
 	switch c.config.Type {
 	case TypeIKEv2:
-		c.Properties, err = c.createIKEv2Properties()
+		properties, err = c.createIKEv2Properties()
 	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
-		c.Properties, err = c.createL2TPIPsecProperties()
+		properties, err = c.createL2TPIPsecProperties()
 	case TypeOpenVPN:
-		c.Properties, err = c.createOpenVPNProperties()
+		properties, err = c.createOpenVPNProperties()
 	case TypeWireGuard:
-		c.Properties = c.createWireGuardProperties()
+		properties = c.createWireGuardProperties()
 	default:
 		return errors.Errorf("unexpected server type: got %s", c.config.Type)
 	}
-	return err
+
+	if err != nil {
+		return err
+	}
+
+	properties["Metered"] = c.config.Metered
+	staticIPConfig, ok := properties["StaticIPConfig"].(map[string]interface{})
+	if !ok {
+		staticIPConfig = make(map[string]interface{})
+		properties["StaticIPConfig"] = staticIPConfig
+	}
+	staticIPConfig["Mtu"] = c.config.MTU
+	staticIPConfig["SearchDomains"] = c.config.SearchDomains
+
+	c.Properties = properties
+	return nil
 }
 
 func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error) {
