@@ -16,6 +16,69 @@
       "message": "I\u0027m overloaded on reviews, removing myself and adding Billy.",
       "revId": "146804d31a59a4eacb93754583885a706074b7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8346e0_7fb58b27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-19T16:20:15Z",
+      "side": 1,
+      "message": "LGTM: minor nit and question regarding veth interface naming.",
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a566962_ce1b727d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-19T16:20:15Z",
+      "side": 1,
+      "message": "Just to make sure I understand, based on the way we are currently killing the existing interfaces first before spawning new interfaces, we should always have veth0/1 right?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb22a25_4bdd663e",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-19T16:20:15Z",
+      "side": 1,
+      "message": "Can we specify these prefixes are only relevant for the legacy router if openwrt doesn\u0027t use these?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
