@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22df25ec_384e7324",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-19T21:23:16Z",
+      "side": 1,
+      "message": "Done. This was removed as we are not checking against these properties anymore",
+      "parentUuid": "aaac5c0c_003ad404",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf2df5ea_dbd5c513",
@@ -174,6 +192,24 @@
       "side": 1,
       "message": "This is fine.",
       "parentUuid": "cf2df5ea_dbd5c513",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd43901_764a1607",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-19T21:23:16Z",
+      "side": 1,
+      "message": "Done. This was removed as we are not checking against these properties anymore",
+      "parentUuid": "134d5b38_fbd51e32",
       "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -427,6 +463,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b807fc_a6ea3254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-19T21:23:16Z",
+      "side": 1,
+      "message": "Done. Removed the properties that don\u0027t return to their default values. Acknowledging this test will look very empty now, but considering we agree with the above, I am going to resolve this.",
+      "parentUuid": "c8e08e9f_338c3e73",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d9dee8e_05338d5a",
@@ -476,6 +530,24 @@
       "side": 1,
       "message": "I think that eventually we will pass them in as test parameters. If you want to get a head start on that, you can look at diag_fail_dns_resolver_present.go for an example.",
       "parentUuid": "2816b780_b48d209d",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83c4dea_96d06b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-19T21:23:16Z",
+      "side": 1,
+      "message": "Done. Setup a very simple parameterized test for verifying ethernet online.",
+      "parentUuid": "4d3712a7_8c60bb2f",
       "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

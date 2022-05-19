@@ -33,6 +33,24 @@
       "message": "nit: Let\u0027s add a blank line between each of these for readability/reviewability.(Or use an array and a loop as you mentioned).\nNote: When we remove the failure properties this will be less interesting, but once we start testing failure cases it will get interesting again.",
       "revId": "17bad497b95fec30c3102171b0ee852d8949ee5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc00be55_1c9ca13a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties_ethernet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-19T21:23:16Z",
+      "side": 1,
+      "message": "Most of these have been removed so this is done.",
+      "parentUuid": "b7e5be3e_66f42d5d",
+      "revId": "17bad497b95fec30c3102171b0ee852d8949ee5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

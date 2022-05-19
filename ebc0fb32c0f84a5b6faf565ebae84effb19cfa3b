@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec65c910_3d3dc275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-19T21:23:16Z",
+      "side": 1,
+      "message": "-Removed properties that are not returned to default value for ethernet online. \n-Setup first parameterized test\n\nThis test will look very basic now but it is the baseline for our next implementation of a virtual ethernet pair for future captive portal tests.\n\nChanged file name from shill_captive_portal_properties_ethernet.go -\u003e shill_captive_portal_properties.go",
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
