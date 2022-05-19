@@ -70,6 +70,30 @@
       },
       "revId": "d9cbe35c23786910493b89f8ee9efa6af8c17b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ae8e45_2d4c2272",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-19T16:18:59Z",
+      "side": 1,
+      "message": "you should be able to bypass the repo upload hooks for this case. I think this will work:\n\n1. run `tast-lint -fix` on your CL\n2. revert this section of the CL that\u0027s unrelated to your work\n3. run `repo upload --ignore-hooks .` and make sure that only this portion of the CL fails the upload hooks",
+      "parentUuid": "b80b892c_3b16f822",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "d9cbe35c23786910493b89f8ee9efa6af8c17b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
