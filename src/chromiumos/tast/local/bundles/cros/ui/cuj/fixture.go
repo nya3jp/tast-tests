@@ -260,6 +260,9 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 
 		var err error
 		if f.bt == browser.TypeLacros {
+			if f.webUITabStrip {
+				opts = append(opts, chrome.LacrosEnableFeatures("WebUITabStrip"))
+			}
 			opts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary),
 				lacrosfixt.ChromeOptions(opts...)).Opts()
 			if err != nil {
