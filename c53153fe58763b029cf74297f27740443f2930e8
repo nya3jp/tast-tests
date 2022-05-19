@@ -357,6 +357,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "343e701b_d89d4aa6",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "I agree we can use some testing for the metrics merging code, so I extracted that function and added a test for it. I don\u0027t think we need to make the interface more complicated than it needs to be though. This package is only meant for providing a simple interface for running the common profiling tasks that we use in camera tests.\n\nThe `taskfunc` I have now is essentially trivial wrappers of existing functions, and those functions eventually fork some commands on the real device, so there isn\u0027t too much stuff we can test in unit tests.",
+      "parentUuid": "dfce4d32_27ce4128",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a048acb_af5af44a",
         "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
         "patchSetId": 6

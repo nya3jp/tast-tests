@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96965970_1c643c6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a8cf20_94db3f63",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3b8267b_ee406382",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-05-18T11:39:51Z",
       "side": 1,
       "message": "nit: maybe inline constants that used just once to don\u0027t clutter package namespace",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a12d01cf_82f42a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3b8267b_ee406382",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "656a65fe_51d517d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9bac4e4_e1ac3f6b",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "200c22fe_128b7f2b",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2c75e10_d6b0a336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200c22fe_128b7f2b",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 23
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f351eb8e_d42ebebe",
@@ -140,6 +236,30 @@
       "writtenOn": "2022-05-18T11:39:51Z",
       "side": 1,
       "message": "nit: if it\u0027s possible that ProfilerCtx will be nil, then Start() should return error as well",
+      "range": {
+        "startLine": 222,
+        "startChar": 7,
+        "endLine": 222,
+        "endChar": 18
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "808b7115_1774295b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f351eb8e_d42ebebe",
       "range": {
         "startLine": 222,
         "startChar": 7,
@@ -175,6 +295,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14cce40f_65cd7352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "I believe in this case we want to cancel() before starting the next subtest so that we release the occupied resources.",
+      "parentUuid": "149261c1_80d3cf6d",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 11
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acb8e950_769190a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
         "patchSetId": 10
@@ -186,6 +330,30 @@
       "writtenOn": "2022-05-18T11:39:51Z",
       "side": 1,
       "message": "nit: same: don\u0027t ignore error",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 20
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdd2cbbc_fe2fbc90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acb8e950_769190a1",
       "range": {
         "startLine": 238,
         "startChar": 0,
@@ -219,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c3309c_3013c730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b865f71_ec71da67",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 11
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a28ccb9_e0e0472b",
@@ -232,6 +424,30 @@
       "writtenOn": "2022-05-18T11:39:51Z",
       "side": 1,
       "message": "I think I already did a similar comment about jsonInput being nil",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 23
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f0aa60_b6e545f2",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "I guess you meant separating unmarshalling JSON bytes into a different function.",
+      "parentUuid": "3a28ccb9_e0e0472b",
       "range": {
         "startLine": 98,
         "startChar": 0,
@@ -290,6 +506,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a454dd4_b849a9c5",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not sure I follow. Here we just want to add a log that the file the caller wants to append to does not exist or is invalid, so we\u0027ll simply overwrite the config, which is the behavior we need for the test.",
+      "parentUuid": "b68230d0_a682d702",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 54
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d14957_9d212363",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a43e8f52_ef0c22a0",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e53afe6_31bbac4a",
         "filename": "src/chromiumos/tast/local/camera/features/control.go",
         "patchSetId": 10
@@ -301,6 +565,30 @@
       "writtenOn": "2022-05-18T11:39:51Z",
       "side": 1,
       "message": "this might return error",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 12
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d0f795_74ce9ad9",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e53afe6_31bbac4a",
       "range": {
         "startLine": 174,
         "startChar": 4,
@@ -324,6 +612,30 @@
       "writtenOn": "2022-05-18T09:19:37Z",
       "side": 1,
       "message": "this is error prone if only at runtime you will see that there is no such profiler, it\u0027s also pretty easy to ignore that error.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 52
+      },
+      "revId": "8ac2dd938e8568e4c9c83ec472f007726e5ef1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422665ea_b47cf2f9",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-19T06:48:15Z",
+      "side": 1,
+      "message": "This now returns an error so it should be harder for the user to ignore it when there\u0027s issue. This is only meant for handling `testing.Vars[]` from `tast run -var\u003dprofiler\u003d\u003c...\u003e ...` command-line invocation. I\u0027ve also defined a explicit `ProfilerType` for the profilers.\n\nTast tests should most likely use this package with the default set of profilers. If the test wants to specify their own set of profilers, they should at least verify it locally before merging the code, so I don\u0027t think it\u0027s easy to ignore the error here.",
+      "parentUuid": "51757bf7_91c3a27f",
       "range": {
         "startLine": 127,
         "startChar": 0,
