@@ -11,6 +11,7 @@ package cryptohome
 import (
 	"context"
 	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -55,6 +56,26 @@ func UserPath(ctx context.Context, user string) (string, error) {
 		return "", errors.Wrap(err, "failed to get user home path")
 	}
 	return path, nil
+}
+
+// MyFilesPath returns the path to the user's MyFiles directory within
+// their encrypted home directory.
+func MyFilesPath(ctx context.Context, user string) (string, error) {
+	userPath, err := UserPath(ctx, user)
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(userPath, "MyFiles"), nil
+}
+
+// DownloadsPath returns the path to the user's MyFiles directory within
+// their encrypted home directory.
+func DownloadsPath(ctx context.Context, user string) (string, error) {
+	myFilesPath, err := MyFilesPath(ctx, user)
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(myFilesPath, "Downloads"), nil
 }
 
 // SystemPath returns the path to user's encrypted system directory.

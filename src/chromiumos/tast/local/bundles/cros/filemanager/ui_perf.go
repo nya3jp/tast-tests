@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -71,6 +72,11 @@ func UIPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(cleanupCtx)
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users Downloads path: ", err)
+	}
+
 	// Get Test API connection.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -101,7 +107,7 @@ func UIPerf(ctx context.Context, s *testing.State) {
 
 			// Run the directory listing test and observe the histogram for output.
 			histograms, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
-				return testDirectoryListing(ctx, s, files, ew, testCase, totalFiles)
+				return testDirectoryListing(ctx, s, files, ew, testCase, downloadsPath, totalFiles)
 			}, uma)
 			if err != nil {
 				s.Fatal("Failed to retrieve histogram data: ", err)
@@ -139,8 +145,8 @@ func createDirectoryListing(ctx context.Context, folderPath string, files int) e
 	return nil
 }
 
-func testDirectoryListing(ctx context.Context, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, testCase string, totalFiles int) error {
-	folderPath := filepath.Join(filesapp.DownloadPath, testCase)
+func testDirectoryListing(ctx context.Context, s *testing.State, files *filesapp.FilesApp, ew *input.KeyboardEventWriter, testCase, downloadsPath string, totalFiles int) error {
+	folderPath := filepath.Join(downloadsPath, testCase)
 	if err := os.MkdirAll(folderPath, 0644); err != nil {
 		return errors.Wrapf(err, "failed to create directory %q", folderPath)
 	}
