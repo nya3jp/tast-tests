@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed2c4d9b_816db5b8",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:42Z",
+      "side": 1,
+      "message": "This definitely needs to be done.",
+      "parentUuid": "c596e6ca_ed056498",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ad13e6b_25927c16",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-05-17T06:37:46Z",
       "side": 1,
       "message": "For Chrome enroll, it is for enterprise policy tests. The enroll is needed only on the DUT rather than all the companion DUTs. I think you can remove the for loop here and just enroll the default DUT. We can add this later if new case requires all the DUTs be enrolled.",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fd5f057_e0b09acd",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure here. I\u0027d prefer to treat all DUTs the same way, at this level we have no idea how they will be used, e.g. I run the same test, but originating from both DUTs. Limiting capabilities now would make harder using them in a different way.",
+      "parentUuid": "6ad13e6b_25927c16",
       "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +145,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9382a4c_2e8ba12e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:42Z",
+      "side": 1,
+      "message": "Thanks for your tip!",
+      "parentUuid": "5bd875ab_c32608ec",
+      "range": {
+        "startLine": 183,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 21
+      },
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e24660f_5012f0b1",
@@ -126,6 +186,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91d7d8e_ca540d5d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e24660f_5012f0b1",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9465f5f1_c56123e1",
@@ -139,6 +217,24 @@
       "writtenOn": "2022-05-17T06:37:46Z",
       "side": 1,
       "message": "tf.netCertStore should be per DUT.",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8bcda0f_cc1ef732",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9465f5f1_c56123e1",
       "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +269,24 @@
       "writtenOn": "2022-05-18T08:19:14Z",
       "side": 1,
       "message": "It doesn\u0027t work as is since d would be a copy of dutData.\n\nI recommend changing the type of tf.duts from []dutData to []*dutData. Except for immutable types, slices of non-pointer structs are often difficult to work with.",
+      "parentUuid": "1937a8d4_3a11d9bf",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125c6848_c50e6b56",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:42Z",
+      "side": 1,
+      "message": "golang\u0027s `range` returns you a copy of the object instead of a reference. That\u0027s counter-intuitive, but it\u0027s not the only such feature of this language.\n\nThe consequence is, that whatever you\u0027d change in `d`, it won\u0027t be stored in `tf.duts`and you\u0027d end up in NPE when using e.g. wifiClient.\nFixed.",
       "parentUuid": "1937a8d4_3a11d9bf",
       "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
