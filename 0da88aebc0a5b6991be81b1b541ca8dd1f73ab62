@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9785c627_1c3b1687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-05-19T20:35:28Z",
+      "side": 1,
+      "message": "Is that possible to remove to gio/testutil since this part is repeated in another test?",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 65
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26a30bcc_434d6e75",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
         "patchSetId": 15
@@ -90,6 +113,29 @@
         "startChar": 4,
         "endLine": 113,
         "endChar": 11
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc592c71_55921f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-05-19T20:35:28Z",
+      "side": 1,
+      "message": "Can you also add another test case to change binding to non-existing key?",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 66
       },
       "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
