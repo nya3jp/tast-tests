@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "403aa81d_16943dee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-19T23:09:37Z",
+      "side": 1,
+      "message": "Yichen, WDYT?",
+      "revId": "ed4cf9681cfd2038e0a9d14ffb104ccbc29b4eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

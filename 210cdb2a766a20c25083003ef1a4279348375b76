@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e25ac22_921e8dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-19T23:09:37Z",
+      "side": 1,
+      "message": "My point here was that we still want to run cleanup (mostly to stop potential tracing) after test function times out. Therefore I think that it should use longer timeout (as compared to the test function timeout).",
+      "parentUuid": "103b7fda_a71a121e",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "210cdb2a766a20c25083003ef1a4279348375b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "089570eb_ae009ea2",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
         "patchSetId": 11
@@ -94,6 +118,30 @@
       "writtenOn": "2022-05-03T21:54:33Z",
       "side": 1,
       "message": "closeCtx should be shorten, no?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 9
+      },
+      "revId": "210cdb2a766a20c25083003ef1a4279348375b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0628b27_b773b47b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-19T23:09:37Z",
+      "side": 1,
+      "message": "I think cleanup should happen in case of test function timeout. Or we could leak system tracing.",
+      "parentUuid": "089570eb_ae009ea2",
       "range": {
         "startLine": 110,
         "startChar": 1,
