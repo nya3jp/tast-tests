@@ -52,8 +52,7 @@ func init() {
 				checkProgIf:      false,
 			},
 		}, {
-			Name:      "thunderbolt",
-			ExtraAttr: []string{"informational"},
+			Name: "thunderbolt",
 			Val: busInfoTestParams{
 				checkThunderbolt: true,
 				checkProgIf:      false,
