@@ -225,6 +225,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb9466c_65907c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-05-19T07:49:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c870e8bb_cfea89b0",
+      "range": {
+        "startLine": 71,
+        "startChar": 28,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "b8e56dddc864fe693adebb1ead8c18430c820224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9a399e6_09472240",
