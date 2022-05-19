@@ -28,30 +28,66 @@ const (
 	OffStatus    = "Off"
 )
 
-// Timeouts contains durations to configure Ambient mode timeouts.
-type Timeouts struct {
-	LockScreenIdle       time.Duration
-	BackgroundLockScreen time.Duration
-	PhotoRefreshInterval time.Duration
+// const for ambient themes.
+const (
+	SlideShow     = "Slide show"
+	FeelTheBreeze = "Feel the breeze"
+	FloatOnBy     = "Float on by"
+)
+
+// Default values for TestParams' fields.
+const (
+	// Slide show mode only requires downloading and decoding 2 photos before the
+	// screen saver starts rendering. The animations, however, can request around
+	// 16 photos before starting (with an internal timeout after which screen
+	// saver starts anyways if it can't prepare all 16). Since this is
+	// significantly more than slide show, the timeout should be larger.
+	AmbientStartSlideShowDefaultTimeout = 15 * time.Second
+	AmbientStartAnimationDefaultTimeout = 30 * time.Second
+	// Not used. Animation playback speed does not apply to slide show yet.
+	SlideShowDefaultPlaybackSpeed = 1
+	// Typical animation cycle duration is currently 60 seconds. 60 seconds / 20
+	// = 3 second cycle duration. This should give the test ample time to iterate
+	// through 2 full animation cycles, giving it sufficient test coverage.
+	AnimationDefaultPlaybackSpeed = 20
+)
+
+// TestParams for each test case.
+type TestParams struct {
+	TopicSource            string
+	Theme                  string
+	AnimationPlaybackSpeed float32
+	AnimationStartTimeout  time.Duration
+}
+
+// DeviceSettings that must be set on the DUT before the test begins. These
+// settings are not user-visible and can only be changed by test code. The main
+// overarching purpose of these is to speed up ambient mode so that the test
+// doesn't have to take too long.
+type DeviceSettings struct {
+	LockScreenIdle         time.Duration
+	BackgroundLockScreen   time.Duration
+	PhotoRefreshInterval   time.Duration
+	AnimationPlaybackSpeed float32
 }
 
 func toNearestSecond(d time.Duration) int {
 	return int(d.Round(time.Second).Seconds())
 }
 
-// SetTimeouts changes timeouts for Ambient mode to speed up testing. Rounds
-// values to the nearest second.
-func SetTimeouts(
+// SetDeviceSettings changes settings for Ambient mode to speed up testing.
+// Rounds values to the nearest second.
+func SetDeviceSettings(
 	ctx context.Context,
 	tconn *chrome.TestConn,
-	timeouts Timeouts,
+	deviceSettings DeviceSettings,
 ) error {
 	if err := tconn.Call(
 		ctx,
 		nil,
 		`tast.promisify(chrome.settingsPrivate.setPref)`,
 		"ash.ambient.lock_screen_idle_timeout",
-		toNearestSecond(timeouts.LockScreenIdle),
+		toNearestSecond(deviceSettings.LockScreenIdle),
 	); err != nil {
 		return errors.Wrap(err, "failed to set lock screen idle timeout")
 	}
@@ -61,7 +97,7 @@ func SetTimeouts(
 		nil,
 		`tast.promisify(chrome.settingsPrivate.setPref)`,
 		"ash.ambient.lock_screen_background_timeout",
-		toNearestSecond(timeouts.BackgroundLockScreen),
+		toNearestSecond(deviceSettings.BackgroundLockScreen),
 	); err != nil {
 		return errors.Wrap(err, "failed to set lock screen background timeout")
 	}
@@ -71,11 +107,20 @@ func SetTimeouts(
 		nil,
 		`tast.promisify(chrome.settingsPrivate.setPref)`,
 		"ash.ambient.photo_refresh_interval",
-		toNearestSecond(timeouts.PhotoRefreshInterval),
+		toNearestSecond(deviceSettings.PhotoRefreshInterval),
 	); err != nil {
 		return errors.Wrap(err, "failed to set photo refresh interval")
 	}
 
+	if err := tconn.Call(
+		ctx,
+		nil,
+		`tast.promisify(chrome.settingsPrivate.setPref)`,
+		"ash.ambient.animation_playback_speed",
+		deviceSettings.AnimationPlaybackSpeed,
+	); err != nil {
+		return errors.Wrap(err, "failed to set playback speed")
+	}
 	return nil
 }
 
@@ -142,12 +187,13 @@ func TestLockScreenIdle(
 	cr *chrome.Chrome,
 	tconn *chrome.TestConn,
 	ui *uiauto.Context,
+	ambientStartTimeout time.Duration,
 ) error {
 	return uiauto.Combine("start, hide, and restart ambient mode",
 		lockScreen(ctx, tconn),
-		waitForAmbientStart(tconn, ui),
+		waitForAmbientStart(tconn, ui, ambientStartTimeout),
 		hideAmbientMode(tconn, ui),
-		waitForAmbientStart(tconn, ui),
+		waitForAmbientStart(tconn, ui, ambientStartTimeout),
 	)(ctx)
 }
 
@@ -184,15 +230,13 @@ func UnlockScreen(ctx context.Context, tconn *chrome.TestConn, username, passwor
 
 // waitForAmbientStart returns an action to wait for ambient mode to start and validate
 // the number of photo transitions during ambient mode.
-// Relax photo transitions timeout to 15 seconds to reserve enough time for the animation
-// as lockscreen can happen for few minutes.
-func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context) uiauto.Action {
+func waitForAmbientStart(tconn *chrome.TestConn, ui *uiauto.Context, timeout time.Duration) uiauto.Action {
 	return func(ctx context.Context) error {
 		if err := waitForPhotoTransitions(
 			ctx,
 			tconn,
 			2,
-			15*time.Second,
+			timeout,
 		); err != nil {
 			return errors.Wrap(err, "failed to wait for photo transitions")
 		}
