@@ -111,6 +111,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8424f1db_32feb8fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-19T06:24:32Z",
+      "side": 1,
+      "message": "It is probably fine for now, though for my specific case what I would prefer is a way to query a build which is prior current build, regardless of which channel it is on as long as it doesn\u0027t outright crash, see b/231302900",
+      "parentUuid": "b185c541_1a3ae4f1",
+      "revId": "dcb396948b69fc20262eccae31fa398de37f0c78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24f9f22f_2c030cb0",
