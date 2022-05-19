@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6661f9_21a6ca5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-19T03:29:47Z",
+      "side": 1,
+      "message": "Just general comment: these are going to be added straight into a critical test which could block CQ if not done right, it might be good to have an informational group of Archive tests that you can run them on before promoting to critical. WDYT?",
+      "revId": "7827ea985bc5a10368721a0f225d10d6d8659187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ad637c_10ba9f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-19T03:29:47Z",
+      "side": 1,
+      "message": "All of these should be `s.Fatal` instead of `s.Error` and return. You can `Fatal` with in individual `s.Run` and it will continue with other sub tests but fail overall.",
+      "range": {
+        "startLine": 446,
+        "startChar": 4,
+        "endLine": 446,
+        "endChar": 10
+      },
+      "revId": "7827ea985bc5a10368721a0f225d10d6d8659187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
