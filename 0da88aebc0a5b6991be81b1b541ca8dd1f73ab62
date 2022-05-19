@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a30bcc_434d6e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-19T20:18:13Z",
+      "side": 1,
+      "message": "IIUC This should be s.Error , Else rest of the tests will not be run when this is hit.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 10
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1450123_129b6397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-05-19T20:18:13Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
