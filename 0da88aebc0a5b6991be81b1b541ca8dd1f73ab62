@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7aee449_5ea02657",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-19T21:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9785c627_1c3b1687",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 65
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26a30bcc_434d6e75",
@@ -196,6 +220,30 @@
       "writtenOn": "2022-05-19T20:35:28Z",
       "side": 1,
       "message": "Can you also add another test case to change binding to non-existing key?",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 66
+      },
+      "revId": "0da88aebc0a5b6991be81b1b541ca8dd1f73ab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5debec75_fb6ce822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-19T21:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc592c71_55921f5e",
       "range": {
         "startLine": 117,
         "startChar": 2,
