@@ -66,6 +66,7 @@ func OobeArc(ctx context.Context, s *testing.State) {
 		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(
 			"Accept and continue|Got it")).Role(role.Button)),
 		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
+		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Review Google Play options following setup").Role(role.CheckBox)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
