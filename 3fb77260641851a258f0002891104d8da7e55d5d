@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7543b0ca_d9036859",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-19T08:54:48Z",
+      "side": 1,
+      "message": "Hi Yi Chou,\n\nIn this CL, when cros_healthd hit errors, we have to restart ui. In this CL, we close |Chrome| and create |Chrome| again and try to log in. But in the second time, we\u0027ll encounter |cryptohome.WaitForUserMountAndValidateType| failure. Any thought?\n\nFull log: http://go/paste/4800705312325632",
+      "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
