@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "899f253e_46bdbadf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-19T20:14:05Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "4d4b80e42b133c1c7a7f6eaa959892ea9a7858db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7eee014_907bf0c0",
@@ -60,6 +77,23 @@
         "endLine": 84,
         "endChar": 47
       },
+      "revId": "4d4b80e42b133c1c7a7f6eaa959892ea9a7858db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "356d38d6_4ca38a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-19T20:14:05Z",
+      "side": 1,
+      "message": "nit: \"incorrect\" spelled, well, incorrectly",
       "revId": "4d4b80e42b133c1c7a7f6eaa959892ea9a7858db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
