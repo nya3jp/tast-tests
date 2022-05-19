@@ -381,6 +381,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff1a6487_8fc32d5c",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-19T17:26:33Z",
+      "side": 1,
+      "message": "Hey Nya,\n\nWDYT about proposed approach?",
+      "parentUuid": "343e701b_d89d4aa6",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a048acb_af5af44a",
         "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
         "patchSetId": 6

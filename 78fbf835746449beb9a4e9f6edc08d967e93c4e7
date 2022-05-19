@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82239a08_fb5541b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-19T17:26:33Z",
+      "side": 1,
+      "message": "Hi Nya,\n\nCan you please take a look on this CL?\n\nI personally don\u0027t like existing approach, but would like to hear someone else opinion.",
+      "revId": "78fbf835746449beb9a4e9f6edc08d967e93c4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
