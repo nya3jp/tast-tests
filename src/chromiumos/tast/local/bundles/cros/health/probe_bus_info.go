@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/bundles/cros/health/usb"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/testing"
@@ -45,7 +44,6 @@ func init() {
 			"intel-chrome-system-automation-team@intel.com",
 		},
 		Attr:         []string{"group:mainline"},
-		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
@@ -62,7 +60,6 @@ func init() {
 				checkProgIf:             false,
 				checkUSBFirmwareVersion: false,
 			},
-			ExtraData:         []string{"testcert.p12"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		}, {
 			// TODO(b/200837194): Remove this after the volteer2 issue fix.
@@ -106,7 +103,6 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 		// Checking whether the Thunderbolt device is connected or not.
 		port, _ := typecutils.CheckPortsForTBTPartner(ctx)
 		if port != -1 {
-			// For accesing the Thunderbolt device we have to disable the data protection access from UI.
 			portStr := strconv.Itoa(port)
 			if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "suspend", portStr).Run(); err != nil {
 				s.Fatal("Failed to simulate unplug: ", err)
@@ -116,22 +112,6 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 					s.Error("Failed to perform replug: ", err)
 				}
 			}(ctx)
-			// Get to the Chrome login screen.
-			cr, err := chrome.New(ctx,
-				chrome.DeferLogin(),
-				chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")))
-			if err != nil {
-				s.Fatal("Failed to start Chrome at login screen: ", err)
-			}
-			defer cr.Close(ctx)
-
-			if err := typecutils.EnablePeripheralDataAccess(ctx, s.DataPath("testcert.p12")); err != nil {
-				s.Fatal("Failed to enable peripheral data access setting: ", err)
-			}
-
-			if err := cr.ContinueLogin(ctx); err != nil {
-				s.Fatal("Failed to login: ", err)
-			}
 
 			if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
 				s.Fatal("Failed to simulate replug: ", err)

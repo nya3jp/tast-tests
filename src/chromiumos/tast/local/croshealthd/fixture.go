@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -25,11 +27,13 @@ func init() {
 			"menghuan@google.com",         // Fixture maintainer
 			"cros-tdm-tpe-eng@google.com", // team mailing list
 		},
-		SetUpTimeout:    30 * time.Second,
-		ResetTimeout:    5 * time.Second,
+		SetUpTimeout:    90 * time.Second,
+		ResetTimeout:    90 * time.Second,
 		PreTestTimeout:  5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
-		TearDownTimeout: 5 * time.Second,
+		TearDownTimeout: 90 * time.Second,
+		Data:            []string{"testcert.p12"},
+		Vars:            []string{"ui.signinProfileTestExtensionManifestKey"},
 		Impl:            newCrosHealthdFixture(),
 	})
 }
@@ -39,6 +43,10 @@ type crosHealthdFixture struct {
 	// pid of cros_healthd, for check if it crashed or restarted within a single test.
 	pid        int
 	forceReset bool
+	// The following 3 varialbes are used for Chrome login.
+	chromeOption chrome.Option
+	chrome       *chrome.Chrome
+	certPath     string
 }
 
 func newCrosHealthdFixture() testing.FixtureImpl {
@@ -46,7 +54,9 @@ func newCrosHealthdFixture() testing.FixtureImpl {
 }
 
 func (f *crosHealthdFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	if err := f.RestartHealthdService(ctx); err != nil {
+	f.chromeOption = chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey"))
+	f.certPath = s.DataPath("testcert.p12")
+	if err := f.RestartHealthdService(ctx, false); err != nil {
 		s.Fatal("Fail to setup crosHealthdFixture: ", err)
 	}
 	return nil
@@ -79,7 +89,7 @@ func (f *crosHealthdFixture) Reset(ctx context.Context) error {
 	if f.forceReset {
 		f.forceReset = false
 
-		if err := f.RestartHealthdService(ctx); err != nil {
+		if err := f.RestartHealthdService(ctx, false); err != nil {
 			return errors.Wrap(err, "Fail to reset crosHealthdFixture")
 		}
 	}
@@ -89,20 +99,54 @@ func (f *crosHealthdFixture) Reset(ctx context.Context) error {
 func (f *crosHealthdFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	// cros_healthd should be running be default on all systems. Ensure it is
 	// left running.
-	if err := f.RestartHealthdService(ctx); err != nil {
+	if err := f.RestartHealthdService(ctx, true); err != nil {
 		s.Fatalf("Fail to reset cros_healthd enivronment: %s", err)
 	}
 }
 
-func (f *crosHealthdFixture) RestartHealthdService(ctx context.Context) error {
+func (f *crosHealthdFixture) DisableDataProtection(ctx context.Context, teardown bool) error {
+	if f.chrome != nil {
+		// |chrome.Close| disconnects from Chrome and cleans up standard extensions.
+		// It won't restart the ui process.
+		if err := f.chrome.Close(ctx); err != nil {
+			return errors.Wrap(err, "failed to close Chrome")
+		}
+	}
+
+	if teardown {
+		return nil
+	}
+
+	// Create a new Chrome login screen.
+	// |chrome.New| will restart ui, so we don't need to restart ui by ourselves.
+	var err error
+	f.chrome, err = chrome.New(ctx, chrome.DeferLogin(), f.chromeOption)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome at login screen")
+	}
+
+	// For accessing the Thunderbolt device we have to disable the data protection access from UI.
+	if err := typecutils.EnablePeripheralDataAccess(ctx, f.certPath); err != nil {
+		return errors.Wrap(err, "failed to enable peripheral data access setting")
+	}
+
+	if err := f.chrome.ContinueLogin(ctx); err != nil {
+		return errors.Wrap(err, "failed to login")
+	}
+
+	return nil
+}
+
+func (f *crosHealthdFixture) RestartHealthdService(ctx context.Context, teardown bool) error {
 	// Stop "cros_healthd" to ensure "ui" is not using it.
 	if err := upstart.StopJob(ctx, "cros_healthd"); err != nil {
 		return errors.Wrapf(err, "unable to stop %q upstart service", crosHealthdJobName)
 	}
-	// Restart the "ui" job to ensure that Chrome is running. Chrome internally will wait "cros_healthd" to be up.
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		return errors.Wrap(err, "unable to ensure 'ui' upstart service is running")
+
+	if err := f.DisableDataProtection(ctx, teardown); err != nil {
+		return err
 	}
+
 	// Ensure cros_healthd is up and wait until Mojo bootstrap flow is done.
 	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
 		return errors.Wrap(err, "failed to start cros_healthd")
