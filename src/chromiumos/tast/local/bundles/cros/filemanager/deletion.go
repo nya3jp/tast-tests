@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -86,9 +87,14 @@ func Deletion(ctx context.Context, s *testing.State) {
 		file:           testFile,
 	}
 
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users MyFiles path: ", err)
+	}
+
 	dirPath := map[string]string{
-		filesapp.Downloads: filesapp.DownloadPath,
-		filesapp.MyFiles:   filesapp.MyFilesPath,
+		filesapp.Downloads: filepath.Join(myFilesPath, "Downloads"),
+		filesapp.MyFiles:   myFilesPath,
 	}
 
 	res := &deletionTestResource{
