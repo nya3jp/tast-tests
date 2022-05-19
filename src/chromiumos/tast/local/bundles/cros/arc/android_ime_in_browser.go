@@ -186,4 +186,14 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Interval: time.Second}); err != nil {
 		s.Error("Failed to get input text: ", err)
 	}
+
+	// Hide the keyboard using the "back" button in shelf.
+	if err := uia.LeftClick(nodewith.ClassName("ash/BackButton"))(ctx); err != nil {
+		s.Fatal("Failed to click shelf back button: ", err)
+	}
+
+	if err := uia.WaitUntilGone(keyboard)(ctx); err != nil {
+		s.Fatal("Keyboard not hidden after clicking back button")
+	}
+
 }
