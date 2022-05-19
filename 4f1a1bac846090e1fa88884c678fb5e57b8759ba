@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eaaef8c_7447a646",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-19T16:11:22Z",
+      "side": 1,
+      "message": "Removing myself because the CL was submitted before I had a chance to review it.",
+      "revId": "4f1a1bac846090e1fa88884c678fb5e57b8759ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
