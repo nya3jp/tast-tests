@@ -166,14 +166,13 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		defer l.Close(ctx)
 	}
 	br := cr.Browser()
-	tconns := []*chrome.TestConn{tconn}
+	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
-		bTconn, err := l.TestAPIConn(ctx)
+		bTconn, err = l.TestAPIConn(ctx)
 		if err != nil {
 			s.Fatal("Failed to get lacros test API conn: ", err)
 		}
-		tconns = append(tconns, bTconn)
 	}
 
 	if pauseMode == Lock {
@@ -205,11 +204,15 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	defer cancel()
 
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs(tconns)...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
 	defer recorder.Close(cleanupRecorderCtx)
+	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+		s.Fatal("Failed to add metrics to recorder: ", err)
+	}
+
 	var totalElapsed time.Duration
 	if err = recorder.Run(ctx, func(ctx context.Context) error {
 		startTime := time.Now()

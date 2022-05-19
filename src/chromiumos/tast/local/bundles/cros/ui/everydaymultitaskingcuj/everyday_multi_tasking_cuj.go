@@ -147,14 +147,13 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 		defer l.Close(ctx)
 	}
 	br := cr.Browser()
-	tconns := []*chrome.TestConn{tconn}
+	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
-		bTconn, err := l.TestAPIConn(ctx)
+		bTconn, err = l.TestAPIConn(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get lacros test API conn")
 		}
-		tconns = append(tconns, bTconn)
 	}
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
@@ -191,11 +190,14 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 
 	options := cujrecorder.NewPerformanceCUJOptions()
 	options.DoNotChangeBluetooth = params.enableBT
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, options, cuj.MetricConfigs(tconns)...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, options)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
+	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+		return errors.Wrap(err, "failed to add metrics to recorder")
+	}
 
 	var appStartTime int64
 	switch params.appName {
