@@ -22,6 +22,30 @@
       },
       "revId": "c5f8d16236b3651090677423938a4795a9ff60f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93cc95cc_5bf986fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh_google_photos_wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-05-19T17:28:59Z",
+      "side": 1,
+      "message": "Added a comment :)",
+      "parentUuid": "4b050a96_69b1ee79",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 18
+      },
+      "revId": "c5f8d16236b3651090677423938a4795a9ff60f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
