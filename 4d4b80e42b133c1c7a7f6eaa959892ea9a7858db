@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7eee014_907bf0c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-19T12:45:33Z",
+      "side": 1,
+      "message": "Does it really take that long to run this test?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "4d4b80e42b133c1c7a7f6eaa959892ea9a7858db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ebe7d75_e1f35cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-19T12:45:33Z",
+      "side": 1,
+      "message": "nit: I don\u0027t know if the outputLogPath file is collected and available in case the test fails.\n\nIn the line 99 you log each of the lines however, the test may not get to that point if output can\u0027t be split with a new line.\n\nMaybe it is better to log the whole file earlier?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 47
+      },
+      "revId": "4d4b80e42b133c1c7a7f6eaa959892ea9a7858db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
