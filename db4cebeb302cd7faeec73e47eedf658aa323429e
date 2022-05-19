@@ -16,6 +16,155 @@
       "message": "Adding Tast owners to review.",
       "revId": "db4cebeb302cd7faeec73e47eedf658aa323429e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbdac85c_f73c801a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-19T10:01:31Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "db4cebeb302cd7faeec73e47eedf658aa323429e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4656a8b6_c9f0727a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-19T10:01:31Z",
+      "side": 1,
+      "message": "nit: inline",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "db4cebeb302cd7faeec73e47eedf658aa323429e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61991e0_0aa9438d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-19T10:01:31Z",
+      "side": 1,
+      "message": "nit: add period",
+      "range": {
+        "startLine": 61,
+        "startChar": 62,
+        "endLine": 61,
+        "endChar": 72
+      },
+      "revId": "db4cebeb302cd7faeec73e47eedf658aa323429e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ad0e5e_286c02e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-19T10:01:31Z",
+      "side": 1,
+      "message": "nit: CHT",
+      "range": {
+        "startLine": 83,
+        "startChar": 71,
+        "endLine": 83,
+        "endChar": 74
+      },
+      "revId": "db4cebeb302cd7faeec73e47eedf658aa323429e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3a32b8_360c4fa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-19T10:01:31Z",
+      "side": 1,
+      "message": "nit: use %q",
+      "range": {
+        "startLine": 126,
+        "startChar": 46,
+        "endLine": 126,
+        "endChar": 47
+      },
+      "revId": "db4cebeb302cd7faeec73e47eedf658aa323429e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f8075cb_8e6e538f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-19T10:01:31Z",
+      "side": 1,
+      "message": "nit: CPUs",
+      "range": {
+        "startLine": 138,
+        "startChar": 23,
+        "endLine": 138,
+        "endChar": 27
+      },
+      "revId": "db4cebeb302cd7faeec73e47eedf658aa323429e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539335a3_2b68df94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_cpu_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-19T10:01:31Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments\nhttps://go.dev/doc/effective_go",
+      "revId": "db4cebeb302cd7faeec73e47eedf658aa323429e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
