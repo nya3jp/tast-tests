@@ -29,9 +29,7 @@ const (
 	ARCVPNService = "ArcHostVpnService"
 )
 
-// SetUpHostVPN create the host VPN server, but does not initiate a connection. The returned
-// vpn.Connection is immediately ready for Connect() to be called on it. Also returns a cleanup
-// function that handles the VPN server cleanup for the caller to execute.
+// SetUpHostVPN creates a base VPN config, then calls SetUpHostVPNWithConfig
 func SetUpHostVPN(ctx, cleanupCtx context.Context) (*vpn.Connection, func() error, error) {
 	// Host VPN config we'll use for connections. Arbitrary VPN type, but it can't cause the
 	// test to log out of the user during setup otherwise we won't have access to adb anymore.
@@ -41,6 +39,13 @@ func SetUpHostVPN(ctx, cleanupCtx context.Context) (*vpn.Connection, func() erro
 		Type:     vpn.TypeL2TPIPsecSwanctl,
 		AuthType: vpn.AuthTypePSK,
 	}
+	return SetUpHostVPNWithConfig(ctx, cleanupCtx, config)
+}
+
+// SetUpHostVPNWithConfig create the host VPN server, but does not initiate a connection. The
+// returned vpn.Connection is immediately ready for Connect() to be called on it. Also returns a
+// cleanup function that handles the VPN server cleanup for the caller to execute.
+func SetUpHostVPNWithConfig(ctx, cleanupCtx context.Context, config vpn.Config) (*vpn.Connection, func() error, error) {
 	conn, err := vpn.NewConnection(ctx, config)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to create connection object")
