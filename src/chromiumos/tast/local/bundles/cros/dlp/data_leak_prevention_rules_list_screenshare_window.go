@@ -46,7 +46,6 @@ func init() {
 			Val: screenshare.TestParams{
 				Name:        "blocked",
 				Restriction: restrictionlevel.Blocked,
-				Path:        screenshare.RestrictedPath,
 				BrowserType: browser.TypeAsh,
 			},
 		}, {
@@ -55,7 +54,6 @@ func init() {
 			Val: screenshare.TestParams{
 				Name:        "allowed",
 				Restriction: restrictionlevel.Allowed,
-				Path:        screenshare.UnrestrictedPath,
 				BrowserType: browser.TypeAsh,
 			},
 		}, {
@@ -64,7 +62,6 @@ func init() {
 			Val: screenshare.TestParams{
 				Name:        "warn_proceeded",
 				Restriction: restrictionlevel.WarnProceeded,
-				Path:        screenshare.RestrictedPath,
 				BrowserType: browser.TypeAsh,
 			},
 		}, {
@@ -73,7 +70,6 @@ func init() {
 			Val: screenshare.TestParams{
 				Name:        "warn_cancelled",
 				Restriction: restrictionlevel.WarnCancelled,
-				Path:        screenshare.RestrictedPath,
 				BrowserType: browser.TypeAsh,
 			},
 		}, {
@@ -83,7 +79,6 @@ func init() {
 			Val: screenshare.TestParams{
 				Name:        "blocked",
 				Restriction: restrictionlevel.Blocked,
-				Path:        screenshare.RestrictedPath,
 				BrowserType: browser.TypeLacros,
 			},
 		}, {
@@ -93,7 +88,6 @@ func init() {
 			Val: screenshare.TestParams{
 				Name:        "allowed",
 				Restriction: restrictionlevel.Allowed,
-				Path:        screenshare.UnrestrictedPath,
 				BrowserType: browser.TypeLacros,
 			},
 		}, {
@@ -103,7 +97,6 @@ func init() {
 			Val: screenshare.TestParams{
 				Name:        "warn_proceeded",
 				Restriction: restrictionlevel.WarnProceeded,
-				Path:        screenshare.RestrictedPath,
 				BrowserType: browser.TypeLacros,
 			},
 		}, {
@@ -112,7 +105,6 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshare.TestParams{
 				Name:        "warn_cancelled",
-				Path:        screenshare.RestrictedPath,
 				Restriction: restrictionlevel.WarnCancelled,
 				BrowserType: browser.TypeLacros,
 			},
@@ -128,8 +120,16 @@ func DataLeakPreventionRulesListScreenshareWindow(ctx context.Context, s *testin
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	url := server.URL + params.Path
-	unrestrictedURL := server.URL + screenshare.UnrestrictedPath
+	// The URL used for testing the screenshare policies. The /text_1.html URL is unrestricted,
+	// while /text_2.html will have either be blocked or warned on, depending on the exact test.
+	var url string
+	if params.Restriction == restrictionlevel.Allowed {
+		url = server.URL + "/text_1.html"
+	} else {
+		url = server.URL + "/text_2.html"
+	}
+
+	nonRestrictedSite := server.URL + "/text_1.html"
 
 	// Update the policy blob.
 	pb := policy.NewBlob()
@@ -163,12 +163,12 @@ func DataLeakPreventionRulesListScreenshareWindow(ctx context.Context, s *testin
 	defer closeBrowser(ctx)
 
 	var conn *browser.Conn
-	if conn, err = br.NewConn(ctx, unrestrictedURL); err != nil {
+	if conn, err = br.NewConn(ctx, nonRestrictedSite); err != nil {
 		s.Fatal("Failed to open page: ", err)
 	}
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-		s.Fatalf("Failed to wait for %q to achieve quiescence: %v", unrestrictedURL, err)
+		s.Fatalf("Failed to wait for %q to achieve quiescence: %v", nonRestrictedSite, err)
 	}
 
 	var screenRecorder *uiauto.ScreenRecorder
@@ -241,12 +241,12 @@ func DataLeakPreventionRulesListScreenshareWindow(ctx context.Context, s *testin
 		s.Fatal("Polling the frame status timed out: ", err)
 	}
 
-	if conn, err = br.NewConn(ctx, unrestrictedURL); err != nil {
+	if conn, err = br.NewConn(ctx, nonRestrictedSite); err != nil {
 		s.Fatal("Failed to open page: ", err)
 	}
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-		s.Fatalf("Failed to wait for %q to achieve quiescence: %v", unrestrictedURL, err)
+		s.Fatalf("Failed to wait for %q to achieve quiescence: %v", nonRestrictedSite, err)
 	}
 
 	if _, err := ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains(screenshare.ScreenshareResumedIDContains), ash.WaitTitle(screenshare.ScreenshareResumedTitle)); (err != nil) == (params.Restriction == restrictionlevel.Blocked) {
@@ -269,7 +269,7 @@ func DataLeakPreventionRulesListScreenshareWindow(ctx context.Context, s *testin
 		}
 
 		if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-			s.Fatalf("Failed to wait for %q to achieve quiescence: %v", unrestrictedURL, err)
+			s.Fatalf("Failed to wait for %q to achieve quiescence: %v", nonRestrictedSite, err)
 		}
 
 		if err := screenshare.CheckFrameStatus(ctx, screenRecorder /*wantAllowed=*/, true); err != nil {
