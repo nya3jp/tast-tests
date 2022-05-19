@@ -59,6 +59,7 @@ group("all") {
     "ArcSurfaceInsetsTest:ArcSurfaceInsetsTest",
     "ArcTtsTest:ArcTtsTest",
     "ArcInstallAppWithAppListSortedTest:ArcInstallAppWithAppListSortedTest",
+    "ArcVolumeFilterTest:ArcVolumeFilterTest",
     "ArcWMTestApp:ArcWMTestApp_23",
     "ArcWMTestApp:ArcWMTestApp_24",
     "ArcWMTestApp:ArcWMTestApp_24_InMaximizedList",
