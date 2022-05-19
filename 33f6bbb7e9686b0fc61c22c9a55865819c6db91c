@@ -205,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd8803a_b1546007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-19T21:13:31Z",
+      "side": 1,
+      "message": "s.entityRoot.cfg.DataDir is not visible to us so we can\u0027t use it.",
+      "parentUuid": "da1ea5b5_98dcab37",
+      "range": {
+        "startLine": 132,
+        "startChar": 36,
+        "endLine": 132,
+        "endChar": 81
+      },
+      "revId": "33f6bbb7e9686b0fc61c22c9a55865819c6db91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4adf0dd6_0d09d945",
@@ -218,6 +242,30 @@
       "writtenOn": "2022-05-18T07:20:54Z",
       "side": 1,
       "message": "don\u0027t have to, but should we just do a normal chrome trace if perfetto cfg is not provided?",
+      "range": {
+        "startLine": 490,
+        "startChar": 21,
+        "endLine": 490,
+        "endChar": 41
+      },
+      "revId": "33f6bbb7e9686b0fc61c22c9a55865819c6db91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70278e6_c349f9eb",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-19T21:13:31Z",
+      "side": 1,
+      "message": "it can be done by pass a config file only contain ```org.chromium.trace_event``` and ```org.chromium.trace_metadata``` data sources. Test should pass a config file if it wants to enable tracing.",
+      "parentUuid": "4adf0dd6_0d09d945",
       "range": {
         "startLine": 490,
         "startChar": 21,
