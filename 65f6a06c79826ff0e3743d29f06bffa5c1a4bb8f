@@ -146,6 +146,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1737aed6_9229733a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-19T00:46:37Z",
+      "side": 1,
+      "message": "Resolving this comment as neis@ fixed the discrepancy (thanks!). It\u0027s now ready for review again.",
+      "parentUuid": "7baba75b_bbfc9f8e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "65f6a06c79826ff0e3743d29f06bffa5c1a4bb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b08ca638_03ee513c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
