@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d95e81a8_df007a47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "247a23f9_00bd2254",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "94e3003c_3392a628",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Do you think we should create a new group then? I\u0027m kind or reluctant to add this to group:nearby-share, as the test is in the wifi bundle and TDLS can support more than nearby.",
       "parentUuid": "ee4a3f5f_b95194e7",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a595dda_7481f910",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Well, anyway, I\u0027ve created group:wificell_dual. Now I need to figure out how to pair it with a correct pool and teach test runners how to configure it.",
+      "parentUuid": "2f131ad7_c93d1d42",
       "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

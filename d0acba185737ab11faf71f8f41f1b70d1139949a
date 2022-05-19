@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d39d8afe_f3bd9768",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61cf2d47_57295f5a",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1b7a0c8_51438319",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-05-17T08:00:20Z",
       "side": 1,
       "message": "ditto",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "393910d8_7a16d8a6",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1b7a0c8_51438319",
       "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e83ba5d_332a7250",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d2c6b7f_f99c46a6",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df0bbcae_1a73a48b",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-05-17T08:00:20Z",
       "side": 1,
       "message": "Would be better to fetch this during run time rather than use a compile time const. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go;l\u003d1154?q\u003dClientInterface\u0026sq\u003d\u0026ss\u003dchromiumos",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74f78c5_0e7a203f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0bbcae_1a73a48b",
       "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +192,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39c2b36_19cec976",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4b79eda_c7269ff4",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63b7bc6e_9d55685b",
@@ -137,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd775388_62927558",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63b7bc6e_9d55685b",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5f93ffc_bbd7a053",
@@ -150,6 +258,30 @@
       "writtenOn": "2022-05-18T08:10:29Z",
       "side": 1,
       "message": "nit: typically the test failure message doesn\u0027t contain \"err: \" but simply concatenates the error message, such as:\n\n s.Fatal(\"Failed to configure ap: \", err)",
+      "range": {
+        "startLine": 92,
+        "startChar": 33,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b8b6f0_ab44b268",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Oh, then it seems I used a wrong code to learn coding standard from :)",
+      "parentUuid": "b5f93ffc_bbd7a053",
       "range": {
         "startLine": 92,
         "startChar": 33,
@@ -183,6 +315,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37eac7d4_5fdb4e12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77caf840_99912f6c",
+      "range": {
+        "startLine": 131,
+        "startChar": 73,
+        "endLine": 131,
+        "endChar": 76
+      },
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25f5c089_54522ce2",
@@ -196,6 +352,30 @@
       "writtenOn": "2022-05-18T08:10:29Z",
       "side": 1,
       "message": "ditto\n\n errors.Wrap(err, \"failed to call command\")",
+      "range": {
+        "startLine": 36,
+        "startChar": 56,
+        "endLine": 36,
+        "endChar": 61
+      },
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c52a8a_cd61e671",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25f5c089_54522ce2",
       "range": {
         "startLine": 36,
         "startChar": 56,
@@ -223,6 +403,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24de28a_65ffad24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70af5ce2_6c18c9e3",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ed7a35a_43056b72",
@@ -240,6 +438,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "332dfa4c_ac45a60b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "Done, implementation moved to the first commit.",
+      "parentUuid": "0ed7a35a_43056b72",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de19f175_44ea6fa9",
@@ -253,6 +469,24 @@
       "writtenOn": "2022-05-17T08:00:20Z",
       "side": 1,
       "message": "Put this to hwdep.go? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d1?q\u003dhwdep.go\u0026ss\u003dchromiumos",
+      "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d692e94c_6bb2881e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:17:53Z",
+      "side": 1,
+      "message": "No longer necessary.",
+      "parentUuid": "de19f175_44ea6fa9",
       "revId": "d0acba185737ab11faf71f8f41f1b70d1139949a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
