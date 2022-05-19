@@ -578,6 +578,11 @@ func StartWireGuardServer(ctx context.Context, clientPublicKey string, usePSK, i
 	chro.AddStartupCommand("wg setconf wg1 /" + wgConfigFile)
 	chro.AddStartupCommand("ip addr add dev wg1 " + server.OverlayIP)
 	chro.AddStartupCommand("ip link set dev wg1 up")
+	if isSecondServer {
+		chro.AddStartupCommand("ip route add " + wgSecondServerAllowedIPs + " dev wg1")
+	} else {
+		chro.AddStartupCommand("ip route add " + wgServerAllowedIPs + " dev wg1")
+	}
 
 	var err error
 	if server.UnderlayIP, err = chro.Startup(ctx); err != nil {
