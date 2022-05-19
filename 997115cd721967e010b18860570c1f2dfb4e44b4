@@ -393,6 +393,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "489a37d7_49d6c462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-19T19:10:38Z",
+      "side": 1,
+      "message": "It\u0027s a starting point. It was intended to be a baseline (which is generally a good practice), but since we aren\u0027t setting any of the portal properties for \u0027online\u0027, it will end up being pretty similar to ShillEthernetReady.\n\nI have already spoke to Michael about this and the plan will be:\na) Land this as an informational test for Ethernet.\nb) Get veth working and update this test as a baseline for veth (which will be new and important).\nc) Expand the test to include non online states and test portal properties.\n\nWe could skip (a), but I would just as soon land an Ethernet baseline so that when we add the veth version we can focus on the differences.\n\nWDYT?",
+      "parentUuid": "4bedb743_515b09d3",
+      "revId": "997115cd721967e010b18860570c1f2dfb4e44b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d9dee8e_05338d5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/captive_portal_base.go",
         "patchSetId": 1
