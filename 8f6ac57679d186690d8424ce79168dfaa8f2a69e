@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555ecfb8_758aee32",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-19T00:08:56Z",
+      "side": 1,
+      "message": "What happens if lacros is launched (becomes running) after line 98, so it tries apps.Launch again unnecessarily?",
+      "revId": "8f6ac57679d186690d8424ce79168dfaa8f2a69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
