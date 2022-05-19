@@ -262,6 +262,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78b87f7_55ba731f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_spa.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-05-19T00:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8ecbb6_edb38c09",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "1084c7e89cd43079c1b7ee7789616cf4910b233d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5de562d_ebfa0e44",
