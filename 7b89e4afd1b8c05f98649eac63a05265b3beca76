@@ -16,6 +16,23 @@
       "message": "LGTM from tast-owners perspective. Just FYI we usually wait for an area owner to LGTM before we review, wait for LGTM from Billy before landing pls",
       "revId": "7b89e4afd1b8c05f98649eac63a05265b3beca76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b1b81a_e8d7fd97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-05-19T16:23:54Z",
+      "side": 1,
+      "message": "LGTM. I reviewed the \"openwrt Bridge, Veth, and VethBridgeBinding support\" cl first (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3651555) , so my comments regarding modifying these common files are on that cl. If you think it makes sense, feel free to bubble down those changes to this initial refactor. Otherwise I\u0027m fine with landing this cl as is provided everything is submitted at once.",
+      "revId": "7b89e4afd1b8c05f98649eac63a05265b3beca76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
