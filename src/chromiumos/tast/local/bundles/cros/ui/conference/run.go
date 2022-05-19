@@ -56,14 +56,13 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 	br := cr.Browser()
-	tconns := []*chrome.TestConn{tconn}
+	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
-		bTconn, err := l.TestAPIConn(ctx)
+		bTconn, err = l.TestAPIConn(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get lacros test API conn")
 		}
-		tconns = append(tconns, bTconn)
 	}
 	conf.SetBrowser(br)
 
@@ -88,11 +87,14 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 
 	testing.ContextLog(ctx, "Start recording actions")
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
+	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+		return errors.Wrap(err, "failed to add metrics to recorder")
+	}
 
 	meetTimeout := 50 * time.Second
 	if roomSize == NoRoom {
