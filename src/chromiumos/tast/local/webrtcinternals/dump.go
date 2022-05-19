@@ -46,7 +46,7 @@ type Statistic struct {
 
 // Update represents an entry in the UpdateLog field of PeerConnection.
 type Update struct {
-	Time  string `json:"time"`
-	Type  string `json:"type"`
-	Value string `json:"value"`
+	Time  TimeWithJSLocaleString `json:"time"`
+	Type  string                 `json:"type"`
+	Value string                 `json:"value"`
 }
