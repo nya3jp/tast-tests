@@ -16,6 +16,46 @@
       "message": "-Removed properties that are not returned to default value for ethernet online. \n-Setup first parameterized test\n\nThis test will look very basic now but it is the baseline for our next implementation of a virtual ethernet pair for future captive portal tests.\n\nChanged file name from shill_captive_portal_properties_ethernet.go -\u003e shill_captive_portal_properties.go",
       "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd36e5aa_010bada5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-19T21:33:17Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f441d9_96ef019e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-19T21:33:17Z",
+      "side": 1,
+      "message": "not sure what best practice is here, but I\u0027d prefer just returning an error instead.",
+      "range": {
+        "startLine": 56,
+        "startChar": 86,
+        "endLine": 56,
+        "endChar": 102
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
