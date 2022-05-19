@@ -233,6 +233,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4cc26a0_66f82260",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-05-19T05:54:50Z",
+      "side": 1,
+      "message": "I think I\u0027m missing something. If restarting a fixture overwrites log files because they have the same name, that sounds like it should be fixed rather than using a hack based on the timestamp. Maybe separate directories? People trying to debug what happens will not understand that some files are created by a fixture restart based purely on the timestamp, there should be a very clear naming pattern if that happens.\nBTW, are other log files overwritten?\n\n\u003e With the timestamp it also helps us get a clear timeline of log files\n\nThat sounds reasonable, but IIRC currently the timestamp in the name is xxxxxxx_syslogd.log where xxxxxxx is a very large integer unless I\u0027m missing what time.Now().Unix() will print. Humans can\u0027t convert the number of ticks since epoch to a human-readable timestamp. If a file is going to be named based on a timestamp, it should be a human-readable timestamp like syslog_2022-02-01_19:31:27.log",
+      "parentUuid": "02bcb651_0edf34ce",
+      "range": {
+        "startLine": 99,
+        "startChar": 80,
+        "endLine": 99,
+        "endChar": 81
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8cb3985_7fdb26ec",
         "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
         "patchSetId": 1
