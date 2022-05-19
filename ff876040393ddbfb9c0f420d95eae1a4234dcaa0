@@ -16,6 +16,24 @@
       "message": "The the lab cache server should be doing the uncompress / untar - if it is not doing that then might be a bug there ( but likely that would cause a lab outage ) The other option is that the file you are requesting from the cache server has changed.   If you request the compressed file it will serve that but if you request the .bin file it will generate that for you.   Not sure exactly what changed but that is how I can see this working before and not working now servod never never supported untaring the file.",
       "revId": "ff876040393ddbfb9c0f420d95eae1a4234dcaa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebef6f26_a549c2b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-19T19:55:24Z",
+      "side": 1,
+      "message": "I have this URL:\n\nhttp://moblab.bettis.org:8082/static/asurada-release/R104-14836.0.0/chromiumos_test_image.tar.xz?gs_bucket\u003dchromeos-image-archive\n\nIt doesn\u0027t untar/uncompress the file. What do I change this to in order to get the cache server to do the uncompress?",
+      "parentUuid": "7418fefd_8c620b1b",
+      "revId": "ff876040393ddbfb9c0f420d95eae1a4234dcaa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
