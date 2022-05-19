@@ -92,6 +92,30 @@ type record struct {
 	Buckets []metrics.HistogramBucket `json:"buckets"`
 }
 
+// combine combines another record into an existing one.
+func (rec *record) combine(newRec *record) error {
+	if rec.config != newRec.config {
+		return errors.New("records with different config cannot be combined")
+	}
+	rec.totalCount += newRec.totalCount
+	rec.Sum += newRec.Sum
+	rec.Buckets = append(rec.Buckets, newRec.Buckets...)
+	return nil
+}
+
+// saveMetric records the metric into the perf values.
+func (rec *record) saveMetric(pv *perf.Values, name string) {
+	if rec.totalCount == 0 {
+		return
+	}
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      rec.config.unit,
+		Variant:   "average",
+		Direction: rec.config.direction,
+	}, float64(rec.Sum)/float64(rec.totalCount))
+}
+
 // Recorder is a utility to measure various metrics for CUJ-style tests.
 type Recorder struct {
 	cr    *chrome.Chrome
@@ -100,8 +124,9 @@ type Recorder struct {
 	// Metrics names keyed by relevant chrome.TestConn pointer.
 	names map[*browser.Browser][]string
 
-	// Metric records keyed by metric name.
-	records map[string]*record
+	// Metric records keyed by relevant browser.Browser pointer.
+	// Its value is a map keyed by metric name.
+	records map[*browser.Browser]map[string]*record
 
 	traceDir        string
 	perfettoCfgPath string
@@ -183,7 +208,10 @@ func (r *Recorder) AddCollectedMetrics(b *browser.Browser, configs ...MetricConf
 			return errors.Errorf("invalid histogram name: %s", config.histogramName)
 		}
 		r.names[b] = append(r.names[b], config.histogramName)
-		r.records[config.histogramName] = &record{config: config}
+		if _, ok := r.records[b]; !ok {
+			r.records[b] = make(map[string]*record)
+		}
+		r.records[b][config.histogramName] = &record{config: config}
 	}
 	return nil
 }
@@ -301,7 +329,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	r.loginEventRecorder = perfSrc.NewLoginEventRecorder(tpsMetricPrefix)
 
 	r.names = make(map[*browser.Browser][]string)
-	r.records = make(map[string]*record)
+	r.records = make(map[*browser.Browser]map[string]*record)
 
 	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
@@ -509,7 +537,7 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 	r.startedAtTm = time.Time{} // Reset to zero.
 
 	// Collects metrics per browser test connection.
-	var hists []*metrics.Histogram
+	tHists := make(map[*browser.Browser][]*metrics.Histogram)
 	for b, rr := range r.mr {
 		tconn, err := b.TestAPIConn(ctx)
 		if err != nil {
@@ -517,25 +545,26 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 		}
 		h, err := rr.Histogram(runCtx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to collect metrics")
+			return errors.Wrapf(err, "failed to collect metrics for browser %v", b.Type())
 		}
-		browserName := b.Type() + "-Chrome"
-		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v", browserName, histsWithSamples(h))
-		hists = append(hists, h...)
+		testing.ContextLogf(ctx,
+			"The following metrics are collected from %q: %v", b.Type()+"-Chrome", histsWithSamples(h))
+		tHists[b] = append(tHists[b], h...)
 	}
 	// Reset recorders and context.
 	r.mr = nil
 
-	for _, hist := range hists {
-		if hist.TotalCount() == 0 {
-			continue
+	for b, hists := range tHists {
+		for _, hist := range hists {
+			if hist.TotalCount() == 0 {
+				continue
+			}
+			// Combine histogram result to the record.
+			if err := r.records[b][hist.Name].combine(&record{config: r.records[b][hist.Name].config,
+				totalCount: hist.TotalCount(), Sum: hist.Sum, Buckets: hist.Buckets}); err != nil {
+				return err
+			}
 		}
-		record := r.records[hist.Name]
-		record.totalCount += hist.TotalCount()
-		record.Sum += hist.Sum
-
-		// Concatenate buckets.
-		record.Buckets = append(record.Buckets, hist.Buckets...)
 	}
 	return nil
 }
@@ -653,23 +682,40 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		return errors.Wrap(err, "failed to get display info")
 	}
 
-	var crasUnderruns float64
-	for name, record := range r.records {
-		if record.totalCount == 0 {
-			continue
+	var allRecords = make(map[string]*record) // Combined records from all tconns.
+
+	// Record records by browser.
+	for b, records := range r.records {
+		for name, rec := range records {
+			if rec.totalCount == 0 {
+				continue
+			}
+			// Append metric name with connName as the new metric name, for example:
+			// - EventLatency.TotalLatency_ash-Chrome,
+			// - PageLoad.InteractiveTiming.InputDelay3_lacros-Chrome
+			rec.saveMetric(pv, fmt.Sprintf("%s_%s-Chrome", name, b.Type()))
+			// Combine the record.
+			if _, ok := allRecords[name]; !ok {
+				allRecords[name] = &record{config: rec.config}
+			}
+			if err := allRecords[name].combine(rec); err != nil {
+				return err
+			}
 		}
+	}
+	var crasUnderruns float64
+	// Record combined records from all tconns.
+	for name, rec := range allRecords {
 		if name == "Cras.UnderrunsPerDevice" {
-			crasUnderruns = float64(record.Sum)
+			crasUnderruns = float64(rec.Sum)
 			// We are not interested in reporting Cras.UnderrunsPerDevice but will use this value
 			// to derive UnderrunsPerDevicePerMinute. Continue the loop.
 			continue
 		}
-		pv.Set(perf.Metric{
-			Name:      name,
-			Unit:      record.config.unit,
-			Variant:   "average",
-			Direction: record.config.direction,
-		}, float64(record.Sum)/float64(record.totalCount))
+		// Metric name recorded is the original histogram name. For example:
+		// - EventLatency.TotalLatency
+		// - PageLoad.InteractiveTiming.InputDelay3
+		rec.saveMetric(pv, name)
 	}
 
 	// Derive Cras.UnderrunsPerDevicePerMinute. Ideally, the audio playing time and number of CRAS audio device
@@ -716,12 +762,41 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 // SaveHistograms saves histogram raw data to a given directory in a
 // file named "recorder_histograms.json" by marshal the recorders.
 func (r *Recorder) SaveHistograms(outDir string) error {
-	filePath := path.Join(outDir, "recorder_histograms.json")
-	j, err := json.MarshalIndent(r.records, "", "  ")
-	if err != nil {
-		return err
+	saveJSONFile := func(fileName string, records map[string]*record) error {
+		filePath := path.Join(outDir, fileName+".json")
+		j, err := json.MarshalIndent(records, "", "  ")
+		if err != nil {
+			return errors.Wrapf(err, "failed to marshall data for %s json file: %v", fileName, records)
+		}
+		if err := ioutil.WriteFile(filePath, j, 0644); err != nil {
+			return errors.Wrapf(err, "failed to write %s json file", fileName)
+		}
+		return nil
 	}
-	return ioutil.WriteFile(filePath, j, 0644)
+
+	const histogramFileName = "recorder_histograms"
+	var allRecords = make(map[string]*record) // Combined records from all tconns.
+
+	for b, records := range r.records {
+		// File for tconn based histogram will be appended with the tconn name.
+		// For example:
+		//   - recorder_histograms_ash-Chrome.json
+		//   - recorder_histograms_lacros-Chrome.json
+		fileName := fmt.Sprintf("%s_%s-Chrome", histogramFileName, b.Type())
+		if err := saveJSONFile(fileName, records); err != nil {
+			return err
+		}
+		for name, rec := range records {
+			if _, ok := allRecords[name]; !ok {
+				allRecords[name] = &record{config: rec.config}
+			}
+			// Combine the record.
+			if err := allRecords[name].combine(rec); err != nil {
+				return err
+			}
+		}
+	}
+	return saveJSONFile(histogramFileName, allRecords)
 }
 
 // histsWithSamples returns the names of the histograms that have at least one sample.
