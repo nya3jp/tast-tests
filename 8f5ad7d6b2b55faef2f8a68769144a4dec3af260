@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea59fc4a_16efe08c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-05-19T02:30:53Z",
+      "side": 1,
+      "message": "might need to change the name of run-device-play.sh to run-aplay.sh as well",
+      "parentUuid": "03a589de_fc141d1e",
+      "revId": "8f5ad7d6b2b55faef2f8a68769144a4dec3af260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "440db791_cd838b04",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
         "patchSetId": 1
@@ -37,6 +55,23 @@
         "endLine": 26,
         "endChar": 42
       },
+      "revId": "8f5ad7d6b2b55faef2f8a68769144a4dec3af260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c53e05_a9e4ec38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-audio-arecord.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-05-19T02:30:53Z",
+      "side": 1,
+      "message": "could be just `run-arecord.sh`",
       "revId": "8f5ad7d6b2b55faef2f8a68769144a4dec3af260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
