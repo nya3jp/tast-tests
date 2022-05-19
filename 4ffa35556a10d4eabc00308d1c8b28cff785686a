@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e15f7b_a08c1a8b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosinfo/lacrosinfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-19T02:29:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf683dbc_6d69ad36",
+      "range": {
+        "startLine": 5,
+        "startChar": 29,
+        "endLine": 5,
+        "endChar": 76
+      },
+      "revId": "4ffa35556a10d4eabc00308d1c8b28cff785686a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38023cdb_ad985639",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-18T04:52:35Z",
       "side": 1,
       "message": "Faillog takes a screenshot among other things. What about 10 seconds?",
+      "revId": "4ffa35556a10d4eabc00308d1c8b28cff785686a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd23acf_49699253",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-19T02:29:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38023cdb_ad985639",
       "revId": "4ffa35556a10d4eabc00308d1c8b28cff785686a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
