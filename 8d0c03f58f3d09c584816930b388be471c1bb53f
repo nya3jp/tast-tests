@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c89fc6b_d4586b10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-19T18:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6b2a73c_569a8eda",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "8d0c03f58f3d09c584816930b388be471c1bb53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29c501dc_2ea2e798",
@@ -145,6 +169,54 @@
         "startChar": 21,
         "endLine": 326,
         "endChar": 27
+      },
+      "revId": "8d0c03f58f3d09c584816930b388be471c1bb53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12909cac_930deeca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-19T18:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff641fbf_5043fd74",
+      "range": {
+        "startLine": 326,
+        "startChar": 21,
+        "endLine": 326,
+        "endChar": 27
+      },
+      "revId": "8d0c03f58f3d09c584816930b388be471c1bb53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c813053b_f5d3ba07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-19T18:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83109a30_dfd7e704",
+      "range": {
+        "startLine": 326,
+        "startChar": 50,
+        "endLine": 326,
+        "endChar": 59
       },
       "revId": "8d0c03f58f3d09c584816930b388be471c1bb53f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
