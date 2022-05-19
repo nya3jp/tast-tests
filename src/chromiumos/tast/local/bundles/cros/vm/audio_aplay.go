@@ -17,15 +17,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const runDevicePlay string = "run-device-play.sh"
+const runAudioAplay string = "run-aplay.sh"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DevicePlay,
+		Func:         AudioAplay,
 		Desc:         "Checks that the sound device is recognized in crosvm with aplay list",
 		Contacts:     []string{"pteerapong@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Data:         []string{runDevicePlay},
+		Data:         []string{runAudioAplay},
 		Timeout:      12 * time.Minute,
 		SoftwareDeps: []string{"vm_host", "dlc"},
 		Fixture:      "vmDLC",
@@ -48,7 +48,7 @@ func init() {
 	})
 }
 
-func DevicePlay(ctx context.Context, s *testing.State) {
+func AudioAplay(ctx context.Context, s *testing.State) {
 	config := s.Param().(audioutils.Config)
 	data := s.FixtValue().(dlc.FixtData)
 
@@ -56,7 +56,7 @@ func DevicePlay(ctx context.Context, s *testing.State) {
 	outputLogPath := filepath.Join(s.OutDir(), "output.txt")
 
 	kernelArgs := []string{
-		fmt.Sprintf("init=%s", s.DataPath(runDevicePlay)),
+		fmt.Sprintf("init=%s", s.DataPath(runAudioAplay)),
 		"--",
 		outputLogPath,
 	}
