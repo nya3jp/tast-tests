@@ -52,6 +52,24 @@
       "tag": "mailMessageId\u003d\u003cCAKFRRPKTpa_\u003dHnXmu8nKS3v63MNmZe_VRJ+T6k5RrOuLP20tiA@mail.gmail.com\u003e",
       "revId": "ff876040393ddbfb9c0f420d95eae1a4234dcaa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8614ef38_c9462ba7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-19T21:15:13Z",
+      "side": 1,
+      "message": "I see, satlab doesn\u0027t use a real cache server, it is a proxy server configured here: http://cs/chromium_infra/go/src/infra/cros/cmd/caching-backend/conf-creator/conf_templates.go;l\u003d37;rcl\u003d2440d3e6e26795747b2e3e8b7dd4ee7cb27c8e23\n\nSo it looks like to be most compatible with both satlab and also gs_cache, I should call: http://moblab.bettis.org:8082/stage?archive_url\u003dgs%3A%2F%2Fchromeos-image-archive%2Fasurada-release%2FR104-14836.0.0\u0026artifact\u003dtest_image\n\nwhich is a no-op on satlab, but does something real on gs_cache, and then download the uncompressed file with http://moblab.bettis.org:8082/static/asurada-release/R104-14836.0.0/chromiumos_test_image.bin\n\nIt appears that url really ought to have ?gs_bucket\u003dchromeos-image-archive at the end, but that doesn\u0027t work on satlab despite the comment in the nginxTemplate to the contrary.",
+      "tag": "mailMessageId\u003d\u003cCAD22NBmL-MnKUPAK-UXRzcdsVHwF4UrXawHv6H53Fmf1Ye4Axg@mail.gmail.com\u003e",
+      "revId": "ff876040393ddbfb9c0f420d95eae1a4234dcaa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
