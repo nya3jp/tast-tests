@@ -49,6 +49,7 @@ group("all") {
     "ArcPerAppDensityTest:ArcPerAppDensityTest",
     "ArcPipTest:ArcPipTest",
     "ArcPipVideoTest:ArcPipVideoTest",
+    "ArcVolumeFilterTest:ArcVolumeFilterTest",
     "ArcPrintTest:ArcPrintTest",
     "ArcPreImeKeyEventTest:ArcPreImeKeyEventTest",
     "ArcQuarterSizedWindowZoomingTest:ArcQuarterSizedWindowZoomingTest",
