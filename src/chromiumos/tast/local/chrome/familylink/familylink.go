@@ -271,7 +271,7 @@ func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, 
 
 	// Parse family link internals page.
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
-	rows := nodewith.Role(role.LayoutTableRow).Ancestor(nodewith.Role(role.WebView))
+	rows := nodewith.Role(role.LayoutTableRow)
 	if err := ui.WaitUntilExists(rows.First())(ctx); err != nil {
 		return errors.Wrap(err, "could not load family link user internals table")
 	}
@@ -279,27 +279,19 @@ func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, 
 	if err != nil {
 		return errors.Wrap(err, "failed to retrieve nodes info for rows")
 	}
-	foundIsChild := false
-	foundEmail := false
+
+	if err := ui.WaitUntilExists(nodewith.NameContaining(strings.ToLower(email)).NameStartingWith("Google Account:").Role(role.Button))(ctx); err != nil {
+		return errors.Wrapf(err, "user with email %s is not logged into browser", email)
+	}
+
 	// Family link user internals has a table with unnamed rows containing labels
-	// and values. To find the correct rows, we must iterate through all rows, check
-	// that it contains a cell with the label we are looking for, and check that the
-	// row also contains the correct value. It is expected for the labels of interest
+	// and values. To find the correct row, we must iterate through all rows, check
+	// that it contains a cell with the label "Child", and check that the
+	// row also contains the correct value. It is expected for the label
 	// to only occur once in the table.
+	foundIsChild := false
 	for i := range nodes {
 		row := rows.Nth(i)
-		// If this is the row labeled "Account", check value matches user email.
-		accountCell := nodewith.Role(role.LayoutTableCell).Name("Account").Ancestor(row)
-		emailValueCell := nodewith.Role(role.LayoutTableCell).Name(strings.ToLower(email)).Ancestor(row)
-		if err := ui.Exists(accountCell)(ctx); err == nil {
-			if foundEmail {
-				return errors.New("account row should only occur once")
-			}
-			foundEmail = true
-			if valueErr := ui.Exists(emailValueCell)(ctx); valueErr != nil {
-				return errors.Wrapf(valueErr, "user with email %s is not logged into browser", email)
-			}
-		}
 		// If this is the row labeled "Child", check value is true.
 		childCell := nodewith.Role(role.LayoutTableCell).Name("Child").Ancestor(row)
 		trueCell := nodewith.Role(role.LayoutTableCell).Name("true").Ancestor(row)
@@ -315,9 +307,6 @@ func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, 
 	}
 	if !foundIsChild {
 		return errors.New("could not find child row in family link user internals table")
-	}
-	if !foundEmail {
-		return errors.New("could not find account row in family link user internals table")
 	}
 	return nil
 }
