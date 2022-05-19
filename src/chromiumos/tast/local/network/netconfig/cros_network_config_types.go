@@ -302,6 +302,11 @@ type SubjectAltName struct {
 	Value string             `json:"value"`
 }
 
+// AutoConnectConfig is a wrapper to allow optional auto_connect configuration.
+type AutoConnectConfig struct {
+	Value bool `json:"value"`
+}
+
 // EAPConfigProperties contains properties for EAP networks.
 // Currently only PEAP networks without CA certificates are supported, so the
 // fields related to certificates are not included: ServerCAPEMs, ServerCARefs,
@@ -333,16 +338,25 @@ type WiFiConfigProperties struct {
 	HiddenSsid HiddenSsidMode       `json:"hiddenSsid"`
 }
 
+// CellularConfigProperties is used to create new configurations or change existing ones
+type CellularConfigProperties struct {
+	Apn     ApnProperties     `json:"Apn,omitempty"`
+	Roaming RoamingProperties `json:"Roaming,omitempty"`
+}
+
 // NetworkTypeConfigProperties contains properties for one type of network.
-// Currently only WiFi is supported.
+// Currently only WiFi and Cellular xis supported.
 type NetworkTypeConfigProperties struct {
-	Wifi WiFiConfigProperties `json:"wifi"`
+	Wifi     WiFiConfigProperties     `json:"wifi"`
+	Cellular CellularConfigProperties `json:"cellular"`
 }
 
 // ConfigProperties is passed to SetProperties or ConfigureNetwork to configure
 // a new network or augment an existing one.
 type ConfigProperties struct {
-	TypeConfig NetworkTypeConfigProperties `json:"typeConfig"`
+	AutoConnect AutoConnectConfig           `json:"autoConnect,omitempty"`
+	GUID        string                      `json:"guid,omitempty"`
+	TypeConfig  NetworkTypeConfigProperties `json:"typeConfig"`
 }
 
 // FilterType is used for requesting lists of network states.
@@ -364,6 +378,23 @@ type NetworkFilter struct {
 	Filter      FilterType  `json:"filter"`
 	NetworkType NetworkType `json:"networktype"`
 	Limit       int32       `json:"limit"`
+}
+
+// ApnProperties is used in CellularConfigProperties
+type ApnProperties struct {
+	AccessPointName string `json:"AccessPointName"`
+	Authentication  string `json:"authentication,omitempty"`
+	Language        string `json:"language,omitempty"`
+	LocalizedName   string `json:"localizedName,omitempty"`
+	Name            string `json:"name,omitempty"`
+	Password        string `json:"password, omitempty"`
+	Username        string `json:"username,omitempty"`
+	Attach          string `json:"attach, omitempty"`
+}
+
+// RoamingProperties is used in CellularConfigProperties
+type RoamingProperties struct {
+	AllowRoaming bool `json:"allow_roaming"`
 }
 
 // SIMLockStatus is the SIM card lock status for Cellular networks.

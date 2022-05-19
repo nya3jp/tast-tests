@@ -36,6 +36,18 @@ async function() {
       return await this.getCrosNetworkConfig().configureNetwork(properties, shared);
     },
 
+    async setProperties(guid, properties, cfgtype) {
+      // ConfigProperties.NetworkTypeConfigProperties is a union and expects
+      // only one key to be present. Since golang does not support union,
+      // remove all keys except for cfgtype
+      keys = Object.keys(properties.typeConfig)
+      keys.forEach(function (item,index){
+      if (item != cfgtype)
+      delete properties['typeConfig'][item];})
+
+      return await this.getCrosNetworkConfig().setProperties(guid, properties);
+   },
+
     async forgetNetwork(guid) {
       return await this.getCrosNetworkConfig().forgetNetwork(guid);
     },
@@ -54,7 +66,9 @@ async function() {
      Object.keys(filter).map(function(key,_) {
        lowercased_filter[key[0].toLowerCase()+key.slice(1)] = filter[key]});
      return await this.getCrosNetworkConfig().getNetworkStateList(lowercased_filter);
+
    },
+
 
   }
 }

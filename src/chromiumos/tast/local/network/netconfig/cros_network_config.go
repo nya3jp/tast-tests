@@ -75,6 +75,31 @@ func (c *CrosNetworkConfig) ConfigureNetwork(ctx context.Context, properties Con
 	return result.GUID, nil
 }
 
+// SetProperties sets properties for the network matching |guid|. |properties.guid| must be
+// null or match |guid|, otherwise it will fail with an invalid input error.
+// cfgtype should be one of 'wifi|cellular' and is used to remove unused config from NetworkTypeConfigProperties
+func (c *CrosNetworkConfig) SetProperties(ctx context.Context, guid string, properties ConfigProperties, cfgtype string) error {
+	var result struct {
+		Success      bool
+		ErrorMessage string
+	}
+
+	if err := c.mojoRemote.Call(ctx, &result,
+		"function(guid, properties,cfgtype) {return this.setProperties(guid, properties, cfgtype)}", guid, properties, cfgtype); err != nil {
+		return errors.Wrap(err, "failed to run setProperties javascript wrapper")
+	}
+	return nil
+
+	if result.ErrorMessage != "" {
+		return errors.New(result.ErrorMessage)
+	}
+
+	if result.Success != true {
+		return errors.New("setProperties failed")
+	}
+	return nil
+}
+
 // ForgetNetwork removes the network with guid from the device.
 func (c *CrosNetworkConfig) ForgetNetwork(ctx context.Context, guid string) (bool, error) {
 	var result struct{ Success bool }
@@ -116,8 +141,8 @@ func (c *CrosNetworkConfig) GetDeviceStateList(ctx context.Context) ([]DeviceSta
 	var result struct{ Result []DeviceStateProperties }
 
 	if err := c.mojoRemote.Call(ctx, &result,
-		"function(filter) { return this.getDeviceStateList()}"); err != nil {
-		return result.Result, errors.Wrap(err, "failed to run DeviceStateList")
+		"function() { return this.getDeviceStateList()}"); err != nil {
+		return result.Result, errors.Wrap(err, "failed to run getDeviceStateList")
 	}
 
 	return result.Result, nil
