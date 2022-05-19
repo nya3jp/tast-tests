@@ -33,6 +33,24 @@
       "message": "David didn\u0027t reply within a day, so skipping shadow review.",
       "revId": "bf1c3a950f3931996b5c3506220e3092a4af2d89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "811964cd_1e0dd286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-19T00:07:33Z",
+      "side": 1,
+      "message": "I\u0027m not a shadow reviewer, so I\u0027m not sure why both of us got added.",
+      "parentUuid": "d21fd168_6d8040b0",
+      "revId": "bf1c3a950f3931996b5c3506220e3092a4af2d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
