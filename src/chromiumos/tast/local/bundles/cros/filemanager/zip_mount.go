@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -97,9 +98,14 @@ func ZipMount(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users Downloads path: ", err)
+	}
+
 	// Load ZIP files.
 	for _, zipFile := range zipFiles {
-		zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
+		zipFileLocation := filepath.Join(downloadsPath, zipFile)
 
 		if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
 			s.Fatalf("Cannot copy ZIP file to %s: %s", zipFileLocation, err)

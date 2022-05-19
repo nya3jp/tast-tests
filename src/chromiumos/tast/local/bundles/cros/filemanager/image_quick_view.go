@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -43,7 +44,13 @@ func ImageQuickView(ctx context.Context, s *testing.State) {
 		previewImageFile       = "files_app_test.png"
 		previewImageDimensions = "100 x 100"
 	)
-	imageFileLocation := filepath.Join(filesapp.DownloadPath, previewImageFile)
+
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users Downloads path: ", err)
+	}
+
+	imageFileLocation := filepath.Join(downloadsPath, previewImageFile)
 	if err := fsutil.CopyFile(s.DataPath(previewImageFile), imageFileLocation); err != nil {
 		s.Fatalf("Failed to copy the test image to %s: %s", imageFileLocation, err)
 	}

@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/smb"
 	"chromiumos/tast/testing"
@@ -86,8 +87,13 @@ func SMBFileOperations(ctx context.Context, s *testing.State) {
 }
 
 func testCopyOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, fixture smb.FixtureData, files *filesapp.FilesApp) {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, fixture.Chrome.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users Downloads path: ", err)
+	}
+
 	const textFile = "test.txt"
-	testFileLocation := filepath.Join(filesapp.DownloadPath, textFile)
+	testFileLocation := filepath.Join(downloadsPath, textFile)
 	if err := createTestFile(testFileLocation); err != nil {
 		s.Fatalf("Failed to create file %q: %s", testFileLocation, err)
 	}

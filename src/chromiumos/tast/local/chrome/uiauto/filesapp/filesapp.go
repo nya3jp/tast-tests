@@ -27,6 +27,22 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// DEPRECATED: The following path is deprecated so please do not use it anymore.
+// All usages are being migrated away, to get the users Downloads or MyFiles
+// path please use the cryptohome library, e.g.:
+//
+// 	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+// 	if err != nil {
+// 		s.Fatal("Failed to retrieve users Downloads path: ", err)
+// 	}
+//
+// Or to retrieve the MyFiles path location:
+//
+// 	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+// 		if err != nil {
+// 			s.Fatal("Failed to retrieve users MyFiles path: ", err)
+// 		}
+
 // DownloadPath is the location of Downloads for the user.
 const DownloadPath = "/home/chronos/user/Downloads/"
 
