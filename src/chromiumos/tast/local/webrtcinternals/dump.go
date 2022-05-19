@@ -44,9 +44,11 @@ type Statistic struct {
 	Values    string `json:"values"`
 }
 
-// Update represents an entry in the UpdateLog field of PeerConnection.
+// Update represents an entry in the UpdateLog field of PeerConnection. The
+// timestamp is unmarshaled based on the assumption that the dump was
+// downloaded from chrome://webrtc-internals in the local time zone.
 type Update struct {
-	Time  string `json:"time"`
-	Type  string `json:"type"`
-	Value string `json:"value"`
+	Time  TimeWithJSLocaleString `json:"time"`
+	Type  string                 `json:"type"`
+	Value string                 `json:"value"`
 }
