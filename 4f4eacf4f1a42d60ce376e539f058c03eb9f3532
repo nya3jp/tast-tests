@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e3dd36_d3f7839c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-05-19T11:38:47Z",
+      "side": 1,
+      "message": "Good news: temporarily removing the \u0027informational\u0027 attribute actually added the test to the dry run.\n\nBad news: the test failed in the builder bot.\nIt seems like it actually fails before it reaches the lines you changed.",
+      "revId": "4f4eacf4f1a42d60ce376e539f058c03eb9f3532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
