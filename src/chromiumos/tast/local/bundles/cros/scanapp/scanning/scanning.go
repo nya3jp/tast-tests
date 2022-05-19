@@ -335,7 +335,7 @@ func ensureScannerIdle(ctx context.Context, uri string) error {
 			return errors.Errorf("scanner status is: %s", status)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: 1 * time.Second})
+	}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 1 * time.Second})
 }
 
 // ScannerStatus structures the data returned by a call to a scanner's
