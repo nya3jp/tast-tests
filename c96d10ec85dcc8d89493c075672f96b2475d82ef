@@ -86,6 +86,24 @@
       "parentUuid": "344d4ae4_f58da2c1",
       "revId": "c96d10ec85dcc8d89493c075672f96b2475d82ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ccefde_4890042e",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-19T22:14:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "476e0b51_ea9f37b8",
+      "revId": "c96d10ec85dcc8d89493c075672f96b2475d82ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
