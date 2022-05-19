@@ -142,7 +142,8 @@ type Recorder struct {
 	names map[*chrome.TestConn][]string
 
 	// Metric records keyed by metric name.
-	records map[string]*record
+	records  map[string]*record                      // Records for all TestConns.
+	tRecords map[*chrome.TestConn]map[string]*record // Records by TestConn.
 
 	traceDir string
 
@@ -260,6 +261,12 @@ func (r *Recorder) addCollectedMetrics(tconn *chrome.TestConn, configs ...Metric
 
 		r.names[bTconn] = append(r.names[bTconn], config.histogramName)
 		r.records[config.histogramName] = &record{config: config}
+		if _, ok := r.tRecords[bTconn]; !ok {
+			r.tRecords[bTconn] = make(map[string]*record)
+			addSpecialRecords(r.tRecords[bTconn]) // Add Latency and Smoothness group recorders.
+		}
+		r.tRecords[bTconn][config.histogramName] = &record{config: config}
+
 	}
 	return nil
 }
@@ -390,17 +397,9 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 
 	r.names = make(map[*chrome.TestConn][]string)
 	r.records = make(map[string]*record, len(configs)+2)
+	r.tRecords = make(map[*chrome.TestConn]map[string]*record)
 	r.addCollectedMetrics(nil, configs...)
-	r.records[string(groupLatency)] = &record{config: MetricConfig{
-		histogramName: string(groupLatency),
-		unit:          "ms",
-		direction:     perf.SmallerIsBetter,
-	}}
-	r.records[string(groupSmoothness)] = &record{config: MetricConfig{
-		histogramName: string(groupSmoothness),
-		unit:          "percent",
-		direction:     perf.BiggerIsBetter,
-	}}
+	addSpecialRecords(r.records) // Add Latency and Smoothness group recorders.
 
 	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
@@ -580,46 +579,23 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 	r.startedAtTm = time.Time{} // Reset to zero.
 
 	// Collects metrics per browser test connection.
-	var hists []*metrics.Histogram
+	tHists := make(map[*chrome.TestConn][]*metrics.Histogram)
 	for tconn, rr := range r.mr {
 		h, err := rr.Histogram(runCtx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to collect metrics")
 		}
-		connName := "lacros-Chrome"
-		// Check if the tconn uses the same underlying session connection with r.tconn.
-		// We compare the value of the two pointers.
-		if *tconn == *r.tconn {
-			connName = "ash-Chrome"
-		}
-		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v", connName, histsWithSamples(h))
-		hists = append(hists, h...)
+		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v",
+			getTconnName(tconn, r.tconn), histsWithSamples(h))
+		tHists[tconn] = append(tHists[tconn], h...)
 	}
 	// Reset recorders and context.
 	r.mr = nil
 
-	for _, hist := range hists {
-		if hist.TotalCount() == 0 {
-			continue
-		}
-		record := r.records[hist.Name]
-		record.totalCount += hist.TotalCount()
-		record.Sum += hist.Sum
-		jankCounts := []float64{
-			getJankCounts(hist, record.config.direction, record.config.jankCriteria[0]),
-			getJankCounts(hist, record.config.direction, record.config.jankCriteria[1]),
-		}
-		record.jankCounts[0] += jankCounts[0]
-		record.jankCounts[1] += jankCounts[1]
-
-		// Concatenate buckets.
-		record.Buckets = append(record.Buckets, hist.Buckets...)
-
-		if totalRecord, ok := r.records[string(record.config.group)]; ok {
-			totalRecord.totalCount += hist.TotalCount()
-			totalRecord.Sum += hist.Sum
-			totalRecord.jankCounts[0] += jankCounts[0]
-			totalRecord.jankCounts[1] += jankCounts[1]
+	for tconn, hists := range tHists {
+		for _, hist := range hists {
+			processHistogram(r.records, hist)         // Accumulate to the total records.
+			processHistogram(r.tRecords[tconn], hist) // Accumulate to the tconn specific records.
 		}
 	}
 	return nil
@@ -739,6 +715,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	}
 
 	var crasUnderruns float64
+	// Record all records from all tconns.
 	for name, record := range r.records {
 		if record.totalCount == 0 {
 			continue
@@ -749,24 +726,20 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 			// to derive UnderrunsPerDevicePerMinute. Continue the loop.
 			continue
 		}
-		pv.Set(perf.Metric{
-			Name:      name,
-			Unit:      record.config.unit,
-			Variant:   "average",
-			Direction: record.config.direction,
-		}, float64(record.Sum)/float64(record.totalCount))
-		pv.Set(perf.Metric{
-			Name:      name,
-			Unit:      "percent",
-			Variant:   "jank_rate",
-			Direction: perf.SmallerIsBetter,
-		}, record.jankCounts[0]/float64(record.totalCount)*100)
-		pv.Set(perf.Metric{
-			Name:      name,
-			Unit:      "percent",
-			Variant:   "very_jank_rate",
-			Direction: perf.SmallerIsBetter,
-		}, record.jankCounts[1]/float64(record.totalCount)*100)
+		// Metric name recorded is the original histogram name. For example:
+		// - EventLatency.TotalLatency
+		// - PageLoad.InteractiveTiming.InputDelay3
+		recordMetric(pv, name, record)
+	}
+	// Record records by tconn.
+	for tconn, records := range r.tRecords {
+		connName := getTconnName(tconn, r.tconn)
+		for name, record := range records {
+			// Combine metric name with connName as the new metric name, for example:
+			// - EventLatency.TotalLatency_ash-Chrome,
+			// - PageLoad.InteractiveTiming.InputDelay3_lacros-Chrome
+			recordMetric(pv, name+"_"+connName, record)
+		}
 	}
 
 	// Derive Cras.UnderrunsPerDevicePerMinute. Ideally, the audio playing time and number of CRAS audio device
@@ -813,12 +786,34 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 // SaveHistograms saves histogram raw data to a given directory in a
 // file named "recorder_histograms.json" by marshal the recorders.
 func (r *Recorder) SaveHistograms(outDir string) error {
-	filePath := path.Join(outDir, "recorder_histograms.json")
-	j, err := json.MarshalIndent(r.records, "", "  ")
-	if err != nil {
+	saveJSONFile := func(fileName string, records map[string]*record) error {
+		filePath := path.Join(outDir, fileName+".json")
+		j, err := json.MarshalIndent(records, "", "  ")
+		if err != nil {
+			return errors.Wrapf(err, "failed to marshall data for %s json file: %v", fileName, records)
+		}
+		if err := ioutil.WriteFile(filePath, j, 0644); err != nil {
+			return errors.Wrapf(err, "failed to write %s json file", fileName)
+		}
+		return nil
+	}
+
+	histogramFileName := "recorder_histograms"
+	if err := saveJSONFile(histogramFileName, r.records); err != nil {
 		return err
 	}
-	return ioutil.WriteFile(filePath, j, 0644)
+
+	for tconn, records := range r.tRecords {
+		// File for tconn based histogram will be appended with the tconn name.
+		// For example:
+		//   - recorder_histograms_ash-Chrome.json
+		//   - recorder_histograms_lacros-Chrome.json
+		fileName := histogramFileName + "_" + getTconnName(tconn, r.tconn)
+		if err := saveJSONFile(fileName, records); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // histsWithSamples returns the names of the histograms that have at least one sample.
@@ -830,4 +825,86 @@ func histsWithSamples(hists []*metrics.Histogram) []string {
 		}
 	}
 	return histNames
+}
+
+// addSpecialRecords adds the special metrics groups, Latency and Smoothness,
+// into the records map.
+func addSpecialRecords(records map[string]*record) {
+	records[string(groupLatency)] = &record{config: MetricConfig{
+		histogramName: string(groupLatency),
+		unit:          "ms",
+		direction:     perf.SmallerIsBetter,
+	}}
+	records[string(groupSmoothness)] = &record{config: MetricConfig{
+		histogramName: string(groupSmoothness),
+		unit:          "percent",
+		direction:     perf.BiggerIsBetter,
+	}}
+}
+
+// processHistogram accumulates the histogram into the related metric recorder.
+func processHistogram(records map[string]*record, hist *metrics.Histogram) {
+	if hist.TotalCount() == 0 {
+		return
+	}
+	record, ok := records[hist.Name]
+	if !ok {
+		return
+	}
+
+	record.totalCount += hist.TotalCount()
+	record.Sum += hist.Sum
+	jankCounts := []float64{
+		getJankCounts(hist, record.config.direction, record.config.jankCriteria[0]),
+		getJankCounts(hist, record.config.direction, record.config.jankCriteria[1]),
+	}
+	record.jankCounts[0] += jankCounts[0]
+	record.jankCounts[1] += jankCounts[1]
+
+	// Concatenate buckets.
+	record.Buckets = append(record.Buckets, hist.Buckets...)
+
+	if totalRecord, ok := records[string(record.config.group)]; ok {
+		totalRecord.totalCount += hist.TotalCount()
+		totalRecord.Sum += hist.Sum
+		totalRecord.jankCounts[0] += jankCounts[0]
+		totalRecord.jankCounts[1] += jankCounts[1]
+	}
+}
+
+// getTconnName return the name of the browser that the bConn is connected to.
+// tconn is the ash-Chrome connection that is used for comparision.
+func getTconnName(bConn, tconn *chrome.TestConn) string {
+	connName := "lacros-Chrome"
+	// Check if the bConn uses the same underlying session connection with tconn.
+	// The values of the two pointers are compared.
+	if *bConn == *tconn {
+		connName = "ash-Chrome"
+	}
+	return connName
+}
+
+// recordMetric records the metric into the perf values.
+func recordMetric(pv *perf.Values, name string, record *record) {
+	if record.totalCount == 0 {
+		return
+	}
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      record.config.unit,
+		Variant:   "average",
+		Direction: record.config.direction,
+	}, float64(record.Sum)/float64(record.totalCount))
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      "percent",
+		Variant:   "jank_rate",
+		Direction: perf.SmallerIsBetter,
+	}, record.jankCounts[0]/float64(record.totalCount)*100)
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      "percent",
+		Variant:   "very_jank_rate",
+		Direction: perf.SmallerIsBetter,
+	}, record.jankCounts[1]/float64(record.totalCount)*100)
 }
