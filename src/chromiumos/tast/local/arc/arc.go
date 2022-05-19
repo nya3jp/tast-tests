@@ -265,7 +265,13 @@ func newWithSyslogReaderAndTimeout(ctx context.Context, outDir string, reader *s
 			if err != nil {
 				testing.ContextLogf(ctx, "Ppid not found for %v: %v", p.Pid, err)
 			}
-			lines = append(lines, fmt.Sprintf("%v, %q, %q, %v\n", p.Pid, exe, cmdline, ppid))
+			line := fmt.Sprintf("%v, %q, %q, %v", p.Pid, exe, cmdline, ppid)
+			// Note: we hit an issue that the file written below got disappeared
+			// for some reasons. The issue is investigated, but this part of the code is also
+			// for the investigation of another test flakiness. To investigate the issues in parallel,
+			// we dump the info to log, which is not recommended in general, though.
+			testing.ContextLog(ctx, line)
+			lines = append(lines, line+"\n")
 		}
 		path := filepath.Join(outDir, "chromeroot-ps.txt")
 		if err := os.WriteFile(path, []byte(strings.Join(lines, "")), 0644); err != nil {
