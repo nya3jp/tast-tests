@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -36,9 +37,14 @@ func init() {
 func Smoke(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users Downloads path: ", err)
+	}
+
 	// Setup the test file.
 	const textFile = "test.txt"
-	testFileLocation := filepath.Join(filesapp.DownloadPath, textFile)
+	testFileLocation := filepath.Join(downloadsPath, textFile)
 	if err := ioutil.WriteFile(testFileLocation, []byte("blahblah"), 0644); err != nil {
 		s.Fatalf("Creating file %s failed: %s", testFileLocation, err)
 	}

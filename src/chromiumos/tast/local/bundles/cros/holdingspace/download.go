@@ -18,8 +18,8 @@ import (
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -129,9 +129,15 @@ func Download(ctx context.Context, s *testing.State) {
 		s.Fatal("Tray exists: ", err)
 	}
 
+	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.NormalizedUser(), err)
+	}
+	downloadsPath := filepath.Join(cryptohomeUserPath, "MyFiles", "Downloads")
+	
 	// Cache the name and location of the download.
 	downloadName := "download.txt"
-	downloadLocation := filepath.Join(filesapp.DownloadPath, downloadName)
+	downloadLocation := filepath.Join(downloadsPath, downloadName)
 	defer os.Remove(downloadLocation)
 
 	// Create a local server. If a request indicates `redirect=true`, the response

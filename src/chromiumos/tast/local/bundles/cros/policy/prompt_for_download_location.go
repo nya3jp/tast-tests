@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -75,13 +76,19 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
+	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.NormalizedUser(), err)
+	}
+	downloadsPath := filepath.Join(cryptohomeUserPath, "MyFiles", "Downloads")
+	
 	defer func() { // Clean up Downloads directory.
-		files, err := ioutil.ReadDir(filesapp.DownloadPath)
+		files, err := ioutil.ReadDir(downloadsPath)
 		if err != nil {
 			s.Fatal("Failed to get files from Downloads directory: ", err)
 		}
 		for _, file := range files {
-			if err = os.RemoveAll(filepath.Join(filesapp.DownloadPath, file.Name())); err != nil {
+			if err = os.RemoveAll(filepath.Join(downloadsPath, file.Name())); err != nil {
 				s.Fatal("Failed to remove file: ", file.Name())
 			}
 		}

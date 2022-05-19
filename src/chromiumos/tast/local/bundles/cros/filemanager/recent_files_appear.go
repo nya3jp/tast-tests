@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -88,12 +89,18 @@ func RecentFilesAppear(ctx context.Context, s *testing.State) {
 
 	testPath := s.DataPath(testImage)
 
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users MyFiles path: ", err)
+	}
+	downloadsPath := filepath.Join(myFilesPath, "Downloads")
+
 	for _, subtest := range []struct {
 		dirName string
 		dirPath string
 	}{
-		{filesapp.Downloads, filesapp.DownloadPath},
-		{filesapp.MyFiles, filesapp.MyFilesPath},
+		{filesapp.Downloads, downloadsPath},
+		{filesapp.MyFiles, myFilesPath},
 	} {
 		f := func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx

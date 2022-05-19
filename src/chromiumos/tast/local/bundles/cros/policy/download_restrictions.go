@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -59,13 +60,19 @@ func DownloadRestrictions(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.NormalizedUser(), err)
+	}
+	downloadsPath := filepath.Join(cryptohomeUserPath, "MyFiles", "Downloads")
+	
 	// Clear Downloads directory.
-	files, err := ioutil.ReadDir(filesapp.DownloadPath)
+	files, err := ioutil.ReadDir(downloadsPath)
 	if err != nil {
 		s.Fatal("Failed to get files from Downloads directory")
 	}
 	for _, file := range files {
-		if err = os.RemoveAll(filepath.Join(filesapp.DownloadPath, file.Name())); err != nil {
+		if err = os.RemoveAll(filepath.Join(downloadsPath, file.Name())); err != nil {
 			s.Fatal("Failed to remove file: ", file.Name())
 		}
 	}
@@ -149,7 +156,7 @@ func DownloadRestrictions(ctx context.Context, s *testing.State) {
 				if param.blocked {
 					s.Error("Download was not blocked")
 				}
-				if err := os.Remove(filesapp.DownloadPath + "download_restrictions.zip"); err != nil {
+				if err := os.Remove(downloadsPath + "download_restrictions.zip"); err != nil {
 					s.Error("Failed to remove download_restrictions.zip: ", err)
 				}
 			}

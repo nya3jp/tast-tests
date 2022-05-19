@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -62,9 +63,14 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users MyFiles path: ", err)
+	}
+
 	// Setup the test file.
 	const textFile = "test.txt"
-	testFileLocation := filepath.Join(filesapp.MyFilesPath, textFile)
+	testFileLocation := filepath.Join(myFilesPath, textFile)
 	if err := ioutil.WriteFile(testFileLocation, []byte("blahblah"), 0644); err != nil {
 		s.Fatalf("Creating file %s failed: %s", testFileLocation, err)
 	}

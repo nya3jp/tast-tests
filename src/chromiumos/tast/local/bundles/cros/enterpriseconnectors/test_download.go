@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -117,14 +117,21 @@ func init() {
 }
 
 func TestDownload(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+
+	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.NormalizedUser(), err)
+	}
+	downloadsPath := filepath.Join(cryptohomeUserPath, "MyFiles", "Downloads")
 
 	// Clear Downloads directory.
-	files, err := ioutil.ReadDir(filesapp.DownloadPath)
+	files, err := ioutil.ReadDir(downloadsPath)
 	if err != nil {
 		s.Fatal("Failed to get files from Downloads directory")
 	}
 	for _, file := range files {
-		if err = os.RemoveAll(filepath.Join(filesapp.DownloadPath, file.Name())); err != nil {
+		if err = os.RemoveAll(filepath.Join(downloadsPath, file.Name())); err != nil {
 			s.Fatal("Failed to remove file: ", file.Name())
 		}
 	}
@@ -147,11 +154,11 @@ func TestDownload(ctx context.Context, s *testing.State) {
 		s.Fatal("Policy is set, but shouldn't be")
 	}
 
-	testDownloadForBrowser(ctx, s, browser.TypeLacros)
-	testDownloadForBrowser(ctx, s, browser.TypeAsh)
+	testDownloadForBrowser(ctx, s, browser.TypeLacros, downloadsPath)
+	testDownloadForBrowser(ctx, s, browser.TypeAsh, downloadsPath)
 }
 
-func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType browser.Type) {
+func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType browser.Type, downloadsPath string) {
 	testParams := s.Param().(helpers.TestParams)
 
 	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
@@ -240,8 +247,9 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 
 			// Cleanup file
 			defer func() {
-				if _, err := os.Stat(filesapp.DownloadPath + dlFileName); !os.IsNotExist(err) {
-					if err := os.Remove(filesapp.DownloadPath + dlFileName); err != nil {
+				cleanupFilePath := filepath.Join(downloadsPath, dlFileName)
+				if _, err := os.Stat(cleanupFilePath); !os.IsNotExist(err) {
+					if err := os.Remove(cleanupFilePath); err != nil {
 						s.Error("Failed to remove ", dlFileName, ": ", err)
 					}
 				}
@@ -271,7 +279,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			}
 
 			// Check file blocked/existence.
-			_, err = os.Stat(filesapp.DownloadPath + dlFileName)
+			_, err = os.Stat(filepath.Join(downloadsPath, dlFileName))
 			if os.IsNotExist(err) {
 				if !shouldBlockDownload {
 					s.Error("Download was blocked, but shouldn't have been: ", err)

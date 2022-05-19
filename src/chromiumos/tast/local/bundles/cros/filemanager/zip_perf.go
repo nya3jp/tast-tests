@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -101,17 +102,22 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 		},
 	}
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users Downloads path: ", err)
+	}
+
 	// Load ZIP files.
 	for _, data := range subTests {
 		zipFile := data.zipBaseName + ".zip"
-		zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
+		zipFileLocation := filepath.Join(downloadsPath, zipFile)
 		if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
 			s.Fatalf("Failed to copy zip file to %s: %s", zipFileLocation, err)
 		}
 
 		// Remove zip files and extraction folders when the test finishes.
 		defer os.Remove(zipFileLocation)
-		defer os.RemoveAll(filepath.Join(filesapp.DownloadPath, data.zipBaseName))
+		defer os.RemoveAll(filepath.Join(downloadsPath, data.zipBaseName))
 
 		// Add reading permission (-rw-r--r--).
 		os.Chmod(zipFileLocation, 0644)
