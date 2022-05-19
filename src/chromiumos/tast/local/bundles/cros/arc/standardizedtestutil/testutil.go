@@ -85,6 +85,19 @@ const (
 	ZoomOut
 )
 
+// ThemeStyle maps directly to arc::mojom::ThemeStyleType.
+type ThemeStyle string
+
+// Corresponds to the definition in autotest_private.idl.
+const (
+	TonalSpot  ThemeStyle = "TonalSpot"
+	Vibrant    ThemeStyle = "Vibrant"
+	Expressive ThemeStyle = "Expressive"
+	Spritz     ThemeStyle = "Spritz"
+	Rainbow    ThemeStyle = "Rainbow"
+	FruitSalad ThemeStyle = "FruitSalad"
+)
+
 // TouchscreenTapType represents the touch screen tap type to perform.
 type TouchscreenTapType int
 
