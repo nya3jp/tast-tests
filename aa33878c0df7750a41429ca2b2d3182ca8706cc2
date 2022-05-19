@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf076ba_1bea1fd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-19T21:44:13Z",
+      "side": 1,
+      "message": "Hi Ben, PTAL.\n\nI think it might be good to expand the mock printer to return an error if it\u0027s shut down when the test case hasn\u0027t been satisfied. In our mock script here, we expect to see lpadmin send another get-printer-attributes request without the document-format attribute after we respond with a 500 Internal Server Error to the request with document-format. However, if that request never came, we wouldn\u0027t necessarily know. Alternatively, we could expand this test in the future to fully configure the printer, which would serve the same purpose and maybe give us better coverage than this first version.",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
