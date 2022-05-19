@@ -29,9 +29,7 @@ const (
 	ARCVPNService = "ArcHostVpnService"
 )
 
-// SetUpHostVPN create the host VPN server, but does not initiate a connection. The returned
-// vpn.Connection is immediately ready for Connect() to be called on it. Also returns a cleanup
-// function that handles the VPN server cleanup for the caller to execute.
+// SetUpHostVPN creates a base VPN config, then delegates the rest of the set up to SEtUpHostVPNWithConfig
 func SetUpHostVPN(ctx, cleanupCtx context.Context) (*vpn.Connection, func() error, error) {
 	// Host VPN config we'll use for connections. Arbitrary VPN type, but it can't cause the
 	// test to log out of the user during setup otherwise we won't have access to adb anymore.
@@ -41,6 +39,13 @@ func SetUpHostVPN(ctx, cleanupCtx context.Context) (*vpn.Connection, func() erro
 		Type:     vpn.TypeL2TPIPsecSwanctl,
 		AuthType: vpn.AuthTypePSK,
 	}
+	return SetUpHostVPNWithConfig(ctx, cleanupCtx, config)
+}
+
+// SetUpHostVPNWithConfig create the host VPN server, but does not initiate a connection. The returned
+// vpn.Connection is immediately ready for Connect() to be called on it. Also returns a cleanup
+// function that handles the VPN server cleanup for the caller to execute.
+func SetUpHostVPNWithConfig(ctx, cleanupCtx context.Context, config vpn.Config) (*vpn.Connection, func() error, error) {
 	conn, err := vpn.NewConnection(ctx, config)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to create connection object")
@@ -66,6 +71,7 @@ func SetARCVPNEnabled(ctx context.Context, a *arc.ARC, enabled bool) error {
 	if !strings.Contains(string(o), "sEnableCrosVpnAsArcVpn="+fmt.Sprintf("%t", enabled)) {
 		return errors.New("unable to set sEnableCrosVpnAsArcVpn to " + fmt.Sprintf("%t", enabled))
 	}
+
 	return nil
 }
 
@@ -91,7 +97,7 @@ func CheckARCVPNState(ctx context.Context, a *arc.ARC, expectedRunning bool) err
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrapf(err, "service not in expected running state of %t", expectedRunning)
 	}
 	return nil
