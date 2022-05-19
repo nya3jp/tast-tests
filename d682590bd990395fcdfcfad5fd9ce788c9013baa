@@ -39,6 +39,30 @@
       },
       "revId": "d682590bd990395fcdfcfad5fd9ce788c9013baa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "536147f5_bb5c6d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_keyboard_backlight.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-19T19:20:26Z",
+      "side": 1,
+      "message": "Class updated in https://chromium-review.googlesource.com/c/chromium/src/+/3654663",
+      "parentUuid": "f79ae970_7093d365",
+      "range": {
+        "startLine": 76,
+        "startChar": 53,
+        "endLine": 76,
+        "endChar": 66
+      },
+      "revId": "d682590bd990395fcdfcfad5fd9ce788c9013baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
