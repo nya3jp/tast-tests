@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
@@ -51,18 +52,23 @@ func init() {
 }
 
 func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
-	var (
-		tmpFilename              = "test_file.txt"
-		tmpFileCrosDownloadsPath = filepath.Join(filesapp.DownloadPath, tmpFilename)
-		tmpFileContents          = "Test file string in file in the Linux shared folder."
-		geditWindowAshTitle      = "test_file.txt [Read-Only] (/mnt/chromeos/MyFiles/Downloads) - gedit"
-		geditContextMenuItem     = "Open with Text Editor"
-	)
-
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
 	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
+
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users Download path: ", err)
+	}
+
+	var (
+		tmpFilename              = "test_file.txt"
+		tmpFileCrosDownloadsPath = filepath.Join(downloadsPath, tmpFilename)
+		tmpFileContents          = "Test file string in file in the Linux shared folder."
+		geditWindowAshTitle      = "test_file.txt [Read-Only] (/mnt/chromeos/MyFiles/Downloads) - gedit"
+		geditContextMenuItem     = "Open with Text Editor"
+	)
 
 	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 

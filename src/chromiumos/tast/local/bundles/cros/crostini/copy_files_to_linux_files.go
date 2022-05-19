@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -70,6 +71,7 @@ func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
+	cr := s.FixtValue().(crostini.FixtureData).Chrome
 
 	if err := cont.Cleanup(ctx, "."); err != nil {
 		s.Fatal("Failed to cleanup the home directory before the test: ", err)
@@ -84,9 +86,14 @@ func CopyFilesToLinuxFiles(ctx context.Context, s *testing.State) {
 	testFiles := []string{"testfile1.txt", "testfile2.txt", "testfile3.txt"}
 	s.Log("Test copying files to Linux files")
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users Download path: ", err)
+	}
+
 	// Create some files in Downloads.
 	for _, file := range testFiles {
-		path := filepath.Join(filesapp.DownloadPath, file)
+		path := filepath.Join(downloadsPath, file)
 		if err := ioutil.WriteFile(path, []byte("test"), 0644); err != nil {
 			s.Fatal("Failed to create file in Downloads: ", err)
 		}

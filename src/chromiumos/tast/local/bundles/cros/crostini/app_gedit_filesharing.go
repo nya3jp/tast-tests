@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/local/vm"
@@ -34,7 +35,6 @@ import (
 
 var (
 	tmpFilename              = "testfile.txt"
-	tmpFileCrosDownloadsPath = filepath.Join(filesapp.DownloadPath, tmpFilename)
 	tmpFileCrostiniMountPath = filepath.Join(sharedfolders.MountPathDownloads, tmpFilename)
 	tmpFileContents          = "This is a text string in a text file in the Downloads folder."
 	geditContextMenuItem     = "Open with Text Editor"
@@ -69,6 +69,12 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
+
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users Download path: ", err)
+	}
+	tmpFileCrosDownloadsPath := filepath.Join(downloadsPath, tmpFilename)
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
