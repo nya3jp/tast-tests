@@ -188,11 +188,14 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 	defer recorder.Close(cleanupRecorderCtx)
+	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+		s.Fatal("Failed to add metrics to recorder: ", err)
+	}
 
 	numberOfTabs := 13
 	if workload == collaborating {

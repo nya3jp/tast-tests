@@ -165,7 +165,6 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	}
 
 	br := cr.Browser()
-	tconns := []*chrome.TestConn{tconn}
 	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
@@ -173,7 +172,6 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		if err != nil {
 			return errors.Wrap(err, "failed to create test API conn")
 		}
-		tconns = append(tconns, bTconn)
 	}
 
 	videoSources := basicVideoSrc
@@ -237,11 +235,14 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	defer cancel()
 
 	options := cujrecorder.NewPerformanceCUJOptions()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, options, cuj.MetricConfigs(tconns)...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, options)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanupRecorderCtx)
+	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+		return errors.Wrap(err, "failed to add metrics to recorder")
+	}
 
 	for _, videoSource := range videoSources {
 		// Repeat the run for different video source.
