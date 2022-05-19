@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -25,11 +27,13 @@ func init() {
 			"menghuan@google.com",         // Fixture maintainer
 			"cros-tdm-tpe-eng@google.com", // team mailing list
 		},
-		SetUpTimeout:    30 * time.Second,
-		ResetTimeout:    5 * time.Second,
+		SetUpTimeout:    90 * time.Second,
+		ResetTimeout:    90 * time.Second,
 		PreTestTimeout:  5 * time.Second,
 		PostTestTimeout: 5 * time.Second,
-		TearDownTimeout: 5 * time.Second,
+		TearDownTimeout: 90 * time.Second,
+		Data:            []string{"testcert.p12"},
+		Vars:            []string{"ui.signinProfileTestExtensionManifestKey"},
 		Impl:            newCrosHealthdFixture(),
 	})
 }
@@ -39,6 +43,10 @@ type crosHealthdFixture struct {
 	// pid of cros_healthd, for check if it crashed or restarted within a single test.
 	pid        int
 	forceReset bool
+	// The following 3 varialbes are used for Chrome login.
+	chromeOption chrome.Option
+	chrome       *chrome.Chrome
+	certPath     string
 }
 
 func newCrosHealthdFixture() testing.FixtureImpl {
@@ -46,6 +54,8 @@ func newCrosHealthdFixture() testing.FixtureImpl {
 }
 
 func (f *crosHealthdFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	f.chromeOption = chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey"))
+	f.certPath = s.DataPath("testcert.p12")
 	if err := f.RestartHealthdService(ctx); err != nil {
 		s.Fatal("Fail to setup crosHealthdFixture: ", err)
 	}
@@ -99,10 +109,31 @@ func (f *crosHealthdFixture) RestartHealthdService(ctx context.Context) error {
 	if err := upstart.StopJob(ctx, "cros_healthd"); err != nil {
 		return errors.Wrapf(err, "unable to stop %q upstart service", crosHealthdJobName)
 	}
-	// Restart the "ui" job to ensure that Chrome is running. Chrome internally will wait "cros_healthd" to be up.
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		return errors.Wrap(err, "unable to ensure 'ui' upstart service is running")
+
+	// Create a new Chrome login screen.
+	// |chrome.New| will restart ui, so we don't need to restart ui by ourselves.
+	if f.chrome != nil {
+		if err := f.chrome.Close(ctx); err != nil {
+			return errors.Wrap(err, "failed to close Chrome")
+		}
+		f.chrome = nil
 	}
+
+	var err error
+	f.chrome, err = chrome.New(ctx, chrome.DeferLogin(), f.chromeOption)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome at login screen")
+	}
+
+	// For accessing the Thunderbolt device we have to disable the data protection access from UI.
+	if err := typecutils.EnablePeripheralDataAccess(ctx, f.certPath); err != nil {
+		return errors.Wrap(err, "failed to enable peripheral data access setting")
+	}
+
+	if err := f.chrome.ContinueLogin(ctx); err != nil {
+		return errors.Wrap(err, "failed to login")
+	}
+
 	// Ensure cros_healthd is up and wait until Mojo bootstrap flow is done.
 	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
 		return errors.Wrap(err, "failed to start cros_healthd")
