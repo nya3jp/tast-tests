@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13c8062_6b09e7af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:18:06Z",
+      "side": 1,
+      "message": "Rework done. Please review.",
+      "revId": "f558769f329365755ab9cb6ec9a9b55668f0537a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fe4dd8_78531ad7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-19T15:18:06Z",
+      "side": 1,
+      "message": "Test Fixture\u0027s PingFromSpecificDUT could be reused after its small refactoring.",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "f558769f329365755ab9cb6ec9a9b55668f0537a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
