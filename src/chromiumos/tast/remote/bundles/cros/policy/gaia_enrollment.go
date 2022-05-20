@@ -43,10 +43,20 @@ func init() {
 					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
 				},
 			},
+			{
+				Name: "autopush_flexorgs",
+				Val: testInfo{
+					username: "policy.GAIAEnrollment.flex_user_name",
+					password: "policy.GAIAEnrollment.flex_password",
+					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+				},
+			},
 		},
 		Vars: []string{
 			"policy.GAIAEnrollment.user_name",
 			"policy.GAIAEnrollment.password",
+			"policy.GAIAEnrollment.flex_user_name",
+			"policy.GAIAEnrollment.flex_password",
 		},
 	})
 }
@@ -78,7 +88,7 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
-	if _, err := pc.GAIAEnrollAndLoginUsingChrome(ctx, &ps.GAIAEnrollAndLoginUsingChromeRequest{
+	if _, err := pc.GAIAEnrollUsingChrome(ctx, &ps.GAIAEnrollUsingChromeRequest{
 		Username:    username,
 		Password:    password,
 		DmserverURL: dmServerURL,
