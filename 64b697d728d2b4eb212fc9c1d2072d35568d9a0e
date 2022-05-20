@@ -16,6 +16,23 @@
       "message": "PTAL, thank you!",
       "revId": "64b697d728d2b4eb212fc9c1d2072d35568d9a0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c01b062_4fbca4fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-20T06:48:09Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "64b697d728d2b4eb212fc9c1d2072d35568d9a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
