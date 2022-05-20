@@ -124,6 +124,24 @@
       "parentUuid": "235c5dd1_8d6baf7a",
       "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3d9710_07ed7b1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-20T05:17:06Z",
+      "side": 1,
+      "message": "Sorry, the two loops are run in different ssh session, no loops are terminated/report error during the test.",
+      "parentUuid": "df22d8aa_675eb9a9",
+      "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
