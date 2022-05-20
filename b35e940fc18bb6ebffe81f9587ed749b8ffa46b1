@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "213bb5a6_e3d670ae",
+        "filename": "src/chromiumos/tast/local/webrtcinternals/time_with_js_locale_string.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-20T11:44:15Z",
+      "side": 1,
+      "message": "Please add some comments on the location part, as it is a little confusing now.\nDo I understand it right that the saving happens in local time, and the loading happens as if it was local time as well?\nSo e.g. if the log is created in the PST zone at 1 pm, and loaded in Europe in CEST zone, it will think the log was made in 1 pm in CEST?",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "b35e940fc18bb6ebffe81f9587ed749b8ffa46b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
