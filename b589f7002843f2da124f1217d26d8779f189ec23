@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0ef0b1_16a9ff86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-20T16:30:27Z",
+      "side": 1,
+      "message": "One reason I did it this way was to avoid repeating the following code in every test\n\n```\n\tlabelsStr, ok :\u003d cmd(\"autotest_host_info_labels\")\n\tif !ok {\n\t\treturn errors.New(\"failed to read autotest_host_info_labels\")\n\t}\n```",
+      "parentUuid": "549b23ac_6a21718a",
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ba3f2a_a1f34769",
