@@ -39,9 +39,9 @@ type PeerConnection struct {
 
 // Statistic represents an entry in the Stats field of PeerConnection.
 type Statistic struct {
-	StartTime string `json:"startTime"`
-	EndTime   string `json:"endTime"`
-	Values    string `json:"values"`
+	StartTime string                    `json:"startTime"`
+	EndTime   string                    `json:"endTime"`
+	Values    SliceWithJSONQuotedString `json:"values"`
 }
 
 // Update represents an entry in the UpdateLog field of PeerConnection.
