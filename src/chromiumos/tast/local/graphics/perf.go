@@ -479,6 +479,29 @@ func MeasureFdCount(ctx context.Context, duration time.Duration, p *perf.Values)
 	return nil
 }
 
+// MeasureDramBandwidth measures average DRAM bandwidth consumption in bytes
+// per second over the given duration.
+func MeasureDramBandwidth(ctx context.Context, duration time.Duration, p *perf.Values) error {
+	testing.ContextLog(ctx, "Measuring DRAM bandwidth usage for ", duration)
+
+	mtkDramToolCmd := exec.Command("mtk_dram_tool", "-l", strconv.FormatInt(duration.Milliseconds(), 10))
+	var out bytes.Buffer
+	mtkDramToolCmd.Stdout = &out
+
+	err := mtkDramToolCmd.Run()
+	if err != nil {
+		return errors.Wrap(err, "failed to execute mtk_dram_tool")
+	}
+
+	dramUsage, err := strconv.ParseInt(out.String()[:strings.Index(out.String(), ".")], 10, 64)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse mtk_dram_tool output")
+	}
+
+	reportMetric("dramUsage", "bytesPerSecond", float64(dramUsage), perf.SmallerIsBetter, p)
+	return nil
+}
+
 // UpdatePerfMetricFromHistogram takes a snapshot of histogramName and
 // calculates the average difference with initHistogram. The result is then
 // logged to perfValues with metricName.
