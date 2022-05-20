@@ -67,6 +67,125 @@
       "message": "Similar here. `recoverUnhealthyDUT` might set `f.tf` to nil which affects the outer loop.",
       "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9958063f_9695d14b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T10:07:43Z",
+      "side": 1,
+      "message": "typo: ba --\u003e be",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "451716fd_d0c42ecb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T10:07:43Z",
+      "side": 1,
+      "message": "Use `DefaultDUT` rather than hardcode value",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8790f0c_a4847f43",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T10:07:43Z",
+      "side": 1,
+      "message": "ditto, `DefaultDUT`",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0f5eee_3f0c1cf2",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T10:07:43Z",
+      "side": 1,
+      "message": "ditto, `DefaultDUT`",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b5baa11_799e6709",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T10:07:43Z",
+      "side": 1,
+      "message": "ditto, `DefaultDUT`",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2609d54e_37ddd60f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T10:07:43Z",
+      "side": 1,
+      "message": "ditto, `DefaultDUT`",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fabc912_e37f205e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T10:07:43Z",
+      "side": 1,
+      "message": "ditto, `DefaultDUT`",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
