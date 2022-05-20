@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "864fe487_601fbada",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-20T19:09:48Z",
+      "side": 1,
+      "message": "I\u0027m gonna move it to personalization.OpenPersonalizatinHub() function.\nHowever, do you have any thoughts on the issue. We never have to add this input.Mouse(ctx) in our codes before. It would work without these codes when we run the subtest separately `tast run \u003cDUT\u003e screensaver.SetScreensaver.art_gallery` and `tast run \u003cDUT\u003e screensaver.SetScreensaver.google_photos`. However, it doesn\u0027t work when running them together. This is our first parameterized test so we might miss something.\n\n`Summary of the problem: running the  google_photos  and  art_gallery  tests individually works, but running them sequentially, the second one always fails. We suspect it\u0027s a mouse initialization problem - the second test cannot right click until  input.Mouse(ctx)  is called. Any ideas?`",
+      "parentUuid": "6db0bd72_46e4de21",
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef7db8f4_0cffa282",
         "filename": "src/chromiumos/tast/local/ambient/ambient.go",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-20T09:43:35Z",
       "side": 1,
       "message": "can we use ID instead of name?",
+      "range": {
+        "startLine": 93,
+        "startChar": 71,
+        "endLine": 93,
+        "endChar": 90
+      },
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e374c21f_811c0499",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-20T19:09:48Z",
+      "side": 1,
+      "message": "I would love to use ID instead of name as it\u0027s less likely to change in our HTML code than class or aria-label/name. However, iiuc, Tast currently doesn\u0027t support ID to be shown in UI Tree. We also have an email thread with Tast Team and got the below reply.\n`The Tast UIAutomation APIs relies on https://developer.chrome.com/docs/extensions/reference/automation/#type-AutomationNode which is primarily to support Accessibility. It is unlikely that the HTML Id Attribute would make it to AutomationNode APIs.`\nUsing class is ok but I don\u0027t want to make it too specific to just a specific element. That\u0027s why currently we usually use a combination of role, class and name to search for a node.",
+      "parentUuid": "ef7db8f4_0cffa282",
       "range": {
         "startLine": 93,
         "startChar": 71,
@@ -75,6 +117,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9dfb53b_134371af",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-20T19:09:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd079e7c_49d1d0cd",
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b8f3d5_b23a357c",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-20T19:09:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd079e7c_49d1d0cd",
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce7cc88c_dd306409",
@@ -88,6 +166,30 @@
       "writtenOn": "2022-05-20T09:43:35Z",
       "side": 1,
       "message": "can this be id/class etc., instead of name?",
+      "range": {
+        "startLine": 109,
+        "startChar": 61,
+        "endLine": 109,
+        "endChar": 75
+      },
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "090c3110_0858fa14",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-20T19:09:48Z",
+      "side": 1,
+      "message": "same as comment in #93",
+      "parentUuid": "ce7cc88c_dd306409",
       "range": {
         "startLine": 109,
         "startChar": 61,
@@ -121,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e2bb47_d5df584b",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-20T19:09:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b902cf_fb672592",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adcfc59c_d7bdcb80",
@@ -134,6 +260,24 @@
       "writtenOn": "2022-05-19T22:14:24Z",
       "side": 1,
       "message": "on second thought, I would move the mouse creation here, where it is needed",
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f9cd71_173ccd82",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-20T19:09:48Z",
+      "side": 1,
+      "message": "I will move it here after the discussion #84 ambient.go.\nIt\u0027s interesting that when I use a function to open hub through launcher which only use keyboard, launcher is not launched for second test too.\nSimilar to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_launcher.go;l\u003d69\n... But it works after I add the mouse creation.",
+      "parentUuid": "adcfc59c_d7bdcb80",
       "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
