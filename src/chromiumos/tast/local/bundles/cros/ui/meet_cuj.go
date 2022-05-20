@@ -442,7 +442,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	configs := append(cujrecorder.MetricConfigs(),
+	configs := append(cujrecorder.DeprecatedMetricConfigs(),
 		cujrecorder.NewCustomMetricConfig(
 			"Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter,
 			[]int64{1, 20}),
