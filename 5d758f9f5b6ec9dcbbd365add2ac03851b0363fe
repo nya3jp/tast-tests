@@ -34,6 +34,24 @@
       "parentUuid": "fb8894d8_8e7947c4",
       "revId": "5d758f9f5b6ec9dcbbd365add2ac03851b0363fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dddc424_41db79ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-20T19:31:26Z",
+      "side": 1,
+      "message": "I think it would be good to let this run more, and get closer to the 20 that the documentation suggests before promoting it to critical. That will help eliminate CQ errors in the future.",
+      "parentUuid": "860d22ba_822891e1",
+      "revId": "5d758f9f5b6ec9dcbbd365add2ac03851b0363fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
