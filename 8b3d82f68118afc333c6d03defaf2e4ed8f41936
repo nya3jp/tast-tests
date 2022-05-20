@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84009734_c0d07188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-20T06:38:55Z",
+      "side": 1,
+      "message": "Hi all,\n\nWe have observed that Kiosk.Launch.Error metrics volume dropped a lot since M100 (b/233157784). As a starting point of investigation I have implemented a Tast test to verify if the UMA logging part works as intended. Please take a look!",
+      "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
