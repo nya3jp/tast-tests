@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf25db0_eefd2af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/perfetto/system_trace_config.pbtxt",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-20T01:11:52Z",
+      "side": 1,
+      "message": "After thinking over, I think we should force each test to pass their own config file instead of having a default config so that when people adding new tests with tracing enabled they have to think about what trace they want to collect in the test.",
+      "parentUuid": "777129ae_b122597c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "21f5790e3cd1027870475a8793d8d463de5d6f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54260068_e61bdd57",
