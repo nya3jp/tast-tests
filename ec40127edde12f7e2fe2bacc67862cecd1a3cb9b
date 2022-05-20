@@ -16,6 +16,23 @@
       "message": "Uploaded patchset 5 to test if CQ failure in `input.InputMethodManagement` is caused by the PersonalizationHub flag.",
       "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db28bfa8_977fe4db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-20T20:33:16Z",
+      "side": 1,
+      "message": "`input.InputMethodManagement` could be broken after turning on personalization hub. Adding test author to take a look.",
+      "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
