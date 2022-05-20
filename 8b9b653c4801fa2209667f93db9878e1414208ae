@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d79fe699_e8c26925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-20T14:07:12Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "958dfd47_7e16154c",
+      "range": {
+        "startLine": 187,
+        "startChar": 43,
+        "endLine": 187,
+        "endChar": 49
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e71f4667_db32abf7",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Setting up the DNS actually affects whether we can reach the test VPN server, so there\u0027s some dependency with the underlying logic/values in vpn/vpn_server.go. I\u0027m a bit wary of pulling that logic out here, but I can add a comment to explain? Thoughts?",
       "parentUuid": "e71f4667_db32abf7",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b935731_a352e060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-20T14:07:12Z",
+      "side": 1,
+      "message": "Ack. Agreed this would create too much complexity there. We can leave it like this for now.",
+      "parentUuid": "35c38cd7_cc48285c",
       "range": {
         "startLine": 32,
         "startChar": 1,
