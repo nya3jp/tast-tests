@@ -88,6 +88,24 @@
       "parentUuid": "7cfae3c0_65f346cf",
       "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "235c5dd1_8d6baf7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-20T04:41:39Z",
+      "side": 1,
+      "message": "hmmm, I ran the following two commands during the test, but I don\u0027t see any errors.\n\n```\nwhile :; do date; ls /home/.shadow/salt; done\nwhile :; do date; cryptohome-path user testuser; sleep 0.2; done\n```",
+      "parentUuid": "15396f36_1e4aa6bd",
+      "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
