@@ -160,6 +160,24 @@
       "parentUuid": "de3d9710_07ed7b1e",
       "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba05574_8711f9c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-20T05:30:22Z",
+      "side": 1,
+      "message": "Brilliant! Thanks for the suggestion, it\u0027s resolved.",
+      "parentUuid": "28cf536e_9d16a99b",
+      "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
