@@ -20,6 +20,109 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6db0bd72_46e4de21",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T09:43:35Z",
+      "side": 1,
+      "message": "so per commit message, this is very important. Can this be a part of dependency of the needed function, instead, that enforces the caller to make it, maybe?",
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7db8f4_0cffa282",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T09:43:35Z",
+      "side": 1,
+      "message": "can we use ID instead of name?",
+      "range": {
+        "startLine": 93,
+        "startChar": 71,
+        "endLine": 93,
+        "endChar": 90
+      },
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd079e7c_49d1d0cd",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T09:43:35Z",
+      "side": 1,
+      "message": "nit/style: we do not use getter prefixes, like \"get\", \"is\", \"has\", etc. Could you drop? (i.e. just ambientModeEnabled().",
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7cc88c_dd306409",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T09:43:35Z",
+      "side": 1,
+      "message": "can this be id/class etc., instead of name?",
+      "range": {
+        "startLine": 109,
+        "startChar": 61,
+        "endLine": 109,
+        "endChar": 75
+      },
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b902cf_fb672592",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T09:43:35Z",
+      "side": 1,
+      "message": "nit/style:\n\n ambientMode, err :\u003d ambientModeEnabled(...)\n if err !\u003d nil {\n   return errors.Wrap(...)\n }\n if !ambientMode {\n   ...\n }\n return nil",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adcfc59c_d7bdcb80",
         "filename": "src/chromiumos/tast/local/personalization/personalization.go",
         "patchSetId": 2
