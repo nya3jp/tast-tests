@@ -106,6 +106,24 @@
       "parentUuid": "15396f36_1e4aa6bd",
       "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df22d8aa_675eb9a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-05-20T05:14:54Z",
+      "side": 1,
+      "message": "IIUC, the file shouldn\u0027t be delete at anytime.(If someone deleted it, they should restart cryptohomed.)\n```\nwhile :; do date; ls /home/.shadow/salt; done\n```\nThe first loop shouldn\u0027t be exited.",
+      "parentUuid": "235c5dd1_8d6baf7a",
+      "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
