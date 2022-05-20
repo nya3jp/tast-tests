@@ -16,6 +16,24 @@
       "message": "What happens if lacros is launched (becomes running) after line 98, so it tries apps.Launch again unnecessarily?",
       "revId": "8f6ac57679d186690d8424ce79168dfaa8f2a69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3209c56_8d06e9f4",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-05-20T13:50:30Z",
+      "side": 1,
+      "message": "Thank you for reviewing, Eliot. I believe I\u0027ve made the necessary changes to fix that now. PTAL.",
+      "parentUuid": "555ecfb8_758aee32",
+      "revId": "8f6ac57679d186690d8424ce79168dfaa8f2a69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
