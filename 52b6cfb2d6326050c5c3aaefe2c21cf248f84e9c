@@ -87,6 +87,24 @@
       "parentUuid": "04903ffb_be2ac227",
       "revId": "52b6cfb2d6326050c5c3aaefe2c21cf248f84e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b5aec6_9f5b51e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-20T06:59:46Z",
+      "side": 1,
+      "message": "Thanks for your attention. I didn\u0027t figure out how to reproduce a vmtest. This test was skipped while I tried to run it on my DUT.\n\nI added a fixture to run without Personalization Hub in patchset 5. The CQ still failed.",
+      "parentUuid": "c2af1024_a4b6e654",
+      "revId": "52b6cfb2d6326050c5c3aaefe2c21cf248f84e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
