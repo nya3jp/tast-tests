@@ -1,0 +1,113 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package firmware
+
+import (
+	"bufio"
+	"context"
+	"io"
+	"strings"
+	"time"
+
+	"chromiumos/tast/common/servo"
+	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
+
+var (
+	enableWPPrompt  = "Prompt for hardware WP able"
+	disableWPPrompt = "Prompt for hardware WP disable"
+
+	subtestResultPrefix = "<+>"
+	subtestPass         = "Pass"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         FlashromTester,
+		Desc:         "Tast wrapper that runs flashrom_tester",
+		Contacts:     []string{"nartemiev@google.com", "chromeos-firmware@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Timeout:      30 * time.Minute,
+		Params: []testing.Param{
+			{
+				Fixture: fixture.NormalMode,
+			},
+		},
+	})
+}
+
+func FlashromTester(ctx context.Context, s *testing.State) {
+	h := s.FixtValue().(*fixture.Value).Helper
+
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
+
+	testing.ContextLog(ctx, "test")
+	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "/usr/sbin/flashrom", "host")
+
+	stdin, err := cmd.StdinPipe()
+	if err != nil {
+		s.Fatal("StdinPipe() call failed: ", err)
+	}
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		s.Fatal("StdoutPipe() call failed: ", err)
+	}
+	stdoutSc := bufio.NewScanner(stdout)
+
+	go func() {
+		for stdoutSc.Scan() {
+			text := stdoutSc.Text()
+			s.Logf("Tester output: %s", text)
+
+			// Check for failing subtests i.e. check if line
+			// contains a subtest result and the result isn't a
+			// pass
+			if strings.Contains(text, subtestResultPrefix) && !strings.Contains(text, subtestPass) {
+				s.Fatal("Failed subtest: ", text)
+
+			}
+
+			// Change HWWP when prompted by the tester
+			changeWP := false
+			wpState := servo.FWWPStateOff
+			wpStr := "disable"
+			if strings.Contains(text, disableWPPrompt) {
+				changeWP = true
+			} else if strings.Contains(text, enableWPPrompt) {
+				changeWP = true
+				wpState = servo.FWWPStateOn
+				wpStr = "enable"
+			}
+			if changeWP {
+				s.Logf("Handling prompt to %s WP", wpStr)
+
+				if err := h.Servo.SetFWWPState(ctx, wpState); err != nil {
+					s.Fatalf("Failed to %s WP: %v", wpStr, err)
+				}
+
+				// Write newline because tester expeces key press
+				s.Log("Continuing test")
+				io.WriteString(stdin, "\n")
+			}
+
+		}
+	}()
+
+	if err := cmd.Start(); err != nil {
+		s.Fatal("Start() call failed: ", err)
+	}
+
+	// Write newline because tester expeces key press
+	s.Log("Starting tester")
+	io.WriteString(stdin, "\n")
+
+	cmd.Wait()
+}
