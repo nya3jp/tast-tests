@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "158a4af8_4cca7553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-20T18:01:49Z",
+      "side": 1,
+      "message": "Sure, could you add a TODO here then?",
+      "parentUuid": "ae19545b_9339f967",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f2b66d4_d845ccbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
         "patchSetId": 8
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "It\u0027s done line #128. I followed the logic implemented in `ethernet_static_ip.go`: pop/remove the test profile if there\u0027s one on top, then pop all the user profiles if any. WDYT ?",
       "parentUuid": "1f2b66d4_d845ccbc",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc2ff01_ec74e759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-20T18:01:49Z",
+      "side": 1,
+      "message": "It looks like ethernet_static_ip only pops all user profiles (maybe I\u0027m missing something), then pushes a new default profile and a new \"user\" profile.",
+      "parentUuid": "fedfd979_5a78a0d4",
       "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ab5ef27_d1caf730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-20T18:01:49Z",
+      "side": 1,
+      "message": "Ack, I\u0027ll leave it up to you.",
+      "parentUuid": "671bd21a_07aafe86",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef0a3d76_94d1b361",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
         "patchSetId": 8
@@ -178,6 +232,30 @@
       "side": 1,
       "message": "I don\u0027t think so, we expect `CreateFakeUserProfile()` to remove any conflicting profile.",
       "parentUuid": "ef0a3d76_94d1b361",
+      "range": {
+        "startLine": 309,
+        "startChar": 76,
+        "endLine": 309,
+        "endChar": 87
+      },
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0553b7f_fbfbb329",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-20T18:01:49Z",
+      "side": 1,
+      "message": "I guess I was thinking of some edge case where this test runs once and fails without proper cleanup and leaves the user profile on top of the stack, then some other tests pushes a default profile on top, doesn\u0027t clean that up, then this test runs again, we would get a name conflict. Or maybe someone mean just puts the DUT in that state to mess with the test. It\u0027s not a big deal and not likely, but it could be a good safeguard to make it more robust (it\u0027s also not hard to do).",
+      "parentUuid": "19a1badb_0deb7ff3",
       "range": {
         "startLine": 309,
         "startChar": 76,
