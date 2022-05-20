@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e0a8e1b_6f199d10",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-20T08:00:14Z",
+      "side": 1,
+      "message": "Curios why keyboard functionality check belongs to power package.",
+      "revId": "a535275bb44168de126a1713f6a8a5c18adc8780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a86301c0_f0443fc5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
         "patchSetId": 1
@@ -100,6 +117,30 @@
       "writtenOn": "2022-05-16T17:21:09Z",
       "side": 1,
       "message": "`return nil, errors.Wrap(err, \"failed to login Chrome\")`",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "a535275bb44168de126a1713f6a8a5c18adc8780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34cfb86c_515e2f41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-20T08:00:14Z",
+      "side": 1,
+      "message": "The error message shall be \"failed to get audioService: \".\n\nAlso, why does it need to check audioService? It is not trivial. Please add a comment.",
+      "parentUuid": "779cf427_e86d4151",
       "range": {
         "startLine": 72,
         "startChar": 3,
