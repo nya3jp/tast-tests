@@ -70,6 +70,24 @@
       "parentUuid": "ecea04e8_ac06f281",
       "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15396f36_1e4aa6bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-05-20T02:39:29Z",
+      "side": 1,
+      "message": "Looks like \"/home/.shadow/salt\" had been remove by someone in the test, could you monitor the status of this file while running the test?",
+      "parentUuid": "7cfae3c0_65f346cf",
+      "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
