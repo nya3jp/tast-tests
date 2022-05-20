@@ -344,7 +344,7 @@ func (t *TabletActionHandler) SwitchToAppWindowByName(appName, targetName string
 func (t *TabletActionHandler) switchToWindowThroughHotseat(ctx context.Context, appName string, menuItemFinder *nodewith.Finder) error {
 	// clickIcon is the action to click the APP on the hot seat.
 	var clickIcon func(ctx context.Context) error
-	if strings.Contains(appName, "Chrome") || strings.Contains(appName, "Chromium") {
+	if strings.Contains(appName, "Chrome") || strings.Contains(appName, "Chromium") || strings.Contains(appName, "Lacros") {
 		clickIcon = func(ctx context.Context) error {
 			if _, err := t.clickChromeOnHotseat(ctx); err != nil {
 				return errors.Wrap(err, "failed to click Chrome app icon on hotseat")
@@ -725,7 +725,7 @@ func (cl *ClamshellActionHandler) ClickUntil(finder *nodewith.Finder, condition 
 
 // LaunchChrome launches the Chrome browser.
 func (cl *ClamshellActionHandler) LaunchChrome(ctx context.Context) (time.Time, error) {
-	return LaunchAppFromShelf(ctx, cl.tconn, "Chrome", "Chromium")
+	return LaunchAppFromShelf(ctx, cl.tconn, "Chrome", "Chromium", "Lacros")
 }
 
 func (cl *ClamshellActionHandler) clickOpenedAppOnShelf(ctx context.Context, appName string) (time.Time, error) {
@@ -849,17 +849,17 @@ func (cl *ClamshellActionHandler) SwitchToLRUWindow(opt SwitchWindowOption) acti
 
 // switchToWindowThroughShelf switch current focus window to another through shelf.
 func (cl *ClamshellActionHandler) switchToWindowThroughShelf(ctx context.Context, appName string, menuItemFinder *nodewith.Finder) error {
-	if strings.Contains(appName, "Chrome") || strings.Contains(appName, "Chromium") {
-		app, err := apps.ChromeOrChromium(ctx, cl.tconn)
+	if strings.Contains(appName, "Chrome") || strings.Contains(appName, "Chromium") || strings.Contains(appName, "Lacros") {
+		browserApp, err := apps.PrimaryBrowser(ctx, cl.tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to check Chrome browser for current build")
+			return errors.Wrap(err, "could not find the Chrome app")
 		}
 		items, err := ash.ShelfItems(ctx, cl.tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to get shelf items")
 		}
 		for _, item := range items {
-			if item.AppID == app.ID {
+			if item.AppID == browserApp.ID {
 				appName = item.Title
 			}
 		}
@@ -876,8 +876,7 @@ func (cl *ClamshellActionHandler) switchToWindowThroughShelf(ctx context.Context
 
 	if err := uiauto.Retry(retryTimes, uiauto.Combine(fmt.Sprintf("click [%s] app icon and submenu", appName),
 		clickAppIcon(),
-		cl.ui.WithTimeout(5*time.Second).WaitUntilExists(menuItemFinder),
-		cl.ui.LeftClick(menuItemFinder),
+		uiauto.IfSuccessThen(cl.ui.WithTimeout(5*time.Second).WaitUntilExists(menuItemFinder), cl.ui.LeftClick(menuItemFinder)),
 	))(ctx); err != nil {
 		return errors.Wrapf(err, "failed to find menu items of app %s on shelf and tap", appName)
 	}
