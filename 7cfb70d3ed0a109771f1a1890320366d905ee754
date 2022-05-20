@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a529cd_a66cfd3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-20T04:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "565bb92c_cae967e1",
+      "range": {
+        "startLine": 54,
+        "startChar": 43,
+        "endLine": 54,
+        "endChar": 53
+      },
+      "revId": "7cfb70d3ed0a109771f1a1890320366d905ee754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d393df6_05e5964d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-19T04:53:58Z",
       "side": 1,
       "message": "what is minChannelTime",
+      "range": {
+        "startLine": 55,
+        "startChar": 36,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "7cfb70d3ed0a109771f1a1890320366d905ee754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "610bd697_af6dffda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-20T04:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d393df6_05e5964d",
       "range": {
         "startLine": 55,
         "startChar": 36,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a69731a2_42a91217",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-20T04:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3ef9452_6587d6f2",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "7cfb70d3ed0a109771f1a1890320366d905ee754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f380bbf3_40f4422b",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-19T04:53:58Z",
       "side": 1,
       "message": "use pipes to surround variables, e.g. |delayInterval|. same everywhere else",
+      "range": {
+        "startLine": 59,
+        "startChar": 47,
+        "endLine": 59,
+        "endChar": 60
+      },
+      "revId": "7cfb70d3ed0a109771f1a1890320366d905ee754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "689400e0_9804c18a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-20T04:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f380bbf3_40f4422b",
       "range": {
         "startLine": 59,
         "startChar": 47,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd91044_3f0178e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-20T04:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f138d20_4213180b",
+      "range": {
+        "startLine": 61,
+        "startChar": 37,
+        "endLine": 61,
+        "endChar": 46
+      },
+      "revId": "7cfb70d3ed0a109771f1a1890320366d905ee754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d4ce8b7_555085db",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-19T04:53:58Z",
       "side": 1,
       "message": "This is more of a semantic thing, but this isn\u0027t that clear. Something more along the lines of \"This test originally defined |beaconFirst| as..., but the captures occasionally missed the probe requests either due to collision with the beacon frames or..., and this would cause the test to fail\".",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 20
+      },
+      "revId": "7cfb70d3ed0a109771f1a1890320366d905ee754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bcbb29_6575f3a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-05-20T04:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d4ce8b7_555085db",
       "range": {
         "startLine": 230,
         "startChar": 5,
