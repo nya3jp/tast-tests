@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "439b89d4_4f3c378c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-20T17:16:23Z",
+      "side": 1,
+      "message": "Does this help if we get more variables in s.Var,\ns.RequiredVar(\"autotest_host_info_labels\")",
+      "parentUuid": "4f0ef0b1_16a9ff86",
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ba3f2a_a1f34769",
