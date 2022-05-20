@@ -16,6 +16,24 @@
       "message": "This should be in the tast-tests-private/ repository under the same crosint/arcappgameperf/ folder. The test can be prefixed with `external` and be named `external_roblox_cold_minigame_launch`. ",
       "revId": "78c83dd74f88f59eb48f1833a36d854c07ae99ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6aa900f_ff460653",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-20T19:42:42Z",
+      "side": 1,
+      "message": "That will eliminate the duplication, and allow us to reuse all of our existing code while also keeping it in the private repository which we wanted. We can still report the results, regardless of where the code lives in our dashboard.",
+      "parentUuid": "1f5827dd_be14e957",
+      "revId": "78c83dd74f88f59eb48f1833a36d854c07ae99ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
