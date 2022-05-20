@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/media/binsetup"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type decoderConfig struct {
@@ -34,6 +35,7 @@ func init() {
 			"chromeos-gfx@google.com",
 		},
 		Attr:         []string{"group:mainline"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("brya")),     // TODO(b/232999036): Fix and reenable.
 		SoftwareDeps: []string{"chrome", "no_qemu", "vaapi"}, // TODO(crbug.com/1080871): Remove no_qemu SoftwareDeps.
 		Params: []testing.Param{{
 			Name: "webp_decoder",
