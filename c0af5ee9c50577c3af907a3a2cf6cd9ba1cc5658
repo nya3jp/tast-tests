@@ -16,6 +16,23 @@
       "message": "Rework done. Please review.",
       "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f44a96_12a5b233",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-20T08:47:39Z",
+      "side": 1,
+      "message": "LGTM from my side, I defer to others for domain expert reviews.",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
