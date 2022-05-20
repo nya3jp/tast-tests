@@ -167,7 +167,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	// also the percent of dropped frames of video; In tablet mode, this test will measure
 	// the combinations of input latency of tab dragging and of input latency of split view
 	// resizing and the percent of dropped frames of video.
-	configs := cujrecorder.MetricConfigs()
+	configs := cujrecorder.DeprecatedMetricConfigs()
 
 	if !tabletMode {
 		configs = append(configs, cujrecorder.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"))
