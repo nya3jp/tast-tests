@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Tests Crostini starts up with LXD 4.0",
 		Contacts:     []string{"sidereal@google.com", "clumptini@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host", "dlc"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "crostiniBullseyeWithLxdNext",
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{
