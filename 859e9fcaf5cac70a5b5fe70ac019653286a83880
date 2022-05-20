@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e05fcfd_3b5f2ba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-20T18:56:48Z",
+      "side": 1,
+      "message": "Hi folks, PTAL. Kalin, I renamed the existing scanapp.Hardware test now that we\u0027re adding more tests that run on real hardware - is that okay? Do you need to modify some scheduling/config files to account for the new name?",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
