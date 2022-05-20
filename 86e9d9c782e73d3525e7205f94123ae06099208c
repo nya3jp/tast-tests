@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing.",
       "revId": "86e9d9c782e73d3525e7205f94123ae06099208c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed3c05b_a4532a6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-20T22:22:00Z",
+      "side": 1,
+      "message": "Could you add a sample run command to the Cl description? or maybe simpler replace the value of the TEST attribute.",
+      "revId": "86e9d9c782e73d3525e7205f94123ae06099208c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
