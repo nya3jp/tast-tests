@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f79b275_524c6eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-20T18:20:59Z",
+      "side": 1,
+      "message": "Created b/233375774 and added TODO. Also created crrev.com/c/3657640 for dependency `typec_location`",
+      "parentUuid": "6fc5f4bd_a9632b05",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "d9b891d2cf7f2b48e4de39f425b2a3de56757edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "950abe76_6788cfe8",
