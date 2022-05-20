@@ -16,6 +16,92 @@
       "message": "Hi Ben, PTAL.\n\nI think it might be good to expand the mock printer to return an error if it\u0027s shut down when the test case hasn\u0027t been satisfied. In our mock script here, we expect to see lpadmin send another get-printer-attributes request without the document-format attribute after we respond with a 500 Internal Server Error to the request with document-format. However, if that request never came, we wouldn\u0027t necessarily know. Alternatively, we could expand this test in the future to fully configure the printer, which would serve the same purpose and maybe give us better coverage than this first version.",
       "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb6d46e8_9f3f4429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-20T15:57:09Z",
+      "side": 1,
+      "message": "Agreed, it seems like the mock printer needs to indicate somewhere that all of its conditions have been satisfied.  Does it at least produce a log file we can read to confirm that all the expected requests have arrived?",
+      "parentUuid": "dcf076ba_1bea1fd5",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9e5ccc_989590f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-20T15:57:09Z",
+      "side": 1,
+      "message": "nit: This doesn\u0027t match the new expected format.  Please take a look at the PSA: https://groups.google.com/a/chromium.org/g/chromium-os-dev/c/gZBw_GxEeng/m/oH5BONcECwAJ",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74606494_34e4dce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-20T15:57:09Z",
+      "side": 1,
+      "message": "Does this need a new Chrome?  If it doesn\u0027t depend on a fresh Chrome, it should be more efficient to switch to the virtualUsbPrinterModulesLoadedWithChromeLoggedIn fixture.",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980354ad_f0dc7df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-20T15:57:09Z",
+      "side": 1,
+      "message": "The returned printer object from usbprinter.Start should have the VID and PID.  Could you generate this string from there instead of hardcoding?  That way this doesn\u0027t break if we ever change the values.",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6107cecb_411f8f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-20T15:57:09Z",
+      "side": 1,
+      "message": "Is there a bug for this somewhere?  Is lpadmin not actually using an exit status of 9, or is it getting incorrectly parsed?",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
