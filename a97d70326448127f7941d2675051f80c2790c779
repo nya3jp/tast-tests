@@ -16,6 +16,114 @@
       "message": "nya-san was quicker enough. post submit but LGTM.",
       "revId": "a97d70326448127f7941d2675051f80c2790c779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dfb069c_eea44774",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-20T16:53:13Z",
+      "side": 1,
+      "message": "cc xliu@cienet.com fyi",
+      "revId": "a97d70326448127f7941d2675051f80c2790c779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc0e5a7_a46a3684",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-20T16:53:13Z",
+      "side": 1,
+      "message": "`RWH_TabSwitchPaintDuration` is a browser metric.",
+      "revId": "a97d70326448127f7941d2675051f80c2790c779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab939789_7ce9928d",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-20T16:53:13Z",
+      "side": 1,
+      "message": "The name `EventLatency.TotalLatency` is confusing. It measures the event latency of blink. So it is actually a browser metric.\n\nWe don\u0027t yet have ash ui event latency metrics at the moment. They will be added later.",
+      "range": {
+        "startLine": 55,
+        "startChar": 25,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "a97d70326448127f7941d2675051f80c2790c779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c55229_cc2b7911",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-20T16:53:13Z",
+      "side": 1,
+      "message": "All these start with `Apps` measure the smoothness of launch (aka app list). So belongs `AshCommonMetricConfigs` rather than browser metrics.",
+      "revId": "a97d70326448127f7941d2675051f80c2790c779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2145cd71_90aa3102",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-20T16:53:13Z",
+      "side": 1,
+      "message": "ditto, these `Apps.` ones are ash metrics.",
+      "revId": "a97d70326448127f7941d2675051f80c2790c779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9552b0_bda86a72",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-20T16:53:13Z",
+      "side": 1,
+      "message": "All the ones prefixed with `Graphics` are browser metrics. They measure smoothness of blink and do not cover ash ui.",
+      "revId": "a97d70326448127f7941d2675051f80c2790c779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
