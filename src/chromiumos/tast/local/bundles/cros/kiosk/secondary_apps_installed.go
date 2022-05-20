@@ -132,14 +132,7 @@ func SecondaryAppsInstalled(ctx context.Context, s *testing.State) {
 		// with UI.
 		testing.Sleep(ctx, 3*time.Second)
 
-		localAccountsBtn := nodewith.Name("Apps").HasClass("MenuButton")
-		appButtonNode := nodewith.Name(appName).HasClass("MenuItemView")
-		if err := uiauto.Combine("launch Kiosk app from menu",
-			ui.WaitUntilExists(localAccountsBtn),
-			ui.LeftClick(localAccountsBtn),
-			ui.WaitUntilExists(appButtonNode),
-			ui.LeftClick(appButtonNode),
-		)(ctx); err != nil {
+		if err := kioskmode.StartFromSignInScreen(ctx, ui, appName); err != nil {
 			s.Fatal("Failed to start Kiosk application from Sign-in screen: ", err)
 		}
 
