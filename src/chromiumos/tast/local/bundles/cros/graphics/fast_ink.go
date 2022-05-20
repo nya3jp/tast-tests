@@ -15,7 +15,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
@@ -26,16 +28,25 @@ import (
 const fastInkAPK = "LowLatencyStylusDemoGPU_20210423.apk"
 
 type fastInkTestParams struct {
-	arc              bool
-	tablet           bool
+	// arc is true for testing Fast Ink in the LowLatencyStylusDemoGPU
+	// ARC app, false for testing Fast Ink in the Chrome browser.
+	arc bool
+	// browserType indicates the Ash Chrome browser or Lacros, when
+	// arc is false. If arc is true, then browserType is ignored.
+	browserType browser.Type
+	// tablet is true for tablet mode, false for clamshell mode.
+	tablet bool
+	// displayRotations indicates the display rotation angles for
+	// testing Fast Ink.
 	displayRotations []display.RotationAngle
-	wStates          []ash.WindowStateType
+	// wStates indicates the window states for testing Fast Ink.
+	wStates []ash.WindowStateType
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FastInk,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verifies that fast ink is working as evidenced by a hardware overlay",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -46,8 +57,9 @@ func init() {
 			ExtraData: []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
 			Fixture:   "chromeLoggedIn",
 			Val: fastInkTestParams{
-				arc:    false,
-				tablet: false,
+				arc:         false,
+				browserType: browser.TypeAsh,
+				tablet:      false,
 				displayRotations: []display.RotationAngle{
 					display.Rotate0,
 					display.Rotate90,
@@ -64,8 +76,48 @@ func init() {
 			ExtraData: []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
 			Fixture:   "chromeLoggedIn",
 			Val: fastInkTestParams{
-				arc:    false,
-				tablet: true,
+				arc:         false,
+				browserType: browser.TypeAsh,
+				tablet:      true,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate90,
+					display.Rotate180,
+					display.Rotate270,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "chrome_clamshell_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
+			Fixture:           "lacros",
+			Val: fastInkTestParams{
+				arc:         false,
+				browserType: browser.TypeLacros,
+				tablet:      false,
+				displayRotations: []display.RotationAngle{
+					display.Rotate0,
+					display.Rotate90,
+					display.Rotate180,
+					display.Rotate270,
+				},
+				wStates: []ash.WindowStateType{
+					ash.WindowStateNormal,
+					ash.WindowStateMaximized,
+					ash.WindowStateFullscreen,
+				}},
+		}, {
+			Name:              "chrome_tablet_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{"d-canvas/main.html", "d-canvas/2d.js", "d-canvas/webgl.js"},
+			Fixture:           "lacros",
+			Val: fastInkTestParams{
+				arc:         false,
+				browserType: browser.TypeLacros,
+				tablet:      true,
 				displayRotations: []display.RotationAngle{
 					display.Rotate0,
 					display.Rotate90,
@@ -162,10 +214,17 @@ func FastInk(ctx context.Context, s *testing.State) {
 
 	params := s.Param().(fastInkTestParams)
 	var cr *chrome.Chrome
+	var cs ash.ConnSource
 	if params.arc {
 		cr = s.FixtValue().(*arc.PreData).Chrome
 	} else {
-		cr = s.FixtValue().(*chrome.Chrome)
+		var l *lacros.Lacros
+		var err error
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), params.browserType)
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		defer lacros.CloseLacros(cleanupCtx, l)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -213,7 +272,7 @@ func FastInk(ctx context.Context, s *testing.State) {
 		srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 		defer srv.Close()
 
-		conn, err := cr.NewConn(ctx, srv.URL+"/d-canvas/main.html")
+		conn, err := cs.NewConn(ctx, srv.URL+"/d-canvas/main.html")
 		if err != nil {
 			s.Fatal("Failed to load d-canvas/main.html: ", err)
 		}
