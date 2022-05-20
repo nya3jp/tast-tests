@@ -355,6 +355,14 @@ func (k *Kiosk) RestartChromeWithOptions(ctx context.Context, opts ...chrome.Opt
 	if err := k.cr.Close(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to close Chrome")
 	}
+	return k.RestartChromeNoCloseWithOptions(ctx, opts...)
+}
+
+// RestartChromeNoCloseWithOptions replaces the current Chrome in kiosk instance
+// with a new one using custom options without closing the old one. It will be
+// closed by Kiosk.Close(). Useful when Chrome already closes itself, for
+// example when cancelling a Kiosk launch.
+func (k *Kiosk) RestartChromeNoCloseWithOptions(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
 	k.cr = nil
 
 	testing.ContextLog(ctx, "Restarting ui")
