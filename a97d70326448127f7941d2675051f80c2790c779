@@ -216,6 +216,30 @@
       },
       "revId": "a97d70326448127f7941d2675051f80c2790c779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060a22ca_c6f16bab",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-20T18:44:00Z",
+      "side": 1,
+      "message": "It is likely because camera app runs as part of ash-chrome, regardless of whether lacros-chrome is enabled or not. In this case, it make sense to put it under ash metrics. But for other cases (non system web app), it is a browser metric.\n\nSo it sounds like only tests could decide which source to get metrics data from. It is difficult to make it \"common\" in this sense.",
+      "parentUuid": "57cddccb_ca3c3af1",
+      "range": {
+        "startLine": 144,
+        "startChar": 66,
+        "endLine": 144,
+        "endChar": 78
+      },
+      "revId": "a97d70326448127f7941d2675051f80c2790c779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
