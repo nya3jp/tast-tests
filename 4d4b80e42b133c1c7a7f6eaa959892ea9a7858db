@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a1fc1a_68010dd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1542263
+      },
+      "writtenOn": "2022-05-20T03:15:51Z",
+      "side": 1,
+      "message": "Changed to 3 minutes",
+      "parentUuid": "a7eee014_907bf0c0",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "4d4b80e42b133c1c7a7f6eaa959892ea9a7858db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ebe7d75_e1f35cd5",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9482be1a_6c87d129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1542263
+      },
+      "writtenOn": "2022-05-20T03:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ebe7d75_e1f35cd5",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 47
+      },
+      "revId": "4d4b80e42b133c1c7a7f6eaa959892ea9a7858db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "356d38d6_4ca38a7e",
@@ -94,6 +142,24 @@
       "writtenOn": "2022-05-19T20:14:05Z",
       "side": 1,
       "message": "nit: \"incorrect\" spelled, well, incorrectly",
+      "revId": "4d4b80e42b133c1c7a7f6eaa959892ea9a7858db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e54d42_8643702f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1542263
+      },
+      "writtenOn": "2022-05-20T03:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "356d38d6_4ca38a7e",
       "revId": "4d4b80e42b133c1c7a7f6eaa959892ea9a7858db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
