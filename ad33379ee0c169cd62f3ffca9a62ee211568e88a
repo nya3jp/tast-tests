@@ -33,6 +33,24 @@
       "message": "Do we have to keep this? It could be easy to mix data from different browsers here.",
       "revId": "ad33379ee0c169cd62f3ffca9a62ee211568e88a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66739298_9d2c9b62",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-20T17:55:12Z",
+      "side": 1,
+      "message": "Thanks Xiyuan for the review. The combined records will be used by `(r *Recorder) Record()` and `(r *Recorder) SaveHistograms()`. It\u0027s better to keep a copy in the Recorder so it won\u0027t be generated twice by those two functions.",
+      "parentUuid": "f32074c3_74eda3a8",
+      "revId": "ad33379ee0c169cd62f3ffca9a62ee211568e88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
