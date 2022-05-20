@@ -16,6 +16,46 @@
       "message": "Follow-up patch of https://crrev.com/c/3616548\nPTAL, thanks!",
       "revId": "7e0faa3d4ba2bdcc22a1a91d02b3b1978a737116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3f8e62_a9ba9d9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T13:27:59Z",
+      "side": 1,
+      "message": "nice. LGTM with comment.",
+      "revId": "7e0faa3d4ba2bdcc22a1a91d02b3b1978a737116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc5bdc3_f46c9d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T13:27:59Z",
+      "side": 1,
+      "message": "nit: \"const\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "7e0faa3d4ba2bdcc22a1a91d02b3b1978a737116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
