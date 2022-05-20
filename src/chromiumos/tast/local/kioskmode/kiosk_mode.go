@@ -353,7 +353,7 @@ func WaitForCrxInCache(ctx context.Context, id string) error {
 // a new one using custom options. It will be closed by Kiosk.Close().
 func (k *Kiosk) RestartChromeWithOptions(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
 	if err := k.cr.Close(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to close Chrome")
+		testing.ContextLog(ctx, "Failed to close Chrome. Continue restarting anyway: ", err)
 	}
 	k.cr = nil
 
