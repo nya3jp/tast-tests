@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5651212a_0baa892b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/driver.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-20T17:34:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "47c269ae_32c17efd",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2e34582_236ab5ca",
@@ -236,6 +254,24 @@
       "side": 1,
       "message": "In theory yes, we should use `ClaimInterface()` on `wlan1` and `wlan2`. But on test images, Shill is launched with `--devices-blocked ...wlan1,wlan2...` which prevent it to use both interfaces. Thus `ClaimInterface()` call will fail.",
       "parentUuid": "180f8975_db2360d1",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf65d50a_f84468d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-05-20T17:34:48Z",
+      "side": 1,
+      "message": "Ah I see. In that case, we should still check that it\u0027s actually blocked. For example, we may need to unblock wlan1 in the future for tethering testing.",
+      "parentUuid": "46a1887a_c7d11283",
       "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
