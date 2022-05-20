@@ -33,6 +33,40 @@
       "message": "LGTM from my side, I defer to others for domain expert reviews.",
       "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7604b62_35ed94b2",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T09:57:16Z",
+      "side": 1,
+      "message": "I think this should be moved to line 288 before test fixture is created. `recoverUnhealthyDUT` will call `f.tf.Close` and set `f.tf` to nil",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beeaad60_57cef55c",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T09:57:16Z",
+      "side": 1,
+      "message": "Similar here. `recoverUnhealthyDUT` might set `f.tf` to nil which affects the outer loop.",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f6ee05_6b1a73c9",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-20T09:57:16Z",
+      "side": 1,
+      "message": "SGTM. Thanks!",
+      "parentUuid": "7fd5f057_e0b09acd",
+      "revId": "f4f2b2f9f8a7b0432a3eda78e8a5dabd9a2d71cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea33e3fa_be02d8f9",
