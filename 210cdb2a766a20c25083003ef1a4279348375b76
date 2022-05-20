@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1cbd0d_3d81c387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-20T06:22:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e25ac22_921e8dfb",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "210cdb2a766a20c25083003ef1a4279348375b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "089570eb_ae009ea2",
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "I think cleanup should happen in case of test function timeout. Or we could leak system tracing.",
       "parentUuid": "089570eb_ae009ea2",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 9
+      },
+      "revId": "210cdb2a766a20c25083003ef1a4279348375b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cdaf7ef_da849a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-20T06:22:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0628b27_b773b47b",
       "range": {
         "startLine": 110,
         "startChar": 1,
