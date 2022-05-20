@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a7b4bd_a70aa3e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-20T22:15:50Z",
+      "side": 1,
+      "message": "1. Please run tast unit test.\n2. Please put more comments in the code so that it is to easier to understand what it is trying to check. \n\nThanks.",
+      "revId": "54dc2cb8ce989e9e82b5536d5de75da6e704c215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f908a64f_19b72c34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-20T22:15:50Z",
+      "side": 1,
+      "message": "Why do you onnly set it to true for usbPortPathRegex but not usb4PortPathRegex? Please put some comments in this function so that I can understand what it is trying to do better. Thanks.",
+      "revId": "54dc2cb8ce989e9e82b5536d5de75da6e704c215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
