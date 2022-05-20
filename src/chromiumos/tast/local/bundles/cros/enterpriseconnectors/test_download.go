@@ -37,7 +37,6 @@ func init() {
 		SoftwareDeps: []string{
 			"chrome",
 			"chrome_internal",
-			"lacros",
 		},
 		Attr: []string{
 			"group:mainline",
@@ -83,6 +82,7 @@ func init() {
 					ScansEnabled:            true,
 					BrowserType:             browser.TypeLacros,
 				},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 			{
 				Name:    "scan_enabled_blocks_immediate_and_unscannable_lacros",
@@ -93,6 +93,7 @@ func init() {
 					ScansEnabled:            true,
 					BrowserType:             browser.TypeLacros,
 				},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 			{
 				Name:    "scan_disabled_lacros",
@@ -103,6 +104,7 @@ func init() {
 					ScansEnabled:            false,
 					BrowserType:             browser.TypeLacros,
 				},
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 		Data: []string{
