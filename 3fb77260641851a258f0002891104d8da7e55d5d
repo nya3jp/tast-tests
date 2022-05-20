@@ -142,6 +142,24 @@
       "parentUuid": "df22d8aa_675eb9a9",
       "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28cf536e_9d16a99b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-05-20T05:23:07Z",
+      "side": 1,
+      "message": "Oh, and could you increase the timeout of the fixture? Chrome may need at most 1.5 minute to login. 5 seconds is not enough for most of the cases.",
+      "parentUuid": "de3d9710_07ed7b1e",
+      "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
