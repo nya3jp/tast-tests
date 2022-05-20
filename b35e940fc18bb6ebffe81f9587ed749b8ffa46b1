@@ -22,6 +22,30 @@
       },
       "revId": "b35e940fc18bb6ebffe81f9587ed749b8ffa46b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a81e91d3_158e2d0d",
+        "filename": "src/chromiumos/tast/local/webrtcinternals/time_with_js_locale_string.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-20T17:25:56Z",
+      "side": 1,
+      "message": "Yes, that is right. I have added code comments as you requested.",
+      "parentUuid": "213bb5a6_e3d670ae",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "b35e940fc18bb6ebffe81f9587ed749b8ffa46b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
