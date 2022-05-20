@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "670f8ca5_4127f691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-20T18:20:54Z",
+      "side": 1,
+      "message": "Created crrev.com/c/3657641 for dependency `typec_usb_link`",
+      "parentUuid": "d726b3a5_1a336c55",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 71
+      },
+      "revId": "d130abb456c6fe212eff43a12b2d9ebe82fe4070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbefce6c_58f3b0f7",
