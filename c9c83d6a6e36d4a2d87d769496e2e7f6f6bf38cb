@@ -139,6 +139,2227 @@
       "parentUuid": "13aadfd3_08f96a5d",
       "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "124322ed_a43f1220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Initial pass.",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0829f298_cd05ae24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "empty lines are not needed at the beginning of the function. Ditto for other empty lines at the beginning of a function.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c629df43_7e9e4736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: remove spaces?",
+      "range": {
+        "startLine": 90,
+        "startChar": 50,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aac39c3_dd820fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: switch ?",
+      "range": {
+        "startLine": 112,
+        "startChar": 13,
+        "endLine": 112,
+        "endChar": 19
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab29c2ec_fc1b50ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: maybe you want to add what is checked?",
+      "range": {
+        "startLine": 112,
+        "startChar": 41,
+        "endLine": 112,
+        "endChar": 42
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac24cf0e_2ebf85da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: remove the space? Ditto for other spaces at the end of a string.\nNote that s.Log() automatically appends a newline after the string, not concatenating the next log.",
+      "range": {
+        "startLine": 130,
+        "startChar": 54,
+        "endLine": 130,
+        "endChar": 55
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c34a901_be94c640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "errors.Wrap(err, \"...\") ?",
+      "range": {
+        "startLine": 160,
+        "startChar": 10,
+        "endLine": 160,
+        "endChar": 46
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65bd12a4_221944ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove empty line",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fb7060f_9d15077f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "; got %s, want %s\n\nditto for others.",
+      "range": {
+        "startLine": 182,
+        "startChar": 36,
+        "endLine": 182,
+        "endChar": 53
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f4968e_df07cdfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: param\nSee the below comment, you can remove param2.",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b39f748_bd163518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "for _, pkgName :\u003d range []string{...}",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 3
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b7ed70_5a9e05cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove empty line\nditto for others.",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af26826e_b1505143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove. Wrapf adds `: ` automatically.",
+      "range": {
+        "startLine": 222,
+        "startChar": 71,
+        "endLine": 222,
+        "endChar": 73
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f63d065_2ae8f867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Could you document what happens if this sleep is removed?",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 43
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813c86f7_827934c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 3
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d24f3b85_7f1689e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "You can just inline it?\n\nif err :\u003d utils....; err !\u003d nil {",
+      "range": {
+        "startLine": 278,
+        "startChar": 3,
+        "endLine": 278,
+        "endChar": 12
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d18dd1e_97f6967a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46faafc1_24353128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 2
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad228d99_d6a59f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: remove [ and ]?",
+      "range": {
+        "startLine": 347,
+        "startChar": 17,
+        "endLine": 347,
+        "endChar": 35
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7909a7_425773e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Could you document what bad happens if the sleep is removed?",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 34
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7dcb2a_566a0a28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 427,
+        "startChar": 22,
+        "endLine": 427,
+        "endChar": 29
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237d3029_729000e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "!info.IsPrimary",
+      "range": {
+        "startLine": 428,
+        "startChar": 6,
+        "endLine": 428,
+        "endChar": 30
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d2cbdf8_e6f90677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff5361f_22d14541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c32c12f5_ec3cf2cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: strconv.Itoa(dispID)",
+      "range": {
+        "startLine": 22,
+        "startChar": 51,
+        "endLine": 22,
+        "endChar": 76
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db7bb38_140bd36d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "You don\u0027t have to write this doc to all the files under a package.\nYou can create a new file doc.go that just contains documentation, and remove these comments from other files.\n\ncf. https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/network/netconfig/doc.go",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 63
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952b862a_d6a67571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Let\u0027s own a pointer to the struct. `*display.Info`",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "435401bf_cf862677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39277ea8_7a556c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: could you include displayType in the string?",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e8972f_f38fbe11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "moveTo moves the mouse cursor to the specified display. mouse.Move does not ...\n\n?",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b648d2_94b6dc40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: outside\n?",
+      "range": {
+        "startLine": 44,
+        "startChar": 46,
+        "endLine": 44,
+        "endChar": 54
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f19ae20_ae245d20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "intBounds\nDisemvoweling is generally discouraged, unless the resulting word is very common.",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 8
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e3efa7_966bc76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "extBounds",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56aa445b_78d08fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "This looks to be an important restriction calls should be aware of. Could you mention it in the method description?",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 113
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37adcb2_fc7b6431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: remove `:`",
+      "range": {
+        "startLine": 52,
+        "startChar": 118,
+        "endLine": 52,
+        "endChar": 119
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a6b7b6d_894a54e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: remove `:`",
+      "range": {
+        "startLine": 52,
+        "startChar": 149,
+        "endLine": 52,
+        "endChar": 150
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694ed48c_43ffcadb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "What happens if we don\u0027t sleep? Could you add comments?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d48a51_110df1e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "returns a display which is not internal\n\n?",
+      "range": {
+        "startLine": 18,
+        "startChar": 22,
+        "endLine": 18,
+        "endChar": 67
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c87bd6_18519643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Remove the parameter?",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 19,
+        "endChar": 62
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849fedee_b9587f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Drop Get.\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b688b5d_6ec470df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "It looks not a right description. Could you update?",
+      "range": {
+        "startLine": 25,
+        "startChar": 34,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36709765_5b556c09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "err is nil here. Instead of errors.Wrap, use `errors.New(\"...\")`",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7af8907_fc7d3b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "return result, errors.New(...)",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a23e96e_a1d6da88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nil\n?",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3704b003_569f873c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "For most functions, you don\u0027t have to pass `s`. It seems `s` is passed just for logging, but you can log with `testing.ContextLog(ctx, \"...\")` or `testing.ContextLogf(ctx, ...)`.\n\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#ContextLog\n\nCould you update all the functions that receive `s` just for logging, removing the parameter and replacing `s.Log...` with `testing.ContextLog...` ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 49,
+        "endLine": 53,
+        "endChar": 65
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405cc34b_b369093a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "You can invert the condition to reduce nesting.\n\n```\nif disp.IsPrimary {\n  return nil\n}\ns.Logf(...)\n\n...\n```",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b020cf3d_6a54dc72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove empty line",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f455d8_18e3dd39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove empty line",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73efd522_c50be2fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "move? Could you document what this function does instead?",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fcec38_126b232f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Let\u0027s fullspell it as `source` instead of `sour`. `src` might be OK if you want, as it\u0027s a common abbreviation.",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7e7287_e7abbd80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "not needed\n\n```\nsourceDispID :\u003d win.DisplayID\ndestDispID :\u003d destDisp.ID\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607d6aaa_5fed1421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove empty line",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbba5c2a_082117ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove empty line",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf23d333_4525a45f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "It\u0027s needed?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 19
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf71482e_5f348e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "It\u0027s needed?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 87
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b087fd_422bf604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "headerPoint ?",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 6
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1203eb34_14572af5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "what point?",
+      "range": {
+        "startLine": 129,
+        "startChar": 12,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0550bb0c_2a36254f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Consistently use `dest` or `dst`.",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 4
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a657ae13_f3629ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: Bounds",
+      "range": {
+        "startLine": 130,
+        "startChar": 8,
+        "endLine": 130,
+        "endChar": 12
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0305eb0a_bec62413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 142,
+        "startChar": 65,
+        "endLine": 142,
+        "endChar": 67
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d660bcf_a1c0ea93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "inline.",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "612054f3_646256c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: add a space between , and ID",
+      "range": {
+        "startLine": 148,
+        "startChar": 76,
+        "endLine": 148,
+        "endChar": 78
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673e9030_2dd3007e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove empty line",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f7cd1c_1fa515d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "; got %q, want %q",
+      "range": {
+        "startLine": 162,
+        "startChar": 42,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe016382_f7211bb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "`wantState` . In Go, `want` is prefered over `expect`.",
+      "range": {
+        "startLine": 168,
+        "startChar": 87,
+        "endLine": 168,
+        "endChar": 95
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14899c0f_59f15277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 182,
+        "startChar": 62,
+        "endLine": 182,
+        "endChar": 63
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1afa5fb_331c19cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditto (: -\u003e ;, ; -\u003e ,)",
+      "range": {
+        "startLine": 189,
+        "startChar": 47,
+        "endLine": 189,
+        "endChar": 64
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce3507f_0d6bbd0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "wantWindow ?\nIt seems `Info` doesn\u0027t add information.",
+      "range": {
+        "startLine": 198,
+        "startChar": 85,
+        "endLine": 198,
+        "endChar": 103
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5854f88_68dd5e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 201,
+        "startChar": 64,
+        "endLine": 201,
+        "endChar": 65
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9752623d_36b30ed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 204,
+        "startChar": 36,
+        "endLine": 204,
+        "endChar": 69
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d728f62a_1e884801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "them\n?",
+      "range": {
+        "startLine": 209,
+        "startChar": 57,
+        "endLine": 209,
+        "endChar": 60
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aac2191_81ae23b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 223,
+        "startChar": 68,
+        "endLine": 223,
+        "endChar": 70
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be429eb7_457e60f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "param\n?",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1389ae_0337027e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Add comment `/* displayID */`",
+      "range": {
+        "startLine": 244,
+        "startChar": 74,
+        "endLine": 244,
+        "endChar": 75
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f644cc_a8bbe6e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Is it correct? The comment says \"external\", but it has `int`.",
+      "range": {
+        "startLine": 266,
+        "startChar": 66,
+        "endLine": 266,
+        "endChar": 69
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5214c05b_054077ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "inline.",
+      "range": {
+        "startLine": 266,
+        "startChar": 3,
+        "endLine": 266,
+        "endChar": 12
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17737490_bd52a9ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": ", ID",
+      "range": {
+        "startLine": 268,
+        "startChar": 78,
+        "endLine": 268,
+        "endChar": 79
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a193e7b1_69bc4b39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove empty line",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8875fe9a_33a1df12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove empty line",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6517f5ea_4ffc64e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: retrieves",
+      "range": {
+        "startLine": 27,
+        "startChar": 14,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93233e59_2e3935bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "wwcbURL",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e5708e_546759fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "url\nCapital latters are used for exporting only",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc8237c_8c68163e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Is it defined somewhere, or they are just for testing? Could you add comment?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe805ed6_5b7892f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this comment means. Could you elaborate?",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64a7383_e801473e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Could you refine the document?\n\n- What this function does\n- What the parameters action and port mean.\n\nDitto for other functions in this file.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c525c7_fc3187d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "api\n?",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70cdd4da_e2644cd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "url, or maybe `api` for consistency?",
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd694cd_dc4a1c79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "ditoo",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 4
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6974bb22_10ccd5f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "correct;",
+      "range": {
+        "startLine": 183,
+        "startChar": 44,
+        "endLine": 183,
+        "endChar": 54
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052c7b2a_14c422e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "color :\u003d fmt...",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 42
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca2811e_1b75941c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 80
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45848409_c8a54404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "nit: USB. ditto for the next line",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a517fe_4ed81125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 35
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d9102b0_83d0910a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Please explain the parameters.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d79b55d_2d8b7908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Omit get. Ditto for others.",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf44cd5_d3e0ccb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "wantState ? Ditto for others.",
+      "range": {
+        "startLine": 32,
+        "startChar": 64,
+        "endLine": 32,
+        "endChar": 69
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01bf207_ee387177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Can we just read the file?\n\nio.ReadFile(\"/sys...\")\n\nDitto for others.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 80
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce63556b_61382921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "omit. Ditto for others.",
+      "range": {
+        "startLine": 145,
+        "startChar": 23,
+        "endLine": 145,
+        "endChar": 31
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e2b094_07eb49ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "Could you refine the document?",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 23
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8181a29b_938bcd02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 61
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f99043_0aa7f226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-20T07:36:28Z",
+      "side": 1,
+      "message": "These are no-op. Can we remove them from this patch?",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 1
+      },
+      "revId": "c9c83d6a6e36d4a2d87d769496e2e7f6f6bf38cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
