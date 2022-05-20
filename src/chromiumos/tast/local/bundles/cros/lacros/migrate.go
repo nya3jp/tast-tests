@@ -7,6 +7,7 @@ package lacros
 import (
 	"context"
 	"os"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -23,6 +24,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type migrateParams struct {
+	option []chrome.Option
+	pref   string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Migrate,
@@ -38,10 +44,14 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Params: []testing.Param{{
 			Name: "copy",
-			Val:  []chrome.Option{chrome.DisableFeatures("LacrosMoveProfileMigration")},
+			Val: migrateParams{
+				option: []chrome.Option{chrome.DisableFeatures("LacrosMoveProfileMigration")},
+				pref:   "lacros.profile_migration_completed_for_user."},
 		}, {
 			Name: "move",
-			Val:  []chrome.Option{chrome.EnableFeatures("LacrosMoveProfileMigration")},
+			Val: migrateParams{
+				option: []chrome.Option{chrome.EnableFeatures("LacrosMoveProfileMigration")},
+				pref:   "lacros.profile_move_migration_completed_for_user."},
 		}},
 	})
 }
@@ -54,7 +64,7 @@ func Migrate(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	prepareAshProfile(ctx, s, kb)
-	cr, err := migrateProfile(ctx, s.Param().([]chrome.Option))
+	cr, err := migrateProfile(ctx, s.Param().(migrateParams))
 	if err != nil {
 		s.Fatal("Failed to migrate profile: ", err)
 	}
@@ -114,7 +124,7 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 		ui.LeftClick(addButton1),
 		// The "Add extension" button may not immediately be clickable.
 		ui.LeftClickUntil(addButton2, ui.Gone(addButton2)),
-		ui.WaitUntilExists(removeButton),
+		ui.RetryUntil(cr.Browser().ReloadActiveTab, ui.WithTimeout(10*time.Second).WaitUntilExists(removeButton)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to install: ", err)
 	}
@@ -264,7 +274,7 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	}()
 }
 
-func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chrome, error) {
+func migrateProfile(ctx context.Context, params migrateParams) (*chrome.Chrome, error) {
 	// TODO(chromium:1290297): This is a hack.
 	// chrome.New doesn't really support profile migration because it
 	// doesn't anticipate the additional Chrome restart that profile
@@ -280,7 +290,7 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 		chrome.RemoveNotification(false),
 		chrome.EnableFeatures("LacrosProfileMigrationForAnyUser"),
 	}
-	opts = append(opts, extraOpts...)
+	opts = append(opts, params.option...)
 	opts, err := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(opts...)).Opts()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to compute Chrome options")
@@ -298,6 +308,7 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 		return nil, err
 	}
 	pref := "lacros.profile_migration_completed_for_user." + userHash
+	pref = params.pref + userHash
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		completedVal, err := localstate.UnmarshalPref(browser.TypeAsh, pref)
 		if err != nil {
