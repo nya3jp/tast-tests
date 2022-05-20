@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f3be5f_85e3511d",
+        "filename": "src/chromiumos/tast/local/hostapd/conf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-20T07:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c10297d1_6104bbb3",
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "071ca7fc_c8a797c6",
@@ -547,6 +565,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55875a1_4b429ef6",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-20T07:34:48Z",
+      "side": 1,
+      "message": "So I finally understood why `SIGTERM` is used: `hostapd` must be able to clean correctly the configuration from the Wi-Fi interface it uses before leaving and it won\u0027t happen if we use `SIGKILL`.",
+      "parentUuid": "7e290fb5_0502f59b",
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a25b80d_175a7ccc",
@@ -560,6 +596,24 @@
       "writtenOn": "2022-05-10T16:49:47Z",
       "side": 1,
       "message": "Can you check why it failed?",
+      "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1093569_250565e4",
+        "filename": "src/chromiumos/tast/local/hostapd/hostapd.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-05-20T07:34:48Z",
+      "side": 1,
+      "message": "Actually I can\u0027t find any reasonable answer. I\u0027m checking the error now, and everything works fine.",
+      "parentUuid": "5a25b80d_175a7ccc",
       "revId": "86a33a9e8663e2d091b550a915a3a5f517f59cbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
