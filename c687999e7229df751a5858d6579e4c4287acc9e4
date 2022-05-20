@@ -33,6 +33,24 @@
       "message": "Did tast-lint let you upload this new test with LacrosVariantNeeded set?\n\nIn general, if the test needs a lacros variant and it\u0027s a new test, it should be added with lacros to begin with.",
       "revId": "c687999e7229df751a5858d6579e4c4287acc9e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07aedb9d_e9b899fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/request_mobile_site_tablet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-20T02:24:32Z",
+      "side": 1,
+      "message": "Thank you for your time!\n--\n\u003e Did tast-lint let you upload this new test with LacrosVariantNeeded set?\nYes, we didn\u0027t skip any pre-upload checks.\n\n\u003e In general, if the test needs a lacros variant and it\u0027s a new test, it should be added with lacros to begin with.\nShould we set it as `LacrosVariantUnknown` before lacros status gets confirmed?",
+      "parentUuid": "e9313201_4d98cb03",
+      "revId": "c687999e7229df751a5858d6579e4c4287acc9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
