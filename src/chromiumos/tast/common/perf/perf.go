@@ -141,14 +141,15 @@ func (s *Metric) setDefaults() {
 
 // Maps a Metric unit type to a histogram unit type. TODO(stevenjb) Investigate
 var supportedUnits = map[string]string{
-	"bytes": "sizeInBytes",
-	"J":     "J",
-	"W":     "W",
-	"count": "count",
-	"ms":    "ms",
-	"n%":    "n%",
-	"sigma": "sigma",
-	"tsMs":  "tsMs",
+	"bytes":          "sizeInBytes",
+	"bytesPerSecond": "bytesPerSecond",
+	"J":              "J",
+	"W":              "W",
+	"count":          "count",
+	"ms":             "ms",
+	"n%":             "n%",
+	"sigma":          "sigma",
+	"tsMs":           "tsMs",
 }
 
 func (s *Metric) histogramUnit() string {
