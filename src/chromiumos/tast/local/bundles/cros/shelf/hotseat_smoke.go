@@ -28,7 +28,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel("magister")),
 		Pre:          chrome.LoggedIn(),
 	})
 }
