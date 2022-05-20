@@ -16,6 +16,92 @@
       "message": "Hi all,\n\nWe have observed that Kiosk.Launch.Error metrics volume dropped a lot since M100 (b/233157784). As a starting point of investigation I have implemented a Tast test to verify if the UMA logging part works as intended. Please take a look!",
       "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468d2794_01d4f6fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_error_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-20T09:39:30Z",
+      "side": 1,
+      "message": "I guess this is needed as the connection to the current Chrome will be lost once we break the startup sequence. Is that right?\n\nOtherwise we could use uiauto to wait for some element to be gone or to be visible.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443d5935_6d592a70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_error_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-20T09:39:30Z",
+      "side": 1,
+      "message": "Perhaps leave a comment about what this part is about.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b98e18_a203a583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_error_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-20T09:39:30Z",
+      "side": 1,
+      "message": "Why is this sleep necessary?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 34
+      },
+      "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa3a23a_5fc0fbd3",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-20T09:39:30Z",
+      "side": 1,
+      "message": "Is it safe to continue testing if closing the process failed? Won\u0027t we end up with two process and one being a zombie one?",
+      "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
