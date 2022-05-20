@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "549b23ac_6a21718a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-20T14:39:03Z",
+      "side": 1,
+      "message": "Passing in `s.Var` instead of the result of `s.Var(\"autotest_host_info_labels\")` is interesting... wouldn\u0027t have thought to do it like that, but I\u0027m also wondering how much it matters that we factor out naming the var we want because we have to put it in the test definition in `init` anyway...",
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ba3f2a_a1f34769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-20T14:39:03Z",
+      "side": 1,
+      "message": "should this be part of this CL?",
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf0841d_ebada4db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-20T14:39:03Z",
+      "side": 1,
+      "message": "any reason we added this line?",
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96fbef5c_e46d030b",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-20T14:39:03Z",
+      "side": 1,
+      "message": "nit: \"ensuring\"?",
+      "range": {
+        "startLine": 109,
+        "startChar": 95,
+        "endLine": 109,
+        "endChar": 102
+      },
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
