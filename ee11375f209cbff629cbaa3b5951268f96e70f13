@@ -16,6 +16,184 @@
       "message": "off to Yulun to take a look",
       "revId": "ee11375f209cbff629cbaa3b5951268f96e70f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efea54ac_37a80a01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-20T18:46:40Z",
+      "side": 1,
+      "message": "LGTM %nits",
+      "revId": "ee11375f209cbff629cbaa3b5951268f96e70f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc6621d_fecb5442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-20T18:46:40Z",
+      "side": 1,
+      "message": "Would it be worth it to add a func to setup targetAppID, defaultAppIDsInOrder, and updatedAppIDsInOrder etc.\n\ntype AppRearrangementTestCase struct {\ntargetAppID\ndefaultAppIDsInOrder\nupdatedAppIDsInOrder\n}\n\nfunc SetupShelf (ctx context.Context, tconn *chrome.TestConn,type rearrangmentTestType) {\nreturn {\ntargetAppID \"something\",\ndefaultAppIDsInOrder: ...\n}\n} \n\nTotally up to you :)",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 46
+      },
+      "revId": "ee11375f209cbff629cbaa3b5951268f96e70f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f1aa55_c89cf712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-20T18:46:40Z",
+      "side": 1,
+      "message": "don\u0027t need \"on\"",
+      "range": {
+        "startLine": 263,
+        "startChar": 53,
+        "endLine": 263,
+        "endChar": 55
+      },
+      "revId": "ee11375f209cbff629cbaa3b5951268f96e70f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea3b85f_8f9559af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-20T18:46:40Z",
+      "side": 1,
+      "message": "Maybe \"Failed to start drag on the target app\" or \"Failed to start dragging the target app\"",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 106
+      },
+      "revId": "ee11375f209cbff629cbaa3b5951268f96e70f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27bd7fb4_82b457b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-20T18:46:40Z",
+      "side": 1,
+      "message": "I personally prefer \"from last to middle\" over \"to middle from last\"\n\nDoesn\u0027t matter as long as consistent\n\n(see line 275)",
+      "range": {
+        "startLine": 267,
+        "startChar": 27,
+        "endLine": 267,
+        "endChar": 78
+      },
+      "revId": "ee11375f209cbff629cbaa3b5951268f96e70f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c017e12_6c4818c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-20T18:46:40Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 270,
+        "startChar": 41,
+        "endLine": 270,
+        "endChar": 78
+      },
+      "revId": "ee11375f209cbff629cbaa3b5951268f96e70f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8e58c0_99631a0a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-20T18:46:40Z",
+      "side": 1,
+      "message": "GetShelfAppBounds? Unsure if we want \"FromNames\"",
+      "range": {
+        "startLine": 678,
+        "startChar": 5,
+        "endLine": 678,
+        "endChar": 31
+      },
+      "revId": "ee11375f209cbff629cbaa3b5951268f96e70f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610e573d_c2a830f3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-20T18:46:40Z",
+      "side": 1,
+      "message": "get bounds for %s",
+      "range": {
+        "startLine": 684,
+        "startChar": 48,
+        "endLine": 684,
+        "endChar": 72
+      },
+      "revId": "ee11375f209cbff629cbaa3b5951268f96e70f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
