@@ -141,6 +141,30 @@
       },
       "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac72087_ffbe6a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-20T00:56:19Z",
+      "side": 1,
+      "message": "Relying on a Google\u0027s site is better than on a third-party site (because we don\u0027t send extra traffic to them), but it\u0027s still not preferable from pov of test stability.\n\nThe easiest way to serve local contents is to use httptest.NewServer(http.FileServer(s.DataFileSystem())). See this for example:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/fast_ink.go;drc\u003d14caad2428faa63f150f507f52acb44287d5e7a2;l\u003d213",
+      "parentUuid": "53cb653d_62b2f9bd",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "5bc464fbe0107e9fb9e43b283544a2b50abed45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
