@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdad5f0_d026c9b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-20T06:44:12Z",
+      "side": 1,
+      "message": "I think it\u0027s Ok. These tests are very stable. So if there is any flakiness, I should be able to spot it quickly on the dashboards.",
+      "parentUuid": "fe6661f9_21a6ca5a",
+      "revId": "7827ea985bc5a10368721a0f225d10d6d8659187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ad637c_10ba9f7f",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-19T03:29:47Z",
       "side": 1,
       "message": "All of these should be `s.Fatal` instead of `s.Error` and return. You can `Fatal` with in individual `s.Run` and it will continue with other sub tests but fail overall.",
+      "range": {
+        "startLine": 446,
+        "startChar": 4,
+        "endLine": 446,
+        "endChar": 10
+      },
+      "revId": "7827ea985bc5a10368721a0f225d10d6d8659187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa64a91_62a2b27c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-20T06:44:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7ad637c_10ba9f7f",
       "range": {
         "startLine": 446,
         "startChar": 4,
