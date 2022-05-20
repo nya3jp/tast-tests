@@ -103,7 +103,7 @@ func ChromevoxHint(ctx context.Context, s *testing.State) {
 		// is the same as below. The second is the ChromeVox welcome message, that
 		// indicates that ChromeVox is on.
 		speechExpectations = []a11y.SpeechExpectation{
-			a11y.NewRegexExpectation("Do you want to activate ChromeVox, the built-in screen reader for Chrome OS*"),
+			a11y.NewRegexExpectation("Do you want to activate ChromeVox, the built-in screen reader for ChromeOS*"),
 			a11y.NewRegexExpectation("ChromeVox spoken feedback is ready"),
 		}
 		actions = uiauto.Combine("wait for and interact with the ChromeVox hint dialog",
@@ -114,7 +114,7 @@ func ChromevoxHint(ctx context.Context, s *testing.State) {
 		// If the dialog is dismissed, we should only get one speech utterance that
 		// asks the user if they want to activate ChromeVox.
 		speechExpectations = []a11y.SpeechExpectation{
-			a11y.NewRegexExpectation("Do you want to activate ChromeVox, the built-in screen reader for Chrome OS*"),
+			a11y.NewRegexExpectation("Do you want to activate ChromeVox, the built-in screen reader for ChromeOS*"),
 		}
 		actions = uiauto.Combine("wait for and interact with the ChromeVox hint dialog",
 			ui.WithTimeout(30*time.Second).WaitUntilExists(chromeVoxText),
