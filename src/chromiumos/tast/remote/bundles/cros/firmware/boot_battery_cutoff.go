@@ -13,8 +13,9 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
-	"chromiumos/tast/services/cros/firmware"
+	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -28,6 +29,10 @@ const (
 	errmsg2 = "No data was sent from the pty"
 	errmsg3 = "EC: Timeout waiting for response."
 )
+
+type reconnectErr struct {
+	*errors.E
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -61,6 +66,19 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	if err := h.RequireConfig(ctx); err != nil {
 		s.Fatal("Failed to get config: ", err)
 	}
+
+	// For debugging purposes, log servo and dut connection type.
+	servoType, err := h.Servo.GetServoType(ctx)
+	if err != nil {
+		s.Fatal("Failed to find servo type: ", err)
+	}
+	s.Logf("Servo type: %s", servoType)
+
+	dutConnType, err := h.Servo.GetDUTConnectionType(ctx)
+	if err != nil {
+		s.Fatal("Failed to find dut connection type: ", err)
+	}
+	s.Logf("DUT connection type: %s", dutConnType)
 
 	if err := h.RequireBiosServiceClient(ctx); err != nil {
 		s.Fatal("Failed to get bios service: ", err)
@@ -116,7 +134,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "unexpected EC error")
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 3 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 3 * time.Second}); err != nil {
 			s.Fatal("EC did not become unresponsive: ", err)
 		}
 		s.Log("EC is unresponsive")
@@ -130,13 +148,16 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	}
 
 	// This function will try to reconnect to the DUT and check the system power state to assure DUT has booted.
-	confirmBoot := func(ctx context.Context) error {
+	confirmBoot := func(ctx context.Context, wakeByAC bool) error {
 		// Wait for a connection to the DUT.
 		s.Log("Wait for SSH to DUT")
 		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 3*time.Minute)
 		defer cancelWaitConnect()
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
+			if wakeByAC && strings.Contains(err.Error(), context.DeadlineExceeded.Error()) {
+				return &reconnectErr{E: errors.New("timed out reconnecting DUT. Attempting a press on power button")}
+			}
 			return errors.Wrap(err, "failed to reconnect to DUT")
 		}
 		return nil
@@ -154,7 +175,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Enabling AP software write protect")
-	bs := firmware.NewBiosServiceClient(h.RPCClient.Conn)
+	bs := pb.NewBiosServiceClient(h.RPCClient.Conn)
 	if _, err := bs.EnableAPSoftwareWriteProtect(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to enable AP write protection: ", err)
 	}
@@ -177,8 +198,18 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	}
 
 	// Confirm a successful boot.
-	if err := confirmBoot(ctx); err != nil {
-		s.Fatal("Failed to boot: ", err)
+	if err := confirmBoot(ctx, true); err != nil {
+		if _, ok := err.(*reconnectErr); ok {
+			s.Log("Context error: ", err.(*reconnectErr))
+			// Power button is another wake up pin to wake DUT from deep sleep.
+			// If re-connecting charger fails in waking up DUT, try with a press
+			// on power to fully wake DUT from G3 into S0.
+			if err := wakeDUTS0(ctx, h); err != nil {
+				s.Fatal("Unable to reconnect to DUT: ", err)
+			}
+		} else {
+			s.Fatal("Failed to boot: ", err)
+		}
 	}
 	s.Log("DUT booted succesfully")
 
@@ -212,7 +243,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		}
 
 		// Confirm a successful boot.
-		if err := confirmBoot(ctx); err != nil {
+		if err := confirmBoot(ctx, false); err != nil {
 			s.Fatal("Failed to boot: ", err)
 		}
 		s.Log("DUT booted succesfully")
@@ -221,4 +252,26 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		s.Log("WARNING: DUT is a chromeslate but no micro-servo is present")
 	}
 
+}
+
+// wakeDUTS0 will check DUT's power state if replugging AC fails to fully awake DUT from battery cutoff.
+// If DUT is at G3 or S5 power button will be pressed to advance it to S0.
+func wakeDUTS0(ctx context.Context, h *firmware.Helper) error {
+	retryCtx, cancelRetry := context.WithTimeout(ctx, 3*time.Minute)
+	defer cancelRetry()
+
+	// Check if DUT is at G3. If DUT is in G3, use power button to boot it into S0.
+	testing.ContextLog(retryCtx, "Checking if power state is at G3 or S5")
+	if err := h.WaitForPowerStates(retryCtx, firmware.PowerStateInterval, 1*time.Minute, "G3", "S5"); err != nil {
+		return errors.Wrap(err, "unable to get power state at G3 or S5. DUT disconnected due to other reasons")
+	}
+	testing.ContextLogf(retryCtx, "Pressing power button for %s to wake DUT into S0 from G3 or S5", h.Config.HoldPwrButtonPowerOn)
+	if err := h.Servo.KeypressWithDuration(retryCtx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOn)); err != nil {
+		return errors.Wrap(err, "failed to press power button")
+	}
+	testing.ContextLog(retryCtx, "Waiting for power state S0")
+	if err := h.WaitForPowerStates(retryCtx, firmware.PowerStateInterval, 1*time.Minute, "S0"); err != nil {
+		return errors.Wrap(err, "unable to get power state at S0")
+	}
+	return nil
 }
