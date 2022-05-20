@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87726334_e0d82e88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-20T05:28:04Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a566962_ce1b727d",
@@ -76,6 +93,52 @@
         "startChar": 1,
         "endLine": 28,
         "endChar": 25
+      },
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d2afa7c_1572da9f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-20T05:28:04Z",
+      "side": 1,
+      "message": "Maybe this is understandable for someone with knowledge in this area, but it is not clear to me what a legacy router is. Perhaps you could be more precise, e.g. by referring to a relevant standards document that you are using to define \u0027legacy\u0027?",
+      "range": {
+        "startLine": 32,
+        "startChar": 53,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e3fc81_fd254449",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-20T05:28:04Z",
+      "side": 1,
+      "message": "nit: releases",
+      "range": {
+        "startLine": 718,
+        "startChar": 19,
+        "endLine": 718,
+        "endChar": 26
       },
       "revId": "146804d31a59a4eacb93754583885a706074b7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
