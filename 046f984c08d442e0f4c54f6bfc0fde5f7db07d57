@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a10af12_754c64c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-05-20T05:41:15Z",
+      "side": 1,
+      "message": "Yup, kukui-kernelnext is at 5.10 and octopus-kernelnext is at 5.15. Amended the commit message to call this out.",
+      "parentUuid": "53a5d063_630edd94",
+      "range": {
+        "startLine": 35,
+        "startChar": 46,
+        "endLine": 35,
+        "endChar": 55
+      },
+      "revId": "046f984c08d442e0f4c54f6bfc0fde5f7db07d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47b7146a_baa377f0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-20T05:32:00Z",
       "side": 1,
       "message": "Is this format expected?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 4
+      },
+      "revId": "046f984c08d442e0f4c54f6bfc0fde5f7db07d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cedb5da4_b54d22b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-05-20T05:41:15Z",
+      "side": 1,
+      "message": "repo yelled at me when I tried to upload (before touching these lines?) so I copied and pasted its suggestion here. Not really sure why it got triggered though..",
+      "parentUuid": "47b7146a_baa377f0",
       "range": {
         "startLine": 101,
         "startChar": 0,
