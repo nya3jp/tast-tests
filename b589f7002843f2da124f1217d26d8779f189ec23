@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8a5e9e_4b6895f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-20T17:33:32Z",
+      "side": 1,
+      "message": "Yes, Since we are passing s.Var ... we can update the helper to read any env variable.",
+      "parentUuid": "439b89d4_4f3c378c",
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ba3f2a_a1f34769",
