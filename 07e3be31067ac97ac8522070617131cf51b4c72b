@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca18054f_4b5c620c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-05-20T22:41:47Z",
+      "side": 1,
+      "message": "LGTM with a nit for consideration.",
+      "revId": "07e3be31067ac97ac8522070617131cf51b4c72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "876afb0a_caecad24",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-05-20T22:41:47Z",
+      "side": 1,
+      "message": "I\u0027d leave a comment here saying that mtk_dram_tool would fail\nif e.g. the platform is not supported. Moreover, I could \nthink about leaving here a log of the situation and returning \nnil. That way we could catch actual errors in the callsite\n(which would be l.498 -- error parsing the actual output).\nWDYT? If so then leave a comment in l.483 saying that running\non a non-supported platform would not err-out (but would not\nproduce results either).",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 60
+      },
+      "revId": "07e3be31067ac97ac8522070617131cf51b4c72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
