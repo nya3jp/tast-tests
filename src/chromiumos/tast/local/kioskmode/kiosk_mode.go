@@ -17,7 +17,9 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/syslog"
@@ -49,9 +51,12 @@ var (
 	kioskAppAccountType = policy.AccountTypeKioskApp
 	// KioskAppID pointing to the Printtest app - not listed in the WebStore.
 	KioskAppID = "aajgmlihcokkalfjbangebcffdoanjfo"
+	// KioskAppBtnName is the name of the Printest app which shows up in the Apps
+	// menu on the sign-in screen.
+	KioskAppBtnName = "Simple Printest"
 	// KioskAppBtnNode node representing this application on the Apps menu on
 	// the Sign-in screen.
-	KioskAppBtnNode = nodewith.Name("Simple Printest").ClassName("MenuItemView")
+	KioskAppBtnNode = nodewith.Name(KioskAppBtnName).ClassName("MenuItemView")
 	kioskAppPolicy  = policy.DeviceLocalAccountInfo{
 		AccountID:   &KioskAppAccountID,
 		AccountType: &kioskAppAccountType,
@@ -349,12 +354,11 @@ func WaitForCrxInCache(ctx context.Context, id string) error {
 	}, nil)
 }
 
-// RestartChromeWithOptions replaces the current Chrome in kiosk instance with
-// a new one using custom options. It will be closed by Kiosk.Close().
-func (k *Kiosk) RestartChromeWithOptions(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
-	if err := k.cr.Close(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to close Chrome")
-	}
+// restartChromeNoCloseWithOptions replaces the current Chrome in kiosk instance
+// with a new one using custom options without closing the old one. It will be
+// closed by Kiosk.Close(). Useful when Chrome already closes itself, for
+// example when cancelling a Kiosk launch.
+func (k *Kiosk) restartChromeNoCloseWithOptions(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
 	k.cr = nil
 
 	testing.ContextLog(ctx, "Restarting ui")
@@ -374,4 +378,65 @@ func (k *Kiosk) RestartChromeWithOptions(ctx context.Context, opts ...chrome.Opt
 	}
 	k.cr = cr
 	return cr, err
+}
+
+// RestartChromeWithOptions replaces the current Chrome in kiosk instance with
+// a new one using custom options. It will be closed by Kiosk.Close().
+func (k *Kiosk) RestartChromeWithOptions(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
+	if err := k.cr.Close(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to close Chrome")
+	}
+	return k.restartChromeNoCloseWithOptions(ctx, opts...)
+}
+
+// StartFromSignInScreen starts a Kiosk app from the Apps menu on the sign-in
+// screen, simulating a manual launch. It doesn't wait for a successful launch
+// so that the launch can be cancelled by pressing Ctrl+Alt+S.
+// TODO(b/230840565): Extract and extend this function to support MGS.
+func StartFromSignInScreen(ctx context.Context, ui *uiauto.Context, name string) error {
+	testing.ContextLog(ctx, "Starting Kiosk app from sign-in screen: "+name)
+	localAccountsBtn := nodewith.Name("Apps").HasClass("MenuButton")
+	kioskAppBtn := nodewith.Name(name).HasClass("MenuItemView")
+	cancelLaunchText := nodewith.Name("Press Ctrl + Alt + S to switch to ChromeOS").Role("staticText")
+	if err := uiauto.Combine("launch Kiosk app from menu",
+		ui.WaitUntilExists(localAccountsBtn),
+		ui.LeftClick(localAccountsBtn),
+		ui.WaitUntilExists(kioskAppBtn),
+		ui.LeftClick(kioskAppBtn),
+		ui.WaitUntilExists(cancelLaunchText),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to start Kiosk application from apps menu")
+	}
+	return nil
+}
+
+// CancelKioskLaunch cancels the current Kiosk launch by pressing Ctrl+Alt+S.
+// Must be invoked on the Kiosk splash screen. A new Chrome instance will be
+// started with given options. It verifies a successful cancel by checking for
+// cancelled message on the screen.
+func (k *Kiosk) CancelKioskLaunch(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
+	testing.ContextLog(ctx, "Cancelling Kiosk launch via Ctrl+Alt+S")
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a keyboard")
+	}
+	defer kw.Close()
+
+	if err := kw.Accel(ctx, "Ctrl+Alt+S"); err != nil {
+		return nil, errors.Wrap(err, "failed to hit Ctrl+Alt+S and attempt to quit a kiosk app")
+	}
+	// The current Chrome process will exit after pressing Ctrl+Alt+S. Waiting for
+	// UI events is therefore not possible. A short delay is needed to make sure
+	// launch error event will be triggered before restarting UI.
+	if err := testing.Sleep(ctx, 300*time.Millisecond); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for Chrome to exit")
+	}
+
+	// Restart Chrome without closing since the current Chrome process has already
+	// exited itself.
+	cr, err := k.restartChromeNoCloseWithOptions(ctx, opts...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to restart Chrome")
+	}
+	return cr, nil
 }
