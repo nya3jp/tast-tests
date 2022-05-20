@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f7f0ea_8710377e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-05-20T07:48:19Z",
+      "side": 1,
+      "message": "Switched to checking each search domain separately",
+      "parentUuid": "7b99916d_d98df5f2",
+      "range": {
+        "startLine": 106,
+        "startChar": 47,
+        "endLine": 106,
+        "endChar": 48
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9cdd2a6_9431f443",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-20T06:39:24Z",
       "side": 1,
       "message": "I am not sure I understand: the system default network should not necessarily be metered. But you found that on P, regardless of the default network capabilities, the VPN will never have CAPABILITY_NOT_METERED ?",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 59
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4493dc_73c39c64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-05-20T07:48:19Z",
+      "side": 1,
+      "message": "VPN apps will be metered by default, unless overridden (which we can\u0027t do on P). Sorry that was worded poorly, tried to clarify the comment a bit\n\nMore details here: https://developer.android.com/reference/android/net/VpnService.Builder#setMetered(boolean)",
+      "parentUuid": "b9cdd2a6_9431f443",
       "range": {
         "startLine": 168,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad285157_b2710d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-05-20T07:48:19Z",
+      "side": 1,
+      "message": "\u003e We should maybe fix this bug by back porting the aosp patch that does this on a later release because in feedback reports we only get dumpsys.\nCreated b/233322908\n\u003e \n\u003e Inside Android this is only \"informational\" right ? The actual MTU on the Androd tun0 interface inside ARC is correctly set ?\nCorrect, the tun0 interface has the right value",
+      "parentUuid": "2d9e4bb6_58a8c6f6",
+      "range": {
+        "startLine": 178,
+        "startChar": 58,
+        "endLine": 179,
+        "endChar": 79
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c941201_0560adbd",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "958dfd47_7e16154c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-05-20T07:48:19Z",
+      "side": 1,
+      "message": "Yup, we set a new config with a mtu value of 1280 on line 145",
+      "parentUuid": "0c941201_0560adbd",
+      "range": {
+        "startLine": 187,
+        "startChar": 43,
+        "endLine": 187,
+        "endChar": 49
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e71f4667_db32abf7",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-05-20T06:39:24Z",
       "side": 1,
       "message": "it is a bit strange to see search domains being configured without also DNS being configured.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c38cd7_cc48285c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-05-20T07:48:19Z",
+      "side": 1,
+      "message": "Setting up the DNS actually affects whether we can reach the test VPN server, so there\u0027s some dependency with the underlying logic/values in vpn/vpn_server.go. I\u0027m a bit wary of pulling that logic out here, but I can add a comment to explain? Thoughts?",
+      "parentUuid": "e71f4667_db32abf7",
       "range": {
         "startLine": 32,
         "startChar": 1,
