@@ -52,6 +52,24 @@
       "parentUuid": "bae16ee3_43d2f71d",
       "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cfae3c0_65f346cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-20T01:55:12Z",
+      "side": 1,
+      "message": "I tried to record all messages from the start of my test till the end: http://go/paste/5266784878854144\n\nWhen fixture set up, everything is fine. However, I can see several error like `ERR cryptohomed[1573]: ioctl(LOOP_GET_STATUS64) failed, err: -1`. But anyway, the library itself doesn\u0027t report error when we log in.\n\nBut after the test, it start to report failure.  You may check the log after \"health.ProbeBusInfo.progif: \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d end\". Since the error is the same, I\u0027m not sure how to check if it\u0027s a real error or not.",
+      "parentUuid": "ecea04e8_ac06f281",
+      "revId": "3fb77260641851a258f0002891104d8da7e55d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
