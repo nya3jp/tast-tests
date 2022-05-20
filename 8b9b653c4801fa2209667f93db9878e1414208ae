@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b99916d_d98df5f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-20T06:39:24Z",
+      "side": 1,
+      "message": "This space is an implementation detail in Android. Actually the doc says it should be a \u0027,\u0027, but the impl is a \u0027 \u0027 so it could one day change and be different across branches. I am not sure how this checkMatch function works, but can we have a wildcard in the expected match ?",
+      "range": {
+        "startLine": 106,
+        "startChar": 47,
+        "endLine": 106,
+        "endChar": 48
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9cdd2a6_9431f443",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-20T06:39:24Z",
+      "side": 1,
+      "message": "I am not sure I understand: the system default network should not necessarily be metered. But you found that on P, regardless of the default network capabilities, the VPN will never have CAPABILITY_NOT_METERED ?",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 59
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9e4bb6_58a8c6f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-20T06:39:24Z",
+      "side": 1,
+      "message": "We should maybe fix this bug by back porting the aosp patch that does this on a later release because in feedback reports we only get dumpsys.\n\nInside Android this is only \"informational\" right ? The actual MTU on the Androd tun0 interface inside ARC is correctly set ?\n\nOn the host if we read the Android VPN MTU from the LinkProperties and end up always using the default, there are situations where MTU is misconfigured from the host perspective, so this bug should have actual functional impact there.",
+      "range": {
+        "startLine": 178,
+        "startChar": 58,
+        "endLine": 179,
+        "endChar": 79
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c941201_0560adbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-20T06:39:24Z",
+      "side": 1,
+      "message": "I might be misunderstanding the logic, but shouldn\u0027t this expect the value found in the test Config ?",
+      "range": {
+        "startLine": 187,
+        "startChar": 43,
+        "endLine": 187,
+        "endChar": 49
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71f4667_db32abf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-20T06:39:24Z",
+      "side": 1,
+      "message": "it is a bit strange to see search domains being configured without also DNS being configured.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "8b9b653c4801fa2209667f93db9878e1414208ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
