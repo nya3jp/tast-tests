@@ -70,6 +70,24 @@
       "parentUuid": "04babe0d_448e2d71",
       "revId": "78c83dd74f88f59eb48f1833a36d854c07ae99ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80083351_74d3ffdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-20T21:05:02Z",
+      "side": 1,
+      "message": "I was under the impression that Roblox would want to see the source code for the tests; in the event they do, do we provide it to them, or deny them?",
+      "parentUuid": "58e25326_b1ee086f",
+      "revId": "78c83dd74f88f59eb48f1833a36d854c07ae99ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
