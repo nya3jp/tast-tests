@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d9ebe9_00c096bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T09:30:29Z",
+      "side": 1,
+      "message": "Sorry for delayed reply. LGTM with a comment.",
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2470e421_11ecf919",
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "Not really, it will be cleaned by certStore.Cleanup(), which is called in TearDown() (I suppose a TearDown will always be called paired with a SetUp IIUC).",
       "parentUuid": "2470e421_11ecf919",
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd316539_4e4fdf6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T09:30:29Z",
+      "side": 1,
+      "message": "Got it. Thanks.",
+      "parentUuid": "b29c20f9_230b6168",
       "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -90,6 +125,30 @@
       "side": 1,
       "message": "Sorry maybe I didn\u0027t make it clear, I meant we need to reset shill when this happen, but the easiest way to do that here is failing the fixture to do a full reset.",
       "parentUuid": "b2421d13_21e68040",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95cbd62_368d2b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-20T09:30:29Z",
+      "side": 1,
+      "message": "Ah, I see your intention.\nHow about mentioning it a bit more explicit? E.g.\n\n we\u0027ll fully restart of this fixture, which is triggered by reporting error here.",
+      "parentUuid": "eb38f636_10c8d4d2",
       "range": {
         "startLine": 161,
         "startChar": 4,
