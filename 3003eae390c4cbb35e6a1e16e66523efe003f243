@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f0975e_329007c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-05-20T21:35:07Z",
+      "side": 1,
+      "message": "Have to include change for DefaultSimPin \u003d \"1111\"(changed to 1111 from 1234) in mmconst.const \nVerified on sim pin lock pool duts :\nchromeos7-row5-rack1-host2.cros:\n\ntast -verbose run \u0027-var\u003dautotest_host_info_labels\u003d[\"label-modem_imei:357797110100070\", \"label-modem_sim_count:1\", \"label-modem_type:MODEM_TYPE_QUALCOMM_SC7180\",\"label-sim_2_0_carrier_name:NETWORK_TMOBILE\", \"label-sim_2_0_iccid:8901260153779127706\", \"label-sim_2_0_pin:1111\", \"label-sim_2_0_puk:31224207\",\"label-sim_2_num_profiles:1\", \"label-sim_2_type:SIM_PHYSICAL\", \"label-sim_slot_id:2\"]\u0027 localhost:2200 cellular.ShillCellularSimPinLock\n\nchromeos7-row5-rack1-host1.cros:\ntast -verbose run \u0027-var\u003dautotest_host_info_labels\u003d[\"label-modem_imei:357797110000114\",\"label-modem_sim_count:1\",\"label-modem_type:MODEM_TYPE_QUALCOMM_SC7180\",\"label-sim_2_0_carrier_name:NETWORK_TMOBILE\",\"label-sim_2_0_iccid:8901260153779127425\",\"label-sim_2_0_pin:1111\",\"label-sim_2_0_puk:67308773\",\"label-sim_2_num_profiles:1\",\"label-sim_2_type:SIM_PHYSICAL\",\"label-sim_slot_id:2\"]\u0027 localhost:2200 cellular.ShillCellularSimPinLock ",
+      "revId": "3003eae390c4cbb35e6a1e16e66523efe003f243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
