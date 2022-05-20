@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c134ffb5_c42d7fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-20T16:22:13Z",
+      "side": 1,
+      "message": "No, removed the changes.",
+      "parentUuid": "08ba3f2a_a1f34769",
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edf0841d_ebada4db",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "442114f4_5819eab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-20T16:22:13Z",
+      "side": 1,
+      "message": "No, just formatting error. Fixed",
+      "parentUuid": "edf0841d_ebada4db",
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96fbef5c_e46d030b",
         "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
         "patchSetId": 2
@@ -65,6 +101,30 @@
       "writtenOn": "2022-05-20T14:39:03Z",
       "side": 1,
       "message": "nit: \"ensuring\"?",
+      "range": {
+        "startLine": 109,
+        "startChar": 95,
+        "endLine": 109,
+        "endChar": 102
+      },
+      "revId": "b589f7002843f2da124f1217d26d8779f189ec23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861944a0_ec0d0480",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-20T16:22:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96fbef5c_e46d030b",
       "range": {
         "startLine": 109,
         "startChar": 95,
