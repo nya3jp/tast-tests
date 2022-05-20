@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631b029b_406ebe13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-20T03:51:06Z",
+      "side": 1,
+      "message": "As we agreed with the SPERA on the path forward the common metrics, ( b/233016697#comment8 ), I am splitting set of common metrics into 3.\n\nI am not totally sure about the place of the individual metrics, please double check.\n\nPTAL.",
+      "revId": "d3c1d54314bb56827b5f801b3326cc4f80c202a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
