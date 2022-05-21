@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -49,15 +50,21 @@ func BubbleScroll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Bubble launcher requires clamshell mode.
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
 		s.Fatal("Failed to ensure clamshell mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
+
+	defer launcher.CloseBubbleLauncher(tconn)(cleanupCtx)
 
 	// On failure, take the screenshot before the above cleanup() happens.
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// Ensure tablet launcher has finished closing.
 	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
