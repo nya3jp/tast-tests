@@ -48,7 +48,7 @@ func UIOtaBasicSms(ctx context.Context, s *testing.State) {
 	   d) Clear received SMS notification
 	*/
 
-	messageToSend := "Hello " + time.Now().Format("01-02-2022 16:10:10")
+	messageToSend := "Hello " + time.Now().Format(time.UnixDate)
 
 	helper, err := cellular.NewHelper(ctx)
 	if err != nil {
@@ -60,7 +60,7 @@ func UIOtaBasicSms(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to find Cellular Service: ", err)
 	}
 
-	// Read modem property OwnNumber.
+	// Read modem property OwnNumbers.
 	modem, err := modemmanager.NewModem(ctx)
 	if err != nil {
 		s.Fatal("Failed to create modem: ", err)
@@ -130,7 +130,7 @@ func UIOtaBasicSms(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Check for SMS message")
-	err = uiHelper.ValidateMessage(ctx, phoneNumbers[0], messageToSend)
+	err = uiHelper.ValidateMessage(ctx, messageToSend)
 	if err != nil {
 		faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, uiHelper.Tconn)
 		s.Fatal("Failed validation of message: ", err)
