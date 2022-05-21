@@ -457,11 +457,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	configs := append(cujrecorder.DeprecatedMetricConfigs(),
 		cujrecorder.NewCustomMetricConfig(
-			"Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter,
-			[]int64{1, 20}),
+			"Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter),
 		cujrecorder.NewCustomMetricConfig(
-			"Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter,
-			[]int64{1, 20}))
+			"Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter))
 
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {

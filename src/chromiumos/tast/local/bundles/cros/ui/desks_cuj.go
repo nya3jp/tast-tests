@@ -121,7 +121,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, append(
 		cujrecorder.DeprecatedMetricConfigs(),
-		cujrecorder.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter, []int64{500, 2000}),
+		cujrecorder.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter),
 		cujrecorder.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
 	)...)
 	if err != nil {
