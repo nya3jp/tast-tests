@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f9a4643_5eadc20a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-21T06:19:04Z",
+      "side": 1,
+      "message": "This is a good point.\nShould we overwrite tracing in each subsequent attempt and report the last one only?\nHopefully it will be the most stable one.",
+      "parentUuid": "8ed92765_ae95f775",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "f06239039b59f599fe49670a31be3eb04828dad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "909e12b1_4229d7e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/perfetto/system_trace_config.pbtxt",
         "patchSetId": 12
