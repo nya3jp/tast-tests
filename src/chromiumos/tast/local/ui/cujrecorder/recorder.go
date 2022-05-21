@@ -30,9 +30,8 @@ import (
 type metricGroup string
 
 const (
-	groupSmoothness metricGroup = "AnimationSmoothness"
-	groupLatency    metricGroup = "InputLatency"
-	groupOther      metricGroup = ""
+	deprecatedGroupSmoothness metricGroup = "AnimationSmoothness"
+	deprecatedGroupLatency    metricGroup = "InputLatency"
 )
 
 const (
@@ -53,14 +52,6 @@ type MetricConfig struct {
 	// The direction of the histogram.
 	direction perf.Direction
 
-	// The criteria to be considered jank, used to aggregated rate of janky
-	// instances.
-	jankCriteria []int64
-
-	// The group of the metrics. Metrics in the same group will be aggregated
-	// nto one, except for groupOther.
-	group metricGroup
-
 	// TestConn to pull the histogram. If nil, the histogram is fetched using
 	// the TestConn in recorder.
 	// TODO(b/230676548): Deprecated.
@@ -72,7 +63,7 @@ type MetricConfig struct {
 // smoothness metrics will be aggregated into the "AnimationSmoothness" entry at
 // the end.
 func NewSmoothnessMetricConfig(histogramName string) MetricConfig {
-	return MetricConfig{histogramName: histogramName, unit: "percent", direction: perf.BiggerIsBetter, jankCriteria: []int64{50, 20}, group: groupSmoothness}
+	return MetricConfig{histogramName: histogramName, unit: "percent", direction: perf.BiggerIsBetter}
 }
 
 // DeprecatedNewSmoothnessMetricConfigWithTestConn (use non-"WithTestConn"
@@ -89,7 +80,7 @@ func DeprecatedNewSmoothnessMetricConfigWithTestConn(histogramName string, tconn
 // input latency data for the given histogram name. The whole data of all input
 // latency metrics will be aggregated into the "InputLatency" entry at the end.
 func NewLatencyMetricConfig(histogramName string) MetricConfig {
-	return MetricConfig{histogramName: histogramName, unit: "ms", direction: perf.SmallerIsBetter, jankCriteria: []int64{100, 250}, group: groupLatency}
+	return MetricConfig{histogramName: histogramName, unit: "ms", direction: perf.SmallerIsBetter}
 }
 
 // DeprecatedNewLatencyMetricConfigWithTestConn (use non-"WithTestConn"
@@ -103,10 +94,10 @@ func DeprecatedNewLatencyMetricConfigWithTestConn(histogramName string, tconn *c
 }
 
 // NewCustomMetricConfig creates a new MetricConfig for the given histogram
-// name, unit, direction, and jankCriteria. The data are reported as-is but
+// name, unit, and direction. The data are reported as-is but
 // not aggregated with other histograms.
-func NewCustomMetricConfig(histogramName, unit string, direction perf.Direction, jankCriteria []int64) MetricConfig {
-	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction, jankCriteria: jankCriteria, group: groupOther}
+func NewCustomMetricConfig(histogramName, unit string, direction perf.Direction) MetricConfig {
+	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction}
 }
 
 // DeprecatedNewCustomMetricConfigWithTestConn (use non-"WithTestConn" version)
@@ -115,7 +106,7 @@ func NewCustomMetricConfig(histogramName, unit string, direction perf.Direction,
 // TODO(b/230676548): Deprecated.
 func DeprecatedNewCustomMetricConfigWithTestConn(histogramName, unit string,
 	direction perf.Direction, jankCriteria []int64, tconn *chrome.TestConn) MetricConfig {
-	conf := NewCustomMetricConfig(histogramName, unit, direction, jankCriteria)
+	conf := NewCustomMetricConfig(histogramName, unit, direction)
 	conf.tconn = tconn
 	return conf
 }
@@ -123,12 +114,10 @@ func DeprecatedNewCustomMetricConfigWithTestConn(histogramName, unit string,
 type record struct {
 	config     MetricConfig
 	totalCount int64
-	jankCounts [2]float64
-
-	// The following fields can be outputted to json file as histogram raw data.
 
 	// Sum is the sum of the all entries in the histogram.
 	Sum int64 `json:"sum"`
+
 	// Buckets contains ranges of reported values. It's the concatenated histogram buckets from multiple runs.
 	Buckets []metrics.HistogramBucket `json:"buckets"`
 }
@@ -180,29 +169,6 @@ type Recorder struct {
 	loginEventRecorder *perfSrc.LoginEventRecorder
 }
 
-func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
-	var count float64
-	if direction == perf.BiggerIsBetter {
-		for _, bucket := range hist.Buckets {
-			if bucket.Max < criteria {
-				count += float64(bucket.Count)
-			} else if bucket.Min <= criteria {
-				// Estimate the count with assuming uniform distribution.
-				count += float64(bucket.Count) * float64(criteria-bucket.Min) / float64(bucket.Max-bucket.Min)
-			}
-		}
-	} else {
-		for _, bucket := range hist.Buckets {
-			if bucket.Min > criteria {
-				count += float64(bucket.Count)
-			} else if bucket.Max > criteria {
-				count += float64(bucket.Count) * float64(bucket.Max-criteria) / float64(bucket.Max-bucket.Min)
-			}
-		}
-	}
-	return count
-}
-
 // RecorderOptions contains options to control the recorder setup.
 // The options are determined based on the test needs.
 type RecorderOptions struct {
@@ -244,7 +210,7 @@ func (r *Recorder) addCollectedMetrics(tconn *chrome.TestConn, configs ...Metric
 		return errors.New("canont modify list of collected metrics after recodding was started")
 	}
 	for _, config := range configs {
-		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
+		if config.histogramName == string(deprecatedGroupLatency) || config.histogramName == string(deprecatedGroupSmoothness) {
 			return errors.Errorf("invalid histogram name: %s", config.histogramName)
 		}
 
@@ -391,16 +357,6 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	r.names = make(map[*chrome.TestConn][]string)
 	r.records = make(map[string]*record, len(configs)+2)
 	r.addCollectedMetrics(nil, configs...)
-	r.records[string(groupLatency)] = &record{config: MetricConfig{
-		histogramName: string(groupLatency),
-		unit:          "ms",
-		direction:     perf.SmallerIsBetter,
-	}}
-	r.records[string(groupSmoothness)] = &record{config: MetricConfig{
-		histogramName: string(groupSmoothness),
-		unit:          "percent",
-		direction:     perf.BiggerIsBetter,
-	}}
 
 	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
@@ -605,22 +561,9 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 		record := r.records[hist.Name]
 		record.totalCount += hist.TotalCount()
 		record.Sum += hist.Sum
-		jankCounts := []float64{
-			getJankCounts(hist, record.config.direction, record.config.jankCriteria[0]),
-			getJankCounts(hist, record.config.direction, record.config.jankCriteria[1]),
-		}
-		record.jankCounts[0] += jankCounts[0]
-		record.jankCounts[1] += jankCounts[1]
 
 		// Concatenate buckets.
 		record.Buckets = append(record.Buckets, hist.Buckets...)
-
-		if totalRecord, ok := r.records[string(record.config.group)]; ok {
-			totalRecord.totalCount += hist.TotalCount()
-			totalRecord.Sum += hist.Sum
-			totalRecord.jankCounts[0] += jankCounts[0]
-			totalRecord.jankCounts[1] += jankCounts[1]
-		}
 	}
 	return nil
 }
@@ -740,33 +683,14 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 
 	var crasUnderruns float64
 	for name, record := range r.records {
-		if record.totalCount == 0 {
-			continue
-		}
+		// We are not interested in reporting Cras.UnderrunsPerDevice but will use this value
+		// to derive UnderrunsPerDevicePerMinute.
 		if name == "Cras.UnderrunsPerDevice" {
-			crasUnderruns = float64(record.Sum)
-			// We are not interested in reporting Cras.UnderrunsPerDevice but will use this value
-			// to derive UnderrunsPerDevicePerMinute. Continue the loop.
-			continue
+			if record.totalCount != 0 {
+				crasUnderruns = float64(record.Sum)
+			}
+			break
 		}
-		pv.Set(perf.Metric{
-			Name:      name,
-			Unit:      record.config.unit,
-			Variant:   "average",
-			Direction: record.config.direction,
-		}, float64(record.Sum)/float64(record.totalCount))
-		pv.Set(perf.Metric{
-			Name:      name,
-			Unit:      "percent",
-			Variant:   "jank_rate",
-			Direction: perf.SmallerIsBetter,
-		}, record.jankCounts[0]/float64(record.totalCount)*100)
-		pv.Set(perf.Metric{
-			Name:      name,
-			Unit:      "percent",
-			Variant:   "very_jank_rate",
-			Direction: perf.SmallerIsBetter,
-		}, record.jankCounts[1]/float64(record.totalCount)*100)
 	}
 
 	// Derive Cras.UnderrunsPerDevicePerMinute. Ideally, the audio playing time and number of CRAS audio device
