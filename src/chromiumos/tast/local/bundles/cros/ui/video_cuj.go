@@ -197,10 +197,10 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	configs := []cujrecorder.MetricConfig{
 		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter, []int64{50, 80}),
+			perf.SmallerIsBetter),
 		cujrecorder.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter, []int64{0, 3}),
+			perf.SmallerIsBetter),
 	}
 	if tabletMode {
 		configs = append(configs,
