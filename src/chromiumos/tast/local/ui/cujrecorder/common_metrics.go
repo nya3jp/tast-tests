@@ -19,9 +19,31 @@ func AshCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.WithOverview", "ms", perf.SmallerIsBetter, []int64{25, 300}),
 		NewCustomMetricConfig("Ash.SplitViewResize.PresentationTime.MaxLatency.ClamshellMode.SingleWindow", "ms", perf.SmallerIsBetter, []int64{25, 300}),
 		NewCustomMetricConfig("Ash.SplitViewResize.PresentationTime.MaxLatency.ClamshellMode.WithOverview", "ms", perf.SmallerIsBetter, []int64{25, 300}),
+		NewCustomMetricConfig("Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency.TabletMode", "ms", perf.SmallerIsBetter, []int64{25, 300}),
+		NewCustomMetricConfig("Apps.PaginationTransition.DragScroll.PresentationTime.TabletMode", "ms", perf.SmallerIsBetter, []int64{25, 300}),
+		NewCustomMetricConfig("Apps.StateTransition.Drag.PresentationTime.MaxLatency.TabletMode", "ms", perf.SmallerIsBetter, []int64{25, 300}),
+		NewCustomMetricConfig("Apps.StateTransition.Drag.PresentationTime.TabletMode", "ms", perf.SmallerIsBetter, []int64{25, 300}),
 
 		// Smoothness.
 		NewCustomMetricConfig("Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent", perf.SmallerIsBetter, []int64{50, 80}),
+		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.EnterFullscreenAllApps"),
+		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.EnterFullscreenSearch"),
+		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.FadeInOverview"),
+		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.FadeOutOverview"),
+		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.HideLauncherForWindow"),
+		NewSmoothnessMetricConfig("Apps.PaginationTransition.AnimationSmoothness.ClamshellMode"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.ClamshellMode"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.EnterOverview"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.ExitOverview"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FadeInOverview"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FadeOutOverview"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FullscreenAllApps.ClamshellMode"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FullscreenSearch.ClamshellMode"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.Peeking.ClamshellMode"),
+		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.TabletMode"),
 		NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.ClamshellMode"),
 		NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.SingleClamshellMode"),
 		NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.SplitView"),
@@ -37,8 +59,11 @@ func AshCommonMetricConfigs() []MetricConfig {
 		NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
 		NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Show"),
 		NewSmoothnessMetricConfig("Ash.Window.AnimationSmoothness.CrossFade"),
-		NewSmoothnessMetricConfig("Ash.Window.AnimationSmoothness.Hide"),
 		NewSmoothnessMetricConfig("Ash.Window.AnimationSmoothness.Snap"),
+
+		// Media Quality.
+		NewCustomMetricConfig("Cras.FetchDelayMilliSeconds", "ms", perf.SmallerIsBetter, []int64{0, 20}),
+		NewCustomMetricConfig("Cras.UnderrunsPerDevice", "count", perf.SmallerIsBetter, []int64{0, 10}),
 
 		// ARC App Kill Metrics
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.LMKD.CachedCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
@@ -50,9 +75,7 @@ func AshCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.LinuxOOMCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
 
 		// Others to monitor.
-		NewCustomMetricConfig("MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter, []int64{800, 1600}),
 		NewCustomMetricConfig("Power.BatteryDischargeRate", "mW", perf.SmallerIsBetter, []int64{50, 100}),
-		NewCustomMetricConfig("EventLatency.TotalLatency", "ms", perf.SmallerIsBetter, []int64{800, 1600}),
 		NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
 		NewLatencyMetricConfig("Ash.HotseatTransition.Drag.PresentationTime"),
 		NewSmoothnessMetricConfig("Ash.Homescreen.AnimationSmoothness"),
@@ -77,22 +100,8 @@ func BrowserCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Event.Latency.EndToEnd.KeyPress", "microseconds", perf.SmallerIsBetter, []int64{25000, 300000}),
 		NewCustomMetricConfig("Event.Latency.EndToEnd.Mouse", "microseconds", perf.SmallerIsBetter, []int64{25000, 300000}),
 		NewCustomMetricConfig("Event.Latency.EndToEnd.TouchpadPinch2", "microseconds", perf.SmallerIsBetter, []int64{25000, 300000}),
-		NewCustomMetricConfig("Apps.PaginationTransition.DragScroll.PresentationTime.MaxLatency.TabletMode", "ms", perf.SmallerIsBetter, []int64{25, 300}),
-		NewCustomMetricConfig("Apps.PaginationTransition.DragScroll.PresentationTime.TabletMode", "ms", perf.SmallerIsBetter, []int64{25, 300}),
-		NewCustomMetricConfig("Apps.StateTransition.Drag.PresentationTime.MaxLatency.TabletMode", "ms", perf.SmallerIsBetter, []int64{25, 300}),
-		NewCustomMetricConfig("Apps.StateTransition.Drag.PresentationTime.TabletMode", "ms", perf.SmallerIsBetter, []int64{25, 300}),
 
 		// Smoothness.
-		NewSmoothnessMetricConfig("Apps.PaginationTransition.AnimationSmoothness.ClamshellMode"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FullscreenAllApps.ClamshellMode"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.ClamshellMode"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.EnterOverview"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.ExitOverview"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.Peeking.ClamshellMode"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.TabletMode"),
 		NewSmoothnessMetricConfig("Chrome.Tabs.AnimationSmoothness.TabLoading"),
 		NewSmoothnessMetricConfig("Chrome.Tabs.AnimationSmoothness.HoverCard.FadeOut"),
 		NewSmoothnessMetricConfig("Chrome.Tabs.AnimationSmoothness.HoverCard.FadeIn"),
@@ -106,24 +115,17 @@ func BrowserCommonMetricConfigs() []MetricConfig {
 		// Startup Latency.
 		NewCustomMetricConfig("Startup.FirstWebContents.NonEmptyPaint3", "ms", perf.SmallerIsBetter, []int64{300, 2000}),
 
-		// Media Quality.
-		NewCustomMetricConfig("Cras.FetchDelayMilliSeconds", "ms", perf.SmallerIsBetter, []int64{0, 20}),
-		NewCustomMetricConfig("Cras.UnderrunsPerDevice", "count", perf.SmallerIsBetter, []int64{0, 10}),
-
 		// Others to monitor.
+		NewCustomMetricConfig("MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter, []int64{800, 1600}),
+		NewCustomMetricConfig("EventLatency.TotalLatency", "ms", perf.SmallerIsBetter, []int64{800, 1600}),
 		NewCustomMetricConfig("PageLoad.InteractiveTiming.FirstInputDelay4", "ms", perf.SmallerIsBetter, []int64{800, 1600}),
 		NewCustomMetricConfig("SessionRestore.ForegroundTabFirstPaint4", "ms", perf.SmallerIsBetter, []int64{800, 1600}),
 		NewCustomMetricConfig("Media.Video.Roughness.60fps", "ms", perf.SmallerIsBetter, []int64{20, 50}),
 		NewCustomMetricConfig("Media.DroppedFrameCount", "count", perf.SmallerIsBetter, []int64{10, 40}),
+		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllInteractions", "percent", perf.SmallerIsBetter, []int64{20, 50}),
 		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllSequences", "percent", perf.SmallerIsBetter, []int64{20, 50}),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FullscreenSearch.ClamshellMode"),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.HideLauncherForWindow"),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.EnterFullscreenAllApps"),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.EnterFullscreenSearch"),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.FadeInOverview"),
-		NewSmoothnessMetricConfig("Apps.HomeLauncherTransition.AnimationSmoothness.FadeOutOverview"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FadeInOverview"),
-		NewSmoothnessMetricConfig("Apps.StateTransition.AnimationSmoothness.FadeOutOverview"),
+		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllSequences", "percent", perf.SmallerIsBetter, []int64{20, 50}),
+		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent", perf.SmallerIsBetter, []int64{20, 50}),
 		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.Capturer", "percent", perf.SmallerIsBetter, []int64{50, 80}),
 		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.Encoder", "percent", perf.SmallerIsBetter, []int64{50, 80}),
 		NewCustomMetricConfig("WebRTC.Video.DroppedFrames.EncoderQueue", "percent", perf.SmallerIsBetter, []int64{50, 80}),
@@ -137,11 +139,7 @@ func BrowserCommonMetricConfigs() []MetricConfig {
 func AnyChromeCommonMetricConfigs() []MetricConfig {
 	return []MetricConfig{
 		// Smoothness.
-		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent", perf.SmallerIsBetter, []int64{20, 50}),
-		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllInteractions", "percent", perf.SmallerIsBetter, []int64{20, 50}),
-
-		// Others to monitor.
-		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllSequences", "percent", perf.SmallerIsBetter, []int64{20, 50}),
+		NewSmoothnessMetricConfig("Ash.Window.AnimationSmoothness.Hide"),
 	}
 }
 
