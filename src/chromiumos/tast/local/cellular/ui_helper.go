@@ -149,7 +149,6 @@ func (h *UIHelper) SendMessage(ctx context.Context, number, message string) erro
 	h.UIHandler.ClickUntil(smsTextField, h.UI.Exists(smsTextFieldFocused))
 	if err := uiauto.Combine("Focus message text field",
 		h.UI.WaitUntilExists(smsTextField.Visible()),
-		h.UI.FocusAndWait(smsTextField),
 		h.UI.LeftClick(smsTextField),
 		kb.TypeAction(message),
 		kb.AccelAction("Enter"),
@@ -171,7 +170,7 @@ func (h *UIHelper) SendMessage(ctx context.Context, number, message string) erro
 }
 
 // ValidateMessage - validates sms received.
-func (h *UIHelper) ValidateMessage(ctx context.Context, number, messageSent string) error {
+func (h *UIHelper) ValidateMessage(ctx context.Context, messageSent string) error {
 
 	// check message content.
 	notification := nodewith.Role(role.Window).ClassName("ash/message_center/MessagePopup")
@@ -192,12 +191,10 @@ func (h *UIHelper) ValidateMessage(ctx context.Context, number, messageSent stri
 
 	testing.ContextLog(ctx, "alert dialog data: ", smsDetails)
 
-	message := strings.SplitAfter(smsDetails.Name, "+"+number)
-
-	if strings.Contains(message[1], messageSent) {
+	if strings.Contains(smsDetails.Name, messageSent) {
 		testing.ContextLog(ctx, "success message received")
 		return nil
 	}
 
-	return errors.Wrap(err, "failed to receive sent sms")
+	return errors.Wrap(err, "notification does not contain sent sms")
 }
