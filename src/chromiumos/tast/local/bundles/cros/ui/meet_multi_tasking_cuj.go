@@ -262,10 +262,10 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		// Ash metrics config, always collected from ash-chrome.
 		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter, []int64{50, 80}),
+			perf.SmallerIsBetter),
 		cujrecorder.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter, []int64{0, 3}),
+			perf.SmallerIsBetter),
 		// Browser metrics config, collected from ash-chrome or lacros-chrome
 		// depending on the browser being used.
 		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
