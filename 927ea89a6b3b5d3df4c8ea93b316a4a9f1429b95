@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa6be7cd_f759e54d",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-22T17:06:09Z",
+      "side": 1,
+      "message": "It\u0027s okay to leave this in Browser. I think the test case can decide to collect the whole BrowserCommonMetricConfigs from Ash-Chrome if the test involves browser based apps, like system settings, CCA, etc.",
+      "parentUuid": "7252d87f_f9e6456e",
+      "revId": "927ea89a6b3b5d3df4c8ea93b316a4a9f1429b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f308c498_16401840",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
         "patchSetId": 3
