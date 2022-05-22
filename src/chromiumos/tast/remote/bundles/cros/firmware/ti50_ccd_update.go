@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
 	"regexp"
 	"time"
@@ -163,17 +164,20 @@ func prepareCcdImageFile(ctx context.Context, s *testing.State, image string) (s
 		return "", err
 	}
 
-	// Zero the signature field (offsets 4-100) in RO_A and RO_B since we
-	// are using node locked RO on Andreiboard for testing (b/215718883).
-
-	cmd := s.DUT().Conn().CommandContext(ctx, "dd", "seek=4", "count=96", "bs=1", "conv=nocreat,notrunc", "if=/dev/zero", "of="+dutImage)
-	if err := cmd.Run(); err != nil {
-		return "", err
-	}
-
-	cmd = s.DUT().Conn().CommandContext(ctx, "dd", "seek=524292", "count=96", "bs=1", "conv=nocreat,notrunc", "if=/dev/zero", "of="+dutImage)
-	if err := cmd.Run(); err != nil {
-		return "", err
+	// Zero the signature field (offset 4, length 384) in RO_A and RO_B, and
+	// zero the cryptolib magic (offset 0, length 4), since we are using node
+	// locked RO on Andreiboard for testing (b/230341252).
+	for _, base := range []int{0, 0x800, 0x80000, 0x80800} {
+		seek := base + 4
+		count := 384
+		if base == 0x800 || base == 0x80800 {
+			seek = base
+			count = 4
+		}
+		cmd := s.DUT().Conn().CommandContext(ctx, "dd", fmt.Sprintf("seek=%d", seek), fmt.Sprintf("count=%d", count), "bs=1", "conv=nocreat,notrunc", "if=/dev/zero", "of="+dutImage)
+		if err := cmd.Run(); err != nil {
+			return "", err
+		}
 	}
 
 	return dutImage, nil
