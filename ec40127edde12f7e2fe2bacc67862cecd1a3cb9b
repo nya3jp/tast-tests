@@ -33,6 +33,24 @@
       "message": "`input.InputMethodManagement` could be broken after turning on personalization hub. Adding test author to take a look.",
       "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c85d7d_2ccbe8da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-22T22:21:39Z",
+      "side": 1,
+      "message": "You can try `tast run -checktestdeps\u003dfalse \u003cDUT\u003e inputs.InputManagement` to run this test on you local machine. \n\nPlease confirm that you can reproduce the problem and the fixture change (turning off personalization hub) is truly the fix.",
+      "parentUuid": "db28bfa8_977fe4db",
+      "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
