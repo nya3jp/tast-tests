@@ -16,6 +16,24 @@
       "message": "I think this change will become much simpler after https://crrev.com/c/3658416 .",
       "revId": "29e03cdae239d0706c11adbfea91fde8ed2d1e1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143e2fe1_00c63128",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-22T17:10:21Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ll make this as WIP and continue after https://crrev.com/c/3658416 is merged.",
+      "parentUuid": "e9f52fbe_8981744c",
+      "revId": "29e03cdae239d0706c11adbfea91fde8ed2d1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
