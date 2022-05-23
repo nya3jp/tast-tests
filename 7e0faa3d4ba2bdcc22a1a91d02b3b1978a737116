@@ -56,6 +56,30 @@
       },
       "revId": "7e0faa3d4ba2bdcc22a1a91d02b3b1978a737116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f7f1640_0edd6fff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-23T02:23:45Z",
+      "side": 1,
+      "message": "Thanks for the review!\nThe problem here is that we need to take address (\u0026) on them, and we cannot take address on constants in go (mentioned in the comment). We need to take address because we need to treat empty string and no value differently, and thus we use a *string to represent this in the struct.\nDo you have any suggestion for this case (json stringify an optional string)?",
+      "parentUuid": "2fc5bdc3_f46c9d6b",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "7e0faa3d4ba2bdcc22a1a91d02b3b1978a737116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
