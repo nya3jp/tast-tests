@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70f617f3_91768f67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-23T19:45:49Z",
+      "side": 1,
+      "message": "Submitting this CL as I don\u0027t think the test failure is related to this change and it would be safe to submit just a change of test metadata without impacting any production code.",
+      "revId": "215ffe08ca56d15f1d23166f5d585661650da6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
