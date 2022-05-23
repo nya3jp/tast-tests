@@ -92,16 +92,16 @@ func (hss *SettingService) StartUIWithCustomScreenPrivacySetting(ctx context.Con
 	}
 
 	if err := ui.WaitUntilExists(nodewith.Name(req.Setting).Role(role.ToggleButton))(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for the toggle to show the list of users")
+		return nil, errors.Wrap(err, "failed to wait for the toggle button to show up")
 	}
 
 	isEnabled, err := settings.IsToggleOptionEnabled(ctx, hss.cr, req.Setting)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not check the status of the toggle")
+		return nil, errors.Wrap(err, "could not check the status of the toggle button")
 	}
 	if isEnabled != req.Enable {
 		if err := ui.LeftClick(nodewith.Name(req.Setting).Role(role.ToggleButton))(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to show the list of users")
+			return nil, errors.Wrap(err, "failed to click on the button")
 		}
 	}
 	return &empty.Empty{}, nil
