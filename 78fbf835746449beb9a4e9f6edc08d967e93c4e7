@@ -33,6 +33,46 @@
       "message": "Sorry, I have to defer to someone else to review this CL.",
       "revId": "78fbf835746449beb9a4e9f6edc08d967e93c4e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e396cc2_326eab0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-23T18:54:27Z",
+      "side": 1,
+      "message": "In general, this CL is too big to do a thorough review. Please consider to break something like this down into multiple CLs in future. This one is ok.\n\nAlso, please run the full tast unit test, \"fast_build.sh -T\" instead of of just one unit tests. Then update the commit log.\n\nPlease ask a domain expert to review this change. I am not familiar with camera testing.\n\nThanks.\n",
+      "revId": "78fbf835746449beb9a4e9f6edc08d967e93c4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98c2454_f74645e5",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-23T18:54:27Z",
+      "side": 1,
+      "message": "How big is the c.Feature? I am worried that it will be inefficient to do a sequential search every time this function is called. How about a map?",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "78fbf835746449beb9a4e9f6edc08d967e93c4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
