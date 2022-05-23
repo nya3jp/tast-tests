@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/modemfwd"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,6 +26,10 @@ func init() {
 		Fixture:      "cellular",
 		SoftwareDeps: []string{"modemfwd"},
 		Timeout:      20 * time.Second,
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(
+			// Skip this test on devices without a firmware-variant value.
+			"drallion", "nautiluslte", "sarien",
+		)),
 	})
 }
 
