@@ -39,6 +39,30 @@
       },
       "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b44772_69ac6c3d",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-05-23T17:22:42Z",
+      "side": 1,
+      "message": "If you visit chrome://newtab there is a circle avatar in the top right corner where the \"Name\" is \"Google Account:\" + user name + user email.",
+      "parentUuid": "af2da389_026c3c04",
+      "range": {
+        "startLine": 274,
+        "startChar": 11,
+        "endLine": 274,
+        "endChar": 119
+      },
+      "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
