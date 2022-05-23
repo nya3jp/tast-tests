@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce003370_9ac8ffc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-05-23T09:41:16Z",
+      "side": 1,
+      "message": "Please, have a look to this CL for BootBatteryCutoff()",
+      "revId": "ce41454463e7dc9359c9d0750b6f859769286e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
