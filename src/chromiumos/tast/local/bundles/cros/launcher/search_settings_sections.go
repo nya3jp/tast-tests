@@ -146,7 +146,7 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 				ui.WaitUntilExists(result),
 				ui.LeftClick(result),
 			)(ctx); err != nil {
-				s.Fatalf("Failed to search for result %q in launcher: %v", tc.searchTerm, err)
+				s.Fatalf("Failed to for result %q in launcher: %v", tc.searchTerm, err)
 			}
 
 			activeWindow, err := ash.GetActiveWindow(ctx, tconn)

@@ -12,7 +12,9 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
+	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 	"time"
@@ -24,6 +26,8 @@ import (
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
+
+const ussFlagFile = "/var/lib/cryptohome/uss_enabled"
 
 // CmdHelper provides various helper functions that could be shared across all
 // hwsec integration test base on CmdRunner.
@@ -426,4 +430,16 @@ func (h *CmdTPMClearHelper) EnsureTPMIsReset(ctx context.Context) error {
 // EnsureTPMAndSystemStateAreReset ensures the TPM is reset and simulates a Powerwash.
 func (h *CmdTPMClearHelper) EnsureTPMAndSystemStateAreReset(ctx context.Context) error {
 	return h.ensureTPMIsReset(ctx, true)
+}
+
+// EnableUserSecretStash enables the UserSecretStash experiment by creating a
+// flag file that's checked by cryptohomed.
+func (h *CmdTPMClearHelper) EnableUserSecretStash() (func() error, error) {
+	if err := os.MkdirAll(path.Dir(ussFlagFile), 0755); err != nil {
+		return nil, errors.Wrap(err, "failed to create the UserSecretStash flag file directory")
+	}
+	if err := ioutil.WriteFile(ussFlagFile, []byte{}, 0644); err != nil {
+		return nil, errors.Wrap(err, "failed to write the UserSecretStash flag file")
+	}
+	return (func() error { return os.Remove(ussFlagFile) }), nil
 }
