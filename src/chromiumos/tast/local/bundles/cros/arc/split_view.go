@@ -97,7 +97,7 @@ func waitForStableWindowBounds(ctx context.Context, tconn *chrome.TestConn, pack
 		}
 		return nil
 	}
-	if err := testing.Poll(ctx, checkIfChanging, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 5 * time.Second}); err != nil {
+	if err := testing.Poll(ctx, checkIfChanging, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "the window bounds did not stop changing")
 	}
 
