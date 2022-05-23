@@ -18,7 +18,7 @@ func init() {
 		Func:         UninstallInvalidApp,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Attempts to uninstall a non-existant desktop file and expects to see errors",
-		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
