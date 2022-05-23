@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec1f4f8_9cdcaf5a",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-05-23T16:56:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc221f1_e959d60e",
+      "range": {
+        "startLine": 484,
+        "startChar": 12,
+        "endLine": 484,
+        "endChar": 17
+      },
+      "revId": "2550d9601c6b58144bbeb22cdd0647f102811548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9c6f2d8_76f2b897",
