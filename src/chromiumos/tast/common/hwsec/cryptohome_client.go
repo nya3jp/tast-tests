@@ -912,6 +912,12 @@ func (u *CryptohomeClient) CreatePersistentUser(ctx context.Context, authSession
 	return err
 }
 
+// MigrateToDircrypto migrates vault to dircrypto. Must be mounted for migration first.
+func (u *CryptohomeClient) MigrateToDircrypto(ctx context.Context, userName string) error {
+	_, err := u.binary.migrateToDircrypto(ctx, userName)
+	return err
+}
+
 // MountWithAuthSession mounts a user with AuthSessionID.
 func (u *CryptohomeClient) MountWithAuthSession(ctx context.Context, authSessionID string, publicMount bool) error {
 	_, err := u.binary.mountWithAuthSession(ctx, authSessionID, publicMount)
