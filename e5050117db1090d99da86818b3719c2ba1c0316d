@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "896420eb_82f239ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "I added some minor syntactical suggestions, but overall it looks good to me. I\u0027m not too familiar with the different libraries used so I\u0027ll just trust that it works as suggested.",
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73acef6b_03130927",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "nit: add a period",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86831a17_5524f73a",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "If you are trying to make sure there is enough time for deferred cleanup, shorten `ctx` so there is time for it and use the shortened `ctx` in this function and then use the longer context for the deferred function. Just renaming it has no effect.",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6008e31_e37727e4",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b3ff4e5_b24f0eb5",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "nit: add a period",
+      "range": {
+        "startLine": 126,
+        "startChar": 46,
+        "endLine": 126,
+        "endChar": 53
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ff9d67_a00d56ad",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "All of these parameters on one line makes it really long. I\u0027d prefer to see it as an arg list created above this and then expand it for the CommandContext call. That way you could organize them across multiple lines and make it easier to read.\n\nSomething like this:\n```\ndbusSendArgs :\u003d []string{\n\t\"--system\", \"--fixed\", \"--print-reply\",\n\t\"--dest\u003dorg.chromium.flimflam\", \"/\",\n\t\"org.chromium.flimflam.Manager.DisableTechnology\", \"string:cellular\",\n}\nif err :\u003d dutConn.CommandContext(ctx, \"dbus-send\", dbusSendArgs...); err !\u003d nil {\n\t...\n}\t\t\n```",
+      "range": {
+        "startLine": 127,
+        "startChar": 46,
+        "endLine": 127,
+        "endChar": 204
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f3256d_da3f990a",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "nit: add a period",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7366f9c_2d11a598",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "nit: add a period",
+      "range": {
+        "startLine": 136,
+        "startChar": 71,
+        "endLine": 136,
+        "endChar": 72
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bb93b9_2e70217f",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "nit: Put the bug id in the TODO block:\n```\nTODO(b/229419538):\n```",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 16
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5edecbc8_aaa19b53",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "nit: add a period",
+      "range": {
+        "startLine": 145,
+        "startChar": 83,
+        "endLine": 145,
+        "endChar": 86
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4a40ae_1f1666b3",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "nit: add a period",
+      "range": {
+        "startLine": 147,
+        "startChar": 51,
+        "endLine": 147,
+        "endChar": 52
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbaa8fa7_1be1e24a",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "same comment as other dbus-send call",
+      "range": {
+        "startLine": 148,
+        "startChar": 46,
+        "endLine": 148,
+        "endChar": 203
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0317973e_51cb32d8",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T18:24:27Z",
+      "side": 1,
+      "message": "nit: add a period",
+      "range": {
+        "startLine": 151,
+        "startChar": 11,
+        "endLine": 151,
+        "endChar": 69
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
