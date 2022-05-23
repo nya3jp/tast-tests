@@ -141,6 +141,30 @@
       },
       "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce3c279_f54681b5",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T19:46:38Z",
+      "side": 1,
+      "message": "Thanks for the comments on this, I\u0027ve simplified it to `^\\d+:\\s+([^@:]+)@?[^:]*:` which does not use a non-capturing group but has the same effect.",
+      "parentUuid": "707b5190_85efaaf6",
+      "range": {
+        "startLine": 265,
+        "startChar": 59,
+        "endLine": 265,
+        "endChar": 71
+      },
+      "revId": "b8f3ffa51fe165e14d079132533e69071c224298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
