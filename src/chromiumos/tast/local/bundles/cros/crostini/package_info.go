@@ -19,7 +19,7 @@ func init() {
 		Func:         PackageInfo,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Queries the information for a Debian package that we have copied into the container",
-		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		Data:         []string{"package.deb"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
