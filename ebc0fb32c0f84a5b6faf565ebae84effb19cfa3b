@@ -289,6 +289,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ca5d7d9_bf106212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-23T17:46:05Z",
+      "side": 1,
+      "message": "By this, do you mean replace `s.Fatalf` with `s.Errorf`? Or do you mean adding an error return to the function, and having the pass state be `return nil` and errors/failures be `return err`?",
+      "parentUuid": "32d9a576_a94e7413",
+      "range": {
+        "startLine": 56,
+        "startChar": 86,
+        "endLine": 56,
+        "endChar": 102
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70acebd7_fb8e385f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
         "patchSetId": 3
