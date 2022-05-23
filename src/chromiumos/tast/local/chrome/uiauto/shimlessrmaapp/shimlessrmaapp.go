@@ -146,7 +146,7 @@ func (r *RMAApp) WaitForUpdateOSPageToLoad() uiauto.Action {
 
 // WaitForPageToLoad returns a function that waits for the a page with title |pageTitle| to load.
 func (r *RMAApp) WaitForPageToLoad(pageTitle string, timeout time.Duration) uiauto.Action {
-	title := nodewith.Name(pageTitle).Role(role.Heading)
+	title := nodewith.NameContaining(pageTitle).Role(role.Heading)
 	return r.ui.WithTimeout(timeout).WaitUntilExists(title)
 }
 
@@ -162,24 +162,24 @@ func (r *RMAApp) LeftClickCancelButton() uiauto.Action {
 
 // LeftClickButton returns a function that clicks a button.
 func (r *RMAApp) LeftClickButton(label string) uiauto.Action {
-	return r.leftClickButton(nodewith.Name(label).Role(role.Button).Visible())
+	return r.leftClickButton(nodewith.NameContaining(label).Role(role.Button).Visible())
 }
 
 // WaitUntilButtonEnabled returns a function that waits |timeout| for a button to be enabled.
 func (r *RMAApp) WaitUntilButtonEnabled(label string, timeout time.Duration) uiauto.Action {
-	return r.waitUntilEnabled(nodewith.Name(label).Role(role.Button).Visible(), timeout)
+	return r.waitUntilEnabled(nodewith.NameContaining(label).Role(role.Button).Visible(), timeout)
 }
 
 // LeftClickRadioButton returns a function that clicks a radio button.
 func (r *RMAApp) LeftClickRadioButton(label string) uiauto.Action {
 	// TODO(b/230692945): Can we add RadioButton as role?
 	radioGroup := nodewith.Role(role.RadioGroup)
-	return r.ui.LeftClick(nodewith.Name(label).Ancestor(radioGroup).First())
+	return r.ui.LeftClick(nodewith.NameContaining(label).Ancestor(radioGroup).First())
 }
 
 // LeftClickLink returns a function that clicks a link.
 func (r *RMAApp) LeftClickLink(label string) uiauto.Action {
-	return r.ui.LeftClick(nodewith.Name(label).Role(role.Link).Visible())
+	return r.ui.LeftClick(nodewith.NameContaining(label).Role(role.Link).Visible())
 }
 
 // RetrieveTextByPrefix returns a text which has a cerntian prefix.
