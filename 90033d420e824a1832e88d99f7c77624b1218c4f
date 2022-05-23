@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c111cf35_ae10b7f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-23T06:10:55Z",
+      "side": 1,
+      "message": "I\u0027ll probably get to work on BrowserManager starting end of this week or next week. \n\nIf there is something very urgent that requires this CL then I\u0027m fine with landing something like this (and remove it again later). Otherwise I\u0027d just wait a bit longer.",
+      "revId": "90033d420e824a1832e88d99f7c77624b1218c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
