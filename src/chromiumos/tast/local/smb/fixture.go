@@ -232,7 +232,7 @@ func UnmountAllSmbMounts(ctx context.Context, cr *chrome.Chrome) error {
 	for i := range info {
 		if info[i].Fstype == "fuse.smbfs" {
 			smbfsUniqueID := filepath.Base(info[i].MountPath)
-			if err := conn.Call(ctx, nil, "chrome.fileManagerPrivate.removeMount", "smb:"+smbfsUniqueID); err != nil {
+			if err := conn.Call(ctx, nil, "tast.promisify(chrome.fileManagerPrivate.removeMount)", "smb:"+smbfsUniqueID); err != nil {
 				testing.ContextLogf(ctx, "Failed to unmount smb mountpoint %q: %v", smbfsUniqueID, err)
 				continue
 			}
@@ -247,7 +247,7 @@ func UnmountAllSmbMounts(ctx context.Context, cr *chrome.Chrome) error {
 func removeAllContents(ctx context.Context, path string) error {
 	dir, err := ioutil.ReadDir(path)
 	if err != nil {
-		return errors.Wrapf(err, "failed to read path %q: %v", path, err)
+		return errors.Wrapf(err, "failed to read path %q", path)
 	}
 	for _, subdir := range dir {
 		subdirPath := filepath.Join(path, subdir.Name())
