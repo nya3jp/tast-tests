@@ -16,6 +16,24 @@
       "message": "Thanks for fixing this!\n\nI saw this section of go/tast-writing that says not to worry about chrome\u0027s UI state on test exit:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown\n\nI guess we do need to worry about leaving a clean UI state on exit? Or should the other tests explicitly close the launcher on startup?",
       "revId": "d9dae4684368a839712b541a84e81f1d5c6e93e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "663b72f6_98ea089f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-23T17:06:45Z",
+      "side": 1,
+      "message": "I think we don\u0027t have to worry about chrome state, but that\u0027s not quote the case for launcher. It would probably be a good idea to change launcher tests not to depend on launcher being closed when the test starts, but resetting system UI state when the test completes seems like a good practice to me, too",
+      "parentUuid": "e6e4cc2e_fc449305",
+      "revId": "d9dae4684368a839712b541a84e81f1d5c6e93e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
