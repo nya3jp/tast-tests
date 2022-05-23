@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c579b4b2_8b6de160",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:15:00Z",
+      "side": 1,
+      "message": "Looks good. I have one question, Which element are you checking for the email?",
+      "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af2da389_026c3c04",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:15:00Z",
+      "side": 1,
+      "message": "Q: Which element is that?",
+      "range": {
+        "startLine": 274,
+        "startChar": 11,
+        "endLine": 274,
+        "endChar": 119
+      },
+      "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
