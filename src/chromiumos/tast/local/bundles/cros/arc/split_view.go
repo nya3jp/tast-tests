@@ -321,12 +321,18 @@ func SplitView(ctx context.Context, s *testing.State) {
 	var rightAct, leftAct *arc.Activity
 	for _, app := range []struct {
 		act          **arc.Activity
+		apkName      string
 		pkgName      string
 		activityName string
 	}{
-		{&rightAct, "com.android.storagemanager", ".deletionhelper.DeletionHelperActivity"},
-		{&leftAct, "com.android.settings", ".Settings"},
+		{&rightAct, wm.APKNameArcWMTestApp24, wm.Pkg24, wm.ResizableUnspecifiedActivity},
+		{&leftAct, wm.APKNameArcWMTestApp24PhoneSize, wm.Pkg24InPhoneSizeList, wm.ResizableUnspecifiedActivity},
 	} {
+		if err := a.Install(ctx, arc.APKPath(app.apkName)); err != nil {
+			s.Fatal("Failed to install app: ", err)
+		}
+		defer a.Uninstall(cleanupCtx, app.pkgName)
+
 		act, err := arc.NewActivity(a, app.pkgName, app.activityName)
 		if err != nil {
 			s.Fatalf("Failed to create a new activity (%s): %v", app.pkgName, err)
