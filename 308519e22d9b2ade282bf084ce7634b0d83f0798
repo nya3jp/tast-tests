@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a2393a9_ad74cd80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-23T03:05:00Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion!",
+      "parentUuid": "f95cbd62_368d2b57",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60d41941_2c036b39",
@@ -220,6 +244,30 @@
       "side": 1,
       "message": "I see. Looks like I misunderstood the flow here - Reset() returning a non-nil error will trigger TearDown() where shill is reset. It LGTM then.",
       "parentUuid": "30555fa8_d6d9a1ea",
+      "range": {
+        "startLine": 173,
+        "startChar": 11,
+        "endLine": 173,
+        "endChar": 32
+      },
+      "revId": "308519e22d9b2ade282bf084ce7634b0d83f0798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb92735_a5f27d49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-23T03:05:00Z",
+      "side": 1,
+      "message": "(Marked as resolved)",
+      "parentUuid": "c4899479_3e81a3ff",
       "range": {
         "startLine": 173,
         "startChar": 11,
