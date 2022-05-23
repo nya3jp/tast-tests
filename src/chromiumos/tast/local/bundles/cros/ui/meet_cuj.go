@@ -35,7 +35,6 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
@@ -776,18 +775,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			)(ctx); err != nil {
 				return errors.Wrap(err, "failed to select the Google Docs tab")
 			}
-		}
-
-		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
-		if err != nil {
-			return errors.Wrap(err, "failed to start the profiler")
-		}
-		if prof != nil {
-			defer func() {
-				if err := prof.End(closeCtx); err != nil {
-					s.Error("Failed to stop profiler: ", err)
-				}
-			}()
 		}
 
 		errc := make(chan error)
