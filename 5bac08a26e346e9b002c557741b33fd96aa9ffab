@@ -87,6 +87,30 @@
       },
       "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de552b37_8585c295",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-05-23T19:13:46Z",
+      "side": 1,
+      "message": "It appears in both ash and chrome (and in chrome browser on mac). This is a screenshot of the element in ash https://screenshot.googleplex.com/9G3kqjPeHJ5iBq2. Ash variant also passes.",
+      "parentUuid": "2ecd32e4_92bf6a31",
+      "range": {
+        "startLine": 274,
+        "startChar": 11,
+        "endLine": 274,
+        "endChar": 119
+      },
+      "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
