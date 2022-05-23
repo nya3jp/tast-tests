@@ -104,10 +104,11 @@ func usbDevices(ctx context.Context) ([][]string, error) {
 }
 
 // deviceNames returns the vendor name and the product name of device with
-// vendorID:prodID. The names are extracted from lsusb.
-func deviceNames(ctx context.Context, vendorID, prodID string) (string, string, error) {
-	arg := fmt.Sprintf("-d%s:%s", vendorID, prodID)
-	b, err := runCommand(ctx, "lsusb", "-v", arg)
+// vendorID:prodID and busNumber:devNumber. The names are extracted from lsusb.
+func deviceNames(ctx context.Context, vendorID, prodID, busNumber, devNumber string) (string, string, error) {
+	arg1 := fmt.Sprintf("-d%s:%s", vendorID, prodID)
+	arg2 := fmt.Sprintf("-s%s:%s", busNumber, devNumber)
+	b, err := runCommand(ctx, "lsusb", "-v", arg1, arg2)
 	if err != nil {
 		return "", "", err
 	}
@@ -256,6 +257,8 @@ func deviceFirmwareVersion(ctx context.Context, vendorID, prodID, serial string)
 func ExpectedDevices(ctx context.Context) ([]Device, error) {
 	// Reference: https://www.kernel.org/doc/html/v4.12/driver-api/usb/usb.html#sys-kernel-debug-usb-devices-output-format
 
+	// E.g. T:  Bus=02 Lev=00 Prnt=00 Port=00 Cnt=00 Dev#=  1 Spd=10000 MxCh= 4
+	reT := regexp.MustCompile(`Bus=([0-9]{1,3}).* Dev#=\s*([0-9]{1,3})`)
 	// E.g. D:  Ver= 2.00 Cls=09(hub  ) Sub=00 Prot=01 MxPS=64 #Cfgs=  1
 	reD := regexp.MustCompile(`Cls=([0-9a-f]{2}).* Sub=([0-9a-f]{2}) Prot=([0-9a-f]{2})`)
 	// E.g. P:  Vendor=1d6b ProdID=0002 Rev=05.04
@@ -273,8 +276,15 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 	for _, dev := range devs {
 		var r Device
 		var serial string
+		var busNumber, devNumber string
 		for _, line := range dev {
 			switch line[0] {
+			case 'T':
+				m := reT.FindStringSubmatch(line)
+				if m == nil {
+					return nil, errors.Errorf("cannot parse usb-devices T: %v", line)
+				}
+				busNumber, devNumber = m[1], m[2]
 			case 'D':
 				m := reD.FindStringSubmatch(line)
 				if m == nil {
@@ -324,7 +334,7 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 			}
 		}
 		var err error
-		if r.VendorName, r.ProductName, err = deviceNames(ctx, r.VendorID, r.ProdID); err != nil {
+		if r.VendorName, r.ProductName, err = deviceNames(ctx, r.VendorID, r.ProdID, busNumber, devNumber); err != nil {
 			return nil, err
 		}
 		if r.FwupdFirmwareVersionInfo, err = deviceFirmwareVersion(ctx, r.VendorID, r.ProdID, serial); err != nil {
