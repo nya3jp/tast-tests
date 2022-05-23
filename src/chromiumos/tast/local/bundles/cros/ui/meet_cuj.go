@@ -7,7 +7,6 @@ package ui
 import (
 	"context"
 	"fmt"
-	"io"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -887,11 +886,17 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if path, err := dumpWebRTCInternals(ctx, tconn, webRTCUI, cr.NormalizedUser()); err != nil {
 			s.Error("Failed to download dump from chrome://webrtc-internals: ", err)
 		} else {
-			if err := copyFileForTestResults(path, filepath.Join(s.OutDir(), "webrtc-internals.json")); err != nil {
-				s.Error("Failed to copy WebRTC internals dump to results folder: ", err)
+			dump, readErr := os.ReadFile(path)
+			if readErr != nil {
+				s.Error("Failed to read WebRTC internals dump from Downloads folder: ", readErr)
 			}
 			if err := os.Remove(path); err != nil {
 				s.Error("Failed to remove WebRTC internals dump from Downloads folder: ", err)
+			}
+			if readErr == nil {
+				if err := os.WriteFile(filepath.Join(s.OutDir(), "webrtc-internals.json"), dump, 0644); err != nil {
+					s.Error("Failed to write WebRTC internals dump to test results folder: ", err)
+				}
 			}
 		}
 
@@ -1026,25 +1031,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
-}
-
-// copyFileForTestResults copies a file. The destination file must not already exist. The
-// created copy has file permissions 0644 regardless of the file permissions of the original.
-func copyFileForTestResults(srcPath, dstPath string) error {
-	src, err := os.Open(srcPath)
-	if err != nil {
-		return err
-	}
-	defer src.Close()
-
-	dst, err := os.OpenFile(dstPath, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0644)
-	if err != nil {
-		return err
-	}
-	defer dst.Close()
-
-	_, err = io.Copy(dst, src)
-	return err
 }
 
 // focusWebRTCInternals activates the browser tab for chrome://webrtc-internals.
