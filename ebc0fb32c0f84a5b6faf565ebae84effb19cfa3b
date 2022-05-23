@@ -35,6 +35,92 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d943931_ff96a1d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T16:15:02Z",
+      "side": 1,
+      "message": "LGTM % nits, sorry for delay!",
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ba8dfc_b9059edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T16:15:02Z",
+      "side": 1,
+      "message": "nit: Get service properties.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba6aba0e_cef30e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T16:15:02Z",
+      "side": 1,
+      "message": "nit: Failed to find Ethernet service",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a3a455_ad4d32bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T16:15:02Z",
+      "side": 1,
+      "message": "same: start with \"Failed to ...\"",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35f441d9_96ef019e",
@@ -53,6 +139,99 @@
         "startChar": 86,
         "endLine": 56,
         "endChar": 102
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef4a1b2_496f1e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T16:15:02Z",
+      "side": 1,
+      "message": "if you use it just once, i\u0027d just inline the whole function code into ShillCaptivePortalProperties",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d9a576_a94e7413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T16:15:02Z",
+      "side": 1,
+      "message": "+",
+      "parentUuid": "35f441d9_96ef019e",
+      "range": {
+        "startLine": 56,
+        "startChar": 86,
+        "endLine": 56,
+        "endChar": 102
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70acebd7_fb8e385f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T16:15:02Z",
+      "side": 1,
+      "message": "nit: Failed to get property %q: %v",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 47
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe0b67f_3e1740d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T16:15:02Z",
+      "side": 1,
+      "message": "nit: Unexpected %q property value: got %q, want: %q",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 81
       },
       "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
