@@ -33,6 +33,24 @@
       "message": "Do you have an idea of how many failures to cooldown this will still result in?\n\nIt should be way better than the current situation, but maybe green stainless will still complain?",
       "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f22a355_7edc9f75",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-23T05:01:38Z",
+      "side": 1,
+      "message": "If we assume that the power.IdleTemperature test is representative of the distribution of temperatures after a failed WaitForCooldown, then it should reduce the number of failures due to temperature by 95% for the subset of boards listed in the map.\n\nThere will still be failures due to temperature, but I think we have some old/broken/worn out boards, and for those failures IMO we should ask the lab team to look at those devices specifically.\n\nIn the doc I\u0027ve already found that a minority of boards are posting the highest idle temperatures (90 to 100 deg in some cases).\n\nNote that if we wanted to fully get rid of failures due to temperature, we would have to let these worn out boards pollute the performance results.",
+      "parentUuid": "1eb44b7e_a8d1311e",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
