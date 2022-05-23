@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24de9023_05e9d094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-23T18:11:44Z",
+      "side": 1,
+      "message": "Made a change to combine `regexp.MatchString` line with `if err !\u003d nil` line.",
+      "parentUuid": "1e6e0c92_b17c40e8",
+      "revId": "0bda556eae81dfb3c3b9215cb55acb3e3e62c4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45066d1a_840c087d",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-20T21:40:47Z",
       "side": 1,
       "message": "Should you check for valid keywords?",
+      "revId": "0bda556eae81dfb3c3b9215cb55acb3e3e62c4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7735065_d9afc948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-23T18:11:44Z",
+      "side": 1,
+      "message": "It is hard to expect correct values for each location field since different boards and models have different port locations. I think a check for `unknown` value is enough to make sure that the future boards add a custom physical location info since the panel field would be set to `unknown` by default without a custom location added.",
+      "parentUuid": "45066d1a_840c087d",
       "revId": "0bda556eae81dfb3c3b9215cb55acb3e3e62c4c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
