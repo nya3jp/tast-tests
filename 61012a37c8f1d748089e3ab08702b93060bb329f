@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed8067f_4803f279",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-23T01:27:50Z",
+      "side": 1,
+      "message": "Does this leave the `f.chrome` unclose?",
+      "revId": "61012a37c8f1d748089e3ab08702b93060bb329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f0ad9f_96db284b",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-05-23T01:27:50Z",
+      "side": 1,
+      "message": "nit: This is unnecessary. It is overridden below.",
+      "revId": "61012a37c8f1d748089e3ab08702b93060bb329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
