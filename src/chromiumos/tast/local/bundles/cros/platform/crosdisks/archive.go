@@ -113,11 +113,18 @@ func testInvalidArchives(ctx context.Context, s *testing.State, cd *crosdisks.Cr
 	for _, f := range []string{
 		"Invalid.rar",
 		"Invalid.zip",
-		"Not There.rar",
-		"Not There.zip",
 	} {
 		if err := verifyMountStatus(ctx, cd, filepath.Join(dataDir, f), filepath.Ext(f), nil, crosdisks.MountErrorMountProgramFailed); err != nil {
 			s.Errorf("Unexpected status of mounting invalid archive %q: %v", f, err)
+		}
+	}
+
+	for _, f := range []string{
+		"Not There.rar",
+		"Not There.zip",
+	} {
+		if err := verifyMountStatus(ctx, cd, filepath.Join(dataDir, f), filepath.Ext(f), nil, crosdisks.MountErrorInvalidPath); err != nil {
+			s.Errorf("Unexpected status of mounting absent archive %q: %v", f, err)
 		}
 	}
 }
