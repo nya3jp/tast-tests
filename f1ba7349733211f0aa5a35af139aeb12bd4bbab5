@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "950b9acf_70fde4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-23T03:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "252f37b9_91a46018",
+      "revId": "f1ba7349733211f0aa5a35af139aeb12bd4bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab10eb2a_4c8f2bf1",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-05-23T01:06:16Z",
       "side": 1,
       "message": "same here.",
+      "revId": "f1ba7349733211f0aa5a35af139aeb12bd4bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14c0e60_84dd19e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-23T03:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab10eb2a_4c8f2bf1",
       "revId": "f1ba7349733211f0aa5a35af139aeb12bd4bbab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
