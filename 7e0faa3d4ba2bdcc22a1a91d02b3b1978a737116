@@ -80,6 +80,30 @@
       },
       "revId": "7e0faa3d4ba2bdcc22a1a91d02b3b1978a737116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c57fecd6_7c0b9a28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-23T08:46:53Z",
+      "side": 1,
+      "message": "Oh I see. then only pubKey can be const, and others need to stay var. Thank you for explanation.",
+      "parentUuid": "3f7f1640_0edd6fff",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "7e0faa3d4ba2bdcc22a1a91d02b3b1978a737116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
