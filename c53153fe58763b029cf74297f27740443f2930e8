@@ -405,6 +405,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58103556_bee2cdc8",
+        "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-23T08:14:10Z",
+      "side": 1,
+      "message": "Hmm, generally speaking, building a special-purpose profiler on top of a general-purpose profiler sounds fine. But I might be missing some context.",
+      "parentUuid": "ff1a6487_8fc32d5c",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "c53153fe58763b029cf74297f27740443f2930e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a048acb_af5af44a",
         "filename": "src/chromiumos/tast/local/camera/perf/profiler.go",
         "patchSetId": 6
