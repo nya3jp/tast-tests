@@ -16,6 +16,30 @@
       "message": "PTAL. Thank you!",
       "revId": "3f1f7c52e4648ddd811ae8faea5ccbb3b5c094c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cdfaf03_dae28411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_quick_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-23T00:57:09Z",
+      "side": 1,
+      "message": "\u003e \"accidently\" is a possible misspelling of \"accidentally\".\n\nPlease fix.",
+      "parentUuid": "ec97cebf_9fbeb623",
+      "range": {
+        "startLine": 95,
+        "startChar": 15,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "3f1f7c52e4648ddd811ae8faea5ccbb3b5c094c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
