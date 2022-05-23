@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca8a87d_f67fa811",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "Why these two strings are constants, but all the other ones are not?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b26142c0_94c80a44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "Below you do these in the other order: first `bpforce disconnect atboot`, then `servo.FWWPStateOff`.\n\nWhy is order different between two places?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "969369fe_e0647d75",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "This command is shared at least in two places, maybe it\u0027d be better to extract it to a shared function? Or at least to a string constant?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8460852e_719ea995",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "Without this the next button will not be enabled?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dbc431e_4a29c0fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "Add comment why the sleep is required?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15019f89_35531b11",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "This is simpler than parsing json? Maybe we\u0027d better properly parse and update json here?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d888551c_49a976f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "maybe s/Necessary/NotOpen/?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63016335_a08ee8f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "You plan to reuse this function to reenable factory mode somewhere else?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a811d6_f2c93c03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "maybe `([^\u0026]*)` would work better in case there are several ampersands?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7989308_d0379ec4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "I think we should report an error here in case we don\u0027t find a match in case something changes down the line.",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c309ea94_95e31e24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:28:00Z",
+      "side": 1,
+      "message": "I think we should report an error here in case we don\u0027t find a match in case something changes down the line.",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
