@@ -110,6 +110,30 @@
       },
       "revId": "2550d9601c6b58144bbeb22cdd0647f102811548",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a0d76f_a4095ae7",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-23T17:08:02Z",
+      "side": 1,
+      "message": "Fine if that metric is not reported on unsupported platforms.\n\nBut the problem is that the test assumes that \"exec.Command()\" fails because mtk_dram_tool is run on unsupported platforms... but it could be failing for other reasons. And that should be avoidewd.\n\nOne possibly way to solve it:\n\n- Add a different check, something that guarantees mtk_dram_tool can run on the platform... I\u0027m not familiar with mtk_dram_tool, but perhaps there is something that is exposed in /proc or /sys or something\n\n- rename the function from `MeasureDRAMBandwidth` to `MaybeMeasureDRAMBandwidth`...  so that it implies that it might not run\n\n- and update the docstring of the function",
+      "parentUuid": "f62d4415_bc136acf",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 12
+      },
+      "revId": "2550d9601c6b58144bbeb22cdd0647f102811548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
