@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "252f37b9_91a46018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-23T01:55:15Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "9577c705_6ed1531a",
+      "revId": "f1ba7349733211f0aa5a35af139aeb12bd4bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab10eb2a_4c8f2bf1",
         "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
         "patchSetId": 1
