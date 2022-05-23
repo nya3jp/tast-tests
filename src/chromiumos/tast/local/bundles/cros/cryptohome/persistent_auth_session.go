@@ -15,7 +15,26 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+)
+
+type vaultType int64
+
+type params struct {
+	VaultType vaultType
+}
+
+const (
+	noneVaultType vaultType = iota
+	ecryptfsVaultType
+	fscryptV1VaultType
+	defaultVaultType
+)
+
+const (
+	cleanupTime = 20 * time.Second
+	testTime    = 60 * time.Second
 )
 
 func init() {
@@ -28,6 +47,17 @@ func init() {
 			"cryptohome-core@chromium.org",
 		},
 		Attr: []string{"group:mainline"},
+		Params: []testing.Param{{
+			Name: "default",
+			Val:  &params{VaultType: defaultVaultType},
+		}, {
+			Name: "ecryptfs",
+			Val:  &params{VaultType: ecryptfsVaultType},
+		}, {
+			Name:              "fscrypt_v1",
+			ExtraSoftwareDeps: []string{"use_fscrypt_v2"},
+			Val:               &params{VaultType: fscryptV1VaultType},
+		}},
 	})
 }
 
@@ -39,9 +69,14 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 		testFileContent = "content"
 	)
 
+	vtype := s.Param().(*params).VaultType
+	isEcryptfs := vtype == ecryptfsVaultType
+
 	ctxForCleanUp := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
+
+	s.Log("Prepare environment")
 
 	cmdRunner := hwseclocal.NewCmdRunner()
 	client := hwsec.NewCryptohomeClient(cmdRunner)
@@ -64,6 +99,14 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
+	if vtype == fscryptV1VaultType {
+		s.Log("Switch cryptohome to fscryptv1 ")
+		if err := upstart.RestartJob(ctx, "cryptohomed", upstart.WithArg("CRYPTOHOMED_ARGS", "--negate_fscrypt_v2_for_test")); err != nil {
+			s.Fatal("Can't disable fscryptv2: ", err)
+		}
+		defer upstart.RestartJob(ctx, "cryptohomed")
+	}
+
 	if err := cryptohome.CreateUserWithAuthSession(ctx, userName, userPassword, false); err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
@@ -76,12 +119,12 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+	if err := client.PreparePersistentVault(ctx, authSessionID, isEcryptfs); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, false); err == nil {
+	if err := client.PreparePersistentVault(ctx, authSessionID, isEcryptfs); err == nil {
 		s.Fatal("Secondary prepare attempt for the same user should fail, but succeeded")
 	}
 
@@ -101,13 +144,17 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
+	if _, err := ioutil.ReadFile(filePath); err == nil {
+		s.Fatal("File is readable after unmount")
+	}
+
 	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+	if err := client.PreparePersistentVault(ctx, authSessionID, isEcryptfs); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 
