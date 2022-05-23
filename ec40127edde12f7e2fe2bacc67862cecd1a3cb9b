@@ -102,6 +102,24 @@
       "message": "nit: add a TODO with a bug to remove this fixture",
       "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfdbcd9c_f41af9bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-23T23:25:34Z",
+      "side": 1,
+      "message": "+1. Sounds like this is a temp solution. It makes input.InputMethodManagement testing in a non-real environment if the Hub is enabled by default.",
+      "parentUuid": "1a80408f_2fe0f258",
+      "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
