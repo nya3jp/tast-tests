@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a456c2a_a17e7da5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-23T23:35:45Z",
+      "side": 1,
+      "message": "Looks good overall.",
+      "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7e9dfd_cce9b921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-23T23:35:45Z",
+      "side": 1,
+      "message": "Instead of passing this param, could you retrieve the f.isLacros value from the fixture, pass it to VerifyUserSignedIntoBrowserAsChild() as a boolean, and automatically select browser.Type{Ash|Lacros} inside the helper function? This way, we abstract away the browser.Type detail for clients and they only need to pass a single boolean to toggle between Ash and Lacros.",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f56fa9e_3122abe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-23T23:35:45Z",
+      "side": 1,
+      "message": "s.FixtValue().(*familylink.FixtData).isLacros",
+      "range": {
+        "startLine": 53,
+        "startChar": 73,
+        "endLine": 53,
+        "endChar": 82
+      },
+      "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af2da389_026c3c04",
@@ -132,6 +195,29 @@
         "startChar": 11,
         "endLine": 274,
         "endChar": 119
+      },
+      "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4264d750_9d4f4aab",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-23T23:35:45Z",
+      "side": 1,
+      "message": "Galen, want to put yourself as the owner for this fixture?",
+      "range": {
+        "startLine": 76,
+        "startChar": 22,
+        "endLine": 76,
+        "endChar": 31
       },
       "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
