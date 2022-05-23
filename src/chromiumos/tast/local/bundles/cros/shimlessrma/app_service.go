@@ -6,6 +6,7 @@ package shimlessrma
 
 import (
 	"context"
+	"os"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -18,6 +19,8 @@ import (
 	pb "chromiumos/tast/services/cros/shimlessrma"
 	"chromiumos/tast/testing"
 )
+
+const skipPowerwashFile = "/var/lib/rmad/.disable_powerwash"
 
 func init() {
 	testing.AddService(&testing.Service{
@@ -48,6 +51,10 @@ func (shimlessRMA *AppService) NewShimlessRMA(ctx context.Context,
 		// Create a valid empty rmad state file.
 		if err := shimlessrmaapp.CreateEmptyStateFile(); err != nil {
 			return nil, errors.Wrap(err, "failed to create rmad state file")
+		}
+
+		if _, err := os.Create(skipPowerwashFile); err != nil {
+			return nil, errors.Wrap(err, "failed to create .disable_powerwas file")
 		}
 	}
 
@@ -85,6 +92,8 @@ func (shimlessRMA *AppService) CloseShimlessRMA(ctx context.Context,
 	testexec.CommandContext(ctx, "stop", "rmad").Run()
 
 	shimlessrmaapp.RemoveStateFile()
+
+	os.Remove(skipPowerwashFile)
 
 	shimlessRMA.cr.Close(ctx)
 
