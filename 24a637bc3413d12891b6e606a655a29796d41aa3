@@ -231,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "240ce9e5_33aa351b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "IIUC, you are planning to add more test cases with different testFunc:* in the future that\u0027s why you are passing the function tdlsDiscoverMAC here. However, in the meantime all the subtest are using the same tdlsDiscoverMAC, so there is no need to pass it here.\n\nyou can have something similar to this test:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go;rcl\u003d993afe4ab612b891a29f68fb572143533fd98fab;l\u003d35",
+      "parentUuid": "d4f24919_6dffa2a2",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c1822cb_6ff33177",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 4

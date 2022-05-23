@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22d6878d_2947e0b1",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "I recommend adding the TDLS wpa_cli commands in this file as functions such as TDLSDiscover(). WDYT?\n\nThis function can be named Run() to make it general for other uses not just TDLS. However, if this function won\u0027t be used then it should be deleted until it\u0027s needed.",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2485bd38_431eaabe",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 7
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "OK",
       "parentUuid": "2485bd38_431eaabe",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8002508_d5733ecc",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "+1\n\nnit: I think you can have other two functions ScanResults() which returns the scan results and WaitForNetwork/Results() whcih polls for scan results with reasonable timeout.",
+      "parentUuid": "e7f85432_e9ae00c4",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -91,6 +126,91 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60fa7c82_10e48006",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "Update name style:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests\n\nExample:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go;rcl\u003d18b3ce28df8b9c159bf49a40b78fb9583608d3a1;l\u003d58",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e2bd96_2cc0ae2b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "Same as line 57",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3307bd91_b70d6405",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "nit: Use default DefaultOpenNetworkAPOptions if special options not needed:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go;rcl\u003da4bcf33ed7d94030a2f9a2cd8727e40315c38cb3;l\u003d1140",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beba4cb6_cdd79097",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "I am confused. What is the purpose of this step? IIUC, at this point the two DUTs should be connected to the same AP and the TDLS link can be created. Is it possible to verify the functionality of all these commands [1] using test scenarios instead? such as:\n1- Discover\n2- Setup\n3- Verify connection using ping command + pCap to track traffic\n4- Teardown\n\nWDYT?\n\n[1]:\n```\n  tdls_discover \u003caddr\u003e\n  tdls_setup \u003caddr\u003e\n  tdls_teardown \u003caddr\u003e\n  tdls_link_status \u003caddr\u003e\n  tdls_chan_switch \u003caddr\u003e \n  tdls_cancel_chan_switch \u003caddr\u003e\n```",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4434cef6_58f128b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "Is it possible to use `iw`? here so we can use the iw_runner instead.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/network/iw/runner.go",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12bd66af_61d23352",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 7
@@ -143,6 +263,40 @@
       "side": 1,
       "message": "Yes, I can do it.",
       "parentUuid": "134ffe4d_ca24f883",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac9ce7f_31a17f4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "nit: This function looks like a general function that could be used by other tests in the future. It would be nice to have a general file in src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil that have common functions like this one.",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808e82cc_afa40cfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-05-23T21:02:39Z",
+      "side": 1,
+      "message": "Same as line 26",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
