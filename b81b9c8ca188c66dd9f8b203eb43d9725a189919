@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d617c82_517d80fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-23T16:09:45Z",
+      "side": 1,
+      "message": "nit: Subject is too long. Could we make it shorter?",
+      "revId": "b81b9c8ca188c66dd9f8b203eb43d9725a189919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf67938_e366ba22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-23T16:09:45Z",
+      "side": 1,
+      "message": "nit: typo, and wrap at 72 chars",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "b81b9c8ca188c66dd9f8b203eb43d9725a189919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e98a8d3_80fb8ba6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-23T16:09:45Z",
+      "side": 1,
+      "message": "Think the jank/very_jank is requested from PM (Trevor?). Please double check that they are no longer needed.",
+      "revId": "b81b9c8ca188c66dd9f8b203eb43d9725a189919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
