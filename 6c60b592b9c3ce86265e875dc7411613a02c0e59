@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6999b6a3_519a5cd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-23T09:10:12Z",
+      "side": 1,
+      "message": "I think this is not the general issue on the specific image, some device with the same image and model id(`hatch (kohaku)`) pass the test from the tastboard[1]. Maybe the bluetooth is broken on this DUT.\n\nI think we could assume that the BT is not supported.\n\n[1] https://tastboard.corp.google.com/test/health.MonitorBluetoothEvent",
+      "parentUuid": "6abf5554_7e24534b",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 77
+      },
+      "revId": "6c60b592b9c3ce86265e875dc7411613a02c0e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6640360_1672c0fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
         "patchSetId": 3
