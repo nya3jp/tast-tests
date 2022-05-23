@@ -7,21 +7,12 @@ package shimlessrma
 
 import (
 	"context"
-	"fmt"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-	"google.golang.org/grpc"
-
 	"chromiumos/tast/common/action"
-	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb"
-	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
-	"chromiumos/tast/rpc"
-	pb "chromiumos/tast/services/cros/shimlessrma"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -41,7 +32,6 @@ func init() {
 		VarDeps: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 		},
-		// Find proper deps from go/tast-deps
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.shimlessrma.AppService"},
@@ -52,70 +42,61 @@ func init() {
 
 func DisableHWWPWithBatteryDisconnection(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	firmwareHelper := s.FixtValue().(*fixture.Value).Helper
-	if err := firmwareHelper.RequireServo(ctx); err != nil {
-		s.Fatal("Failed to init servo: ", err)
-	}
-
-	if val, err := firmwareHelper.Servo.GetString(ctx, servo.GSCCCDLevel); err != nil {
-		s.Fatal("Failed to get gsc_ccd_level: ", err)
-	} else if val != servo.Open {
-		s.Logf("CCD is not open, got %q. Attempting to unlock", val)
-		if err := firmwareHelper.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
-			s.Fatal("Failed to unlock CCD: ", err)
-		}
-	}
-
 	dut := firmwareHelper.DUT
+	key := s.RequiredVar("ui.signinProfileTestExtensionManifestKey")
 
-	cl, client := createShimlessClient(ctx, s, dut, firmwareHelper, false)
-	defer cl.Close(cleanupCtx)
-	defer client.CloseShimlessRMA(cleanupCtx, &empty.Empty{})
+	if err := firmwareHelper.RequireServo(ctx); err != nil {
+		s.Fatal("Fail to init servo: ", err)
+	}
 
-	// Set WP as enabled as starting point.
-	changeWriteProtectStatus(ctx, s, firmwareHelper, servo.FWWPStateOn)
-	uiHelper := rmaweb.NewUIHelper(client)
+	uiHelper, err := rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, false)
+	if err != nil {
+		s.Fatal("Fail to initialize RMA Helper: ", err)
+	}
+	defer uiHelper.DisposeResource(cleanupCtx)
 
-	if err := action.Combine("Navigate to Manual Disable Write Protect page",
+	if err := uiHelper.SetupInitStatus(ctx); err != nil {
+		s.Fatal("Fail to setup init status: ", err)
+	}
+
+	if err := action.Combine("Navigate to Manual Disable Write Protect page and turn off write protect",
 		uiHelper.WelcomePageOperation,
 		uiHelper.ComponentsPageOperation,
 		uiHelper.OwnerPageOperation,
 		uiHelper.WipeDevicePageOperation,
-		uiHelper.WriteProtectPageOperation,
+		uiHelper.WriteProtectPageChooseManul,
 	)(ctx); err != nil {
-		s.Fatal("Failed to navigate to Manual Disable Write Protect page: ", err)
+		s.Fatal("Fail to navigate to Manual Disable Write Protect page and turn off write protect: ", err)
 	}
-
-	if err := firmwareHelper.Servo.RunCR50Command(ctx, "bpforce disconnect atboot"); err != nil {
-		s.Fatal("Fail to disconnect battery: ", err)
-	}
-	// Disables WP by CCD.
-	changeWriteProtectStatus(ctx, s, firmwareHelper, servo.FWWPStateOff)
-	// Wait for reboot start.
-	testing.Sleep(ctx, waitForRebootStart)
-
-	cl, client = createShimlessClient(ctx, s, dut, firmwareHelper, true)
-	defer cl.Close(cleanupCtx)
-	defer client.CloseShimlessRMA(cleanupCtx, &empty.Empty{})
-
-	uiHelper = rmaweb.NewUIHelper(client)
-	if err := uiHelper.WriteProtectDisabledPageOperation(ctx); err != nil {
-		s.Fatal("Fail to operate write protect disabled page: ", err)
-	}
-	// Bypass firmware installation for now.
-	bypassFirmwareInstallation(ctx, s, dut, client)
 
 	// Wait for reboot start.
 	testing.Sleep(ctx, waitForRebootStart)
 
-	cl, client = createShimlessClient(ctx, s, dut, firmwareHelper, true)
-	defer cl.Close(cleanupCtx)
-	defer client.CloseShimlessRMA(cleanupCtx, &empty.Empty{})
+	uiHelper, err = rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, true)
+	if err != nil {
+		s.Fatal("Fail to initialize RMA Helper: ", err)
+	}
+	defer uiHelper.DisposeResource(cleanupCtx)
 
-	uiHelper = rmaweb.NewUIHelper(client)
+	if err := action.Combine("Navigate to firmware installation page and install firmware",
+		uiHelper.WriteProtectDisabledPageOperation,
+		uiHelper.BypassFirmwareInstallation,
+	)(ctx); err != nil {
+		s.Fatal("Fail to navigate to firmware installation page and install firmware: ", err)
+	}
+
+	// Wait for reboot start.
+	testing.Sleep(ctx, waitForRebootStart)
+
+	uiHelper, err = rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, true)
+	if err != nil {
+		s.Fatal("Fail to initialize RMA Helper: ", err)
+	}
+	defer uiHelper.DisposeResource(cleanupCtx)
 
 	if err := action.Combine("Navigate to Device Provision page",
 		uiHelper.FirmwareInstallationPageOperation,
@@ -128,16 +109,11 @@ func DisableHWWPWithBatteryDisconnection(ctx context.Context, s *testing.State) 
 	// Another reboot after provisioning
 	testing.Sleep(ctx, waitForRebootStart)
 
-	cl, client = createShimlessClient(ctx, s, dut, firmwareHelper, true)
-	defer cl.Close(cleanupCtx)
-	defer client.CloseShimlessRMA(cleanupCtx, &empty.Empty{})
-
-	uiHelper = rmaweb.NewUIHelper(client)
-
-	if err := firmwareHelper.Servo.RunCR50Command(ctx, "bpforce follow_batt_pres atboot"); err != nil {
-		s.Fatal("Failed to disconnect battery: ", err)
+	uiHelper, err = rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, true)
+	if err != nil {
+		s.Fatal("Fail to initialize RMA Helper: ", err)
 	}
-	changeWriteProtectStatus(ctx, s, firmwareHelper, servo.FWWPStateOn)
+	defer uiHelper.DisposeResource(cleanupCtx)
 
 	// TODO: I comment out the following code due to a bug in Shimless RMA.
 	// I will add it back after Shimless RMA fix it.
@@ -149,9 +125,12 @@ func DisableHWWPWithBatteryDisconnection(ctx context.Context, s *testing.State) 
 	// Wait for reboot start.
 	testing.Sleep(ctx, waitForRebootStart)
 
-	cl, client = createShimlessClient(ctx, s, dut, firmwareHelper, true)
+	cl, client, error = rmaweb.CreateShimlessClient(ctx, s.RPCHint(), dut, firmwareHelper, s.RequiredVar("ui.signinProfileTestExtensionManifestKey"), true)
 	defer cl.Close(cleanupCtx)
 	defer client.CloseShimlessRMA(cleanupCtx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Fail to create Shimless RMA Client: ", err)
+	}
 	s.Log("Init Shimless RMA successfully after enable CCD")
 	*/
 
@@ -160,49 +139,5 @@ func DisableHWWPWithBatteryDisconnection(ctx context.Context, s *testing.State) 
 		uiHelper.RepairCompeletedPageOperation,
 	)(ctx); err != nil {
 		s.Fatal("Fail to navigate to Repair Complete page: ", err)
-	}
-}
-
-func createShimlessClient(ctx context.Context, s *testing.State, dut *dut.DUT, firmwareHelper *firmware.Helper, reconnect bool) (*rpc.Client, pb.AppServiceClient) {
-	if err := firmwareHelper.WaitConnect(ctx); err != nil {
-		s.Fatal("Failed connect to DUT: ", err)
-	}
-
-	// Setup rpc.
-	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-
-	request := &pb.NewShimlessRMARequest{
-		ManifestKey: s.RequiredVar("ui.signinProfileTestExtensionManifestKey"),
-		Reconnect:   reconnect,
-	}
-	client := pb.NewAppServiceClient(cl.Conn)
-	if _, err := client.NewShimlessRMA(ctx, request, grpc.WaitForReady(true)); err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-
-	return cl, client
-}
-
-func changeWriteProtectStatus(ctx context.Context, s *testing.State, firmwareHelper *firmware.Helper, status servo.FWWPStateValue) {
-	if err := firmwareHelper.Servo.SetFWWPState(ctx, status); err != nil {
-		s.Fatal("Failed to change write protect: ", err)
-	}
-}
-
-func bypassFirmwareInstallation(ctx context.Context, s *testing.State, dut *dut.DUT, client pb.AppServiceClient) {
-	// This sleep is important since we need to wait for RMAD to update state file completed.
-	testing.Sleep(ctx, 3*time.Second)
-	// Add "firmware_updated":true to state file.
-	_, err := dut.Conn().CommandContext(ctx, "sed", "-i", fmt.Sprintf("s/%s/%s/g", ".$", ",\"firmware_updated\":true}"), "/mnt/stateful_partition/unencrypted/rma-data/state").Output()
-	if err != nil {
-		s.Fatal("Failed to update state file to skip firmware installtion: ", err)
-	}
-
-	s.Log("Restart dut after firmware installed")
-	if err := dut.Reboot(ctx); err != nil {
-		s.Fatal("Failed to reboot DUT: ", err)
 	}
 }
