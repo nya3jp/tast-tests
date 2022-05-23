@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2272696a_afce9460",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-23T22:05:03Z",
+      "side": 1,
+      "message": "thanks avery alex and xiyuan, filed a bug for it https://b.corp.google.com/issues/233663703",
+      "parentUuid": "6fb3053d_f034c3a1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "f06239039b59f599fe49670a31be3eb04828dad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "909e12b1_4229d7e7",
