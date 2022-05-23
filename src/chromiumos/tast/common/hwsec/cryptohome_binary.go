@@ -361,6 +361,11 @@ func (c *cryptohomeBinary) createPersistentUser(ctx context.Context, authSession
 	return c.call(ctx, "--action=create_persistent_user", "--auth_session_id="+authSessionID)
 }
 
+// migrateToDircrypto calls "cryptohome --action=migrate_to_dircrypto" with "--user"
+func (c *cryptohomeBinary) migrateToDircrypto(ctx context.Context, userName string) ([]byte, error) {
+	return c.call(ctx, "--action=migrate_to_dircrypto", "--user="+userName)
+}
+
 // mountWithAuthSession calls "cryptohome --action=mount_ex" with "--auth_session_id".
 // password is ignored if publicMount is set to true.
 func (c *cryptohomeBinary) mountWithAuthSession(ctx context.Context, authSessionID string, publicMount bool) ([]byte, error) {
