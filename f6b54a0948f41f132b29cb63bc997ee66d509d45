@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2485bd38_431eaabe",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-23T02:25:50Z",
+      "side": 1,
+      "message": "The \"OK\" output here just means the scan command has been executed. The scan could take a while, you should do a poll on the terminal and wait for `CTRL-EVENT-SCAN-RESULTS`, otherwise, the scan result might be just from a previous scan.",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88762a45_7b7b363d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-23T02:25:50Z",
+      "side": 1,
+      "message": "Remove this?",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134ffe4d_ca24f883",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-23T02:25:50Z",
+      "side": 1,
+      "message": "How about export tf.getUniqueAPName and reuse it?\n\nRef: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/wificell/test_fixture.go;l\u003d600?q\u003dgetUniqueAPName\u0026sq\u003d\u0026ss\u003dchromiumos",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc9c2960_5cc85570",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-23T02:25:50Z",
+      "side": 1,
+      "message": "This will introduce a hidden problem when phys[0] supports `tdls_oper` but not `tdls_mgmt` while phys[1] supports `tdls_mgmt`. You might want to pass the two commands as optional parameters to `checkCommand` so that it could be checked on the same phy instance.\n\nWe don\u0027t support multiple PHYs in ChromeOS Tast test yet. Most of the test cases just use the first phy instance.\n\nE.G.: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/caps.go;l\u003d49?q\u003dwifi%2Fcaps.go\u0026ss\u003dchromiumos",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
