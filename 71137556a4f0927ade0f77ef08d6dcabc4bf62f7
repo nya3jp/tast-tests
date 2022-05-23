@@ -16,6 +16,24 @@
       "message": "Is there a particular reason you need to use NameContaining here? My concern is that the function names used in this file generally are for exact match, and do not implicitly suggest \"NameContaining\". ",
       "revId": "71137556a4f0927ade0f77ef08d6dcabc4bf62f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ed96b9_3c28b3a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-23T01:46:56Z",
+      "side": 1,
+      "message": "Shimless RMA team is still actively changing UI label name and it causes our testing broken from time to time. Your concern is fair enough but we need more flexibilities.",
+      "parentUuid": "cbb4ec45_60b477dd",
+      "revId": "71137556a4f0927ade0f77ef08d6dcabc4bf62f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
