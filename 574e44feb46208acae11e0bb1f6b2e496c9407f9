@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b8a53a_45001166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_error_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1520178
+      },
+      "writtenOn": "2022-05-23T07:27:29Z",
+      "side": 1,
+      "message": "There\u0027s a lot going on in this method. Any way we can split it into submethods?\n\nStartKioskLaunch\n\nManuallyCancelKioskLaunch\n\nWaitForHistogramUpdate\n\nCleanup\n\nBonus: can any of this be moved into a library, feels like a lot of boilerplate.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 64
+      },
+      "revId": "574e44feb46208acae11e0bb1f6b2e496c9407f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
