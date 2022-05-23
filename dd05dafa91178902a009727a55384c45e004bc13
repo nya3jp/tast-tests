@@ -88,6 +88,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91882ed1_870ecb32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-23T07:36:22Z",
+      "side": 1,
+      "message": "Or better a constant",
+      "parentUuid": "3dbc431e_4a29c0fc",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15019f89_35531b11",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
         "patchSetId": 3
