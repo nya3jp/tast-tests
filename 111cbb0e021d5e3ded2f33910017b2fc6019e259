@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa71ba95_abb4dea8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-23T14:41:37Z",
+      "side": 1,
+      "message": "nit: \"Set\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "111cbb0e021d5e3ded2f33910017b2fc6019e259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f49cd870_4099cad2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-23T14:41:37Z",
+      "side": 1,
+      "message": "I only had time for a quick look, I will try to check it tomorrow in detail.\nYou can fix the nits and the typo in the meantime.",
+      "revId": "111cbb0e021d5e3ded2f33910017b2fc6019e259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13787646_f45156ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-23T14:41:37Z",
+      "side": 1,
+      "message": "nit:\n\u003e  if err :\u003d uiauto.Combine(\"Enable light mode\",\n\u003e  \tpersonalization.OpenPersonalizationHub(ui),\n\u003e  \tpersonalization.ToggleLightMode(ui),\n\u003e  )(ctx); err !\u003d nil {\n\u003e  \ts.Fatal(\"Failed to enable light mode: \", err)\n\u003e  }\nIt would be better like this, to visually separate `s.Fatal()` from the inside of `Combine()`.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "111cbb0e021d5e3ded2f33910017b2fc6019e259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1bef546_5c6ec2e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-23T14:41:37Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 54
+      },
+      "revId": "111cbb0e021d5e3ded2f33910017b2fc6019e259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3a610d_a95093c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-23T14:41:37Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 138,
+        "startChar": 39,
+        "endLine": 138,
+        "endChar": 59
+      },
+      "revId": "111cbb0e021d5e3ded2f33910017b2fc6019e259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
