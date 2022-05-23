@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e96ea835_8686aa8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-23T17:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ba8dfc_b9059edc",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6aba0e_cef30e15",
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08cb118a_01b02b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-23T17:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba6aba0e_cef30e15",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23a3a455_ad4d32bc",
@@ -111,6 +159,30 @@
       "writtenOn": "2022-05-23T16:15:02Z",
       "side": 1,
       "message": "same: start with \"Failed to ...\"",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b355d95_ca150049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-23T17:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23a3a455_ad4d32bc",
       "range": {
         "startLine": 50,
         "startChar": 11,
@@ -191,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "102c0332_104c2bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-23T17:39:25Z",
+      "side": 1,
+      "message": "Leaving this as is since future tests will probably use it. Should save time in the end.",
+      "parentUuid": "8ef4a1b2_496f1e67",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70acebd7_fb8e385f",
@@ -214,6 +310,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300ff13d_cd13dda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-23T17:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70acebd7_fb8e385f",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 47
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efe0b67f_3e1740d1",
@@ -227,6 +347,30 @@
       "writtenOn": "2022-05-23T16:15:02Z",
       "side": 1,
       "message": "nit: Unexpected %q property value: got %q, want: %q",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 81
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78537fb_4f8e0277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-23T17:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efe0b67f_3e1740d1",
       "range": {
         "startLine": 62,
         "startChar": 12,
