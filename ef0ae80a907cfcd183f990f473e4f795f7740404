@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f760c34_7beb736f",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-23T08:45:35Z",
+      "side": 1,
+      "message": "for better investigation in the future, maybe testing.ContextLogf here, too?",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1eb44b7e_a8d1311e",
         "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
         "patchSetId": 1
@@ -49,6 +66,23 @@
       "side": 1,
       "message": "If we assume that the power.IdleTemperature test is representative of the distribution of temperatures after a failed WaitForCooldown, then it should reduce the number of failures due to temperature by 95% for the subset of boards listed in the map.\n\nThere will still be failures due to temperature, but I think we have some old/broken/worn out boards, and for those failures IMO we should ask the lab team to look at those devices specifically.\n\nIn the doc I\u0027ve already found that a minority of boards are posting the highest idle temperatures (90 to 100 deg in some cases).\n\nNote that if we wanted to fully get rid of failures due to temperature, we would have to let these worn out boards pollute the performance results.",
       "parentUuid": "1eb44b7e_a8d1311e",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838a5c4c_1ecbe9ab",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-23T08:45:35Z",
+      "side": 1,
+      "message": "could you document how they are calculated, and how can we update this?\n\nseewaifu@, from infra maintenance perspective, could you share how we can maintain this kind of stuff in the future? Do you have some recommendation?",
       "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
