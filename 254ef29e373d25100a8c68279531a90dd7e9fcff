@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7be3b8d6_b00923b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-23T22:39:13Z",
+      "side": 1,
+      "message": "This test seems to be similar as https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3656936/2 with the only difference being the action to disable \n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests",
+      "revId": "254ef29e373d25100a8c68279531a90dd7e9fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0755fd8_8b436f0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-23T22:39:13Z",
+      "side": 1,
+      "message": "This test seems to be similar as https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3656936/2 with the only difference being this action. Instead of creating a new test with duplicated code, you may try parameterized test, and use different actions here based on different params. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 101
+      },
+      "revId": "254ef29e373d25100a8c68279531a90dd7e9fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21eed48a_230a877d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
         "patchSetId": 3
