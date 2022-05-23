@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83b34d2_650c4557",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:07:20Z",
+      "side": 1,
+      "message": "Apologies for a delay in review.",
+      "revId": "a86a03afe9b6cc0177772cdb8db5cd7c839388d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c110615b_f486b40a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_extensions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:07:20Z",
+      "side": 1,
+      "message": "Not looking to address it here, just thinking for the future.\nI generally find it somewhat confusing that sometimes we pass parent credentials only and sometimes parent as child. I feel like we are missing the existing dependency between parent and child.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "a86a03afe9b6cc0177772cdb8db5cd7c839388d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d3f4be_5a8cdd10",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:07:20Z",
+      "side": 1,
+      "message": "Unless you are thinking of updating this test in the future to add an extension I would reflect it\u0027s behavior in the name e.g. NavigateExtensionApprovalFlow",
+      "range": {
+        "startLine": 326,
+        "startChar": 5,
+        "endLine": 326,
+        "endChar": 27
+      },
+      "revId": "a86a03afe9b6cc0177772cdb8db5cd7c839388d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150fa115_c646d9fc",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:07:20Z",
+      "side": 1,
+      "message": "What is the rational for that? Does cleanup mean closing the dialog? How about clicking cancel button at the end of the flow?",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 0
+      },
+      "revId": "a86a03afe9b6cc0177772cdb8db5cd7c839388d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe075d7d_53a22170",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:07:20Z",
+      "side": 1,
+      "message": "Google developed\n(I would stick to using popular Google developed extensions as there are hopefully less chances for it to go away)",
+      "range": {
+        "startLine": 342,
+        "startChar": 59,
+        "endLine": 342,
+        "endChar": 68
+      },
+      "revId": "a86a03afe9b6cc0177772cdb8db5cd7c839388d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e694faca_939bf37f",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:07:20Z",
+      "side": 1,
+      "message": "Nit: Period at the end. Here and line 353",
+      "revId": "a86a03afe9b6cc0177772cdb8db5cd7c839388d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4123759c_1705ec3a",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:07:20Z",
+      "side": 1,
+      "message": "The test only works for an account with 2 parents?\nCan you make it adapt to number of parents or add a description that it tests 2 parent flow?",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 2
+      },
+      "revId": "a86a03afe9b6cc0177772cdb8db5cd7c839388d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c29700_04c135d5",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T16:07:20Z",
+      "side": 1,
+      "message": "Also check that the \u0027Cancel\u0027 and \u0027Approve\u0027 buttons are visible and enabled.",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 2
+      },
+      "revId": "a86a03afe9b6cc0177772cdb8db5cd7c839388d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
