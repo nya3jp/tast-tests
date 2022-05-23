@@ -28,7 +28,6 @@ func init() {
 		Params: []testing.Param{{
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros_stable"},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable",
 			Fixture:           "lacros",
@@ -38,7 +37,6 @@ func init() {
 			Name:              "primary",
 			Fixture:           "lacrosPrimary",
 			ExtraSoftwareDeps: []string{"lacros_stable"},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "primary_unstable",
 			Fixture:           "lacrosPrimary",
