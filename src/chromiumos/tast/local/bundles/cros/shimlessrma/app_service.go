@@ -49,6 +49,10 @@ func (shimlessRMA *AppService) NewShimlessRMA(ctx context.Context,
 		if err := shimlessrmaapp.CreateEmptyStateFile(); err != nil {
 			return nil, errors.Wrap(err, "failed to create rmad state file")
 		}
+
+		if err := testexec.CommandContext(ctx, "touch", "/var/lib/rmad/.disable_powerwash").Run(); err != nil {
+			return nil, errors.Wrap(err, "failed to create .disable_powerwas file")
+		}
 	}
 
 	cr, err := chrome.New(ctx, chrome.EnableFeatures("ShimlessRMAFlow"),
@@ -85,6 +89,8 @@ func (shimlessRMA *AppService) CloseShimlessRMA(ctx context.Context,
 	testexec.CommandContext(ctx, "stop", "rmad").Run()
 
 	shimlessrmaapp.RemoveStateFile()
+
+	testexec.CommandContext(ctx, "rm", "/var/lib/rmad/.disable_powerwash").Run()
 
 	shimlessRMA.cr.Close(ctx)
 
