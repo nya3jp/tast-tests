@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ce050d_ae02fbbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/vault_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-05-23T18:25:03Z",
+      "side": 1,
+      "message": "That\u0027s a neat pattern for breaking down v1 and v2 related failures.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 35
+      },
+      "revId": "07240086ecec96f86e8316e9ad3992954cd0b832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf0c3314_56c4a98f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/vault_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-05-23T18:25:03Z",
+      "side": 1,
+      "message": "nit: I think one `defer client.UnmountAll` should be enough for the entire test.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "07240086ecec96f86e8316e9ad3992954cd0b832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
