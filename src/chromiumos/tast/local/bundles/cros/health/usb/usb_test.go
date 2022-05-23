@@ -59,11 +59,29 @@ S:  Product=Type-C Video Adapter
 S:  SerialNumber=0000074f7cb5
 C:* #Ifs= 1 Cfg#= 1 Atr=80 MxPwr=100mA
 I:* If#= 0 Alt= 0 #EPs= 0 Cls=fe(app. ) Sub=01 Prot=01 Driver=(none)
+
+T:  Bus=04 Lev=02 Prnt=22 Port=00 Cnt=01 Dev#= 1 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=00(>ifc ) Sub=00 Prot=00 MxPS=64 #Cfgs=  2
+P:  Vendor=0bda ProdID=8153 Rev=31.00
+S:  Manufacturer=Realtek
+S:  Product=USB 10/100/1000 LAN
+S:  SerialNumber=001000001
+C:* #Ifs= 1 Cfg#= 1 Atr=a0 MxPwr=350mA
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=ff(vend.) Sub=ff Prot=00 Driver=r8152
+
+T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=5000 MxCh= 0
+D:  Ver= 3.00 Cls=00(>ifc ) Sub=00 Prot=00 MxPS= 9 #Cfgs=  2
+P:  Vendor=0bda ProdID=8153 Rev=31.00
+S:  Manufacturer=UNITEK
+S:  Product=UNITEK Y-3470B
+S:  SerialNumber=001000001
+C:* #Ifs= 1 Cfg#= 1 Atr=a0 MxPwr=288mA
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=ff(vend.) Sub=ff Prot=00 Driver=r8152
 `,
 }
 
 var cmdRes = map[string]string{
-	"lsusb -v -d1a2b:3c4d": `Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+	"lsusb -v -d1a2b:3c4d -s02:1": `Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Couldn't open device, some information will be missing
 Device Descriptor:                                        
   bLength                18                               
@@ -81,7 +99,7 @@ Device Descriptor:
   iSerial                 1                               
   bNumConfigurations      1                               
 `,
-	"lsusb -v -d1a2b:3c4e": `Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+	"lsusb -v -d1a2b:3c4e -s02:1": `Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Couldn't open device, some information will be missing
 Device Descriptor:                                        
   bLength                18                               
@@ -100,7 +118,7 @@ Device Descriptor:
   bNumConfigurations      1                               
 `,
 	// There could be multiple same devices.
-	"lsusb -v -d1a2b:5e6f": `Bus 002 Device 002: ID 1a2b:5e6f Alice, Inc. USB2.0 HD UVC WebCam
+	"lsusb -v -d1a2b:5e6f -s01:2": `Bus 001 Device 002: ID 1a2b:5e6f Alice, Inc. USB2.0 HD UVC WebCam
 Couldn't open device, some information will be missing
 Device Descriptor:                                        
   bLength                18                               
@@ -117,7 +135,7 @@ Device Descriptor:
   iProduct                2   USB2.0 HD UVC WebCam 
   bNumConfigurations      1                               
 
-Bus 002 Device 002: ID 1a2b:5e6f Alice, Inc. USB2.0 HD UVC WebCam
+Bus 001 Device 002: ID 1a2b:5e6f Alice, Inc. USB2.0 HD UVC WebCam
 Couldn't open device, some information will be missing
 Device Descriptor:                                        
   bLength                18                               
@@ -135,7 +153,44 @@ Device Descriptor:
   iSerial                 1                               
   bNumConfigurations      1                               
 `,
-	"lsusb -v -d1fc9:5002": `Bus 003 Device 004: ID 1fc9:5002 NXP Semiconductors Type-C Video Adapter
+	// Two devices with the same idVendor:idProduct can have different iProduct strings.
+	// Use busNumber:devNumber to tell them apart.
+	"lsusb -v -d0bda:8153 -s04:1": `Bus 004 Device 001: ID 0bda:8153 Realtek Semiconductor Corp. UNITEK Y-3470B
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               3.00
+  bDeviceClass            0 
+  bDeviceSubClass         0 
+  bDeviceProtocol         0 
+  bMaxPacketSize0         9
+  idVendor           0x0bda Realtek Semiconductor Corp.
+  idProduct          0x8153 
+  bcdDevice           31.00
+  iManufacturer           1 UNITEK
+  iProduct                2 UNITEK Y-3470B
+  iSerial                 6 001000001
+  bNumConfigurations      2
+`,
+	"lsusb -v -d0bda:8153 -s05:2": `
+Bus 005 Device 002: ID 0bda:8153 Realtek Semiconductor Corp. USB 10/100/1000 LAN
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.10
+  bDeviceClass            0 
+  bDeviceSubClass         0 
+  bDeviceProtocol         0 
+  bMaxPacketSize0        64
+  idVendor           0x0bda Realtek Semiconductor Corp.
+  idProduct          0x8153 
+  bcdDevice           31.00
+  iManufacturer           1 Realtek
+  iProduct                2 USB 10/100/1000 LAN
+  iSerial                 6 001000001
+  bNumConfigurations      2
+`,
+	"lsusb -v -d1fc9:5002 -s03:4": `Bus 003 Device 004: ID 1fc9:5002 NXP Semiconductors Type-C Video Adapter
 Device Descriptor:
   bLength                18
   bDescriptorType         1
@@ -195,6 +250,42 @@ func TestExpectedDevices(t *testing.T) {
 		t.Fatal("Failed to run ExpectedDevices:", err)
 	}
 	e := []Device{
+		Device{
+			VendorID:    "0bda",
+			ProdID:      "8153",
+			VendorName:  "Realtek Semiconductor Corp.",
+			ProductName: "UNITEK Y-3470B",
+			Class:       "00",
+			SubClass:    "00",
+			Protocol:    "00",
+			Interfaces: []Interface{
+				Interface{
+					InterfaceNumber: 0,
+					Class:           "ff",
+					SubClass:        "ff",
+					Protocol:        "00",
+					Driver:          ptr("r8152"),
+				},
+			},
+		},
+		Device{
+			VendorID:    "0bda",
+			ProdID:      "8153",
+			VendorName:  "Realtek Semiconductor Corp.",
+			ProductName: "USB 10/100/1000 LAN",
+			Class:       "00",
+			SubClass:    "00",
+			Protocol:    "00",
+			Interfaces: []Interface{
+				Interface{
+					InterfaceNumber: 0,
+					Class:           "ff",
+					SubClass:        "ff",
+					Protocol:        "00",
+					Driver:          ptr("r8152"),
+				},
+			},
+		},
 		Device{
 			VendorID:    "1a2b",
 			ProdID:      "3c4d",
