@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45cde5a8_5f82e02b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-23T16:19:59Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "927ea89a6b3b5d3df4c8ea93b316a4a9f1429b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "885c7ac8_99a5040e",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-23T16:19:59Z",
+      "side": 1,
+      "message": "This UMA is removed in M98.\nhttps://source.chromium.org/chromium/chromium/src/+/main:tools/metrics/histograms/metadata/others/histograms.xml;drc\u003d45eed77e0a91aca0c53d4ccd0eb95468f3d94bd8;l\u003d8071\n\nLet\u0027s replace it with the new ones:\nhttps://source.chromium.org/chromium/chromium/src/+/main:tools/metrics/histograms/metadata/browser/histograms.xml;drc\u003d48860a401e31363b0ca347b698c8fc1fd5c166a2;l\u003d565\nhttps://source.chromium.org/chromium/chromium/src/+/main:tools/metrics/histograms/metadata/browser/histograms.xml;drc\u003d48860a401e31363b0ca347b698c8fc1fd5c166a2;l\u003d25\n\nI am okay to do this in a follow-up to keep this CL just moving code around.",
+      "revId": "927ea89a6b3b5d3df4c8ea93b316a4a9f1429b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7252d87f_f9e6456e",
