@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59dab739_85d426fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_error_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-23T06:14:03Z",
+      "side": 1,
+      "message": "It\u0027s because this keyboard shortcut makes the current Chrome process exit, which takes time to process. Waiting for some elements is not possible also due to this reason. Without delay the launch error event won\u0027t be triggered. Added comments to make it clear here.",
+      "parentUuid": "468d2794_01d4f6fa",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "443d5935_6d592a70",
@@ -72,6 +96,30 @@
       "writtenOn": "2022-05-20T09:39:30Z",
       "side": 1,
       "message": "Perhaps leave a comment about what this part is about.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1057c303_e0877a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_error_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-23T06:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "443d5935_6d592a70",
       "range": {
         "startLine": 142,
         "startChar": 0,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e80e13_e192e3eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_error_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-23T06:14:03Z",
+      "side": 1,
+      "message": "I just noticed that logging into Kiosk session doesn\u0027t make policy refresh work. Therefore I changed it to restarting Chrome into fake user session. The delay here is no longer needed.",
+      "parentUuid": "44b98e18_a203a583",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 34
+      },
+      "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baa3a23a_5fc0fbd3",
@@ -118,6 +190,24 @@
       "writtenOn": "2022-05-20T09:39:30Z",
       "side": 1,
       "message": "Is it safe to continue testing if closing the process failed? Won\u0027t we end up with two process and one being a zombie one?",
+      "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3bcb45e_fb8f7e39",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-23T06:14:03Z",
+      "side": 1,
+      "message": "The problem with this test is that Chrome restarts itself after any error happens during launching kiosk. At this point the chrome.Chrome instance is already invalid and cannot be closed. I have made a separate function for this use case. Is there a better way of doing this?",
+      "parentUuid": "baa3a23a_5fc0fbd3",
       "revId": "8b3d82f68118afc333c6d03defaf2e4ed8f41936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
