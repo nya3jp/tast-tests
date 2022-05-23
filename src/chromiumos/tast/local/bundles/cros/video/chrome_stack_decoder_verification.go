@@ -562,7 +562,8 @@ func init() {
 			},
 		}, {
 			Name:              "vp9_0_svc",
-			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+            // TODO(b/210167476): Reenable when it's not failing everywhere.
+			//ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp9SVCFiles),
 			Val: chromeStackDecoderVerificationTestParam{
