@@ -16,6 +16,75 @@
       "message": "LGTM",
       "revId": "985d612c68c0af9c28b9645db94adb991a88968a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bd9135b_29ac0f0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-23T07:52:07Z",
+      "side": 1,
+      "message": "IIUC value is also a regular expression. How about naming it valueRegex to align with lineRegex?",
+      "range": {
+        "startLine": 218,
+        "startChar": 34,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "985d612c68c0af9c28b9645db94adb991a88968a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ded248_132d13ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-23T07:52:07Z",
+      "side": 1,
+      "message": "I guess you meant FindAllString.\n\nFindStringSubmatch searches for the leftmost match, and returns its submatches. If the regular expression does not contain capture groups, it returns at most one submatch (that is equal to the whole match).",
+      "range": {
+        "startLine": 221,
+        "startChar": 23,
+        "endLine": 221,
+        "endChar": 41
+      },
+      "revId": "985d612c68c0af9c28b9645db94adb991a88968a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8cb3f0_d3d501ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_configs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-23T07:52:07Z",
+      "side": 1,
+      "message": "This is a slice of one empty string, i.e. []string{\"\"}. I guess that\u0027s not what you meant?",
+      "range": {
+        "startLine": 226,
+        "startChar": 18,
+        "endLine": 226,
+        "endChar": 35
+      },
+      "revId": "985d612c68c0af9c28b9645db94adb991a88968a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
