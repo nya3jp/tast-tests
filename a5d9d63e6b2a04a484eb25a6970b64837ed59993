@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9617db94_718b6002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-23T04:17:55Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f750d8ce_3a050d48",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "a5d9d63e6b2a04a484eb25a6970b64837ed59993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6f46799_9cea2cbb",
