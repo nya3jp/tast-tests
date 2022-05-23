@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c3afcf_4238ec4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-23T01:56:25Z",
+      "side": 1,
+      "message": "I will start Tast review after this CL is LGTM\u0027ed by a domain expert.",
+      "revId": "4252fb43532f5b2ff4025a4a1c2b02f53a6435e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
