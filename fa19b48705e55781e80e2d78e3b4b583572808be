@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a548ce6_a72b8eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-23T21:46:18Z",
+      "side": 1,
+      "message": "Hi Tast owners, this projector.SharedScreencast Tast test is ready for review.",
+      "revId": "fa19b48705e55781e80e2d78e3b4b583572808be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
