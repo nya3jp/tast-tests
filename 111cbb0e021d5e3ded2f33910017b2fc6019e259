@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "10ea80ff_31d2f97d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-23T16:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa71ba95_abb4dea8",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "111cbb0e021d5e3ded2f33910017b2fc6019e259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f49cd870_4099cad2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b630f9_08c0e074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-23T16:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13787646_f45156ef",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "111cbb0e021d5e3ded2f33910017b2fc6019e259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1bef546_5c6ec2e3",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0110bdf1_16648939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-23T16:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bef546_5c6ec2e3",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 54
+      },
+      "revId": "111cbb0e021d5e3ded2f33910017b2fc6019e259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb3a610d_a95093c1",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-05-23T14:41:37Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 138,
+        "startChar": 39,
+        "endLine": 138,
+        "endChar": 59
+      },
+      "revId": "111cbb0e021d5e3ded2f33910017b2fc6019e259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d177d6ae_766327db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-23T16:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb3a610d_a95093c1",
       "range": {
         "startLine": 138,
         "startChar": 39,
