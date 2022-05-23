@@ -94,6 +94,30 @@
       },
       "revId": "475517faa1382c1bd3de524e4ea725db393c0c8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17a5277_673865e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/loop_device_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-23T05:30:23Z",
+      "side": 1,
+      "message": "The current solution LGTM before we have kernel version dependencies in Tast.",
+      "parentUuid": "9e0bcb76_e2fdeeeb",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "475517faa1382c1bd3de524e4ea725db393c0c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
