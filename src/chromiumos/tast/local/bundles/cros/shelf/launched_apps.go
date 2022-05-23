@@ -28,7 +28,7 @@ func init() {
 			"tbarzic@chromium.org",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 
 		Params: []testing.Param{
@@ -38,12 +38,14 @@ func init() {
 				Fixture:           "chromeLoggedInDisableSync",
 				Val:               false,
 				ExtraSoftwareDeps: []string{"no_tablet_form_factor"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "lacros",
 				Fixture:           "lacrosPrimaryDisableSync",
 				Val:               false,
 				ExtraSoftwareDeps: []string{"lacros", "no_tablet_form_factor"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				// Primary form factor is tablet.
