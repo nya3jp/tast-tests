@@ -138,7 +138,6 @@ func init() {
 					routerSecConfFac: ax.NewSecSAEConfigParamFac("helloworld", ax.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}},
-				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ax6E()),
 			},
 			{
 				// Verifies that DUT can connect to a hidden wpa (AES) 802.11ax network on channel 85, 41 on the 6ghz band
@@ -154,7 +153,6 @@ func init() {
 					routerSecConfFac: ax.NewSecSAEConfigParamFac("helloworld", ax.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}},
-				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ax6E()),
 			},
 			{
 				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ax with 40Mhz channel width on the 6ghz band
@@ -165,7 +163,6 @@ func init() {
 					routerSecConfFac: ax.NewSecSAEConfigParamFac("helloworld", ax.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}},
-				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ax6E()),
 			},
 			{
 				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ax with 80Mhz channel width on the 6ghz band
@@ -176,7 +173,6 @@ func init() {
 					routerSecConfFac: ax.NewSecSAEConfigParamFac("helloworld", ax.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}},
-				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ax6E()),
 			},
 			{
 				// Verifies that DUT can connect to a broadcasted wpa (AES) 802.11ax with 40Mhz channel width on the 6ghz band
@@ -187,7 +183,6 @@ func init() {
 					routerSecConfFac: ax.NewSecSAEConfigParamFac("helloworld", ax.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}},
-				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ax6E()),
 			},
 		},
 	})
