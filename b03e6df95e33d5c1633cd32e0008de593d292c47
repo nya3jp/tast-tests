@@ -52,6 +52,24 @@
       "parentUuid": "e2b93ab8_086d5327",
       "revId": "b03e6df95e33d5c1633cd32e0008de593d292c47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e84278_2f27f343",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-05-23T23:30:05Z",
+      "side": 1,
+      "message": "Tests are green, can we merge this?",
+      "parentUuid": "c8dab90a_eca4431a",
+      "revId": "b03e6df95e33d5c1633cd32e0008de593d292c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
