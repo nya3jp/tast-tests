@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae7b18e_60e68c62",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-23T02:00:18Z",
+      "side": 1,
+      "message": "In latest patch, I tried to not create a new connection when it\u0027s at TearDown phase.",
+      "parentUuid": "bed8067f_4803f279",
+      "revId": "61012a37c8f1d748089e3ab08702b93060bb329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1f0ad9f_96db284b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-23T01:27:50Z",
       "side": 1,
       "message": "nit: This is unnecessary. It is overridden below.",
+      "revId": "61012a37c8f1d748089e3ab08702b93060bb329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617afc42_9ea4a94b",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-23T02:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1f0ad9f_96db284b",
       "revId": "61012a37c8f1d748089e3ab08702b93060bb329f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
