@@ -16,6 +16,23 @@
       "message": "If you\u0027re cc\u0027d you either have a test which directly or indirectly uses this functionality (see go/tast-perf-test-temperature for details) or you at some point were on a thread about this issue. Please LMK if you have any concerns.",
       "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb44b7e_a8d1311e",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-05-23T04:18:12Z",
+      "side": 1,
+      "message": "Do you have an idea of how many failures to cooldown this will still result in?\n\nIt should be way better than the current situation, but maybe green stainless will still complain?",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
