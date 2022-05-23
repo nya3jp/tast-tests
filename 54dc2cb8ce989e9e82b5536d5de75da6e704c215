@@ -33,6 +33,24 @@
       "message": "Why do you onnly set it to true for usbPortPathRegex but not usb4PortPathRegex? Please put some comments in this function so that I can understand what it is trying to do better. Thanks.",
       "revId": "54dc2cb8ce989e9e82b5536d5de75da6e704c215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3b6e18_18d0ccac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-23T18:10:11Z",
+      "side": 1,
+      "message": "Done. Added a comment at line 60",
+      "parentUuid": "f908a64f_19b72c34",
+      "revId": "54dc2cb8ce989e9e82b5536d5de75da6e704c215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
