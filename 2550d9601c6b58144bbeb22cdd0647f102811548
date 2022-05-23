@@ -62,6 +62,30 @@
       },
       "revId": "2550d9601c6b58144bbeb22cdd0647f102811548",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62d4415_bc136acf",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-23T16:14:10Z",
+      "side": 1,
+      "message": "I disagree on the basis that this is a performance metric that may\nor may not be reported. Plenty of examples abound of such situation.\nThe test itself would not fail based on this metric not being \npresent; OTOH duplicating the test to have a dependency would \nintroduce an unwieldy maintenance complexity (see e.g. \nBatteryDischarge test variants all over).",
+      "parentUuid": "c9c6f2d8_76f2b897",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 12
+      },
+      "revId": "2550d9601c6b58144bbeb22cdd0647f102811548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
