@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "a098c45525646bd9d92f5cc160df1ea24be6f77a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91ff3f2_88caef67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_display.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-05-23T22:20:49Z",
+      "side": 1,
+      "message": "Are you going to other CUJs in another CL like \n- pressing customized button (if mapping is hidden, then show the input mappings first).\n- clicking outside of the menu then the menu is closed.\n- turn off the input overlay control, then the customize button and hide mapping toggle are disabled too.\n\nI am fine if you add in another CL.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "a098c45525646bd9d92f5cc160df1ea24be6f77a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
