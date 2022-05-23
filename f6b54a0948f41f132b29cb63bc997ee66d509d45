@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7f85432_e9ae00c4",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-23T09:48:12Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "2485bd38_431eaabe",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88762a45_7b7b363d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 7
@@ -31,6 +49,47 @@
       "writtenOn": "2022-05-23T02:25:50Z",
       "side": 1,
       "message": "Remove this?",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb647a03_9a13e987",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-23T09:48:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure why.",
+      "parentUuid": "88762a45_7b7b363d",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12bd66af_61d23352",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-23T09:48:12Z",
+      "side": 1,
+      "message": "I obviously messed up the directions :facepalm:",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 4
+      },
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +113,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffc93851_84a9ca42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-23T09:48:12Z",
+      "side": 1,
+      "message": "Yes, I can do it.",
+      "parentUuid": "134ffe4d_ca24f883",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc9c2960_5cc85570",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
         "patchSetId": 7
@@ -65,6 +142,24 @@
       "writtenOn": "2022-05-23T02:25:50Z",
       "side": 1,
       "message": "This will introduce a hidden problem when phys[0] supports `tdls_oper` but not `tdls_mgmt` while phys[1] supports `tdls_mgmt`. You might want to pass the two commands as optional parameters to `checkCommand` so that it could be checked on the same phy instance.\n\nWe don\u0027t support multiple PHYs in ChromeOS Tast test yet. Most of the test cases just use the first phy instance.\n\nE.G.: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/caps.go;l\u003d49?q\u003dwifi%2Fcaps.go\u0026ss\u003dchromiumos",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff058eb_2f56614f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-23T09:48:12Z",
+      "side": 1,
+      "message": "In theory, yes. In practice I don\u0027t quite believe two phys of the same modem would have a different set of features. And ChromeOS doesn\u0027t support multiple modems AFAIK.\n\nI can only check phys[0]",
+      "parentUuid": "cc9c2960_5cc85570",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
