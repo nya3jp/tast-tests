@@ -70,6 +70,30 @@
       },
       "revId": "475517faa1382c1bd3de524e4ea725db393c0c8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0bcb76_e2fdeeeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/loop_device_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-23T03:36:28Z",
+      "side": 1,
+      "message": "The link you send is for containers\u0027 kernel versions, on host we have pinned versions.\nThe kernel patch is NOT upstreamed, (upstream didn\u0027t want the behaviour in any form, so we had to CHROMIUM the patch).\nOpened a bug against tast to add kernel dependency (b/233553312)\nI add short-circuit checking kernel version explicitly. I know it is antipattern, but the best way for now. LMK if you think that is wrong.",
+      "parentUuid": "db777af9_b8e2e82b",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "475517faa1382c1bd3de524e4ea725db393c0c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
