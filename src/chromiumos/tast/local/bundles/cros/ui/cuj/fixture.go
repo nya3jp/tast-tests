@@ -62,6 +62,21 @@ func init() {
 		PreTestTimeout: CPUIdleTimeout + 5*time.Second,
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: "cpuIdleForEnrolledCUJ",
+		Desc: "The fixture to wait DUT cpu to idle for logged in with gaia user on an enrolled device",
+		Contacts: []string{
+			"alston.huang@cienet.com",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl:            &cpuIdleForCUJFixture{},
+		PreTestTimeout:  CPUIdleTimeout + 5*time.Second,
+		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.Enrolled,
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToCUJUser",
 		Desc: "The main fixture used for UI CUJ tests",
 		Contacts: []string{
@@ -124,11 +139,10 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl:            &loggedInToCUJUserFixture{webUITabStrip: true},
-		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		PostTestTimeout: 15 * time.Second,
-		Parent:          fixture.Enrolled,
+		Parent:          "cpuIdleForEnrolledCUJ",
+		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout + optin.OptinTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
 		Vars: []string{
 			"ui.cujAccountPool",
 		},
