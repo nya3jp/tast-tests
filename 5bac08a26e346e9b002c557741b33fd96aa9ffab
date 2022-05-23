@@ -111,6 +111,30 @@
       },
       "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9745f83a_aacfd0d0",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-05-23T19:20:09Z",
+      "side": 1,
+      "message": "Let\u0027s land and see. For some reason I do not see the avatar in the content area with one of my accounts.",
+      "parentUuid": "de552b37_8585c295",
+      "range": {
+        "startLine": 274,
+        "startChar": 11,
+        "endLine": 274,
+        "endChar": 119
+      },
+      "revId": "5bac08a26e346e9b002c557741b33fd96aa9ffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
