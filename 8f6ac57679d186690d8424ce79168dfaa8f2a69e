@@ -34,6 +34,24 @@
       "parentUuid": "555ecfb8_758aee32",
       "revId": "8f6ac57679d186690d8424ce79168dfaa8f2a69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "126b7f7d_06dc7651",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-23T01:09:58Z",
+      "side": 1,
+      "message": "This looks like it\u0027s less susceptible to this issue, but we can still launch this twice if lacros becomes running after line 98 in the new patch set. Also, it doesn\u0027t take into account intermediate states of lacros - see https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/crosapi/browser_manager.h;l\u003d313;drc\u003dfbd2df0534c28fd59aed44421d6f3fbeda89c437 . e.g. it would still launch lacros if the state is \"STARTING\" here. My guess is that this CL will overall improve the flakes but create some of its own flakes, and potentially silently modify the behaviour of performance tests when it creates a new window (IIUC launching twice creates a new window but correct me if I\u0027m wrong). IMO ideally we just fix browsermanager and call apps.Launch once (and poll to wait until it\u0027s running). There\u0027s not really a good and simple way to do this approach without sync issues AFAICT.\n\nGeorg, how is the work coming for browsermanager changes? Do you think this CL\u0027s tradeoffs are worth it?",
+      "parentUuid": "b3209c56_8d06e9f4",
+      "revId": "8f6ac57679d186690d8424ce79168dfaa8f2a69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
