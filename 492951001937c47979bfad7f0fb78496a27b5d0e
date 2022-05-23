@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43bba9d_c796fc21",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-23T12:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df4033ec_d7a333a6",
+      "range": {
+        "startLine": 341,
+        "startChar": 30,
+        "endLine": 341,
+        "endChar": 40
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e89d2546_e5d5a4a5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-16T23:47:36Z",
       "side": 1,
       "message": "nit: I think it\u0027s safe to omit \"UserSecretStash\" here, since USS will become the default in (some) future, and also since it\u0027s not the primary intent of the test. Also let\u0027s disambiguate from the stateful recovery.\n\nSo what about calling it just \"CryptohomeRecovery\"?",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c6da2c_4a85b602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-23T12:58:17Z",
+      "side": 1,
+      "message": "Cryptohome* is not allowed because it\u0027s the name of the package. Renamed to Recovery",
+      "parentUuid": "e89d2546_e5d5a4a5",
       "range": {
         "startLine": 25,
         "startChar": 8,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e3d9652_7749f382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-23T12:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55291d66_3211d1a6",
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb2fbfc6_1939a31e",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-05-16T23:47:36Z",
       "side": 1,
       "message": "Wondering if we can extract this piece of code (copied here for the 3rd time) as a reusable component; maybe a fixture?.. I\u0027m not a Tast expert though.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50875148_6939d36f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-23T12:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb2fbfc6_1939a31e",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d46cf7c4_a55f8986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-23T12:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd202700_f9e3babc",
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f1917d5_fd7fab35",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-05-16T23:47:36Z",
       "side": 1,
       "message": "nit: The test adds no pin.",
+      "range": {
+        "startLine": 116,
+        "startChar": 72,
+        "endLine": 116,
+        "endChar": 85
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc22f515_c778429c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-23T12:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f1917d5_fd7fab35",
       "range": {
         "startLine": 116,
         "startChar": 72,
@@ -146,6 +278,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d166fa52_6dd9051d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-23T12:58:17Z",
+      "side": 1,
+      "message": "I copied it from UserSecretStashAddPin :)\nhardikgoyal@ can you please take a look?",
+      "parentUuid": "81be7310_aa03f7ab",
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4af5775b_6e0e5904",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
         "patchSetId": 2
@@ -157,6 +307,30 @@
       "writtenOn": "2022-05-16T23:47:36Z",
       "side": 1,
       "message": "nit: \"add recovery auth factor\"",
+      "range": {
+        "startLine": 152,
+        "startChar": 21,
+        "endLine": 152,
+        "endChar": 43
+      },
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae542d0_bbc65751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-23T12:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4af5775b_6e0e5904",
       "range": {
         "startLine": 152,
         "startChar": 21,
