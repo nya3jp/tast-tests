@@ -16,6 +16,29 @@
       "message": "Please, have a look to this CL for BootBatteryCutoff()",
       "revId": "ce41454463e7dc9359c9d0750b6f859769286e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0793f23c_b6ca21b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_battery_cutoff.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-23T16:25:40Z",
+      "side": 1,
+      "message": "errors.Is() will walk the error chain and return true if any of the errors match. That seems more appropriate than string.Contains, though the effect should be the same.",
+      "range": {
+        "startLine": 158,
+        "startChar": 18,
+        "endLine": 158,
+        "endChar": 34
+      },
+      "revId": "ce41454463e7dc9359c9d0750b6f859769286e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
