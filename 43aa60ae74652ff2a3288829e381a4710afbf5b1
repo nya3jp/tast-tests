@@ -16,6 +16,24 @@
       "message": "Think we need to keep `average`. Otherwise, what do we report for UMA metrics?",
       "revId": "43aa60ae74652ff2a3288829e381a4710afbf5b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dae4fc1_1385b24e",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-23T23:01:54Z",
+      "side": 0,
+      "message": "agree with xiyuan, we need to keep `average` (or any equivalent) so that tps pipeline can get the value of UMA metrics (https://source.corp.google.com/piper///depot/google3/googleclient/chrome/chromeos_performance_dashboard/tps/flume/cuj_analyzer.cc;l\u003d161)",
+      "parentUuid": "87ff52f3_e3e0138b",
+      "revId": "43aa60ae74652ff2a3288829e381a4710afbf5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
