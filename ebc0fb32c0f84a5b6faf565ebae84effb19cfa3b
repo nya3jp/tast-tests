@@ -335,6 +335,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5025729_c3b2db02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-23T18:20:47Z",
+      "side": 1,
+      "message": "Done. Please take a look and if it\u0027s good then I will CR+2",
+      "parentUuid": "8708fa69_2668319d",
+      "range": {
+        "startLine": 56,
+        "startChar": 86,
+        "endLine": 56,
+        "endChar": 102
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70acebd7_fb8e385f",
