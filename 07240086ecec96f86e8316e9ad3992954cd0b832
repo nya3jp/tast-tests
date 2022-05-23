@@ -45,6 +45,30 @@
       },
       "revId": "07240086ecec96f86e8316e9ad3992954cd0b832",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad449b2a_6ab43140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/vault_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-23T22:29:23Z",
+      "side": 1,
+      "message": "It is about sequencing. Since having multiples doesn\u0027t hurt, being explicit is better imo, but open to opinions.",
+      "parentUuid": "bf0c3314_56c4a98f",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "07240086ecec96f86e8316e9ad3992954cd0b832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
