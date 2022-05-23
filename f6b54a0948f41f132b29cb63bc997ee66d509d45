@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "774a9d21_5d703104",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-23T09:53:56Z",
+      "side": 1,
+      "message": "I did not find anywhere `WifiTDLS` is defined.",
+      "parentUuid": "eb647a03_9a13e987",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12bd66af_61d23352",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 7
