@@ -723,6 +723,15 @@ func checkAppManagementSettingToggleState(ctx context.Context, tconn *chrome.Tes
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+func openLegacyWallpaperPicker(ui *uiauto.Context) uiauto.Action {
+	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
+	return ui.RetryUntil(uiauto.Combine("open wallpaper picker",
+		ui.LeftClick(nodewith.HasClass("WallpaperView")),
+		ui.RightClick(nodewith.HasClass("WallpaperView")),
+		ui.WithInterval(300*time.Millisecond).LeftClickUntil(setWallpaperMenu, ui.Gone(setWallpaperMenu))),
+		ui.Exists(nodewith.NameContaining("Wallpaper").Role(role.Window).First()))
+}
+
 // SetSolidWhiteWallpaper sets the wallpaper to the solid white.
 func SetSolidWhiteWallpaper(ctx context.Context, ui *uiauto.Context) error {
 	const (
@@ -737,7 +746,11 @@ func SetSolidWhiteWallpaper(ctx context.Context, ui *uiauto.Context) error {
 	defer mew.Close()
 
 	if err := wallpaper.OpenWallpaperPicker(ui)(ctx); err != nil {
-		return errors.Wrap(err, "failed to open wallpaper picker")
+		// wallpaper.OpenWallpaperPicker currently doesn't support devices without Personalization Hub enabled, so try to open legacy one if it fails.
+		// TODO(b/233546001): Remove this workaround when Personalization Hub gets enabled by default.
+		if err := openLegacyWallpaperPicker(ui)(ctx); err != nil {
+			return errors.Wrap(err, "failed to open wallpaper picker")
+		}
 	}
 	if err := wallpaper.SelectCollection(ui, constants.SolidColorsCollection)(ctx); err != nil {
 		return errors.Wrap(err, "failed to select wallpaper collection")
