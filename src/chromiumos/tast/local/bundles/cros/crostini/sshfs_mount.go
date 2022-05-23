@@ -23,7 +23,8 @@ func init() {
 		Func:         SSHFSMount,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks crostini SSHFS mount",
-		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
+		// TODO: ping joel
+		Contacts:     []string{"joelhockey@chromium.org", "clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

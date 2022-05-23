@@ -35,7 +35,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInForCrostini",
 		Desc:     "Logged into a session",
-		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts: []string{"clumptini+oncall@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			opts := generateChromeOpts(s)
 			// Enable ARC++ if it is supported. We do this on every
@@ -60,7 +60,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInWithGaiaForCrostini",
 		Desc:     "Logged into a session with Gaia user",
-		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts: []string{"jinrongwu@google.com", "clumptini+oncall@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			opts := generateChromeOpts(s)
 			if arc.Supported() {
@@ -81,7 +81,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInForCrostiniWithLacros",
 		Desc:     "Logged into a session and enable Lacros",
-		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts: []string{"jinrongwu@google.com", "clumptini+oncall@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			opts := generateChromeOpts(s)
 			if arc.Supported() {
@@ -102,7 +102,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBuster",
 		Desc:            "Install Crostini with Buster",
-		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:        []string{"jinrongwu@google.com", "clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBuster},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
@@ -119,7 +119,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBullseye",
 		Desc:            "Install Crostini with Bullseye",
-		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:        []string{"jinrongwu@google.com", "clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
@@ -133,7 +133,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBusterGaia",
 		Desc:            "Install Crostini with Buster in Chrome logged in with Gaia",
-		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:        []string{"jinrongwu@google.com", "clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBuster},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
@@ -147,7 +147,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBullseyeGaia",
 		Desc:            "Install Crostini with Bullseye in Chrome logged in with Gaia",
-		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:        []string{"jinrongwu@google.com", "clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
@@ -161,7 +161,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBusterLargeContainer",
 		Desc:            "Install Crostini with Bullseye in large container with apps installed",
-		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:        []string{"jinrongwu@google.com", "clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBusterLC},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
@@ -175,7 +175,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBullseyeWithLacros",
 		Desc:            "Install Crostini with Bullseye and enable Lacros",
-		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:        []string{"jinrongwu@google.com", "clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
@@ -189,7 +189,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInForCrostiniLxdNext",
 		Desc:     "Logged into a session (with LXD 4.0)",
-		Contacts: []string{"sidereal@google.com", "cros-containers-dev@google.com"},
+		Contacts: []string{"sidereal@google.com", "clumptini+oncall@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			opts := generateChromeOpts(s)
 			opts = append(opts, chrome.EnableFeatures("CrostiniUseLxd4"))
@@ -203,7 +203,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBullseyeWithLxdNext",
 		Desc:            "Install Crostini with Bullseye and LXD 4.0",
-		Contacts:        []string{"sidereal@google.com", "cros-containers-dev@google.com"},
+		Contacts:        []string{"sidereal@google.com", "clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
 		SetUpTimeout:    installationTimeout,
 		ResetTimeout:    checkContainerTimeout,

@@ -27,7 +27,7 @@ func init() {
 		Func:         HomeDirectoryCreateFile,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test creating a file/folder in Linux files and container using a pre-built crostini image",
-		Contacts:     []string{"jinrongwu@chromium.org"},
+		Contacts:     []string{"clumptini+oncall@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

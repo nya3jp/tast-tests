@@ -17,7 +17,7 @@ func init() {
 		Func:         Basic,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests basic Crostini startup only (where crostini was shipped with the build)",
-		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{

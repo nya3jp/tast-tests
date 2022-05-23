@@ -20,7 +20,7 @@ func init() {
 		Func:         GPUEnabled,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that Crostini starts with the correct GPU device depending on whether the GPU flag is set or not",
-		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host", "crosvm_gpu"},
 		Params: []testing.Param{

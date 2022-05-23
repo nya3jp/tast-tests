@@ -21,7 +21,8 @@ func init() {
 		Func:         LaunchTerminal,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Executes the x-terminal-emulator alternative in the container which should then cause Chrome to open the Terminal extension",
-		Contacts:     []string{"davidmunro@google.com", "cros-containers-dev@google.com"},
+		// TODO: ping owners
+		Contacts:     []string{"davidmunro@google.com", "clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
