@@ -255,6 +255,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aa28117_b08540d6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T19:46:12Z",
+      "side": 1,
+      "message": "The overwriting can happen for the fixture debug logs since it uses the same directory for the logs during start and close (I believe, have not confirmed). That was just an added benefit though, my primary goal was to keep the natural order of the filenames consistent with time so they were easier to read next to each other.\n\nI\u0027ve refactored this to make it very clear how the filename format is being created and also adopted the same condensed timestamp format that tast is using in other places already.",
+      "parentUuid": "c4cc26a0_66f82260",
+      "range": {
+        "startLine": 99,
+        "startChar": 80,
+        "endLine": 99,
+        "endChar": 81
+      },
+      "revId": "ab35432fa1dcfd6ddcf6736c13235238221aaaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8cb3985_7fdb26ec",
