@@ -39,6 +39,30 @@
       },
       "revId": "94eb78f024c25c6e41c9b604efe68683cd62ead3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d984e28_85cb77f3",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-05-23T00:52:20Z",
+      "side": 1,
+      "message": "Oh cool, didn\u0027t know we could do that. Let me update it.",
+      "parentUuid": "6a381e70_1430c6f9",
+      "range": {
+        "startLine": 235,
+        "startChar": 33,
+        "endLine": 235,
+        "endChar": 98
+      },
+      "revId": "94eb78f024c25c6e41c9b604efe68683cd62ead3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
