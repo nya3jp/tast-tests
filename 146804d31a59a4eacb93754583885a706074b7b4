@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "895031d5_a474033d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T19:47:19Z",
+      "side": 1,
+      "message": "This isn\u0027t guaranteed because you can create as many veth pairs as you want to and each time the name suffix is incremented by one. However, since OpenWrt controls its own incrementation for the peer based on current existing peers, you can get them out of sync and also have more than veth0/1. \n\nExample valid scenario:\nvethA5 -\u003e veth0\nvethA6 -\u003e veth1\nvethA7 -\u003e veth2\n\nremove vethA6\nadd vethA8\n\nvethA5 -\u003e veth0\nvethA7 -\u003e veth2\nvethA8 -\u003e veth1\n\nThis is why for OpenWrt we now lookup the peer iface name by checking the alias of the other veth end. Either way the test will have the correct name for each veth end and either can be used for removal.",
+      "parentUuid": "9a566962_ce1b727d",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eb22a25_4bdd663e",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-05-19T16:20:15Z",
       "side": 1,
       "message": "Can we specify these prefixes are only relevant for the legacy router if openwrt doesn\u0027t use these?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d98b1a_fd6d9336",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T19:47:19Z",
+      "side": 1,
+      "message": "I\u0027d like to keep it as this actually since this is router implementation independent. It\u0027s still actually passed to OpenWrt\u0027s `ip` implementation without any issue I just don\u0027t know why it doesn\u0027t stick. Who knows, maybe one day it will. Either way it\u0027s still used for both.",
+      "parentUuid": "7eb22a25_4bdd663e",
       "range": {
         "startLine": 28,
         "startChar": 1,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb51a7f_9b42bcea",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T19:47:19Z",
+      "side": 1,
+      "message": "Legacy refers to the legacy router controller implementation. There is one named legacy: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/router/legacy/\n\nIn this context I believe it is understandable enough as-is since it explicitly named legacy and is one of only three router controllers. This common package is for said router controllers.",
+      "parentUuid": "4d2afa7c_1572da9f",
+      "range": {
+        "startLine": 32,
+        "startChar": 53,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39e3fc81_fd254449",
@@ -134,6 +206,30 @@
       "writtenOn": "2022-05-20T05:28:04Z",
       "side": 1,
       "message": "nit: releases",
+      "range": {
+        "startLine": 718,
+        "startChar": 19,
+        "endLine": 718,
+        "endChar": 26
+      },
+      "revId": "146804d31a59a4eacb93754583885a706074b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6017bbe_2c872674",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-23T19:47:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e3fc81_fd254449",
       "range": {
         "startLine": 718,
         "startChar": 19,
