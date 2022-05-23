@@ -22,7 +22,7 @@ func init() {
 		Func:     RunTestsRemoteFixture,
 		Desc:     "Verifies that Tast can run remote fixtures",
 		Contacts: []string{"oka@chromium.org", "tast-owners@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
