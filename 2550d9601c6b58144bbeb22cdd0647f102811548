@@ -158,6 +158,30 @@
       },
       "revId": "2550d9601c6b58144bbeb22cdd0647f102811548",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1fcbd4b_77c28f7a",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-23T17:25:03Z",
+      "side": 1,
+      "message": "\u003e would we maybe be able to parse the output of a failed mtk_dram_tool run and check if it contains the string \"Error! Incompatible device!\" ?\n\nyes, that should work",
+      "parentUuid": "e6cd0b04_a01b4fde",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 12
+      },
+      "revId": "2550d9601c6b58144bbeb22cdd0647f102811548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
