@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801bb81b_7ae491cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-05-23T18:23:50Z",
+      "side": 1,
+      "message": "Use upstart.RestartJob https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/upstart/upstart.go;l\u003d185 (also can get rid of the sleep time in those cases)",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 143
+      },
+      "revId": "c68eef558bbdf842abd0a085cc2caa019651eb1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
