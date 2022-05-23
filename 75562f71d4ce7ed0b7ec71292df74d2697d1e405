@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22bb33c_641a8cff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-23T05:15:43Z",
+      "side": 1,
+      "message": "A better way is to log the errors in case they happen.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "75562f71d4ce7ed0b7ec71292df74d2697d1e405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
