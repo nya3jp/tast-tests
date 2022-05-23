@@ -68,6 +68,40 @@
       "message": "user_avatar_image.go LGTM for now.",
       "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "705557a4_c8a77c14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T17:11:00Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a80408f_2fe0f258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-23T17:11:00Z",
+      "side": 1,
+      "message": "nit: add a TODO with a bug to remove this fixture",
+      "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
