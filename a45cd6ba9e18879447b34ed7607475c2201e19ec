@@ -16,6 +16,24 @@
       "message": "It makes sense for platform.BootPerf to need a Lacros variant, but I don\u0027t know anything about the other test.",
       "revId": "a45cd6ba9e18879447b34ed7607475c2201e19ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b718b1_69062cd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2022-05-23T17:30:11Z",
+      "side": 1,
+      "message": "Then I\u0027ll change platform.BootPerf to LacrosVariantNeeded",
+      "parentUuid": "4fdd1b46_6c906b11",
+      "revId": "a45cd6ba9e18879447b34ed7607475c2201e19ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
