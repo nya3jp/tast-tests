@@ -22,6 +22,30 @@
       },
       "revId": "574e44feb46208acae11e0bb1f6b2e496c9407f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da91dd14_2f691902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_error_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-23T09:31:46Z",
+      "side": 1,
+      "message": "Done. I moved StartFromSignInScreen and CancelKioskLaunch to kiosk_mode.go.",
+      "parentUuid": "70b8a53a_45001166",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 64
+      },
+      "revId": "574e44feb46208acae11e0bb1f6b2e496c9407f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
