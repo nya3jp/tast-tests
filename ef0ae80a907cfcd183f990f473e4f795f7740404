@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ab876c_34779dc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-23T18:18:01Z",
+      "side": 1,
+      "message": "Please add comment on how the temperature threholds are set. Also, please run tast unit test: fast_build.sh -T\n\nThen, add \n\nTEST\u003dtast unit test passed \n\nto the commit log. Thanks.",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f760c34_7beb736f",
@@ -83,6 +100,24 @@
       "writtenOn": "2022-05-23T08:45:35Z",
       "side": 1,
       "message": "could you document how they are calculated, and how can we update this?\n\nseewaifu@, from infra maintenance perspective, could you share how we can maintain this kind of stuff in the future? Do you have some recommendation?",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71f9182_c4a064ae",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-23T18:18:01Z",
+      "side": 1,
+      "message": "I agree, author should mention how the number is based on so that we know how to maintain it in future.",
+      "parentUuid": "838a5c4c_1ecbe9ab",
       "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
