@@ -30,8 +30,7 @@ func init() {
 		Desc:         "Check that crashes inside the VM produce crash reports",
 		Contacts: []string{
 			// Crostini
-			"sidereal@google.com",
-			"cros-containers-dev@google.com",
+			"clumptini+oncall@google.com",
 			// Monitoring and forensics
 			"mutexlox@google.com",
 			"cros-telemetry@google.com",

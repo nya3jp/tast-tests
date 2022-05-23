@@ -19,7 +19,7 @@ func init() {
 		Func:         SharedFontFiles,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the hostOS font files are shared with the guestOS and they are accessible",
-		Contacts:     []string{"matterchen@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
