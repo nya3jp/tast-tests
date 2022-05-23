@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1720e33a_eab48d40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-23T07:01:32Z",
+      "side": 1,
+      "message": "https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1326398",
+      "parentUuid": "da6d15c5_3b674019",
+      "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfc7f78a_a4203607",
@@ -174,6 +192,24 @@
       "side": 1,
       "message": "How?",
       "parentUuid": "13c0dbf8_3508c382",
+      "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "137ee1c5_05b9f0ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-23T07:01:32Z",
+      "side": 1,
+      "message": "I\u0027m unable to reproduce this with my current setup, so let me drop this part from the CL. Will investigate later when I have a repro again.",
+      "parentUuid": "75260784_e9fd1ca3",
       "revId": "19df4e8ba63cee18f74d31b0ceab2044df98bda4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
