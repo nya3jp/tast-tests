@@ -16,6 +16,74 @@
       "message": "Thanks Renuga and Mohammad.",
       "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af806c43_a281139c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-23T00:27:57Z",
+      "side": 1,
+      "message": "can we name it differently so we have the possibility of adding more options if needed?\n\ne.g. \n\n```\ntype oobeArcTestOptions struct {\n    consolidatedConsentEnabled bool\n}\n```",
+      "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1047cf1f_03022b13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-23T00:27:57Z",
+      "side": 1,
+      "message": "Can we instantiate the options array and append the enabled/disabled option based on the flag instead of duplicating the chrome.New call?\n\nExample of appending options https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crostini/pre.go;l\u003d367",
+      "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef11258c_70b4c271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-23T00:27:57Z",
+      "side": 1,
+      "message": "Can we factor out the body into a method and call it here for readability?",
+      "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d002748_d2c1849e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-23T00:27:57Z",
+      "side": 1,
+      "message": "Why is this not launched when consolidated consent is enabled? This seems like a bug.",
+      "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
