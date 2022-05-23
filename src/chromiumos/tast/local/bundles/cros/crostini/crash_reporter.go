@@ -31,7 +31,8 @@ func init() {
 		Contacts: []string{
 			// Crostini
 			"sidereal@google.com",
-			"cros-containers-dev@google.com",
+			// TODO: does sidereal want to stay contact?
+			"clumptini+oncall@google.com",
 			// Monitoring and forensics
 			"mutexlox@google.com",
 			"cros-telemetry@google.com",

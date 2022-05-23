@@ -19,7 +19,8 @@ func init() {
 		Func:         Notify,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests crostini notification integration",
-		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
+		// TODO: ping sidereal
+		Contacts:     []string{"sidereal@google.com", "clumptini+oncall@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{

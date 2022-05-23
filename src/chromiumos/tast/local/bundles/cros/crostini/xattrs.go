@@ -22,7 +22,8 @@ func init() {
 		Func:         Xattrs,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test that the container image has extended attributes set",
-		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
+		// TODO: ping
+		Contacts:     []string{"sidereal@google.com", "clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

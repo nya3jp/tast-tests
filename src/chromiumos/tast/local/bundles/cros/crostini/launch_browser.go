@@ -22,7 +22,8 @@ func init() {
 		Func:         LaunchBrowser,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Opens a browser window on the host from the container, using several common approaches (/etc/alternatives, $BROWSER, and xdg-open)",
-		Contacts:     []string{"davidmunro@google.com", "cros-containers-dev@google.com"},
+		// TODO: davidmunro want to stay owner?
+		Contacts:     []string{"davidmunro@google.com", "clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
