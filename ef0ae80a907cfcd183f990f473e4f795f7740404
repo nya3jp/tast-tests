@@ -156,6 +156,24 @@
       "parentUuid": "e71f9182_c4a064ae",
       "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7928b26a_40fab0d8",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-24T16:45:28Z",
+      "side": 1,
+      "message": "Then you should mention go/tast-perf-test-temperature in this comment. People who need to undertstand this code in future will probably look the comment in the code instead of the CL that creates the code. Please mentioned go/tast-perf-test-temperature in the comment inside the code.  Thanks.",
+      "parentUuid": "79d07b8f_0d353c80",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
