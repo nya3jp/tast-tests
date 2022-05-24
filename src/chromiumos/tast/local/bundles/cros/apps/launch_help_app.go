@@ -26,7 +26,7 @@ type testParameters struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchHelpApp,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Help app should be launched after OOBE",
 		Contacts: []string{
 			"showoff-eng@google.com",
@@ -100,6 +100,27 @@ func init() {
 					oobe:       false,
 				},
 				Fixture: "chromeLoggedInForEA",
+			}, {
+				Name:              "clamshell_logged_in_stable_lacros",
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				Fixture:           "lacrosForEA",
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				Val: testParameters{
+					tabletMode: false,
+					oobe:       false,
+				},
+			},
+			{
+				Name:              "tablet_logged_in_stable_lacros",
+				Fixture:           "lacrosForEA",
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
+				Val: testParameters{
+					tabletMode: true,
+					oobe:       false,
+				},
 			},
 		}})
 }
