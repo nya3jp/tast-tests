@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb987e5e_76a8ee06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-24T10:52:59Z",
+      "side": 1,
+      "message": "Gabor, can you first take a look at this? I want to somehow check oobe_config_save can run during shutdown without any issues, which may include shill or chrome not being up anymore, but could also be something else. Still, checking like this is probably not a good idea. What do you think?",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 212
+      },
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
