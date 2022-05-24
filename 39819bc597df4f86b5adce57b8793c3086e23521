@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85be0d50_215a297c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-05-24T03:01:15Z",
+      "side": 1,
+      "message": "how about our team instead?",
+      "range": {
+        "startLine": 32,
+        "startChar": 49,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705ee05b_1b51c619",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-05-24T03:01:15Z",
+      "side": 1,
+      "message": "We want to be sure this test doesn\u0027t wear out DUT flash so probably should run only when we want it to?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86d67a57_74e920c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-05-24T03:01:15Z",
+      "side": 1,
+      "message": "also depends on \"flashrom_tester\"",
+      "range": {
+        "startLine": 34,
+        "startChar": 48,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "165fd398_c618c220",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
         "patchSetId": 3
