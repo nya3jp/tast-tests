@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -36,6 +37,7 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
+	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
 )
 
@@ -304,13 +306,11 @@ func init() {
 //   - Record and save metrics.
 func MeetCUJ(ctx context.Context, s *testing.State) {
 	const (
-		timeout                 = 10 * time.Second
-		defaultDocsURL          = "https://docs.new/"
-		jamboardURL             = "https://jamboard.google.com"
-		notes                   = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-		newTabTitle             = "New Tab"
-		decodingCodecMetricName = "meetcuj_decoding_codec"
-		encodingCodecMetricName = "meetcuj_encoding_codec"
+		timeout        = 10 * time.Second
+		defaultDocsURL = "https://docs.new/"
+		jamboardURL    = "https://jamboard.google.com"
+		notes          = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		newTabTitle    = "New Tab"
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -886,17 +886,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				if err := os.WriteFile(filepath.Join(s.OutDir(), "webrtc-internals.json"), dump, 0644); err != nil {
 					s.Error("Failed to write WebRTC internals dump to test results folder: ", err)
 				}
+				if err := reportWebRTCInternals(pv, dump, meet.num); err != nil {
+					s.Error("Failed to report info from WebRTC internals dump to performance metrics: ", err)
+				}
 			}
-		}
-
-		if err := webRTCUI.WaitUntilExists(videoStream)(ctx); err != nil {
-			s.Error("Failed to wait for video stream info: ", err)
-		}
-		if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
-			s.Errorf("Failed to report %s: %v", decodingCodecMetricName, err)
-		}
-		if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
-			s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
 		}
 	}
 
@@ -1065,39 +1058,164 @@ func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto
 	return filepath.Join(downloadsPath, notification.Message), nil
 }
 
-// reportCodec looks for node names containing given descriptions of a vp8 video stream
-// and a vp9 video stream, and reports the detected video codec to a performance metric.
-func reportCodec(ctx context.Context, ui *uiauto.Context, pv *perf.Values, metricName, vp8Description, vp9Description string) error {
-	foundVP8, err := ui.IsNodeFound(ctx, nodewith.NameContaining(vp8Description).First())
-	if err != nil {
-		return errors.Wrap(err, "failed to check for vp8 video stream")
+// reportWebRTCInternals reports info from a WebRTC internals dump to performance metrics.
+func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int) error {
+	var webRTC webrtcinternals.Dump
+	if err := json.Unmarshal(dump, &webRTC); err != nil {
+		return errors.Wrap(err, "failed to unmarshal WebRTC internals dump")
+	}
+	if len(webRTC.PeerConnections) != 1 {
+		return errors.Errorf("unexpected number of peer connections: got %d; want 1", len(webRTC.PeerConnections))
+	}
+	var peerConn webrtcinternals.PeerConnection
+	for _, pc := range webRTC.PeerConnections {
+		peerConn = pc
 	}
 
-	foundVP9, err := ui.IsNodeFound(ctx, nodewith.NameContaining(vp9Description).First())
-	if err != nil {
-		return errors.Wrap(err, "failed to check for vp9 video stream")
+	videoStreamRegexp := regexp.MustCompile(`^RTC(Inbound|Outbound)RTPVideoStream_(\d+)-(.+)$`)
+	codecDescription := make(map[string]string)
+	unit := map[string]string{
+		"frameWidth":      "px",
+		"frameHeight":     "px",
+		"framesPerSecond": "fps",
 	}
 
-	if !foundVP8 && !foundVP9 {
-		return errors.New("found neither a vp8 video stream nor a vp9 video stream")
+	type timeSeries []float64
+	type indexByStatName map[string]timeSeries
+	type indexByStreamID map[string]indexByStatName
+	type indexByDirection map[string]indexByStreamID
+	byDirection := make(indexByDirection)
+
+	for fullName, statistic := range peerConn.Stats {
+		matches := videoStreamRegexp.FindStringSubmatch(fullName)
+		if len(matches) == 0 {
+			continue
+		}
+		direction := matches[1]
+		streamID := matches[2]
+		statName := matches[3]
+
+		if statName == "[codec]" {
+			if len(statistic.Values) == 0 {
+				return errors.Errorf("no values for %q", fullName)
+			}
+			firstCodec := statistic.Values[0]
+			for _, value := range statistic.Values {
+				if firstCodec != value {
+					return errors.Errorf("found time-varying codec for %q: %v", fullName, statistic.Values)
+				}
+			}
+			description, ok := firstCodec.(string)
+			if !ok {
+				return errors.Errorf("expected %q values to be strings; got %v", fullName, statistic.Values)
+			}
+
+			previousDescription, ok := codecDescription[direction]
+			if !ok {
+				codecDescription[direction] = description
+			} else if previousDescription != description {
+				return errors.Errorf("found differing %s video stream codecs: %s versus %s", direction, previousDescription, description)
+			}
+
+			continue
+		}
+
+		if _, ok := unit[statName]; !ok {
+			continue
+		}
+
+		var report timeSeries
+		for _, value := range statistic.Values {
+			metric, ok := value.(float64)
+			if !ok {
+				return errors.Errorf("expected %q values to be numerical; got %v", fullName, statistic.Values)
+			}
+			report = append(report, metric)
+		}
+
+		byStreamID, ok := byDirection[direction]
+		if !ok {
+			byStreamID = make(indexByStreamID)
+			byDirection[direction] = byStreamID
+		}
+		byStatName, ok := byStreamID[streamID]
+		if !ok {
+			byStatName = make(indexByStatName)
+			byStreamID[streamID] = byStatName
+		}
+		byStatName[statName] = report
 	}
 
-	if foundVP8 && foundVP9 {
-		return errors.New("found both a vp8 video stream and a vp9 video stream")
-	}
+	codec := make(map[string]videoCodecReport)
+	for direction, expectedCount := range map[string]int{
+		"Inbound":  numBots,
+		"Outbound": 1,
+	} {
+		description, ok := codecDescription[direction]
+		if !ok {
+			return errors.Errorf("no %s video stream [codec] statistics", direction)
+		}
+		if strings.HasPrefix(description, "VP8") {
+			codec[direction] = vp8
+		} else if strings.HasPrefix(description, "VP9") {
+			codec[direction] = vp9
+		} else {
+			return errors.Errorf("unrecognized %s video stream codec: %q", direction, description)
+		}
 
-	var codec videoCodecReport
-	if foundVP8 {
-		codec = vp8
-	} else if foundVP9 {
-		codec = vp9
+		byStreamID, ok := byDirection[direction]
+		if !ok {
+			return errors.Errorf("missing %s video stream statistics", direction)
+		}
+		if len(byStreamID) != expectedCount {
+			return errors.Errorf("unexpected number of %s video streams: got %d; want %d", direction, len(byStreamID), expectedCount)
+		}
+		for streamID, byStatName := range byStreamID {
+			for statName := range unit {
+				if _, ok := byStatName[statName]; !ok {
+					return errors.Errorf("missing %s statistic for %s video stream %s", statName, direction, streamID)
+				}
+			}
+		}
 	}
 
 	pv.Set(perf.Metric{
-		Name:      metricName,
+		Name:      "meetcuj_decoding_codec",
 		Unit:      "unitless",
 		Direction: perf.BiggerIsBetter,
-	}, float64(codec))
+	}, float64(codec["Inbound"]))
+	pv.Set(perf.Metric{
+		Name:      "meetcuj_encoding_codec",
+		Unit:      "unitless",
+		Direction: perf.BiggerIsBetter,
+	}, float64(codec["Outbound"]))
+
+	var whichBot uint
+	for _, byStatName := range byDirection["Inbound"] {
+		for statName, report := range byStatName {
+			pv.Set(perf.Metric{
+				Name:      "WebRTCInternals.Video.Inbound." + statName,
+				Variant:   fmt.Sprintf("bot%02d", whichBot),
+				Unit:      unit[statName],
+				Direction: perf.BiggerIsBetter,
+				Multiple:  true,
+			}, report...)
+		}
+		whichBot++
+	}
+
+	var outboundByStatName indexByStatName
+	for _, byStatName := range byDirection["Outbound"] {
+		outboundByStatName = byStatName
+	}
+	for statName, report := range outboundByStatName {
+		pv.Set(perf.Metric{
+			Name:      "WebRTCInternals.Video.Outbound." + statName,
+			Unit:      unit[statName],
+			Direction: perf.BiggerIsBetter,
+			Multiple:  true,
+		}, report...)
+	}
 
 	return nil
 }
