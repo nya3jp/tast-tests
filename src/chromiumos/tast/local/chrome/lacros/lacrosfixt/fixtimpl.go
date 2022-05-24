@@ -203,4 +203,19 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	// lacrosForEA is a fixture to bring up Lacros as a primary browser
+	// from the rootfs partition by default.
+	// It pre-installs essential apps.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosForEA",
+		Desc:     "Logged into a user session with Lacros for essential apps",
+		Contacts: []string{"alvinjia@google.com", "shengjun@chromium.org"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(KeepAlive(true), Mode(lacros.LacrosPrimary), EnableWebAppInstall()).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
