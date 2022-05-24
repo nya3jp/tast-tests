@@ -3,6 +3,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30a1f916_743cf4d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:59:58Z",
+      "side": 1,
+      "message": "Can you check what happens if you remove this?",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 39
+      },
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b75c709_d9eda499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:59:58Z",
+      "side": 1,
+      "message": "Please add some error handling here.\nYou can use combine if you only want to add it once.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f3c803_62bcf2c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:59:58Z",
+      "side": 1,
+      "message": "Can you check here if the file still exists for some reason (as you skipped the error handling in the `rm` step)?",
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e17b69_66cc4629",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:59:58Z",
+      "side": 1,
+      "message": "Is the built in timeout for this suitable for you?",
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb987e5e_76a8ee06",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
         "patchSetId": 1
@@ -19,6 +99,53 @@
         "startChar": 2,
         "endLine": 80,
         "endChar": 212
+      },
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18236998_03f37e16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:59:58Z",
+      "side": 1,
+      "message": "I don\u0027t know how it can be detected if there is an error, so I don\u0027t know what should be checked.",
+      "parentUuid": "cb987e5e_76a8ee06",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 212
+      },
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba5eea2_2698a66c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:59:58Z",
+      "side": 1,
+      "message": "This should be a little more descriptive :)",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 17
       },
       "revId": "737529c7611320065ed34c867a7c9007467a7408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
