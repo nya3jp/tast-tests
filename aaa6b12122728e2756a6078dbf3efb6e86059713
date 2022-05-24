@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c5b173_7b0b435d",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-24T19:59:19Z",
+      "side": 1,
+      "message": "I looks like using the issue happened after locking and unlocking screen using session manager (Sample codes to reproduce the issue - https://paste.googleplex.com/5366387133382656)\nAfter I changed to use functions in `src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go` to lock and unlock screen and the issue seemed resolved.",
+      "parentUuid": "864fe487_601fbada",
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef7db8f4_0cffa282",
