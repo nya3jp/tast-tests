@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7387121_ec1c12fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-24T16:42:44Z",
+      "side": 1,
+      "message": "Please add a google contact to the contact list if possible. Also, please ask a domain expert to give you a +2. Thanks.",
+      "revId": "23a573c5acbc2b009fbd68647df1662ad6a67e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac297ad_7da16d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-24T16:42:44Z",
+      "side": 1,
+      "message": "Do you have a google contact? If so, please add one here. thanks.",
+      "revId": "23a573c5acbc2b009fbd68647df1662ad6a67e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
