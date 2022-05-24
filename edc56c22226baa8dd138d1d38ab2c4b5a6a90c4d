@@ -16,6 +16,24 @@
       "message": "i.e. can\u0027t you just call `vkbCtx.HideVirtualKeyboard()(cleanupCtx)` directly here? (Also, is it OK to drop errors?)",
       "revId": "edc56c22226baa8dd138d1d38ab2c4b5a6a90c4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd94778b_8d8eee7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/onscreen_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T17:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4df703f_363b3c66",
+      "revId": "edc56c22226baa8dd138d1d38ab2c4b5a6a90c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
