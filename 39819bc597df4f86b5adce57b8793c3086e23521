@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "165fd398_c618c220",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-05-24T01:05:55Z",
+      "side": 1,
+      "message": "is it useful to print or store the flashrom_tester outputs? it seems to be discarded.",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "106c9804_6cb7d58b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-05-24T01:05:55Z",
+      "side": 1,
+      "message": "maybe name these \u0027targetWpState\u0027, would save me 5 seconds of comprehension.",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb4ebae_767afe49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-05-24T01:05:55Z",
+      "side": 1,
+      "message": "expect",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
