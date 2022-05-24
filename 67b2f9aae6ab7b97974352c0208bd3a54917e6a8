@@ -315,6 +315,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0a23d05_04a60b7d",
+        "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-24T07:07:57Z",
+      "side": 1,
+      "message": "Just the two functions in the other CL. You use PowerOntoDUT in the USBDeviceFunctionality test, so it is appropriate to change it in this CL.\n\nIn general, the best practice is to keep logically separate changes in different CLs (even if those separate changes touch the same file).\n\nDepending on the scenario, you can:\n- Keep the CLs totally separate and let git merge the changes. (Usually seamless if changes do not conflict.)\n- Stack the changes one ontop of the other, as you have here.",
+      "parentUuid": "29565948_9cc2d033",
+      "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bb0bd16_46e425b3",
         "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
         "patchSetId": 2
