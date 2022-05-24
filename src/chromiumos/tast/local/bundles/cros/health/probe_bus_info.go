@@ -30,8 +30,6 @@ type busInfoTestParams struct {
 	checkThunderbolt bool
 	// Workaround for b/200837194 to skip checking PCI ProgIf field.
 	checkProgIf bool
-	// Whether to check usb firmware versions.
-	checkUSBFirmwareVersion bool
 }
 
 func init() {
@@ -50,17 +48,15 @@ func init() {
 		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
 			Val: busInfoTestParams{
-				checkThunderbolt:        false,
-				checkProgIf:             false,
-				checkUSBFirmwareVersion: false,
+				checkThunderbolt: false,
+				checkProgIf:      false,
 			},
 		}, {
 			Name:      "thunderbolt",
 			ExtraAttr: []string{"informational"},
 			Val: busInfoTestParams{
-				checkThunderbolt:        true,
-				checkProgIf:             false,
-				checkUSBFirmwareVersion: false,
+				checkThunderbolt: true,
+				checkProgIf:      false,
 			},
 			ExtraData:         []string{"testcert.p12"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
@@ -69,18 +65,8 @@ func init() {
 			Name:      "progif",
 			ExtraAttr: []string{"informational"},
 			Val: busInfoTestParams{
-				checkThunderbolt:        false,
-				checkProgIf:             true,
-				checkUSBFirmwareVersion: false,
-			},
-		}, {
-			// TODO(b/231667630): Remove this after the subtest is stable.
-			Name:      "usb_firmware_version",
-			ExtraAttr: []string{"informational"},
-			Val: busInfoTestParams{
-				checkThunderbolt:        false,
-				checkProgIf:             false,
-				checkUSBFirmwareVersion: true,
+				checkThunderbolt: false,
+				checkProgIf:      true,
 			},
 		}},
 	})
@@ -185,7 +171,7 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 	if err := validatePCIDevices(ctx, pciDevs, testParam.checkProgIf); err != nil {
 		s.Fatal("PCI validation failed: ", err)
 	}
-	if err := validateUSBDevices(ctx, usbDevs, testParam.checkUSBFirmwareVersion); err != nil {
+	if err := validateUSBDevices(ctx, usbDevs); err != nil {
 		s.Fatal("USB validation failed: ", err)
 	}
 
@@ -230,7 +216,7 @@ func validatePCIDevices(ctx context.Context, devs []busDevice, checkProgIf bool)
 
 // validateUSBDevices validates the USB devices with the expected USB
 // devices extracted by the "usb-devices" and the "lsusb" commands.
-func validateUSBDevices(ctx context.Context, devs []busDevice, checkUSBFirmwareVersion bool) error {
+func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 	var got []usb.Device
 	for _, d := range devs {
 		udIn := d.BusInfo.USBBusInfo
@@ -259,20 +245,12 @@ func validateUSBDevices(ctx context.Context, devs []busDevice, checkUSBFirmwareV
 				VersionFormat: udIn.FwupdFirmwareVersionInfo.VersionFormat,
 			}
 		}
-		if !checkUSBFirmwareVersion {
-			udOut.FwupdFirmwareVersionInfo = nil
-		}
 		got = append(got, udOut)
 	}
 	usb.Sort(got)
 	exp, err := usb.ExpectedDevices(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected devices")
-	}
-	if !checkUSBFirmwareVersion {
-		for i := range exp {
-			exp[i].FwupdFirmwareVersionInfo = nil
-		}
 	}
 	if d := cmp.Diff(exp, got); d != "" {
 		return errors.Errorf("unexpected USB device data, (-expected + got): %s", d)
