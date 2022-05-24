@@ -22,6 +22,8 @@ const (
 	TestFlagDefault = "default"
 	// TestFlagSurfaceless is used to select the surfaceless replay mode
 	TestFlagSurfaceless = "surfaceless"
+	// TestFlagD3Dtrace is used to run D3D traces under proton.
+	TestFlagD3Dtrace = "ProtonD3D"
 )
 
 // VersionInfo is used as a container for the protocol version information
