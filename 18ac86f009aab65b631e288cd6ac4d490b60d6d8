@@ -22,6 +22,30 @@
       },
       "revId": "18ac86f009aab65b631e288cd6ac4d490b60d6d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "726569f5_fdaa53bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-24T23:50:46Z",
+      "side": 1,
+      "message": "I don\u0027t think so. We could add it to lacrosinfo perhaps.\nBut have you considered making use of apps.PrimaryBrowser() here?",
+      "parentUuid": "c1d7f23a_8c67cf9a",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 72
+      },
+      "revId": "18ac86f009aab65b631e288cd6ac4d490b60d6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
