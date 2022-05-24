@@ -67,7 +67,7 @@ func OpenPersonalizationHubFromLauncher(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("open personalization hub by searching in launcher",
 		personalization.SearchForAppInLauncher("personalization hub", "Personalization", kb, ui),
-		ui.Exists(nodewith.Role(role.Window).NameContaining("Personalization").First()),
+		ui.Exists(nodewith.Role(role.Window).NameContaining("Wallpaper & style").First()),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open personalization hub from launcher: ", err)
 	}

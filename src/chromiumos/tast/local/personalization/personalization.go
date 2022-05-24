@@ -19,11 +19,11 @@ import (
 
 // OpenPersonalizationHub returns an action to open the personalization app.
 func OpenPersonalizationHub(ui *uiauto.Context) uiauto.Action {
-	setPersonalizationMenu := nodewith.Name("Personalize").Role(role.MenuItem)
+	setPersonalizationMenu := nodewith.NameContaining("Set wallpaper").Role(role.MenuItem)
 	return ui.RetryUntil(uiauto.Combine("open personalization hub",
 		ui.MouseClickAtLocation(1, coords.Point{X: rand.Intn(200), Y: rand.Intn(200)}), // right click a random pixel
 		ui.WithInterval(300*time.Millisecond).LeftClickUntil(setPersonalizationMenu, ui.Gone(setPersonalizationMenu))),
-		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()))
+		ui.Exists(nodewith.NameContaining("Wallpaper & style").Role(role.Window).First()))
 }
 
 // OpenWallpaperSubpage returns an action to open the wallpaper subpage.
@@ -83,7 +83,7 @@ func NavigateHome(ui *uiauto.Context) uiauto.Action {
 	return uiauto.Combine("click home button",
 		ui.WaitUntilExists(homeButton),
 		ui.LeftClick(homeButton),
-		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()))
+		ui.Exists(nodewith.NameContaining("Wallpaper & style").Role(role.Window).First()))
 }
 
 // NavigateBreadcrumb returns an action to navigate to a desired page using breadcrumb.

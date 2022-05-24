@@ -60,8 +60,8 @@ func OpenPersonalizationHubFromSettings(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("open personalization hub from settings",
 		personalization.SearchForAppInLauncher("settings", "Settings, Installed App", kb, ui),
 		ui.LeftClick(nodewith.Role(role.Link).NameContaining("Personalization").HasClass("item")),
-		ui.LeftClick(nodewith.Role(role.Link).NameContaining("Personalize your device").First()),
-		ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining("Personalization").First()),
+		ui.LeftClick(nodewith.Role(role.Link).NameContaining("Set your wallpaper").First()),
+		ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining("Wallpaper & style").First()),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open personalization hub from settings: ", err)
 	}
@@ -71,7 +71,7 @@ func OpenPersonalizationHubFromSettings(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(nodewith.Role(role.TextField).HasClass("Textfield")),
 		kb.TypeAction("personalization"),
 		kb.AccelAction("Enter"),
-		ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining("Personalization").First()),
+		ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining("Wallpaper & style").First()),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open personalization hub by searching in settings: ", err)
 	}

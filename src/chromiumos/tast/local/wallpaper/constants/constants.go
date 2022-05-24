@@ -39,6 +39,9 @@ var RefreshButton = nodewith.Name("Refresh the current wallpaper image").Role(ro
 // SolidColorsCollection is the name of a wallpaper collection of solid colors.
 const SolidColorsCollection = "Solid colors"
 
+// ElementCollection is the name of a wallpaper collection of solid colors.
+const ElementCollection = "Element"
+
 // YellowWallpaperName is the name of a solid yellow wallpaper in the solid colors collection.
 const YellowWallpaperName = "Yellow"
 
