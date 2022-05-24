@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "046e82d2_bd43efb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-24T22:54:08Z",
+      "side": 1,
+      "message": "+tast-owners\n\nPlease review.",
+      "revId": "927ea89a6b3b5d3df4c8ea93b316a4a9f1429b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "885c7ac8_99a5040e",
@@ -48,6 +65,24 @@
       "writtenOn": "2022-05-23T16:19:59Z",
       "side": 1,
       "message": "This UMA is removed in M98.\nhttps://source.chromium.org/chromium/chromium/src/+/main:tools/metrics/histograms/metadata/others/histograms.xml;drc\u003d45eed77e0a91aca0c53d4ccd0eb95468f3d94bd8;l\u003d8071\n\nLet\u0027s replace it with the new ones:\nhttps://source.chromium.org/chromium/chromium/src/+/main:tools/metrics/histograms/metadata/browser/histograms.xml;drc\u003d48860a401e31363b0ca347b698c8fc1fd5c166a2;l\u003d565\nhttps://source.chromium.org/chromium/chromium/src/+/main:tools/metrics/histograms/metadata/browser/histograms.xml;drc\u003d48860a401e31363b0ca347b698c8fc1fd5c166a2;l\u003d25\n\nI am okay to do this in a follow-up to keep this CL just moving code around.",
+      "revId": "927ea89a6b3b5d3df4c8ea93b316a4a9f1429b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023bef51_a63e0ab3",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-24T22:54:08Z",
+      "side": 1,
+      "message": "Yes, let me do it in a followup CL.",
+      "parentUuid": "885c7ac8_99a5040e",
       "revId": "927ea89a6b3b5d3df4c8ea93b316a4a9f1429b95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +118,24 @@
       "side": 1,
       "message": "It\u0027s okay to leave this in Browser. I think the test case can decide to collect the whole BrowserCommonMetricConfigs from Ash-Chrome if the test involves browser based apps, like system settings, CCA, etc.",
       "parentUuid": "7252d87f_f9e6456e",
+      "revId": "927ea89a6b3b5d3df4c8ea93b316a4a9f1429b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e74fa4_4e13bc57",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-24T22:54:08Z",
+      "side": 1,
+      "message": "Yes. But we are looking forward implementing the \"metric is required\" flag that will wait for certain metrics if requested. I.e. tests will fail if metrics are not available on the given test connection.\n\nWe will discuss it later, but in general we want to collect metrics only when we expect them to be available.",
+      "parentUuid": "fa6be7cd_f759e54d",
       "revId": "927ea89a6b3b5d3df4c8ea93b316a4a9f1429b95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
