@@ -176,6 +176,24 @@
       "parentUuid": "75850110_e73ee81c",
       "revId": "7ac1a7a892dbe0f2613f5b67ce987d5f71e29264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "696bffa1_2f793783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_suggested_search_result.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-24T03:32:04Z",
+      "side": 1,
+      "message": "(Done)",
+      "parentUuid": "e277bf08_d5818264",
+      "revId": "7ac1a7a892dbe0f2613f5b67ce987d5f71e29264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
