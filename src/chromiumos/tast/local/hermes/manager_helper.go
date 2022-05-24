@@ -25,3 +25,20 @@ func GetHermesManager(ctx context.Context) (*Manager, error) {
 	}
 	return &Manager{obj}, nil
 }
+
+// GetNumEUICC returns the number of eUICC's on the device.
+func GetNumEUICC(ctx context.Context) (int, error) {
+	h, err := GetHermesManager(ctx)
+	if err != nil {
+		return -1, errors.Wrap(err, "could not get Hermes Manager DBus object")
+	}
+	props, err := dbusutil.NewDBusProperties(ctx, h.DBusObject)
+	if err != nil {
+		return -1, errors.Wrap(err, "unable to get Hermes manager properties")
+	}
+	euiccPaths, err := props.GetObjectPaths(hermesconst.ManagerPropertyAvailableEuiccs)
+	if err != nil {
+		return -1, errors.Wrap(err, "unable to get available euiccs")
+	}
+	return len(euiccPaths), nil
+}
