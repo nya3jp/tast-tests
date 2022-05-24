@@ -97,7 +97,7 @@ func testSettingETMStrobingConfiguration(ctx context.Context, s *testing.State) 
 
 // verifyETMData verifies that the report contains an AUX record with ETM data.
 func verifyETMData(report string) error {
-	etmDataRegexp := regexp.MustCompile(`CoreSight ETM Trace data: size (\d+) bytes`)
+	etmDataRegexp := regexp.MustCompile(`CoreSight ETM.* Trace data: size (\d+) bytes`)
 	records := strings.Split(report, "\n\n")
 	for _, record := range records {
 		match := etmDataRegexp.FindStringSubmatch(record)
