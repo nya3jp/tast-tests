@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "271734d3_1e0796f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "What other strings do you mean?\n\nActually they are only used once in the tast tests, so I will make them in-place variables.",
+      "parentUuid": "5ca8a87d_f67fa811",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b26142c0_94c80a44",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-23T07:28:00Z",
       "side": 1,
       "message": "Below you do these in the other order: first `bpforce disconnect atboot`, then `servo.FWWPStateOff`.\n\nWhy is order different between two places?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ebe0c8_71e1c947",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "The order doesn\u0027t matter. I will move `bpforce disconnect atboot` before `servo.FWWPStateOff` to be consistent.",
+      "parentUuid": "b26142c0_94c80a44",
       "revId": "dd05dafa91178902a009727a55384c45e004bc13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57cf209d_4ee29f0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "969369fe_e0647d75",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8460852e_719ea995",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-05-23T07:28:00Z",
       "side": 1,
       "message": "Without this the next button will not be enabled?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0556013_c9129cba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "There is no `Next` button in this page. Alternatively, Shimless RMA detects battery signal, wp status, and moves to next page if the status requirement is met.",
+      "parentUuid": "8460852e_719ea995",
       "revId": "dd05dafa91178902a009727a55384c45e004bc13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c975144e_576a58ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "Ah. I add this to address a flaky issue but after Shimless RMA provides a way to skip powerwash, we may not need it. Let me have a try.",
+      "parentUuid": "91882ed1_870ecb32",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15019f89_35531b11",
@@ -123,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "056cfd07_c5f455af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "It is on host side. Another option is to create gRPC and parse json in DUT side. However, I feel it introduces unnecessary complexity. What\u0027s your thought?",
+      "parentUuid": "15019f89_35531b11",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d888551c_49a976f0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
         "patchSetId": 3
@@ -134,6 +242,24 @@
       "writtenOn": "2022-05-23T07:28:00Z",
       "side": 1,
       "message": "maybe s/Necessary/NotOpen/?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "337d46e7_68cee8c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d888551c_49a976f0",
       "revId": "dd05dafa91178902a009727a55384c45e004bc13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -157,6 +283,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b13c97ac_30884828",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "No. The reason I create a method is to encapsulate factory mode update into a separate method. Do you prefer to not create a method?",
+      "parentUuid": "63016335_a08ee8f9",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2a811d6_f2c93c03",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
         "patchSetId": 3
@@ -168,6 +312,24 @@
       "writtenOn": "2022-05-23T07:28:00Z",
       "side": 1,
       "message": "maybe `([^\u0026]*)` would work better in case there are several ampersands?",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7846ef80_1a92de84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2a811d6_f2c93c03",
       "revId": "dd05dafa91178902a009727a55384c45e004bc13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -189,6 +351,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca02633d_c167a8a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7989308_d0379ec4",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c309ea94_95e31e24",
@@ -202,6 +382,24 @@
       "writtenOn": "2022-05-23T07:28:00Z",
       "side": 1,
       "message": "I think we should report an error here in case we don\u0027t find a match in case something changes down the line.",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a96d59b_b81f4d67",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c309ea94_95e31e24",
       "revId": "dd05dafa91178902a009727a55384c45e004bc13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
