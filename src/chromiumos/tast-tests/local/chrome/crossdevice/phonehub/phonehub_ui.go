@@ -1,0 +1,384 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package phonehub
+
+import (
+	"context"
+	"regexp"
+	"strconv"
+	"strings"
+	"time"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast-tests/local/chrome"
+	"chromiumos/tast-tests/local/chrome/uiauto"
+	"chromiumos/tast-tests/local/chrome/uiauto/checked"
+	"chromiumos/tast-tests/local/chrome/uiauto/nodewith"
+	"chromiumos/tast-tests/local/chrome/uiauto/ossettings"
+	"chromiumos/tast-tests/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
+)
+
+const (
+	settingsURL                 = "chrome://os-settings/"
+	connectedDevicesSettingsURL = "multidevice/features"
+	setupDialogURL              = "chrome://os-settings/multidevice/features?showPhonePermissionSetupDialog"
+	multidevicePageJS           = `document.querySelector("os-settings-ui").shadowRoot` +
+		`.querySelector("os-settings-main").shadowRoot` +
+		`.querySelector("os-settings-page").shadowRoot` +
+		`.querySelector("settings-multidevice-page")`
+	multideviceSubpageJS = multidevicePageJS + `.shadowRoot` +
+		`.querySelector("settings-multidevice-subpage")`
+	phoneHubToggleJS = multideviceSubpageJS +
+		`.shadowRoot.getElementById("phoneHubItem")` +
+		`.shadowRoot.querySelector("settings-multidevice-feature-toggle")` +
+		`.shadowRoot.getElementById("toggle")`
+	recentPhotosToggleJS = multideviceSubpageJS +
+		`.shadowRoot.getElementById("phoneHubCameraRollItem")` +
+		`.shadowRoot.querySelector("settings-multidevice-feature-toggle")` +
+		`.shadowRoot.getElementById("toggle")`
+	setupDialogNextButtonJS = multidevicePageJS +
+		`.shadowRoot.querySelector("settings-multidevice-permissions-setup-dialog")` +
+		`.shadowRoot.getElementById("getStartedButton")`
+	featureCheckedJS               = `.checked`
+	connectedDeviceToggleVisibleJS = multidevicePageJS + `.shouldShowToggle_()`
+)
+
+// Enable enables Phone Hub from OS Settings using JS. Assumes a connected device has already been paired.
+// Hide should be called afterwards to close the Phone Hub tray. It is left open here so callers can capture the UI state upon error if needed.
+// Note: it can take up to 5 minutes for an Android device to successfully pair with the Chromebook.
+// To account for this, the deadline of the passed in context should expire no sooner than 5 minutes from when this function is called.
+func Enable(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+	_, err := ossettings.Launch(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch OS settings")
+	}
+	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(settingsURL))
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome session to OS settings")
+	}
+	defer settingsConn.Close()
+
+	// Use JS to wait for a phone to be connected. If we are stuck waiting for the
+	// "Connected devices" toggle to become visible (i.e. waiting for verification)
+	// for more than 5 minutes, attempt to force a sync through the debug page.
+	if ctxutil.DeadlineBefore(ctx, time.Now().Add(5*time.Minute)) {
+		d, _ := ctx.Deadline()
+		t := d.Sub(time.Now())
+		return errors.Errorf("insufficient time remaining before the context reaches its deadline. need at least 5 minutes, only %v remain", t)
+	}
+	testing.ContextLog(ctx, "Waiting up to 5 minutes for the devices to be paired")
+	if err := settingsConn.WaitForExpr(ctx, multidevicePageJS); err != nil {
+		return errors.Wrap(err, "failed waiting for \"Connected devices\" subpage to load")
+	}
+	if err := settingsConn.WaitForExprWithTimeout(ctx, connectedDeviceToggleVisibleJS, 5*time.Minute); err != nil {
+		// Force a sync with the chrome://proximity-auth sync button and keep waiting.
+		testing.ContextLog(ctx, "Devices did not pair within 5 minutes. Attempting to force a sync through the debug page")
+		conn, err := cr.NewConn(ctx, "chrome://proximity-auth")
+		if err != nil {
+			return errors.Wrap(err, "failed to open chrome://proximity-auth")
+		}
+		defer conn.Close()
+		syncBtn := `document.getElementById("force-device-sync")`
+		if err := conn.WaitForExpr(ctx, syncBtn); err != nil {
+			return errors.Wrap(err, "failed waiting for chrome://proximity-auth 'Sync' button to load")
+		}
+		if err := conn.Eval(ctx, syncBtn+`.click()`, nil); err != nil {
+			return errors.Wrap(err, "failed to click chrome://proximity-auth 'Sync' button")
+		}
+		if err := settingsConn.WaitForExpr(ctx, connectedDeviceToggleVisibleJS); err != nil {
+			return errors.Wrap(err, "'Connected devices' subpage not available after forcing device sync")
+		}
+	}
+
+	// Turn on Phone Hub in the "Connected devices" subpage. The easiest way to get there is to reopen OS Settings on that specific page.
+	_, err = ossettings.LaunchAtPageURL(ctx, tconn, cr, connectedDevicesSettingsURL, func(context.Context) error { return nil })
+	if err != nil {
+		return errors.Wrap(err, "failed to re-launch OS Settings to the multidevice feature page")
+	}
+
+	// Toggle Phone Hub on with JS.
+	if err := settingsConn.WaitForExpr(ctx, phoneHubToggleJS); err != nil {
+		return errors.Wrap(err, "failed to find the Phone Hub toggle")
+	}
+	var enabled bool
+	if err := settingsConn.Eval(ctx, phoneHubToggleJS+featureCheckedJS, &enabled); err != nil {
+		return errors.Wrap(err, "failed to get Phone Hub toggle status")
+	}
+	if !enabled {
+		if err := settingsConn.Eval(ctx, phoneHubToggleJS+`.click()`, nil); err != nil {
+			return errors.Wrap(err, "failed to enable Phone Hub")
+		}
+	}
+	// Check that the toggle was correctly enabled.
+	if err := settingsConn.WaitForExpr(ctx, phoneHubToggleJS+featureCheckedJS+`===true`); err != nil {
+		return errors.Wrap(err, "failed to toggle Phone Hub on using JS")
+	}
+	// Phone Hub is still not immediately ready to use after toggling it on from OS Settings,
+	// since it takes a short amount of time for it to connect to the phone and display anything.
+	// Wait for it to become usable by checking for the existence of a settings pod.
+	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
+	if err := Show(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to show Phone Hub")
+	}
+	if err := ui.WaitUntilExists(phoneHubSettingPod.First())(ctx); err != nil {
+		return errors.Wrap(err, "failed to find a Phone Hub setting pod")
+	}
+
+	return nil
+}
+
+// PhoneHubTray is the finder for the Phone Hub tray UI.
+var PhoneHubTray = nodewith.Name("Phone Hub").ClassName("Widget")
+
+// PhoneHubShelfIcon is the finder for the Phone Hub shelf icon.
+var PhoneHubShelfIcon = nodewith.Name("Phone Hub").Role(role.Button).ClassName("PhoneHubTray")
+
+// phoneHubSettingPod is the base UI finder for the individual setting pods.
+var phoneHubSettingPod = nodewith.Ancestor(PhoneHubTray).Role(role.ToggleButton)
+
+// SilencePhonePod is the finder for Phone Hub's Silence Phone pod.
+var SilencePhonePod = phoneHubSettingPod.NameContaining("Toggle Silence phone")
+
+// LocatePhonePod is the finder for Phone Hub's "Locate phone" pod.
+var LocatePhonePod = phoneHubSettingPod.NameContaining("Toggle Locate phone")
+
+// Show opens Phone Hub if it's not already open.
+func Show(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	if err := ui.Exists(PhoneHubTray)(ctx); err == nil { // Phone Hub already open
+		return nil
+	}
+	if err := uiauto.Combine("click Phone Hub shelf icon and wait for it to open",
+		ui.LeftClick(PhoneHubShelfIcon),
+		ui.WaitUntilExists(PhoneHubTray),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to open Phone Hub")
+	}
+	return nil
+}
+
+// Hide hides Phone Hub if it's not already hidden.
+func Hide(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	if err := ui.Exists(PhoneHubTray)(ctx); err != nil { // Phone Hub already hidden
+		return nil
+	}
+	if err := uiauto.Combine("click Phone Hub shelf icon and wait for it to close",
+		ui.LeftClick(PhoneHubShelfIcon),
+		ui.WaitUntilGone(PhoneHubTray),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to close Phone Hub")
+	}
+	return nil
+}
+
+// podToggled returns true if the given setting pod is active, and false otherwise.
+func podToggled(ctx context.Context, tconn *chrome.TestConn, pod *nodewith.Finder) (bool, error) {
+	ui := uiauto.New(tconn)
+	info, err := ui.Info(ctx, pod)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get node info for the setting pod")
+	}
+	if info.Checked == checked.True {
+		return true, nil
+	}
+	return false, nil
+}
+
+// waitForPodToggled waits for the given pod to be toggled on/off.
+func waitForPodToggled(ctx context.Context, tconn *chrome.TestConn, pod *nodewith.Finder, enabled bool, timeout time.Duration) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if curr, err := podToggled(ctx, tconn, pod); err != nil {
+			return err
+		} else if curr != enabled {
+			return errors.New("current status does not match the desired status")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		wanted := "off"
+		if enabled {
+			wanted = "on"
+		}
+		return errors.Wrapf(err, "failed waiting for Silence Phone to be turned %v", wanted)
+	}
+	return nil
+}
+
+// togglePod toggles the given Phone Hub pod on/off.
+func togglePod(ctx context.Context, tconn *chrome.TestConn, pod *nodewith.Finder, enable bool) error {
+	ui := uiauto.New(tconn)
+	curr, err := podToggled(ctx, tconn, pod)
+	if err != nil {
+		return errors.Wrap(err, "failed to check current pod setting")
+	}
+	if curr == enable {
+		return nil
+	}
+	if err := ui.LeftClick(pod)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click pod")
+	}
+	if err := waitForPodToggled(ctx, tconn, pod, enable, 15*time.Second); err != nil {
+		return errors.Wrap(err, "failed waiting for pod to be toggled after clicking")
+	}
+	return nil
+}
+
+// PhoneSilenced returns true if the "Silence phone" pod is active, and false otherwise.
+func PhoneSilenced(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	return podToggled(ctx, tconn, SilencePhonePod)
+}
+
+// WaitForPhoneSilenced waits for the "Phone Silenced" pod to be toggled on/off, since its state can be changed from the Android side.
+func WaitForPhoneSilenced(ctx context.Context, tconn *chrome.TestConn, silenced bool, timeout time.Duration) error {
+	return waitForPodToggled(ctx, tconn, SilencePhonePod, silenced, timeout)
+}
+
+// LocatePhoneEnabled returns true if the "Locate phone" pod is active, and false otherwise.
+func LocatePhoneEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	return podToggled(ctx, tconn, LocatePhonePod)
+}
+
+// WaitForLocatePhoneEnabled waits for the "Locate phone" pod to be toggled on/off.
+func WaitForLocatePhoneEnabled(ctx context.Context, tconn *chrome.TestConn, silenced bool, timeout time.Duration) error {
+	return waitForPodToggled(ctx, tconn, LocatePhonePod, silenced, timeout)
+}
+
+// ToggleSilencePhonePod toggles Phone Hub's "Silence Phone" pod on/off.
+func ToggleSilencePhonePod(ctx context.Context, tconn *chrome.TestConn, silence bool) error {
+	return togglePod(ctx, tconn, SilencePhonePod, silence)
+}
+
+// ToggleLocatePhonePod toggles Phone Hub's "Locate phone" pod on/off.
+func ToggleLocatePhonePod(ctx context.Context, tconn *chrome.TestConn, enable bool) error {
+	return togglePod(ctx, tconn, LocatePhonePod, enable)
+}
+
+// FindRecentPhotosSetupButton returns a finder which locates the Set up button for the Recent Photos feature.
+func FindRecentPhotosSetupButton() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName("MultideviceFeatureOptInView")).Name("Set up").Role(role.Button)
+}
+
+// OptInRecentPhotos enables the Recent Photos feature by clicking on the Set up button displayed in the Phone Hub bubble and run the set up flow right before user consent on the phone.
+func OptInRecentPhotos(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+	ui := uiauto.New(tconn)
+	if err := ui.LeftClick(FindRecentPhotosSetupButton())(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on the Recent Photos opt-in button")
+	}
+
+	setupDialogConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURLPrefix(setupDialogURL))
+	if err != nil {
+		return errors.Wrap(err, "permissions set up dialog did not launch")
+	}
+	defer setupDialogConn.Close()
+	if err := setupDialogConn.WaitForExpr(ctx, setupDialogNextButtonJS); err != nil {
+		return errors.Wrap(err, "failed to wait for Permissions Setup Dialog to be visible")
+	}
+	if err := setupDialogConn.Eval(ctx, setupDialogNextButtonJS+`.click()`, nil); err != nil {
+		return errors.Wrap(err, "failed to click Next on Permissions Setup Dialog intro screen")
+	}
+
+	return nil
+}
+
+// DownloadMostRecentPhoto downloads the first photo shown in Phone Hub's Recent Photos section to Tote.
+func DownloadMostRecentPhoto(ctx context.Context, tconn *chrome.TestConn) error {
+	mostRecentPhotoThumbnail := nodewith.Ancestor(PhoneHubTray).ClassName("CameraRollThumbnail").First()
+	// It might take some time to receive and display the recent photo thumbnails.
+	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
+	if err := ui.LeftClick(mostRecentPhotoThumbnail)(ctx); err != nil {
+		return errors.Wrap(err, "failed to download recent photo")
+	}
+	return nil
+}
+
+// ToggleRecentPhotosSetting toggles the Recent Photos setting using JS. This assumes that a connected device has already been paired.
+func ToggleRecentPhotosSetting(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, enable bool) error {
+	_, err := ossettings.Launch(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch OS settings")
+	}
+	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(settingsURL))
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome session to OS settings")
+	}
+	defer settingsConn.Close()
+
+	_, err = ossettings.LaunchAtPageURL(ctx, tconn, cr, connectedDevicesSettingsURL, func(context.Context) error { return nil })
+	if err != nil {
+		return errors.Wrap(err, "failed to re-launch OS Settings to the multidevice feature page")
+	}
+
+	if err := settingsConn.WaitForExpr(ctx, recentPhotosToggleJS); err != nil {
+		return errors.Wrap(err, "failed to find the Recent Photos toggle")
+	}
+	var isEnabled bool
+	if err := settingsConn.Eval(ctx, recentPhotosToggleJS+featureCheckedJS, &isEnabled); err != nil {
+		return errors.Wrap(err, "failed to get Recent Photos toggle status")
+	}
+	if isEnabled != enable {
+		if err := settingsConn.Eval(ctx, recentPhotosToggleJS+`.click()`, nil); err != nil {
+			return errors.Wrap(err, "failed to click on Recent Photos toggle")
+		}
+	}
+	if err := settingsConn.WaitForExpr(ctx, recentPhotosToggleJS+featureCheckedJS+`===`+strconv.FormatBool(enable)); err != nil {
+		return errors.Wrapf(err, "failed to toggle Recent Photos to %v using JS", strconv.FormatBool(enable))
+	}
+
+	return nil
+}
+
+// BatteryLevel returns the battery level displayed in Phone Hub.
+func BatteryLevel(ctx context.Context, tconn *chrome.TestConn) (int, error) {
+	ui := uiauto.New(tconn)
+	battery, err := ui.Info(ctx, nodewith.Role(role.StaticText).NameContaining("Phone battery"))
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to find phone battery display")
+	}
+
+	r := regexp.MustCompile(`Phone battery (\d+)%`)
+	m := r.FindStringSubmatch(string(battery.Name))
+	if len(m) == 0 {
+		return -1, errors.Wrap(err, "failed to extract battery percentage from the UI")
+	}
+	level, err := strconv.Atoi(m[1])
+	if err != nil {
+		return -1, errors.Wrapf(err, "failed to convert battery level %v to int", m[0])
+	}
+	return level, nil
+}
+
+// RecentTabChipFinder is the finder for Phone Hub "Recent Chrome tab" chips.
+var RecentTabChipFinder = nodewith.Role(role.Button).HasClass("ContinueBrowsingChip")
+
+// RecentTabChip represents one of Phone Hub's "Recent Chrome tab" chips.
+type RecentTabChip struct {
+	URL    string
+	Finder *nodewith.Finder
+}
+
+// RecentTabChips returns all of the "Recent Chrome tab" chips currently displayed in Phone Hub.
+func RecentTabChips(ctx context.Context, tconn *chrome.TestConn) ([]RecentTabChip, error) {
+	ui := uiauto.New(tconn)
+	if err := ui.WaitUntilExists(RecentTabChipFinder.First())(ctx); err != nil {
+		return nil, errors.Wrap(err, "no recent tab chips found")
+	}
+	nodes, err := ui.NodesInfo(ctx, RecentTabChipFinder)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get UI node info about recent tab chips")
+	}
+
+	var chips []RecentTabChip
+	for _, node := range nodes {
+		// Extract the URL from the Name attribute, which looks like:
+		//   name=Browser tab 1 of 1. Blah, https://www.blah.org/
+		name := node.Name
+		parts := strings.Split(name, " ")
+		url := parts[len(parts)-1]
+		chips = append(chips, RecentTabChip{URL: url, Finder: RecentTabChipFinder.Name(name)})
+	}
+	return chips, nil
+}

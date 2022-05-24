@@ -1,0 +1,34 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package camera
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast-tests/common/media/caps"
+	"chromiumos/tast-tests/local/bundles/cros/camera/hal3"
+	"chromiumos/tast-tests/local/chrome"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         HAL3Perf,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Measures camera HAL3 performance",
+		Contacts:     []string{"hywu@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},
+		Pre:          chrome.LoggedIn(),
+		Timeout:      4 * time.Minute,
+	})
+}
+
+func HAL3Perf(ctx context.Context, s *testing.State) {
+	if err := hal3.RunTest(ctx, hal3.PerfTestConfig()); err != nil {
+		s.Error("Test failed: ", err)
+	}
+}

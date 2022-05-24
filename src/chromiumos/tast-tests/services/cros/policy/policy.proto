@@ -1,0 +1,124 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.policy;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast-tests/services/cros/policy";
+
+// Policy provides functions to perform enrollment.
+service PolicyService {
+  rpc EnrollUsingChrome(EnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
+  rpc GAIAEnrollUsingChrome(GAIAEnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
+  rpc GAIAEnrollAndLoginUsingChrome(GAIAEnrollAndLoginUsingChromeRequest) returns (google.protobuf.Empty) {}
+  rpc UpdatePolicies(UpdatePoliciesRequest) returns (google.protobuf.Empty) {}
+  rpc CheckChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc StopChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc StartChrome(StartChromeRequest) returns (google.protobuf.Empty) {}
+  rpc StopChrome(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc ContinueLogin(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc CreateFakeDMSDir(CreateFakeDMSDirRequest) returns (google.protobuf.Empty) {}
+  rpc RemoveFakeDMSDir(RemoveFakeDMSDirRequest) returns (google.protobuf.Empty) {}
+
+  rpc StartExternalDataServer(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+  rpc ServePolicyData(ServePolicyDataRequest)
+      returns (ServePolicyDataResponse) {}
+  rpc StopExternalDataServer(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+
+  rpc EvalStatementInExtension(EvalInExtensionRequest)
+      returns (google.protobuf.Empty) {}
+  rpc EvalInExtension(EvalInExtensionRequest)
+      returns (EvalInExtensionResponse) {}
+
+  // Verifies that the notification corresponding to the id in the request is visible.
+  rpc VerifyVisibleNotification(VerifyVisibleNotificationRequest)
+      returns (google.protobuf.Empty) {}
+  // Creates a new connection to the Chrome URL in the request and evaluates the expression in the request on it.
+  rpc EvalExpressionInChromeURL(EvalExpressionInChromeUrlRequest)
+      returns (google.protobuf.Empty) {}
+}
+
+message EnrollUsingChromeRequest {
+  bytes policy_json = 1;
+  string username = 2;
+  repeated Extension extensions = 3;
+  string extra_args = 4;
+  string fakedms_dir = 5;
+  bool skip_login = 6;
+}
+
+message GAIAEnrollUsingChromeRequest {
+  string username = 1;
+  string password = 2;
+  string dmserverURL = 3;
+}
+
+message GAIAEnrollAndLoginUsingChromeRequest {
+  string username = 1;
+  string password = 2;
+  string dmserverURL = 3;
+}
+
+message CreateFakeDMSDirRequest {
+  string path = 1;
+}
+
+message RemoveFakeDMSDirRequest {
+  string path = 1;
+}
+
+message UpdatePoliciesRequest {
+  bytes policy_json = 1;
+}
+
+message ServePolicyDataRequest {
+  bytes contents = 1;
+}
+
+message ServePolicyDataResponse {
+  string url = 1;
+  string hash = 2;
+}
+
+message EvalInExtensionRequest {
+  string extension_id = 1;
+  string expression = 2;
+}
+
+message EvalInExtensionResponse {
+  bytes result = 1;
+}
+
+message ExtensionFile {
+  string name = 1;
+  bytes contents = 2;
+}
+
+message Extension {
+  string id = 1;
+  repeated ExtensionFile files = 2;
+}
+
+message VerifyVisibleNotificationRequest {
+  string notification_id = 1;
+}
+
+message EvalExpressionInChromeUrlRequest {
+  string url = 1;
+  string expression = 2;
+}
+
+message StartChromeRequest {
+  bytes policy_json = 1;
+  string username = 2;
+  bool skip_login = 3;
+  bool keep_enrollment = 4;
+  bool defer_login = 5;
+}

@@ -1,0 +1,37 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"context"
+
+	"chromiumos/tast-tests/local/arc"
+	"chromiumos/tast-tests/local/bundles/cros/arc/containermount"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         ContainerMount,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Verifies mount points' shared flags for ARC",
+		Contacts: []string{
+			"arc-core@google.com",
+			"arc-storage@google.com",
+			"hidehiko@chromium.org", // Tast port author.
+		},
+		// TODO(yusukes,ricardoq): ARCVM does not need the test. Remove this once we retire ARC container.
+		SoftwareDeps: []string{
+			"android_p",
+			"chrome",
+		},
+		Attr:    []string{"group:mainline"},
+		Fixture: "arcBooted",
+	})
+}
+
+func ContainerMount(ctx context.Context, s *testing.State) {
+	containermount.RunTest(ctx, s, s.FixtValue().(*arc.PreData).ARC)
+}

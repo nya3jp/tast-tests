@@ -1,0 +1,46 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.camerabox;
+
+import "camerabox/common.proto";
+
+option go_package = "chromiumos/tast-tests/services/cros/camerabox";
+
+// HAL3Service provides RPC methods to run camera HAL3 tests.
+service HAL3Service {
+  // RunTest runs specific HAL3 camera test on target facing camera.
+  rpc RunTest(RunTestRequest) returns (RunTestResponse) {}
+}
+
+enum HAL3CameraTest {
+  DEVICE = 0;
+  FRAME = 1;
+  JDA = 2;
+  JEA = 3;
+  MODULE = 4;
+  PERF = 5;
+  PREVIEW = 6;
+  RECORDING = 7;
+  STILL_CAPTURE = 8;
+  STREAM = 9;
+  FACE_DETECTION = 10;
+}
+
+message RunTestRequest {
+  // Type of test to be run.
+  HAL3CameraTest test = 1;
+  // Facing of camera to be tested.
+  Facing facing = 2;
+  // Extended test parameters. The format is "id1=value1,id2=value2,..."
+  string extended_params = 3;
+}
+
+message RunTestResponse {
+  TestResult result = 1;
+  // Error message from running test.
+  string error = 2;
+}

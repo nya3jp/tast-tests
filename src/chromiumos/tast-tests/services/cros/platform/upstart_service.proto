@@ -1,0 +1,76 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.platform;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast-tests/services/cros/platform";
+
+// UpstartService provides RPC methods for interacting with upstart.
+service UpstartService {
+  // Check that the given upstart job is running.
+  rpc CheckJob(CheckJobRequest) returns (google.protobuf.Empty) {}
+  // JobStatus returns the current status of job.
+  rpc JobStatus(JobStatusRequest) returns (JobStatusResponse) {}
+  // StartJob starts job. If it is already running, this returns an error.
+  rpc StartJob(StartJobRequest) returns (google.protobuf.Empty) {}
+  // StopJob stops job. If it is not currently running, this is a no-op.
+  rpc StopJob(StopJobRequest) returns (google.protobuf.Empty) {}
+  // EnableJob enables an upstart job that was previously disabled.
+  rpc EnableJob(EnableJobRequest) returns (google.protobuf.Empty) {}
+  // DisableJob disables an upstart job, which takes effect on the next reboot.
+  rpc DisableJob(DisableJobRequest) returns (google.protobuf.Empty) {}
+  // IsJobEnabled checks if the given upstart job is enabled.
+  rpc IsJobEnabled(IsJobEnabledRequest) returns (IsJobEnabledResponse) {}
+}
+
+message CheckJobRequest {
+  string job_name = 1;
+}
+
+message JobStatusRequest {
+  string job_name = 1;
+}
+
+// Definitions of "goal" and "state" described in
+// https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast-tests/local/upstart/upstart.go
+message JobStatusResponse {
+  string goal = 1;
+  string state = 2;
+  int32 pid = 3;
+}
+
+message StartJobRequest {
+  string job_name = 1;
+  reserved 2;
+  repeated Arg args = 3;
+}
+
+message StopJobRequest {
+  string job_name = 1;
+}
+
+message EnableJobRequest {
+  string job_name = 1;
+}
+
+message DisableJobRequest {
+  string job_name = 1;
+}
+
+message IsJobEnabledRequest {
+  string job_name = 1;
+}
+
+message IsJobEnabledResponse {
+  bool enabled = 1;
+}
+
+message Arg {
+  string key = 1;
+  string value = 2;
+}
