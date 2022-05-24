@@ -135,6 +135,19 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	// lacrosOnly is a fixture to bring up Lacros as the only browser from the rootfs partition by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosOnly",
+		Desc:     "Lacros Chrome from rootfs as the only browser",
+		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(Mode(lacros.LacrosOnly)).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
 	// lacrosPrimaryDisableSync is a fixture to bring up Lacros as a primary browser from the rootfs partition by default and disables app sync.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosPrimaryDisableSync",
