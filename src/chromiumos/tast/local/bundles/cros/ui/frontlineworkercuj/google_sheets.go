@@ -145,14 +145,14 @@ func (g *GoogleSheets) EditPivotTable() uiauto.Action {
 func (g *GoogleSheets) editPivotTableEditor(buttonName, itemName string) uiauto.Action {
 	pivotTableEditor := nodewith.Name("Pivot table editor").Role(role.Complementary)
 	button := nodewith.Name(buttonName).Role(role.PopUpButton).Ancestor(pivotTableEditor)
-	buttonOffscreen := button.Offscreen()
+	buttonCollapsed := button.Collapsed()
 	buttonExpanded := button.Expanded()
 	menuItem := nodewith.Name(itemName).Role(role.MenuItem)
 	return uiauto.Combine("edit the values",
 		// Sometimes, the display size is not large enough that when adding "Rows" and "Columns".
 		// The "Value Add" button might drop outside of the display.
 		uiauto.IfSuccessThen(
-			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(buttonOffscreen),
+			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(buttonCollapsed),
 			g.ui.EnsureFocused(button),
 		),
 		g.uiHdl.ClickUntil(button, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(buttonExpanded)),
