@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "617a387a_9ba75cdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-24T21:17:07Z",
+      "side": 1,
+      "message": "Leaving s.Var as an argument is probably fine, but it is really only going to be useful if we plan on reading several kinds of Vars, which I feel like we probably shouldn\u0027t be doing. The other thing is that if we end up having to inject labels into the helper (in unit tests for it, perhaps? if it takes on a lot more functionality, we might have to do this) it will be less intuitive as you will have to pass a function that returns the labels rather than just pass the labels themselves.",
+      "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c7dde26_650972d1",
