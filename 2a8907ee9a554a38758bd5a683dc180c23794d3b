@@ -22,6 +22,30 @@
       },
       "revId": "2a8907ee9a554a38758bd5a683dc180c23794d3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a63b51_c05f8216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-05-24T17:11:40Z",
+      "side": 1,
+      "message": "it scrolls the node to make it visible https://source.chromium.org/chromium/chromium/src/+/main:extensions/common/api/automation.idl;drc\u003df5e14f2ca94881e49b316350e748fa07c946e668;l\u003d1414\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:extensions/renderer/resources/automation/automation_node.js;drc\u003d35b4aa53bf5bca7c903802948908d4f828592c2f;l\u003d1079",
+      "parentUuid": "3db9b558_27cbacee",
+      "range": {
+        "startLine": 93,
+        "startChar": 12,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "2a8907ee9a554a38758bd5a683dc180c23794d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
