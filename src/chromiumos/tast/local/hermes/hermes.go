@@ -9,10 +9,34 @@ package hermes
 import (
 	"context"
 	"reflect"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/common/hermesconst"
 )
+
+// WaitForHermesIdle waits for Chrome to refresh installed profiles before returning.
+func WaitForHermesIdle(ctx context.Context, timeout time.Duration) error {
+	numEUICC, err := GetNumEUICC(ctx)
+	if err != nil {
+		return errors.Wrap(err, "Unable to get number of euiccs");
+	}
+	if numEUICC == 0 {
+		return nil
+	}
+	euicc, _, err := GetEUICC(ctx, false)
+	if err != nil {
+		return errors.Wrap(err, "Unable to get Hermes euicc");
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
+		return CheckProperty(ctx, euicc.DBusObject, hermesconst.EuiccPropertyProfileRefreshedAtleastOnce, true)
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return errors.Wrap(err, "Timed out waiting for ProfilesRefreshedAtleastOnce==true")
+	}
+	return nil
+}
 
 // CheckProperty reads a DBus property on a DBusObject. Returns an error if the value does not match the expected value
 func CheckProperty(ctx context.Context, o *dbusutil.DBusObject, prop string, expected interface{}) error {
