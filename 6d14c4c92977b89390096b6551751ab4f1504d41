@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d197181_89239319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T03:13:45Z",
+      "side": 1,
+      "message": "Ok. Thank you for preparing a separate CL to address the issue.",
+      "parentUuid": "3cbd763a_55cf3e90",
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf916fc3_73ac3303",
