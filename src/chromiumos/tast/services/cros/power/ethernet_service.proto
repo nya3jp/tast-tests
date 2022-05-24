@@ -1,0 +1,35 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.power;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/power";
+
+
+service EthernetService {
+  // New logs into a Chrome session as a fake user. Close must be called later
+  // to clean up the associated resources.
+  rpc New (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Browse browses the url address passed.
+  rpc Browse (BrowseRequest) returns (google.protobuf.Empty) {}
+
+  // SetWifi enables/disables Wifi via shill.
+  rpc SetWifi(WifiRequest) returns (google.protobuf.Empty) {}
+}
+
+message BrowseRequest {
+  string url = 1;
+}
+
+message WifiRequest{
+    bool enabled = 1;
+}
