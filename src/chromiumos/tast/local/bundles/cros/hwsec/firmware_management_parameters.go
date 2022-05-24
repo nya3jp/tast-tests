@@ -121,6 +121,12 @@ func FirmwareManagementParameters(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
 	utility := helper.CryptohomeClient()
+	dc := helper.DaemonController()
+
+	// Ensure we have the owner password.
+	if err := hwseclocal.RestoreTPMOwnerPasswordIfNeeded(ctx, dc); err != nil {
+		s.Fatal("Failed to restore TPM owner password: ", err)
+	}
 
 	// First backup the current FWMP so the test doesn't affect what's on DUT.
 	fwmp, err := utility.BackupFWMP(ctx)

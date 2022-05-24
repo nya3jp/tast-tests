@@ -32,7 +32,7 @@ func NewAttestationLocalInfra(dc *hwsec.DaemonController) *AttestationLocalInfra
 
 // Enable enables the local test infra for attestation flow testing.
 func (ali *AttestationLocalInfra) Enable(ctx context.Context) (lastErr error) {
-	if err := ali.restoreTPMOwnerPasswordIfNeeded(ctx); err != nil {
+	if err := RestoreTPMOwnerPasswordIfNeeded(ctx, ali.dc); err != nil {
 		return errors.Wrap(err, "failed to restore tpm owner password")
 	}
 	if _, err := os.Stat(hwsec.AttestationDBPath); err == nil {
@@ -90,35 +90,6 @@ func (ali *AttestationLocalInfra) Disable(ctx context.Context) error {
 		lastErr = errors.Wrap(err, "failed to disable fake pca agent")
 	}
 	return lastErr
-}
-
-// restoreTPMOwnerPasswordIfNeeded restores the owner password from the snapshot stored
-// at the beginning of the entire test program if the owner password gets wiped already.
-func (ali *AttestationLocalInfra) restoreTPMOwnerPasswordIfNeeded(ctx context.Context) error {
-	hasOwnerPassword, err := isTPMLocalDataIntact(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to check owner password")
-	}
-	if hasOwnerPassword {
-		return nil
-	}
-	if err := RestoreTPMManagerData(ctx); err != nil {
-		testing.ContextLog(ctx, "Failed to restore tpm manager local data")
-		testing.ContextLog(ctx, "If you saw this on local testing, probably the TPM ownership isn't taken by the testing infra")
-		testing.ContextLog(ctx, "You chould try to power wash the device and run the test again")
-		return errors.Wrap(err, "failed to restore tpm manager local data")
-	}
-	if err := ali.dc.Restart(ctx, hwsec.TPMManagerDaemon); err != nil {
-		return errors.Wrap(err, "failed to restart tpm manager")
-	}
-	hasOwnerPassword, err = isTPMLocalDataIntact(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to check owner password")
-	}
-	if !hasOwnerPassword {
-		return errors.Wrap(err, "no owner password after restoration")
-	}
-	return nil
 }
 
 // injectWellKnownGoogleKeys creates the well-known Google keys file and restarts attestation service.
