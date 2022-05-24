@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd39b14_927aae79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-24T16:50:37Z",
+      "side": 1,
+      "message": "I only have one nit comment.",
+      "revId": "e5e7426ca055bc1e0d8139c7d63c97bb8fadabda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f637d9d3_6c76f853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-24T16:50:37Z",
+      "side": 1,
+      "message": "I think the more idiomatic way is \n\n```\nmatched, err :\u003d regexp.MatchString(typecConnAbsolutePathRegex, string(absolutePath));\nif err !\u003d nil {\n    return errors.Wrapf(err, \"could not match regex with %s\", string(absolutePath))\n}\nif !matched {\n    return errors.Errorf(\"connector directory, %s, not linked to typec connector device\", connectorPath)\n}\nreturn nil\n```",
+      "revId": "e5e7426ca055bc1e0d8139c7d63c97bb8fadabda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
