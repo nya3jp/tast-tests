@@ -22,6 +22,30 @@
       },
       "revId": "c2ed6d06d9d7a1536b46bb116c5f176f3963ecd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58bdba74_99edf969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_install_dlc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-05-24T15:55:55Z",
+      "side": 1,
+      "message": "oops, that\u0027s a copy/paste leftover.\nhwdeps removed",
+      "parentUuid": "dc475f93_893268bf",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "c2ed6d06d9d7a1536b46bb116c5f176f3963ecd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
