@@ -33,6 +33,23 @@
       "message": "lgtm",
       "revId": "04dc2be986100723d3ae2e328c871866806e5190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "584536fa_0938bbdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:37:12Z",
+      "side": 1,
+      "message": "Can this be a function of `Recorder`?\nSo instead of `cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder)`, it can be called like `recorder.AddPerformanceCUJMetrics(tconn, bTconn)`.\nFrom the current function, it wouldn\u0027t expect it to modify the `recorder` variable.",
+      "revId": "04dc2be986100723d3ae2e328c871866806e5190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
