@@ -41,7 +41,6 @@ func init() {
 		}, {
 			Name:              "tpm1_lacros",
 			ExtraSoftwareDeps: []string{"tpm1", "lacros"},
-			ExtraAttr:         []string{"informational"},
 			Fixture:           "lacros",
 			Val:               browser.TypeLacros,
 		}, {
