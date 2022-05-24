@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a7d0fe_9f9c4f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T04:46:36Z",
+      "side": 1,
+      "message": "This is a simplified test of firmware.ECWakeOnCharge, which puts the DUT to hibernate using an alternate method.\n\nfirmware.ECWakeOnCharge uses servo\u0027s ECHibernate() to perform hibernation whereas this test uses \u0027hibdelay\u0027 command to perform hibernation.",
+      "parentUuid": "5ecac390_e8a6d7f3",
+      "revId": "c309b3c78a361a729576ce85570b3bb0f6bd7888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73a8ddc5_06456e69",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-18T16:40:20Z",
       "side": 1,
       "message": "`log in` (two words) because the word login is a noun, not a verb.",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "c309b3c78a361a729576ce85570b3bb0f6bd7888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53637712_4ef27f0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/wake_from_hibernation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T04:46:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73a8ddc5_06456e69",
       "range": {
         "startLine": 54,
         "startChar": 21,
