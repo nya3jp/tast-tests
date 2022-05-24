@@ -243,6 +243,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93348f3e_f1f3ef05",
+        "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-24T03:11:37Z",
+      "side": 1,
+      "message": "Not done. Please justify or fix.",
+      "parentUuid": "c8c2008a_9aeccd21",
+      "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bb0bd16_46e425b3",
         "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
         "patchSetId": 2
@@ -272,6 +290,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "6bb0bd16_46e425b3",
+      "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfdbcdd0_5299c0d7",
+        "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-24T03:11:37Z",
+      "side": 1,
+      "message": "Not done. Please justify or fix.",
+      "parentUuid": "c46b5571_2dd6719b",
       "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
