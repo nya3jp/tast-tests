@@ -25,10 +25,10 @@ import (
 )
 
 const (
-	installationTimeout   = 7 * time.Minute
+	installationTimeout   = 15 * time.Minute
 	checkContainerTimeout = time.Minute
 	postTestTimeout       = 30 * time.Second
-	uninstallationTimeout = time.Minute
+	uninstallationTimeout = 2 * time.Minute
 )
 
 func init() {
