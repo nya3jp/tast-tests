@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1937c585_eba34ca2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-24T09:24:18Z",
+      "side": 1,
+      "message": "I am not sue if these return any errors, but if they do, it is better to log the errors (`testing.ContextLog`).",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 61
+      },
+      "revId": "8c0496086e59e9ac2e45f1c10d3adc9eba2492c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b2814b_eec99ef8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-24T09:24:18Z",
+      "side": 1,
+      "message": "`return uiHelper.waitAndClickButton(ctx, \"Get started\", longTimeInSecondToEnableButton)`",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "8c0496086e59e9ac2e45f1c10d3adc9eba2492c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d50018_fb4fda3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-24T09:24:18Z",
+      "side": 1,
+      "message": "`return uiHelper.clickButton(ctx, \"Next\")`",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "8c0496086e59e9ac2e45f1c10d3adc9eba2492c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ec3944_83bfd7f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-24T09:24:18Z",
+      "side": 1,
+      "message": "ditto\n\nPlease also check all other functions in this file.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 11
+      },
+      "revId": "8c0496086e59e9ac2e45f1c10d3adc9eba2492c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcba39aa_3cf950d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-24T09:24:18Z",
+      "side": 1,
+      "message": "How about refactoring the private functions to return actions, instead of errors? so you can simplify many functions in this file by using `action.Combine`.\n\ni.e., `uiHelper.clickButton(ctx, \"Next\")` can be refactored to `uiHelper.clickButton(\"Next\")(ctx)` where `clickButton` is a function that returns an action.",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 12
+      },
+      "revId": "8c0496086e59e9ac2e45f1c10d3adc9eba2492c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
