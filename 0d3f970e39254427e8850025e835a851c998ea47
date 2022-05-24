@@ -33,6 +33,24 @@
       "message": "btw, lacrosprimary is default now, so we could clean up the existing primary tests (not just this one)",
       "revId": "0d3f970e39254427e8850025e835a851c998ea47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2cba35c_bdf6a5e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-24T15:38:50Z",
+      "side": 1,
+      "message": "That makes sense. then I\u0027ll be adding a new variant for lacrosonly to this test in a follow up. Do you have a plan to clean up the primary tests as a part of crbug/1260037?",
+      "parentUuid": "41e770cb_1956e86c",
+      "revId": "0d3f970e39254427e8850025e835a851c998ea47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
