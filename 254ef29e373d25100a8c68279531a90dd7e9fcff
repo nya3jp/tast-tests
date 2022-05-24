@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4be9dee4_ec656189",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-24T02:14:27Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter how or where the tests are executed, as these are just testing code. You can have different attributes or dependencies for either of them if needed. \n\nIn fact, they are still two independent tests with parameterized tests.\n\nRight now they are `shimlessrma.DisableHWWPWithBatteryDisconnection` v.s. `shimlessrma.DisableHWWPWithRSU`.\n\nWith parameterized tests, they become `shimlessrma.DisableHWWP.battery_disconnection` v.s. `shimlessrma.DisableHWWP.rsu`.\n\nAs long as you don\u0027t have any device-depend testing code in the script, it is reasonable to use parameterized test since they are sharing a lot of setups/cleanups.",
+      "parentUuid": "f4f84950_089248e2",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 101
+      },
+      "revId": "254ef29e373d25100a8c68279531a90dd7e9fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21eed48a_230a877d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
         "patchSetId": 3
