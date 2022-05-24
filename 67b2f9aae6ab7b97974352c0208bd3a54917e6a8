@@ -297,6 +297,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29565948_9cc2d033",
+        "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T06:00:05Z",
+      "side": 1,
+      "message": "Sure, we will move it to the other CL. \n\nBut should we have the complete file with all the functions or just these 2 functions in the other CL? Can you let us know the BKM that should be followed when we are modifying the same file in different CLs?",
+      "parentUuid": "60a444ef_3f17375b",
+      "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bb0bd16_46e425b3",
         "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
         "patchSetId": 2
