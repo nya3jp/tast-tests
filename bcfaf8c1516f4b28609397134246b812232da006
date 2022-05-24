@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "527e772b_d99d4937",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T09:23:02Z",
+      "side": 1,
+      "message": "LGTM. Thanks for the test and the changes in the lib.",
+      "revId": "bcfaf8c1516f4b28609397134246b812232da006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e1df47_dffd1202",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T09:23:02Z",
+      "side": 1,
+      "message": "This is a good move. Could you please add b/230840565 as a TODO here? \nWe want to extract this at some point to a signin package as similar thing happens in MGS but uses different UI nodes.",
+      "revId": "bcfaf8c1516f4b28609397134246b812232da006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d10d034_8c0ce437",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T09:23:02Z",
+      "side": 1,
+      "message": "Add kiosk app name in the log message.",
+      "revId": "bcfaf8c1516f4b28609397134246b812232da006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
