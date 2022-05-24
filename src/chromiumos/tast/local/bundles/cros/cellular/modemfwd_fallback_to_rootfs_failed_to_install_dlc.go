@@ -31,7 +31,7 @@ func init() {
 		Fixture:      "cellular",
 		SoftwareDeps: []string{"modemfwd"},
 		Timeout:      1 * time.Minute,
-		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.SkipOnPlatform(
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(
 			// List of existing cellular boards in which we never want to run this test.
 			"coral", "dedede", "drallion", "hatch", "nautiluslte", "octopus", "sarien", "zork",
 			// List of boards which have their FW in DLCs, but no longer have them in the rootfs.
