@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -73,36 +75,37 @@ func BubbleLaunchApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Launcher not closed: ", err)
 	}
 
-	// Open the bubble by pressing the search key on the keyboard.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
+	// Ensure bubble launcher is open.
+	if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
+		s.Fatal("Failed to open bubble launcher: ", err)
 	}
-	defer kb.Close()
 
-	if err := kb.Accel(ctx, "Search"); err != nil {
-		s.Fatal("Failed to press Search: ", err)
+	// Ensure apps are finished installing.
+	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 	}
 
 	ui := uiauto.New(tconn)
 	bubble := nodewith.ClassName(ash.AppListBubbleClassName)
-	if err := ui.WaitUntilExists(bubble)(ctx); err != nil {
-		s.Fatal("Could not open bubble by pressing Search key: ", err)
-	}
-
 	settingButton := nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(nodewith.ClassName(launcher.BubbleAppsGridViewClass))
 
 	if s.Param().(bubbleLaunchAppTestType) == enableLauncherAppSort {
 		// When the launcher app sort feature is enabled, fake apps are placed at the front. In this case, scroll the apps grid to the end to show the setting app button before launching the app.
 
-		// Wait until the bubble launcher bounds become stable.
-		if err := ui.WaitForLocation(bubble)(ctx); err != nil {
-			s.Fatal("Failed to wait for bubble location changes: ", err)
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			s.Fatal("Failed to find keyboard: ", err)
 		}
+		defer kb.Close()
 
 		// Ensure that system apps show by scrolling to the end through focus traversal when the bubble launcher is in overflow.
 		if err := kb.TypeKey(ctx, input.KEY_UP); err != nil {
 			s.Fatalf("Failed to send %d: %v", input.KEY_UP, err)
+		}
+
+		// Wait for the settings app to appear onscreen.
+		if err := waitForOnscreen(ctx, ui, settingButton); err != nil {
+			s.Fatal("Failed to wait for settings app to appear onscreen: ", err)
 		}
 
 		// Wait until the setting app button's bounds become stable.
@@ -122,4 +125,18 @@ func BubbleLaunchApp(ctx context.Context, s *testing.State) {
 	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID, time.Minute); err != nil {
 		s.Error("Settings app did not start from bubble launcher: ", err)
 	}
+}
+
+func waitForOnscreen(ctx context.Context, ui *uiauto.Context, targetItem *nodewith.Finder) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := ui.Info(ctx, targetItem)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get target item info"))
+		}
+		if info.State[state.Offscreen] {
+			return errors.New("Item is offscreen")
+		}
+		return nil
+
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
 }
