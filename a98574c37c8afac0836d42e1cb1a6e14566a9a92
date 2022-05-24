@@ -110,6 +110,30 @@
       },
       "revId": "a98574c37c8afac0836d42e1cb1a6e14566a9a92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eab0312_685b5f37",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1520178
+      },
+      "writtenOn": "2022-05-24T10:20:33Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t know this convention, thank you!",
+      "parentUuid": "622ce4b9_192c3c96",
+      "range": {
+        "startLine": 361,
+        "startChar": 16,
+        "endLine": 361,
+        "endChar": 17
+      },
+      "revId": "a98574c37c8afac0836d42e1cb1a6e14566a9a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
