@@ -120,6 +120,24 @@
       "parentUuid": "838a5c4c_1ecbe9ab",
       "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d07b8f_0d353c80",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-24T02:11:03Z",
+      "side": 1,
+      "message": "What\u0027s missing from the current comment? It\u0027s based on the 95th percentile value from power.IdleTemperature. Is adding that test name sufficient documentation? It would be far too long to explain exactly /how/ to update it here, and also would require access to google specific resources.\n\nJFYI the process is documented in the doc referenced by the CL description.",
+      "parentUuid": "e71f9182_c4a064ae",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
