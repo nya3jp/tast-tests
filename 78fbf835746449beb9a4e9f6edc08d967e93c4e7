@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75740e22_221568f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-24T00:20:29Z",
+      "side": 1,
+      "message": "Thanks. I updated the TEST label after verifying with `fast_build.sh -T`.\n\nSorry about the big CL. I originally split the CL into one module change per CL, but was told that if we add new functions/modules in tast repo, we should include the clients in one CL. I\u0027ll try to keep the tast CLs small in the future.",
+      "parentUuid": "3e396cc2_326eab0a",
+      "revId": "78fbf835746449beb9a4e9f6edc08d967e93c4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f98c2454_f74645e5",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-05-23T18:54:27Z",
       "side": 1,
       "message": "How big is the c.Feature? I am worried that it will be inefficient to do a sequential search every time this function is called. How about a map?",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "78fbf835746449beb9a4e9f6edc08d967e93c4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7efdd21_91417336",
+        "filename": "src/chromiumos/tast/local/camera/features/control.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-24T00:20:29Z",
+      "side": 1,
+      "message": "It won\u0027t go over 100 for the foreseeable future, so linear search should be fine.",
+      "parentUuid": "f98c2454_f74645e5",
       "range": {
         "startLine": 71,
         "startChar": 22,
