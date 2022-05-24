@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -84,19 +85,21 @@ func Run(ctx context.Context, cr *chrome.Chrome, googlePhotos *GooglePhotos, tab
 		return errors.Wrap(err, "failed to create the recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
+	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+		return errors.Wrap(err, "failed to add metrics to recorder")
+	}
 
 	pv := perf.NewValues()
-	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		googlePhotos.Open()
-		googlePhotos.Upload(testImage)
-		googlePhotos.AddFilters()
-		googlePhotos.Edit()
-		googlePhotos.Rotate()
-		googlePhotos.ReduceColor()
-		googlePhotos.Crop()
-		googlePhotos.UndoEdit()
-		return nil
-	}); err != nil {
+	if err := recorder.Run(ctx, uiauto.NamedCombine("image editing on Google Photos",
+		googlePhotos.Open(),
+		googlePhotos.Upload(testImage),
+		googlePhotos.AddFilters(),
+		googlePhotos.Edit(),
+		googlePhotos.Rotate(),
+		googlePhotos.ReduceColor(),
+		googlePhotos.Crop(),
+		googlePhotos.UndoEdit(),
+	)); err != nil {
 		return errors.Wrap(err, "failed to conduct the recorder task")
 	}
 
