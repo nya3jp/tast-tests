@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1424430c_03099b4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "Jonathan, could you reivew use of uiauto? Especially I wonder if we can remove `uiauto.Sleep`s.",
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf916fc3_73ac3303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "optional: case chromeAppTest, fileAppTest:\nshould also work.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a13ab8e_6004ec96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "Do we expect that the target app is always the last element of this slice?\nIf that\u0027s the case, how about initializing targetAppID here too? Otherwise, it\u0027s hard to see that targetAppID and targetAppName points to the same app.\n\ntargetAppID :\u003d defaultAppIDsInOrder[len(defaultAppIDsInOrder) - 1]",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 14
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab4f3ba_7122d716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "remove get\n\nhttp://go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 374,
+        "startChar": 5,
+        "endLine": 374,
+        "endChar": 18
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c276fa_24b92761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "I think this check should be done in caller side. I think it\u0027s surprising if a function named `fakeAppIDs` checks its length.",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 113
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de401d1_f69e3a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "remove get",
+      "range": {
+        "startLine": 392,
+        "startChar": 5,
+        "endLine": 392,
+        "endChar": 23
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e737ac3c_75bbbd38",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "remove Get?",
+      "range": {
+        "startLine": 517,
+        "startChar": 5,
+        "endLine": 517,
+        "endChar": 47
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a59817c_2c89e776",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "remove Get",
+      "range": {
+        "startLine": 683,
+        "startChar": 5,
+        "endLine": 683,
+        "endChar": 30
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59706726_4fd14e51",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "Before this formal definition, could you add brief intuitive description? Something like\nverifies apps are horizontally or vertically ordered\n?",
+      "range": {
+        "startLine": 697,
+        "startChar": 24,
+        "endLine": 697,
+        "endChar": 25
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6eaa04_84b26b8a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "nit: This is not necessary. It might be a matter of preference, but I\u0027d avoid special-casing unless it\u0027s really necessary.",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 0
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77fedf61_6dd3d315",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "want\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 717,
+        "startChar": 52,
+        "endLine": 717,
+        "endChar": 58
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e6cc0f_7f241c43",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-05-24T00:29:01Z",
+      "side": 1,
+      "message": "want",
+      "range": {
+        "startLine": 721,
+        "startChar": 46,
+        "endLine": 721,
+        "endChar": 52
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
