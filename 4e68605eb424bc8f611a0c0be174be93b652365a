@@ -16,6 +16,86 @@
       "message": "Thanks for reviewing. All comments addressed.",
       "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7fda5b_31fd4234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:17:39Z",
+      "side": 1,
+      "message": "If the light mode is already enabled, this won\u0027t fail, right?\nAs I checked the recording, it should not.\nAnyway, please add a comment on this.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1bb8dcd_cb2d1e69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:17:39Z",
+      "side": 1,
+      "message": "If the test fails here, and the dark theme stays turned on, can it cause problems for the other tests?\nIf so, can you defer a call, that sets the personalization back to default?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b17ad6_988d4a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:17:39Z",
+      "side": 1,
+      "message": "If this check fails, because it couldn\u0027t find the `\t\tui.WaitUntilExists(nodewith.Name(fmt.Sprintf(\"Currently set %v\", image)).Role(role.Heading))` node, you don\u0027t know from the errors what went wrong. E.g. the page did not load, or the wrong wallpaper is set.\nIt might be better to create a function that returns with the name of the currently set wallpaper, and check it against the expectation in the test.\n`nodewith.NameStartingWith()` should be suitable for this (+nodeInfo).\nWhat do you think about this apporach?",
+      "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7da6c6c8_8812241d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:17:39Z",
+      "side": 1,
+      "message": "Do you plan to use this function in a `uiauto.Combine` later?\nIf not, I don\u0027t see the need to return with an `uiauto.Action`.",
+      "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

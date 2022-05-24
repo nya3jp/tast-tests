@@ -306,6 +306,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e430e95_403afb77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:17:39Z",
+      "side": 1,
+      "message": "I checked the recording as well, and for me it seems like the bubble is closed because of the `ui.LeftClick(nodewith.Role(page.Role).ClassName(page.ClassName).Name(page.Name))` call on the first page.\nCan you try to skip this call for the first page?",
+      "parentUuid": "49f6b564_1663afbf",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef9eec31_4b8a69aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
         "patchSetId": 1
