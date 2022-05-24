@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e8e358_1ff41064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/launch_error_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1520178
+      },
+      "writtenOn": "2022-05-24T10:09:06Z",
+      "side": 1,
+      "message": "Should this be upper case?",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 6
+      },
+      "revId": "a98574c37c8afac0836d42e1cb1a6e14566a9a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f515a61c_399ad94e",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1520178
+      },
+      "writtenOn": "2022-05-24T10:09:06Z",
+      "side": 1,
+      "message": "Why is this lower-case?",
+      "range": {
+        "startLine": 361,
+        "startChar": 16,
+        "endLine": 361,
+        "endChar": 17
+      },
+      "revId": "a98574c37c8afac0836d42e1cb1a6e14566a9a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
