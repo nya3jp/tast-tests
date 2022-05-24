@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "450c7749_eab8dbc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-24T05:49:41Z",
+      "side": 1,
+      "message": "WANT_LGTM\u003dhcyang, hidehiko, svenzheng",
+      "revId": "fedf4aee197c521b24a3d701f74c61f37b335c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
