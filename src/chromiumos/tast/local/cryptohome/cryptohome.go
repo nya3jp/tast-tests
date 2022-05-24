@@ -68,7 +68,7 @@ func MyFilesPath(ctx context.Context, user string) (string, error) {
 	return filepath.Join(userPath, "MyFiles"), nil
 }
 
-// DownloadsPath returns the path to the user's MyFiles directory within
+// DownloadsPath returns the path to the user's Downloads directory within
 // their encrypted home directory.
 func DownloadsPath(ctx context.Context, user string) (string, error) {
 	myFilesPath, err := MyFilesPath(ctx, user)
