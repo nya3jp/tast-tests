@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3b2f0e_ea530f98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T18:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8acd363_5e16bf9a",
+      "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c7907a4_d11b94e3",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-24T08:43:25Z",
       "side": 1,
       "message": "testing.Sleep is often identified as a culprit of flakiness.\nCould you document the reasons why you need Sleep here?\nIf it is waiting for some condition, could you use testing.Poll?\nOr, if you\u0027re waiting for fixed amount of time actually, could you explicitly document the background in detail?",
+      "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "487e50dd_4863cc62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T18:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c7907a4_d11b94e3",
       "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "370698cb_c556f715",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T18:39:11Z",
+      "side": 1,
+      "message": "In the [bios_code_ab.go](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/bios_code_ab.go;l\u003d81) script, they are using CR LF, which we are also following.",
+      "parentUuid": "c4446381_85298ae2",
+      "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cace94ca_d19e6da8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
         "patchSetId": 1
@@ -65,6 +119,24 @@
       "writtenOn": "2022-05-24T08:43:25Z",
       "side": 1,
       "message": "I think this needs to be put at L70 or so?",
+      "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c099e2_e8834307",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T18:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cace94ca_d19e6da8",
       "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
