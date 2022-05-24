@@ -68,7 +68,7 @@ func DailyRefresh(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("Enable daily refresh",
 		wallpaper.OpenWallpaperPicker(ui),
-		wallpaper.SelectCollection(ui, constants.SolidColorsCollection),
+		wallpaper.SelectCollection(ui, constants.ElementCollection),
 		ui.LeftClick(nodewith.Name("Change wallpaper image daily").Role(role.ToggleButton)),
 		ui.WaitUntilExists(nodewith.Name("Refresh the current wallpaper image").Role(role.Button)),
 		wallpaper.MinimizeWallpaperPicker(ui),

@@ -28,7 +28,7 @@ import (
 
 // Wallpaper human readable strings
 const (
-	Personalization = "Personalization"
+	Personalization = "Wallpaper & style"
 )
 
 // OpenWallpaperPicker returns an action to open the personalization hub and navigate to wallpaper subpage.

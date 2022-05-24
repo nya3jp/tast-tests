@@ -40,23 +40,23 @@ func Change(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	ui := uiauto.New(tconn)
-	personalizeMenu := nodewith.Name("Personalize").Role(role.MenuItem)
+	personalizeMenu := nodewith.Name("Set wallpaper  style").Role(role.MenuItem)
 	changeWallpaperButton := nodewith.Name("Change wallpaper").Role(role.Button)
-	solidColorsMenu := nodewith.Name("Solid colors").Role(role.StaticText)
+	solidColorsMenu := nodewith.NameContaining("Element").Role(role.Button).HasClass("photo-inner-container")
 	if err := uiauto.Combine("change the wallpaper",
 		ui.RightClick(nodewith.HasClass("WallpaperView")),
 		// This button takes a bit before it is clickable.
 		// Keep clicking it until the click is received and the menu closes.
 		ui.WithInterval(time.Second).LeftClickUntil(personalizeMenu, ui.Gone(personalizeMenu)),
-		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()),
+		ui.Exists(nodewith.NameContaining("Wallpaper & style").Role(role.Window).First()),
 		ui.LeftClick(changeWallpaperButton),
 		ui.FocusAndWait(solidColorsMenu),
 		ui.MakeVisible(solidColorsMenu),
 		ui.LeftClick(solidColorsMenu),
-		ui.LeftClick(nodewith.Name("Deep Purple").Role(role.ListBoxOption)),
-		// Ensure that "Deep Purple" text is displayed.
+		ui.LeftClick(nodewith.NameContaining("Wind Light").Role(role.ListBoxOption)),
+		// Ensure that "Wind Light" text is displayed.
 		// The UI displays the name of the currently set wallpaper.
-		ui.WaitUntilExists(nodewith.NameContaining("Deep Purple").Role(role.Heading)),
+		ui.WaitUntilExists(nodewith.NameContaining("Wind Light").Role(role.Heading)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to change the wallpaper: ", err)
 	}
