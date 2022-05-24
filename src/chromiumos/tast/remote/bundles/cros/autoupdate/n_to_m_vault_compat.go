@@ -45,7 +45,7 @@ func init() {
 			"dlunev@google.com", // Test author
 			"chromeos-storage@google.com",
 		},
-		Attr:         []string{"group:autoupdate"},
+		Attr:         []string{}, // Test disabled because of b/233735246.
 		SoftwareDeps: []string{"tpm", "reboot", "chrome", "auto_update_stable"},
 		ServiceDeps: []string{
 			"tast.cros.autoupdate.NebraskaService",
