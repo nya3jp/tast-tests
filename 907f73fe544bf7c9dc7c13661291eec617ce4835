@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2f54b8_dc74c589",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T08:07:15Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "907f73fe544bf7c9dc7c13661291eec617ce4835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "458add2e_f54b0002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_capture_allowed_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T08:07:15Z",
+      "side": 1,
+      "message": "nit: please add chromeos-commercial-remote-management@google.com",
+      "revId": "907f73fe544bf7c9dc7c13661291eec617ce4835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56bfa7df_12347a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_capture_allowed_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T08:07:15Z",
+      "side": 1,
+      "message": "IIRIC we put Unset case as the last one - just to be on a safe side and not to leave policies set.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "907f73fe544bf7c9dc7c13661291eec617ce4835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574d094d_169d80c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/audio_capture_allowed_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T08:07:15Z",
+      "side": 1,
+      "message": "nit: Add comment that this is an arbitrary picked timeout.",
+      "range": {
+        "startLine": 144,
+        "startChar": 40,
+        "endLine": 144,
+        "endChar": 54
+      },
+      "revId": "907f73fe544bf7c9dc7c13661291eec617ce4835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
