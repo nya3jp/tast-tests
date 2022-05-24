@@ -36,6 +36,11 @@ const (
 	EuiccMethodResetMemory                      = "ResetMemory"
 )
 
+// Hermes.Euicc properties
+const (
+	EuiccPropertyProfileRefreshedAtLeastOnce = "ProfilesRefreshedAtLeastOnce"
+)
+
 // Hermes.Profile methods
 const (
 	ProfileMethodEnable  = "Enable"
