@@ -30,7 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchGalleryFromNotifications,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify Gallery launches correctly when opening image from notifications",
 		Contacts: []string{
 			"backlight-swe@google.com",
@@ -39,15 +39,22 @@ func init() {
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"gear_wheels_4000x3000_20200624.jpg", "download_link.html"},
-		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
 				Name:              "stable",
+				Fixture:           "chromeLoggedInForEA",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable",
+				Fixture:           "chromeLoggedInForEA",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
+			}, {
+				Name:              "lacros",
+				Fixture:           "lacrosForEA",
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			},
 		},
 	})

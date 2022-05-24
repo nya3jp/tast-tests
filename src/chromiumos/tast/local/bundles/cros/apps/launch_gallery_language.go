@@ -23,18 +23,26 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchGalleryLanguage,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Launch Gallery APP in different system languages",
 		Contacts: []string{
 			"backlight-swe@google.com",
 			"shengjun@chromium.org",
 		},
-		// Fails due to a new string that is not yet translated.
-		// TODO(b/196705842): Restore to "mainline" once translations are final.
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
-		Fixture:      "chromeLoggedInForEAInJP",
+		Params: []testing.Param{
+			{
+				Fixture: "chromeLoggedInForEAInJP",
+			},
+			{
+				Name:              "lacros",
+				Fixture:           "lacrosForEAInJP",
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+			},
+		},
 	})
 }
 

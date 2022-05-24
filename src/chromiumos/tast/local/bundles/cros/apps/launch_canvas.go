@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
@@ -24,23 +25,30 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchCanvas,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Launches Chrome Canvas APP through the launcher after user login",
 		Contacts: []string{
 			"blick-swe@google.com",
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromeLoggedInForEA",
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{{
 			Name:              "stable",
+			Fixture:           "chromeLoggedInForEA",
 			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 		}, {
 			Name:              "unstable",
+			Fixture:           "chromeLoggedInForEA",
 			ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosForEA",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 		}},
 	})
 }
@@ -53,7 +61,12 @@ func LaunchCanvas(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, shortCancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer shortCancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Canvas.ID, 2*time.Minute); err != nil {
 		s.Fatal("Failed to wait for installed app: ", err)
@@ -62,6 +75,7 @@ func LaunchCanvas(ctx context.Context, s *testing.State) {
 	if err := apps.Launch(ctx, tconn, apps.Canvas.ID); err != nil {
 		s.Fatal("Failed to launch Canvas: ", err)
 	}
+	defer apps.Close(cleanupCtx, tconn, apps.Canvas.ID)
 
 	if err := ash.WaitForApp(ctx, tconn, apps.Canvas.ID, time.Minute); err != nil {
 		s.Fatalf("Fail to wait for %s by app id %s: %v", apps.Canvas.Name, apps.Canvas.ID, err)
