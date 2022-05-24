@@ -22,6 +22,30 @@
       },
       "revId": "669df7605a33f854a0d3492afa7d0e6dd9757724",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "085426bb_b7341734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/open_personalization_hub_from_launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-24T23:45:48Z",
+      "side": 1,
+      "message": "Yes. I plan to add a personalization/constant.go just like what you did with wallpaper. It\u0027s beyond the scope of this CL so I\u0027ll upload a separate one.\n\nLeaving this comment open as a reminder.",
+      "parentUuid": "7b2f2b3b_8e1578e3",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 73
+      },
+      "revId": "669df7605a33f854a0d3492afa7d0e6dd9757724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
