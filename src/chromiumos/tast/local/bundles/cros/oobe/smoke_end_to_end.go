@@ -47,6 +47,8 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 	options := []chrome.Option{
 		chrome.NoLogin(),
 		chrome.DontSkipOOBEAfterLogin(),
+		// TODO(https://crbug.com/1328790): Enable the OobeConsolidatedConsent feature.
+		chrome.DisableFeatures("OobeConsolidatedConsent"),
 		chrome.DeferLogin(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
@@ -162,7 +164,7 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for the sync screen")
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.SyncScreen.isVisible()"); err != nil {
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.SyncScreen.isReadyForTesting()"); err != nil {
 		s.Fatal("Failed to wait for the sync creation screen to be visible: ", err)
 	}
 	if err := uiauto.Combine("click next on the sync screen",
