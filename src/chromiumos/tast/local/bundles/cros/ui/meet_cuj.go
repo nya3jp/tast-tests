@@ -33,8 +33,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
-	"chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -1069,14 +1069,9 @@ func focusWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, bt browse
 // returns the file path. This function assumes that chrome://webrtc-internals
 // is already shown, with the Create Dump section expanded.
 func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, username string) (string, error) {
-	helper, err := hwsec.NewHelper(hwsec.NewCmdRunner())
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, username)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to create hwsec local helper")
-	}
-
-	sanitizedUsername, err := helper.CryptohomeClient().GetSanitizedUsername(ctx, username, true)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to get sanitized username")
+		return "", errors.Wrap(err, "failed to get Downloads path")
 	}
 
 	button := nodewith.Name("Download the PeerConnection updates and stats data").Role(role.Button)
@@ -1092,7 +1087,7 @@ func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto
 		return "", errors.Wrap(err, "failed to wait for download notification")
 	}
 
-	return filepath.Join("/home/user", sanitizedUsername, "Downloads", notification.Message), nil
+	return filepath.Join(downloadsPath, notification.Message), nil
 }
 
 // reportCodec looks for node names containing given descriptions of a vp8 video stream
