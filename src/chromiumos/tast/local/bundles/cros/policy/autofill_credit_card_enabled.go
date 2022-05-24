@@ -232,7 +232,7 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 					}
 
 					if err := uiauto.Combine("trigger and handle the save prompt for the credit card",
-						ui.LeftClick(nodewith.Name("OK").Role(role.Button)),
+						ui.LeftClick(nodewith.Name("OK").Role(role.Button).ClassName("test-target-button")),
 						ui.WaitUntilExists(visaNode),
 						ui.LeftClick(nodewith.Role(role.Button).Name("Save").ClassName("MdTextButton")),
 						kb.AccelAction("Enter"),
@@ -282,7 +282,7 @@ func openCreditCardPage(ctx context.Context, br *browser.Browser, tconn *chrome.
 	}
 
 	// Ensure the page is open.
-	if err := ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button))(ctx); err != nil {
+	if err := ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button).ClassName("test-target-button"))(ctx); err != nil {
 		return nil, errors.Wrap(err, "expected to find the OK button on the credit card page")
 	}
 

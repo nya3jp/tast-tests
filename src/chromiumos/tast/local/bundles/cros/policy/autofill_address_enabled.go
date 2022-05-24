@@ -208,7 +208,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				// Trigger the autofill by clicking the email field and choosing the suggested address (this could be any of the address fields).
 				suggestionPopup := nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView")
 				if err := uiauto.Combine("clicking the Email field and choosing the suggested address",
-					ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button)),
+					ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button).ClassName("test-target-button")),
 					ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Email")),
 					ui.WaitUntilExists(suggestionPopup),
 					ui.LeftClick(suggestionPopup),
