@@ -1,0 +1,26 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.autoupdate;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/autoupdate";
+
+// UpdateUIService holds a Chrome instance and can be used to control update-relevant UI features
+// such as restarting for update.
+service UpdateUIService {
+  // New instantiates the service by logging into Chrome.
+  rpc New (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close shuts down the Chrome instance and frees resources.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // RelaunchAfterUpdate will relaunch the system if there's an update pending by clicking the
+  // relaunch button on the settings page.
+  rpc RelaunchAfterUpdate (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
