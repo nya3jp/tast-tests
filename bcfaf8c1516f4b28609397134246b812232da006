@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a55141f_50814007",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-24T10:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03e1df47_dffd1202",
+      "revId": "bcfaf8c1516f4b28609397134246b812232da006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d10d034_8c0ce437",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-24T09:23:02Z",
       "side": 1,
       "message": "Add kiosk app name in the log message.",
+      "revId": "bcfaf8c1516f4b28609397134246b812232da006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4228b8bb_ff1e3627",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-05-24T10:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d10d034_8c0ce437",
       "revId": "bcfaf8c1516f4b28609397134246b812232da006",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
