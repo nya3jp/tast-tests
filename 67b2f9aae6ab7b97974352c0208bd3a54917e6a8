@@ -333,6 +333,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f2fd520_18101dcb",
+        "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T07:26:46Z",
+      "side": 1,
+      "message": "Thanks! We will remove those functions from this CL.",
+      "parentUuid": "f0a23d05_04a60b7d",
+      "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bb0bd16_46e425b3",
         "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
         "patchSetId": 2
