@@ -50,6 +50,24 @@
       "message": "Can this be a function of `Recorder`?\nSo instead of `cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder)`, it can be called like `recorder.AddPerformanceCUJMetrics(tconn, bTconn)`.\nFrom the current function, it wouldn\u0027t expect it to modify the `recorder` variable.",
       "revId": "04dc2be986100723d3ae2e328c871866806e5190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44461e84_206d0958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-24T15:04:00Z",
+      "side": 1,
+      "message": "Thanks Gabor for your review.\n\nThe `cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder)` covers the logic to ask the recorder to collect different metrics from different browsers for \"Performance CUJs\". Performance CUJs are the ones that are run by partners on moblab as part of SPERA project. Other CUJs, such as the TPS CUJs, may have different strategy to collect metrics from ash-Chrome or lacros-Chrome. The idea is to separate this logic from the recorder and let the CUJs themself to determine their own metrics collecting strategy.",
+      "parentUuid": "584536fa_0938bbdd",
+      "revId": "04dc2be986100723d3ae2e328c871866806e5190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
