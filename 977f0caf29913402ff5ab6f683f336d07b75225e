@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb81b8eb_72b069ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T07:41:41Z",
+      "side": 1,
+      "message": "Updated the commit message. The complete command to run the test is \n\n```\ntast run -var\u003dwifissid\u003d\u003cwifi name\u003e -var\u003dwifipassword\u003d\u003cwifi password\u003e \u003cdut ip\u003e wifi.Upload.bronze\n```",
+      "parentUuid": "76304a2f_e65260ec",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "491fa26d_2fff62d3",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb802433_e92373ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T07:41:41Z",
+      "side": 1,
+      "message": "We are planning to run this test in IntelLabs and OEM/ODM labs via Moblab or as a standalone test. Hence we have not included this as part of any existing suite.",
+      "parentUuid": "b91b8913_8bd59763",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "571d90cf_a07df11d",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/upload.go",
         "patchSetId": 1
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "becd43fe_2d7e4caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T07:41:41Z",
+      "side": 1,
+      "message": "I agree with you. But we don\u0027t have any other means to test the uploading of a file using WiFi. We had the option to upload it to Google Drive but there also we will have the chance of UI getting changed.",
+      "parentUuid": "571d90cf_a07df11d",
+      "range": {
+        "startLine": 26,
+        "startChar": 33,
+        "endLine": 26,
+        "endChar": 59
+      },
+      "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fe16a28_8506d781",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/upload.go",
         "patchSetId": 1
@@ -117,6 +189,30 @@
       "writtenOn": "2022-04-13T21:21:17Z",
       "side": 1,
       "message": "Where are those variables set? We had an issue where \nwifi.APBrowseInternet would fail to start http://issuetracker.google.com/223502256 \n\n```\nPanic: Required variable \"wifissid\" not supplied via -var or -varsfile\n```\n\nIt looks like we could have the same issue here",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5316acf_6536dca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T07:41:41Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t have access to this bug.\n\nThese variables can be passed when we are running the test, as mentioned in the commit message.",
+      "parentUuid": "5fe16a28_8506d781",
       "range": {
         "startLine": 75,
         "startChar": 1,
