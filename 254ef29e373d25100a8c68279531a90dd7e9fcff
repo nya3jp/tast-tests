@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db7f921_1c549d5c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4be9dee4_ec656189",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 101
+      },
+      "revId": "254ef29e373d25100a8c68279531a90dd7e9fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21eed48a_230a877d",
@@ -120,6 +144,24 @@
       "writtenOn": "2022-05-23T07:35:45Z",
       "side": 1,
       "message": "Manul → Manual?",
+      "revId": "254ef29e373d25100a8c68279531a90dd7e9fcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b5547d_3afa03a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-24T06:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21eed48a_230a877d",
       "revId": "254ef29e373d25100a8c68279531a90dd7e9fcff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
