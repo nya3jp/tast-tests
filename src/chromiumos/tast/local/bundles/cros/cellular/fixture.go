@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -23,7 +24,7 @@ func init() {
 			"stevenjb@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		SetUpTimeout:    8 * time.Second,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    5 * time.Second,
 		PreTestTimeout:  1 * time.Second,
 		PostTestTimeout: 1 * time.Second,
@@ -55,15 +56,11 @@ func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	} else {
 		s.Logf("%q not running", modemfwdJobName)
 	}
-
-	if f.hermesStopped, err = stopJob(ctx, hermesJobName); err != nil {
-		s.Fatalf("Failed to stop job: %q, %s", hermesJobName, err)
+	if !upstart.JobExists(ctx, hermesJobName) {
+		return nil
 	}
-
-	if f.hermesStopped {
-		s.Logf("Stopped %q", hermesJobName)
-	} else {
-		s.Logf("%q not running", hermesJobName)
+	if err := hermes.WaitForHermesIdle(ctx, 2*time.Minute); err != nil {
+		s.Fatalf("Timed out waiting for Hermes to be idle: %s", err)
 	}
 
 	return nil
@@ -82,14 +79,6 @@ func (f *cellularFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 			s.Fatalf("Failed to start %q: %s", modemfwdJobName, err)
 		}
 		s.Logf("Started %q", modemfwdJobName)
-	}
-
-	if f.hermesStopped {
-		err := upstart.EnsureJobRunning(ctx, hermesJobName)
-		if err != nil {
-			s.Fatalf("Failed to start %q: %s", hermesJobName, err)
-		}
-		s.Logf("Started %q", hermesJobName)
 	}
 }
 
