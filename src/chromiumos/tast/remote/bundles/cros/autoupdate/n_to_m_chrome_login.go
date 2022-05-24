@@ -28,7 +28,7 @@ func init() {
 			"hcyang@google.com", // Test author
 			"cros-hwsec@google.com",
 		},
-		Attr:         []string{"group:autoupdate"},
+		Attr:         []string{}, // Test disabled because of b/233735246.
 		SoftwareDeps: []string{"tpm", "reboot", "chrome", "auto_update_stable"},
 		ServiceDeps: []string{
 			"tast.cros.browser.ChromeService",
