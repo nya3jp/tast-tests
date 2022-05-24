@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc4c433_48716cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_pin_lock.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-24T04:54:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "af054c13_573c2008",
+      "range": {
+        "startLine": 47,
+        "startChar": 74,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "06731425f1b39fbf7d5966e2d5ac6017b24b5b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f41f3304_37d182e5",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-20T17:07:39Z",
       "side": 1,
       "message": "nit: \u0027.\u0027 end of comments",
+      "revId": "06731425f1b39fbf7d5966e2d5ac6017b24b5b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e085e22d_0b8ee0f1",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-24T04:54:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f41f3304_37d182e5",
       "revId": "06731425f1b39fbf7d5966e2d5ac6017b24b5b82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd7f2c6c_8344172f",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-24T04:54:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35e88f4d_e32d780f",
+      "range": {
+        "startLine": 1023,
+        "startChar": 42,
+        "endLine": 1023,
+        "endChar": 44
+      },
+      "revId": "06731425f1b39fbf7d5966e2d5ac6017b24b5b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddc4fb1d_b8800ede",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-05-20T17:07:39Z",
       "side": 1,
       "message": "For new files I see am getting warning says to use \u0027ChromiumOS\u0027 and asking to remove \u0027All rights reserved\u0027 . Doubting it might ask same if you do a repo sync and running checks before upload.",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 33
+      },
+      "revId": "06731425f1b39fbf7d5966e2d5ac6017b24b5b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0bd849_d027c435",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-24T04:54:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ddc4fb1d_b8800ede",
       "range": {
         "startLine": 1,
         "startChar": 22,
