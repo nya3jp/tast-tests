@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3707c4d_27be345f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-24T12:44:11Z",
+      "side": 1,
+      "message": "Can you put this CL in a relation chain with the other CL that will use the dump in the memory?",
+      "revId": "013e347a3c9dbd54c84a236e6439e4710caa4ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
