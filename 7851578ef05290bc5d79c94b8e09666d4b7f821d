@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fada963_336fad4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-24T20:51:33Z",
+      "side": 1,
+      "message": "nit: `.`",
+      "range": {
+        "startLine": 9,
+        "startChar": 71,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "7851578ef05290bc5d79c94b8e09666d4b7f821d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7806306_608c7820",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-24T20:51:33Z",
+      "side": 1,
+      "message": "nit: `will`",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "7851578ef05290bc5d79c94b8e09666d4b7f821d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a405aa_d55d0895",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-24T20:51:33Z",
+      "side": 1,
+      "message": "nit: `Calling`",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "7851578ef05290bc5d79c94b8e09666d4b7f821d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "51bd6075_06f6c03b",
@@ -14,6 +83,69 @@
       "writtenOn": "2022-05-24T20:40:14Z",
       "side": 1,
       "message": "Hello, please help me review this change. Thank you.",
+      "revId": "7851578ef05290bc5d79c94b8e09666d4b7f821d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ec5ecf_f4bd539d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-24T20:51:33Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with nits",
+      "revId": "7851578ef05290bc5d79c94b8e09666d4b7f821d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9962892_724ce0bf",
+        "filename": "src/chromiumos/tast/local/hwsec/backup_important_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-24T20:51:33Z",
+      "side": 1,
+      "message": "nit: `got`",
+      "range": {
+        "startLine": 54,
+        "startChar": 69,
+        "endLine": 54,
+        "endChar": 73
+      },
+      "revId": "7851578ef05290bc5d79c94b8e09666d4b7f821d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ed4f23_3d3c9875",
+        "filename": "src/chromiumos/tast/local/hwsec/backup_important_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-24T20:51:33Z",
+      "side": 1,
+      "message": "nit: comma",
+      "range": {
+        "startLine": 54,
+        "startChar": 46,
+        "endLine": 54,
+        "endChar": 47
+      },
       "revId": "7851578ef05290bc5d79c94b8e09666d4b7f821d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
