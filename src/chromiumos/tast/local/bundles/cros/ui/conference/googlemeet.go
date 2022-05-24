@@ -434,6 +434,7 @@ func (conf *GoogleMeetConference) SwitchTabs(ctx context.Context) error {
 		return errors.Wrap(err, "failed to open the wiki url")
 	}
 	defer wikiConn.Close()
+	defer wikiConn.CloseTarget(ctx)
 	if err := webutil.WaitForQuiescence(ctx, wikiConn, longUITimeout); err != nil {
 		return errors.Wrap(err, "failed to wait for wiki page to finish loading")
 	}
