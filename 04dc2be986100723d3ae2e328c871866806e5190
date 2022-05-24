@@ -68,6 +68,24 @@
       "parentUuid": "584536fa_0938bbdd",
       "revId": "04dc2be986100723d3ae2e328c871866806e5190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55bde515_8516beb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-24T15:37:37Z",
+      "side": 1,
+      "message": "\u003e this be a function of `Recorder` ?\n\u003e So instead of  `cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder)`,\n\u003e it can be called like  `recorder.AddPerformanceCUJMetrics(tconn, bTconn)` .\n\u003e From the current function, it wouldn\u0027t expect it to modify the  recorder  variable.\n\nI think that in general we do not want to collect the same set of browser metrics from both Lacros and Ash. Test should be specific about which set of metrics it needs from the specific instance. This is how Hidehiko suggested us to design the API here.\n\nI feel that this function is a compatibility layer because some tests were already implemented collecting the same set of metrics from all the browsers. So we need something before we migrate the actual tests and sort the metrics.",
+      "parentUuid": "44461e84_206d0958",
+      "revId": "04dc2be986100723d3ae2e328c871866806e5190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
