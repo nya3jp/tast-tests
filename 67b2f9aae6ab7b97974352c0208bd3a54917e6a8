@@ -349,6 +349,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25efbc3f_15f74932",
+        "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T11:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f2fd520_18101dcb",
+      "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bb0bd16_46e425b3",
@@ -416,6 +434,24 @@
       "side": 1,
       "message": "We are using SlpAndC10PackageValues() in the child patch [3614763](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3614763). Since this is a new file, we are adding this func in this CL itself.",
       "parentUuid": "dfdbcdd0_5299c0d7",
+      "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "744af6be_5bb21501",
+        "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T11:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c40c40e_190bca12",
       "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
