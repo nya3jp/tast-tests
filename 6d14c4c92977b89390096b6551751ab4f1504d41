@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cbd763a_55cf3e90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "About using `uiauto.Sleep`: now when starting the drag on a shelf app icon, we have to wait until the app icon enters drag mode. Unfortunately, there are not any available APIs to wait until the drag mode starts. \n\nI am willing to provide an API in a separate CL. Meanwhile, I would like to land this CL first. Just want to point out: the current test code that uses `uiauto.Sleep(time.Second)` is quite stable right now.",
+      "parentUuid": "1424430c_03099b4c",
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf916fc3_73ac3303",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-24T00:29:01Z",
       "side": 1,
       "message": "optional: case chromeAppTest, fileAppTest:\nshould also work.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39928100_8807c9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf916fc3_73ac3303",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "769d78d6_569fed5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a13ab8e_6004ec96",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 14
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ab4f3ba_7122d716",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-05-24T00:29:01Z",
       "side": 1,
       "message": "remove get\n\nhttp://go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 374,
+        "startChar": 5,
+        "endLine": 374,
+        "endChar": 18
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "879edad4_bd7f7667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ab4f3ba_7122d716",
       "range": {
         "startLine": 374,
         "startChar": 5,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64e931a_2edba001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c276fa_24b92761",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 113
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6de401d1_f69e3a43",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-05-24T00:29:01Z",
       "side": 1,
       "message": "remove get",
+      "range": {
+        "startLine": 392,
+        "startChar": 5,
+        "endLine": 392,
+        "endChar": 23
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c35d208_c745c59d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de401d1_f69e3a43",
       "range": {
         "startLine": 392,
         "startChar": 5,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a46899c7_e51565e9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e737ac3c_75bbbd38",
+      "range": {
+        "startLine": 517,
+        "startChar": 5,
+        "endLine": 517,
+        "endChar": 47
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a59817c_2c89e776",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-05-24T00:29:01Z",
       "side": 1,
       "message": "remove Get",
+      "range": {
+        "startLine": 683,
+        "startChar": 5,
+        "endLine": 683,
+        "endChar": 30
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aaf6087_31444e90",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a59817c_2c89e776",
       "range": {
         "startLine": 683,
         "startChar": 5,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2032f8f6_21244007",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59706726_4fd14e51",
+      "range": {
+        "startLine": 697,
+        "startChar": 24,
+        "endLine": 697,
+        "endChar": 25
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a6eaa04_84b26b8a",
@@ -215,6 +425,30 @@
       "writtenOn": "2022-05-24T00:29:01Z",
       "side": 1,
       "message": "nit: This is not necessary. It might be a matter of preference, but I\u0027d avoid special-casing unless it\u0027s really necessary.",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 0
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca3b4a7_ba4dea24",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a6eaa04_84b26b8a",
       "range": {
         "startLine": 702,
         "startChar": 0,
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41284159_8b05e33a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77fedf61_6dd3d315",
+      "range": {
+        "startLine": 717,
+        "startChar": 52,
+        "endLine": 717,
+        "endChar": 58
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01e6cc0f_7f241c43",
@@ -261,6 +519,30 @@
       "writtenOn": "2022-05-24T00:29:01Z",
       "side": 1,
       "message": "want",
+      "range": {
+        "startLine": 721,
+        "startChar": 46,
+        "endLine": 721,
+        "endChar": 52
+      },
+      "revId": "6d14c4c92977b89390096b6551751ab4f1504d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f078c478_cfc693ce",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T01:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e6cc0f_7f241c43",
       "range": {
         "startLine": 721,
         "startChar": 46,
