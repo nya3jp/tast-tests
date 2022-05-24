@@ -84,6 +84,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, googlePhotos *GooglePhotos, tab
 		return errors.Wrap(err, "failed to create the recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
+	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+		return errors.Wrap(err, "failed to add metrics to recorder")
+	}
 
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
