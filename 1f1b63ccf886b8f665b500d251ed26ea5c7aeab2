@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd6c36cd_04756ea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/onscreen_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T05:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ab51e5c_02ebcee5",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "1f1b63ccf886b8f665b500d251ed26ea5c7aeab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e245ee6_ff417c8b",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-18T15:41:08Z",
       "side": 1,
       "message": "nit: do we need this blank line?",
+      "revId": "1f1b63ccf886b8f665b500d251ed26ea5c7aeab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a605b3c3_baa16417",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/onscreen_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-24T05:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e245ee6_ff417c8b",
       "revId": "1f1b63ccf886b8f665b500d251ed26ea5c7aeab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
