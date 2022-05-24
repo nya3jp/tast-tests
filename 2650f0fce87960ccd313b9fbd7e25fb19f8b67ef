@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d154af_2f57c9f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T08:16:37Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "2650f0fce87960ccd313b9fbd7e25fb19f8b67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d486fdde_ed593c46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T08:16:37Z",
+      "side": 1,
+      "message": "For my own interest - is there a doc about the types of vaults somewhere?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "2650f0fce87960ccd313b9fbd7e25fb19f8b67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6a1712_2e4c9aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-24T08:16:37Z",
+      "side": 1,
+      "message": "nit: I may be blind but where is \u0027testTime\u0027 used? Did you want to use it in the Timeout field of the test?",
+      "revId": "2650f0fce87960ccd313b9fbd7e25fb19f8b67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
