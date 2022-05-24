@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d2abb9_45c916c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-24T08:38:39Z",
+      "side": 1,
+      "message": "my initial scan.",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85be0d50_215a297c",
@@ -89,6 +106,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5aa4e9b9_b7449b7f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-24T08:38:39Z",
+      "side": 1,
+      "message": "could you add more comment like examples of expected lines etc.?\nIt\u0027s nice to comment where it comes from, too.",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f1c386_7348c5c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-24T08:38:39Z",
+      "side": 1,
+      "message": "calling s.Fatal() may not work well from another goroutine.\nRather, goroutine looks unneeded in this case.\nYou can just remove goroutine, and inline the body into the caller.",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "106c9804_6cb7d58b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
         "patchSetId": 3
@@ -106,6 +157,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db0e7039_e8d3149b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-24T08:38:39Z",
+      "side": 1,
+      "message": "could you handle errors?",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffb4ebae_767afe49",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
         "patchSetId": 3
@@ -117,6 +185,23 @@
       "writtenOn": "2022-05-24T01:05:55Z",
       "side": 1,
       "message": "expect",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c90bd7_9aa09847",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-24T08:38:39Z",
+      "side": 1,
+      "message": "could you handle errors? Also, this needs to be called on error, too. So,\n- you\u0027ll need to call this in defer.\n- you\u0027ll need to terminate the subprocess on error cases.",
       "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
