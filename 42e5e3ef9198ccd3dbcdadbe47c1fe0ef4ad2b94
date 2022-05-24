@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8acd363_5e16bf9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-24T08:43:25Z",
+      "side": 1,
+      "message": "nit: const delay \u003d ...",
+      "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c7907a4_d11b94e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-24T08:43:25Z",
+      "side": 1,
+      "message": "testing.Sleep is often identified as a culprit of flakiness.\nCould you document the reasons why you need Sleep here?\nIf it is waiting for some condition, could you use testing.Poll?\nOr, if you\u0027re waiting for fixed amount of time actually, could you explicitly document the background in detail?",
+      "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4446381_85298ae2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-24T08:43:25Z",
+      "side": 1,
+      "message": "clarification: does the tool uses CR LF, unlike other common case which is just LF?",
+      "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cace94ca_d19e6da8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-24T08:43:25Z",
+      "side": 1,
+      "message": "I think this needs to be put at L70 or so?",
+      "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
