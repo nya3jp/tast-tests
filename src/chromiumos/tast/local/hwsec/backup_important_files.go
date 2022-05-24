@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/testing"
 )
 
 const tpmManagerLocalDataBackupPath = "/var/lib/tpm_manager/local_tpm_data.tast-hwsec-backup"
@@ -45,6 +46,35 @@ func BackupTPMManagerDataIfIntact(ctx context.Context) error {
 func RestoreTPMManagerData(ctx context.Context) error {
 	if err := fsutil.CopyFile(tpmManagerLocalDataBackupPath, hwsec.TpmManagerLocalDataPath); err != nil {
 		return errors.Wrap(err, "failed to copy tpm manager local data backup")
+	}
+	return nil
+}
+
+// RestoreTPMOwnerPasswordIfNeeded restores the owner password from the snapshot stored
+// at the beginning of the entire test program, if the owner password got wiped already.
+func RestoreTPMOwnerPasswordIfNeeded(ctx context.Context, dc *hwsec.DaemonController) error {
+	hasOwnerPassword, err := isTPMLocalDataIntact(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to check owner password")
+	}
+	if hasOwnerPassword {
+		return nil
+	}
+	if err := RestoreTPMManagerData(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to restore tpm manager local data")
+		testing.ContextLog(ctx, "If you saw this on local testing, probably the TPM ownership isn't taken by the testing infra")
+		testing.ContextLog(ctx, "You chould try to power wash the device and run the test again")
+		return errors.Wrap(err, "failed to restore tpm manager local data")
+	}
+	if err := dc.Restart(ctx, hwsec.TPMManagerDaemon); err != nil {
+		return errors.Wrap(err, "failed to restart tpm manager")
+	}
+	hasOwnerPassword, err = isTPMLocalDataIntact(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to check owner password")
+	}
+	if !hasOwnerPassword {
+		return errors.Wrap(err, "no owner password after restoration")
 	}
 	return nil
 }
