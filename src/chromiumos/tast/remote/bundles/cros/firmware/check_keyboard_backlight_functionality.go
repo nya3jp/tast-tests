@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
-	"chromiumos/tast/services/cros/baserpc"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -33,7 +32,7 @@ func init() {
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.ui.ScreenRecorderService", "tast.cros.baserpc.FaillogService"},
+		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.ui.ScreenRecorderService"},
 		HardwareDeps: hwdep.D(
 			hwdep.ChromeEC(),
 			hwdep.KeyboardBacklight(),
@@ -84,15 +83,8 @@ func CheckKeyboardBacklightFunctionality(ctx context.Context, s *testing.State) 
 	}
 	defer chromeService.Close(ctx, &empty.Empty{})
 
-	// Create a temporary directory to save screen recording.
-	faillogService := baserpc.NewFaillogServiceClient(h.RPCClient.Conn)
-	outDir, err := faillogService.Create(ctx, &empty.Empty{})
-	if err != nil {
-		s.Fatal("Failed to create a new directory for faillog: ", err)
-	}
-	filePath := filepath.Join(outDir.Path, "kblightRecord.webm")
-
 	s.Log("Screen recorder started")
+	filePath := filepath.Join(s.OutDir(), "kblightRecord.webm")
 	startRequest := pb.StartRequest{
 		FileName: filePath,
 	}
