@@ -43,6 +43,16 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
 		}, {
+			Name:              "only",
+			Fixture:           "lacrosOnly",
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "only_unstable",
+			Fixture:           "lacrosOnly",
+			ExtraSoftwareDeps: []string{"lacros_unstable"},
+			ExtraAttr:         []string{"informational"},
+		}, {
 			Name:              "omaha",
 			Fixture:           "lacrosOmaha",
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
@@ -62,16 +72,18 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get installed apps: ", err)
 	}
-	found := false
+	browserAppName := ""
 	for _, appItem := range appItems {
-		if appItem.AppID == apps.Lacros.ID && appItem.Name == apps.Lacros.Name && appItem.Type == ash.StandaloneBrowser {
-			found = true
+		// TODO(crbug.com/1328994): Use apps.PrimaryBrowser for LacrosOnly app.
+		if appItem.Type == ash.StandaloneBrowser && appItem.AppID == apps.Lacros.ID &&
+			(appItem.Name == apps.Lacros.Name || appItem.Name == apps.Chrome.Name) {
+			browserAppName = appItem.Name
 			break
 		}
 	}
-	if !found {
-		s.Logf("AppID: %v, Name: %v, Type: %v, was expected, but got",
-			apps.Lacros.ID, apps.Lacros.Name, ash.StandaloneBrowser)
+	if browserAppName == "" {
+		s.Logf("AppID: %v, Name: Lacros or Chrome, Type: %v, was expected, but got",
+			apps.Lacros.ID, ash.StandaloneBrowser)
 		for _, appItem := range appItems {
 			s.Logf("AppID: %v, Name: %v, Type: %v", appItem.AppID, appItem.Name, appItem.Type)
 		}
@@ -83,9 +95,9 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get shelf items: ", err)
 	}
-	found = false
+	found := false
 	for _, shelfItem := range shelfItems {
-		if shelfItem.AppID == apps.Lacros.ID && shelfItem.Title == apps.Lacros.Name && shelfItem.Type == ash.ShelfItemTypePinnedApp {
+		if shelfItem.AppID == apps.Lacros.ID && shelfItem.Title == browserAppName && shelfItem.Type == ash.ShelfItemTypePinnedApp {
 			found = true
 			break
 		}
@@ -106,7 +118,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 
 	// Clean up user data dir to ensure a clean start.
 	os.RemoveAll(lacros.UserDataDir)
-	if err = ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
+	if err = ash.LaunchAppFromShelf(ctx, tconn, browserAppName, apps.Lacros.ID); err != nil {
 		s.Fatal("Failed to launch Lacros: ", err)
 	}
 
