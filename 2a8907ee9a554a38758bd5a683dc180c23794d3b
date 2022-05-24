@@ -70,6 +70,30 @@
       },
       "revId": "2a8907ee9a554a38758bd5a683dc180c23794d3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccee01c2_465f0442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T17:21:59Z",
+      "side": 1,
+      "message": "I see. It should generate a `ax::mojom::Action::kScrollToMakeVisible` event. Then it gets handled by `View::HandleAccessibleAction()`. Thank you!",
+      "parentUuid": "35a63b51_c05f8216",
+      "range": {
+        "startLine": 93,
+        "startChar": 12,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "2a8907ee9a554a38758bd5a683dc180c23794d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
