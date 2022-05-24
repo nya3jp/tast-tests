@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db9b558_27cbacee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-24T17:08:41Z",
+      "side": 1,
+      "message": "Question: what does `ui.MakeVisible()` really do? I took a look at the code and it actually calls `node.makeVisible()`. Does it set the view visibility to be true or call a function like `ScrollViewToVisible()`?",
+      "range": {
+        "startLine": 93,
+        "startChar": 12,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "2a8907ee9a554a38758bd5a683dc180c23794d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
