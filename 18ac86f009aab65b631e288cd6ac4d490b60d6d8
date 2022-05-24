@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d7f23a_8c67cf9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-24T21:20:17Z",
+      "side": 1,
+      "message": "Q: Is there any way for the test to know if lacros is set as a primary vs. the only browser?",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 72
+      },
+      "revId": "18ac86f009aab65b631e288cd6ac4d490b60d6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
