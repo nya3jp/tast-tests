@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acd92f09_6fcd591a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-24T19:53:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20c85d7d_2ccbe8da",
+      "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a80408f_2fe0f258",
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "+1. Sounds like this is a temp solution. It makes input.InputMethodManagement testing in a non-real environment if the Hub is enabled by default.",
       "parentUuid": "1a80408f_2fe0f258",
+      "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd53853e_3618709f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-24T19:53:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfdbcd9c_f41af9bf",
       "revId": "ec40127edde12f7e2fe2bacc67862cecd1a3cb9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
