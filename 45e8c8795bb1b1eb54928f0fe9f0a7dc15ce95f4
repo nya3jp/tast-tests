@@ -16,6 +16,24 @@
       "message": "This has consistent failures on a few boards: https://tastboard.corp.google.com/test/health.ProbeBusInfo \n\nIs there a reason for those or should it be resolved before promotion? ",
       "revId": "45e8c8795bb1b1eb54928f0fe9f0a7dc15ce95f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54bbfb5_e6cf4d8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-24T01:02:44Z",
+      "side": 1,
+      "message": "The board you pasted is \"health.ProbeBusInfo\" test. What we promote is one of its subtest : \"health.ProbeBusInfo.thunderbolt\", which was stable when we submitted this CL.\n\nhttps://tastboard.corp.google.com/test/health.ProbeBusInfo.thunderbolt",
+      "parentUuid": "f3a0b986_4b082f4d",
+      "revId": "45e8c8795bb1b1eb54928f0fe9f0a7dc15ce95f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
