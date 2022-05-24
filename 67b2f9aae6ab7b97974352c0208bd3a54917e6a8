@@ -279,6 +279,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60a444ef_3f17375b",
+        "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-24T05:53:17Z",
+      "side": 1,
+      "message": "This change is not logically part of this CL, I think it would be better reviewed as part of that CL. Can you move it?",
+      "parentUuid": "4c0e4d5b_592ce3df",
+      "revId": "67b2f9aae6ab7b97974352c0208bd3a54917e6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bb0bd16_46e425b3",
         "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
         "patchSetId": 2
