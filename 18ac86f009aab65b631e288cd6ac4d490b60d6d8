@@ -46,6 +46,30 @@
       },
       "revId": "18ac86f009aab65b631e288cd6ac4d490b60d6d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e611299a_384e564b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-24T23:57:41Z",
+      "side": 1,
+      "message": "That\u0027s actually where I came from. \nI was looking at `apps.PrimaryBrowser()` and realized that there is no way that PrimaryBrowser checks if it\u0027s the only browser or not and returns a new app struct for LacrosOnly (name \u003d \"Chrome\", ID \u003d Lacros.ID) at the moment.\nCan you help make `apps.PrimaryBrowser()` work for Chrome, Chromium, Lacros and LacrosOnly as well?",
+      "parentUuid": "726569f5_fdaa53bf",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 72
+      },
+      "revId": "18ac86f009aab65b631e288cd6ac4d490b60d6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
