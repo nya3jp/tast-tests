@@ -46,6 +46,30 @@
       },
       "revId": "2a8907ee9a554a38758bd5a683dc180c23794d3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71889bc9_bd7e3ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-05-24T17:19:16Z",
+      "side": 1,
+      "message": "I don\u0027t know what the implementation does. But when I watch the test run on device, the view scrolls to be visible. So I suspect it\u0027s calling something like `ScrollViewToVisible()`.\n\nIt might be going through this code path in views::View::HandleAccessibleAction() but I\u0027m not sure:\nhttps://source.chromium.org/chromium/chromium/src/+/main:ui/views/view.cc;drc\u003d8b496fca52f9509077cc3969f7f9ba7329506c7a;l\u003d1878",
+      "parentUuid": "3db9b558_27cbacee",
+      "range": {
+        "startLine": 93,
+        "startChar": 12,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "2a8907ee9a554a38758bd5a683dc180c23794d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
