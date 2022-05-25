@@ -15,10 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ECADC,
-		Desc:         "Basic check for EC ADC temperature",
-		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		Func:     ECADC,
+		Desc:     "Basic check for EC ADC temperature",
+		Contacts: []string{"js@semihalf.com", "chromeos-firmware@google.com"},
+		// TODO(b/194908031): Add back to firmware_unstable and firmware_bringup once this test actually works.
+		Attr:         []string{},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
