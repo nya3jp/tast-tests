@@ -25,7 +25,7 @@ func init() {
 			"cros-tdm-tpe-eng@google.com",
 			"intel-chrome-system-automation-team@intel.com"},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 	})
 }
