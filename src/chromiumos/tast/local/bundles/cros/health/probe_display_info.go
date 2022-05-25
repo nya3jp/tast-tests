@@ -70,6 +70,14 @@ type embeddedDisplayInfo struct {
 	ResolutionHorizontal   *jsontypes.Uint32 `json:"resolution_horizontal"`
 	ResolutionVertical     *jsontypes.Uint32 `json:"resolution_vertical"`
 	RefreshRate            *float64          `json:"refresh_rate"`
+	Manufacturer           string            `json:"manufacturer"`
+	ModelID                *uint16           `json:"model_id"`
+	SerialNumber           *jsontypes.Uint32 `json:"serial_number"`
+	ManufactureWeek        *uint8            `json:"manufacture_week"`
+	ManufactureYear        *uint16           `json:"manufacture_year"`
+	EdidVersion            string            `json:"edid_version"`
+	InputType              string            `json:"input_type"`
+	DisplayName            string            `json:"display_name"`
 }
 
 type externalDisplayInfo struct {
@@ -78,6 +86,14 @@ type externalDisplayInfo struct {
 	ResolutionHorizontal *jsontypes.Uint32 `json:"resolution_horizontal"`
 	ResolutionVertical   *jsontypes.Uint32 `json:"resolution_vertical"`
 	RefreshRate          *float64          `json:"refresh_rate"`
+	Manufacturer         string            `json:"manufacturer"`
+	ModelID              *uint16           `json:"model_id"`
+	SerialNumber         *jsontypes.Uint32 `json:"serial_number"`
+	ManufactureWeek      *uint8            `json:"manufacture_week"`
+	ManufactureYear      *uint16           `json:"manufacture_year"`
+	EdidVersion          string            `json:"edid_version"`
+	InputType            string            `json:"input_type"`
+	DisplayName          string            `json:"display_name"`
 }
 
 type modetestConnectorColumn int
