@@ -36,6 +36,22 @@ type Operations struct {
 	CleanUp      func(ctx context.Context)
 }
 
+func rollback(ctx context.Context, dut *dut.DUT) error {
+	// Restore original image version with rollback.
+	testing.ContextLog(ctx, "Restoring the original device image")
+	if err := dut.Conn().CommandContext(ctx, "update_engine_client", "--rollback", "--nopowerwash", "--follow").Run(); err != nil {
+		return errors.Wrap(err, "failed to rollback the DUT")
+	}
+
+	// Reboot the DUT.
+	testing.ContextLog(ctx, "Rebooting the DUT after the rollback")
+	if err := dut.Reboot(ctx); err != nil {
+		return errors.Wrap(err, "failed to reboot the DUT after rollback")
+	}
+
+	return nil
+}
+
 // NToMTest drives autoupdate and calls to client code providing callbacks.
 // deltaM parameter specifies amount of milestones to rollback.
 func NToMTest(ctx context.Context, dut *dut.DUT, outDir string, rpcHint *testing.RPCHint, ops *Operations, deltaM int) error {
@@ -125,26 +141,26 @@ func NToMTest(ctx context.Context, dut *dut.DUT, outDir string, rpcHint *testing
 			// Rollback is not needed here, the test execution can stop.
 			return errors.New("the image version did not change after the update")
 		}
-		return errors.Wrapf(err, "failed to update the image, image version after the update is incorrect; got %s, want %s", version, rollbackVersion)
+		err = errors.Wrapf(err, "failed to update the image, image version after the update is incorrect; got %s, want %s", version, rollbackVersion)
+		if rollbackErr := rollback(postCtx, dut); rollbackErr != nil {
+			err = errors.Wrapf(err, "failed to rollback after failure: %v", rollbackErr)
+		}
+		return err
 	}
 
 	if ops.PostUpdate != nil {
 		testing.ContextLog(ctx, "Running PostUpdate")
 		if err := ops.PostUpdate(postCtx); err != nil {
-			return errors.Wrap(err, "failed to run the PostUpdate operation")
+			err = errors.Wrap(err, "failed to run the PostUpdate operation")
+			if rollbackErr := rollback(postCtx, dut); rollbackErr != nil {
+				err = errors.Wrapf(err, "failed to rollback after failure: %v", rollbackErr)
+			}
+			return err
 		}
 	}
 
-	// Restore original image version with rollback.
-	testing.ContextLog(ctx, "Restoring the original device image")
-	if err := dut.Conn().CommandContext(postCtx, "update_engine_client", "--rollback", "--nopowerwash", "--follow").Run(); err != nil {
-		return errors.Wrap(err, "failed to rollback the DUT")
-	}
-
-	// Reboot the DUT.
-	testing.ContextLog(ctx, "Rebooting the DUT after the rollback")
-	if err := dut.Reboot(postCtx); err != nil {
-		return errors.Wrap(err, "failed to reboot the DUT after rollback")
+	if err := rollback(postCtx, dut); err != nil {
+		return errors.Wrap(err, "failed to rollback")
 	}
 
 	// Check the image version.
