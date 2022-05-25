@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee03983_e67f7bc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-05-25T15:55:27Z",
+      "side": 1,
+      "message": "lgtm if we want to remove jank counts.\n\nNote that if we want to calculate jank/very_jank counts on the dashboard side, we need to store the histogram buckets in test results and data pipeline needs to be pick up them. ",
+      "revId": "92a24d1c20d84aa510862b5514d8aee2e1e56498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a958dab_929bac41",
