@@ -33,10 +33,10 @@ func init() {
 		Desc:     "Fixture settig persistent policy user for a Family Link account",
 		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Vars: []string{
-			"unicorn.childUser",
+			"family.unicornEmail",
 		},
 		Impl: &persistentFixture{
-			policyUserVar: "unicorn.childUser",
+			policyUserVar: "family.unicornEmail",
 		},
 		SetUpTimeout:    5 * time.Second,
 		ResetTimeout:    5 * time.Second,
@@ -75,7 +75,7 @@ type persistentFixture struct {
 	// policyUser is the persistentuser account that used as policyUser in policy blob.
 	// Keep nil if unused.
 	policyUser *string
-	// The policyUserVar is the account variable (i.e. "unicorn.childUser") when using
+	// The policyUserVar is the account variable (i.e. "family.unicornEmail") when using
 	// a different account instead of tast-user@managedchrome.com for policy test.
 	// It is used to set the value of the policyUser variable above.
 	policyUserVar string
