@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
+	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -57,7 +58,7 @@ func multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 // RunClamShell runs window arrangement cuj for clamshell. We test performance
 // for resizing window, dragging window, maximizing window, minimizing window
 // and split view resizing.
-func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, act *arc.Activity, withTestVideo arc.ActivityStartOption) error {
+func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, d *androidui.Device, act *arc.Activity, withTestVideo arc.ActivityStartOption) error {
 	const (
 		timeout  = 10 * time.Second
 		duration = 2 * time.Second
@@ -305,6 +306,18 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	}
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateRightSnapped); err != nil {
 		return errors.Wrap(err, "failed to wait for ARC app to be snapped on right")
+	}
+	// Wait until the video is playing, or at least the app is
+	// idle and not showing the message "Can't play this video."
+	if err := d.WaitForIdle(ctx, time.Minute); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC app to be idle")
+	}
+	if err := d.Object(
+		androidui.Text("Can't play this video."),
+		androidui.PackageName("org.chromium.arc.testapp.pictureinpicturevideo"),
+		androidui.ClassName("android.widget.TextView"),
+	).WaitUntilGone(ctx, time.Minute); err != nil {
+		return errors.Wrap(err, "failed to wait for \"Can't play this video.\" message to be absent")
 	}
 	// Use multiresize on the two snapped windows.
 	testing.ContextLog(ctx, "Multiresizing a snapped browser window and a snapped ARC window")
