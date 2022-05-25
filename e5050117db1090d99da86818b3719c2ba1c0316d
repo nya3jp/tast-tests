@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7f3ac76_eb611734",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-25T20:52:06Z",
+      "side": 1,
+      "message": "Renaming the variable doesn\u0027t actually do anything though - it\u0027s still the same data passed around. You need to shorten it for using the context in ConnectToCallbox and pass the longer one to the deferred function. That way the deferred function doesn\u0027t run out of time if later ConnectToCallbox functions run out of context time.\n\nSomething like\n```\nctxForCleanupcl :\u003d ctx\ndefer cl.Close(ctxForCleanupcl)\nctx \u003d ctx.ctxutil.Shorten(ctx, 500 * time.Millisecond)\n```\nwhich guarantees cl.Close has at least 500ms of runtime allotted to it, taken from the original ctx\u0027s allotted run time.\n\nThis is important for cleanup calls like Closes that always need to happen, even if something later on fails.",
+      "parentUuid": "28cd2403_3f012633",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6008e31_e37727e4",
         "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
         "patchSetId": 1
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "I was told that I had to do it this way.",
       "parentUuid": "e6008e31_e37727e4",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5805ca_e7ada711",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-25T20:52:06Z",
+      "side": 1,
+      "message": "See other comment",
+      "parentUuid": "c7129b21_6e4b4fc0",
       "range": {
         "startLine": 111,
         "startChar": 7,
