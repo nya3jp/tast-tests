@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c854156_7d587392",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-25T11:57:41Z",
+      "side": 1,
+      "message": "could you document if it is necessary to use CRLF and reasons?",
+      "parentUuid": "370698cb_c556f715",
+      "revId": "42e5e3ef9198ccd3dbcdadbe47c1fe0ef4ad2b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cace94ca_d19e6da8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/verify_fast_lid_close_open.go",
         "patchSetId": 1
