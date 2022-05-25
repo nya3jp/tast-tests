@@ -103,9 +103,9 @@ var TypingMessageHello = typingMessage{
 		ExpectedText:    "한",
 	},
 	ime.Arabic: {
-		CharacterKeySeq: strings.Split("سلام", ""),
-		LocationKeySeq:  strings.Split("sghl", ""),
-		ExpectedText:    "سلام",
+		CharacterKeySeq: strings.Split("مرحبا", ""),
+		LocationKeySeq:  strings.Split("lvpfh", ""),
+		ExpectedText:    "مرحبا",
 	},
 }
 
