@@ -16,6 +16,24 @@
       "message": "FYI: Alvin will be the Tast owner to review `EDU video editing` CUJ.",
       "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83df9423_bfd1fc40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-25T06:45:53Z",
+      "side": 1,
+      "message": "Thanks for the assignment, great work.",
+      "parentUuid": "54aa7ce2_bde495b0",
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
