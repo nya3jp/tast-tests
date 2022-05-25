@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d343686_fece8a3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-25T10:15:37Z",
+      "side": 1,
+      "message": "Adding chinglin@ in case he has some insights to share.",
+      "revId": "8ff77d2fd49e78a17ae63363ea7849d5310870c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d134a873_221243ee",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-05-25T10:15:37Z",
+      "side": 1,
+      "message": "In many other places we use sampling frequency (with `-F`) to throttle the perf sampling rate. Since `cycles` can be varying, depending on the use-case the `-F` can be a better representation of the system state than `-c`, as you\u0027ll get fewer samples with `-c` if the CPU is sleeping or running at low frequency.\n\nThe default frequency perf uses is 4000 and we often use 499. For example this is the command we use to capture perf data in feedback report:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/debugd/src/log_tool.cc;drc\u003d93df5034a52481f2113511a3ea7fa55263f857f5;l\u003d653\n\nNot to say we shouldn\u0027t add `-c` here. I just want to see if `-F` would be a useful arg to support.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "8ff77d2fd49e78a17ae63363ea7849d5310870c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
