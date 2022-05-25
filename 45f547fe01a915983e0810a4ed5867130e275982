@@ -16,6 +16,23 @@
       "message": "Osama, please review",
       "revId": "45f547fe01a915983e0810a4ed5867130e275982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a94353e7_150f5ff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-05-25T07:18:01Z",
+      "side": 1,
+      "message": "+tast-owners@",
+      "revId": "45f547fe01a915983e0810a4ed5867130e275982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
