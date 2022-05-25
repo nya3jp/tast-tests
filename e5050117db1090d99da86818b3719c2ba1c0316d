@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39a805e8_d4d7ff5a",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-25T20:53:17Z",
+      "side": 1,
+      "message": "I mean\n```\nctxForCleanupcl :\u003d ctx\ndefer cl.Close(ctxForCleanupcl)\nctx \u003d ctxutil.Shorten(ctx, 500 * time.Millisecond)\n```",
+      "parentUuid": "f7f3ac76_eb611734",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6008e31_e37727e4",
         "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
         "patchSetId": 1
