@@ -51,7 +51,6 @@ func init() {
 				useFlatbufferModel: false,
 			},
 			Fixture:           "lacrosFastHistogramsAndBuiltinSmartDimModel",
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros_stable"},
 		}},
 	})
