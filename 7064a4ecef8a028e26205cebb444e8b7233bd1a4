@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45d46bbe_39361ea6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-25T01:33:55Z",
+      "side": 1,
+      "message": "Thanks for working on this. Looking good.\n\nA question for Yilkal and +courtneywong to see if anything else we want to include for testing annotator.",
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948747f1_de95260f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-25T01:33:55Z",
+      "side": 1,
+      "message": "+yilkal, any thought about how we can test with SODA? Does live caption has fake speech recognition service we can use?",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d241a1d7_05628dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-25T01:33:55Z",
+      "side": 1,
+      "message": "nit: rename to something more descriptive.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e5fba4f_1c807256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-25T01:33:55Z",
+      "side": 1,
+      "message": "nit: annotatorTrayButton.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a016246d_0d548ec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-25T01:33:55Z",
+      "side": 1,
+      "message": "I am curious about why we need this.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959e2471_232c0814",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-25T01:33:55Z",
+      "side": 1,
+      "message": "nit: Enable annotator.",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 24
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51eb3c5_6f380a39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-25T01:33:55Z",
+      "side": 1,
+      "message": "nit: Disable annotator.",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c4c27f_7ebeebbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1268793
+      },
+      "writtenOn": "2022-05-25T01:33:55Z",
+      "side": 1,
+      "message": "Can we verify that Projector App is opened/maximized?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 71
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
