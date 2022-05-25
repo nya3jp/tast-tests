@@ -210,6 +210,24 @@
       "parentUuid": "90fa730a_1bddea22",
       "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f53973b_f3a3c9ba",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-25T01:34:06Z",
+      "side": 1,
+      "message": "Sorry, just one question. Will it be an issue for us to publish the thresholds for different models in public test? I simply don\u0027t know. Just asking. Thanks.",
+      "parentUuid": "fd29f2ce_99e3df1b",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
