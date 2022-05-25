@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9c604f_9dc67d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-25T17:45:35Z",
+      "side": 1,
+      "message": "LacrosVariantExists? or does it remain needed for a lacros variant for flatbuffer?",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "d64e8dfc8c0db2aed25c48e6b643eebcf74f32d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
