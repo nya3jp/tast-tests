@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1763590_1edda6f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-25T02:53:32Z",
+      "side": 1,
+      "message": "yes, it won\u0027t fail even light mode is already enabled. Comment updated.",
+      "parentUuid": "ce7fda5b_31fd4234",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1bb8dcd_cb2d1e69",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-24T12:17:39Z",
       "side": 1,
       "message": "If the test fails here, and the dark theme stays turned on, can it cause problems for the other tests?\nIf so, can you defer a call, that sets the personalization back to default?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9dab329_2f2c0377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-25T02:53:32Z",
+      "side": 1,
+      "message": "All our related dark light tast-tests would need to set the dark/light mode first so it wouldn\u0027t be a problem in case that a specific mode is enabled.\nHowever, I thought the setup will be reset for other tests like state after log in (except we have parameterized tests). Could it be a case that the last state of previous test is used for the next tests?",
+      "parentUuid": "d1bb8dcd_cb2d1e69",
       "range": {
         "startLine": 82,
         "startChar": 0,
@@ -94,6 +142,42 @@
       "writtenOn": "2022-05-24T12:17:39Z",
       "side": 1,
       "message": "Do you plan to use this function in a `uiauto.Combine` later?\nIf not, I don\u0027t see the need to return with an `uiauto.Action`.",
+      "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da651cb_0e0a8cb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-25T02:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b17ad6_988d4a5c",
+      "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a45ab6a_92b443bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-25T02:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da6c6c8_8812241d",
       "revId": "4e68605eb424bc8f611a0c0be174be93b652365a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
