@@ -732,13 +732,28 @@ func openLegacyWallpaperPicker(ui *uiauto.Context) uiauto.Action {
 		ui.Exists(nodewith.NameContaining("Wallpaper").Role(role.Window).First()))
 }
 
-// SetSolidWhiteWallpaper sets the wallpaper to the solid white.
-func SetSolidWhiteWallpaper(ctx context.Context, ui *uiauto.Context) error {
+func scrollDownUntilSucceeds(ctx context.Context, action uiauto.Action, mew *input.MouseEventWriter) error {
 	const (
 		maxNumSelectRetries = 4
 		numScrolls          = 100
 	)
+	var actionErr error
+	for i := 0; i < maxNumSelectRetries; i++ {
+		if actionErr = action(ctx); actionErr == nil {
+			return nil
+		}
+		for j := 0; j < numScrolls; j++ {
+			if err := mew.ScrollDown(); err != nil {
+				return errors.Wrap(err, "failed to scroll down")
+			}
+		}
+	}
 
+	return actionErr
+}
+
+// SetSolidWhiteWallpaper sets the wallpaper to the solid white.
+func SetSolidWhiteWallpaper(ctx context.Context, ui *uiauto.Context) error {
 	mew, err := input.Mouse(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup the mouse")
@@ -752,24 +767,14 @@ func SetSolidWhiteWallpaper(ctx context.Context, ui *uiauto.Context) error {
 			return errors.Wrap(err, "failed to open wallpaper picker")
 		}
 	}
-	if err := wallpaper.SelectCollection(ui, constants.SolidColorsCollection)(ctx); err != nil {
+	// "Solid" collection is at the end of the collection list so we need to scroll down to make it visible on a small display.
+	if err := scrollDownUntilSucceeds(ctx, wallpaper.SelectCollection(ui, constants.SolidColorsCollection), mew); err != nil {
 		return errors.Wrap(err, "failed to select wallpaper collection")
 	}
 
 	// "White" wallpaper is at the end of the wallpaper list so we need to scroll down to make it visible on a small display.
-	var selectImageErr error
-	for i := 0; i < maxNumSelectRetries; i++ {
-		if selectImageErr = wallpaper.SelectImage(ui.WithTimeout(5*time.Second), constants.WhiteWallpaperName)(ctx); selectImageErr == nil {
-			break
-		}
-		for j := 0; j < numScrolls; j++ {
-			if err := mew.ScrollDown(); err != nil {
-				return errors.Wrap(err, "failed to scroll down")
-			}
-		}
-	}
-	if selectImageErr != nil {
-		return errors.Wrapf(selectImageErr, "failed to select wallpaper image after %d retries", maxNumSelectRetries)
+	if err := scrollDownUntilSucceeds(ctx, wallpaper.SelectImage(ui.WithTimeout(5*time.Second), constants.WhiteWallpaperName), mew); err != nil {
+		return errors.Wrap(err, "failed to select wallpaper image")
 	}
 
 	if err := wallpaper.CloseWallpaperPicker()(ctx); err != nil {
