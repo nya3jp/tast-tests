@@ -210,8 +210,8 @@ func OpenLinuxInstallerAndClickNext(ctx context.Context, tconn *chrome.TestConn,
 	defer func() { faillog.DumpUITreeAndScreenshot(cleanupCtx, tconn, "crostini_installer", retErr) }()
 	installButton := nodewith.Name("Install").Role(role.Button)
 	if err := uiauto.Combine("open Install and click button Next",
-		ui.LeftClickUntil(TurnOnButton, ui.WaitUntilExists(nextButton)),
-		ui.LeftClickUntil(nextButton, ui.WaitUntilExists(installButton)))(ctx); err != nil {
+		ui.LeftClickUntil(TurnOnButton, ui.Exists(nextButton)),
+		ui.LeftClickUntil(nextButton, ui.Exists(installButton)))(ctx); err != nil {
 		return errors.Wrap(err, "failed to click button Next on the installer")
 	}
 	return nil
