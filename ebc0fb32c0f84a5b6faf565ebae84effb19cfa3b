@@ -475,6 +475,30 @@
       },
       "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4dc2e3e_0ec6fad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-25T16:34:25Z",
+      "side": 1,
+      "message": "Done. The linter told me to not capitalize \u0027unexpected\u0027.",
+      "parentUuid": "91a781e1_df1e6a0c",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 81
+      },
+      "revId": "ebc0fb32c0f84a5b6faf565ebae84effb19cfa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
