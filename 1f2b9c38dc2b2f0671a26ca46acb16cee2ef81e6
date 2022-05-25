@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0479b716_f61a4440",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/util/updatelib.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-25T10:47:54Z",
+      "side": 1,
+      "message": "I think it\u0027d be safer and cleaner to use `defer` and add a cleanup function that compares current and previous version, and rolls back if they are not the same.\n\nOtherwise the next person adding a function call here that has an error case may miss to rollback before returning.",
+      "range": {
+        "startLine": 145,
+        "startChar": 20,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "1f2b9c38dc2b2f0671a26ca46acb16cee2ef81e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1523d88b_92dc579a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/util/updatelib.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-25T10:47:54Z",
+      "side": 1,
+      "message": "In order to have a cleanup function, you\u0027ll probably need to extract this one into a separate function that runs after your deferred cleanup function.",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 28
+      },
+      "revId": "1f2b9c38dc2b2f0671a26ca46acb16cee2ef81e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
