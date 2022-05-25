@@ -153,9 +153,9 @@ func findEthernetServiceByIfName(ctx context.Context, m *shill.Manager, ifName s
 		return nil, errors.Wrapf(err, "failed to find the device with interface name %s", ifName)
 	}
 	testing.ContextLog(ctx, "Waiting for service being selected on device: ", ifName)
-	servicePath, err := device.WaitForSelectedService(ctx, 5*time.Second)
+	service, err := device.WaitForSelectedService(ctx, 5*time.Second)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the selected service path")
+		return nil, errors.Wrap(err, "failed to get the selected service")
 	}
-	return shill.NewService(ctx, servicePath)
+	return service, nil
 }

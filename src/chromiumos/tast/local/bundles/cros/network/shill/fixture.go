@@ -25,11 +25,11 @@ const ResetShillTimeout = 30 * time.Second
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "shillReset",
-		Desc: "A fixture that ensures shill is in a default state when the test starts and will reset any shill modifications after the test",
+		Desc: "A fixture that ensures shill is in a default state with no user profiles when the test starts and will reset any shill modifications after the test",
 		Contacts: []string{
-			"khegde@chromium.org",            // fixture maintainer
-			"stevenjb@chromium.org",          // network-health tech lead
-			"cros-network-health@google.com", // network-health team
+			"khegde@chromium.org",                 // fixture maintainer
+			"stevenjb@chromium.org",               // fixture maintainer
+			"cros-network-health-team@google.com", // Network Health team
 		},
 		PreTestTimeout:  ResetShillTimeout + 5*time.Second,
 		PostTestTimeout: 5 * time.Second,
@@ -38,7 +38,7 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "shillResetWithArcBooted",
-		Desc: "A fixture that ensures shill is in a default state when the test starts and will reset any shill modifications after the test (with 'arcBooted' fixture)",
+		Desc: "A fixture that ensures shill is in a default state with no user profiles when the test starts and will reset any shill modifications after the test (with 'arcBooted' fixture)",
 		Contacts: []string{
 			"cassiewang@chromium.org",         // fixture maintainer
 			"cros-networking-bugs@google.com", // platform networking team
