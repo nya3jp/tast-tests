@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -67,6 +68,9 @@ type Connections struct {
 
 	// ARC holds resources related to the ARC session.
 	ARC *arc.ARC
+
+	// ARCUI interacts with the ARC UI Automator server.
+	ARCUI *ui.Device
 
 	// ArcVideoActivity is an ARC activity that plays a video, looped.
 	// If you minimize it, it plays the video in PIP.
@@ -148,10 +152,16 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		connection.ARC = s.FixtValue().(*arc.PreData).ARC
 	}
 
+	var err error
+	connection.ARCUI, err = connection.ARC.NewUIDevice(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to initialize ARC UI automator")
+	}
+	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, connection.ARCUI.Close)
+
 	if err := connection.ARC.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
 		return nil, errors.Wrap(err, "failed to install ARC app")
 	}
-	var err error
 	connection.ArcVideoActivity, err = arc.NewActivity(connection.ARC, pkgName, ".VideoActivity")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ARC activity")
