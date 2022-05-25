@@ -118,6 +118,30 @@
       },
       "revId": "18ac86f009aab65b631e288cd6ac4d490b60d6d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a42aee5_47151243",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-25T01:40:23Z",
+      "side": 1,
+      "message": "I can do it but it will have to queue up behind some more urgent things.\n\nI\u0027m fine with landing the CL with a TODO.",
+      "parentUuid": "49acdcce_08766f98",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 72
+      },
+      "revId": "18ac86f009aab65b631e288cd6ac4d490b60d6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
