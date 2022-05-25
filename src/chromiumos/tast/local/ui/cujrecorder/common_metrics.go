@@ -65,7 +65,7 @@ func AshCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Cras.FetchDelayMilliSeconds", "ms", perf.SmallerIsBetter, []int64{0, 20}),
 		NewCustomMetricConfig("Cras.UnderrunsPerDevice", "count", perf.SmallerIsBetter, []int64{0, 10}),
 
-		// ARC App Kill Metrics
+		// Tab Discard Metrics
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.LMKD.CachedCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.LMKD.ForegroundCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.LMKD.PerceptibleCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
@@ -73,6 +73,10 @@ func AshCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.Pressure.ForegroundCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.Pressure.PerceptibleCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.LinuxOOMCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
+		NewCustomMetricConfig("Discarding.DailyDiscards.External", "tabs", perf.SmallerIsBetter, []int64{0, 5}),
+		NewCustomMetricConfig("Discarding.DailyDiscards.Urgent", "tabs", perf.SmallerIsBetter, []int64{0, 5}),
+		NewCustomMetricConfig("Discarding.DailyReloads.External", "tabs", perf.SmallerIsBetter, []int64{0, 5}),
+		NewCustomMetricConfig("Discarding.DailyReloads.Urgent", "tabs", perf.SmallerIsBetter, []int64{0, 5}),
 
 		// Others to monitor.
 		NewCustomMetricConfig("Power.BatteryDischargeRate", "mW", perf.SmallerIsBetter, []int64{50, 100}),
