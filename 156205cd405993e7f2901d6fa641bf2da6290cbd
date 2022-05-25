@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2772b5_71f73ced",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-25T20:23:39Z",
+      "side": 1,
+      "message": "LGTM for tast-owners. I really don\u0027t know about running the command as root or not.",
+      "revId": "156205cd405993e7f2901d6fa641bf2da6290cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7989a91_bbde77c2",
