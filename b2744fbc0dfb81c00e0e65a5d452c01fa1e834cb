@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06774435_beca39ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-25T03:52:36Z",
+      "side": 1,
+      "message": "nit: following",
+      "revId": "b2744fbc0dfb81c00e0e65a5d452c01fa1e834cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
