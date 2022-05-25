@@ -24,8 +24,8 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
 		VarDeps: []string{
-			"unicorn.parentUser",
-			"unicorn.parentPassword",
+			"family.parentEmail",
+			"family.parentPassword",
 		},
 		Fixture: "familyLinkUnicornLogin",
 	})
@@ -43,7 +43,7 @@ func UnicornExtensions(ctx context.Context, s *testing.State) {
 	}
 
 	// TODO(https://crbug.com/1313067) set browser type to be Ash or LaCrOS based on param.
-	if err := familylink.NavigateExtensionApprovalFlow(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("unicorn.parentUser"), s.RequiredVar("unicorn.parentPassword")); err != nil {
+	if err := familylink.NavigateExtensionApprovalFlow(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("family.parentEmail"), s.RequiredVar("family.parentPassword")); err != nil {
 		s.Fatal("Failed to add extension: ", err)
 	}
 }
