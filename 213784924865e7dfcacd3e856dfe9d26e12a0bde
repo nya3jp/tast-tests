@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdeef7f5_11f3467e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-25T11:48:35Z",
+      "side": 1,
+      "message": "It stands for manual test automation, should we use another word?",
+      "parentUuid": "9614ddc3_eb3c0928",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18404faa_e6051241",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -118,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c891a36_c081867d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-25T11:48:35Z",
+      "side": 1,
+      "message": "We kept the original logic from policy.FileSystemWriteBlockedForUrls.\n\nAccording to our test, only this message: \"User activation is required to show a file picker.\" indicates a failure of trigger the file picker, all others are not.\n\nShould we make any changes or add more comments to make it more clear?",
+      "parentUuid": "04b71841_126e26e3",
+      "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4042b811_e8053382",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
         "patchSetId": 1
@@ -152,6 +194,30 @@
       "writtenOn": "2022-05-25T08:18:39Z",
       "side": 1,
       "message": "Even if we set an unrelated policy, as long as the `WantFileSystemWrite` value is set, the test makes sense. So I think this check can be removed.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 79
+      },
+      "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a2beb0_31827efb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-05-25T11:48:35Z",
+      "side": 1,
+      "message": "Sorry for not noticing this,\nbut actually we have two incoming tests/CLs that exercise FileSystemRead policies.\n\nShould we remove the switch-case in this CL?",
+      "parentUuid": "17da73af_5380c994",
       "range": {
         "startLine": 159,
         "startChar": 0,
