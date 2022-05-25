@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f86d4f21_a1445f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-25T07:53:16Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "04dc2be986100723d3ae2e328c871866806e5190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "584536fa_0938bbdd",
@@ -84,6 +101,24 @@
       "side": 1,
       "message": "\u003e this be a function of `Recorder` ?\n\u003e So instead of  `cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder)`,\n\u003e it can be called like  `recorder.AddPerformanceCUJMetrics(tconn, bTconn)` .\n\u003e From the current function, it wouldn\u0027t expect it to modify the  recorder  variable.\n\nI think that in general we do not want to collect the same set of browser metrics from both Lacros and Ash. Test should be specific about which set of metrics it needs from the specific instance. This is how Hidehiko suggested us to design the API here.\n\nI feel that this function is a compatibility layer because some tests were already implemented collecting the same set of metrics from all the browsers. So we need something before we migrate the actual tests and sort the metrics.",
       "parentUuid": "44461e84_206d0958",
+      "revId": "04dc2be986100723d3ae2e328c871866806e5190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f5dae58_d4740346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-25T07:53:16Z",
+      "side": 1,
+      "message": "I see. And you cannot create a new instance of recorder to use something like \n\u003e  recorder, err :\u003d cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder)\nas `recorder` needs a cleanup.\nI usually like to avoid modifying an input parameter of a function as it makes it harder to read the code, but I don\u0027t really see any other option until we have to support both browsers.",
+      "parentUuid": "55bde515_8516beb0",
       "revId": "04dc2be986100723d3ae2e328c871866806e5190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
