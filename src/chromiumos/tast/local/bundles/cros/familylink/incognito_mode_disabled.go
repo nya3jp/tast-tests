@@ -29,12 +29,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
-		VarDeps: []string{
-			"unicorn.parentUser",
-			"unicorn.parentPassword",
-			"unicorn.childUser",
-			"unicorn.childPassword",
-		},
 		Fixture: "familyLinkUnicornLogin",
 	})
 }
