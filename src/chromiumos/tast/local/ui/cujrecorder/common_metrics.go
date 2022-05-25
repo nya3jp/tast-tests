@@ -74,6 +74,12 @@ func AshCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.Pressure.PerceptibleCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
 		NewCustomMetricConfig("Arc.App.LowMemoryKills.LinuxOOMCount10Minutes", "apps", perf.SmallerIsBetter, []int64{0, 5}),
 
+		// Tab Discard Metrics
+		NewCustomMetricConfig("Discarding.DailyDiscards.External", "tabs", perf.SmallerIsBetter, []int64{0, 5}),
+		NewCustomMetricConfig("Discarding.DailyDiscards.Urgent", "tabs", perf.SmallerIsBetter, []int64{0, 5}),
+		NewCustomMetricConfig("Discarding.DailyReloads.External", "tabs", perf.SmallerIsBetter, []int64{0, 5}),
+		NewCustomMetricConfig("Discarding.DailyReloads.Urgent", "tabs", perf.SmallerIsBetter, []int64{0, 5}),
+
 		// Others to monitor.
 		NewCustomMetricConfig("Power.BatteryDischargeRate", "mW", perf.SmallerIsBetter, []int64{50, 100}),
 		NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
