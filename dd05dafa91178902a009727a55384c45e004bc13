@@ -231,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e302c347_899feca6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-25T00:17:45Z",
+      "side": 1,
+      "message": "I think it\u0027s better to add complexity for the sake of correctness, otherwise your script depends on the fact that the `state` must end with `}`, if it\u0027ll contain \u0027 \u0027 or \u0027\\n\u0027 it\u0027s going to create an invalid json.",
+      "parentUuid": "056cfd07_c5f455af",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d888551c_49a976f0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
         "patchSetId": 3
@@ -295,6 +313,24 @@
       "side": 1,
       "message": "No. The reason I create a method is to encapsulate factory mode update into a separate method. Do you prefer to not create a method?",
       "parentUuid": "63016335_a08ee8f9",
+      "revId": "dd05dafa91178902a009727a55384c45e004bc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869745b6_a933d233",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-25T00:17:45Z",
+      "side": 1,
+      "message": "I guess extracting it to a method allows you to give a proper human name, this is good.",
+      "parentUuid": "b13c97ac_30884828",
       "revId": "dd05dafa91178902a009727a55384c45e004bc13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
