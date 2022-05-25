@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54aa7ce2_bde495b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-25T04:02:59Z",
+      "side": 1,
+      "message": "FYI: Alvin will be the Tast owner to review `EDU video editing` CUJ.",
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
