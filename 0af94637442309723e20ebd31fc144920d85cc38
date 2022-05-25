@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6977ac_8a85d1d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-05-25T19:55:54Z",
+      "side": 1,
+      "message": "Only updated copyright message at the top of the new files since last reviewed change as per requirement by newer presubmit checks.",
+      "revId": "0af94637442309723e20ebd31fc144920d85cc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
