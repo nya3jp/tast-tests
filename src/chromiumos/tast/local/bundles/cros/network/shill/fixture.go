@@ -25,11 +25,11 @@ const ResetShillTimeout = 30 * time.Second
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "shillReset",
-		Desc: "A fixture that ensures shill is in a default state when the test starts and will reset any shill modifications after the test",
+		Desc: "A fixture that ensures shill is in a default state with no user profiles when the test starts and will reset any shill modifications after the test",
 		Contacts: []string{
-			"khegde@chromium.org",            // fixture maintainer
-			"stevenjb@chromium.org",          // network-health tech lead
-			"cros-network-health@google.com", // network-health team
+			"khegde@chromium.org",                 // fixture maintainer
+			"stevenjb@chromium.org",               // fixture maintainer
+			"cros-network-health-team@google.com", // Network Health team
 		},
 		PreTestTimeout:  ResetShillTimeout + 5*time.Second,
 		PostTestTimeout: 5 * time.Second,
@@ -38,7 +38,7 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "shillResetWithArcBooted",
-		Desc: "A fixture that ensures shill is in a default state when the test starts and will reset any shill modifications after the test (with 'arcBooted' fixture)",
+		Desc: "A fixture that ensures shill is in a default state with no user profiles when the test starts and will reset any shill modifications after the test (with 'arcBooted' fixture)",
 		Contacts: []string{
 			"cassiewang@chromium.org",         // fixture maintainer
 			"cros-networking-bugs@google.com", // platform networking team
@@ -65,23 +65,6 @@ func ResetShill(ctx context.Context) []error {
 		// No more can be done if shill doesn't start
 		return append(errs, errors.Wrap(err, "failed to restart shill"))
 	}
-	manager, err := shill.NewManager(ctx)
-	if err != nil {
-		// No more can be done if a manger interface cannot be created
-		return append(errs, errors.Wrap(err, "failed to create new shill manager"))
-	}
-	if err = manager.PopAllUserProfiles(ctx); err != nil {
-		errs = append(errs, errors.Wrap(err, "failed to pop all user profiles"))
-	}
-
-	// Wait until a service is connected.
-	expectProps := map[string]interface{}{
-		shillconst.ServicePropertyIsConnected: true,
-	}
-	if _, err := manager.WaitForServiceProperties(ctx, expectProps, ResetShillTimeout); err != nil {
-		errs = append(errs, errors.Wrap(err, "failed to wait for connected service"))
-	}
-
 	return errs
 }
 
@@ -120,6 +103,24 @@ func (f *shillFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 			s.Error("ResetShill error: ", err)
 		}
 		s.Fatal("Failed resetting shill in PreTest")
+	}
+
+	// Ensure that no shill user profiles are loaded.
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Shill Manager: ", err)
+	}
+	if err = m.PopAllUserProfiles(ctx); err != nil {
+		s.Fatal("Failed to call Manager.PopAllUserProfiles: ", err)
+	}
+
+	// Ensure that a service is connected. Every DUT requires a primary connection,
+	// so we uses this to ensure that normal Shill startup has completed.
+	expectProps := map[string]interface{}{
+		shillconst.ServicePropertyIsConnected: true,
+	}
+	if _, err := m.WaitForServiceProperties(ctx, expectProps, ResetShillTimeout); err != nil {
+		s.Fatal("Failed to wait for connected service: ", err)
 	}
 
 	success = true
