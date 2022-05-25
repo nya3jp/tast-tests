@@ -40,12 +40,12 @@ func init() {
 		Name:     "familyLinkUnicornLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword", true),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true),
 		Vars: []string{
-			"unicorn.parentUser",
-			"unicorn.parentPassword",
-			"unicorn.childUser",
-			"unicorn.childPassword",
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.unicornEmail",
+			"family.unicornPassword",
 		},
 		SetUpTimeout:    chrome.GAIALoginChildTimeout,
 		ResetTimeout:    resetTimeout,
@@ -58,13 +58,13 @@ func init() {
 		Name:     "familyLinkUnicornLoginNonOwner",
 		Desc:     "Supervised Family Link user login with Unicorn account as second user on device",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword", false),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", false),
 		Vars: []string{
 			"ui.gaiaPoolDefault",
-			"unicorn.parentUser",
-			"unicorn.parentPassword",
-			"unicorn.childUser",
-			"unicorn.childPassword",
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.unicornEmail",
+			"family.unicornPassword",
 		},
 		SetUpTimeout:    chrome.GAIALoginChildTimeout,
 		ResetTimeout:    resetTimeout,
@@ -77,12 +77,12 @@ func init() {
 		Name:     "familyLinkGellerLogin",
 		Desc:     "Supervised Family Link user login with Geller account",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("geller.parentUser", "geller.parentPassword", "geller.childUser", "geller.childPassword", true),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.gellerEmail", "family.gellerPassword", true),
 		Vars: []string{
-			"geller.parentUser",
-			"geller.parentPassword",
-			"geller.childUser",
-			"geller.childPassword",
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.gellerEmail",
+			"family.gellerPassword",
 		},
 		SetUpTimeout:    chrome.GAIALoginChildTimeout,
 		ResetTimeout:    resetTimeout,
@@ -129,12 +129,12 @@ func init() {
 		Name:     "familyLinkUnicornPolicyLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account and policy setup",
 		Contacts: []string{"tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword", true),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true),
 		Vars: []string{
-			"unicorn.parentUser",
-			"unicorn.parentPassword",
-			"unicorn.childUser",
-			"unicorn.childPassword",
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.unicornEmail",
+			"family.unicornPassword",
 		},
 		SetUpTimeout:    chrome.GAIALoginChildTimeout,
 		ResetTimeout:    resetTimeout,
@@ -167,12 +167,12 @@ func init() {
 		Name:     "familyLinkUnicornLoginWithPersonalizationHub",
 		Desc:     "Supervised Family Link user login with Unicorn account and Personalization Hub enabled",
 		Contacts: []string{"tobyhuang@chromium.org", "pzliu@google.com", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword", true, chrome.EnableFeatures("PersonalizationHub")),
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true, chrome.EnableFeatures("PersonalizationHub")),
 		Vars: []string{
-			"unicorn.parentUser",
-			"unicorn.parentPassword",
-			"unicorn.childUser",
-			"unicorn.childPassword",
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.gellerEmail",
+			"family.gellerPassword",
 		},
 		SetUpTimeout:    chrome.GAIALoginChildTimeout,
 		ResetTimeout:    resetTimeout,
@@ -212,6 +212,10 @@ type FixtData struct {
 func (f *familyLinkFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	parentUser := s.RequiredVar(f.parentUser)
 	parentPass := s.RequiredVar(f.parentPassword)
+
+	// Dev tools are neccessary for the test instrumentation to work, but by default disabled for supervised users.
+	// Always force enable them in supervised users tests.
+	f.opts = append(f.opts, chrome.ExtraArgs("--force-devtools-available"))
 
 	isChildLogin := len(f.childUser) > 0 && len(f.childPassword) > 0
 	if isChildLogin {

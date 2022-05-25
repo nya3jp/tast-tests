@@ -30,7 +30,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		VarDeps:      []string{"unicorn.childFirstName", "unicorn.childLastName"},
+		VarDeps:      []string{"family.unicornFirstName", "family.unicornLastName"},
 		Fixture:      "familyLinkUnicornLoginNonOwner",
 	})
 }
@@ -41,8 +41,8 @@ func MultipleSignInDisabled(ctx context.Context, s *testing.State) {
 	// Unicorn user is logged in.
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 
-	childFirstName := s.RequiredVar("unicorn.childFirstName")
-	childLastName := s.RequiredVar("unicorn.childLastName")
+	childFirstName := s.RequiredVar("family.unicornFirstName")
+	childLastName := s.RequiredVar("family.unicornLastName")
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)

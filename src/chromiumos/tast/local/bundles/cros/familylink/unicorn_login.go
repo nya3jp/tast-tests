@@ -24,10 +24,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
 		VarDeps: []string{
-			"unicorn.parentUser",
-			"unicorn.parentPassword",
-			"unicorn.childUser",
-			"unicorn.childPassword",
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.unicornEmail",
+			"family.unicornPassword",
 		},
 		Fixture: "familyLinkUnicornLogin",
 	})
@@ -44,7 +44,7 @@ func UnicornLogin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection")
 	}
 	// TODO(https://crbug.com/1313067) set browser type to be Ash or LaCrOS based on param.
-	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("unicorn.childUser")); err != nil {
+	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("family.unicornEmail")); err != nil {
 		s.Fatal("Failed to verify user signed into browser: ", err)
 	}
 }
