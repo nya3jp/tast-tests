@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3073eb3b_7027769a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_management.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-05-25T01:55:50Z",
+      "side": 1,
+      "message": "Suggest that you should investigate why your feature breaks our test which tracks a critical use case, rather than just disabling your feature in our test.",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "45d7c75cd975787d3f5af2190df09458f56f3430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
