@@ -21,6 +21,7 @@ import (
 const (
 	dbusManagerPath      = "/" // crosbug.com/20135
 	dbusManagerInterface = "org.chromium.flimflam.Manager"
+	testProfileName      = "test"
 )
 
 // Exported constants
@@ -434,4 +435,31 @@ func (m *Manager) GetDebugLevel(ctx context.Context) (int, error) {
 // RecheckPortal requests shill to rerun its captive portal detector.
 func (m *Manager) RecheckPortal(ctx context.Context) error {
 	return m.Call(ctx, "RecheckPortal").Err
+}
+
+// PushTestProfile creates and pushes a Shill profile for testing.
+// The profile is not a user profile so it will not be reloaded if Shill crashes
+// or the DUT restarts, making it safe to save changes to it while testing.
+// Returns a function that should be deferred to pop and remove the profile.
+func (m *Manager) PushTestProfile(ctx context.Context) (func(), error) {
+	// Remove any existing test profile.
+	if err := m.RemoveProfile(ctx, testProfileName); err != nil {
+		return nil, errors.Wrap(err, "RemoveProfile failed")
+	}
+	if _, err := m.CreateProfile(ctx, testProfileName); err != nil {
+		return nil, errors.Wrap(err, "CreateProfile failed")
+	}
+	if _, err := m.PushProfile(ctx, testProfileName); err != nil {
+		return nil, errors.Wrap(err, "PushProfile failed")
+	}
+	return func() {
+		if err := m.PopProfile(ctx, testProfileName); err != nil {
+			testing.ContextLog(ctx, "Error popping test profile: ", err)
+			return
+		}
+		if err := m.RemoveProfile(ctx, testProfileName); err != nil {
+			testing.ContextLog(ctx, "Error removing test profile: ", err)
+			return
+		}
+	}, nil
 }
