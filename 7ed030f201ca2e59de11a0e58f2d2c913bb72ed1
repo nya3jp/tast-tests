@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c22492_c5933a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-25T17:21:27Z",
+      "side": 1,
+      "message": "Removed all but one constant to inline them.",
+      "parentUuid": "fe0f1edf_c9432bf5",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "7ed030f201ca2e59de11a0e58f2d2c913bb72ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fec29106_6b0f7c78",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-24T21:03:14Z",
       "side": 1,
       "message": "These constants are used in only 1 place, so it is better to inline them.",
+      "range": {
+        "startLine": 74,
+        "startChar": 40,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "7ed030f201ca2e59de11a0e58f2d2c913bb72ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8321ff_1839f9ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-25T17:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec29106_6b0f7c78",
       "range": {
         "startLine": 74,
         "startChar": 40,
