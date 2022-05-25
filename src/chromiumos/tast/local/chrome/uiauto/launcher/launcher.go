@@ -298,7 +298,8 @@ func WaitForClamshellLauncherSearchExit(tconn *chrome.TestConn) uiauto.Action {
 // AppSearchFinder returns a Finder to find the specified app in an open launcher's search results.
 func AppSearchFinder(appName, searchContainer string) *nodewith.Finder {
 	searchResultView := nodewith.ClassName(searchContainer)
-	return nodewith.NameStartingWith(appName + ", Installed App").Ancestor(searchResultView)
+	re := regexp.MustCompile(regexp.QuoteMeta(appName) + ", [Ii]nstalled [Aa]pp")
+	return nodewith.NameRegex(re).Ancestor(searchResultView)
 }
 
 // AppItemViewFinder returns a Finder to find the specified app in an open launcher's item view.
