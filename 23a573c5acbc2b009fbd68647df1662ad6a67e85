@@ -50,6 +50,24 @@
       "message": "Do you have a google contact? If so, please add one here. thanks.",
       "revId": "23a573c5acbc2b009fbd68647df1662ad6a67e85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa8c1b5_ebf4fde5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-05-25T01:04:13Z",
+      "side": 1,
+      "message": "This fixture is for performance CUJ test cases implemented only by cienet. So instead of adding google contacts, we only added metrics teams.",
+      "parentUuid": "2ac297ad_7da16d31",
+      "revId": "23a573c5acbc2b009fbd68647df1662ad6a67e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
