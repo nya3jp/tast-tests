@@ -34,7 +34,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: chrome.GAIALoginTimeout + 5*time.Minute,
-		VarDeps: []string{"arc.parentUser", "arc.parentPassword", "edu.user", "edu.password"},
+		VarDeps: []string{"arc.parentUser", "arc.parentPassword", "family.eduEmail", "family.eduPassword"},
 		Fixture: "familyLinkUnicornArcPolicyLogin",
 	})
 }
@@ -46,8 +46,8 @@ func EducoexistenceArc(ctx context.Context, s *testing.State) {
 
 	parentUser := s.RequiredVar("arc.parentUser")
 	parentPass := s.RequiredVar("arc.parentPassword")
-	eduUser := s.RequiredVar("edu.user")
-	eduPass := s.RequiredVar("edu.password")
+	eduUser := s.RequiredVar("family.eduEmail")
+	eduPass := s.RequiredVar("family.eduPassword")
 
 	arcEnabledPolicy := &policy.ArcEnabled{Val: true}
 	policies := []policy.Policy{arcEnabledPolicy}
