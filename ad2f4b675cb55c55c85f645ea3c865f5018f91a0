@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e45b1db_4ceb9368",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 17
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db61b1d_4fb0151e",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "here as well",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 16
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530ef6dc_e7e611ae",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "just drop, not needed",
+      "range": {
+        "startLine": 849,
+        "startChar": 117,
+        "endLine": 849,
+        "endChar": 132
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264e173e_25dffe4c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "this is not needed for the challenge credential. --action-add_credentials without anything public_mount should be ok.",
+      "range": {
+        "startLine": 883,
+        "startChar": 125,
+        "endLine": 883,
+        "endChar": 141
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549d307c_e5b912b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "this is now fixed",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18256bfa_ef4152a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "please add comment /*parameter*/?",
+      "range": {
+        "startLine": 111,
+        "startChar": 82,
+        "endLine": 111,
+        "endChar": 87
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c693be_7a2a076c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "comment",
+      "range": {
+        "startLine": 114,
+        "startChar": 88,
+        "endLine": 114,
+        "endChar": 93
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc74538_edab1bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "what is ctxForCleanup? What does the function do differently when called with ctxForCleanup?",
+      "range": {
+        "startLine": 114,
+        "startChar": 63,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b1fc81_9120eee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "PreparePersistantVault should go before AddCredentials (the order for the first user should be 1-start_auth_session, 2-create_persistant_vault 3-create_persistant_user(first user accepted as authenticate) 4-add_credentials )",
+      "range": {
+        "startLine": 123,
+        "startChar": 18,
+        "endLine": 123,
+        "endChar": 40
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7652b681_c9a5900e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "defer client.UnmountAll(ctxForCleanUp)",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441dc8a2_c307470f",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "I think it is better to code directly into the test function. It is easier to follow the scenrario that way.\nYou can have thin wrappers but I think the content of this function should be visible in the test function.",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 59
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a216c483_e95bef18",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-05-25T23:56:01Z",
+      "side": 1,
+      "message": "dont forget to cleanup:\ndefer cryptohome.RemoveVault(ctxForCleanUp, userName)",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 2
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
