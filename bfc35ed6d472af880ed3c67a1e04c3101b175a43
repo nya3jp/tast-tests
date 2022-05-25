@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ccaf65_cd5d2e91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-05-25T06:31:27Z",
+      "side": 1,
+      "message": "Nit: CrOS likes lines to be wrapped at 72? characters, or something like that.",
+      "revId": "bfc35ed6d472af880ed3c67a1e04c3101b175a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6195dc47_a0455c34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-05-25T06:31:27Z",
+      "side": 1,
+      "message": "click turn on and next buttons? Missing word?",
+      "range": {
+        "startLine": 9,
+        "startChar": 49,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "bfc35ed6d472af880ed3c67a1e04c3101b175a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
