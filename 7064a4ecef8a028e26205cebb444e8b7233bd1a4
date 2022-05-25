@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9a60eb_3cbfc4ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513392
+      },
+      "writtenOn": "2022-05-25T22:50:59Z",
+      "side": 1,
+      "message": "Overall, the test cases covered LGTM. \n\nThe only additional behavior I can think of that we may want to test is checking to see if a new Projector session initializes the correct color from the pref, but it doesn\u0027t seem like we have a great way of checking color right now (one way could be checking to see which color has the focus ring around it, but I don\u0027t know if that\u0027s possible?). ",
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "948747f1_de95260f",
@@ -151,6 +168,29 @@
         "startChar": 5,
         "endLine": 91,
         "endChar": 10
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15953c8_9be87e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1513392
+      },
+      "writtenOn": "2022-05-25T22:50:59Z",
+      "side": 1,
+      "message": "I don\u0027t have much familiarity with the APIs used in Tast tests, but is `ClickUntil` the right choice for a button that toggles things back and forth? Is there any chance that clicking too quickly will turn the annotator back on?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 57
       },
       "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
