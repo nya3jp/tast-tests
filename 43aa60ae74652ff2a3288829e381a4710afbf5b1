@@ -34,6 +34,24 @@
       "parentUuid": "87ff52f3_e3e0138b",
       "revId": "43aa60ae74652ff2a3288829e381a4710afbf5b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba574dd5_81e7e03f",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-25T00:00:33Z",
+      "side": 0,
+      "message": "Hmmm. I was pretty sure it was for group aggregation only.\n\nFixed.",
+      "parentUuid": "9dae4fc1_1385b24e",
+      "revId": "43aa60ae74652ff2a3288829e381a4710afbf5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
