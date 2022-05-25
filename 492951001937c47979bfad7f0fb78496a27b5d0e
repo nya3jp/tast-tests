@@ -296,6 +296,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f71e6a1_def8bb38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-05-25T17:07:47Z",
+      "side": 1,
+      "message": "that was a different test. I was checking for persistence. You dont need to unmount and remount -- just add it",
+      "parentUuid": "d166fa52_6dd9051d",
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4af5775b_6e0e5904",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
         "patchSetId": 2
