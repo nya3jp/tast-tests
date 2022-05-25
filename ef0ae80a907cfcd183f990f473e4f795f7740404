@@ -228,6 +228,24 @@
       "parentUuid": "fd29f2ce_99e3df1b",
       "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf0f553_c6dfc4ed",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-25T03:29:20Z",
+      "side": 1,
+      "message": "I ran this by someone and they didn\u0027t have any objections. Other than that, I don\u0027t really know. But, the lab environment is very different to the production environment, so I don\u0027t think these temperatures necessarily map to anything useful outside of that environment.",
+      "parentUuid": "5f53973b_f3a3c9ba",
+      "revId": "ef0ae80a907cfcd183f990f473e4f795f7740404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
