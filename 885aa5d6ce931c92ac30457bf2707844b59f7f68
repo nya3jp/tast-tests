@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811b6fa7_a6e9937a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-25T08:38:07Z",
+      "side": 1,
+      "message": "nit: Start CL message with either:\ntast-tests:\nor \nui:\n\nthe latter is preferable as it indicates the package where the change were made (if only one package is affected).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "885aa5d6ce931c92ac30457bf2707844b59f7f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa37a0f2_6d0f8b4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-25T08:38:07Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "885aa5d6ce931c92ac30457bf2707844b59f7f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
