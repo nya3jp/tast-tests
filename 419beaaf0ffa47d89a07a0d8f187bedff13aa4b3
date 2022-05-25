@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c48981_22d3d50b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-25T23:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13328d52_9628ff35",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "419beaaf0ffa47d89a07a0d8f187bedff13aa4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbd316b5_5bcded10",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-25T22:20:39Z",
       "side": 1,
       "message": "Please close the system tray after your tests. I saw that the system tray was still open on my DUT",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "419beaaf0ffa47d89a07a0d8f187bedff13aa4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31fe2b7_b6b5e43c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-25T23:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd316b5_5bcded10",
       "range": {
         "startLine": 143,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d949d0_40b9d24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/show_events.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-25T23:29:31Z",
+      "side": 1,
+      "message": "Thanks so much for looking into this!",
+      "parentUuid": "296dff6b_43518154",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 78
+      },
+      "revId": "419beaaf0ffa47d89a07a0d8f187bedff13aa4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab722663_5f2f2216",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-25T22:20:39Z",
       "side": 1,
       "message": "It is flaky. Sometimes, on my DUT, there were no events shown on that day. Then your test generated an error. I notice that when the events are ready for viewing, there will be a dot on a date cell. Is it possible to utilize it to wait for events to be ready? If not, I am okay to use hard-coded time waiting.",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 77
+      },
+      "revId": "419beaaf0ffa47d89a07a0d8f187bedff13aa4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278c4a86_e9c50cd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/show_events.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-25T23:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab722663_5f2f2216",
       "range": {
         "startLine": 90,
         "startChar": 2,
