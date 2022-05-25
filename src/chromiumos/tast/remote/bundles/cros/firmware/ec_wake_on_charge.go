@@ -99,7 +99,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 	}
 
 	if err := h.RequireServo(ctx); err != nil {
-		s.Fatal("Failed to init servo: ", err)
+		s.Fatal("Failed to connect to servo: ", err)
 	}
 
 	hasMicroOrC2D2, err := h.Servo.PreferDebugHeader(ctx)
@@ -153,6 +153,18 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				// Open CCD after waking DUT and before talking to the EC.
 				if err := openCCD(ctx); err != nil {
 					return err
+				}
+				valAfterOpenCCD, err := h.Servo.GetString(ctx, servo.GSCCCDLevel)
+				if err != nil {
+					return errors.Wrap(err, "failed to get gsc_ccd_level")
+				}
+				if valAfterOpenCCD != servo.Open {
+					s.Logf("CCD state: %s. Attempting to open again via cr50 console", valAfterOpenCCD)
+					ccdStrings, err := h.Servo.RunCR50CommandGetOutput(ctx, "ccd open", []string{`\[\S+ CCD opened]`})
+					if err != nil {
+						return errors.Wrap(err, "cr50 console ccd open command")
+					}
+					s.Logf("Cr50 output: %s", ccdStrings[0][0])
 				}
 			}
 
@@ -229,7 +241,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					s.Log("Failed to ping servo, reconnecting: ", err)
 					err = h.ServoProxy.Reconnect(ctx)
 					if err != nil {
-						s.Error("Failed to reconnect to servo: ", err)
+						s.Error("Failed to connect to servo: ", err)
 					}
 				}
 			}
@@ -397,7 +409,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					retryCtx, cancelRetry := context.WithTimeout(ctx, 1*time.Minute)
 					defer cancelRetry()
 					if err := bootDUTIntoS0(retryCtx, h); err != nil {
-						s.Fatal("Unable to reconnect to DUT: ", err)
+						s.Fatal("Failed to reconnect to DUT: ", err)
 					}
 				case "no":
 					// According to Stainless, when lid is closed, DUTs remain in G3
