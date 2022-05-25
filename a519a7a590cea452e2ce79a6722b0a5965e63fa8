@@ -16,6 +16,24 @@
       "message": "Curious if these tests have ever worked or if they have always failed?",
       "revId": "a519a7a590cea452e2ce79a6722b0a5965e63fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1464e5e3_155c9881",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_s3_using_power_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-25T20:02:25Z",
+      "side": 0,
+      "message": "No need to be curious, just look in stainless. There are a few passes, but mostly all red.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dqueued_date\u0026first_date\u003d2022-01-01\u0026last_date\u003d2022-05-25\u0026suite\u003dfaft_unstable\u0026test\u003d%5E%28tast%5C.firmware.ECADC%7Ctast.firmware.DUTWakeS3UsingPowerButton%7Ctast.firmware.S3SuspendResume.stress_test%7Ctast.firmware.S3EntryExitAfterLidClose.tablet_mode%7Ctast.firmware.S3EntryExitAfterLidClose.clamshell_mode%7Ctast.firmware.FWSysfsVPD%29%24\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dfalse\u0026exclude_acts\u003dfalse\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
+      "parentUuid": "64da7469_e5025e6f",
+      "revId": "a519a7a590cea452e2ce79a6722b0a5965e63fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
