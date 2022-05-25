@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d254de98_9598c085",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-25T01:59:39Z",
+      "side": 1,
+      "message": "The issue is not about the test (InputMethodManagement) itself.\n\nYou are trying to enable Personalization hub in the guest login mode as well. I just confirmed that after enabling that feature in guest mode, I could not even manually open the OS setting page by clicking the UI.",
+      "revId": "45d7c75cd975787d3f5af2190df09458f56f3430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3073eb3b_7027769a",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_management.go",
         "patchSetId": 7
