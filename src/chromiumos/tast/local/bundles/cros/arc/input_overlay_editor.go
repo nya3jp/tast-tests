@@ -58,8 +58,8 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 			// Close educational dialog.
 			ui.LeftClick(nodewith.Name("Got it").HasClass("LabelButtonLabel")),
 			// Open game controls.
-			uda.LeftClick(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
-			uda.LeftClick(uidetection.Word("Customize")),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
+			uda.Tap(uidetection.Word("Customize")),
 			// Change mapping of "w" to "ESC" (NOTE: "w" key is used because, unlike the
 			// "n" key, the associated on-screen error messages have no overlapping text,
 			// and thus it has the highest chance of success with text detection).
@@ -76,7 +76,7 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 			// Verify illegal mapping.
 			waitForMultiple(uda, "Unsupported", "ported", "pported"),
 			// Close out.
-			uda.LeftClick(uidetection.Word("Cancel")),
+			uda.Tap(uidetection.Word("Cancel")),
 		)(ctx); err != nil {
 			s.Error("Failed to verify illegal keys: ", err)
 			// Reset activity.
@@ -90,11 +90,11 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("cancel changed mapping",
 			// Open game controls.
 			ui.LeftClick(nodewith.ClassName("ImageButton")),
-			uda.LeftClick(uidetection.Word("Customize")),
+			uda.Tap(uidetection.Word("Customize")),
 			// Change mapping of "n" to "l".
 			ui.LeftClick(nodewith.Name("n")),
 			kb.TypeAction("l"),
-			uda.LeftClick(uidetection.Word("Cancel")),
+			uda.Tap(uidetection.Word("Cancel")),
 			// Verify old mapping still exists.
 			ui.WaitUntilExists(nodewith.Name("n")),
 		)(ctx); err != nil {
@@ -110,12 +110,12 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("mapping unbound",
 			// Open game controls.
 			ui.LeftClick(nodewith.ClassName("ImageButton")),
-			uda.LeftClick(uidetection.Word("Customize")),
+			uda.Tap(uidetection.Word("Customize")),
 			// Change mapping of "n" to "m"
 			ui.LeftClick(nodewith.Name("w")),
 			kb.TypeAction("g"),
 			// Save binding.
-			uda.LeftClick(uidetection.Word("Save")),
+			uda.Tap(uidetection.Word("Save")),
 			// Verify original "m" binding doesn't exist anymore (i.e. the current "m"
 			// binding taps at the bottom tap button, not the top tap button).
 			gio.MoveOverlayButton(kb, "g", &params),
@@ -128,12 +128,12 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("mapping unbound",
 			// Open game controls.
 			ui.LeftClick(nodewith.ClassName("ImageButton")),
-			uda.LeftClick(uidetection.Word("Customize")),
+			uda.Tap(uidetection.Word("Customize")),
 			// Change mapping of "n" to "m"
 			ui.LeftClick(nodewith.Name("n")),
 			kb.TypeAction("m"),
 			// Save binding.
-			uda.LeftClick(uidetection.Word("Save")),
+			uda.Tap(uidetection.Word("Save")),
 			// Verify original "m" binding doesn't exist anymore (i.e. the current "m"
 			// binding taps at the bottom tap button, not the top tap button).
 			gio.TapOverlayButton(kb, "m", &params, gio.BotTap),
