@@ -141,7 +141,7 @@ func SetupTestApp(ctx context.Context, s *testing.State, testFunc PerformTestFun
 	// Start timing and launch the activity.
 	startTime := time.Now()
 
-	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+	if err := act.Start(ctx, tconn, arc.WithWindowingMode(arc.WindowingModeFreeform), arc.WithWaitForLaunch()); err != nil {
 		s.Fatal("Failed to start ArcInputOverlayTest: ", err)
 	}
 	defer act.Stop(ctx, tconn)
