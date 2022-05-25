@@ -70,6 +70,7 @@ func APIAvailableRoutines(ctx context.Context, s *testing.State) {
 	}
 
 	wantRoutines := []string{
+		"ac_power",
 		"battery_capacity",
 		"battery_health",
 		"cpu_cache",
