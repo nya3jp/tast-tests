@@ -51,12 +51,22 @@ func init() {
 					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
 				},
 			},
+			{
+				Name: "autopush_new_saml",
+				Val: testInfo{
+					username: "policy.GAIAEnrollment.new_saml_user_name",
+					password: "policy.GAIAEnrollment.new_saml_password",
+					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+				},
+			},
 		},
 		Vars: []string{
 			"policy.GAIAEnrollment.user_name",
 			"policy.GAIAEnrollment.password",
 			"policy.GAIAEnrollment.flex_user_name",
 			"policy.GAIAEnrollment.flex_password",
+			"policy.GAIAEnrollment.new_saml_user_name",
+			"policy.GAIAEnrollment.new_saml_password",
 		},
 	})
 }
