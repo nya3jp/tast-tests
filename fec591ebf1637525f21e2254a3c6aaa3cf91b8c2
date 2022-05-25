@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8bfa17e_a886295a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-25T17:22:52Z",
+      "side": 1,
+      "message": "Ack, Have updated the logic to pass the labels as a string array",
+      "parentUuid": "617a387a_9ba75cdf",
+      "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c7dde26_650972d1",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-24T20:33:24Z",
       "side": 1,
       "message": "Use s.Logf here",
+      "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "144b78de_a2782ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_pin_lock.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-25T17:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c7dde26_650972d1",
       "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23b280a7_b008a505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_puk_lock.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-25T17:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32185711_01c9b31e",
+      "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8121a64f_debb266f",
@@ -65,6 +119,30 @@
       "writtenOn": "2022-05-24T20:33:24Z",
       "side": 1,
       "message": "IMEI",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db2cd11d_214b65ec",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-25T17:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8121a64f_debb266f",
       "range": {
         "startLine": 36,
         "startChar": 1,
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9af5a9a7_61cb36da",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-25T17:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99cfdad9_d33a5639",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d28dc8b_44400110",
@@ -111,6 +213,30 @@
       "writtenOn": "2022-05-24T20:33:24Z",
       "side": 1,
       "message": "EID",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "041f2227_b757b075",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-25T17:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d28dc8b_44400110",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a19ab5_b89c4e53",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-25T17:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c60cc832_d1b465fd",
+      "range": {
+        "startLine": 948,
+        "startChar": 19,
+        "endLine": 948,
+        "endChar": 22
+      },
+      "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba95f2b8_a6ddcded",
@@ -157,6 +307,30 @@
       "writtenOn": "2022-05-24T20:33:24Z",
       "side": 1,
       "message": "nit: ID",
+      "range": {
+        "startLine": 1023,
+        "startChar": 36,
+        "endLine": 1023,
+        "endChar": 38
+      },
+      "revId": "fec591ebf1637525f21e2254a3c6aaa3cf91b8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4483b980_4f15cecc",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-05-25T17:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba95f2b8_a6ddcded",
       "range": {
         "startLine": 1023,
         "startChar": 36,
