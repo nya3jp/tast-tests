@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a958dab_929bac41",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-05-25T15:24:10Z",
+      "side": 1,
+      "message": "Since you are working on this file, can you change the unit to \"microseconds\" for this UMA?",
+      "range": {
+        "startLine": 55,
+        "startChar": 54,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "92a24d1c20d84aa510862b5514d8aee2e1e56498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
