@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751d9e7c_098bd7da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-25T23:30:49Z",
+      "side": 1,
+      "message": "This is a WIP, largely for reference, but maybe worth adding?\n\nStill TODO: Setting up Layer 3. It would be nice to at least get this set up enough to start a captive portal probe that results in \"offline\".\n",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
