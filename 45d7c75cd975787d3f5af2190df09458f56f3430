@@ -39,6 +39,30 @@
       },
       "revId": "45d7c75cd975787d3f5af2190df09458f56f3430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ecfed80_fbcf9a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_management.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-05-25T23:28:45Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion. Verified that these tests will pass after https://crrev.com/c/3668779 fixes the os-settings issue in guest session. Removed fixture \"ClamshellNonVKInGuestNonHub\".",
+      "parentUuid": "3073eb3b_7027769a",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "45d7c75cd975787d3f5af2190df09458f56f3430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
