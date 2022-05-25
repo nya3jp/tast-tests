@@ -491,13 +491,21 @@ func (app *MicrosoftWebOffice) checkSignIn(ctx context.Context) error {
 	// If the account manager exists, it means it has been logged in. Skip the login procedure.
 	accountManager := nodewith.NameContaining("Account manager for").Role(role.Button)
 	if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(accountManager)(ctx); err != nil {
-		testing.ContextLog(ctx, "Clicking the sign in link")
-
 		msWebArea := nodewith.NameContaining("Microsoft Office").Role(role.RootWebArea)
 		signInLink := nodewith.NameContaining("Sign in").Role(role.Link).Ancestor(msWebArea).First()
-		if err := uiauto.IfSuccessThen(
-			app.ui.WithTimeout(defaultUIWaitTime*2).WaitUntilExists(signInLink),
-			app.uiHdl.Click(signInLink),
+		securityHeading := nodewith.Name("Is your security info still accurate?").Role(role.Heading)
+		looksGoodButton := nodewith.Name("Looks good!").Role(role.Button)
+		if err := uiauto.NamedAction("click the sign in link",
+			uiauto.Combine("click the sign in link",
+				uiauto.IfSuccessThen(
+					app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(signInLink),
+					app.uiHdl.Click(signInLink),
+				),
+				uiauto.IfSuccessThen(
+					app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(securityHeading),
+					app.uiHdl.Click(looksGoodButton),
+				),
+			),
 		)(ctx); err != nil {
 			return err
 		}
@@ -522,13 +530,12 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 	enterAccount := func(ctx context.Context) error {
 		accountField := nodewith.NameContaining("Enter your email").Role(role.TextField)
 		nextButton := nodewith.Name("Next").Role(role.Button)
-		testing.ContextLog(ctx, "Entering the account")
-		return uiauto.Combine("enter the account",
+		return uiauto.NamedAction("enter the account", uiauto.Combine("enter the account",
 			app.ui.RetryUntil(app.ui.DoDefault(accountField), app.ui.Exists(accountField.Focused())),
 			app.kb.AccelAction("Ctrl+A"),
 			app.kb.TypeAction(app.username),
 			app.ui.DoDefault(nextButton),
-		)(ctx)
+		))(ctx)
 	}
 
 	passwordField := nodewith.Name("Enter the password for " + app.username).Role(role.TextField)
@@ -538,14 +545,14 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 	closeButton := nodewith.Name("Close first run experience").Role(role.Button)
 
 	enterPassword := func(ctx context.Context) error {
-		testing.ContextLog(ctx, "Entering the password")
-		return uiauto.Combine("enter the password",
+		return uiauto.NamedAction("enter the password", uiauto.Combine("enter the password",
 			app.ui.RetryUntil(app.ui.DoDefault(passwordField), app.ui.Exists(passwordField.Focused())),
+			app.kb.AccelAction("Ctrl+A"), // Prevent the field from already being populated.
 			app.kb.TypeAction(app.password),
 			app.uiHdl.Click(signInButton),
 			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(staySignInHeading), app.uiHdl.Click(yesButton)),
 			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeButton), app.uiHdl.Click(closeButton)),
-		)(ctx)
+		))(ctx)
 	}
 
 	accountList := nodewith.Name("Pick an account").Role(role.List)
