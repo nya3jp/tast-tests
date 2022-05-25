@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2b0155_00678cdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-25T22:43:14Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81456c75_950a9778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-25T22:43:14Z",
+      "side": 1,
+      "message": "ids by pin order",
+      "range": {
+        "startLine": 189,
+        "startChar": 12,
+        "endLine": 189,
+        "endChar": 33
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a699252b_74c4046b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-25T22:43:14Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 189,
+        "startChar": 77,
+        "endLine": 189,
+        "endChar": 92
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb7d2e4f_69c418f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-25T22:43:14Z",
+      "side": 1,
+      "message": "The updated app id order after drag and drop operations. Not sure if we want \"from last slot to the first slot\"",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 115
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc147d5a_01af1d05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-25T22:43:14Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 322,
+        "startChar": 3,
+        "endLine": 322,
+        "endChar": 7
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1bec937_368e94a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-05-25T22:43:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 362,
+        "startChar": 3,
+        "endLine": 362,
+        "endChar": 7
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
