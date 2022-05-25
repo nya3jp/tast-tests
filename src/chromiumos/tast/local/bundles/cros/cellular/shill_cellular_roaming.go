@@ -54,7 +54,10 @@ func ShillCellularRoaming(ctx context.Context, s *testing.State) {
 	}
 
 	// The test attributes have "cellular_sim_roaming", thus check that we have a roaming sim
-	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyCellularRoamingState, "roaming", shillconst.DefaultTimeout); err != nil {
+	// Default timeout is causing flakiness in the test.
+	// Adding more wait time for the modem init as a fix: b/232111265.
+	const longerTimeout = 180 * time.Second
+	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyCellularRoamingState, "roaming", longerTimeout); err != nil {
 		s.Fatal("Could not check if a roaming sim is inserted: ", err)
 	}
 
