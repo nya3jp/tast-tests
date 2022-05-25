@@ -20,8 +20,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/webutil"
@@ -47,12 +48,12 @@ func init() {
 		Data:         []string{"manifest.json", "background.js", "content.js"},
 		Params: []testing.Param{{
 			Name:    "ash",
-			Fixture: fixture.ChromePolicyLoggedIn,
+			Fixture: fixture.FakeDMS,
 			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Fixture:           fixture.FakeDMS,
 			Val:               browser.TypeLacros,
 		}},
 	})
@@ -60,12 +61,15 @@ func init() {
 func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.State) {
 	fakeDMS := s.FixtValue().(*fakedms.FakeDMS)
 
+	browserType := s.Param().(browser.Type)
 	// DLP policy with all clipboard blocked restriction.
-	policyDLP := policy.RestrictiveDLPPolicyForClipboard()
+	extraPolicies := policy.RestrictiveDLPPolicyForClipboard()
+	if browserType == browser.TypeLacros {
+		extraPolicies = append(extraPolicies, &policyBlob.LacrosAvailability{Val: "lacros_primary"})
+	}
 
-	// Update the policy blob.
 	pb := policyBlob.NewBlob()
-	pb.AddPolicies(policyDLP)
+	pb.AddPolicies(extraPolicies)
 	if err := fakeDMS.WritePolicyBlob(pb); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
@@ -81,12 +85,22 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 		s.Fatal("Failed setup of DLP Clipboard extension: ", err)
 	}
 
-	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	// Policies are only updated after Chrome startup.
-	cr, err := chrome.New(ctx,
+	chromeOpts := []chrome.Option{
 		chrome.UnpackedExtension(extDir),
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-		chrome.DMSPolicy(fakeDMS.URL))
+		chrome.DMSPolicy(fakeDMS.URL),
+	}
+	if browserType == browser.TypeLacros {
+		var err error
+		chromeOpts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(chromeOpts...)).Opts()
+		if err != nil {
+			s.Fatal("Failed to compute Chrome options: ", err)
+		}
+	}
+
+	// Start a Chrome instance that will fetch policies from the FakeDMS.
+	// Policies are only updated after Chrome startup.
+	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -146,11 +160,18 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
-			if err != nil {
-				s.Fatal("Failed to open the browser: ", err)
+			var br *browser.Browser
+			if browserType == browser.TypeLacros {
+				l, err := lacros.Launch(ctx, tconn)
+				if err != nil {
+					s.Fatal("Failed to launch Lacros: ", err)
+				}
+				defer l.Close(ctx)
+				br = l.Browser()
+
+			} else {
+				br = cr.Browser()
 			}
-			defer closeBrowser(ctx)
 
 			conn, err := br.NewConn(ctx, "https://"+param.url)
 			if err != nil {
