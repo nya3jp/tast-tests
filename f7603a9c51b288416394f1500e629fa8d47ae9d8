@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "587a6d36_702c5429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-25T15:32:10Z",
+      "side": 1,
+      "message": "LGTM, but let\u0027s submit after M104 branch.",
+      "revId": "f7603a9c51b288416394f1500e629fa8d47ae9d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
