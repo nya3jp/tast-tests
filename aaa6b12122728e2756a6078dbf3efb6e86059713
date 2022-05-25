@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f3e5de0_9add2cfb",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-25T11:54:30Z",
+      "side": 1,
+      "message": "ok, thanks for clarification.",
+      "parentUuid": "e374c21f_811c0499",
+      "range": {
+        "startLine": 93,
+        "startChar": 71,
+        "endLine": 93,
+        "endChar": 90
+      },
+      "revId": "aaa6b12122728e2756a6078dbf3efb6e86059713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd079e7c_49d1d0cd",
         "filename": "src/chromiumos/tast/local/ambient/ambient.go",
         "patchSetId": 2
