@@ -51,6 +51,24 @@
       "parentUuid": "41e770cb_1956e86c",
       "revId": "0d3f970e39254427e8850025e835a851c998ea47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4686840f_a45ab500",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-25T03:35:45Z",
+      "side": 1,
+      "message": "Discussed offline, but we might want to keep around the primary tests for when we eventually switch the tast tests to be lacros only.",
+      "parentUuid": "b2cba35c_bdf6a5e3",
+      "revId": "0d3f970e39254427e8850025e835a851c998ea47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
