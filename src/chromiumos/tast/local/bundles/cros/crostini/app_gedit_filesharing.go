@@ -91,6 +91,7 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Files app: ", err)
 	}
+	defer filesApp.Close(cleanupCtx)
 
 	// Open tmp file with Gedit.
 	err = uiauto.Combine("open tmp file with Gedit",
@@ -101,9 +102,17 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open tmp file in the Downloads folder: ", err)
 	}
 
+	geditWindow := nodewith.NameContaining(tmpFilename).Role(role.Window).First()
+	filesAppShelfButton := nodewith.Name(apps.Files.Name).ClassName("ash/ShelfAppButton")
+	ui := uiauto.New(tconn)
+	ud := uidetection.NewDefault(tconn)
+
 	// Launch terminal so we can run commands in the container.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
+		if err := closeGedit(ctx, keyboard, ui, geditWindow); err != nil {
+			s.Log("Failed to close Gedit after failing to launch termnal: ", err)
+		}
 		s.Fatal("Failed to open Crostini Terminal: ", err)
 	}
 
@@ -117,11 +126,6 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 			}
 		}
 	}()
-
-	geditWindow := nodewith.NameContaining(tmpFilename).Role(role.Window).First()
-	filesAppShelfButton := nodewith.Name(apps.Files.Name).ClassName("ash/ShelfAppButton")
-	ui := uiauto.New(tconn)
-	ud := uidetection.NewDefault(tconn)
 
 	err = checkFilesharingBeforeRestart(
 		ctx, cont, tconn, ui, ud, filesApp, keyboard, geditWindow, filesAppShelfButton)
