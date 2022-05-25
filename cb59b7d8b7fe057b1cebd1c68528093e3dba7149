@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40287301_07941240",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-25T23:12:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f48eb25_9d64346a",
+      "revId": "cb59b7d8b7fe057b1cebd1c68528093e3dba7149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf17e071_b73bd7c9",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-25T22:49:56Z",
       "side": 1,
       "message": "I assume, the order of opening a file in gedit and opening a terminal doesn\u0027t matter.\nIn this case we can swap them: open the terminal first and open gedit second.\nHere is why it makes sense:\n1. If opening the terminal fails before we open gedit, it is a fatal error and we return straight away, but we don\u0027t need to close gedit (it\u0027s not open yet)\n2. If the terminal is opened successfully, we will automatically leverage the cleanup below (see the comment above `restartIfError`), which will restart crostini and close gedit if it\u0027s still open.",
+      "revId": "cb59b7d8b7fe057b1cebd1c68528093e3dba7149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87011f42_2dcd453c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-25T23:12:26Z",
+      "side": 1,
+      "message": "Done. Revised to swap the order of opening gedit and terminal.",
+      "parentUuid": "cf17e071_b73bd7c9",
       "revId": "cb59b7d8b7fe057b1cebd1c68528093e3dba7149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
