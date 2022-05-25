@@ -69,9 +69,9 @@ func (d *Device) RequestRoam(ctx context.Context, bssid string) error {
 	return nil
 }
 
-// WaitForSelectedService returns the first valid value (i.e., not "/") of the
-// "SelectedService" property.
-func (d *Device) WaitForSelectedService(ctx context.Context, timeout time.Duration) (dbus.ObjectPath, error) {
+// WaitForSelectedService waits for a valid selected Service for the Device.
+// If no Service is selected or the selected service can not be retrieved, an error is returned.
+func (d *Device) WaitForSelectedService(ctx context.Context, timeout time.Duration) (*Service, error) {
 	var servicePath dbus.ObjectPath
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		deviceProp, err := d.GetProperties(ctx)
@@ -87,9 +87,13 @@ func (d *Device) WaitForSelectedService(ctx context.Context, timeout time.Durati
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return "/", err
+		return nil, err
 	}
-	return servicePath, nil
+	service, err := NewService(ctx, servicePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Service")
+	}
+	return service, nil
 }
 
 // (Cellular only) Enable or disable PIN protection for a cellular modem's SIM
