@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -107,8 +107,8 @@ func ButtonClicks(ctx context.Context, s *testing.State) {
 	}
 
 	// Clicking the down button for 12 times should go to the next year.
-	nextyear := strconv.Itoa(time.Now().Year() + 1)
-	nextYearLabel := nodewith.Name(nextyear).ClassName("Label").Onscreen()
+	nextYear := strconv.Itoa(time.Now().Year() + 1)
+	nextYearLabel := nodewith.Name(nextYear).ClassName("Label").Onscreen()
 	downButton := nodewith.Name("Show next month").ClassName("IconButton")
 	for i := 0; i < numMonths; i++ {
 		if err := ui.LeftClick(downButton)(ctx); err != nil {
