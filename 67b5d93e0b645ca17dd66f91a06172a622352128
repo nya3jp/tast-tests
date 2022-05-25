@@ -1,0 +1,121 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308c13d6_0a72e734",
+        "filename": "src/chromiumos/tast/local/power/cpufreq_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-25T01:36:52Z",
+      "side": 1,
+      "message": "nit: golang doesn\u0027t have strict line limits, but it\u0027s still recommended to keep comments \u003c80 characters if there is no specific reason to exceed that limit.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 101
+      },
+      "revId": "67b5d93e0b645ca17dd66f91a06172a622352128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d927192e_5e6f8358",
+        "filename": "src/chromiumos/tast/local/power/cpufreq_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-25T01:36:52Z",
+      "side": 1,
+      "message": "\u003e \"initalizes\" is a possible misspelling of \"initializes\".\n\nPlease fix.",
+      "parentUuid": "536d9ae4_4eab2585",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 19
+      },
+      "revId": "67b5d93e0b645ca17dd66f91a06172a622352128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f515ef_f8d92e61",
+        "filename": "src/chromiumos/tast/local/power/cpufreq_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-25T01:36:52Z",
+      "side": 1,
+      "message": "I think these metrics will be very hard to interpret. A given test will end up with multiple very similar metrics that are interchangeable on a run-to-run basis (e.g. CPU0 @ 2GHz + CPU1 @ 1GHz could become CPU0 @ 1GHz + CPU1 @ 2GHz on the next run).\n\nIt might make sense to add an aggregated metric for average CPU frequency, at most split up into big vs little CPUs. I think that would be easier to interpret when looking at crosbolt. We can still add per-cpu metrics as well.",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "67b5d93e0b645ca17dd66f91a06172a622352128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a2b0f1_d91de3eb",
+        "filename": "src/chromiumos/tast/local/power/loadavg_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-25T01:36:52Z",
+      "side": 1,
+      "message": "\u003e \"initalizes\" is a possible misspelling of \"initializes\".\n\nPlease fix.",
+      "parentUuid": "ce182e64_6965982e",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "67b5d93e0b645ca17dd66f91a06172a622352128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ccd11be_f9dff511",
+        "filename": "src/chromiumos/tast/local/power/loadavg_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-05-25T01:36:52Z",
+      "side": 1,
+      "message": "We need to account for the fact that the numbers returned by the kernel contain historical system load. In particular, we don\u0027t want to pollute a test\u0027s data with the system load from before the test started.\n\nI think we can do that by recording the timestamp here, and then only starting to record the 1/5/15 minute load averages in Snapshot after the appropriate length of time elapses.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 50
+      },
+      "revId": "67b5d93e0b645ca17dd66f91a06172a622352128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
