@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "466f206c_50b0fc65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-05-25T10:41:57Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "6cfdbdc4_3c90b054",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "f1907925c066d2d1e941b15a21adbb96f2234c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8333d701_efbef4ca",
@@ -37,6 +61,46 @@
       "writtenOn": "2022-05-23T22:52:55Z",
       "side": 1,
       "message": "shadow reviewer lgtm with better subject line",
+      "revId": "f1907925c066d2d1e941b15a21adbb96f2234c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009869a8_79b18e84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-05-25T10:41:57Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "f1907925c066d2d1e941b15a21adbb96f2234c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec75604_09b7edd5",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-05-25T10:41:57Z",
+      "side": 1,
+      "message": "nit: \"deletes\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 25,
+        "endLine": 44,
+        "endChar": 36
+      },
       "revId": "f1907925c066d2d1e941b15a21adbb96f2234c6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
