@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad01551e_daf086c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-25T19:20:52Z",
+      "side": 1,
+      "message": "nit: `\"...%q: %s\"`",
+      "range": {
+        "startLine": 99,
+        "startChar": 42,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "6d340fe70be427d23298cdabf26cfe8694f734df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
