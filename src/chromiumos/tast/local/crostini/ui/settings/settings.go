@@ -311,9 +311,7 @@ var RemoveConfirmDialog = removeConfirmDialogStruct{
 
 // ClickRemove clicks Remove to launch the delete.
 func (s *Settings) ClickRemove() uiauto.Action {
-	return uiauto.Combine("to click button Remove to launch delete dialog",
-		s.ui.LeftClick(removeLinuxButton),
-		s.ui.WaitUntilExists(RemoveConfirmDialog.Self))
+	return s.ui.WithInterval(time.Second).LeftClickUntil(removeLinuxButton, s.ui.Exists(RemoveConfirmDialog.Self))
 }
 
 // Remove removes Crostini.
