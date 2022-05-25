@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1298e6_d6cf68d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-05-25T15:21:06Z",
+      "side": 1,
+      "message": "nit: no need to add \":\" into error. \":\" is also a delimeter between errors, so your error message with : will be confusing.",
+      "range": {
+        "startLine": 62,
+        "startChar": 50,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "65ccd8a4c7b314eb8cbd00894512ba62ea490850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
