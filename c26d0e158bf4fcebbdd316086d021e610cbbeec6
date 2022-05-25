@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6d52927_f3c4673a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-05-25T18:42:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af806c43_a281139c",
+      "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1047cf1f_03022b13",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-23T00:27:57Z",
       "side": 1,
       "message": "Can we instantiate the options array and append the enabled/disabled option based on the flag instead of duplicating the chrome.New call?\n\nExample of appending options https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crostini/pre.go;l\u003d367",
+      "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d2e966_023a0d89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-05-25T18:42:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1047cf1f_03022b13",
       "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8287854_dfbd5197",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-05-25T18:42:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef11258c_70b4c271",
+      "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d002748_d2c1849e",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-05-23T00:27:57Z",
       "side": 1,
       "message": "Why is this not launched when consolidated consent is enabled? This seems like a bug.",
+      "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca615ebd_c1da9789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-05-25T18:42:34Z",
+      "side": 1,
+      "message": "We\u0027ve abandoned the checkbox for \"reviewing ARC options after setup\" that was previously present in ARC ToS screen and was checked in the steps above when the consolidated consent is disabled.\n\n`ui.LeftClick(nodewith.Name(\"Review Google Play options following setup\").Role(role.CheckBox))`",
+      "parentUuid": "8d002748_d2c1849e",
       "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
