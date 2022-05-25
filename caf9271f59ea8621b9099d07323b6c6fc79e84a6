@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0501084d_3ad7bcf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-25T17:39:01Z",
+      "side": 1,
+      "message": "Is it possible for a peripheral to have a USB4 port dir, but not a USB port?\n\nI\u0027m trying to understand the \"optional\" nature of the USB4 port here, and whether it is even necessary...\n\nIf this is running on CQ, it is *not* (at least in the medium term) going to have a USB4 peripheral hanging off of it.",
+      "range": {
+        "startLine": 55,
+        "startChar": 61,
+        "endLine": 55,
+        "endChar": 88
+      },
+      "revId": "caf9271f59ea8621b9099d07323b6c6fc79e84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b6d0fad_14f4a97c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-25T17:39:01Z",
+      "side": 1,
+      "message": "If we want to confirm the link is correct, shouldn\u0027t we check that what the |connector| points to is the same as the port we started from?",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "caf9271f59ea8621b9099d07323b6c6fc79e84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8a9d9c_6eefe3a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-25T17:39:01Z",
+      "side": 1,
+      "message": "Is regex overkill here? Why not Contains()? \n\nhttps://pkg.go.dev/strings#Contains\n\nIf you can use that:\n- the error handling is simplified\n- you can inline the entire thing instead of breaking out another function.",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 74
+      },
+      "revId": "caf9271f59ea8621b9099d07323b6c6fc79e84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
