@@ -16,6 +16,23 @@
       "message": "WANT_LGTM\u003dtbarzic, hidehiko, svenzheng",
       "revId": "8147e654372c6b16fc3ca0ef73c2876b0cbd46b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2167831_d6b2b635",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-25T00:07:24Z",
+      "side": 1,
+      "message": "Submitting to CQ again as the failure doesn\u0027t seem to be relevant \n(\"provision chromeos via tls: add job_repo_url and cros-version labels to host info file: rpc error: code \u003d Unavailable desc \u003d connection error: desc \u003d \"transport: Error while dialing dial tcp 0.0.0.0:7151: connect: connection refused\")",
+      "revId": "8147e654372c6b16fc3ca0ef73c2876b0cbd46b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
