@@ -16,6 +16,92 @@
       "message": "Otherwise LGTM (don\u0027t have tast ownership)",
       "revId": "7cc512987bf5ebe81d620430b9da19b1fdc390d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac2f3efe_685cd5f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/vault_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-25T02:50:43Z",
+      "side": 1,
+      "message": "Please be specific:\n\nmigration from A to B",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "7cc512987bf5ebe81d620430b9da19b1fdc390d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c93477_d1f46bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/vault_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-25T02:50:43Z",
+      "side": 1,
+      "message": "You may move both \"informational\" to Attr above so you can save ExtraAttr for now.",
+      "revId": "7cc512987bf5ebe81d620430b9da19b1fdc390d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66c3d40_076983d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/vault_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-25T02:50:43Z",
+      "side": 1,
+      "message": "Migrating valut from ... to ...",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "7cc512987bf5ebe81d620430b9da19b1fdc390d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599cb89d_493f683f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/vault_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-25T02:50:43Z",
+      "side": 1,
+      "message": "does this mean \"mount as fscrypt\"?",
+      "range": {
+        "startLine": 136,
+        "startChar": 69,
+        "endLine": 136,
+        "endChar": 77
+      },
+      "revId": "7cc512987bf5ebe81d620430b9da19b1fdc390d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
