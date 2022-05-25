@@ -6,8 +6,6 @@ package familylink
 
 import (
 	"context"
-	"fmt"
-	"strings"
 	"time"
 
 	"chromiumos/tast/local/chrome/familylink"
@@ -30,7 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		VarDeps:      []string{"unicorn.childFirstName", "unicorn.childLastName"},
+		VarDeps:      []string{"family.unicornEmail"},
 		Fixture:      "familyLinkUnicornLoginNonOwner",
 	})
 }
@@ -40,9 +38,6 @@ func MultipleSignInDisabled(ctx context.Context, s *testing.State) {
 	// device: a regular owner and a Unicorn secondary user. The
 	// Unicorn user is logged in.
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
-
-	childFirstName := s.RequiredVar("unicorn.childFirstName")
-	childLastName := s.RequiredVar("unicorn.childLastName")
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)
@@ -54,9 +49,9 @@ func MultipleSignInDisabled(ctx context.Context, s *testing.State) {
 	defer quicksettings.Hide(ctx, tconn)
 
 	s.Log("Attempting to add multiple profiles")
-	userProfileName := fmt.Sprintf("%s%s", strings.ToLower(childFirstName), strings.ToLower(childLastName))
-	s.Logf("Looking for user profile name %q", userProfileName)
-	userProfileIcon := nodewith.NameContaining(userProfileName).Role(role.Button)
+	userEmail := s.RequiredVar("family.unicornEmail")
+	s.Logf("Looking for user email %q", userEmail)
+	userProfileIcon := nodewith.NameContaining(userEmail).Role(role.Button)
 	if err := ui.WaitUntilExists(userProfileIcon)(ctx); err != nil {
 		s.Fatal("Failed to find the user profile icon: ", err)
 	}
