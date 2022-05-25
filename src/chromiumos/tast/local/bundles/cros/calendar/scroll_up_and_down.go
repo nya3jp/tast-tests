@@ -10,17 +10,20 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto/touch"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ButtonClicks,
+		Func:         ScrollUpAndDown,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Checks the basic interacting with calendar view",
+		Desc:         "Checks the scroll to next/previous months on the calendar view",
 		Contacts: []string{
 			"jiamingc@chromium.org",
 			"cros-calendar@google.com",
@@ -31,8 +34,8 @@ func init() {
 	})
 }
 
-// ButtonClicks verifies that we can open the calendar, and click all (up/down, today, and settings) buttons correctly.
-func ButtonClicks(ctx context.Context, s *testing.State) {
+// ScrollUpAndDown verifies that we can open the calendar, and scroll up/down then back to today correctly.
+func ScrollUpAndDown(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -40,34 +43,28 @@ func ButtonClicks(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	s.Log("Start testing calendar view from quick settings")
-	if err := quicksettings.Expand(ctx, tconn); err != nil {
-		s.Fatal("Failed to open quick settings")
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
+	if err != nil {
+		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
+	defer cleanup(ctx)
 
+	tc, err := touch.New(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to set up the touch context: ", err)
+	}
+	defer tc.Close()
+
+	s.Log("Start testing calendar view from date tray")
 	ui := uiauto.New(tconn)
 
-	// Opening the calendar view from the quick setting's page and back to the main view several times.
-	const iterations = 5
-	for i := 0; i < iterations; i++ {
-		s.Logf("Opening Calendar view (iteration %d of %d)", i+1, iterations)
-
-		if err := ui.LeftClick(quicksettings.DateView)(ctx); err != nil {
-			s.Fatal("Failed to click the DateView in quick settings bubble: ", err)
-		}
-
-		backButton := nodewith.Name("Previous menu").ClassName("IconButton")
-		if err := ui.LeftClick(backButton)(ctx); err != nil {
-			s.Fatal("Failed to click the BackButton in calendar view bubble: ", err)
-		}
-
-	}
+	dateTray := nodewith.ClassName("DateTray")
 
 	// Comparing the time before and after opening the calendar view just in case this test is run at the very end of a year, e.g. Dec 31 23:59:59.
 	beforeOpeningCalendarYear := time.Now().Year()
 
-	if err := ui.LeftClick(quicksettings.DateView)(ctx); err != nil {
-		s.Fatal("Failed to click the DateView in quick settings page: ", err)
+	if err := ui.DoDefault(dateTray)(ctx); err != nil {
+		s.Fatal("Failed to click the date tray: ", err)
 	}
 
 	// Wait for calendar view getting loaded and finished fetching the events from Google Calendar api.
@@ -96,24 +93,39 @@ func ButtonClicks(ctx context.Context, s *testing.State) {
 	}
 
 	calendarView := nodewith.ClassName("CalendarView")
-	triView := nodewith.ClassName("TriView").Ancestor(calendarView).Nth(1)
-	headerView := nodewith.ClassName("View").Ancestor(triView).Nth(0)
+	scrollView := nodewith.ClassName("ScrollView").Ancestor(calendarView).Nth(0)
+	scrollViewBounds, err := ui.Location(ctx, scrollView)
+	if err != nil {
+		s.Fatal("Failed to find calendar scroll view bounds: ", err)
+	}
 
-	// Clicking the up button for 12 times should go to the previous year.
-	upButton := nodewith.Name("Show previous month").ClassName("IconButton")
-	const numMonths = 12
+	// Sets swipe points and speed.
+	swipeStartPt := coords.NewPoint(scrollViewBounds.CenterX(), scrollViewBounds.Top+20)
+	swipeEndPt := coords.NewPoint(scrollViewBounds.CenterX(), scrollViewBounds.Bottom()-10)
+	const swipeSpeed = 10 * time.Millisecond
+	const delay = 1 * time.Second
+
+	// The scroll times depends on the screen size.
+	// But it should scroll one month with at most 3 scrolls.
+	// So here 3*12 (months) is set as the max scroll times.
+	const scrollTimes = 36
+
+	// Scroll until previous year label is visible.
 	previousYear := strconv.Itoa(yearInt - 1)
 	previousYearLabel := nodewith.Name(previousYear).ClassName("Label").Onscreen()
-	for i := 0; i < numMonths; i++ {
-		if err := ui.LeftClick(upButton)(ctx); err != nil {
-			s.Fatal("Failed to click the up button in calendar view bubble: ", err)
+	for i := 0; i < scrollTimes; i++ {
+		if err := tc.Swipe(swipeStartPt, tc.SwipeTo(swipeEndPt, swipeSpeed), tc.Hold(delay))(ctx); err != nil {
+			s.Fatal("Failed to scroll up on calendar view: ", err)
+		}
+		if found, err := ui.IsNodeFound(ctx, previousYearLabel); err != nil {
+			s.Fatal("Failed to check previous year while scrolling: ", err)
+		} else if found == true {
+			break
 		}
 	}
-	if err := ui.WaitForLocation(headerView)(ctx); err != nil {
-		s.Fatal("Failed to wait for the year label to be stable after click on up button 12 times: ", err)
-	}
+
 	if err := ui.WaitUntilExists(previousYearLabel)(ctx); err != nil {
-		s.Fatal("Failed to find year label after clicking on up button: ", err)
+		s.Fatal("Failed to scroll previous year: ", err)
 	}
 
 	// Clicking on today button should go back to today's momth.
@@ -140,37 +152,30 @@ func ButtonClicks(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find year label after clicking on today button: ", err)
 	}
 
-	// Clicking the down button for 12 times should go to the next year.
+	// Scroll until next year label is visible.
 	nextYear := strconv.Itoa(yearInt + 1)
 	nextYearLabel := nodewith.Name(nextYear).ClassName("Label").Onscreen()
-	downButton := nodewith.Name("Show next month").ClassName("IconButton")
-	for i := 0; i < numMonths; i++ {
-		if err := ui.LeftClick(downButton)(ctx); err != nil {
-			s.Fatal("Failed to click the down button in calendar view bubble: ", err)
+	for i := 0; i < scrollTimes; i++ {
+		if err := tc.Swipe(swipeEndPt, tc.SwipeTo(swipeStartPt, swipeSpeed), tc.Hold(delay))(ctx); err != nil {
+			s.Fatal("Failed to scroll down on calendar view: ", err)
+		}
+		if found, err := ui.IsNodeFound(ctx, nextYearLabel); err != nil {
+			s.Fatal("Failed to check next year while scrolling: ", err)
+		} else if found == true {
+			break
 		}
 	}
-	if err := ui.WaitForLocation(headerView)(ctx); err != nil {
-		s.Fatal("Failed to wait for the year label to be stable after click on down button 12 times: ", err)
-	}
 	if err := ui.WaitUntilExists(nextYearLabel)(ctx); err != nil {
-		s.Fatal("Failed to find year label after clicking on down button: ", err)
+		s.Fatal("Failed to scroll next year: ", err)
 	}
 
-	settingButton := nodewith.Name("Date and time settings").ClassName("IconButton")
-	if err := ui.LeftClick(settingButton)(ctx); err != nil {
-		s.Fatal("Failed to click the setting button in calendar view bubble: ", err)
-	}
-
-	// Check if the DateTime setting page within the OS Settings was opened.
-	matcher := chrome.MatchTargetURL("chrome://os-settings/dateTime")
-	conn, err := cr.NewConnForTarget(ctx, matcher)
+	// Close the calendar view.
+	calendarViewBounds, err := ui.Location(ctx, calendarView)
 	if err != nil {
-		s.Fatal("Failed to open the date and time settings: ", err)
+		s.Fatal("Failed to find calendar view bounds: ", err)
 	}
-	defer conn.Close()
-
-	settingCloseButton := nodewith.Name("Close").ClassName("FrameCaptionButton")
-	if err := ui.LeftClick(settingCloseButton)(ctx); err != nil {
-		s.Fatal("Failed to click the setting close button in the settings page: ", err)
+	outsideCalendarPt := coords.NewPoint(calendarViewBounds.Right()+2, calendarViewBounds.Top-5)
+	if err := mouse.Click(tconn, outsideCalendarPt, mouse.LeftButton)(ctx); err != nil {
+		s.Fatal("Failed to click outside of the calendar view: ", err)
 	}
 }
