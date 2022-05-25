@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7989a91_bbde77c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-25T18:09:42Z",
+      "side": 1,
+      "message": "I wonder if we can run dbus-monitor with `su - nobody` or maybe in a minijail to avoid adding it here?",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "156205cd405993e7f2901d6fa641bf2da6290cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
