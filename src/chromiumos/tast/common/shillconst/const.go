@@ -128,6 +128,7 @@ const (
 	ServicePropertyAutoConnect    = "AutoConnect"
 	ServicePropertyGUID           = "GUID"
 	ServicePropertyProvider       = "Provider"
+	ServicePropertyPriority       = "Priority"
 
 	// Cellular service property names.
 	ServicePropertyCellularICCID         = "Cellular.ICCID"
