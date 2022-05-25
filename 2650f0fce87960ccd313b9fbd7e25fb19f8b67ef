@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5d7fdd8e_526de7ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-25T03:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f61de73e_fd58b9f0",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "2650f0fce87960ccd313b9fbd7e25fb19f8b67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "20d154af_2f57c9f8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ba0f7f_540f60c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-25T03:15:18Z",
+      "side": 1,
+      "message": "Not really and the story is slightly complicated this is why this enum looks weird.\n\nWe have\n-ecryptfs - deprecated, but still present on some devices\n-fscryptv1 - current active on 4.x devices (and may still be present on upreved ones)\n-fscryptv2 - current active\n-dmcrypt - upcoming and enabled on some platforms\n\nThe story how it chooses which one a device should use is complicated. What is important is that default corresponds to either fscryptv1, fscryptv2 or dmcrypt depending on the device. Ecryptfs is forced to verify old devices still work, and fscryptv1 is forced to verify v2 transition doesn\u0027t break it.",
+      "parentUuid": "d486fdde_ed593c46",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "2650f0fce87960ccd313b9fbd7e25fb19f8b67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de6a1712_2e4c9aaf",
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf793224_e5d72dcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-25T03:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de6a1712_2e4c9aaf",
+      "revId": "2650f0fce87960ccd313b9fbd7e25fb19f8b67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b28f7b59_35d73682",
@@ -111,6 +177,24 @@
       "writtenOn": "2022-05-24T19:25:20Z",
       "side": 1,
       "message": "nit: dont need this line",
+      "revId": "2650f0fce87960ccd313b9fbd7e25fb19f8b67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1f141a_45b2a368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-25T03:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b28f7b59_35d73682",
       "revId": "2650f0fce87960ccd313b9fbd7e25fb19f8b67ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
