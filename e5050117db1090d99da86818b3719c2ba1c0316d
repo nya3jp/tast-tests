@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7ecf3d_f40f00f8",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73acef6b_03130927",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86831a17_5524f73a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-23T18:24:27Z",
       "side": 1,
       "message": "If you are trying to make sure there is enough time for deferred cleanup, shorten `ctx` so there is time for it and use the shortened `ctx` in this function and then use the longer context for the deferred function. Just renaming it has no effect.",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28cd2403_3f012633",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "I was told that I had to do it this way.",
+      "parentUuid": "86831a17_5524f73a",
       "range": {
         "startLine": 104,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7129b21_6e4b4fc0",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "I was told that I had to do it this way.",
+      "parentUuid": "e6008e31_e37727e4",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b3ff4e5_b24f0eb5",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-05-23T18:24:27Z",
       "side": 1,
       "message": "nit: add a period",
+      "range": {
+        "startLine": 126,
+        "startChar": 46,
+        "endLine": 126,
+        "endChar": 53
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a8c2f0b_8fe8966b",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b3ff4e5_b24f0eb5",
       "range": {
         "startLine": 126,
         "startChar": 46,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10bff05b_6ffcc305",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ff9d67_a00d56ad",
+      "range": {
+        "startLine": 127,
+        "startChar": 46,
+        "endLine": 127,
+        "endChar": 204
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33f3256d_da3f990a",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a443cf_0ee2e4b8",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33f3256d_da3f990a",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7366f9c_2d11a598",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-05-23T18:24:27Z",
       "side": 1,
       "message": "nit: add a period",
+      "range": {
+        "startLine": 136,
+        "startChar": 71,
+        "endLine": 136,
+        "endChar": 72
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068f77c4_13f0c8b3",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7366f9c_2d11a598",
       "range": {
         "startLine": 136,
         "startChar": 71,
@@ -225,6 +393,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3bbf28_2dc93dd3",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47bb93b9_2e70217f",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 16
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5748244_6f0bba31",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5edecbc8_aaa19b53",
+      "range": {
+        "startLine": 145,
+        "startChar": 83,
+        "endLine": 145,
+        "endChar": 86
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c4a40ae_1f1666b3",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-05-23T18:24:27Z",
       "side": 1,
       "message": "nit: add a period",
+      "range": {
+        "startLine": 147,
+        "startChar": 51,
+        "endLine": 147,
+        "endChar": 52
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b28f667_813e08a0",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c4a40ae_1f1666b3",
       "range": {
         "startLine": 147,
         "startChar": 51,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71fc30e6_367219a6",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbaa8fa7_1be1e24a",
+      "range": {
+        "startLine": 148,
+        "startChar": 46,
+        "endLine": 148,
+        "endChar": 203
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0317973e_51cb32d8",
@@ -284,6 +548,30 @@
       "writtenOn": "2022-05-23T18:24:27Z",
       "side": 1,
       "message": "nit: add a period",
+      "range": {
+        "startLine": 151,
+        "startChar": 11,
+        "endLine": 151,
+        "endChar": 69
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a60ee5_9d795d18",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-25T19:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0317973e_51cb32d8",
       "range": {
         "startLine": 151,
         "startChar": 11,
