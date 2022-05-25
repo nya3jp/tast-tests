@@ -16,6 +16,24 @@
       "message": "are you sure we run every `cleanup` that gets deferred, here? It seems to me like we could be shadowing it in the environment, and then defer the last function assigned to cleanup three times, rather than each one once.",
       "revId": "b957878c40f7de0c2030f61824d0562620e3a8ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37113773_d6d7316c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/autoconnect_cellular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-05-25T21:00:37Z",
+      "side": 1,
+      "message": "I confirmed that it works. I\u0027ve changed the variable names for clarity.",
+      "parentUuid": "486d6e3b_6accfc7e",
+      "revId": "b957878c40f7de0c2030f61824d0562620e3a8ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
