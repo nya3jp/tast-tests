@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d3dd09_eb3d6041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-25T23:41:43Z",
+      "side": 1,
+      "message": "Deferred cleanup should also be moved higher and run after `terminalapp.Launch`.",
+      "revId": "c92a3cd2232275d9f89a5a247a7b7b2f8ab0fa43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
