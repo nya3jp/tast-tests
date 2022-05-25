@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "050c9e42_c2f6f641",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-05-25T01:53:40Z",
+      "side": 1,
+      "message": "If it\u0027s single device failure, maybe we should ask the lab to fix specific device by go/single-dut-repair, instead of skipping the test.",
+      "parentUuid": "6999b6a3_519a5cd3",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 77
+      },
+      "revId": "6c60b592b9c3ce86265e875dc7411613a02c0e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6640360_1672c0fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
         "patchSetId": 3
