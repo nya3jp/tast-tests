@@ -16,6 +16,29 @@
       "message": "Hi Tast owners, this projector.SharedScreencast Tast test is ready for review.",
       "revId": "fa19b48705e55781e80e2d78e3b4b583572808be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde28001_604d422f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-25T03:08:27Z",
+      "side": 1,
+      "message": "Please use shorten ctx for defer:\n```\nctxForCleanUp :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n\n// normal flow, use ctx.\n...\n\n// defer call, use ctxForCleanUp.\n```",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "fa19b48705e55781e80e2d78e3b4b583572808be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
