@@ -354,6 +354,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf002cd1_30cba562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-25T08:10:52Z",
+      "side": 1,
+      "message": "I didn\u0027t really use the quick settings with multiple pages, so I assumed when you open the quick setting, it *always* opens on the first page. If so, you can skip clicking the page selector for the first page (and only for the first page). As I saw in the recording that when the first page is open, and you click the first page selector, the page is closed. of course the reason can be different, it is only my observation based on the recording.",
+      "parentUuid": "5281ce33_b9d22927",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "b3bfe610be684b3da2100f2697b8308091d11a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef9eec31_4b8a69aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dl_theme_quick_settings.go",
         "patchSetId": 1
