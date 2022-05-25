@@ -82,6 +82,12 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	// Launch terminal so we can run commands in the container.
+	terminalApp, err := terminalapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to open Crostini Terminal: ", err)
+	}
+
 	// Create a temp text file in the /Downloads folder to use in this test.
 	if err := ioutil.WriteFile(tmpFileCrosDownloadsPath, []byte(tmpFileContents), 0644); err != nil {
 		s.Fatal("Failed to create text file in Downloads folder: ", err)
@@ -91,6 +97,7 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Files app: ", err)
 	}
+	defer filesApp.Close(cleanupCtx)
 
 	// Open tmp file with Gedit.
 	err = uiauto.Combine("open tmp file with Gedit",
@@ -99,12 +106,6 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	)(ctx)
 	if err != nil {
 		s.Fatal("Failed to open tmp file in the Downloads folder: ", err)
-	}
-
-	// Launch terminal so we can run commands in the container.
-	terminalApp, err := terminalapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to open Crostini Terminal: ", err)
 	}
 
 	// Restart crostini in the end in case any error in the middle and gedit is not closed.
