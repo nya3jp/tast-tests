@@ -156,6 +156,24 @@
       "parentUuid": "8d002748_d2c1849e",
       "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc17ee8_b0002386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-25T18:47:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca615ebd_c1da9789",
+      "revId": "c26d0e158bf4fcebbdd316086d021e610cbbeec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
