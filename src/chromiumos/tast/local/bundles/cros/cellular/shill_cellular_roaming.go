@@ -23,7 +23,7 @@ func init() {
 		Contacts: []string{"pholla@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
 		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_roaming"},
 		Fixture:  "cellular",
-		Timeout:  60 * time.Second,
+		Timeout:  240 * time.Second,
 	})
 }
 
@@ -54,7 +54,10 @@ func ShillCellularRoaming(ctx context.Context, s *testing.State) {
 	}
 
 	// The test attributes have "cellular_sim_roaming", thus check that we have a roaming sim
-	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyCellularRoamingState, "roaming", shillconst.DefaultTimeout); err != nil {
+	// Adding more wait time (3 minutes for a typical roaming situation) for the modem service init.
+	// b/232111265
+	const longerTimeout = 180 * time.Second
+	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyCellularRoamingState, "roaming", longerTimeout); err != nil {
 		s.Fatal("Could not check if a roaming sim is inserted: ", err)
 	}
 
