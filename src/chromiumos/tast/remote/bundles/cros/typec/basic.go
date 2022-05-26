@@ -26,9 +26,17 @@ func init() {
 		Func:         Basic,
 		Desc:         "Checks basic typec kernel driver functionality",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
-		Attr:         []string{"group:mainline", "group:typec", "informational"},
+		Attr:         []string{"group:mainline", "group:typec"},
 		HardwareDeps: hwdep.D(hwdep.ECFeatureTypecCmd(), hwdep.SkipOnModel("fievel", "habokay", "tiger"), hwdep.ChromeEC()),
 		Vars:         []string{"servo"},
+		Params: []testing.Param{
+			{
+				// These boards have known flakiness with Servo/TCPC interactions, so mark the test as informational for them.
+				Name:              "unstable",
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("magma", "magneto", "nipperkin", "wormdingler", "pazquel", "lindar", "volteer2")),
+			},
+		},
 	})
 }
 
