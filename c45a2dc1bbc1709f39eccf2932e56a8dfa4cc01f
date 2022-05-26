@@ -16,6 +16,24 @@
       "message": "could you check very recent failure?",
       "revId": "c45a2dc1bbc1709f39eccf2932e56a8dfa4cc01f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f3c984b_b085a011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-26T16:37:40Z",
+      "side": 1,
+      "message": "No. Looks like it failed on one board last night after I had checked 20 passing runs. The failure doesn\u0027t look obvious, so I\u0027ll be abandoning this promotion and soaking it for more time.",
+      "parentUuid": "73054fbd_6ab67ed5",
+      "revId": "c45a2dc1bbc1709f39eccf2932e56a8dfa4cc01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
