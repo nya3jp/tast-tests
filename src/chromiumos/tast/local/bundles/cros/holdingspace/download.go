@@ -85,7 +85,14 @@ func init() {
 				testfunc:    testDownloadPinAndUnpin,
 				browserType: browser.TypeLacros,
 			},
-			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
+		}, {
+			Name: "lacros_pin_and_unpin_unstable",
+			Val: downloadParams{
+				testfunc:    testDownloadPinAndUnpin,
+				browserType: browser.TypeLacros,
+			},
+			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
 		}, {
 			Name: "lacros_remove",
 			Val: downloadParams{
