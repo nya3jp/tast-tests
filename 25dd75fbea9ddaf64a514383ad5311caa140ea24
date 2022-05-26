@@ -38,6 +38,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7181acd2_d26acfdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T03:47:51Z",
+      "side": 1,
+      "message": "Note that we are considering changing network interface autodetection in the future such that we have less name-based autodetection. For tests concretely this would mean calling systematically ClaimDevice / UnclaimDevice. For now this is fine to acknowledge these name patterns.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 88
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7eca8c_15e8c443",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T03:47:51Z",
+      "side": 1,
+      "message": "These two names are a bit misleading here: one side is hinting that this simulates an interface of type ethernet, but the other side is hinting that this is used to simulate an AP.\n\nThe names should maybe better reflect that technology we expect shill to pick here (kEthernet I believe).",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cd1c0d2_a32272f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 2
