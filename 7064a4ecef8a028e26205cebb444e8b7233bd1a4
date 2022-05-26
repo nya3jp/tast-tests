@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "092e1268_17cfc2d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1332928
+      },
+      "writtenOn": "2022-05-26T21:48:09Z",
+      "side": 1,
+      "message": "I think tast tests are supposed to be integration tests so I don\u0027t think we can use fake speech recognition service.\n\nThe good news here is that we can test with SODA. Please take a look at the tast test written by the live caption [1].\n\nThe only challenge here is to get specific sound/audio into the microphone of the user\u0027s device to verify the particular transcription result. I am not sure if tast test is able to provide us with that. If we don\u0027t need to validate the transcription results, we can just follow what [1] did and we might be able to run the whole system (with the transcriptions resulting in an empty string).\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/a11y/live_caption.go;bpv\u003d1",
+      "parentUuid": "948747f1_de95260f",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d241a1d7_05628dc2",
         "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
         "patchSetId": 16
