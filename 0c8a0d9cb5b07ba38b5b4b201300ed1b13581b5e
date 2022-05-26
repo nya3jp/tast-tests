@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af112d5_a7c48541",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-05-26T03:48:27Z",
+      "side": 1,
+      "message": "Nit: regexp.QuoteMeta(appName) to treat it as a string literal, not a regex.",
+      "revId": "0c8a0d9cb5b07ba38b5b4b201300ed1b13581b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
