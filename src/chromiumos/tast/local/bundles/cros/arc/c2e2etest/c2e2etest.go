@@ -139,6 +139,7 @@ var videoCodecEnumValues = map[string]int{
 	"H264PROFILE_MAIN":    1,
 	"VP8PROFILE_ANY":      11,
 	"VP9PROFILE_PROFILE0": 12,
+	"HEVCPROFILE_MAIN":    16,
 }
 
 // StreamDataArg returns a string that can be used for an argument to the c2_e2e_test APK.

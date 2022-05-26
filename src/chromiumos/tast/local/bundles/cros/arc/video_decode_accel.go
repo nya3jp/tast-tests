@@ -100,6 +100,18 @@ func init() {
 			Fixture:           "arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm"},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
+		}, {
+			Name:              "hevc_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.hevc"},
+			Fixture:           "arcBootedWithVideoLogging",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "android_vm"},
+			ExtraData:         []string{"test-25fps.hevc", "test-25fps.hevc.json"},
+		}, {
+			Name:              "hevc_oopvd_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.hevc"},
+			Fixture:           "arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "android_vm"},
+			ExtraData:         []string{"test-25fps.hevc", "test-25fps.hevc.json"},
 		}},
 	})
 }

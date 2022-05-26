@@ -88,6 +88,26 @@ func init() {
 			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "2160p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.ivf", "2160p_60fps_600frames.vp9.ivf.json"},
+		}, {
+			Name:              "hevc_1080p_30fps",
+			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "1080p_30fps_300frames.hevc"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+			ExtraData:         []string{"1080p_30fps_300frames.hevc", "1080p_30fps_300frames.hevc.json"},
+		}, {
+			Name:              "hevc_1080p_60fps",
+			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "1080p_60fps_600frames.hevc"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60},
+			ExtraData:         []string{"1080p_60fps_600frames.hevc", "1080p_60fps_600frames.hevc.json"},
+		}, {
+			Name:              "hevc_2160p_30fps",
+			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "2160p_30fps_300frames.hevc"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K},
+			ExtraData:         []string{"2160p_30fps_300frames.hevc", "2160p_30fps_300frames.hevc.json"},
+		}, {
+			Name:              "hevc_2160p_60fps",
+			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "2160p_60fps_600frames.hevc"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60},
+			ExtraData:         []string{"2160p_60fps_600frames.hevc", "2160p_60fps_600frames.hevc.json"},
 		},
 			{
 				Name:              "h264_linear_output_1080p_30fps",

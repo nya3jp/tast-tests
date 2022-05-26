@@ -315,6 +315,54 @@ func init() {
 			Fixture:           "arcBootedWithOutOfProcessVideoDecoding",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "android_vm"},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.ivf", "2160p_60fps_600frames.vp9.ivf.json"},
+		}, {
+			Name:              "hevc_1080p_30fps_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.hevc"},
+			Fixture:           "arcBooted",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "android_vm"},
+			ExtraData:         []string{"1080p_30fps_300frames.hevc", "1080p_30fps_300frames.hevc.json"},
+		}, {
+			Name:              "hevc_oopvd_1080p_30fps_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_30fps_300frames.hevc"},
+			Fixture:           "arcBootedWithOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "android_vm"},
+			ExtraData:         []string{"1080p_30fps_300frames.hevc", "1080p_30fps_300frames.hevc.json"},
+		}, {
+			Name:              "hevc_1080p_60fps_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.hevc"},
+			Fixture:           "arcBooted",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "android_vm"},
+			ExtraData:         []string{"1080p_60fps_600frames.hevc", "1080p_60fps_600frames.hevc.json"},
+		}, {
+			Name:              "hevc_oopvd_1080p_60fps_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "1080p_60fps_600frames.hevc"},
+			Fixture:           "arcBootedWithOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "android_vm"},
+			ExtraData:         []string{"1080p_60fps_600frames.hevc", "1080p_60fps_600frames.hevc.json"},
+		}, {
+			Name:              "hevc_2160p_30fps_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.hevc"},
+			Fixture:           "arcBooted",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K, "android_vm"},
+			ExtraData:         []string{"2160p_30fps_300frames.hevc", "2160p_30fps_300frames.hevc.json"},
+		}, {
+			Name:              "hevc_oopvd_2160p_30fps_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_30fps_300frames.hevc"},
+			Fixture:           "arcBootedWithOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K, "android_vm"},
+			ExtraData:         []string{"2160p_30fps_300frames.hevc", "2160p_30fps_300frames.hevc.json"},
+		}, {
+			Name:              "hevc_2160p_60fps_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.hevc"},
+			Fixture:           "arcBooted",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60, "android_vm"},
+			ExtraData:         []string{"2160p_60fps_600frames.hevc", "2160p_60fps_600frames.hevc.json"},
+		}, {
+			Name:              "hevc_oopvd_2160p_60fps_vm",
+			Val:               video.DecodeTestOptions{TestVideo: "2160p_60fps_600frames.hevc"},
+			Fixture:           "arcBootedWithOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60, "android_vm"},
+			ExtraData:         []string{"2160p_60fps_600frames.hevc", "2160p_60fps_600frames.hevc.json"},
 		}},
 	})
 }
