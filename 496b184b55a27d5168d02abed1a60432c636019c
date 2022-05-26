@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a43ea706_a76c2019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-26T00:41:19Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "496b184b55a27d5168d02abed1a60432c636019c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf3b7f0_a0299b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-26T00:41:19Z",
+      "side": 1,
+      "message": "after refactoring `dragCameraPreviewTo` (see the other comment), you can simplify the code by using `uiauto.Combine()`",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "496b184b55a27d5168d02abed1a60432c636019c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75176b2f_dad4da74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-26T00:41:19Z",
+      "side": 1,
+      "message": "consider refactor this function to return an action (`func (ctx context.Context) error`), instead of an error.",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 24
+      },
+      "revId": "496b184b55a27d5168d02abed1a60432c636019c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
