@@ -108,7 +108,7 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 	)
 
 	emojiCandidateWindowFinder := nodewith.HasClass("SuggestionWindowView").Role(role.Window)
-	emojiCharFinder := nodewith.Name(emoji).Ancestor(emojiCandidateWindowFinder).HasClass("StyledLabel")
+	emojiCharFinder := nodewith.Name(emoji).Ancestor(emojiCandidateWindowFinder).First()
 	learnMoreFinder := nodewith.Name("Learn more").Ancestor(emojiCandidateWindowFinder).HasClass("ImageButton")
 	ui := uiauto.New(tconn)
 
