@@ -54,6 +54,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "876826ea_00b4b25d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-26T15:49:30Z",
+      "side": 1,
+      "message": "Looks great as a step towards captive portal tests. Thank you Steven!",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7181acd2_d26acfdd",
@@ -150,6 +167,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e2b3b48_1b098167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-26T15:49:30Z",
+      "side": 1,
+      "message": "nit: Device",
+      "range": {
+        "startLine": 77,
+        "startChar": 25,
+        "endLine": 77,
+        "endChar": 31
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cd1c0d2_a32272f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 2
@@ -213,6 +253,52 @@
         "startChar": 10,
         "endLine": 442,
         "endChar": 13
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83af1568_10e25e35",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-26T15:49:30Z",
+      "side": 1,
+      "message": "Would it be valuable to be able to push multiple test profiles with different names? If that\u0027s the case, we should pass the profile name into the function call.",
+      "range": {
+        "startLine": 446,
+        "startChar": 32,
+        "endLine": 446,
+        "endChar": 47
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eda4c6c_8478ec0f",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-26T15:49:30Z",
+      "side": 1,
+      "message": "nit:\n```\nif _, err :\u003d m.PushProfile(ctx, testProfileName); err !\u003d nil {\n    return nil, errors.Wrap(err, \"PushProfile failed\")\n}\n```",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 455,
+        "endChar": 2
       },
       "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
