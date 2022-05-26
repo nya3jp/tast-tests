@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8b842f40_dba46fa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-26T16:34:16Z",
+      "side": 1,
+      "message": "Done. \nAlternatively, if it\u0027s flaky only on VMs and it\u0027s not a real issue, we may consider using \u0027lacros_stable\u0027 as softwaredeps and expand it later once it gets stable on VMs (http://osscs/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/crosbundle/software_defs.go;l\u003d101) We\u0027ll see.",
+      "parentUuid": "6df74fe3_e5c880fd",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "315cb8891b4866bcbba2e41016dd8f0d1b8758c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7a81df5a_6fdfce76",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
