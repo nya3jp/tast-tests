@@ -46,6 +46,30 @@
       },
       "revId": "86ccfa2ba61ef4f717201a89b50d2cad3b77fe4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e40707ed_cf63deb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T21:22:13Z",
+      "side": 1,
+      "message": "The CQ failed but you did not update this to `Refactor`.",
+      "parentUuid": "f0decb47_0298176c",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "86ccfa2ba61ef4f717201a89b50d2cad3b77fe4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
