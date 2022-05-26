@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af613113_01dfdca9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-26T23:43:58Z",
+      "side": 1,
+      "message": "Hi, I don\u0027t see how the failures are related to the CL.",
+      "revId": "8fdd7e911c3b4b96de2e142f1b03d028e0a71b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
