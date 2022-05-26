@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da014df3_184d701b",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-26T15:31:38Z",
+      "side": 1,
+      "message": "Updated string as Personalization Hub is renamed to \"Wallpaper \u0026 style\".\nA follow up CL consolidating all the const into constants.go file to clean up personalization tast tests will be posted (b/233808954)",
+      "revId": "423cc2d6f995303b94325cec78be28ecc45a84f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
