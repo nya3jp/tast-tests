@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21d74df7_766738d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-26T18:59:35Z",
+      "side": 1,
+      "message": "Steven, do we plan on submitting this code (I ask because it\u0027s marked as WIP). I think both parts you mention are valuable.",
+      "parentUuid": "98060f82_abe09915",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7181acd2_d26acfdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 2
@@ -325,6 +343,23 @@
         "endLine": 446,
         "endChar": 47
       },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77de1dfa_361b3a0c",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-26T18:59:35Z",
+      "side": 1,
+      "message": "Before removing the profile, does it make sense to check whether it\u0027s on the stack (is it even possible that the test profile would be on the stack before we push it?)",
       "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
