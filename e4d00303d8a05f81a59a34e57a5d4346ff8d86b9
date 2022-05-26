@@ -16,6 +16,69 @@
       "message": "pwang@ WDYT? I tried it on a number of devices and\nreadings look sound.\n\nOthers FYI",
       "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "505648b0_701b7d0b",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-05-26T21:20:41Z",
+      "side": 1,
+      "message": "Why we have ignoreErr set to true here? Should we check Err() instead?",
+      "range": {
+        "startLine": 451,
+        "startChar": 47,
+        "endLine": 451,
+        "endChar": 51
+      },
+      "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19a67976_b1837a97",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-05-26T21:20:41Z",
+      "side": 1,
+      "message": "measurement,",
+      "range": {
+        "startLine": 459,
+        "startChar": 36,
+        "endLine": 459,
+        "endChar": 40
+      },
+      "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e11613_87c925be",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-05-26T21:20:41Z",
+      "side": 1,
+      "message": "Let\u0027s check if the remaining time of ctx is greater than t. So that we won\u0027t hit by timeout.",
+      "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
