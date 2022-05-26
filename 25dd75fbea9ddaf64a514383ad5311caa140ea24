@@ -305,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "641f1985_93092f90",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-05-26T15:53:49Z",
+      "side": 1,
+      "message": "sgtm thank you for the clarification",
+      "parentUuid": "99fc3f6e_b60a356f",
+      "range": {
+        "startLine": 446,
+        "startChar": 32,
+        "endLine": 446,
+        "endChar": 47
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eda4c6c_8478ec0f",
