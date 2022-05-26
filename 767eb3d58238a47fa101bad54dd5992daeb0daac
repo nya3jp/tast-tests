@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80fd1d64_d8e94146",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T13:18:22Z",
+      "side": 1,
+      "message": "Thanks for the explanation! I\u0027d wait for thoughts from other reviewers.",
+      "parentUuid": "20b440b7_5afca08b",
+      "range": {
+        "startLine": 925,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 26
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5984255_a1138d3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
         "patchSetId": 5

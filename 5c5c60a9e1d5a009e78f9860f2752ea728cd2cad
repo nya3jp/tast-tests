@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c49993_3fe4159e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T13:18:22Z",
+      "side": 1,
+      "message": "mounts",
+      "range": {
+        "startLine": 119,
+        "startChar": 54,
+        "endLine": 119,
+        "endChar": 59
+      },
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d317726_bfae4327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T13:18:22Z",
+      "side": 1,
+      "message": "Please note that testing.ContextLog and testing.State.Error are different in that the latter marks the entire test as failure:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#errors-and-logging\n(I\u0027m not sure whether we should strictly keep the previous behavior in this particular case, though.)",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 70
+      },
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c42fe1fa_400fbda4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T13:18:22Z",
+      "side": 1,
+      "message": "M",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
