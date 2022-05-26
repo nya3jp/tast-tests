@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98275ed6_3ffd6300",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-26T19:27:07Z",
+      "side": 1,
+      "message": "This just fails the test, right?",
+      "revId": "23c099c1fc708fd8a09517f0f9ce589a4754ea1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
