@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76595e56_bf746872",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85be0d50_215a297c",
+      "range": {
+        "startLine": 32,
+        "startChar": 49,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "705ee05b_1b51c619",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-24T03:01:15Z",
       "side": 1,
       "message": "We want to be sure this test doesn\u0027t wear out DUT flash so probably should run only when we want it to?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7fae574_16d2efff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "Once weekly should be fine, but I\u0027m not sure how we schedule that.",
+      "parentUuid": "705ee05b_1b51c619",
       "range": {
         "startLine": 33,
         "startChar": 2,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "735a35a5_10d98938",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "I tried adding the dep but it caused failure. Does \"flashrom\" cover the tester as well?",
+      "parentUuid": "86d67a57_74e920c0",
+      "range": {
+        "startLine": 34,
+        "startChar": 48,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "165fd398_c618c220",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
         "patchSetId": 3
@@ -100,6 +172,24 @@
       "writtenOn": "2022-05-24T01:05:55Z",
       "side": 1,
       "message": "is it useful to print or store the flashrom_tester outputs? it seems to be discarded.",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb04fd89_c56e3bcd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "Do you mean the exit code or the standard out? Right now each line that is read by the scanner gets printed, i.e.\n\n```\n                 for stdoutSc.Scan() {\n                         text :\u003d stdoutSc.Text()\n                         s.Logf(\"Tester output: %s\", text)\n```",
+      "parentUuid": "165fd398_c618c220",
       "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -123,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75a7b64c_7ba705d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "I\u0027ve added some examples but I\u0027m not sure about commenting where it comes from, do you mean I should link the tester code that prints results? The tool is going to get refactored so I\u0027m not sure if it will be helpful.",
+      "parentUuid": "5aa4e9b9_b7449b7f",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6f1c386_7348c5c2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
         "patchSetId": 3
@@ -134,6 +242,24 @@
       "writtenOn": "2022-05-24T08:38:39Z",
       "side": 1,
       "message": "calling s.Fatal() may not work well from another goroutine.\nRather, goroutine looks unneeded in this case.\nYou can just remove goroutine, and inline the body into the caller.",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c789d02e_c33e4d1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6f1c386_7348c5c2",
       "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15511151_7dd07797",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "106c9804_6cb7d58b",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db0e7039_e8d3149b",
@@ -168,6 +312,24 @@
       "writtenOn": "2022-05-24T08:38:39Z",
       "side": 1,
       "message": "could you handle errors?",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db89361_cb107940",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db0e7039_e8d3149b",
       "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -189,6 +351,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "638b5001_4776c4d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffb4ebae_767afe49",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57c90bd7_9aa09847",
@@ -202,6 +382,24 @@
       "writtenOn": "2022-05-24T08:38:39Z",
       "side": 1,
       "message": "could you handle errors? Also, this needs to be called on error, too. So,\n- you\u0027ll need to call this in defer.\n- you\u0027ll need to terminate the subprocess on error cases.",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2b7027_5736893d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-26T23:53:46Z",
+      "side": 1,
+      "message": "I\u0027ve moved this to a defer call.\n\nShouldn\u0027t s.Fatal() terminate the subprocess on err though?",
+      "parentUuid": "57c90bd7_9aa09847",
       "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
