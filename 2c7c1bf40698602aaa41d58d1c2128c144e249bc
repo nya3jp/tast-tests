@@ -16,6 +16,24 @@
       "message": "I believe you will have to increase the timeout here too, otherwise the test context will timeout first.",
       "revId": "2c7c1bf40698602aaa41d58d1c2128c144e249bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f77752bb_1b203078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_roaming.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1487102
+      },
+      "writtenOn": "2022-05-26T00:53:59Z",
+      "side": 1,
+      "message": "Should it be a number greater than 180 seconds, say, 240 seconds?",
+      "parentUuid": "ccfa3753_2eb667cb",
+      "revId": "2c7c1bf40698602aaa41d58d1c2128c144e249bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
