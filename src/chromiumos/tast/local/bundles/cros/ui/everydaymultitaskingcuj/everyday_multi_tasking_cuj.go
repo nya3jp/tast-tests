@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/arc/apputil/spotify"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
@@ -230,7 +231,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 			appStartTime = t.Milliseconds()
 
 			testing.ContextLog(ctx, "Start to play Spotify")
-			if err = appSpotify.Play(ctx); err != nil {
+			if err = appSpotify.Play(ctx, apputil.NewAudio("Photograph", "Song • Ed Sheeran")); err != nil {
 				return errors.Wrap(err, "failed to play Spotify")
 			}
 			// Let spotify continue to play for some time.
