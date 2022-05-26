@@ -33,7 +33,9 @@ func init() {
 			"gildekel@chromium.org", // WebP decoder test author
 			"chromeos-gfx@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr: []string{"group:mainline",
+			// TODO(b/232538630): Mark as not informational after test is fixed.
+			"informational"},
 		SoftwareDeps: []string{"chrome", "no_qemu", "vaapi"}, // TODO(crbug.com/1080871): Remove no_qemu SoftwareDeps.
 		Params: []testing.Param{{
 			Name: "webp_decoder",
