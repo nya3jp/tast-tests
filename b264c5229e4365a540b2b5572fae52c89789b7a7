@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a372b442_73ba349b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T22:53:48Z",
+      "side": 1,
+      "message": "LGTM % passing `cameraPreviewWidget`.",
+      "revId": "b264c5229e4365a540b2b5572fae52c89789b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
