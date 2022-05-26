@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a70aa7e7_502283b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "`code duplication`",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988f53b8_d30e7f7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "nit:\n\tsvo :\u003d s.FixtValue().(*fixture.Value).Servo()",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e65b08_252263ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "No need for the parentheses.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f1134e_7a2be568",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "Remove this line.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2075ca_c72eb03a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "Remove this line.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b239dff_7f54f7ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "`s.RequiredVar(\"servo\")`",
+      "range": {
+        "startLine": 56,
+        "startChar": 33,
+        "endLine": 56,
+        "endChar": 42
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f7e0f6_422a877e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "`\treturn \u0026Value{pxy: pxy, svo: pxy.Servo()}`",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 11
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e6f41a_e929170e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "nit: No need to multiply a value by 1.",
+      "range": {
+        "startLine": 89,
+        "startChar": 30,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e46fc5d3_f572c236",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "nit: No need to multiply a value by 1.",
+      "range": {
+        "startLine": 98,
+        "startChar": 30,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26268f57_479d9472",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "nit: There is an inconsistency in that there is a blank line at the corresponding place in `PreTest` but not here in `PostTest`.",
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d079722e_c3bff6a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "`Failed`",
+      "range": {
+        "startLine": 126,
+        "startChar": 11,
+        "endLine": 126,
+        "endChar": 17
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa67db9_13d06342",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "`on`",
+      "range": {
+        "startLine": 131,
+        "startChar": 35,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "812d8896_da1a8988",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T23:42:39Z",
+      "side": 1,
+      "message": "nit:\n\tsvo :\u003d s.FixtValue().(*fixture.Value).Servo()",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
