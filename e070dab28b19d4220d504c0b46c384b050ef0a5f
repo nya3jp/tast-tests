@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99f482d_406d4cc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-26T04:21:34Z",
+      "side": 1,
+      "message": "I think `len(webRTC.PeerConnections) \u003d\u003d 1`? Could we get rid of the for loop?",
+      "range": {
+        "startLine": 1101,
+        "startChar": 20,
+        "endLine": 1101,
+        "endChar": 48
+      },
+      "revId": "e070dab28b19d4220d504c0b46c384b050ef0a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
