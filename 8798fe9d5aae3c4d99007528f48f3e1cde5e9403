@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb9c5a2_800c2361",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-05-26T23:11:45Z",
+      "side": 1,
+      "message": "I think it is maximized mode. Can you explain more about why the maximized mode failed? Something like `surface_bounds received is not the window bounds excluding the caption height when the activity is in maximized mode on P.`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "8798fe9d5aae3c4d99007528f48f3e1cde5e9403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
