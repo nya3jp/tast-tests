@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72335125_12cdb160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-26T19:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4498b03_25e7f3bc",
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59c1230b_8b91f4f0",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-26T15:37:05Z",
       "side": 1,
       "message": "optional: maybe DoDefault() for stability? (LeftClick sends click event to the button location, but it does not guarantee the dateTray element receives the event).",
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7fc19aa_98ecad99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-26T19:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59c1230b_8b91f4f0",
       "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19e85112_3c04123e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-26T19:40:23Z",
+      "side": 1,
+      "message": "Let me give a little background here:] So the calendar view will always show the current month as its landing view. For example, now it should show May as its current month, April as its previous month. And the year label is the corresponding year, which is 2022 for now. So if it\u0027s the year end, for example Dec 30th 2022, it will show December as the current month and show 2022 as the year label.",
+      "parentUuid": "e271d10c_4a832a57",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 68
+      },
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8f8c317_42f05fb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
         "patchSetId": 4
@@ -88,6 +148,24 @@
       "writtenOn": "2022-05-26T15:37:05Z",
       "side": 1,
       "message": "similarly, there\u0027s possiblity that previousYear \u003d\u003d year.",
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38950b3e_5a79cc01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-26T19:40:23Z",
+      "side": 1,
+      "message": "See my other reply, so there\u0027s no chance that previous year is 2022 if the current year is 2022, otherwise it\u0027s a bug and we should catch it.",
+      "parentUuid": "b8f8c317_42f05fb9",
       "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e4203b1_2414fb0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-26T19:40:23Z",
+      "side": 1,
+      "message": "Done with rename.\n\nsame here for next year, it will be 2023 if now is in 2022.",
+      "parentUuid": "5abc82a8_f3d9c2a4",
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8c4ea91_929208a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/show_events.go",
         "patchSetId": 4
@@ -122,6 +218,24 @@
       "writtenOn": "2022-05-26T15:37:05Z",
       "side": 1,
       "message": "ditto",
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28115470_8f985c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/show_events.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-26T19:40:23Z",
+      "side": 1,
+      "message": "same here.",
+      "parentUuid": "b8c4ea91_929208a7",
       "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
