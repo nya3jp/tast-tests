@@ -34,6 +34,23 @@
       "parentUuid": "0a75b972_6c1c9998",
       "revId": "d0581439cc8c786fd00ae60216e9d38e8f8449d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "480c45b0_b129482c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-26T06:58:39Z",
+      "side": 1,
+      "message": "As discussed offline, this uses the uiauto solution, which is pretty stable and provenly works in Crostini tests.",
+      "revId": "d0581439cc8c786fd00ae60216e9d38e8f8449d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
