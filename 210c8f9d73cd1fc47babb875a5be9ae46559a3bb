@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7e2a7c2_7ca04de8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-26T15:49:52Z",
+      "side": 1,
+      "message": "I have some notes for routing.go about the test name (it should be more specific), restarting Shill (we should only do so if it is a requirement, e.g. when testing startup behavior), and defering inverse changes (e.g. to the portal detection list). I\u0027m not sure however whether routing.go is intended to be ready for review?\n\nOtherwise I will generally defer to Hugo for a high level review, most of this is not my area of expertise.\n\nGenerally speaking it looks like this will be very useful, thank you for sharing!",
+      "parentUuid": "65f575ec_d41039c6",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe29487c_7366edd0",
