@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20c8918_4ec4ee50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-05-26T09:35:34Z",
+      "side": 1,
+      "message": "We\u0027ve leased a few DUTs from the lab and manually run the patch on Blacktip360, Gallop, Liara, Dratini, and Damu.",
+      "revId": "88735f801773461ec564161895cb5242e2db3047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
