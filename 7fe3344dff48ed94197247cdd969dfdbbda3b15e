@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb09cc2_686ce739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-26T22:31:53Z",
+      "side": 1,
+      "message": "How about using `RotateToLandscape`?\n```\nrestore, err :\u003d display.RotateToLandscape()\nif err!\u003dnil {}\ndefer restore(cleanupCtx)\n```",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "7fe3344dff48ed94197247cdd969dfdbbda3b15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
