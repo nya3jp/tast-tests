@@ -50,6 +50,24 @@
       "message": "Add Keigo and Terry to the reviewer lists. Just want to know if this change will be in conflict or duplicate Keigo\u0027s and Terry\u0027s work on converting Tast to Go Module. Thanks.",
       "revId": "a369b10099b7a1803b103a9963cc83361205f8cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3920b71a_d485aa7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2022-05-26T16:26:33Z",
+      "side": 1,
+      "message": "This change is part of a rather large effort to switch the entire ChromeOS build tree from GOPATH to Go modules mode.\n\nAmong other things, the cros-go.eclass got rewrote, see CL 3530928.\n\nThis effort should build upon the various smaller per-project efforts until now, including Tast.\n\nAll the CLs merged until now are in the topic `go-modules-conversion`. There are still a few more to go. \n\nThis CL is the largest of the set because of the directory rename, the others should be significantly smaller.\n\nAnother CL which will affect Tast is the one which fixes the path-based imports (eg change from `import \"chromiumos/tast/testing\"` to `\"go.chromium.org/chromiumos/tast/testing\"`). We might have some overlap there, but it\u0027s no problem because these changes are scripted on my side and I can rebase / regenerate easily.",
+      "parentUuid": "544ac1bb_0e3e6aa7",
+      "revId": "a369b10099b7a1803b103a9963cc83361205f8cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
