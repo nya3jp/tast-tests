@@ -99,7 +99,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 	}
 
 	if err := h.RequireServo(ctx); err != nil {
-		s.Fatal("Failed to init servo: ", err)
+		s.Fatal("Failed to connect to servo: ", err)
 	}
 
 	hasMicroOrC2D2, err := h.Servo.PreferDebugHeader(ctx)
@@ -107,14 +107,51 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		s.Fatal("PreferDebugHeader: ", err)
 	}
 
+	checkCCDTestlab := func(ctx context.Context) error {
+		// Regular expressions.
+		var (
+			accessDenied          = `Access Denied`
+			shortPPStart          = `\[\S+ PP start short\]`
+			checkCCDTestlabEnable = `(` + accessDenied + `|` + shortPPStart + `)`
+		)
+		testlabStatus, err := h.Servo.GetString(ctx, servo.CR50Testlab)
+		if err != nil {
+			return errors.Wrap(err, "failed to get cr50_testlab")
+		}
+		if testlabStatus != string(servo.On) {
+			s.Log("Checking if enabling testlab is possible")
+			strings, err := h.Servo.RunCR50CommandGetOutput(ctx, "ccd testlab enable", []string{checkCCDTestlabEnable})
+			if err != nil {
+				s.Log("Unexpected error from 'ccd testlab enable': ", err)
+			} else {
+				s.Logf("Output from running 'ccd testlab enable': %s", strings[0][0])
+			}
+			// In case that 'ccd testlab enable' worked, sleep here regardless for the timeout to
+			// happen on the power press.
+			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep")
+			}
+		}
+		return nil
+	}
+
 	openCCD := func(ctx context.Context) error {
 		if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
 			return errors.Wrap(err, "while checking if servo has a CCD connection")
 		} else if hasCCD {
+			// Running 'ccd testlab open' would likely not work if it was not enabled.
+			// But, if CCD was locked, testlab mode couldn't be enabled, and the
+			// console output would print 'access denied'. For debugging purposes,
+			// check here if enabling testlab mode is possible.
+			// To-do: if 'ccd testlab open' fails, we might need to consider doing a
+			// regular ap open.
 			if val, err := h.Servo.GetString(ctx, servo.GSCCCDLevel); err != nil {
 				return errors.Wrap(err, "failed to get gsc_ccd_level")
 			} else if val != servo.Open {
 				s.Logf("CCD is not open, got %q. Attempting to unlock", val)
+				if err := checkCCDTestlab(ctx); err != nil {
+					return err
+				}
 				if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
 					return errors.Wrap(err, "failed to unlock CCD")
 				}
@@ -154,6 +191,12 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				if err := openCCD(ctx); err != nil {
 					return err
 				}
+				// For debugging purposes, log the ccd state again for reference.
+				valAfterOpenCCD, err := h.Servo.GetString(ctx, servo.GSCCCDLevel)
+				if err != nil {
+					return errors.Wrap(err, "failed to get gsc_ccd_level")
+				}
+				s.Logf("CCD state: %s", valAfterOpenCCD)
 			}
 
 			// Sleep briefly to ensure that CCD has fully opened.
@@ -229,7 +272,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					s.Log("Failed to ping servo, reconnecting: ", err)
 					err = h.ServoProxy.Reconnect(ctx)
 					if err != nil {
-						s.Error("Failed to reconnect to servo: ", err)
+						s.Error("Failed to connect to servo: ", err)
 					}
 				}
 			}
@@ -397,7 +440,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					retryCtx, cancelRetry := context.WithTimeout(ctx, 1*time.Minute)
 					defer cancelRetry()
 					if err := bootDUTIntoS0(retryCtx, h); err != nil {
-						s.Fatal("Unable to reconnect to DUT: ", err)
+						s.Fatal("Failed to reconnect to DUT: ", err)
 					}
 				case "no":
 					// According to Stainless, when lid is closed, DUTs remain in G3
@@ -451,6 +494,10 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 func checkTabletModeStatus(ctx context.Context, h *firmware.Helper) (bool, error) {
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		return false, errors.Wrap(err, "requiring RPC utils")
+	}
+	testing.ContextLog(ctx, "Sleeping for a few seconds before starting a new Chrome")
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return false, errors.Wrap(err, "failed to wait for a few seconds")
 	}
 	if _, err := h.RPCUtils.NewChrome(ctx, &empty.Empty{}); err != nil {
 		return false, errors.Wrap(err, "failed to create instance of chrome")
