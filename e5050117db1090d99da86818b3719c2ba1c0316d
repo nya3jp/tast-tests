@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ca664f_b36f76f6",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-26T23:06:21Z",
+      "side": 1,
+      "message": "This is copied code from another test.  The copy of ctx is something that was required for the cleanup context convention.  Fixed the part where the cleanup context wasn\u0027t being used, though.",
+      "parentUuid": "39a805e8_d4d7ff5a",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6008e31_e37727e4",
@@ -221,6 +245,30 @@
       "side": 1,
       "message": "See other comment",
       "parentUuid": "c7129b21_6e4b4fc0",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "e5050117db1090d99da86818b3719c2ba1c0316d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93dbad0_5335c44e",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-05-26T23:06:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e5805ca_e7ada711",
       "range": {
         "startLine": 111,
         "startChar": 7,
