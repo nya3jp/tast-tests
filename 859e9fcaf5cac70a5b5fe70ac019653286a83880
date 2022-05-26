@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff468d38_2a7a1f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hw_all_combinations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-26T20:18:58Z",
+      "side": 1,
+      "message": "I generally don\u0027t touch copyright headers unless the presubmit complains.  The usual rule is that they\u0027re put on when a file is created and then never touched after, even if the format for new files changes.  That said, I also don\u0027t know of any harm done by updating this header.",
+      "parentUuid": "f0c348a0_838d86e3",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "262fb5b2_1b9d64ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hw_all_combinations.go",
         "patchSetId": 3
@@ -237,6 +255,24 @@
       "side": 1,
       "message": "It is - I did it this way because my plan for the next variant (critical combinations) is to first sort the page size and resolution arrays, then return new slices with only the first and last elements. I\u0027m not sure I could do that in place.",
       "parentUuid": "c9ff21d1_89cdddcb",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4060db8_7732d50f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-05-26T20:18:58Z",
+      "side": 1,
+      "message": "Sounds good given that plan.",
+      "parentUuid": "2e95a2f2_610741f6",
       "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
