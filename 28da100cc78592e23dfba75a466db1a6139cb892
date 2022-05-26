@@ -34,6 +34,24 @@
       "parentUuid": "435dbf81_eb7eb47c",
       "revId": "28da100cc78592e23dfba75a466db1a6139cb892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea0a4a7_2aa8d359",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-26T01:26:08Z",
+      "side": 1,
+      "message": "I think your chroot is probably outdated. Try \"update_chroot\" and see if it helps.",
+      "parentUuid": "7d850998_da5586c7",
+      "revId": "28da100cc78592e23dfba75a466db1a6139cb892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
