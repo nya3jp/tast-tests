@@ -369,6 +369,30 @@
       },
       "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ff9553_6d9f7a3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T10:57:09Z",
+      "side": 1,
+      "message": "Thanks! (and sorry for marking this as \u0027Resolved\u0027 in the previous roll)\nProbably we should make another CL for the inlining and adding a function that sets up the image (e.g., calls CreateZeroFile, AttachLoopDevice, FormatVFAT and Mount).",
+      "parentUuid": "fb3764b4_7890222a",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 25
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
