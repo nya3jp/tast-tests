@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0c348a0_838d86e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hw_all_combinations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-26T18:29:09Z",
+      "side": 1,
+      "message": "I typically treat renames as new files - especially in this case, where we end up with two files where previously we only had one. It seems weird to say both files are renames when we\u0027re multiplying... WDYT?",
+      "parentUuid": "71e7b361_78b16f5f",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "262fb5b2_1b9d64ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hw_all_combinations.go",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-21T01:06:35Z",
       "side": 1,
       "message": "I think we should call these HardwareAllCombinations, etc.  It\u0027s a lot easier to read than three capital letters at the front.",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b3a8de_5083865a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hw_all_combinations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-26T18:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "262fb5b2_1b9d64ef",
       "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6cb081f_ee90c19e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hw_all_combinations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-26T18:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "037b3be9_85d9e5cf",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21ab41ce_4c2dd9e6",
@@ -82,6 +136,30 @@
       "writtenOn": "2022-05-21T01:06:35Z",
       "side": 1,
       "message": "This name seems misleading, since the usage below suggests that it\u0027s generating settings lists instead of adjusting them.  Before renaming, see also my next comment about mutating in place.",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 25
+      },
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbdf505f_c536878b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-26T18:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21ab41ce_4c2dd9e6",
       "range": {
         "startLine": 120,
         "startChar": 5,
@@ -111,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e95a2f2_610741f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-26T18:29:09Z",
+      "side": 1,
+      "message": "It is - I did it this way because my plan for the next variant (critical combinations) is to first sort the page size and resolution arrays, then return new slices with only the first and last elements. I\u0027m not sure I could do that in place.",
+      "parentUuid": "c9ff21d1_89cdddcb",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdf353f8_e3f389ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
         "patchSetId": 3
@@ -122,6 +218,24 @@
       "writtenOn": "2022-05-21T01:06:35Z",
       "side": 1,
       "message": "The other functions take mode first.  Any reason not to do the same here for consistency?",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a37a015_45dbb1ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-26T18:29:09Z",
+      "side": 1,
+      "message": "Nope 😞",
+      "parentUuid": "fdf353f8_e3f389ce",
       "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +253,24 @@
       "writtenOn": "2022-05-21T01:06:35Z",
       "side": 1,
       "message": "I figured out what you\u0027re doing here and I think it\u0027s correct, but this probably needs more explanation.",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b53a259_7ae6be8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-05-26T18:29:09Z",
+      "side": 1,
+      "message": "Good call - this took some napkin math to figure out and it isn\u0027t super straightforward.",
+      "parentUuid": "9dc4aaeb_23079ac0",
       "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
