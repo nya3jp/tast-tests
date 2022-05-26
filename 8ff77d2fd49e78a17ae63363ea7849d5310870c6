@@ -39,6 +39,30 @@
       },
       "revId": "8ff77d2fd49e78a17ae63363ea7849d5310870c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ee89d1_9528f3e0",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2022-05-26T06:15:55Z",
+      "side": 1,
+      "message": "That\u0027s an interesting point. I never heard about it.\nCWP team uses only the `-c` option in the field: https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/metrics/perf/perf_events_collector.cc;l\u003d134-192;drc\u003dbdd68018e8248518e988b1ee5515cd34b96ef8b3\nIt could be because they intentionally want to collect less samples and hence have lower overhead on slower devices.\n\nThinking about \"running at low frequency\". If the CPU frequency drops by some reason the same workload (for example a benchmark) will take longer to execute. Profiles with `-c` will have approximately the same size and will inflate with `-F`.\nOn the other hand, tests with the fixed duration will benefit from `-F`.\n\nI think there are different use cases for `-c` and `-F` and maybe it makes sense to support both.",
+      "parentUuid": "d134a873_221243ee",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "8ff77d2fd49e78a17ae63363ea7849d5310870c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
