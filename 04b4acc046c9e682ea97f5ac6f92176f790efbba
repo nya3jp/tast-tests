@@ -362,6 +362,30 @@
       },
       "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6dddfa2_b9f13b41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-26T20:54:40Z",
+      "side": 1,
+      "message": "does the test passes locally? if it does then it means it just disappears, otherwise you can use https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d720?q\u003duiauto%20invisible\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F",
+      "parentUuid": "7a2b54df_ce837a83",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
