@@ -25,6 +25,8 @@ func writeIVFFileHeader(bitstreamFile io.Writer, codec videotype.Codec, w, h, fr
 		bitstreamFile.Write([]byte{'V', 'P', '8', '0'})
 	case videotype.VP9:
 		bitstreamFile.Write([]byte{'V', 'P', '9', '0'})
+	case videotype.AV1:
+		bitstreamFile.Write([]byte{'A', 'V', '0', '1'})
 	default:
 		panic("Unknown codec")
 	}
@@ -56,8 +58,10 @@ func saveTemporalLayerBitstream(bitstreams [][]byte, codec videotype.Codec, widt
 	switch codec {
 	case videotype.H264:
 		filePrefix = "webcodecs.h264"
-	case videotype.VP8, videotype.VP9:
+	case videotype.VP8, videotype.VP9, videotype.AV1:
 		filePrefix = "webcodecs.ivf"
+	default:
+		panic("Unknown codec")
 	}
 
 	bitstreamFile, err := encoding.CreatePublicTempFile(filePrefix)

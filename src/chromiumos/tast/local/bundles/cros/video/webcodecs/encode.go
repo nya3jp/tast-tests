@@ -89,6 +89,8 @@ func computeBitstreamQuality(ctx context.Context, yuvFile, outDir string, bitstr
 		decoder = encoding.OpenH264Decoder
 	case videotype.VP8, videotype.VP9:
 		decoder = encoding.LibvpxDecoder
+	case videotype.AV1:
+		decoder = encoding.LibaomDecoder
 	}
 
 	psnr, ssim, err = encoding.CompareFiles(ctx, decoder, yuvFile, bitstreamFile, outDir, coords.NewSize(w, h))

@@ -106,6 +106,18 @@ func init() {
 			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T3"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
 			Fixture:           "chromeWebCodecs",
+		}, {
+			Name:    "av1_sw",
+			Val:     webcodecs.TestEncodeArgs{Codec: videotype.AV1, Acceleration: webcodecs.PreferSoftware},
+			Fixture: "chromeWebCodecs",
+		}, {
+			Name:    "av1_sw_l1t2",
+			Val:     webcodecs.TestEncodeArgs{Codec: videotype.AV1, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2"},
+			Fixture: "chromeWebCodecs",
+		}, {
+			Name:    "av1_sw_l1t3",
+			Val:     webcodecs.TestEncodeArgs{Codec: videotype.AV1, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
+			Fixture: "chromeWebCodecs",
 		}},
 	})
 }

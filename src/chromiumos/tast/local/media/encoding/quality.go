@@ -27,6 +27,8 @@ const (
 	OpenH264Decoder Decoder = "openh264dec"
 	// LibvpxDecoder is a VP8 and VP9 decoder built from https://chromium.googlesource.com/webm/libvpx/.
 	LibvpxDecoder Decoder = "vpxdec"
+	// LibaomDecoder is a AV1 decoder built from https://aomedia.googlesource.com/aom/.
+	LibaomDecoder Decoder = "aomdec"
 )
 
 // regExpSSIM is the regexp to find the SSIM output in the tiny_ssim log.
@@ -72,7 +74,7 @@ func CompareFiles(ctx context.Context, decoder Decoder, yuvFile, encodedFile, ou
 	}()
 
 	decodeCommand := []string{encodedFile}
-	if decoder == LibvpxDecoder {
+	if decoder == LibvpxDecoder || decoder == LibaomDecoder {
 		decodeCommand = append(decodeCommand, "-o")
 	}
 	decodeCommand = append(decodeCommand, yuvFile2.Name())
