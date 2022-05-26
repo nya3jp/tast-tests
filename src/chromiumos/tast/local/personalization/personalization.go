@@ -23,7 +23,7 @@ func OpenPersonalizationHub(ui *uiauto.Context) uiauto.Action {
 	return ui.RetryUntil(uiauto.Combine("open personalization hub",
 		ui.MouseClickAtLocation(1, coords.Point{X: rand.Intn(200), Y: rand.Intn(200)}), // right click a random pixel
 		ui.WithInterval(300*time.Millisecond).LeftClickUntil(setPersonalizationMenu, ui.Gone(setPersonalizationMenu))),
-		ui.Exists(nodewith.NameContaining("Personalization").Role(role.Window).First()))
+		ui.Exists(nodewith.NameContaining("Wallpaper & style").Role(role.Window).First()))
 }
 
 // OpenWallpaperSubpage returns an action to open the wallpaper subpage.
