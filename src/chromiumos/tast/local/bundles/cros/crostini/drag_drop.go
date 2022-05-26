@@ -13,9 +13,11 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -78,9 +80,30 @@ func init() {
 }
 
 func DragDrop(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*30)
+	defer cancel()
+
 	pre := s.FixtValue().(crostini.FixtureData)
 	tconn := pre.Tconn
 	cont := pre.Cont
+
+	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
+	// Ensures landscape orientation.
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	}
+	if orientation.Type == display.OrientationPortraitPrimary {
+		if err = display.SetDisplayRotationSync(ctx, tconn, displayInfo.ID, display.Rotate90); err != nil {
+			s.Fatal("Failed to rotate display: ", err)
+		}
+		defer display.SetDisplayRotationSync(cleanupCtx, tconn, displayInfo.ID, display.Rotate0)
+	}
 
 	s.Log("Copying testing applets to container")
 	if err := cont.PushFile(ctx, s.DataPath(dragApplet), dragApplet); err != nil {
@@ -110,23 +133,23 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	if err := cont.Command(ctx, "mkdir", dirDragFromCrostini).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Create container dir failed: ", err)
 	}
-	defer cont.RemoveAll(ctx, dirDragFromCrostini)
+	defer cont.RemoveAll(cleanupCtx, dirDragFromCrostini)
 	if err := cont.WriteFile(ctx, fileDragFromCrostini, fileDragFromCrostini); err != nil {
 		s.Fatal("Create container file failed: ", err)
 	}
-	defer cont.RemoveAll(ctx, fileDragFromCrostini)
+	defer cont.RemoveAll(cleanupCtx, fileDragFromCrostini)
 
 	// Open FilesApp left-snapped.
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Close(ctx)
+	defer files.Close(cleanupCtx)
 	_, err = setWindowState(ctx, tconn, "Files - My files", ash.WindowStateLeftSnapped)
 	if err != nil {
 		s.Fatal("Failed to set Files App left-snapped: ", err)
 	}
-	defer setWindowState(ctx, tconn, "Files - My files", ash.WindowStateNormal)
+	defer setWindowState(cleanupCtx, tconn, "Files - My files", ash.WindowStateNormal)
 
 	// Drag and drop file and dir from FilesApp to app.
 	if err = dragFromFilesApp(ctx, pre, files, dirDragFromFilesapp, "['file:///mnt/chromeos/MyFiles/filesappdir']"); err != nil {
@@ -221,7 +244,12 @@ func dragFromCrostini(ctx context.Context, pre crostini.FixtureData, files *file
 
 	ui := uiauto.New(tconn)
 	dragPoint := dragAppletWindow.BoundsInRoot.CenterPoint()
-	dropPoint := coords.Point{X: dragAppletWindow.BoundsInRoot.Left - 100, Y: 400}
+	// 100 pixels to the left of the applet window should be enough to drop inside of the Files app window.
+	// Drag near the bottom of the Files app to avoid accidentally dropping on existing files or directories.
+	dropPoint := coords.Point{
+		X: dragAppletWindow.BoundsInRoot.Left - 100,
+		Y: dragAppletWindow.BoundsInRoot.Bottom() - 100,
+	}
 	dragDrop := func(ctx context.Context) error {
 		if err = mouse.Drag(tconn, dragPoint, dropPoint, time.Second)(ctx); err != nil {
 			return errors.Wrap(err, "drag and drop")
