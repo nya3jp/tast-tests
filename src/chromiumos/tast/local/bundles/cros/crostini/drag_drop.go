@@ -13,9 +13,11 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -78,9 +80,20 @@ func init() {
 }
 
 func DragDrop(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*30)
+	defer cancel()
+
 	pre := s.FixtValue().(crostini.FixtureData)
 	tconn := pre.Tconn
 	cont := pre.Cont
+
+	// Ensures landscape orientation.
+	restore, err := display.RotateToLandscape(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to rotate display to landscape: ", err)
+	}
+	defer restore(cleanupCtx)
 
 	s.Log("Copying testing applets to container")
 	if err := cont.PushFile(ctx, s.DataPath(dragApplet), dragApplet); err != nil {
@@ -110,23 +123,23 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	if err := cont.Command(ctx, "mkdir", dirDragFromCrostini).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Create container dir failed: ", err)
 	}
-	defer cont.RemoveAll(ctx, dirDragFromCrostini)
+	defer cont.RemoveAll(cleanupCtx, dirDragFromCrostini)
 	if err := cont.WriteFile(ctx, fileDragFromCrostini, fileDragFromCrostini); err != nil {
 		s.Fatal("Create container file failed: ", err)
 	}
-	defer cont.RemoveAll(ctx, fileDragFromCrostini)
+	defer cont.RemoveAll(cleanupCtx, fileDragFromCrostini)
 
 	// Open FilesApp left-snapped.
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
-	defer files.Close(ctx)
-	_, err = setWindowState(ctx, tconn, "Files - My files", ash.WindowStateLeftSnapped)
+	defer files.Close(cleanupCtx)
+	filesWindow, err := setWindowState(ctx, tconn, "Files - My files", ash.WindowStateLeftSnapped)
 	if err != nil {
 		s.Fatal("Failed to set Files App left-snapped: ", err)
 	}
-	defer setWindowState(ctx, tconn, "Files - My files", ash.WindowStateNormal)
+	defer setWindowState(cleanupCtx, tconn, "Files - My files", ash.WindowStateNormal)
 
 	// Drag and drop file and dir from FilesApp to app.
 	if err = dragFromFilesApp(ctx, pre, files, dirDragFromFilesapp, "['file:///mnt/chromeos/MyFiles/filesappdir']"); err != nil {
@@ -137,10 +150,10 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	}
 
 	// Drag and drop file from drag app to FilesApp.
-	if err = dragFromCrostini(ctx, pre, files, dirDragFromCrostini, false); err != nil {
+	if err = dragFromCrostini(ctx, pre, files, filesWindow, dirDragFromCrostini, false); err != nil {
 		s.Fatalf("Failed to drag %s from crostini to FilesApp: %v", dirDragFromCrostini, err)
 	}
-	if err = dragFromCrostini(ctx, pre, files, fileDragFromCrostini, true); err != nil {
+	if err = dragFromCrostini(ctx, pre, files, filesWindow, fileDragFromCrostini, true); err != nil {
 		s.Fatalf("Failed to drag %s from crostini to FilesApp: %v", fileDragFromCrostini, err)
 	}
 }
@@ -203,7 +216,7 @@ func dragFromFilesApp(ctx context.Context, pre crostini.FixtureData, files *file
 }
 
 // dragFromCrostini drags the specified file or directory from crostini to FilesApp.
-func dragFromCrostini(ctx context.Context, pre crostini.FixtureData, files *filesapp.FilesApp, path string, isFile bool) error {
+func dragFromCrostini(ctx context.Context, pre crostini.FixtureData, files *filesapp.FilesApp, filesWindow *ash.Window, path string, isFile bool) error {
 	tconn := pre.Tconn
 	cont := pre.Cont
 
@@ -221,7 +234,11 @@ func dragFromCrostini(ctx context.Context, pre crostini.FixtureData, files *file
 
 	ui := uiauto.New(tconn)
 	dragPoint := dragAppletWindow.BoundsInRoot.CenterPoint()
-	dropPoint := coords.Point{X: dragAppletWindow.BoundsInRoot.Left - 100, Y: 400}
+	// Drag near the bottom of the Files app to avoid accidentally dropping on existing files or directories.
+	dropPoint := coords.Point{
+		X: filesWindow.BoundsInRoot.CenterPoint().X,
+		Y: filesWindow.BoundsInRoot.Bottom() - 100,
+	}
 	dragDrop := func(ctx context.Context) error {
 		if err = mouse.Drag(tconn, dragPoint, dropPoint, time.Second)(ctx); err != nil {
 			return errors.Wrap(err, "drag and drop")
