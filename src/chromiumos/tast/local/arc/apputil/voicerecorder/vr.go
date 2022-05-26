@@ -15,10 +15,10 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/apputil"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -239,6 +239,10 @@ func (vr *VoiceRecorder) PlayFile(fileName string) uiauto.Action {
 // DeleteAudio deletes the audio file created by RecordSound method.
 // The file deletion functionality provide by Voice Recorder might comes with ads show up,
 // to avoid dealing with ads, here delete those files by os.Remove().
-func (vr *VoiceRecorder) DeleteAudio(fileName string) error {
-	return os.Remove(filepath.Join(filesapp.DownloadPath, "Recorders", fileName))
+func (vr *VoiceRecorder) DeleteAudio(ctx context.Context, cr *chrome.Chrome, fileName string) error {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve users Downloads path")
+	}
+	return os.Remove(filepath.Join(downloadsPath, "Recorders", fileName))
 }
