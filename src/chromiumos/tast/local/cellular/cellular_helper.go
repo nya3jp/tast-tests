@@ -299,6 +299,18 @@ func (h *Helper) Disconnect(ctx context.Context) (time.Duration, error) {
 	return time.Since(start), nil
 }
 
+// IsConnected return err if shillconst.ServicePropertyIsConnected is not true
+func (h *Helper) IsConnected(ctx context.Context) error {
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return err
+	}
+	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, true, defaultTimeout); err != nil {
+		return err
+	}
+	return nil
+}
+
 // SetDeviceProperty sets a Device property and waits for the property to be set.
 func (h *Helper) SetDeviceProperty(ctx context.Context, prop string, value interface{}, timeout time.Duration) error {
 	ctx, st := timing.Start(ctx, "Helper.SetDeviceProperty")
