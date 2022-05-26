@@ -16,6 +16,24 @@
       "message": "Matt, can you please confirm if screen recorder is ready for use? I do not remember the issue has been solved b/211845574",
       "revId": "d0581439cc8c786fd00ae60216e9d38e8f8449d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23422426_67cba56a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-26T06:43:45Z",
+      "side": 1,
+      "message": "That was the VNC one. This is irrelevant to that.",
+      "parentUuid": "0a75b972_6c1c9998",
+      "revId": "d0581439cc8c786fd00ae60216e9d38e8f8449d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
