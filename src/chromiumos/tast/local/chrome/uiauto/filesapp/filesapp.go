@@ -76,6 +76,7 @@ const (
 	Playfiles   = "Play files"
 	Recent      = "Recent"
 	Images      = "Images"
+	Trash       = "Trash"
 )
 
 // FilesApp represents an instance of the Files App.
@@ -206,6 +207,12 @@ func (f *FilesApp) OpenDrive() uiauto.Action {
 // An error is returned if Linux files is not found or does not open.
 func (f *FilesApp) OpenLinuxFiles() uiauto.Action {
 	return f.OpenDir("Linux files", FilesTitlePrefix+"Linux files")
+}
+
+// OpenTrash returns a function that opens the Trash folder in the Files App.
+// An error is returned if Trash directory is not found or does not open.
+func (f *FilesApp) OpenTrash() uiauto.Action {
+	return f.OpenDir(Trash, FilesTitlePrefix+Trash)
 }
 
 // file returns a nodewith.Finder for a file with the specified name.
@@ -346,6 +353,19 @@ func (f *FilesApp) DeleteFileOrFolder(kb *input.KeyboardEventWriter, fileName st
 		f.SelectFile(fileName),
 		kb.AccelAction("Alt+Backspace"),
 		f.LeftClick(nodewith.Name("Delete").ClassName("cr-dialog-ok").Role(role.Button)),
+		f.WaitUntilFileGone(fileName),
+	)
+}
+
+// TrashFileOrFolder returns a function that trashes a file or folder.
+// The parent folder must currently be open for this to work.
+// NOTE: The FilesTrash feature must be enabled for this to properly trash, if
+// the feature is not enabled, please use DeleteFileOrFolder which correctly
+// clicks on the confirmation dialog that appears on deletion.
+func (f *FilesApp) TrashFileOrFolder(kb *input.KeyboardEventWriter, fileName string) uiauto.Action {
+	return uiauto.Combine(fmt.Sprintf("TrashFileOrFolder(%s)", fileName),
+		f.SelectFile(fileName),
+		kb.AccelAction("Alt+Backspace"),
 		f.WaitUntilFileGone(fileName),
 	)
 }
