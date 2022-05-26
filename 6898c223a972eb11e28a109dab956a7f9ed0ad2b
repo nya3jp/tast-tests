@@ -362,6 +362,30 @@
       },
       "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42b94522_b8be7f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-26T20:57:59Z",
+      "side": 1,
+      "message": "I don\u0027t know much about the camera preview, if it is possible that the preview starts locating in the bottom-right area and the targetRect is also the bottom-right area?",
+      "parentUuid": "7ec210f9_6be232b0",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 18
+      },
+      "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
