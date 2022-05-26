@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
 	"chromiumos/tast/local/chrome/lacros/lacrosproc"
 	"chromiumos/tast/testing"
 )
@@ -141,7 +140,7 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	info, err := lacrosinfo.Snapshot(ctx, tconn)
+	info, err := lacros.InfoSnapshot(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get lacros info: ", err)
 	}

@@ -7,9 +7,7 @@ package lacros
 import (
 	"context"
 	"path/filepath"
-	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -18,8 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
-	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
-	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
 	"chromiumos/tast/testing"
 )
 
@@ -55,7 +51,7 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 func Connect(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr error) {
 	debuggingPortPath := filepath.Join(UserDataDir, "DevToolsActivePort")
 
-	info, err := lacrosinfo.Snapshot(ctx, tconn)
+	info, err := InfoSnapshot(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get lacros info")
 	}
@@ -79,15 +75,8 @@ func Connect(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr err
 	}, nil
 }
 
-// Launch launches lacros. Note that this function expects lacros to be closed
-// as a precondition.
-func Launch(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr error) {
-	// Reserve a few seconds for faillog capture.
-	faillogCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-	defer lacrosfaillog.SaveIf(faillogCtx, tconn, func() bool { return retErr != nil })
-
+// Launch launches lacros.
+func Launch(ctx context.Context, tconn *chrome.TestConn) (*Lacros, error) {
 	// Make sure Lacros app is not running before launch.
 	if running, err := ash.AppRunning(ctx, tconn, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to check if app is not running before launch")
