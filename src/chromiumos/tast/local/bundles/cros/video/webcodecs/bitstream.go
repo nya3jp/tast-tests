@@ -16,7 +16,7 @@ import (
 
 // writeIVFFileHeader and writeIVFFrameHeader writes IVF file header and frame header into bitstreamFile, respectively.
 // See https://wiki.multimedia.cx/index.php/IVF.
-func writeIVFFileHeader(bitstreamFile io.Writer, codec videotype.Codec, w, h, framerate, numFrames int) {
+func writeIVFFileHeader(bitstreamFile io.Writer, codec videotype.Codec, w, h, framerate, numFrames int) error {
 	bitstreamFile.Write([]byte{'D', 'K', 'I', 'F'})
 	binary.Write(bitstreamFile, binary.LittleEndian, uint16(0))
 	binary.Write(bitstreamFile, binary.LittleEndian, uint16(32))
@@ -25,8 +25,10 @@ func writeIVFFileHeader(bitstreamFile io.Writer, codec videotype.Codec, w, h, fr
 		bitstreamFile.Write([]byte{'V', 'P', '8', '0'})
 	case videotype.VP9:
 		bitstreamFile.Write([]byte{'V', 'P', '9', '0'})
+	case videotype.AV1:
+		bitstreamFile.Write([]byte{'A', 'V', '0', '1'})
 	default:
-		panic("Unknown codec")
+		return errors.Errorf("unknown codec: %v", codec)
 	}
 
 	binary.Write(bitstreamFile, binary.LittleEndian, uint16(w))
@@ -35,6 +37,8 @@ func writeIVFFileHeader(bitstreamFile io.Writer, codec videotype.Codec, w, h, fr
 	binary.Write(bitstreamFile, binary.LittleEndian, uint32(1))
 	binary.Write(bitstreamFile, binary.LittleEndian, uint32(numFrames))
 	binary.Write(bitstreamFile, binary.LittleEndian, uint32(0))
+
+	return nil
 }
 
 func writeIVFFrameHeader(bitstreamFile io.Writer, size uint32, timestamp uint64) {
@@ -56,8 +60,10 @@ func saveTemporalLayerBitstream(bitstreams [][]byte, codec videotype.Codec, widt
 	switch codec {
 	case videotype.H264:
 		filePrefix = "webcodecs.h264"
-	case videotype.VP8, videotype.VP9:
+	case videotype.VP8, videotype.VP9, videotype.AV1:
 		filePrefix = "webcodecs.ivf"
+	default:
+		return "", errors.Errorf("unknown codec: %v", codec)
 	}
 
 	bitstreamFile, err := encoding.CreatePublicTempFile(filePrefix)
@@ -74,7 +80,9 @@ func saveTemporalLayerBitstream(bitstreams [][]byte, codec videotype.Codec, widt
 
 	// Add Create IVF header
 	if codec != videotype.H264 {
-		writeIVFFileHeader(bitstreamFile, codec, width, height, framerate, len(bitstreams))
+		if err = writeIVFFileHeader(bitstreamFile, codec, width, height, framerate, len(bitstreams)); err != nil {
+			return "", errors.Wrap(err, "failed writing ivf file header")
+		}
 	}
 
 	for i, b := range bitstreams {
