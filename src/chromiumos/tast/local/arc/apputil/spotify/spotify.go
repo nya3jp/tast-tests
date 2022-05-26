@@ -42,6 +42,8 @@ type Spotify struct {
 	firstLogin bool
 }
 
+var _ apputil.ARCAudioPlayer = (*Spotify)(nil)
+
 // New returns the the manager of Spotify, caller will able to control Spotify app through this object.
 func New(ctx context.Context, kb *input.KeyboardEventWriter, a *arc.ARC, tconn *chrome.TestConn, account string) (*Spotify, error) {
 	app, err := apputil.NewApp(ctx, kb, tconn, a, AppName, PackageName)
@@ -54,8 +56,13 @@ func New(ctx context.Context, kb *input.KeyboardEventWriter, a *arc.ARC, tconn *
 	}, nil
 }
 
+// Song returns the audio information that Spotify is going to search and play.
+func Song(album, artist string) *apputil.Audio {
+	return &apputil.Audio{Album: album, Artist: artist}
+}
+
 // Play plays a song.
-func (s *Spotify) Play(ctx context.Context) error {
+func (s *Spotify) Play(ctx context.Context, song *apputil.Audio) error {
 	const playPauseButtonID = spotifyIDPrefix + "play_pause_button"
 	playButton := s.D.Object(ui.ID(playPauseButtonID), ui.Enabled(true), ui.Description("Play"))
 
@@ -76,7 +83,7 @@ func (s *Spotify) Play(ctx context.Context) error {
 				return errors.Wrap(err, "failed to wait until home page shows")
 			}
 		}
-		if err := s.searchSongAndPlay(ctx); err != nil {
+		if err := s.searchSongAndPlay(ctx, song); err != nil {
 			return errors.Wrap(err, "failed to search song and play")
 		}
 	}
@@ -206,20 +213,18 @@ func (s *Spotify) waitUntilHomePageShows(ctx context.Context) error {
 // searchSongAndPlay searches a song and play.
 // If Spotify is installed for the first time, there will be no last listened song.
 // Search for a song to play.
-func (s *Spotify) searchSongAndPlay(ctx context.Context) error {
+func (s *Spotify) searchSongAndPlay(ctx context.Context, song *apputil.Audio) error {
 	const (
 		searchFieldID = spotifyIDPrefix + "find_search_field_text"
 		queryID       = spotifyIDPrefix + "query"
 		childrenID    = spotifyIDPrefix + "children"
-		albumName     = "Photograph"
-		singerName    = "Song • Ed Sheeran"
 	)
 
 	var (
 		searchTab    = s.D.Object(ui.ID(searchTabID))
 		searchField  = s.D.Object(ui.ID(searchFieldID))
 		query        = s.D.Object(ui.ID(queryID))
-		singerButton = s.D.Object(ui.Text(singerName))
+		singerButton = s.D.Object(ui.Text(song.Artist))
 	)
 
 	testing.ContextLog(ctx, "Try to search a song and play")
@@ -228,7 +233,7 @@ func (s *Spotify) searchSongAndPlay(ctx context.Context) error {
 		apputil.FindAndClick(searchTab, defaultUITimeout),
 		apputil.FindAndClick(searchField, defaultUITimeout),
 		apputil.FindAndClick(query, defaultUITimeout),
-		s.Kb.TypeAction(albumName),
+		s.Kb.TypeAction(song.Album),
 		apputil.FindAndClick(singerButton, defaultUITimeout),
 	)(ctx); err != nil {
 		return err

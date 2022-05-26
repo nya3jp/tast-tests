@@ -19,7 +19,7 @@ import (
 func FindAndClick(obj *ui.Object, timeout time.Duration) action.Action {
 	return func(ctx context.Context) error {
 		if err := obj.WaitForExists(ctx, timeout); err != nil {
-			return errors.Wrap(err, "failed to find the target object")
+			return errors.Wrap(err, "failed to wait for target object exists")
 		}
 		if err := obj.Click(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the target object")
@@ -91,4 +91,18 @@ func ClickAnyFromObjectPool(ctx context.Context, pool map[*ui.Object]string, tim
 	}
 
 	return nil
+}
+
+// WaitUntilGone waits for a view matching the selector to disappear.
+func WaitUntilGone(obj *ui.Object, timeout time.Duration) action.Action {
+	return func(ctx context.Context) error {
+		return obj.WaitUntilGone(ctx, timeout)
+	}
+}
+
+// SwipeRight performs the swipe right action on the UiObject.
+func SwipeRight(obj *ui.Object, steps int) action.Action {
+	return func(ctx context.Context) error {
+		return obj.SwipeRight(ctx, steps)
+	}
 }
