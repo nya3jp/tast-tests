@@ -34,6 +34,24 @@
       "parentUuid": "59185983_88952655",
       "revId": "a6354c17640e3c61d6268e01ab41d64fbe12099e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a175a9_d565d70b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-26T22:25:26Z",
+      "side": 1,
+      "message": "I believe the right order should be: \n1, Land the CL (https://crrev.com/c/3668779) that fixes the guest mode issue.\n2, After (1) uprevs to chromeos, land this CL to enable `--disable-features\u003dPersonalizationHub`.\n3, Re-land the original CL (https://crrev.com/c/3669466).\n\nThis is not the issue of the inputs test, which in fact detected a real bug for the personalization hub feature.\n\nIs there a reason why you want to land https://crrev.com/c/3669466 in this uprev? If not urgent, you should wait until the next uprev to land https://crrev.com/c/3669466 after (1) and (2).",
+      "parentUuid": "c5395b97_541be318",
+      "revId": "a6354c17640e3c61d6268e01ab41d64fbe12099e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
