@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d032e80_66b559b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "Checking the usage in the test I understand why this method is needed, but at first I was wondering \"why do we need this method instead of instantiating Chrome directly in RelaunchAfterUpdate\"?\n\nFor what I understand it is because the tests need to first log in, do some stuff and then call the relaunch call, right? Could you please add a comment in the service clarifying this?\n\nMaybe renaming it to InstantiateChrome or ChromeLogIn or something like that would also help to clarify what it does.",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a788ab3d_ee7bd8eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "Please add a comment describing the purpose of the method",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb63af7a_f9095546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "Please add a comment describing the purpose of the method \"RelaunchAfterUpdate ...\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b7b59a_b188276c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "nit: errors.Wrap(err, \"failed to connect to test API\")",
+      "range": {
+        "startLine": 60,
+        "startChar": 14,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf7438a7_a3fa4c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "It seems this call is flaky and it is recommended to use LaunchAtPageURL instead if possible (b/189055966)",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c38ccab_095affcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "nit: errors.Wrap(err, \"failed to launch about ChromeOS settings\")",
+      "range": {
+        "startLine": 65,
+        "startChar": 14,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6bd5748_c7dce845",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "should we remove this flag when the test finishes then instead so we are sure it won\u0027t be there?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40703441_5fa6666d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "s.Log messages should start with upper-case (go/tast-writing#formatting).\n\nThis applies to all s.Log in this file.",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa2478c_98401103",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "New does not seem to relaunch, just instantiates Chrome, am I missing something?",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70489e96_e1675822",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "`:\u003d` ?",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 10
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387af21b_711127d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "should we also print the err?",
+      "range": {
+        "startLine": 97,
+        "startChar": 22,
+        "endLine": 97,
+        "endChar": 49
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bd09dc3_982e6791",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "For what I understand, if we just return nil without any condition, Poll will just run once and succeed?\n\nSo, should it return nil if \"Exiting oobe_config_save\" is found in the logs instead? \n\nI am wondering if at the moment it could return nil, not because it actually worked, but because it looks for \"ERR oobe_config_save\" before it is logged and, therefore, it does not find it.",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 12
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d13f50_954a0063",
+        "filename": "src/chromiumos/tast/services/cros/autoupdate/update_ui_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-05-26T10:37:08Z",
+      "side": 1,
+      "message": "Although it is possible, it is not recommended to use Empty for requests and responses in rpc calls. Please create [rpcCallName]Request and [rpcCallName]Response messages for both rpc calls and leave them empty as we do in rollback_service (https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/services/cros/autoupdate/rollback_service.proto;l\u003d35). This would allow to extend the service easily if needed in the future without having to change the rpc calls (deprecate + create new ones).\n\nSee b/170714593 and discussion in links for more details.\n\nAlso, please add a comment describing the purpose of each of the calls.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
