@@ -214,14 +214,8 @@ func (r *ScreenRecorder) Start(ctx context.Context, tconn *chrome.TestConn) erro
 	}
 	testing.ContextLog(ctx, "Started screen recording")
 	r.isRecording = true
-
-	ui := New(tconn)
-	closeNotificationButton := nodewith.Name("Notification close").Role(role.Button)
-	messagePopupAlert := nodewith.ClassName("MessagePopupView").Role(role.AlertDialog)
-	if err := Combine("close notification and wait for it to disappear",
-		ui.WithInterval(1*time.Second).LeftClick(closeNotificationButton),
-		ui.WaitUntilGone(messagePopupAlert))(ctx); err != nil {
-		return err
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)"); err != nil {
+		testing.ContextLog(ctx, "Failed to close notification: ", err)
 	}
 	return nil
 }
@@ -282,9 +276,13 @@ func (r *ScreenRecorder) FrameStatus(ctx context.Context) (string, error) {
 // Release frees the reference to Javascript for this video recorder.
 func (r *ScreenRecorder) Release(ctx context.Context) {
 	if r.isRecording {
-		r.Stop(ctx)
+		if err := r.Stop(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to stop screen recorder: ", err)
+		}
 	}
-	r.videoRecorder.Release(ctx)
+	if err := r.videoRecorder.Release(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to release screen recorder: ", err)
+	}
 }
 
 // ScreenRecorderStopSaveRelease stops, saves and releases the screen recorder.
