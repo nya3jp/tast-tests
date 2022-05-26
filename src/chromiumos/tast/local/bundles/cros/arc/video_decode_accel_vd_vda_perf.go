@@ -21,6 +21,7 @@ type videoDecodeAccelVDVDAPerfTestParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VideoDecodeAccelVDVDAPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures performance of hardware decode acceleration performance using media::VideoDecoder through the VDA interface, by running the video_decode_accelerator_perf_tests binary (see go/vd-migration)",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -86,6 +87,26 @@ func init() {
 			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "2160p_60fps_600frames.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.ivf", "2160p_60fps_600frames.vp9.ivf.json"},
+		}, {
+			Name:              "hevc_1080p_30fps",
+			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "1080p_30fps_300frames.hevc"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+			ExtraData:         []string{"1080p_30fps_300frames.hevc", "1080p_30fps_300frames.hevc.json"},
+		}, {
+			Name:              "hevc_1080p_60fps",
+			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "1080p_60fps_600frames.hevc"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60},
+			ExtraData:         []string{"1080p_60fps_600frames.hevc", "1080p_60fps_600frames.hevc.json"},
+		}, {
+			Name:              "hevc_2160p_30fps",
+			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "2160p_30fps_300frames.hevc"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K},
+			ExtraData:         []string{"2160p_30fps_300frames.hevc", "2160p_30fps_300frames.hevc.json"},
+		}, {
+			Name:              "hevc_2160p_60fps",
+			Val:               videoDecodeAccelVDVDAPerfTestParam{dataPath: "2160p_60fps_600frames.hevc"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60},
+			ExtraData:         []string{"2160p_60fps_600frames.hevc", "2160p_60fps_600frames.hevc.json"},
 		},
 			{
 				Name:              "h264_linear_output_1080p_30fps",

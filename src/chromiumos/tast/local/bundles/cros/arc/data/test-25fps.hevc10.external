@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test-25fps_20210301.hevc10",
+  "size": 115179,
+  "sha256sum": "46f2f338d6ace186e5f9cb5d89e8af460217495b6c42783c29afd8e14004490b"
+}
