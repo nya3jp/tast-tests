@@ -12,12 +12,14 @@ package videotype
 type Codec string
 
 const (
+	// H264 represents the H.264 codec.
+	H264 Codec = "H264"
 	// VP8 represents the VP8 codec.
 	VP8 Codec = "VP8"
 	// VP9 represents the VP9 codec.
 	VP9 Codec = "VP9"
-	// H264 represents the H.264 codec.
-	H264 Codec = "H264"
+	// AV1 represents the AV1 codec.
+	AV1 Codec = "AV1"
 )
 
 // PixelFormat stands for pixel format in yuv image.

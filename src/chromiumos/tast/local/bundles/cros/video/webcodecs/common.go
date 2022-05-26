@@ -56,6 +56,13 @@ func toMIMECodec(codec videotype.Codec) string {
 	case videotype.VP9:
 		// VP9 profile 0 level 1.0 8-bit depth.
 		return "vp09.00.10.08"
+	case videotype.AV1:
+		// AV1 profile Main level 3.1 8-bit depth.
+		// "level 3.1" means 1280x720@30fps, as per [1], is that intended,
+		// i.e. to specify the resolution and framerate at configuration
+		// time (and not just encode anything that is fed into the encoder).
+		// [1] https://aomedia.org/av1/specification/annex-a/
+		return "av01.0.05M.08"
 	}
 	return ""
 }
