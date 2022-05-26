@@ -44,6 +44,20 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "driveFsStartedTrashEnabled",
+		Desc:            "Ensures DriveFS is mounted and provides an authenticated Drive API Client",
+		Contacts:        []string{"benreich@chromium.org", "chromeos-files-syd@chromium.org"},
+		Impl:            &fixture{chromeOptions: []chrome.Option{chrome.EnableFeatures("FilesTrash")}},
+		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
+		ResetTimeout:    driveFsSetupTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars: []string{
+			"drivefs.accountPool",
+			"drivefs.extensionClientID",
+		},
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "driveFsStartedWithNativeMessaging",
 		Desc:     "Ensures DriveFS is mounted and the bidirectional messaging functionality is enabled",
 		Contacts: []string{"austinct@chromium.org", "chromeos-files-syd@chromium.org"},
