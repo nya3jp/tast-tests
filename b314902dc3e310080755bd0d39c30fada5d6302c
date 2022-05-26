@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d6b55e8_3d9584a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T03:52:36Z",
+      "side": 1,
+      "message": "Got it. Thanks for reminder!",
+      "parentUuid": "e10d7bc8_c4cd651c",
+      "range": {
+        "startLine": 543,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 69
+      },
+      "revId": "b314902dc3e310080755bd0d39c30fada5d6302c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87c7ebb6_228a4cdf",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-25T12:31:52Z",
       "side": 1,
       "message": "This might be redundant. doDefault sends the click event to button directly regardless of its location.",
+      "range": {
+        "startLine": 547,
+        "startChar": 3,
+        "endLine": 547,
+        "endChar": 35
+      },
+      "revId": "b314902dc3e310080755bd0d39c30fada5d6302c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "310e47fe_488d6f04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T03:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87c7ebb6_228a4cdf",
       "range": {
         "startLine": 547,
         "startChar": 3,
