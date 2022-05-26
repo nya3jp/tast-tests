@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccce262b_456c741a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T08:14:14Z",
+      "side": 1,
+      "message": "I think you can remove Cq-Depend in this case, and optionally mention the Chromium CLs in the commit message.",
+      "parentUuid": "0fdccb2e_6b7c633e",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1fc4dfde_a6699d4f",

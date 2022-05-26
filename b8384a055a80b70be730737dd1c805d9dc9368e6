@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6c27197_dc386f07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T08:14:14Z",
+      "side": 1,
+      "message": "s.Log(\"Performing removable media sharing check\") or something for consistency with L74?",
+      "revId": "b8384a055a80b70be730737dd1c805d9dc9368e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d05893a4_e606c1a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T08:14:14Z",
+      "side": 1,
+      "message": "You should execute os.Remove(image) before returning. The same goes for every return with err !\u003d nil from this line.",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 8
+      },
+      "revId": "b8384a055a80b70be730737dd1c805d9dc9368e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0740014_3f352cb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T08:14:14Z",
+      "side": 1,
+      "message": "DetachLoopDevice(ctx, devLoop) before returning. To avoid duplicate code, maybe you can define cleanupFunc and execute it before returning witn err !\u003d nil (and expand it to include Unmount() before returning at the end).",
+      "revId": "b8384a055a80b70be730737dd1c805d9dc9368e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
