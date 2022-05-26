@@ -22,6 +22,30 @@
       },
       "revId": "cab73a9d44aac22178c1bfe87bceee4f3b024031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1032c72_ad7c4c01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-05-26T09:59:44Z",
+      "side": 1,
+      "message": "I was reading up on firmware_Cr50Testlab from autotest, and one of the test cases suggests that when ccd is locked, testlab mode can\u0027t be enabled/disabled. Hibernation seems to always get ccd locked after DUT has waken up. \n\nI\u0027m wondering if things are different when DUT\u0027s in dev mode. But, logging the console output from running \u0027ccd testlab enable\u0027 might help confirm whether it\u0027s possible.\n\nIf testlab open fails, perhaps we\u0027ll consider doing a regular ap open in one follow-up patch.",
+      "parentUuid": "006b612c_bf2e5528",
+      "range": {
+        "startLine": 163,
+        "startChar": 62,
+        "endLine": 163,
+        "endChar": 70
+      },
+      "revId": "cab73a9d44aac22178c1bfe87bceee4f3b024031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
