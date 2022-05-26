@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24a719c_c28502f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:21:53Z",
+      "side": 1,
+      "message": "LGTM % below",
+      "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7fda374_9d0b3085",
@@ -36,6 +53,98 @@
         "startChar": 36,
         "endLine": 28,
         "endChar": 81
+      },
+      "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b6e100_f21d4c64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:21:53Z",
+      "side": 1,
+      "message": "Nit: we can omit this, since that\u0027s the default count, in order to make this line a bit shorter.",
+      "range": {
+        "startLine": 46,
+        "startChar": 131,
+        "endLine": 46,
+        "endChar": 145
+      },
+      "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b3476d_85df6351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:21:53Z",
+      "side": 1,
+      "message": "It seems we never use `captureSurfaceWidth` and `captureSurfaceHeight` themselves, rather, just their halves, maybe we can just cache those as `surfaceQuadrantWidth` and `surfaceQuadrantHeight`.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1650c0d1_f67dad1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:21:53Z",
+      "side": 1,
+      "message": "Please move these right above their first use, i.e. line 110.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32139eda_6a1f35c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:21:53Z",
+      "side": 1,
+      "message": "Is it possible we pass these? (This is more of a question to the Tast owners).",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 65
       },
       "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -77,6 +186,30 @@
       "writtenOn": "2022-05-26T04:35:10Z",
       "side": 1,
       "message": "might want to check the location of cameraPreviewWidget is changed after mouse events, wdyt?",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 18
+      },
+      "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d768695a_957f802c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:21:53Z",
+      "side": 1,
+      "message": "I think we\u0027re more interested in what happens after we release the mouse, since that\u0027s when the snap bounds are set. Unless you mean something else, please let us know. Thank you so much! 😊",
+      "parentUuid": "bfc3b579_9edf1477",
       "range": {
         "startLine": 141,
         "startChar": 2,
