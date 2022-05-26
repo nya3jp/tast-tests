@@ -283,6 +283,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99fc3f6e_b60a356f",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-26T15:52:50Z",
+      "side": 1,
+      "message": "The intention here is for this to provide an east way to create a single temporary profile so that properties that are saved will not be persisted. If a test needs to manage more than one profile for some reason it should probably call the profile management functions directly.",
+      "parentUuid": "83af1568_10e25e35",
+      "range": {
+        "startLine": 446,
+        "startChar": 32,
+        "endLine": 446,
+        "endChar": 47
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eda4c6c_8478ec0f",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 2
