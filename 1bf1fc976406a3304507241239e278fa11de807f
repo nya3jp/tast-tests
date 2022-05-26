@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ce224e_bfe2ea47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-26T16:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81456c75_950a9778",
+      "range": {
+        "startLine": 189,
+        "startChar": 12,
+        "endLine": 189,
+        "endChar": 33
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e7f54fb_bb9e7767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-26T16:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a699252b_74c4046b",
+      "range": {
+        "startLine": 189,
+        "startChar": 77,
+        "endLine": 189,
+        "endChar": 92
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb7d2e4f_69c418f7",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-05-25T22:43:14Z",
       "side": 1,
       "message": "The updated app id order after drag and drop operations. Not sure if we want \"from last slot to the first slot\"",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 115
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4dffee_933754f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-26T16:21:11Z",
+      "side": 1,
+      "message": "Personally I think we still need it because in the test the icon is also dragged from the first slot to the last one",
+      "parentUuid": "fb7d2e4f_69c418f7",
       "range": {
         "startLine": 192,
         "startChar": 4,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f3b9a8_4774289e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-26T16:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc147d5a_01af1d05",
+      "range": {
+        "startLine": 322,
+        "startChar": 3,
+        "endLine": 322,
+        "endChar": 7
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1bec937_368e94a4",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-05-25T22:43:14Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 362,
+        "startChar": 3,
+        "endLine": 362,
+        "endChar": 7
+      },
+      "revId": "1bf1fc976406a3304507241239e278fa11de807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27dead05_66afe699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-05-26T16:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1bec937_368e94a4",
       "range": {
         "startLine": 362,
         "startChar": 3,
