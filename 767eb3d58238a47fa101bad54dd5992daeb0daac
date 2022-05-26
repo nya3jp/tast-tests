@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20b440b7_5afca08b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T12:39:54Z",
+      "side": 1,
+      "message": "IIRC, I once tried to just copy-and-paste the two functions from optin_managed.go to external_storage_disabled.go, only to find out that you can\u0027t declare two functions with the same name in a same directory. Since I\u0027m not sure what names to give to the copied version of the functions in external_storage_disabled.go, I prefer to move these functions to somewhere that can be referred from both of the tests.",
+      "parentUuid": "917ec187_10a29f4b",
+      "range": {
+        "startLine": 925,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 26
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5984255_a1138d3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
         "patchSetId": 5
