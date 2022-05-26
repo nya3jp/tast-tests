@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "322ba9a7_a3c2bcb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:36:36Z",
+      "side": 1,
+      "message": "LGTM % below",
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23f2eb81_bc1d3823",
@@ -43,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e88cb5ae_45cd9c26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:36:36Z",
+      "side": 1,
+      "message": "Nit: Let\u0027s remove this, since it\u0027s the default 😊",
+      "range": {
+        "startLine": 44,
+        "startChar": 130,
+        "endLine": 44,
+        "endChar": 145
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffbf7d57_b562b929",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
         "patchSetId": 1
@@ -59,6 +99,75 @@
         "startChar": 16,
         "endLine": 48,
         "endChar": 19
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89ffa1b_01e7281b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:36:36Z",
+      "side": 1,
+      "message": "Ditto: `cameraPreviewLocation.Top`.",
+      "range": {
+        "startLine": 118,
+        "startChar": 70,
+        "endLine": 118,
+        "endChar": 103
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca67b7eb_94048382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:36:36Z",
+      "side": 1,
+      "message": "`cameraPreviewLocation.TopLeft().X` is just `cameraPreviewLocation.Left` 😊",
+      "range": {
+        "startLine": 118,
+        "startChar": 55,
+        "endLine": 118,
+        "endChar": 66
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57aea058_b64e1ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T16:36:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we use the new bounds here, i.e. `cameraPreviewCollapsedLocation`?",
+      "range": {
+        "startLine": 118,
+        "startChar": 33,
+        "endLine": 118,
+        "endChar": 54
       },
       "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
