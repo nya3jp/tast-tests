@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c16b7f9f_fab443ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T04:56:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether this Cq-Depend for a Chromium CL is respected, but anyway it would be better to submit this CL after Chrome is uprev\u0027ed and has your changes crrev.com/c/3650484 and crrev.com/c/3655844.",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1fc4dfde_a6699d4f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -14,6 +37,144 @@
       "writtenOn": "2022-05-26T04:15:39Z",
       "side": 1,
       "message": "risan@, youkichihosoi@: Please take a look. Thanks!",
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917ec187_10a29f4b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T04:56:50Z",
+      "side": 1,
+      "message": "This one does not seem to be specific to ARC, and I\u0027m not sure whether it should be defined in arc.go. Maybe we can add `\u0026policy.ArcEnabled{Val: true, Stat: policy.StatusSet}` by default?\nOr it might be just okay to define setupFakePolicyServer and setupManagedChrome locally in external_storage_disabled.go given that fakedms.New etc. seem to be used in various ways and it might not be simple to define a generic function. For example:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go;l\u003d49-65;drc\u003ddde35ad5392b2a4075ae9c1bf0cb677ca9f3613e\n\nAnyway I do not have a strong opinion, and would like to hear from experts like Hasan and Tast owners about how to deal with this.",
+      "range": {
+        "startLine": 925,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 26
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5984255_a1138d3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T04:56:50Z",
+      "side": 1,
+      "message": "The test also checks removable media.",
+      "range": {
+        "startLine": 23,
+        "startChar": 29,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "949a9cf4_8156dadd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T04:56:50Z",
+      "side": 1,
+      "message": "I think the test checks the behavior on a specific policy (ExternalStorageDisabled), rather than managed users in general.",
+      "range": {
+        "startLine": 23,
+        "startChar": 55,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8543942d_c298c630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T04:56:50Z",
+      "side": 1,
+      "message": "JFYI, this `ExtraAttr` and the one in L36 can be included in `Attr` in L28.\nHowever, I see some tests (incl. arc.OptinManaged) use `ExtraAttr` even when `Attr` can be used instead. So it is probably not mandatory. Maybe some people prefer `ExtraAttr` to explicitly indicate that each parameterized test can be promoted to critical independently from each other.",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 48
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb38d071_6f1e70fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T04:56:50Z",
+      "side": 1,
+      "message": "Can\u0027t this be arc.New?\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/arc/arc.go;l\u003d193;drc\u003ddc01ad06d80a8c573f1ef0078a44989f2655d0b6",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "698ba668_dcde3d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T04:56:50Z",
+      "side": 1,
+      "message": "Instead of defining RunMountDisabledTest (which will be used only in arc.ExternalStorageDisabled), how about defining a new function that performs CreateZeroFile, AttachLoopDevice, FormatVFAT, and Mount?\n\nIt can be used in not only removablemedia.RunTest, but also arc.EnableExternalStorage:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go;l\u003d80-105;drc\u003d9677100dfec835b6acaec920dcdd29e4b27a9a28\n\nThe new function should return a cleanup function that performs Unmount, DetachLoopDevice, and and os.Remove (in this order).\nYou can refer to arc.DownloadManager etc. for how to return a cleanup function:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/download_manager.go;l\u003d188-199;drc\u003d9677100dfec835b6acaec920dcdd29e4b27a9a28",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 25
+      },
       "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
