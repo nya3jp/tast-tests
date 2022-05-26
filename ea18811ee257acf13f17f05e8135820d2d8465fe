@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad5eac3_88f8833b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-05-26T20:56:10Z",
+      "side": 1,
+      "message": "LGTM, but please wait until Yichen and Alvin are happy! 😊",
+      "revId": "ea18811ee257acf13f17f05e8135820d2d8465fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
