@@ -25,16 +25,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// exerciseSplitViewResize assumes two snapped windows and then does the following:
+// exerciseSplitViewResize assumes two snapped windows and a second desk (but the
+// first desk is the active one). Then exerciseSplitViewResize does the following:
 // 1. Drag the divider.
 // 2. Enter overview.
 // 3. Drag the divider.
-// 4. Close the overview window.
+// 4. Drag the overview window to the second desk.
 // 5. Drag the divider.
 func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, splitViewDragPoints DragPoints, enterOverview action.Action) error {
 	const (
-		slow = 2 * time.Second
-		fast = time.Second / 2
+		slow              = 2 * time.Second
+		moderatePace      = time.Second
+		longPressDuration = time.Second
 	)
 
 	// 1. Drag the divider.
@@ -54,18 +56,30 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 		return errors.Wrap(err, "failed to drag divider between overview window and snapped window")
 	}
 
-	// 4. Close the first overview window.
+	// 4. Drag the overview window to the second desk.
 	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to find the window in the overview mode to swipe to close")
+		return errors.Wrap(err, "failed to find the window in the overview mode to drag to the second desk")
 	}
-	swipeStart := w.OverviewInfo.Bounds.CenterPoint()
-	if err := pc.Drag(swipeStart, pc.DragTo(swipeStart.Sub(coords.NewPoint(0, 200)), fast))(ctx); err != nil {
-		return errors.Wrap(err, "failed to swipe to close overview window")
+	deskMiniViews, err := ui.NodesInfo(ctx, nodewith.ClassName("DeskMiniView"))
+	if err != nil {
+		return errors.Wrap(err, "failed to get desk mini-views")
 	}
-	// Wait for the swipe-to-close animation to finish before dragging the divider. This is important
-	// because the state at the beginning of the divider drag determines which performance metrics
-	// are recorded for the entire drag. If the drag begins before the window has actually closed,
+	if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount < 2 {
+		return errors.Errorf("expected more than 1 desk mini-views; found %v", deskMiniViewCount)
+	}
+	if err := pc.Drag(
+		// Initiate the drag with a long press at the centerpoint of the overview window.
+		w.OverviewInfo.Bounds.CenterPoint(),
+		uiauto.Sleep(longPressDuration),
+		// Then drag the overview window to the centerpoint of the second desk mini-view.
+		pc.DragTo(deskMiniViews[1].Location.CenterPoint(), moderatePace),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag overview window to second desk")
+	}
+	// Wait for the overview window to reach the second desk before dragging the divider. This is
+	// important because the state at the beginning of the divider drag determines which performance
+	// metrics are recorded for the entire drag. If the drag begins with a window still in overview,
 	// the resulting data will be for Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview
 	// and not Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow.
 	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
@@ -138,6 +152,17 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		return errors.Wrap(err, "failed to wait for browser windows to be snapped correctly")
 	}
+
+	// Create a second virtual desk.
+	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to create a new desk")
+	}
+	defer cleanUp(closeCtx, action.Named(
+		"clean up desks",
+		func(ctx context.Context) error {
+			return ash.CleanUpDesks(ctx, tconn)
+		},
+	), &retErr)
 
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
