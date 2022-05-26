@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59185983_88952655",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-26T19:21:26Z",
+      "side": 1,
+      "message": "alvinjia@ inputs.* tests will be fixed with PersonalizationHub enabled once uprev to Chrome 104.0.5085.0 or newer lands. However, that might be a while https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3671104 given the failures there. What do you think about having this CL disable `PersonalizationHub` feature for those input tests again?\n\nWe will put up a follow up CL to remove the `--disable-features\u003dPersonalizationHub` and merge that as soon as successful uprev happens.",
+      "revId": "a6354c17640e3c61d6268e01ab41d64fbe12099e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
