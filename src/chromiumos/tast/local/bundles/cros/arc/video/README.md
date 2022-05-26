@@ -17,7 +17,8 @@ These tests validate Android video decoding functionality by running the
 [MediaCodec] interface. The test decodes a video from start to finish and
 validates decoded frames by comparing their checksums against expected values.
 
-Tests are available for the H.264, VP8 and VP9 codecs. To run all tests use:
+Tests are available for the H.264, HEVC, VP8 and VP9 codecs. To run all tests
+use:
 
     tast run $HOST arc.VideoDecodeAccel.*
 
@@ -29,9 +30,9 @@ decoder's maximum FPS by decoding a video as fast as possible, and it measures
 cpu, power usage, and dropped frames while decoding and rendering a video at
 the appropriate FPS.
 
-Performance tests are available for the H.264, VP8 and VP9 codecs, using 1080p
-and 2160p videos, both in 30 and 60fps variants. To run all performance tests
-use:
+Performance tests are available for the H.264, HEVC, VP8 and VP9 codecs, using
+1080p and 2160p videos, both in 30 and 60fps variants. To run all performance
+tests use:
 
     tast run $HOST arc.VideoDecodeAccelPerf.*
 

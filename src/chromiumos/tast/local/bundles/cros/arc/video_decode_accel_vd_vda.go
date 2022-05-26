@@ -52,6 +52,18 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
 			ExtraData:         []string{"test-25fps.vp9_2", "test-25fps.vp9_2.json"},
 		}, {
+			Name:              "hevc",
+			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.hevc"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+			ExtraData:         []string{"test-25fps.hevc", "test-25fps.hevc.json"},
+		}, {
+			Name:              "hevc_10bit",
+			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.hevc10"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC10BPP},
+			ExtraData:         []string{"test-25fps.hevc10", "test-25fps.hevc10.json"},
+		}, {
 			Name:              "h264_resolution_switch",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "switch_1080p_720p_240frames.h264"},
 			ExtraAttr:         []string{"group:mainline", "informational"},
@@ -69,6 +81,12 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
+		}, {
+			Name:              "hevc_resolution_switch",
+			Val:               videoDecodeAccelVDVDATestParam{dataPath: "switch_1080p_720p_240frames.hevc"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+			ExtraData:         []string{"switch_1080p_720p_240frames.hevc", "switch_1080p_720p_240frames.hevc.json"},
 		}, {
 			// This test uses a video that makes use of the VP9 show-existing-frame feature and is used in Android CTS:
 			// https://android.googlesource.com/platform/cts/+/HEAD/tests/tests/media/res/raw/vp90_2_17_show_existing_frame.vp9
@@ -112,6 +130,12 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}, {
+			Name:              "hevc_linear_output",
+			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.hevc", useLinearOutput: true},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+			ExtraData:         []string{"test-25fps.hevc", "test-25fps.hevc.json"},
+		}, {
 			Name:              "h264_resolution_switch_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "switch_1080p_720p_240frames.h264", useLinearOutput: true},
 			ExtraAttr:         []string{"group:mainline", "informational"},
@@ -129,6 +153,12 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
+		}, {
+			Name:              "hevc_resolution_switch_linear_output",
+			Val:               videoDecodeAccelVDVDATestParam{dataPath: "switch_1080p_720p_240frames.hevc", useLinearOutput: true},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
+			ExtraData:         []string{"switch_1080p_720p_240frames.hevc", "switch_1080p_720p_240frames.hevc.json"},
 		}, {
 			// This test uses a video that makes use of the VP9 show-existing-frame feature and is used in Android CTS:
 			// https://android.googlesource.com/platform/cts/+/HEAD/tests/tests/media/res/raw/vp90_2_17_show_existing_frame.vp9
