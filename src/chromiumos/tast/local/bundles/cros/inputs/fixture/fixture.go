@@ -7,6 +7,7 @@ package fixture
 
 import (
 	"context"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
@@ -24,7 +26,8 @@ import (
 
 const (
 	resetTimeout    = 30 * time.Second
-	postTestTimeout = 5 * time.Second
+	preTestTimeout  = 5 * time.Second
+	postTestTimeout = 15 * time.Second
 )
 
 // List of fixture names for inputs.
@@ -69,6 +72,7 @@ func init() {
 		},
 		Impl:            inputsFixture(notForced, true, false, browser.TypeAsh),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -83,6 +87,7 @@ func init() {
 		},
 		Impl:            inputsFixture(notForced, true, false, browser.TypeAsh, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -97,6 +102,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeAsh),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -111,6 +117,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, true, true, browser.TypeAsh),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -125,6 +132,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -139,6 +147,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -153,6 +162,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=AssistMultiWord")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -167,6 +177,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -181,6 +192,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -195,6 +207,7 @@ func init() {
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -209,6 +222,7 @@ func init() {
 		},
 		Impl:            inputsFixture(tabletMode, true, true, browser.TypeAsh),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -223,6 +237,7 @@ func init() {
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -237,6 +252,7 @@ func init() {
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultipasteSuggestion")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -251,6 +267,7 @@ func init() {
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -267,6 +284,7 @@ func init() {
 		},
 		Impl:            inputsFixture(notForced, true, false, browser.TypeLacros),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -281,6 +299,7 @@ func init() {
 		},
 		Impl:            inputsFixture(notForced, true, false, browser.TypeLacros, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -295,6 +314,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeLacros),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -309,6 +329,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -323,6 +344,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -337,6 +359,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=AssistMultiWord")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -351,6 +374,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -365,6 +389,7 @@ func init() {
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -379,6 +404,7 @@ func init() {
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -393,6 +419,7 @@ func init() {
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=AssistAutoCorrect")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -407,6 +434,7 @@ func init() {
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultipasteSuggestion")),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -421,6 +449,7 @@ func init() {
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.GuestLogin()),
 		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -453,6 +482,7 @@ type inputsFixtureImpl struct {
 	browserType browser.Type    // Whether Ash or Lacros is used for test
 	fOpts       []chrome.Option // Options that are passed to chrome.New
 	tconn       *chrome.TestConn
+	recorder    *uiauto.ScreenRecorder
 }
 
 func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -512,7 +542,14 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 }
 
 func (f *inputsFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
-
+	recorder, err := uiauto.NewScreenRecorder(ctx, f.tconn)
+	if err != nil {
+		s.Log("Failed to create screen recorder: ", err)
+	}
+	if err := recorder.Start(ctx, f.tconn); err != nil {
+		s.Log("Failed to start screen recorder: ", err)
+	}
+	f.recorder = recorder
 }
 
 func (f *inputsFixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -522,6 +559,21 @@ func (f *inputsFixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestSta
 			s.Log("Failed to hide virtual keyboard: ", err)
 		}
 	}
+
+	// Do nothing if the recorder is not initialized.
+	if f.recorder == nil {
+		return
+	}
+	if err := f.recorder.Stop(ctx); err != nil {
+		s.Log("Failed to stop screen recorder: ", err)
+	} else if s.HasError() {
+		recordingFile := filepath.Join(s.OutDir(), "record.webm")
+		if err := f.recorder.SaveInBytes(ctx, recordingFile); err != nil {
+			s.Log("Failed to save screen recording: ", err)
+		}
+		s.Log("Saved recording to ", recordingFile)
+	}
+	f.recorder.Release(ctx)
 }
 
 func (f *inputsFixtureImpl) Reset(ctx context.Context) error {
