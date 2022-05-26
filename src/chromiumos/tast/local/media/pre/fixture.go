@@ -452,39 +452,6 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeVideoWithClearHEVCHWDecoding",
-		Desc:     "Similar to chromeVideo fixture but also enables hardware accelerated HEVC decoding for clear content",
-		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.ExtraArgs(chromeVideoArgs...),
-				chrome.ExtraArgs(chromeUseClearHEVCHWDecodingArgs...),
-			}, nil
-		}),
-		Parent:          "gpuWatchDog",
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeVideoWithGuestLoginAndClearHEVCHWDecoding",
-		Desc:     "Similar to chromeVideo fixture but forcing login as a guest and enables hardware accelerated HEVC decoding for clear content",
-		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.ExtraArgs(chromeVideoArgs...),
-				chrome.ExtraArgs(chromeUseClearHEVCHWDecodingArgs...),
-				chrome.GuestLogin(),
-			}, nil
-		}),
-		Parent:          "gpuWatchDog",
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeVideoWithDistinctiveIdentifier",
 		Desc:     "Similar to chromeVideo fixture but also allows a distinctive identifier which is needed for HWDRM",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
@@ -492,27 +459,6 @@ func init() {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
-				chrome.ExtraArgs(chromeAllowDistinctiveIdentifierArgs...),
-			}, nil
-		}),
-		Parent:          "gpuWatchDog",
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
-	// We need to allow clear HEVC for DRM content because Shaka player needs that
-	// to function properly for HEVC.
-	// TODO(b/182171409): Remove this once Shaka player is updated to support HEVC
-	// without this flag.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeVideoWithClearHEVCHWDecodingAndDistinctiveIdentifier",
-		Desc:     "Similar to chromeVideo fixture but also allows a distinctive identifer and enables hardware accelerated HEVC decoding for clear content",
-		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.ExtraArgs(chromeVideoArgs...),
-				chrome.ExtraArgs(chromeUseClearHEVCHWDecodingArgs...),
 				chrome.ExtraArgs(chromeAllowDistinctiveIdentifierArgs...),
 			}, nil
 		}),
@@ -594,10 +540,6 @@ var chromeFakeWebcamArgs = []string{
 	"--use-fake-device-for-media-stream",
 	// Avoid the need to grant camera/microphone permissions.
 	"--use-fake-ui-for-media-stream"}
-
-var chromeUseClearHEVCHWDecodingArgs = []string{
-	// Enable playback of unencrypted HEVC content in Chrome.
-	"--enable-clear-hevc-for-testing"}
 
 var chromeAllowDistinctiveIdentifierArgs = []string{
 	// Allows distinctive identifier with DRM playback when in dev mode. We don't

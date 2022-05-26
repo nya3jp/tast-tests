@@ -302,8 +302,8 @@ func init() {
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"bear-320x240.hevc.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc10_hw",
 			Val: playParams{
@@ -314,8 +314,8 @@ func init() {
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"bear-320x240.hevc10.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC10BPP, "proprietary_codecs", "protected_content"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC10BPP, "proprietary_codecs"},
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_hw_mse",
 			Val: playParams{
@@ -362,8 +362,8 @@ func init() {
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.hevc.mp4", "bear-320x240-audio-only.aac.mp4", "bear-320x240.hevc.mpd"),
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "av1_guest",
 			Val: playParams{

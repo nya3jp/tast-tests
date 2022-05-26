@@ -76,8 +76,8 @@ func init() {
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_hevc.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "vp8",
 			Val: seekTest{
@@ -142,8 +142,8 @@ func init() {
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.hevc.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "switch_vp8",
 			Val: seekTest{
@@ -223,9 +223,9 @@ func init() {
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_hevc.mp4"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
 			Timeout:           20 * time.Minute,
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_alt",
 			Val: seekTest{
