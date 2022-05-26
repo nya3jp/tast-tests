@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99f0427b_b1ee0aa0",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-26T08:23:00Z",
+      "side": 1,
+      "message": "Can you export this type? We export its values below, but sometimes they\u0027re difficult to use when the type is unexported.\n\nFor example, we cannot write a function that returns perfRecordSamplingType according to an argument, like:\n\n```\npackage some_other_package\n\nfunc SamplingTypeByName(name string) profiler.perfRecordSamplingType // error!\n```",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "8ff77d2fd49e78a17ae63363ea7849d5310870c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b49c332_e127952b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-26T08:23:00Z",
+      "side": 1,
+      "message": "This struct has got many members but only a few of them are valid at a time.\n\nFor better compile-time safety, I\u0027d suggest splitting it to multiple structs that hold only valid fields for a particular mode.\n\nExample:\n\n```\ntype PerfOpts struct {\n  // Exactly one of these fields is non-nil.\n  record *perfRecordOpts\n  statRecord *perfStatRecordOpts\n  stat *perfStatOpts\n  sched *perfSchedOpts\n}\n```",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 13
+      },
+      "revId": "8ff77d2fd49e78a17ae63363ea7849d5310870c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d134a873_221243ee",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 4
