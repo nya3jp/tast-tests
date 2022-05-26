@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package everydaymultitaskingcuj
+// Package spotify contains local Tast tests that exercise spotify.
+package spotify
 
 import (
 	"context"
@@ -12,8 +13,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/arc/playstore"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -24,6 +25,8 @@ import (
 )
 
 const (
+	// AppName is the name of ARC app.
+	AppName            = "Spotify"
 	spotifyPackageName = "com.spotify.music"
 	spotifyIDPrefix    = "com.spotify.music:id/"
 	searchTabID        = spotifyIDPrefix + "search_tab"
@@ -46,8 +49,8 @@ type Spotify struct {
 	launched   bool
 }
 
-// NewSpotify returns the the manager of Spotify, caller will able to control Spotify app through this object.
-func NewSpotify(ctx context.Context, kb *input.KeyboardEventWriter, a *arc.ARC, tconn *chrome.TestConn, account string) (*Spotify, error) {
+// New returns the the manager of Spotify, caller will able to control Spotify app through this object.
+func New(ctx context.Context, kb *input.KeyboardEventWriter, a *arc.ARC, tconn *chrome.TestConn, account string) (*Spotify, error) {
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create new ARC UI device")
@@ -83,15 +86,15 @@ func (s *Spotify) Launch(ctx context.Context) (time.Duration, error) {
 		// If the package is already visible,
 		// needs to close it and launch again to collect app start time.
 		if err := w.CloseWindow(ctx, s.tconn); err != nil {
-			return -1, errors.Wrapf(err, "failed to close %s app", SpotifyAppName)
+			return -1, errors.Wrapf(err, "failed to close %s app", AppName)
 		}
 	}
 
 	var startTime time.Time
 	// Sometimes the Spotify App will fail to open, so add retry here.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := launcher.SearchAndLaunch(s.tconn, s.kb, SpotifyAppName)(ctx); err != nil {
-			return errors.Wrapf(err, "failed to launch %s app", SpotifyAppName)
+		if err := launcher.SearchAndLaunch(s.tconn, s.kb, AppName)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to launch %s app", AppName)
 		}
 		startTime = time.Now()
 		return ash.WaitForVisible(ctx, s.tconn, spotifyPackageName)
@@ -133,7 +136,7 @@ func (s *Spotify) Play(ctx context.Context) error {
 	playButton := s.d.Object(ui.ID(playPauseButtonID), ui.Enabled(true), ui.Description("Play"))
 
 	// If it has been played, it can play the song directly.
-	if err := cuj.FindAndClick(playButton, shortUITimeout)(ctx); err == nil {
+	if err := apputil.FindAndClick(playButton, shortUITimeout)(ctx); err == nil {
 		testing.ContextLog(ctx, "Play Spotify directly")
 	} else {
 		searchTab := s.d.Object(ui.ID(searchTabID))
@@ -168,7 +171,7 @@ func (s *Spotify) Play(ctx context.Context) error {
 // loginIfRequired logins to Spotify if it is not logged in.
 func (s *Spotify) loginIfRequired(ctx context.Context) error {
 	// The "This app is designed for mobile" prompt needs to be dismissed to get to the log in page.
-	if err := cuj.DismissMobilePrompt(ctx, s.tconn); err != nil {
+	if err := apputil.DismissMobilePrompt(ctx, s.tconn); err != nil {
 		return errors.Wrap(err, `failed to dismiss "This app is designed for mobile" prompt`)
 	}
 
@@ -205,7 +208,7 @@ func (s *Spotify) loginIfRequired(ctx context.Context) error {
 		}
 	}
 	accountButton := s.d.Object(ui.Text(s.account))
-	if err := cuj.FindAndClick(accountButton, shortUITimeout)(ctx); err != nil {
+	if err := apputil.FindAndClick(accountButton, shortUITimeout)(ctx); err != nil {
 		testing.ContextLog(ctx, `The button "account button" not found, signed in directly`)
 	}
 	s.firstLogin = true
@@ -301,11 +304,11 @@ func (s *Spotify) searchSongAndPlay(ctx context.Context) error {
 	testing.ContextLog(ctx, "Try to search a song and play")
 
 	if err := uiauto.Combine("search song",
-		cuj.FindAndClick(searchTab, defaultUITimeout),
-		cuj.FindAndClick(searchField, defaultUITimeout),
-		cuj.FindAndClick(query, defaultUITimeout),
+		apputil.FindAndClick(searchTab, defaultUITimeout),
+		apputil.FindAndClick(searchField, defaultUITimeout),
+		apputil.FindAndClick(query, defaultUITimeout),
 		s.kb.TypeAction(albumName),
-		cuj.FindAndClick(singerButton, defaultUITimeout),
+		apputil.FindAndClick(singerButton, defaultUITimeout),
 	)(ctx); err != nil {
 		return err
 	}
@@ -319,7 +322,7 @@ func (s *Spotify) searchSongAndPlay(ctx context.Context) error {
 
 	// It might automatically start playing after click singerButton,
 	// so skip if shufflePlayButton not found.
-	if err := cuj.ClickIfExist(shufflePlayButton, defaultUITimeout)(ctx); err != nil {
+	if err := apputil.ClickIfExist(shufflePlayButton, defaultUITimeout)(ctx); err != nil {
 		return errors.Wrap(err, `failed to click "shuffle play button"`)
 	}
 

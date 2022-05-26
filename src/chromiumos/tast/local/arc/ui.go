@@ -34,9 +34,12 @@ func (a *ARC) DumpUIHierarchyOnError(ctx context.Context, outDir string, hasErro
 		return nil
 	}
 
+	dumpFile := "/sdcard/window_dump.xml"
+
 	if err := a.Command(ctx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to dump arc UI")
 	}
+	defer a.Command(ctx, "rm", dumpFile).Run(testexec.DumpLogOnError)
 
 	dir := filepath.Join(outDir, "faillog")
 	if err := os.MkdirAll(dir, 0777); err != nil {
@@ -44,7 +47,7 @@ func (a *ARC) DumpUIHierarchyOnError(ctx context.Context, outDir string, hasErro
 	}
 
 	file := filepath.Join(dir, "arc_uidump.xml")
-	if err := a.PullFile(ctx, "/sdcard/window_dump.xml", file); err != nil {
+	if err := a.PullFile(ctx, dumpFile, file); err != nil {
 		return errors.Wrap(err, "failed to pull UI dump to outDir")
 	}
 

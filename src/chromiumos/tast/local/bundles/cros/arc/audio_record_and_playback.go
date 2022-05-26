@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/arc/apputil/voicerecorder"
+	"chromiumos/tast/local/arc/apputil/voicerecorder"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mtbf"
@@ -75,7 +75,7 @@ func AudioRecordAndPlayback(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to record audio: ", err)
 	}
-	defer vr.DeleteAudio(audioName)
+	defer vr.DeleteAudio(cleanupCtx, cr, audioName)
 
 	s.Log("Playing back the recorded audio")
 	if err := vr.PlayFile(audioName)(ctx); err != nil {

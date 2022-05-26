@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/apputil/spotify"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/camera/cca"
@@ -39,7 +40,7 @@ const (
 	// YoutubeMusicAppName indicates to test against YoutubeMusic.
 	YoutubeMusicAppName = "ytmusic"
 	// SpotifyAppName indicates to test against Spotify.
-	SpotifyAppName = "Spotify"
+	SpotifyAppName = spotify.AppName
 
 	helloworldAPKName      = "ArcAppValidityTest.apk"
 	helloworldPackageName  = "org.chromium.arc.testapp.appvaliditytast"
@@ -97,7 +98,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 	}
 
 	var appHelloWorld *arc.Activity
-	var appSpotify *Spotify
+	var appSpotify *spotify.Spotify
 	switch params.appName {
 	case HelloWorldAppName:
 		testing.ContextLog(ctx, "Install ", helloworldPackageName)
@@ -110,7 +111,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, bt browser.Type, a *arc.ARC, pa
 		}
 		defer appHelloWorld.Close()
 	case SpotifyAppName:
-		if appSpotify, err = NewSpotify(ctx, kb, a, tconn, params.account); err != nil {
+		if appSpotify, err = spotify.New(ctx, kb, a, tconn, params.account); err != nil {
 			return errors.Wrap(err, "failed to create Spotify instance")
 		}
 		defer func(ctx context.Context) {

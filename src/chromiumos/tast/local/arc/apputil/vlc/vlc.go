@@ -19,13 +19,13 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/apputil"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -123,11 +123,16 @@ func (vlc *Vlc) Install(ctx context.Context, cr *chrome.Chrome) error {
 		return errors.New("failed to find element to click")
 	}
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve users Downloads path")
+	}
+
 	chromeui := uiauto.New(vlc.app.Tconn)
 	dialog := nodewith.NameContaining(fmt.Sprintf("keep %s anyway?", apkName)).Role(role.AlertDialog)
 	keepBtn := nodewith.Role(role.Button).Name("KEEP").Ancestor(dialog)
 	showInFolder := nodewith.Role(role.Button).Name("SHOW IN FOLDER").HasClass("MdTextButton")
-	apkPath := filepath.Join(filesapp.DownloadPath, apkName)
+	apkPath := filepath.Join(downloadsPath, apkName)
 	if err := uiauto.Combine("download and keep apk",
 		chromeui.WithTimeout(3*time.Minute).WaitUntilExists(keepBtn),
 		chromeui.LeftClick(keepBtn),
