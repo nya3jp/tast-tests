@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd2fc8e_9d4be186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-26T10:15:23Z",
+      "side": 1,
+      "message": "Sorry for not noticing this before, but functions like CreateZeroFile, AttachLoopDevice, etc. are no longer needed to be exported, and thus should be renamed to createZeroFile, attachLoopDevice, etc. (Basically you can do the inverse of crrev.com/c/2983929.)",
+      "range": {
+        "startLine": 122,
+        "startChar": 15,
+        "endLine": 122,
+        "endChar": 16
+      },
+      "revId": "b82ee189a0b2ce8a4bd850b551b98853336b0e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
