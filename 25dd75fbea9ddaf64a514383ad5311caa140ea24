@@ -16,6 +16,47 @@
       "message": "This is a WIP, largely for reference, but maybe worth adding?\n\nStill TODO: Setting up Layer 3. It would be nice to at least get this set up enough to start a captive portal probe that results in \"offline\".\n",
       "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7678fca_2b8221bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-26T02:47:17Z",
+      "side": 1,
+      "message": "Thanks for upload this patch!\nI also have a WIP patch (sorry that I should mention this earlier) which adds a package to provide the similar functionality (but including L3 setup).\nI think I can upload that patch today and then let\u0027s discuss the next step.",
+      "parentUuid": "751d9e7c_098bd7da",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd1c0d2_a32272f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-26T02:47:17Z",
+      "side": 1,
+      "message": "One concern here is (as mentioned in my doc) that, if the physical Ethernet is unstable (disconnected and connected again during the test, we observed this behavior in the VPNConnect tests in the lab), it will load this priority and thus become the default network. So I would still prefer introducing an addtional temporary property to differentiate Ethernet services in the tests.\n\nWDYT?",
+      "range": {
+        "startLine": 101,
+        "startChar": 46,
+        "endLine": 101,
+        "endChar": 69
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
