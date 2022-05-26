@@ -12,9 +12,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/servo"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/typec/fixture"
 	"chromiumos/tast/remote/bundles/cros/typec/typecutils"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -28,6 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:typec", "informational"},
 		HardwareDeps: hwdep.D(hwdep.ECFeatureTypecCmd(), hwdep.ChromeEC()),
 		Vars:         []string{"servo"},
+		Fixture:      "typeCServo",
 	})
 }
 
@@ -41,86 +42,8 @@ func init() {
 // - Make the servo's HPD state to "high".
 // - Check that the DUT woke, count the EC wake events and confirm that the wake count increased.
 func HpdWake(ctx context.Context, s *testing.State) {
-	ctxForCleanUp := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
 	d := s.DUT()
-	if !d.Connected(ctx) {
-		s.Fatal("Failed DUT connection check at the beginning")
-	}
-
-	servoSpec, _ := s.Var("servo")
-	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
-	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
-	}
-	defer pxy.Close(ctxForCleanUp)
-
-	// Configure Servo to be OK with CC being off.
-	svo := pxy.Servo()
-	// Only bother doing this if the device has CCD.
-	ret, err := svo.HasCCD(ctx)
-	if err != nil {
-		s.Fatal("Failed to check servo CCD capability: ", err)
-	}
-	if ret {
-		if err := svo.SetOnOff(ctx, servo.CCDKeepaliveEn, servo.Off); err != nil {
-			s.Fatal("Failed to disable CCD keepalive: ", err)
-		}
-		defer func() {
-			if err := svo.SetOnOff(ctxForCleanUp, servo.CCDKeepaliveEn, servo.On); err != nil {
-				s.Log("Unable to enable CCD keepalive: ", err)
-			}
-		}()
-	}
-
-	// Wait for servo control to take effect.
-	if err := testing.Sleep(ctx, time.Second); err != nil {
-		s.Fatal("Failed to sleep after CCD keepalive disable: ", err)
-	}
-
-	if err := svo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
-		s.Fatal("Failed to switch CCD watchdog off: ", err)
-	}
-	defer func() {
-		if err := svo.WatchdogAdd(ctxForCleanUp, servo.WatchdogCCD); err != nil {
-			s.Error("Unable to switch CCD watchdog on: ", err)
-		}
-	}()
-
-	// Wait for servo control to take effect.
-	if err := testing.Sleep(ctx, time.Second); err != nil {
-		s.Fatal("Failed to sleep after CCD watchdog off: ", err)
-	}
-
-	// Make sure that CC is switched on at the end of the test.
-	defer func() {
-		if err := svo.SetCC(ctxForCleanUp, servo.On); err != nil {
-			s.Error("Unable to enable Servo CC: ", err)
-		}
-	}()
-
-	// Turn CC Off before modifying DTS Mode.
-	if err := typecutils.CcOffAndWait(ctx, svo); err != nil {
-		s.Fatal("Failed CC off and wait: ", err)
-	}
-
-	// Servo DTS mode needs to be off to configure enable DP alternate mode support.
-	if err := svo.SetOnOff(ctx, servo.DTSMode, servo.Off); err != nil {
-		s.Fatal("Failed to disable Servo DTS mode: ", err)
-	}
-	defer func() {
-		if err := svo.SetOnOff(ctxForCleanUp, servo.DTSMode, servo.On); err != nil {
-			s.Error("Unable to enable Servo DTS mode: ", err)
-		}
-	}()
-
-	// Wait for DTS-off PD negotiation to complete.
-	if err := testing.Sleep(ctx, 2500*time.Millisecond); err != nil {
-		s.Fatal("Failed to sleep for DTS-off power negotiation: ", err)
-	}
-
+	svo := s.FixtValue().(*fixture.Value).Servo()
 	if err := enumerateDP(ctx, svo, d, s); err != nil {
 		s.Fatal("DP enumeration failed: ", err)
 	}
@@ -176,11 +99,6 @@ func HpdWake(ctx context.Context, s *testing.State) {
 		if !bytes.Contains([]byte(err.Error()), []byte("remote command exited without exit status")) {
 			s.Fatal("Suspend command returned unexpected error: ", err)
 		}
-	}
-
-	// Turn CC Off before modifying DTS Mode in cleanup.
-	if err := typecutils.CcOffAndWait(ctx, svo); err != nil {
-		s.Fatal("Failed CC off and wait: ", err)
 	}
 }
 
