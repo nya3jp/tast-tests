@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edaf4e52_d5234ca9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-26T19:24:02Z",
+      "side": 1,
+      "message": "The test itself isn\u0027t super interesting, I mostly wanted to land it as an example, but I will clean up and send out the test profile code separately (I think there are one or two existing tests that could make use of it).",
+      "parentUuid": "21d74df7_766738d2",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7181acd2_d26acfdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 2
@@ -360,6 +378,24 @@
       "writtenOn": "2022-05-26T18:59:35Z",
       "side": 1,
       "message": "Before removing the profile, does it make sense to check whether it\u0027s on the stack (is it even possible that the test profile would be on the stack before we push it?)",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eeed36a_b29afacc",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-26T19:24:02Z",
+      "side": 1,
+      "message": "\u0027CreateProfile\u0027 creates a directory and fails if one already exists (e.g. from a run the didn\u0027t clean up properly), thus the \u0027RemoveProfile\u0027 call. We could only call Remove if Create fails, which might be a little more clear.",
+      "parentUuid": "77de1dfa_361b3a0c",
       "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
