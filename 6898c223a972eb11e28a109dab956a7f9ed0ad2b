@@ -272,6 +272,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bdc9e3f_9794e96d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-26T22:48:22Z",
+      "side": 1,
+      "message": "Good point. Yes, you can if you want.\n\nActually, it is better to pass `cameraPreviewWidget` from the caller, as it is already defined at line 64. This helps to maintain a single source of truth.\n\nFor `ac :\u003d uiauto.New(tconn)`, it is okay to make it a local variable here.",
+      "parentUuid": "611255a4_6c7e8fb3",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 65
+      },
+      "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4c3127c_a230b3f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
         "patchSetId": 4
