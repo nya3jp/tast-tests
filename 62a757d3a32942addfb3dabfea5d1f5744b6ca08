@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353f83b8_b3f47ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_stress_enable_disable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-26T13:16:56Z",
+      "side": 1,
+      "message": "nit: remove this extra space",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "62a757d3a32942addfb3dabfea5d1f5744b6ca08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
