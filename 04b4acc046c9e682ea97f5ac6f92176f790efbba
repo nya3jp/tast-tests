@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "801991da_b46f8680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-05-26T20:49:57Z",
+      "side": 1,
+      "message": "Yes, it is better.",
+      "parentUuid": "23f2eb81_bc1d3823",
+      "range": {
+        "startLine": 26,
+        "startChar": 71,
+        "endLine": 26,
+        "endChar": 81
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e88cb5ae_45cd9c26",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "919bc3fd_622f9516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-05-26T20:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e88cb5ae_45cd9c26",
+      "range": {
+        "startLine": 44,
+        "startChar": 130,
+        "endLine": 44,
+        "endChar": 145
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffbf7d57_b562b929",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-05-26T08:33:46Z",
       "side": 1,
       "message": "use cleanupCtx in clean up functions",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bca5f15_c7b4811c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-05-26T20:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffbf7d57_b562b929",
       "range": {
         "startLine": 48,
         "startChar": 16,
@@ -173,6 +245,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab87124_42af864a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-05-26T20:49:57Z",
+      "side": 1,
+      "message": "Ah, yes you are right.",
+      "parentUuid": "57aea058_b64e1ada",
+      "range": {
+        "startLine": 118,
+        "startChar": 33,
+        "endLine": 118,
+        "endChar": 54
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41ab6b9_ffed3345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-05-26T20:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d89ffa1b_01e7281b",
+      "range": {
+        "startLine": 118,
+        "startChar": 70,
+        "endLine": 118,
+        "endChar": 103
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53516061_421fe076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-05-26T20:49:57Z",
+      "side": 1,
+      "message": "Thank you for pointing it out. I still have trouble checking the golang APIs in the code repo :( Seems this repo is not indexed?",
+      "parentUuid": "ca67b7eb_94048382",
+      "range": {
+        "startLine": 118,
+        "startChar": 55,
+        "endLine": 118,
+        "endChar": 66
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5ae3c40_13301484",
@@ -186,6 +330,30 @@
       "writtenOn": "2022-05-26T08:33:46Z",
       "side": 1,
       "message": "does this work? does the button disappear from the accessibility tree, or it just becomes invisible?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a2b54df_ce837a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1509882
+      },
+      "writtenOn": "2022-05-26T20:49:57Z",
+      "side": 1,
+      "message": "Yes, the button will disappear as we set the visibility to false in this case. So in this case, it will also disappear from the accessibility tree?",
+      "parentUuid": "a5ae3c40_13301484",
       "range": {
         "startLine": 122,
         "startChar": 2,
