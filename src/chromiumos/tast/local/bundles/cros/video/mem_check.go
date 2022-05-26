@@ -57,8 +57,8 @@ func init() {
 			Val:               memCheckParams{fileName: "720_hevc.mp4", sizes: []graphics.Size{{Width: 1280, Height: 720}}, videoType: play.NormalVideo},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720_hevc.mp4"},
-			ExtraSoftwareDeps: []string{"video_overlays", caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
-			Fixture:           "chromeVideoWithGuestLoginAndClearHEVCHWDecoding",
+			ExtraSoftwareDeps: []string{"video_overlays", caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithGuestLogin",
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "vp8_hw",
@@ -97,8 +97,8 @@ func init() {
 			Val:               memCheckParams{fileName: "cars_dash_hevc.mpd", sizes: []graphics.Size{{Width: 256, Height: 144}, {Width: 426, Height: 240}}, videoType: play.MSEVideo},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         append(play.MSEDataFiles(), "cars_dash_hevc.mpd", "cars_144_hevc.mp4", "cars_240_hevc.mp4"),
-			ExtraSoftwareDeps: []string{"video_overlays", caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
-			Fixture:           "chromeVideoWithGuestLoginAndClearHEVCHWDecoding",
+			ExtraSoftwareDeps: []string{"video_overlays", caps.HWDecodeHEVC, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithGuestLogin",
 			Timeout:           10 * time.Minute,
 		}},
 	})

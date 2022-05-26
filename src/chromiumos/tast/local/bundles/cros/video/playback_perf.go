@@ -475,10 +475,10 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"perf/hevc/144p_30fps_300frames.hevc.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc_240p_30fps_hw",
 			Val: playbackPerfParams{
@@ -486,10 +486,10 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"perf/hevc/240p_30fps_300frames.hevc.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc_360p_30fps_hw",
 			Val: playbackPerfParams{
@@ -497,10 +497,10 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"perf/hevc/360p_30fps_300frames.hevc.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc_480p_30fps_hw",
 			Val: playbackPerfParams{
@@ -508,10 +508,10 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"perf/hevc/480p_30fps_300frames.hevc.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc_720p_30fps_hw",
 			Val: playbackPerfParams{
@@ -519,10 +519,10 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"perf/hevc/720p_30fps_300frames.hevc.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc_1080p_30fps_hw",
 			Val: playbackPerfParams{
@@ -530,9 +530,9 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
 			ExtraData:         []string{"perf/hevc/1080p_30fps_300frames.hevc.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc_1080p_60fps_hw",
 			Val: playbackPerfParams{
@@ -540,9 +540,9 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "proprietary_codecs"},
 			ExtraData:         []string{"perf/hevc/1080p_60fps_600frames.hevc.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc_2160p_30fps_hw",
 			Val: playbackPerfParams{
@@ -550,9 +550,9 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K, "proprietary_codecs"},
 			ExtraData:         []string{"perf/hevc/2160p_30fps_300frames.hevc.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc_2160p_60fps_hw",
 			Val: playbackPerfParams{
@@ -560,9 +560,9 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60, "proprietary_codecs"},
 			ExtraData:         []string{"perf/hevc/2160p_60fps_600frames.hevc.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc10_2160p_30fps_hw",
 			Val: playbackPerfParams{
@@ -570,9 +570,9 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K10BPP, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K10BPP, "proprietary_codecs"},
 			ExtraData:         []string{"perf/hevc10/2160p_30fps_300frames.hevc10.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "hevc10_2160p_60fps_hw",
 			Val: playbackPerfParams{
@@ -580,9 +580,9 @@ func init() {
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60_10BPP, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60_10BPP, "proprietary_codecs"},
 			ExtraData:         []string{"perf/hevc10/2160p_60fps_600frames.hevc10.mp4"},
-			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_480p_30fps_sw",
 			Val: playbackPerfParams{
