@@ -16,6 +16,24 @@
       "message": "Please run tast unit test, fast_build.sh -T. Then add following line to your commit log.\n\nTEST\u003dtast unit tests passed.\n\nAlso, please add somebody familiar with crostini to review and give you a +2. Thanks.",
       "revId": "28da100cc78592e23dfba75a466db1a6139cb892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d850998_da5586c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535342
+      },
+      "writtenOn": "2022-05-26T01:21:34Z",
+      "side": 1,
+      "message": "Ran the above script and got:\nok  \tchromiumos/tast/local/audio\t0.100s\n# chromiumos/tast/local/bundles/cros/cellular\n../tast-tests/src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_verification.go:106:40: mainFW.AssocFirmware undefined (type *\"chromiumos/modemfwd\".MainFirmwareV2 has no field or method AssocFirmware)\nFAIL\tchromiumos/tast/local/bundles/cros [build failed]\n\n^ This test isn\u0027t associated with my change, is it ok to still submit and file a \nbug separately?\n\nadded David for crostini reviewer.",
+      "parentUuid": "435dbf81_eb7eb47c",
+      "revId": "28da100cc78592e23dfba75a466db1a6139cb892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
