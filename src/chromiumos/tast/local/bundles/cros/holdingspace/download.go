@@ -39,7 +39,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "cancel",
@@ -47,12 +47,14 @@ func init() {
 				testfunc:    testDownloadCancel,
 				browserType: browser.TypeAsh,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "pause_and_resume",
 			Val: downloadParams{
 				testfunc:    testDownloadPauseAndResume,
 				browserType: browser.TypeAsh,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "pin_and_unpin",
 			Val: downloadParams{
@@ -65,12 +67,14 @@ func init() {
 				testfunc:    testDownloadRemove,
 				browserType: browser.TypeAsh,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "lacros_cancel",
 			Val: downloadParams{
 				testfunc:    testDownloadCancel,
 				browserType: browser.TypeLacros,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			Name: "lacros_pause_and_resume",
@@ -78,6 +82,7 @@ func init() {
 				testfunc:    testDownloadPauseAndResume,
 				browserType: browser.TypeLacros,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			Name: "lacros_pin_and_unpin",
@@ -92,6 +97,7 @@ func init() {
 				testfunc:    testDownloadRemove,
 				browserType: browser.TypeLacros,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
