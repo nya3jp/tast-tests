@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac469b3c_75f2a7f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b583306_11d66ceb",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0ead2f2_5235e968",
@@ -72,6 +96,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "just `loginWithGoogle :\u003d uiauto.Combine(\"login with Google\"`",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d722936_2798c4ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Thanks for the suggestion.\nWe need uiauto.NamedAction to log the action.\nuiauto.Combine doesn\u0027t do any logging.\nOr can I add log to uiauto.Combine?",
+      "parentUuid": "a0ead2f2_5235e968",
       "range": {
         "startLine": 94,
         "startChar": 1,
@@ -107,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7321ce71_bae1feec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "62acc8a3_a6e1217c",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f90ed3f_4a46f9a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
         "patchSetId": 3
@@ -118,6 +190,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "ditto, you don\u0027t need an extra `NamedAction` here.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 32
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eddf27bd_dada5598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "5f90ed3f_4a46f9a9",
       "range": {
         "startLine": 112,
         "startChar": 2,
@@ -151,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d907133_bf62b207",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Some low-end DUTs take a long time to load the page.",
+      "parentUuid": "ad57db56_21585218",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 38
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "895ccda3_ddc5df11",
@@ -164,6 +284,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6240f6ec_4b6f4821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "895ccda3_ddc5df11",
       "range": {
         "startLine": 123,
         "startChar": 5,
@@ -199,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f617a77_42a823b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "5b471c84_c4f177ec",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 38
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "869f534c_0be690df",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
         "patchSetId": 3
@@ -210,6 +378,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "is there a reason why you need to retry this as well?",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6a6ccde_caa679ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "The pop-up prompt window display time is not necessarily, so add retry to ensure that the window is closed.\nAdd a comment here.",
+      "parentUuid": "869f534c_0be690df",
       "range": {
         "startLine": 136,
         "startChar": 2,
@@ -243,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a634d0d7_514b3af1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5389636_931cc767",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c88ca662_5595febb",
@@ -256,6 +472,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "better to use `ui.WithTimeout().WaitUntilGone`",
+      "range": {
+        "startLine": 153,
+        "startChar": 43,
+        "endLine": 153,
+        "endChar": 47
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cef7adf_44d36a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c88ca662_5595febb",
       "range": {
         "startLine": 153,
         "startChar": 43,
@@ -291,6 +531,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddc72952_06cfa676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "1c1e6f28_7c47186e",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 20
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a67e14e1_26dad681",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
         "patchSetId": 3
@@ -302,6 +566,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "why retrying?",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f58689_7d760de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "The pop-up prompt window display time is not necessarily, so add retry to ensure that the window is closed.\nAdd a comment here.",
+      "parentUuid": "a67e14e1_26dad681",
       "range": {
         "startLine": 155,
         "startChar": 3,
@@ -337,6 +625,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a1952fc_b7151ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "7869496b_5d167dca",
+      "range": {
+        "startLine": 161,
+        "startChar": 14,
+        "endLine": 161,
+        "endChar": 46
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "985b9577_d25369b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
         "patchSetId": 3
@@ -348,6 +660,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "why retrying? if really needed, you may want to add comments to justify.",
+      "range": {
+        "startLine": 192,
+        "startChar": 15,
+        "endLine": 192,
+        "endChar": 23
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dcd6b45_f09839da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Sometimes it fails to drag the video, so add a retry here.\nAdd a comment here.",
+      "parentUuid": "985b9577_d25369b3",
       "range": {
         "startLine": 192,
         "startChar": 15,
@@ -371,6 +707,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "`w.clips[clipName] \u003d Clip{...}`\nIf a variable is only used once, you normally don\u0027t need to define it. Simply insert the assignment to where it is used.",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a82582_c6ee4db6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c006fd00_9b2dc4a1",
       "range": {
         "startLine": 207,
         "startChar": 2,
@@ -406,6 +766,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eff96478_6d5f52f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "6ea86222_4ee7b1c4",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 215,
+        "endChar": 38
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcd3edfb_34ab4983",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
         "patchSetId": 3
@@ -417,6 +801,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "could you define a const for this?",
+      "range": {
+        "startLine": 262,
+        "startChar": 34,
+        "endLine": 262,
+        "endChar": 37
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60311c2c_67fd2003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd3edfb_34ab4983",
       "range": {
         "startLine": 262,
         "startChar": 34,
@@ -440,6 +848,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "use `ui.WithInterval(...).LeftClickUntil`, otherwise this will send too many clicks.",
+      "range": {
+        "startLine": 281,
+        "startChar": 4,
+        "endLine": 281,
+        "endChar": 21
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ecbe7bf_ad2f7042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af4f97c3_91872736",
       "range": {
         "startLine": 281,
         "startChar": 4,
@@ -496,6 +928,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9887eedb_3411adf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc3f831_980d244c",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 17
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6bf54d5_f2d11d87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e8ded0_b613dc71",
+      "range": {
+        "startLine": 347,
+        "startChar": 48,
+        "endLine": 347,
+        "endChar": 58
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52863a2a_a86b5fb9",
@@ -509,6 +989,30 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "you can just use `ui.WaitUntilGone` here",
+      "range": {
+        "startLine": 361,
+        "startChar": 3,
+        "endLine": 361,
+        "endChar": 89
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56498869_6923e8b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52863a2a_a86b5fb9",
       "range": {
         "startLine": 361,
         "startChar": 3,
@@ -555,6 +1059,54 @@
       "writtenOn": "2022-05-25T23:43:15Z",
       "side": 1,
       "message": "function names is Go should not use `get` as prefix. Normally, just use `currentTime`",
+      "range": {
+        "startLine": 416,
+        "startChar": 18,
+        "endLine": 416,
+        "endChar": 32
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb457652_16c0cba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d43e6aee_91d9a01a",
+      "range": {
+        "startLine": 416,
+        "startChar": 55,
+        "endLine": 416,
+        "endChar": 85
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15acb93e_fef2cc09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-26T06:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e26ba09_9caf7bd6",
       "range": {
         "startLine": 416,
         "startChar": 18,
