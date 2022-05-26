@@ -16,6 +16,24 @@
       "message": "This just fails the test, right?",
       "revId": "23c099c1fc708fd8a09517f0f9ce589a4754ea1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a42479_99e7b799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-26T20:28:52Z",
+      "side": 1,
+      "message": "If the \"Can\u0027t play this video.\" message does not disappear, then this will fail the test. I think that is reasonable. I do not like tests passing and producing misleading performance data.",
+      "parentUuid": "98275ed6_3ffd6300",
+      "revId": "23c099c1fc708fd8a09517f0f9ce589a4754ea1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
