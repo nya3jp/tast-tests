@@ -52,6 +52,24 @@
       "parentUuid": "c5395b97_541be318",
       "revId": "a6354c17640e3c61d6268e01ab41d64fbe12099e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3d5078_8767bc39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-26T23:22:01Z",
+      "side": 1,
+      "message": "This could be a workaround to get https://crrev.com/c/3669466 land in this uprev:\n\n1, modify this CL to change the policy test only, but don\u0027t turn on the personalization hub by default in src/chromiumos/tast/local/chrome/internal/config/config.go (change it to false), then submit this.\n2,land https://crrev.com/c/3668779 and https://crrev.com/c/3669466 together for the uprev.\n3, turn on personalization hub in Tast (change the default value to true at src/chromiumos/tast/local/chrome/internal/config/config.go)\n\nThis way, you don\u0027t need to touch the inputs to reduce the CQ protection.",
+      "parentUuid": "37a175a9_d565d70b",
+      "revId": "a6354c17640e3c61d6268e01ab41d64fbe12099e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
