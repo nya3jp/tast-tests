@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fdccb2e_6b7c633e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T07:20:52Z",
+      "side": 1,
+      "message": "Sorry, I forgot to update this line. Should I add chromium:3655844? (Or do I need Cq-Depend in this case in the first place?)",
+      "parentUuid": "c16b7f9f_fab443ed",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1fc4dfde_a6699d4f",
@@ -112,6 +136,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1480c364_db93411b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T07:20:52Z",
+      "side": 1,
+      "message": "Sorry, I forgot to update this. Thanks for catching.",
+      "parentUuid": "f5984255_a1138d3d",
+      "range": {
+        "startLine": 23,
+        "startChar": 29,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3096451a_0f2604d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T07:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "949a9cf4_8156dadd",
+      "range": {
+        "startLine": 23,
+        "startChar": 55,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8543942d_c298c630",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
         "patchSetId": 5
@@ -156,6 +228,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08d7c56_99434b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T07:20:52Z",
+      "side": 1,
+      "message": "Looks like so. Thanks!",
+      "parentUuid": "cb38d071_6f1e70fa",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "698ba668_dcde3d3b",
@@ -169,6 +265,30 @@
       "writtenOn": "2022-05-26T04:56:50Z",
       "side": 1,
       "message": "Instead of defining RunMountDisabledTest (which will be used only in arc.ExternalStorageDisabled), how about defining a new function that performs CreateZeroFile, AttachLoopDevice, FormatVFAT, and Mount?\n\nIt can be used in not only removablemedia.RunTest, but also arc.EnableExternalStorage:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/enable_external_storage.go;l\u003d80-105;drc\u003d9677100dfec835b6acaec920dcdd29e4b27a9a28\n\nThe new function should return a cleanup function that performs Unmount, DetachLoopDevice, and and os.Remove (in this order).\nYou can refer to arc.DownloadManager etc. for how to return a cleanup function:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/download_manager.go;l\u003d188-199;drc\u003d9677100dfec835b6acaec920dcdd29e4b27a9a28",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 25
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0359d93a_97acabb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T07:20:52Z",
+      "side": 1,
+      "message": "Sounds good, thanks. (I wonder if we should inline removablemedia.RunTest to arc.RemovableMedia as well? It was ported from autotest: https://crrev.com/c/1698083, https://crrev.com/i/2585656)",
+      "parentUuid": "698ba668_dcde3d3b",
       "range": {
         "startLine": 199,
         "startChar": 5,
