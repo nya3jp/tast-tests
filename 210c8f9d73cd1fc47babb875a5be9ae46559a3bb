@@ -20,6 +20,187 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7e56109d_efe2c992",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "This looks really like an awesome base for a lot of potential tests. There are other existing tests we could port to this new fixture as well.\n\nI haven\u0027t looked at everything yet, but so far the code looks already quite polished.",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe29487c_7366edd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "Sorry I am not sure I understand: this is just for illustrative purposes for how to use the test facilities added in this patch ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1248801_d6c13776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "Once we have the first layer functional and submitted, we could look into backing the fake veth interface with the real network and forward traffic to the Internet with a default route. This would allow exercising and validating network validation.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9647316_7ed8768b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "This might not be obvious to any reader that this provide a dhcpv4 server.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8589d8da_1385af94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "We could maybe move these as const global values in pool.go since 100 and 200 are already defined there.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b722cb8_f8efcecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "\u003e \"enviroment\" is a possible misspelling of \"environment\".\n\nPlease fix.",
+      "parentUuid": "5a104948_85bf1694",
+      "range": {
+        "startLine": 5,
+        "startChar": 59,
+        "endLine": 5,
+        "endChar": 69
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c99f467_4d0b93ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "Maybe consider using \"services\" here instead.",
+      "parentUuid": "f35e0140_21e3c628",
+      "range": {
+        "startLine": 6,
+        "startChar": 60,
+        "endLine": 6,
+        "endChar": 69
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1279ef20_ca2a9d1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "\u003e \"separte\" is a possible misspelling of \"separate\".\n\nPlease fix.",
+      "parentUuid": "743c399c_11a30d6c",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f4add10f_86c34bbe",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 1
@@ -36,6 +217,255 @@
         "startChar": 0,
         "endLine": 6,
         "endChar": 11
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9251792b_91d3a228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "pool.go is maybe a bit ambiguous. What abotu subnet_pool to reflect better the type being defined there ?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4723bc9d_ff7d0e58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "Need explanation.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a4523d_f3f229a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "Need explanation",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398c5ef3_04d320e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "Using the literal representations of addresses is a bit hacky and might be fragile.\n\nI would recommend directly computing the offsets with numbers, or directly with bytes in network order. This might look more complex at first, but this is the correct way to think about the prefixes as bytes in memory.\n\nSo it could look:\n\nv4_prefix :\u003d IP{192, 168, ipv4Next, 0}\nv6_prefix :\u003d IP{0xff, 0, 0, 0, 0, 0, 0, ipv6next, 0, 0, 0, 0, 0, 0, 0, 0}\n\nAlso for IPv6 it would be more natural to enumerate the prefixes at the LSB of the network prefix. Actually bytes 6th and 7th are supposed to be the subnet id.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aa803db_17dfb7e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "We should explain that this simulate an IPv6 router advertising the IPv6 configuration of the network with RA packets.",
+      "range": {
+        "startLine": 5,
+        "startChar": 26,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d8ab40_026cee3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "Where is this configuration syntax for this utility is defined ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5874dd51_a33efd52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "\u003e \"enviroment\" is a possible misspelling of \"environment\".\n\nPlease fix.",
+      "parentUuid": "b6c26538_4707e353",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c776408e_af45c87c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "Could we add a reference to the relevant shill documentation there ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 20,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920c5328_1b75b72d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "We should repeat that this name cannot be longer than X because IFNAMSIZ.",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 64
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b20bd795_d29d74bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "\u003e \"responsibilty\" is a possible misspelling of \"responsibility\".\n\nPlease fix.",
+      "parentUuid": "5ad60932_d8fde8ca",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d413cc4_b457c44e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-26T15:04:50Z",
+      "side": 1,
+      "message": "Is this possible to do all the allocations, argument parsing etc before any operation that requires a defer in case of error ?",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 72
       },
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
