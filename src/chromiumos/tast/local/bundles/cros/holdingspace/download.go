@@ -18,8 +18,8 @@ import (
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -85,7 +85,14 @@ func init() {
 				testfunc:    testDownloadPinAndUnpin,
 				browserType: browser.TypeLacros,
 			},
-			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
+		}, {
+			Name: "lacros_unstable",
+			Val: downloadParams{
+				testfunc:    testDownloadPinAndUnpin,
+				browserType: browser.TypeLacros,
+			},
+			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
 		}, {
 			Name: "lacros_remove",
 			Val: downloadParams{
@@ -131,7 +138,11 @@ func Download(ctx context.Context, s *testing.State) {
 
 	// Cache the name and location of the download.
 	downloadName := "download.txt"
-	downloadLocation := filepath.Join(filesapp.DownloadPath, downloadName)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users Download path: ", err)
+	}
+	downloadLocation := filepath.Join(downloadsPath, downloadName)
 	defer os.Remove(downloadLocation)
 
 	// Create a local server. If a request indicates `redirect=true`, the response
