@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b3a09e_08087f9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-05-26T02:58:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b10dcfd_2eb7bdb7",
+      "revId": "a535275bb44168de126a1713f6a8a5c18adc8780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a86301c0_f0443fc5",
