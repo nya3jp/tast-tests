@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5571b4_05edd2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T09:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6c27197_dc386f07",
+      "revId": "b8384a055a80b70be730737dd1c805d9dc9368e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d05893a4_e606c1a4",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b2237e_b8ee5949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T09:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d05893a4_e606c1a4",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 8
+      },
+      "revId": "b8384a055a80b70be730737dd1c805d9dc9368e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0740014_3f352cb9",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-05-26T08:14:14Z",
       "side": 1,
       "message": "DetachLoopDevice(ctx, devLoop) before returning. To avoid duplicate code, maybe you can define cleanupFunc and execute it before returning witn err !\u003d nil (and expand it to include Unmount() before returning at the end).",
+      "revId": "b8384a055a80b70be730737dd1c805d9dc9368e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b8433a_638dc5bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T09:18:51Z",
+      "side": 1,
+      "message": "Oops, thanks!",
+      "parentUuid": "d0740014_3f352cb9",
       "revId": "b8384a055a80b70be730737dd1c805d9dc9368e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
