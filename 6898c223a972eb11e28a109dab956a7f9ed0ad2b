@@ -434,6 +434,30 @@
       },
       "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12958156_daa56f30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_drag_to_snap.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-26T21:27:23Z",
+      "side": 1,
+      "message": "I see, then as long as at L113 it doesn\u0027t start with captureSurfaceBottomRight then it should be fine.",
+      "parentUuid": "1805a362_0d9af21e",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 18
+      },
+      "revId": "6898c223a972eb11e28a109dab956a7f9ed0ad2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
