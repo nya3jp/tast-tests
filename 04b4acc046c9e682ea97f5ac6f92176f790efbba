@@ -16,6 +16,75 @@
       "message": "Hi Ahmed, Yichen and Alvin,\n\nCould you please help with the tast test review when you are available?\n\nThanks!",
       "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f2eb81_bc1d3823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-26T08:33:46Z",
+      "side": 1,
+      "message": "i think `the selfie cam\u0027s resize button` is better?wdyt?",
+      "range": {
+        "startLine": 26,
+        "startChar": 71,
+        "endLine": 26,
+        "endChar": 81
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffbf7d57_b562b929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-26T08:33:46Z",
+      "side": 1,
+      "message": "use cleanupCtx in clean up functions",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ae3c40_13301484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/capture_selfie_cam_resize_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-05-26T08:33:46Z",
+      "side": 1,
+      "message": "does this work? does the button disappear from the accessibility tree, or it just becomes invisible?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "04b4acc046c9e682ea97f5ac6f92176f790efbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
