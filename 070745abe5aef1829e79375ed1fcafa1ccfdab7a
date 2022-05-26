@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "070745abe5aef1829e79375ed1fcafa1ccfdab7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e16311c_d2f89402",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-05-26T00:31:21Z",
+      "side": 1,
+      "message": "hmm... Maybe we can launch it un-maximized. This looks like it only applies on portrait-only app.",
+      "revId": "070745abe5aef1829e79375ed1fcafa1ccfdab7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
