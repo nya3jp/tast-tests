@@ -111,6 +111,30 @@
       },
       "revId": "156205cd405993e7f2901d6fa641bf2da6290cbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1fb08ce_6e885f0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/sandboxed_services.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-05-26T20:59:23Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s running fine as far as I can tell.   I\u0027ve done the same testing you have described here:\nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3485554",
+      "parentUuid": "8e03cea8_61d464f1",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "156205cd405993e7f2901d6fa641bf2da6290cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
