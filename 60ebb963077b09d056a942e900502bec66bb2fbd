@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5365e8_6ba6b432",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-26T04:15:39Z",
+      "side": 1,
+      "message": "It seems that the false-negative flakiness of MyFiles mount check no longer exists thanks to crrev.com/c/3655844. I tried running arc.ExternalStorageDisabled.vm three times with reverting crrev.com/c/3650484 (the hard-coding patch) and they all failed.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "60ebb963077b09d056a942e900502bec66bb2fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
