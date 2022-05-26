@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98060f82_abe09915",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-26T15:02:08Z",
+      "side": 1,
+      "message": "That would be great! The only parts of this test that I think are interesting are:\n1. Casting Device.SelectedService correctly to get the associated Service (and confirming that Shill did indeed create one).\n2. Manager.PushTestProfile as a convenient helper for pushing and deferring a test profile pop.",
+      "parentUuid": "f7678fca_2b8221bd",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7181acd2_d26acfdd",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-05-26T03:47:51Z",
       "side": 1,
       "message": "Note that we are considering changing network interface autodetection in the future such that we have less name-based autodetection. For tests concretely this would mean calling systematically ClaimDevice / UnclaimDevice. For now this is fine to acknowledge these name patterns.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 88
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e6e24d8_17eca9b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-26T15:02:08Z",
+      "side": 1,
+      "message": "Ack. I should probably be clear that we are intentionally not using the \"veth\" prefix since here we *do* want Shill to manage the connection :-)",
+      "parentUuid": "7181acd2_d26acfdd",
       "range": {
         "startLine": 51,
         "startChar": 2,
@@ -84,6 +126,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a92c3f5_e7bc1b5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-26T15:02:08Z",
+      "side": 1,
+      "message": "I am happy to take specific suggestions (it wasn\u0027t clear to me whether you were suggesting \"ethernet\"? except IIUC we\u0027ll want to distinguish this from the existing \"ethernet\" Device), I\u0027ll take a closer look at what \"hostapdIface\" actually maps to, I just copied this from ethernet_8021x and inverted the name so that Shill wouldn\u0027t ignore it.",
+      "parentUuid": "ca7eca8c_15e8c443",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cd1c0d2_a32272f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 2
@@ -100,6 +166,53 @@
         "startChar": 46,
         "endLine": 101,
         "endChar": 69
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14b943cc_1aa24feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-26T15:02:08Z",
+      "side": 1,
+      "message": "Since this is a local test, I don\u0027t think that shouldn\u0027t matter: \n* If Shill crashes or the DUT reboots during the test, the test profile will not be reloaded.\n* Otherwise the defer function will remove the test profile.\n\nThere isn\u0027t any particular need to set the Priority in this particular test, I just wanted to verify that we could. (It\u0027s something we will eventually want to do to verify that a network in a captive portal state is lower priority than an online network, even if has a higher Priority).",
+      "parentUuid": "2cd1c0d2_a32272f7",
+      "range": {
+        "startLine": 101,
+        "startChar": 46,
+        "endLine": 101,
+        "endChar": 69
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6276e33_3518966e",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-26T15:02:08Z",
+      "side": 1,
+      "message": "DUT",
+      "range": {
+        "startLine": 442,
+        "startChar": 10,
+        "endLine": 442,
+        "endChar": 13
       },
       "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
