@@ -16,6 +16,8 @@ const (
 	VP8 Codec = "VP8"
 	// VP9 represents the VP9 codec.
 	VP9 Codec = "VP9"
+	// AV1 represents the AV1 codec.
+	AV1 Codec = "AV1"
 	// H264 represents the H.264 codec.
 	H264 Codec = "H264"
 )
