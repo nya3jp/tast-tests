@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e6259a3_135822d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-26T18:15:21Z",
+      "side": 1,
+      "message": "Sorry I am not fully understanding your question.\n\nSince all Type C ports support USB, but only some support USB4, I think typec conn should have a link to usb port, but may or may not have a link to usb4 port. If a typec conn has a link to usb4 port but not usb port, I think that would be an error. Would my understanding be correct?\n\nDo you think we should also keep track of usb4 ports found? or maybe not consider usb4 ports?",
+      "parentUuid": "0501084d_3ad7bcf8",
+      "range": {
+        "startLine": 55,
+        "startChar": 61,
+        "endLine": 55,
+        "endChar": 88
+      },
+      "revId": "caf9271f59ea8621b9099d07323b6c6fc79e84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b6d0fad_14f4a97c",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
         "patchSetId": 13
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-25T17:39:01Z",
       "side": 1,
       "message": "If we want to confirm the link is correct, shouldn\u0027t we check that what the |connector| points to is the same as the port we started from?",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "caf9271f59ea8621b9099d07323b6c6fc79e84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95abe1f3_de99fcd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-26T18:15:21Z",
+      "side": 1,
+      "message": "Right. Added a check if the absolute path is the same with the original typec port",
+      "parentUuid": "9b6d0fad_14f4a97c",
       "range": {
         "startLine": 107,
         "startChar": 10,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-25T17:39:01Z",
       "side": 1,
       "message": "Is regex overkill here? Why not Contains()? \n\nhttps://pkg.go.dev/strings#Contains\n\nIf you can use that:\n- the error handling is simplified\n- you can inline the entire thing instead of breaking out another function.",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 74
+      },
+      "revId": "caf9271f59ea8621b9099d07323b6c6fc79e84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e76ca04_7e516b62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-26T18:15:21Z",
+      "side": 1,
+      "message": "Changed to use `strings.Contains` and moved into `checkUsbPortDir`",
+      "parentUuid": "bd8a9d9c_6eefe3a3",
       "range": {
         "startLine": 121,
         "startChar": 1,
