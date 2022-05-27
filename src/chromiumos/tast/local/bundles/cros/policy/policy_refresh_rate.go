@@ -88,7 +88,7 @@ func PolicyRefreshRate(ctx context.Context, s *testing.State) { // NOLINT "Polic
 			defer conn.Close()
 
 			var refreshValue string
-			if err := conn.Eval(ctx, `document.querySelector("#status-box-container .refresh-interval").innerText`, &refreshValue); err != nil {
+			if err := conn.Eval(ctx, `getRefreshIntervalEl().innerText`, &refreshValue); err != nil {
 				s.Fatal("Could not read policy page: ", err)
 			}
 			// Check the refresh value.
