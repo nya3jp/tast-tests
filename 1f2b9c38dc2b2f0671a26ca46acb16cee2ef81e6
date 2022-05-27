@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3f17b4e_f942e504",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/util/updatelib.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-05-27T03:17:37Z",
+      "side": 1,
+      "message": "one drama with that is that we then can\u0027t propagate rollback errors to the test level without bringing in the test the state dependency which tast folks are generally not happy with. given that this is supposed to be superseded by autoupdate fixture to reset the state in between the tests, is this really necessary to overcomplicate the current state until that is ready?",
+      "parentUuid": "0479b716_f61a4440",
+      "range": {
+        "startLine": 145,
+        "startChar": 20,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "1f2b9c38dc2b2f0671a26ca46acb16cee2ef81e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1523d88b_92dc579a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/util/updatelib.go",
         "patchSetId": 1
