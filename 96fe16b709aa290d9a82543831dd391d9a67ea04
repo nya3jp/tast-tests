@@ -70,6 +70,30 @@
       },
       "revId": "96fe16b709aa290d9a82543831dd391d9a67ea04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da845a15_dffef62d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-27T09:58:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f40f2c_68cb99b7",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "96fe16b709aa290d9a82543831dd391d9a67ea04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
