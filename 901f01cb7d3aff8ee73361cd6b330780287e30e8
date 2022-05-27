@@ -16,6 +16,24 @@
       "message": "Is there a way to quickly enable src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go test instead of making an illusion that it works?",
       "revId": "901f01cb7d3aff8ee73361cd6b330780287e30e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e238deba_e8886efb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-27T16:34:27Z",
+      "side": 1,
+      "message": "Unfortunately it doesn\u0027t look like it. We\u0027re working on a replacement but the entire user interface changed and the behavior to verify has new UX.",
+      "parentUuid": "ae16c856_8f11d915",
+      "revId": "901f01cb7d3aff8ee73361cd6b330780287e30e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
