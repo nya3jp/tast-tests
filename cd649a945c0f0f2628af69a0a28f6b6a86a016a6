@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b060b8c_a610fa18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-05-27T18:30:29Z",
+      "side": 1,
+      "message": "You forgot to remove the informational attr, before starting the dry-run.",
+      "range": {
+        "startLine": 39,
+        "startChar": 44,
+        "endLine": 39,
+        "endChar": 57
+      },
+      "revId": "cd649a945c0f0f2628af69a0a28f6b6a86a016a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
