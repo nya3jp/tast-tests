@@ -36,7 +36,7 @@ func init() {
 			"chromeos-commercial-identity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
 		Fixture:      fixture.FakeDMS,
 	})
@@ -107,7 +107,7 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
 		s.Error("Failed to get the website title: ", err)
 	}
-	if strings.Contains(websiteTitle, "401") {
+	if !strings.Contains(websiteTitle, "401") {
 		s.Error("Website title did not contain error 401")
 	}
 
