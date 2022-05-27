@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "779d9ca9_a7b3095f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu_video_editing_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-27T02:05:15Z",
+      "side": 1,
+      "message": "Because our case will indicate the level of each case, but I think it can be added when necessary.\nThanks for noticing this.",
+      "parentUuid": "01f78190_a700ad01",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "a5911265b2c4543d09fdadf37b75238c28142cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e0ce624_9a6abef2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-27T00:33:39Z",
       "side": 1,
       "message": "you don\u0027t need to break this long string.",
+      "range": {
+        "startLine": 39,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 84
+      },
+      "revId": "a5911265b2c4543d09fdadf37b75238c28142cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6ed1c6_d847c025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-27T02:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0ce624_9a6abef2",
       "range": {
         "startLine": 39,
         "startChar": 19,

@@ -22,6 +22,30 @@
       },
       "revId": "96fe16b709aa290d9a82543831dd391d9a67ea04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81b0de9_b20d4588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-27T02:05:15Z",
+      "side": 1,
+      "message": "Thanks for your advice.\nI don\u0027t think it\u0027s good to do this and it will cause a lot of code duplication.",
+      "parentUuid": "04415f3d_dfabd2fa",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "96fe16b709aa290d9a82543831dd391d9a67ea04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
