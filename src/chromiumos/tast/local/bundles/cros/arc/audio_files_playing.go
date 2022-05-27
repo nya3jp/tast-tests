@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/arc/apputil/vlc"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
@@ -39,11 +40,12 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Play audio files via ARC++ app VLC player and verifies audio volume level is changed based on volume controls",
 		Contacts:     []string{"ting.chen@cienet.com", "alfredyu@cienet.com", "cienet-development@googlegroups.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// Purposely leave the empty Attr here. MTBF tests are not included in mainline or crosbolt for now.
+		Attr:         []string{},
 		Data:         []string{"format_m4a.m4a", "format_mp3.mp3", "format_ogg.ogg", "format_wav.wav"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "arc"},
 		Fixture:      mtbf.LoginReuseFixture,
-		Timeout:      10 * time.Minute,
+		Timeout:      5*time.Minute + apputil.InstallationTimeout,
 	})
 }
 

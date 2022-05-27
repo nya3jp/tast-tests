@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/arc/apputil/voicerecorder"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -22,10 +23,11 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Records audio via ARC++ app Voice Recorder and verifies that it can playback the recorded audio file",
 		Contacts:     []string{"sun.tsai@cienet.com", "alfredyu@cienet.com", "cienet-development@googlegroups.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// Purposely leave the empty Attr here. MTBF tests are not included in mainline or crosbolt for now.
+		Attr:         []string{},
 		SoftwareDeps: []string{"chrome", "arc"},
 		Fixture:      mtbf.LoginReuseFixture,
-		Timeout:      5 * time.Minute,
+		Timeout:      3*time.Minute + apputil.InstallationTimeout,
 	})
 }
 
