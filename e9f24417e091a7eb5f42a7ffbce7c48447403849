@@ -39,6 +39,30 @@
       },
       "revId": "e9f24417e091a7eb5f42a7ffbce7c48447403849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adbf2460_e29252f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-05-27T21:24:04Z",
+      "side": 1,
+      "message": "I would prefer to separate them as they perform separate tasks (not like a serial of steps to make up a task). It would be easier to read and debug if a failure happens as we know immediately the reason due to setting default avatar or setting avatar from camera. There is a topic in Tast Chatty Users discussing when to use uiauto.Combine too.",
+      "parentUuid": "1bae518b_d4db4189",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "e9f24417e091a7eb5f42a7ffbce7c48447403849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
