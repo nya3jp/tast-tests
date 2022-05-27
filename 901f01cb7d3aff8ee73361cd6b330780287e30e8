@@ -34,6 +34,24 @@
       "parentUuid": "ae16c856_8f11d915",
       "revId": "901f01cb7d3aff8ee73361cd6b330780287e30e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add7b0a4_dd4f7636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-05-27T17:34:38Z",
+      "side": 1,
+      "message": "I will say in the meantime that the underlying C++ code that implements the policy restriction on user avatar is unchanged. The difference is all in the user interface. We\u0027re working on other tast tests right now but plan to rewrite this one shortly: b/230901276",
+      "parentUuid": "e238deba_e8886efb",
+      "revId": "901f01cb7d3aff8ee73361cd6b330780287e30e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
