@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f73435_decc65e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "You can check which element has focus, but this test won\u0027t work. The test accounts are randomly pulled from a pool. You don\u0027t know if the initial color is going to be magenta (default) or blue from a previous test run on the same account.",
+      "parentUuid": "cd9a60eb_3cbfc4ec",
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "948747f1_de95260f",
@@ -82,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2850ced8_ab201ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "Done. The \"ondevice_speech\" software dependency was what I was looking for! Now this test only runs on devices with SODA installed, and skips the test otherwise, so we can test the prod flow. We don\u0027t need to test with --projector-extended-features-disabled because this flag isn\u0027t used in prod. The transcription would include whatever random noise is happening in the sky lab. I\u0027m testing the transcript separately in the downstream CL crrev.com/c/3611299 with a shared screencast that has a pre-generated transcript.",
+      "parentUuid": "092e1268_17cfc2d9",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d241a1d7_05628dc2",
@@ -95,6 +137,30 @@
       "writtenOn": "2022-05-25T01:33:55Z",
       "side": 1,
       "message": "nit: rename to something more descriptive.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57ba93e3_87c48609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "Done, renamed to clickAnywhereToRecord.",
+      "parentUuid": "d241a1d7_05628dc2",
       "range": {
         "startLine": 51,
         "startChar": 1,
@@ -128,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef56a0a6_f56b3d22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e5fba4f_1c807256",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a016246d_0d548ec8",
@@ -141,6 +231,30 @@
       "writtenOn": "2022-05-25T01:33:55Z",
       "side": 1,
       "message": "I am curious about why we need this.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f33e2b4_20005e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "It helps to maximize the app so that it displays consistently across devices with different screen sizes, to reduce flakiness. I added a comment.",
+      "parentUuid": "a016246d_0d548ec8",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -174,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b689de_48eb10e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "959e2471_232c0814",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 24
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c51eb3c5_6f380a39",
@@ -187,6 +325,30 @@
       "writtenOn": "2022-05-25T01:33:55Z",
       "side": 1,
       "message": "nit: Disable annotator.",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eec5e69_12e50fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c51eb3c5_6f380a39",
       "range": {
         "startLine": 91,
         "startChar": 5,
@@ -220,6 +382,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34cd1292_06c9a454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "Done. I added a one second interval in between clicks, so the test doesn\u0027t spam the button too quickly. See go/tast-codelab-3 for a similar approach. The risk of turning the annotator back on is low because this function clicks the button, then checks if the ink canvas is gone, and only tries again if the ink canvas is still there.",
+      "parentUuid": "e15953c8_9be87e18",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 57
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03c4c27f_7ebeebbc",
@@ -233,6 +419,30 @@
       "writtenOn": "2022-05-25T01:33:55Z",
       "side": 1,
       "message": "Can we verify that Projector App is opened/maximized?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 71
+      },
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61451be_0a507dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "Done. I am indirectly verifying that the Projector app maximized after we finished recording by trying to delete the screencast item that we just created. We must do this to prevent taking up Drive quota on these test accounts over time. I couldn\u0027t figure out a way to mock DriveFS, so I\u0027m testing the prod flow instead. I think it\u0027s better to test the prod flow than a mock service. If you look at this Tast test [1], for example, they create a new DriveFS item and delete it within the same test.\n\n[1] src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_google_doc.go",
+      "parentUuid": "03c4c27f_7ebeebbc",
       "range": {
         "startLine": 103,
         "startChar": 0,

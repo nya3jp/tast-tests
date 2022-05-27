@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74604253_cee97e8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-05-27T18:29:18Z",
+      "side": 1,
+      "message": "Thanks for the reviews. @llin, I tried diffing the entire UI tree after enabling and disabling annotator mode. The cursor doesn\u0027t appear anywhere in the UI tree. Since Tast is built around the UI tree, I don\u0027t think it\u0027s possible to verify that the cursor changes in annotator mode through Tast (unless we add a scuba test and check pixels). The best I can do is verify that the ink canvas appears in the UI tree.",
+      "revId": "05c3b56e5616fef3363f55b973519f452abe277a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
