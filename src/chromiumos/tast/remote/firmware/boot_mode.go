@@ -542,10 +542,15 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		switch h.Config.ModeSwitcherType {
 		case KeyboardDevSwitcher:
-			// 1. Sleep for [FirmwareScreen] seconds.
-			// 2. Press enter.
-			// 3. Sleep for [KeypressDelay] seconds.
-			// 4. Press enter.
+			// Press both SPACE and ENTER so that we can handle both with and without ENTER_TRIGGERS_TONORM, and the menu UI which doesn't use SPACE.
+			testing.ContextLog(ctx, "Pressing SPACE")
+			if err := h.Servo.PressKey(ctx, " ", servo.DurTab); err != nil {
+				return errors.Wrap(err, "pressing SPACE on firmware screen while disabling dev mode")
+			}
+			testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
+			if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
+				return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
+			}
 			testing.ContextLog(ctx, "Pressing ENTER")
 			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
 				return errors.Wrap(err, "pressing Enter on firmware screen while disabling dev mode")
