@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff8dfa69_c6593bd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-27T21:27:03Z",
+      "side": 1,
+      "message": "I think it should be able to run on any lab DUT as long as a servo is connected. Can you clarify what do you mean by what is the basic setup for DUT? Thanks!",
+      "parentUuid": "f33a104d_28545466",
+      "revId": "7e9ad2bf1a4d1a6be4bfc36e650c744c81a5458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41b7fc1e_ae949200",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-27T17:15:23Z",
       "side": 1,
       "message": "Which one is servo v4p1? Should there be a check? \n\nIn the lab, there are multiple servo\nservo 3.x\nservo 4.0  No usb mux port.\nservo 4.1",
+      "range": {
+        "startLine": 141,
+        "startChar": 32,
+        "endLine": 141,
+        "endChar": 41
+      },
+      "revId": "7e9ad2bf1a4d1a6be4bfc36e650c744c81a5458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a338deea_a4eef326",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/external_usb_stress.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-05-27T21:27:03Z",
+      "side": 1,
+      "message": "If a servo does not have a usb mux and setting a mux state does not work, I think no usb connection can be detected in line 64. What do you think about initially checking the usb device list when the mux is USBMuxDUT and USBMuxHost to determine if mux can be used to simulate usb connect/disconnect? Would this cover the cases of no mux in the servo?",
+      "parentUuid": "41b7fc1e_ae949200",
       "range": {
         "startLine": 141,
         "startChar": 32,
