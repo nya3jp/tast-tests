@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9898ba7_ac67d462",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003044
+      },
+      "writtenOn": "2022-05-27T07:27:07Z",
+      "side": 1,
+      "message": "Wasn\u0027t sure if the other CLs that landed at the same time need to be reverted together but it didn\u0027t look like it.\n\nhidehiko@/edcourney@/neis@ - wdyt about landing this first while other investigations go on?",
+      "revId": "9c8183ff32517401f3276339ed16767f3020eb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
