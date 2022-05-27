@@ -57,7 +57,7 @@ func multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 // RunClamShell runs window arrangement cuj for clamshell. We test performance
 // for resizing window, dragging window, maximizing window, minimizing window
 // and split view resizing.
-func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, act *arc.Activity, withTestVideo arc.ActivityStartOption) error {
+func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, act *arc.Activity, withTestVideo arc.ActivityStartOption) (retErr error) {
 	const (
 		timeout  = 10 * time.Second
 		duration = 2 * time.Second
@@ -220,7 +220,11 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	if err != nil {
 		return errors.Wrap(err, "failed to open the keyboard")
 	}
-	defer kw.Close()
+	defer func() {
+		if err := kw.Close(); retErr == nil && err != nil {
+			retErr = errors.Wrap(err, "failed to close the keyboard")
+		}
+	}()
 	// Enter the overview mode.
 	topRow, err := input.KeyboardTopRowLayout(ctx, kw)
 	if err != nil {
@@ -234,7 +238,11 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to create a new desk")
 	}
-	defer ash.CleanUpDesks(closeCtx, tconn)
+	defer func() {
+		if err := ash.CleanUpDesks(closeCtx, tconn); retErr == nil && err != nil {
+			retErr = errors.Wrap(err, "failed to clean up desks")
+		}
+	}()
 	// Wait for location-change events to be completed.
 	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
@@ -298,7 +306,11 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	}
 	// Close the ARC app at the end of the test. Otherwise it will cause
 	// the test server's Close() function to block for a few minutes.
-	defer act.Stop(closeCtx, tconn)
+	defer func() {
+		if err := act.Stop(closeCtx, tconn); retErr == nil && err != nil {
+			retErr = errors.Wrap(err, "failed to close the ARC app")
+		}
+	}()
 	// Use Alt+] to snap the ARC app on the right.
 	if err := kw.AccelAction("Alt+]")(ctx); err != nil {
 		return errors.Wrap(err, "failed to press Alt+] to snap the ARC app on the right")
