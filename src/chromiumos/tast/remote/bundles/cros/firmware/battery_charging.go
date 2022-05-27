@@ -75,6 +75,16 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to reconnect to DUT: ", err)
 		}
 
+		// Stainless results showed that after setting dut power off, charger
+		// was still attached to some duts. For debugging purposes, check whether
+		// servo has reported false information about its control over pd role.
+		hasControl, err := h.Servo.HasControl(ctx, string(servo.PDRole))
+		if err != nil {
+			s.Fatal("Failed to check for control: ", err)
+		} else if hasControl && servoType == "type-a" {
+			s.Log("Servo reported that it has control on pd role for Type-A")
+		}
+
 		// Verify that DUT's charger was plugged/unplugged as expected.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			currentCharger, err := h.Servo.GetChargerAttached(ctx)
@@ -106,9 +116,9 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 				return errors.Wrap(err, "failed to sleep")
 			}
-			// Check for DUT in S0ix or S3 powerstates.
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0ix", "S3"); err != nil {
-				return errors.Wrap(err, "failed to get powerstates at S0ix or S3")
+			// Check for DUT in S0ix, S3, S5, and G3 powerstates.
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0ix", "S3", "S5", "G3"); err != nil {
+				return errors.Wrap(err, "failed to get powerstates at S0ix, S3, S5, or G3")
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 3 * time.Minute}); err != nil {
