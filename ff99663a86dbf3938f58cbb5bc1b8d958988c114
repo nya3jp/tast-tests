@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff909bf8_9385760c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:15Z",
+      "side": 1,
+      "message": "Please review.",
+      "revId": "ff99663a86dbf3938f58cbb5bc1b8d958988c114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "285c24c5_cbab970f",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-05-23T16:55:53Z",
       "side": 1,
       "message": "Why do we need backward compatible versions? Is it still used in some code?",
+      "revId": "ff99663a86dbf3938f58cbb5bc1b8d958988c114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86f0a1ff_fddd6438",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:15Z",
+      "side": 1,
+      "message": "In 14 files. I prefer to keep a smaller footprint for this change and deprecate the old functions, otherwise merging this change will be a rather bad experience of perpetual conflict resolution. I could cleanup the uses after the primary patchset is merged (hoping people will respect the deprecated note).",
+      "parentUuid": "285c24c5_cbab970f",
       "revId": "ff99663a86dbf3938f58cbb5bc1b8d958988c114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +151,24 @@
       "writtenOn": "2022-05-23T16:55:53Z",
       "side": 1,
       "message": "This function is not marked as Deprecated",
+      "revId": "ff99663a86dbf3938f58cbb5bc1b8d958988c114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c58339_22fb0e56",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a08211a3_799a67f9",
       "revId": "ff99663a86dbf3938f58cbb5bc1b8d958988c114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
