@@ -7,6 +7,9 @@ package crastestclient
 
 import (
 	"context"
+	"os"
+	"os/exec"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -285,4 +288,22 @@ func dumpActiveStreams(ctx context.Context) ([]StreamInfo, error) {
 		streams = append(streams, *stream)
 	}
 	return streams, nil
+}
+
+// DumpAudioDiagnostics dumps audio diagnostics into the given dir.
+func DumpAudioDiagnostics(dir string) error {
+	path := filepath.Join(dir, "audio_diagnostics.txt")
+	f, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	cmd := exec.Command("audio_diagnostics")
+	cmd.Stdout = f
+	err = cmd.Run()
+	if err != nil {
+		return err
+	}
+	return nil
 }
