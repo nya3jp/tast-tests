@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4335cc5_2a544321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-27T00:09:49Z",
+      "side": 1,
+      "message": "It is fine in that case.\n\nJust curious, what is the reason why you want to log the actions? As the general guide for logging in Tast is only to log in case of errors.",
+      "parentUuid": "4d722936_2798c4ac",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62acc8a3_a6e1217c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
         "patchSetId": 3
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "62acc8a3_a6e1217c",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21871ac_483fb058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-27T00:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7321ce71_bae1feec",
       "range": {
         "startLine": 104,
         "startChar": 1,
@@ -214,6 +262,30 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "5f90ed3f_4a46f9a9",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 32
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09162aa3_4711f9bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-27T00:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eddf27bd_dada5598",
       "range": {
         "startLine": 112,
         "startChar": 2,
@@ -355,6 +427,30 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "5b471c84_c4f177ec",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 38
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd6251dc_37029d37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-27T00:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f617a77_42a823b2",
       "range": {
         "startLine": 135,
         "startChar": 8,
@@ -553,6 +649,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c4e239_e94b343c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-27T00:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ddc72952_06cfa676",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 20
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a67e14e1_26dad681",
@@ -637,6 +757,30 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "7869496b_5d167dca",
+      "range": {
+        "startLine": 161,
+        "startChar": 14,
+        "endLine": 161,
+        "endChar": 46
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "277cffde_aad31ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-27T00:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a1952fc_b7151ade",
       "range": {
         "startLine": 161,
         "startChar": 14,
@@ -778,6 +922,30 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "6ea86222_4ee7b1c4",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 215,
+        "endChar": 38
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b34eced_b1f3dffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-27T00:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eff96478_6d5f52f4",
       "range": {
         "startLine": 215,
         "startChar": 8,
