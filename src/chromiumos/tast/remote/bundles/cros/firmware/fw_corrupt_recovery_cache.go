@@ -24,7 +24,8 @@ func init() {
 		Func:        FWCorruptRecoveryCache,
 		Desc:        "Corrupt recovery cache and then check it's rebuilt",
 		Contacts:    []string{"js@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:        []string{"group:firmware", "firmware_unstable"},
+		// TODO(b/194907751): Add back to firmware_unstable once this test actually works.
+		Attr:         []string{},
 		Fixture:     fixture.DevModeGBB,
 		Timeout:     20 * time.Minute,
 		ServiceDeps: []string{"tast.cros.firmware.BiosService"},
