@@ -7,6 +7,8 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -108,6 +110,7 @@ func ResizeBackupRestore(ctx context.Context, s *testing.State) {
 
 	const (
 		backupFileBaseName = "test-backup"
+		backupFileName     = backupFileBaseName + ".tini"
 		existingFile       = "./existing.txt"
 		existingFileStr    = "This file should be captured in the checksum, deleted after backup, then restored."
 		checksumPreFile    = "/tmp/checksum_pre.txt"
@@ -153,10 +156,18 @@ func ResizeBackupRestore(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to left click backup Save button: ", err)
 	}
 
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users MyFiles path: ", err)
+	}
+
 	ui := uiauto.New(tconn)
 	if err = ui.WithTimeout(5 * time.Minute).WaitUntilExists(settings.BackupNotification)(ctx); err != nil {
 		s.Fatal("Backup complete notification not found: ", err)
 	}
+
+	backupFilePath := filepath.Join(myFilesPath, backupFileName)
+	defer os.Remove(backupFilePath)
 
 	// Log a listing of dir.
 	logFiles := func(dir string) {
