@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33a104d_28545466",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-05-27T17:15:23Z",
+      "side": 1,
+      "message": "What is the basic setup for the DUT?  Can this test running on any main lab DUT? Or does it require customized setup?\n \nWe can sync up on this.",
+      "revId": "7e9ad2bf1a4d1a6be4bfc36e650c744c81a5458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b7fc1e_ae949200",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/external_usb_stress.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-05-27T17:15:23Z",
+      "side": 1,
+      "message": "Which one is servo v4p1? Should there be a check? \n\nIn the lab, there are multiple servo\nservo 3.x\nservo 4.0  No usb mux port.\nservo 4.1",
+      "range": {
+        "startLine": 141,
+        "startChar": 32,
+        "endLine": 141,
+        "endChar": 41
+      },
+      "revId": "7e9ad2bf1a4d1a6be4bfc36e650c744c81a5458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
