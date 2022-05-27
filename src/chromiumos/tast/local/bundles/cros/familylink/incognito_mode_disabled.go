@@ -22,14 +22,19 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IncognitoModeDisabled,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests that incognito mode is disabled for Unicorn users",
 		Contacts: []string{
 			"tobyhuang@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
-		Fixture:      "familyLinkUnicornLogin",
+		Params: []testing.Param{{
+			Fixture: "familyLinkUnicornLogin",
+		}, {
+			Name:    "lacros",
+			Fixture: "familyLinkUnicornLoginWithLacros",
+		}},
 	})
 }
 
@@ -40,8 +45,8 @@ func IncognitoModeDisabled(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// Get the expected browser.
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	// Get the primary browser.
+	chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
 		s.Fatal("Could not find the Chrome app: ", err)
 	}
