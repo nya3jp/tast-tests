@@ -36,7 +36,7 @@ func AllGBBFlags() []pb.GBBFlag {
 
 // FAFTGBBFlags returns the flags that faft sets in firmware_test.py before starting a test.
 func FAFTGBBFlags() []pb.GBBFlag {
-	return []pb.GBBFlag{pb.GBBFlag_FAFT_KEY_OVERIDE, pb.GBBFlag_ENTER_TRIGGERS_TONORM}
+	return []pb.GBBFlag{pb.GBBFlag_RUNNING_FAFT, pb.GBBFlag_ENTER_TRIGGERS_TONORM}
 }
 
 // RebootRequiredGBBFlags returns flags that require a DUT reboot after they are changed.
