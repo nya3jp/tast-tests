@@ -110,6 +110,30 @@
       },
       "revId": "86c69ab3d0ab800c4d7a26acb6bd1df2f5efb261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e396d0_0cbf29fa",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-05-27T02:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd056526_7c4f5257",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 422,
+        "endChar": 0
+      },
+      "revId": "86c69ab3d0ab800c4d7a26acb6bd1df2f5efb261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
