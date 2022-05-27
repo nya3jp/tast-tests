@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d17538_ec49fc74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-27T00:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11c49993_3fe4159e",
+      "range": {
+        "startLine": 119,
+        "startChar": 54,
+        "endLine": 119,
+        "endChar": 59
+      },
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d317726_bfae4327",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cf607c7_9246fe1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-27T00:17:52Z",
+      "side": 1,
+      "message": "Thanks! I simply followed how it was done in [setUpAndroidPort in arc.DownloadManager](https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/download_manager.go;l\u003d206;drc\u003d9677100dfec835b6acaec920dcdd29e4b27a9a28) here so I don\u0027t have strong opinion about it.",
+      "parentUuid": "3d317726_bfae4327",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 70
+      },
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c42fe1fa_400fbda4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
         "patchSetId": 10
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-26T13:18:22Z",
       "side": 1,
       "message": "M",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef94f3e_896c00b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-27T00:17:52Z",
+      "side": 1,
+      "message": "Done (Oops, sorry...)",
+      "parentUuid": "c42fe1fa_400fbda4",
       "range": {
         "startLine": 145,
         "startChar": 4,
