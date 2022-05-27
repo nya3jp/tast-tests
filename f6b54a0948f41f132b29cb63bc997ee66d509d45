@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c7307e_8aafa5ec",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "ACK\n`run()` could be used but not exported. That would save some code.",
+      "parentUuid": "22d6878d_2947e0b1",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2485bd38_431eaabe",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "+1\n\nnit: I think you can have other two functions ScanResults() which returns the scan results and WaitForNetwork/Results() whcih polls for scan results with reasonable timeout.",
       "parentUuid": "e7f85432_e9ae00c4",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316eaced_87b3c036",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "OK, so it seems I cannot poll events in the command mode and handling interactive mode is too big canon to kill a fly (and defies the purpose of checking if command mode works).\nI will satisfy myself of only checking CLI ping.",
+      "parentUuid": "a8002508_d5733ecc",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0099ce78_4fc6dfe2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "It\u0027s defined in dependencies for this CL. Pico6 already has issues so I\u0027m disabling it until it\u0027s stable.",
+      "parentUuid": "774a9d21_5d703104",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60fa7c82_10e48006",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 7
@@ -137,6 +191,24 @@
       "writtenOn": "2022-05-23T21:02:39Z",
       "side": 1,
       "message": "Update name style:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests\n\nExample:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_reason.go;rcl\u003d18b3ce28df8b9c159bf49a40b78fb9583608d3a1;l\u003d58",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec28b40f_3df6f5b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "tdlsTestcase.name is a different beast than Param.Name, but I could use the same notation.",
+      "parentUuid": "60fa7c82_10e48006",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +249,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08194549_12da96aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "I think I\u0027ve already answered this before, but I might be wrong: I purposefully want to have `g` mode, not `n` (I\u0027ve already found one host transmitting in \"n\" mode to AP after the TDLS Setup negotiation). Thus I cannot use DefaultOptions (or reset it later, which defies the purpose).",
+      "parentUuid": "3307bd91_b70d6405",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beba4cb6_cdd79097",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 7
@@ -188,6 +278,24 @@
       "writtenOn": "2022-05-23T21:02:39Z",
       "side": 1,
       "message": "I am confused. What is the purpose of this step? IIUC, at this point the two DUTs should be connected to the same AP and the TDLS link can be created. Is it possible to verify the functionality of all these commands [1] using test scenarios instead? such as:\n1- Discover\n2- Setup\n3- Verify connection using ping command + pCap to track traffic\n4- Teardown\n\nWDYT?\n\n[1]:\n```\n  tdls_discover \u003caddr\u003e\n  tdls_setup \u003caddr\u003e\n  tdls_teardown \u003caddr\u003e\n  tdls_link_status \u003caddr\u003e\n  tdls_chan_switch \u003caddr\u003e \n  tdls_cancel_chan_switch \u003caddr\u003e\n```",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d1023e_1afe2bc5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "This is for two reasons:\n1) this is obviously leftover from earlier implementations where I setup peer host manually, not through the fixture. However I decided to leave it, because:\n2) I\u0027m trying purposefully not to kill two birds with one stone, I start from testing the facility I will be using later for the main test. Too many times in the tast tests I\u0027ve managed to trigger unwanted errors in the tools I assume would work. Thus I want to make sure any issues I find later on in the main test will be really related to the main topic of the test. I could use CLI ping for that, but I\u0027m using scan instead.\n\nAs to the commands:\nSetup/Teardown is in the next patch.\nI could indeed test links status CLI command, but I think this is rather an internal tool, there\u0027s no associated network traffic. That would rather have no purpose for AVL (WDYT?)\nAnd I have yet to find devices with Channel Switch support declared by the driver. We don\u0027t have this in MVP, only in P2 (in unreviewed requirements).",
+      "parentUuid": "beba4cb6_cdd79097",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -209,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab46b28_efa5236d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "Or I could use a dedicated function from `iw` package.... ;)",
+      "parentUuid": "4434cef6_58f128b7",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12bd66af_61d23352",
@@ -222,6 +348,30 @@
       "writtenOn": "2022-05-23T09:48:12Z",
       "side": 1,
       "message": "I obviously messed up the directions :facepalm:",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 4
+      },
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236c1ac3_912c2081",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12bd66af_61d23352",
       "range": {
         "startLine": 211,
         "startChar": 3,
@@ -267,6 +417,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec11c6c_63738e6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffc93851_84a9ca42",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aac9ce7f_31a17f4b",
@@ -284,6 +452,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefd3491_51f872ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "Function removed entirely.",
+      "parentUuid": "aac9ce7f_31a17f4b",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "808e82cc_afa40cfa",
@@ -297,6 +483,24 @@
       "writtenOn": "2022-05-23T21:02:39Z",
       "side": 1,
       "message": "Same as line 26",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "138ca006_2277b26e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "Function removed.",
+      "parentUuid": "808e82cc_afa40cfa",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -332,6 +536,24 @@
       "side": 1,
       "message": "In theory, yes. In practice I don\u0027t quite believe two phys of the same modem would have a different set of features. And ChromeOS doesn\u0027t support multiple modems AFAIK.\n\nI can only check phys[0]",
       "parentUuid": "cc9c2960_5cc85570",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effe2601_f77c9ea5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ff058eb_2f56614f",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

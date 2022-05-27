@@ -249,6 +249,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a27cac1b_30b06ad7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:38Z",
+      "side": 1,
+      "message": "Just want to make sure: you want me to remove this function pointer, so it could be brought back in the next commit in the patchset?\n\nI thought I could use one design for multiple patches, not re-design the test for each one. This probably needs more explicit comment in the code from my side.",
+      "parentUuid": "240ce9e5_33aa351b",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c1822cb_6ff33177",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 4
