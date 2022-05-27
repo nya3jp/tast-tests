@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ebfa910_1dabc188",
+        "filename": "src/chromiumos/tast/local/perf/zram_info_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-27T16:19:24Z",
+      "side": 1,
+      "message": "Ah, tricky grammar. Done.",
+      "parentUuid": "7adf0998_d8473f34",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "2a9fb61d06cfe5beea986ed61bd665caf1258d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e76ca2cb_5928b69b",
         "filename": "src/chromiumos/tast/local/perf/zram_info_tracker.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-27T15:54:14Z",
       "side": 1,
       "message": "This doesn\u0027t need to be a member variable either right? It\u0027s just t.stats[zramMmStatMaxIndex], right? it can be a temporary in this function i believe",
+      "range": {
+        "startLine": 138,
+        "startChar": 65,
+        "endLine": 138,
+        "endChar": 82
+      },
+      "revId": "2a9fb61d06cfe5beea986ed61bd665caf1258d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caffd414_880fe95a",
+        "filename": "src/chromiumos/tast/local/perf/zram_info_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-27T16:19:24Z",
+      "side": 1,
+      "message": "My current implementation doesn\u0027t actually define t.stats until we run Stop(). In Start() I just define t.memUsedMaxStart since that\u0027s the only value we compare. \n\nWe could potentially also define t.stats in Start(), but I thought we wouldn\u0027t want consumers of ZramInfoTracker to try accessing t.stats before we run Stop(), because that might lead to ambiguity in what the t.stats value is actually holding at any given time.",
+      "parentUuid": "e76ca2cb_5928b69b",
       "range": {
         "startLine": 138,
         "startChar": 65,
