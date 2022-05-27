@@ -16,6 +16,29 @@
       "message": "Please review again, I when rebasing I found out that the second common_metrics file does not redefine the metrics anymore, so I removed my changes there. ",
       "revId": "b44b4d50e8be1f496cd3bf48f62ee756e0855da7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80183c1e_9eb2bba0",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-27T16:00:34Z",
+      "side": 1,
+      "message": "I think Alex wants to get rid of these",
+      "range": {
+        "startLine": 78,
+        "startChar": 93,
+        "endLine": 78,
+        "endChar": 104
+      },
+      "revId": "b44b4d50e8be1f496cd3bf48f62ee756e0855da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
