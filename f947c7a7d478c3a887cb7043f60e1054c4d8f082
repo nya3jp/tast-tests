@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d74af602_11d27d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-27T20:47:30Z",
+      "side": 1,
+      "message": "I see what you mean. So to cover this corner case, I get time Now() twice, one before calendar view is rendered and another one after the calendar view is rendered. If time doesn\u0027t change we used the first one, if it changed we use the second one. See change in the latest patch :]",
+      "parentUuid": "35071c3e_bcb82c4c",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 68
+      },
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8f8c317_42f05fb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
         "patchSetId": 4
@@ -190,6 +214,24 @@
       "side": 1,
       "message": "See my other reply, so there\u0027s no chance that previous year is 2022 if the current year is 2022, otherwise it\u0027s a bug and we should catch it.",
       "parentUuid": "b8f8c317_42f05fb9",
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ed1e0b3_2d8acd38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-27T20:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38950b3e_5a79cc01",
       "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -229,6 +271,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de91f7d1_68628c9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-27T20:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e4203b1_2414fb0f",
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8c4ea91_929208a7",
@@ -260,6 +320,24 @@
       "side": 1,
       "message": "same here.",
       "parentUuid": "b8c4ea91_929208a7",
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc4c8fa6_7b2da7a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/show_events.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-05-27T20:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28115470_8f985c22",
       "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
