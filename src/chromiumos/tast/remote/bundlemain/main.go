@@ -78,7 +78,7 @@ func hwsecCheckTPMState(ctx context.Context, s *testing.TestHookState, origStatu
 	}
 
 	// We didn't expect the TPM is owned but doesn't have the permission to reset DA counter.
-	if status.IsOwned && !status.HasResetLockPermissions {
+	if status.IsOwned && !status.HasResetLockPermissions && status.IsOwnerPasswordPresent {
 		testing.ContextLog(ctx, "TPM is owned but doesn't have the permission to reset DA counter")
 		// But don't failed the tast if it's not cause by this tast.
 		if origStatus == nil || !origStatus.IsOwned || origStatus.HasResetLockPermissions {
