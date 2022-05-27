@@ -16,6 +16,24 @@
       "message": "Unfortunately we need to be fairly strict on the pass rate.  Looking at the pattern of failures you may be able to get it high enough by excluding certain boards/models.\n\nSee Crostini tast tests for how these have been split into stable/unstable tests, with stable boards marked critical, and unstable boards informational.\n\nIt looks like there are several boards that are 100% passing, so this is probably a good approach here.",
       "revId": "3b858b5c79270bc4c33411c8716847b5244b84df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4b31af_dfc04933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-27T01:11:44Z",
+      "side": 1,
+      "message": "Thanks Matthew. Could you point me to specific test where this was done, as an example I can follow?\n\nI\u0027m happy to keep this informational on boards that we know have suspect TCPCs (so it will never be 100% on them).\n\n\u003e Looking at the pattern of failures you may be able to get it high enough by excluding certain boards/models.\n\nMay I ask, what is \"high enough\"? Is it just 100%? Or is there some case-by-case wiggle room?",
+      "parentUuid": "cc1d8df2_4b310ac2",
+      "revId": "3b858b5c79270bc4c33411c8716847b5244b84df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
