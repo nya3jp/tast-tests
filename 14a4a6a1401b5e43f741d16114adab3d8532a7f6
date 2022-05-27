@@ -154,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74064722_08edad01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-27T01:22:44Z",
+      "side": 1,
+      "message": "This is our project requirement and confirm that these steps are followed.",
+      "parentUuid": "f4335cc5_2a544321",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62acc8a3_a6e1217c",
