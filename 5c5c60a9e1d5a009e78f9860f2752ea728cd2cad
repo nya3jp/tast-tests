@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "615ae661_7bc96d2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-27T03:15:10Z",
+      "side": 1,
+      "message": "mhasank@: Could you take a look? Especially we would appreciate your thoughts on the [Youkichi-san\u0027s comment](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3641387/comments/917ec187_10a29f4b).\nThanks!",
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11c49993_3fe4159e",
