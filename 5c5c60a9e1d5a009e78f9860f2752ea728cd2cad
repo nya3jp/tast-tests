@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c373013_c2b16adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-27T03:43:43Z",
+      "side": 1,
+      "message": "I don\u0027t think we need real creds (or a pool). We can just use fake login like this example https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/arc_backup_restore_service_enabled.go;l\u003d88;drc\u003ddde35ad5392b2a4075ae9c1bf0cb677ca9f3613e",
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11c49993_3fe4159e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
         "patchSetId": 10

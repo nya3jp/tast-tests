@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf1db6a0_0f9347a6",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-27T03:43:43Z",
+      "side": 1,
+      "message": "1. If the method name starts with small letter (camelCase) then it is local to the file it is defined in but if it starts with capital letter (PascalCase) then it becomes an exported function and it has to be unique in the directory.\n\n2. SetupManagedChrome can be local to the methods it is beind used in since it is not very useful as a generic function in my opinion.\n\n3. setupFakeDmsServer seems useful and I agree that being in \u0027arc\u0027 module may not be ideal. We can move it to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/ if something doesn\u0027t exit there already that does this.",
+      "parentUuid": "80fd1d64_d8e94146",
+      "range": {
+        "startLine": 925,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 26
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5984255_a1138d3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
         "patchSetId": 5
