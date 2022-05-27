@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e8e406_3e42469a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-27T18:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a70aa7e7_502283b4",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "988f53b8_d30e7f7a",
@@ -542,6 +566,30 @@
       "writtenOn": "2022-05-26T23:42:39Z",
       "side": 1,
       "message": "nit:\n\tsvo :\u003d s.FixtValue().(*fixture.Value).Servo()",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9a1733_bc3966da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-27T18:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "812d8896_da1a8988",
       "range": {
         "startLine": 46,
         "startChar": 0,
