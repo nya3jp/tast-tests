@@ -15,6 +15,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/shirou/gopsutil/v3/cpu"
+
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
@@ -44,6 +46,9 @@ var regExpFPSV4L2 = regexp.MustCompile(`\((\d+\.\d+)fps\)`)
 
 // regExpFPSVpxenc is the regexp to find the FPS output from vpxenc's log.
 var regExpFPSVpxenc = regexp.MustCompile(`\((\d+\.\d+) fps\)`)
+
+// regExpFPSAomenc is the regexp to find the FPS output from aomenc's log.
+var regExpFPSAomenc = regexp.MustCompile(`\((\d+\.\d+) fps\)`)
 
 // regExpFPSOpenh264enc is the regexp to find the FPS output from openh264enc's log.
 var regExpFPSOpenh264enc = regexp.MustCompile(`(\d+\.\d+) fps`)
@@ -507,6 +512,19 @@ func init() {
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
 			// Devices with small SSDs can't store the files, see b/181165183.
 			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
+		}, {
+			Name: "aomenc_av1_180",
+			Val: testParam{
+				command:        "aomenc",
+				filename:       "tulip2-320x180.vp9.webm",
+				numFrames:      500,
+				fps:            30,
+				size:           coords.NewSize(320, 180),
+				commandBuilder: argsAomenc,
+				regExpFPS:      regExpFPSAomenc,
+				decoder:        encoding.LibaomDecoder,
+			},
+			ExtraData: []string{"tulip2-320x180.vp9.webm"},
 		}, {
 			Name: "openh264enc_180",
 			Val: testParam{
@@ -1054,6 +1072,78 @@ func argsVpxenc(ctx context.Context, testName, exe, yuvFile string, size coords.
 
 	// Source file goes at the end without any flag.
 	command = append(command, yuvFile)
+	return
+}
+
+func argsAomenc(ctx context.Context, testName, exe, yuvFile string, size coords.Size, fps int) (command []string, ivfFile string, bitrate int, err error) {
+	// This RTC options is cited from this presentation https://www.facebook.com/atscaleevents/videos/1054764365071442/ (b/230992225).
+	rtcOptions := []string{
+		"--profile=0",              // AV1 profile Main.
+		"--enable-tpl-model=0",     // Off rate-distortion optimization.
+		"--deltaq-mode=0",          // Off delta-q mode.
+		"--enable-order-hint=0",    // Off the reference frame order hint and related tools.
+		"--end-usage=cbr",          // Rate control mode is CBR.
+		"--cpu-used=7",             // Speed settings. Higher is faster. 5..10 for realtime.
+		"--passes=1",               // One pass encoding.
+		"--usage=1",                // Encoder usage is realtime.
+		"--lag-in-frames=0",        // No lag frame.
+		"--enable-cdef=1",          // Enable CDEF (constrained directional enhancement filter).
+		"--cdf-update-mode=1",      // Update CDF (cumulative distribution function) for entropy coding on all frames.
+		"--noise-sensitivity=0",    // Disable denoising.
+		"--error-resilient=0",      // Disable error resilient mode.
+		"--aq-mode=3",              // Set adaptive quantization mode to cyclic refresh.
+		"--min-q=2",                // Min quantizer value [0..63].
+		"--max-q=52",               // Max quantizer value [0..63].
+		"--undershoot-pct=50",      // The allowed bitrate undershoot percentage.
+		"--overshoot-pct=50",       // The allowed bitrate overshoot percentage.
+		"--buf-sz=1000",            // A decoder application shall have same buffer amount as target bitrate.
+		"--buf-initial-sz=600",     // A decoder application may have 60% buffer amount as target bitrate prior to beginning.
+		"--buf-optimal-sz=600",     // The encoder tries to maintain 60% buffer amount in the decoder's buffer.
+		"--max-intra-rate=300",     // The size of a keyframe is up to three frames in average.
+		"--disable-kf",             // A keyframe is NOT produced periodically.
+		"--coeff-cost-upd-freq=3",  // Don't update cost for coefficients.
+		"--mode-cost-upd-freq=3",   // Don't update cost for mode.
+		"--mv-cost-upd-freq=3",     // Don't update cost for motion vectors.
+		"--dv-cost-upd-freq=3",     // Don't update cost for intrabc motion vectors.
+		"--enable-obmc=0",          // Disable OBMC (over block motion compensation).
+		"--enable-warped-motion=0", // Disable warped motion.
+		"--enable-ref-frame-mvs=0", // Disable motion field motion vectors.
+		"--enable-global-motion=0", // Disable global motion.
+		"--tile-columns=0",         // Don't split tiles in columns. Note --tile-rows=1 by default, so the tile is 2x1.
+		"--row-mt=1",               // Enable row based multi-threading.
+	}
+
+	command = []string{exe}
+	command = append(command, rtcOptions...)
+	command = append(command, "--width="+strconv.Itoa(size.Width), "--height="+strconv.Itoa(size.Height))
+
+	// This threads logic follows what WebRTC does.
+	// https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/video_coding/codecs/av1/libaom_av1_encoder.cc;l=375;drc=67172ba3828a038c491384620c3f854bd6d0ece9
+	numLogicalCores, err := cpu.Counts(true)
+	if err != nil {
+		return nil, "", 0, errors.Wrap(err, "failed getting cpu cores")
+	}
+	// The reason why this is not >= is libwebrtc wants to have a thread other
+	// than threads executing encoding.
+	if size.Width*size.Height >= 640*360 && numLogicalCores > 4 {
+		command = append(command, "--threads=4")
+	} else {
+		// ALL ChromeOS devices should have more than 2 logical cores.
+		command = append(command, "--threads=2")
+	}
+
+	// AV1 uses a 30% better bitrate than VP9, which targets 0.07 bpp.
+	// Use int() to round towards zero always.
+	bitrate = int(0.70 * 0.07 /* BPP */ * float64(fps) * float64(size.Width) * float64(size.Height))
+	command = append(command, "--target-bitrate="+strconv.Itoa(bitrate))
+	command = append(command, fmt.Sprintf("--fps=%d/1", fps))
+
+	ivfFile = yuvFile + ".ivf"
+	command = append(command, "--ivf", "-o", ivfFile)
+
+	// Source file goes at the end without any flag.
+	command = append(command, yuvFile)
+
 	return
 }
 
