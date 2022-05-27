@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddbff6ea_433028db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-27T04:52:51Z",
+      "side": 1,
+      "message": "If you need to run software on the other side of the interface given to shill such that it looks like a real IP network, I would encourage using Jie\u0027s fixture.",
+      "parentUuid": "edaf4e52_d5234ca9",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7181acd2_d26acfdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 2
@@ -144,6 +162,30 @@
       "side": 1,
       "message": "Ack. I should probably be clear that we are intentionally not using the \"veth\" prefix since here we *do* want Shill to manage the connection :-)",
       "parentUuid": "7181acd2_d26acfdd",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 88
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a889e8_cacd1cf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-27T04:52:51Z",
+      "side": 1,
+      "message": "(resolved)",
+      "parentUuid": "6e6e24d8_17eca9b7",
       "range": {
         "startLine": 51,
         "startChar": 2,
@@ -191,6 +233,30 @@
       "side": 1,
       "message": "I am happy to take specific suggestions (it wasn\u0027t clear to me whether you were suggesting \"ethernet\"? except IIUC we\u0027ll want to distinguish this from the existing \"ethernet\" Device), I\u0027ll take a closer look at what \"hostapdIface\" actually maps to, I just copied this from ethernet_8021x and inverted the name so that Shill wouldn\u0027t ignore it.",
       "parentUuid": "ca7eca8c_15e8c443",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1b881c_e8f8b360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-27T04:52:51Z",
+      "side": 1,
+      "message": "\u003e I\u0027ll take a closer look at what \"hostapdIface\" actually maps to, I just copied this from ethernet_8021x.\n\nhostapdIface is just a variable name that reflects what that other test is doing with it. This is because the ethernet_8021x test is checking EAP authentication over a shill ethernet network, which is done client side with the supplicant (even if it is ethernet). And I assume that the easiest to get that test setup done is to run WiFi hostapd on the other side, but the test is really trying to emulate a kEthernet network for shill.\n\nHere since you would not run hostapd, the var name may be misleading. Also you have \"veth\" in the var name of one, and \"veth\" in the string content of the other.",
+      "parentUuid": "2a92c3f5_e7bc1b5d",
       "range": {
         "startLine": 50,
         "startChar": 0,
