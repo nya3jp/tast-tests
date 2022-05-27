@@ -7,7 +7,6 @@ package rmaweb
 
 import (
 	"context"
-	"fmt"
 	"regexp"
 	"time"
 
@@ -220,9 +219,7 @@ func (uiHelper *UIHelper) RSUPageOperation(ctx context.Context) error {
 func (uiHelper *UIHelper) BypassFirmwareInstallation(ctx context.Context) error {
 	// This sleep is important since we need to wait for RMAD to update state file completed.
 	testing.Sleep(ctx, 3*time.Second)
-	// TODO(b/233829472): Replace followig approach with Json parsing.
-	// Add "firmware_updated":true to state file.
-	if _, err := uiHelper.Dut.Conn().CommandContext(ctx, "sed", "-i", fmt.Sprintf("s/%s/%s/g", ".$", ",\"firmware_updated\":true}"), "/mnt/stateful_partition/unencrypted/rma-data/state").Output(); err != nil {
+	if _, err := uiHelper.Client.BypassFirmwareInstallation(ctx, &empty.Empty{}); err != nil {
 		return err
 	}
 
