@@ -41,6 +41,9 @@ service AppService {
 
   // Enter the content into input box.
   rpc EnterIntoTextInput(EnterIntoTextInputRequest) returns (google.protobuf.Empty) {}
+
+  // Bypass firmare installation.
+  rpc BypassFirmwareInstallation(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message NewShimlessRMARequest {
