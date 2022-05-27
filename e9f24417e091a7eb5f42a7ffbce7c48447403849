@@ -16,6 +16,29 @@
       "message": "PTAL, thank you!",
       "revId": "e9f24417e091a7eb5f42a7ffbce7c48447403849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bae518b_d4db4189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-05-27T20:55:59Z",
+      "side": 1,
+      "message": "can both these methods return uiauto.Action so we can combine them to `uiauto.Combine` call above?",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "e9f24417e091a7eb5f42a7ffbce7c48447403849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
