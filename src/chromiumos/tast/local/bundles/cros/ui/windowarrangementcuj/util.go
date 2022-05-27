@@ -210,6 +210,24 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	return connection, nil
 }
 
+// cleanUp is used to execute a given cleanup action and report
+// the resulting error if it is not nil. The intended usage is:
+// func Example(ctx, closeCtx context.Context) (retErr error) {
+//   ...
+//   defer cleanUp(closeCtx, action.Named("description of cleanup action", cleanup), &retErr)
+//   ...
+// }
+func cleanUp(ctx context.Context, cleanup action.Action, retErr *error) {
+	if err := cleanup(ctx); err != nil {
+		if *retErr == nil {
+			*retErr = err
+		} else {
+			testing.ContextLog(ctx, "Cleanup failed: ", err)
+			testing.ContextLog(ctx, "Note: This cleanup failure is not the first error. The first error will be reported after all cleanup actions have been attempted")
+		}
+	}
+}
+
 // Drag does the specified drag based on the documentation of DragPoints.
 func Drag(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, p DragPoints, duration time.Duration) error {
 	initialBoundsMap := make(map[int]coords.Rect)
