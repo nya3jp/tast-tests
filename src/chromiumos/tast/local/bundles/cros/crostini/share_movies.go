@@ -10,12 +10,14 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -67,39 +69,33 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	// Show Play files.
-	// It is necessary to call optin.Perform and optin.WaitForPlayStoreShown to make sure that Play files is shown.
-	maxAttempts := 2
-	if err := optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
+	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to optin to Play Store: ", err)
 	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, 2*time.Minute); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
-	}
-	// The PlayStore app restarts itself at the end. We need to wait for this to happen before opening the Files
-	// app, or otherwise PlayStore window may reopen on top of Files app and cause the test to fail.
-	// We may as well close PlayStore at this point as it is no longer required. The PlayStore restarting itself
-	// was measured to take ~1.5 seconds, but the "optin.ClosePlayStore(ctx, tconn)" call waits for PlayStore to
-	// be open anyway, before closing it.
-	testing.Sleep(ctx, 2*time.Second)
-	optin.ClosePlayStore(ctx, tconn)
+	defer func(ctx context.Context) {
+		if err := optin.SetPlayStoreEnabled(ctx, tconn, false); err != nil {
+			s.Error("Failed to opt out of Play Store: ", err)
+		}
+	}(cleanupCtx)
 
 	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Unshare shared folders in the end.
-	defer func() {
-		if err := sharedFolders.UnshareAll(cont, cr)(cleanupCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := sharedFolders.UnshareAll(cont, cr)(ctx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to open Files app: ", err)
 	}
+	defer filesApp.Close(cleanupCtx)
 
 	const Movies = "Movies"
 	if err := uiauto.Combine("open Play files and click Manage with Linux on Movies",
@@ -114,6 +110,8 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Manage shared folders: ", err)
 	}
+	defer st.Close(cleanupCtx)
+
 	shared, err := st.GetSharedFolders(ctx)
 	if err != nil {
 		s.Fatal("Failed to find the shared folders list: ", err)
@@ -123,15 +121,27 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify inside Crostini.
-	if list, err := cont.GetFileList(ctx, sharedfolders.MountPath); err != nil {
-		s.Fatalf("Failed to get file list of %s: %s", sharedfolders.MountPath, err)
-	} else if want := []string{"fonts", sharedfolders.MountFolderPlay}; !reflect.DeepEqual(list, want) {
-		s.Fatalf("Failed to verify file list in /mnt/chromeos, got %s, want %s", list, want)
+	if err := verifyContainerFiles(
+		ctx, cont, sharedfolders.MountPath, []string{"fonts", sharedfolders.MountFolderPlay},
+	); err != nil {
+		s.Fatal("Failed to verify container root files: ", err)
 	}
 
-	if list, err := cont.GetFileList(ctx, sharedfolders.MountPathPlay); err != nil {
-		s.Fatalf("Failed to get file list of %s: %s", sharedfolders.MountPathPlay, err)
-	} else if want := []string{Movies}; !reflect.DeepEqual(list, want) {
-		s.Fatalf("Failed to verify file list in /mnt/chromeos/PlayFiles, got %s, want %s", list, want)
+	if err := verifyContainerFiles(
+		ctx, cont, sharedfolders.MountPathPlay, []string{Movies},
+	); err != nil {
+		s.Fatal("Failed to verify container play files: ", err)
 	}
+}
+
+func verifyContainerFiles(ctx context.Context, cont *vm.Container, path string, wantFiles []string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if list, err := cont.GetFileList(ctx, path); err != nil {
+			return errors.Wrapf(err, "failed to get file list of %s", path)
+		} else if !reflect.DeepEqual(list, wantFiles) {
+			return errors.Wrapf(err, "failed to verify file list in %s, got %s, want %s", path, list, wantFiles)
+		}
+		return nil
+
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 5 * time.Second})
 }
