@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe79a8cb_a2df948a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-27T19:20:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a6c1d0e_638259a2",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "c4209ac3c7ede91fd0d254c7ebafe6cc21afe0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca2075ca_c72eb03a",
