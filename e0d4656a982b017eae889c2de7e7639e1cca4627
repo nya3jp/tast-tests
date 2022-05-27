@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed7b4faf_a2a4a1e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-05-27T23:39:39Z",
+      "side": 1,
+      "message": "change instances of `Rtl` to `RTL` everywhere (general Go style guidelines are to use the same case for acronyms https://github.com/golang/go/wiki/CodeReviewComments#initialisms)\n\nmaybe also leave a comment mentioning right-to-left here in case anyone unfamiliar ever is reading through it",
+      "revId": "e0d4656a982b017eae889c2de7e7639e1cca4627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
