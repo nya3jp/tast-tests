@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05577d23_71233905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-27T16:00:03Z",
+      "side": 1,
+      "message": "lgtm with grammar adjustment",
+      "revId": "2a9fb61d06cfe5beea986ed61bd665caf1258d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adf0998_d8473f34",
+        "filename": "src/chromiumos/tast/local/perf/zram_info_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-27T16:00:03Z",
+      "side": 1,
+      "message": "`is` rather than `are`, because `order` is singular",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "2a9fb61d06cfe5beea986ed61bd665caf1258d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e76ca2cb_5928b69b",
