@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35071c3e_bcb82c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-27T07:17:20Z",
+      "side": 1,
+      "message": "I understand the spec of the page, but problem is in test code, IMO.\n\nIIUC, the year of the page is decided on loading.\nhowever, it\u0027s taking the time between the pageloading and this line.\n\nE.g., the page is loaded 2022 Dec. 31, 11:59:50 pm, and time.Now() at L68 can run 2023 Jan. 1, 00:00:03 am. Then there will be the gap.\nThe same can be applied time handling below.\n\nMy request is to write the code handling the time properly.",
+      "parentUuid": "19e85112_3c04123e",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 68
+      },
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8f8c317_42f05fb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
         "patchSetId": 4
