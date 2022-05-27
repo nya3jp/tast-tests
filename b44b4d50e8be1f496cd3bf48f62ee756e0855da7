@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5405d783_d013aabb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-27T15:59:06Z",
+      "side": 1,
+      "message": "Please review again, I when rebasing I found out that the second common_metrics file does not redefine the metrics anymore, so I removed my changes there. ",
+      "revId": "b44b4d50e8be1f496cd3bf48f62ee756e0855da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
