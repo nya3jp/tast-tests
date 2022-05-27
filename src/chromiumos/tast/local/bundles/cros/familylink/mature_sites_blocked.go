@@ -9,9 +9,11 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -27,24 +29,37 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"unicorn.matureSite"},
-		Fixture:      "familyLinkUnicornLogin",
+		Params: []testing.Param{{
+			Val:     browser.TypeAsh,
+			Fixture: "familyLinkUnicornLogin",
+		}, {
+			Name:    "lacros",
+			Val:     browser.TypeLacros,
+			Fixture: "familyLinkUnicornLoginWithLacros",
+		}},
 	})
 }
 
 func MatureSitesBlocked(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to set up browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
 
 	matureSite := s.RequiredVar("unicorn.matureSite")
-
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	conn, err := cr.NewConn(ctx, matureSite)
+	conn, err := br.NewConn(ctx, matureSite, browser.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to navigate to website: ", err)
 	}
 	defer conn.Close()
-
 	ui := uiauto.New(tconn)
 	if err := ui.WaitUntilExists(nodewith.Name("Site blocked").Role(role.StaticText))(ctx); err != nil {
 		s.Fatal("Mature website is not blocked for Unicorn user: ", err)
