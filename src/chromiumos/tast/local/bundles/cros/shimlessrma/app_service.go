@@ -6,6 +6,8 @@ package shimlessrma
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
 	"os"
 	"time"
 
@@ -183,6 +185,39 @@ func (shimlessRMA *AppService) EnterIntoTextInput(ctx context.Context,
 
 	if err := shimlessRMA.app.EnterIntoTextInput(ctx, req.TextInputName, req.Content)(ctx); err != nil {
 		return nil, errors.Wrapf(err, "failed to enter content %s into text input", req.Content)
+	}
+	return &empty.Empty{}, nil
+}
+
+// ByPassFirmwareInstallation add "firmware_updated":true to state file to bypass firmware installation.
+func (shimlessRMA *AppService) ByPassFirmwareInstallation(ctx context.Context,
+	req *empty.Empty) (*empty.Empty, error) {
+
+	stateFilePath := "/mnt/stateful_partition/unencrypted/rma-data/state"
+	jsonFile, err := os.Open(stateFilePath)
+	defer jsonFile.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	byteValue, err := ioutil.ReadAll(jsonFile)
+	if err != nil {
+		return nil, err
+	}
+
+	var result map[string]interface{}
+	if err := json.Unmarshal([]byte(byteValue), &result); err != nil {
+		return nil, err
+	}
+
+	result["firmware_updated"] = true
+	updatedByteValue, err := json.Marshal(result)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := ioutil.WriteFile(stateFilePath, updatedByteValue, 0644); err != nil {
+		return nil, err
 	}
 	return &empty.Empty{}, nil
 }
