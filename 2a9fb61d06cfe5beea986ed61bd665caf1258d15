@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e76ca2cb_5928b69b",
+        "filename": "src/chromiumos/tast/local/perf/zram_info_tracker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-05-27T15:54:14Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be a member variable either right? It\u0027s just t.stats[zramMmStatMaxIndex], right? it can be a temporary in this function i believe",
+      "range": {
+        "startLine": 138,
+        "startChar": 65,
+        "endLine": 138,
+        "endChar": 82
+      },
+      "revId": "2a9fb61d06cfe5beea986ed61bd665caf1258d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
