@@ -61,7 +61,7 @@ func reloadPolicies(ctx context.Context, conn *browser.Conn, s *testing.State) {
 
 	// TODO(crbug/1326565): Wait for policies to be reloaded.
 	if s.Param().(browser.Type) == browser.TypeLacros {
-		if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 			s.Fatal("Failed while waiting for policies to be reloaded: ", err)
 		}
 		if err := conn.Navigate(ctx, "chrome://policy"); err != nil {
@@ -147,10 +147,10 @@ func ChromePolicyPageStatusTimestamps(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	// These time regexps allow for a little more time to pass than their name
-	// suggests. This helps reduce flakiness on slow devices.
-	var zeroSecsAgoRE = regexp.MustCompile(`([0-7]) secs? ago`)
-	var tenSecsAgoRE = regexp.MustCompile(`(1[0-7]) secs ago`)
+	// This time regexp allows for up to 30 seconds more time to pass than
+	// its name suggests. This helps reduce flakiness on slow devices.
+	var zeroSecsAgoRE = regexp.MustCompile(`([0-9]|1[0-9]|2[0-9]|30) secs? ago`)
+	var oneMinAgoRE = regexp.MustCompile(`1 min ago`)
 
 	// Reload policies and immediately check that timestamps are at 0 secs ago.
 	reloadPolicies(ctx, conn, s)
@@ -158,19 +158,19 @@ func ChromePolicyPageStatusTimestamps(ctx context.Context, s *testing.State) {
 	checkTime(newBoxes, boxNames, "time-since-last-refresh", zeroSecsAgoRE, s)
 	checkTime(newBoxes, boxNames, "time-since-last-fetch-attempt", zeroSecsAgoRE, s)
 
-	// Sleep for 10 seconds, refresh page, check that timestamps are updated.
-	if err = testing.Sleep(ctx, 10*time.Second); err != nil {
-		s.Fatal("Failed to sleep for 10 seconds: ", err)
+	// Sleep for 1 minute, refresh page, check that timestamps are updated.
+	if err = testing.Sleep(ctx, time.Minute); err != nil {
+		s.Fatal("Failed to sleep for 1 minute: ", err)
 	}
 	if err = conn.Navigate(ctx, "chrome://policy"); err != nil {
 		s.Fatal("Failed to reload chrome://policy: ", err)
 	}
 	sleepyBoxes := readStatusBoxes(ctx, conn, s)
-	checkTime(sleepyBoxes, boxNames, "time-since-last-refresh", tenSecsAgoRE, s)
-	checkTime(sleepyBoxes, boxNames, "time-since-last-fetch-attempt", tenSecsAgoRE, s)
+	checkTime(sleepyBoxes, boxNames, "time-since-last-refresh", oneMinAgoRE, s)
+	checkTime(sleepyBoxes, boxNames, "time-since-last-fetch-attempt", oneMinAgoRE, s)
 
 	// Simulate 500 error on the server while reloading policies, check that fetch
-	// timestamp is at 0 secs ago whilst policy timestamp is still at 10 secs ago.
+	// timestamp is at 0 secs ago whilst policy timestamp is still at 1 min ago.
 	pb := policy.NewBlob()
 	pb.RequestErrors["policy"] = 500
 	if err = policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
@@ -178,6 +178,6 @@ func ChromePolicyPageStatusTimestamps(ctx context.Context, s *testing.State) {
 	}
 	reloadPolicies(ctx, conn, s)
 	mixedBoxes := readStatusBoxes(ctx, conn, s)
-	checkTime(mixedBoxes, boxNames, "time-since-last-refresh", tenSecsAgoRE, s)
+	checkTime(mixedBoxes, boxNames, "time-since-last-refresh", oneMinAgoRE, s)
 	checkTime(mixedBoxes, boxNames, "time-since-last-fetch-attempt", zeroSecsAgoRE, s)
 }
