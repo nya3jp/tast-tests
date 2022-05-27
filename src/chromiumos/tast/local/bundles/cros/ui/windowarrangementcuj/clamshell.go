@@ -264,7 +264,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 		return errors.Wrap(err, "failed to get desk mini-views")
 	}
 	if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount < 2 {
-		return errors.Wrapf(err, "expected more than 1 desk mini-views; found %v", deskMiniViewCount)
+		return errors.Errorf("expected more than 1 desk mini-views; found %v", deskMiniViewCount)
 	}
 	if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(),
 		pc.DragTo(deskMiniViews[1].Location.CenterPoint(), duration))(ctx); err != nil {
