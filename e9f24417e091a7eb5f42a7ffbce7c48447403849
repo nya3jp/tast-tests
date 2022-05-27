@@ -37,6 +37,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c21b0e86_a9939cdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-27T23:55:29Z",
+      "side": 1,
+      "message": "Please add a comment to document what this function is doing",
+      "revId": "e9f24417e091a7eb5f42a7ffbce7c48447403849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cbb4e8_65336564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-27T23:55:29Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "e9f24417e091a7eb5f42a7ffbce7c48447403849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2f4bfd_68638fec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-27T23:55:29Z",
+      "side": 1,
+      "message": "Catch and wrap error here",
+      "revId": "e9f24417e091a7eb5f42a7ffbce7c48447403849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bae518b_d4db4189",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_avatar_from_camera.go",
         "patchSetId": 2
