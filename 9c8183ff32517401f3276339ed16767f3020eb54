@@ -33,6 +33,24 @@
       "message": "I have kevin locally, and testing it. However, I cannot repro the failure yet.\n\nI\u0027m ok to temporarily disable this once to double check if this is really the cause on the bot or not, for the short term, just to focus on unblock LKGM uprev.\nIf it does not fix, pls reland this sooner than later. We\u0027re relying this test to make sure lacros is not broken.\n\nNote that there\u0027re currently no theory we see this is culprit / no proof. So it looks like just a random trial, right?\nDefer to Eliot for the decision.",
       "revId": "9c8183ff32517401f3276339ed16767f3020eb54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e20a675b_89e1b84b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-05-27T08:02:06Z",
+      "side": 1,
+      "message": "I think this is unlikely to \"fix\" the issue, since the issue is chrome crashing. It might stop the crash from happening, but that still needs to be root caused. Have you looked at the crash dumps and desymbolized them?\n\nIf you land this, please revert it if you find it doesn\u0027t help.",
+      "parentUuid": "1cc3b5f7_b3bafbac",
+      "revId": "9c8183ff32517401f3276339ed16767f3020eb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
