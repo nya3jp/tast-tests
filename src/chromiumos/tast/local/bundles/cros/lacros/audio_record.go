@@ -73,5 +73,8 @@ func AudioRecord(ctx context.Context, s *testing.State) {
 
 	if _, err = crastestclient.FirstRunningDevice(ctx, audio.InputStream); err != nil {
 		s.Error("Failed to detect running input device: ", err)
+		if err := crastestclient.DumpAudioDiagnostics(ctx, s.OutDir()); err != nil {
+			s.Error("Failed to dump audio diagnostics: ", err)
+		}
 	}
 }
