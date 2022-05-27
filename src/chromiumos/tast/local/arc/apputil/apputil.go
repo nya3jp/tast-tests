@@ -27,10 +27,10 @@ import (
 
 // App holds resources of ARC app.
 type App struct {
-	kb    *input.KeyboardEventWriter
-	Tconn *chrome.TestConn
-	A     *arc.ARC
-	D     *ui.Device
+	KB     *input.KeyboardEventWriter
+	Tconn  *chrome.TestConn
+	ARC    *arc.ARC
+	Device *ui.Device
 
 	AppName string
 	PkgName string
@@ -46,55 +46,67 @@ func NewApp(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.Te
 	}
 
 	return &App{
-		kb:       kb,
+		KB:       kb,
 		Tconn:    tconn,
-		A:        a,
-		D:        d,
+		ARC:      a,
+		Device:   d,
 		AppName:  appName,
 		PkgName:  pkgName,
 		launched: false,
 	}, nil
 }
 
+// InstallationTimeout defines the maximum time duration to install an app from the play store.
+const InstallationTimeout = 5 * time.Minute
+
 // Install installs the ARC app with the package name.
 func (app *App) Install(ctx context.Context) error {
-	const installationTimeout = 3 * time.Minute
-
 	deadLine, ok := ctx.Deadline()
-	if ok && deadLine.Sub(time.Now()) < installationTimeout {
+	if ok && deadLine.Sub(time.Now()) < InstallationTimeout {
 		return errors.Errorf("there are no time to install ARC app %q", app.AppName)
 	}
 
 	// Limit the installation time with a new context.
-	installCtx, cancel := context.WithTimeout(ctx, installationTimeout)
+	installCtx, cancel := context.WithTimeout(ctx, InstallationTimeout)
 	defer cancel()
 
-	if err := playstore.InstallOrUpdateAppAndClose(installCtx, app.Tconn, app.A, app.D, app.PkgName, &playstore.Options{TryLimit: -1}); err != nil {
+	if err := playstore.InstallOrUpdateAppAndClose(installCtx, app.Tconn, app.ARC, app.Device, app.PkgName, &playstore.Options{TryLimit: -1}); err != nil {
 		return errors.Wrapf(err, "failed to install %s", app.PkgName)
 	}
 	return nil
 }
 
-// Launch launches the ARC app.
+// Launch launches the ARC app and returns the time spent for the app to be visible.
 // The app has to be installed before calling this function,
 // i.e. `Install(context.Context)` should be called first.
-func (app *App) Launch(ctx context.Context) error {
+func (app *App) Launch(ctx context.Context) (time.Duration, error) {
+	if w, err := ash.GetARCAppWindowInfo(ctx, app.Tconn, app.PkgName); err == nil {
+		// If the package is already visible,
+		// needs to close it and launch again to collect app start time.
+		if err := w.CloseWindow(ctx, app.Tconn); err != nil {
+			return -1, errors.Wrapf(err, "failed to close %s app", app.AppName)
+		}
+	}
+
+	var startTime time.Time
+	// Sometimes the Spotify App will fail to open, so add retry here.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := launcher.SearchAndLaunch(app.Tconn, app.kb, app.AppName)(ctx); err != nil {
+		if err := launcher.SearchAndLaunch(app.Tconn, app.KB, app.AppName)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to launch %s app", app.AppName)
 		}
+		startTime = time.Now()
 		return ash.WaitForVisible(ctx, app.Tconn, app.PkgName)
 	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
-		return errors.Wrapf(err, "failed to wait for the new window of %s", app.PkgName)
+		return -1, errors.Wrapf(err, "failed to wait for the new window of %s", app.PkgName)
 	}
 
 	app.launched = true
-	return nil
+	return time.Since(startTime), nil
 }
 
 // GetVersion gets the version of the ARC app.
 func (app *App) GetVersion(ctx context.Context) (version string, err error) {
-	out, err := app.A.Command(ctx, "dumpsys", "package", app.PkgName).Output()
+	out, err := app.ARC.Command(ctx, "dumpsys", "package", app.PkgName).Output()
 	if err != nil {
 		return "", err
 	}
@@ -115,13 +127,13 @@ func (app *App) GetVersion(ctx context.Context) (version string, err error) {
 // it dumps the ARC UI if hasError returns true, and then closes ARC app.
 // If hasError returns true, screenshot will be taken and UI hierarchy will be dumped to the given dumpDir.
 func (app *App) Close(ctx context.Context, cr *chrome.Chrome, hasError func() bool, outDir string) error {
-	if err := app.D.Close(ctx); err != nil {
+	if err := app.Device.Close(ctx); err != nil {
 		// Just log the error.
 		testing.ContextLog(ctx, "Failed to close ARC UI device: ", err)
 	}
 
 	faillog.SaveScreenshotOnError(ctx, cr, outDir, hasError)
-	if err := app.A.DumpUIHierarchyOnError(ctx, outDir, hasError); err != nil {
+	if err := app.ARC.DumpUIHierarchyOnError(ctx, outDir, hasError); err != nil {
 		// Just log the error.
 		testing.ContextLog(ctx, "Failed to dump ARC UI hierarchy: ", err)
 	}

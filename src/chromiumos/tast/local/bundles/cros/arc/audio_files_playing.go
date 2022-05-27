@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/arc/apputil/vlc"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
@@ -43,7 +44,7 @@ func init() {
 		Data:         []string{"format_m4a.m4a", "format_mp3.mp3", "format_ogg.ogg", "format_wav.wav"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "arc"},
 		Fixture:      mtbf.LoginReuseFixture,
-		Timeout:      10 * time.Minute,
+		Timeout:      5*time.Minute + apputil.InstallationTimeout,
 	})
 }
 
