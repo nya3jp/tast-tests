@@ -22,6 +22,30 @@
       },
       "revId": "474c34d96e4a6fcb554835ca350cd98095052c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52aa5ac6_cda5ffa3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_corrupt_recovery_cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-27T16:08:08Z",
+      "side": 1,
+      "message": "You can\u0027t add firmware_unstable without group:firmware, so it seemed redundant.",
+      "parentUuid": "4369e2c1_8c2f2525",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "474c34d96e4a6fcb554835ca350cd98095052c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
