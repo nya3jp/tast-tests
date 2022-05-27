@@ -249,27 +249,17 @@ func verifyUnicodeArchives(ctx context.Context, cd *crosdisks.CrosDisks, archive
 	}
 
 	// Test single-file archives.
-	// TODO (crbug.com/1326765) Fix the name of the embedded file.
-	want = DirectoryContents{
-		"data": {Data: []byte("Don't forget to smile 😀!\n")},
-	}
-	for _, archive := range []string{
-		"Smile 😀.txt.bz2",
-		"Smile 😀.txt.lzma",
-		"Smile 😀.txt.xz",
-		"Smile 😀.txt.Z",
-		"Smile 😀.txt.zst",
-	} {
-		archivePath := filepath.Join(archiveDir, archive)
-		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
-			return errors.Wrapf(err, "test failed for %q", archive)
-		}
-	}
-
 	want = DirectoryContents{
 		"Smile 😀.txt": {Data: []byte("Don't forget to smile 😀!\n")},
 	}
-	for _, archive := range []string{"Smile 😀.txt.gz"} {
+	for _, archive := range []string{
+		"Smile 😀.txt.bz2",
+		"Smile 😀.txt.gz",
+		"Smile 😀.txt.lzma",
+		"Smile 😀.txt.xz",
+		"Smile 😀.txt.zst",
+		"Smile 😀.txt.Z",
+	} {
 		archivePath := filepath.Join(archiveDir, archive)
 		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
 			return errors.Wrapf(err, "test failed for %q", archive)
