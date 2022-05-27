@@ -84,7 +84,7 @@ func readStatusBoxes(ctx context.Context, conn *browser.Conn, s *testing.State) 
 	var boxes statusBoxesMap
 	if err := conn.Eval(ctx, `(async() => {
 		const statusSection = document.getElementById('status-section');
-		const policies = statusSection.querySelectorAll('fieldset');
+		const policies = getPolicyFieldsets();
 		const statuses = {};
 		for (let i = 0; i < policies.length; ++i) {
 			const legend = policies[i].querySelector('legend').textContent;
