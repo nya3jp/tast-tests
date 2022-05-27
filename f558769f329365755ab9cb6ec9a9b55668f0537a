@@ -39,6 +39,30 @@
       },
       "revId": "f558769f329365755ab9cb6ec9a9b55668f0537a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "384a43b1_553764c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-27T21:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23fe4dd8_78531ad7",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "f558769f329365755ab9cb6ec9a9b55668f0537a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
