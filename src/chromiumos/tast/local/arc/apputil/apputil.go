@@ -27,7 +27,7 @@ import (
 
 // App holds resources of ARC app.
 type App struct {
-	kb    *input.KeyboardEventWriter
+	Kb    *input.KeyboardEventWriter
 	Tconn *chrome.TestConn
 	A     *arc.ARC
 	D     *ui.Device
@@ -46,7 +46,7 @@ func NewApp(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.Te
 	}
 
 	return &App{
-		kb:       kb,
+		Kb:       kb,
 		Tconn:    tconn,
 		A:        a,
 		D:        d,
@@ -56,17 +56,18 @@ func NewApp(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.Te
 	}, nil
 }
 
+// InstallationTimeout defines the maximum time duration to install an app from the play store.
+const InstallationTimeout = 5 * time.Minute
+
 // Install installs the ARC app with the package name.
 func (app *App) Install(ctx context.Context) error {
-	const installationTimeout = 3 * time.Minute
-
 	deadLine, ok := ctx.Deadline()
-	if ok && deadLine.Sub(time.Now()) < installationTimeout {
+	if ok && deadLine.Sub(time.Now()) < InstallationTimeout {
 		return errors.Errorf("there are no time to install ARC app %q", app.AppName)
 	}
 
 	// Limit the installation time with a new context.
-	installCtx, cancel := context.WithTimeout(ctx, installationTimeout)
+	installCtx, cancel := context.WithTimeout(ctx, InstallationTimeout)
 	defer cancel()
 
 	if err := playstore.InstallOrUpdateAppAndClose(installCtx, app.Tconn, app.A, app.D, app.PkgName, &playstore.Options{TryLimit: -1}); err != nil {
@@ -80,7 +81,7 @@ func (app *App) Install(ctx context.Context) error {
 // i.e. `Install(context.Context)` should be called first.
 func (app *App) Launch(ctx context.Context) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := launcher.SearchAndLaunch(app.Tconn, app.kb, app.AppName)(ctx); err != nil {
+		if err := launcher.SearchAndLaunch(app.Tconn, app.Kb, app.AppName)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to launch %s app", app.AppName)
 		}
 		return ash.WaitForVisible(ctx, app.Tconn, app.PkgName)
@@ -90,6 +91,34 @@ func (app *App) Launch(ctx context.Context) error {
 
 	app.launched = true
 	return nil
+}
+
+// LaunchAndGetAppStartTime launches the ARC app and returns the time spent for the app to be visible.
+// The app has to be installed before calling this function,
+// i.e. `Install(context.Context)` should be called first.
+func (app *App) LaunchAndGetAppStartTime(ctx context.Context) (time.Duration, error) {
+	if w, err := ash.GetARCAppWindowInfo(ctx, app.Tconn, app.PkgName); err == nil {
+		// If the package is already visible,
+		// needs to close it and launch again to collect app start time.
+		if err := w.CloseWindow(ctx, app.Tconn); err != nil {
+			return -1, errors.Wrapf(err, "failed to close %s app", app.AppName)
+		}
+	}
+
+	var startTime time.Time
+	// Sometimes the Spotify App will fail to open, so add retry here.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := launcher.SearchAndLaunch(app.Tconn, app.Kb, app.AppName)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to launch %s app", app.AppName)
+		}
+		startTime = time.Now()
+		return ash.WaitForVisible(ctx, app.Tconn, app.PkgName)
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+		return -1, errors.Wrapf(err, "failed to wait for the new window of %s", app.PkgName)
+	}
+
+	app.launched = true
+	return time.Since(startTime), nil
 }
 
 // GetVersion gets the version of the ARC app.

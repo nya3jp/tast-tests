@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/arc/apputil"
 	"chromiumos/tast/local/arc/apputil/voicerecorder"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -25,7 +26,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		Fixture:      mtbf.LoginReuseFixture,
-		Timeout:      5 * time.Minute,
+		Timeout:      3*time.Minute + apputil.InstallationTimeout,
 	})
 }
 
