@@ -6,10 +6,7 @@ package enterprise
 
 import (
 	"context"
-	"os"
 	"path/filepath"
-	"regexp"
-	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -26,11 +23,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/timing"
 )
 
 const (
@@ -185,21 +180,13 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("wait for packages", err)
 		}
 
-		// Ensure that Andriod packages are set as not-uninstallable by ARC policy.
-		testing.ContextLog(ctx, "Waiting for packages being marked as not uninstallable")
-		if err := waitForBlockUninstall(ctx, cr, a, packages); err != nil {
-			return exit("verify packages as marked uninstallable", err)
+		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
+			return exit("verify packages are uninstallable", err)
 		}
 
 		if err := ensurePlayStoreNotEmpty(ctx, tconn, a); err != nil {
 			faillog.DumpUITree(cleanupCtx, s.OutDir(), tconn)
 			return exit("verify Play Store is not empty", err)
-		}
-
-		// Delaying the validation of uninstall after Play Store UI has loaded to ensure
-		// that the configuration is loaded by Package Manager.
-		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
-			return exit("verify packages are uninstallable", err)
 		}
 
 		return nil
@@ -312,72 +299,4 @@ func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *
 	}
 
 	return nil
-}
-
-// readPackageRestrictions reads content of package restrictions file.
-func readPackageRestrictions(ctx context.Context, a *arc.ARC, cr *chrome.Chrome) ([]byte, error) {
-	const packageRestrictionsPath = "/data/system/users/0/package-restrictions.xml"
-
-	// Cryptohome dir for the current user.
-	rootCryptDir, err := cryptohome.SystemPath(ctx, cr.User())
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
-	}
-
-	// android-data dir under the cryptohome dir (/home/root/${USER_HASH}/android-data)
-	androidDataDir := filepath.Join(rootCryptDir, "android-data")
-
-	return a.ReadXMLFile(ctx, filepath.Join(androidDataDir, packageRestrictionsPath))
-}
-
-// waitForBlockUninstall waits for Android packages to be set as not uninstallable.
-func waitForBlockUninstall(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packages []string) error {
-	ctx, st := timing.Start(ctx, "wait_block_packages")
-	defer st.End()
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := readPackageRestrictions(ctx, a, cr)
-		if err != nil {
-			if errors.Is(err, os.ErrNotExist) {
-				return errors.Wrap(err, "package-restrictions.xml does not exist yet")
-			}
-			return testing.PollBreak(errors.Wrap(err, "failed to read package-restrictions.xml"))
-		}
-
-		r := regexp.MustCompile(`<block-uninstall packageName="(.*)" />`)
-		matches := r.FindAllStringSubmatch(string(out), -1)
-		if matches == nil {
-			return errors.New("no package marked as block uninstall yet")
-		}
-
-		// We must wait for all packages being blocked at the same time. Otherwise
-		// previously blocked packages will be able to be uninstalled in a short period.
-		notBlockedPackages := make(map[string]bool)
-		for _, p := range packages {
-			notBlockedPackages[p] = true
-		}
-
-		for _, m := range matches {
-			packageName := m[1]
-			if notBlockedPackages[packageName] {
-				delete(notBlockedPackages, packageName)
-			}
-		}
-		if len(notBlockedPackages) != 0 {
-			return errors.Errorf("%d package(s) are not blocked yet: %s",
-				len(notBlockedPackages),
-				strings.Join(makeList(notBlockedPackages), ", "))
-		}
-		return nil
-	}, nil)
-}
-
-// makeList returns a list of keys from map.
-func makeList(packages map[string]bool) []string {
-	var packagesList []string
-	for pkg := range packages {
-		packagesList = append(packagesList, pkg)
-	}
-	sort.Strings(packagesList)
-	return packagesList
 }
