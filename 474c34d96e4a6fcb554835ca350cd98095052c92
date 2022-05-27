@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4369e2c1_8c2f2525",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_corrupt_recovery_cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2022-05-27T16:03:42Z",
+      "side": 1,
+      "message": "(forgive me if this is a silly question, feel free to push back if my suggestions don\u0027t make sense) Do you not need to add \"group:firmware\" back too?\n\nIf so: I suggest including it in the comment here\n\nIf not: consider adding to the CL description that this \"group:firmware\" was permanently removed for $REASON.",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "474c34d96e4a6fcb554835ca350cd98095052c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
