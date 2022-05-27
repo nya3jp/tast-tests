@@ -239,7 +239,7 @@ func newWithSyslogReaderAndTimeout(ctx context.Context, outDir string, reader *s
 		// We hit unexpected cases that we found two or more chrome root processes.
 		// To investigate the case, we dump the all processes here.
 		// TODO(b/231683759): Remove the dump when the problem is solved.
-		var err procutil.FoundTooManyProcessesError
+		var err *procutil.FoundTooManyProcessesError
 		if !errors.As(retErr, &err) {
 			// The error is different from what we're interested in.
 			return
