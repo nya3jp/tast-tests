@@ -70,6 +70,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7121b8f7_c64f6a8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "Thanks, Jie! Mostly nits and clarifications from me.",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe29487c_7366edd0",
@@ -118,6 +135,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96b7102b_6a1c3f33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "Sorry, would you be able to elaborate here? I\u0027m assuming the first layer is the L2 layer and our initial goal is to get the veth functional. Can we not use multiple veth pairs to validate the network? I.e., setting up a veth pair to act like a router and another like a server (or another router)? Please correct me if I\u0027m misunderstanding the goal or anything else.",
+      "parentUuid": "e1248801_d6c13776",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "497b9966_5c1661f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "How do we know what Priority to assign when creating the new interface (I guess my question is how did you know to use the value 5 here)?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9647316_7ed8768b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
         "patchSetId": 1
@@ -141,6 +199,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b225faff_8d9a55d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "Curious why the 12h and port\u003d0 are not modifiable values?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b97fd2d_f8b5771a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "nit: s/with/will",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8589d8da_1385af94",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
         "patchSetId": 1
@@ -158,6 +250,23 @@
         "endLine": 66,
         "endChar": 46
       },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a70ab8be_88c56b4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "supernit: \"is of type Mask\"?\n\"stringified\"",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +321,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "038d0cfa_23345cfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "Just to confirm the abstractions, we are running multiple services, each within its own separate netns right? And each netns contains its own chroot?",
+      "parentUuid": "0c99f467_4d0b93ab",
+      "range": {
+        "startLine": 6,
+        "startChar": 60,
+        "endLine": 6,
+        "endChar": 69
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1279ef20_ca2a9d1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/doc.go",
         "patchSetId": 1
@@ -230,6 +363,23 @@
         "endLine": 7,
         "endChar": 10
       },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e7809d8_5485c100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "nit: virtualnet",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -253,6 +403,23 @@
         "endLine": 6,
         "endChar": 11
       },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b08c124_cb0ea31f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "For my understanding, if IFNAMSIZ is 16, why is the maxNameLen only 10?",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -299,6 +466,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4237f5ba_0c478307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "nit: error message is referencing VPN, which is probably a c/p issue?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2826facb_e521706b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 1
@@ -316,6 +500,74 @@
         "endLine": 193,
         "endChar": 19
       },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c60f8074_34c3e46c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "nit: directories",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae0dbdb2_def7fd04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "For my understanding, why does this command need to be run outside the chroot but the one on L247 needs to be run inside the chroot?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3227da5_dd23b184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "nit: returns whether",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6507a1aa_72937e69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "nit: Can this just be exists(), i.e.,\n\nif !exists(path) {\n...\n}",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -379,6 +631,40 @@
         "endLine": 21,
         "endChar": 18
       },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8960e81b_d20540fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "I think that if this class is changed to subnet_pool.go, this can become New()",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72627002_37e77a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "nit: AllocNextIPv6Subnet",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -478,6 +764,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31036b17_781cb289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "Is there a rule for when we want to run things without the chroot vs. within the chroot?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c776408e_af45c87c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
         "patchSetId": 1
@@ -518,6 +821,23 @@
         "endLine": 24,
         "endChar": 64
       },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bef8198_ecd2652e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-05-27T22:27:53Z",
+      "side": 1,
+      "message": "nit: s/RAserver/RAServer",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
