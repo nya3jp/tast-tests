@@ -118,6 +118,12 @@ func Combine(name string, steps ...Action) Action {
 	return action.Combine(name, steps...)
 }
 
+// NamedCombine combines a list of functions from Context to error into one function.
+// It logs when actions starts, and if the action fails, tells you the name of the failing action.
+func NamedCombine(name string, steps ...Action) Action {
+	return action.Named(name, action.Combine(name, steps...))
+}
+
 // Retry returns a function that retries a given action if it returns error.
 // The action will be executed up to n times, including the first attempt.
 // The last error will be returned.  Any other errors will be silently logged.
