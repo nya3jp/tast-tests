@@ -68,7 +68,7 @@ func NewVLCPlayer(ctx context.Context, cr *chrome.Chrome, kb *input.KeyboardEven
 // because the version installed from the play store will be inconsistent under different accounts.
 // If the wrong version is installed, it will reinstall.
 func (vlc *Vlc) Install(ctx context.Context, cr *chrome.Chrome) error {
-	isInstalled, err := vlc.app.A.PackageInstalled(ctx, vlc.app.PkgName)
+	isInstalled, err := vlc.app.ARC.PackageInstalled(ctx, vlc.app.PkgName)
 	if err != nil {
 		return errors.Wrap(err, "failed to find if package is installed")
 	}
@@ -81,7 +81,7 @@ func (vlc *Vlc) Install(ctx context.Context, cr *chrome.Chrome) error {
 			return nil
 		}
 		testing.ContextLogf(ctx, "Version %s has been installed, reinstall version %s", ver, version)
-		if err := vlc.app.A.Uninstall(ctx, vlc.app.PkgName); err != nil {
+		if err := vlc.app.ARC.Uninstall(ctx, vlc.app.PkgName); err != nil {
 			return errors.Wrapf(err, "failed to uninstall the wrong version %s", ver)
 		}
 	}
@@ -142,12 +142,12 @@ func (vlc *Vlc) Install(ctx context.Context, cr *chrome.Chrome) error {
 	}
 	defer os.Remove(apkPath)
 
-	return vlc.app.A.Install(ctx, apkPath, adb.InstallOptionGrantPermissions)
+	return vlc.app.ARC.Install(ctx, apkPath, adb.InstallOptionGrantPermissions)
 }
 
 // getApkName gets the name of the APK file to install on the DUT.
 func (vlc *Vlc) getApkName(ctx context.Context) (string, error) {
-	out, err := vlc.app.A.Command(ctx, "getprop", "ro.product.cpu.abi").Output(testexec.DumpLogOnError)
+	out, err := vlc.app.ARC.Command(ctx, "getprop", "ro.product.cpu.abi").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get abi: %s", string(out))
 	}
@@ -161,7 +161,7 @@ func (vlc *Vlc) getApkName(ctx context.Context) (string, error) {
 // Launch launches ARC app VLC.
 func (vlc *Vlc) Launch(ctx context.Context) error {
 	testing.ContextLogf(ctx, "Openning app: %q", AppName)
-	if err := vlc.app.Launch(ctx); err != nil {
+	if _, err := vlc.app.Launch(ctx); err != nil {
 		return errors.Wrap(err, "failed to launch App")
 	}
 
@@ -177,9 +177,9 @@ func (vlc *Vlc) Close(ctx context.Context, cr *chrome.Chrome, hasError func() bo
 func (vlc *Vlc) EnterAudioFolder(ctx context.Context) error {
 	testing.ContextLog(ctx, "Navigate to vlc audio folder")
 	return uiauto.Combine("navigate to vlc audio folder",
-		apputil.FindAndClick(vlc.app.D.Object(ui.ID(navDirID)), shortTimeout),
-		apputil.FindAndClick(vlc.app.D.Object(ui.ID(titleID), ui.Text("Download")), shortTimeout),
-		apputil.FindAndClick(vlc.app.D.Object(ui.ID(titleID), ui.Text("audios")), shortTimeout),
+		apputil.FindAndClick(vlc.app.Device.Object(ui.ID(navDirID)), shortTimeout),
+		apputil.FindAndClick(vlc.app.Device.Object(ui.ID(titleID), ui.Text("Download")), shortTimeout),
+		apputil.FindAndClick(vlc.app.Device.Object(ui.ID(titleID), ui.Text("audios")), shortTimeout),
 	)(ctx)
 }
 
@@ -188,7 +188,7 @@ func (vlc *Vlc) PlayAudio(ctx context.Context, filetype string) error {
 	testing.ContextLogf(ctx, "Playing media file(%s)", filetype)
 
 	testing.ContextLog(ctx, "Click on file")
-	filename := vlc.app.D.Object(ui.TextContains(filetype))
+	filename := vlc.app.Device.Object(ui.TextContains(filetype))
 	if err := apputil.FindAndClick(filename, shortTimeout)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to find the target file: %s", filetype)
 	}
@@ -198,14 +198,14 @@ func (vlc *Vlc) PlayAudio(ctx context.Context, filetype string) error {
 	}
 
 	testing.ContextLog(ctx, "Verify playing filename")
-	playingFilename := vlc.app.D.Object(ui.ID(titleID), ui.TextContains(filetype))
+	playingFilename := vlc.app.Device.Object(ui.ID(titleID), ui.TextContains(filetype))
 	if err := playingFilename.WaitForExists(ctx, shortTimeout); err != nil {
 		return errors.Wrap(err, "the VLC player is not playing")
 	}
 
 	testing.ContextLog(ctx, "Wait for pause button")
 	playPauseID := idPrefix + "header_play_pause"
-	pauseButton := vlc.app.D.Object(ui.ID(playPauseID), ui.Description("Pause"))
+	pauseButton := vlc.app.Device.Object(ui.ID(playPauseID), ui.Description("Pause"))
 	if err := pauseButton.WaitForExists(ctx, shortTimeout); err != nil {
 		return errors.Wrap(err, "the VLC player is not playing")
 	}
@@ -216,25 +216,25 @@ func (vlc *Vlc) PlayAudio(ctx context.Context, filetype string) error {
 func (vlc *Vlc) clearStartupPrompt(ctx context.Context) error {
 	// If app messages appear, click it.
 	testing.ContextLog(ctx, "Clear start up prompt")
-	startBtn := vlc.app.D.Object(ui.ID(idPrefix + "startButton"))
-	permissionBtn := vlc.app.D.Object(ui.ID(idPrefix + "grantPermissionButton"))
+	startBtn := vlc.app.Device.Object(ui.ID(idPrefix + "startButton"))
+	permissionBtn := vlc.app.Device.Object(ui.ID(idPrefix + "grantPermissionButton"))
 
 	return uiauto.IfSuccessThen(
 		apputil.WaitForExists(startBtn, shortTimeout),
 		uiauto.Combine("clear start up prompt",
 			apputil.ClickIfExist(startBtn, shortTimeout),
 			apputil.ClickIfExist(permissionBtn, shortTimeout),
-			apputil.ClickIfExist(vlc.app.D.Object(ui.Text("ALLOW")), shortTimeout),
-			apputil.ClickIfExist(vlc.app.D.Object(ui.ID(nextBtnID)), shortTimeout),
-			apputil.ClickIfExist(vlc.app.D.Object(ui.ID(doneBtnID)), shortTimeout),
-			apputil.ClickIfExist(vlc.app.D.Object(ui.Text("YES")), shortTimeout),
+			apputil.ClickIfExist(vlc.app.Device.Object(ui.Text("ALLOW")), shortTimeout),
+			apputil.ClickIfExist(vlc.app.Device.Object(ui.ID(nextBtnID)), shortTimeout),
+			apputil.ClickIfExist(vlc.app.Device.Object(ui.ID(doneBtnID)), shortTimeout),
+			apputil.ClickIfExist(vlc.app.Device.Object(ui.Text("YES")), shortTimeout),
 		),
 	)(ctx)
 }
 
 func (vlc *Vlc) clearPromptAfterPlay(ctx context.Context) error {
 	testing.ContextLog(ctx, "Clear instruction prompt")
-	nextButton := vlc.app.D.Object(ui.ID(nextBtnID))
+	nextButton := vlc.app.Device.Object(ui.ID(nextBtnID))
 
 	// The multi-step prompt has the same button object. Use for loop to reduce code.
 	for i := 0; i < 3; i++ {
@@ -247,13 +247,13 @@ func (vlc *Vlc) clearPromptAfterPlay(ctx context.Context) error {
 
 // Play plays audio.
 func (vlc *Vlc) Play(ctx context.Context) error {
-	return vlc.app.D.PressKeyCode(ctx, ui.KEYCODE_MEDIA_PLAY, 0)
+	return vlc.app.Device.PressKeyCode(ctx, ui.KEYCODE_MEDIA_PLAY, 0)
 }
 
 // IsPaused check if the player paused.
 func (vlc *Vlc) IsPaused(ctx context.Context) error {
 	playPauseID := idPrefix + "header_play_pause"
-	playButton := vlc.app.D.Object(ui.ID(playPauseID), ui.Description("Play"))
+	playButton := vlc.app.Device.Object(ui.ID(playPauseID), ui.Description("Play"))
 	if err := playButton.Exists(ctx); err != nil {
 		errors.Wrap(err, "play button not found, player is not paused")
 	}
@@ -263,7 +263,7 @@ func (vlc *Vlc) IsPaused(ctx context.Context) error {
 // IsPlaying check if the player is playing.
 func (vlc *Vlc) IsPlaying(ctx context.Context) error {
 	playPauseID := idPrefix + "header_play_pause"
-	playButton := vlc.app.D.Object(ui.ID(playPauseID), ui.Description("Pause"))
+	playButton := vlc.app.Device.Object(ui.ID(playPauseID), ui.Description("Pause"))
 	if err := playButton.Exists(ctx); err != nil {
 		errors.Wrap(err, "pause button not found, player is not playing")
 	}
