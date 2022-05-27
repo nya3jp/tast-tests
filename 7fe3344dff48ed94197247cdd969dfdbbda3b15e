@@ -22,6 +22,30 @@
       },
       "revId": "7fe3344dff48ed94197247cdd969dfdbbda3b15e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9bb4b1f_55741de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-27T00:14:23Z",
+      "side": 1,
+      "message": "Thank you, that\u0027s a great idea.\nIt has also helped me realise that we may need to drag in another direction, so I updated drag point calculation as well to be more resilient.",
+      "parentUuid": "0bb09cc2_686ce739",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "7fe3344dff48ed94197247cdd969dfdbbda3b15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
