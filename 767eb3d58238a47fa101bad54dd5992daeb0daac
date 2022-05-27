@@ -210,6 +210,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2b71ede_39ecc89c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-27T05:50:16Z",
+      "side": 1,
+      "message": "Actually it seems that functions with the same name cannot be declared in the same block even if they are not exported:\n```\n2022-05-27T05:40:19.519321Z Building local_test_runner, cros, remote_test_runner, cros\n2022-05-27T05:40:21.132069Z # chromiumos/tast/local/bundles/cros/arc\n2022-05-27T05:40:21.132152Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/optin_managed_copy.go:87:6: setupFakePolicyServer redeclared in this block\n2022-05-27T05:40:21.132174Z     ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go:87:6: other declaration of setupFakePolicyServer\n2022-05-27T05:40:21.132192Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/optin_managed_copy.go:110:6: setupManagedChrome redeclared in this block\n2022-05-27T05:40:21.132209Z     ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go:110:6: other declaration of setupManagedChrome\n```\nFor SetupManagedChrome I think you can just inline it.",
+      "parentUuid": "cf1db6a0_0f9347a6",
+      "range": {
+        "startLine": 925,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 26
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5984255_a1138d3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
         "patchSetId": 5
