@@ -32,22 +32,39 @@ service BiosService {
   rpc ChromeosFirmwareUpdate (FirmwareUpdateModeRequest) returns (google.protobuf.Empty) {}
 }
 
-// GBBFlag bit positions
+// GBBFlag bit positions. These must match what is in src/platform/vboot_reference/firmware/2lib/include/2gbb_flags.h.
 enum GBBFlag {
-  DEV_SCREEN_SHORT_DELAY    = 0;
-  LOAD_OPTION_ROMS          = 1;
-  ENABLE_ALTERNATE_OS       = 2;
-  FORCE_DEV_SWITCH_ON       = 3;
-  FORCE_DEV_BOOT_USB        = 4;
+  // Reduce the dev screen delay to 2 sec from 30 sec to speed up factory.
+  DEV_SCREEN_SHORT_DELAY = 0;
+  LOAD_OPTION_ROMS = 1 [deprecated = true];
+  ENABLE_ALTERNATE_OS = 2 [deprecated = true];
+  // Force dev switch on, regardless of physical/keyboard dev switch position.
+  FORCE_DEV_SWITCH_ON = 3;
+  // Allow booting from external disk in dev mode even if dev_boot_usb=0.
+  FORCE_DEV_BOOT_USB = 4;
+  // Disable firmware rollback protection.
   DISABLE_FW_ROLLBACK_CHECK = 5;
-  ENTER_TRIGGERS_TONORM     = 6;
-  FORCE_DEV_BOOT_LEGACY     = 7;
-  FAFT_KEY_OVERIDE          = 8;
-  DISABLE_EC_SOFTWARE_SYNC  = 9;
-  DEFAULT_DEV_BOOT_LEGACY   = 10;
-  DISABLE_PD_SOFTWARE_SYNC  = 11;
-  DISABLE_LID_SHUTDOWN      = 12;
-  FORCE_DEV_BOOT_FASTBOOT_FULL_CAP = 13;
+  // Allow Enter key to trigger dev->tonorm screen transition.
+  ENTER_TRIGGERS_TONORM = 6;
+  // Allow booting Legacy OSes in dev mode even if dev_boot_altfw=0.
+  FORCE_DEV_BOOT_LEGACY = 7;
+  // Currently running FAFT tests.
+  RUNNING_FAFT = 8;
+  // Disable EC software sync
+  DISABLE_EC_SOFTWARE_SYNC = 9;
+  // Default to booting legacy OS when dev screen times out
+  DEFAULT_DEV_BOOT_ALTFW = 10;
+  // Disable auxiliary firmware (auxfw) software sync
+  DISABLE_AUXFW_SOFTWARE_SYNC = 11;
+  // Disable shutdown on lid closed
+  DISABLE_LID_SHUTDOWN = 12;
+  FORCE_DEV_BOOT_FASTBOOT_FULL_CAP = 13 [deprecated = true];
+  // Recovery mode always assumes manual recovery, even if EC_IN_RW=1 
+  FORCE_MANUAL_RECOVERY = 14;
+  // Disable FWMP
+  DISABLE_FWMP = 15;
+  // Enable USB Device Controller
+  ENABLE_UDC = 16;
 }
 
 // Programmers enum for flashrom programmers
