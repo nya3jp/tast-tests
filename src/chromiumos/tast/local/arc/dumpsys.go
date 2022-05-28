@@ -147,6 +147,18 @@ func (a *ARC) TaskInfosFromDumpsys(ctx context.Context) ([]TaskInfo, error) {
 		}
 		fillWindowState(tasks, tasksFromWayland)
 		return tasks, nil
+	case SDKT:
+		tasks, err := a.dumpsysActivityActivitiesT(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not get info from 'dumpsys activity activities'")
+		}
+		// We here use dumpsysWaylandT to fulfil the windowState property which is not available in T's "dumpsys activity activities"
+		tasksFromWayland, err := a.dumpsysWaylandT(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not get info from 'dumpsys Wayland'")
+		}
+		fillWindowState(tasks, tasksFromWayland)
+		return tasks, nil
 	default:
 		return nil, errors.Errorf("unsupported Android version %d", n)
 	}
@@ -374,6 +386,20 @@ func (a *ARC) dumpsysWaylandS(ctx context.Context) (tasks []TaskInfo, err error)
 	return a.dumpsysWaylandR(ctx)
 }
 
+// dumpsysActivityActivitiesT returns the "dumpsys activity activities" output as a list of TaskInfo.
+// Should only be called on ARC T devices.
+func (a *ARC) dumpsysActivityActivitiesT(ctx context.Context) (tasks []TaskInfo, err error) {
+	// Delegate to S version because there isn't significant difference.
+	return a.dumpsysActivityActivitiesS(ctx)
+}
+
+// dumpsysWaylandT returns the "dumpsys Wayland" output as a list of TaskInfo, which is complementary to dumpsysActivityActivitiesT.
+// Should only be called on ARC T devices.
+func (a *ARC) dumpsysWaylandT(ctx context.Context) (tasks []TaskInfo, err error) {
+	// Delegate to S version because there isn't significant difference.
+	return a.dumpsysWaylandS(ctx)
+}
+
 // Helper functions.
 
 // fillWindowState fills windowState property from tasks dumped from Wayland. This is necessary for ARC++ R or above because
@@ -436,7 +462,7 @@ func (a *ARC) DumpsysMeminfoPackage(ctx context.Context, pkg string) (*MeminfoAp
 		return nil, err
 	}
 	switch n {
-	case SDKP, SDKR, SDKS:
+	case SDKP, SDKR, SDKS, SDKT:
 		return a.dumpsysMeminfoPackageR(ctx, pkg)
 	default:
 		return nil, errors.Errorf("unsupported Android version %d", n)
