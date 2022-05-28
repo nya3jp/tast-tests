@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35aafdbb_1760aeb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-05-28T00:51:13Z",
+      "side": 1,
+      "message": "A bit nit-picking on the description. How about: CloudDPC for ARC has been updated to set the package restrictions before\nthe package is installed (rather than after), so we don\u0027t need to wait for the package restrictions to be set when the app is installed.",
+      "revId": "33dcb1887862d47293f1f020b641c99651adb230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addd5ee4_57c943f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-05-28T00:51:13Z",
+      "side": 1,
+      "message": "IIUC, the reason is that the restriction is set before app installation. Thus when app has been installed, there\u0027s no need to wait for restriction to apply.\n\nThis has nothing to do with which operation is faster.",
+      "revId": "33dcb1887862d47293f1f020b641c99651adb230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fcdd7e5_ecd585f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-05-28T00:51:13Z",
+      "side": 1,
+      "message": "LGTM. Some nits.",
+      "revId": "33dcb1887862d47293f1f020b641c99651adb230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
