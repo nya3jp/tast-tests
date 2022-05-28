@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb38fe2_3c5b3b8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-28T00:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35aafdbb_1760aeb3",
+      "revId": "33dcb1887862d47293f1f020b641c99651adb230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "addd5ee4_57c943f0",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-28T00:51:13Z",
       "side": 1,
       "message": "IIUC, the reason is that the restriction is set before app installation. Thus when app has been installed, there\u0027s no need to wait for restriction to apply.\n\nThis has nothing to do with which operation is faster.",
+      "revId": "33dcb1887862d47293f1f020b641c99651adb230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6754bf5d_da651fdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-28T00:58:33Z",
+      "side": 1,
+      "message": "If the operations are asynchronous and potentially parallel, the timing would matter. Nonetheless, I removed the part to avoid confusion since I hadn\u0027t confirmed the strict ordering.",
+      "parentUuid": "addd5ee4_57c943f0",
       "revId": "33dcb1887862d47293f1f020b641c99651adb230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
