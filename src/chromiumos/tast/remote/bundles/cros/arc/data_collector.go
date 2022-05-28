@@ -13,8 +13,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/arc/version"
@@ -427,7 +425,12 @@ func genTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, targetDi
 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	response, err := service.Generate(shortCtx, &empty.Empty{})
+	// TTS cache setup should be disabled for the genuine cache to be generated.
+	request := arcpb.TTSCacheRequest{
+		TtsCacheSetupEnabled: false,
+	}
+
+	response, err := service.Generate(shortCtx, &request)
 	if err != nil {
 		return errors.Wrap(err, "failed to generate TTS caches")
 	}
