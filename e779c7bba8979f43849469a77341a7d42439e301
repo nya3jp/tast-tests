@@ -22,6 +22,30 @@
       },
       "revId": "e779c7bba8979f43849469a77341a7d42439e301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e65114_beda104b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-28T02:22:05Z",
+      "side": 0,
+      "message": "Yep-yep. I intended to do that, but then I realised it would make more sense to revert the change and unblock everyone and experiment with the timeouts later.\nWill do it next week :) .",
+      "parentUuid": "115669ff_b8672216",
+      "range": {
+        "startLine": 213,
+        "startChar": 34,
+        "endLine": 213,
+        "endChar": 66
+      },
+      "revId": "e779c7bba8979f43849469a77341a7d42439e301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
