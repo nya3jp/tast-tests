@@ -58,7 +58,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.arc.GmsCoreCacheService"},
+		ServiceDeps:  []string{"tast.cros.arc.GmsCoreCacheService", "tast.cros.arc.TTSCacheService"},
 		Params: []testing.Param{{
 			Name:              "pi_container",
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -292,6 +292,77 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 		"--dynamic-validate", "no").Run(testexec.DumpLogOnError); err != nil {
 		s.Error("Failed to validate withoutCache against generated: ", err)
 	}
+
+	s.Log("Validating TTS cache")
+	withoutCacheTTSCacheFile, pregenTTSCacheFile, initializedFromCache := getTTSCache(ctx, s, cl, tempDir, false)
+
+	if pregenTTSCacheFile == "" {
+		s.Log("Pregenerated TTS cache doesn't exist, skipping TTS cache validation")
+	} else {
+		if initializedFromCache {
+			s.Error("TTS engine should not be initialized from cache when cache setup is disabled")
+		}
+		if err := saveOutput(filepath.Join(s.OutDir(), "without_cache_tts_cache_diff.txt"),
+			testexec.CommandContext(ctx, "diff", withoutCacheTTSCacheFile, pregenTTSCacheFile)); err != nil {
+			s.Error("Error validating TTS pregenerated cache against generated cache with no cache setup: ", err)
+		}
+
+		withCacheTTSCacheFile, pregenTTSCacheFile, initializedFromCache := getTTSCache(ctx, s, cl, tempDir, true)
+
+		if !initializedFromCache {
+			s.Error("TTS engine should be initialized from cache when cache setup is enabled")
+		}
+		if err := saveOutput(filepath.Join(s.OutDir(), "with_cache_tts_cache_diff.txt"),
+			testexec.CommandContext(ctx, "diff", withCacheTTSCacheFile, pregenTTSCacheFile)); err != nil {
+			s.Error("Error validating TTS pregenerated cache against generated cache with cache setup: ", err)
+		}
+	}
+}
+
+func getTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, tempDir string, cacheEnabled bool) (string, string, bool) {
+	service := arc.NewTTSCacheServiceClient(cl.Conn)
+
+	// Shorten the total context by 5 seconds to allow for cleanup.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	request := arcpb.TTSCacheRequest{
+		TtsCacheSetupEnabled: cacheEnabled,
+	}
+	response, err := service.Generate(shortCtx, &request)
+	if err != nil {
+		s.Fatal(errors.Wrap(err, "failed to generate TTS cache"))
+	}
+	d := s.DUT()
+	defer d.Conn().CommandContext(ctx, "rm", "-rf", response.TargetDir).Output()
+
+	var subDir string
+	if cacheEnabled {
+		subDir = filepath.Join(tempDir, "withCache")
+	} else {
+		subDir = filepath.Join(tempDir, "withoutCache")
+	}
+
+	if err := os.Mkdir(subDir, os.ModePerm); err != nil {
+		s.Fatal(errors.Wrap(err, "failed to created temp dir for TTS caches"))
+	}
+
+	getFile := func(file string) string {
+		localFile := filepath.Join(subDir, filepath.Base(file))
+
+		if err := d.GetFile(ctx, file, localFile); err != nil {
+			s.Fatal(errors.Wrapf(err, "failed to get %q from the device", file))
+		}
+		return localFile
+	}
+
+	cacheFile := getFile(filepath.Join(response.TargetDir, response.TtsStateCacheName))
+	pregenFile := ""
+	if response.PregeneratedTtsStateCacheName != "" {
+		pregenFile = getFile(filepath.Join(response.TargetDir, response.PregeneratedTtsStateCacheName))
+	}
+
+	return cacheFile, pregenFile, response.EngineInitializedFromCache
 }
 
 // resourceInfo describes attributes of file resource used for layout verification.
