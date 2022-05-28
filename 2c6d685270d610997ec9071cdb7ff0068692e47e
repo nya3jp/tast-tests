@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "234a793f_951b0e03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-05-28T12:27:42Z",
+      "side": 1,
+      "message": "Remove myself from attention list. Add me back once you need the review. ",
+      "revId": "2c6d685270d610997ec9071cdb7ff0068692e47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d954d7df_d37037ee",
