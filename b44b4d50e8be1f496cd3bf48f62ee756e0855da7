@@ -63,6 +63,30 @@
       },
       "revId": "b44b4d50e8be1f496cd3bf48f62ee756e0855da7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b898201b_679e2cda",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-05-28T02:10:53Z",
+      "side": 1,
+      "message": "Yes, I want to get rid of these. But I\u0027ll remove them once we get to an agreement ;)",
+      "parentUuid": "f92a6565_68b96c83",
+      "range": {
+        "startLine": 78,
+        "startChar": 93,
+        "endLine": 78,
+        "endChar": 104
+      },
+      "revId": "b44b4d50e8be1f496cd3bf48f62ee756e0855da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
