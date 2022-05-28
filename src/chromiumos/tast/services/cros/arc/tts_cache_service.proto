@@ -6,19 +6,26 @@ syntax = "proto3";
 
 package tast.cros.arc;
 
-import "google/protobuf/empty.proto";
-
 option go_package = "chromiumos/tast/services/cros/arc";
 
 // TTSCacheService provides TTS caches generation
 service TTSCacheService {
   // Generate generates TTS cache.
-  rpc Generate (google.protobuf.Empty) returns (TTSCacheResponse) {}
+  rpc Generate (TTSCacheRequest) returns (TTSCacheResponse) {}
+}
+
+message TTSCacheRequest {
+  // If set, TTS cache setup is enabled. Otherwise the pregenerated cache won't be used.
+  bool tts_cache_setup_enabled = 1;
 }
 
 message TTSCacheResponse {
   // Path to directory with TTS cache.
   string target_dir = 1;
   // Name of TTS state cache.
-  string tts_state_cache_name = 7;
+  string tts_state_cache_name = 2;
+  // Name of pregenerated TTS state cache if it can be pulled from Android. Otherwise it will be empty.
+  string pregenerated_tts_state_cache_name = 3;
+  // Whether or not the TTS engine was initialized from cache.
+  bool engine_initialized_from_cache = 4;
 }
