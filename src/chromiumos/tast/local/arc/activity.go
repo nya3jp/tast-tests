@@ -536,6 +536,8 @@ func (ac *Activity) MoveWindow(ctx context.Context, tconn *chrome.TestConn, t ti
 		return ac.moveWindowP(ctx, coords.NewPoint(toBounds.Left, toBounds.Top), t)
 	case SDKR:
 		return ac.moveWindowR(ctx, tconn, t, toBounds, fromBounds)
+	case SDKT:
+		return ac.moveWindowT(ctx, tconn, t, toBounds, fromBounds)
 	default:
 		return errors.Errorf("unsupported SDK version: %d", sdkVer)
 	}
@@ -626,6 +628,17 @@ func (ac *Activity) moveWindowR(ctx context.Context, tconn *chrome.TestConn, t t
 	return dragWithPause(ctx, tconn, from, to, t)
 }
 
+// moveWindowT moves the activity's window to a new location.
+// t represents the duration of the movement.
+// toBounds represent the destination bounds (in px).
+// fromBounds represent the source bounds (in px).
+// moveWindowT only works with WindowStateNormal and WindowStatePIP windows. Will fail otherwise.
+// moveWindowT performs the movement using a mouse drag.
+func (ac *Activity) moveWindowT(ctx context.Context, tconn *chrome.TestConn, t time.Duration, toBounds, fromBounds coords.Rect) error {
+	// Delegate to R version because there isn't a significant difference.
+	return ac.moveWindowR(ctx, tconn, t, toBounds, fromBounds)
+}
+
 // ResizeWindow resizes the activity's window.
 // border represents from where the resize should start.
 // to represents the coordinates for for the new border's position, in pixels.
@@ -646,6 +659,11 @@ func (ac *Activity) ResizeWindow(ctx context.Context, tconn *chrome.TestConn, bo
 		return nil
 	case SDKR:
 		if err := ac.resizeWindowR(ctx, tconn, border, to, time.Second); err != nil {
+			return errors.Wrap(err, "could not resize window")
+		}
+		return nil
+	case SDKT:
+		if err := ac.resizeWindowT(ctx, tconn, border, to, time.Second); err != nil {
 			return errors.Wrap(err, "could not resize window")
 		}
 		return nil
@@ -778,6 +796,17 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	return mouse.Drag(tconn, src, to, t)(ctx)
 }
 
+// resizeWindowT resizes the activity's window.
+// border represents from where the resize should start.
+// to represents the coordinates for for the new border's position, in pixels.
+// t represents the duration of the resize.
+// resizeWindowT only works with WindowStateNormal and WindowStatePIP windows. Will fail otherwise.
+// resizeWindowT performs the resizing using a mouse drag.
+func (ac *Activity) resizeWindowT(ctx context.Context, tconn *chrome.TestConn, border BorderType, to coords.Point, t time.Duration) error {
+	// Delegate to R version because there isn't a significant difference.
+	return ac.resizeWindowR(ctx, tconn, border, to, t)
+}
+
 // SetWindowState sets the window state. Note this method is async, so ensure to call ash.WaitForArcAppWindowState after this.
 // Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
 func (ac *Activity) SetWindowState(ctx context.Context, tconn *chrome.TestConn, state WindowState) error {
@@ -793,6 +822,8 @@ func (ac *Activity) SetWindowState(ctx context.Context, tconn *chrome.TestConn, 
 		return ac.setWindowStateR(ctx, tconn, state)
 	case SDKS:
 		return ac.setWindowStateS(ctx, tconn, state)
+	case SDKT:
+		return ac.setWindowStateT(ctx, tconn, state)
 	default:
 		return errors.Errorf("unsupported SDK version: %d", sdkVer)
 	}
@@ -848,6 +879,13 @@ func (ac *Activity) setWindowStateR(ctx context.Context, tconn *chrome.TestConn,
 func (ac *Activity) setWindowStateS(ctx context.Context, tconn *chrome.TestConn, state WindowState) error {
 	// Delegate to R version because there isn't significant difference.
 	return ac.setWindowStateR(ctx, tconn, state)
+}
+
+// setWindowStateT sets the window state. Note this method is async, so ensure to call ash.WaitForArcAppWindowState after this.
+// Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
+func (ac *Activity) setWindowStateT(ctx context.Context, tconn *chrome.TestConn, state WindowState) error {
+	// Delegate to S version because there isn't significant difference.
+	return ac.setWindowStateS(ctx, tconn, state)
 }
 
 func windowStateToWMEvent(state WindowState) (ash.WMEventType, error) {

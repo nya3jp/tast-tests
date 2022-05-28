@@ -647,6 +647,8 @@ func expandPIPViaMenuTouch(ctx context.Context, cr *chrome.Chrome, tconn *chrome
 		return expandPIPViaMenuTouchP(ctx, tconn, act, dev, dispMode, restoreWindowState)
 	case arc.SDKR:
 		return expandPIPViaMenuTouchR(ctx, cr, tconn, dispMode, restoreWindowState)
+	case arc.SDKT:
+		return expandPIPViaMenuTouchT(ctx, cr, tconn, dispMode, restoreWindowState)
 	default:
 		return errors.Errorf("unsupported SDK version: %d", sdkVer)
 	}
@@ -746,6 +748,14 @@ func expandPIPViaMenuTouchR(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 40 * time.Second})
+}
+
+// expandPIPViaMenuTouchT performs a mouse click to the center of PIP window and expands PIP.
+// After moving the mouse to the center of the PIP window it waits until the PIP menu is visible
+// before the expand icon is clicked.
+func expandPIPViaMenuTouchT(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, dispMode *display.DisplayMode, restoreWindowState ash.WindowStateType) error {
+	// Delegate to R version because there isn't a significant difference.
+	return expandPIPViaMenuTouchR(ctx, cr, tconn, dispMode, restoreWindowState)
 }
 
 // waitForPIPWindow keeps looking for a PIP window until it appears on the Chrome side.
