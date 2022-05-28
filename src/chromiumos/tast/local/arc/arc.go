@@ -663,6 +663,23 @@ func makeList(packages map[string]bool) []string {
 	return packagesList
 }
 
+// frozenPackages lists all packages that are frozen.
+func (a *ARC) frozenPackages(ctx context.Context) (map[string]struct{}, error) {
+	out, err := a.Command(ctx, "dumpsys", "package", "frozen").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+
+	packages := make(map[string]struct{})
+	lines := strings.Split(strings.TrimSpace(string(out)), "\n")
+	// Skip the first line with title 'Frozen packages:'
+	for _, name := range lines[1:] {
+		name = strings.TrimSpace(name)
+		packages[name] = struct{}{}
+	}
+	return packages, nil
+}
+
 // WaitForPackages waits for Android packages being installed.
 func (a *ARC) WaitForPackages(ctx context.Context, packages []string) error {
 	ctx, st := timing.Start(ctx, "wait_packages")
@@ -685,8 +702,14 @@ func (a *ARC) WaitForPackages(ctx context.Context, packages []string) error {
 			return testing.PollBreak(err)
 		}
 
+		frozenPkgs, err := a.frozenPackages(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
 		for p := range pkgs {
-			if notInstalledPackages[p] {
+			// A package is not fully installed until is unfrozen.
+			if _, frozen := frozenPkgs[p]; !frozen && notInstalledPackages[p] {
 				delete(notInstalledPackages, p)
 			}
 		}
