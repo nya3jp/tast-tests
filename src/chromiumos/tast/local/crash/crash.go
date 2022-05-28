@@ -272,6 +272,7 @@ func (e RegexesNotFound) Error() string {
 type waitForCrashFilesOptions struct {
 	timeout         time.Duration
 	optionalRegexes []string
+	metaStrings     []string
 }
 
 // WaitForCrashFilesOpt is a self-referential function can be used to configure WaitForCrashFiles.
@@ -297,6 +298,17 @@ func OptionalRegexes(optionalRegexes []string) WaitForCrashFilesOpt {
 	}
 }
 
+// MetaString instructs WaitForCrashFiles to only metch .meta files that contain
+// the given string. The string is an exact match and not a regex. This only
+// applies to .meta files; if a regex matches a file which does not end in .meta,
+// it will be regarded as a match regardless of whether or not it matches the
+// metaString.
+func MetaString(metaString string) WaitForCrashFilesOpt {
+	return func(w *waitForCrashFilesOptions) {
+		w.metaStrings = append(w.metaStrings, metaString)
+	}
+}
+
 // WaitForCrashFiles waits for each regex in regexes to match a file in dirs.
 // The directory is not matched against the regex, and the regex must match the
 // entire filename. (So  /var/spool/crash/hello_world.20200331.1234.log will NOT
@@ -312,7 +324,10 @@ func OptionalRegexes(optionalRegexes []string) WaitForCrashFilesOpt {
 //   * Leave matching files they do not expect to generate
 // If there are more matches than expected and the test can't tell which are expected, it shouldn't delete any.
 func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...WaitForCrashFilesOpt) (map[string][]string, error) {
-	w := &waitForCrashFilesOptions{timeout: 15 * time.Second}
+	// Always insist that meta files have "done=1", otherwise we may return
+	// partly-written crash reports.
+	const metaDoneString = "done=1"
+	w := &waitForCrashFilesOptions{timeout: 15 * time.Second, metaStrings: []string{metaDoneString}}
 	for _, opt := range opts {
 		opt(w)
 	}
@@ -350,7 +365,8 @@ func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...Wait
 						return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
 					}
 					if matchThisFile {
-						// Wait for meta files to have "done=1".
+						// Wait for meta files to have "done=1" and possibly
+						// other strings.
 						if strings.HasSuffix(f, ".meta") {
 							var contents []byte
 							if contents, err = ioutil.ReadFile(f); err != nil {
@@ -361,9 +377,11 @@ func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...Wait
 								// just retry and see if we can read on the next go-round.
 								return errors.Wrap(err, "failed to read .meta file")
 							}
-							if !strings.Contains(string(contents), "done=1") {
-								// Not there yet.
-								matchThisFile = false
+							for _, metaString := range w.metaStrings {
+								if !strings.Contains(string(contents), metaString) {
+									// Not there yet.
+									matchThisFile = false
+								}
 							}
 						}
 					}
