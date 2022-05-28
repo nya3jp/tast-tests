@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b47f30a2_96e84aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-28T00:09:30Z",
+      "side": 1,
+      "message": "can you add TODO bug for below unimplemented functions? btw using consistent placeholder nil  or empty function.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "f4708f5b868692425715209a017ad21113ed15ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8385b7_c6d2a876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/image_editing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-28T00:09:30Z",
+      "side": 1,
+      "message": "I am not quite sure how function returns nil works. I would personally prefer to use empty function as placeholder.",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "f4708f5b868692425715209a017ad21113ed15ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
