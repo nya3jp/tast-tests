@@ -159,6 +159,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e2deb4f_60257111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-28T04:22:27Z",
+      "side": 1,
+      "message": "\u003e first layer functional\n\nThis was not super clear, but I was not referring to OSI layers here. I was just talking about test infrastructure setups added on top of each other. Here the first such stage is to have a functional IP network with automatic IP provisioning simulated on the DUT and known to shill.",
+      "parentUuid": "96b7102b_6a1c3f33",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "497b9966_5c1661f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
         "patchSetId": 1
@@ -547,6 +571,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66f8a3a4_74be34d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-28T04:22:27Z",
+      "side": 1,
+      "message": "FYI it is also possible to create a veth directly across two network namespaces: https://source.corp.google.com/chromeos_public/src/platform2/patchpanel/datapath.cc;l\u003d746\n\nThis might be convenient here.",
+      "range": {
+        "startLine": 235,
+        "startChar": 19,
+        "endLine": 235,
+        "endChar": 65
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae0dbdb2_def7fd04",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 1
@@ -558,6 +605,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "For my understanding, why does this command need to be run outside the chroot but the one on L247 needs to be run inside the chroot?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92933622_63fa36e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-28T04:22:27Z",
+      "side": 1,
+      "message": "See comment on L.246: on this line, one half of the veth pair has been moved to inside the network namespace. We can\u0027t set its IFF_UP flag on that interface from the root ns anymore.",
+      "parentUuid": "ae0dbdb2_def7fd04",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -799,6 +864,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "Is there a rule for when we want to run things without the chroot vs. within the chroot?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c8ddf7_d4b4a97f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-28T04:22:27Z",
+      "side": 1,
+      "message": "Any configuration you need to apply to the created network namespace must be done within that namespace.",
+      "parentUuid": "31036b17_781cb289",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
