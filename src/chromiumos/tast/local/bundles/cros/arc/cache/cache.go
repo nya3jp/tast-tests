@@ -73,6 +73,9 @@ const (
 	GSFCache = "gservices_cache.db"
 	// TTSStateCache defines the TTS state cache file name.
 	TTSStateCache = "tts_state_cache.dat"
+	// PregeneratedTTSStateCache defines the name of the pregenerated tts state cache file name.
+	// Used to retrieve the tts cache included in the Android image from /system/etc.
+	PregeneratedTTSStateCache = "pregen_tts_state_cache.dat"
 	// Timeout to wait GMS Core resources.
 	gmsCoreWaitTimeout = 2 * time.Minute
 )
