@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115669ff_b8672216",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-28T00:58:21Z",
+      "side": 0,
+      "message": "You may try adding a short timeout for `WaitUntilExists`.",
+      "range": {
+        "startLine": 213,
+        "startChar": 34,
+        "endLine": 213,
+        "endChar": 66
+      },
+      "revId": "e779c7bba8979f43849469a77341a7d42439e301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
