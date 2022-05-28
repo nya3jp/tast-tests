@@ -16,6 +16,24 @@
       "message": "Resubmitting as I checked if recent betty vm tests are okay: https://screenshot.googleplex.com/9RjqR4aAYdZV4d4\n\nIf it fails again, wouild it make sense adding \"lacros_stable\" softwaredeps to rule out vmtests for CQ promotion at the moment?",
       "revId": "bf7f6252e7801af1b34d712ad121723a1d45dab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7af63072_62688f83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-05-28T00:57:35Z",
+      "side": 1,
+      "message": "Marking as WIP as it failed twice in betty VMs. so, is it okay with adding \"lacros_stable\" and moving on for the lacros variant? or should we fix it for VMs now for CQ promotion? Please advise.",
+      "parentUuid": "c639baea_9d743b55",
+      "revId": "bf7f6252e7801af1b34d712ad121723a1d45dab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
