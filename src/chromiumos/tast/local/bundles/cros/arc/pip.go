@@ -7,7 +7,6 @@ package arc
 import (
 	"context"
 	"fmt"
-	"image/color"
 	"math"
 	"time"
 
@@ -24,7 +23,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -708,8 +706,7 @@ func expandPIPViaMenuTouchP(ctx context.Context, tconn *chrome.TestConn, act *ar
 }
 
 // expandPIPViaMenuTouchR performs a mouse click to the center of PIP window and expands PIP.
-// After moving the mouse to the center of the PIP window it waits until the PIP menu is visible
-// before the expand icon is clicked.
+// After moving the mouse to the center of the PIP window, it clicks on the center of the window several times until PIP gets expanded.
 func expandPIPViaMenuTouchR(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, dispMode *display.DisplayMode, restoreWindowState ash.WindowStateType) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		window, err := getPIPWindow(ctx, tconn)
@@ -718,7 +715,6 @@ func expandPIPViaMenuTouchR(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 		}
 
 		bounds := window.BoundsInRoot
-		origBounds := coords.ConvertBoundsFromDPToPX(window.BoundsInRoot, dispMode.DeviceScaleFactor)
 
 		// Move the cursor away from the PIP window and then to the center of the PIP window slowly, otherwise
 		// the PIP menu won't activate.
@@ -728,24 +724,24 @@ func expandPIPViaMenuTouchR(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 		if err := mouse.Move(tconn, coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2), time.Second)(ctx); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to move the mouse to center of the PIP window"))
 		}
-		// Wait for the PIP menu to appear.
-		if err := waitForPIPMenu(ctx, cr, origBounds); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "the PIP menu did not appear"))
-		}
-		// Click on the expand button.
-		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to press the left button"))
-		}
-		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to release the left button"))
-		}
-		// Check that it restored to the correct window state.
-		if err := ash.WaitForARCAppWindowStateWithPollOptions(ctx, tconn, pipTestPkgName, restoreWindowState,
-			&testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-			return errors.Wrap(err, "did not expand to restore window state")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 40 * time.Second})
+		// Try clicking the center of the window several times until the PIP window gets expanded.
+		// The PIP menu has a bit of delay until it gets shown after the mouse hovers on the window.
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			// Click on the expand button.
+			if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to press the left button"))
+			}
+			if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to release the left button"))
+			}
+			// Check that it restored to the correct window state.
+			if err := ash.WaitForARCAppWindowStateWithPollOptions(ctx, tconn, pipTestPkgName, restoreWindowState,
+				&testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
+				return errors.Wrap(err, "did not expand to restore window state")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
+	}, &testing.PollOptions{Timeout: 20 * time.Second})
 }
 
 // waitForPIPWindow keeps looking for a PIP window until it appears on the Chrome side.
@@ -765,26 +761,6 @@ func waitForPIPToBeGone(ctx context.Context, tconn *chrome.TestConn) error {
 		pip, err := getPIPWindow(ctx, tconn)
 		if err == nil && pip != nil {
 			return errors.Wrap(err, "the PIP window exists")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
-}
-
-// waitForPIPMenu keeps looking for the PIP menu until it occludes the PIP window.
-func waitForPIPMenu(ctx context.Context, cr *chrome.Chrome, bounds coords.Rect) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		// Grab a screenshot of the PIP window.
-		img, err := screenshot.GrabAndCropScreenshot(ctx, cr, bounds)
-		if err != nil {
-			return errors.Wrap(err, "did not grab PIP window screenshot")
-		}
-		// Count the number of pixels that match the PIP window background.
-		pipBgPixels := imgcmp.CountPixelsWithDiff(img, color.RGBA{241, 241, 241, 255}, 30)
-		pipMenuPixels := imgcmp.CountPixelsWithDiff(img, color.RGBA{176, 176, 176, 255}, 30)
-
-		if pipBgPixels > pipMenuPixels {
-			// The menu isn't showing, otherwise there would be more menu overlay pixels than bg pixels.
-			return errors.New("the PIP menu isn't showing yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
