@@ -19,39 +19,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	// TODO(b/149590275): remove once fixed
-	flashprotectOutputHardwareAndSoftwareWriteProtectEnabledBloonchipper = `Flash protect flags: 0x0000040f wp_gpio_asserted ro_at_boot ro_now rollback_now all_now
-Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
-Writable flags:      0x00000000
-`
-	flashprotectOutputHardwareAndSoftwareWriteProtectEnabled = `Flash protect flags: 0x0000000b wp_gpio_asserted ro_at_boot ro_now
-Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
-Writable flags:      0x00000004 all_now
-`
-
-	// TODO(b/149590275): remove once fixed
-	flashprotectOutputHardwareWriteProtectDisabledAndSoftwareWriteProtectEnabledBloonchipper = `Flash protect flags: 0x00000407 ro_at_boot ro_now rollback_now all_now
-Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
-Writable flags:      0x00000000
-`
-
-	flashprotectOutputHardwareWriteProtectDisabledAndSoftwareWriteProtectEnabled = `Flash protect flags: 0x00000003 ro_at_boot ro_now
-Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
-Writable flags:      0x00000000
-`
-
-	flashprotectOutputHardwareAndSoftwareWriteProtectEnabledRO = `Flash protect flags: 0x0000000b wp_gpio_asserted ro_at_boot ro_now
-Valid flags:         0x0000003f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT
-Writable flags:      0x00000004 all_now
-`
-
-	flashprotectOutputHardwareAndSoftwareWriteProtectDisabled = `Flash protect flags: 0x00000000
-Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
-Writable flags:      0x00000001 ro_at_boot
-`
-)
-
 // FlashProtectFlags represents a set of EC flash protect flags.
 type FlashProtectFlags uint64
 
@@ -182,43 +149,6 @@ func GetFlashProtect(ctx context.Context, d *dut.DUT) (FlashProtect, error) {
 	return fp, fp.UnmarshalerEctool(bytes)
 }
 
-func flashProtectState(ctx context.Context, d *dut.DUT) (string, error) {
-	bytes, err := EctoolCommand(ctx, d, "flashprotect").Output()
-	if err != nil {
-		return "", errors.Wrap(err, "failed to get flashprotect state")
-	}
-	return string(bytes), nil
-}
-
-func expectedFlashProtectOutput(fpBoard FPBoardName, curImage FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) string {
-	expectedOutput := ""
-
-	switch {
-	case softwareWriteProtectEnabled && hardwareWriteProtectEnabled:
-		if curImage == ImageTypeRO {
-			expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledRO
-		} else {
-			// TODO(b/149590275): remove once fixed
-			if fpBoard == FPBoardNameBloonchipper {
-				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledBloonchipper
-			} else {
-				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabled
-			}
-		}
-	case softwareWriteProtectEnabled && !hardwareWriteProtectEnabled:
-		// TODO(b/149590275): remove once fixed
-		if fpBoard == FPBoardNameBloonchipper {
-			expectedOutput = flashprotectOutputHardwareWriteProtectDisabledAndSoftwareWriteProtectEnabledBloonchipper
-		} else {
-			expectedOutput = flashprotectOutputHardwareWriteProtectDisabledAndSoftwareWriteProtectEnabled
-		}
-	case !softwareWriteProtectEnabled && !hardwareWriteProtectEnabled:
-		expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectDisabled
-	}
-
-	return expectedOutput
-}
-
 // SetHardwareWriteProtect sets the FPMCU's hardware write protection to the
 // state specified by enable.
 func SetHardwareWriteProtect(ctx context.Context, pxy *servo.Proxy, enable bool) error {
@@ -260,20 +190,22 @@ func SetSoftwareWriteProtect(ctx context.Context, d *dut.DUT, enable bool) error
 
 // CheckWriteProtectStateCorrect correct returns an error if the FPMCU's current write
 // protection state does not match the expected state.
-func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, fpBoard FPBoardName, curImage FWImageType, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) error {
-	output, err := flashProtectState(ctx, d)
+func CheckWriteProtectStateCorrect(ctx context.Context, d *dut.DUT, softwareWriteProtectEnabled, hardwareWriteProtectEnabled bool) error {
+	fp, err := GetFlashProtect(ctx, d)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to get flashprotect")
 	}
 
-	expectedOutput := expectedFlashProtectOutput(fpBoard, curImage, softwareWriteProtectEnabled, hardwareWriteProtectEnabled)
-
-	if expectedOutput == "" {
-		return errors.Errorf("invalid state, hw wp: %t, sw wp: %t", hardwareWriteProtectEnabled, softwareWriteProtectEnabled)
+	if fp.IsHardwareWriteProtected() != hardwareWriteProtectEnabled {
+		return errors.Errorf("HW-WP state is incorrect: expect=%t actual=%t",
+			hardwareWriteProtectEnabled, fp.IsHardwareWriteProtected())
 	}
 
-	if expectedOutput != output {
-		return errors.Errorf("incorrect write protect state, expected: %q, actual: %q", expectedOutput, output)
+	if (fp.IsSoftwareReadOutProtected() && fp.IsSoftwareWriteProtected()) !=
+		softwareWriteProtectEnabled {
+		return errors.Errorf("SW-WP state is incorrect: expect=%t actual=(rdp-%t,now-%t)",
+			softwareWriteProtectEnabled, fp.IsSoftwareReadOutProtected(),
+			fp.IsSoftwareWriteProtected())
 	}
 
 	return nil

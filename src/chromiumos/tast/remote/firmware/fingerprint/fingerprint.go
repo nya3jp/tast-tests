@@ -530,7 +530,7 @@ func InitializeHWAndSWWriteProtect(ctx context.Context, d *rpcdut.RPCDUT, pxy *s
 		return err
 	}
 
-	if err := CheckWriteProtectStateCorrect(ctx, d.DUT(), fpBoard, ImageTypeRW, enableSWWP, enableHWWP); err != nil {
+	if err := CheckWriteProtectStateCorrect(ctx, d.DUT(), enableSWWP, enableHWWP); err != nil {
 		return errors.Wrap(err, "failed to validate write protect settings")
 	}
 
