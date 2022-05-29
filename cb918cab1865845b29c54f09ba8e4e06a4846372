@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3da26e_aed9f044",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-05-29T00:58:18Z",
+      "side": 1,
+      "message": "This statement is not true. \nIt\u0027s just because the DA counter is zero, nothing to reset.\nBut we still cannot reset the DA if the counter is non-zero value.",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "cb918cab1865845b29c54f09ba8e4e06a4846372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
