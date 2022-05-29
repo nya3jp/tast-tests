@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65294e42_ca487ae8",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-05-29T23:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e5a223d_0cef84a9",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 22
+      },
+      "revId": "13965a77e5654b01bbab4ea22a3db5c1cc96c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d8b2467_07f5aff5",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-09-28T18:04:48Z",
       "side": 1,
       "message": "In the case where we want software write protect to be enabled  (softwareWriteProtectEnabled \u003d true), but \"IsSoftwareReadOutProtected\" returns false (the ro_at_boot flag is not set), we will not return an error, right?\n\nIs that different behavior than what currently happens?",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 2
+      },
+      "revId": "13965a77e5654b01bbab4ea22a3db5c1cc96c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1f3a0e_afcc328e",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-05-29T23:18:18Z",
+      "side": 1,
+      "message": "It looks like we will return an error if softwareWriteProtectEnabled is true and either fp.IsSoftwareReadOutProtected or fp.IsSoftwareWriteProtected is false. \n\nThe current behavior also will give an error if the flashProtectState output is not equal in any way to the expectedFlashProtectOutput, including a difference in ro_at_boot flag.",
+      "parentUuid": "4d8b2467_07f5aff5",
       "range": {
         "startLine": 274,
         "startChar": 0,
