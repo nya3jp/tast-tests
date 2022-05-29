@@ -226,6 +226,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a784be_328f367a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/wevideo/wevideo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-29T22:35:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "12e07327_bf68415e",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "14a4a6a1401b5e43f741d16114adab3d8532a7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62acc8a3_a6e1217c",
