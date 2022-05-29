@@ -68,7 +68,7 @@ func FpRebootToRO(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Validating flash protection hasn't changed")
-	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT(), t.FPBoard(), fingerprint.ImageTypeRO, true, true); err != nil {
+	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT(), true, true); err != nil {
 		s.Fatal("Incorrect write protect state: ", err)
 	}
 
@@ -83,7 +83,7 @@ func FpRebootToRO(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Validating flash protection hasn't changed")
-	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT(), t.FPBoard(), fingerprint.ImageTypeRW, true, true); err != nil {
+	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT(), true, true); err != nil {
 		s.Fatal("Incorrect write protect state: ", err)
 	}
 }

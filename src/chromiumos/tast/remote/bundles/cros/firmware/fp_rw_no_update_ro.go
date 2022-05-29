@@ -75,7 +75,7 @@ func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
 	}
 
 	// Hardware write protect must be enabled for the test to work correctly.
-	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT(), t.FPBoard(), fingerprint.ImageTypeRW, true, true); err != nil {
+	if err := fingerprint.CheckWriteProtectStateCorrect(ctx, d.DUT(), true, true); err != nil {
 		s.Fatal("Failed to validate write protect settings: ", err)
 	}
 
