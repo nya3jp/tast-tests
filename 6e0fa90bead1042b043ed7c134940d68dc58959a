@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db690d7d_b69d9a06",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-29T22:22:23Z",
+      "side": 1,
+      "message": "Please also comment how this differs from `Combine`.",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "6e0fa90bead1042b043ed7c134940d68dc58959a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
