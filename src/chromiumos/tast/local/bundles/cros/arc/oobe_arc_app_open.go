@@ -29,7 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Launch ARC App post the OOBE Flow Setup Complete",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com", "cros-oac@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
+		Attr:         []string{"group:mainline", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -55,7 +55,7 @@ func init() {
 				consolidatedConsentEnabled: true,
 			},
 		}},
-		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 20*time.Minute,
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 30*time.Minute,
 		VarDeps: []string{"arc.parentUser", "arc.parentPassword"},
 	})
 }
@@ -118,7 +118,7 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 
 	statusArea := nodewith.HasClass("ash/StatusAreaWidgetDelegate")
 	s.Log("Waiting for notification")
-	_, err = ash.WaitForNotification(ctx, tconn, 20*time.Minute, ash.WaitTitle("Setup complete"))
+	_, err = ash.WaitForNotification(ctx, tconn, 25*time.Minute, ash.WaitTitle("Setup complete"))
 	if err != nil {
 		if err := ui.LeftClick(statusArea)(ctx); err != nil {
 			s.Log("Failed to click status area : ", err)
