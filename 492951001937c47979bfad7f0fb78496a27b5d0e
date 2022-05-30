@@ -312,6 +312,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb26541_ab8ed775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-05-30T06:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f71e6a1_def8bb38",
+      "revId": "492951001937c47979bfad7f0fb78496a27b5d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4af5775b_6e0e5904",
