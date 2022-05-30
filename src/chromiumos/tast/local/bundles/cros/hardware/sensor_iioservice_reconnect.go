@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -7,19 +7,21 @@ package hardware
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/hardware/iio"
 	"chromiumos/tast/local/bundles/cros/hardware/simpleclient"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
-const latencyExceedsTolerance = "Max latency exceeds latency tolerance."
+const clientDisconnected = "SensorHalClient disconnected"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SensorIioservice,
+		Func: SensorIioserviceReconnect,
 		Desc: "Tests that iioservice provides sensors' samples properly",
 		Contacts: []string{
 			"gwendal@chromium.com",      // ChromeOS sensors point of contact
@@ -31,8 +33,9 @@ func init() {
 	})
 }
 
-// SensorIioservice reads all devices' samples from daemon iioservice.
-func SensorIioservice(ctx context.Context, s *testing.State) {
+// SensorIioserviceReconnect reads devices' samples from iioservice, and
+// re-bootstrap the mojo network upon ui's (mojo broker) restart.
+func SensorIioserviceReconnect(ctx context.Context, s *testing.State) {
 	var maxFreq int
 	var strOut string
 
@@ -54,22 +57,39 @@ func SensorIioservice(ctx context.Context, s *testing.State) {
 		}
 
 		frequency := fmt.Sprintf("--frequency=%f", float64(maxFreq)/1000)
+		samples := fmt.Sprintf("--samples=%d", maxFreq/200)
 
-		out, err := testexec.CommandContext(ctx, "iioservice_simpleclient",
+		cmd := testexec.CommandContext(ctx, "iioservice_simpleclient",
 			fmt.Sprintf("--device_id=%d", sn.IioID), "--channels=timestamp",
-			frequency).CombinedOutput()
-
+			"--disconnect_tolerance=1", frequency, samples)
+		stderr, err := cmd.StderrPipe()
 		if err != nil {
+			s.Error("Failed to create stderr pipe")
+		}
+		if err := cmd.Start(); err != nil {
+			s.Error("Failed to start reading: ", err)
+		}
+
+		if err := upstart.RestartJob(ctx, "ui"); err != nil {
+			s.Fatal("Failed to restart ui: ", err)
+		}
+
+		bytes, err := ioutil.ReadAll(stderr)
+		if err != nil {
+			s.Error("Failed to read from stderr")
+		}
+
+		if err := cmd.Wait(); err != nil {
 			s.Error("Error reading samples on DUT: ", err)
 		}
 
-		strOut = string(out)
+		strOut = string(bytes)
 		if strings.Contains(strOut, simpleclient.OnErrorOccurred) {
 			s.Error("OnErrorOccurred: ", sn.Name)
-		} else if strings.Contains(strOut, latencyExceedsTolerance) {
-			s.Error("Latency Exceeds Tolerance: ", sn.Name)
 		} else if !strings.Contains(strOut, simpleclient.SucceedReadingSamples) {
 			s.Error("Not enough successful readsamples on sensor: ", sn.Name)
+		} else if !strings.Contains(strOut, clientDisconnected) {
+			s.Error("Didn't record SensorHalClient disconnected: ", sn.Name)
 		} else {
 			s.Logf("Test passed on device name: %v, id: %v", sn.Name, sn.IioID)
 		}
