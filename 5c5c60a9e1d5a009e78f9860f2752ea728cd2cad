@@ -110,6 +110,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38b9d3b_a9a11ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-30T06:39:56Z",
+      "side": 1,
+      "message": "Alright, let\u0027s use the real account then. Thanks for checking.",
+      "parentUuid": "48530dc2_32bcc5ef",
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fce3cf55_e0cd6177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-30T06:39:56Z",
+      "side": 1,
+      "message": "I think it is fine as it is right now.",
+      "parentUuid": "13ead060_fa3cdd92",
+      "range": {
+        "startLine": 44,
+        "startChar": 52,
+        "endLine": 44,
+        "endChar": 76
+      },
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11c49993_3fe4159e",
