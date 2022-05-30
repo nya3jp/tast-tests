@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "847b3109_1201b1e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-30T03:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66496579_d9287f9a",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 82
+      },
+      "revId": "e97646154b675a6ef45f7b0494cb97159ba68779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "174661ba_46824e34",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-29T23:01:03Z",
       "side": 1,
       "message": "also extract this function to be defined outside, it helps to reduce the length of the outer function.",
+      "range": {
+        "startLine": 93,
+        "startChar": 29,
+        "endLine": 93,
+        "endChar": 71
+      },
+      "revId": "e97646154b675a6ef45f7b0494cb97159ba68779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e126318_8f886b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-30T03:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "174661ba_46824e34",
       "range": {
         "startLine": 93,
         "startChar": 29,
@@ -88,6 +136,54 @@
         "startChar": 5,
         "endLine": 177,
         "endChar": 17
+      },
+      "revId": "e97646154b675a6ef45f7b0494cb97159ba68779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4658ed9_9c956879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-30T03:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f073a50b_57c1a500",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 17
+      },
+      "revId": "e97646154b675a6ef45f7b0494cb97159ba68779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "942747e4_0dc21ad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-30T03:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5b3c515_b8a16355",
+      "range": {
+        "startLine": 177,
+        "startChar": 81,
+        "endLine": 177,
+        "endChar": 121
       },
       "revId": "e97646154b675a6ef45f7b0494cb97159ba68779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
