@@ -33,14 +33,14 @@ func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session)
 	ctx, st := timing.Start(ctx, "login_guest")
 	defer st.End()
 
-	// guestLoginForTesting() relaunches the browser. In advance,
+	// loginAsGuest() relaunches the browser. In advance,
 	// remove the file at cdputil.DebuggingPortPath, which should be
 	// recreated after the port gets ready.
 	if err := driver.PrepareForRestart(); err != nil {
 		return err
 	}
 
-	if err := oobeConn.Eval(ctx, "Oobe.guestLoginForTesting()", nil); err != nil {
+	if err := oobeConn.Eval(ctx, "OobeAPI.loginAsGuest()", nil); err != nil {
 		return err
 	}
 
