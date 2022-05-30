@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "302d1115_ab4bd9b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-05-30T06:57:00Z",
+      "side": 1,
+      "message": "Thanks for your suggestion, it works.",
+      "parentUuid": "a3d425fc_32adeaf8",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "8e442910325e93b9ccef6ccde7dd8cf2c23a78a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26d25e76_e92a60e1",
