@@ -65,9 +65,9 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to determine whether reboot is needed: ", err)
 	}
-
+	enableSWWP := true
 	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy,
-		fpBoard, buildFWFile, needsReboot); err != nil {
+		fpBoard, buildFWFile, needsReboot, !enableSWWP); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 

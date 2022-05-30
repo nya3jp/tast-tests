@@ -159,8 +159,8 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		return nil, errors.Wrap(err, "failed to create remote working directory")
 	}
 
-	// Check FPMCU state and reflash if needed.
-	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
+	// Check FPMCU state and reflash if needed. Remove SWWP if needed.
+	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing, !enableSWWP); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
@@ -182,7 +182,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
-	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
+	if err := ReimageFPMCU(ctx, t.DUT(), t.Servo(), t.NeedsRebootAfterFlashing()); err != nil {
 		firstErr = err
 	}
 
