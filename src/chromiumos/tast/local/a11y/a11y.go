@@ -79,7 +79,14 @@ func NewChromeVoxConn(ctx context.Context, c *chrome.Chrome) (*ChromeVoxConn, er
 			return errors.Wrap(err, "timed out waiting for ChromeVox connection to be ready")
 		}
 
-		// Make sure ChromeVoxState is exported globally.
+		// Make sure ChromeVoxState exists and accessible.
+		if err := extConn.Eval(ctx, `(async () => {
+			if (!window.ChromeVoxState) {
+			  window.ChromeVoxState = (await import('/chromevox/background/chromevox_state.js')).ChromeVoxState;
+			}
+		  })()`, nil); err != nil {
+			return errors.Wrap(err, "failed to export modules from ChromeVox")
+		}
 		if err := extConn.WaitForExpr(ctx, "ChromeVoxState.instance"); err != nil {
 			return errors.Wrap(err, "ChromeVoxState is unavailable")
 		}
@@ -190,7 +197,7 @@ func (cv *ChromeVoxConn) SetVoice(ctx context.Context, vd VoiceData) error {
 			// Wait for ChromeVox's current voice to update.
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				var actualVoicename string
-				if err := cv.Eval(ctx, "ChromeVoxState.backgroundTts.currentVoice", &actualVoicename); err != nil {
+				if err := cv.Eval(ctx, "ChromeVoxState.instance.backgroundTts.currentVoice", &actualVoicename); err != nil {
 					return err
 				}
 
