@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9023b79a_9748e05b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-30T08:37:05Z",
+      "side": 1,
+      "message": "Thanks for clarifying Alfred. \nIn principle we use either:\ntast: Some framework change (1)\ntest-tests: Change that affects multiple packages (2)\npolicy: Change to policy test(s) (3)\n\nIf you have a CL that affects one package then please go ahead with the option (3) - using package name as a prefix and starting the CL message with a capital letter.",
+      "parentUuid": "bdeef7f5_11f3467e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18404faa_e6051241",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -154,6 +178,24 @@
       "side": 1,
       "message": "We kept the original logic from policy.FileSystemWriteBlockedForUrls.\n\nAccording to our test, only this message: \"User activation is required to show a file picker.\" indicates a failure of trigger the file picker, all others are not.\n\nShould we make any changes or add more comments to make it more clear?",
       "parentUuid": "04b71841_126e26e3",
+      "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e04c46_ae36352f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-30T08:37:05Z",
+      "side": 1,
+      "message": "Got it.\n\nI am just thinking, if there will be any other error than \"User activation is required to show a file picker.\", does it make sense to continue executing test logic?\nOr would it be better to return an error here with an appropriate message?",
+      "parentUuid": "2c891a36_c081867d",
       "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
