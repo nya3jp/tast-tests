@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/local/vm"
@@ -34,7 +35,6 @@ import (
 
 var (
 	tmpFilename              = "testfile.txt"
-	tmpFileCrosDownloadsPath = filepath.Join(filesapp.DownloadPath, tmpFilename)
 	tmpFileCrostiniMountPath = filepath.Join(sharedfolders.MountPathDownloads, tmpFilename)
 	tmpFileContents          = "This is a text string in a text file in the Downloads folder."
 	geditContextMenuItem     = "Open with Text Editor"
@@ -45,7 +45,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppGeditFilesharing,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Test gedit in Terminal window",
+		Desc:         "Test gedit file shareing in Terminal window",
 		Contacts: []string{
 			"ashpakov@google.com", // until Oct 2022
 			"cros-containers-dev@google.com",
@@ -74,35 +74,24 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-	defer func(ctx context.Context) {
-		if err := os.Remove(tmpFileCrosDownloadsPath); err != nil {
-			s.Logf("Cleanup: failed to remove file %s on cleanup: %v", tmpFileCrosDownloadsPath, err)
-		}
-	}(cleanupCtx)
+
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users Download path: ", err)
+	}
+	tmpFileCrosDownloadsPath := filepath.Join(downloadsPath, tmpFilename)
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	// Launch terminal so we can run commands in the container.
-	terminalApp, err := terminalapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to open Crostini Terminal: ", err)
-	}
-
-	// Restart crostini in the end in case any error in the middle and gedit is not closed.
-	// This also closes the Terminal window.
-	restartIfError := true
-	defer func(ctx context.Context) {
-		if restartIfError {
-			if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(ctx); err != nil {
-				s.Log("Failed to restart crostini: ", err)
-			}
-		}
-	}(cleanupCtx)
 
 	// Create a temp text file in the /Downloads folder to use in this test.
 	if err := ioutil.WriteFile(tmpFileCrosDownloadsPath, []byte(tmpFileContents), 0644); err != nil {
 		s.Fatal("Failed to create text file in Downloads folder: ", err)
 	}
+	defer func() {
+		if err := os.Remove(tmpFileCrosDownloadsPath); err != nil {
+			s.Logf("Cleanup: failed to remove file %s on cleanup: %v", tmpFileCrosDownloadsPath, err)
+		}
+	}()
 
 	filesApp, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
@@ -123,6 +112,26 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	filesAppShelfButton := nodewith.Name(apps.Files.Name).ClassName("ash/ShelfAppButton")
 	ui := uiauto.New(tconn)
 	ud := uidetection.NewDefault(tconn)
+
+	// Launch terminal so we can run commands in the container.
+	terminalApp, err := terminalapp.Launch(ctx, tconn)
+	if err != nil {
+		if err := closeGedit(ctx, keyboard, ui, geditWindow); err != nil {
+			s.Log("Failed to close Gedit after failing to launch termnal: ", err)
+		}
+		s.Fatal("Failed to open Crostini Terminal: ", err)
+	}
+
+	// Restart crostini in the end in case any error in the middle and gedit is not closed.
+	// This also closes the Terminal window.
+	restartIfError := true
+	defer func(ctx context.Context) {
+		if restartIfError {
+			if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(ctx); err != nil {
+				s.Log("Failed to restart crostini: ", err)
+			}
+		}
+	}(cleanupCtx)
 
 	err = checkFilesharingBeforeRestart(
 		ctx, cont, tconn, ui, ud, filesApp, keyboard, geditWindow, filesAppShelfButton)
