@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a723ece4_2f835b0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/subnet/pool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "\u003e \"avaliable\" is a possible misspelling of \"available\".\n\nDone.",
+      "parentUuid": "6a47c027_38e5cd0a",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "eecb948e1af2b03b36d54b54444888e54700173b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

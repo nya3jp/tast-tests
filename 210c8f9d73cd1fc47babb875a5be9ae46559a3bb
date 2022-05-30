@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79114a61_6a7a93b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Thanks for taking a look!\n\u003e I\u0027m not sure however whether routing.go is intended to be ready for review?\nNo, it just for demonstrate how this package can be used and will be deleted before submission.\nI\u0027ll have a group of routing_xxx.go tests later.",
+      "parentUuid": "c7e2a7c2_7ca04de8",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe29487c_7366edd0",
@@ -100,6 +118,30 @@
       "writtenOn": "2022-05-26T15:04:50Z",
       "side": 1,
       "message": "Sorry I am not sure I understand: this is just for illustrative purposes for how to use the test facilities added in this patch ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e6a300_28f537e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Yes, I will remove this before submission",
+      "parentUuid": "fe29487c_7366edd0",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -183,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35d112a6_0dbfcde2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "\u003e we could look into backing the fake veth interface with the real network and forward traffic to the Internet with a default route.\nI would prefer setting up the validation server inside the netns if possible, since adding addtional route may pollute the part we want to test.\n\n\u003e Can we not use multiple veth pairs to validate the network? I.e., setting up a veth pair to act like a router and another like a server (or another router)?\nYes, this is also my plan. There can be a server netns behind the router netns (which is not included in this patch, I will added another CreateRouterServerEnv() function for that), and there also can be multiple router env at the same time.",
+      "parentUuid": "0e2deb4f_60257111",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "497b9966_5c1661f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
         "patchSetId": 1
@@ -194,6 +260,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "How do we know what Priority to assign when creating the new interface (I guess my question is how did you know to use the value 5 here)?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85fbf23f_162f79bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "This is just a random value, if there is only one Env, any value larger than 0 is fine; if there are multiple Envs, we will need arrange the numbers to reflect the order, but the exact numbers are not important here.",
+      "parentUuid": "497b9966_5c1661f6",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -221,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e65a58_54379f37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done. I only mentioned the DHCP server here, we may want to also mention its DNS functionalities when needed later.",
+      "parentUuid": "a9647316_7ed8768b",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b225faff_8d9a55d2",
@@ -238,6 +346,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46c73dbe_5b492aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Because they are not needed for the routing tests. Feel free to make them configurable if you need them!",
+      "parentUuid": "b225faff_8d9a55d2",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b97fd2d_f8b5771a",
@@ -251,6 +377,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "nit: s/with/will",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af997bd8_cc4b7a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b97fd2d_f8b5771a",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -280,6 +424,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99336386_72b5b8da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "They are not the same, in pool.go they are the subnet range but here they are the IP range...",
+      "parentUuid": "8589d8da_1385af94",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a70ab8be_88c56b4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
         "patchSetId": 1
@@ -291,6 +459,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "supernit: \"is of type Mask\"?\n\"stringified\"",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d5f3a0_176a101a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done. Thanks for correcting my poor grammar :)",
+      "parentUuid": "a70ab8be_88c56b4b",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -309,6 +495,30 @@
       "side": 1,
       "message": "\u003e \"enviroment\" is a possible misspelling of \"environment\".\n\nPlease fix.",
       "parentUuid": "5a104948_85bf1694",
+      "range": {
+        "startLine": 5,
+        "startChar": 59,
+        "endLine": 5,
+        "endChar": 69
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df406810_00843e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b722cb8_f8efcecd",
       "range": {
         "startLine": 5,
         "startChar": 59,
@@ -391,6 +601,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b7460f_fe7879b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "\u003e Maybe consider using \"services\" here instead.\nDone. Thanks for the suggestion!\n\n\u003e it looks like the multiple services can actually run in a single namespace?\nYes",
+      "parentUuid": "534fc4cf_d89c7212",
+      "range": {
+        "startLine": 6,
+        "startChar": 60,
+        "endLine": 6,
+        "endChar": 69
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1279ef20_ca2a9d1f",
@@ -415,6 +649,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a5d4418_4581fb53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1279ef20_ca2a9d1f",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e7809d8_5485c100",
@@ -428,6 +686,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "nit: virtualnet",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "305ed26a_47fb1d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done. Tricium was not working :(",
+      "parentUuid": "3e7809d8_5485c100",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -472,6 +748,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0816e57_a172e644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "This limitation is for the Env\u0027s name, we will add a prefix (e.g., \"ethi_\") to it to create the name for veth, thus it is 10\u003d16-5(len(\"ethi_\"))-1(trailing zero)",
+      "parentUuid": "5b08c124_cb0ea31f",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cabb0b3_4c76d4f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "\u003e \"modications\" is a possible misspelling of \"modifications\".\n\nDone.",
+      "parentUuid": "fa21400d_37424dc0",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf2eb864_dce48369",
@@ -485,6 +803,24 @@
       "writtenOn": "2022-05-27T05:21:05Z",
       "side": 1,
       "message": "what about a function literal just taking the err to avoid all these dup lines?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82269bf1_18d077f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2eb864_dce48369",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -512,6 +848,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6e6bcf_b5e40014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f591cab_ffcac058",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 15
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4237f5ba_0c478307",
@@ -525,6 +885,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "nit: error message is referencing VPN, which is probably a c/p issue?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90819d18_90bbdafc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4237f5ba_0c478307",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -552,6 +930,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7273191c_085bbd50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2826facb_e521706b",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 19
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c60f8074_34c3e46c",
@@ -569,6 +971,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "780e69d4_9e76a975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c60f8074_34c3e46c",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66f8a3a4_74be34d7",
@@ -582,6 +1002,30 @@
       "writtenOn": "2022-05-28T04:22:27Z",
       "side": 1,
       "message": "FYI it is also possible to create a veth directly across two network namespaces: https://source.corp.google.com/chromeos_public/src/platform2/patchpanel/datapath.cc;l\u003d746\n\nThis might be convenient here.",
+      "range": {
+        "startLine": 235,
+        "startChar": 19,
+        "endLine": 235,
+        "endChar": 65
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "794e4b97_5a2c121c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Thanks for the information and the link!\nveth package is doing more than just creating a veth pair, I think we can consider extending that package later.",
+      "parentUuid": "66f8a3a4_74be34d7",
       "range": {
         "startLine": 235,
         "startChar": 19,
@@ -629,6 +1073,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f7dfdb7_ddae0545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "I guess Kartik\u0027s question is about chroot but not the netns :)\n\nFor the chroot, TBH I don\u0027t know exactly why we need it (it is from some legacy code). My guess is for some servers, some directories or file paths used by the server are not configurable, and thus running them outside chroot may cause some conflictions since those paths may also used by some services running on a normal image (i.e., not in the test). For example, in the openvpn tests, both client and server need to run the same openvpn binary, and we definitely don\u0027t want them to see the same set of files (this is just my guess, I haven\u0027t checked if it is feasible to configure the paths for the server). It is also easier to control what the server changes on the file system -- the chroot dir will just be removed after the tests.\n\nSo for `ip` commands, we don\u0027t need to control the file system it sees because we don\u0027t have the concerns that they will read or write some files unexpectedly. For other servers, I would suggest using chroot if it is feasible.",
+      "parentUuid": "92933622_63fa36e1",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3227da5_dd23b184",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 1
@@ -640,6 +1102,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "nit: returns whether",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c152c339_2826e1ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3227da5_dd23b184",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -663,6 +1143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "075152a3_14ed6c8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Question: which package provide this `exists` function?",
+      "parentUuid": "6507a1aa_72937e69",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9251792b_91d3a228",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
         "patchSetId": 1
@@ -674,6 +1172,24 @@
       "writtenOn": "2022-05-26T15:04:50Z",
       "side": 1,
       "message": "pool.go is maybe a bit ambiguous. What abotu subnet_pool to reflect better the type being defined there ?",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3d93491_0a2451c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Added a subnet package instead.",
+      "parentUuid": "9251792b_91d3a228",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -691,6 +1207,30 @@
       "writtenOn": "2022-05-26T15:04:50Z",
       "side": 1,
       "message": "Need explanation.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49247fbf_0c211132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4723bc9d_ff7d0e58",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -724,6 +1264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6597a46e_cfb6c722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6a4523d_f3f229a7",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8960e81b_d20540fe",
@@ -741,6 +1305,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f330ce25_f7c9f0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done with a NewPool() function in subnet package.",
+      "parentUuid": "8960e81b_d20540fe",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72627002_37e77a68",
@@ -754,6 +1336,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "nit: AllocNextIPv6Subnet",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b70e522_31af839c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72627002_37e77a68",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -781,6 +1381,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "795fca89_5394120a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done. Thanks for the information and suggestion! I read the definition of ULA again and I suppose you mean 0xfd for the first byte for v6 prefix",
+      "parentUuid": "398c5ef3_04d320e2",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aa803db_17dfb7e9",
@@ -794,6 +1418,30 @@
       "writtenOn": "2022-05-26T15:04:50Z",
       "side": 1,
       "message": "We should explain that this simulate an IPv6 router advertising the IPv6 configuration of the network with RA packets.",
+      "range": {
+        "startLine": 5,
+        "startChar": 26,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e7af3e_ba6af4f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa803db_17dfb7e9",
       "range": {
         "startLine": 5,
         "startChar": 26,
@@ -829,6 +1477,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09d8d056_ee37adfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "man 5 radvd.conf\nhttps://linux.die.net/man/5/radvd.conf",
+      "parentUuid": "f0d8ab40_026cee3c",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5874dd51_a33efd52",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
         "patchSetId": 1
@@ -841,6 +1513,30 @@
       "side": 1,
       "message": "\u003e \"enviroment\" is a possible misspelling of \"environment\".\n\nPlease fix.",
       "parentUuid": "b6c26538_4707e353",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acbef075_73903587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5874dd51_a33efd52",
       "range": {
         "startLine": 74,
         "startChar": 19,
@@ -886,6 +1582,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2774929_595eb2e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Also see my reply above. Marked as resolved here.",
+      "parentUuid": "f5c8ddf7_d4b4a97f",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c776408e_af45c87c",
@@ -899,6 +1613,30 @@
       "writtenOn": "2022-05-26T15:04:50Z",
       "side": 1,
       "message": "Could we add a reference to the relevant shill documentation there ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 20,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd8ce9cd_8dd1bb24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done. Mentioned service-api.txt here, although this entry does not exist now. Will added it soon.",
+      "parentUuid": "c776408e_af45c87c",
       "range": {
         "startLine": 22,
         "startChar": 20,
@@ -932,6 +1670,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13746e3e_0ea4e20f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "920c5328_1b75b72d",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 64
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bef8198_ecd2652e",
@@ -945,6 +1707,24 @@
       "writtenOn": "2022-05-27T22:27:53Z",
       "side": 1,
       "message": "nit: s/RAserver/RAServer",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9a44c7_cc2b1daa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bef8198_ecd2652e",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -973,6 +1753,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a9c688_5f85450e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b20bd795_d29d74bf",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82c587c3_46ce4d1d",
@@ -986,6 +1790,30 @@
       "writtenOn": "2022-05-27T05:21:05Z",
       "side": 1,
       "message": "same as before\nif success { return }\n...",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b65b68_4f6978c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82c587c3_46ce4d1d",
       "range": {
         "startLine": 45,
         "startChar": 2,
@@ -1021,6 +1849,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2317b3fb_115e845c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Not sure if I understand your comment... What is the case you are worried about here?",
+      "parentUuid": "2d413cc4_b457c44e",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74ef2279_5a1654c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
         "patchSetId": 1
@@ -1032,6 +1884,30 @@
       "writtenOn": "2022-05-27T05:21:05Z",
       "side": 1,
       "message": "nit: const",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 63
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "937d1555_97a32849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T14:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74ef2279_5a1654c9",
       "range": {
         "startLine": 76,
         "startChar": 31,
