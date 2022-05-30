@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e585b0a8_51d137e7",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-05-30T02:21:54Z",
+      "side": 0,
+      "message": "dumpsysActivityActivitiesS just calls dumpsysActivityActivitiesR, and dumpsysWaylandS just calls dumpsysWaylandR, so I just deleted this case because it\u0027s the exact same as SDKR.",
+      "revId": "b8ee53617ba64fda5398d2dbed2b4206bcb4f4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
