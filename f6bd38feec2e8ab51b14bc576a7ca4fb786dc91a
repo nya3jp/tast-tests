@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d152d7b0_2f759c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-30T16:58:06Z",
+      "side": 1,
+      "message": "Yup, all defers are called whenever the function finishes, error, success, fatal, panic they will run 👍",
+      "parentUuid": "cab34cb8_ca9090a7",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "f6bd38feec2e8ab51b14bc576a7ca4fb786dc91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6cbb16b_edb38b23",

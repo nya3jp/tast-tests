@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3da5d01_3a4f38fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-30T16:58:06Z",
+      "side": 1,
+      "message": "Only nits, happy for you to land and follow up! Super pumped to see this get to critical 😊",
+      "revId": "f1becad68db5f9373529c4be690b7f7d74cf6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff43cb84_4b299b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-30T16:58:06Z",
+      "side": 1,
+      "message": "nit: Good practice is to \"reserve\" some time at the end of the test to perform these deferrals. Something like:\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n```\nThen you pass `cleanupCtx` to all these deferred functions, so if `ctx` hits the deadline (i.e. the test times out) there will be 5s left to ensure all these cleanup deferrals are run.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "f1becad68db5f9373529c4be690b7f7d74cf6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bd98b3_e18ce731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-30T16:58:06Z",
+      "side": 1,
+      "message": "nit: maybe move this into the `const` block up at line 31?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "f1becad68db5f9373529c4be690b7f7d74cf6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65694720_323c029b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-30T16:58:06Z",
+      "side": 1,
+      "message": "nit: prefer to only log in error scenarios or when you know the following line might take a while or be known to hang. From using these functions I think they\u0027re generally fairly quick?\n\nhttp://go/tast-docs/writing_tests.md#when-to-log",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 45
+      },
+      "revId": "f1becad68db5f9373529c4be690b7f7d74cf6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

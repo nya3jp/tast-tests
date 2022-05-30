@@ -142,6 +142,30 @@
       },
       "revId": "26c71d887724d001fda62e1b5a9a09753c2782dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5aa6075_58e3bd8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-05-30T16:58:06Z",
+      "side": 1,
+      "message": "Yes just to close the loop here, defers will always run. `s.Error` is to be used when you want the test to fail, but don\u0027t want to stop execution. `s.Fatal` is to be used when continuing on the test would be pointless given the fatal condition.",
+      "parentUuid": "61fda4a9_65f1b638",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "26c71d887724d001fda62e1b5a9a09753c2782dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
