@@ -22,6 +22,30 @@
       },
       "revId": "7bf7c009ec4a6ed8fabef6aefbf066f4496763a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad4d0529_4dff9b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-30T05:15:44Z",
+      "side": 0,
+      "message": "I don\u0027t know, what is the correct way forward here - already asked Nicholas to weigh in. I had a similar conversation before with @sidereal in case of another test. Back then it was an acceptable way forward. I am not sure about the decision process here. There are two options going forward:\n1) if all good, accept the change as is\n2) if not, introduce a new type of tests, similar to existing `testFilesFix`, but with a configurable timeout option.",
+      "parentUuid": "3980b31b_a57ccabb",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "7bf7c009ec4a6ed8fabef6aefbf066f4496763a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
