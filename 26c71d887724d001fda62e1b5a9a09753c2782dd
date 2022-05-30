@@ -94,6 +94,30 @@
       },
       "revId": "26c71d887724d001fda62e1b5a9a09753c2782dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac5cc08_c8b1b234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-05-30T06:24:12Z",
+      "side": 1,
+      "message": "With that forced Fatal call:\n\n\t```s.Log(\"Awaiting MountCompleted event\")\n\tm, err :\u003d w.Wait(ctx)\n\tif err \u003d\u003d nil {  // HACK: for a Fatal error\n\t\ts.Fatal(\"Failed awaiting MountCompleted event: \", err);\n\t}```\n\t\ntast test run LOG\n\n2022-05-30T06:17:15.147245Z Started test platform.Fusebox\n2022-05-30T06:17:15.228868Z [06:17:14.079] Connecting to CrosDisks D-Bus service\n2022-05-30T06:17:15.239627Z [06:17:14.080] Mounting fusebox source: \"fusebox://fusebox-tast-test-requests\"\n2022-05-30T06:17:15.243767Z [06:17:14.098] Awaiting MountCompleted event\n2022-05-30T06:17:15.251956Z [06:17:14.098] Error at fusebox.go:63: Failed awaiting MountCompleted event: \u003cnil\u003e\n2022-05-30T06:17:15.252022Z [06:17:14.098] Stack trace:\nFailed awaiting MountCompleted event: \u003cnil\u003e\n        at chromiumos/tast/local/bundles/cros/platform.Fusebox (fusebox.go:63)\n        at chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n        at chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n        at runtime.goexit (asm_amd64.s:1571)\n2022-05-30T06:17:15.382606Z [06:17:14.234] Connecting to browser at ws://localhost:36431/devtools/browser/606e2cf1-d637-4603-a08a-4f837588ae77\n2022-05-30T06:17:15.388782Z [06:17:14.237] Connecting to Chrome target DF73519BBC46FB8BB51CD0A823E3B2F2\n2022-05-30T06:17:15.388859Z [06:17:14.240] Taking screenshot via chrome API\n2022-05-30T06:17:16.894174Z Completed test platform.Fusebox in 1.75s with 1 error(s)\n2022-05-30T06:17:19.798066Z --------------------------------------------------------------------------------\n2022-05-30T06:17:19.798115Z platform.Fusebox [ FAIL ] Failed awaiting MountCompleted event: \u003cnil\u003e\n2022-05-30T06:17:19.798136Z --------------------------------------------------------------------------------\n2022-05-30T06:17:19.798151Z Results saved to /tmp/tast/results/20220530-161705\n\n/var/log/messages LOG\n\n2022-05-30T06:17:14.102690Z INFO fusebox[7323]: Kernel FUSE : umount(8) /dev/fd/\n12\n2022-05-30T06:17:14.102744Z DEBUG fusebox[7323]: Scheduling delayed task_id 2 to\n run in 0 s.\n2022-05-30T06:17:14.102836Z DEBUG fusebox[7323]: Running delayed task_id 2 sched\nuled from this location.\n2022-05-30T06:17:14.105221Z INFO cros-disks[26955]: FUSE daemon for \u0027/media/fuse\n/fusebox-tast-test-requests\u0027 exited normally\n\nLooks to me like the `defer Unmount` happened even though `s.Fatal` called. \n\nThat suggests a better patch: just call `s.Fatal` everywhere.",
+      "parentUuid": "10a1459b_e1edb788",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "26c71d887724d001fda62e1b5a9a09753c2782dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
