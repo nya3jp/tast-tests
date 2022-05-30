@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a877b1cf_6b74c82f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-05-30T10:18:16Z",
+      "side": 1,
+      "message": "PTAL! (I found this while I was working on another issue)",
+      "revId": "9c619acb18c94504074f2013ab0703c218a9ee04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
