@@ -16,6 +16,46 @@
       "message": "+2 for Tast Review",
       "revId": "8a4b24920d084b302030da133b196048b3e59bfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbead96_cabe16d7",
+        "filename": "src/chromiumos/tast/local/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-30T07:58:01Z",
+      "side": 1,
+      "message": "could you use textexec.CommandContext?",
+      "revId": "8a4b24920d084b302030da133b196048b3e59bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "983835ba_f8d981ac",
+        "filename": "src/chromiumos/tast/local/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-30T07:58:01Z",
+      "side": 1,
+      "message": "nit/style\n\nreturn cmd.Run()",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 11
+      },
+      "revId": "8a4b24920d084b302030da133b196048b3e59bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
