@@ -33,6 +33,23 @@
       "message": "tast-owners@: Please take a look.",
       "revId": "c805d2744b598a0eeda8803b3404e31a16ee3243",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d2567e_3018d7ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-30T05:59:04Z",
+      "side": 1,
+      "message": "Approving trivial CL without waiting for a shadow reviewer.",
+      "revId": "c805d2744b598a0eeda8803b3404e31a16ee3243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
