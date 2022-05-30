@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f7d0464_68710772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-30T04:40:31Z",
+      "side": 1,
+      "message": "Instead of `s.Error` + `return`, you can use `s.Fatal`.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "f6bd38feec2e8ab51b14bc576a7ca4fb786dc91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cbb16b_edb38b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-30T04:40:31Z",
+      "side": 1,
+      "message": "No need for `else` here",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 7
+      },
+      "revId": "f6bd38feec2e8ab51b14bc576a7ca4fb786dc91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aefd1bb_1f092f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-30T04:40:31Z",
+      "side": 1,
+      "message": "No need for `else` here",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 7
+      },
+      "revId": "f6bd38feec2e8ab51b14bc576a7ca4fb786dc91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
