@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e04bde66_9c5516f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/util/updatelib.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T08:51:48Z",
+      "side": 1,
+      "message": "I think you can use `testing.ContextLog` to log errors without passing state:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/docs/writing_tests.md;l\u003d1594?q\u003d%22testing.context%22\u0026sq\u003dpackage:chromeos_public\n\nNot sure if adding a deferred method would make it more complicated, but since it\u0027s just a temporary solution I\u0027m not going to insist on doing that. Maybe just add a comment then that we *must* call rollback before leaving the function?",
+      "parentUuid": "b3f17b4e_f942e504",
+      "range": {
+        "startLine": 145,
+        "startChar": 20,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "1f2b9c38dc2b2f0671a26ca46acb16cee2ef81e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1523d88b_92dc579a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/util/updatelib.go",
         "patchSetId": 1
