@@ -22,6 +22,30 @@
       },
       "revId": "3322e59232e0fbd7f442109ebf6d4cf18e120295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "789b674c_5b5d0b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-05-30T06:43:51Z",
+      "side": 1,
+      "message": "Fixed in patch-set #16.",
+      "parentUuid": "0fab27cb_a3439538",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 49
+      },
+      "revId": "3322e59232e0fbd7f442109ebf6d4cf18e120295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
