@@ -26,6 +26,9 @@ const (
 
 	// SDKS is the SDK version of Android S v2, which is the S version of ARC.
 	SDKS = 32
+
+	// SDKT is the SDK version of Android T.
+	SDKT = 33
 )
 
 // SDKVersion returns the ARC's Android SDK version for the current ARC image
