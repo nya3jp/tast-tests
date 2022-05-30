@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3764abc_8767ca01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-30T00:41:14Z",
+      "side": 1,
+      "message": "/typo sharing",
+      "revId": "8e9aa125361e21a2a87af98d18a32a5ec5822359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d898ca05_9b4f6987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-30T00:41:14Z",
+      "side": 1,
+      "message": "/typo terminal",
+      "revId": "8e9aa125361e21a2a87af98d18a32a5ec5822359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
