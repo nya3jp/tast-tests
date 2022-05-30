@@ -24,6 +24,8 @@ service CheckVirtualKeyboardService {
     rpc TouchChromeAddressBar (google.protobuf.Empty) returns (google.protobuf.Empty) {}
     // CheckVirtualKeyboardIsPresent checks whether the virtual keyboard is present.
     rpc CheckVirtualKeyboardIsPresent (CheckVirtualKeyboardRequest) returns (CheckVirtualKeyboardResponse) {}
+    // ClickSearchBar clicks the search bar.
+    rpc ClickSearchBar (CheckVirtualKeyboardRequest) returns (google.protobuf.Empty) {}
 }
 
 // NewBrowserRequest to login to Chrome with a desired browser enabled.
