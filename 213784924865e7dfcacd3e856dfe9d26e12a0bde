@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18c9b6a5_ba27fc94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-30T08:38:11Z",
+      "side": 1,
+      "message": "\u003e\u003e test-tests: Change that affects multiple packages (2)\nThere is a typo. It should be:\ntast-tests: Change that affects multiple packages (2)",
+      "parentUuid": "9023b79a_9748e05b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18404faa_e6051241",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
