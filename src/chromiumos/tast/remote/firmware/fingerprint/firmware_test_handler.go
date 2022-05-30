@@ -139,7 +139,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 	}
 
 	// Check FPMCU state and reflash if needed.
-	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
+	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing, enableSWWP); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
@@ -148,8 +148,16 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		return nil, err
 	}
 
-	if err := InitializeHWAndSWWriteProtect(ctx, t.d, pxy, t.fpBoard, enableHWWP, enableSWWP); err != nil {
-		return nil, errors.Wrap(err, "initializing write protect failed")
+	if err := SetHardwareWriteProtect(ctx, pxy, enableHWWP); err != nil {
+		return nil, err
+	}
+
+	if err := SetSoftwareWriteProtect(ctx, d.DUT(), enableSWWP); err != nil {
+		return nil, err
+	}
+
+	if err := CheckWriteProtectStateCorrect(ctx, d.DUT(), enableSWWP, enableHWWP); err != nil {
+		return nil, errors.Wrap(err, "failed to validate write protect settings")
 	}
 
 	return t, nil
@@ -161,7 +169,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
-	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
+	if err := t.ReimageFPMCU(ctx); err != nil {
 		firstErr = err
 	}
 
@@ -255,6 +263,11 @@ func (t *FirmwareTest) DUTTempDir() string {
 // FPBoard gets the fingerprint board name.
 func (t *FirmwareTest) FPBoard() FPBoardName {
 	return t.fpBoard
+}
+
+// ReimageFPMCU flashes the FPMCU, initializes entropy, and sets the TPM seed.
+func (t *FirmwareTest) ReimageFPMCU(ctx context.Context) error {
+	return ReimageFPMCU(ctx, t.DUT(), t.Servo(), t.NeedsRebootAfterFlashing())
 }
 
 type daemonState struct {
