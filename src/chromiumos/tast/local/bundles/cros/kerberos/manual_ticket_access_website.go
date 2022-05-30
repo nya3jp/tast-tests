@@ -93,22 +93,42 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	// The website does not have a valid certificate. We accept the warning and
 	// proceed to the content.
 	clickAdvance := fmt.Sprintf("document.getElementById(%q).click()", "details-button")
-	if err := conn.Eval(ctx, clickAdvance, nil); err != nil {
-		s.Fatal("Failed to click Advance button: ", err)
-	}
-
 	clickProceed := fmt.Sprintf("document.getElementById(%q).click()", "proceed-link")
-	if err := conn.Eval(ctx, clickProceed, nil); err != nil {
-		s.Fatal("Failed to click Advance button: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := conn.Eval(ctx, clickAdvance, nil); err != nil {
+			return errors.Wrap(err, "failed to click Advance button")
+		}
+
+		if err := conn.Eval(ctx, clickProceed, nil); err != nil {
+			return errors.Wrap(err, "failed to click Proceed button")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		s.Fatal("Could not accept the certificate warning: ", err)
 	}
 
 	// Check that title is 401 - unauthorized.
 	var websiteTitle string
-	if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
-		s.Error("Failed to get the website title: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
+			return errors.Wrap(err, "failed to get the website title")
+		}
+		if websiteTitle == "" {
+			return errors.New("website title is empty")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		s.Fatal("Couldn't get non-empty website title: ", err)
 	}
-	if strings.Contains(websiteTitle, "401") {
-		s.Error("Website title did not contain error 401")
+
+	if !strings.Contains(websiteTitle, "401") {
+		s.Fatal("Website title did not contain error 401")
 	}
 
 	keyboard, err := input.Keyboard(ctx)
@@ -124,7 +144,6 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 
 	s.Log("Wait for website to have non-empty title")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-
 		if err := conn.Navigate(ctx, config.WebsiteAddress); err != nil {
 			s.Fatalf("Failed to navigate to the server URL %q: %v", config.WebsiteAddress, err)
 		}
@@ -133,14 +152,14 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to get the website title")
 		}
 		if websiteTitle == "" || strings.Contains(websiteTitle, "401") {
-			return errors.New("website title is still empty")
+			return errors.New("website title is empty")
 		}
 		return nil
 	}, &testing.PollOptions{
 		Timeout:  5 * time.Second,
 		Interval: 1 * time.Second,
-	}); err != nil {
-		s.Error("Couldn't get non-empty website title: ", err)
+	}); err != nil && websiteTitle == "" {
+		s.Fatal("Couldn't get non-empty website title: ", err)
 	}
 
 	if !strings.Contains(websiteTitle, "KerberosTest") {
