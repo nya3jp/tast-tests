@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34b7858f_38b0b601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a788ab3d_ee7bd8eb",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e73d974_e20fdf75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Yes, exactly. The two calls need to be split.\n\nI called it \"New\" because that carries the information that this function should be called before using the service. Seemed to be a common pattern to me:\nhttps://source.corp.google.com/search?q\u003d.*_service.go%20New\u0026sq\u003dpackage:chromeos_public\n\nAdding comment that this logs into Chrome with default credentials.\n\nI thought presubmit was going to complain if I don\u0027t follow the go format rules and forget comments. Apparently not, sorry for the manual fuzz.",
+      "parentUuid": "9d032e80_66b559b3",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb63af7a_f9095546",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-26T10:37:08Z",
       "side": 1,
       "message": "Please add a comment describing the purpose of the method \"RelaunchAfterUpdate ...\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32184467_3289030c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb63af7a_f9095546",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fecd283_060a6841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "hrmm I\u0027ve been trying to only add error chains if I actually have some context to provide, but I guess it\u0027s hard to tell when that is. Will go back to adding snake errors everywhere in tast.",
+      "parentUuid": "51b7b59a_b188276c",
+      "range": {
+        "startLine": 60,
+        "startChar": 14,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf7438a7_a3fa4c9f",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-05-26T10:37:08Z",
       "side": 1,
       "message": "It seems this call is flaky and it is recommended to use LaunchAtPageURL instead if possible (b/189055966)",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116b846d_4603eb2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf7438a7_a3fa4c9f",
       "range": {
         "startLine": 63,
         "startChar": 21,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3211514a_709d9df2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c38ccab_095affcd",
+      "range": {
+        "startLine": 65,
+        "startChar": 14,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6bd5748_c7dce845",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-05-26T10:37:08Z",
       "side": 1,
       "message": "should we remove this flag when the test finishes then instead so we are sure it won\u0027t be there?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c104be30_ff7714f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Yea good point, that\u0027s a bit cleaner. We can actually do it in one step and remove and check the result to make sure it was there.",
+      "parentUuid": "f6bd5748_c7dce845",
       "range": {
         "startLine": 38,
         "startChar": 2,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e269437_4fb18f2b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40703441_5fa6666d",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfa2478c_98401103",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-05-26T10:37:08Z",
       "side": 1,
       "message": "New does not seem to relaunch, just instantiates Chrome, am I missing something?",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef2164e_09ddcf9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Ouh yes, that error message is nonesense. Changing.",
+      "parentUuid": "cfa2478c_98401103",
       "range": {
         "startLine": 63,
         "startChar": 11,
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2503c72a_ad2a3d55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70489e96_e1675822",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 10
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "387af21b_711127d9",
@@ -244,6 +484,30 @@
       "writtenOn": "2022-05-26T10:37:08Z",
       "side": 1,
       "message": "should we also print the err?",
+      "range": {
+        "startLine": 97,
+        "startChar": 22,
+        "endLine": 97,
+        "endChar": 49
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50003ecf_9e6626f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Probably not necessary but why not, can\u0027t hurt.",
+      "parentUuid": "387af21b_711127d9",
       "range": {
         "startLine": 97,
         "startChar": 22,
@@ -277,6 +541,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "148c3212_bc318dd4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Logging already happens on shutdown. I added this polling because it may take a bit longer for /var to be available than for the WaitConnect to be successful. So we need to poll for being able to remove and check for the flag in /var/lib/oobe_config_save.\n\nWondering if it can happen that /var/lib/oobe_config_save is available but /var/log/messages isn\u0027t. I think that\u0027s also what you\u0027re referring to.\nSince we\u0027re relying on the format already anyways, let\u0027s add that check for oobe_config_save running. \"INFO oobe_config_save\" should suffice and depends less on the actual wording.",
+      "parentUuid": "9bd09dc3_982e6791",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 12
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43d13f50_954a0063",
@@ -290,6 +578,30 @@
       "writtenOn": "2022-05-26T10:37:08Z",
       "side": 1,
       "message": "Although it is possible, it is not recommended to use Empty for requests and responses in rpc calls. Please create [rpcCallName]Request and [rpcCallName]Response messages for both rpc calls and leave them empty as we do in rollback_service (https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/services/cros/autoupdate/rollback_service.proto;l\u003d35). This would allow to extend the service easily if needed in the future without having to change the rpc calls (deprecate + create new ones).\n\nSee b/170714593 and discussion in links for more details.\n\nAlso, please add a comment describing the purpose of each of the calls.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "4ad1d78b28fe1803deed7288dec5314591ddb4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eebcebdf_a07c868b",
+        "filename": "src/chromiumos/tast/services/cros/autoupdate/update_ui_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "I think that may be the case for proto in general, but not for tast services. Tast services don\u0027t need to be compatible with different versions (unless you\u0027re doing rollback - but that\u0027s the rare exception, not the norm).\nSo to change tast services (unless doing rollback), you can always meddle with the proto as much as you like.\n\n(Also, in a more well founded world, proto would be able to extend from empty to any other type... but that\u0027s a different discussion)\n\nEven the grpc tutorial uses protobuf\u0027s Empty: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#remote-procedure-calls-with-grpc\n\nAdding comments.",
+      "parentUuid": "43d13f50_954a0063",
       "range": {
         "startLine": 15,
         "startChar": 0,

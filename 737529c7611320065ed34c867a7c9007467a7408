@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78799761_26f1d0bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a1f916_743cf4d3",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 39
+      },
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b75c709_d9eda499",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-24T12:59:58Z",
       "side": 1,
       "message": "Please add some error handling here.\nYou can use combine if you only want to add it once.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65111aab_bd9c3498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/update_ui_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b75c709_d9eda499",
       "range": {
         "startLine": 72,
         "startChar": 0,
@@ -96,6 +144,24 @@
       "side": 1,
       "message": "No, I meant something else.\nThe file deletion is fine, but after the deletion step, you can check if it is really deleted (e.g. was not write protected), as you didn\u0027t check for errors.\n\nBut I think it is also possible to add a flag to rm so it does not throw an error, if the file is not there.",
       "parentUuid": "628e11f5_8951fad7",
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "419e9de3_28ab1516",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Ah yes, rm -f would have done the trick. But not needed anymore anyways, since I now always remove the flag upon checking.",
+      "parentUuid": "64bc6d95_56649a75",
       "revId": "737529c7611320065ed34c867a7c9007467a7408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -220,6 +286,30 @@
       "side": 1,
       "message": "If it is a temporary solution (the whole test), I think it can stay.",
       "parentUuid": "0b41a5e5_ccf04cec",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 212
+      },
+      "revId": "737529c7611320065ed34c867a7c9007467a7408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24e5972_48556824",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-30T11:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a484812_d251fe71",
       "range": {
         "startLine": 80,
         "startChar": 2,
