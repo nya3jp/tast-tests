@@ -128,7 +128,8 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 
 	// InitializeKnownState enables HW write protect so that we are testing
 	// the same configuration as the end user.
-	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot); err != nil {
+	enableSWWP := false
+	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot, enableSWWP); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 
