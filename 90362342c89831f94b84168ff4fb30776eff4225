@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44324211_433aff43",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-30T03:20:11Z",
+      "side": 1,
+      "message": "`WithInterval` here will increase the interval between the clicks. However, we also have `s.ui.WithTimeout(shortUITimeout).WaitUntilExists` which will add to that  interval. As `shortUITimeout` is set to 5 seconds already, this will make interval between the click long enough and we don\u0027t need an extra interval increase.\nThanks for bringing it up. Removed.",
+      "parentUuid": "5828810d_51802906",
+      "range": {
+        "startLine": 315,
+        "startChar": 12,
+        "endLine": 315,
+        "endChar": 39
+      },
+      "revId": "90362342c89831f94b84168ff4fb30776eff4225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8f7d816_78145b38",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec9024f_222ee773",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-30T03:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8f7d816_78145b38",
+      "range": {
+        "startLine": 322,
+        "startChar": 7,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "90362342c89831f94b84168ff4fb30776eff4225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbe4ce94_5241d3e3",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-30T02:41:01Z",
       "side": 1,
       "message": "Just curious, is one minute always sufficient to remove linux on all devices?",
+      "range": {
+        "startLine": 323,
+        "startChar": 19,
+        "endLine": 323,
+        "endChar": 30
+      },
+      "revId": "90362342c89831f94b84168ff4fb30776eff4225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e029900_0f1089a4",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-30T03:20:11Z",
+      "side": 1,
+      "message": "That\u0027s a great point. No, it\u0027s [not](https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-05-17\u0026last_date\u003d2022-05-30\u0026test\u003dcrostini.*\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003d.*failed+to+remove+Linux+on+step+3%3A+context+deadline+exceeded%3B+last+error+follows%3A+node+still+exists\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse).\nAdded http://b/234305009 to address it.",
+      "parentUuid": "fbe4ce94_5241d3e3",
       "range": {
         "startLine": 323,
         "startChar": 19,
