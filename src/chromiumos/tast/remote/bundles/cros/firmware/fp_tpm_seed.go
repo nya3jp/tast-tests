@@ -64,8 +64,9 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create MP firmwareFile: ", err)
 	}
+	removeSWWP := false
 	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy,
-		fpBoard, *firmwareFile, needsReboot); err != nil {
+		fpBoard, *firmwareFile, needsReboot, removeSWWP); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 

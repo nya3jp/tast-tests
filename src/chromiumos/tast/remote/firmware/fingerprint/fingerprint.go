@@ -137,9 +137,9 @@ var keyIDMap = map[string]KeyType{
 
 // Map of attributes for a given board's various firmware file releases.
 // Two purposes:
-//   1) Documents the exact versions and keys used for a given firmware file.
-//   2) Used to verify that files that end up in the build (and therefore
-//      what we release) is exactly what we expect.
+//  1. Documents the exact versions and keys used for a given firmware file.
+//  2. Used to verify that files that end up in the build (and therefore
+//     what we release) is exactly what we expect.
 var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 	FPBoardNameBloonchipper: {
 		"bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.14348-e5fb0b9-RW.bin": {
@@ -475,8 +475,8 @@ func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, firmw
 	return nil
 }
 
-// InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
-func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, firmwareFile FirmwareFile, needsRebootAfterFlashing bool) error {
+// InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU. It then checks if SWWP will need to be removed. If so, it reflashes.
+func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, firmwareFile FirmwareFile, needsRebootAfterFlashing, removeSWWP bool) error {
 	// Check if the FPMCU even responds to a friendly hello (query version).
 	// Save the version string in a file for later.
 	out, err := CheckFirmwareIsFunctional(ctx, d.DUT())
@@ -484,6 +484,18 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Reflashing FP firmware", err)
 		if err := ReimageFPMCU(ctx, d, pxy, firmwareFile.FilePath, needsRebootAfterFlashing); err != nil {
 			return err
+		}
+	}
+	// If we need to remove software write protect, we must reflash here.
+	testing.ContextLog(ctx, "Checking if software write protect needs to be removed")
+	fp, err := GetFlashProtect(ctx, d.DUT())
+	if err != nil {
+		return errors.Wrap(err, "failed to read flash protect")
+	}
+	if removeSWWP && fp.IsSoftwareReadOutProtected() {
+		testing.ContextLog(ctx, "Software write protect had previously been enabled. Reflashing FP firmware")
+		if err := ReimageFPMCU(ctx, d, pxy, firmwareFile.FilePath, needsRebootAfterFlashing); err != nil {
+			return errors.Wrap(err, "failed to remove software write protect")
 		}
 	}
 	versionOutputFile := "cros_fp_version.txt"
