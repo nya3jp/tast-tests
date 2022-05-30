@@ -8,6 +8,7 @@ package apps
 import (
 	"context"
 	"fmt"
+	"net/url"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -327,6 +328,32 @@ func getInstalledAppID(ctx context.Context, tconn *chrome.TestConn, predicate fu
 	return appID, err
 }
 
+// FindSystemWebAppByOrigin returns an `ash.ChromeApp` that is a system web app and matches `origin`.
+// This won't match Terminal app, which is managed by Crostini and tested separately.
+// Returns `nil` if the app isn't found (i.e. installed).
+func FindSystemWebAppByOrigin(ctx context.Context, tconn *chrome.TestConn, origin string) (*ash.ChromeApp, error) {
+	installedApps, err := ash.ChromeApps(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get installed apps")
+	}
+
+	swaURL, err := url.Parse(origin)
+	if err != nil {
+		return nil, errors.Wrapf(err, "system web app origin is invalid, got %s", origin)
+	}
+
+	for _, app := range installedApps {
+		if app.InstallSource == "System" && app.Type == "Web" {
+			// SWA's `publisher_id` is their start_url, match it against the provided `origin`.
+			appURL, _ := url.Parse(app.PublisherID)
+			if appURL != nil && appURL.Scheme == swaURL.Scheme && appURL.Host == swaURL.Host {
+				return app, nil
+			}
+		}
+	}
+	return nil, nil
+}
+
 // LaunchSystemWebApp launches a system web app specifide by its name and URL.
 func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, url string) error {
 	return tconn.Call(ctx, nil, `async (appName, url) => {
@@ -379,6 +406,23 @@ func ListSystemWebAppsInternalNames(ctx context.Context, tconn *chrome.TestConn)
 	}
 
 	return result, nil
+}
+
+// SystemWebApp corresponds to `SystemWebApp` defined in autotest_private.idl
+type SystemWebApp struct {
+	InternalName string `json:"internalName"`
+	URL          string `json:"url"`
+	Name         string `json:"name"`
+	StartURL     string `json:"startUrl"`
+}
+
+// ListRegisteredSystemWebApps returns all registered system web apps.
+func ListRegisteredSystemWebApps(ctx context.Context, tconn *chrome.TestConn) ([]*SystemWebApp, error) {
+	var s []*SystemWebApp
+	if err := tconn.Call(ctx, &s, "tast.promisify(chrome.autotestPrivate.getRegisteredSystemWebApps)"); err != nil {
+		return nil, errors.Wrap(err, "failed to call getRegisteredSystemWebApps")
+	}
+	return s, nil
 }
 
 // LaunchOSSettings launches the OS Settings app to its subpage URL, and returns
