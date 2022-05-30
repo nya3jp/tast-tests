@@ -33,6 +33,24 @@
       "message": "In general, it requires the tests to be stable on at least 20 consecutive builds to be promoted (https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra).\n\nIt looks like these tests got only 10 builds (https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2022-05-24\u0026last_date\u003d2022-05-30\u0026test\u003d%5E.*AppGeditUnshareFolder%24%7C%5E.*AppGedit%24%7CRestartApp\u0026status\u003dGOOD\u0026status\u003dFAIL\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse)\n\nI am fine if you are confident to promote them early, ",
       "revId": "901e1c4e827a052069bdd4dc85d6b7f71238b78d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74974121_188ddfca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-05-30T01:26:56Z",
+      "side": 1,
+      "message": "Did anything change to fix the previous cause of flake? Looking at the last failure, it looks like the \"T\" was input too early, so didn\u0027t make it into Gedit. I don\u0027t recall seeing a CL to fix that though maybe I missed it?",
+      "parentUuid": "d76f1586_150e1af3",
+      "revId": "901e1c4e827a052069bdd4dc85d6b7f71238b78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
