@@ -22,6 +22,30 @@
       },
       "revId": "4ff36efa14c917babd969f0469e47382c6920525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86296baf_30b6ac93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-30T01:05:48Z",
+      "side": 1,
+      "message": "A good pratice in Go is \"prefer contexts passed as arguments\". \n\nIn this specific example,\n(1) In `defer func(){...(cleanupCtx)}()`, `cleanupCtx` is evaluated only when the function is executed.\n(2) In `defer func(ctx context.Context){...(ctx)}(cleanupCtx)`, `cleanupCtx` is evaluated immediately.\n\nIn situation (1), there is no gurrantee that `cleanupCtx` will not be changed outside later.",
+      "parentUuid": "592e52af_b9647681",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "4ff36efa14c917babd969f0469e47382c6920525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
