@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ef68398_7e2645ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-05-30T05:29:48Z",
+      "side": 1,
+      "message": "I mean if you remove the `else`, you need to add a newline so that the following `if` is at the start of a line.",
+      "parentUuid": "3465370e_f0a11eee",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 7
+      },
+      "revId": "f6bd38feec2e8ab51b14bc576a7ca4fb786dc91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4aefd1bb_1f092f81",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
         "patchSetId": 10
