@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1430a30d_ef6dcc4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/image_editing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-05-30T04:24:08Z",
+      "side": 1,
+      "message": "As \"filesapp.DownloadPath\" are being deprecated. Change to use [\"cryptohome\" package](https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#logged-in-users-home-directory).",
+      "revId": "ec57e9de4fbfec5603ee9aa2a9da3486fef1f205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
