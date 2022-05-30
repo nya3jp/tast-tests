@@ -33,6 +33,24 @@
       "message": "nit: Add a dot at the end of the comment.",
       "revId": "2a3276662b627d0d39cea0617545816b023ad745",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcc2d09_dc63507f",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-05-30T12:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22a45558_0e17f108",
+      "revId": "2a3276662b627d0d39cea0617545816b023ad745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
