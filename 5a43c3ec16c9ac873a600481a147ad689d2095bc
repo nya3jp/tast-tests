@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b76f0b5f_9fe04fff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-30T05:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76a9d75f_9940772d",
+      "range": {
+        "startLine": 89,
+        "startChar": 21,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "5a43c3ec16c9ac873a600481a147ad689d2095bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87176cd0_0041956f",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-25T18:55:34Z",
       "side": 1,
       "message": "https://go.dev/play/p/PjccQ0aFRSi",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 124
+      },
+      "revId": "5a43c3ec16c9ac873a600481a147ad689d2095bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0491d97_84918ef8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-30T05:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87176cd0_0041956f",
       "range": {
         "startLine": 109,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2773a6a1_c47b2c69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-30T05:23:45Z",
+      "side": 1,
+      "message": "Even-though we get \u0027evtest\u0027 command output, still it returns with \u0027err !\u003d nil\u0027. So err was ignored.",
+      "parentUuid": "b20b245a_4b6e9ca3",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 61
+      },
+      "revId": "5a43c3ec16c9ac873a600481a147ad689d2095bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e8e6716_bc0175a0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
         "patchSetId": 3
@@ -100,6 +172,30 @@
       "writtenOn": "2022-05-25T18:55:34Z",
       "side": 1,
       "message": "Sorry I could have given you better advice here the first time. All this code can simply be written like so:\n\tif len(result) \u003d\u003d 0 {\n\t\treturn 0, errors.New(\"failed to find keyboard in evtest command output\")\n\t}\n\treturn strconv.Atoi(result[1])",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 21
+      },
+      "revId": "5a43c3ec16c9ac873a600481a147ad689d2095bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5764c27a_0c04376d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-30T05:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e8e6716_bc0175a0",
       "range": {
         "startLine": 204,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4505bb_ac1bcf79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-30T05:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5ba78d_26a603e0",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 123
+      },
+      "revId": "5a43c3ec16c9ac873a600481a147ad689d2095bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dea3130_fc44177d",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fbc5a1d_82255c3d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-30T05:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dea3130_fc44177d",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 130
+      },
+      "revId": "5a43c3ec16c9ac873a600481a147ad689d2095bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e7ef451_976bd5b5",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-05-25T18:55:34Z",
       "side": 1,
       "message": "https://go.dev/play/p/PjccQ0aFRSi\n\nAlso, you can end the message with the word `error`, anticipating that `errors.Wrapf` will add a colon, a space, and the error.",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 121
+      },
+      "revId": "5a43c3ec16c9ac873a600481a147ad689d2095bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2b000f_6821672d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/onboard_keyboard_functionality_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-30T05:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e7ef451_976bd5b5",
       "range": {
         "startLine": 262,
         "startChar": 0,
