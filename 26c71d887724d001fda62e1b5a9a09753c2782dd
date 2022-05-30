@@ -22,6 +22,30 @@
       },
       "revId": "26c71d887724d001fda62e1b5a9a09753c2782dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4866e5ba_9a728eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-05-30T05:37:48Z",
+      "side": 1,
+      "message": "Will the prior defers be called?  Using .Error which I cribbed from other .go tests using Mount suggested to me that .Error was the way to go.  No question that the defers will be called in that case.",
+      "parentUuid": "c2d2eac3_22a9caec",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "26c71d887724d001fda62e1b5a9a09753c2782dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

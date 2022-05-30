@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54061838_38980127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-05-30T05:37:48Z",
+      "side": 1,
+      "message": "Oh right. Let\u0027s just leave this if/else group together without a new line to break it apart, I reckon.",
+      "parentUuid": "5ef68398_7e2645ba",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 7
+      },
+      "revId": "f6bd38feec2e8ab51b14bc576a7ca4fb786dc91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4aefd1bb_1f092f81",
