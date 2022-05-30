@@ -16,6 +16,24 @@
       "message": "Do you still need to add a stable variant as well?",
       "revId": "f6fb958701a00d5c598466cb37b17fdeb27b53ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f30ae5_e4a6e921",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-30T05:39:15Z",
+      "side": 1,
+      "message": "The regular version (tast.typec.Basic) would be the stable one (and critical).",
+      "parentUuid": "7acc8386_7cd8c0cf",
+      "revId": "f6fb958701a00d5c598466cb37b17fdeb27b53ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
