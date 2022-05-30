@@ -41,6 +41,7 @@ const (
 )
 
 const uiTimeout = 15 * time.Second
+const shortUITimeout = 5 * time.Second
 
 // Sub settings name.
 const (
@@ -210,8 +211,8 @@ func OpenLinuxInstallerAndClickNext(ctx context.Context, tconn *chrome.TestConn,
 	defer func() { faillog.DumpUITreeAndScreenshot(cleanupCtx, tconn, "crostini_installer", retErr) }()
 	installButton := nodewith.Name("Install").Role(role.Button)
 	if err := uiauto.Combine("open Install and click button Next",
-		ui.LeftClickUntil(TurnOnButton, ui.WaitUntilExists(nextButton)),
-		ui.LeftClickUntil(nextButton, ui.WaitUntilExists(installButton)))(ctx); err != nil {
+		ui.LeftClickUntil(TurnOnButton, ui.WithTimeout(shortUITimeout).WaitUntilExists(nextButton)),
+		ui.LeftClickUntil(nextButton, ui.WithTimeout(shortUITimeout).WaitUntilExists(installButton)))(ctx); err != nil {
 		return errors.Wrap(err, "failed to click button Next on the installer")
 	}
 	return nil
@@ -311,14 +312,14 @@ var RemoveConfirmDialog = removeConfirmDialogStruct{
 
 // ClickRemove clicks Remove to launch the delete.
 func (s *Settings) ClickRemove() uiauto.Action {
-	return s.ui.WithInterval(time.Second).LeftClickUntil(removeLinuxButton, s.ui.Exists(RemoveConfirmDialog.Self))
+	return s.ui.LeftClickUntil(removeLinuxButton, s.ui.WithTimeout(shortUITimeout).WaitUntilExists(RemoveConfirmDialog.Self))
 }
 
 // Remove removes Crostini.
 func (s *Settings) Remove() uiauto.Action {
 	return uiauto.Combine("remove Linux",
 		s.ClickRemove(),
-		s.ui.WithInterval(time.Second).LeftClickUntil(RemoveConfirmDialog.Delete, s.ui.Exists(RemoveLinuxAlert)),
+		s.ui.LeftClickUntil(RemoveConfirmDialog.Delete, s.ui.WithTimeout(shortUITimeout).WaitUntilExists(RemoveLinuxAlert)),
 		s.ui.WithTimeout(time.Minute).WaitUntilGone(RemoveLinuxAlert),
 		s.ui.WaitUntilExists(TurnOnButton))
 }
