@@ -30,7 +30,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Navigate through OOBE and Verify that PlayStore Settings Screen is launched at the end",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com", "cros-oac@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
+		Attr:         []string{"group:mainline", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -56,7 +56,7 @@ func init() {
 				consolidatedConsentEnabled: true,
 			},
 		}},
-		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 300*time.Second,
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 10*time.Minute,
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
