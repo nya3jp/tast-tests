@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
@@ -44,6 +45,7 @@ type CheckVirtualKeyboardService struct {
 	closeBrowser func(ctx context.Context)
 	tconn        *chrome.TestConn // from ash-chrome
 	sharedObject *common.SharedObjectsForService
+	uia          *uiauto.Context
 }
 
 // NewChromeLoggedIn Logs into a user session.
@@ -124,12 +126,20 @@ func (cvk *CheckVirtualKeyboardService) ClickChromeAddressBar(ctx context.Contex
 
 // CheckVirtualKeyboardIsPresent checks whether the virtual keyboard is present.
 func (cvk *CheckVirtualKeyboardService) CheckVirtualKeyboardIsPresent(ctx context.Context, req *pb.CheckVirtualKeyboardRequest) (*pb.CheckVirtualKeyboardResponse, error) {
-	if cvk.cr == nil {
+	cvk.sharedObject.ChromeMutex.Lock()
+	defer cvk.sharedObject.ChromeMutex.Unlock()
+
+	if cvk.sharedObject.Chrome == nil {
 		return nil, errors.New("Chrome not available")
 	}
 
+	tconn, err := cvk.sharedObject.Chrome.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
 	var exists bool
-	uiauto := uiauto.New(cvk.tconn)
+	uiauto := uiauto.New(tconn)
 
 	vkNode := nodewith.Name("Chrome OS Virtual Keyboard").Role(role.RootWebArea).Visible()
 	if err := uiauto.WithTimeout(3 * time.Second).WaitUntilExists(vkNode)(ctx); err != nil {
@@ -172,4 +182,43 @@ func saveLogsOnError(ctx context.Context, cvk *CheckVirtualKeyboardService, hasE
 	faillog.DumpUITreeOnError(ctx, filepath.Join(outDir, "CheckVirtualKeyboardService-"+msg), hasError, cvk.tconn)
 	faillog.SaveScreenshotOnError(ctx, cvk.cr, filepath.Join(outDir, "CheckVirtualKeyboardService-"+msg), hasError)
 	return nil
+}
+
+// ClickSearchBar left-clicks on the search bar when tablet mode if off,
+// and sends a tap on the touch screen instead when tablet mode is on.
+func (cvk *CheckVirtualKeyboardService) ClickSearchBar(ctx context.Context, req *pb.CheckVirtualKeyboardRequest) (*empty.Empty, error) {
+
+	cvk.sharedObject.ChromeMutex.Lock()
+	defer cvk.sharedObject.ChromeMutex.Unlock()
+
+	if cvk.sharedObject.Chrome == nil {
+		return nil, errors.New("Chrome not available")
+	}
+
+	tconn, err := cvk.sharedObject.Chrome.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	// Left-click if dut is not in tablet mode,
+	// otherwise send a tap on the touch screen.
+	searchBarNode := nodewith.ClassName("SearchBoxView").First()
+	if !req.IsDutTabletMode {
+		cvk.uia = uiauto.New(tconn)
+		if err := uiauto.Combine("open launcher and left click search bar",
+			launcher.Open(tconn),
+			cvk.uia.LeftClick(searchBarNode),
+		)(ctx); err != nil {
+			return &empty.Empty{}, err
+		}
+	} else {
+		tc, err := touch.New(ctx, tconn)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to create the touch context instance")
+		}
+		if err := tc.Tap(searchBarNode)(ctx); err != nil {
+			return nil, errors.Wrap(err, "could not tap the search bar")
+		}
+	}
+	return &empty.Empty{}, nil
 }
