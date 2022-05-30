@@ -272,8 +272,8 @@ func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, a *arc
 			}
 
 			return nil
-		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 5 * time.Second})
-	}, &testing.PollOptions{Timeout: 60 * time.Second})
+		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
+	}, nil)
 }
 
 // launchAssetBrowserActivity starts the activity that displays the available apps.
