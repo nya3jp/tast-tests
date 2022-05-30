@@ -16,6 +16,24 @@
       "message": "nit: i think better capitalization would be \"Bypass\"",
       "revId": "56c7a3e2922897e68d104bc8906b948b8af5b403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7724a3c3_8cc4662f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-30T23:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11418edd_f9198362",
+      "revId": "56c7a3e2922897e68d104bc8906b948b8af5b403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
