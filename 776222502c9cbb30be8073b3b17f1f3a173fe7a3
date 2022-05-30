@@ -16,6 +16,98 @@
       "message": "nya@: Since the previous Tast Owners reviewer is OOO, could you help us to review this instead? Thank you!!",
       "revId": "776222502c9cbb30be8073b3b17f1f3a173fe7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30755966_51a2d746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-30T07:19:27Z",
+      "side": 1,
+      "message": "set up?",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "776222502c9cbb30be8073b3b17f1f3a173fe7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c9791f_4f221ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-30T07:19:27Z",
+      "side": 1,
+      "message": "\"Failed to set up Chrome\", or maybe \"Failed to start Chrome\" to make it consistent with ARC fixtures?\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/arc/fixture.go;l\u003d479;drc\u003d043a6b60a274ea6f9cd02d3eabd1049dee913ebe",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "776222502c9cbb30be8073b3b17f1f3a173fe7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49daf8bb_3110f36e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-30T07:19:27Z",
+      "side": 1,
+      "message": "Period at the end, or maybe you can just remove this as it\u0027s trivial.",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "776222502c9cbb30be8073b3b17f1f3a173fe7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2375dba6_fd6534fd",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-05-30T07:19:27Z",
+      "side": 1,
+      "message": "nit: \"policies\" (plural) to make it consistent with the variable name etc. + period at the end.",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 30
+      },
+      "revId": "776222502c9cbb30be8073b3b17f1f3a173fe7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
