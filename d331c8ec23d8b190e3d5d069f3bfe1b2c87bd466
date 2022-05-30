@@ -22,6 +22,30 @@
       },
       "revId": "d331c8ec23d8b190e3d5d069f3bfe1b2c87bd466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5fa70a9_8ce59aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-05-30T23:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df43943d_8afcfa56",
+      "range": {
+        "startLine": 37,
+        "startChar": 63,
+        "endLine": 37,
+        "endChar": 76
+      },
+      "revId": "d331c8ec23d8b190e3d5d069f3bfe1b2c87bd466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
