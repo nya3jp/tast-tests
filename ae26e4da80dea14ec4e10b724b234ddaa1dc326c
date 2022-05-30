@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62116897_c0e35d89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-05-30T09:12:37Z",
+      "side": 1,
+      "message": "nit for consistency with other tests: cr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "ae26e4da80dea14ec4e10b724b234ddaa1dc326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f22adde1_9ab9c129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-05-30T09:12:37Z",
+      "side": 1,
+      "message": "Question: Do you think there is a need to differentiate between the error messages in this loop and the next one?\nfor example if the first few actions were successful, then it failed in the middle, do you think it\u0027s better to add an index to identify at which point it failed?",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 2
+      },
+      "revId": "ae26e4da80dea14ec4e10b724b234ddaa1dc326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61975dd4_4b142959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-05-30T09:12:37Z",
+      "side": 1,
+      "message": "Question: this error message is similar to other errors at 329 and 342, do you think there is a need to differentiate between them?",
+      "range": {
+        "startLine": 338,
+        "startChar": 27,
+        "endLine": 338,
+        "endChar": 57
+      },
+      "revId": "ae26e4da80dea14ec4e10b724b234ddaa1dc326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
