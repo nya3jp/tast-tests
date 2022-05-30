@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c596723_4f305b3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T03:17:08Z",
+      "side": 1,
+      "message": "\u003e Manager.PushTestProfile as a convenient helper for pushing and deferring a test profile pop.\nThanks, this is very useful!\nDo we consider binding it with the shillReset fixture?\nAnd another question not related to this patch but related to the shillReset fixture: currently we restart shill in preTest, is it possible to move it to SetUp? Restarting shill is time-consuming and may make DUT losing ssh connection in some rare cases based on my observation for VPN tests, so maybe we could just push a temp profile in PreTest and pop it in PostTest to avoid it. WDYT?",
+      "parentUuid": "ddbff6ea_433028db",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7181acd2_d26acfdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 2
@@ -327,6 +345,30 @@
       "side": 1,
       "message": "Since this is a local test, I don\u0027t think that shouldn\u0027t matter: \n* If Shill crashes or the DUT reboots during the test, the test profile will not be reloaded.\n* Otherwise the defer function will remove the test profile.\n\nThere isn\u0027t any particular need to set the Priority in this particular test, I just wanted to verify that we could. (It\u0027s something we will eventually want to do to verify that a network in a captive portal state is lower priority than an online network, even if has a higher Priority).",
       "parentUuid": "2cd1c0d2_a32272f7",
+      "range": {
+        "startLine": 101,
+        "startChar": 46,
+        "endLine": 101,
+        "endChar": 69
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c539f7a_5b40019c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-30T03:17:08Z",
+      "side": 1,
+      "message": "Ack, thanks!\nActually the case I\u0027m worried about is not the cleanup after the test, but that during the test, physical network could become the default network due to that and thus make the test flaky.",
+      "parentUuid": "14b943cc_1aa24feb",
       "range": {
         "startLine": 101,
         "startChar": 46,
