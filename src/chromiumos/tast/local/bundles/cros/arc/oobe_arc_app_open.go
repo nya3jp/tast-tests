@@ -55,7 +55,7 @@ func init() {
 				consolidatedConsentEnabled: true,
 			},
 		}},
-		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 20*time.Minute,
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 25*time.Minute,
 		VarDeps: []string{"arc.parentUser", "arc.parentPassword"},
 	})
 }
