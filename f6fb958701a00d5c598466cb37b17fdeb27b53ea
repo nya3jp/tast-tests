@@ -34,6 +34,24 @@
       "parentUuid": "7acc8386_7cd8c0cf",
       "revId": "f6fb958701a00d5c598466cb37b17fdeb27b53ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b46e1c_48a2dbad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-05-30T06:17:45Z",
+      "side": 1,
+      "message": "I thought this would remove tast.typec.Basic and only adds tast.typec.Basic.unstable, but perhaps I am misremembering things.  If you can run the test through the CLI then it should all be good.\n\nI would recommend trying it locally on both a stable and unstable board (or just switching the board you are testing on between the two lists).",
+      "parentUuid": "93f30ae5_e4a6e921",
+      "revId": "f6fb958701a00d5c598466cb37b17fdeb27b53ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
