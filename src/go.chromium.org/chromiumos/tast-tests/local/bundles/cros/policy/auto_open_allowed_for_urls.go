@@ -1,0 +1,163 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package policy
+
+import (
+	"context"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"os"
+	"path"
+	"time"
+
+	"go.chromium.org/chromiumos/tast-tests/common/fixture"
+	"go.chromium.org/chromiumos/tast-tests/common/policy"
+	"go.chromium.org/chromiumos/tast-tests/common/policy/fakedms"
+	"go.chromium.org/chromiumos/tast/ctxutil"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/browser"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/browser/browserfixt"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/faillog"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/filesapp"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/nodewith"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/role"
+	"go.chromium.org/chromiumos/tast-tests/local/policyutil"
+	"go.chromium.org/chromiumos/tast/testing"
+)
+
+const (
+	indexFileName    = "auto_open_allowed_for_urls_index.html"
+	downloadFileName = "auto_open_allowed_for_urls_file.zip"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         AutoOpenAllowedForURLs,
+		LacrosStatus: testing.LacrosVariantExists,
+		Desc:         "Checking if files are auto-opened depending on the value of this policy",
+		Contacts: []string{
+			"cmfcmf@google.com", // Test author
+			"chromeos-commercial-remote-management@google.com",
+		},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               browser.TypeLacros,
+		}},
+		Data: []string{indexFileName, downloadFileName},
+	})
+}
+
+// AutoOpenAllowedForURLs tests the AutoOpenAllowedForURLs policy.
+func AutoOpenAllowedForURLs(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
+	indexURL := fmt.Sprintf("%s/%s", server.URL, indexFileName)
+	matchingURL := fmt.Sprintf("%s/%s?matching=1", server.URL, downloadFileName)
+
+	for _, param := range []struct {
+		name          string
+		linkIDToClick string
+		wantAutoOpen  bool
+		policy        *policy.AutoOpenAllowedForURLs
+	}{
+		{
+			name:          "allowed_matching",
+			linkIDToClick: "matching",
+			wantAutoOpen:  true,
+			policy:        &policy.AutoOpenAllowedForURLs{Val: []string{matchingURL}},
+		},
+		{
+			name:          "allowed_non_matching",
+			linkIDToClick: "nonMatching",
+			wantAutoOpen:  false,
+			policy:        &policy.AutoOpenAllowedForURLs{Val: []string{matchingURL}},
+		},
+		{
+			name:          "unset",
+			linkIDToClick: "matching",
+			wantAutoOpen:  true,
+			policy:        &policy.AutoOpenAllowedForURLs{Stat: policy.StatusUnset},
+		},
+	} {
+		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+
+			// Perform cleanup.
+			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+				s.Fatal("Failed to clean up: ", err)
+			}
+
+			// Update policies.
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{
+				param.policy,
+				&policy.AutoOpenFileTypes{Val: []string{"zip"}},
+			}); err != nil {
+				s.Fatal("Failed to update policies: ", err)
+			}
+
+			// Reserve 10 seconds for cleanup.
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+			defer cancel()
+
+			// Setup browser based on the chrome type.
+			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer closeBrowser(cleanupCtx)
+
+			// We cannot directly open the file we are trying to download via
+			// NewConn(), since NewConn() expects Chrome to navigate to the URL
+			// passed to it. However, Chrome does not navigate and change its URL when
+			// downloading a file. Instead, Chrome continues to show the current page.
+			// To circumvent this problem, we open an HTML file that contains links to
+			// download the file and click them via Eval().
+			conn, err := br.NewConn(ctx, indexURL)
+			if err != nil {
+				s.Fatal("Failed to open website: ", err)
+			}
+			defer conn.Close()
+
+			clickLink := fmt.Sprintf(`document.getElementById("%s").click();`, param.linkIDToClick)
+			if err := conn.Eval(ctx, clickLink, nil); err != nil {
+				s.Fatal("Failed to click download link: ", err)
+			}
+			defer os.Remove(path.Join(filesapp.DownloadPath, downloadFileName))
+
+			// Connect to Test API to use it with the UI library.
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to create Test API connection: ", err)
+			}
+
+			ui := uiauto.New(tconn)
+			fileBrowserNode := nodewith.Role(role.Window).Name("Files - Downloads").ClassName("RootView")
+			if param.wantAutoOpen {
+				if err := ui.WaitUntilExists(fileBrowserNode)(ctx); err != nil {
+					s.Error("Failed to wait for file to auto open: ", err)
+				}
+			} else {
+				if err := ui.EnsureGoneFor(fileBrowserNode, 5*time.Second)(ctx); err != nil {
+					s.Error("File unexpectedly auto opened: ", err)
+				}
+			}
+		})
+	}
+}

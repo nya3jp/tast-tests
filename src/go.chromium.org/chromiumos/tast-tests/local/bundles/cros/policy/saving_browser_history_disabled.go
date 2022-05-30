@@ -1,0 +1,170 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package policy
+
+import (
+	"context"
+	"io"
+	"net/http"
+	"net/http/httptest"
+	"time"
+
+	"go.chromium.org/chromiumos/tast-tests/common/fixture"
+	"go.chromium.org/chromiumos/tast-tests/common/policy"
+	"go.chromium.org/chromiumos/tast-tests/common/policy/fakedms"
+	"go.chromium.org/chromiumos/tast/ctxutil"
+	"go.chromium.org/chromiumos/tast/errors"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/browser"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/browser/browserfixt"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/faillog"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/nodewith"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/role"
+	"go.chromium.org/chromiumos/tast-tests/local/policyutil"
+	"go.chromium.org/chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         SavingBrowserHistoryDisabled,
+		LacrosStatus: testing.LacrosVariantExists,
+		Desc:         "Behavior of SavingBrowserHistoryDisabled policy, check if browsing history entries are shown based on the value of the policy",
+		Contacts: []string{
+			"alexanderhartl@google.com", // Test author
+			"chromeos-commercial-remote-management@google.com",
+		},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               browser.TypeLacros,
+		}},
+	})
+}
+
+func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// Connect to Test API to use it with the UI library.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// Create a server that serves an empty html document.
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Content-Type", "text/html")
+		io.WriteString(w, "")
+	}))
+	defer server.Close()
+
+	for _, param := range []struct {
+		name    string
+		enabled bool                                 // enabled is the expected enabled state of the browsing history.
+		policy  *policy.SavingBrowserHistoryDisabled // policy is the policy we test.
+	}{
+		{
+			name:    "unset",
+			enabled: true,
+			policy:  &policy.SavingBrowserHistoryDisabled{Stat: policy.StatusUnset},
+		},
+		{
+			name:    "history_disabled",
+			enabled: false,
+			policy:  &policy.SavingBrowserHistoryDisabled{Val: true},
+		},
+		{
+			name:    "history_enabled",
+			enabled: true,
+			policy:  &policy.SavingBrowserHistoryDisabled{Val: false},
+		},
+	} {
+		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+
+			// Perform cleanup.
+			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+				s.Fatal("Failed to clean up: ", err)
+			}
+
+			// Update policies.
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy}); err != nil {
+				s.Fatal("Failed to update policies: ", err)
+			}
+
+			// Clear the browser history.
+			if err := tconn.Eval(ctx, `tast.promisify(chrome.browsingData.removeHistory({"since": 0}))`, nil); err != nil {
+				s.Fatal("Failed to clear browsing history: ", err)
+			}
+
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer closeBrowser(cleanupCtx)
+
+			// Open a website to create a browsing history entry.
+			conn, err := br.NewConn(ctx, server.URL)
+			if err != nil {
+				s.Fatal("Failed to connect to the browser: ", err)
+			}
+			defer conn.Close()
+
+			hconn, err := br.NewConn(ctx, "chrome://history")
+			if err != nil {
+				s.Fatal("Failed to connect to the browser: ", err)
+			}
+			defer hconn.Close()
+
+			ui := uiauto.New(tconn)
+
+			// Check whether there is a browser history or not.
+			histFound := false
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+
+				// TODO(b/203396229): Remove First() after fixing the duplication in the ui tree.
+				// Check if there is a browser history entry.
+				if exists, err := ui.IsNodeFound(ctx, nodewith.ClassName("website-link").Role(role.Link).First()); err != nil {
+					return testing.PollBreak(errors.Wrap(err, "finding website-link node failed"))
+				} else if exists {
+					histFound = true
+					return nil
+				}
+
+				// TODO(b/203396229): Remove First() after fixing the duplication in the ui tree.
+				// Check if there is no browser history.
+				if exists, err := ui.IsNodeFound(ctx, nodewith.Name("Your browsing history appears here").Role(role.StaticText).First()); err != nil {
+					return testing.PollBreak(errors.Wrap(err, "finding text node failed"))
+				} else if exists {
+					histFound = false
+					return nil
+				}
+
+				return errors.New("requested ui nodes not found")
+
+			}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+				s.Fatal("Failed to check if history exists: ", err)
+			}
+
+			if histFound != param.enabled {
+				s.Errorf("Unexpected existence of browser history found: got %t; want %t", histFound, param.enabled)
+			}
+		})
+	}
+}

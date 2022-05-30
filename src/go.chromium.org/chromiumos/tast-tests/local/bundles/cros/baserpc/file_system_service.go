@@ -1,0 +1,175 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package baserpc
+
+import (
+	"context"
+	"io/ioutil"
+	"os"
+
+	"github.com/golang/protobuf/ptypes"
+	"golang.org/x/sys/unix"
+	"google.golang.org/grpc"
+
+	"go.chromium.org/chromiumos/tast-tests/services/cros/baserpc"
+	"go.chromium.org/chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddService(&testing.Service{
+		Register: func(srv *grpc.Server, s *testing.ServiceState) {
+			baserpc.RegisterFileSystemServer(srv, &FileSystemService{s})
+		},
+	})
+}
+
+// FileSystemService implements tast.cros.baserpc.FileSystem gRPC service.
+type FileSystemService struct {
+	s *testing.ServiceState
+}
+
+// ReadDir returns a list of files in a directory.
+func (fs *FileSystemService) ReadDir(ctx context.Context, req *baserpc.ReadDirRequest) (*baserpc.ReadDirResponse, error) {
+	var res baserpc.ReadDirResponse
+	res.Error = encodeErr(func() error {
+		fis, err := ioutil.ReadDir(req.Dir)
+		if err != nil {
+			return err
+		}
+
+		for _, fi := range fis {
+			i, err := toFileInfoProto(fi)
+			if err != nil {
+				return err
+			}
+			res.Files = append(res.Files, i)
+		}
+		return nil
+	}())
+	return &res, nil
+}
+
+// Stat returns information of a file.
+func (fs *FileSystemService) Stat(ctx context.Context, req *baserpc.StatRequest) (*baserpc.StatResponse, error) {
+	var res baserpc.StatResponse
+	res.Error = encodeErr(func() error {
+		fi, err := os.Stat(req.Name)
+		if err != nil {
+			return err
+		}
+		i, err := toFileInfoProto(fi)
+		if err != nil {
+			return err
+		}
+		res.Info = i
+		return nil
+	}())
+	return &res, nil
+}
+
+// ReadFile reads the content of a file.
+func (fs *FileSystemService) ReadFile(ctx context.Context, req *baserpc.ReadFileRequest) (*baserpc.ReadFileResponse, error) {
+	var res baserpc.ReadFileResponse
+	res.Error = encodeErr(func() error {
+		f, err := ioutil.ReadFile(req.Name)
+		if err != nil {
+			return err
+		}
+		res.Content = f
+		return nil
+	}())
+	return &res, nil
+}
+
+// WriteFile writes the content of a file.
+func (fs *FileSystemService) WriteFile(ctx context.Context, req *baserpc.WriteFileRequest) (*baserpc.WriteFileResponse, error) {
+	var res baserpc.WriteFileResponse
+	res.Error = encodeErr(func() error {
+		if err := ioutil.WriteFile(req.Name, req.Content, os.FileMode(req.Mode)); err != nil {
+			return err
+		}
+		return nil
+	}())
+	return &res, nil
+}
+
+func (fs *FileSystemService) Remove(ctx context.Context, req *baserpc.RemoveRequest) (*baserpc.RemoveResponse, error) {
+	var res baserpc.RemoveResponse
+	res.Error = encodeErr(func() error {
+		if err := os.Remove(req.Name); err != nil {
+			return err
+		}
+		return nil
+	}())
+	return &res, nil
+}
+
+// RemoveAll removes the path and any children it contains.
+func (fs *FileSystemService) RemoveAll(ctx context.Context, req *baserpc.RemoveRequest) (*baserpc.RemoveResponse, error) {
+	var res baserpc.RemoveResponse
+	res.Error = encodeErr(func() error {
+		if err := os.RemoveAll(req.Name); err != nil {
+			return err
+		}
+		return nil
+	}())
+	return &res, nil
+}
+
+// TempDir creates a temporary directory.
+func (fs *FileSystemService) TempDir(ctx context.Context, req *baserpc.TempDirRequest) (*baserpc.TempDirResponse, error) {
+	var res baserpc.TempDirResponse
+	res.Error = encodeErr(func() error {
+		dirName, err := ioutil.TempDir(req.Dir, req.Pattern)
+		if err != nil {
+			return err
+		}
+		res.Name = dirName
+		return nil
+	}())
+	return &res, nil
+}
+
+func toFileInfoProto(fi os.FileInfo) (*baserpc.FileInfo, error) {
+	ts, err := ptypes.TimestampProto(fi.ModTime())
+	if err != nil {
+		return nil, err
+	}
+	return &baserpc.FileInfo{
+		Name:     fi.Name(),
+		Size:     uint64(fi.Size()),
+		Mode:     uint64(fi.Mode()),
+		Modified: ts,
+	}, nil
+}
+
+func encodeErr(err error) *baserpc.Error {
+	switch err := err.(type) {
+	case unix.Errno:
+		return &baserpc.Error{Type: &baserpc.Error_Errno{Errno: uint32(err)}}
+	case *os.LinkError:
+		return &baserpc.Error{Type: &baserpc.Error_Link{Link: &baserpc.LinkError{
+			Op:    err.Op,
+			Old:   err.Old,
+			New:   err.New,
+			Error: encodeErr(err.Err),
+		}}}
+	case *os.PathError:
+		return &baserpc.Error{Type: &baserpc.Error_Path{Path: &baserpc.PathError{
+			Op:    err.Op,
+			Path:  err.Path,
+			Error: encodeErr(err.Err),
+		}}}
+	case *os.SyscallError:
+		return &baserpc.Error{Type: &baserpc.Error_Syscall{Syscall: &baserpc.SyscallError{
+			Syscall: err.Syscall,
+			Error:   encodeErr(err.Err),
+		}}}
+	case nil:
+		return nil
+	default:
+		return &baserpc.Error{Type: &baserpc.Error_Msg{Msg: err.Error()}}
+	}
+}

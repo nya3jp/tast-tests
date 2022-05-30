@@ -1,0 +1,139 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package wmp
+
+import (
+	"context"
+	"time"
+
+	"go.chromium.org/chromiumos/tast/ctxutil"
+	"go.chromium.org/chromiumos/tast-tests/local/bundles/cros/wmp/wmputils"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/ash"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/display"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/faillog"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/mouse"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/nodewith"
+	"go.chromium.org/chromiumos/tast-tests/local/input"
+	"go.chromium.org/chromiumos/tast/testing"
+)
+
+type deviceModeType string
+
+const (
+	clamshellMode deviceModeType = "clamshell mode"
+	tabletMode    deviceModeType = "tablet mode"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         RecordPartialScreen,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Checks that partial screen video record works correctly",
+		Contacts: []string{
+			"yichenz@chromium.org",
+			"chromeos-wmp@google.com",
+			"chromeos-sw-engprod@google.com",
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{
+			{
+				Name: "clamshell_mode",
+				Val:  clamshellMode,
+			},
+			{
+				Name: "tablet_mode",
+				Val:  tabletMode,
+			},
+		},
+	})
+}
+
+func RecordPartialScreen(ctx context.Context, s *testing.State) {
+	deviceMode := s.Param().(deviceModeType)
+
+	cr := s.FixtValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	var isTabletMode bool
+	if deviceMode == tabletMode {
+		isTabletMode = true
+	} else {
+		isTabletMode = false
+	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
+	defer cancel()
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletMode)
+	if err != nil {
+		s.Fatalf("Failed to ensure %s: %v", deviceMode, err)
+	}
+	defer cleanup(cleanupCtx)
+
+	ac := uiauto.New(tconn)
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a keyboard: ", err)
+	}
+
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
+	// Start partial screen recording via UI.
+	screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
+	recordPartialScreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record partial screen")
+	dragStartPt := info.WorkArea.TopLeft()
+	dragEndPt := info.WorkArea.CenterPoint()
+	// The click point must be outside of drag area (i.e. outside of dragStartPt - dragEndPt rectangle).
+	dragClearPt := info.WorkArea.BottomCenter()
+	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
+	recordTakenLabel := nodewith.ClassName("Label").Name("Screen recording taken")
+
+	// Enter screen capture mode.
+	if err := wmputils.EnsureCaptureModeActivated(tconn, true)(ctx); err != nil {
+		s.Fatal("Failed to enable recording: ", err)
+	}
+	// Ensure case exit screen capture mode.
+	defer wmputils.EnsureCaptureModeActivated(tconn, false)(cleanupCtx)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
+
+	if err := uiauto.Combine(
+		"record partial screen",
+		ac.LeftClick(screenRecordToggleButton),
+		ac.LeftClick(recordPartialScreenToggleButton),
+		// Clear the drag area.
+		mouse.Click(tconn, dragClearPt, mouse.LeftButton),
+		// Drag to select an area to record.
+		mouse.Drag(tconn, dragStartPt, dragEndPt, time.Second),
+		kb.AccelAction("enter"),
+		// Record partial screen for about 30 seconds.
+		uiauto.Sleep(30*time.Second),
+		ac.LeftClick(stopRecordButton),
+		// Check if the screen record is taken.
+		ac.WaitUntilExists(recordTakenLabel),
+	)(ctx); err != nil {
+		s.Fatal("Failed to record partial screen: ", err)
+	}
+
+	// Check there is a screen record video file stored in Downloads folder.
+	has, err := wmputils.HasScreenRecord(ctx)
+	if err != nil {
+		s.Fatal("Failed to check whether screen record is present: ", err)
+	}
+	if !has {
+		s.Fatal("No screen record is stored in Downloads folder")
+	}
+}

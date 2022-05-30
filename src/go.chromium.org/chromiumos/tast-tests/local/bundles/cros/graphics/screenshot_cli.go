@@ -1,0 +1,38 @@
+// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package graphics
+
+import (
+	"context"
+
+	"go.chromium.org/chromiumos/tast-tests/local/bundles/cros/graphics/sshot"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome"
+	"go.chromium.org/chromiumos/tast-tests/local/screenshot"
+	"go.chromium.org/chromiumos/tast/testing"
+	"go.chromium.org/chromiumos/tast/testing/hwdep"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         ScreenshotCLI,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Takes a screenshot using the CLI",
+		Contacts:     []string{"nya@chromium.org"},
+		Attr:         []string{"group:mainline"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		SoftwareDeps: []string{"chrome", "screenshot"},
+		Fixture:      "chromeGraphics",
+	})
+}
+
+func ScreenshotCLI(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*chrome.Chrome)
+	err := sshot.SShot(ctx, s, cr, func(ctx context.Context, path string) error {
+		return screenshot.Capture(ctx, path)
+	})
+	if err != nil {
+		s.Fatal("Failure in screenshot comparison: ", err)
+	}
+}

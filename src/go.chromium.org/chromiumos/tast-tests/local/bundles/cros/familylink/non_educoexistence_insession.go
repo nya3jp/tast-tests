@@ -1,0 +1,58 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package familylink is used for writing Family Link tests.
+package familylink
+
+import (
+	"context"
+	"time"
+
+	"go.chromium.org/chromiumos/tast-tests/local/chrome"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/familylink"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/faillog"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/nodewith"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/role"
+	"go.chromium.org/chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         NonEducoexistenceInsession,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Checks that Unicorn account trying to add a non-EDU secondary account fails",
+		Contacts:     []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      chrome.GAIALoginTimeout + 5*time.Minute,
+		Vars:         []string{"unicorn.parentUser", "unicorn.parentPassword", "geller.parentUser", "geller.parentPassword"},
+		Fixture:      "familyLinkUnicornLogin",
+	})
+}
+
+func NonEducoexistenceInsession(ctx context.Context, s *testing.State) {
+	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	cr := s.FixtValue().(*familylink.FixtData).Chrome
+
+	unicornParentUser := s.RequiredVar("unicorn.parentUser")
+	unicornParentPass := s.RequiredVar("unicorn.parentPassword")
+	gellerParentUser := s.RequiredVar("geller.parentUser")
+	gellerParentPass := s.RequiredVar("geller.parentPassword")
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	ui := uiauto.New(tconn)
+
+	s.Log("Launching the in-session Edu Coexistence flow")
+	// Passing geller parent credentials instead of Edu should fail.
+	if err := familylink.AddEduSecondaryAccount(ctx, cr, tconn, unicornParentUser, unicornParentPass, gellerParentUser, gellerParentPass, false /*verifyEduSecondaryAddSuccess*/); err != nil {
+		s.Fatal("Failed to go through the in-session Edu Coexistence flow: ", err)
+	}
+
+	s.Log("Verifying the attempt to add a non-EDU secondary account failed")
+	if err := ui.WaitUntilExists(nodewith.Name("Can’t add account").Role(role.Heading))(ctx); err != nil {
+		s.Fatal("Failed to detect can't add acccount error message: ", err)
+	}
+}

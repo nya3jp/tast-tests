@@ -1,0 +1,15 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package fixture
+
+// Fixtures defined in go.chromium.org/chromiumos/tast-tests/local/kioskmode/fixtures/kiosk.go.
+const (
+	// KioskLoggedInAsh
+	KioskLoggedInAsh = "kioskLoggedInAsh"
+	// KioskLoggedInLacros
+	KioskLoggedInLacros = "kioskLoggedInLacros"
+	// KioskAutoLaunchCleanup is a fixture name.
+	KioskAutoLaunchCleanup = "kioskAutoLaunchCleanup"
+)

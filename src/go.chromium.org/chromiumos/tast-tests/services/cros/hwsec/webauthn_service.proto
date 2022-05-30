@@ -1,0 +1,76 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.hwsec;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "go.chromium.org/chromiumos/tast-tests/services/cros/hwsec";
+
+service WebauthnService {
+  // New logs into a Chrome session as a fake user. Close must be called later
+  // to clean up the associated resources.
+  rpc New (NewRequest) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StartWebauthn (StartWebauthnRequest) returns (google.protobuf.Empty) {}
+
+  rpc EndWebauthn (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StartMakeCredential (StartMakeCredentialRequest) returns (google.protobuf.Empty) {}
+
+  rpc CheckMakeCredential (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StartGetAssertion (StartGetAssertionRequest) returns (google.protobuf.Empty) {}
+
+  rpc CheckGetAssertion (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc EnterPassword (EnterPasswordRequest) returns (google.protobuf.Empty) {}
+}
+
+enum BrowserType {
+  ASH = 0;
+  LACROS = 1;
+}
+
+enum UserVerification {
+  DISCOURAGED = 0;
+  PREFERRED = 1;
+  REQUIRED = 2;
+}
+
+enum AuthenticatorType {
+  UNSPECIFIED = 0;
+  PLATFORM = 1;
+  CROSS_PLATFORM = 2;
+}
+
+message NewRequest {
+  reserved 1 to 3;
+  BrowserType browser_type = 4;
+  // KeepState controls whether to keep existing user profiles.
+  bool keep_state = 5;
+}
+
+message EnterPasswordRequest {
+  string password = 1;
+}
+
+message StartWebauthnRequest {
+  UserVerification user_verification = 1;
+  AuthenticatorType authenticator_type = 2;
+  bool has_dialog = 3;
+}
+
+message StartMakeCredentialRequest {
+  string username = 1;
+}
+
+message StartGetAssertionRequest {
+  string username = 1;
+}

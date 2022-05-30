@@ -1,0 +1,87 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package diagnostics
+
+import (
+	"context"
+	"time"
+
+	"go.chromium.org/chromiumos/tast-tests/common/action"
+	"go.chromium.org/chromiumos/tast/ctxutil"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto"
+	da "go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/diagnosticsapp"
+	"go.chromium.org/chromiumos/tast-tests/local/chrome/uiauto/faillog"
+	"go.chromium.org/chromiumos/tast-tests/local/input"
+	"go.chromium.org/chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         InputKeyboardConnectAndDisconnect,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Connect a virtual keyboard on the diagnostics input page and then disconnect it",
+		Contacts:     []string{"jeff.lin@cienet.com", "xliu@cienet.com", "cros-peripherals@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      3 * time.Minute,
+	})
+}
+
+func InputKeyboardConnectAndDisconnect(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	cr, err := chrome.New(ctx, chrome.Region("us"), chrome.EnableFeatures("DiagnosticsAppNavigation", "EnableInputInDiagnosticsApp"))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
+
+	dxRootNode, err := da.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch diagnostics app: ", err)
+	}
+	defer da.Close(cleanupCtx, tconn)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	ui := uiauto.New(tconn)
+	inputTab := da.DxInput.Ancestor(dxRootNode)
+	virtualKeyboard := da.DxVirtualKeyboardHeading
+	if err := uiauto.Combine("check no virtual keyboard exists in input device list",
+		ui.LeftClick(inputTab),
+		ui.Gone(virtualKeyboard),
+	)(ctx); err != nil {
+		s.Fatal("Failed to check virtual keyboard: ", err)
+	}
+
+	// Since virtual keyboard with BUS_USB (0x03) doesn't work yet, use BUS_I2C (0x18).
+	// See https://crrev.com/c/1407138 for more discussion.
+	vkb, err := input.VirtualKeyboardWithBusType(ctx, 0x18)
+	if err != nil {
+		s.Fatal("Failed to create a virtual keyboard: ", err)
+	}
+	defer vkb.Close()
+
+	disconnectKeyboard := func() action.Action {
+		return func(ctx context.Context) error {
+			return vkb.Close()
+		}
+	}
+
+	if err := uiauto.Combine("verify virtual keyboard appears and disappears in the device list",
+		ui.WaitUntilExists(virtualKeyboard),
+		disconnectKeyboard(),
+		ui.WaitUntilGone(virtualKeyboard),
+	)(ctx); err != nil {
+		s.Fatal("Failed to execute keyboard test: ", err)
+	}
+}

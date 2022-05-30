@@ -1,0 +1,175 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.nearbyservice;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "go.chromium.org/chromiumos/tast-tests/services/cros/nearbyservice";
+
+// NearbyShareService allows basic remote operations of the Nearby Share
+// feature.
+service NearbyShareService {
+  // NewChromeLogin logs into a Chrome session as a fake user with the Nearby
+  // Share flags enabled. Close must be called later to clean up the associated
+  // resources.
+  rpc NewChromeLogin(CrOSLoginRequest) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc CloseChrome(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // CrOSSetup configures Nearby Share on a ChromeOS device.
+  rpc CrOSSetup(CrOSSetupRequest) returns (google.protobuf.Empty) {}
+
+  // FilesHashes returns a list of hashes for a list of files.
+  rpc FilesHashes(CrOSFileHashRequest) returns (CrOSFileHashResponse) {}
+
+  // PrepareFiles extracts test files.
+  rpc PrepareFiles(CrOSPrepareFileRequest) returns (CrOSPrepareFileResponse) {}
+
+  // StartSend tries to sends files to receiver.
+  rpc StartSend(CrOSSendFilesRequest) returns (google.protobuf.Empty) {}
+
+  // SelectShareTarget will select the receiver device.
+  rpc SelectShareTarget(CrOSSelectShareTargetRequest)
+      returns (CrOSShareTokenResponse) {}
+
+  // StartHighVisibilityMode enables the Nearby Share High Visibility mode from
+  // quick settings.
+  rpc StartHighVisibilityMode(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+
+  // WaitForOnboardingFlow waits for the Nearby Share onboarding flow to open.
+  rpc WaitForOnboardingFlow(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+
+  // StartReceiving will enable high vis receiving from javascript.
+  rpc StartReceiving(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // WaitForSenderAndAcceptShare is called by receiver to receive the file from
+  // sender.
+  rpc WaitForSenderAndAcceptShare(CrOSReceiveFilesRequest)
+      returns (CrOSShareTokenResponse) {}
+
+  // AcceptIncomingShareNotificationAndWaitForCompletion is used for in contacts
+  // transfers where the Chromebook accepts the transfer via a notification and
+  // waits for a followup notification to see the transfer is complete.
+  rpc AcceptIncomingShareNotificationAndWaitForCompletion(
+      CrOSReceiveFilesRequest) returns (google.protobuf.Empty) {}
+
+  // Accepts the notification that appears when a nearby device is trying to
+  // discover a share target. This puts the user into high visibility mode.
+  rpc AcceptFastInitiationNotification(
+      CrOSAcceptFastInitiationNotificationRequest)
+      returns (google.protobuf.Empty) {}
+
+  // StartLogging is used to begin logging at the start of a test.
+  rpc StartLogging(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // SaveLogs is used to saved the relevant log files for a nearby share run.
+  rpc SaveLogs(SaveLogsRequest) returns (google.protobuf.Empty) {}
+
+  // ClearTransferredFiles clears the transferred files in the receiver's
+  // Downloads folder.
+  rpc ClearTransferredFiles(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+
+  // CrOSAttributes gets device info for a chromebook used in remote tests.
+  rpc CrOSAttributes(google.protobuf.Empty) returns (CrOSAttributesResponse) {}
+
+  // EnableBluetooth enables bluetooth on the chromebook. It is safe to assume
+  // bluetooth has been enabled when this RPC returns.
+  rpc EnableBluetooth(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+
+  // DisableBluetooth disables bluetooth on the chromebook. It is safe to assume
+  // bluetooth has been disabled when this RPC returns.
+  rpc DisableBluetooth(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+}
+
+// CrOSLoginRequest to login to Chrome with configurable GAIA credentials.
+message CrOSLoginRequest {
+  string username = 1;
+  string password = 2;
+  bool keep_state = 3;
+  repeated string enabled_flags = 4;
+  repeated string disabled_flags = 5;
+}
+
+// CrOSAcceptFastInitiationNotificationRequest is a request to accept a
+// background scanning notification which differs depending on whether
+// onboarding is complete.
+message CrOSAcceptFastInitiationNotificationRequest {
+  bool is_setup_complete = 1;
+}
+
+// CrOSSetupRequest is a request to setup and configure Nearby Share on a
+// ChromeOS device.
+message CrOSSetupRequest {
+  int32 data_usage = 1;
+  int32 visibility = 2;
+  string device_name = 3;
+  string sender_username = 4;
+}
+
+// CrOSPrepareFileRequest contains the archive of files to be sent by Nearby
+// Share.
+message CrOSPrepareFileRequest {
+  string file_name = 1;
+}
+
+// CrOSPrepareFileResponse is the individual file names that were extracted that
+// will be sent.
+message CrOSPrepareFileResponse {
+  repeated string file_names = 1;
+}
+
+// CrOSSendFilesRequest contains the files to be sent by Nearby Share.
+message CrOSSendFilesRequest {
+  repeated string file_names = 1;
+}
+
+// CrOSSelectShareTargetRequest contains the receiver to send files to.
+message CrOSSelectShareTargetRequest {
+  string receiver_name = 1;
+  bool collect_share_token = 2;
+}
+
+// CrOSFileHashRequest contains the list of files we want to hash.
+message CrOSFileHashRequest {
+  repeated string file_names = 1;
+  string file_dir = 2;
+}
+
+// CrOSFileHashResponse contains the list of hashes generated for a list of
+// files.
+message CrOSFileHashResponse {
+  repeated string hashes = 1;
+}
+
+// CrOSReceiveFilesRequest contains the sender name that we want to receive
+// files from and the file transfer timeout in seconds.
+message CrOSReceiveFilesRequest {
+  string sender_name = 1;
+  int32 transfer_timeout_seconds = 2;
+}
+
+// CrOSShareTokenResponse contains the share token from the receiver.
+message CrOSShareTokenResponse {
+  string share_token = 1;
+}
+
+// CrOSAttributesResponse contains the attributes for a chromeos DUT.
+message CrOSAttributesResponse {
+  string attributes = 1;
+}
+
+// SaveLogsRequest contains whether or not to save a screenshot and a UI tree
+// dump.
+message SaveLogsRequest {
+  bool save_ui_logs = 1;
+}

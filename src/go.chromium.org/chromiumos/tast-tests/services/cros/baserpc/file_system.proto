@@ -1,0 +1,132 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package tast.cros.baserpc;
+option go_package = "go.chromium.org/chromiumos/tast-tests/services/cros/baserpc";
+
+// FileSystem provides basic access to file system on the DUT.
+service FileSystem {
+  // ReadDir returns the content of a directory.
+  rpc ReadDir (ReadDirRequest) returns (ReadDirResponse) {}
+
+  // Stat returns information of a file.
+  rpc Stat (StatRequest) returns (StatResponse) {}
+
+  // ReadFile reads the content of a file.
+  rpc ReadFile (ReadFileRequest) returns (ReadFileResponse) {}
+
+  // WriteFile writes the content of a file.
+  rpc WriteFile (WriteFileRequest) returns (WriteFileResponse) {}
+
+  // Remove removes the named file or (empty) directory.
+  rpc Remove (RemoveRequest) returns (RemoveResponse) {}
+
+  // RemoveAll removes the path and any children it contains.
+  rpc RemoveAll (RemoveRequest) returns (RemoveResponse) {}
+
+  // TempDir creates a temporary directory.
+  rpc TempDir (TempDirRequest) returns (TempDirResponse) {}
+}
+
+message ReadDirRequest {
+  // Path to the directory to read the content of.
+  string dir = 1;
+}
+
+message ReadDirResponse {
+  Error error = 1;
+  // List of files under the directory, sorted by filename.
+  repeated FileInfo files = 2;
+}
+
+message StatRequest {
+  // File path to the file to get file information.
+  string name = 1;
+}
+
+message StatResponse {
+  Error error = 1;
+  FileInfo info = 2;
+}
+
+message ReadFileRequest {
+  // File path to the file to be read.
+  string name = 1;
+}
+
+message ReadFileResponse {
+  Error error = 1;
+  bytes content = 2;
+}
+
+message WriteFileRequest {
+  string name = 1;  // File path to the file to be written.
+  bytes content = 2;
+  uint32 mode = 3;
+}
+
+message WriteFileResponse {
+  Error error = 1;
+}
+
+message RemoveRequest {
+  string name = 1;  // Path to be removed.
+}
+
+message RemoveResponse {
+  Error error = 1;
+}
+
+message TempDirRequest {
+  // If dir is the empty string, the default directory for temporary files is used.
+  string dir = 1;
+  // If pattern includes a "*", the random string replaces the last "*".
+  string pattern = 2;
+}
+
+message TempDirResponse {
+  // The name of the new directory.
+  string name = 1;
+  Error error = 2;
+}
+
+// FileInfo contains attributes of a file.
+message FileInfo {
+  string name = 1;
+  uint64 size = 2;
+  uint64 mode = 3;
+  google.protobuf.Timestamp modified = 4;
+}
+
+message Error {
+  oneof type {
+    uint32 errno = 1;  // syscall.Errno
+    LinkError link = 2;  // os.LinkError
+    PathError path = 3;  // os.PathError
+    SyscallError syscall = 4;  // os.SyscallError
+    string msg = 5;  // other errors
+  }
+}
+
+message LinkError {
+  string op = 1;
+  string old = 2;
+  string new = 3;
+  Error error = 4;
+}
+
+message PathError {
+  string op = 1;
+  string path = 2;
+  Error error = 3;
+}
+
+message SyscallError {
+  string syscall = 1;
+  Error error = 2;
+}
