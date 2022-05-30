@@ -232,6 +232,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dbe15df_759acb5d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-30T05:05:41Z",
+      "side": 1,
+      "message": "Thanks Hasan and Youkichi-san!\n\nRe Youkichi-san: inlining sounds good.\n\nFor setupFakePolicyServer, I think we can just add it to policyutils since I don\u0027t think there is anything that does exactly the same thing. (One possibility I thought of was to use [fixture.ChromeEnrolledLoggedInARC](http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/chrome.go;l\u003d136;rcl\u003d97c67f8fd4a691b727f1061ed454e1bbdc8e3400), but I think it can\u0027t be used for this test since it uses ARCEnabled with a fake cred.)",
+      "parentUuid": "e2b71ede_39ecc89c",
+      "range": {
+        "startLine": 925,
+        "startChar": 5,
+        "endLine": 925,
+        "endChar": 26
+      },
+      "revId": "767eb3d58238a47fa101bad54dd5992daeb0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5984255_a1138d3d",

@@ -71,6 +71,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13ead060_fa3cdd92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-30T05:05:41Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t mention this earlier, but this string constant `\"arc.managedAccountPool\"` is actually shared with optin_managed.go (defined as `loginPoolVar` in optin_managed.go). It might be better if we could put this constant definition to somewhere common, but is there a nice place we can add this to?",
+      "range": {
+        "startLine": 44,
+        "startChar": 52,
+        "endLine": 44,
+        "endChar": 76
+      },
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48530dc2_32bcc5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-30T05:05:41Z",
+      "side": 1,
+      "message": "I tried using the fake creds instead of the real creds and found out that it makes arc.ExternalStorageDisabled.vm to always pass with or without the hard-coding patch (crrev.com/c/3650484). At the patchset10 of this CL, crrev.com/c/3650484 makes difference in the test result (arc.ExternalStorageDisabled.vm randomly passes or fails at MyFiles mount without the patch, and passes with the patch).\nAccording to youkichihosoi@\u0027s investigation, it seems that using a real GAIA account + ARCSupported is necessary to initialize ARCPolicyBridge (and propagate the policy to ARC). So we should probably use the real creds for this test to be able to catch the original bug (b/217531658).",
+      "parentUuid": "4c373013_c2b16adc",
+      "revId": "5c5c60a9e1d5a009e78f9860f2752ea728cd2cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11c49993_3fe4159e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
         "patchSetId": 10
