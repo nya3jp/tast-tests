@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4417e855_a73a52bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-30T04:10:21Z",
+      "side": 1,
+      "message": "just `defer cleanup(cleanupCtx, tconn, cr, w, outDir, retErr)`",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "8e442910325e93b9ccef6ccde7dd8cf2c23a78a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d25e76_e92a60e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-30T04:10:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 14
+      },
+      "revId": "8e442910325e93b9ccef6ccde7dd8cf2c23a78a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
