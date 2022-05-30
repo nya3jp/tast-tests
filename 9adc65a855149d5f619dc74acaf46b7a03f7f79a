@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbcadd6_dd370d91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-05-30T03:39:16Z",
+      "side": 1,
+      "message": "This test is still failing on betty-pi-arc-direct-tast-vm and the root cause seems to be unclear so that seems a good reason to demote this.\n\nWhen this was sent to CQ on Friday it hit the mesa-iris breakage b/234290087 so I\u0027m going to go ahead and chump this.",
+      "revId": "9adc65a855149d5f619dc74acaf46b7a03f7f79a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
