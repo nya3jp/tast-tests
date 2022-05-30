@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592e52af_b9647681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2022-05-30T00:16:59Z",
+      "side": 1,
+      "message": "Why was it necessary to pass a Context here? I thought cleanupCtx could be automatically captured?",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "4ff36efa14c917babd969f0469e47382c6920525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
