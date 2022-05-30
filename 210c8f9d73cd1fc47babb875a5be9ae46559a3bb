@@ -247,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9df582f_0054a4a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-30T15:30:26Z",
+      "side": 1,
+      "message": "\u003e I would prefer setting up the validation server inside the netns if possible, since adding addtional route may pollute the part we want to test.\n\nYes that\u0027s a good point. Agreed.",
+      "parentUuid": "35d112a6_0dbfcde2",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "497b9966_5c1661f6",
@@ -436,6 +460,30 @@
       "side": 1,
       "message": "They are not the same, in pool.go they are the subnet range but here they are the IP range...",
       "parentUuid": "8589d8da_1385af94",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322decf8_097f3ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-30T15:30:26Z",
+      "side": 1,
+      "message": "Oh right, I got mislead by the values. So actually it might be better to explicitly make the bounds for this range different.",
+      "parentUuid": "99336386_72b5b8da",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -1036,6 +1084,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99412142_c0eab023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-30T15:30:26Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "794e4b97_5a2c121c",
+      "range": {
+        "startLine": 235,
+        "startChar": 19,
+        "endLine": 235,
+        "endChar": 65
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae0dbdb2_def7fd04",
@@ -1085,6 +1157,24 @@
       "side": 1,
       "message": "I guess Kartik\u0027s question is about chroot but not the netns :)\n\nFor the chroot, TBH I don\u0027t know exactly why we need it (it is from some legacy code). My guess is for some servers, some directories or file paths used by the server are not configurable, and thus running them outside chroot may cause some conflictions since those paths may also used by some services running on a normal image (i.e., not in the test). For example, in the openvpn tests, both client and server need to run the same openvpn binary, and we definitely don\u0027t want them to see the same set of files (this is just my guess, I haven\u0027t checked if it is feasible to configure the paths for the server). It is also easier to control what the server changes on the file system -- the chroot dir will just be removed after the tests.\n\nSo for `ip` commands, we don\u0027t need to control the file system it sees because we don\u0027t have the concerns that they will read or write some files unexpectedly. For other servers, I would suggest using chroot if it is feasible.",
       "parentUuid": "92933622_63fa36e1",
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91028cf_0855dde9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-30T15:30:26Z",
+      "side": 1,
+      "message": "Ahh sorry I may have misunderstood the question.\n\nNote that some networking commands definitely need to see the correct mount filesystem and the correct network namespace at the same time. There are multiple examples for ARC container in src/platform2/patchpanel/arc_service.cc.",
+      "parentUuid": "9f7dfdb7_ddae0545",
       "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1395,6 +1485,30 @@
       "side": 1,
       "message": "Done. Thanks for the information and suggestion! I read the definition of ULA again and I suppose you mean 0xfd for the first byte for v6 prefix",
       "parentUuid": "398c5ef3_04d320e2",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86716242_19ccc040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/pool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-30T15:30:26Z",
+      "side": 1,
+      "message": "\u003e you mean 0xfd for the first byte for v6 prefix\n\nYes.",
+      "parentUuid": "795fca89_5394120a",
       "range": {
         "startLine": 40,
         "startChar": 5,
@@ -1861,6 +1975,30 @@
       "side": 1,
       "message": "Not sure if I understand your comment... What is the case you are worried about here?",
       "parentUuid": "2d413cc4_b457c44e",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9cd309_efbe9b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-05-30T15:30:26Z",
+      "side": 1,
+      "message": "This is just to push to the back of the functions all side effects to potentially undo in case of error.",
+      "parentUuid": "2317b3fb_115e845c",
       "range": {
         "startLine": 59,
         "startChar": 3,
