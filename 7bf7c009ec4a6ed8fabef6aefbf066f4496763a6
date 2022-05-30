@@ -46,6 +46,30 @@
       },
       "revId": "7bf7c009ec4a6ed8fabef6aefbf066f4496763a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5824c6_4c586fcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-30T05:31:46Z",
+      "side": 0,
+      "message": "I am not familiar with this topic, just wanted to bring into attention that the change also removed bullseye. I will leave it up to you to decide.",
+      "parentUuid": "ad4d0529_4dff9b10",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "7bf7c009ec4a6ed8fabef6aefbf066f4496763a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
