@@ -226,6 +226,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c4d86ea_572f69e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-30T08:45:29Z",
+      "side": 1,
+      "message": "Let me add some context:\n\nThe error \"User activation is required to show a file picker\" is sometimes flakily triggered when Chrome does not believe that the click executed by Tast was triggered by a user gesture. In this case, we just retry the click.\n\nIf opening the file picker fails with any other error, then this could either be expected or unexpected behavior, depending on the policy (if file system access is blocked by policy, we expect the error, otherwise we expect no error). In any case, we want to stop the testing.Poll loop by returning nil, not an error. If we returned an error from testing.Poll, it would continue polling.\n\nNote: The test does not directly assert whether an error was thrown or not, but rather, it checks whether it finds the file picker dialog (or not) depending on `param.WantFileSystemWrite`.",
+      "parentUuid": "2c891a36_c081867d",
+      "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4042b811_e8053382",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
         "patchSetId": 1
@@ -243,6 +261,23 @@
         "endLine": 135,
         "endChar": 37
       },
+      "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c875092d_938f1d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-30T08:45:29Z",
+      "side": 1,
+      "message": "This line should be below the `triggerFilePicker` call.",
       "revId": "213784924865e7dfcacd3e856dfe9d26e12a0bde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
