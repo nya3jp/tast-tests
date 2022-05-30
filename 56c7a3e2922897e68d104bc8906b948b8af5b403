@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11418edd_f9198362",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-05-30T05:36:46Z",
+      "side": 1,
+      "message": "nit: i think better capitalization would be \"Bypass\"",
+      "revId": "56c7a3e2922897e68d104bc8906b948b8af5b403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
