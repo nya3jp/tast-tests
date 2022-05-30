@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c48c558_af72ebfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-05-30T21:09:43Z",
+      "side": 1,
+      "message": "nit: Maybe something like \"disableUserSecretStash\" or \"cleanupUSSExperiment\"?\n\nThe current name is just a bit asymmetric as the \"EnableUserSecretStash()\" name doesn\u0027t say anything about files.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 11
+      },
+      "revId": "20e4b5290042bcd86fb26fd188f82b33657226a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
