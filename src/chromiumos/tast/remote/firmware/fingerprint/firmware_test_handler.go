@@ -167,7 +167,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 	}
 
 	// Check FPMCU state and reflash if needed.
-	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
+	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing, enableSWWP); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
@@ -322,6 +322,11 @@ func (t *FirmwareTest) DUTTempDir() string {
 // FPBoard gets the fingerprint board name.
 func (t *FirmwareTest) FPBoard() FPBoardName {
 	return t.fpBoard
+}
+
+// ReimageFPMCU flashes the FPMCU, initializes entropy, and sets the TPM seed.
+func (t *FirmwareTest) ReimageFPMCU(ctx context.Context) error {
+	return ReimageFPMCU(ctx, t.DUT(), t.Servo(), t.NeedsRebootAfterFlashing())
 }
 
 type daemonState struct {
