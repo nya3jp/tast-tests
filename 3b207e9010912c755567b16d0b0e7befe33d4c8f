@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a072351_b103e4c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-05-30T01:36:44Z",
+      "side": 1,
+      "message": "To make sure I understand: The test creates a file in the user\u0027s downloads directory, opens with gedit, opens terminal...and the file gets deleted from the downloads folder? The downloads folder isn\u0027t shared with Crostini? The downloads folder is shared but this file specificially doesn\u0027t show up?\n\nThey all sound like bugs we should fix in the sharing code, not work around in the test.",
+      "revId": "3b207e9010912c755567b16d0b0e7befe33d4c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
