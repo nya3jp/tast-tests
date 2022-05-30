@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b7eb6c_e8f01b83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-30T09:19:25Z",
+      "side": 1,
+      "message": "nit: Start the commit message with \narc: Message",
+      "revId": "8ab003d19e1069a05a1bc408c71d5dca69a6e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4572876c_8f8571bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-30T09:19:25Z",
+      "side": 1,
+      "message": "LGTM % nit.\nThanks for the explanation comment 👍",
+      "revId": "8ab003d19e1069a05a1bc408c71d5dca69a6e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
