@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d3138b_72f33d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-30T23:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ab55c86_ea4a6e9c",
+      "range": {
+        "startLine": 193,
+        "startChar": 77,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "f7d2e6df9a102d71552746004e24613c336535df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "128c96c8_0f032eb8",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-30T17:14:42Z",
       "side": 1,
       "message": "nit: prefer `const` keyword.",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 14
+      },
+      "revId": "f7d2e6df9a102d71552746004e24613c336535df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cadbac0_ddd4da13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-30T23:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "128c96c8_0f032eb8",
       "range": {
         "startLine": 196,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a343876f_bbfdc25e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-30T23:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90167535_a98c0a9f",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 23
+      },
+      "revId": "f7d2e6df9a102d71552746004e24613c336535df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78fef587_a925b04a",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-05-30T17:14:42Z",
       "side": 1,
       "message": "nit: I believe `base::WriteFile` (which seems to create this file [1]) creates the file with `0666` permissions [2]. Should we be ensuring we maintain these permissions?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/rmad/dbus_service.cc;l\u003d433;drc\u003d24e0c870926f4baf7d12bdf21bbfc31ae7dea266\n[2] https://source.chromium.org/chromium/chromium/src/+/main:base/files/file_util_posix.cc;l\u003d870;drc\u003d8d6a246c9be4f6b731dc7f6e680b7d5e13a512b5",
+      "range": {
+        "startLine": 219,
+        "startChar": 61,
+        "endLine": 219,
+        "endChar": 65
+      },
+      "revId": "f7d2e6df9a102d71552746004e24613c336535df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b3fb48_834cf652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/app_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-05-30T23:42:09Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "78fef587_a925b04a",
       "range": {
         "startLine": 219,
         "startChar": 61,
