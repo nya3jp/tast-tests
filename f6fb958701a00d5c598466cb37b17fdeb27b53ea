@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7acc8386_7cd8c0cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-05-30T02:39:24Z",
+      "side": 1,
+      "message": "Do you still need to add a stable variant as well?",
+      "revId": "f6fb958701a00d5c598466cb37b17fdeb27b53ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
