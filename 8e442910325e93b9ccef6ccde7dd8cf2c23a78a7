@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3d425fc_32adeaf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-30T04:51:07Z",
+      "side": 1,
+      "message": "Right, the parameters are evaluated immediately in defer calls. But this code is looking confusing, could you try not to use `retErr`? instead, define a `hasError :\u003d true` in the begin, set it to `false` in the end, and use it to indicate whether the cleanup is on error.\n\n```\nhasError :\u003d true\n...\ndefer cleanup(ctx, tconn, cr, w, outDir, func() bool{return hasError})\n...\n\nhasError \u003d false\n```\n\nAlso, you may change cleanup to use `hasError func() bool` as the last parameter, which is compatible with `DumpUITreeWithScreenshotOnError`.",
+      "parentUuid": "4c4cc0a4_5b9823a5",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "8e442910325e93b9ccef6ccde7dd8cf2c23a78a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26d25e76_e92a60e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videoeditingcuj/run.go",
         "patchSetId": 8
