@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce75d48b_38ad8fb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-05-30T06:52:19Z",
+      "side": 1,
+      "message": "Test passing locally for me.\n\n2022-05-30T06:48:25.413746Z Started test platform.Fusebox\n2022-05-30T06:48:25.498690Z [06:48:24.342] Connecting to CrosDisks D-Bus service\n2022-05-30T06:48:25.498780Z [06:48:24.343] Mounting fusebox source \"fusebox://fusebox-tast-test-requests\"\n2022-05-30T06:48:25.513568Z [06:48:24.362] Awaiting MountCompleted event\n2022-05-30T06:48:25.513645Z [06:48:24.362] CrosDisks mounted \"fusebox://fusebox-tast-test-requests\" at /media/fuse/fusebox-tast-test-requests\n2022-05-30T06:48:25.513684Z [06:48:24.362] Calling stat(2) on fusebox fake file entry /media/fuse/fusebox-tast-test-requests/hello\n2022-05-30T06:48:25.518576Z [06:48:24.367] Connecting to D-Bus interface org.chromium.FuseBoxReverseService\n2022-05-30T06:48:25.523575Z [06:48:24.368] Calling fusebox D-Bus interface TestIsAlive method\n2022-05-30T06:48:25.591167Z Completed test platform.Fusebox in 186ms with 0 error(s)\n2022-05-30T06:48:27.551506Z --------------------------------------------------------------------------------\n2022-05-30T06:48:27.551557Z platform.Fusebox [ PASS ]",
+      "revId": "10a35068afe98d09ca8a6bd0061815bad9d93db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
