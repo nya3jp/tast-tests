@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d5eac7_b94bcc4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T00:40:10Z",
+      "side": 1,
+      "message": "We have to update platform/tast-tests, platform/tast-tests-private and platform/tast atomically to make this rewrite succeed. I don\u0027t think it\u0027s realistically possible, given that platform/tast-tests have 16k+ files and many CLs are always in CQ. We need a way to make this rewrite happen progressively, rather than atomically.\n\nI talked about this with Seewai, and he will set up a meeting to discuss.\n",
+      "revId": "eeb3d109b679aad153c397524596e645d80fd38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
