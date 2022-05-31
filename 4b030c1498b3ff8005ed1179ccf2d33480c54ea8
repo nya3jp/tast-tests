@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feadd3b4_009265da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-31T00:53:27Z",
+      "side": 1,
+      "message": "These locators are too general. I hope you can use a more robust \u0026 stable locator. At least, you can use parent to limit the scope to the app only.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9ced35_4b4c2602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-31T00:53:27Z",
+      "side": 1,
+      "message": "The same rule applies to all locators in this cl, thanks.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfc46827_778d19c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-31T00:53:27Z",
+      "side": 1,
+      "message": "can you explain why sleep is required here and no better solution to avoid it. Click function implicitly waits for element appear and stable. So wait for change does not make sense.",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 64
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04317c3_41aca739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-31T00:53:27Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 64
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb30bce_28c4d951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-05-31T00:53:27Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 226,
+        "startChar": 3,
+        "endLine": 226,
+        "endChar": 65
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
