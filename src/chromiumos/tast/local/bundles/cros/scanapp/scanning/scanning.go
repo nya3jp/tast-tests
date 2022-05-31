@@ -73,6 +73,9 @@ const (
 	// HardwareTestRunAllCombinations tests each combination of color mode, page
 	// size and resolution.
 	HardwareTestRunAllCombinations HardwareTestMode = iota
+	// HardwareTestRunCriticalCombinations tests each color mode with the
+	// largest and smallest supported resolutions and page sizes.
+	HardwareTestRunCriticalCombinations
 	// HardwareTestRunRandomizedCombinations tests the minimal number of
 	// combinations necessary to test each color mode, page size and resolution
 	// at least once. Combinations will be randomized each run.
@@ -121,6 +124,9 @@ func generateSettingsLists(mode HardwareTestMode, colorModes []scanapp.ColorMode
 	switch mode {
 	case HardwareTestRunAllCombinations:
 		// No need to do anything here.
+	case HardwareTestRunCriticalCombinations:
+		// TODO: Sort page sizes and resolutions. Strip all but smallest and
+		// largest.
 	case HardwareTestRunRandomizedCombinations:
 		rand.Shuffle(len(colorModes), func(i, j int) {
 			colorModes[i], colorModes[j] = colorModes[j], colorModes[i]
@@ -143,6 +149,11 @@ func generateSettingsLists(mode HardwareTestMode, colorModes []scanapp.ColorMode
 func calculateNumScans(mode HardwareTestMode, numColorModes, numPageSizes, numResolutions int) (int, error) {
 	switch mode {
 	case HardwareTestRunAllCombinations:
+		fallthrough
+	case HardwareTestRunCriticalCombinations:
+		// This should be called after the non-essential resolutions and page
+		// sizes were stripped from the input, so we want to test all of the
+		// remaining combinations, same as HardwareTestRunAllCombinations.
 		return numColorModes * numPageSizes * numResolutions, nil
 	case HardwareTestRunRandomizedCombinations:
 		numScans := numColorModes
@@ -166,6 +177,8 @@ func calculateNumScans(mode HardwareTestMode, numColorModes, numPageSizes, numRe
 func getNextScanCombination(mode HardwareTestMode, numScan int, colorModes []scanapp.ColorMode, pageSizes []scanapp.PageSize, resolutions []scanapp.Resolution) (colorMode scanapp.ColorMode, pageSize scanapp.PageSize, resolution scanapp.Resolution, err error) {
 	switch mode {
 	case HardwareTestRunAllCombinations:
+		fallthrough
+	case HardwareTestRunCriticalCombinations:
 		// Iterate through each possible combination. Every scan combination
 		// advances the resolution index once (rolling over when it reaches the
 		// end of the resolutions slice). When the resolution index rolls over,
