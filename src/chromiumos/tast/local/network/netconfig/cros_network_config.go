@@ -18,6 +18,22 @@ type CrosNetworkConfig struct {
 	mojoRemote *chrome.JSObject
 }
 
+// NewCrosNetworkConfigOobe creates a connection to cros_network_config when the
+// device is in the OOBE screen.
+func NewCrosNetworkConfigOobe(ctx context.Context, cr *chrome.Chrome) (*CrosNetworkConfig, error) {
+	oobeConn, err := cr.WaitForOOBEConnection(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open connection with oobe")
+	}
+
+	var mojoRemote chrome.JSObject
+	if err := oobeConn.Call(ctx, &mojoRemote, crosNetworkConfigJs); err != nil {
+		return nil, errors.Wrap(err, "failed to set up the network mojo API")
+	}
+
+	return &CrosNetworkConfig{oobeConn, &mojoRemote}, nil
+}
+
 // NewCrosNetworkConfig creates a connection to cros_network_config that allows
 // to make mojo calls. Only works in a context where chrome://network may be
 // opened.
