@@ -41,7 +41,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars:         []string{"record"},
-		Timeout:      10*time.Minute + cuj.CPUStablizationTimeout,
+		Timeout:      20*time.Minute + cuj.CPUStablizationTimeout,
 		Data:         []string{"shaka_720.webm", "pip.html", cujrecorder.SystemTraceConfigFile},
 		Params: []testing.Param{
 			{
@@ -289,7 +289,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Run the recorder.
-	if err := recorder.Run(ctx, f); err != nil {
+	if err := recorder.RunFor(ctx, f, 10*time.Minute); err != nil {
 		s.Fatal("Failed to conduct the recorder task: ", err)
 	}
 
