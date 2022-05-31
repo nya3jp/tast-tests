@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "994f8425_aa8f35ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-31T08:07:15Z",
+      "side": 1,
+      "message": "Thanks for the change. Looks good to me overall with some nits.",
+      "revId": "b6de5cd0ff5c71d1cc8ca432010b99880de1828b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9715ea24_744e4da6",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-31T08:07:15Z",
+      "side": 1,
+      "message": "You might want to do `recoverUnhealthyDUT` after stop enrollment as `policy.NewPolicyServiceClient(d.rpc.Conn)` use `d.rpc.Conn` which might got reset during recovery.",
+      "revId": "b6de5cd0ff5c71d1cc8ca432010b99880de1828b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf74d5c2_e9f80df0",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-05-31T08:07:15Z",
+      "side": 1,
+      "message": "Thanks, until here, no `f.tf` has been created and these are just options. So we should be fine in `recoverUnhealthyDUT`",
+      "parentUuid": "8ded6611_9eb548b4",
+      "revId": "c0af5ee9c50577c3af907a3a2cf6cd9ba1cc5658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beeaad60_57cef55c",
