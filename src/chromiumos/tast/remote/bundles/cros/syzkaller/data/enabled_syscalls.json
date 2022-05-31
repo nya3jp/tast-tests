@@ -826,5 +826,19 @@
 			"ioctl$VHOST_GET_VRING_ENDIAN",
 			"ioctl$VHOST_SET_VRING_BUSYLOOP_TIMEOUT"
 		]
+	},
+	{
+		"driver": "media-controller(CONFIG_MEDIA_CONTROLLER)",
+		"syscalls": [
+			"syz_open_dev$media",
+			"ioctl$MEDIA_IOC_DEVICE_INFO",
+			"ioctl$MEDIA_IOC_ENUM_ENTITIES",
+			"ioctl$MEDIA_IOC_ENUM_LINKS",
+			"ioctl$MEDIA_IOC_SETUP_LINK",
+			"ioctl$MEDIA_IOC_G_TOPOLOGY",
+			"ioctl$MEDIA_IOC_REQUEST_ALLOC",
+			"ioctl$MEDIA_REQUEST_IOC_QUEUE",
+			"ioctl$MEDIA_REQUEST_IOC_REINIT"
+		]
 	}
 ]
