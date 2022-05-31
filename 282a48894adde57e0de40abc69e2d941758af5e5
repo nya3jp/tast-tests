@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b3166e_bb744c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3db26841_80c2e167",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b599b33_f2d0cc03",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-09T09:02:25Z",
       "side": 1,
       "message": "nit: \"const\"",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f85f01d_c1336bf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b599b33_f2d0cc03",
       "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf5a4356_17c6cb38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "If onboard speaker is not selected as active node so we are setting onboard speaker as active audio node. So it is required to be in polling.",
+      "parentUuid": "394fbb5f_3d305a2f",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 4
+      },
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4dcaa80a_d175c580",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
         "patchSetId": 2
@@ -88,6 +148,24 @@
       "writtenOn": "2022-05-09T09:02:25Z",
       "side": 1,
       "message": "const",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c4fd48d_f58bdf42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dcaa80a_d175c580",
       "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71159035_9715513f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d96e723d_48790779",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72231bde_72dab2a7",
@@ -122,6 +218,24 @@
       "writtenOn": "2022-05-09T09:02:25Z",
       "side": 1,
       "message": "const",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62ffdd8_51382b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72231bde_72dab2a7",
       "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42c6c6c_6f860452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "037e88c1_ba6df862",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69e8ff3e_5f96ee9b",
@@ -156,6 +288,24 @@
       "writtenOn": "2022-05-09T09:02:25Z",
       "side": 1,
       "message": "nit: could you iterate i :\u003d 0 to i \u003c iterHours, and instead use i+1 for logging?",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a4fae2a_bbed6f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69e8ff3e_5f96ee9b",
       "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -185,6 +335,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71199264_8d851147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "can you please elaborate on this comment?",
+      "parentUuid": "017079ce_d85e9a8f",
+      "range": {
+        "startLine": 170,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adeed677_3702d24f",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
         "patchSetId": 2
@@ -196,6 +370,24 @@
       "writtenOn": "2022-05-09T09:02:25Z",
       "side": 1,
       "message": "it\u0027s recommended to avoid depending on the human readable name of UI.\nCould you identify the item by class or id?",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acd1e2d7_e24ee6cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adeed677_3702d24f",
       "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +405,24 @@
       "writtenOn": "2022-05-09T09:02:25Z",
       "side": 1,
       "message": "ditto. Any good machine-readable/stable way to identify the window?",
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b4e9ab_3b326ff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-05-31T07:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d9066b_6a1d8b16",
       "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
