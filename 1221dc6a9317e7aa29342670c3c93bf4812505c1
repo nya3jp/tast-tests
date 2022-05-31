@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610a4140_4adb60b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-31T12:23:16Z",
+      "side": 1,
+      "message": "unfortunately, I do not think there\u0027s enough capacity to run this lengthy tests for informational.\nAlso, we epect mainline tests to be promoted to CQ blockers, and so there are definitely more limited capacity only.\n\nCould you discuss with infra team to figure out where/how to run this tests continuously?",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "1221dc6a9317e7aa29342670c3c93bf4812505c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

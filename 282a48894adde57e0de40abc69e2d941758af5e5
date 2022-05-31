@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b08965bd_7aca39f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-31T12:23:16Z",
+      "side": 1,
+      "message": "It\u0027s weird. Why doesn\u0027t one-time setting work?",
+      "parentUuid": "bf5a4356_17c6cb38",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 4
+      },
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4dcaa80a_d175c580",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
         "patchSetId": 2
@@ -347,6 +371,30 @@
       "side": 1,
       "message": "can you please elaborate on this comment?",
       "parentUuid": "017079ce_d85e9a8f",
+      "range": {
+        "startLine": 170,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811db5ad_2a9adedb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-31T12:23:16Z",
+      "side": 1,
+      "message": "Hmm... with re-reading the code, it looks weird still, but I may not fully understand your intention.\nCould you describe what you\u0027d like to achieve by this polling?",
+      "parentUuid": "71199264_8d851147",
       "range": {
         "startLine": 170,
         "startChar": 3,
