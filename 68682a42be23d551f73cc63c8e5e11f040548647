@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be246072_d82998a7",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-31T21:44:48Z",
+      "side": 1,
+      "message": "The existing code is split across two repositories and the expectation with `NewSurfaceFlingerMetrics` is that it passes in a full `surfaceName`, i.e. `SurfaceView - com.innersloth.spacemafia/com.innersloth.spacemafia.EosUnityPlayerActivity#0` that it will directly read from. If `NewDefault` needs package name instead, than it can accept that.\n\nThe above is just an outline for how you can ensure tests don\u0027t fail while you work through changing the implementation. It may need more/less depending on your specific needs but until `cl 3`, `NewSurfaceFlingerMetrics` must be available, and work for all existing tests. That said, it sounds like you may need this CL to introduce a few new methods for instantiating a `SurfaceFlingerMetric` that performs automatic detection, while still supporting the manual detection in the short term.",
+      "parentUuid": "8908f8bd_86eb220f",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a25cf29_d3ab0ac1",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
