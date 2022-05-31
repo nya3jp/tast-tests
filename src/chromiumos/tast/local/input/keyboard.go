@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"math/big"
 	"os"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -69,6 +70,24 @@ func FindPhysicalKeyboard(ctx context.Context) (bool, string, error) {
 		}
 	}
 	return false, "", nil
+}
+
+// FindPowerKeyDevice iterates over devices and returns path for cros_ec_buttons
+// if it exists, otherwise returns the regular physical keyboard.
+func FindPowerKeyDevice(ctx context.Context) (bool, string, error) {
+	infos, err := readDevices("")
+	if err != nil {
+		return false, "", errors.Wrap(err, "failed to read devices")
+	}
+
+	// If cros_ec_buttons is a device, use that for power key, otherwise use physical keyboard device.
+	for _, info := range infos {
+		if strings.Contains(info.name, "cros_ec_buttons") {
+			testing.ContextLogf(ctx, "Using cros_ec_buttons device %+v", info)
+			return true, info.path, nil
+		}
+	}
+	return FindPhysicalKeyboard(ctx)
 }
 
 // virtualKeyboard creates a virtual keyboard device and returns an EventWriter that injects events into it.

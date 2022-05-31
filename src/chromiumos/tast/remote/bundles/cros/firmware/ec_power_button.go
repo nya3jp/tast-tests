@@ -109,7 +109,7 @@ func testPowerOffWithShortPowerKey(ctx context.Context, h *firmware.Helper) erro
 	}
 
 	testing.ContextLog(ctx, "Checking for S5 or G3 powerstate")
-	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S5", "G3"); err != nil {
+	if err := h.WaitForPowerStates(ctx, 2*time.Second, 60*time.Second, "S5", "G3"); err != nil {
 		return errors.Wrap(err, "failed to get S5 or G3 powerstate")
 	}
 
@@ -119,7 +119,7 @@ func testPowerOffWithShortPowerKey(ctx context.Context, h *firmware.Helper) erro
 	}
 
 	testing.ContextLog(ctx, "Waiting for S0 powerstate")
-	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+	if err := h.WaitForPowerStates(ctx, 2*time.Second, 60*time.Second, "S0"); err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
 
@@ -129,7 +129,7 @@ func testPowerOffWithShortPowerKey(ctx context.Context, h *firmware.Helper) erro
 func testPowerKeyDebounce(ctx context.Context, h *firmware.Helper) error {
 	readKeyPress := func(scanner *bufio.Scanner, keyCode string) error {
 
-		regex := `Event.*time.*code\s(\d*)\s\(` + keyCode + `\)`
+		regex := `Event.*time.*code\s(` + keyCode + `)\s\(\S+\)`
 		expMatch := regexp.MustCompile(regex)
 
 		text := make(chan string)
@@ -141,7 +141,7 @@ func testPowerKeyDebounce(ctx context.Context, h *firmware.Helper) error {
 		}()
 		for {
 			select {
-			case <-time.After(2 * time.Second):
+			case <-time.After(10 * time.Second):
 				return errors.New("did not detect keycode within expected time")
 			case out := <-text:
 				if match := expMatch.FindStringSubmatch(out); match != nil {
@@ -155,10 +155,11 @@ func testPowerKeyDebounce(ctx context.Context, h *firmware.Helper) error {
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		return errors.Wrap(err, "requiring RPC utils")
 	}
+
 	testing.ContextLog(ctx, "Look for physical keyboard")
-	res, err := h.RPCUtils.FindPhysicalKeyboard(ctx, &empty.Empty{})
+	res, err := h.RPCUtils.FindPowerKeyDevice(ctx, &empty.Empty{})
 	if err != nil {
-		return errors.Wrap(err, "during FindPhysicalKeyboard")
+		return errors.Wrap(err, "during FindPowerKeyDevice")
 	}
 	device := res.Path
 	testing.ContextLog(ctx, "Device path: ", device)
@@ -173,12 +174,12 @@ func testPowerKeyDebounce(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Read for power key press")
-	if err := readKeyPress(scanner, "KEY_POWER"); err != nil {
+	if err := readKeyPress(scanner, "116"); err != nil {
 		return errors.Wrap(err, "failed to read key")
 	}
 
 	testing.ContextLog(ctx, "Waiting for S0 powerstate")
-	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+	if err := h.WaitForPowerStates(ctx, 2*time.Second, 60*time.Second, "S0"); err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
 
