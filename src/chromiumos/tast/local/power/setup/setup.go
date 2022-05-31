@@ -140,14 +140,14 @@ const DefaultDischargeThreshold = 2.0
 var (
 	// NoBatteryDischarge option requests setup not to try
 	// forcing discharge of battery
-	NoBatteryDischarge = basicBatteryDischargeMode{discharge: false}
+	NoBatteryDischarge = &basicBatteryDischargeMode{discharge: false}
 	// ForceBatteryDischarge option requests setup to force
 	// discharging battery during a test
-	ForceBatteryDischarge = basicBatteryDischargeMode{
+	ForceBatteryDischarge = &basicBatteryDischargeMode{
 		discharge: true, threshold: DefaultDischargeThreshold}
 )
 
-func (battery basicBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
+func (battery *basicBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
 	if battery.discharge {
 		var cleanup CleanupCallback
 		cleanup, battery.err = SetBatteryDischarge(ctx, battery.threshold)
@@ -155,7 +155,7 @@ func (battery basicBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) 
 	}
 }
 
-func (battery basicBatteryDischargeMode) Err() error {
+func (battery *basicBatteryDischargeMode) Err() error {
 	return battery.err
 }
 
@@ -173,18 +173,18 @@ type advancedBatteryDischargeMode struct {
 // error is omitted from the power test setup but can be obtained via Err() interface.
 func TryBatteryDischarge(ignoreErr bool, threshold float64) BatteryDischargeMode {
 	if !ignoreErr {
-		return basicBatteryDischargeMode{discharge: true, threshold: threshold}
+		return &basicBatteryDischargeMode{discharge: true, threshold: threshold}
 	}
-	return advancedBatteryDischargeMode{threshold: threshold}
+	return &advancedBatteryDischargeMode{threshold: threshold}
 }
 
-func (battery advancedBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
+func (battery *advancedBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
 	var cleanup CleanupCallback
 	cleanup, battery.err = SetBatteryDischarge(ctx, battery.threshold)
 	s.Add(cleanup, nil)
 }
 
-func (battery advancedBatteryDischargeMode) Err() error {
+func (battery *advancedBatteryDischargeMode) Err() error {
 	return battery.err
 }
 
