@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8908f8bd_86eb220f",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-31T21:35:48Z",
+      "side": 1,
+      "message": "Wouldn\u0027t `NewDefault` need to take in the app package name, since I still need the caller to provide that? \n\nAnd in that case, can I just go ahead and modify `NewSurfaceFlingerMetrics` so that the string taken in is `appPkgName` instead of `surfaceName`?",
+      "parentUuid": "536ad300_727e137f",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a25cf29_d3ab0ac1",
         "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
         "patchSetId": 1
