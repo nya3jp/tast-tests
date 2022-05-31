@@ -39,6 +39,30 @@
       },
       "revId": "a18608694ad2f1843923244d89c28df757bda514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e606355a_e802087e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-05-31T10:06:06Z",
+      "side": 1,
+      "message": "I am sorry, could you a bit elaborate on that?\n\nI thought that we want to see \"Error 401\" the first time we open the website.\nSo if we dont have that error (meaning webtitle does not contain 401), that means something is wrong (for example we have access without a kerberos ticket), hence we fail our test.",
+      "parentUuid": "a05ce9c2_407e0a06",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "a18608694ad2f1843923244d89c28df757bda514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
