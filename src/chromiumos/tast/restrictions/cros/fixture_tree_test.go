@@ -27,9 +27,9 @@ func TestEntityLabelInheritance(t *gotesting.T) {
 			t.Errorf("fixture %s, referenced by %s %s, not found", v.Parent, v.Type, v.Name)
 			continue
 		}
-		if !v.HasLabel(restrictions.FragileUIMatcherLabel) &&
-			p.HasLabel(restrictions.FragileUIMatcherLabel) {
-			t.Errorf("%s %s doesn't have \"%s\" label, but the parent %s %s does.",
+		if !v.HasPrivateAttr(restrictions.FragileUIMatcherLabel) &&
+			p.HasPrivateAttr(restrictions.FragileUIMatcherLabel) {
+			t.Errorf("%s %s doesn't have \"%s\" privateAttr, but the parent %s %s does.",
 				v.Type, v.Name, restrictions.FragileUIMatcherLabel, p.Type, p.Name)
 		}
 	}
@@ -38,9 +38,9 @@ func TestEntityLabelInheritance(t *gotesting.T) {
 func TestMainlineTestsHaveNoFragileUIMatcher(t *gotesting.T) {
 	nodes := testcheck.Entities()
 	for _, v := range nodes {
-		if v.HasLabel(restrictions.FragileUIMatcherLabel) &&
+		if v.HasPrivateAttr(restrictions.FragileUIMatcherLabel) &&
 			v.HasAttr(mainlineAttributeName) {
-			t.Errorf("test %s, has \"%s\" label, but is a mainline test",
+			t.Errorf("test %s, has \"%s\" privateAttr, but is a mainline test",
 				v.Name, restrictions.FragileUIMatcherLabel)
 		}
 	}
