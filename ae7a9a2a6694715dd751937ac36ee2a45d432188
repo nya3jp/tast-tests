@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16efe1e9_2d2040f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-31T20:44:12Z",
+      "side": 1,
+      "message": "If this fails, shouldn\u0027t we fatal? The test will probably fail in a much less obvious way later otherwise...",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51976db1_bd1b6e35",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
         "patchSetId": 1
@@ -71,6 +94,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fc5c896_5d433f87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-31T20:44:12Z",
+      "side": 1,
+      "message": "+1, it is not included in any error messages as stated in the comment.",
+      "parentUuid": "51976db1_bd1b6e35",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2a926c8_55755586",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
         "patchSetId": 1
@@ -82,6 +123,24 @@
       "writtenOn": "2022-05-31T18:32:22Z",
       "side": 1,
       "message": "Is it necessary to call `s.Fatal` here, and with that, pass the testing state into this helper function?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c97be775_ab0e04ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-31T20:44:12Z",
+      "side": 1,
+      "message": "+1, we should just return an error here, right?",
+      "parentUuid": "d2a926c8_55755586",
       "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
