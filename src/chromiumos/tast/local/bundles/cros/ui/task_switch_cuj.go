@@ -516,7 +516,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 				// searching by name because launcher could append suffix to the app
 				// name. E.g. gmail app has "Gmail, Installed app" as its name. The
 				// suffix is for chromevox and could change.
-				ac.WithTimeout(5*time.Second).LeftClick(nodewith.ClassName("SearchResultTileItemView").First()),
+				ac.WithTimeout(5*time.Second).LeftClick(nodewith.HasClass("SearchResultView").First()),
 				func(ctx context.Context) error { return ash.WaitForVisible(ctx, tconn, app.packageName) },
 				func(ctx context.Context) error {
 					s.Log("Skipping the splash screen of ", app.query)
