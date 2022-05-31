@@ -152,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c934e8_2f102fb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-05-31T10:26:19Z",
+      "side": 1,
+      "message": "But now after reading it again I saw this may be more related to the framework than to actual tests, so I removed the logging.",
+      "parentUuid": "9954078b_c8f87952",
+      "revId": "df8569fcce3dc19731e416fb2bda45b27af44f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcabe99d_e58b5097",
