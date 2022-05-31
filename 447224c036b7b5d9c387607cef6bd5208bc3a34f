@@ -16,6 +16,23 @@
       "message": "Your review suggestions from he initial CL, PTAL.\n",
       "revId": "447224c036b7b5d9c387607cef6bd5208bc3a34f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d5ffd2_98e27439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-05-31T08:31:18Z",
+      "side": 1,
+      "message": "Example output: test takes 172ms on nami device\n\nCrosDisks mounted /media/fuse/fusebox-alive-test\nStating fusebox file entry /media/fuse/fusebox-alive-test/hello\nCalling org.chromium.FuseBoxReverseService.TestIsAlive method\nCompleted test platform.Fusebox in 172ms with 0 error(s)\nplatform.Fusebox [ PASS ]\n\n",
+      "revId": "447224c036b7b5d9c387607cef6bd5208bc3a34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
