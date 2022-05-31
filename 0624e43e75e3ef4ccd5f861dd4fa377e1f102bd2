@@ -16,6 +16,23 @@
       "message": "Hi Eric,\n\nCan you please review now?",
       "revId": "0624e43e75e3ef4ccd5f861dd4fa377e1f102bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc0a92a_b9685241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-05-31T20:45:29Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "0624e43e75e3ef4ccd5f861dd4fa377e1f102bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
