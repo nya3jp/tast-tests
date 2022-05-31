@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3d3c70_4e53e2eb",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-05-31T05:34:51Z",
+      "side": 1,
+      "message": "\"Do not add a context member to a struct type\" https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#:~:text\u003dDo%20not%20add%20a%20context%20member%20to%20a%20struct%20type",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "6e46532bff6f160d8979b0fa764edb31b7213257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
