@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4787e9_78f6d7d8",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-31T03:02:04Z",
+      "side": 1,
+      "message": "/typo \"and\"",
+      "revId": "1a344f4867e7920332c9c0ad7323b8d0834697f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f9460bd_a26432ab",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-31T03:02:04Z",
+      "side": 1,
+      "message": "/nit missing a full stop.",
+      "revId": "1a344f4867e7920332c9c0ad7323b8d0834697f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a2b05b_bd021fd2",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-31T03:02:04Z",
+      "side": 1,
+      "message": "It is usually nice to return `errors.Wrap(err, \"\u003clowercase-description\u003e\")` to add context to the error. Similarly below.",
+      "revId": "1a344f4867e7920332c9c0ad7323b8d0834697f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
