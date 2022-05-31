@@ -39,6 +39,63 @@
       },
       "revId": "6e46532bff6f160d8979b0fa764edb31b7213257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50cbd7d8_6a53dffd",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-31T05:56:35Z",
+      "side": 1,
+      "message": "design: Two things:\n- Prefer to return *perf.Values and let the caller merge them using perf.Values.Merge(...) rather than modifying a caller-supplied collection. This more functional style makes dataflow clearer.\n- It is unusual that this method both adds values to a user-supplied collection, and then saves the entire collection (including the user-supplied values!) out to the given directory.\n\nI think this method should either:\n- Save the metrics to a self-created perf.Values collection, and save that to disk.\n- Save the metrics to a self-created perf.Values collection, and return that collection. The caller can merge it with existing perf values they have using the Values.Merge(...) method, and save it out themselves.\n\nI think the second option is probably the cleanest and most flexible.",
+      "range": {
+        "startLine": 65,
+        "startChar": 31,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "6e46532bff6f160d8979b0fa764edb31b7213257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b0863f_45553d62",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-31T05:56:35Z",
+      "side": 1,
+      "message": "suggestion: The way your API is currently used, there is no benefit to separating NewRecording and Start.\n\nKeeping these methods separate only creates the possibility someone could use the API incorrectly. If you merged the methods, you could eliminate this check, as the recorder will always be set.\n\nIf you are concerned about the number of arguments being passed to start, you could use an RecordingOptions struct to group them together.",
+      "revId": "6e46532bff6f160d8979b0fa764edb31b7213257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a423e9_2ea29bcf",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-05-31T05:56:35Z",
+      "side": 1,
+      "message": "As above, suggest you drop this and let the caller do it if they want it.",
+      "revId": "6e46532bff6f160d8979b0fa764edb31b7213257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
