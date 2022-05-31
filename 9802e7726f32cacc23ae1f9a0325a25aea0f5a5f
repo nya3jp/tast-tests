@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af99db44_eb69345f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-31T18:10:45Z",
+      "side": 1,
+      "message": "Looking good",
+      "revId": "9802e7726f32cacc23ae1f9a0325a25aea0f5a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1db8ca3e_880cbffe",
@@ -26,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "896ef13b_a431001e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-31T18:10:45Z",
+      "side": 1,
+      "message": "Hmm so we don\u0027t know the keyframe delimiter in AOM bitstreams?\nThere\u0027s code for INTRA_ONLY_FRAME etc in the uncompressed frame\nheader, so with a bit of bricolage we might be able to find it.\n\nOtherwise I\u0027d say it\u0027d be better to substitute countHexHits() \nwith an ffprobe call (and then remove the regExpKeyFrames... \nvariables etc).",
+      "parentUuid": "1db8ca3e_880cbffe",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "9802e7726f32cacc23ae1f9a0325a25aea0f5a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da140976_e1bcee18",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
         "patchSetId": 1
@@ -37,6 +78,30 @@
       "writtenOn": "2022-05-27T11:09:09Z",
       "side": 1,
       "message": "How do you think about this?",
+      "range": {
+        "startLine": 1204,
+        "startChar": 1,
+        "endLine": 1205,
+        "endChar": 97
+      },
+      "revId": "9802e7726f32cacc23ae1f9a0325a25aea0f5a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff459d53_d237b286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-31T18:10:45Z",
+      "side": 1,
+      "message": "SGTM - or we can also ask Erik to review the CL.",
+      "parentUuid": "da140976_e1bcee18",
       "range": {
         "startLine": 1204,
         "startChar": 1,
