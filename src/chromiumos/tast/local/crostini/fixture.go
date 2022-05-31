@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -291,6 +292,10 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
+	r := NewRecording("crostini_restart", RestartStages)
+	if err = r.Start(ctx, f.tconn); err != nil {
+		s.Log("Can't record initial restart metrics: ", err)
+	}
 	if checkKeepState(s) && terminaDLCAvailable() {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
 		if err = f.launchExitTerminal(ctx); err != nil {
@@ -302,6 +307,9 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		if _, err := cui.InstallCrostini(ctx, f.tconn, f.cr, iOptions); err != nil {
 			s.Fatal("Failed to install Crostini: ", err)
 		}
+	}
+	if err = r.UpdatePerf(perf.NewValues(), s.OutDir()); err != nil {
+		s.Log("Can't update metrics: ", err)
 	}
 
 	f.cont, err = vm.DefaultContainer(ctx, f.cr.NormalizedUser())
