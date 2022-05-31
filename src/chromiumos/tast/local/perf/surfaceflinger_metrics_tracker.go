@@ -7,12 +7,14 @@ package perf
 import (
 	"context"
 	"math"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/testing"
 )
 
 // frame is a struct used to store frame information from a single SurfaceFlinger
@@ -57,6 +59,9 @@ func (f *SurfaceFlingerMetrics) Start(ctx context.Context) error {
 	}
 	f.collecting = make(chan bool)
 	f.collectingErr = make(chan error, 1)
+	if err := f.getSurfaceName(ctx); err != nil {
+		return errors.Wrap(err, "failed to get surface name")
+	}
 
 	// TODO(b/230396035): Change the interval to be obtained based on the device's screen refresh rate.
 	const screenRefreshInterval = 500 * time.Millisecond
@@ -195,4 +200,22 @@ func (f *SurfaceFlingerMetrics) calculateMetrics() (fps, latency float64, err er
 	latency = latencies / float64(numFrames)
 
 	return fps, latency, nil
+}
+
+func (f *SurfaceFlingerMetrics) getSurfaceName(ctx context.Context) error {
+	// Execute SurfaceFlinger list command.
+	out, err := f.arc.Command(ctx, "dumpsys", "SurfaceFlinger", "--list").Output()
+	if err != nil {
+		return errors.Wrap(err, "failed to execute SurfaceFlinger list command")
+	}
+	// Looking for: line starting with "SurfaceView - ", capturing rest of the line.
+	re := regexp.MustCompile(`(?m)^(SurfaceView - [\w./#]*)`)
+	groups := re.FindStringSubmatch(string(out))
+	if len(groups) < 1 {
+		// do second regex here
+		return nil
+	}
+	testing.ContextLogf(ctx, "Second: %s", groups[1])
+	f.surfaceName = groups[0]
+	return nil
 }
