@@ -494,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b334bd_a3f542a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-31T01:37:50Z",
+      "side": 1,
+      "message": "Done. Changed to a different range.",
+      "parentUuid": "322decf8_097f3ee4",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a70ab8be_88c56b4b",
@@ -1999,6 +2023,30 @@
       "side": 1,
       "message": "This is just to push to the back of the functions all side effects to potentially undo in case of error.",
       "parentUuid": "2317b3fb_115e845c",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "210c8f9d73cd1fc47babb875a5be9ae46559a3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5734d4ff_baa22670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-05-31T01:37:50Z",
+      "side": 1,
+      "message": "All side effect on the DUT should be cleared by the defer function on L44.\nThe only thing cannot be cleared is this pool (next available subnet will still be increased), but I think it should be fine.",
+      "parentUuid": "8e9cd309_efbe9b6b",
       "range": {
         "startLine": 59,
         "startChar": 3,
