@@ -30,6 +30,53 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	// lacrosPerf is the same as lacros, but has some options specific for perf tests.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosPerf",
+		Desc:     "Lacros Chrome from a pre-built image, for perf tests",
+		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			// Powerd is restarts because fwupd starts, which breaks power tests.
+			// Disable the FirmwareUpdaterApp feature.
+			return NewConfig(ChromeOptions(chrome.DisableFeatures("FirmwareUpdaterApp"))).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	// lacrosForceComposition is the same as lacros but
+	// forces composition for ash-chrome.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosPerfForceComposition",
+		Desc:     "Lacros Chrome from a pre-built image with composition forced on",
+		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(ChromeOptions(chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
+				chrome.DisableFeatures("FirmwareUpdaterApp"))).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	// lacrosForceDelegation is the same as lacros but
+	// forces delegated composition.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosPerfForceDelegated",
+		Desc:     "Lacros Chrome from a pre-built image with delegated compositing forced on",
+		Contacts: []string{"petermcneeley@chromium.org", "edcourtney@chromium.org"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig(ChromeOptions(
+				chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
+				chrome.LacrosEnableFeatures("DelegatedCompositing"),
+				chrome.DisableFeatures("FirmwareUpdaterApp"))).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
 	// lacrosAudio is the same as lacros but has some special flags for audio
 	// tests.
 	testing.AddFixture(&testing.Fixture{
@@ -73,36 +120,6 @@ func init() {
 			return NewConfig(ChromeOptions(chrome.DisableFeatures("ProductivityLauncher"))).Opts()
 		}),
 		Parent:          "install100Apps",
-		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
-	// lacrosForceComposition is the same as lacros but
-	// forces composition for ash-chrome.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosForceComposition",
-		Desc:     "Lacros Chrome from a pre-built image with composition forced on",
-		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfig(ChromeOptions(chrome.ExtraArgs("--enable-hardware-overlays=\"\""))).Opts()
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
-	// lacrosForceDelegation is the same as lacros but
-	// forces delegated composition.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosForceDelegated",
-		Desc:     "Lacros Chrome from a pre-built image with delegated compositing forced on",
-		Contacts: []string{"petermcneeley@chromium.org", "edcourtney@chromium.org"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfig(ChromeOptions(
-				chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
-				chrome.LacrosEnableFeatures("DelegatedCompositing"))).Opts()
-		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
