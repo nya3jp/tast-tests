@@ -93,6 +93,13 @@ var convertibleKeyboardScanned = []string{
 	"kasumi360",
 	"nightfury",
 	"foob",
+	"gumboz",
+	"vilboz360",
+	"voema",
+	"collis",
+	"morphius",
+	"ezkinil",
+	"kohaku",
 }
 
 func init() {
@@ -400,8 +407,32 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	}
 
 	powerBtnPollOptions := testing.PollOptions{
-		Timeout:  30 * time.Second,
+		Timeout:  40 * time.Second,
 		Interval: 1 * time.Second,
+	}
+	turnDisplayOffWithPower := func(ctx context.Context) error {
+		// On Stainless, sometimes a short press on the power button did not turn off
+		// the display. Increment the press duration by 100 milliseconds during each
+		// retry, starting from 200 milliseconds, till a total of 1 second is reached.
+		displayOffPwrDur := 200 * time.Millisecond
+		i := 0
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			s.Logf("Pressing on power button for %q", displayOffPwrDur)
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+				return errors.Wrap(err, "error in pressing power button")
+			}
+			i++
+			if i <= 8 {
+				displayOffPwrDur += 100 * time.Millisecond
+			}
+			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+				return errors.Wrap(err, "error in sleeping for 1 second")
+			}
+			if err := verifyScreenState(ctx, expectOff); err != nil {
+				return errors.Wrapf(err, "error in verifying DUT's screen state: %q", expectOff)
+			}
+			return nil
+		}, &powerBtnPollOptions)
 	}
 
 	// The screenWake function attempts one of the screenWakeTrigger options to wake the screen.
@@ -409,18 +440,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		// Ensure that DUT's screen is off before sending a trigger to wake the screen.
 		if screenIsOn {
 			s.Log("Turn off DUT's screen before testing a screen wake trigger")
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-					return errors.Wrap(err, "error in pressing power button")
-				}
-				if err := testing.Sleep(ctx, 1*time.Second); err != nil {
-					return errors.Wrap(err, "error in sleeping for 1 second")
-				}
-				if err := verifyScreenState(ctx, expectOff); err != nil {
-					return errors.Wrapf(err, "error in verifying DUT's screen state: %q", expectOff)
-				}
-				return nil
-			}, &powerBtnPollOptions); err != nil {
+			if err := turnDisplayOffWithPower(ctx); err != nil {
 				return errors.Wrapf(err, "while attempting to turn off the screen before screenWakeTrigger: %q", option)
 			}
 		}
@@ -483,7 +503,8 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				s.Log("Skip because DUT does not have a lid")
 				return nil
 			}
-			// Emulate DUT lid closing.
+			// Close RPC connection and emulate DUT lid closing.
+			h.CloseRPCConnection(ctx)
 			if err := h.Servo.CloseLid(ctx); err != nil {
 				return errors.Wrap(err, "error in closing the lid")
 			}
@@ -526,10 +547,20 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to get S0 powerstate")
 			}
 
-			// Delay for some time to ensure lid was properly opened.
-			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep")
+			waitConnectShortCtx, cancelWaitConnectShort := context.WithTimeout(ctx, 1*time.Minute)
+			defer cancelWaitConnectShort()
+			if err := h.WaitConnect(waitConnectShortCtx); err != nil {
+				return errors.Wrap(err, "failed to reconnect to DUT")
 			}
+
+			// Stainless showed that Eldrid and lillipup ran into the context deadline error while a
+			// screenshot was being taken. It might be that the ssh connection dropped during closing
+			// and opening lid. Reconnect to the RPC serice on the DUT. If a connection already exists,
+			// nothing would return.
+			if err := h.RequireRPCClient(ctx); err != nil {
+				return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+			}
+			screenshotService = graphics.NewScreenshotServiceClient(h.RPCClient.Conn)
 		}
 
 		// Verify that DUT's screen was awakened by one of the screenWakeTrigger options, except for screenWakeByScreenTouch.
@@ -632,18 +663,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Tab power button to turn display off")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurShortPress); err != nil {
-			return errors.Wrap(err, "error in pressing power button")
-		}
-		if err := testing.Sleep(ctx, 1*time.Second); err != nil {
-			return errors.Wrap(err, "error in sleeping for 1 second")
-		}
-		if err := verifyScreenState(ctx, expectOff); err != nil {
-			return errors.Wrapf(err, "error in verifying DUT's screen state: %q", expectOff)
-		}
-		return nil
-	}, &powerBtnPollOptions); err != nil {
+	if err := turnDisplayOffWithPower(ctx); err != nil {
 		s.Fatal("During setting tabletmode on and a tab on power button: ", err)
 	}
 
