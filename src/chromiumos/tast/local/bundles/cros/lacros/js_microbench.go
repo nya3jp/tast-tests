@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -62,8 +63,13 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users Download path: ", err)
+	}
+
 	// Prepare HTML data file.
-	dir, err := ioutil.TempDir("/home/chronos/user/Downloads", "")
+	dir, err := ioutil.TempDir(downloadsPath, "")
 	if err != nil {
 		s.Fatal("Failed to create working directory: ", err)
 	}
