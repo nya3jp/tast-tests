@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -272,7 +272,8 @@ func (v *searchFunctionVerifier) accel(ctx context.Context) error {
 
 // verify verifies if the key is triggered.
 func (v *searchFunctionVerifier) verify(ctx context.Context) error {
-	return ash.WaitForLauncherState(ctx, v.tconn, ash.Peeking)
+	bubbleLauncher := nodewith.ClassName("AppListBubbleView")
+	return v.ui.WaitUntilExists(bubbleLauncher)(ctx)
 }
 
 // functionName returns the function name of "Search"/"Launcher".
