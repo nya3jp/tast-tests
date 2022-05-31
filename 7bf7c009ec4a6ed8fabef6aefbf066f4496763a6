@@ -70,6 +70,30 @@
       },
       "revId": "7bf7c009ec4a6ed8fabef6aefbf066f4496763a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8983427a_bb311180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-05-31T02:38:57Z",
+      "side": 0,
+      "message": "This CL triggered a conversation, whether we should run more tests on bullseye, as it is used by 2/3 of the customers. This led to creating a separate bug b/234390590 for that. We have also agreed that it is fine for the time being to merge this CL as is. It will remove bullseye test variant for `ResizeBackupRestore`. Later, this test will be migrated from buster to bullseye as a part of a separate effort (b/234390590).",
+      "parentUuid": "0b5824c6_4c586fcb",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "7bf7c009ec4a6ed8fabef6aefbf066f4496763a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
