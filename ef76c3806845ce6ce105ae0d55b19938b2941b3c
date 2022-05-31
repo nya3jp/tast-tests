@@ -33,6 +33,24 @@
       "message": "LGTM for the CL. +1 to land this after we made sure LKGM looks good.",
       "revId": "ef76c3806845ce6ce105ae0d55b19938b2941b3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81877120_509d4a44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-31T01:20:24Z",
+      "side": 1,
+      "message": "No lacros failures in https://chromium-review.googlesource.com/c/chromium/src/+/3673659",
+      "parentUuid": "9e8179a0_b9515f8c",
+      "revId": "ef76c3806845ce6ce105ae0d55b19938b2941b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
