@@ -44,10 +44,11 @@ func MojoCellularToggle(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable cellular: ", err)
 	}
 
-	netConn, err := netconfig.NewCrosNetworkConfig(ctx, cr)
+	netConn, err := netconfig.CreateLoggedInCrosNetworkConfig(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to get network Mojo Object: ", err)
 	}
+	defer netConn.Close(ctx)
 
 	const iterations = 5
 	for i := 0; i < iterations; i++ {
