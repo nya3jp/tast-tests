@@ -22,6 +22,30 @@
       },
       "revId": "e070dab28b19d4220d504c0b46c384b050ef0a5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80862e91_d83a3f25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-05-31T19:57:45Z",
+      "side": 1,
+      "message": "Okay, and for consistency, I have also \"gotten rid of\" `for _, byStatName :\u003d range byDirection[\"Outbound\"]`.",
+      "parentUuid": "c99f482d_406d4cc4",
+      "range": {
+        "startLine": 1101,
+        "startChar": 20,
+        "endLine": 1101,
+        "endChar": 48
+      },
+      "revId": "e070dab28b19d4220d504c0b46c384b050ef0a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
