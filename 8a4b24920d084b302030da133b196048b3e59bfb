@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f6033a9_77c06b51",
+        "filename": "src/chromiumos/tast/local/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-05-31T10:14:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bbead96_cabe16d7",
+      "revId": "8a4b24920d084b302030da133b196048b3e59bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "983835ba_f8d981ac",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-30T07:58:01Z",
       "side": 1,
       "message": "nit/style\n\nreturn cmd.Run()",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 11
+      },
+      "revId": "8a4b24920d084b302030da133b196048b3e59bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718184f0_8ef998bb",
+        "filename": "src/chromiumos/tast/local/audio/crastestclient/cras_test_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-05-31T10:14:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "983835ba_f8d981ac",
       "range": {
         "startLine": 304,
         "startChar": 1,
