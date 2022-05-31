@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "378ed0b1_e1154edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/canvas.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T08:06:20Z",
+      "side": 1,
+      "message": "Can you add the copyright header?",
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20141434_ad2071db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/canvas.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T08:06:20Z",
+      "side": 1,
+      "message": "Optional: You can just move the \u003cscript\u003e tag to the end of \u003cbody\u003e, then you don\u0027t need to wait for the load event.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67164e1a_d65f1547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/canvas.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T08:06:20Z",
+      "side": 1,
+      "message": "style: Please use const/let instead of var.",
+      "range": {
+        "startLine": 8,
+        "startChar": 12,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1be7ab5d_34b4692a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/canvas.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T08:06:20Z",
+      "side": 1,
+      "message": "nit\u0026optional: I feel like it\u0027s more intuitive to track whether we\u0027re drawing now, e.g. isDrawing.",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3bd5b59_42a1f23c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T08:06:20Z",
+      "side": 1,
+      "message": "cmd needs to be Wait\u0027ed to release resources associated to the child process when it\u0027s done.\nhttps://pkg.go.dev/os/exec#Cmd.Wait",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 4
+      },
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
