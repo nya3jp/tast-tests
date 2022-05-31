@@ -765,20 +765,35 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	if err := ms.PowerOff(ctx); err != nil {
 		return errors.Wrap(err, "powering off DUT")
 	}
+	// Booting into recovery mode seems to work better if you don't enable the USB key until after the recovery power state.
+	if usbMux == servo.USBMuxDUT {
+		testing.ContextLog(ctx, "Powering off USB")
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
+			return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
+		}
+	}
 	// Powering off the USB mux has some side effects that take some time. Specifically, you can't turn
 	// it back on again too quickly or the USB stick fails.
 	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
 		return errors.Wrapf(err, "sleeping before setting usb mux state to %s", usbMux)
 	}
-	if ok, err := h.Servo.HasControl(ctx, string(servo.ImageUSBKeyPwr)); err != nil {
-		return errors.Wrap(err, "failed checking control ImageUSBKeyPwr")
-	} else if ok {
-		if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
-			return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
+	if usbMux != servo.USBMuxDUT {
+		if ok, err := h.Servo.HasControl(ctx, string(servo.ImageUSBKeyPwr)); err != nil {
+			return errors.Wrap(err, "failed checking control ImageUSBKeyPwr")
+		} else if ok {
+			if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
+				return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
+			}
 		}
 	}
 	if err := h.Servo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
 		return errors.Wrapf(err, "setting power state to %s", servo.PowerStateRec)
+	}
+	if usbMux == servo.USBMuxDUT {
+		testing.ContextLog(ctx, "Enabling USB")
+		if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
+			return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
+		}
 	}
 	return nil
 }
