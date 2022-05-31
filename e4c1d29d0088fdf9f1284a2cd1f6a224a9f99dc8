@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87be2057_91c417bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-31T12:07:40Z",
+      "side": 1,
+      "message": "LGTM to avoid another cross-timezone iteration, but please address my inlined comment before submitting.",
+      "revId": "e4c1d29d0088fdf9f1284a2cd1f6a224a9f99dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c886cb0_36ec069f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-31T12:07:40Z",
+      "side": 1,
+      "message": "this Wait should be called only if Start succeeds. So could you move this to L69?",
+      "revId": "e4c1d29d0088fdf9f1284a2cd1f6a224a9f99dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

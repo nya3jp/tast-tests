@@ -503,6 +503,24 @@
       "parentUuid": "57c90bd7_9aa09847",
       "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c0d70b_fad23101",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-05-31T12:07:40Z",
+      "side": 1,
+      "message": "It\u0027s callers\u0027s responsibility in general.\nLater on, on process clean up, everything will be cleaned, but each test should be careful.",
+      "parentUuid": "2c2b7027_5736893d",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
