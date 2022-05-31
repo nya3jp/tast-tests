@@ -7,6 +7,7 @@ package firmware
 import (
 	"bufio"
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
@@ -127,9 +128,9 @@ func testPowerOffWithShortPowerKey(ctx context.Context, h *firmware.Helper) erro
 }
 
 func testPowerKeyDebounce(ctx context.Context, h *firmware.Helper) error {
-	readKeyPress := func(scanner *bufio.Scanner, keyCode string) error {
+	readKeyPress := func(scanner *bufio.Scanner, keyCode servo.KeyCode) error {
 
-		regex := `Event.*time.*code\s(\d*)\s\(` + keyCode + `\)`
+		regex := fmt.Sprintf(`Event.*time.*code\s(%d)\s\(\S+\)`, keyCode)
 		expMatch := regexp.MustCompile(regex)
 
 		text := make(chan string)
@@ -141,7 +142,7 @@ func testPowerKeyDebounce(ctx context.Context, h *firmware.Helper) error {
 		}()
 		for {
 			select {
-			case <-time.After(2 * time.Second):
+			case <-time.After(10 * time.Second):
 				return errors.New("did not detect keycode within expected time")
 			case out := <-text:
 				if match := expMatch.FindStringSubmatch(out); match != nil {
@@ -155,10 +156,11 @@ func testPowerKeyDebounce(ctx context.Context, h *firmware.Helper) error {
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		return errors.Wrap(err, "requiring RPC utils")
 	}
+
 	testing.ContextLog(ctx, "Look for physical keyboard")
-	res, err := h.RPCUtils.FindPhysicalKeyboard(ctx, &empty.Empty{})
+	res, err := h.RPCUtils.FindPowerKeyDevice(ctx, &empty.Empty{})
 	if err != nil {
-		return errors.Wrap(err, "during FindPhysicalKeyboard")
+		return errors.Wrap(err, "during FindPowerKeyDevice")
 	}
 	device := res.Path
 	testing.ContextLog(ctx, "Device path: ", device)
@@ -173,7 +175,7 @@ func testPowerKeyDebounce(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Read for power key press")
-	if err := readKeyPress(scanner, "KEY_POWER"); err != nil {
+	if err := readKeyPress(scanner, servo.KeyPower); err != nil {
 		return errors.Wrap(err, "failed to read key")
 	}
 

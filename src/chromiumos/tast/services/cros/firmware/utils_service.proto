@@ -19,7 +19,10 @@ service UtilsService {
   rpc ReadServoKeyboard (ReadServoKeyboardRequest) returns (ReadServoKeyboardResponse) {}
 
   // FindPhysicalKeyboard finds /dev/input/event* file for physical a keyboard.
-  rpc FindPhysicalKeyboard (google.protobuf.Empty) returns (FindPhysicalKeyboardResponse) {}
+  rpc FindPhysicalKeyboard (google.protobuf.Empty) returns (InputDevicePath) {}
+
+  // FindPowerKeyDevice finds /dev/input/event* file for device that reads power key keycodes.
+  rpc FindPowerKeyDevice (google.protobuf.Empty) returns (InputDevicePath) {}
 
   // NewChrome creates a new instance of Chrome
   rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -53,8 +56,8 @@ message ReadServoKeyboardResponse {
   repeated string keys = 1;
 }
 
-// FindPhysicalKeyboardResponse provides the path to /dev/input/event* for physical keyboard.
-message FindPhysicalKeyboardResponse {
+// InputDevicePath provides the path to /dev/input/event* for a device.
+message InputDevicePath {
   string path = 1;
 }
 
