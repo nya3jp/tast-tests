@@ -16,6 +16,92 @@
       "message": "Looks like Hasan was removed from reviewer by mistake. Let me re-add them to keep visibility.",
       "revId": "afe6f2b0b069e7dcfcf87f517bf6fb9b6a59bd31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc4ce28_6c7dbb24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T08:16:17Z",
+      "side": 1,
+      "message": "I have some recommendations...",
+      "revId": "afe6f2b0b069e7dcfcf87f517bf6fb9b6a59bd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef3aeab_aeedef1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T08:16:17Z",
+      "side": 1,
+      "message": "nit: why don\u0027t you inline this to chrome.New call?",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "afe6f2b0b069e7dcfcf87f517bf6fb9b6a59bd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbbd8c0_809b682a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T08:16:17Z",
+      "side": 1,
+      "message": "Inserting cleanup in all error cases is error-prone; we often forget to insert one, especially when we make changes to the code later.\n\nMy recommendation is to use the named return values to run deferred cleanups only on errors.\n\nExample:\n\n```\nfunc CreateAndMountImage(...) (mountDir string, cleanupFunc func(...), retErr error) {\n  image, err :\u003d createZeroFile(...)\n  if err !\u003d nil {\n    return ...\n  }\n  defer func() {\n    if retErr !\u003d nil {\n      os.Remove(image)\n    }\n  }()\n  \n  devLoop, err :\u003d attachLoopDevice(...)\n  if err !\u003d nil {\n    return ...\n  }\n  defer func() {\n    if retErr !\u003d nil {\n      ...\n    }\n  }()\n  \n  ...\n}\n```",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "afe6f2b0b069e7dcfcf87f517bf6fb9b6a59bd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa854ff_c95d681d",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-05-31T08:16:17Z",
+      "side": 1,
+      "message": "ditto: I recommend using deferred statement here.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "afe6f2b0b069e7dcfcf87f517bf6fb9b6a59bd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
