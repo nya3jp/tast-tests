@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2e8b17_5d14c76f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-05-31T06:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e57d275f_1407bc16",
+      "revId": "8e6b4d435c6a2df71bc6681d5ade2a169c0a0583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "560ad1e7_071eacd7",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-10T02:23:44Z",
       "side": 1,
       "message": "for future safeness, I\u0027d recommend to use Call.\n\nconn.Call(ctx, nil, `(cookie) \u003d\u003e document.cookie \u003d cookie`, cookie)",
+      "range": {
+        "startLine": 131,
+        "startChar": 11,
+        "endLine": 131,
+        "endChar": 81
+      },
+      "revId": "8e6b4d435c6a2df71bc6681d5ade2a169c0a0583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae0ef555_4d4bd16c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-05-31T06:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "560ad1e7_071eacd7",
       "range": {
         "startLine": 131,
         "startChar": 11,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e1ace0_5adffc42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-05-31T06:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "527c3f25_c936bf11",
+      "revId": "8e6b4d435c6a2df71bc6681d5ade2a169c0a0583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7a3fc35_71c06a9f",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-05-10T02:23:44Z",
       "side": 1,
       "message": "ditto.\n\nconn.Call(ctx, \u0026contained, `(cookie) \u003d\u003e { return document.cookie.split(\u0027; \u0027).includes(cookie); }`, cookie)",
+      "range": {
+        "startLine": 266,
+        "startChar": 17,
+        "endLine": 269,
+        "endChar": 17
+      },
+      "revId": "8e6b4d435c6a2df71bc6681d5ade2a169c0a0583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05917fa6_e7843008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-05-31T06:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a3fc35_71c06a9f",
       "range": {
         "startLine": 266,
         "startChar": 17,
