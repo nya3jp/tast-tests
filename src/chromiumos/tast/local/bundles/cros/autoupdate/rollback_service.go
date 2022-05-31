@@ -47,7 +47,7 @@ func (r *RollbackService) SetUpNetworks(ctx context.Context, request *aupb.SetUp
 	}
 	defer cr.Close(ctx)
 
-	api, err := nc.NewCrosNetworkConfig(ctx, cr)
+	api, err := nc.CreateLoggedInCrosNetworkConfig(ctx, cr)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get cros network config api")
 	}
@@ -133,7 +133,7 @@ func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.Veri
 		return nil, errors.Wrap(err, "failed to login as normal user after rollback")
 	}
 
-	api, err := nc.NewCrosNetworkConfig(ctx, cr)
+	api, err := nc.CreateLoggedInCrosNetworkConfig(ctx, cr)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get cros network config api")
 	}

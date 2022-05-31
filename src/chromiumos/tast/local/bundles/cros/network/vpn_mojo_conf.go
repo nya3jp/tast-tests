@@ -37,10 +37,11 @@ func VPNMojoConf(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	networkConfig, err := netconfig.NewCrosNetworkConfig(ctx, cr)
+	networkConfig, err := netconfig.CreateLoggedInCrosNetworkConfig(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to create CrosNetworkConfig: ", err)
 	}
+	defer networkConfig.Close(ctx)
 
 	m, err := shill.NewManager(ctx)
 	if err != nil {
