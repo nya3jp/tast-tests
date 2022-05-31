@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98252fc1_22f303ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-31T07:08:50Z",
+      "side": 1,
+      "message": "nit: \"...frequently used functions for testing file system access\" or similar.",
+      "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c9a2792_fc1e18a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_write_ask_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-31T07:08:50Z",
+      "side": 1,
+      "message": "nit: \"parse\"",
+      "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07379947_b9302e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_write_ask_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-31T07:08:50Z",
+      "side": 1,
+      "message": "Should we have another test case here that combines DefaultFileSystemWriteGuardSetting(\u003d 2) and FileSystemWriteAskForUrls to verify that FileSystemWriteAskForUrls correctly supersedes DefaultFileSystemWriteGuardSetting?",
+      "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb983ced_5e8ffb16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_write_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-31T07:08:50Z",
+      "side": 1,
+      "message": "nit: \"parse\"",
+      "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
