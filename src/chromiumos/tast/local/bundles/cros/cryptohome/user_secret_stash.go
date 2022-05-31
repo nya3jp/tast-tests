@@ -8,8 +8,6 @@ import (
 	"bytes"
 	"context"
 	"io/ioutil"
-	"os"
-	"path"
 	"path/filepath"
 	"time"
 
@@ -39,7 +37,6 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 		passwordLabel   = "online-password"
 		testFile        = "file"
 		testFileContent = "content"
-		ussFlagFile     = "/var/lib/cryptohome/uss_enabled"
 	)
 
 	ctxForCleanUp := ctx
@@ -69,13 +66,11 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 
 	// Enable the UserSecretStash experiment for the duration of the test by
 	// creating a flag file that's checked by cryptohomed.
-	if err := os.MkdirAll(path.Dir(ussFlagFile), 0755); err != nil {
-		s.Fatal("Failed to create the UserSecretStash flag file directory: ", err)
+	cleanupUSSExperiment, err := helper.EnableUserSecretStash()
+	if err != nil {
+		s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
 	}
-	if err := ioutil.WriteFile(ussFlagFile, []byte{}, 0644); err != nil {
-		s.Fatal("Failed to write the UserSecretStash flag file: ", err)
-	}
-	defer os.Remove(ussFlagFile)
+	defer cleanupUSSExperiment()
 
 	// Create and mount the persistent user.
 	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false)
