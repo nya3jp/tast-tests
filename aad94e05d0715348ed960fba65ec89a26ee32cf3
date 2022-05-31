@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f6b957c_dd0a6fac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-05-31T01:07:28Z",
+      "side": 1,
+      "message": "Alternatively, I could create a new tab, open the history page there, and keep reloading it until the item shows up.",
+      "revId": "aad94e05d0715348ed960fba65ec89a26ee32cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
