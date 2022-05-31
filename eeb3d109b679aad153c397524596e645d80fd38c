@@ -16,6 +16,24 @@
       "message": "We have to update platform/tast-tests, platform/tast-tests-private and platform/tast atomically to make this rewrite succeed. I don\u0027t think it\u0027s realistically possible, given that platform/tast-tests have 16k+ files and many CLs are always in CQ. We need a way to make this rewrite happen progressively, rather than atomically.\n\nI talked about this with Seewai, and he will set up a meeting to discuss.\n",
       "revId": "eeb3d109b679aad153c397524596e645d80fd38c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b30a23b_ae37cf42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2022-05-31T07:13:57Z",
+      "side": 1,
+      "message": "Please also invite me (adrian.ratiu@collabora.com) and Manoj Gupta and Ryan Beltran from Google.\n\nI am an external contractor so I do not have access to the internal/private tests code. Definitely will need some support to be able land this.\n\nMaybe an option would be to pause tast-tests CQ for 24 hours so this can be integrated all at once?",
+      "parentUuid": "98d5eac7_b94bcc4b",
+      "revId": "eeb3d109b679aad153c397524596e645d80fd38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
