@@ -189,6 +189,12 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	if err := pc.Drag(firstTabRect.CenterPoint(), pc.DragTo(snapRightPoint, duration))(ctx); err != nil {
 		return errors.Wrap(err, "failed to snap the second tab to the right")
 	}
+	defer cleanUp(ctx, action.Named(
+		"recombine the browser tabs",
+		func(ctx context.Context) error {
+			return CombineTabs(ctx, tconn, ui, pc, duration)
+		},
+	), &retErr)
 
 	ws, err = ash.GetAllWindows(ctx, tconn)
 	if err != nil {
@@ -304,8 +310,6 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	if err := act.Start(ctx, tconn, withTestVideo); err != nil {
 		return errors.Wrap(err, "failed to start ARC app")
 	}
-	// Close the ARC app at the end of the test. Otherwise it will cause
-	// the test server's Close() function to block for a few minutes.
 	defer cleanUp(closeCtx, action.Named(
 		"close the ARC app",
 		func(ctx context.Context) error {
