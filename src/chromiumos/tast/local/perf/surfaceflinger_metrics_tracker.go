@@ -6,7 +6,9 @@ package perf
 
 import (
 	"context"
+	"fmt"
 	"math"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -32,6 +34,7 @@ type SurfaceFlingerMetrics struct {
 	frames []frame
 	// Contains the last saved timestamp. Used to filter out duplicates.
 	lastTimestamp int
+	appPkgName    string
 	surfaceName   string
 	arc           *arc.ARC
 	collecting    chan bool
@@ -39,13 +42,25 @@ type SurfaceFlingerMetrics struct {
 }
 
 // NewSurfaceFlingerMetrics returns a new instance of SurfaceFlinger.
+// TODO(b/230500493): Remove this constructor after tests are fixed.
 func NewSurfaceFlingerMetrics(surfaceName string, a *arc.ARC) *SurfaceFlingerMetrics {
 	f := &SurfaceFlingerMetrics{
 		frames:        nil,
 		lastTimestamp: -1,
-		// TODO(b/230500493): change surfaceName to be obtained via some other method.
-		surfaceName: surfaceName,
-		arc:         a,
+		surfaceName:   surfaceName,
+		arc:           a,
+	}
+	return f
+}
+
+// NewDefault returns a new instance of SurfaceFlinger.
+// TODO(b/230500493): Rename this constructor after tests are fixed.
+func NewDefault(appPkgName string, a *arc.ARC) *SurfaceFlingerMetrics {
+	f := &SurfaceFlingerMetrics{
+		frames:        nil,
+		lastTimestamp: -1,
+		appPkgName:    appPkgName,
+		arc:           a,
 	}
 	return f
 }
@@ -57,6 +72,9 @@ func (f *SurfaceFlingerMetrics) Start(ctx context.Context) error {
 	}
 	f.collecting = make(chan bool)
 	f.collectingErr = make(chan error, 1)
+	if err := f.detectAndSetupSurfaceName(ctx); err != nil {
+		return errors.Wrap(err, "failed to detect and setup surface name")
+	}
 
 	// TODO(b/230396035): Change the interval to be obtained based on the device's screen refresh rate.
 	const screenRefreshInterval = 500 * time.Millisecond
@@ -195,4 +213,34 @@ func (f *SurfaceFlingerMetrics) calculateMetrics() (fps, latency float64, err er
 	latency = latencies / float64(numFrames)
 
 	return fps, latency, nil
+}
+
+func (f *SurfaceFlingerMetrics) detectAndSetupSurfaceName(ctx context.Context) error {
+	// TODO(b/230500493): Addition to make sure tests still run normally; remove after tests fixed.
+	if f.appPkgName == "" {
+		return nil
+	}
+
+	// Execute SurfaceFlinger list command.
+	out, err := f.arc.Command(ctx, "dumpsys", "SurfaceFlinger", "--list").Output()
+	if err != nil {
+		return errors.Wrap(err, "failed to execute SurfaceFlinger list command")
+	}
+
+	// Looking for: line starting with "SurfaceView - <appPkgName>", capturing rest of the line.
+	re := regexp.MustCompile(fmt.Sprintf(`(?m)^(SurfaceView - %s[^\n]*)`, f.appPkgName))
+	groups := re.FindStringSubmatch(string(out))
+	if len(groups) > 0 {
+		f.surfaceName = groups[len(groups)-1]
+		return nil
+	}
+
+	// Didn't find the first pattern, moving onto the second pattern.
+	re = regexp.MustCompile(fmt.Sprintf(`(?m)^(%s[^\n]*)`, f.appPkgName))
+	match := re.FindString(string(out))
+	if match == "" {
+		return errors.Errorf("no matches found for app package name %s", f.appPkgName)
+	}
+	f.surfaceName = match
+	return nil
 }
