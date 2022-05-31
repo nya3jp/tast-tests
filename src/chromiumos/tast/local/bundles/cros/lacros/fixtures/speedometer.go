@@ -38,6 +38,7 @@ func init() {
 			if err != nil {
 				return nil, err
 			}
+			opts = append(opts, chrome.DisableFeatures("FirmwareUpdaterApp"))
 			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -58,6 +59,7 @@ func init() {
 			if err != nil {
 				return nil, err
 			}
+			opts = append(opts, chrome.DisableFeatures("FirmwareUpdaterApp"))
 			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,

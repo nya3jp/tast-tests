@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Fixture:      "lacros",
+		Fixture:      "lacrosPerf",
 		// Waiting for the stability can take longer time. So, we have a longer buffer.
 		Timeout: 6 * time.Minute,
 	})
