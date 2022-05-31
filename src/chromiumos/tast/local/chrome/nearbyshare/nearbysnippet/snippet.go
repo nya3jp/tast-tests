@@ -322,6 +322,19 @@ func (a *AndroidNearbyDevice) SendFile(ctx context.Context, senderName, receiver
 	return nil
 }
 
+// SendWifi starts sending with a timeout.
+// Sets the AndroidNearbyDevice's transferCallback, which is needed when awaiting follow-up SnippetEvents when calling eventWaitAndGet.
+func (a *AndroidNearbyDevice) SendWifi(ctx context.Context, senderName, receiverName, shareWifiName, wifiPassword string, securityType nearbycommon.SecurityType, turnaroundTime time.Duration) error {
+	// Reset the transferCallback between shares.
+	a.transferCallback = ""
+	res, err := a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "sendWiFi", senderName, receiverName, shareWifiName, securityType, wifiPassword, int(turnaroundTime.Seconds()))
+	if err != nil {
+		return err
+	}
+	a.transferCallback = res.Callback
+	return nil
+}
+
 // CancelSendingFile ends Nearby Share on the sending side. This is used to fail fast instead of waiting for SendFile's timeout.
 func (a *AndroidNearbyDevice) CancelSendingFile(ctx context.Context) error {
 	_, err := a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "cancelSendingFile")
