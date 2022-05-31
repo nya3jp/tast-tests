@@ -16,6 +16,126 @@
       "message": "Thanks!",
       "revId": "df8569fcce3dc19731e416fb2bda45b27af44f64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf56a124_39f6f6a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-31T09:58:14Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "df8569fcce3dc19731e416fb2bda45b27af44f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18fb08f8_d311077d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-31T09:58:14Z",
+      "side": 1,
+      "message": "nit: OOBEConfigSaveShutdown",
+      "revId": "df8569fcce3dc19731e416fb2bda45b27af44f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a045d8_982fa9d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-31T09:58:14Z",
+      "side": 1,
+      "message": "It is more like connecting to the DUT.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "df8569fcce3dc19731e416fb2bda45b27af44f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c42072a_0348365d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-31T09:58:14Z",
+      "side": 1,
+      "message": "Are the logs only here for the tests writing, or do you plan to leave these here for the lab run as well?\nUsually there is no need to use this much logs, only a few to help debugging, when the error messages are not enough.",
+      "revId": "df8569fcce3dc19731e416fb2bda45b27af44f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcabe99d_e58b5097",
+        "filename": "src/chromiumos/tast/services/cros/autoupdate/update_ui_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-31T09:58:14Z",
+      "side": 1,
+      "message": "Remove trailing whitespace.",
+      "range": {
+        "startLine": 23,
+        "startChar": 42,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "df8569fcce3dc19731e416fb2bda45b27af44f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84e5174_b4248b3f",
+        "filename": "src/chromiumos/tast/services/cros/autoupdate/update_ui_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-05-31T09:58:14Z",
+      "side": 1,
+      "message": "nit: add a newline to the end.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "df8569fcce3dc19731e416fb2bda45b27af44f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
