@@ -5,8 +5,12 @@
 package apps
 
 import (
+	"bytes"
 	"context"
-	"strings"
+	"io/ioutil"
+	"math/rand"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -14,6 +18,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -29,112 +34,142 @@ func init() {
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Params: []testing.Param{{
-			Name: "default_enabled_apps_stable",
-			Val:  []chrome.Option{},
-		}, {
-			Name: "all_apps_stable",
-			Val:  []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
-		}},
 	})
 }
 
 // SystemWebAppsReinstall tests that system web apps can be reinstalled (i.e. don't crash Chrome).
 func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
-	chromeOpts := s.Param().([]chrome.Option)
+	testFileContent := make([]byte, 8)
+	rand.Read(testFileContent)
 
-	// First run on a clean profile, this is when system web apps are first installed.
-	installedNames, registeredInternalNames, err := runChromeSession(ctx, chromeOpts...)
+	// First session: fresh install.
+	err := func() error {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+
+		cr, tconn, err := createChrome(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create Chrome instance")
+		}
+
+		// Schedule a sign out, prepare for the next login.
+		defer func(ctx context.Context, tconn *chrome.TestConn) {
+			if err := quicksettings.SignOut(ctx, tconn); err != nil {
+				s.Fatal("Failed to sign-out: ", err)
+			}
+		}(cleanupCtx, tconn)
+
+		// Create a test file for confidence check during second chrome session.
+		testFilePath, err := testFilePath(ctx, cr)
+		if err != nil {
+			return errors.Wrap(err, "failed to get test file path")
+		}
+		if err = ioutil.WriteFile(testFilePath, testFileContent, 0644); err != nil {
+			return errors.Wrap(err, "failed to create test file for confidence check")
+		}
+
+		return checkAppsInstalled(ctx, tconn)
+	}()
+
 	if err != nil {
-		s.Fatal("First time install failed: ", err)
+		s.Fatal("Failed to run first Chrome session: ", err)
 	}
 
-	if len(registeredInternalNames) != len(installedNames) {
-		s.Logf("Registered apps: %s", strings.Join(registeredInternalNames, ", "))
-		s.Logf("Installed apps: %s", strings.Join(installedNames, ", "))
-		s.Fatalf("Unexpected number of installed apps: want %d; got %d", len(registeredInternalNames), len(installedNames))
-	}
+	// Second session: keep state and trigger reinstall.
+	err = func() error {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
 
-	// Next, run on the previous profile with chrome.KeepState(), and ask system web app manager to reinstall apps.
-	reinstallOpts := append(chromeOpts, chrome.KeepState(), chrome.EnableFeatures("AlwaysReinstallSystemWebApps"))
-	installedNames, registeredInternalNames, err = runChromeSession(ctx, reinstallOpts...)
+		cr, tconn, err := createChrome(ctx, chrome.KeepState(), chrome.EnableFeatures("AlwaysReinstallSystemWebApps"))
+		if err != nil {
+			return errors.Wrap(err, "failed to create Chrome instance")
+		}
+
+		// Sign out to restore state. This test don't use fixture, and need to cleanup after itself.
+		defer func(ctx context.Context, tconn *chrome.TestConn, s *testing.State) {
+			if err := quicksettings.SignOut(ctx, tconn); err != nil {
+				s.Fatal("Failed to sign-out: ", err)
+			}
+		}(cleanupCtx, tconn, s)
+
+		// Confidence check: confirm the state is persisted.
+		testFilePath, err := testFilePath(ctx, cr)
+		if err != nil {
+			return errors.Wrap(err, "failed to get test file path")
+		}
+
+		defer os.Remove(testFilePath)
+
+		b, err := ioutil.ReadFile(testFilePath)
+		if err != nil {
+			return errors.Wrap(err, "failed to pass confidence check")
+		}
+
+		if !bytes.Equal(testFileContent, b) {
+			return errors.Errorf("failed to pass confidence check, content differs, want %v, got: %v", testFileContent, b)
+		}
+
+		return checkAppsInstalled(ctx, tconn)
+	}()
+
 	if err != nil {
-		s.Fatal("Reinstall failed: ", err)
-	}
-
-	if len(registeredInternalNames) != len(installedNames) {
-		s.Logf("Registered apps: %s", strings.Join(registeredInternalNames, ", "))
-		s.Logf("Installed apps: %s", strings.Join(installedNames, ", "))
-		s.Fatalf("Unexpected number of installed apps: want %d; got %d", len(registeredInternalNames), len(installedNames))
+		s.Fatal("Failed to run second Chrome session: ", err)
 	}
 }
 
-// runChromeSession runs Chrome based on chromeOpts, and return a list of installed system app names
-// (as shown to users), and a list of registered system app internal names (that should be available
-// to users). Note, the app name and internal name are different, thus are not comparable.
-func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]string, []string, error) {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
+// createChrome creates a new Chrome instance with `chromeOpts` and returns Chrome and its Test API connection.
+func createChrome(ctx context.Context, chromeOpts ...chrome.Option) (*chrome.Chrome, *chrome.TestConn, error) {
+	// Create a fresh login.
 	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to start Chrome")
+		return nil, nil, errors.Wrap(err, "failed to create Chrome")
 	}
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to connect Test API")
+		return nil, nil, errors.Wrap(err, "failed to connect to Test API")
 	}
 
-	defer func(ctx context.Context, tconn *chrome.TestConn) {
-		if err := quicksettings.SignOut(ctx, tconn); err != nil {
-			testing.ContextLog(ctx, "Failed to sign-out: ", err)
-		}
-	}(cleanupCtx, tconn)
-
-	installedSystemWebApps, err := apps.ListSystemWebApps(ctx, tconn)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to get installed system apps")
-	}
-
-	var installedNames []string
-	for _, app := range installedSystemWebApps {
-		installedNames = append(installedNames, app.Name)
-	}
-
-	registeredInternalNames, err := apps.ListSystemWebAppsInternalNames(ctx, tconn)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to get registered system apps")
-	}
-
-	// Handle the case where Crostini (Terminal App) is installed, but not shown to the user due
-	// to hardwares not supporting virtualization.
-	crostiniIsAvailable, err := supportCrostini(ctx, tconn)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to determine crostini support")
-	}
-
-	for i, internalName := range registeredInternalNames {
-		if internalName == "Terminal" && !crostiniIsAvailable {
-			registeredInternalNames = append(registeredInternalNames[:i], registeredInternalNames[i+1:]...)
-			break
-		}
-	}
-
-	return installedNames, registeredInternalNames, nil
+	return cr, tconn, nil
 }
 
-// supportCrostini returns whether Crostini is allowed to run on device.
-func supportCrostini(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	var result bool
-	err := tconn.Eval(
-		ctx,
-		"tast.promisify(chrome.autotestPrivate.couldAllowCrostini)()", &result)
-
+// checkAppsInstalled performs assertions and verifies a set of system web apps that covers different
+// install code paths are installed by querying AppService.
+func checkAppsInstalled(ctx context.Context, tconn *chrome.TestConn) error {
+	registeredSystemWebApps, err := apps.ListRegisteredSystemWebApps(ctx, tconn)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to get result from Test API")
+		return errors.Wrap(err, "failed to get registered system web apps")
 	}
 
-	return result, nil
+	// A set of system web apps that trigger different install code paths.
+	testAppInternalNames := map[string]bool{
+		"OSSettings": true,
+		"Media":      true,
+		"Help":       true,
+	}
+
+	for _, swa := range registeredSystemWebApps {
+		if testAppInternalNames[swa.InternalName] {
+			app, err := apps.FindSystemWebAppByOrigin(ctx, tconn, swa.StartURL)
+			if err != nil {
+				return errors.Wrapf(err, "failed to match origin, app: %s, origin: %s", swa.InternalName, swa.StartURL)
+			}
+			if app == nil {
+				return errors.Errorf("failed to find system web app that should have been installed: %s", swa.InternalName)
+			}
+		}
+	}
+
+	return nil
+}
+
+// testFilePath return a path in user's Downloads folder for confidence check.
+func testFilePath(ctx context.Context, cr *chrome.Chrome) (string, error) {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		return "", errors.Wrap(err, "failed to retrieve user's Downloads path")
+	}
+
+	return filepath.Join(downloadsPath, "system-web-apps-reinstall-confidence-check"), nil
 }
