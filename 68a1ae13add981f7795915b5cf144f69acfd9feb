@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7ae477_b826a465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-05-31T19:55:11Z",
+      "side": 1,
+      "message": "\"level 3.1\" means 1280x720@30fps, as per [1], is that intended,\ni.e. to specify the resolution and framerate at configuration\ntime (and not just encode anything that is fed into the encoder).\n \n \n \n [1] https://aomedia.org/av1/specification/annex-a/",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 31
+      },
+      "revId": "68a1ae13add981f7795915b5cf144f69acfd9feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
