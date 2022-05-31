@@ -45,9 +45,3 @@ var systemWebAppsUnstableModels = []string{
 	"tidus",
 	"yuna",
 }
-
-// SystemWebAppsStableModels is a list of models that are stable to be promoted to critical.
-var SystemWebAppsStableModels = hwdep.SkipOnModel(systemWebAppsUnstableModels...)
-
-// SystemWebAppsUnstableModels is a list of models that are flaky as Terminal SWA is not reinstalled due to crbug.com/1072877.
-var SystemWebAppsUnstableModels = hwdep.Model(systemWebAppsUnstableModels...)
