@@ -23,7 +23,10 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -208,6 +211,48 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 
 	ok = true
 	return connection, nil
+}
+
+// CombineTabs is used to merge two browser windows, each consisting
+// of a single tab, into one browser window with two tabs.
+func CombineTabs(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, duration time.Duration) (retErr error) {
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		return errors.Wrap(err, "failed to ensure clamshell mode")
+	}
+	defer func() {
+		if err := cleanup(ctx); retErr == nil && err != nil {
+			retErr = errors.Wrap(err, "failed to clean up after ensuring clamshell mode")
+		}
+	}()
+
+	tab := nodewith.Role(role.Tab).HasClass("Tab")
+	firstTabRect, err := ui.Location(ctx, tab.First())
+	if err != nil {
+		return errors.Wrap(err, "failed to get the location of the first tab")
+	}
+	secondTabRect, err := ui.Location(ctx, tab.Nth(1))
+	if err != nil {
+		return errors.Wrap(err, "failed to get the location of the second tab")
+	}
+
+	if err := pc.Drag(
+		firstTabRect.CenterPoint(),
+		pc.DragTo(firstTabRect.BottomCenter(), duration),
+		pc.DragTo(secondTabRect.CenterPoint(), duration),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag one browser tab to the other")
+	}
+
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the window list")
+	}
+	if len(ws) != 1 {
+		return errors.Errorf("unexpected number of windows after trying to merge: got %d; expected 1", len(ws))
+	}
+
+	return nil
 }
 
 // Drag does the specified drag based on the documentation of DragPoints.
