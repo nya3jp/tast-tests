@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e98ece9_beeaa09e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_ask_for_urls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-31T07:11:18Z",
+      "side": 1,
+      "message": "nit: \"parse\"",
+      "revId": "b53ae8bb1e11406d753df8f1c95bcfacb62caa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261a3cc9_406d9ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_ask_for_urls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-05-31T07:11:18Z",
+      "side": 1,
+      "message": "Similar to the other *Ask* test, I am wondering whether it would be best to also have a test case where the policy truly has an impact -- like when it is combined with DefaultFileSystemReadGuardSetting configured to block access by default.",
+      "revId": "b53ae8bb1e11406d753df8f1c95bcfacb62caa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
