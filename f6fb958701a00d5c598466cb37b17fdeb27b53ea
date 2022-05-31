@@ -52,6 +52,24 @@
       "parentUuid": "93f30ae5_e4a6e921",
       "revId": "f6fb958701a00d5c598466cb37b17fdeb27b53ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7fe042_62ea1427",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-31T18:00:01Z",
+      "side": 1,
+      "message": "\u003e I would recommend trying it locally on both a stable and unstable board (or just switching the board you are testing on between the two lists).\n\nYou\u0027re right. A \"stable\" version is required (just typec.Basic) doesn\u0027t work.\n\nI tried what you suggested with the \"pazquel\" board:\nWhen board is in \"unstable\" param list: typec.Basic.unstable runs, typec.Basic.stable doesn\u0027t\nWhen board is not in \"unstable\" param list: typec.Basic.stable runs, typec.Basic.unstable doesn\u0027t.",
+      "parentUuid": "30b46e1c_48a2dbad",
+      "revId": "f6fb958701a00d5c598466cb37b17fdeb27b53ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
