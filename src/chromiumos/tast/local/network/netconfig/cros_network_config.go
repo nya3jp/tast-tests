@@ -10,12 +10,34 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // CrosNetworkConfig contains the mojo connection to cros_network_config.
 type CrosNetworkConfig struct {
 	conn       *chrome.Conn
 	mojoRemote *chrome.JSObject
+}
+
+// NewCrosNetworkConfigOobe creates a connection to cros_network_config in the
+// oobe.
+func NewCrosNetworkConfigOobe(ctx context.Context, cr *chrome.Chrome) (*CrosNetworkConfig, error) {
+	testing.ContextLog(ctx, "NewCrosNetworkConfigOobe")
+
+	oobeConn, err := cr.WaitForOOBEConnection(ctx)
+	defer oobeConn.Close()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open connection with oobe")
+	}
+
+	testing.ContextLog(ctx, "Connecting to mojoRemote")
+	var mojoRemote chrome.JSObject
+	if err := oobeConn.Call(ctx, &mojoRemote, crosNetworkConfigJs); err != nil {
+		return nil, errors.Wrap(err, "failed to set up the network mojo API")
+	}
+
+	testing.ContextLog(ctx, "Returning mojoRemote")
+	return &CrosNetworkConfig{oobeConn, &mojoRemote}, nil
 }
 
 // NewCrosNetworkConfig creates a connection to cros_network_config that allows
