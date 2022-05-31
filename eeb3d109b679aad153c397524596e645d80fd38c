@@ -34,6 +34,24 @@
       "parentUuid": "98d5eac7_b94bcc4b",
       "revId": "eeb3d109b679aad153c397524596e645d80fd38c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832d1be7_6be015da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2022-05-31T07:28:21Z",
+      "side": 1,
+      "message": "BTW it takes me 15 minutes max to rebase this and solve the conflicts because the changes done here are automated.\n\nI could share the instructions to recreate these changes in the private overlays to make it easier for you, or the toolchain team on the Google side could handle the private overlay changes, it remains to be discussed.\n\nIt is just some simple renaming and \u0026 grep / sed scripting.",
+      "parentUuid": "0b30a23b_ae37cf42",
+      "revId": "eeb3d109b679aad153c397524596e645d80fd38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
