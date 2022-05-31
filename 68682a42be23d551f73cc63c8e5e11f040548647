@@ -16,6 +16,92 @@
       "message": "What should we do about SurfaceName obtainment for games like Minecraft, where the SurfaceName does not start with \"SurfaceView - ...\"? \n\nIf we have to pass in the app package name, would I have to do a `cq-depend` or something?",
       "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c4c635_159bd3a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-31T21:26:52Z",
+      "side": 1,
+      "message": "Where you have `do second regex here` should emulate https://source.corp.google.com/sc-dev/tools/vendor/google_prebuilts/arc/frame_latency.py;l\u003d121?q\u003dregex\u0026ss\u003dpiper%2FGoogle%2Fsc-dev:tools%2Fvendor%2Fgoogle_prebuilts%2Farc%2F which addresses the issue.",
+      "parentUuid": "c5ee45e3_04f46e43",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff85136f_50012a93",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-31T21:26:52Z",
+      "side": 1,
+      "message": "This would be removed",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536ad300_727e137f",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-31T21:26:52Z",
+      "side": 1,
+      "message": "In order to merge this properly across public/private repository without breaking anything, you\u0027ll need to do the following:\n\n[cl 1 in tast-tests/] (this cl):\n\n1. Remove `surfaceName` from `SurfaceFlingerMetrics`.\n2. Get the automatic detection working correctly.\n3. Test it on all our existing tests.\n4. Add a new function named `NewDefault` which mimics this function but only takes `a *arc.ARC`. It will temporarily go unused.\n\n[cl 2 in tast-tests-private]:\n\n1. Update all tests to instantiate surface flinger using `NewDefault` rather than `NewSurfaceFlingerMetrics`. \n2. Have this cq-depend `cl 1`\n\n[cl 3 in tast-tests]:\n1. Remove `NewSurfaceFlingerMetrics`\n2. cq-depend `cl 2`",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a25cf29_d3ab0ac1",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-31T21:26:52Z",
+      "side": 1,
+      "message": "Few things:\n\n1. nit: `get` shouldn\u0027t be used in a name in go. `surfaceName` as the function  name is enough.\n2. A `get` type function shouldn\u0027t have side-effects. In this case, you\u0027re setting the `surfaceName` field directly. I believe that field can be completely removed, and this function can just return a `string` or error instead.",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a165664_56b99b2c",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-05-31T21:26:52Z",
+      "side": 1,
+      "message": "This should match: https://source.corp.google.com/sc-dev/tools/vendor/google_prebuilts/arc/frame_latency.py;l\u003d121?q\u003dregex\u0026ss\u003dpiper%2FGoogle%2Fsc-dev:tools%2Fvendor%2Fgoogle_prebuilts%2Farc%2F\n\nalso it seems the logic from here: https://source.corp.google.com/sc-dev/tools/vendor/google_prebuilts/arc/frame_latency.py;l\u003d125?q\u003dregex\u0026ss\u003dpiper%2FGoogle%2Fsc-dev:tools%2Fvendor%2Fgoogle_prebuilts%2Farc%2F is missing.",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
