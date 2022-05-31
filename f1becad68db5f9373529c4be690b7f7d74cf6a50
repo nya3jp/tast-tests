@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a6b501_e31286de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-05-31T08:27:49Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3678097",
+      "parentUuid": "ff43cb84_4b299b1f",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "f1becad68db5f9373529c4be690b7f7d74cf6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2bd98b3_e18ce731",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "688c6af3_3e13d000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-05-31T08:27:49Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3678097\n\nMoved the const block up at line 31, below this part 😊",
+      "parentUuid": "a2bd98b3_e18ce731",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "f1becad68db5f9373529c4be690b7f7d74cf6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65694720_323c029b",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-05-30T16:58:06Z",
       "side": 1,
       "message": "nit: prefer to only log in error scenarios or when you know the following line might take a while or be known to hang. From using these functions I think they\u0027re generally fairly quick?\n\nhttp://go/tast-docs/writing_tests.md#when-to-log",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 45
+      },
+      "revId": "f1becad68db5f9373529c4be690b7f7d74cf6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a4b14f_0dbddf75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-05-31T08:27:49Z",
+      "side": 1,
+      "message": "These functions are quick I found when measuring. Some these can go...\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3678097",
+      "parentUuid": "65694720_323c029b",
       "range": {
         "startLine": 53,
         "startChar": 1,
