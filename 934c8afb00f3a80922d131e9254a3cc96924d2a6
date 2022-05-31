@@ -50,6 +50,24 @@
       "message": "nit: If order of `zramFieldNames` is important, than I think this portion of the comment may be better above the `zramFieldNames` to give future readers context into the importance of the order. WDYT?",
       "revId": "934c8afb00f3a80922d131e9254a3cc96924d2a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2aa1cf7_ccfb04fb",
+        "filename": "src/chromiumos/tast/local/perf/zram_info_tracker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-05-31T16:57:37Z",
+      "side": 1,
+      "message": "I agree -- we also only use zramFieldNames in the logging of getMmStat, so my original placement seemed pretty weakly placed. I moved it as you suggested.",
+      "parentUuid": "402ed998_e375ab74",
+      "revId": "934c8afb00f3a80922d131e9254a3cc96924d2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
