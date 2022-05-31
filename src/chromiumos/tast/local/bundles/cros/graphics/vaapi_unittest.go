@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/binsetup"
-	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -114,7 +113,6 @@ func VAAPIUnittest(ctx context.Context, s *testing.State) {
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
 		gtest.ExtraArgs("--test_data_path="+tempDir+"/"),
 		gtest.Filter(decoderVal.gtestFilter),
-		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
 		s.Errorf("Failed to run %v: %v", exec, err)
 		if report != nil {
