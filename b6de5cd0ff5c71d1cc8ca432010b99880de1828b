@@ -33,6 +33,24 @@
       "message": "You might want to do `recoverUnhealthyDUT` after stop enrollment as `policy.NewPolicyServiceClient(d.rpc.Conn)` use `d.rpc.Conn` which might got reset during recovery.",
       "revId": "b6de5cd0ff5c71d1cc8ca432010b99880de1828b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f71d21c_35b3b6f9",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-05-31T20:14:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9715ea24_744e4da6",
+      "revId": "b6de5cd0ff5c71d1cc8ca432010b99880de1828b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
