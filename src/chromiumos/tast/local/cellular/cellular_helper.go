@@ -828,6 +828,11 @@ func (h *Helper) EnterIncorrectPin(ctx context.Context, currentPin string) error
 		return nil
 	}
 
+	// If puk locked with unknown error, ignoring error as intention is to do puk lock.
+	locked := h.IsSimPukLocked(ctx)
+	if locked {
+		return nil
+	}
 	return errors.Wrap(err, "unusual pin error")
 }
 
