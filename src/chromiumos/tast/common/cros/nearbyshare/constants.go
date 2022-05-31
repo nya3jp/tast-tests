@@ -66,6 +66,17 @@ const (
 	MimeTypePng       MimeType = "image/png"
 )
 
+// SecurityType is the Wi-Fi network security type that is expected by the snippet's SendWifi method.
+type SecurityType string
+
+// SecurityTypes supported by the snippet library.
+const (
+	SecurityTypeOpen    SecurityType = "Open"
+	SecurityTypeUnknown SecurityType = "Unknown"
+	SecurityTypeWpaPsk  SecurityType = "WpaPsk"
+	SecurityTypeWep     SecurityType = "Wep"
+)
+
 // TestData contains the values for parameterized tests, such as:
 // - File name of the archive containing files to be shared
 // - File transfer timeout (varies depending on file size)
@@ -76,6 +87,20 @@ type TestData struct {
 	TransferTimeout time.Duration
 	TestTimeout     time.Duration
 	MimeType        MimeType
+}
+
+// WiFiTestData contains values for parameterized tests for Wi-Fi credentials:
+// - Wi-Fi name / SSID / Network name
+// - Wi-Fi password
+// - Wi-Fi transfer timeout
+// - Total test timeout (transfer timeout + time required for sender and receiver to detect each other)
+// - Security type of the Wi-Fi network
+type WiFiTestData struct {
+	WiFiName        string
+	WiFiPassword    string
+	TransferTimeout time.Duration
+	TestTimeout     time.Duration
+	SecurityType    SecurityType
 }
 
 // DownloadPath is the downloads directory on CrOS.
