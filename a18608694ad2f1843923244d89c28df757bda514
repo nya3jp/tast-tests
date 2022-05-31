@@ -16,6 +16,29 @@
       "message": "Fixed some mistakes, please take a look.",
       "revId": "a18608694ad2f1843923244d89c28df757bda514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a05ce9c2_407e0a06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-05-31T09:53:31Z",
+      "side": 1,
+      "message": "This part was checking that we actually get 401 as there is no ticket created - comment in the line 113 also supports that. \n\nLater in the test, in line 143 the ticket is added and we open the website again which should result in an opening page without an error.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "a18608694ad2f1843923244d89c28df757bda514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
