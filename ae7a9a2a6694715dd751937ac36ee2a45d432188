@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0446f31c_196bccd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-05-31T09:40:01Z",
+      "side": 1,
+      "message": "tast-owners: PTAL\ncalamity: PTAL at test logic change (as SWA platform owner)\n\ndoc: https://docs.google.com/document/d/1sMMtpTRSQY_gAIDDJxc0-4eFSm_Jsv77cJpNh0VhZu8/edit#",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
