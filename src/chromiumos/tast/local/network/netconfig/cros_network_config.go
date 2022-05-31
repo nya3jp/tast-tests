@@ -18,15 +18,32 @@ type CrosNetworkConfig struct {
 	mojoRemote *chrome.JSObject
 }
 
-// NewCrosNetworkConfig creates a connection to cros_network_config that allows
-// to make mojo calls. Only works in a context where chrome://network may be
-// opened.
-func NewCrosNetworkConfig(ctx context.Context, cr *chrome.Chrome) (*CrosNetworkConfig, error) {
+// CreateOobeCrosNetworkConfig creates a connection to cros_network_config
+// when the device is in the OOBE screen.
+func CreateOobeCrosNetworkConfig(ctx context.Context, cr *chrome.Chrome) (*CrosNetworkConfig, error) {
+	oobeConn, err := cr.WaitForOOBEConnection(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open connection with oobe")
+	}
+
+	return NewCrosNetworkConfig(ctx, oobeConn)
+}
+
+// CreateLoggedInCrosNetworkConfig creates a connection to cros_network_config
+// when the device is logged in so chrome://network may be opened.
+func CreateLoggedInCrosNetworkConfig(ctx context.Context, cr *chrome.Chrome) (*CrosNetworkConfig, error) {
 	conn, err := cr.NewConn(ctx, "chrome://network")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to open network tab")
 	}
 
+	return NewCrosNetworkConfig(ctx, conn)
+}
+
+// NewCrosNetworkConfig creates a connection to cros_network_config that allows
+// to make mojo calls. It receives a connection where it is possible to create
+// a mojo connection to cros_network_config.
+func NewCrosNetworkConfig(ctx context.Context, conn *chrome.Conn) (*CrosNetworkConfig, error) {
 	var mojoRemote chrome.JSObject
 	if err := conn.Call(ctx, &mojoRemote, crosNetworkConfigJs); err != nil {
 		return nil, errors.Wrap(err, "failed to set up the network mojo API")
@@ -35,7 +52,7 @@ func NewCrosNetworkConfig(ctx context.Context, cr *chrome.Chrome) (*CrosNetworkC
 	return &CrosNetworkConfig{conn, &mojoRemote}, nil
 }
 
-// Close cleans up the injected javascript and closes the chrome://network tab.
+// Close cleans up the injected javascript.
 func (c *CrosNetworkConfig) Close(ctx context.Context) error {
 	if err := c.mojoRemote.Release(ctx); err != nil {
 		return err

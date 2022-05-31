@@ -82,7 +82,7 @@ func MojoEnsureNetworkStateAfterCellularToggle(ctx context.Context, s *testing.S
 		s.Fatal("Failed to enable Wi-Fi: ", err)
 	}
 
-	netConn, err := netconfig.NewCrosNetworkConfig(ctx, cr)
+	netConn, err := netconfig.CreateLoggedInCrosNetworkConfig(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to get network Mojo Object: ", err)
 	}

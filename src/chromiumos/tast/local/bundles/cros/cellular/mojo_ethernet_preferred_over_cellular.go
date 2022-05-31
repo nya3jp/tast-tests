@@ -69,7 +69,7 @@ func MojoEthernetPreferredOverCellular(ctx context.Context, s *testing.State) {
 
 	// Lab devices will have ethernet already enabled and connected.
 
-	netConn, err := netconfig.NewCrosNetworkConfig(ctx, cr)
+	netConn, err := netconfig.CreateLoggedInCrosNetworkConfig(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to get network Mojo Object: ", err)
 	}
