@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -15,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -48,7 +50,8 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		chrome.NoLogin(),
 		chrome.DontSkipOOBEAfterLogin(),
 		// TODO(https://crbug.com/1328790): Enable the OobeConsolidatedConsent feature.
-		chrome.DisableFeatures("OobeConsolidatedConsent"),
+		// TODO(https://crbug.com/1335879): Enable the EnableOobeThemeSelection feature.
+		chrome.DisableFeatures("OobeConsolidatedConsent", "EnableOobeThemeSelection"),
 		chrome.DeferLogin(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
@@ -193,6 +196,32 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		)(ctx); err != nil {
 			s.Fatal("Failed to skip on the fingerprint screen: ", err)
 		}
+	}
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	supportsLE := false
+	if supportsLE, err = cryptohome.SupportsLECredentials(ctx); err != nil {
+		s.Fatal("Failed to get supported policies: ", err)
+	}
+
+	isInTabletMode := false
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.PinSetupScreen.isInTabletMode()", &isInTabletMode); err != nil {
+		s.Fatal("Failed to evaluate whether the device in the table mode: ", err)
+	}
+
+	if supportsLE || isInTabletMode {
+		s.Log("Waiting for the pin setup screen")
+		var pinSkipButton string
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.PinSetupScreen.getSkipButtonName()", &pinSkipButton); err != nil {
+			s.Fatal("Failed to get pin setup skip button name: ", err)
+		}
+		skipButton := nodewith.Role(role.Button).Name(pinSkipButton)
+		if err := ui.LeftClick(skipButton)(ctx); err != nil {
+			s.Fatal("Failed to click pin setup skip button: ", err)
+		}
+	} else {
+		s.Log("Skipping the pin setup screen")
 	}
 
 	shouldSkipAssistant := false
