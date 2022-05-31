@@ -366,7 +366,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			ForceLaunchBrowser:              false,
 			EphemeralUser:                   false,
 			EnableFilesAppSWA:               false,
-			EnablePersonalizationHub:        false,
+			EnablePersonalizationHub:        true,
 			UseSandboxGaia:                  false,
 		},
 	}
