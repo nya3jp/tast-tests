@@ -189,6 +189,15 @@ var ChineseWubi = InputMethod{
 	VoiceLanguage:       LanguageZhHans,
 }
 
+// ChineseZhuyin represents the input method of Chinese Zhuyin.
+var ChineseZhuyin = InputMethod{
+	Name:                "Chinese Zhuyin",
+	ID:                  "zh-hant-t-i0-und",
+	ShortLabel:          "注",
+	HandwritingLanguage: LanguageZhHant,
+	VoiceLanguage:       LanguageZhHant,
+}
+
 // Cantonese represents the input method of Chinese Cantonese.
 var Cantonese = InputMethod{
 	Name:                "Cantonese",
@@ -367,6 +376,7 @@ var inputMethods = []InputMethod{
 	ChineseQuick,
 	ChineseTraditionalPinyin,
 	ChineseWubi,
+	ChineseZhuyin,
 	Korean,
 	Arabic,
 	GreekTransliteration,
