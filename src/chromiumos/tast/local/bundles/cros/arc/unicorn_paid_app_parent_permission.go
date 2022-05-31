@@ -36,7 +36,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Fixture: "familyLinkUnicornArcLogin",
+		Fixture: "familyLinkUnicornArcPolicyLogin",
 	})
 }
 

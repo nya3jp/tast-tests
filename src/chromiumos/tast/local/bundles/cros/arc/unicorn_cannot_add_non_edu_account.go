@@ -40,7 +40,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		VarDeps: []string{"geller.parentUser", "geller.parentPassword", "arc.parentPassword"},
-		Fixture: "familyLinkUnicornArcLogin",
+		Fixture: "familyLinkUnicornArcPolicyLogin",
 	})
 }
 
