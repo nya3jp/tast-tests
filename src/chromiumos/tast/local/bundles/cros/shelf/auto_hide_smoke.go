@@ -17,6 +17,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type autoHideTestType struct {
+	tabletMode bool
+	underRTL   bool // If true, the system UI is adapted to right-to-left languages.
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AutoHideSmoke,
@@ -30,24 +35,61 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
-			Val:  false,
-		}, {
-			Name:              "tablet_mode",
-			Val:               true,
-			ExtraAttr:         []string{"informational"},
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			Val: autoHideTestType{
+				tabletMode: false,
+				underRTL:   false,
+			},
 		},
+			{
+				Name: "clamshell_mode_rtl",
+				Val: autoHideTestType{
+					tabletMode: false,
+					underRTL:   true,
+				},
+			},
+			{
+				Name: "tablet_mode",
+				Val: autoHideTestType{
+					tabletMode: true,
+					underRTL:   false,
+				},
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			},
+			{
+				Name: "tablet_mode_rtl",
+				Val: autoHideTestType{
+					tabletMode: true,
+					underRTL:   true,
+				},
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			},
 		},
 	})
 }
 
 // AutoHideSmoke tests basic shelf features.
 func AutoHideSmoke(ctx context.Context, s *testing.State) {
-	tabletMode := s.Param().(bool)
-	cr := s.FixtValue().(*chrome.Chrome)
+	testType := s.Param().(autoHideTestType)
+	isUnderRTL := testType.underRTL
+
+	var cr *chrome.Chrome
+	var err error
+	if isUnderRTL {
+		cr, err = chrome.New(ctx, []chrome.Option{chrome.ExtraArgs("--force-ui-direction=rtl")}...)
+		if err != nil {
+			s.Fatal("Failed to start chrome with rtl: ", err)
+		}
+	} else {
+		cr, err = chrome.New(ctx)
+		if err != nil {
+			s.Fatal("Failed to start chrome: ", err)
+		}
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -156,7 +198,7 @@ func AutoHideSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Shelf should be hidden when moving mouse out of shelf area: ", err)
 	}
 
-	if tabletMode {
+	if testType.tabletMode {
 		// Enter tablet mode and verify that the shelf becomes hidden.
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 		if err != nil {
