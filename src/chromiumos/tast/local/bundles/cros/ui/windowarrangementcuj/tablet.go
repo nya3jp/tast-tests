@@ -101,6 +101,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, d *androidui.Device, act *arc.Activity, withTestVideo arc.ActivityStartOption) (retErr error) {
 	const (
 		timeout           = 10 * time.Second
+		duration          = 2 * time.Second
 		doubleTapInterval = 100 * time.Millisecond
 	)
 
@@ -135,6 +136,11 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag a tab to snap to the right")
 	}
+	defer func() {
+		if err := CombineTabs(ctx, tconn, ui, pc, duration); retErr == nil && err != nil {
+			retErr = errors.Wrap(err, "failed to recombine the browser tabs")
+		}
+	}()
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
@@ -196,8 +202,6 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	if err := act.Start(ctx, tconn, withTestVideo); err != nil {
 		return errors.Wrap(err, "failed to start ARC app")
 	}
-	// Close the ARC app at the end of the test. Otherwise it will cause
-	// the test server's Close() function to block for a few minutes.
 	defer func() {
 		if err := act.Stop(closeCtx, tconn); retErr == nil && err != nil {
 			retErr = errors.Wrap(err, "failed to close the ARC app")
