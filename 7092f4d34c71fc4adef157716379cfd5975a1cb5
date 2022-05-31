@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa631b12_e2f13acf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T17:09:41Z",
+      "side": 1,
+      "message": "this is a non-trivial CL.\n\nin the body, please describe what the test does.\n\nHelps not only the reviewer, but also in maintainability.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "7092f4d34c71fc4adef157716379cfd5975a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c42c9ac3_0030a86a",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T17:09:41Z",
+      "side": 1,
+      "message": "is it important what it returns?\n\nIf so, I\u0027d focus more on \"what\" it does, and not so much is \"how\" it does it.\n\ne.g:\n\n  // getRecoveryRequest returns XXXX.... by calling [... the rest of your original docstring...]",
+      "range": {
+        "startLine": 393,
+        "startChar": 21,
+        "endLine": 393,
+        "endChar": 70
+      },
+      "revId": "7092f4d34c71fc4adef157716379cfd5975a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5425ae_4e59f68f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T17:09:41Z",
+      "side": 1,
+      "message": "Perhaps renaming it `fetch...` instead of `get...` ?\n\nSee: https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 394,
+        "startChar": 27,
+        "endLine": 394,
+        "endChar": 45
+      },
+      "revId": "7092f4d34c71fc4adef157716379cfd5975a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb22f8f_be9a9a7e",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T17:09:41Z",
+      "side": 1,
+      "message": "IIUC, the classes \"recovery_request:\" and \"\\n\" are not needed as classes.\nAlso, could `\\n` be replaced with `$` ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 45,
+        "endLine": 41,
+        "endChar": 72
+      },
+      "revId": "7092f4d34c71fc4adef157716379cfd5975a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "649d550f_3f66727d",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T17:09:41Z",
+      "side": 1,
+      "message": "ditto above: Prefer to use Fetch than Get for this case\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 943,
+        "startChar": 3,
+        "endLine": 943,
+        "endChar": 21
+      },
+      "revId": "7092f4d34c71fc4adef157716379cfd5975a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc2144c_1f3703a8",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T17:09:41Z",
+      "side": 1,
+      "message": "what\u0027s the meaning of \"creates\" in this context, and how is it related to the prefix \"Get\".\n\nWhat confuses me, is that the function starts with \"Get\" but the description says \"Creates\"",
+      "range": {
+        "startLine": 943,
+        "startChar": 23,
+        "endLine": 943,
+        "endChar": 46
+      },
+      "revId": "7092f4d34c71fc4adef157716379cfd5975a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7488a7ce_91cf2b9c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T17:09:41Z",
+      "side": 1,
+      "message": "See comment above... but this could be replaced with `m[1]` making it more clear",
+      "range": {
+        "startLine": 954,
+        "startChar": 33,
+        "endLine": 954,
+        "endChar": 38
+      },
+      "revId": "7092f4d34c71fc4adef157716379cfd5975a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ff4186_3be0ac3c",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T17:09:41Z",
+      "side": 1,
+      "message": "ditto above\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 256,
+        "startChar": 27,
+        "endLine": 256,
+        "endChar": 31
+      },
+      "revId": "7092f4d34c71fc4adef157716379cfd5975a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245baa8a_a02adfe6",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T17:09:41Z",
+      "side": 1,
+      "message": "ditto above\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "range": {
+        "startLine": 277,
+        "startChar": 26,
+        "endLine": 277,
+        "endChar": 31
+      },
+      "revId": "7092f4d34c71fc4adef157716379cfd5975a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
