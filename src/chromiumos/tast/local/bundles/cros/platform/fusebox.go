@@ -8,7 +8,9 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crosdisks"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
@@ -17,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Fusebox,
-		Desc: "Mount fusebox daemon and verify it can respond to requests",
+		Desc: "Mount fusebox daemon and verify it responds to requests",
 		Contacts: []string{
 			"noel@chromium.org",
 			"benreich@chromium.org",
@@ -28,13 +30,10 @@ func init() {
 }
 
 func Fusebox(ctx context.Context, s *testing.State) {
-	const (
-		dbusName      = "org.chromium.FuseBoxReverseService"
-		dbusPath      = "/org/chromium/FuseBoxReverseService"
-		dbusInterface = "org.chromium.FuseBoxReverseService"
-	)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
-	s.Log("Connecting to CrosDisks D-Bus service")
 	cd, err := crosdisks.New(ctx)
 	if err != nil {
 		s.Fatal("Failed connecting to CrosDisks D-Bus service: ", err)
@@ -45,49 +44,51 @@ func Fusebox(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get MountCompleted event watcher: ", err)
 	}
-	defer w.Close(ctx)
+	defer w.Close(cleanupCtx)
 
-	const source = "fusebox://fusebox-tast-test-requests"
-	options := []string{"--fake", "--debug", "--v=2"}
-
-	s.Logf("Mounting fusebox source %q", source)
+	const source = "fusebox://fusebox-alive-test"
+	options := []string{"--fake"}
 	if err := cd.Mount(ctx, source, "fusebox", options); err != nil {
-		s.Fatal("Failed during CrosDisks Mount call: ", err)
+		s.Fatal("CrosDisks Mount call failed: ", err)
 	}
-	defer cd.Unmount(ctx, source, nil /* options */)
+	defer cd.Unmount(cleanupCtx, source, nil /* options */)
 
-	s.Log("Awaiting MountCompleted event")
 	m, err := w.Wait(ctx)
 	if err != nil {
 		s.Fatal("Failed awaiting MountCompleted event: ", err)
+	} else if m.SourcePath != source {
+		s.Fatal("Failed invalid mount source: ", m.SourcePath)
+	} else if m.MountPath != "/media/fuse/fusebox-alive-test" {
+		s.Fatal("Failed invalid mount point: ", m.MountPath)
+	} else {
+		s.Log("CrosDisks mounted ", m.MountPath)
 	}
 
-	s.Logf("CrosDisks mounted %q at %v", m.SourcePath, m.MountPath)
-	if m.SourcePath != source {
-		s.Fatal("Failed: invalid source: ", m.SourcePath)
-	} else if m.MountPath != "/media/fuse/fusebox-tast-test-requests" {
-		s.Fatal("Failed: invalid mount-point: ", m.MountPath)
-	}
-
-	// Test FUSE request: stat(2) fake file system file entry "hello".
+	// Test FUSE request: stat(2) fake file entry "hello".
 	hello := filepath.Join(m.MountPath, "hello")
-	s.Log("Calling stat(2) on fusebox fake file entry ", hello)
+	s.Log("Stating fusebox file entry ", hello)
 	if _, err := os.Stat(hello); err != nil {
 		s.Fatal("Failed stat(2): ", err)
 	}
 
-	// Test D-Bus request: call fusebox daemon D-Bus interface method.
-	s.Logf("Connecting to D-Bus interface %s", dbusName)
+	// Connect to the fusebox daemon D-Bus interface.
+	const (
+		dbusName      = "org.chromium.FuseBoxReverseService"
+		dbusPath      = "/org/chromium/FuseBoxReverseService"
+		dbusInterface = "org.chromium.FuseBoxReverseService"
+	)
 	_, dbusObj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {
-		s.Fatalf("Failed to connect to D-Bus interface %s: %v", dbusName, err)
+		s.Fatal("Failed to connect to fusebox D-Bus: ", err)
 	}
 
-	var result bool
-	s.Log("Calling fusebox D-Bus interface TestIsAlive method")
-	if err := dbusObj.CallWithContext(ctx, dbusInterface+".TestIsAlive", 0).Store(&result); err != nil {
-		s.Fatal("Failed to call D-Bus TestIsAlive method: ", err)
+	// Test D-Bus request: call fusebox daemon D-Bus method.
+	const method = dbusInterface + "." + "TestIsAlive"
+	s.Logf("Calling %s method", method)
+	var result bool = false
+	if err := dbusObj.CallWithContext(ctx, method, 0).Store(&result); err != nil {
+		s.Fatal("Failed to call D-Bus method: ", err)
 	} else if !result {
-		s.Fatal("Failed: D-Bus TestIsAlive method returned false")
+		s.Fatal("Failed D-Bus method returned false")
 	}
 }
