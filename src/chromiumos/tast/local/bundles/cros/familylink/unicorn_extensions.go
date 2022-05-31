@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UnicornExtensions,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks if Unicorn user can add extension with parent permission",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com", "tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -27,7 +27,14 @@ func init() {
 			"family.parentEmail",
 			"family.parentPassword",
 		},
-		Fixture: "familyLinkUnicornLogin",
+		Params: []testing.Param{{
+			Val:     browser.TypeAsh,
+			Fixture: "familyLinkUnicornLogin",
+		}, {
+			Name:    "lacros",
+			Val:     browser.TypeLacros,
+			Fixture: "familyLinkUnicornLoginWithLacros",
+		}},
 	})
 }
 
@@ -42,8 +49,7 @@ func UnicornExtensions(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection")
 	}
 
-	// TODO(https://crbug.com/1313067) set browser type to be Ash or LaCrOS based on param.
-	if err := familylink.NavigateExtensionApprovalFlow(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("family.parentEmail"), s.RequiredVar("family.parentPassword")); err != nil {
+	if err := familylink.NavigateExtensionApprovalFlow(ctx, cr, tconn, s.Param().(browser.Type), s.RequiredVar("family.parentEmail"), s.RequiredVar("family.parentPassword")); err != nil {
 		s.Fatal("Failed to add extension: ", err)
 	}
 }
