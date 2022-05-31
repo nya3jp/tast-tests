@@ -40,7 +40,7 @@ func OpenWallpaperSubpage(ui *uiauto.Context) uiauto.Action {
 // Reference: aria-label="$i18n{ariaLabelChangeScreensaver}"
 // ash/webui/personalization_app/resources/trusted/personalization_main_element.html
 func OpenScreensaverSubpage(ui *uiauto.Context) uiauto.Action {
-	return openSubpage("Change screensaver", ui)
+	return openSubpage("Change screen saver", ui)
 }
 
 // OpenAvatarSubpage returns an action to open the avatar subpage.
