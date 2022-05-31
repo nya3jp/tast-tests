@@ -156,14 +156,25 @@ func (us *UtilsService) ReadServoKeyboard(ctx context.Context, req *fwpb.ReadSer
 	return &fwpb.ReadServoKeyboardResponse{Keys: keys}, nil
 }
 
-func (us *UtilsService) FindPhysicalKeyboard(ctx context.Context, req *empty.Empty) (*fwpb.FindPhysicalKeyboardResponse, error) {
+func (us *UtilsService) FindPhysicalKeyboard(ctx context.Context, req *empty.Empty) (*fwpb.InputDevicePath, error) {
 	foundKB, path, err := input.FindPhysicalKeyboard(ctx)
 	if err != nil {
 		return nil, err
 	} else if !foundKB {
 		return nil, errors.New("no physical keyboard found")
 	} else {
-		return &fwpb.FindPhysicalKeyboardResponse{Path: path}, nil
+		return &fwpb.InputDevicePath{Path: path}, nil
+	}
+}
+
+func (us *UtilsService) FindPowerKeyDevice(ctx context.Context, req *empty.Empty) (*fwpb.InputDevicePath, error) {
+	foundPowerKey, path, err := input.FindPowerKeyDevice(ctx)
+	if err != nil {
+		return nil, err
+	} else if !foundPowerKey {
+		return nil, errors.New("no input device for power key found")
+	} else {
+		return &fwpb.InputDevicePath{Path: path}, nil
 	}
 }
 
