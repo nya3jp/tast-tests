@@ -12,11 +12,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -32,13 +30,11 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name:              "default_enabled_apps_stable",
-			Val:               []chrome.Option{},
-			ExtraHardwareDeps: hwdep.D(pre.SystemWebAppsStableModels),
+			Name: "default_enabled_apps_stable",
+			Val:  []chrome.Option{},
 		}, {
-			Name:              "all_apps_stable",
-			Val:               []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
-			ExtraHardwareDeps: hwdep.D(pre.SystemWebAppsStableModels),
+			Name: "all_apps_stable",
+			Val:  []chrome.Option{chrome.EnableFeatures("EnableAllSystemWebApps")},
 		}},
 	})
 }

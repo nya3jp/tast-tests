@@ -33,21 +33,3 @@ var AppsStableModels = hwdep.Model(stableModels...)
 // kevin64 is an experimental board does not support nacl, which fails Canvas installation.
 // To stabilize the tests, have to exclude entire kevin model as no distinguish between kevin and kevin64.
 var AppsUnstableModels = hwdep.SkipOnModel(append(stableModels, "kevin")...)
-
-// TODO(crbug.com/1137646): Remove this list once crbug.com/1072877 has been fixed.
-var systemWebAppsUnstableModels = []string{
-	"buddy",
-	"gandof",
-	"guado",
-	"lulu",
-	"paine",
-	"samus",
-	"tidus",
-	"yuna",
-}
-
-// SystemWebAppsStableModels is a list of models that are stable to be promoted to critical.
-var SystemWebAppsStableModels = hwdep.SkipOnModel(systemWebAppsUnstableModels...)
-
-// SystemWebAppsUnstableModels is a list of models that are flaky as Terminal SWA is not reinstalled due to crbug.com/1072877.
-var SystemWebAppsUnstableModels = hwdep.Model(systemWebAppsUnstableModels...)
