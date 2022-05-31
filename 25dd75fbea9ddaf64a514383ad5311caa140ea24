@@ -285,6 +285,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1089c610_2e8ae0c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-31T22:47:47Z",
+      "side": 1,
+      "message": "Ah, thank you very much for the detailed explanation. Looking back at the 8021x test and veth.go, I clearly got confused here. I\u0027ve renamed both of these and clarified the comment.",
+      "parentUuid": "db1b881c_e8f8b360",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e2b3b48_1b098167",
@@ -298,6 +322,30 @@
       "writtenOn": "2022-05-26T15:49:30Z",
       "side": 1,
       "message": "nit: Device",
+      "range": {
+        "startLine": 77,
+        "startChar": 25,
+        "endLine": 77,
+        "endChar": 31
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc140851_e0c796b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-31T22:47:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e2b3b48_1b098167",
       "range": {
         "startLine": 77,
         "startChar": 25,
@@ -379,6 +427,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "184056c8_179b5245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-31T22:47:47Z",
+      "side": 1,
+      "message": "I did some more investigation and determined that Shill only persists the initial Ethernet Service properties to the ethernet_any profile entry. Additional ethernet services will be persisted to ethernet_{MAC_ADDR} which in the case of the veth pair is ethernet_000000000000. So even without pushing a test profile, this will be non-flakey.\n\nI added some additional tests to confirm that behavior, which I think make this test valuable, so removing the WIP.",
+      "parentUuid": "6c539f7a_5b40019c",
+      "range": {
+        "startLine": 101,
+        "startChar": 46,
+        "endLine": 101,
+        "endChar": 69
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6276e33_3518966e",
@@ -392,6 +464,30 @@
       "writtenOn": "2022-05-26T15:02:08Z",
       "side": 1,
       "message": "DUT",
+      "range": {
+        "startLine": 442,
+        "startChar": 10,
+        "endLine": 442,
+        "endChar": 13
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "602e8a19_b1d8718d",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-31T22:47:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6276e33_3518966e",
       "range": {
         "startLine": 442,
         "startChar": 10,
@@ -521,6 +617,30 @@
       "writtenOn": "2022-05-26T15:49:30Z",
       "side": 1,
       "message": "nit:\n```\nif _, err :\u003d m.PushProfile(ctx, testProfileName); err !\u003d nil {\n    return nil, errors.Wrap(err, \"PushProfile failed\")\n}\n```",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 455,
+        "endChar": 2
+      },
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f136ab5_b6141746",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-05-31T22:47:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eda4c6c_8478ec0f",
       "range": {
         "startLine": 452,
         "startChar": 1,
