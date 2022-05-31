@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2971b112_c892f1b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-31T16:09:10Z",
+      "side": 1,
+      "message": "I have a few comments.\n\nPlease run tast unit test: fast_build.sh -T",
+      "revId": "e7c39ef79fe9feac25ee71d825892fc24ab84788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4722415_e4382a65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/charging_via_usb4_gatex_card.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-31T16:09:10Z",
+      "side": 1,
+      "message": "Con\u0027t hardcode /tmp. Use ioutil.TempDir.",
+      "revId": "e7c39ef79fe9feac25ee71d825892fc24ab84788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c864b29_992eb87f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/charging_via_usb4_gatex_card.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-31T16:09:10Z",
+      "side": 1,
+      "message": "expectedOut :\u003d \"Cable Type: Passive\"",
+      "revId": "e7c39ef79fe9feac25ee71d825892fc24ab84788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3400c5_826fa481",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/charging_via_usb4_gatex_card.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-31T16:09:10Z",
+      "side": 1,
+      "message": "```\nif _, err :\u003d typecutils.IsDeviceEnumerated(ctx, dut, usb4Val[\"device_name\"].(string), dutPort); err !\u003d nil {\n```\n\nI looked at IsDeviceEnumerated. I think connected is always false if err !\u003d nil. Also, I don\u0027t think the value is relevant if err !\u003d nil. Also, connected is not used anywhere in the code.",
+      "revId": "e7c39ef79fe9feac25ee71d825892fc24ab84788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2981c02_c8e8aeb3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/charging_via_usb4_gatex_card.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-31T16:09:10Z",
+      "side": 1,
+      "message": "if supply",
+      "revId": "e7c39ef79fe9feac25ee71d825892fc24ab84788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae338b4_722c5021",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/charging_via_usb4_gatex_card.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-31T16:09:10Z",
+      "side": 1,
+      "message": "supply is either true or false. Don\u0027t need to do this check.",
+      "range": {
+        "startLine": 200,
+        "startChar": 9,
+        "endLine": 200,
+        "endChar": 27
+      },
+      "revId": "e7c39ef79fe9feac25ee71d825892fc24ab84788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d4ec15_793edee1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/charging_via_usb4_gatex_card.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-31T16:09:10Z",
+      "side": 1,
+      "message": "if charging {",
+      "revId": "e7c39ef79fe9feac25ee71d825892fc24ab84788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd192163_9b25f6ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/charging_via_usb4_gatex_card.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-31T16:09:10Z",
+      "side": 1,
+      "message": "charging is either true or false. Don\u0027t need to do this check.",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 29
+      },
+      "revId": "e7c39ef79fe9feac25ee71d825892fc24ab84788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f31dbcc_9ffee230",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/typecutils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-05-31T16:09:10Z",
+      "side": 1,
+      "message": "err is nil. There is nothing to wrap.",
+      "revId": "e7c39ef79fe9feac25ee71d825892fc24ab84788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
