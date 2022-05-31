@@ -27,7 +27,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      60 * time.Minute,
-		Fixture:      "lacros",
+		Fixture:      "lacrosPerf",
 		Params: []testing.Param{{
 			Val: []browser.Type{browser.TypeLacros, browser.TypeAsh},
 		}, {

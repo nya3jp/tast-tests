@@ -32,112 +32,112 @@ func init() {
 				TestType: gpucuj.TestTypeMaximized,
 				Rot90:    false,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "maximized_rot90",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeMaximized,
 				Rot90:    true,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "maximized_composited",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeMaximized,
 				Rot90:    false,
 			},
-			Fixture: "lacrosForceComposition",
+			Fixture: "lacrosPerfForceComposition",
 		}, {
 			Name: "maximized_delegated",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeMaximized,
 				Rot90:    false,
 			},
-			Fixture: "lacrosForceDelegated",
+			Fixture: "lacrosPerfForceDelegated",
 		}, {
 			Name: "threedot",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeThreeDot,
 				Rot90:    false,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "threedot_rot90",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeThreeDot,
 				Rot90:    true,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "threedot_composited",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeThreeDot,
 				Rot90:    false,
 			},
-			Fixture: "lacrosForceComposition",
+			Fixture: "lacrosPerfForceComposition",
 		}, {
 			Name: "resize",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeResize,
 				Rot90:    false,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "resize_rot90",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeResize,
 				Rot90:    true,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "resize_composited",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeResize,
 				Rot90:    false,
 			},
-			Fixture: "lacrosForceComposition",
+			Fixture: "lacrosPerfForceComposition",
 		}, {
 			Name: "moveocclusion",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeMoveOcclusion,
 				Rot90:    false,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "moveocclusion_rot90",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeMoveOcclusion,
 				Rot90:    true,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "moveocclusion_composited",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeMoveOcclusion,
 				Rot90:    false,
 			},
-			Fixture: "lacrosForceComposition",
+			Fixture: "lacrosPerfForceComposition",
 		}, {
 			Name: "moveocclusion_withcroswindow",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeMoveOcclusionWithCrosWindow,
 				Rot90:    false,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "moveocclusion_withcroswindow_rot90",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeMoveOcclusionWithCrosWindow,
 				Rot90:    true,
 			},
-			Fixture: "lacros",
+			Fixture: "lacrosPerf",
 		}, {
 			Name: "moveocclusion_withcroswindow_composited",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeMoveOcclusionWithCrosWindow,
 				Rot90:    false,
 			},
-			Fixture: "lacrosForceComposition",
+			Fixture: "lacrosPerfForceComposition",
 		}},
 	})
 }
