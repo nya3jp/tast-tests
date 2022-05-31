@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae11f6a_5a97b096",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-31T18:00:46Z",
+      "side": 1,
+      "message": "I\u0027ll hold off on CQ+2 since I\u0027ve made a non-trivial change to the patch, and so I think you should take another look.",
+      "revId": "4ec7f227eeabfd08b8129eb85e7a2966619c985f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
