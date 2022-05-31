@@ -78,7 +78,8 @@ func requestScreenShare(ctx context.Context, tconn *chrome.TestConn) (*ScreenRec
 						reader.readAsDataURL(blob);
 					}.bind(this);
 					this.recorder.stop();
-				})
+					this.videoTrack.stop();
+				});
 			},
 			frameStatus: function() {
 				return new Promise((resolve, reject) => {
