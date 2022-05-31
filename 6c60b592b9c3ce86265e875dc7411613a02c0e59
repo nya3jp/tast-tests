@@ -134,6 +134,24 @@
       "message": "skipping test on the runtime condition is considered as a pattern to be avoided.\nCould you make a hardware/software dependencies, instead?",
       "revId": "6c60b592b9c3ce86265e875dc7411613a02c0e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc72bcfb_40e558f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-05-31T06:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6640360_1672c0fd",
+      "revId": "6c60b592b9c3ce86265e875dc7411613a02c0e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
