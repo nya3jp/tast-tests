@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc4be7a_1d515242",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-31T18:32:22Z",
+      "side": 1,
+      "message": "Does this mean that this test is only supposed to run on hatch? \n\nIf so, please add a hardware dependency\n\nIf not, please test on more devices + add `TEST\u003dtast run $DUT apps.SystemWebAppsReinstall` to the commit message`",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0446f31c_196bccd3",
@@ -14,6 +31,74 @@
       "writtenOn": "2022-05-31T09:40:01Z",
       "side": 1,
       "message": "tast-owners: PTAL\ncalamity: PTAL at test logic change (as SWA platform owner)\n\ndoc: https://docs.google.com/document/d/1sMMtpTRSQY_gAIDDJxc0-4eFSm_Jsv77cJpNh0VhZu8/edit#",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a97c1c_ef1a8f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-31T18:32:22Z",
+      "side": 1,
+      "message": "Any particular reason to declare the testing parameters up here and pass them in much later, instead of using the testing format by table driven tests?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51976db1_bd1b6e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-31T18:32:22Z",
+      "side": 1,
+      "message": "Is the `when` parameter supposed to be used in this function?",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a926c8_55755586",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-31T18:32:22Z",
+      "side": 1,
+      "message": "Is it necessary to call `s.Fatal` here, and with that, pass the testing state into this helper function?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa1f699_e6ec25b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-05-31T18:32:22Z",
+      "side": 1,
+      "message": "Please add a comment to document what this function is doing\n\nAdditionally, please rename this function to remove the word \"get\": https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
       "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
