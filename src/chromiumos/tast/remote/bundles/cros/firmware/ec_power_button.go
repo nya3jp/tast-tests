@@ -5,12 +5,9 @@
 package firmware
 
 import (
-	"bufio"
 	"context"
-	"regexp"
+	"strings"
 	"time"
-
-	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
@@ -42,10 +39,9 @@ func init() {
 		Timeout:      45 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name: "toggle_powerd",
-				Val:  powerOffWithAndWithoutPowerd,
-				// TODO(b/235742217): This test might be leaving broken DUTS that can't be auto-repaired. Add attr firmware_unstable when fixed.
-				ExtraAttr: []string{},
+				Name:      "toggle_powerd",
+				Val:       powerOffWithAndWithoutPowerd,
+				ExtraAttr: []string{"firmware_unstable"},
 			},
 			{
 				Name:              "ignore_short_power_key",
@@ -93,10 +89,6 @@ func ECPowerButton(ctx context.Context, s *testing.State) {
 		if err := testIgnoreShortPowerKey(ctx, h); err != nil {
 			s.Fatal("DUT unexpectedly shut down from short power key press: ", err)
 		}
-		s.Log("Test that device with internal display debounces very short power key press")
-		if err := testPowerKeyDebounce(ctx, h); err != nil {
-			s.Fatal("Expected power key pressed for 10ms to be debounced: ", err)
-		}
 	case powerOffWithShortPowerKey:
 		// If DUT doesn't have internal display, expect 200ms power key press to power off DUT.
 		s.Log("Test device without internal display doesn't ignore short power key press")
@@ -118,67 +110,8 @@ func testPowerOffWithShortPowerKey(ctx context.Context, h *firmware.Helper) erro
 	}
 
 	testing.ContextLog(ctx, "Pressing power key")
-	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOn)); err != nil {
 		return errors.Wrap(err, "failed to press power key on DUT")
-	}
-
-	testing.ContextLog(ctx, "Waiting for S0 powerstate")
-	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
-		return errors.Wrap(err, "failed to get S0 powerstate")
-	}
-
-	return h.WaitConnect(ctx)
-}
-
-func testPowerKeyDebounce(ctx context.Context, h *firmware.Helper) error {
-	readKeyPress := func(scanner *bufio.Scanner, keyCode string) error {
-
-		regex := `Event.*time.*code\s(\d*)\s\(` + keyCode + `\)`
-		expMatch := regexp.MustCompile(regex)
-
-		text := make(chan string)
-		go func() {
-			for scanner.Scan() {
-				text <- scanner.Text()
-			}
-			close(text)
-		}()
-		for {
-			select {
-			case <-time.After(2 * time.Second):
-				return errors.New("did not detect keycode within expected time")
-			case out := <-text:
-				if match := expMatch.FindStringSubmatch(out); match != nil {
-					testing.ContextLog(ctx, "key pressed: ", match)
-					return nil
-				}
-			}
-		}
-	}
-
-	if err := h.RequireRPCUtils(ctx); err != nil {
-		return errors.Wrap(err, "requiring RPC utils")
-	}
-	testing.ContextLog(ctx, "Look for physical keyboard")
-	res, err := h.RPCUtils.FindPhysicalKeyboard(ctx, &empty.Empty{})
-	if err != nil {
-		return errors.Wrap(err, "during FindPhysicalKeyboard")
-	}
-	device := res.Path
-	testing.ContextLog(ctx, "Device path: ", device)
-	cmd := h.DUT.Conn().CommandContext(ctx, "evtest", device)
-	stdout, err := cmd.StdoutPipe()
-	scanner := bufio.NewScanner(stdout)
-	cmd.Start()
-
-	testing.ContextLog(ctx, "Pressing power key for 10ms")
-	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(10*time.Millisecond)); err != nil {
-		return errors.Wrap(err, "failed to press power key on DUT")
-	}
-
-	testing.ContextLog(ctx, "Read for power key press")
-	if err := readKeyPress(scanner, "KEY_POWER"); err != nil {
-		return errors.Wrap(err, "failed to read key")
 	}
 
 	testing.ContextLog(ctx, "Waiting for S0 powerstate")
@@ -205,17 +138,25 @@ func testIgnoreShortPowerKey(ctx context.Context, h *firmware.Helper) error {
 		return errors.Wrapf(err, "failed to sleep for %s ms", shortPowerKeyPressDur)
 	}
 
-	testing.ContextLog(ctx, "Expect S0 powerstate")
-	currPowerState, err := h.Servo.GetECSystemPowerState(ctx)
-	if err != nil {
+	testing.ContextLog(ctx, "Expect DUT to remain in S0 powerstate")
+	if currPowerState, err := h.Servo.GetECSystemPowerState(ctx); err != nil {
+		return errors.Wrap(err, "failed to get current power state")
+	} else if currPowerState != "S0" {
+		return errors.Errorf("Current power state is: %s, expected S0", currPowerState)
+	}
+
+	testing.ContextLog(ctx, "After short sleep (5s) expect DUT to still remain in S0")
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep")
+	}
+	if currPowerState, err := h.Servo.GetECSystemPowerState(ctx); err != nil {
 		return errors.Wrap(err, "failed to get current power state")
 	} else if currPowerState != "S0" {
 		return errors.Errorf("Current power state is: %s, expected S0", currPowerState)
 	}
 
 	testing.ContextLog(ctx, "Get new boot id, compare to old")
-	newBootID, err := h.Reporter.BootID(ctx)
-	if err != nil {
+	if newBootID, err := h.Reporter.BootID(ctx); err != nil {
 		return errors.Wrap(err, "failed to get current boot id")
 	} else if newBootID != bootID {
 		return errors.Errorf("boot ID unexpectedly changed from %s to %s", bootID, newBootID)
@@ -223,79 +164,139 @@ func testIgnoreShortPowerKey(ctx context.Context, h *firmware.Helper) error {
 	return nil
 }
 
-func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) error {
-	shutdownAndWake := func(shutDownDur time.Duration, expStates ...string) error {
-		testing.ContextLogf(ctx, "Pressing power key for %s", shutDownDur)
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(shutDownDur)); err != nil {
-			return errors.Wrap(err, "failed to press power key on DUT")
-		}
-
-		testing.ContextLogf(ctx, "Checking for %v powerstates", expStates)
-		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, expStates...); err != nil {
-			return errors.Wrapf(err, "failed to get %v powerstates", expStates)
-		}
-
-		// If we are expecting S5/G3, we might still get to G3 after S5, so give it a little time before we wake up again.
-		if err := testing.Sleep(ctx, time.Second*2); err != nil {
-			return errors.Wrap(err, "sleep failed")
-		}
-
-		testing.ContextLog(ctx, "Send cmd to EC to wake up from deepsleep")
-		h.Servo.RunECCommand(ctx, "help")
-
-		testing.ContextLog(ctx, "Pressing power key (press)")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-			return errors.Wrap(err, "failed to press power key on DUT")
-		}
-
-		testing.ContextLog(ctx, "Waiting for S0 powerstate")
-		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
-			return errors.Wrap(err, "failed to get S0 powerstate")
-		}
-
-		testing.ContextLog(ctx, "Waiting for DUT to connect")
-		if err := h.WaitConnect(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait for DUT to connect")
-		}
-
-		ms, err := firmware.NewModeSwitcher(ctx, h)
-		if err != nil {
-			return errors.Wrap(err, "creating mode switcher")
-		}
-
-		testing.ContextLog(ctx, "Perform mode aware reboot")
-		return ms.ModeAwareReboot(ctx, firmware.ColdReset)
+func shutdownAndWake(ctx context.Context, h *firmware.Helper, shutDownDur time.Duration, expStates ...string) error {
+	testing.ContextLogf(ctx, "Pressing power key for %s", shutDownDur)
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(shutDownDur)); err != nil {
+		return errors.Wrap(err, "failed to press power key on DUT")
 	}
+
+	testing.ContextLogf(ctx, "Checking for %v powerstates", expStates)
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, expStates...); err != nil {
+		return errors.Wrapf(err, "failed to get %v powerstates", expStates)
+	}
+
+	// If we are expecting S5/G3, we might still get to G3 after S5, so give it a little time before we wake up again.
+	if err := testing.Sleep(ctx, time.Second*2); err != nil {
+		return errors.Wrap(err, "sleep failed")
+	}
+
+	testing.ContextLog(ctx, "Send cmd to EC to wake up from deepsleep")
+	h.Servo.RunECCommand(ctx, "help")
+
+	testing.ContextLog(ctx, "Pressing power key (press)")
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+		return errors.Wrap(err, "failed to press power key on DUT")
+	}
+
+	testing.ContextLog(ctx, "Waiting for S0 powerstate")
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+		return errors.Wrap(err, "failed to get S0 powerstate")
+	}
+
+	testing.ContextLog(ctx, "Waiting for DUT to connect")
+	if err := h.WaitConnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for DUT to connect")
+	}
+
+	return nil
+}
+
+func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) (reterr error) {
+	enablePowerd := func(ctx context.Context, status bool) error {
+		startOrStop := "start"
+		if !status {
+			startOrStop = "stop"
+		}
+
+		if status {
+			if out, err := h.DUT.Conn().CommandContext(ctx, "status", "powerd").Output(ssh.DumpLogOnError); err != nil {
+				return errors.Wrap(err, "failed to check powerd status")
+			} else if !strings.Contains(string(out), "start/running,") {
+				testing.ContextLog(ctx, "Setting powerd to start")
+				if err := h.DUT.Conn().CommandContext(ctx, "start", "powerd").Run(ssh.DumpLogOnError); err != nil {
+					return errors.Wrap(err, "failed to start powerd")
+				}
+			} else {
+				testing.ContextLog(ctx, "powerd is already started")
+			}
+		}
+
+		if out, err := h.DUT.Conn().CommandContext(ctx, "status", "fwupd").Output(ssh.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to check fwupd status")
+		} else if strings.Contains(string(out), "start/running,") != status {
+			testing.ContextLogf(ctx, "Setting fwupd to %q", startOrStop)
+			if err := h.DUT.Conn().CommandContext(ctx, startOrStop, "fwupd").Run(ssh.DumpLogOnError); err != nil {
+				return errors.Wrapf(err, "failed to %s fwupd", startOrStop)
+			}
+		} else {
+			testing.ContextLogf(ctx, "fwupd status is already %q", startOrStop)
+		}
+
+		if !status {
+			if out, err := h.DUT.Conn().CommandContext(ctx, "status", "powerd").Output(ssh.DumpLogOnError); err != nil {
+				return errors.Wrap(err, "failed to check powerd status")
+			} else if strings.Contains(string(out), "start/running,") != status {
+				testing.ContextLog(ctx, "Setting powerd to stop")
+				if err := h.DUT.Conn().CommandContext(ctx, "stop", "powerd").Run(ssh.DumpLogOnError); err != nil {
+					return errors.Wrap(err, "failed to stop powerd")
+				}
+			} else {
+				testing.ContextLog(ctx, "powerd is already stopped")
+			}
+		}
+
+		return nil
+	}
+
+	// Make sure fwupd and powerd are running again after test.
+	defer func() {
+		if err := enablePowerd(ctx, true); err != nil {
+			reterr = errors.Wrap(err, "failed to restart powerd after test end")
+		}
+	}()
 
 	powerdDur := h.Config.HoldPwrButtonPowerOff
 	noPowerdDur := h.Config.HoldPwrButtonNoPowerdShutdown
 
-	if err := shutdownAndWake(powerdDur, "S5", "G3"); err != nil {
+	testing.ContextLog(ctx, "starting powerd")
+	if err := enablePowerd(ctx, true); err != nil {
+		return errors.Wrap(err, "failed to start powerd")
+	}
+
+	if err := shutdownAndWake(ctx, h, powerdDur, "S5", "G3"); err != nil {
 		return errors.Wrap(err, "failed shut down and wake with powerd")
 	}
 
 	testing.ContextLog(ctx, "stopping powerd")
-	if _, err := h.DUT.Conn().CommandContext(ctx, "stop", "powerd").Output(ssh.DumpLogOnError); err != nil {
+	if err := enablePowerd(ctx, false); err != nil {
 		return errors.Wrap(err, "failed to stop powerd")
 	}
 
-	if err := shutdownAndWake(noPowerdDur, "G3"); err != nil {
+	if err := shutdownAndWake(ctx, h, noPowerdDur, "G3"); err != nil {
 		return errors.Wrap(err, "failed shut down and wake with no powerd")
 	}
 
-	if err := shutdownAndWake(powerdDur, "G3"); err != nil {
+	testing.ContextLog(ctx, "starting powerd")
+	if err := enablePowerd(ctx, true); err != nil {
+		return errors.Wrap(err, "failed to start powerd")
+	}
+
+	if err := shutdownAndWake(ctx, h, powerdDur, "G3"); err != nil {
 		return errors.Wrap(err, "failed shut down and wake with powerd")
 	}
 
 	testing.ContextLog(ctx, "stopping powerd")
-	if _, err := h.DUT.Conn().CommandContext(ctx, "stop", "powerd").Output(ssh.DumpLogOnError); err != nil {
+	if err := enablePowerd(ctx, false); err != nil {
 		return errors.Wrap(err, "failed to stop powerd")
 	}
 
-	if err := shutdownAndWake(noPowerdDur, "S5", "G3"); err != nil {
+	if err := shutdownAndWake(ctx, h, noPowerdDur, "S5", "G3"); err != nil {
 		return errors.Wrap(err, "failed shut down and wake with no powerd")
 	}
 
+	if err := h.WaitConnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to reconnect to DUT")
+	}
 	return nil
 }
 
@@ -304,8 +305,13 @@ func testRebootWithSettingPowerState(ctx context.Context, h *firmware.Helper) er
 		return errors.Wrap(err, "failed to set 'power_state' to 'off'")
 	}
 
-	testing.ContextLog(ctx, "Pressing power key")
-	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
+	testing.ContextLog(ctx, "Waiting for G3 or S5 powerstate")
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
+		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
+	}
+
+	testing.ContextLog(ctx, "Pressing power key to turn on DUT")
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOn)); err != nil {
 		return errors.Wrap(err, "failed to press power key on DUT")
 	}
 

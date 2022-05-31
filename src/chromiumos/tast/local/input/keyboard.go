@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"math/big"
 	"os"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -70,6 +71,23 @@ func FindPhysicalKeyboard(ctx context.Context) (bool, string, error) {
 		}
 	}
 	return false, "", nil
+}
+
+// FindPowerKeyDevice iterates over devices and returns path for cros_ec_buttons
+// if it exists, otherwise returns the regular physical keyboard.
+func FindPowerKeyDevice(ctx context.Context) (bool, string, error) {
+	infos, err := readDevices("")
+	if err != nil {
+		return false, "", errors.Wrap(err, "failed to read devices")
+	}
+	// If cros_ec_buttons or Power Button is a device, use that for power key, otherwise use physical keyboard device.
+	for _, info := range infos {
+		if strings.Contains(info.name, "cros_ec_buttons") || strings.Contains(info.name, "Power Button") {
+			testing.ContextLogf(ctx, "Using %s device %+v", info.name, info)
+			return true, info.path, nil
+		}
+	}
+	return FindPhysicalKeyboard(ctx)
 }
 
 // virtualKeyboard creates a virtual keyboard device and returns an EventWriter that injects events into it.
@@ -142,7 +160,7 @@ func (kw *KeyboardEventWriter) Device() string { return kw.dev }
 
 // sendKey writes a EV_KEY event containing the specified code and value, followed by a EV_SYN event.
 // If kw represents a keyboard with a custom top row, we will also send a EV_MSC
-//   event mapped from topRowScanCodeMap
+//	event mapped from topRowScanCodeMap
 // If firstErr points at a non-nil error, no events are written.
 // If an error is encountered, it is saved to the address pointed to by firstErr.
 func (kw *KeyboardEventWriter) sendKey(ec EventCode, val int32, firstErr *error) {
@@ -247,9 +265,11 @@ func (kw *KeyboardEventWriter) accel(ctx context.Context, s string, eventType ke
 // Accel injects a sequence of key events simulating the accelerator (a.k.a. hotkey) described by s being typed.
 // Accelerators are described as a sequence of '+'-separated, case-insensitive key characters or names.
 // In addition to non-whitespace characters that are present on a QWERTY keyboard, the following key names may be used:
+//
 //	Modifiers:     "Ctrl", "Alt", "Search", "Shift"
 //	Whitespace:    "Enter", "Space", "Tab", "Backspace"
 //	Function keys: "F1", "F2", ..., "F12"
+//
 // "Shift" must be included for keys that are typed using Shift; for example, use "Ctrl+Shift+/" rather than "Ctrl+?".
 func (kw *KeyboardEventWriter) Accel(ctx context.Context, s string) error {
 	return kw.accel(ctx, s, keyPress|keyRelease)
