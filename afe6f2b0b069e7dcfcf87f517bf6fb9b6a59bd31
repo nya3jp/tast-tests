@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e128ea57_36a32f56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/external_storage_disabled.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-31T12:34:42Z",
+      "side": 1,
+      "message": "Right, it was from when we used to recycle codes in optin_managed.go, but we might just as well inline it now.",
+      "parentUuid": "3ef3aeab_aeedef1b",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "afe6f2b0b069e7dcfcf87f517bf6fb9b6a59bd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cbbd8c0_809b682a",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae7d3c3_85f64847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-31T12:34:42Z",
+      "side": 1,
+      "message": "Looks nice, thanks for the suggestion!",
+      "parentUuid": "3cbbd8c0_809b682a",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "afe6f2b0b069e7dcfcf87f517bf6fb9b6a59bd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fa854ff_c95d681d",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-05-31T08:16:17Z",
       "side": 1,
       "message": "ditto: I recommend using deferred statement here.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "afe6f2b0b069e7dcfcf87f517bf6fb9b6a59bd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a12fef_6f9c03ef",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-31T12:34:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa854ff_c95d681d",
       "range": {
         "startLine": 201,
         "startChar": 1,

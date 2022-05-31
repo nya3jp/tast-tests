@@ -46,6 +46,30 @@
       },
       "revId": "60ebb963077b09d056a942e900502bec66bb2fbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a3a22d_b67cf9cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-05-31T12:34:42Z",
+      "side": 1,
+      "message": "Actually, after the first comment of mine, I observed the false-negative flakiness again when I ran the tests... Anyway, I think it\u0027s fine as you say, since the test passes as expected with the two CLs.",
+      "parentUuid": "36470d73_2cb7d2cf",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "60ebb963077b09d056a942e900502bec66bb2fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
