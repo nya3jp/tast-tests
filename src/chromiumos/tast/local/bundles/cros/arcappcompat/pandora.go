@@ -45,7 +45,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Pandora that installs the app also verifies it is logged in and that the main page is open, checks Pandora correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		Attr:         []string{"group:appcompat", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
@@ -96,7 +96,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
-		Timeout: 10 * time.Minute,
+		Timeout: 20 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
 		VarDeps: []string{"arcappcompat.Pandora.emailid", "arcappcompat.Pandora.password"},
 	})
