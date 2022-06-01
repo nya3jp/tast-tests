@@ -286,6 +286,25 @@ func (r *ScreenRecorder) Release(ctx context.Context) {
 	}
 }
 
+// StopAndSaveOnError ends the screen recording and save it on error.
+func (r *ScreenRecorder) StopAndSaveOnError(ctx context.Context, filepath string, hasError func() bool) {
+	if err := r.Stop(ctx); err != nil {
+		testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
+	} else if hasError() {
+		// If there's an error, we want to wait long enough to see what happens
+		// after the error. This allows you to see subtitles when the error has
+		// occurred, and also happens to help in case something happens after
+		// timing out.
+		testing.Sleep(ctx, 2*time.Second)
+
+		testing.ContextLogf(ctx, "Saving screen record to %s", filepath)
+		if err := r.SaveInBytes(ctx, filepath); err != nil {
+			testing.ContextLogf(ctx, "Failed to save screen record in bytes: %s", err)
+		}
+	}
+	r.Release(ctx)
+}
+
 // ScreenRecorderStopSaveRelease stops, saves and releases the screen recorder.
 func ScreenRecorderStopSaveRelease(ctx context.Context, r *ScreenRecorder, fileName string) {
 	if r != nil {
