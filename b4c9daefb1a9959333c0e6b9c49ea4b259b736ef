@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "50649560_c76784d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T06:17:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1047271e_fd257768",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "20754ee8_2626b961",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -72,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0283b07b_3f00a70d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T06:17:39Z",
+      "side": 1,
+      "message": "Sounds good to me. Thanks for the proposal.",
+      "parentUuid": "7b63ceec_79892c36",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f2407af_7ff14b76",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 2
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "Thanks for the comments. Return it by a function is better! I can do a global change to all cases using this var.",
       "parentUuid": "8f2407af_7ff14b76",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d281eca1_361d1b18",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T06:17:39Z",
+      "side": 1,
+      "message": "Appreciate your help to make the code better.",
+      "parentUuid": "9fb3be30_123770fe",
       "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -152,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78edbe73_e1c14b47",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T06:17:39Z",
+      "side": 1,
+      "message": "Yes you are right. I overlooked it.",
+      "parentUuid": "9f0e70df_6d7e6ae2",
+      "range": {
+        "startLine": 174,
+        "startChar": 60,
+        "endLine": 174,
+        "endChar": 80
+      },
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cc44a26_02db5722",
@@ -183,6 +261,24 @@
       "side": 1,
       "message": "It does run because a BatteryDischargeMode interface is passed in - in our case a pointer implementing the interface.",
       "parentUuid": "0cc44a26_02db5722",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278cb184_8326ae34",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T06:17:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "298c5285_ab1935ba",
       "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
