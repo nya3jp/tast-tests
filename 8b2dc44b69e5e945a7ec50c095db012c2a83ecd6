@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd13edf_d439b581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-01T16:25:31Z",
+      "side": 1,
+      "message": "The comments are not quite lined up. Is this based on something similarly askew in the presentation from Facebook?",
+      "range": {
+        "startLine": 1094,
+        "startChar": 0,
+        "endLine": 1095,
+        "endChar": 75
+      },
+      "revId": "8b2dc44b69e5e945a7ec50c095db012c2a83ecd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a72020_5e99b1a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-01T16:25:31Z",
+      "side": 1,
+      "message": "Should this be `\u003e\u003d` or is it important to have one more core for some other processing? Maybe consider writing a code comment about this.",
+      "range": {
+        "startLine": 1124,
+        "startChar": 57,
+        "endLine": 1124,
+        "endChar": 58
+      },
+      "revId": "8b2dc44b69e5e945a7ec50c095db012c2a83ecd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

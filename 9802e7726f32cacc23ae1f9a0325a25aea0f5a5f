@@ -134,6 +134,30 @@
       },
       "revId": "9802e7726f32cacc23ae1f9a0325a25aea0f5a5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a14446e3_0a97c1e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-01T16:25:31Z",
+      "side": 1,
+      "message": "1. To represent \"a 30% better bitrate\" the code should say `0.70 * 0.07` (which computes a number 30% less than 0.07) instead of `0.07 * 0.07`.\n2. You could call `math.Round` before typecasting from `float64` to `int`, depending on whether it makes sense to round to nearest or always round towards zero. If you have a justification for rounding towards zero, please write a code comment about it.",
+      "parentUuid": "ff459d53_d237b286",
+      "range": {
+        "startLine": 1204,
+        "startChar": 1,
+        "endLine": 1205,
+        "endChar": 97
+      },
+      "revId": "9802e7726f32cacc23ae1f9a0325a25aea0f5a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
