@@ -22,7 +22,6 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO(b/218874503): Merge the HpdWake and Basic common parts using fixtures.
 		Func:         Basic,
 		Desc:         "Checks basic typec kernel driver functionality",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
