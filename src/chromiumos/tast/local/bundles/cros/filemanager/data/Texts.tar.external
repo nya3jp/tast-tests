@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/filemanager/Texts_20200820.tar",
+  "size": 10240,
+  "sha256sum": "74084e693f6aa6544e8270999cf3b00d894e355d2e44534ddc0c879764d0cd1f"
+}

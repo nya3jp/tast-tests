@@ -48,7 +48,26 @@ func init() {
 			"Encrypted_AES-256.zip",
 			"Encrypted_ZipCrypto.zip",
 			"Texts.7z",
+			"Texts.iso",
 			"Texts.rar",
+			"Texts.tZ",
+			"Texts.taZ",
+			"Texts.tar",
+			"Texts.tar.Z",
+			"Texts.tar.bz2",
+			"Texts.tar.bz",
+			"Texts.tar.gz",
+			"Texts.tar.lzma",
+			"Texts.tar.xz",
+			"Texts.tar.zst",
+			"Texts.tb2",
+			"Texts.tbz",
+			"Texts.tbz2",
+			"Texts.tgz",
+			"Texts.tlz",
+			"Texts.txz",
+			"Texts.tz2",
+			"Texts.tzst",
 			"Texts.zip",
 		},
 		Params: []testing.Param{{
@@ -58,10 +77,65 @@ func init() {
 				ZipFiles: []string{"Texts.7z"},
 			},
 		}, {
+			Name: "mount_single_iso",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.iso"},
+			},
+		}, {
 			Name: "mount_single_rar",
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.rar"},
+			},
+		}, {
+			Name: "mount_single_tar",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar"},
+			},
+		}, {
+			Name: "mount_single_tar_bz2",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{
+					"Texts.tar.bz2",
+					"Texts.tar.bz",
+					"Texts.tbz2",
+					"Texts.tb2",
+					"Texts.tz2",
+					"Texts.tbz",
+				},
+			},
+		}, {
+			Name: "mount_single_tar_gz",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.gz", "Texts.tgz"},
+			},
+		}, {
+			Name: "mount_single_tar_lzma",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.lzma", "Texts.tlz"},
+			},
+		}, {
+			Name: "mount_single_tar_xz",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.xz", "Texts.txz"},
+			},
+		}, {
+			Name: "mount_single_tar_zst",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.zst", "Texts.tzst"},
+			},
+		}, {
+			Name: "mount_single_tar_z",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.Z", "Texts.taZ", "Texts.tZ"},
 			},
 		}, {
 			Name: "mount_single_zip",
@@ -89,10 +163,8 @@ func ZipMount(ctx context.Context, s *testing.State) {
 	testParams := s.Param().(testEntry)
 	zipFiles := testParams.ZipFiles
 
-	// TODO(nigeltao): remove "FilesArchivemount" after it gets flipped to
-	// enabled-by-default (scheduled for M94) and before the feature flag
-	// expires (scheduled for M100). crbug.com/1216245
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount"))
+	// TODO(crbug.com/1326797) Remove once it is enabled by default.
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount2"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
@@ -185,13 +257,13 @@ func checkAndUnmountZipFile(ctx context.Context, s *testing.State, files *filesa
 		files.WithTimeout(5*time.Second).WaitUntilExists(zipFileNode),
 		files.LeftClick(zipFileNode),
 	)(ctx); err != nil {
-		s.Fatal("Cannot find and open the mounted ZIP file: ", err)
+		s.Fatalf("Cannot open mounted archive %q: %v", zipFile, err)
 	}
 
 	// Ensure that the Files App is displaying the content of the mounted ZIP file.
 	rootWebArea := nodewith.Name("Files - " + zipFile).Role(role.RootWebArea)
 	if err := files.WithTimeout(5 * time.Second).WaitUntilExists(rootWebArea)(ctx); err != nil {
-		s.Fatal("Cannot see content of mounted ZIP file: ", err)
+		s.Fatalf("Cannot see content of mounted archive %q: %v", zipFile, err)
 	}
 
 	// The test ZIP files are all expected to contain a single "Texts" folder.
@@ -200,7 +272,7 @@ func checkAndUnmountZipFile(ctx context.Context, s *testing.State, files *filesa
 	// Check content of mounted ZIP file.
 	label := nodewith.Name(zipContentDirectoryLabel).Role(role.ListBoxOption)
 	if err := files.WithTimeout(5 * time.Second).WaitUntilExists(label)(ctx); err != nil {
-		s.Fatalf("Cannot see directory %s in mounted ZIP file: %v", zipContentDirectoryLabel, err)
+		s.Fatalf("Cannot see directory %q in mounted archive %q: %v", zipContentDirectoryLabel, zipFile, err)
 	}
 
 	// Find the eject button within the appropriate tree item.
@@ -209,39 +281,41 @@ func checkAndUnmountZipFile(ctx context.Context, s *testing.State, files *filesa
 		files.WithTimeout(5*time.Second).WaitUntilExists(ejectButton),
 		files.LeftClick(ejectButton),
 	)(ctx); err != nil {
-		s.Fatal("Cannot find the eject button within the appropriate tree item: ", err)
+		s.Fatalf("Cannot find Eject button of mounted archive %q: %v", zipFile, err)
 	}
 
 	// Check that the tree item corresponding to the previously mounted ZIP file was removed.
 	if err := files.WithTimeout(5 * time.Second).WaitUntilGone(zipFileNode)(ctx); err != nil {
-		s.Fatalf("%s is still mounted: %v", zipFile, err)
+		s.Fatalf("Cannot eject mounted archive %q: %v", zipFile, err)
 	}
 }
 
 func testMountingSingleZipFile(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFiles []string) {
-	if len(zipFiles) != 1 {
-		s.Fatal("Unexpected length for zipFiles")
-	}
-	zipFile := zipFiles[0]
+	for _, zipFile := range zipFiles {
+		// Open the Downloads folder.
+		if err := files.OpenDownloads()(ctx); err != nil {
+			s.Fatal("Cannot open Downloads folder: ", err)
+		}
 
-	// Select ZIP file.
-	if err := uiauto.Combine("wait for test ZIP file and select",
-		files.WithTimeout(5*time.Second).WaitForFile(zipFile),
-		files.SelectFile(zipFile),
-	)(ctx); err != nil {
-		s.Fatal("Cannot select ZIP file: ", err)
-	}
+		// Select archive.
+		if err := uiauto.Combine("wait for test ZIP file and select",
+			files.WithTimeout(5*time.Second).WaitForFile(zipFile),
+			files.SelectFile(zipFile),
+		)(ctx); err != nil {
+			s.Fatalf("Cannot select archive %q: %v", zipFile, err)
+		}
 
-	// Wait for Open button in the top bar.
-	open := nodewith.Name("Open").Role(role.Button)
-	if err := uiauto.Combine("find and click Open menu item",
-		files.WithTimeout(5*time.Second).WaitUntilExists(open),
-		files.LeftClick(open),
-	)(ctx); err != nil {
-		s.Fatal("Cannot unmount Zip file: ", err)
-	}
+		// Wait for Open button in the top bar.
+		open := nodewith.Name("Open").Role(role.Button)
+		if err := uiauto.Combine("find and click Open menu item",
+			files.WithTimeout(5*time.Second).WaitUntilExists(open),
+			files.LeftClick(open),
+		)(ctx); err != nil {
+			s.Fatalf("Cannot mount archive %q: %v", zipFile, err)
+		}
 
-	checkAndUnmountZipFile(ctx, s, files, zipFile)
+		checkAndUnmountZipFile(ctx, s, files, zipFile)
+	}
 }
 
 func testCancelingMultiplePasswordDialogs(ctx context.Context, s *testing.State, files *filesapp.FilesApp, zipFiles []string) {
