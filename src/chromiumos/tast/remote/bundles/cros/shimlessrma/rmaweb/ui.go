@@ -24,7 +24,7 @@ import (
 )
 
 const timeInSecondToLoadPage = 30
-const timeinSecondToEnableButton = 5
+const timeInSecondToEnableButton = 5
 const longTimeInSecondToEnableButton = 60
 
 // WaitForRebootStart indicates the time to wait before reboot starting.
@@ -51,11 +51,11 @@ func NewUIHelper(ctx context.Context, dut *dut.DUT, firmwareHelper *firmware.Hel
 
 // DisposeResource will close the resources which are required in UIHelper.
 func (uiHelper *UIHelper) DisposeResource(cleanupCtx context.Context) {
-	if err := uiHelper.RPCClient.Close(cleanupCtx); err != nil {
-		testing.ContextLog(cleanupCtx, "Fail to close RPC client")
-	}
 	if _, err := uiHelper.Client.CloseShimlessRMA(cleanupCtx, &empty.Empty{}); err != nil {
-		testing.ContextLog(cleanupCtx, "Fail to close Shimless RMA client")
+		testing.ContextLog(cleanupCtx, "Fail to close Shimless RMA client: ", err)
+	}
+	if err := uiHelper.RPCClient.Close(cleanupCtx); err != nil {
+		testing.ContextLog(cleanupCtx, "Fail to close RPC client: ", err)
 	}
 }
 
@@ -81,7 +81,7 @@ func (uiHelper *UIHelper) OwnerPageOperation(ctx context.Context) error {
 	return action.Combine("Owner page operation",
 		uiHelper.waitForPageToLoad("After repair, who will be using the device?", timeInSecondToLoadPage),
 		uiHelper.clickRadioButton("Device will go to the same user"),
-		uiHelper.waitAndClickButton("Next", timeinSecondToEnableButton),
+		uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
 	)(ctx)
 }
 
@@ -105,7 +105,7 @@ func (uiHelper *UIHelper) WipeDevicePageOperation(ctx context.Context) error {
 	return action.Combine("Wipe Device page operation",
 		uiHelper.waitForPageToLoad("Device is going to the same user. Erase user data?", timeInSecondToLoadPage),
 		uiHelper.clickRadioButton("Erase all data"),
-		uiHelper.waitAndClickButton("Next", timeinSecondToEnableButton),
+		uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
 	)(ctx)
 }
 
@@ -164,8 +164,8 @@ func (uiHelper *UIHelper) FinalizingRepairPageOperation(ctx context.Context) err
 	)(ctx)
 }
 
-// RepairCompeletedPageOperation handles all operations on repair completed Page.
-func (uiHelper *UIHelper) RepairCompeletedPageOperation(ctx context.Context) error {
+// RepairCompletedPageOperation handles all operations on repair completed Page.
+func (uiHelper *UIHelper) RepairCompletedPageOperation(ctx context.Context) error {
 	return action.Combine("Repair Completed page operation",
 		uiHelper.waitForPageToLoad("Repair is complete", longTimeInSecondToEnableButton),
 		uiHelper.clickButton("Reboot"),
@@ -293,7 +293,7 @@ func (uiHelper *UIHelper) writeProtectPageOperation(radioButtonLabel string) act
 	return action.Combine("Write Protect page operation",
 		uiHelper.waitForPageToLoad("Select how you would like to turn off Write Protect", timeInSecondToLoadPage),
 		uiHelper.clickRadioButton(radioButtonLabel),
-		uiHelper.waitAndClickButton("Next", timeinSecondToEnableButton),
+		uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
 	)
 }
 

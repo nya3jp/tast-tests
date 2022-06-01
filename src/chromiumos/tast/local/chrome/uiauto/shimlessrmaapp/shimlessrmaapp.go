@@ -182,7 +182,7 @@ func (r *RMAApp) LeftClickLink(label string) uiauto.Action {
 	return r.ui.LeftClick(nodewith.NameContaining(label).Role(role.Link).Visible())
 }
 
-// RetrieveTextByPrefix returns a text which has a cerntian prefix.
+// RetrieveTextByPrefix returns a text which has a certain prefix.
 func (r *RMAApp) RetrieveTextByPrefix(ctx context.Context, prefix string) (*uiauto.NodeInfo, error) {
 	return r.ui.Info(ctx, nodewith.NameStartingWith(prefix).Role(role.StaticText))
 }

@@ -79,13 +79,12 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Fail to initialize RMA Helper: ", err)
 	}
-	defer uiHelper.DisposeResource(cleanupCtx)
 
 	if err := uiHelper.SetupInitStatus(ctx); err != nil {
 		s.Fatal("Fail to setup init status: ", err)
 	}
 
-	if err := genreateActionCombinedToDisableWP(wpOption, uiHelper)(ctx); err != nil {
+	if err := generateActionCombinedToDisableWP(wpOption, uiHelper)(ctx); err != nil {
 		s.Fatal("Fail to navigate to Disable Write Protect page and turn off write protect: ", err)
 	}
 
@@ -96,7 +95,6 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Fail to initialize RMA Helper: ", err)
 	}
-	defer uiHelper.DisposeResource(cleanupCtx)
 
 	if err := action.Combine("Navigate to firmware installation page and install firmware",
 		uiHelper.WriteProtectDisabledPageOperation,
@@ -112,7 +110,6 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Fail to initialize RMA Helper: ", err)
 	}
-	defer uiHelper.DisposeResource(cleanupCtx)
 
 	if err := action.Combine("Navigate to Device Provision page",
 		uiHelper.FirmwareInstallationPageOperation,
@@ -152,13 +149,13 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 
 	if err := action.Combine("Navigate to Repair Complete page",
 		uiHelper.FinalizingRepairPageOperation,
-		uiHelper.RepairCompeletedPageOperation,
+		uiHelper.RepairCompletedPageOperation,
 	)(ctx); err != nil {
 		s.Fatal("Fail to navigate to Repair Complete page: ", err)
 	}
 }
 
-func genreateActionCombinedToDisableWP(option writeProtectDisableOption, uiHelper *rmaweb.UIHelper) action.Action {
+func generateActionCombinedToDisableWP(option writeProtectDisableOption, uiHelper *rmaweb.UIHelper) action.Action {
 	if option == manual {
 		return action.Combine("Navigate to Manual Disable Write Protect page and turn off write protect",
 			uiHelper.WelcomePageOperation,
