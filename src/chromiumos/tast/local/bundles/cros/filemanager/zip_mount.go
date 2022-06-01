@@ -48,7 +48,16 @@ func init() {
 			"Encrypted_AES-256.zip",
 			"Encrypted_ZipCrypto.zip",
 			"Texts.7z",
+			"Texts.iso",
 			"Texts.rar",
+			"Texts.tar",
+			"Texts.tar.Z",
+			"Texts.tar.bz2",
+			"Texts.tar.gz",
+			"Texts.tar.lz",
+			"Texts.tar.lzma",
+			"Texts.tar.xz",
+			"Texts.tar.zst",
 			"Texts.zip",
 		},
 		Params: []testing.Param{{
@@ -58,10 +67,64 @@ func init() {
 				ZipFiles: []string{"Texts.7z"},
 			},
 		}, {
+			Name: "mount_single_iso",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.iso"},
+			},
+		}, {
 			Name: "mount_single_rar",
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.rar"},
+			},
+		}, {
+			Name: "mount_single_tar",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar"},
+			},
+		}, {
+			Name: "mount_single_tar_bz2",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.bz2"},
+			},
+		}, {
+			Name: "mount_single_tar_gz",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.gz"},
+			},
+		}, {
+			Name: "mount_single_tar_lz",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.lz"},
+			},
+		}, {
+			Name: "mount_single_tar_lzma",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.lzma"},
+			},
+		}, {
+			Name: "mount_single_tar_xz",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.xz"},
+			},
+		}, {
+			Name: "mount_single_tar_zst",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.zst"},
+			},
+		}, {
+			Name: "mount_single_tar_z",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.Z"},
 			},
 		}, {
 			Name: "mount_single_zip",
@@ -92,7 +155,7 @@ func ZipMount(ctx context.Context, s *testing.State) {
 	// TODO(nigeltao): remove "FilesArchivemount" after it gets flipped to
 	// enabled-by-default (scheduled for M94) and before the feature flag
 	// expires (scheduled for M100). crbug.com/1216245
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount"))
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount2"))
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
