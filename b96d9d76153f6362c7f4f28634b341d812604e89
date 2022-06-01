@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6491fad7_4973c107",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-01T06:05:12Z",
+      "side": 1,
+      "message": "LoC is a lot thanks to gofmt, but this change is a few!",
+      "revId": "b96d9d76153f6362c7f4f28634b341d812604e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
