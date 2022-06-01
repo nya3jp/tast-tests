@@ -16,6 +16,24 @@
       "message": "Let\u0027s add a bit more detail about how you\u0027re accomplishing this",
       "revId": "a16cdbd8c363680e38c9601073bcdf9a96374506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54982f9_e1e2afc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-01T01:41:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e1223a_92bb52d7",
+      "revId": "a16cdbd8c363680e38c9601073bcdf9a96374506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
