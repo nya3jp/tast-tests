@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179529cf_7ed4f09f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-01T09:57:02Z",
+      "side": 1,
+      "message": "build error here.",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 8
+      },
+      "revId": "bbbff621c9c4c6e6f87edb1d4ede4b4405324e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4ea5b0_7fcaf113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-01T09:57:02Z",
+      "side": 1,
+      "message": "Clarification: Do you need to pass the test even if the command execution fails, if the log has \"Error: \" section?\n\nIt looks somewhat unnatural, so if this is really intended, could you document explicitly more?\nOtherwise, I\u0027m wondering if \n\n if err :\u003d cmd.Run(...); err !\u003d nil {\n   s.Errorf(...)\n }\n\nis just what you want? I.e., just reverting crrev.com/c/2773882\n\nAlso, I think you can just skip output error lines of warning, because all logs are stored in the dumped text file already.",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 2
+      },
+      "revId": "bbbff621c9c4c6e6f87edb1d4ede4b4405324e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
