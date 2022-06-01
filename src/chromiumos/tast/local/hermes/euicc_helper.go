@@ -68,6 +68,38 @@ func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool)
 	return profiles, nil
 }
 
+// PendingProfiles reads the eSIM, and returns the pending profiles in the eSIM.
+func (e *EUICC) PendingProfiles(ctx context.Context) ([]Profile, error) {
+	if err := e.Call(ctx, "RefreshInstalledProfiles", true).Err; err != nil {
+		return nil, errors.Wrap(err, "unable to refresh installed profiles")
+	}
+	if err := e.Call(ctx, "RequestInstalledProfiles").Err; err != nil {
+		return nil, errors.Wrap(err, "unable to request installed profiles")
+	}
+
+	if err := e.Call(ctx, "RequestPendingProfiles", hermesconst.RootSmdsAddress).Err; err != nil {
+		return nil, errors.Wrap(err, "unable to request pending profiles")
+	}
+
+	props, err := dbusutil.NewDBusProperties(ctx, e.DBusObject)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get euicc properties")
+	}
+	profilePaths, err := props.GetObjectPaths("PendingProfiles")
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get pending profiles")
+	}
+	profiles := make([]Profile, len(profilePaths))
+	for i, profilePath := range profilePaths {
+		obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesProfileInterface, profilePath)
+		if err != nil {
+			return nil, errors.Wrap(err, "unable to get dbus object for profile")
+		}
+		profiles[i] = Profile{obj}
+	}
+	return profiles, nil
+}
+
 // EnabledProfile reads the eSIM, and returns the enabled Profile of the eSIM if found.
 func (e *EUICC) EnabledProfile(ctx context.Context) (*Profile, error) {
 	profiles, err := e.InstalledProfiles(ctx, false)
