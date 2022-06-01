@@ -526,6 +526,75 @@ func init() {
 			},
 			ExtraData: []string{"tulip2-320x180.vp9.webm"},
 		}, {
+			Name: "aomenc_av1_360",
+			Val: testParam{
+				command:        "aomenc",
+				filename:       "tulip2-640x360.vp9.webm",
+				numFrames:      500,
+				fps:            30,
+				size:           coords.NewSize(640, 360),
+				commandBuilder: argsAomenc,
+				regExpFPS:      regExpFPSAomenc,
+				decoder:        encoding.LibaomDecoder,
+			},
+			ExtraData: []string{"tulip2-640x360.vp9.webm"},
+		}, {
+			Name: "aomenc_av1_720",
+			Val: testParam{
+				command:        "aomenc",
+				filename:       "tulip2-1280x720.vp9.webm",
+				numFrames:      500,
+				fps:            30,
+				size:           coords.NewSize(1280, 720),
+				commandBuilder: argsAomenc,
+				regExpFPS:      regExpFPSAomenc,
+				decoder:        encoding.LibaomDecoder,
+			},
+			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
+			// Devices with small SSDs can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
+		}, {
+			Name: "aomenc_av1_180_meet",
+			Val: testParam{
+				command:        "aomenc",
+				filename:       "gipsrestat-320x180.vp9.webm",
+				numFrames:      846,
+				fps:            50,
+				size:           coords.NewSize(320, 180),
+				commandBuilder: argsAomenc,
+				regExpFPS:      regExpFPSAomenc,
+				decoder:        encoding.LibaomDecoder,
+			},
+			ExtraData: []string{"gipsrestat-320x180.vp9.webm"},
+		}, {
+			Name: "aomenc_av1_360_meet",
+			Val: testParam{
+				command:        "aomenc",
+				filename:       "gipsrestat-640x360.vp9.webm",
+				numFrames:      846,
+				fps:            50,
+				size:           coords.NewSize(640, 360),
+				commandBuilder: argsAomenc,
+				regExpFPS:      regExpFPSAomenc,
+				decoder:        encoding.LibaomDecoder,
+			},
+			ExtraData: []string{"gipsrestat-640x360.vp9.webm"},
+		}, {
+			Name: "aomenc_av1_720_meet",
+			Val: testParam{
+				command:        "aomenc",
+				filename:       "gipsrestat-1280x720.vp9.webm",
+				numFrames:      846,
+				fps:            50,
+				size:           coords.NewSize(1280, 720),
+				commandBuilder: argsAomenc,
+				regExpFPS:      regExpFPSAomenc,
+				decoder:        encoding.LibaomDecoder,
+			},
+			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
+			// Devices with small SSDs can't store the files, see b/181165183.
+			ExtraHardwareDeps: hwdep.D(hwdep.MinStorage(24)),
+		}, {
 			Name: "openh264enc_180",
 			Val: testParam{
 				command:        "openh264enc",
