@@ -33,6 +33,23 @@
       "message": "lgtm",
       "revId": "537eb1b41d0c80a1ac29efc4968050a60ecc9cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1001317_35aa12ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-06-01T06:21:32Z",
+      "side": 1,
+      "message": "+tast-owners@",
+      "revId": "537eb1b41d0c80a1ac29efc4968050a60ecc9cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
