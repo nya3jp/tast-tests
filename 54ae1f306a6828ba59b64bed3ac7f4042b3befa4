@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27824b1_d3078665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-01T09:59:36Z",
+      "side": 1,
+      "message": "I think this is out of scope of \"validate\".\nCould you avoid adding non-trivial logic here, and instead move it caller side? Ditto for reset.",
+      "revId": "54ae1f306a6828ba59b64bed3ac7f4042b3befa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
