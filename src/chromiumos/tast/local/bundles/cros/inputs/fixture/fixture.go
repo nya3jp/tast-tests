@@ -542,11 +542,6 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 }
 
 func (f *inputsFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	// TODO(b/233971712) enable recorder in all tests if proved to be stable in
-	// informational tests.
-	if f.browserType == browser.TypeAsh {
-		return
-	}
 	recorder, err := uiauto.NewScreenRecorder(ctx, f.tconn)
 	if err != nil {
 		s.Log("Failed to create screen recorder: ", err)
@@ -568,19 +563,9 @@ func (f *inputsFixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestSta
 	}
 
 	// Do nothing if the recorder is not initialized.
-	if f.recorder == nil {
-		return
+	if f.recorder != nil {
+		f.recorder.StopAndSaveOnError(ctx, filepath.Join(s.OutDir(), "record.webm"), s.HasError)
 	}
-	if err := f.recorder.Stop(ctx); err != nil {
-		s.Log("Failed to stop screen recorder: ", err)
-	} else if s.HasError() {
-		recordingFile := filepath.Join(s.OutDir(), "record.webm")
-		if err := f.recorder.SaveInBytes(ctx, recordingFile); err != nil {
-			s.Log("Failed to save screen recording: ", err)
-		}
-		s.Log("Saved recording to ", recordingFile)
-	}
-	f.recorder.Release(ctx)
 }
 
 func (f *inputsFixtureImpl) Reset(ctx context.Context) error {
