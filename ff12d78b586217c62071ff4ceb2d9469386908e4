@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed2f351_0d8be594",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-01T23:06:42Z",
+      "side": 1,
+      "message": "I don\u0027t suggest using single-letter variable names here as these are public. Use `Arc` and `DUT/Device` instead.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "ff12d78b586217c62071ff4ceb2d9469386908e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d775aa_56da7276",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-01T23:06:42Z",
+      "side": 1,
+      "message": "Can you merge this with Launch? simply let `Launch` also return the start time: `func (app *App) Launch(ctx context.Context) (time.Duration, error)`",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 40
+      },
+      "revId": "ff12d78b586217c62071ff4ceb2d9469386908e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "345fa322_62c36567",
+        "filename": "src/chromiumos/tast/local/arc/apputil/uiwrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-01T23:06:42Z",
+      "side": 1,
+      "message": "I am not sure why you need this method (see the other comment).",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "ff12d78b586217c62071ff4ceb2d9469386908e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71f0460_9309de4c",
+        "filename": "src/chromiumos/tast/local/arc/apputil/uiwrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-01T23:06:42Z",
+      "side": 1,
+      "message": "```\nif err :\u003d btn.WaitForExists(ctx, timeout); err!\u003d nil{\n    if ui.IsTimeout(err) {\n\tcontinue\n    }\n    return errors.Wrap(err, \"failed to check if object exist\")\n}\n```",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "ff12d78b586217c62071ff4ceb2d9469386908e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
