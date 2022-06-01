@@ -117,7 +117,7 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 		s.Fatal("Parent is not a FakeDMS fixture")
 	}
 
-	vdiAccountID := "vdi_kiosk"
+	vdiAccountID := "vdi_kiosk@managedchrome.com"
 	accountType := policy.AccountTypeKioskApp
 	kioskAppPolicy := policy.DeviceLocalAccountInfo{
 		AccountID:   &vdiAccountID,

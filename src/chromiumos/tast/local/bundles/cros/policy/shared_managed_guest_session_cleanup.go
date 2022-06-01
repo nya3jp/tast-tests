@@ -56,7 +56,7 @@ func init() {
 func SharedManagedGuestSessionCleanup(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	accountID := "foo@bar.com"
+	accountID := "foo@managedchrome.com"
 
 	loginScreenExtensionID := mgs.LoginScreenExtensionID
 	inSessionExtensionID := mgs.InSessionExtensionID
