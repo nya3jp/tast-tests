@@ -98,6 +98,53 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 	return router, nil
 }
 
+// CreateRouterServerEnv creates two virtualnet Envs with the given options.
+// This first one (router) simulates the first hop for Internet access which is
+// connected to DUT directly, and the second one (server) simulates a server on
+// the Internet. This setup is useful when we need to test something that cannot
+// be done in local subnet, e.g., to test the default routes. On success, it's
+// caller's responsibility to call Cleanup() on the returned Env objects.
+func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, opts EnvOptions) (routerEnv, serverEnv *env.Env, err error) {
+	success := false
+
+	router, err := CreateRouterEnv(ctx, m, pool, opts)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to create router env")
+	}
+	defer func() {
+		if success {
+			return
+		}
+		if err := router.Cleanup(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to cleanup router env: ", err)
+		}
+	}()
+
+	server, err := env.New("server" + opts.NameSuffix)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to create server env")
+	}
+
+	if err := server.SetUp(ctx); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to set up server env")
+	}
+	defer func() {
+		if success {
+			return
+		}
+		if err := server.Cleanup(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to cleanup server env: ", err)
+		}
+	}()
+
+	if err := server.ConnectToRouter(ctx, router, pool); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect server to router")
+	}
+
+	success = true
+	return router, server, nil
+}
+
 func findEthernetServiceByIfName(ctx context.Context, m *shill.Manager, ifName string) (*shill.Service, error) {
 	testing.ContextLogf(ctx, "Waiting for device %s showing up", ifName)
 	device, err := m.WaitForDeviceByName(ctx, ifName, 5*time.Second)
