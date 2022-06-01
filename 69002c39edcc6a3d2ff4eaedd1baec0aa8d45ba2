@@ -39,6 +39,29 @@
       },
       "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16674f90_08a93420",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-01T04:49:18Z",
+      "side": 1,
+      "message": "type FixtValue struct {\n\tChrome *chrome.Chrome\n\tARC  *arc.ARC\n}\n\nNo need to create `Chrome()` and `ARC()`",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 48
+      },
+      "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
