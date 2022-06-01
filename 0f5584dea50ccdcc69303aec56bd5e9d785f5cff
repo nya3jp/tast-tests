@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f719e2_da8859d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-01T16:20:09Z",
+      "side": 1,
+      "message": "In the future, the two could have been separate CLs (and it will become even more important when we start promoting USS tests to CQ) as two things are separate ",
+      "revId": "0f5584dea50ccdcc69303aec56bd5e9d785f5cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
