@@ -127,14 +127,14 @@ func SpellCheckServiceEnabled(ctx context.Context, s *testing.State) {
 			defer closeBrowser(cleanupCtx)
 
 			// Inside ChromeOS settings, check that the button is restricted and set to the correct value.
-			if err := policyutil.SettingsPage(ctx, cr, br, "syncSetup").
+			if err := policyutil.OSSettingsPage(ctx, cr, "osSyncSetup").
 				SelectNode(ctx, nodewith.
 					Role(role.ToggleButton).
 					NameStartingWith("Enhanced spell check")).
 				Restriction(param.wantRestriction).
 				Checked(param.wantSettingsCheck).
 				Verify(); err != nil {
-				s.Error("Unexpected OS settings state: ", err)
+				s.Fatal("Unexpected OS settings state: ", err)
 			}
 
 			if param.wantRestriction == restriction.Disabled {
@@ -144,7 +144,7 @@ func SpellCheckServiceEnabled(ctx context.Context, s *testing.State) {
 						Role(role.Image).
 						NameStartingWith("Enhanced spell check")).
 					Verify(); err != nil {
-					s.Error("Unexpected OS settings state: ", err)
+					s.Fatal("Unexpected OS settings state: ", err)
 				}
 			}
 
