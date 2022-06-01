@@ -24,8 +24,9 @@ func init() {
 			"cros-network-health@google.com", // network-health team
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "networkDiagnosticsShillReset",
+		// TODO(b/234551696): Re-enable test.
+		Attr:    []string{},
+		Fixture: "networkDiagnosticsShillReset",
 	})
 }
 
