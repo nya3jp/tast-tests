@@ -41,7 +41,6 @@ const (
 	testUser2                = "testUser2@example.com"
 	testFile                 = "file"
 	testFileContent          = "content"
-	ussFlagFile              = "/var/lib/cryptohome/uss_enabled"
 )
 
 func PinWeaverWithAuthFactor(ctx context.Context, s *testing.State) {
@@ -85,13 +84,11 @@ func PinWeaverWithAuthFactor(ctx context.Context, s *testing.State) {
 
 	// Enable the UserSecretStash experiment for the duration of the test by
 	// creating a flag file that's checked by cryptohomed.
-	if out, err := cmdRunner.RunWithCombinedOutput(ctx, "mkdir", "-p", "/var/lib/cryptohome"); err != nil {
-		s.Fatal("Failed to create USS flag dir: ", string(out), err)
+	cleanupUSSExperiment, err := helper.EnableUserSecretStash()
+	if err != nil {
+		s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
 	}
-	if out, err := cmdRunner.RunWithCombinedOutput(ctx, "touch", ussFlagFile); err != nil {
-		s.Fatal("Failed to create USS flag file: ", string(out), err)
-	}
-	defer cmdRunner.Run(ctx, "rm", ussFlagFile)
+	defer cleanupUSSExperiment()
 
 	// Setup a user for testing. This user will be locked out and re-authed to ensure the pin is unlocked.
 	setupUserWithPin(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, s)

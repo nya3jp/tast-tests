@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -20,24 +20,23 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: UserSecretStashAddPin,
-		Desc: "Test user secret stash basic add pin flow with password",
+		Func: Recovery,
+		Desc: "Test addition and authentication of recovery auth factor with password",
 		Contacts: []string{
-			"hardikgoyal@chromium.org",
+			"anastasiian@chromium.org",
 			"cryptohome-core@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"pinweaver", "reboot"},
+		SoftwareDeps: []string{"tpm"},
 	})
 }
 
-func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
+func Recovery(ctx context.Context, s *testing.State) {
 	const (
 		userName        = "foo@bar.baz"
 		userPassword    = "secret"
-		userPin         = "123456"
 		passwordLabel   = "online-password"
-		pinLabel        = "test-pin"
+		recoveryLabel   = "test-recovery"
 		testFile        = "file"
 		testFileContent = "content"
 	)
@@ -89,6 +88,11 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
+	// Add a password auth factor to the user.
+	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+		s.Fatal("Failed to add a password authfactor: ", err)
+	}
+
 	// Write a test file to verify persistence.
 	userPath, err := cryptohome.UserPath(ctx, userName)
 	if err != nil {
@@ -99,9 +103,24 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to write a file to the vault: ", err)
 	}
 
-	// Add a password auth factor to the user.
-	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
-		s.Fatal("Failed to add a password authfactor: ", err)
+	testTool, err := cryptohome.NewRecoveryTestToolWithFakeMediator()
+	if err != nil {
+		s.Fatal("Failed to initialize RecoveryTestTool: ", err)
+	}
+	defer func(s *testing.State, testTool *cryptohome.RecoveryTestTool) {
+		if err := testTool.RemoveDir(); err != nil {
+			s.Error("Failed to remove dir: ", err)
+		}
+	}(s, testTool)
+
+	mediatorPubKey, err := testTool.FetchFakeMediatorPubKeyHex(ctx)
+	if err != nil {
+		s.Fatal("Failed to get mediator pub key: ", err)
+	}
+
+	// Add a recovery auth factor to the user.
+	if err := client.AddRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, mediatorPubKey); err != nil {
+		s.Fatal("Failed to add a recovery auth factor: ", err)
 	}
 
 	// Unmount the user.
@@ -109,44 +128,31 @@ func UserSecretStashAddPin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	// Authenticate a new auth session via the auth factor, mount the user and add a pin.
-	authSessionID, err = client.StartAuthSession(ctx, userName /*ephemeral=*/, false)
+	// Authenticate a new auth session via the new added recovery auth factor and mount the user.
+	authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/)
 	if err != nil {
 		s.Fatal("Failed to start auth session for re-mounting: ", err)
 	}
-	if err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
-		s.Fatal("Failed to authenticate with auth session: ", err)
-	}
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
-		s.Fatal("Failed to prepare persistent vault: ", err)
-	}
 
-	// Verify that the test file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
-	}
-
-	// Add a pin auth factor to the user.
-	if err := client.AddPinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
-		s.Fatal("Failed to create persistent user: ", err)
-	}
-
-	// Unmount the user.
-	if err := client.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
-	}
-
-	// Authenticate a new auth session via the new added pin auth factor and mount the user.
-	authSessionID, err = client.StartAuthSession(ctx, userName /*ephemeral=*/, false)
+	epoch, err := testTool.FetchFakeEpochResponseHex(ctx)
 	if err != nil {
-		s.Fatal("Failed to start auth session for re-mounting: ", err)
+		s.Fatal("Failed to get fake epoch response: ", err)
 	}
-	if err := client.AuthenticatePinAuthFactor(ctx, authSessionID, pinLabel, userPin); err != nil {
-		s.Fatal("Failed to authenticate with auth session: ", err)
+
+	requestHex, err := client.FetchRecoveryRequest(ctx, authSessionID, recoveryLabel, epoch)
+	if err != nil {
+		s.Fatal("Failed to get recovery request: ", err)
 	}
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
+
+	response, err := testTool.FakeMediateWithRequest(ctx, requestHex)
+	if err != nil {
+		s.Fatal("Failed to mediate: ", err)
+	}
+
+	if err := client.AuthenticateRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, epoch, response); err != nil {
+		s.Fatal("Failed to authenticate recovery auth factor: ", err)
+	}
+	if err := client.PreparePersistentVault(ctx, authSessionID, false /*ecryptfs*/); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 
