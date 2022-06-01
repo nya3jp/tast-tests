@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8fb8b4_ef710f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:18:28Z",
+      "side": 1,
+      "message": "A better way to do this for large number of locators:\n\nvar photosWebAreaFinder \u003d nodewith.Ancestor(photosWebArea)\nnextButton :\u003d photosWebAreaFinder.Name(\"Next\").Role(role.Button)\n\nThis can reduce a little bit code, but also good for code readability.\n\nUp to you.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "b0ec342d0def56299d9e3c9cbfea09149497c7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
