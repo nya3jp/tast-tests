@@ -113,7 +113,7 @@ func RecoveryCryptoWithServer(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to execute CreateRecoveryRequest: ", err)
 	}
 
-	request, err := testTool.GetRecoveryRequest()
+	request, err := testTool.FetchRecoveryRequest()
 	if err != nil {
 		s.Fatal("Failed to get recovery request: ", err)
 	}
