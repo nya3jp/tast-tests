@@ -16,6 +16,52 @@
       "message": "+tast-owners@ for the tast review. Thanks!",
       "revId": "002bbe848a633032931ae4f63823209f8b63be77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d93d945_49307634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-06-01T00:42:19Z",
+      "side": 1,
+      "message": "This function doesn\u0027t do any cleanup itself, so it requires that callers invoke Cleanup even if SetUp fails. I think that\u0027s a little unusual, so it might be better to call Cleanup in this function if it fails.",
+      "range": {
+        "startLine": 89,
+        "startChar": 14,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "002bbe848a633032931ae4f63823209f8b63be77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df1152c_0ab21138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-06-01T00:42:19Z",
+      "side": 1,
+      "message": "nit: updateLastErrAndLog?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 55
+      },
+      "revId": "002bbe848a633032931ae4f63823209f8b63be77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
