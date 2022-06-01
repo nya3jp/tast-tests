@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d4856a92_a474d03f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-01T18:52:30Z",
+      "side": 1,
+      "message": "lgtm with code comment edits",
+      "revId": "347ef07949518f5d8b6228a8d14e807cca8494ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4998cc5c_29036b8e",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 3
@@ -19,6 +36,52 @@
         "startChar": 5,
         "endLine": 122,
         "endChar": 25
+      },
+      "revId": "347ef07949518f5d8b6228a8d14e807cca8494ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e0c209c_de5c07ce",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-01T18:52:30Z",
+      "side": 1,
+      "message": "`stores`",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 14
+      },
+      "revId": "347ef07949518f5d8b6228a8d14e807cca8494ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616074ec_5dc1487f",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-01T18:52:30Z",
+      "side": 1,
+      "message": "`error`",
+      "range": {
+        "startLine": 129,
+        "startChar": 39,
+        "endLine": 129,
+        "endChar": 42
       },
       "revId": "347ef07949518f5d8b6228a8d14e807cca8494ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
