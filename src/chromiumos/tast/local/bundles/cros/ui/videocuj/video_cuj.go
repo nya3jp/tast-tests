@@ -322,12 +322,9 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 			}
 
 			// Switch back to video playing.
-			if tabletMode && appName == YoutubeApp {
+			if appName == YoutubeApp {
 				if err := uiHandler.SwitchToAppWindow("YouTube")(ctx); err != nil {
-					return errors.Wrap(err, "failed to click app from Hotseat")
-				}
-				if err := kb.Accel(ctx, "F4"); err != nil {
-					return errors.Wrap(err, "failed to type the tab key")
+					return errors.Wrap(err, "failed to switch to YouTube app")
 				}
 			} else {
 				if err := uiHandler.SwitchWindow()(ctx); err != nil {
