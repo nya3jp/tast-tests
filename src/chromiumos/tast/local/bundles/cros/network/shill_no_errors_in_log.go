@@ -8,6 +8,7 @@ import (
 	"context"
 	"io"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -132,9 +133,23 @@ func ShillNoErrorsInLog(ctx context.Context, s *testing.State) {
 
 	if len(unexpected) != 0 {
 		s.Log("Unexpected errors: ")
-		for _, e := range unexpected {
-			s.Log(e)
+		const maxLines = 3
+		msglines := len(unexpected)
+		if msglines > maxLines {
+			msglines = maxLines
 		}
-		s.Fatal("Number of unexpected error lines: ", len(unexpected))
+		msgs := make([]string, msglines)
+		for n, e := range unexpected {
+			s.Log(e)
+			if n < msglines {
+				msgs[n] = e.Message
+			}
+		}
+		msg := strings.Join(msgs, ", ")
+		if msglines != len(unexpected) {
+			s.Fatalf("Unexpected error lines, %v/%v: %v", msglines, len(unexpected), msg)
+		} else {
+			s.Fatalf("Unexpected error lines(%v): %v", msglines, msg)
+		}
 	}
 }
