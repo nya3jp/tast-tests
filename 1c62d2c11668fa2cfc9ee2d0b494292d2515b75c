@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3962a1fc_38591a04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-01T15:46:46Z",
+      "side": 1,
+      "message": "LGTM\nPlease wait for a +1 from Emmanuel before merging the CL.",
+      "revId": "1c62d2c11668fa2cfc9ee2d0b494292d2515b75c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
