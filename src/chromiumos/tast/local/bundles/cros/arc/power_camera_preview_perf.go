@@ -22,7 +22,7 @@ import (
 
 type powerCameraPreviewPerfArgs struct {
 	targetFPS     string
-	dischargeMode setup.BatteryDischargeMode
+	dischargeMode *setup.BatteryDischargeMode
 }
 
 func init() {
@@ -115,8 +115,8 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 	}()
 
 	args := s.Param().(powerCameraPreviewPerfArgs)
-	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: args.dischargeMode, NightLight: setup.DisableNightLight}))
+	sup.Add(setup.PowerTest(ctx, tconn, args.dischargeMode, setup.PowerTestOptions{
+		Wifi: setup.DisableWifiInterfaces, NightLight: setup.DisableNightLight}))
 
 	// Install camera testing app.
 	a := s.FixtValue().(*arc.PreData).ARC

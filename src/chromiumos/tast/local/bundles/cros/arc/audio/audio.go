@@ -36,7 +36,7 @@ type TestParameters struct {
 	Permission           string
 	Class                string
 	PerformanceMode      PerformanceMode
-	BatteryDischargeMode setup.BatteryDischargeMode
+	BatteryDischargeMode *setup.BatteryDischargeMode
 }
 
 const (
