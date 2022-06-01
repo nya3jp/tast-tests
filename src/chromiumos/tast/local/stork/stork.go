@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -25,7 +26,6 @@ const (
 const (
 	// Used in POST request.
 	gtsTestProfileListKey            = "gtsTestProfileList"
-	eidValue                         = ""
 	confirmationCodeValue            = ""
 	maxConfirmationCodeAttemptsValue = 1
 	maxDownloadAttemptsValue         = 5
@@ -63,6 +63,8 @@ const (
 
 // ActivationCode to be used to install an eSIM profile.
 type ActivationCode string
+
+var eidValue string = ""
 
 // CleanupProfileFunc alerts Stork that the profile has been used.
 type CleanupProfileFunc func(ctx context.Context) error
@@ -156,7 +158,7 @@ func FetchStorkProfile(ctx context.Context) (ActivationCode, CleanupProfileFunc,
 	if err != nil {
 		return ActivationCode(""), nil, err
 	}
-
+	testing.ContextLog(ctx, "TBD Remove: generatedstorkrequestdata: ", data)
 	command := testexec.CommandContext(ctx, curlCommandName,
 		cacertArgName, cacertArgValue,
 		hArgName, hArgValue,
@@ -198,4 +200,10 @@ func FetchStorkProfile(ctx context.Context) (ActivationCode, CleanupProfileFunc,
 	})
 
 	return activationCode, cleanpProfile, nil
+}
+
+// FetchStorkProfileWithEid fetches a test eSIM profile from Stork for given Eid.
+func FetchStorkProfileWithEid(ctx context.Context, eid string) (ActivationCode, CleanupProfileFunc, error) {
+	eidValue = eid
+	return FetchStorkProfile(ctx)
 }

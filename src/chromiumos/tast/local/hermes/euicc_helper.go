@@ -44,6 +44,23 @@ func NewEUICC(ctx context.Context, euiccNum int) (*EUICC, error) {
 	return &EUICC{obj}, nil
 }
 
+// GetEid reads the eSIM, and returns the Eid property of eSIM.
+func (e *EUICC) GetEid(ctx context.Context, shouldNotSwitchSlot bool) (string, error) {
+	if err := e.Call(ctx, "Eid", shouldNotSwitchSlot).Err; err != nil {
+		return "", errors.Wrap(err, "unable to request installed profiles")
+	}
+	props, err := dbusutil.NewDBusProperties(ctx, e.DBusObject)
+	if err != nil {
+		return "", errors.Wrap(err, "unable to get euicc properties")
+	}
+	Eid, err := props.GetString("Eid")
+	if err != nil {
+		return "", errors.Wrap(err, "unable to get Eid")
+	}
+
+	return Eid, nil
+}
+
 // InstalledProfiles reads the eSIM, and returns the installed profiles in the eSIM.
 func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool) ([]Profile, error) {
 	if err := e.Call(ctx, "RefreshInstalledProfiles", shouldNotSwitchSlot).Err; err != nil {
@@ -56,6 +73,30 @@ func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool)
 	profilePaths, err := props.GetObjectPaths("InstalledProfiles")
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get installed profiles")
+	}
+	profiles := make([]Profile, len(profilePaths))
+	for i, profilePath := range profilePaths {
+		obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesProfileInterface, profilePath)
+		if err != nil {
+			return nil, errors.Wrap(err, "unable to get dbus object for profile")
+		}
+		profiles[i] = Profile{obj}
+	}
+	return profiles, nil
+}
+
+// PendingProfiles reads the eSIM, and returns the pending profiles in the eSIM.
+func (e *EUICC) PendingProfiles(ctx context.Context, shouldNotSwitchSlot bool) ([]Profile, error) {
+	if err := e.Call(ctx, "RequestPendingProfiles", hermesconst.RootSmdsAddress, shouldNotSwitchSlot).Err; err != nil {
+		return nil, errors.Wrap(err, "unable to request pending profiles")
+	}
+	props, err := dbusutil.NewDBusProperties(ctx, e.DBusObject)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get euicc properties")
+	}
+	profilePaths, err := props.GetObjectPaths("PendingProfiles")
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get pending profiles")
 	}
 	profiles := make([]Profile, len(profilePaths))
 	for i, profilePath := range profilePaths {
