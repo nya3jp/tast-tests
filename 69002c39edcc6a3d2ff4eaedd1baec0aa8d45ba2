@@ -16,6 +16,29 @@
       "message": "Discussed with Alvin. Alvin will own future ACR++ testing review.",
       "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81bab5c5_f616070f",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-01T04:32:01Z",
+      "side": 1,
+      "message": "you also need `PreTestTimeout`, otherwise the PreTest never runs.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
