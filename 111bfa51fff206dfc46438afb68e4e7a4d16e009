@@ -16,6 +16,213 @@
       "message": "Hi reviewers, sorry for the delay, all comments are addressed, please review, thanks!",
       "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14b18e90_a9ed5eac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/test_jpeg.jpeg.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:50:03Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files\n\nthe suffix is the date this data being added.",
+      "range": {
+        "startLine": 2,
+        "startChar": 67,
+        "endLine": 2,
+        "endChar": 85
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833b0555_d05ed74f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:50:03Z",
+      "side": 1,
+      "message": "nit: should",
+      "range": {
+        "startLine": 97,
+        "startChar": 107,
+        "endLine": 97,
+        "endChar": 113
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091a3c4d_a9017da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:50:03Z",
+      "side": 1,
+      "message": "nit: should",
+      "range": {
+        "startLine": 102,
+        "startChar": 107,
+        "endLine": 102,
+        "endChar": 113
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8798b8a2_f135a7a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:50:03Z",
+      "side": 1,
+      "message": "nit: should",
+      "range": {
+        "startLine": 107,
+        "startChar": 107,
+        "endLine": 107,
+        "endChar": 113
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7db8a6_77d1b73e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:50:03Z",
+      "side": 1,
+      "message": "This comment repeated 3 times and not clear what is commented to.\n\nComment is usually immediately above the code block.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 133
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6be8ce_b6bcda58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:50:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 134
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580e1a62_a991da97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:50:03Z",
+      "side": 1,
+      "message": "nit: reloadFilesAppPage",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 23
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69174c98_2307eced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:50:03Z",
+      "side": 1,
+      "message": "do you need a 3s interval for a wait function?",
+      "range": {
+        "startLine": 211,
+        "startChar": 53,
+        "endLine": 211,
+        "endChar": 78
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d82bb1_cdb5037c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-01T07:50:03Z",
+      "side": 1,
+      "message": "This is so weird. \n\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n    if err :\u003d reloadFilesappPage(ctx, filesAppConn); err !\u003d nil {\n        return testing.PollBreak(errors.Wrap(err, \"failed to reload filesapp page\"))\n    }\n    \n    if err :\u003d files.WaitForFile(folderName); err !\u003d nil{\n        return err\n    }\n}, \u0026testing.PollOptions{Timeout: driveSyncTimeout, Interval: 3 * time.Second}).\n\nI know that the first reloadpage might not be necessary. However the sync is unlikely to happen immediately.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 2
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
