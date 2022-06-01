@@ -66,7 +66,7 @@ func SecondaryAppsInstalled(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	param := s.Param().(secondaryAppsInstalledParam)
 
-	accountID := "kiosk_account"
+	accountID := "kiosk_account@managedchrome.com"
 	accountType := policy.AccountTypeKioskApp
 	appID := "bkledbfligfdnfkmccllbllealecompm"
 	appName := "Dev Kiosk App for multi-apps"
