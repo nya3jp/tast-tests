@@ -87,11 +87,9 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 	}
 
 	// Install gateway address and routes.
-	if err := d.env.RunWithoutChroot(ctx, "ip", "addr", "add", gateway.String(), "dev", d.env.VethInName); err != nil {
-		return errors.Wrap(err, "failed to install gateway address")
-	}
-	if err := d.env.RunWithoutChroot(ctx, "ip", "route", "add", d.subnet.String(), "dev", d.env.VethInName); err != nil {
-		return errors.Wrap(err, "failed to install route")
+	d.env.VethInStaticIPv4Addr = gateway
+	if err := d.env.InstallIPAndRoute(ctx, d.env.VethInName, gateway, d.subnet); err != nil {
+		return errors.Wrap(err, "failed to configure IPv4 in netns")
 	}
 
 	// Start the command.
