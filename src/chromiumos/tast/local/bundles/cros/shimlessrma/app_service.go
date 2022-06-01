@@ -56,7 +56,7 @@ func (shimlessRMA *AppService) NewShimlessRMA(ctx context.Context,
 		}
 
 		if _, err := os.Create(skipPowerwashFile); err != nil {
-			return nil, errors.Wrap(err, "failed to create .disable_powerwas file")
+			return nil, errors.Wrap(err, "failed to create .disable_powerwash file")
 		}
 	}
 
@@ -137,7 +137,7 @@ func (shimlessRMA *AppService) LeftClickButton(ctx context.Context,
 	return &empty.Empty{}, nil
 }
 
-// WaitUntilButtonEnabled waits for button with label eanbled.
+// WaitUntilButtonEnabled waits for button with label enabled.
 func (shimlessRMA *AppService) WaitUntilButtonEnabled(ctx context.Context,
 	req *pb.WaitUntilButtonEnabledRequest) (*empty.Empty, error) {
 	waitTimeout := time.Duration(req.DurationInSecond) * time.Second
