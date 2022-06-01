@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -15,6 +16,7 @@ import (
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/bond"
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -32,9 +34,10 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
@@ -82,8 +85,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
-		SoftwareDeps: []string{"chrome", "arc"},
-		Data:         []string{cujrecorder.SystemTraceConfigFile},
+		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
 		Vars: []string{
 			"mute",
 			"record",
@@ -158,6 +160,7 @@ func init() {
 			// Even bigger meeting.
 			Name:    "49p",
 			Timeout: defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
@@ -341,20 +344,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
-	// Sets the display zoom factor to minimum, to ensure that all
-	// meeting participants' video can be shown simultaneously.
-	info, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the primary display info: ", err)
-	}
-	zoomInitial := info.DisplayZoomFactor
-	zoomMin := info.AvailableDisplayZoomFactors[0]
-	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
-		s.Fatalf("Failed to set display zoom factor to minimum %f: %v", zoomMin, err)
-	}
-
-	defer display.SetDisplayProperties(closeCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
-
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
 	switch meet.browserType {
@@ -455,7 +444,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	configs := append(cujrecorder.DeprecatedMetricConfigs(),
+	configs := append(cujrecorder.MetricConfigs(),
 		cujrecorder.NewCustomMetricConfig(
 			"Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter,
 			[]int64{1, 20}),
@@ -473,7 +462,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	if meet.tracing {
-		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+		recorder.EnableTracing(s.OutDir())
 	}
 	defer func() {
 		if err := recorder.Close(closeCtx); err != nil {
@@ -545,6 +534,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close the meeting: ", err)
 		}
 	}()
+
+	// Sets the display zoom factor to minimum, to ensure that all
+	// meeting participants' video can be shown simultaneously.
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+	zoomInitial := info.DisplayZoomFactor
+	zoomMin := info.AvailableDisplayZoomFactors[0]
+	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
+		s.Fatalf("Failed to set display zoom factor to minimum %f: %v", zoomMin, err)
+	}
+	defer display.SetDisplayProperties(closeCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
 
 	inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	s.Logf("Is in tablet-mode: %t", inTabletMode)
@@ -779,6 +781,18 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
+		prof, err := profiler.Start(ctx, s.OutDir(), profiler.Perf(profiler.PerfRecordOpts()))
+		if err != nil {
+			return errors.Wrap(err, "failed to start the profiler")
+		}
+		if prof != nil {
+			defer func() {
+				if err := prof.End(closeCtx); err != nil {
+					s.Error("Failed to stop profiler: ", err)
+				}
+			}()
+		}
+
 		errc := make(chan error)
 		s.Log("Keeping the meet session for ", meetTimeout)
 		go func() {
@@ -875,17 +889,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if path, err := dumpWebRTCInternals(ctx, tconn, webRTCUI, cr.NormalizedUser()); err != nil {
 			s.Error("Failed to download dump from chrome://webrtc-internals: ", err)
 		} else {
-			dump, readErr := os.ReadFile(path)
-			if readErr != nil {
-				s.Error("Failed to read WebRTC internals dump from Downloads folder: ", readErr)
+			if err := copyFileForTestResults(path, filepath.Join(s.OutDir(), "webrtc-internals.json")); err != nil {
+				s.Error("Failed to copy WebRTC internals dump to results folder: ", err)
 			}
 			if err := os.Remove(path); err != nil {
 				s.Error("Failed to remove WebRTC internals dump from Downloads folder: ", err)
-			}
-			if readErr == nil {
-				if err := os.WriteFile(filepath.Join(s.OutDir(), "webrtc-internals.json"), dump, 0644); err != nil {
-					s.Error("Failed to write WebRTC internals dump to test results folder: ", err)
-				}
 			}
 		}
 
@@ -1022,6 +1030,25 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 }
 
+// copyFileForTestResults copies a file. The destination file must not already exist. The
+// created copy has file permissions 0644 regardless of the file permissions of the original.
+func copyFileForTestResults(srcPath, dstPath string) error {
+	src, err := os.Open(srcPath)
+	if err != nil {
+		return err
+	}
+	defer src.Close()
+
+	dst, err := os.OpenFile(dstPath, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0644)
+	if err != nil {
+		return err
+	}
+	defer dst.Close()
+
+	_, err = io.Copy(dst, src)
+	return err
+}
+
 // focusWebRTCInternals activates the browser tab for chrome://webrtc-internals.
 func focusWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, bt browser.Type, kw *input.KeyboardEventWriter) error {
 	w, err := ash.FindOnlyWindow(ctx, tconn, ash.BrowserTitleMatch(bt, "Meet"))
@@ -1044,9 +1071,14 @@ func focusWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, bt browse
 // returns the file path. This function assumes that chrome://webrtc-internals
 // is already shown, with the Create Dump section expanded.
 func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, username string) (string, error) {
-	downloadsPath, err := cryptohome.DownloadsPath(ctx, username)
+	helper, err := hwsec.NewHelper(hwsec.NewCmdRunner())
 	if err != nil {
-		return "", errors.Wrap(err, "failed to get Downloads path")
+		return "", errors.Wrap(err, "failed to create hwsec local helper")
+	}
+
+	sanitizedUsername, err := helper.CryptohomeClient().GetSanitizedUsername(ctx, username, true)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get sanitized username")
 	}
 
 	button := nodewith.Name("Download the PeerConnection updates and stats data").Role(role.Button)
@@ -1062,7 +1094,7 @@ func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto
 		return "", errors.Wrap(err, "failed to wait for download notification")
 	}
 
-	return filepath.Join(downloadsPath, notification.Message), nil
+	return filepath.Join("/home/user", sanitizedUsername, "Downloads", notification.Message), nil
 }
 
 // reportCodec looks for node names containing given descriptions of a vp8 video stream
