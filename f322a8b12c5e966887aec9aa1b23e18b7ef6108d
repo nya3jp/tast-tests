@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89022bf6_bd2b9ce2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-01T10:26:53Z",
+      "side": 1,
+      "message": "Rebeased the change.\n\ntast owners, PTAL.",
+      "revId": "f322a8b12c5e966887aec9aa1b23e18b7ef6108d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

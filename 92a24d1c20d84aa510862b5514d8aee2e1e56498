@@ -39,6 +39,30 @@
       },
       "revId": "92a24d1c20d84aa510862b5514d8aee2e1e56498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c92a4a61_07a42240",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-01T10:26:53Z",
+      "side": 1,
+      "message": "Let\u0027s leave it to the other change. This one is already large and has too many dependencies.",
+      "parentUuid": "4a958dab_929bac41",
+      "range": {
+        "startLine": 55,
+        "startChar": 54,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "92a24d1c20d84aa510862b5514d8aee2e1e56498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
