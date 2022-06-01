@@ -16,6 +16,23 @@
       "message": "The submission to CQ was failing because it seems that the help menu was not being found in chromium when running in one of the boards. I have updated the dependency so the test is skipped on boards without chrome_internal (see https://crrev.com/c/2935637 for reference). \n\nAsking for review again just in case. Thanks!",
       "revId": "809a06b9823cb640a99bbe999b01b1c8217dc8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad8e793_aaee43f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-01T13:02:32Z",
+      "side": 1,
+      "message": "Still LGTM.",
+      "revId": "809a06b9823cb640a99bbe999b01b1c8217dc8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
