@@ -16,6 +16,75 @@
       "message": "I think this is valuable for validating veth / shill behavior. PTAL and LMKWYT!\n",
       "revId": "e1098f092d6be22b552700f6c993e4076f431936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "770c21b6_1fa4e5ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-01T04:03:02Z",
+      "side": 1,
+      "message": "We should clarify this veth pair is meant for testing. Otherwise some people might be confused if they think these refers to the normal usage of veth on prod images.",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 55
+      },
+      "revId": "e1098f092d6be22b552700f6c993e4076f431936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf70272_d3271144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-01T04:03:02Z",
+      "side": 1,
+      "message": "We should clarify that this is not a normal workflow on a non-test image. Shill manages a veth endpoint only during a few specific tests, as a way to emulate an ethernet network.\n\nSo from a core feature set perspective, this really only test that shill ethernet autodetection code works and creates a Service if a eth-like interface with the right name appears in the environment.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "e1098f092d6be22b552700f6c993e4076f431936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66aaa44a_d00b5f73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-01T04:03:02Z",
+      "side": 1,
+      "message": "Is there an assumption here and in the block below that the device is already connected to a ethernet network ?\n\nWe should make sure the test can pass if the DUT is only connected to WiFi, so maybe we can check if there is some real ethernet network in the first place before creating the veth pair, and only do these checks if we found such a network.\n\nAlternatively we would need a way to express this constraint in the testing.Test object.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "e1098f092d6be22b552700f6c993e4076f431936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
