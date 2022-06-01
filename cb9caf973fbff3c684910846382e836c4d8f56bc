@@ -68,6 +68,24 @@
       "parentUuid": "43c37ac4_3083908e",
       "revId": "cb9caf973fbff3c684910846382e836c4d8f56bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc3b0aa_0c15a72c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-01T23:45:05Z",
+      "side": 1,
+      "message": "Thank you for the detailed reply!\n\nGiven that the output isn\u0027t large, and given that the \"cryptohome_binary\" can be used in scenarios like `testing.Poll`, I decided to go ahead with the following approach: use error chaining, but flatten the stdout to remove any line breaks in it.\n\nDoes this look reasonable to you?",
+      "parentUuid": "3e7a53b3_d05e1785",
+      "revId": "cb9caf973fbff3c684910846382e836c4d8f56bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
