@@ -70,6 +70,7 @@ func init() {
 // Known issues: b:187165216 describes an issue that click event cannot be executed
 // on extended display on certain models.
 func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
+	p := s.Param().(extendedDisplayCUJParam)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
@@ -169,6 +170,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	testResources := videocuj.TestResources{
 		Cr:        cr,
 		Tconn:     tconn,
+		Bt:        p.browserType,
 		A:         a,
 		Kb:        kb,
 		UIHandler: uiHandler,
