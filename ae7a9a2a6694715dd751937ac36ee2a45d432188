@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "04122cee_33207826",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-06-01T01:40:13Z",
+      "side": 1,
+      "message": "Should work on all boards.\nUpdated commit message.",
+      "parentUuid": "ffc4be7a_1d515242",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0446f31c_196bccd3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf904a0a_7961ac99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-06-01T01:40:13Z",
+      "side": 1,
+      "message": "This is less of a table-driven test.\n\nAll apps here forms a single assertion, if any of the app isn\u0027t installed, the whole test should fail. We aren\u0027t interested to see if each app on its own works fine.\n\nAre you suggesting moving this to test params?",
+      "parentUuid": "c3a97c1c_ef1a8f62",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16efe1e9_2d2040f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
         "patchSetId": 1
@@ -65,6 +101,30 @@
       "writtenOn": "2022-05-31T20:44:12Z",
       "side": 1,
       "message": "If this fails, shouldn\u0027t we fatal? The test will probably fail in a much less obvious way later otherwise...",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "232c1189_6b280cc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-06-01T01:40:13Z",
+      "side": 1,
+      "message": "Done. Good point!",
+      "parentUuid": "16efe1e9_2d2040f6",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -110,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "970e0b10_cf2cd644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-06-01T01:40:13Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "5fc5c896_5d433f87",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2a926c8_55755586",
@@ -145,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0735103_21501862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-06-01T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c97be775_ab0e04ae",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fa1f699_e6ec25b9",
@@ -158,6 +254,24 @@
       "writtenOn": "2022-05-31T18:32:22Z",
       "side": 1,
       "message": "Please add a comment to document what this function is doing\n\nAdditionally, please rename this function to remove the word \"get\": https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "532dddb3_772e5047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-06-01T01:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fa1f699_e6ec25b9",
       "revId": "ae7a9a2a6694715dd751937ac36ee2a45d432188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
