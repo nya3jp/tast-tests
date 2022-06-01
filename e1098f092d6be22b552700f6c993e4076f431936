@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ca42c3_dd234eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-01T20:13:19Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "770c21b6_1fa4e5ad",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 55
+      },
+      "revId": "e1098f092d6be22b552700f6c993e4076f431936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddf70272_d3271144",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45296c64_1210172c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-01T20:13:19Z",
+      "side": 1,
+      "message": "Clarified. Let me know if you\u0027d like something different.",
+      "parentUuid": "ddf70272_d3271144",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "e1098f092d6be22b552700f6c993e4076f431936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66aaa44a_d00b5f73",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-06-01T04:03:02Z",
       "side": 1,
       "message": "Is there an assumption here and in the block below that the device is already connected to a ethernet network ?\n\nWe should make sure the test can pass if the DUT is only connected to WiFi, so maybe we can check if there is some real ethernet network in the first place before creating the veth pair, and only do these checks if we found such a network.\n\nAlternatively we would need a way to express this constraint in the testing.Test object.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "e1098f092d6be22b552700f6c993e4076f431936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5ddf47_a1160ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-01T20:13:19Z",
+      "side": 1,
+      "message": "I am not aware of any wifi-only DUT use case in the lab. I\u0027ll add an explicit check at the beginning of the test.",
+      "parentUuid": "66aaa44a_d00b5f73",
       "range": {
         "startLine": 100,
         "startChar": 0,
