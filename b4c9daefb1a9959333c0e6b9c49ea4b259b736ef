@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495ab69b_a01fe45a",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-01T18:29:20Z",
+      "side": 1,
+      "message": "Please see comment [#139](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3680287/comment/53c73950_b665ba5e/).",
+      "parentUuid": "d281eca1_361d1b18",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64cc1d74_5197bb24",
