@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1047271e_fd257768",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T02:46:30Z",
+      "side": 1,
+      "message": "I think you need to fix",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "20754ee8_2626b961",
@@ -14,6 +31,80 @@
       "writtenOn": "2022-05-31T18:49:02Z",
       "side": 1,
       "message": "shadow reviewer lgtm",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf14d097_c8518381",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T02:46:30Z",
+      "side": 1,
+      "message": "The approach having option objects to carry execution result is problematic. The option should be immutable input parameters for the worker/test body to run the test. And you shall have another object to hold the results.\n\nIf your team insist the way of delivering results by modifying the input parameters, it is better to have the name changed from options to modules and make each attributes\u0027 type pointer:\n```\ntype PowerTestModules struct {\n\tBattery    *BatteryDischargeMode\n\t// ...\n}\n```\n ",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2407af_7ff14b76",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T02:46:30Z",
+      "side": 1,
+      "message": "It is not a good idea of holding mutable objects in global variables. In the use case, it is better to have functions to return the two default basicBatteryDischargeMode objects:\n\n```\nfunc NoBatteryDischargeMode() *basicBatteryDischargeMode {\n  return \u0026basicBatteryDischargeMode{...}\n}\n```\n\nHowever, this is beyond the context of the CL. Please fix it in the following CL.",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64cc1d74_5197bb24",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T02:46:30Z",
+      "side": 1,
+      "message": "It returns a pointer: *BatteryDischargeMode",
+      "range": {
+        "startLine": 174,
+        "startChar": 60,
+        "endLine": 174,
+        "endChar": 80
+      },
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc44a26_02db5722",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-01T02:46:30Z",
+      "side": 1,
+      "message": "The code won\u0027t run as you pass a pointer to a value field.",
       "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
