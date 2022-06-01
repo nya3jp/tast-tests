@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c91a7c_76ed724a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-01T17:47:32Z",
+      "side": 1,
+      "message": "Brilliant!",
+      "revId": "35d4bf54d34bd3df40c8f6ed66f86f5958aae826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51234394_9b2b33de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-01T17:47:32Z",
+      "side": 1,
+      "message": "nit: It might be good to also log the output of ffprobe\n(or ffprobe | grep...) into a file like e.g. in l.904-906\nso it can be parsed by a human when things go wrong (it \nhas helped me figure out regressions etc). Can we do that\nhere?",
+      "revId": "35d4bf54d34bd3df40c8f6ed66f86f5958aae826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525a07bd_31abe947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-01T17:47:32Z",
+      "side": 1,
+      "message": "micro-nit: leave a comment stating that ffprobe calls \"I\"\npictures both key-frames (VP8/9, AV1?) and I-frames (H.264 etc)?",
+      "range": {
+        "startLine": 1162,
+        "startChar": 31,
+        "endLine": 1162,
+        "endChar": 42
+      },
+      "revId": "35d4bf54d34bd3df40c8f6ed66f86f5958aae826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
