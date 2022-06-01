@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "48d457469fa9fd1557b12d9fecdee5268c9efe62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "438d2425_f5a578f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-01T14:58:40Z",
+      "side": 1,
+      "message": "Please run tast unit test, too. Thanks.",
+      "revId": "48d457469fa9fd1557b12d9fecdee5268c9efe62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
