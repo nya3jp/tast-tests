@@ -89,6 +89,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f18233e4_a71c26a1",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-01T19:05:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "616074ec_5dc1487f",
+      "range": {
+        "startLine": 129,
+        "startChar": 39,
+        "endLine": 129,
+        "endChar": 42
+      },
+      "revId": "347ef07949518f5d8b6228a8d14e807cca8494ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "845060a5_0ba315df",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-01T19:05:50Z",
+      "side": 1,
+      "message": "Thanks for catching this!",
+      "parentUuid": "4e0c209c_de5c07ce",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 14
+      },
+      "revId": "347ef07949518f5d8b6228a8d14e807cca8494ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "53c73950_b665ba5e",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 3
