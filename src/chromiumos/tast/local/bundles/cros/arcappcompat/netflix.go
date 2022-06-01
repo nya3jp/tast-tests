@@ -48,7 +48,7 @@ func init() {
 		Desc:         "Functional test for Netflix that installs the app also verifies it is logged in and that the main page is open, checks Netflix correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		// TODO(b/186611037): Add Netflix to "appcompat_smoke" suite once the issue mentioned in the comment #5 is resolved.
-		Attr:         []string{"group:appcompat"},
+		Attr:         []string{"group:appcompat", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
@@ -99,7 +99,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
-		Timeout: 10 * time.Minute,
+		Timeout: 20 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
 		VarDeps: []string{"arcappcompat.Netflix.emailid", "arcappcompat.Netflix.password"},
 	})

@@ -35,7 +35,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Minecraft that installs and checks Minecraft correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat", "appcompat_release"},
+		Attr:         []string{"group:appcompat", "appcompat_release", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
