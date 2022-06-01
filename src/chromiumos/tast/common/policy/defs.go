@@ -19580,6 +19580,37 @@ func (p *QuickAnswersUnitConversionEnabled) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 921. CORSNonWildcardRequestHeadersSupport
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type CORSNonWildcardRequestHeadersSupport struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *CORSNonWildcardRequestHeadersSupport) Name() string {
+	return "CORSNonWildcardRequestHeadersSupport"
+}
+func (p *CORSNonWildcardRequestHeadersSupport) Field() string         { return "" }
+func (p *CORSNonWildcardRequestHeadersSupport) Scope() Scope          { return ScopeUser }
+func (p *CORSNonWildcardRequestHeadersSupport) Status() Status        { return p.Stat }
+func (p *CORSNonWildcardRequestHeadersSupport) UntypedV() interface{} { return p.Val }
+func (p *CORSNonWildcardRequestHeadersSupport) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *CORSNonWildcardRequestHeadersSupport) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 922. RemoteAccessHostClipboardSizeBytes
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -20893,7 +20924,6 @@ func (p *WebAuthnFactors) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 965. WebAuthenticationRemoteProxiedRequestsAllowed
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type WebAuthenticationRemoteProxiedRequestsAllowed struct {
 	Stat Status
@@ -21285,6 +21315,123 @@ func (p *UrlParamFilterEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 }
 func (p *UrlParamFilterEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 983. DefaultClipboardSetting
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DefaultClipboardSetting struct {
+	Stat Status
+	Val  int
+}
+
+func (p *DefaultClipboardSetting) Name() string          { return "DefaultClipboardSetting" }
+func (p *DefaultClipboardSetting) Field() string         { return "" }
+func (p *DefaultClipboardSetting) Scope() Scope          { return ScopeUser }
+func (p *DefaultClipboardSetting) Status() Status        { return p.Stat }
+func (p *DefaultClipboardSetting) UntypedV() interface{} { return p.Val }
+func (p *DefaultClipboardSetting) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *DefaultClipboardSetting) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 984. ClipboardAllowedForUrls
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ClipboardAllowedForUrls struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *ClipboardAllowedForUrls) Name() string          { return "ClipboardAllowedForUrls" }
+func (p *ClipboardAllowedForUrls) Field() string         { return "" }
+func (p *ClipboardAllowedForUrls) Scope() Scope          { return ScopeUser }
+func (p *ClipboardAllowedForUrls) Status() Status        { return p.Stat }
+func (p *ClipboardAllowedForUrls) UntypedV() interface{} { return p.Val }
+func (p *ClipboardAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *ClipboardAllowedForUrls) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 985. ClipboardBlockedForUrls
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ClipboardBlockedForUrls struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *ClipboardBlockedForUrls) Name() string          { return "ClipboardBlockedForUrls" }
+func (p *ClipboardBlockedForUrls) Field() string         { return "" }
+func (p *ClipboardBlockedForUrls) Scope() Scope          { return ScopeUser }
+func (p *ClipboardBlockedForUrls) Status() Status        { return p.Stat }
+func (p *ClipboardBlockedForUrls) UntypedV() interface{} { return p.Val }
+func (p *ClipboardBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *ClipboardBlockedForUrls) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 986. OsColorMode
+// This policy has a default value of light.
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type OsColorMode struct {
+	Stat Status
+	Val  string
+}
+
+func (p *OsColorMode) Name() string          { return "OsColorMode" }
+func (p *OsColorMode) Field() string         { return "" }
+func (p *OsColorMode) Scope() Scope          { return ScopeUser }
+func (p *OsColorMode) Status() Status        { return p.Stat }
+func (p *OsColorMode) UntypedV() interface{} { return p.Val }
+func (p *OsColorMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *OsColorMode) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
 	if !ok {
 		return ok
 	}
