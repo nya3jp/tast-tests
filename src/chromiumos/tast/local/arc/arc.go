@@ -367,7 +367,7 @@ func newWithSyslogReaderAndTimeout(ctx context.Context, outDir string, reader *s
 	arc.device = device
 
 	// Disable the Play Store package entirely unless it's booted with chrome.ARCSupported().
-	if enabled, err := isPlayStoreEnabled(); err != nil {
+	if enabled, err := isPlayStoreEnabled(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to check whether Play Store is enabled")
 	} else if !enabled {
 		pkgs, err := arc.InstalledPackages(ctx)
@@ -512,8 +512,8 @@ func ensureARCEnabled() error {
 }
 
 // isPlayStoreEnabled returns true when Play Store is enabled i.e. chrome.ARCSupported is passed.
-func isPlayStoreEnabled() (bool, error) {
-	args, err := chromeArgs()
+func isPlayStoreEnabled(ctx context.Context) (bool, error) {
+	args, err := chromeArgsWithContext(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed getting Chrome args")
 	}
@@ -529,6 +529,14 @@ func isPlayStoreEnabled() (bool, error) {
 // chromeArgs returns command line arguments of the Chrome browser process.
 func chromeArgs() ([]string, error) {
 	proc, err := ashproc.Root()
+	if err != nil {
+		return nil, err
+	}
+	return proc.CmdlineSlice()
+}
+
+func chromeArgsWithContext(ctx context.Context) ([]string, error) {
+	proc, err := ashproc.RootWithContext(ctx)
 	if err != nil {
 		return nil, err
 	}
