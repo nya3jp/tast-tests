@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "071ddca4_7bf5f155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/bitstream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-01T07:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e8cd012_4a29c104",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "2322308599add0df25d6fbc27f6fc241e9fecafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cad26ac_7923abee",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-01T07:03:03Z",
       "side": 1,
       "message": "nit: not sure why H264 is moved up. I would suggest to have this section ab sorted.",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "2322308599add0df25d6fbc27f6fc241e9fecafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51840f3_d6e24a42",
+        "filename": "src/chromiumos/tast/local/media/videotype/video_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-01T07:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cad26ac_7923abee",
       "range": {
         "startLine": 15,
         "startChar": 1,
