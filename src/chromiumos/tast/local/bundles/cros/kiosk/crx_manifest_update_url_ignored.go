@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CRXManifestUpdateURLIgnored,
-		Desc: "Checks if CRXManifestUpdateURLIgnored policy is correctly reflected in update mechanism of extensions",
+		Func:         CRXManifestUpdateURLIgnored,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Checks if CRXManifestUpdateURLIgnored policy is correctly reflected in update mechanism of extensions",
 		Contacts: []string{
 			"zubeil@google.com", // Test author
 			"chromeos-kiosk-eng+TAST@google.com",
@@ -107,7 +108,7 @@ func CRXManifestUpdateURLIgnored(ctx context.Context, s *testing.State) {
 
 func launchKioskAndVerify(ctx context.Context, s *testing.State, ignoreCrxURL bool, originalAppTitle, updatedAppTitle, appID, updateURL string) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
-	accountID := "foo@bar.com"
+	accountID := "foo@managedchrome.com"
 	accountType := policy.AccountTypeKioskApp
 
 	kioskPolicy := []policy.Policy{

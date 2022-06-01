@@ -117,7 +117,7 @@ func (v *mgsFixtureState) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Parent is not a FakeDMS fixture")
 	}
 
-	vdiAccountID := "mgs_vdi"
+	vdiAccountID := "mgs_vdi@managedchrome.com"
 
 	installPolicy := policy.ExtensionInstallForcelist{Val: []string{
 		v.vdiApplicationToStart.ID,
