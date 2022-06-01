@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d642774_e4f6106c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-01T09:46:35Z",
+      "side": 1,
+      "message": "COuld you avoid testing.Sleep just for stabilization?\nInstead, could you poll some events to be done?\n\nDitto for below.",
+      "parentUuid": "75d5a486_2cd83a0a",
+      "revId": "8ecf8830b095c13306856687f5414f11f73bf8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84bb2119_84e2f71d",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
         "patchSetId": 10
