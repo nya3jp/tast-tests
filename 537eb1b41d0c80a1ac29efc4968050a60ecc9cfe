@@ -50,6 +50,46 @@
       "message": "+tast-owners@",
       "revId": "537eb1b41d0c80a1ac29efc4968050a60ecc9cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6a5848_ac0e2430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-01T16:28:33Z",
+      "side": 1,
+      "message": "It might be good in a future CL to parameterize this test explicitly for tablet mode instead of relying on the state the DUT is in at the time. Example here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go;l\u003d34-44\n\n(assuming the same APIs work to force tablet/clamshell mode while in OOBE)",
+      "revId": "537eb1b41d0c80a1ac29efc4968050a60ecc9cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0807d11_1bcc63ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-01T16:28:33Z",
+      "side": 1,
+      "message": "also might be worth leaving a comment about why `LeftClickUntil` is needed here",
+      "range": {
+        "startLine": 219,
+        "startChar": 15,
+        "endLine": 219,
+        "endChar": 29
+      },
+      "revId": "537eb1b41d0c80a1ac29efc4968050a60ecc9cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
