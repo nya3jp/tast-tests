@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bf6c9cf_4e08c742",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-01T07:27:58Z",
+      "side": 1,
+      "message": "\u003e hoping people will respect the deprecated note\nI would prefer to delete the deprecated ones (people might just copy some case implementation and do not go deep to this file and check the comments)\n\nBut I think the footprint of removing the deprecated functions would be too big to be fit into one change. Maybe we could do it in a follow up cleanup change some time later.",
+      "parentUuid": "86f0a1ff_fddd6438",
+      "revId": "ff99663a86dbf3938f58cbb5bc1b8d958988c114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f28fde9_74cc47a4",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
