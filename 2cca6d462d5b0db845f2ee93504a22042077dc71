@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5897620e_165222a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-01T09:43:39Z",
+      "side": 1,
+      "message": "note: clarifying with tast reviewer forums of the guideline of generics use. I\u0027ll get back to you later.",
+      "revId": "2cca6d462d5b0db845f2ee93504a22042077dc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b23078d4_68b70662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-01T09:43:39Z",
+      "side": 1,
+      "message": "nit/style: we avoid using getter prefixes, like get/is/has etc.\nmodetestConnectorEdidInfo.\n\nDitto for existing code (I\u0027m ok to keep this in this CL temporarily for consistency, and rename all of them in another CL, too, if you\u0027d like to do so).",
+      "range": {
+        "startLine": 312,
+        "startChar": 5,
+        "endLine": 312,
+        "endChar": 8
+      },
+      "revId": "2cca6d462d5b0db845f2ee93504a22042077dc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52db893_e58db751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-01T09:43:39Z",
+      "side": 1,
+      "message": "could you avoid using shell? Instead, could you write the go code to do what you need?\nDitto for all the code below.",
+      "revId": "2cca6d462d5b0db845f2ee93504a22042077dc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
