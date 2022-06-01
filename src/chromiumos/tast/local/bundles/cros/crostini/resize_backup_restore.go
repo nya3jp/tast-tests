@@ -38,14 +38,14 @@ func init() {
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
 				Fixture:           "crostiniBuster",
-				Timeout:           10 * time.Minute,
+				Timeout:           15 * time.Minute,
 			}, {
 				Name:              "unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				Fixture:           "crostiniBuster",
-				Timeout:           10 * time.Minute,
+				Timeout:           15 * time.Minute,
 			},
 		},
 	})
