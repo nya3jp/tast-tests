@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bdd0aa0_cb10bf70",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-01T13:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "906ce2ac_1ac04f0d",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 39
+      },
+      "revId": "62ed74a0c4f0f7cc7ddd9625476fef5bbcbcb4d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7788fdfe_be0b4870",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-06-01T07:27:58Z",
       "side": 1,
       "message": "nit: `DUTs` --\u003e `NumberOfDUTs`?",
+      "revId": "62ed74a0c4f0f7cc7ddd9625476fef5bbcbcb4d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "076840f6_9c4a59fc",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-01T13:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7788fdfe_be0b4870",
       "revId": "62ed74a0c4f0f7cc7ddd9625476fef5bbcbcb4d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
