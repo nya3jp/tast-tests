@@ -160,6 +160,7 @@ func init() {
 			// Even bigger meeting.
 			Name:    "49p",
 			Timeout: defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
