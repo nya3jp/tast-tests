@@ -127,7 +127,7 @@ func SpellCheckServiceEnabled(ctx context.Context, s *testing.State) {
 			defer closeBrowser(cleanupCtx)
 
 			// Inside ChromeOS settings, check that the button is restricted and set to the correct value.
-			if err := policyutil.SettingsPage(ctx, cr, br, "syncSetup").
+			if err := policyutil.OSSettingsPage(ctx, cr, "osSyncSetup").
 				SelectNode(ctx, nodewith.
 					Role(role.ToggleButton).
 					NameStartingWith("Enhanced spell check")).
