@@ -635,68 +635,33 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if meet.split {
-		// If it is in split mode, snap Meet window to the left and Google Docs window to the right.
-		// Enter overview mode to enter split mode.
-		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-			s.Fatal("Failed to set overview mode: ", err)
-		}
-		defer ash.SetOverviewModeAndWait(closeCtx, tconn, false)
-		ws, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to get the window list: ", err)
-		}
-		var meetWindow, docsWindow *ash.Window
-		re := regexp.MustCompile(`\bMeet\b`)
-		for _, w := range ws {
-			if re.MatchString(w.Title) {
-				meetWindow = w
-			} else {
-				docsWindow = w
-			}
-		}
-		// There should be always a Hangouts Meet window.
-		if meetWindow == nil {
-			s.Fatal("Failed to find Meet window")
-		}
-		info, err := display.GetPrimaryInfo(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to get the primary display info: ", err)
-		}
-		snapLeftPoint := coords.NewPoint(info.WorkArea.Left+1, info.WorkArea.CenterY())
-		snapRightPoint := coords.NewPoint(info.WorkArea.Right()-1, info.WorkArea.CenterY())
-		if inTabletMode {
-			if docsWindow != nil {
-				if err := pc.Drag(
-					docsWindow.OverviewInfo.Bounds.CenterPoint(),
-					// Sleep is needed in tablet mode
-					action.Sleep(time.Second),
-					pc.DragTo(snapLeftPoint, time.Second),
-				)(ctx); err != nil {
-					s.Fatal("Failed to drag the Google Docs window to the left: ", err)
-				}
-			}
-			if err := pc.Drag(
-				meetWindow.OverviewInfo.Bounds.CenterPoint(),
-				action.Sleep(time.Second),
-				pc.DragTo(snapRightPoint, time.Second),
-			)(ctx); err != nil {
-				s.Fatal("Failed to drag the Meet window to the right: ", err)
-			}
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the window list: ", err)
+	}
+	var meetWindow, collaborationWindow *ash.Window
+	re := regexp.MustCompile(`\bMeet\b`)
+	for _, w := range ws {
+		if re.MatchString(w.Title) {
+			meetWindow = w
 		} else {
-			if docsWindow != nil {
-				if err := pc.Drag(docsWindow.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(snapLeftPoint, time.Second))(ctx); err != nil {
-					s.Fatal("Failed to drag the Docs window to snap to the left: ", err)
-				}
-			}
-			if err := pc.Drag(meetWindow.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(snapRightPoint, time.Second))(ctx); err != nil {
-				s.Fatal("Failed to drag the Meet window to snap to the right: ", err)
-			}
+			collaborationWindow = w
+		}
+	}
+	// There should always be a Meet window.
+	if meetWindow == nil {
+		s.Fatal("Failed to find Meet window")
+	}
+	if meet.split {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, collaborationWindow.ID, ash.WindowStateLeftSnapped); err != nil {
+			s.Fatal("Failed to snap the collaboration window to the left: ", err)
+		}
+		if err := ash.SetWindowStateAndWait(ctx, tconn, meetWindow.ID, ash.WindowStateRightSnapped); err != nil {
+			s.Fatal("Failed to snap the Meet window to the right: ", err)
 		}
 	} else {
-		// If it is not in split screen mode, alt-tab to switch to Meet window on top.
-		if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
-			s.Fatal("Failed to hit alt-tab and switch to Meet window: ", err)
+		if err := meetWindow.ActivateWindow(ctx, tconn); err != nil {
+			s.Fatal("Failed to activate the Meet window: ", err)
 		}
 	}
 
