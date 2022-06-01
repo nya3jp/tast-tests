@@ -16,6 +16,23 @@
       "message": "More tast tests: PTAL. ",
       "revId": "7f2169cd6427cccabd2b5d9987af9dbff58168a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c430edff_7d9787dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-01T05:01:46Z",
+      "side": 1,
+      "message": "Bots are green and willing. PTAL.\n",
+      "revId": "7f2169cd6427cccabd2b5d9987af9dbff58168a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
