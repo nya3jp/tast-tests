@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd75f459_5514c3f3",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-01T22:08:28Z",
+      "side": 1,
+      "message": "I would suggest to add a `preTestTimeout` here as the fixture `arc.bootedFixture` implements a PreTest function, regardless of how it operates. Also, the functionality of that method could be changed in the future without any notice to your test here.",
+      "parentUuid": "e420d2f0_3c56bdb3",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16674f90_08a93420",
         "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
         "patchSetId": 1
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "We removed the `ARC()`.\nHowever we will need the `Chrome()` to support the lacros variant in future CLs.\nExtra comments were added to express the purpose of `Chrome()`\n\nShould we remove the `Chrome()` and make changes in future CLs?",
       "parentUuid": "16674f90_08a93420",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 48
+      },
+      "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ccc85a_34c4ecc9",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-01T22:08:28Z",
+      "side": 1,
+      "message": "I am not sure why you need this to support the lacros variant. Could you give me an example of how you will use it for lacros?",
+      "parentUuid": "f65d83d0_e9f00e45",
       "range": {
         "startLine": 78,
         "startChar": 0,
