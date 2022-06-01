@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19be115c_bc5f1e31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-01T06:05:26Z",
+      "side": 1,
+      "message": "frame_type is 2 bit and OBU syntax is not resulted in fixed bits.\nSo I need to kind of parse it. Since ffprobe is installed in chromeos test image, I would like to use ffprobe.\nhttps://aomediacodec.github.io/av1-spec/#uncompressed-header-syntax",
+      "parentUuid": "896ef13b_a431001e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "9802e7726f32cacc23ae1f9a0325a25aea0f5a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da140976_e1bcee18",
