@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b63ceec_79892c36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-01T03:46:42Z",
+      "side": 1,
+      "message": "Got your point. How about this?\n- keep the `PowerTestOptions` name, but remove the `Battery` field from the struct.\n- Change the `BatteryDischargeMode` interface to `BatteryDischarger` struct, which best describes its function.\n- Change the `PowerTest()` function to accept a batterDischarger parameter, which servers the same purpose as \"Battery\" in the current `PowerTestOptions`, but is a pointer of new `BatteryDischarger` struct.\n\nWith these changes, other immutable options will not be touched. And BatteryDischarger will be more clear about its function.",
+      "parentUuid": "bf14d097_c8518381",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f2407af_7ff14b76",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2022-06-01T02:46:30Z",
       "side": 1,
       "message": "It is not a good idea of holding mutable objects in global variables. In the use case, it is better to have functions to return the two default basicBatteryDischargeMode objects:\n\n```\nfunc NoBatteryDischargeMode() *basicBatteryDischargeMode {\n  return \u0026basicBatteryDischargeMode{...}\n}\n```\n\nHowever, this is beyond the context of the CL. Please fix it in the following CL.",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb3be30_123770fe",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-01T03:46:42Z",
+      "side": 1,
+      "message": "Thanks for the comments. Return it by a function is better! I can do a global change to all cases using this var.",
+      "parentUuid": "8f2407af_7ff14b76",
       "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +130,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f0e70df_6d7e6ae2",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-01T03:46:42Z",
+      "side": 1,
+      "message": "Thanks for your comments, Shuo-Peng. However, the BatteryDischargeMode is an interface and the returned pointer implements the interface, so there is no need to use pointer on BatteryDischargeMode with the current implementation.",
+      "parentUuid": "64cc1d74_5197bb24",
+      "range": {
+        "startLine": 174,
+        "startChar": 60,
+        "endLine": 174,
+        "endChar": 80
+      },
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0cc44a26_02db5722",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 2
@@ -105,6 +165,24 @@
       "writtenOn": "2022-06-01T02:46:30Z",
       "side": 1,
       "message": "The code won\u0027t run as you pass a pointer to a value field.",
+      "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "298c5285_ab1935ba",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-01T03:46:42Z",
+      "side": 1,
+      "message": "It does run because a BatteryDischargeMode interface is passed in - in our case a pointer implementing the interface.",
+      "parentUuid": "0cc44a26_02db5722",
       "revId": "b4c9daefb1a9959333c0e6b9c49ea4b259b736ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
