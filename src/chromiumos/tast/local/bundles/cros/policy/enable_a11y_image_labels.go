@@ -34,7 +34,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verifies that the AccessibilityImageLabels policy works as intended",
 		Contacts: []string{
-			"gflegar@google.com", // Test author
+			"eariassoto@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
