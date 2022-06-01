@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "327b26c5_c065e3e9",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2022-06-01T07:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397bf726_56cc7970",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "b24ddd553a6ebd140688df906428d5596c65178c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4d4cbb4_f4c68789",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-01T06:55:51Z",
       "side": 1,
       "message": "nit: This can probably be deleted now",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "b24ddd553a6ebd140688df906428d5596c65178c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed09eb7_76020006",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2022-06-01T07:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4d4cbb4_f4c68789",
       "range": {
         "startLine": 56,
         "startChar": 1,
