@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc8db1c_bed067d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-01T18:21:04Z",
+      "side": 1,
+      "message": "I\u0027m not completely sure where, but I feel like it\u0027s important to document somewhere that this is ultimately our workaround for crbug/1324662 (dragging meet window in overview mode not working). Not sure if that was this Cl\u0027s intent though.",
+      "revId": "0b727de508562518be04636c8d8c8486752e7feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f7dcd8_9c73b082",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-01T18:21:04Z",
+      "side": 1,
+      "message": "Can we rename docsWindow to something more.. inclusive? I believe that we are just trying to split screen our meet window and some \"other\" window (currently the two options are jamboard \u0026 docs). Thus if we ever try to split screen a jamboard and meet, this variable would be wrongly named?",
+      "revId": "0b727de508562518be04636c8d8c8486752e7feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
