@@ -81,6 +81,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09bbb990_88119d55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-01T12:31:35Z",
+      "side": 1,
+      "message": "LGTM. Thanks for fixing the test logic 🎉",
+      "revId": "a18608694ad2f1843923244d89c28df757bda514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a05ce9c2_407e0a06",
@@ -118,6 +135,30 @@
       "side": 1,
       "message": "I am sorry, could you a bit elaborate on that?\n\nI thought that we want to see \"Error 401\" the first time we open the website.\nSo if we dont have that error (meaning webtitle does not contain 401), that means something is wrong (for example we have access without a kerberos ticket), hence we fail our test.",
       "parentUuid": "a05ce9c2_407e0a06",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "a18608694ad2f1843923244d89c28df757bda514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1b8cff_abaa0240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-01T12:31:35Z",
+      "side": 1,
+      "message": "You are absolutely right about it. Great catch!",
+      "parentUuid": "e606355a_e802087e",
       "range": {
         "startLine": 130,
         "startChar": 0,
