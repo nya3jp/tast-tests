@@ -35,10 +35,22 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_p"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
+			Name:              "h264_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.h264"},
+			Fixture:           "lacrosWithArcBootedWithVideoLogging",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_p", "lacros"},
+			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+		}, {
 			Name:              "h264_oopvd",
 			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.h264"},
 			Fixture:           "arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_p"},
+			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+		}, {
+			Name:              "h264_oopvd_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.h264"},
+			Fixture:           "lacrosWithArcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_p", "lacros"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
 			Name:              "h264_vm",
@@ -47,9 +59,21 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
+			Name:              "h264_vm_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.h264"},
+			Fixture:           "lacrosWithArcBootedWithVideoLogging",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm", "lacros"},
+			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+		}, {
 			Name:              "h264_oopvd_vm",
 			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.h264"},
 			Fixture:           "arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm"},
+			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+		}, {
+			Name:              "h264_oopvd_vm_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.h264"},
+			Fixture:           "lacrosWithArcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "android_vm"},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
@@ -59,10 +83,22 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_p"},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
+			Name:              "vp8_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp8"},
+			Fixture:           "lacrosWithArcBootedWithVideoLogging",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_p", "lacros"},
+			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
+		}, {
 			Name:              "vp8_oopvd",
 			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp8"},
 			Fixture:           "arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_p"},
+			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
+		}, {
+			Name:              "vp8_oopvd_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp8"},
+			Fixture:           "lacrosWithArcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_p", "lacros"},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
 			Name:              "vp8_vm",
@@ -71,10 +107,22 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm"},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
+			Name:              "vp8_vm_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp8"},
+			Fixture:           "lacrosWithArcBootedWithVideoLogging",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm", "lacros"},
+			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
+		}, {
 			Name:              "vp8_oopvd_vm",
 			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp8"},
 			Fixture:           "arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm"},
+			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
+		}, {
+			Name:              "vp8_oopvd_vm_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp8"},
+			Fixture:           "lacrosWithArcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "android_vm", "lacros"},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
 			Name:              "vp9",
@@ -83,10 +131,22 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_p"},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}, {
+			Name:              "vp9_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp9"},
+			Fixture:           "lacrosWithArcBootedWithVideoLogging",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_p", "lacros"},
+			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
+		}, {
 			Name:              "vp9_oopvd",
 			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp9"},
 			Fixture:           "arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_p"},
+			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
+		}, {
+			Name:              "vp9_oopvd_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp9"},
+			Fixture:           "lacrosWithArcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_p", "lacros"},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}, {
 			Name:              "vp9_vm",
@@ -95,10 +155,22 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm"},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}, {
+			Name:              "vp9_vm_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp9"},
+			Fixture:           "lacrosWithArcBootedWithVideoLogging",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm", "lacros"},
+			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
+		}, {
 			Name:              "vp9_oopvd_vm",
 			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp9"},
 			Fixture:           "arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm"},
+			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
+		}, {
+			Name:              "vp9_oopvd_vm_lacros",
+			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.vp9"},
+			Fixture:           "lacrosWithArcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "android_vm", "lacros"},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}},
 	})

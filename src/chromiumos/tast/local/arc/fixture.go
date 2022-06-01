@@ -185,6 +185,27 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name: "lacrosWithArcBootedWithVideoLogging",
+		Desc: "ARC is booted with additional Chrome video logging",
+		Contacts: []string{
+			"arcvm-eng-team@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
+                chrome.ARCEnabled(), chrome.ExtraArgs(
+                    "--vmodule=" + strings.Join([]string{
+                        "*/media/gpu/chromeos/*=2",
+                        "*/media/gpu/vaapi/*=2",
+                        "*/media/gpu/v4l2/*=2",
+                        "*/components/arc/video_accelerator/*=2"}, ",")))).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
 	// arcBootedWithOutOfProcessVideoDecoding is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched with out-of-process
 	// video decoding in this fixture.
 	testing.AddFixture(&testing.Fixture{
@@ -199,6 +220,25 @@ func init() {
 				chrome.ARCEnabled(),
 				chrome.ExtraArgs("--enable-features=OutOfProcessVideoDecoding"),
 			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "lacrosWithArcBootedWithOutOfProcessVideoDecoding",
+		Desc: "ARC is booted with out-of-process video decoding",
+		Contacts: []string{
+			"andrescj@chromium.org",
+			"chromeos-gfx-video@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
+				chrome.ARCEnabled(),
+				chrome.ExtraArgs("--enable-features=OutOfProcessVideoDecoding"),
+            )).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    ResetTimeout,
@@ -230,6 +270,28 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name: "lacrosWithArcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
+		Desc: "ARC is booted with out-of-process video decoding and additional Chrome video logging",
+		Contacts: []string{
+			"andrescj@chromium.org",
+			"chromeos-gfx-video@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.ARCEnabled(), chrome.ExtraArgs(
+				"--enable-features=OutOfProcessVideoDecoding",
+				"--vmodule="+strings.Join([]string{
+					"*/media/gpu/chromeos/*=2",
+					"*/media/gpu/vaapi/*=2",
+					"*/media/gpu/v4l2/*=2",
+					"*/components/arc/video_accelerator/*=2"}, ",")))).Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
 	// arcBootedWithVideoLoggingVD is a fixture similar to arcBootedWithVideoLogging, but with additional Chrome
 	// video logging enabled and the mojo::VideoDecoder stack enabled.
 	testing.AddFixture(&testing.Fixture{
@@ -245,6 +307,26 @@ func init() {
 					"*/media/gpu/vaapi/*=2",
 					"*/media/gpu/v4l2/*=2",
 					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
+		}, "--video-decoder=libvda-vd\n"),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "lacrosWithArcBootedWithVideoLoggingVD",
+		Desc: "ARC is booted with VD and additional Chrome video logging",
+		Contacts: []string{
+			"arcvm-eng-team@google.com",
+		},
+		Impl: NewArcBootedWithConfigFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.ARCEnabled(), chrome.ExtraArgs(
+				"--vmodule=" + strings.Join([]string{
+					"*/media/gpu/chromeos/*=2",
+					"*/media/gpu/vaapi/*=2",
+					"*/media/gpu/v4l2/*=2",
+					"*/components/arc/video_accelerator/*=2"}, ",")))).Opts()
 		}, "--video-decoder=libvda-vd\n"),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    ResetTimeout,
