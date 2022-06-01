@@ -92,6 +92,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/lib/shill"), chk.Users("shill"), chk.Groups("shill"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/timezone"), chk.Users("chronos", "root"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/tpm"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/vm_cicerone"), chk.Users("vm_cicerone"), chk.Groups("vm_cicerone"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/vtpm"), chk.Users("vtpm"), chk.Groups("vtpm"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("encrypted/var/lib/whitelist"), chk.Users("root"), chk.Groups("policy-readers"), chk.Mode(0750)),      // directory itself
 		chk.NewPattern(chk.Tree("encrypted/var/lib/whitelist"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)),              // children
