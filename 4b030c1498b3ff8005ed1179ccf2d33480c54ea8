@@ -262,6 +262,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e464b401_f6c55e2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-06-01T07:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "557efd07_2347fc26",
+      "range": {
+        "startLine": 226,
+        "startChar": 3,
+        "endLine": 226,
+        "endChar": 65
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "31036e3d_2405e235",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
         "patchSetId": 4
