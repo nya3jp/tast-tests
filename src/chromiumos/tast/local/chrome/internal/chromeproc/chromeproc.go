@@ -6,6 +6,7 @@
 package chromeproc
 
 import (
+	"context"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -14,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/procutil"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -43,6 +45,11 @@ func Processes(execPath string) ([]*process.Process, error) {
 
 // Root returns Process instance for Chrome's root process (i.e. Browser process).
 func Root(execPath string) (*process.Process, error) {
+	return RootWithContext(nil, execPath)
+}
+
+// RootWithContext is almost same as Root, but takes context.Context for logging purpose.
+func RootWithContext(ctx context.Context, execPath string) (*process.Process, error) {
 	if !filepath.IsAbs(execPath) {
 		return nil, errors.Errorf("execPath %q must be abs path", execPath)
 	}
@@ -50,7 +57,8 @@ func Root(execPath string) (*process.Process, error) {
 		// A browser process should not have --type= flag.
 		// This check alone is not enough to determine that proc is a browser process;
 		// it might be a brand-new process that just forked from the browser process.
-		if cmdline, err := p.Cmdline(); err != nil || strings.Contains(cmdline, " --type=") {
+		cmdline, err := p.Cmdline()
+		if err != nil || strings.Contains(cmdline, " --type=") {
 			return false
 		}
 
@@ -70,12 +78,23 @@ func Root(execPath string) (*process.Process, error) {
 		if err != nil {
 			return false
 		}
-		if exe, err := pproc.Exe(); err != nil || exe == execPath {
+		pExe, err := pproc.Exe()
+		if err != nil || pExe == execPath {
 			return false
 		}
 
 		// It is still possible that proc is not a browser process if the browser
 		// process exited immediately after it forked, but it is fairly unlikely.
+
+		// Currently, we're facing mysterious error that there are
+		// multiple processes matching this condition, but we're not yet sure
+		// what are they. Dumping the log of what we checked here to investigate
+		// further.
+		if ctx != nil {
+			// Note that it is important to use local variable, instead of calling p.*
+			// again, because the process maybe terminated during this short period.
+			testing.ContextLogf(ctx, "Found browser process: pid=%d, cmdline=%q, ppid=%d, pExe=%q", p.Pid, cmdline, ppid, pExe)
+		}
 		return true
 	}))
 }

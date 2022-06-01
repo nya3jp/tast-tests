@@ -29,6 +29,11 @@ func Root() (*process.Process, error) {
 	return chromeproc.Root(ExecPath)
 }
 
+// RootWithContext is similar to Root, but takes context.Context for logging purpose.
+func RootWithContext(ctx context.Context) (*process.Process, error) {
+	return chromeproc.RootWithContext(ctx, ExecPath)
+}
+
 // WaitForRoot waits for ash-chrome's root process is launched.
 func WaitForRoot(ctx context.Context, timeout time.Duration) (*process.Process, error) {
 	var ret *process.Process
