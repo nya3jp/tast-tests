@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29debd46_d92a7933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002603
+      },
+      "writtenOn": "2022-06-01T04:47:27Z",
+      "side": 1,
+      "message": "Do we need to delete this file?\n\nAlso, is it worth writing something different each run so that if it\u0027s not cleaned up, the test file will fail on stale content?",
+      "revId": "543074b46b6ca108fb507d1c1b40583c3d86ce1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
