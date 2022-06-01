@@ -94,8 +94,8 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 	}()
 
 	batteryMode := s.Param().(setup.BatteryDischargeMode)
-	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: batteryMode, NightLight: setup.DisableNightLight}))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.NewBatteryDischargeFromMode(batteryMode),
+		setup.PowerTestOptions{Wifi: setup.DisableWifiInterfaces, NightLight: setup.DisableNightLight}))
 
 	// Install camera testing app.
 	a := s.FixtValue().(*arc.PreData).ARC
