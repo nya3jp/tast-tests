@@ -147,8 +147,10 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 			s.Error("Cleanup failed: ", err)
 		}
 	}()
-	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: opts.BatteryDischargeMode, NightLight: setup.DisableNightLight}))
+	sup.Add(setup.PowerTest(ctx, tconn,
+		setup.PowerTestOptions{Wifi: setup.DisableWifiInterfaces, NightLight: setup.DisableNightLight},
+		setup.NewBatteryDischargeFromMode(opts.BatteryDischargeMode),
+	))
 
 	// Push raw video file to ARC.
 	sup.Add(setup.AdbMkdir(ctx, a, arcFilePath))

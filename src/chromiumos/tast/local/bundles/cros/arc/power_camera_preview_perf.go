@@ -115,8 +115,10 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 	}()
 
 	args := s.Param().(powerCameraPreviewPerfArgs)
-	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: args.dischargeMode, NightLight: setup.DisableNightLight}))
+	sup.Add(setup.PowerTest(ctx, tconn,
+		setup.PowerTestOptions{Wifi: setup.DisableWifiInterfaces, NightLight: setup.DisableNightLight},
+		setup.NewBatteryDischargeFromMode(args.dischargeMode),
+	))
 
 	// Install camera testing app.
 	a := s.FixtValue().(*arc.PreData).ARC
