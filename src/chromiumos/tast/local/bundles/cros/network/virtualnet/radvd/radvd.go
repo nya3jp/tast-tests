@@ -73,12 +73,6 @@ func (r *radvd) Start(ctx context.Context, env *env.Env) error {
 	}
 
 	// Configure IPv6 environment in netns.
-	if err := r.env.RunWithoutChroot(ctx, "sysctl", "-w", "net.ipv6.conf."+r.env.VethInName+".forwarding=1"); err != nil {
-		return errors.Wrapf(err, "failed to enable ipv6 forwarding in %s", r.env.NetNSName)
-	}
-	if err := r.env.RunWithoutChroot(ctx, "sysctl", "-w", "net.ipv6.conf.all.forwarding=1"); err != nil {
-		return errors.Wrapf(err, "failed to enable ipv6 forwarding in %s", r.env.NetNSName)
-	}
 	if err := r.env.RunWithoutChroot(ctx, "sysctl", "-w", "net.ipv6.conf."+r.env.VethInName+".accept_ra=2"); err != nil {
 		return errors.Wrapf(err, "failed to configure accept_ra for %s", r.env.VethInName)
 	}

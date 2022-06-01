@@ -7,6 +7,7 @@ package env
 
 import (
 	"context"
+	"net"
 	"os"
 	"path/filepath"
 	"strings"
@@ -14,6 +15,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/veth"
+	"chromiumos/tast/local/bundles/cros/network/virtualnet/subnet"
 	"chromiumos/tast/testing"
 )
 
@@ -238,6 +240,14 @@ func (e *Env) makeNetNS(ctx context.Context) error {
 	}
 	e.netnsCreated = true
 
+	// Enable IP forwarding.
+	if err := e.RunWithoutChroot(ctx, "sysctl", "-w", "net.ipv4.conf.all.forwarding=1"); err != nil {
+		return errors.Wrapf(err, "failed to enable ipv4 forwarding in %s", e.NetNSName)
+	}
+	if err := e.RunWithoutChroot(ctx, "sysctl", "-w", "net.ipv6.conf.all.forwarding=1"); err != nil {
+		return errors.Wrapf(err, "failed to enable ipv6 forwarding in %s", e.NetNSName)
+	}
+
 	vethPair, err := veth.NewPair(ctx, e.VethInName, e.VethOutName)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup veth")
@@ -307,6 +317,74 @@ func (e *Env) ReadAndWriteLogIfExists(path string, f *os.File) error {
 		return errors.Wrapf(err, "failed to write contents of %s", path)
 	}
 
+	return nil
+}
+
+// ConnectToRouter connects this Env to |router| by moving the out interface
+// into the netns of |router|, getting one IPv4 and one IPv6 subnet from |pool|,
+// configuring static IP addresses on both in and out interface, and installing
+// routes for the subnet in both of the two netns. An additional default route
+// will be added from this Env to |router|.
+func (e *Env) ConnectToRouter(ctx context.Context, router *Env, pool *subnet.Pool) error {
+	// Move the out interface into |router| and bring it up.
+	if err := testexec.CommandContext(ctx, "ip", "link", "set", e.VethOutName, "netns", router.NetNSName).Run(); err != nil {
+		return errors.Wrapf(err, "failed to move the out interface of %s into %s", e.NetNSName, router.NetNSName)
+	}
+	if err := router.RunWithoutChroot(ctx, "ip", "link", "set", e.VethOutName, "up"); err != nil {
+		return errors.Wrapf(err, "failed to enable interface %s", e.VethOutName)
+	}
+
+	// Install IPv4 addresses and routes.
+	ipv4Subnet, err := pool.AllocNextIPv4Subnet()
+	if err != nil {
+		return errors.Wrap(err, "failed to allocate IPv4 subnet for connecting Envs")
+	}
+	ipv4Addr := ipv4Subnet.IP.To4()
+	selfIPv4Addr := net.IPv4(ipv4Addr[0], ipv4Addr[1], ipv4Addr[2], 2)
+	routerIPv4Addr := net.IPv4(ipv4Addr[0], ipv4Addr[1], ipv4Addr[2], 1)
+	if err := e.ConfigureInterface(ctx, e.VethInName, selfIPv4Addr, ipv4Subnet); err != nil {
+		return errors.Wrapf(err, "failed to configure IPv4 on %s", e.VethInName)
+	}
+	if err := router.ConfigureInterface(ctx, e.VethOutName, routerIPv4Addr, ipv4Subnet); err != nil {
+		return errors.Wrapf(err, "failed to configure IPv4 on %s", e.VethOutName)
+	}
+	if err := e.RunWithoutChroot(ctx, "ip", "route", "add", "default", "via", routerIPv4Addr.String()); err != nil {
+		return errors.Wrap(err, "failed to add IPv4 default route")
+	}
+
+	// Install IPv6 addresses and routes.
+	ipv6Subnet, err := pool.AllocNextIPv6Subnet()
+	if err != nil {
+		return errors.Wrap(err, "failed to allocate IPv6 subnet for connecting Envs")
+	}
+	var selfIPv6Addr, routerIPv6Addr net.IP
+	selfIPv6Addr = append([]byte{}, ipv6Subnet.IP...)
+	selfIPv6Addr[15] = 2
+	routerIPv6Addr = append([]byte{}, ipv6Subnet.IP...)
+	routerIPv6Addr[15] = 1
+	if err := e.ConfigureInterface(ctx, e.VethInName, selfIPv6Addr, ipv6Subnet); err != nil {
+		return errors.Wrapf(err, "failed to configure IPv6 on %s", e.VethInName)
+	}
+	if err := router.ConfigureInterface(ctx, e.VethOutName, routerIPv6Addr, ipv6Subnet); err != nil {
+		return errors.Wrapf(err, "failed to configure IPv6 on %s", e.VethOutName)
+	}
+	if err := e.RunWithoutChroot(ctx, "ip", "route", "add", "default", "via", routerIPv6Addr.String()); err != nil {
+		return errors.Wrap(err, "failed to add IPv6 default route")
+	}
+
+	return nil
+}
+
+// ConfigureInterface configures |addr| on |ifname|, and adds a route to point
+// |subnet| to this interface.
+func (e *Env) ConfigureInterface(ctx context.Context, ifname string, addr net.IP, subnet *net.IPNet) error {
+	if err := e.RunWithoutChroot(ctx, "ip", "addr", "add", addr.String(), "dev", ifname); err != nil {
+		return errors.Wrapf(err, "failed to install address %s on %s", addr.String(), ifname)
+	}
+	if err := e.RunWithoutChroot(ctx, "ip", "route", "add", subnet.String(), "dev", ifname); err != nil {
+		return errors.Wrapf(err, "failed to install route %s on %s", subnet.String(), ifname)
+	}
+	testing.ContextLogf(ctx, "Installed %s with subnet %s on interface %s in netns %s", addr.String(), subnet.String(), ifname, e.NetNSName)
 	return nil
 }
 
