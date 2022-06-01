@@ -34,7 +34,7 @@ func init() {
 func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	accountID := "foo@bar.com"
+	accountID := "foo@managedchrome.com"
 
 	m, cr, err := mgs.New(
 		ctx,

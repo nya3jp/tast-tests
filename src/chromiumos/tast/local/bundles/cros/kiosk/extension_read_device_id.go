@@ -34,7 +34,7 @@ func init() {
 
 func ExtensionReadDeviceID(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
-	accountID := "foo@bar.com"
+	accountID := "foo@managedchrome.com"
 	accountType := policy.AccountTypeKioskApp
 	appID := "ilnpadgckeacioehlommkaafedibdeob"
 	deviceID := "123e4567-e89b-12d3-a456-426614174000"
