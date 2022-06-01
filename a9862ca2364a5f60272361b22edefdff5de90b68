@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a97a4d_7f87d2fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-01T21:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4da229df_17a9ef11",
+      "range": {
+        "startLine": 137,
+        "startChar": 16,
+        "endLine": 137,
+        "endChar": 17
+      },
+      "revId": "a9862ca2364a5f60272361b22edefdff5de90b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a977b2c_cb8e7fc0",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-01T20:42:02Z",
       "side": 1,
       "message": "for _, e :\u003d range unexpected {\ns.Log(e)\n}\n\nmsg :\u003d strings.Join(unexpected[:msglines], \", \")\n\n?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 3
+      },
+      "revId": "a9862ca2364a5f60272361b22edefdff5de90b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e69e7ec_22b21d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-01T21:41:51Z",
+      "side": 1,
+      "message": "I need to extract just e.Message from each entry. I simplified the code a bit by using a local array.",
+      "parentUuid": "3a977b2c_cb8e7fc0",
       "range": {
         "startLine": 140,
         "startChar": 0,
