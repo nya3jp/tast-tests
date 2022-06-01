@@ -292,6 +292,24 @@
       "parentUuid": "cf65d50a_f84468d4",
       "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "127f8630_5d06fa56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-01T21:32:30Z",
+      "side": 1,
+      "message": "Can we first check the list of devices to see if it\u0027s being managed?",
+      "parentUuid": "b8f84347_8d96a688",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
