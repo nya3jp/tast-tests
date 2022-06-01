@@ -50,6 +50,24 @@
       "message": "could you comment why this needs to be disabled?",
       "revId": "800c3fd7422be6fea43f4d17012d83a20e1200b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c3ce0b_00fb3847",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-01T01:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79fcea56_73ad9863",
+      "revId": "800c3fd7422be6fea43f4d17012d83a20e1200b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
