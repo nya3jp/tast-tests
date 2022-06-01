@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d8ad63_1cdf9e3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-06-01T02:38:29Z",
+      "side": 1,
+      "message": "Hi Keigo Oka\n\nI am not quite sure fix all of them correctly\n\nBut I have done all of them\n\nPlease check\n\nThanks",
+      "revId": "84b8171e9c72ba193fa0ee533c22420c81cdbf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
