@@ -264,10 +264,10 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	if options.DischargeThreshold != nil {
 		dischargeThreshold = *options.DischargeThreshold
 	}
-	batteryDischarge := setup.TryBatteryDischarge(true, dischargeThreshold)
+	// Create batteryDischarge with both discharge and ignoreErr set to true.
+	batteryDischarge := setup.NewBatteryDischarge(true, true, dischargeThreshold)
 	powerTestOptions := setup.PowerTestOptions{
 		// The default for the following options is to disable these setting.
-		Battery:    batteryDischarge,
 		Wifi:       setup.DisableWifiInterfaces,
 		NightLight: setup.DisableNightLight,
 		Powerd:     setup.DisablePowerd,
@@ -292,7 +292,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 		powerTestOptions.Bluetooth = setup.DoNotChangeBluetooth
 	}
 
-	r.powerSetupCleanup, err = setup.PowerTest(ctx, r.tconn, powerTestOptions)
+	r.powerSetupCleanup, err = setup.PowerTest(ctx, r.tconn, batteryDischarge, powerTestOptions)
 	batteryDischargeErr := batteryDischarge.Err()
 	if batteryDischargeErr != nil {
 		testing.ContextLog(ctx, "Failed to induce battery discharge: ", batteryDischargeErr)

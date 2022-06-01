@@ -46,7 +46,8 @@ func SetupPerfTest(ctx context.Context, tconn *chrome.TestConn, name string) (re
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{Wifi: setup.DoNotChangeWifiInterfaces, NightLight: setup.DisableNightLight}))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.NewBatteryDischargeFromMode(setup.NoBatteryDischarge),
+		setup.PowerTestOptions{Wifi: setup.DoNotChangeWifiInterfaces, NightLight: setup.DisableNightLight}))
 
 	if err := sup.Check(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to setup power test environment")
