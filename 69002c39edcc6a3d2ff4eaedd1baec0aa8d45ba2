@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e420d2f0_3c56bdb3",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-01T11:25:22Z",
+      "side": 1,
+      "message": "The `Impl` (which is the `arc.bootedFixture` in `arc/fixture.go`) here, the context passed from PreTest is never used (context passed to `func (a *ARC) ResetOutDir(context.Context, string) error` but the function does not actually use it). Also none of the fixtures defined in the `arc/fixture.go` have specified the `PreTestTimeout`.\n\nShould we add `PreTestTimeout` for this and all other arc fixtures?\nAlso should we refine the `func (a *ARC) ResetOutDir(context.Context, string) error` by removing the unused argument?",
+      "parentUuid": "81bab5c5_f616070f",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16674f90_08a93420",
         "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-01T04:49:18Z",
       "side": 1,
       "message": "type FixtValue struct {\n\tChrome *chrome.Chrome\n\tARC  *arc.ARC\n}\n\nNo need to create `Chrome()` and `ARC()`",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 48
+      },
+      "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f65d83d0_e9f00e45",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-01T11:25:22Z",
+      "side": 1,
+      "message": "We removed the `ARC()`.\nHowever we will need the `Chrome()` to support the lacros variant in future CLs.\nExtra comments were added to express the purpose of `Chrome()`\n\nShould we remove the `Chrome()` and make changes in future CLs?",
+      "parentUuid": "16674f90_08a93420",
       "range": {
         "startLine": 78,
         "startChar": 0,
