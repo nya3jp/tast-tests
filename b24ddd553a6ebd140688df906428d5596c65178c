@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51fc8264_79877ca9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-06-01T06:55:51Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "b24ddd553a6ebd140688df906428d5596c65178c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397bf726_56cc7970",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-06-01T06:55:51Z",
+      "side": 1,
+      "message": "nit: Maybe this should be renamed now, e.g. to Values",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "b24ddd553a6ebd140688df906428d5596c65178c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d4cbb4_f4c68789",
+        "filename": "src/chromiumos/tast/local/crostini/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-06-01T06:55:51Z",
+      "side": 1,
+      "message": "nit: This can probably be deleted now",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "b24ddd553a6ebd140688df906428d5596c65178c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
