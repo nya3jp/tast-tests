@@ -108,7 +108,7 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	activationCode, cleanupFunc, err := stork.FetchStorkProfile(ctx)
+	activationCode, cleanupFunc, err := stork.FetchStorkProfile(ctx, "")
 	if err != nil {
 		s.Fatal("Failed to fetch Stork profile: ", err)
 	}

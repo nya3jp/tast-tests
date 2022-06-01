@@ -53,3 +53,13 @@ func CheckProperty(ctx context.Context, o *dbusutil.DBusObject, prop string, exp
 
 	return nil
 }
+
+func CheckNumInstalledProfiles(ctx context.Context, s *testing.State, euicc *EUICC, expected int) {
+	installedProfiles, err := euicc.InstalledProfiles(ctx, false)
+	if err != nil {
+		s.Fatal("Failed to get installed profiles: ", err)
+	}
+	if len(installedProfiles) != expected {
+		s.Fatalf("Unexpected number of installed profiles, got: %d, want: %d", len(installedProfiles), expected)
+	}
+}
