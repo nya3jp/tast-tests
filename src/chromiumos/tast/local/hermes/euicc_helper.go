@@ -46,16 +46,45 @@ func NewEUICC(ctx context.Context, euiccNum int) (*EUICC, error) {
 
 // InstalledProfiles reads the eSIM, and returns the installed profiles in the eSIM.
 func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool) ([]Profile, error) {
-	if err := e.Call(ctx, "RefreshInstalledProfiles", shouldNotSwitchSlot).Err; err != nil {
+	if err := e.Call(ctx, hermesconst.EuiccMethodRefreshInstalledProfiles, shouldNotSwitchSlot).Err; err != nil {
 		return nil, errors.Wrap(err, "unable to request installed profiles")
 	}
 	props, err := dbusutil.NewDBusProperties(ctx, e.DBusObject)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get euicc properties")
 	}
-	profilePaths, err := props.GetObjectPaths("InstalledProfiles")
+	profilePaths, err := props.GetObjectPaths(hermesconst.EuiccPropertyInstalledProfiles)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get installed profiles")
+	}
+	profiles := make([]Profile, len(profilePaths))
+	for i, profilePath := range profilePaths {
+		obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesProfileInterface, profilePath)
+		if err != nil {
+			return nil, errors.Wrap(err, "unable to get dbus object for profile")
+		}
+		profiles[i] = Profile{obj}
+	}
+	return profiles, nil
+}
+
+// PendingProfiles reads the eSIM, and returns the pending profiles in the eSIM.
+func (e *EUICC) PendingProfiles(ctx context.Context) ([]Profile, error) {
+	if err := e.Call(ctx, hermesconst.EuiccMethodRefreshInstalledProfiles, true).Err; err != nil {
+		return nil, errors.Wrap(err, "unable to refresh installed profiles")
+	}
+
+	if err := e.Call(ctx, hermesconst.EuiccMethodRequestPendingProfiles, hermesconst.RootSmdsAddress).Err; err != nil {
+		return nil, errors.Wrap(err, "unable to request pending profiles")
+	}
+
+	props, err := dbusutil.NewDBusProperties(ctx, e.DBusObject)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get euicc properties")
+	}
+	profilePaths, err := props.GetObjectPaths(hermesconst.EuiccPropertyPendingProfiles)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get pending profiles")
 	}
 	profiles := make([]Profile, len(profilePaths))
 	for i, profilePath := range profilePaths {
@@ -117,7 +146,7 @@ func GetEUICC(ctx context.Context, findTestEuicc bool) (*EUICC, int, error) {
 		if err != nil {
 			return nil, -1, errors.Wrap(err, "unable to get EUICC object")
 		}
-		response := obj.Call(ctx, "IsTestEuicc")
+		response := obj.Call(ctx, hermesconst.EuiccMethodIsTestEuicc)
 		if response.Err != nil || len(response.Body) != 1 {
 			continue
 		}

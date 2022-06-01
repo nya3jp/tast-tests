@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -64,7 +65,7 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get test euicc: ", err)
 	}
 
-	if err := euicc.DBusObject.Call(ctx, "ResetMemory", 1).Err; err != nil {
+	if err := euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodResetMemory, 1).Err; err != nil {
 		s.Fatal("Failed to reset test euicc: ", err)
 	}
 	s.Log("Reset test euicc completed")
@@ -108,7 +109,7 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	activationCode, cleanupFunc, err := stork.FetchStorkProfile(ctx)
+	activationCode, cleanupFunc, err := stork.FetchStorkProfile(ctx, "")
 	if err != nil {
 		s.Fatal("Failed to fetch Stork profile: ", err)
 	}
@@ -139,7 +140,7 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 		},
 	}
 
-	if err := euicc.DBusObject.Call(ctx, "UseTestCerts", true).Err; err != nil {
+	if err := euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodUseTestCerts, true).Err; err != nil {
 		s.Fatal("Failed to set use test cert on test euicc: ", err)
 	}
 

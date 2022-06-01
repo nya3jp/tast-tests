@@ -25,7 +25,6 @@ const (
 const (
 	// Used in POST request.
 	gtsTestProfileListKey            = "gtsTestProfileList"
-	eidValue                         = ""
 	confirmationCodeValue            = ""
 	maxConfirmationCodeAttemptsValue = 1
 	maxDownloadAttemptsValue         = 5
@@ -86,9 +85,9 @@ type RequestData struct {
 	Eid                string            `json:"eid"`
 }
 
-func generateStorkRequestData() (string, error) {
+func generateStorkRequestData(eid string) (string, error) {
 	profileListData := &ProfileListData{
-		Eid:                         eidValue,
+		Eid:                         eid,
 		ConfirmationCode:            confirmationCodeValue,
 		MaxConfirmationCodeAttempts: maxConfirmationCodeAttemptsValue,
 		MaxDownloadAttempts:         maxDownloadAttemptsValue,
@@ -101,7 +100,7 @@ func generateStorkRequestData() (string, error) {
 
 	storkRequestData := &RequestData{
 		GtsTestProfileList: []ProfileListData{*profileListData},
-		Eid:                eidValue,
+		Eid:                eid,
 	}
 
 	jsonBytes, err := json.Marshal(storkRequestData)
@@ -151,8 +150,8 @@ func getSessionID(storkResponse map[string]json.RawMessage) (string, error) {
 }
 
 // FetchStorkProfile fetches a test eSIM profile from Stork.
-func FetchStorkProfile(ctx context.Context) (ActivationCode, CleanupProfileFunc, error) {
-	data, err := generateStorkRequestData()
+func FetchStorkProfile(ctx context.Context, eid string) (ActivationCode, CleanupProfileFunc, error) {
+	data, err := generateStorkRequestData(eid)
 	if err != nil {
 		return ActivationCode(""), nil, err
 	}

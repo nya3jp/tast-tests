@@ -37,7 +37,7 @@ const (
 func MojoChangeESimNickname(ctx context.Context, s *testing.State) {
 	eSimMojo := s.FixtValue().(*mojo.FixtData)
 
-	activationCode, cleanupFunc, err := stork.FetchStorkProfile(ctx)
+	activationCode, cleanupFunc, err := stork.FetchStorkProfile(ctx, "")
 	if err != nil {
 		s.Fatal("Failed to fetch Stork profile: ", err)
 	}
