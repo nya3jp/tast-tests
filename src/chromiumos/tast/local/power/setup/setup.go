@@ -304,7 +304,7 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions
 			s.Add(DisableService(ctx, "powerd"))
 		}
 		if options.UpdateEngine == DisableUpdateEngine {
-			s.Add(DisableService(ctx, "update-engine"))
+			s.Add(DisableServiceIfExists(ctx, "update-engine"))
 		}
 		if options.VNC == DisableVNC {
 			s.Add(DisableServiceIfExists(ctx, "vnc"))
