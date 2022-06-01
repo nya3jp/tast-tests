@@ -132,9 +132,24 @@ func ShillNoErrorsInLog(ctx context.Context, s *testing.State) {
 
 	if len(unexpected) != 0 {
 		s.Log("Unexpected errors: ")
-		for _, e := range unexpected {
-			s.Log(e)
+		var msg string
+		var msglines = len(unexpected)
+		if msglines > 3 {
+			msglines = 3
 		}
-		s.Fatal("Number of unexpected error lines: ", len(unexpected))
+		for n, e := range unexpected {
+			s.Log(e)
+			if n < msglines {
+				msg += e.Message
+				if n < msglines-1 {
+					msg += ", "
+				}
+			}
+		}
+		if msglines != len(unexpected) {
+			s.Fatalf("Unexpected error lines, %v/%v: %v", msglines, len(unexpected), msg)
+		} else {
+			s.Fatalf("Unexpected error lines(%v): %v", msglines, msg)
+		}
 	}
 }
