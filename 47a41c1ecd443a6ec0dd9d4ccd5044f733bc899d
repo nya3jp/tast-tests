@@ -274,6 +274,24 @@
       "parentUuid": "46a1887a_c7d11283",
       "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f84347_8d96a688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-01T13:21:11Z",
+      "side": 1,
+      "message": "Actually I don\u0027t really know how we can do that, except try to claim the interface and expect an error if the interface is `wlan1` or `wlan2` (or simply skip them). It seems a bit weak as a check wdyt ?",
+      "parentUuid": "cf65d50a_f84468d4",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
