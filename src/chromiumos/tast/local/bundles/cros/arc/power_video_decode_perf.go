@@ -418,8 +418,8 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: opts.BatteryDischargeMode, NightLight: setup.DisableNightLight}))
+	sup.Add(setup.PowerTest(ctx, tconn, opts.BatteryDischargeMode, setup.PowerTestOptions{
+		Wifi: setup.DisableWifiInterfaces, NightLight: setup.DisableNightLight}))
 	sup.Add(setup.InstallApp(ctx, a, s.DataPath(apkName), c2e2etest.Pkg))
 	for _, p := range c2e2etest.RequiredPermissions() {
 		sup.Add(setup.GrantAndroidPermission(ctx, a, c2e2etest.Pkg, p))

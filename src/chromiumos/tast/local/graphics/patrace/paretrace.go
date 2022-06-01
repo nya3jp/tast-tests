@@ -69,8 +69,8 @@ func RunTrace(ctx context.Context, preData arc.PreData, apkFile, traceFile, outD
 	}()
 
 	// Add the default power test configuration.
-	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: setup.ForceBatteryDischarge, NightLight: setup.DisableNightLight}))
+	sup.Add(setup.PowerTest(ctx, tconn, setup.ForceBatteryDischarge, setup.PowerTestOptions{
+		Wifi: setup.DisableWifiInterfaces, NightLight: setup.DisableNightLight}))
 	if err := sup.Check(ctx); err != nil {
 		return errors.Wrap(err, "setup failed")
 	}

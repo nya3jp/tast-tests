@@ -61,7 +61,7 @@ type DecodeTestOptions struct {
 	TestVideo string
 	// DecoderType indicates whether a HW or SW decoder will be used.
 	DecoderType          DecoderType
-	BatteryDischargeMode setup.BatteryDischargeMode
+	BatteryDischargeMode *setup.BatteryDischargeMode
 }
 
 // arcTestConfig stores GoogleTest configuration passed to c2_e2e_test APK.

@@ -119,73 +119,52 @@ const (
 )
 
 // BatteryDischargeMode what setup is needed for a test
-type BatteryDischargeMode interface {
-	// fulfill implements the indicated battery discharge behavior.
-	fulfill(ctx context.Context, s *Setup)
-	//Err returns the battery discharge error, if any.
-	Err() error
-}
-
-// basicBatteryDischargeMode is for battery discharge modes representable as
-// constant values.
-type basicBatteryDischargeMode struct {
+type BatteryDischargeMode struct {
+	// discharge indicates if battery discharging needs to be performed.
 	discharge bool
+	// threshold is the maximum battery capacity percentage allowed before discharging.
 	threshold float64
-	err       error
+	// ignoreErr indicates to ignore discharge error when doing PowerTest setup.
+	ignoreErr bool
+	// err stores the battery discharging error if any.
+	err error
 }
 
 // DefaultDischargeThreshold is the default battery discharge threshold.
 const DefaultDischargeThreshold = 2.0
 
 var (
-	// NoBatteryDischarge option requests setup not to try
-	// forcing discharge of battery
-	NoBatteryDischarge = basicBatteryDischargeMode{discharge: false}
-	// ForceBatteryDischarge option requests setup to force
-	// discharging battery during a test
-	ForceBatteryDischarge = basicBatteryDischargeMode{
-		discharge: true, threshold: DefaultDischargeThreshold}
+	// NoBatteryDischarge requests setup not to try forcing discharge of battery.
+	// discharge is set to false so discharge will not be performed.
+	NoBatteryDischarge = NewBatteryDischargeMode(false, false, DefaultDischargeThreshold)
+	// ForceBatteryDischarge requests setup to force discharging battery during a test.
+	// ignoreErr is set to false so setup will return error if discharge fails.
+	ForceBatteryDischarge = NewBatteryDischargeMode(true, false, DefaultDischargeThreshold)
 )
 
-func (battery basicBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
-	if battery.discharge {
-		var cleanup CleanupCallback
-		cleanup, battery.err = SetBatteryDischarge(ctx, battery.threshold)
+// fulfill performs the battery discharge during power test setup.
+func (battery *BatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
+	if !battery.discharge {
+		return
+	}
+	var cleanup CleanupCallback
+	cleanup, battery.err = SetBatteryDischarge(ctx, battery.threshold)
+	if battery.ignoreErr {
+		// Don't add err into Setup procedure.
+		s.Add(cleanup, nil)
+	} else {
 		s.Add(cleanup, battery.err)
 	}
 }
 
-func (battery basicBatteryDischargeMode) Err() error {
+// Err returns the battery discharge error.
+func (battery *BatteryDischargeMode) Err() error {
 	return battery.err
 }
 
-// advancedBatteryDischargeMode is for battery discharge modes constructed
-// from parameters.
-type advancedBatteryDischargeMode struct {
-	err       error
-	threshold float64
-}
-
-// TryBatteryDischarge option requests setup to try battery discharge. If the
-// ignoreErr flag is false, TryBatteryDischarge returns basicBatteryDischargeMode
-// which forces the discharge and will cause power test setup to fail on error.
-// Otherwise, the advancedBatteryDischargeMode is returned, with which the discharge
-// error is omitted from the power test setup but can be obtained via Err() interface.
-func TryBatteryDischarge(ignoreErr bool, threshold float64) BatteryDischargeMode {
-	if !ignoreErr {
-		return basicBatteryDischargeMode{discharge: true, threshold: threshold}
-	}
-	return advancedBatteryDischargeMode{threshold: threshold}
-}
-
-func (battery advancedBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
-	var cleanup CleanupCallback
-	cleanup, battery.err = SetBatteryDischarge(ctx, battery.threshold)
-	s.Add(cleanup, nil)
-}
-
-func (battery advancedBatteryDischargeMode) Err() error {
-	return battery.err
+// NewBatteryDischargeMode requests a new BatteryDischargeMode to be returned.
+func NewBatteryDischargeMode(discharge, ignoreErr bool, threshold float64) *BatteryDischargeMode {
+	return &BatteryDischargeMode{discharge: true, ignoreErr: ignoreErr, threshold: threshold}
 }
 
 // UpdateEngineMode indicates what update engine setup is needed for a test.
@@ -281,7 +260,6 @@ const (
 // PowerTestOptions describes how to set up a power test.
 type PowerTestOptions struct {
 	// The default value of the following options is not to perform any changes.
-	Battery    BatteryDischargeMode
 	Wifi       WifiInterfacesMode
 	NightLight NightLightMode
 
@@ -298,7 +276,8 @@ type PowerTestOptions struct {
 
 // PowerTest configures a DUT to run a power test by disabling features that add
 // noise, and consistently configuring components that change power draw.
-func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions) (CleanupCallback, error) {
+func PowerTest(ctx context.Context, c *chrome.TestConn, batteryDischarge *BatteryDischargeMode,
+	options PowerTestOptions) (CleanupCallback, error) {
 	return Nested(ctx, "power test", func(s *Setup) error {
 		if options.Powerd == DisablePowerd {
 			s.Add(DisableService(ctx, "powerd"))
@@ -324,8 +303,8 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions
 		if options.Wifi == DisableWifiInterfaces {
 			s.Add(DisableWiFiAdaptors(ctx))
 		}
-		if options.Battery != nil {
-			options.Battery.fulfill(ctx, s)
+		if batteryDischarge != nil {
+			batteryDischarge.fulfill(ctx, s)
 		}
 		if options.Bluetooth == DisableBluetoothInterfaces {
 			s.Add(DisableBluetooth(ctx))

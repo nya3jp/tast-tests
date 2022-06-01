@@ -44,6 +44,7 @@ const (
 
 const checkInterval = 5 * time.Second
 
+// SystemTraceConfigFile is the system trace config file.
 const SystemTraceConfigFile = "perfetto/system_trace_config.pbtxt"
 
 // MetricConfig is the configuration for the recorder.
@@ -297,10 +298,10 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	if options.DischargeThreshold != nil {
 		dischargeThreshold = *options.DischargeThreshold
 	}
-	batteryDischarge := setup.TryBatteryDischarge(true, dischargeThreshold)
+	// Create batteryDischarge with both discharge and ignoreErr set to true.
+	batteryDischarge := setup.NewBatteryDischargeMode(true, true, dischargeThreshold)
 	powerTestOptions := setup.PowerTestOptions{
 		// The default for the following options is to disable these setting.
-		Battery:    batteryDischarge,
 		Wifi:       setup.DisableWifiInterfaces,
 		NightLight: setup.DisableNightLight,
 		Powerd:     setup.DisablePowerd,
@@ -325,7 +326,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 		powerTestOptions.Bluetooth = setup.DoNotChangeBluetooth
 	}
 
-	r.powerSetupCleanup, err = setup.PowerTest(ctx, r.tconn, powerTestOptions)
+	r.powerSetupCleanup, err = setup.PowerTest(ctx, r.tconn, batteryDischarge, powerTestOptions)
 	batteryDischargeErr := batteryDischarge.Err()
 	if batteryDischargeErr != nil {
 		testing.ContextLog(ctx, "Failed to induce battery discharge: ", batteryDischargeErr)
@@ -451,7 +452,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	return r, nil
 }
 
-// EnableSystemTracing enables system tracing when the recorder is running a test scenario.
+// EnableTracing enables system tracing when the recorder is running a test scenario.
 func (r *Recorder) EnableTracing(traceDir, perfettoCfgPath string) {
 	r.traceDir = traceDir
 	r.perfettoCfgPath = perfettoCfgPath
