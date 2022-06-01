@@ -712,6 +712,13 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrapf(err, "failed to set %s layout", string(meet.layout))
 		}
 
+		if err := meetConn.Eval(ctx, "hrTelemetryApi.streamQuality.send720p()", nil); err != nil {
+			return errors.Wrap(err, "failed to request sending 720p")
+		}
+		if err := meetConn.Eval(ctx, "hrTelemetryApi.streamQuality.receive720p()", nil); err != nil {
+			return errors.Wrap(err, "failed to request receiving 720p")
+		}
+
 		if meet.present {
 			if !meet.docs && !meet.jamboard {
 				return errors.New("need a Google Docs or Jamboard tab to present")
