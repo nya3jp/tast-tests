@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a7b3a4_7d3b7d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-06-01T00:34:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feadd3b4_009265da",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e9ced35_4b4c2602",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-31T00:53:27Z",
       "side": 1,
       "message": "The same rule applies to all locators in this cl, thanks.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1082a3cc_bc7b586c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-06-01T00:34:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e9ced35_4b4c2602",
       "range": {
         "startLine": 65,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2317a9fa_4fb66aaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-06-01T00:34:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfc46827_778d19c3",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 64
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f04317c3_41aca739",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-31T00:53:27Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 64
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4696bdc5_0474d79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-06-01T00:34:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04317c3_41aca739",
       "range": {
         "startLine": 166,
         "startChar": 2,
@@ -112,6 +208,47 @@
         "endLine": 226,
         "endChar": 65
       },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b121c0_03fd50ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-06-01T00:34:17Z",
+      "side": 1,
+      "message": "Since no attribute or element changes inform us that the photo has been edited (filters, color adjustments...etc). Change the image accordingly at the given time.",
+      "parentUuid": "5bb30bce_28c4d951",
+      "range": {
+        "startLine": 226,
+        "startChar": 3,
+        "endLine": 226,
+        "endChar": 65
+      },
+      "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31036e3d_2405e235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-06-01T00:34:17Z",
+      "side": 1,
+      "message": "ditto",
       "revId": "4b030c1498b3ff8005ed1179ccf2d33480c54ea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
