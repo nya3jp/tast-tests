@@ -11,7 +11,9 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/playback"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -982,6 +984,23 @@ func PlaybackPerf(ctx context.Context, s *testing.State) {
 	defer lacros.CloseLacros(ctx, l)
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get primary display info: ", err)
+	}
+	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, dispInfo.ID)
+	if err != nil {
+		s.Fatal("Failed to get shelf behavior: ", err)
+	}
+	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
+		s.Fatal("Failed to set shelf behavior to Never Auto Hide: ", err)
+	}
+	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
 	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, testOpt.decoderType, testOpt.gridSize, testOpt.measureRoughness)
 }
