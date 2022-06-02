@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4e1a76_aff69f76",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-02T04:27:23Z",
+      "side": 1,
+      "message": "Here you create two global mutable objects for tests to be used as input parameters.\n\nTo be safe, for each caller, it should get its own instance so that there\u0027s no global object modification issue.\n\nFurthermore, I see the mutable struct being used in test parameters, which is disallowed. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-registration.\n\nThe right approach should be: passing an enum/literal that describes the desired battery discharge mode in params and before the invocation of PowerTest(), call a BatteryDischargeMode factory method to instantiate a BatteryDischargerMode instance for PowerTest to use.",
+      "revId": "690f23269ab9ae056211e6e4040e6cb3d371e748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85fb95fa_b4e3b894",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-02T04:27:23Z",
+      "side": 1,
+      "message": "discharge",
+      "range": {
+        "startLine": 167,
+        "startChar": 41,
+        "endLine": 167,
+        "endChar": 45
+      },
+      "revId": "690f23269ab9ae056211e6e4040e6cb3d371e748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
