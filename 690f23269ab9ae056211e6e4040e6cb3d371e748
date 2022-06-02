@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a480d69f_ebc08fe7",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-02T19:31:16Z",
+      "side": 1,
+      "message": "Thank you for the comment and link. I changed the `BatteryDischargeMode` back to constant-like immutable values and created `func NewBatteryDischargeFromMode(mode BatteryDischargeMode) *BatteryDischarge {` to return runtime pointers.",
+      "parentUuid": "3a4e1a76_aff69f76",
+      "revId": "690f23269ab9ae056211e6e4040e6cb3d371e748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85fb95fa_b4e3b894",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-02T04:27:23Z",
       "side": 1,
       "message": "discharge",
+      "range": {
+        "startLine": 167,
+        "startChar": 41,
+        "endLine": 167,
+        "endChar": 45
+      },
+      "revId": "690f23269ab9ae056211e6e4040e6cb3d371e748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "340d5fbb_0e6d8f7b",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-02T19:31:16Z",
+      "side": 1,
+      "message": "Thanks for catching this!",
+      "parentUuid": "85fb95fa_b4e3b894",
       "range": {
         "startLine": 167,
         "startChar": 41,
