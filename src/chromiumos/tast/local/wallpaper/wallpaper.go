@@ -41,7 +41,7 @@ func OpenWallpaperPicker(ui *uiauto.Context) uiauto.Action {
 // SelectCollection returns an action to select the collection with the given collection name.
 func SelectCollection(ui *uiauto.Context, collection string) uiauto.Action {
 	// Collections that are fully loaded will have a name like "Name 10 Images".
-	loadedCollections := nodewith.Role(role.Button).HasClass("photo-inner-container").NameRegex(regexp.MustCompile(`.*\d+\s[iI]mages`))
+	loadedCollections := nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container").NameRegex(regexp.MustCompile(`.*\d+\s[iI]mages`))
 	desiredCollection := loadedCollections.NameStartingWith(collection)
 	return uiauto.Combine(fmt.Sprintf("select collection %q", collection),
 		// We should at least wait for a few collections to be loaded.
@@ -172,4 +172,14 @@ func ValidateDiff(img1, img2 image.Image, expectedPercent int) error {
 		return errors.Errorf("unexpected percentage: got %d%%; want at least %d%%", percentage, expectedPercent)
 	}
 	return nil
+}
+
+// CurrentlySetWallpaper gets the name of the current wallpaper.
+func CurrentlySetWallpaper(ctx context.Context, ui *uiauto.Context) (string, error) {
+	currentlySetWallpaperFinder := nodewith.Role(role.Heading).NameStartingWith("Currently set")
+	currentlySetWallpaperNode, err := ui.Info(ctx, currentlySetWallpaperFinder)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to find currently set wallpaper")
+	}
+	return currentlySetWallpaperNode.Name, nil
 }
