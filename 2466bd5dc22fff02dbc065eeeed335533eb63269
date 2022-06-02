@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11cbb7d2_1fa9a079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-02T13:44:02Z",
+      "side": 1,
+      "message": "Given the length of time it takes here (and every subtest will run this block to setup Chrome) you might consider setting up a dedicate fixture for this test that handles the setup and teardown",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 72
+      },
+      "revId": "2466bd5dc22fff02dbc065eeeed335533eb63269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
