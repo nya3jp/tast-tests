@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b907bd23_d2e63dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T14:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebd628f4_f4ba4abd",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "90462b19168ea597eec7da415374b7b94a82ec16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79dded45_0b6259e8",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-02T13:41:37Z",
       "side": 1,
       "message": "hugenit: can be one token",
+      "range": {
+        "startLine": 78,
+        "startChar": 34,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "90462b19168ea597eec7da415374b7b94a82ec16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d3795e_9c814ec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T14:03:30Z",
+      "side": 1,
+      "message": "Done here and below for `+ \"DetachStorage\"`",
+      "parentUuid": "79dded45_0b6259e8",
       "range": {
         "startLine": 78,
         "startChar": 34,
