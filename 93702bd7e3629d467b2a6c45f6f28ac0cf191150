@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f589f0_33793f4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-02T14:32:27Z",
+      "side": 1,
+      "message": "Should be useful for timing purposes (see comment in CL description)",
+      "parentUuid": "2e2637ca_6ecaa01a",
+      "revId": "93702bd7e3629d467b2a6c45f6f28ac0cf191150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "607f51fa_fe8a584a",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-02T13:04:26Z",
       "side": 1,
       "message": "nit: Maybe: Waiting for...",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 16
+      },
+      "revId": "93702bd7e3629d467b2a6c45f6f28ac0cf191150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45807e79_aa437a1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/oobe_config_save_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-02T14:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607f51fa_fe8a584a",
       "range": {
         "startLine": 81,
         "startChar": 8,
