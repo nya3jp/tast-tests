@@ -93,6 +93,30 @@
       },
       "revId": "bbbff621c9c4c6e6f87edb1d4ede4b4405324e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "010b29d0_5a590ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:27:37Z",
+      "side": 1,
+      "message": "it\u0027s recommended to avoid multi-line logs in general, and as you already have output dump file, could you just revert the original CL, then?\nYou can take a look at output file.",
+      "parentUuid": "5093906f_4089511b",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 2
+      },
+      "revId": "bbbff621c9c4c6e6f87edb1d4ede4b4405324e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
