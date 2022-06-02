@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "0bc383839f99704965dd2aacad119deeb5629486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4838a0c7_848bb763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-02T00:23:58Z",
+      "side": 1,
+      "message": "Do we really need to fail here ? Wouldn\u0027t it be simpler to simply skip the final section of the test with the shill restart ?",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
