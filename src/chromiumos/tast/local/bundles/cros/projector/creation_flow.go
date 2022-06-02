@@ -45,7 +45,7 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
 
-	appWindow := nodewith.Name("Screencast").Role(role.RootWebArea).First()
+	appWindow := nodewith.Name("Screencast").Role(role.Application)
 	reload := nodewith.Name("Reload Ctrl+R").Role(role.MenuItem)
 	maximizeButton := nodewith.Name("Maximize").Role(role.Button)
 	newScreencastButton := nodewith.Name("New screencast").Role(role.Button)
@@ -54,6 +54,8 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 	inkCanvas := nodewith.ClassName("ink-engine").Role(role.Canvas)
 	blueMarkerButton := nodewith.Name("Blue").Role(role.Button)
 	stopRecordingButton := nodewith.Name("Stop screen recording").Role(role.Button)
+	tutorialsText := nodewith.Name("Getting started").Role(role.StaticText)
+	closeTutorialsButton := nodewith.Name("Close tutorials").Role(role.Button)
 	screencastItemMoreOptionsButton := nodewith.Name("More options").Role(role.PopUpButton).Nth(1)
 	deleteMenuItem := nodewith.Name("Delete").Role(role.MenuItem)
 	deleteButton := nodewith.Name("Delete").Role(role.Button)
@@ -62,7 +64,7 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Projector app: ", err)
 	}
 
-	// Refresh the app until the new screencast button exists.
+	// Refresh the app until the new screencast and close tutorials buttons exist.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := uiauto.Combine("refresh app",
 			ui.RightClickUntil(appWindow, ui.Exists(reload)),
@@ -70,13 +72,15 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to refresh app")
 		}
-
 		if err := ui.Exists(newScreencastButton)(ctx); err != nil {
 			return errors.Wrap(err, "new screencast button still doesn't exist")
 		}
+		if err := ui.Exists(closeTutorialsButton)(ctx); err != nil {
+			return errors.Wrap(err, "close tutorials button still doesn't exist")
+		}
 		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 10 * time.Second}); err != nil {
-		s.Fatal("Failed to wait for new screencast button to appear: ", err)
+	}, &testing.PollOptions{Timeout: 5 * time.Minute, Interval: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for new screencast and close tutorials buttons to appear: ", err)
 	}
 
 	s.Log("Launching the new screencast creation flow")
@@ -107,9 +111,13 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 		// directory.
 		ui.WaitUntilExists(stopRecordingButton),
 		ui.LeftClickUntil(stopRecordingButton, ui.Gone(stopRecordingButton)),
+		// Dismiss the tutorial videos in case they block the screencast item.
+		ui.WaitUntilExists(closeTutorialsButton),
+		ui.LeftClickUntil(closeTutorialsButton, ui.Gone(tutorialsText)),
 		// We need to clean up this screencast to prevent
 		// taking up Drive quota over time.
 		ui.WaitUntilExists(screencastItemMoreOptionsButton),
+		ui.MakeVisible(screencastItemMoreOptionsButton),
 		ui.LeftClickUntil(screencastItemMoreOptionsButton, ui.Exists(deleteMenuItem)),
 		ui.LeftClickUntil(deleteMenuItem, ui.Exists(deleteButton)),
 		ui.LeftClickUntil(deleteButton, ui.Gone(deleteButton)),

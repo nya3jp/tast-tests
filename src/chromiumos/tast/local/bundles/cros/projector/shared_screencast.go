@@ -10,6 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/projector"
@@ -17,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -28,7 +31,7 @@ func init() {
 		Contacts:     []string{"tobyhuang@chromium.org", "cros-projector@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      5 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Fixture:      "projectorLogin",
 		VarDeps: []string{
 			"projector.sharedScreencastLink",
@@ -70,9 +73,110 @@ func SharedScreencast(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 
 	screencastTitle := nodewith.Name("Screencast for Tast (Do not modify)").Role(role.StaticText)
+	appWindow := nodewith.Name("Screencast").Role(role.Application)
+	reload := nodewith.Name("Reload Ctrl+R").Role(role.MenuItem)
+	shareButton := nodewith.Name("Share").Role(role.Button)
+	copyLinkButton := nodewith.Name("Copy link").Role(role.Button)
+	translationDropdown := nodewith.Name("English").Role(role.Button)
+	french := nodewith.Name("français").Role(role.ListBoxOption)
+	searchToolbar := nodewith.Name("Find in transcript").Role(role.Button)
+	searchBox := nodewith.Name("Find in transcript").Role(role.TextField)
+	searchResult := nodewith.Name("1/1").Role(role.StaticText).Ancestor(nodewith.ClassName("search-result-label"))
+	selectedTranscript := nodewith.Name("marks allemands").Role(role.StaticText).Ancestor(nodewith.ClassName("selected"))
+	timeElapsed := nodewith.Name("01:47").Role(role.StaticText).Ancestor(nodewith.Name("Time elapsed"))
+	timeRemaining := nodewith.Name("01:23").Role(role.StaticText).Ancestor(nodewith.Name("Time remaining"))
+	highlightedTranscript := nodewith.Name("01:47").Role(role.StaticText).Ancestor(nodewith.ClassName("transcript highlighted"))
+	skipBack := nodewith.Name("Skip back").Role(role.Button)
+	skipBackTimeElapsed := nodewith.Name("01:37").Role(role.StaticText).Ancestor(nodewith.Name("Time elapsed"))
+	skipBackTimeRemaining := nodewith.Name("01:33").Role(role.StaticText).Ancestor(nodewith.Name("Time remaining"))
+	skipBackHighlightedTranscript := nodewith.Name("01:31").Role(role.StaticText).Ancestor(nodewith.ClassName("transcript highlighted"))
+	skipAhead := nodewith.Name("Skip ahead").Role(role.Button)
+	playButton := nodewith.Name("Play").Role(role.Button)
+	pauseButton := nodewith.Name("Pause").Role(role.Button)
 
 	// Verify the shared screencast title rendered correctly.
 	if err := ui.WaitUntilExists(screencastTitle)(ctx); err != nil {
 		s.Fatal("Failed to render shared screencast: ", err)
+	}
+
+	// Refresh the app until the share button and translation dropdown exist.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		s.Log("tobyhuang debug: refreshing app")
+		if err := uiauto.Combine("refresh app",
+			ui.RightClickUntil(appWindow, ui.Exists(reload)),
+			ui.LeftClick(reload),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to refresh app")
+		}
+		if err := ui.Exists(shareButton)(ctx); err != nil {
+			s.Log("tobyhuang debug: share button doesn't exist yet")
+			return errors.Wrap(err, "share button still doesn't exist")
+		}
+		if err := ui.Exists(translationDropdown)(ctx); err != nil {
+			s.Log("tobyhuang debug: translation dropdown doesn't exist yet")
+			return errors.Wrap(err, "translation dropdown still doesn't exist")
+		}
+		s.Log("tobyhuang debug: found everything we need")
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Minute, Interval: 5 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for share button and translation dropdown to appear: ", err)
+	}
+
+	if err := uiauto.Combine("copying share link and translating to French",
+		// Copy the share link to clipboard.
+		ui.WaitUntilExists(shareButton),
+		ui.LeftClickUntil(shareButton, ui.Exists(copyLinkButton)),
+		ui.LeftClickUntil(copyLinkButton, ui.Gone(copyLinkButton)),
+		// Translate the transcript to French.
+		ui.WaitUntilExists(translationDropdown),
+		ui.WithInterval(time.Second).LeftClickUntil(translationDropdown, ui.Exists(french)),
+		ui.MakeVisible(french),
+		ui.LeftClickUntil(french, ui.Gone(french)),
+		// Open the search toolbar.
+		ui.LeftClickUntil(searchToolbar, ui.Exists(searchBox)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to copy share link and translate to French: ", err)
+	}
+
+	// Check the shareable link copied to clipboard.
+	data, err := ash.ClipboardTextData(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to retrieve clipboard data: ", err)
+	}
+	if data != sharedScreencast {
+		s.Fatalf("Clipboard data doesn't match share link: expected %s actual %s", sharedScreencast, data)
+	}
+
+	// Typing search term into search box.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	if err := kb.Type(ctx, "marks allemands"); err != nil {
+		s.Fatal("Failed to type search term: ", err)
+	}
+
+	if err := uiauto.Combine("navigating transcript and media controls",
+		// There should only be one search result in the
+		// transcript.
+		ui.WaitUntilExists(searchResult),
+		// We're searching for "German marks" in French so we
+		// know translation worked.
+		ui.WaitUntilExists(selectedTranscript),
+		ui.LeftClickUntil(selectedTranscript, ui.Exists(timeElapsed)),
+		ui.WaitUntilExists(timeRemaining),
+		ui.WaitUntilExists(highlightedTranscript),
+		ui.WithInterval(5*time.Second).LeftClickUntil(skipBack, ui.Exists(skipBackTimeElapsed)),
+		ui.WaitUntilExists(skipBackTimeRemaining),
+		// After skipping back 10 seconds, the highlighted
+		// transcript should be at the 01:31 timestamp.
+		ui.WaitUntilExists(skipBackHighlightedTranscript),
+		ui.WithInterval(5*time.Second).LeftClickUntil(skipAhead, ui.Exists(timeElapsed)),
+		ui.WaitUntilExists(timeRemaining),
+		ui.WaitUntilExists(highlightedTranscript),
+		ui.LeftClickUntil(playButton, ui.Exists(pauseButton)),
+		ui.LeftClickUntil(pauseButton, ui.Exists(playButton)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to navigate transcript and media controls: ", err)
 	}
 }
