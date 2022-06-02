@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0c8a9b_f832cc49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-02T16:27:24Z",
+      "side": 1,
+      "message": "nit: This is potentially confusing because first comes `size.Width*size.Height \u003e\u003d 640*360` so it might be a little unclear that you are referring to `numLogicalCores \u003e 4`.",
+      "range": {
+        "startLine": 1126,
+        "startChar": 19,
+        "endLine": 1126,
+        "endChar": 33
+      },
+      "revId": "60f89e293a9c2f202a93f9ab75c135d8bd438056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af98c679_ae87fab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-02T16:27:24Z",
+      "side": 1,
+      "message": "Why? I believe you that it somehow makes sense, but I think it would be better to provide an explanation or cite a source that explains why this should be rounded towards zero always.",
+      "range": {
+        "startLine": 1136,
+        "startChar": 4,
+        "endLine": 1136,
+        "endChar": 43
+      },
+      "revId": "60f89e293a9c2f202a93f9ab75c135d8bd438056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
