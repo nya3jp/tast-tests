@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5881bdc_7c350d57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-02T14:51:26Z",
+      "side": 1,
+      "message": "Maybe explain that later we will add validation for IDs.",
+      "revId": "5898575d58e6f8fa873ec5b3a2e66b826072b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
