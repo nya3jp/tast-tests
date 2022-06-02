@@ -127,6 +127,30 @@
       },
       "revId": "13965a77e5654b01bbab4ea22a3db5c1cc96c362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9801e402_bc44a2bb",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-02T21:48:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e1f3a0e_afcc328e",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 2
+      },
+      "revId": "13965a77e5654b01bbab4ea22a3db5c1cc96c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
