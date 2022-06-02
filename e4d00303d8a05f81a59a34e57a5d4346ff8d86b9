@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "441d5e56_d08ece77",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-02T21:48:43Z",
+      "side": 1,
+      "message": "By setting ignoreErr to false, it returns advancedBatteryDischargeMode.\nLooking at advancedBatteryDischargeMode, it has an Err method[1].\n\nI can\u0027t find where the signature of the method you mentioned. I found the following signature instead. \n```\nfunc TryBatteryDischarge(ignoreErr bool, threshold float64) BatteryDischargeMode\n```\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/power/setup/setup.go;l\u003d187;rcl\u003ddc2b2a29086968a702c24474362d782196096390",
+      "parentUuid": "7e9b16cd_2b7e3174",
+      "range": {
+        "startLine": 451,
+        "startChar": 47,
+        "endLine": 451,
+        "endChar": 51
+      },
+      "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19a67976_b1837a97",
         "filename": "src/chromiumos/tast/local/graphics/perf.go",
         "patchSetId": 3
