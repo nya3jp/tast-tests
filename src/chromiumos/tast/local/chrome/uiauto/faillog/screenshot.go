@@ -19,14 +19,14 @@ import (
 const screenshotFileName = "screenshot.png"
 
 // SaveScreenshotOnError takes screenshot when the test fails.
-// Use saveScreenshotToFileOnError, if you want to specify the fileName.
+// Use SaveScreenshotToFileOnError, if you want to specify the fileName.
 func SaveScreenshotOnError(ctx context.Context, cr *chrome.Chrome, outDir string, hasError func() bool) {
-	saveScreenshotToFileOnError(ctx, cr, outDir, hasError, screenshotFileName)
+	SaveScreenshotToFileOnError(ctx, cr, outDir, hasError, screenshotFileName)
 }
 
-// saveScreenshotToFileOnError checks the given hasError function and takes screenshot into a file 'fileName' when the test fails.
+// SaveScreenshotToFileOnError checks the given hasError function and takes screenshot into a file 'fileName' when the test fails.
 // It does nothing when the test succeeds.
-func saveScreenshotToFileOnError(ctx context.Context, cr *chrome.Chrome, outDir string, hasError func() bool, fileName string) {
+func SaveScreenshotToFileOnError(ctx context.Context, cr *chrome.Chrome, outDir string, hasError func() bool, fileName string) {
 	if !hasError() {
 		return
 	}

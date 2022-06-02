@@ -6,6 +6,7 @@ package enterprise
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -184,9 +185,9 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("verify packages are uninstallable", err)
 		}
 
-		if err := ensurePlayStoreNotEmpty(ctx, tconn, a); err != nil {
-			faillog.DumpUITree(cleanupCtx, s.OutDir(), tconn)
-			return exit("verify Play Store is not empty", err)
+		if err := ensurePlayStoreNotEmpty(ctx, tconn, cr, a, s.OutDir(), attempts); err != nil {
+			// TODO(b/231751280): Switch to exit when the Play Store bug is resolved.
+			return retry("verify Play Store is not empty", err)
 		}
 
 		return nil
@@ -236,7 +237,7 @@ func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.
 }
 
 // ensurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
-func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
+func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) error {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
@@ -250,7 +251,13 @@ func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, a *arc
 	}
 	defer d.Close(ctx)
 
-	return testing.Poll(ctx, func(ctx context.Context) error {
+	attempts := 0
+	return testing.Poll(ctx, func(ctx context.Context) (retErr error) {
+		attempts++
+		defer faillog.SaveScreenshotToFileOnError(ctx, cr, outDir, func() bool {
+			return retErr != nil
+		}, fmt.Sprintf("play_store%d_%d.png", runID, attempts))
+
 		// TODO(b/231751280): View does not update when app is installed.
 		// When the bug is fixed and Play Store version is upreved on the
 		// system image, move this out of the loop.
