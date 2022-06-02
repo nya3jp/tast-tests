@@ -16,6 +16,24 @@
       "message": "We need an extra mount request at here to let the \"auth_locked\" become \"true\".\n(In other words, the \"auth_locked\" would become true after the 6th wrong try. And the 6th pin try would always failed.)",
       "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c1fa30_01161278",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-02T12:37:52Z",
+      "side": 1,
+      "message": "Interesting, are you sure that\u0027s expected behavior? In line 238 I\u0027m testing MountVault() fails. It\u0027s a 5th attempt after 4 wrong attempts inside almostLockOutPIN(). This test passes for me as it is now, which means PinWeaver blocks the PIN after 5 attempts?",
+      "parentUuid": "1ff2b011_090a341a",
+      "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
