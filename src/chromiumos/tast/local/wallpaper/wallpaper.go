@@ -173,3 +173,13 @@ func ValidateDiff(img1, img2 image.Image, expectedPercent int) error {
 	}
 	return nil
 }
+
+// CurrentWallpaper gets the name of the current wallpaper.
+func CurrentWallpaper(ctx context.Context, ui *uiauto.Context) (string, error) {
+	currentWallpaperFinder := nodewith.Role(role.Heading).NameStartingWith("Currently set")
+	currentWallpaperNode, err := ui.Info(ctx, currentWallpaperFinder)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to find currently set wallpaper")
+	}
+	return currentWallpaperNode.Name, nil
+}
