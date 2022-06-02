@@ -16,6 +16,75 @@
       "message": "I\u0027ll fix the failing ui.ChromeCrashReporterMetrics tests tomorrow.",
       "revId": "612b488f2478664db8e283985d0358cc33ed20ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10bc8bf6_617f3354",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_early.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-02T18:48:04Z",
+      "side": 1,
+      "message": "Can you please phrase this in terms of upstart.UIRestartTimeout?",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "612b488f2478664db8e283985d0358cc33ed20ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac993f22_dcbcc945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_early.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-02T18:48:04Z",
+      "side": 1,
+      "message": "nit: why not `upstart.RestartJob`?",
+      "range": {
+        "startLine": 65,
+        "startChar": 18,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "612b488f2478664db8e283985d0358cc33ed20ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "171233c4_11630674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_early.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-02T18:48:04Z",
+      "side": 1,
+      "message": "Also look for the new early_chrome_crash flag?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 56
+      },
+      "revId": "612b488f2478664db8e283985d0358cc33ed20ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
