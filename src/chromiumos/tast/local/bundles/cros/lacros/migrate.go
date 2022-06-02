@@ -125,9 +125,6 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 	if err := conn.Navigate(ctx, "https://abc.xyz"); err != nil {
 		s.Fatal("Failed to open Alphabet page: ", err)
 	}
-	if err := conn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		s.Fatal("Failed to wait for Alphabet page: ", err)
-	}
 
 	// Bookmark the chrome://downloads page.
 	if err := conn.Navigate(ctx, "chrome://downloads"); err != nil {
