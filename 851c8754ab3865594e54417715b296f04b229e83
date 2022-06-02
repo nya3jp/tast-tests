@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c4a55ee_af7ba200",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-02T22:02:17Z",
+      "side": 0,
+      "message": "I think this is no longer used. If so, we can remove it.",
+      "range": {
+        "startLine": 151,
+        "startChar": 11,
+        "endLine": 151,
+        "endChar": 40
+      },
+      "revId": "851c8754ab3865594e54417715b296f04b229e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "850fc9a1_583c18c1",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 34

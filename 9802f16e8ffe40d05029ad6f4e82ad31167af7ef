@@ -68,6 +68,29 @@
       },
       "revId": "9802f16e8ffe40d05029ad6f4e82ad31167af7ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc227e8_c91c02b6",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-02T22:02:17Z",
+      "side": 1,
+      "message": "[This comment](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go;l\u003d518;drc\u003d09377f9660609f60fae20928eef1c59889eb7f6a) suggests this won\u0027t work if we set `enableSWWP\u003dfalse` and `enableHWWP\u003dtrue`.\n\nIt doesn\u0027t look like we\u0027re doing that in any of the existing tests, but it would be worth testing that `CheckWriteProtectStateCorrect` fails in that scenario and adding a comment.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 2
+      },
+      "revId": "9802f16e8ffe40d05029ad6f4e82ad31167af7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
