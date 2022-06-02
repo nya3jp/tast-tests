@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "39eb8690_a38aa0bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-02T00:44:14Z",
+      "side": 1,
+      "message": "How about filing a bug to add the fixture again?",
+      "revId": "0b4fabbf90249a91d420dd3e5e15fddf2d5bc871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "35aad531_4a6a800e",
@@ -14,6 +31,109 @@
       "writtenOn": "2022-06-01T23:22:14Z",
       "side": 1,
       "message": "PTAL. Thanks!",
+      "revId": "0b4fabbf90249a91d420dd3e5e15fddf2d5bc871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d10758_3265ad8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-02T00:44:14Z",
+      "side": 1,
+      "message": "lgtm % comments",
+      "revId": "0b4fabbf90249a91d420dd3e5e15fddf2d5bc871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e26c876_9d0ae702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-02T00:44:14Z",
+      "side": 1,
+      "message": "I wonder if we sill need such a long timeout",
+      "revId": "0b4fabbf90249a91d420dd3e5e15fddf2d5bc871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e0363ab_968f44f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard_allkeys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-02T00:44:14Z",
+      "side": 1,
+      "message": "Is this correct bug number for this TODO? I think it\u0027d be great if we have a separate one",
+      "range": {
+        "startLine": 110,
+        "startChar": 9,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "0b4fabbf90249a91d420dd3e5e15fddf2d5bc871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c4cfb5_538f63d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard_allkeys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-02T00:44:14Z",
+      "side": 1,
+      "message": "is this resolved now?",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 42
+      },
+      "revId": "0b4fabbf90249a91d420dd3e5e15fddf2d5bc871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8842462_128888e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard_allkeys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-02T00:44:14Z",
+      "side": 1,
+      "message": "how about shortening the context for cleanup?",
+      "range": {
+        "startLine": 213,
+        "startChar": 39,
+        "endLine": 213,
+        "endChar": 42
+      },
       "revId": "0b4fabbf90249a91d420dd3e5e15fddf2d5bc871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
