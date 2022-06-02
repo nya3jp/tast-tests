@@ -117,6 +117,30 @@
       },
       "revId": "bbbff621c9c4c6e6f87edb1d4ede4b4405324e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995f829c_7a78f7fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-02T21:40:42Z",
+      "side": 1,
+      "message": "I feel it is better to modify drm code to output WARN for harmless errors.\nERRORS should be very clear something is really wrong and the test should be considered fail.",
+      "parentUuid": "010b29d0_5a590ab8",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 2
+      },
+      "revId": "bbbff621c9c4c6e6f87edb1d4ede4b4405324e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
