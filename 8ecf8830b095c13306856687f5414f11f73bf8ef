@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ba52d9f_fd7486fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-02T04:39:31Z",
+      "side": 1,
+      "message": "As we discussed offline here are the changes on the latest patch:\n1, Open calendar view -\u003e after the calendar view main label is rendered -\u003e check if it shows the year before opening the calendar view; if not it should show the year of the current |Now()|, which should the next year.\n\n2, Added a todo to remove the use of `sleep` after we have the event list updating implementation. In this cl, we will still wait for 10s as the events fetching duration.\n\n3, Filed and added the bug with a todo, which is it gives the wrong vertical position of the date cell in the scroll view. (https://b.corp.google.com/issues/234673735) We will still use the moving mouse approach to find the date cell in this cl.",
+      "parentUuid": "2b68651c_8b74d00f",
+      "revId": "8ecf8830b095c13306856687f5414f11f73bf8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84bb2119_84e2f71d",
         "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
         "patchSetId": 10
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "Also added a after clicking time here",
       "parentUuid": "84bb2119_84e2f71d",
+      "revId": "8ecf8830b095c13306856687f5414f11f73bf8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f73b8dc_dc6202e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/button_clicks.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-02T04:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc2a2e27_e5572a3e",
       "revId": "8ecf8830b095c13306856687f5414f11f73bf8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -142,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "580ff989_1dabd5d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-02T04:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbfe8632_ac3215cf",
+      "revId": "8ecf8830b095c13306856687f5414f11f73bf8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8a1123b_68466699",
@@ -173,6 +227,24 @@
       "side": 1,
       "message": "Also added a after clicking time now",
       "parentUuid": "c8a1123b_68466699",
+      "revId": "8ecf8830b095c13306856687f5414f11f73bf8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "551129d4_09ceb29b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-02T04:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a013835b_9eb6cab1",
       "revId": "8ecf8830b095c13306856687f5414f11f73bf8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

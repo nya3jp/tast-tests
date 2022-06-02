@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fac95843_64b6e685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/scroll_up_and_down.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-02T04:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d74af602_11d27d66",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 68
+      },
+      "revId": "f947c7a7d478c3a887cb7043f60e1054c4d8f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8f8c317_42f05fb9",
