@@ -8,6 +8,7 @@ package printpreview
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -240,4 +241,34 @@ func SetPagesPerSheet(ctx context.Context, tconn *chrome.TestConn, value string)
 // SetMargins sets the "Margins" dropdown to the desired value.
 func SetMargins(ctx context.Context, tconn *chrome.TestConn, value string) error {
 	return SetDropdown(ctx, tconn, "Margins", value)
+}
+
+// SetScaleDefault sets the "Scale" dropdown to "Default".
+func SetScaleDefault(ctx context.Context, tconn *chrome.TestConn) error {
+	return SetDropdown(ctx, tconn, "Scale", "Default")
+}
+
+// SetScaleCustom sets the "Scale" dropdown to "Custom" and the custom scaling
+// factor to the desired value.
+func SetScaleCustom(ctx context.Context, tconn *chrome.TestConn, value int) error {
+	if err := SetDropdown(ctx, tconn, "Scale", "Custom"); err != nil {
+		return err
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return err
+	}
+
+	spinner := nodewith.Role(role.SpinButton).Focused()
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("find spinner",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(spinner),
+		kb.AccelAction("Ctrl+A"),
+		kb.TypeAction(strconv.Itoa(value)),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return nil
 }
