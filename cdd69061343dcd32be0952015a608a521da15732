@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae81541_b0ade429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-06-02T16:43:12Z",
+      "side": 1,
+      "message": "Removing the remaining instances of the old credentials, before I remove unused yamls. PTAL!",
+      "revId": "cdd69061343dcd32be0952015a608a521da15732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
