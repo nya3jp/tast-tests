@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f66f883_450a2687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-02T12:10:04Z",
+      "side": 1,
+      "message": "No, this can cover all LTS versions (once we have more than 1)\n\nLTC is not different to LTR in omaha.",
+      "parentUuid": "a4a05614_93fa7bcc",
+      "revId": "d725cf7dd8c20ea872a1278d8dc80c0a9ea3ab7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa9ff024_33597e17",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-02T11:58:02Z",
       "side": 1,
       "message": "Is there a reasong for shortening the context here instead of shortening the timeout for the whole test?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "d725cf7dd8c20ea872a1278d8dc80c0a9ea3ab7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "619e0adc_9b6cc718",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts_rollback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-02T12:10:04Z",
+      "side": 1,
+      "message": "Copy paste from the looping tests 😊. Moved to using a shorter timeout.",
+      "parentUuid": "fa9ff024_33597e17",
       "range": {
         "startLine": 50,
         "startChar": 1,
