@@ -22,6 +22,30 @@
       },
       "revId": "a2408abcf6af489433c6890297b65b20f4313dd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da15e32_1b8a3adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_cannot_add_non_edu_account.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-06-02T18:33:36Z",
+      "side": 1,
+      "message": "Yes. Parent is regular consumer user, there is no special treatment for parent. Adding secondary account will cause error because it is not an EDU account. \n\nUpdated that, because it is effectively the same as using parent from the different family. (We can have a different adult account, but then I would rather add it to arc.yaml)",
+      "parentUuid": "afba24ce_337487e9",
+      "range": {
+        "startLine": 91,
+        "startChar": 39,
+        "endLine": 91,
+        "endChar": 49
+      },
+      "revId": "a2408abcf6af489433c6890297b65b20f4313dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
