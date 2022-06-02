@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff2b011_090a341a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-06-02T11:47:49Z",
+      "side": 1,
+      "message": "We need an extra mount request at here to let the \"auth_locked\" become \"true\".\n(In other words, the \"auth_locked\" would become true after the 6th wrong try. And the 6th pin try would always failed.)",
+      "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -50,6 +50,24 @@
       "message": "(This is the actual regression test for b/234659188.)",
       "revId": "4793b6308030a29431143bba78875c02555d7ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4542ad71_76e79c4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-06-02T11:47:49Z",
+      "side": 1,
+      "message": "The fix is crrev.com/c/3686709",
+      "parentUuid": "556e9fb9_608b80d5",
+      "revId": "4793b6308030a29431143bba78875c02555d7ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
