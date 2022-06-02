@@ -27,6 +27,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that System Web Apps can launch through their URL",
 		Contacts: []string{
+			"qjw@chromium.org",
 			"chrome-apps-platform-rationalization@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
@@ -37,6 +38,7 @@ func init() {
 }
 
 // LaunchSystemWebAppsFromURL tries to navigate to System Web Apps from their chrome:// URL.
+// This test launches several SWAs to trigger different launch paths.
 func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 	// Shorten deadline to leave time for cleanup.
 	cleanupCtx := ctx
@@ -50,7 +52,7 @@ func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	systemWebApps, err := apps.ListSystemWebApps(ctx, tconn)
+	systemWebApps, err := apps.ListRegisteredSystemWebApps(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get list of SWAs: ", err)
 	}
@@ -68,20 +70,25 @@ func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 
 	defer uiauto.StopRecordFromKBAndSaveOnError(cleanupCtx, tconn, s.HasError, s.OutDir())
 
-	for _, app := range systemWebApps {
-		chromeURL := app.PublisherID
+	testAppInternalNames := map[string]bool{
+		// Link capture, stand alone app.
+		"OSSettings": true,
+		// Link capture, File Handling (origin trial) app.
+		"Media": true,
+		// Tabbed app, non-link capture.
+		"Crosh": true,
+	}
 
-		// Filter out apps with empty PublisherIDs / Chrome URLs e.g. Terminal.
-		if chromeURL == "" {
-			continue
+	for _, systemWebApp := range systemWebApps {
+		if testAppInternalNames[systemWebApp.InternalName] {
+			s.Run(ctx, systemWebApp.Name, func(ctx context.Context, s *testing.State) {
+				startURL := systemWebApp.StartURL
+				s.Log("Navigating to ", startURL)
+				if err := verifyAndLaunchSystemWebAppFromURL(ctx, cr, tconn, kb, s.OutDir(), systemWebApp.Name, startURL); err != nil {
+					s.Fatalf("Failed navigating to %q: %v", startURL, err)
+				}
+			})
 		}
-
-		s.Run(ctx, app.ShortName, func(ctx context.Context, s *testing.State) {
-			s.Log("Navigating to ", chromeURL)
-			if err := verifyAndLaunchSystemWebAppFromURL(ctx, cr, tconn, kb, s.OutDir(), app.Name, chromeURL); err != nil {
-				s.Fatalf("Failed navigating to %q: %v", chromeURL, err)
-			}
-		})
 	}
 }
 
