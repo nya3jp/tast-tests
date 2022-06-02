@@ -1,14 +1,11 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
 package cryptohome
 
 import (
-	"bytes"
 	"context"
-	"io/ioutil"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -20,22 +17,21 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PersistentCreateAuthSession,
-		Desc: "Test AuthSession with a new flow where we create before authenticate",
+		Func: LegacyLabelAuthSession,
+		Desc: "Test AuthSession with a cryptohome created via legacy APIs without key labels",
 		Contacts: []string{
-			"hardikgoyal@chromium.org",
-			"cryptohome-core@chromium.org",
+			"emaxx@chromium.org", // Test authors
+			"cryptohome-core@google.com",
 		},
-		Attr: []string{"group:mainline"},
+		Attr: []string{"informational", "group:mainline"},
 	})
 }
 
-func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
+func LegacyLabelAuthSession(ctx context.Context, s *testing.State) {
 	const (
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		testFile        = "file"
-		testFileContent = "content"
+		userName       = "foo@bar.baz"
+		userPassword   = "secret"
+		legacyKeyLabel = "legacy-0"
 	)
 
 	ctxForCleanUp := ctx
@@ -63,41 +59,46 @@ func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	if err := cryptohome.CreateAndMountUserWithAuthSession(ctx, userName, userPassword, false); err != nil {
+	// Create persistent user with a vault keyset that has an empty label.
+	authConfig := hwsec.NewPassAuthConfig(userName, userPassword)
+	vaultConfig := hwsec.NewVaultConfig()
+	vaultConfig.CreateEmptyLabel = true
+	// Pass a random label as Cryptohome would refuse a request if none was passed.
+	// CreateEmptyLabel takes precedence over this label when performing the actual mount.
+	if err := client.MountVault(ctx, "label not needed" /* keyLabel */, authConfig, true /*create*/, vaultConfig); err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
 
-	// Write a test file to verify persistence.
-	userPath, err := cryptohome.UserPath(ctx, userName)
+	keys, err := client.ListVaultKeys(ctx, userName)
 	if err != nil {
-		s.Fatal("Failed to get user vault path: ", err)
+		s.Fatal("Failed to list keys: ", err)
+	}
+	if len(keys) != 1 || keys[0] != legacyKeyLabel {
+		s.Fatal("Unexpected keys: ", keys)
 	}
 
-	filePath := filepath.Join(userPath, testFile)
-	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
-		s.Fatal("Failed to write a file to the vault: ", err)
-	}
-
-	// Unmount and mount again.
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, "fake_label", false, false)
+	// Verify authenticate fails if no label is passed.
+	if _, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, "" /* keyLabel */, false, false); err == nil {
+		s.Fatal("Authentication with empty label succeeded unexpectedly")
+	}
+
+	// Verify authentication succeeds if the legacy label is explicitly passed.
+	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, legacyKeyLabel, false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
+	// Verify mounting succeeds.
 	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
-
-	// Verify that file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	if err := client.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 }
