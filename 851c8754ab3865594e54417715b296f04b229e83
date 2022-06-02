@@ -22,6 +22,30 @@
       },
       "revId": "851c8754ab3865594e54417715b296f04b229e83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81be9714_987b5c95",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-02T18:39:13Z",
+      "side": 0,
+      "message": "The commit message in https://crrev.com/c/3102304 mentions that the test order matters. Maybe the same issue exists with the autotest tests, but we don\u0027t hit it because we always test with `suite:fingerprint`, which probably runs in a certain order. Can you figure out the order of tests that cause problems with Tast (before this change) and then try running the autotest tests in that same order to see if they fail as well?",
+      "parentUuid": "850fc9a1_583c18c1",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 67
+      },
+      "revId": "851c8754ab3865594e54417715b296f04b229e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
