@@ -39,7 +39,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		VarDeps: []string{"geller.parentUser", "geller.parentPassword", "arc.parentPassword"},
+		VarDeps: []string{"arc.parentUser", "arc.parentPassword"},
 		Fixture: "familyLinkUnicornArcLogin",
 	})
 }
@@ -88,11 +88,11 @@ func UnicornCannotAddNonEduAccount(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to Open ARC Settings: ", err)
 	}
 
-	gellerParentUser := s.RequiredVar("geller.parentUser")
-	gellerParentPass := s.RequiredVar("geller.parentPassword")
+	nonEduUserEmail := s.RequiredVar("arc.parentUser")
+	nonEduUserPass := s.RequiredVar("arc.parentPassword")
 	parentPassword := s.RequiredVar("arc.parentPassword")
 	s.Log("Add non-EDU ARC account and verify")
-	if err := addAndroidAccount(ctx, d, cr, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
+	if err := addAndroidAccount(ctx, d, cr, tconn, parentPassword, nonEduUserEmail, nonEduUserPass); err != nil {
 		s.Fatal("Failed to Add Account: ", err)
 	}
 }
