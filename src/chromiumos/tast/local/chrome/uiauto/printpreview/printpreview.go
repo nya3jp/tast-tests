@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
@@ -268,6 +269,43 @@ func SetScaleCustom(ctx context.Context, tconn *chrome.TestConn, value int) erro
 		kb.TypeAction(strconv.Itoa(value)),
 	)(ctx); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// SetCheckboxState sets a checkbox option to checked or unchecked as desired.
+func SetCheckboxState(ctx context.Context, tconn *chrome.TestConn, name string, selected bool) error {
+	checkbox := nodewith.Name(name).Role(role.CheckBox)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("find checkbox",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(checkbox),
+	)(ctx); err != nil {
+		return err
+	}
+
+	// This function takes a bool instead of checked.Checked since you can't put
+	// a checkbox in "mixed" state by clicking on it.
+	var targetState checked.Checked
+	if selected {
+		targetState = checked.True
+	} else {
+		targetState = checked.False
+	}
+
+	// The checkbox could be in "mixed" state, so we might have to click it twice.
+	for {
+		if info, err := ui.Info(ctx, checkbox); err != nil {
+			return err
+		} else if info.Checked == targetState {
+			break
+		} else if err := uiauto.Combine("left click checkbox",
+			ui.FocusAndWait(checkbox),
+			ui.LeftClick(checkbox),
+			ui.WaitForLocation(checkbox),
+		)(ctx); err != nil {
+			return err
+		}
 	}
 
 	return nil
