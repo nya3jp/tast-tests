@@ -158,6 +158,30 @@
       },
       "revId": "9802e7726f32cacc23ae1f9a0325a25aea0f5a5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cfbf34a_4bfc92d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-02T06:22:36Z",
+      "side": 1,
+      "message": "Good cacth! I am wrong. This must be 0.70.\nWe expect floor, which is int() here. Commented.",
+      "parentUuid": "a14446e3_0a97c1e6",
+      "range": {
+        "startLine": 1204,
+        "startChar": 1,
+        "endLine": 1205,
+        "endChar": 97
+      },
+      "revId": "9802e7726f32cacc23ae1f9a0325a25aea0f5a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
