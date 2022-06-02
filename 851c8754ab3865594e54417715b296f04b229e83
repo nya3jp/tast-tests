@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850fc9a1_583c18c1",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-02T18:33:19Z",
+      "side": 0,
+      "message": "This is modeled after [_initialize_hw_and_sw_write_protect in the autotest version](https://chromium.googlesource.com/chromiumos/third_party/autotest/+/939745a0f0b8bc199efc3824a00dfe36a688d01f/server/cros/faft/fingerprint_test.py#432), which we call  in [setup_test](https://chromium.googlesource.com/chromiumos/third_party/autotest/+/939745a0f0b8bc199efc3824a00dfe36a688d01f/server/cros/faft/fingerprint_test.py#299).\n\nThe autotest tests don\u0027t seem to have this problem. Are we doing something differently during initialization? (i.e., does `setup_test` do initialization differently than [NewFirmwareTest](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go;l\u003d38;drc\u003d4fc4f8cbd9a8f7e59cc0773eb9d1f8be57321498) ?)",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 67
+      },
+      "revId": "851c8754ab3865594e54417715b296f04b229e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
