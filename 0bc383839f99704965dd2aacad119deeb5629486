@@ -43,6 +43,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f948293_92990769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-02T07:02:42Z",
+      "side": 1,
+      "message": "nit: this else is not needed?",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 7
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e2b516_c1a7a7ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-02T07:02:42Z",
+      "side": 1,
+      "message": "Can we guarantee that the Ethernet service is selected here?\nI assume this should only happen after the auto-connect is triggered?",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1a0fa58_74d789a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 6
