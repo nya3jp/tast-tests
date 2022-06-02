@@ -37,7 +37,12 @@ func init() {
 			"informational",
 		},
 		Timeout: 5 * time.Minute,
-		Fixture: "driveFsStarted",
+		Params: []testing.Param{{
+			Fixture: "driveFsStarted",
+		}, {
+			Name:    "chrome_networking",
+			Fixture: "driveFsStartedWithChromeNetworking",
+		}},
 	})
 }
 

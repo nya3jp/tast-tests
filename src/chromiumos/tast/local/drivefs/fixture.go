@@ -77,6 +77,24 @@ func init() {
 			"drivefs.extensionClientID",
 		},
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "driveFsStartedWithChromeNetworking",
+		Desc:     "Ensures DriveFS is mounted and the Chrome Network Service bridge is enabled",
+		Contacts: []string{"travislane@google.com", "chromeos-files-syd@chromium.org"},
+		Impl: &fixture{chromeOptions: []chrome.Option{
+			chrome.EnableFeatures("DriveFsChromeNetworking"),
+		}, drivefsOptions: map[string]string{
+			"use_cros_http_client": "true",
+		}},
+		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
+		ResetTimeout:    driveFsSetupTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars: []string{
+			"drivefs.accountPool",
+			"drivefs.extensionClientID",
+		},
+	})
 }
 
 // FixtureData is the struct available for tests.
