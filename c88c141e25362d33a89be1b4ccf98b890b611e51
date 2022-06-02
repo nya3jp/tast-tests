@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b461a20_e125d692",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-02T20:23:51Z",
+      "side": 1,
+      "message": "not using const, only using var (which is unfortunate)\n\nIf you are worried, you could keep it inside the init function to prevent outside access.\n\n(note that this is optional, missing +2 is due to there being unstable boards that are not in the list)",
+      "parentUuid": "803d0f52_75fcac77",
+      "range": {
+        "startLine": 36,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "c88c141e25362d33a89be1b4ccf98b890b611e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54faf7ab_9dcbb507",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 5
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "\u003e There seem to be more unstable models (e.g. taeko)\n\nThat\u0027s a newer board (brya)..sigh.\n\n\u003e maybe use an allowlist instead?  It would be easier to review.\n\nI\u0027d really prefer keeping a block list, even if it\u0027s longer right now: I\u0027d want teams bringing up newer boards to ensure this test passes consistently from the get go (and it is challenging to keep updating the block list).",
       "parentUuid": "54faf7ab_9dcbb507",
+      "range": {
+        "startLine": 44,
+        "startChar": 44,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "c88c141e25362d33a89be1b4ccf98b890b611e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d3ccecc_3b4f93b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-02T20:23:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da903490_92b628de",
       "range": {
         "startLine": 44,
         "startChar": 44,
