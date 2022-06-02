@@ -9,19 +9,21 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
 const (
 	driveFsSetupTimeout            = time.Minute
-	driveFsCommandLineArgsFilePath = "/home/chronos/user/GCache/v2/%s/command_line_args"
+	driveFsCommandLineArgsFileName = "command_line_args"
 )
 
 var (
@@ -66,6 +68,24 @@ func init() {
 		}, drivefsOptions: map[string]string{
 			"switchblade":     "true",
 			"switchblade_dss": "true",
+		}},
+		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
+		ResetTimeout:    driveFsSetupTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars: []string{
+			"drivefs.accountPool",
+			"drivefs.extensionClientID",
+		},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "driveFsStartedWithChromeNetworking",
+		Desc:     "Ensures DriveFS is mounted and the Chrome Network Service bridge is enabled",
+		Contacts: []string{"travislane@google.com", "chromeos-files-syd@chromium.org"},
+		Impl: &fixture{chromeOptions: []chrome.Option{
+			chrome.EnableFeatures("DriveFsChromeNetworking"),
+		}, drivefsOptions: map[string]string{
+			"use_cros_http_client": "true",
 		}},
 		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
 		ResetTimeout:    driveFsSetupTimeout,
@@ -166,8 +186,11 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		if len(persistableToken) == 0 {
 			s.Fatal("Failed to obtain the drive persistable token: ", f.mountPath)
 		}
-
-		if err := ioutil.WriteFile(fmt.Sprintf(driveFsCommandLineArgsFilePath, persistableToken), []byte(cliArgs), 0644); err != nil {
+		homeDir, err := cryptohome.UserPath(ctx, f.cr.NormalizedUser())
+		if err != nil {
+			s.Fatal("Failed to obtain home dir path: ", err)
+		}
+		if err := ioutil.WriteFile(getDriveFsConfigPath(homeDir, persistableToken, driveFsCommandLineArgsFileName), []byte(cliArgs), 0644); err != nil {
 			s.Fatal("Failed to write command line args: ", err)
 		}
 
@@ -238,8 +261,11 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 		if len(persistableToken) == 0 {
 			s.Fatal("Failed to obtain the drive persistable token from mount path: ", f.mountPath)
 		}
-
-		if err := os.Remove(fmt.Sprintf(driveFsCommandLineArgsFilePath, persistableToken)); err != nil {
+		homeDir, err := cryptohome.UserPath(ctx, f.cr.NormalizedUser())
+		if err != nil {
+			s.Fatal("Failed to obtain home dir path: ", err)
+		}
+		if err := os.Remove(getDriveFsConfigPath(homeDir, persistableToken, driveFsCommandLineArgsFileName)); err != nil {
 			s.Fatal("Failed to remove command line args file: ", err)
 		}
 	}
@@ -277,4 +303,11 @@ func getRefreshTokenForAccount(account, refreshTokens string) (string, error) {
 // to identify the user account directory under ~/GCache/v2.
 func getPersistableToken(mountPath string) string {
 	return strings.TrimPrefix(mountPath, "/media/fuse/drivefs-")
+}
+
+// getDriveFsConfigPath returns the path to `elem...` in the DriveFS
+// configuration directory based on the provided `homeDir` and
+// `persistableToken`.
+func getDriveFsConfigPath(homeDir, persistableToken string, elem ...string) string {
+	return path.Join(append([]string{homeDir, "GCache/v2", persistableToken}, elem...)...)
 }
