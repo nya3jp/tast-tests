@@ -1,10 +1,6 @@
 {
 	"OldVersion": "13421.87.0",
 	"ChromeOSVersionFromMilestone": {
-	  "84": 13099,
-	  "85": 13310,
-	  "86": 13421,
-	  "87": 13505,
 	  "88": 13597,
 	  "89": 13729,
 	  "90": 13816,
@@ -18,10 +14,11 @@
 	  "99": 14469,
 	  "100": 14526,
 	  "101": 14588,
-	  "102": 14695
+	  "102": 14695,
+	  "103": 14816
 	},
-	"CurrentStableChrome": 100,
-	"NextStableChrome": 101,
+	"CurrentStableChrome": 101,
+	"NextStableChrome": 102,
 	"CurrentChromeOSLTS": 96,
 	"CurrentChromeOSLTSMinor": 73
   }
