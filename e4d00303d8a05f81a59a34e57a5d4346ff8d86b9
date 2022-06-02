@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed091c76_8112616f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-02T19:03:19Z",
+      "side": 1,
+      "message": "pwang@ PTAL",
+      "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "505648b0_701b7d0b",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-05-26T21:20:41Z",
       "side": 1,
       "message": "Why we have ignoreErr set to true here? Should we check Err() instead?",
+      "range": {
+        "startLine": 451,
+        "startChar": 47,
+        "endLine": 451,
+        "endChar": 51
+      },
+      "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e9b16cd_2b7e3174",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-02T19:03:19Z",
+      "side": 1,
+      "message": "Hmm the only other use of TryBatteryDischarge() looks like this [1]\nand I\u0027m not even sure how it works since the signature of that\nmethod is \n  func TryBatteryDischarge(errp *error) BatteryDischargeMode\n\n:) -- can you instruct how to \"check Err() instead\"?\n\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/ui/cujrecorder/recorder.go;l\u003d267?q\u003dTryBatteryDischarge\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2F",
+      "parentUuid": "505648b0_701b7d0b",
       "range": {
         "startLine": 451,
         "startChar": 47,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18861920_55763203",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-02T19:03:19Z",
+      "side": 1,
+      "message": "I think \"meas\" is widely accepted, but done.",
+      "parentUuid": "19a67976_b1837a97",
+      "range": {
+        "startLine": 459,
+        "startChar": 36,
+        "endLine": 459,
+        "endChar": 40
+      },
+      "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10e11613_87c925be",
@@ -77,6 +142,24 @@
       "writtenOn": "2022-05-26T21:20:41Z",
       "side": 1,
       "message": "Let\u0027s check if the remaining time of ctx is greater than t. So that we won\u0027t hit by timeout.",
+      "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3928e004_78822f65",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-02T19:03:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10e11613_87c925be",
       "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
