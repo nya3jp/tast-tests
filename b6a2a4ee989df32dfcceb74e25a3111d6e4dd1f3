@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a3bfe6_11954471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-02T00:18:57Z",
+      "side": 1,
+      "message": "Nit: firstCodec?",
+      "revId": "b6a2a4ee989df32dfcceb74e25a3111d6e4dd1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
