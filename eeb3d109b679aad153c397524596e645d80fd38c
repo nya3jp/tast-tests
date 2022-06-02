@@ -88,6 +88,24 @@
       "parentUuid": "0e7ccb29_09d5f766",
       "revId": "eeb3d109b679aad153c397524596e645d80fd38c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad75fbc_2a51ae2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2022-06-02T08:37:26Z",
+      "side": 1,
+      "message": "Time is ok for me, see you in the call.",
+      "parentUuid": "7a847407_b9c12866",
+      "revId": "eeb3d109b679aad153c397524596e645d80fd38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
