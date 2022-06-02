@@ -401,9 +401,12 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	// Set up the cujrecorder.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, cujrecorder.DeprecatedMetricConfigs()...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
+	}
+	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add recorded metrics: ", err)
 	}
 	if testParam.tracing {
 		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
