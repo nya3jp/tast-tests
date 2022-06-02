@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64929a5_0b2fa838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-02T12:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b08965bd_7aca39f9",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 4
+      },
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dcaa80a_d175c580",
@@ -395,6 +419,30 @@
       "side": 1,
       "message": "Hmm... with re-reading the code, it looks weird still, but I may not fully understand your intention.\nCould you describe what you\u0027d like to achieve by this polling?",
       "parentUuid": "71199264_8d851147",
+      "range": {
+        "startLine": 170,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e8446d_0198da13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-02T12:27:18Z",
+      "side": 1,
+      "message": "Here, we are checking audio route for given stress duration in an hour internal.\n\nFor example: if stress duration is 6 hours we\u0027ll be iterating audio playback check for 6 iterations with each iteration having 1 hour of polling timeout.\n\nWe are using above logic to avoid 1 hour of time sleep.",
+      "parentUuid": "811db5ad_2a9adedb",
       "range": {
         "startLine": 170,
         "startChar": 3,
