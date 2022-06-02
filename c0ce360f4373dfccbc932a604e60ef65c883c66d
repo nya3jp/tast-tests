@@ -16,6 +16,23 @@
       "message": "Hi Ricardo/Takise, could you +2 again? I reduced the scope of the CL to activity/pip since https://crrev.com/c/3676154 already updated the SDK version. Thank you!",
       "revId": "c0ce360f4373dfccbc932a604e60ef65c883c66d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "528dd8c6_7b02a8df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-06-02T03:46:48Z",
+      "side": 1,
+      "message": "Does this depend on https://crrev.com/c/3676154 ? Or did something else also define arc.ADKT?",
+      "revId": "c0ce360f4373dfccbc932a604e60ef65c883c66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
