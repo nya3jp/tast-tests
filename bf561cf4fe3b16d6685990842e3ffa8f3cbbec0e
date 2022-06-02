@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd1cc9f6_3019d94c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-02T21:20:10Z",
+      "side": 1,
+      "message": "The reason for that is because there is a loop in browserMetricConfigs modifying the configs. When these were just local vars I found it was very easy to mix them like:\n\n```\nashConfigs \u003d append(browserConfigs, cujrecorder.NewCustomMetricConfig(...))\n```\n\nSo I extracted them to individual functions to keep the context separate.",
+      "parentUuid": "6a1f77c4_3b2c39fd",
+      "revId": "bf561cf4fe3b16d6685990842e3ffa8f3cbbec0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a764b7a_8f2dde17",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-06-02T19:00:51Z",
       "side": 1,
       "message": "nit: Move this under `ashConfigs` to keep the declaration and usage close together.",
+      "revId": "bf561cf4fe3b16d6685990842e3ffa8f3cbbec0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4d9e7d_47a4382f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-02T21:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a764b7a_8f2dde17",
       "revId": "bf561cf4fe3b16d6685990842e3ffa8f3cbbec0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
