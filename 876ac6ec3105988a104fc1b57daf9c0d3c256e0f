@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bec40b8_b9e9b2e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/show_events.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-06-02T21:20:34Z",
+      "side": 1,
+      "message": "You\u0027re probably falling into this code path here:\nhttps://source.chromium.org/chromium/chromium/src/+/main:ui/accessibility/ax_tree.cc;l\u003d906-907\n\nHave you tried using `unclippedLocation`:\nhttps://source.chromium.org/chromium/chromium/src/+/main:extensions/common/api/automation.idl;l\u003d908-910\n\nBy exposing it here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d37\n\nHere:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d163\n\nAnd retrieving it via `ui.Info()`:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d171-188?q\u003duiauto%2Fautomation.go\u0026ss\u003dchromiumos\n\nOr your own method similar to `ui.Location()`?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d226-258\n\nIf the unclipped location is correct, the next step would be to investigate why your view is thought to be clipped (offscreen) by its container :)",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 72
+      },
+      "revId": "876ac6ec3105988a104fc1b57daf9c0d3c256e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
