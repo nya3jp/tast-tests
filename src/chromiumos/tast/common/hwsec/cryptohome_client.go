@@ -218,6 +218,9 @@ type VaultConfig struct {
 
 	// Ecryptfs is set to true if the vault should be backed by eCryptfs.
 	Ecryptfs bool
+
+	// CreateEmptyLabel is set to true if vault should be created with no label.
+	CreateEmptyLabel bool
 }
 
 // NewVaultConfig creates a default vault config.
@@ -232,6 +235,8 @@ func vaultConfigToExtraFlags(config *VaultConfig) []string {
 		mountFlagEphemeral = "--ensure_ephemeral"
 		// mountFlagEcryptfs is the flag passed to cryptohome command line when you want the vault to use ecryptfs.
 		mountFlagEcryptfs = "--ecryptfs"
+		// mountFlagCreateEmptyLabel is the flag passed to cryptohome command line when you want the legacy behavior of using an empty label in authorization request.
+		mountFlagCreateEmptyLabel = "--create_empty_label"
 	)
 
 	var extraFlags []string
@@ -240,6 +245,9 @@ func vaultConfigToExtraFlags(config *VaultConfig) []string {
 	}
 	if config.Ecryptfs {
 		extraFlags = append(extraFlags, mountFlagEcryptfs)
+	}
+	if config.CreateEmptyLabel {
+		extraFlags = append(extraFlags, mountFlagCreateEmptyLabel)
 	}
 	return extraFlags
 }
@@ -398,7 +406,7 @@ func (u *CryptohomeClient) CheckVault(ctx context.Context, label string, authCon
 	return true, nil
 }
 
-// ListVaultKeys queries the vault associated with user username and password password, and returns nil for error iff the operation is completed successfully, in that case, the returned slice of string contains the labels of keys belonging to that vault.
+// ListVaultKeys queries the vault associated with user username, and returns nil for error iff the operation is completed successfully, in that case, the returned slice of string contains the labels of keys belonging to that vault.
 func (u *CryptohomeClient) ListVaultKeys(ctx context.Context, username string) ([]string, error) {
 	binaryOutput, err := u.binary.listKeysEx(ctx, username)
 	if err != nil {
@@ -843,8 +851,8 @@ func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string, is
 
 // AuthenticateAuthSession authenticates an AuthSession with a given authSessionID.
 // password is ignored if publicMount is set to true.
-func (u *CryptohomeClient) AuthenticateAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) error {
-	_, err := u.binary.authenticateAuthSession(ctx, password, authSessionID, publicMount)
+func (u *CryptohomeClient) AuthenticateAuthSession(ctx context.Context, password, keyLabel, authSessionID string, publicMount bool) error {
+	_, err := u.binary.authenticateAuthSession(ctx, password, keyLabel, authSessionID, publicMount)
 	return err
 }
 
