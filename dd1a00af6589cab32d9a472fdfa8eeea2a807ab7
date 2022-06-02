@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea85a6f_6585ff52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-02T22:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b1b25b2_5f0d90c9",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "dd1a00af6589cab32d9a472fdfa8eeea2a807ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ed35330_3c9586e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-02T21:30:26Z",
       "side": 1,
       "message": "`an`",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "dd1a00af6589cab32d9a472fdfa8eeea2a807ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d25dc043_54d8fadd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-02T22:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ed35330_3c9586e6",
       "range": {
         "startLine": 9,
         "startChar": 31,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74fae13a_bfb4d1ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-02T22:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f9f40ce_b68a78ee",
+      "range": {
+        "startLine": 11,
+        "startChar": 49,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "dd1a00af6589cab32d9a472fdfa8eeea2a807ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "273cebda_e18cf862",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-02T22:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62015c5d_f7625236",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "dd1a00af6589cab32d9a472fdfa8eeea2a807ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ded9a76_177ec74d",
@@ -141,6 +237,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1d4e2e30_cb6fdda0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-02T22:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e2f8162_56285893",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "dd1a00af6589cab32d9a472fdfa8eeea2a807ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bebc69ed_1466f66d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-02T22:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ded9a76_177ec74d",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "dd1a00af6589cab32d9a472fdfa8eeea2a807ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d0541817_e12d7154",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e867f96_ee5407ee",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-02T22:57:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9a144309_6ce363e5",
+      "range": {
+        "startLine": 166,
+        "startChar": 23,
+        "endLine": 166,
+        "endChar": 72
+      },
+      "revId": "dd1a00af6589cab32d9a472fdfa8eeea2a807ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2f08551_1a5f4ac8",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b3221a_5e0b97e6",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-02T22:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2f08551_1a5f4ac8",
+      "range": {
+        "startLine": 171,
+        "startChar": 45,
+        "endLine": 171,
+        "endChar": 61
+      },
+      "revId": "dd1a00af6589cab32d9a472fdfa8eeea2a807ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6eca63d_254e7794",
@@ -215,6 +407,30 @@
       "writtenOn": "2022-06-02T21:30:26Z",
       "side": 1,
       "message": "Instead of this whole `switch` statement, consider this one simple line of code:\n\treturn NewBatteryDischarge(mode \u003d\u003d ForceBatteryDischarge, false, DefaultDischargeThreshold)",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "dd1a00af6589cab32d9a472fdfa8eeea2a807ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0343764d_64fed3be",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-02T22:57:48Z",
+      "side": 1,
+      "message": "Thanks again for the review. I once thought to use if/else considering it has just two enum values. But I decided to use the switch/case format for readability and being clear and easy for other developers to add new BatteryDischargeMode in the future. Hope this makes sense.",
+      "parentUuid": "b6eca63d_254e7794",
       "range": {
         "startLine": 173,
         "startChar": 0,
