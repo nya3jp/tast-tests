@@ -84,7 +84,7 @@ func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false, false)
+	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, "fake_label", false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
