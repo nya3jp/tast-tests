@@ -34,6 +34,29 @@
       "parentUuid": "71200c40_6057396d",
       "revId": "a7efaeb3f97ebf7b9e1a78a5ac6b2e7996a44ea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eaaf2ad_29d416ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_create_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-02T14:01:35Z",
+      "side": 1,
+      "message": "Not blocking your CL, but it\u0027d be great to find a way to reuse the enums from UserDataAuth.proto.\n\nBased on what I see in the tree and in some docs (like https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#defining-grpc-services), it seems the standard approach is to autogenerate the .pb.go file and commit it into the tree. Let me actually look into this myself.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "a7efaeb3f97ebf7b9e1a78a5ac6b2e7996a44ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
