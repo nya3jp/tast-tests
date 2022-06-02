@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9805ee4d_43499b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/ap.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-02T14:51:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "158a4af8_4cca7553",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f2b66d4_d845ccbc",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "It looks like ethernet_static_ip only pops all user profiles (maybe I\u0027m missing something), then pushes a new default profile and a new \"user\" profile.",
       "parentUuid": "fedfd979_5a78a0d4",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4492e8f_28d45e86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-02T14:51:02Z",
+      "side": 1,
+      "message": "As discussed, it\u0027s not possible (not supported) to push Passpoint credentials to a default profile. So the idea is to pop all user profiles on the profile stack (using `PopAllUserProfiles()`) and then remove the \"test\" profile if it still exists. Then we should be ready a test to create its own profile without conflict.",
+      "parentUuid": "3fc2ff01_ec74e759",
       "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -195,6 +231,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56dc1bdc_27ac2102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-02T14:51:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab5ef27_d1caf730",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef0a3d76_94d1b361",
@@ -266,6 +320,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c51377a_e5309edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-02T14:51:02Z",
+      "side": 1,
+      "message": "Got it 😊",
+      "parentUuid": "c0553b7f_fbfbb329",
+      "range": {
+        "startLine": 309,
+        "startChar": 76,
+        "endLine": 309,
+        "endChar": 87
+      },
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ba51ce2_30d0f6d0",
@@ -297,6 +375,24 @@
       "side": 1,
       "message": "Makes sense :)",
       "parentUuid": "9ba51ce2_30d0f6d0",
+      "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31055e1_2dd63238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-02T14:51:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14beb461_8bf28651",
       "revId": "00db0d13548ccbe7e387cb1e42e00c2a7251cb64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
