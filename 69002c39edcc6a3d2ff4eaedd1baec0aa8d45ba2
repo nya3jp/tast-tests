@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d05adcf_30fcf185",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-02T12:19:52Z",
+      "side": 1,
+      "message": "Got it, thanks, `PreTestTimeout` added.",
+      "parentUuid": "cd75f459_5514c3f3",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16674f90_08a93420",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "I am not sure why you need this to support the lacros variant. Could you give me an example of how you will use it for lacros?",
       "parentUuid": "f65d83d0_e9f00e45",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 48
+      },
+      "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57194eb0_3ec076cc",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-02T12:19:52Z",
+      "side": 1,
+      "message": "To include the lacros variant, extra fixture is needed which might make the type of fixt-value not fixed.\n\nAs a result, the specific type and an extra examination are needed to acquire the Chrome instance, like:\n var cr *chrome.Chrome\n if s.TestName() \u003d\u003d \"lacros\" {\n\tcr \u003d s.FixtValue().(*chrome.Chrome)\n } else {\n\tcr \u003d s.FixtValue().(*mtbf.FixtValue).Chrome\n }\nSince all fixt-value of lacros\u0027 fixtures implement the `chrome.HasChrome`, if the fixt-value in this CL implements the `chrome.HasChrome`, above codes can be reduced as:\n cr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()\n\nAlso the lacros fixtures are being changed frequently, so having the `FixtValue` implements the `chrome.HasChrome` might benefit on stability.\n\nWe still need the specific type and an extra examination to acquire the `*arc.ARC` indeed, however, not all tests in MTBF need the ARC resources but almost all tests need the Chrome instance.\nTherefore, we make the `FixtValue` in this CL implements the `chrome.HasChrome`.",
+      "parentUuid": "30ccc85a_34c4ecc9",
       "range": {
         "startLine": 78,
         "startChar": 0,
