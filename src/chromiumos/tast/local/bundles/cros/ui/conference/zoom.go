@@ -286,8 +286,8 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 			testing.ContextLog(ctx, "Turn camera from on to off")
 		}
 		nowCameraButton := nodewith.Name(info.Name).Role(role.Button).Focusable()
-		if err := ui.LeftClickUntil(nowCameraButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(nowCameraButton))(ctx); err != nil {
-			return errors.Wrap(err, "failed to toggle video")
+		if err := ui.WithTimeout(mediumUITimeout).DoDefaultUntil(nowCameraButton, ui.WaitUntilGone(nowCameraButton))(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch camera")
 		}
 		return nil
 	}
@@ -305,8 +305,8 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 			testing.ContextLog(ctx, "Turn microphone from unmute to mute")
 		}
 		nowAudioButton := nodewith.Name(info.Name).Role(role.Button).Focusable()
-		if err := ui.LeftClickUntil(nowAudioButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(nowAudioButton))(ctx); err != nil {
-			return errors.Wrap(err, "failed to toggle audio")
+		if err := ui.WithTimeout(mediumUITimeout).DoDefaultUntil(nowAudioButton, ui.WaitUntilGone(nowAudioButton))(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch microphone")
 		}
 		return nil
 	}
@@ -389,7 +389,8 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 			if err := ui.Exists(settingsButton)(ctx); err == nil {
 				actions = append(actions,
 					uiauto.NamedAction("click settings button",
-						ui.WithTimeout(longUITimeout).LeftClickUntil(settingsButton, ui.WaitUntilExists(backgroundTab))))
+						ui.WithTimeout(longUITimeout).DoDefaultUntil(settingsButton, ui.WaitUntilExists(backgroundTab)),
+					))
 			} else {
 				// If the screen width is not enough, the settings button will be moved to more options.
 				moreOptions := nodewith.Name("More meeting control").Ancestor(webArea)
