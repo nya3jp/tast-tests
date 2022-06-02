@@ -362,52 +362,6 @@ func LaunchSystemWebApp(ctx context.Context, tconn *chrome.TestConn, appName, ur
 	}`, appName, url)
 }
 
-// ListSystemWebApps retrieves a list of installed apps and filters down the system web apps.
-func ListSystemWebApps(ctx context.Context, tconn *chrome.TestConn) ([]*ash.ChromeApp, error) {
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)"); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for all system web apps to be installed")
-	}
-
-	chromeApps, err := ash.ChromeApps(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get list of Chrome apps")
-	}
-
-	var systemWebApps []*ash.ChromeApp
-	for _, app := range chromeApps {
-		// Terminal has special handling in App Service, it has type 'Crostini' and install source 'User'.
-		if (app.InstallSource == "System" && app.Type == "Web") || (app.InstallSource == "User" && app.Type == "Crostini") {
-			systemWebApps = append(systemWebApps, app)
-		}
-	}
-
-	return systemWebApps, nil
-}
-
-// ListSystemWebAppsInternalNames returns a string[] that contains system app's internal names.
-// It queries System Web App Manager via Test API.
-func ListSystemWebAppsInternalNames(ctx context.Context, tconn *chrome.TestConn) ([]string, error) {
-	var result []string
-	err := tconn.Eval(
-		ctx,
-		`new Promise((resolve, reject) => {
-			chrome.autotestPrivate.getRegisteredSystemWebApps((system_apps) => {
-				if (chrome.runtime.lastError) {
-					reject(new Error(chrome.runtime.lastError.message));
-					return;
-				}
-
-				resolve(system_apps.map(system_app => system_app.internalName));
-			});
-		});`, &result)
-
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get result from Test API")
-	}
-
-	return result, nil
-}
-
 // SystemWebApp corresponds to `SystemWebApp` defined in autotest_private.idl
 type SystemWebApp struct {
 	InternalName string `json:"internalName"`
