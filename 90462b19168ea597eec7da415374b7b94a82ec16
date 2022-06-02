@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4474a2e_5c6cc17b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T15:26:38Z",
+      "side": 1,
+      "message": "Sorry for miscommunication. I meant:\n\n m, err :\u003d w.Wait(ctx)\n if err !\u003d nil {\n   s.Fatal(...)\n }\n if m.SourcePaht !\u003d source {\n   s.Fatal(...)\n }\n if ...\n\nyou can preserve s.Log(). Also same patterns can be found below, and ditto for them.",
+      "parentUuid": "b907bd23_d2e63dfb",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "90462b19168ea597eec7da415374b7b94a82ec16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79dded45_0b6259e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go",
         "patchSetId": 5
