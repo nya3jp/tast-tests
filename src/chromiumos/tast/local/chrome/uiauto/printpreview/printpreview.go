@@ -187,3 +187,17 @@ func WaitForPrintPreview(tconn *chrome.TestConn) uiauto.Action {
 		ui.Gone(printPreviewFailedText),
 	)
 }
+
+// ExpandMoreSettings expands the the "More Settings" section of the print
+// settings window.
+func ExpandMoreSettings(ctx context.Context, tconn *chrome.TestConn) error {
+	moreSettingsButton := nodewith.Name("More settings").Role(role.Button)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("find and click more settings button",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(moreSettingsButton),
+		ui.LeftClick(moreSettingsButton),
+	)(ctx); err != nil {
+		return err
+	}
+	return nil
+}
