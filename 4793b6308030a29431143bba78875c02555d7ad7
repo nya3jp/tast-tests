@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903d887c_cb142975",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-02T03:05:46Z",
+      "side": 1,
+      "message": "I don\u0027t know whether Tast owners will like this style, but IMO it makes the tests much more readable: excessive error handling makes it very hard to follow the test structure.",
+      "revId": "4793b6308030a29431143bba78875c02555d7ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556e9fb9_608b80d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-02T03:05:46Z",
+      "side": 1,
+      "message": "(This is the actual regression test for b/234659188.)",
+      "revId": "4793b6308030a29431143bba78875c02555d7ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
