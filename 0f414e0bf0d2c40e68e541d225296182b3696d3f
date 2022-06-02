@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b335abd4_aca40a9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-06-02T02:39:24Z",
+      "side": 1,
+      "message": "LGTM with some Go style nits.",
+      "revId": "0f414e0bf0d2c40e68e541d225296182b3696d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a72e37_b90736e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-06-02T02:39:24Z",
+      "side": 1,
+      "message": "Go style is:\n\n    output :\u003d []string {\n        ls(ctx, s, m.MountPath),\n        create(ctx, s, m.MountPath, \"file\"),\n        cp(ctx, s, m.MountPath, \"hello\", \"copy\"),\n        ls(ctx, s, m.MountPath),\n        read(ctx, s, m.MountPath, \"copy\"),\n        write(ctx, s, m.MountPath, \"copy\"),\n        read(ctx, s, m.MountPath, \"copy\"),\n        ls(ctx, s, m.MountPath),\n        seek(ctx, s, m.MountPath, \"hello\"),\n        mkdir(ctx, s, m.MountPath, \"dir\"),\n        create(ctx, s, m.MountPath, \"dir/file\"),\n        mkdir(ctx, s, m.MountPath, \"dir/dir\"),\n        ls(ctx, s, m.MountPath),\n        rename(ctx, s, m.MountPath, \"file\", \"food\"),\n        ls(ctx, s, m.MountPath),\n        rm(ctx, s, m.MountPath, \"file\"),\n        rmdir(ctx, s, m.MountPath, \"dir\"),\n        ls(ctx, s, m.MountPath),\n        rm(ctx, s, m.MountPath, \"copy\"),\n        ls(ctx, s, m.MountPath),\n    }",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 11
+      },
+      "revId": "0f414e0bf0d2c40e68e541d225296182b3696d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "242d185a_b45c2916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-06-02T02:39:24Z",
+      "side": 1,
+      "message": "Go style is:\n\n    for _, line :\u003d range output {\n        s.Log(line)\n    }",
+      "revId": "0f414e0bf0d2c40e68e541d225296182b3696d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
