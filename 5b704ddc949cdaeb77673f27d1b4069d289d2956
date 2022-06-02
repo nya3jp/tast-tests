@@ -16,6 +16,24 @@
       "message": "Hey Ben, while adding a fixture I got a linter complaint for http://go/tast-writing#logged-in-users-home-directory and figured I\u0027d just address it.",
       "revId": "5b704ddc949cdaeb77673f27d1b4069d289d2956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9046abac_3f2b5971",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-02T19:54:39Z",
+      "side": 1,
+      "message": "Champion. I actually added this rule and totally forgot it was used here. Thanks for adding!",
+      "parentUuid": "642a71fc_12872feb",
+      "revId": "5b704ddc949cdaeb77673f27d1b4069d289d2956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
