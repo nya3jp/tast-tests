@@ -57,6 +57,7 @@ func init() {
 			"Texts.tar.bz2",
 			"Texts.tar.bz",
 			"Texts.tar.gz",
+			"Texts.tar.lz",
 			"Texts.tar.lzma",
 			"Texts.tar.xz",
 			"Texts.tar.zst",
@@ -141,6 +142,12 @@ func init() {
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.tar.gz"},
+			},
+		}, {
+			Name: "mount_single_tar_lz",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.tar.lz"},
 			},
 		}, {
 			Name: "mount_single_tar_lzma",
