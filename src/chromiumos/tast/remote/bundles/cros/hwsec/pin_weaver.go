@@ -6,6 +6,7 @@ package hwsec
 
 import (
 	"context"
+	"fmt"
 	"sort"
 	"strings"
 
@@ -30,13 +31,14 @@ func init() {
 }
 
 const (
-	keyLabel1    = "lecred1"
-	keyLabel2    = "lecred2"
-	goodPin      = "123456"
-	badPin       = "000000"
-	testPassword = "~"
-	user1        = "user1@example.com"
-	user2        = "user2@example.com"
+	keyLabel1          = "lecred1"
+	keyLabel2          = "lecred2"
+	goodPin            = "123456"
+	badPin             = "000000"
+	testPassword       = "~"
+	user1              = "user1@example.com"
+	user2              = "user2@example.com"
+	pinLockoutAttempts = 5
 )
 
 func PinWeaver(ctx context.Context, s *testing.State) {
@@ -57,13 +59,13 @@ func PinWeaver(ctx context.Context, s *testing.State) {
 		helper.CryptohomeClient().RemoveVault(ctx, user2)
 	}()
 
-	testPINs(ctx, user1, user2, true, r, helper, s)
+	testPINs(ctx, true, r, helper, s)
 
 	// Because Cr50 stores state in the firmware, that persists across reboots, this test
 	// needs to run before and after a reboot.
 	helper.Reboot(ctx)
 
-	testPINs(ctx, user1, user2, false, r, helper, s)
+	testPINs(ctx, false, r, helper, s)
 }
 
 func leCredsFromDisk(ctx context.Context, r *hwsecremote.CmdRunnerRemote) ([]string, error) {
@@ -79,7 +81,7 @@ func leCredsFromDisk(ctx context.Context, r *hwsecremote.CmdRunnerRemote) ([]str
 
 // testPINs requires user1 and user2 because their le credential state is shored in the same place
 // and should not conflict.
-func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, s *testing.State) {
+func testPINs(ctx context.Context, resetUsers bool, r *hwsecremote.CmdRunnerRemote, helper *hwsecremote.CmdHelperRemote, s *testing.State) {
 	cryptohomeHelper := helper.CryptohomeClient()
 
 	supportsLE, err := cryptohomeHelper.SupportsLECredentials(ctx)
@@ -127,42 +129,24 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 		}
 	}
 
-	if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user1, goodPin), false, hwsec.NewVaultConfig()); err != nil {
-		s.Fatal("Failed to mount with PIN: ", err)
-	}
-	if err := cryptohomeHelper.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmountAll: ", err)
-	}
+	s.Log("Checking mount via good PIN")
+	testMountViaGoodPIN(ctx, user1, helper, s)
 
-	// Supply invalid credentials five times to trigger firmware lockout of the credential.
-	for i := 0; i < 5; i++ {
-		if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user1, badPin), false, hwsec.NewVaultConfig()); err == nil {
-			s.Fatal("Mount succeeded but should have failed")
-		}
-	}
+	s.Log("Checking good PIN resets wrong PIN counter")
+	// Run this twice to make sure wrong attempts don't sum up past a good attempt.
+	almostLockOutPIN(ctx, user1, helper, s)
+	testMountViaGoodPIN(ctx, user1, helper, s)
+	almostLockOutPIN(ctx, user1, helper, s)
+	testMountViaGoodPIN(ctx, user1, helper, s)
 
-	if err := cryptohomeHelper.MountVault(ctx, "default", hwsec.NewPassAuthConfig(user1, testPassword), false, hwsec.NewVaultConfig()); err != nil {
-		s.Fatal("Failed to mount user: ", err)
-	}
-	output, err := cryptohomeHelper.GetKeyData(ctx, user1, keyLabel1)
-	if err != nil {
-		s.Fatal("Failed to get key data: ", err)
-	}
-	if strings.Contains(output, "auth_locked: true") {
-		s.Fatal("Reset PIN credential is auth locked")
-	}
-	if err := cryptohomeHelper.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmountAll: ", err)
-	}
-
-	if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user1, goodPin), false, hwsec.NewVaultConfig()); err != nil {
-		s.Fatal("Failed to mount with PIN: ", err)
-	}
-	if err := cryptohomeHelper.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmountAll: ", err)
-	}
+	s.Log("Checking password resets locked PIN")
+	lockOutPIN(ctx, user1, helper, s)
+	testMountViaGoodPINFails(ctx, user1, helper, s)
+	testMountViaPassword(ctx, user1, helper, s)
+	testMountViaGoodPIN(ctx, user1, helper, s)
 
 	// Create a new user to test removing.
+	s.Log("Checking PIN removal")
 	if err := cryptohomeHelper.MountVault(ctx, "default", hwsec.NewPassAuthConfig(user2, testPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user2: ", err)
 	}
@@ -201,5 +185,70 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 	}
 	if diff := cmp.Diff(leCredsAfterRemove, leCredsBeforeAdd); diff != "" {
 		s.Fatal("LE cred not cleaned up successfully (-got +want): ", diff)
+	}
+}
+
+func testPINLockState(ctx context.Context, user, label string, expected bool, helper *hwsecremote.CmdHelperRemote, s *testing.State) {
+	cryptohomeHelper := helper.CryptohomeClient()
+	output, err := cryptohomeHelper.GetKeyData(ctx, user, keyLabel1)
+	if err != nil {
+		s.Fatal("Failed to get key data: ", err)
+	}
+	if !strings.Contains(output, fmt.Sprintf("auth_locked: %t", expected)) {
+		s.Fatalf("Unexpected auth locked PIN state: expected %t, got %t", expected, output)
+	}
+}
+
+func testMountViaGoodPIN(ctx context.Context, user string, helper *hwsecremote.CmdHelperRemote, s *testing.State) {
+	cryptohomeHelper := helper.CryptohomeClient()
+	if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user, goodPin), false, hwsec.NewVaultConfig()); err != nil {
+		s.Fatal("Failed to mount with PIN: ", err)
+	}
+	testPINLockState(ctx, user, keyLabel1, false, helper, s)
+	if err := cryptohomeHelper.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmountAll: ", err)
+	}
+}
+
+func testMountViaGoodPINFails(ctx context.Context, user string, helper *hwsecremote.CmdHelperRemote, s *testing.State) {
+	cryptohomeHelper := helper.CryptohomeClient()
+
+	if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user, goodPin), false, hwsec.NewVaultConfig()); err == nil {
+		s.Fatal("Mount succeeded but should have failed")
+	}
+	// TODO(b/234659188): Run this assertion after fixing cryptohome.
+	// testPINLockState(ctx, user, keyLabel1, true, helper, s)
+}
+
+func almostLockOutPIN(ctx context.Context, user string, helper *hwsecremote.CmdHelperRemote, s *testing.State) {
+	cryptohomeHelper := helper.CryptohomeClient()
+	for i := 0; i < pinLockoutAttempts-1; i++ {
+		if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user, badPin), false, hwsec.NewVaultConfig()); err == nil {
+			s.Fatal("Mount succeeded but should have failed")
+		}
+		testPINLockState(ctx, user, keyLabel1, false, helper, s)
+	}
+}
+
+func lockOutPIN(ctx context.Context, user string, helper *hwsecremote.CmdHelperRemote, s *testing.State) {
+	cryptohomeHelper := helper.CryptohomeClient()
+
+	almostLockOutPIN(ctx, user, helper, s)
+
+	if err := cryptohomeHelper.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user, badPin), false, hwsec.NewVaultConfig()); err == nil {
+		s.Fatal("Mount succeeded but should have failed")
+	}
+	// TODO(b/234659188): Run this assertion after fixing cryptohome.
+	// testPINLockState(ctx, user, keyLabel1, true, helper, s)
+}
+
+func testMountViaPassword(ctx context.Context, user string, helper *hwsecremote.CmdHelperRemote, s *testing.State) {
+	cryptohomeHelper := helper.CryptohomeClient()
+	if err := cryptohomeHelper.MountVault(ctx, "default", hwsec.NewPassAuthConfig(user, testPassword), false, hwsec.NewVaultConfig()); err != nil {
+		s.Fatal("Failed to mount user: ", err)
+	}
+	testPINLockState(ctx, user, keyLabel1, false, helper, s)
+	if err := cryptohomeHelper.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmountAll: ", err)
 	}
 }
