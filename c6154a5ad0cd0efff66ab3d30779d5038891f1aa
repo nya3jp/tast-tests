@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "937cc21d_87719cd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-02T16:17:09Z",
+      "side": 1,
+      "message": "Will make other changes. passing eid in method pushes changes across , Is that required for single test!",
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6178793_cf0b3634",
@@ -393,6 +410,30 @@
       "writtenOn": "2022-06-02T02:17:50Z",
       "side": 1,
       "message": "Lets change the signature of this function to FetchStorkProfile(ctx context.Context, eid string)",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 22
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745c9164_f8c73560",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-02T16:17:09Z",
+      "side": 1,
+      "message": "This makes all the other places of this function to be modified to pass empty string, though this change is only for smds test. Is that ok!",
+      "parentUuid": "69a19aad_6e7ebee3",
       "range": {
         "startLine": 156,
         "startChar": 5,
