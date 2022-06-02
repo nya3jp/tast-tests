@@ -72,7 +72,7 @@ func SelectGooglePhotosPhoto(ui *uiauto.Context, name string) uiauto.Action {
 
 // SelectImage returns an action to select the image with the given image title.
 func SelectImage(ui *uiauto.Context, image string) uiauto.Action {
-	imageNode := nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container").Name(image)
+	imageNode := nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container").NameContaining(image)
 	return uiauto.Combine(fmt.Sprintf("select image %q", image),
 		ui.WaitUntilExists(imageNode),
 		ui.MakeVisible(imageNode),
@@ -172,4 +172,14 @@ func ValidateDiff(img1, img2 image.Image, expectedPercent int) error {
 		return errors.Errorf("unexpected percentage: got %d%%; want at least %d%%", percentage, expectedPercent)
 	}
 	return nil
+}
+
+// CurrentlySetWallpaper gets the name of the current wallpaper.
+func CurrentlySetWallpaper(ctx context.Context, ui *uiauto.Context) (string, error) {
+	currentlySetWallpaperFinder := nodewith.Role(role.Heading).NameStartingWith("Currently set")
+	currentlySetWallpaperNode, err := ui.Info(ctx, currentlySetWallpaperFinder)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to find currently set wallpaper")
+	}
+	return currentlySetWallpaperNode.Name, nil
 }
