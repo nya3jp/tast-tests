@@ -34,6 +34,24 @@
       "parentUuid": "1ff2b011_090a341a",
       "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7089aa0_29e87439",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-06-02T12:47:25Z",
+      "side": 1,
+      "message": "Yeah, the PIN would be locked after \"5\" wrong attempts.\nIn line 238 the reason of MountVault() failure is because you provided wrong pin.\n\n(I\u0027m not sure that\u0027s expected behavior or not, but that\u0027s the original behavior before the regression.)",
+      "parentUuid": "e3c1fa30_01161278",
+      "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
