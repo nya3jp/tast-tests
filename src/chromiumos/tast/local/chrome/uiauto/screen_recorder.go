@@ -215,8 +215,12 @@ func (r *ScreenRecorder) Start(ctx context.Context, tconn *chrome.TestConn) erro
 	}
 	testing.ContextLog(ctx, "Started screen recording")
 	r.isRecording = true
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)"); err != nil {
-		testing.ContextLog(ctx, "Failed to close notification: ", err)
+
+	ui := New(tconn)
+	closeNotificationButton := nodewith.Name("Notification close").Role(role.Button)
+	messagePopupAlert := nodewith.ClassName("MessagePopupView").Role(role.AlertDialog)
+	if err := ui.LeftClickUntil(closeNotificationButton, ui.WithInterval(time.Second).WaitUntilGone(messagePopupAlert))(ctx); err != nil {
+		return err
 	}
 	return nil
 }
@@ -284,6 +288,25 @@ func (r *ScreenRecorder) Release(ctx context.Context) {
 	if err := r.videoRecorder.Release(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to release screen recorder: ", err)
 	}
+}
+
+// StopAndSaveOnError ends the screen recording and save it on error.
+func (r *ScreenRecorder) StopAndSaveOnError(ctx context.Context, filepath string, hasError func() bool) {
+	if err := r.Stop(ctx); err != nil {
+		testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
+	} else if hasError() {
+		// If there's an error, we want to wait long enough to see what happens
+		// after the error. This allows you to see subtitles when the error has
+		// occurred, and also happens to help in case something happens after
+		// timing out.
+		testing.Sleep(ctx, 2*time.Second)
+
+		testing.ContextLogf(ctx, "Saving screen record to %s", filepath)
+		if err := r.SaveInBytes(ctx, filepath); err != nil {
+			testing.ContextLogf(ctx, "Failed to save screen record in bytes: %s", err)
+		}
+	}
+	r.Release(ctx)
 }
 
 // ScreenRecorderStopSaveRelease stops, saves and releases the screen recorder.
