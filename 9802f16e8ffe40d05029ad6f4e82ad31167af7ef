@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7888024f_017c9185",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-02T17:45:12Z",
+      "side": 1,
+      "message": "This test should be testing the same configuration as an end-user, so I would expect us to be enabling software write protect (i.e., `enableSWWP \u003d true`).",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 20
+      },
+      "revId": "9802f16e8ffe40d05029ad6f4e82ad31167af7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f796314_a0d42e84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-02T17:45:12Z",
+      "side": 1,
+      "message": "Same as last comment about expecting this to be `true`.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 20
+      },
+      "revId": "9802f16e8ffe40d05029ad6f4e82ad31167af7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
