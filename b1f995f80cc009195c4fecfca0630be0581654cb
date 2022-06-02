@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44731d0_7ce74fd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-02T21:43:05Z",
+      "side": 1,
+      "message": "This should be three sentences instead of one long sentence.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "b1f995f80cc009195c4fecfca0630be0581654cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b698f95_07dbcd88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-02T21:43:05Z",
+      "side": 1,
+      "message": "This should be three sentences instead of one long sentence.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "b1f995f80cc009195c4fecfca0630be0581654cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58991aff_78d87aa5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-02T21:43:05Z",
+      "side": 1,
+      "message": "nit: Remove this comma.",
+      "range": {
+        "startLine": 22,
+        "startChar": 34,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "b1f995f80cc009195c4fecfca0630be0581654cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
