@@ -16,6 +16,24 @@
       "message": "How is this handled now?",
       "revId": "9413570dd639adbb0fe03bd5e1ecb626441ef02c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc9dae0_33e7ea48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-06-02T23:27:07Z",
+      "side": 0,
+      "message": "DUT restarts several times during test. And restart will dispose the connection.",
+      "parentUuid": "3ad900cc_75d8cdfe",
+      "revId": "9413570dd639adbb0fe03bd5e1ecb626441ef02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
