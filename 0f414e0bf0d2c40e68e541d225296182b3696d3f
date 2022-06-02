@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb24fe0d_cc0e8c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T04:40:58Z",
+      "side": 1,
+      "message": "Nice string output collector. Done.",
+      "parentUuid": "29a72e37_b90736e8",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 11
+      },
+      "revId": "0f414e0bf0d2c40e68e541d225296182b3696d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "242d185a_b45c2916",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-06-02T02:39:24Z",
       "side": 1,
       "message": "Go style is:\n\n    for _, line :\u003d range output {\n        s.Log(line)\n    }",
+      "revId": "0f414e0bf0d2c40e68e541d225296182b3696d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2c2210_5045e234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T04:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "242d185a_b45c2916",
       "revId": "0f414e0bf0d2c40e68e541d225296182b3696d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
