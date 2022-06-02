@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a1c3a97_17cf652d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T04:42:40Z",
+      "side": 1,
+      "message": "+hidehiko-san for OWNERS. PTAL.",
+      "revId": "e3d090837a3c80e932160fccbfddffba0b4a77b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
