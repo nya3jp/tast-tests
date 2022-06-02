@@ -119,15 +119,20 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wake display: ", err)
 	}
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, append(
-		cujrecorder.DeprecatedMetricConfigs(),
-		cujrecorder.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter),
-		cujrecorder.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
-	)...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 	defer recorder.Close(cleanupCtx)
+
+	configs := []cujrecorder.MetricConfig{
+		cujrecorder.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter),
+		cujrecorder.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
+	}
+	configs = append(configs, cujrecorder.DeprecatedMetricConfigs()...)
+	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
+		s.Fatal("Failed to add recorded metrics: ", err)
+	}
 
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 

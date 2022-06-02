@@ -100,12 +100,16 @@ func BasicYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer uiHandler.Close()
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, cujrecorder.NewSmoothnessMetricConfig(
-		"Ash.WindowCycleView.AnimationSmoothness.Container"))
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 	defer recorder.Close(cleanupCtx)
+
+	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.NewSmoothnessMetricConfig(
+		"Ash.WindowCycleView.AnimationSmoothness.Container")); err != nil {
+		s.Fatal("Failed to add recorded metrics: ", err)
+	}
 
 	extendedDisplay := false
 	videoApp := videocuj.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)

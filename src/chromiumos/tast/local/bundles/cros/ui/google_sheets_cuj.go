@@ -110,11 +110,15 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, cujrecorder.DeprecatedMetricConfigs()...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
 	defer recorder.Close(closeCtx)
+
+	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add recorded metrics: ", err)
+	}
 
 	// Create a virtual trackpad.
 	tpw, err := input.Trackpad(ctx)

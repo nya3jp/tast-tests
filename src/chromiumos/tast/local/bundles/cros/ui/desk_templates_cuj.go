@@ -92,7 +92,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Set up metrics recorder for TPS calculation
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, cujrecorder.DeprecatedMetricConfigs()...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
@@ -102,6 +102,10 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			s.Error("Failed to stop recorder: ", err)
 		}
 	}(cleanupCtx)
+
+	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add recorded metrics: ", err)
+	}
 
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	pv := perf.NewValues()
