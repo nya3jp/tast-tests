@@ -31,7 +31,7 @@ func init() {
 		Name:     "projectorLogin",
 		Desc:     "Regular user login with Projector feature flag enabled",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-projector@google.com"},
-		Impl:     NewProjectorFixture(chrome.EnableFeatures("Projector"), chrome.EnableFeatures("ProjectorAppDebug"), chrome.EnableFeatures("ProjectorAnnotator")),
+		Impl:     NewProjectorFixture(chrome.EnableFeatures("Projector"), chrome.EnableFeatures("ProjectorAppDebug"), chrome.EnableFeatures("ProjectorAnnotator"), chrome.EnableFeatures("ProjectorTutorialVideoView")),
 		Vars: []string{
 			"ui.gaiaPoolDefault",
 		},
