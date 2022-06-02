@@ -310,6 +310,24 @@
       "parentUuid": "b8f84347_8d96a688",
       "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b20b13_bee28b5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-02T14:50:29Z",
+      "side": 1,
+      "message": "Good point. I extended the implementation to claim the simulated devices that are managed by Shill, it seems to be the more future proof choice. Thus we won\u0027t depend on the fact `wlan1` and `wlan2` are blocked (or not).",
+      "parentUuid": "127f8630_5d06fa56",
+      "revId": "47a41c1ecd443a6ec0dd9d4ccd5044f733bc899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
