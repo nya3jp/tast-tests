@@ -78,6 +78,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea34daf9_cc125e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-02T02:16:26Z",
+      "side": 1,
+      "message": "\u003e Doesn\u0027t this make the assumption that DHCP doesn\u0027t fail before we check the state\nThis assumption itself sounds good to me here. I think this actually verifies that \"whether shill auto-connects a (v)eth device\", but I don\u0027t have a strong opinion on whether we should have this check here.\n\n\"Setting a static ip config when there is no DHCP will turn the state from configuring to connected\" is in the scope of the routing tests for the Network refactor work.",
+      "parentUuid": "51519ab2_08a5d551",
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d97d3a4_3ade8411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-02T02:16:26Z",
+      "side": 1,
+      "message": "Just a further explanation on what we discussed in another patch, if we read the Priority on the same service here, we will find that its value is 0 but not 1.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1db7762_87c1126f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 6
