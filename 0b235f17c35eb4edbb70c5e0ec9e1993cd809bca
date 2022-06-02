@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f11ca59_c4f1f7d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-02T18:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db5bb17f_1575d30e",
+      "range": {
+        "startLine": 225,
+        "startChar": 24,
+        "endLine": 225,
+        "endChar": 37
+      },
+      "revId": "0b235f17c35eb4edbb70c5e0ec9e1993cd809bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f8b1477_31a3f520",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-02T12:23:41Z",
       "side": 1,
       "message": "nit: pass closeCtx by value here, don\u0027t bind by reference, otherwise it\u0027s error prone.\n\ni.e.\n\n```\ndefer func(ctx context.Context) {\n  ...\n}(closeCtx)\n```",
+      "range": {
+        "startLine": 242,
+        "startChar": 7,
+        "endLine": 242,
+        "endChar": 14
+      },
+      "revId": "0b235f17c35eb4edbb70c5e0ec9e1993cd809bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8648bb5e_e3d4d1b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-02T18:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f8b1477_31a3f520",
       "range": {
         "startLine": 242,
         "startChar": 7,
