@@ -70,14 +70,19 @@ func ClosePersonalizationHub(ui *uiauto.Context) uiauto.Action {
 // Reference: aria-label="$i18n{ariaLabelEnableLightColorMode}"
 // ash/webui/personalization_app/resources/trusted/personalization_theme_element.html
 func ToggleLightMode(ui *uiauto.Context) uiauto.Action {
-	return toggleThemeButton("Enable light color mode", ui)
+	return toggleThemeButton("Light", ui)
 }
 
 // ToggleDarkMode returns an action to enable dark color mode.
 // Reference: aria-label="$i18n{ariaLabelEnableDarkColorMode}"
 // ash/webui/personalization_app/resources/trusted/personalization_theme_element.html
 func ToggleDarkMode(ui *uiauto.Context) uiauto.Action {
-	return toggleThemeButton("Enable dark color mode", ui)
+	return toggleThemeButton("Dark", ui)
+}
+
+// ToggleAutoMode returns an action to enable auto color mode.
+func ToggleAutoMode(ui *uiauto.Context) uiauto.Action {
+	return toggleThemeButton("Auto", ui)
 }
 
 // toggleThemeButton returns an action to toggle a theme button.
