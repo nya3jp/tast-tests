@@ -206,6 +206,30 @@
       },
       "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ffac44_005bd8c5",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-02T22:01:29Z",
+      "side": 1,
+      "message": "Thanks for the clarification.\n\nThough I am still not entirely sure why you cannot do lacros within the same fixture (i.e., choosing different ChromeOption for Ash/Lacros in the `Setup`), I don\u0027t mind the way that you are planning to do.\n\n(optional) If you want to use `cr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()`, you may try simply defining:\n```\ntype FixtValue struct {\n\tchrome.HasChrome\n\tARC  *arc.ARC\n}\n```\n\nwhich implicitly makes `FixtValue` implement `Chrome()`.",
+      "parentUuid": "57194eb0_3ec076cc",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 48
+      },
+      "revId": "69002c39edcc6a3d2ff4eaedd1baec0aa8d45ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
