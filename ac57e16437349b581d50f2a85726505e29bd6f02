@@ -70,6 +70,24 @@
       "parentUuid": "a7089aa0_29e87439",
       "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4e28e2_099db33d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-06-02T14:04:50Z",
+      "side": 1,
+      "message": "Yeah, that should be a bug.\nTo implement the behavior correctly, I think we should store the maximum attempts limit and call GetWrongAuthAttempts for \"auth_locked\" query.",
+      "parentUuid": "9c9eeeeb_4d7c076f",
+      "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
