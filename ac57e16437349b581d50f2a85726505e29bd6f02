@@ -88,6 +88,24 @@
       "parentUuid": "9c9eeeeb_4d7c076f",
       "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b26c96f_38242346",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-02T14:13:56Z",
+      "side": 1,
+      "message": "OK, filed b/234715681 for that (it\u0027s probably P2 if, as you say, it was the old code\u0027s behavior even before the regression).",
+      "parentUuid": "8a4e28e2_099db33d",
+      "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
