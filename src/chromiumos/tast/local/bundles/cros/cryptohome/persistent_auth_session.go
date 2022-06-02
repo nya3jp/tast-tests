@@ -112,7 +112,7 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
 
 	// Mount the vault for the first time.
-	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false, false)
+	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, "fake_label", false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
@@ -153,7 +153,7 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false, false)
+	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, "fake_label", false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
