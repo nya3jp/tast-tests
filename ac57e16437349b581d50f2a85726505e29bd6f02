@@ -52,6 +52,24 @@
       "parentUuid": "e3c1fa30_01161278",
       "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c9eeeeb_4d7c076f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-02T12:51:04Z",
+      "side": 1,
+      "message": "OK, then I\u0027m confused... If it\u0027s locked after 5 attempts, why don\u0027t we have auth_locked set to true after 5 attempts? Seems like a cryptohome bug?",
+      "parentUuid": "a7089aa0_29e87439",
+      "revId": "ac57e16437349b581d50f2a85726505e29bd6f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
