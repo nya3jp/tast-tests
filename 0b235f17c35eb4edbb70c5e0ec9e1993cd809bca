@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cab55d_456eed70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-02T12:23:41Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "0b235f17c35eb4edbb70c5e0ec9e1993cd809bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db5bb17f_1575d30e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-02T12:23:41Z",
+      "side": 1,
+      "message": "nit: maybe if retErr !\u003d nil and err !\u003d nil just log error message using testing.ContextLog?",
+      "range": {
+        "startLine": 225,
+        "startChar": 24,
+        "endLine": 225,
+        "endChar": 37
+      },
+      "revId": "0b235f17c35eb4edbb70c5e0ec9e1993cd809bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f8b1477_31a3f520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-02T12:23:41Z",
+      "side": 1,
+      "message": "nit: pass closeCtx by value here, don\u0027t bind by reference, otherwise it\u0027s error prone.\n\ni.e.\n\n```\ndefer func(ctx context.Context) {\n  ...\n}(closeCtx)\n```",
+      "range": {
+        "startLine": 242,
+        "startChar": 7,
+        "endLine": 242,
+        "endChar": 14
+      },
+      "revId": "0b235f17c35eb4edbb70c5e0ec9e1993cd809bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
