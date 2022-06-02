@@ -50,7 +50,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline"},
-		Timeout:      8 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stablePkTests,
 			ExtraSoftwareDeps: []string{"android_p"},
