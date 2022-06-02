@@ -75,11 +75,15 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, cujrecorder.RecorderOptions{}, cujrecorder.DeprecatedMetricConfigs()...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 	defer recorder.Close(cleanupCtx)
+
+	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add recorded metrics: ", err)
+	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Launch the ARC YouTube app.
