@@ -39,6 +39,46 @@
       },
       "revId": "0bc383839f99704965dd2aacad119deeb5629486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a0fa58_74d789a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-02T01:41:07Z",
+      "side": 1,
+      "message": "Doesn\u0027t this make the assumption that DHCP doesn\u0027t fail before we check the state? Is it meaningful to check the state with nothing on the other side of the veth pair?",
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1db7762_87c1126f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-02T01:41:07Z",
+      "side": 1,
+      "message": "can we get the priority above and check it against that instead to avoid making assumptions about the default value?",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
