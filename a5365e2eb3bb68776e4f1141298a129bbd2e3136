@@ -16,6 +16,24 @@
       "message": "does the 10 minute timeout apply for each test case listed in `Params`? And why was it necessary to increase this timeout?",
       "revId": "a5365e2eb3bb68776e4f1141298a129bbd2e3136",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f394bb9e_91e3a85b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1139659
+      },
+      "writtenOn": "2022-06-02T18:49:58Z",
+      "side": 1,
+      "message": "My guess is it applies to all the test cases in Params combined because tast allows us to specify another \"Timeout:\" for each individual test case in Params. Anyways, I don\u0027t mind keeping 5 minutes. I think that\u0027s still a pretty comfortable margin. I just doubled it since it\u0027s twice the number of test cases being added in this CL.",
+      "parentUuid": "5b780cb8_0ed2d849",
+      "revId": "a5365e2eb3bb68776e4f1141298a129bbd2e3136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
