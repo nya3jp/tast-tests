@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edea07bf_f2aa92d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-06-02T02:22:26Z",
+      "side": 1,
+      "message": "LGTM with a nit.",
+      "revId": "1ecbc3a8b19c74d72188fa9e078fd697a9ef1122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ac8b83_868856a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-06-02T02:22:26Z",
+      "side": 1,
+      "message": "I wouldn\u0027t bother with the os.ReadDir check (lines 89-91). You\u0027re checking that the ReadDir returns exactly one element, but there may be multiple elements. Specifically, there\u0027ll be at least two (moniker and mtp) as https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3655724 has recently landed.\n\nI\u0027d replace lines 89-94 with just the os.Stat check.\n\n\tif _, err :\u003d os.Stat(filepath.Join(m.MountPath, \"mtp\")); err !\u003d nil {\n\t\ts.Fatal(\"Failed stat(2): \", err)\n\t}",
+      "revId": "1ecbc3a8b19c74d72188fa9e078fd697a9ef1122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
