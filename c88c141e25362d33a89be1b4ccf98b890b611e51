@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b759838_de99f9be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-02T01:57:50Z",
+      "side": 1,
+      "message": "Declare this list as a constant so you don\u0027t have to keep it in sync in two places.",
+      "range": {
+        "startLine": 36,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "c88c141e25362d33a89be1b4ccf98b890b611e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54faf7ab_9dcbb507",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-02T01:57:50Z",
+      "side": 1,
+      "message": "There seem to be more unstable models (e.g. taeko)\n\nmaybe use an allowlist instead?  It would be easier to review.",
+      "range": {
+        "startLine": 44,
+        "startChar": 44,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "c88c141e25362d33a89be1b4ccf98b890b611e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
