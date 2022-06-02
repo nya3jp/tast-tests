@@ -33,6 +33,24 @@
       "message": "this Wait should be called only if Start succeeds. So could you move this to L69?",
       "revId": "e4c1d29d0088fdf9f1284a2cd1f6a224a9f99dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec330eb_f0f9ffd1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-06-02T01:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c886cb0_36ec069f",
+      "revId": "e4c1d29d0088fdf9f1284a2cd1f6a224a9f99dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

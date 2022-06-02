@@ -173,6 +173,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a676224_6d8bd541",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-06-02T01:21:11Z",
+      "side": 1,
+      "message": "I\u0027ve reached out to Deepa about scheduling, for now though \"group:flashrom\" might be better? I can change it again though.",
+      "parentUuid": "19666ac9_be064a14",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86d67a57_74e920c0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
         "patchSetId": 3
@@ -232,6 +256,30 @@
       "side": 1,
       "message": "no but perhaps you want `flashrom-tester` ?\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/sys-apps/flashrom-tester/flashrom-tester-9999.ebuild",
       "parentUuid": "735a35a5_10d98938",
+      "range": {
+        "startLine": 34,
+        "startChar": 48,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52259adc_cc630161",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-06-02T01:21:11Z",
+      "side": 1,
+      "message": "Ah yes, thanks!",
+      "parentUuid": "5988169e_121ec06a",
       "range": {
         "startLine": 34,
         "startChar": 48,
@@ -326,6 +374,24 @@
       "side": 1,
       "message": "I\u0027ve added some examples but I\u0027m not sure about commenting where it comes from, do you mean I should link the tester code that prints results? The tool is going to get refactored so I\u0027m not sure if it will be helpful.",
       "parentUuid": "5aa4e9b9_b7449b7f",
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8f5a68_61f78061",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-06-02T01:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75a7b64c_7ba705d9",
       "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
