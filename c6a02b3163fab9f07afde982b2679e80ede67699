@@ -16,6 +16,23 @@
       "message": "Please review.",
       "revId": "c6a02b3163fab9f07afde982b2679e80ede67699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416f19f3_29bd1351",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T17:50:44Z",
+      "side": 1,
+      "message": "LGTM, just one comment for adding a TODO comment for the deprecated function.",
+      "revId": "c6a02b3163fab9f07afde982b2679e80ede67699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

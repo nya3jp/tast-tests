@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b2abed8a_2c166589",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T17:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d5b1f9a_3da93ab7",
+      "revId": "ff99663a86dbf3938f58cbb5bc1b8d958988c114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ff909bf8_9385760c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "\u003e hoping people will respect the deprecated note\nI would prefer to delete the deprecated ones (people might just copy some case implementation and do not go deep to this file and check the comments)\n\nBut I think the footprint of removing the deprecated functions would be too big to be fit into one change. Maybe we could do it in a follow up cleanup change some time later.",
       "parentUuid": "86f0a1ff_fddd6438",
+      "revId": "ff99663a86dbf3938f58cbb5bc1b8d958988c114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a191d602_6c2b9c8a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T17:50:44Z",
+      "side": 1,
+      "message": "If we are planning to remove these functions is the future, then we can add a TODO() comment with a bug link/owner. Something similar to this https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/router/legacy/router.go;rcl\u003dfc576eab148989a65989d7a4d297eec901915b5b;l\u003d777",
+      "parentUuid": "6bf6c9cf_4e08c742",
       "revId": "ff99663a86dbf3938f58cbb5bc1b8d958988c114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
