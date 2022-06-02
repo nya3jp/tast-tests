@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3310324b_9b161978",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-02T15:03:44Z",
+      "side": 1,
+      "message": "as we enter badpin on both modems they return error message(org.chromium.flimflam.Error.IncorrectPin), on octopus it was different - \u0027failed to enter pin /device/wwan0: error occurred in EnterPin\u0027\n\n\nbelow different errors are at 3rd attempt: \n\non Qualcomm(trogdor): org.chromium.flimflam.Error.PinBlocked\non Fibocomm(): org.freedesktop.ModemManager1.Error.MobileEquipment.SimPuk\n\nand here also few duts it\u0027s failed to enter pin /device/wwan0: error occurred in EnterPin\u0027 causing test failure though it\u0027s puk locked. https://b.corp.google.com/issues/231984978",
+      "parentUuid": "c9a6f299_00ae407e",
+      "range": {
+        "startLine": 762,
+        "startChar": 42,
+        "endLine": 762,
+        "endChar": 52
+      },
+      "revId": "61b08fefb7e4abcf24f3e6c2cadaeffb55ded893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7416c6a9_048708b5",
         "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
         "patchSetId": 1
