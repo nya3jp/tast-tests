@@ -16,6 +16,24 @@
       "message": "1. I\u0027m trying to test \"mount existing homedir w/ wrong password\n⇒ failure\"\n2. What bug should I use?",
       "revId": "a7efaeb3f97ebf7b9e1a78a5ac6b2e7996a44ea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849b1307_51675af4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-02T13:54:18Z",
+      "side": 1,
+      "message": "Thanks! File a new bug in the cryptohome component. Up to you whether to use bug-per-CL or cover a group of test scenarios you\u0027re planning to tackle.",
+      "parentUuid": "71200c40_6057396d",
+      "revId": "a7efaeb3f97ebf7b9e1a78a5ac6b2e7996a44ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
