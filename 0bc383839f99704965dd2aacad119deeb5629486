@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51519ab2_08a5d551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-02T01:53:46Z",
+      "side": 1,
+      "message": "\u003e  Is it meaningful to check the state with nothing on the other side of the veth pair\n\nYes that a good point. I would say no, unless we can also push a static ip config. However I thought this was impossible to do for a eth service that is not the \"any\" service ?",
+      "parentUuid": "e1a0fa58_74d789a6",
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1db7762_87c1126f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 6
