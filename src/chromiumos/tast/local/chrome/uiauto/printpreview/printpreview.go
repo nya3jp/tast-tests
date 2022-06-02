@@ -201,3 +201,43 @@ func ExpandMoreSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	return nil
 }
+
+// SetDropdown selects a dropdown menu and changes its selected option to the
+// desired value.
+func SetDropdown(ctx context.Context, tconn *chrome.TestConn, name, value string) error {
+	ui := uiauto.New(tconn)
+	dropdown := nodewith.Name(name).Role(role.PopUpButton)
+	option := nodewith.Name(value).Role(role.ListBoxOption)
+
+	if err := uiauto.Combine("find and click dropdown",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(dropdown),
+		ui.FocusAndWait(dropdown),
+		ui.LeftClick(dropdown),
+	)(ctx); err != nil {
+		return err
+	}
+
+	if err := uiauto.Combine("select dropdown option",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(option),
+		ui.LeftClick(option),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// SetPaperSize sets the "Paper size" dropdown to the desired value.
+func SetPaperSize(ctx context.Context, tconn *chrome.TestConn, value string) error {
+	return SetDropdown(ctx, tconn, "Paper size", value)
+}
+
+// SetPagesPerSheet sets the "Pages per sheet" dropdown to the desired value.
+func SetPagesPerSheet(ctx context.Context, tconn *chrome.TestConn, value string) error {
+	return SetDropdown(ctx, tconn, "Pages per sheet", value)
+}
+
+// SetMargins sets the "Margins" dropdown to the desired value.
+func SetMargins(ctx context.Context, tconn *chrome.TestConn, value string) error {
+	return SetDropdown(ctx, tconn, "Margins", value)
+}
