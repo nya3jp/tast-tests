@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "803d0f52_75fcac77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-02T05:49:00Z",
+      "side": 1,
+      "message": "Can we have lists as constants  in golang?",
+      "parentUuid": "2b759838_de99f9be",
+      "range": {
+        "startLine": 36,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "c88c141e25362d33a89be1b4ccf98b890b611e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54faf7ab_9dcbb507",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 5
