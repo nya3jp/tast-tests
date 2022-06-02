@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "065e06fa_0aebd674",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-06-02T13:55:55Z",
+      "side": 1,
+      "message": "LGTM.\nI think if we keep it long tern\u003dm it would be good to mimic the real policy. ",
+      "revId": "f1fdc27c6ee24cb23b191b3015f3f44aaba038d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
