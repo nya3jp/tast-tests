@@ -382,7 +382,7 @@ func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, passw
 
 	// Authenticate the same AuthSession using authSessionID.
 	// If we cannot authenticate, do not proceed with mount and unmount.
-	if err := cryptohome.AuthenticateAuthSession(ctx, password, authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.AuthenticateAuthSession(ctx, password, "fake_label", authSessionID, isKioskUser); err != nil {
 		return errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 	testing.ContextLog(ctx, "User authenticated successfully")
@@ -427,7 +427,7 @@ func CreateUserWithAuthSession(ctx context.Context, username, password string, i
 		return errors.Wrap(err, "failed to add credentials with AuthSession")
 	}
 	testing.ContextLog(ctx, "Added credentials successfully")
-	if err := cryptohome.AuthenticateAuthSession(ctx, password, authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.AuthenticateAuthSession(ctx, password, "fake_label", authSessionID, isKioskUser); err != nil {
 		return errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 	testing.ContextLog(ctx, "User authenticated successfully")
@@ -471,7 +471,7 @@ func CreateAndMountUserWithAuthSession(ctx context.Context, username, password s
 }
 
 // AuthenticateWithAuthSession authenticates an existing user via auth session API.
-func AuthenticateWithAuthSession(ctx context.Context, username, password string, isEphemeral, isKioskUser bool) (string, error) {
+func AuthenticateWithAuthSession(ctx context.Context, username, password, keyLabel string, isEphemeral, isKioskUser bool) (string, error) {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
@@ -484,7 +484,7 @@ func AuthenticateWithAuthSession(ctx context.Context, username, password string,
 
 	// Authenticate the same AuthSession using authSessionID.
 	// If we cannot authenticate, do not proceed with mount and unmount.
-	if err := cryptohome.AuthenticateAuthSession(ctx, password, authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.AuthenticateAuthSession(ctx, password, keyLabel, authSessionID, isKioskUser); err != nil {
 		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 	testing.ContextLog(ctx, "User authenticated successfully")
@@ -505,7 +505,7 @@ func UpdateUserCredentialWithAuthSession(ctx context.Context, username, oldPassw
 
 	// Authenticate the same AuthSession using authSessionID.
 	// If we cannot authenticate, do not proceed with mount and unmount.
-	if err := cryptohome.AuthenticateAuthSession(ctx, oldPassword, authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.AuthenticateAuthSession(ctx, oldPassword, "fake_label", authSessionID, isKioskUser); err != nil {
 		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 

@@ -273,12 +273,12 @@ func (c *cryptohomeBinary) startAuthSession(ctx context.Context, username string
 
 // authenticateAuthSession calls "cryptohome --action=authenticate_auth_session".
 // password is ignored if publicMount is set to true.
-func (c *cryptohomeBinary) authenticateAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) ([]byte, error) {
+func (c *cryptohomeBinary) authenticateAuthSession(ctx context.Context, password, keyLabel, authSessionID string, publicMount bool) ([]byte, error) {
 	args := []string{"--action=authenticate_auth_session", "--auth_session_id=" + authSessionID}
 	if publicMount {
 		args = append(args, "--public_mount", "--key_label=public_mount")
 	} else {
-		args = append(args, "--password="+password, "--key_label=fake_label")
+		args = append(args, "--password="+password, "--key_label="+keyLabel)
 	}
 	return c.call(ctx, args...)
 }

@@ -42,6 +42,7 @@ func VaultMigration(ctx context.Context, s *testing.State) {
 	const (
 		userName        = "foo@bar.baz"
 		userPassword    = "secret"
+		keyLabel        = "fake_label"
 		testFile        = "file"
 		testFileContent = "content"
 	)
@@ -79,7 +80,7 @@ func VaultMigration(ctx context.Context, s *testing.State) {
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
 
 	s.Log("Create ecryptfs vault with a file")
-	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false /*ephemeral*/, false /*kiosk*/)
+	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false /*ephemeral*/, false /*kiosk*/)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
@@ -109,7 +110,7 @@ func VaultMigration(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Mount for encryption migration")
-	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false /*ephemeral*/, false /*kiosk*/)
+	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false /*ephemeral*/, false /*kiosk*/)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
@@ -125,7 +126,7 @@ func VaultMigration(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Mount as fscrypt")
-	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false /*ephemeral*/, false /*kiosk*/)
+	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false /*ephemeral*/, false /*kiosk*/)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
