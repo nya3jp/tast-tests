@@ -282,4 +282,50 @@ func GhostWindow(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to launch ghost window: ", err)
 		}
 	}
+
+	// Test restore single PlayStore task in tablet mode.
+	{
+		// Test ghost window in logout case.
+		cr, err := loginChrome(ctx, s, nil)
+		if err != nil {
+			s.Fatal("Failed to optin: ", err)
+		}
+		defer cr.Close(cleanupCtx)
+
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to create Test API connection: ", err)
+		}
+		tabletModeStatus, err := ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get tablet mode status: ", err)
+		}
+		defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeStatus)
+
+		if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+			s.Fatal("Failed to change device to tablet mode: ", err)
+		}
+
+		creds := cr.Creds()
+		if err := optinAndLaunchPlayStore(ctx, s, cr); err != nil {
+			s.Fatal("Failed to initial optin: ", err)
+		}
+
+		// Stop Chrome after window info saved.
+		waitForWindowInfoSaved(ctx)
+		if err := upstart.RestartJob(ctx, "ui"); err != nil {
+			s.Fatal("Failed to log out: ", err)
+		}
+
+		// Re-login.
+		cr, err = loginChrome(ctx, s, &creds)
+		if err != nil {
+			s.Fatal("Failed to re-optin: ", err)
+		}
+		defer cr.Close(cleanupCtx)
+
+		if err := verifyGhostWindow(ctx, s, cr, false, apps.PlayStore.ID); err != nil {
+			s.Fatal("Failed to launch ghost window: ", err)
+		}
+	}
 }
