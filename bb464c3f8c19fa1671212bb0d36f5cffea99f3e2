@@ -16,6 +16,213 @@
       "message": "+Ben also for OWNERs, know you are NYC for other matters. PTAL if you have time. ",
       "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d417fb8_a97953ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:39:59Z",
+      "side": 1,
+      "message": "although this is internal utility, what\u0027s returned is not trivial. Could you document? Ditto for all the below.",
+      "range": {
+        "startLine": 34,
+        "startChar": 70,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed074de_4e0340bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:39:59Z",
+      "side": 1,
+      "message": "this is package scope, so looks too generic for \"platform\".\nCOuld you introduce a subpackage? Or, give concrete naming?",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbce4c55_60c0fd3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:39:59Z",
+      "side": 1,
+      "message": "instead of testing State, could you return error and handle in caller?\nDitto for below.",
+      "range": {
+        "startLine": 34,
+        "startChar": 32,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b9ba403_b202ed85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:39:59Z",
+      "side": 1,
+      "message": "where does this 6 comes from? Any comments?",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556b2437_1fb897f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:39:59Z",
+      "side": 1,
+      "message": "ditto. Looks magic number?",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ffdb033_5f9b229a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:39:59Z",
+      "side": 1,
+      "message": "could you not using command execution? Instead, could you use go\u0027s library function?\nDitto for all the below.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73078415_332808e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:39:59Z",
+      "side": 1,
+      "message": "failing mv does not mean ENOTSUP?",
+      "range": {
+        "startLine": 140,
+        "startChar": 29,
+        "endLine": 140,
+        "endChar": 36
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ff03b0_bcc3cc05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:39:59Z",
+      "side": 1,
+      "message": "style: \"else\" is not needed\n\n if err !\u003d nil {\n   ...\n }\n if m.SourcePath !\u003d source {\n   ...\n }\n ...",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c485578d_1a0d9501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-02T13:39:59Z",
+      "side": 1,
+      "message": "Could you make this variable so that future developers do not need to modify the code to trigger this.",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 9
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
