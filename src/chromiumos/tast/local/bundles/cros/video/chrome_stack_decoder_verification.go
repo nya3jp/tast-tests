@@ -69,6 +69,11 @@ var h264FilesFromBugs = []string{
 	"test_vectors/h264/files_from_bugs/b_227047778_mtk_8195_artifacts.h264",
 }
 
+// These tests are expected to fail long-term.
+var h264InvalidBistreams = []string{
+	"test_vectors/h264/files_from_bugs/b_234651916_big_buck_bunny_artifacts_rk3399.h264",
+}
+
 var h264Files = map[string][]string{
 	"baseline": {
 		"test_vectors/h264/baseline/AUD_MW_E.h264",
@@ -405,6 +410,15 @@ func init() {
 				validatorType: decoding.MD5,
 			},
 		}, {
+			Name:              "h264_invalid_bitstreams",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
+			ExtraData:         appendJSONFiles(h264InvalidBistreams),
+			Val: chromeStackDecoderVerificationTestParam{
+				videoFiles:    h264InvalidBistreams,
+				validatorType: decoding.MD5,
+			},
+		}, {
 			Name:              "h264_baseline",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
@@ -561,8 +575,8 @@ func init() {
 				validatorType: decoding.MD5,
 			},
 		}, {
-			Name:              "vp9_0_svc",
-            // TODO(b/210167476): Reenable when it's not failing everywhere.
+			Name: "vp9_0_svc",
+			// TODO(b/210167476): Reenable when it's not failing everywhere.
 			//ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp9SVCFiles),

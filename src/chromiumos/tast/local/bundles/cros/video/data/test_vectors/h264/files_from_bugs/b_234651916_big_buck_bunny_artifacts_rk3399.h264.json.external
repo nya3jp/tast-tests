@@ -1,0 +1,5 @@
+{
+  "sha256sum": "fde50a2e23389fdf69ea52ca020d9b1257241b180b6dc88985d853b684462119",
+  "size": 430,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/files_from_bugs/./b_234651916_big_buck_bunny_artifacts_rk3399_20220602.h264.json"
+}
