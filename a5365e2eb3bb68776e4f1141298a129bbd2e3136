@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b780cb8_0ed2d849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-06-02T17:10:45Z",
+      "side": 1,
+      "message": "does the 10 minute timeout apply for each test case listed in `Params`? And why was it necessary to increase this timeout?",
+      "revId": "a5365e2eb3bb68776e4f1141298a129bbd2e3136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
