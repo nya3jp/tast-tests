@@ -527,8 +527,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to expand Create Dump section of chrome://webrtc-internals: ", err)
 	}
 
-	// Open the meeting in another tab in the same window as chrome://webrtc-internals.
-	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode)
+	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, browser.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
@@ -645,7 +644,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	for _, w := range ws {
 		if re.MatchString(w.Title) {
 			meetWindow = w
-		} else {
+		} else if w.Title != "WebRTC Internals" {
 			collaborationWindow = w
 		}
 	}
@@ -832,27 +831,22 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	// Report info from chrome://webrtc-internals.
 	webRTCUI := ui.WithTimeout(10 * time.Minute)
 	videoStream := nodewith.NameContaining("VideoStream").First()
-	if err := focusWebRTCInternals(ctx, tconn, meet.browserType, kw); err != nil {
-		s.Error("Failed to focus the chrome://webrtc-internals tab: ", err)
-		s.Log("Info from chrome://webrtc-internals will not be reported")
+	if path, err := dumpWebRTCInternals(ctx, tconn, webRTCUI, cr.NormalizedUser()); err != nil {
+		s.Error("Failed to download dump from chrome://webrtc-internals: ", err)
 	} else {
-		if path, err := dumpWebRTCInternals(ctx, tconn, webRTCUI, cr.NormalizedUser()); err != nil {
-			s.Error("Failed to download dump from chrome://webrtc-internals: ", err)
-		} else {
-			dump, readErr := os.ReadFile(path)
-			if readErr != nil {
-				s.Error("Failed to read WebRTC internals dump from Downloads folder: ", readErr)
+		dump, readErr := os.ReadFile(path)
+		if readErr != nil {
+			s.Error("Failed to read WebRTC internals dump from Downloads folder: ", readErr)
+		}
+		if err := os.Remove(path); err != nil {
+			s.Error("Failed to remove WebRTC internals dump from Downloads folder: ", err)
+		}
+		if readErr == nil {
+			if err := os.WriteFile(filepath.Join(s.OutDir(), "webrtc-internals.json"), dump, 0644); err != nil {
+				s.Error("Failed to write WebRTC internals dump to test results folder: ", err)
 			}
-			if err := os.Remove(path); err != nil {
-				s.Error("Failed to remove WebRTC internals dump from Downloads folder: ", err)
-			}
-			if readErr == nil {
-				if err := os.WriteFile(filepath.Join(s.OutDir(), "webrtc-internals.json"), dump, 0644); err != nil {
-					s.Error("Failed to write WebRTC internals dump to test results folder: ", err)
-				}
-				if err := reportWebRTCInternals(pv, dump, meet.num); err != nil {
-					s.Error("Failed to report info from WebRTC internals dump to performance metrics: ", err)
-				}
+			if err := reportWebRTCInternals(pv, dump, meet.num); err != nil {
+				s.Error("Failed to report info from WebRTC internals dump to performance metrics: ", err)
 			}
 		}
 	}
@@ -977,24 +971,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
-}
-
-// focusWebRTCInternals activates the browser tab for chrome://webrtc-internals.
-func focusWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, bt browser.Type, kw *input.KeyboardEventWriter) error {
-	w, err := ash.FindOnlyWindow(ctx, tconn, ash.BrowserTitleMatch(bt, "Meet"))
-	if err != nil {
-		return errors.Wrap(err, "failed to find Meet window")
-	}
-
-	if err := w.ActivateWindow(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to activate Meet window")
-	}
-
-	if err := kw.AccelAction("Ctrl+Shift+Tab")(ctx); err != nil {
-		return errors.Wrap(err, "failed to press Ctrl+Shift+Tab")
-	}
-
-	return nil
 }
 
 // dumpWebRTCInternals downloads a dump from chrome://webrtc-internals and
