@@ -63,6 +63,30 @@
       },
       "revId": "1c92107809b0c8c1cc764c2986090819c00fac39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e7fd964_3c46a8e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-02T22:05:50Z",
+      "side": 1,
+      "message": "I figured out how to deflake these web app Tast tests by refreshing in a loop until the target element appears, so I\u0027m re-adding these tests in the downstream CL crrev.com/c/3688132.",
+      "parentUuid": "c0748cc9_4e0a8f2e",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 61
+      },
+      "revId": "1c92107809b0c8c1cc764c2986090819c00fac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
