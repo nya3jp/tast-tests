@@ -16,6 +16,52 @@
       "message": "Hi Keigo Oka\n\nI am not quite sure fix all of them correctly\n\nBut I have done all of them\n\nPlease check\n\nThanks",
       "revId": "84b8171e9c72ba193fa0ee533c22420c81cdbf17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acecf210_aff7844b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-06-02T04:28:22Z",
+      "side": 1,
+      "message": "testing.ContextLogf can be used.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 74
+      },
+      "revId": "84b8171e9c72ba193fa0ee533c22420c81cdbf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "749dc3c8_093046c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-06-02T04:28:22Z",
+      "side": 1,
+      "message": "I believe that global runtime variables are preferred in new code.\nWith that you don\u0027t have to pass around s.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code\n\nCould you use it and remove s from the function parameter? I believe with this change we can also remove s from many functions.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "84b8171e9c72ba193fa0ee533c22420c81cdbf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
