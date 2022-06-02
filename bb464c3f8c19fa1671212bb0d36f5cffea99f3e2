@@ -89,6 +89,78 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbbdc731_778c0d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T15:53:59Z",
+      "side": 1,
+      "message": "The return is the stdout of a POSIX using system call viz., a string. Unless I am missing something, an output string is trivial, no?",
+      "parentUuid": "4d417fb8_a97953ad",
+      "range": {
+        "startLine": 34,
+        "startChar": 70,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069bc443_64e220f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T15:53:59Z",
+      "side": 1,
+      "message": "All these POSIX-like functions fail if ever `err !\u003d nil`. Test should immediately fail and exit.  Better done in function imho, looking at the call site.",
+      "parentUuid": "bbce4c55_60c0fd3d",
+      "range": {
+        "startLine": 34,
+        "startChar": 32,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c11649_521e421a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T15:53:59Z",
+      "side": 1,
+      "message": "My apologies: this is the 3rd go program I have ever written in my life :) \"package scope\" and \"subpackage\" are meaningless to me as a new-to-go programmer.\n\nDidn\u0027t quite follow the \"concrete naming\" advice either.  I read `create(file)` creates a file.",
+      "parentUuid": "6ed074de_4e0340bb",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b9ba403_b202ed85",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
@@ -100,6 +172,30 @@
       "writtenOn": "2022-06-02T13:39:59Z",
       "side": 1,
       "message": "where does this 6 comes from? Any comments?",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b271611_97815889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T15:53:59Z",
+      "side": 1,
+      "message": "No meaning in 6. Files shorter than that will s.Fatal and fail this tast test.",
+      "parentUuid": "8b9ba403_b202ed85",
       "range": {
         "startLine": 75,
         "startChar": 21,
@@ -135,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fe1405b_9ff377e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T15:53:59Z",
+      "side": 1,
+      "message": "go code magic: a buffer of 5 bytes.  It seems to somehow tell f.Read(data) to try read 5 bytes, but again, I am a go novice.  \n\nTest immediately fails with s.Fatalf() if I got this wrong.",
+      "parentUuid": "556b2437_1fb897f8",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ffdb033_5f9b229a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
@@ -146,6 +266,30 @@
       "writtenOn": "2022-06-02T13:39:59Z",
       "side": 1,
       "message": "could you not using command execution? Instead, could you use go\u0027s library function?\nDitto for all the below.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a4a370_f3f81992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T15:53:59Z",
+      "side": 1,
+      "message": "Either is fine.  Nigel (who is a go expert) and I discussed this off-line: use go\u0027s library or use testexec.CommandContext?\n\nnoel: does go\u0027s library support `rm -rf`?  Nigel: Nope, IIRC it does not.\n\nSo ok, we decide either way is fine: go\u0027s lib, or else use testexec.CommandContext for underlying POSIX system call implementation variety.",
+      "parentUuid": "5ffdb033_5f9b229a",
       "range": {
         "startLine": 93,
         "startChar": 1,
@@ -181,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b06cfea3_c7f6e447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T15:53:59Z",
+      "side": 1,
+      "message": "This case it noted in the change description, and in go/fusebox-tast-tests PTAL\n\nENOTSUP is a POSIX \"operation is not supported\" and the fake file system does not support this operation, per the change description.",
+      "parentUuid": "73078415_332808e2",
+      "range": {
+        "startLine": 140,
+        "startChar": 29,
+        "endLine": 140,
+        "endChar": 36
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8ff03b0_bcc3cc05",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
@@ -204,6 +372,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e829cb8b_fa96c906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T15:53:59Z",
+      "side": 1,
+      "message": "style?  For the record, I have have had three views in go code reviews re: else or else if needed or not, so far 😊.  Confusing.\n\nA go code presubmit would resolve it once and for all, save us all time etc, but there is no such presubmit at this time, sadly.\n\nGo presubmits did not complain, and so I assumed the presubmits were happy and ok with it.  I wrote this block of code the same way, in 3 patches, so I\u0027m kinda adverse to writing it differently in this CL.\n\nWhat would you recommend here?",
+      "parentUuid": "e8ff03b0_bcc3cc05",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c485578d_1a0d9501",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
@@ -215,6 +407,30 @@
       "writtenOn": "2022-06-02T13:39:59Z",
       "side": 1,
       "message": "Could you make this variable so that future developers do not need to modify the code to trigger this.",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 9
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77108f1_82039e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-02T15:53:59Z",
+      "side": 1,
+      "message": "This tast test is neither curious nor dependent on the output: the test either works (PASS) or it does not (FAIL).  No real need for a variable, imho.\n\nThis false was more for test debug.  At one point during development, I thought this test would use a golden file to compare test output expectations.  I later dropped that idea (not needed), but the leftover is this `if false` for debugging this test if it goes wrong.",
+      "parentUuid": "c485578d_1a0d9501",
       "range": {
         "startLine": 216,
         "startChar": 4,
