@@ -90,6 +90,12 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 
 	password := cr.Creds().Pass
 
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
+	if err != nil {
+		s.Fatal("Failed to create a CUJ recorder: ", err)
+	}
+	defer recorder.Close(closeCtx)
+
 	configs := []cujrecorder.MetricConfig{
 		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
@@ -98,11 +104,9 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter),
 	}
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
-	if err != nil {
-		s.Fatal("Failed to create a CUJ recorder: ", err)
+	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
+		s.Fatal("Failed to add recorded metrics: ", err)
 	}
-	defer recorder.Close(closeCtx)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {

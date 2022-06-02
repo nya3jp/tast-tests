@@ -213,9 +213,13 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			cujrecorder.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
 		)
 	}
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
+	}
+
+	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
+		s.Fatal("Failed to add recorded metrics: ", err)
 	}
 	if testParam.tracing {
 		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))

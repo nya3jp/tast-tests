@@ -118,27 +118,35 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	configs := []cujrecorder.MetricConfig{
-		// Ash metrics config, always collected from ash-chrome.
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
+	if err != nil {
+		s.Fatal("Failed to create the recorder: ", err)
+	}
+	defer recorder.Close(closeCtx)
+
+	// Ash metrics config, always collected from ash-chrome.
+	ashConfigs := []cujrecorder.MetricConfig{
 		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
 			perf.SmallerIsBetter),
 		cujrecorder.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter),
+	}
+	if err := recorder.AddCollectedMetrics(tconn, ashConfigs...); err != nil {
+		s.Fatal("Failed to add Ash recorded metrics: ", err)
+	}
 
-		// Browser metrics config, collected from ash-chrome or lacros-chrome
-		// depending on the browser being used.
-		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
+	// Browser metrics config, collected from ash-chrome or lacros-chrome
+	// depending on the browser being used.
+	browserConfigs := []cujrecorder.MetricConfig{
+		cujrecorder.NewCustomMetricConfig(
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
-			perf.SmallerIsBetter, []int64{50, 80}, bTconn),
+			perf.SmallerIsBetter),
 	}
-
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
-	if err != nil {
-		s.Fatal("Failed to create the recorder: ", err)
+	if err := recorder.AddCollectedMetrics(bTconn, browserConfigs...); err != nil {
+		s.Fatal("Failed to add Browser recorded metrics: ", err)
 	}
-	defer recorder.Close(closeCtx)
 
 	conn, err := cs.NewConn(ctx, stadiacuj.StadiaGameURL)
 	if err != nil {
