@@ -23,7 +23,7 @@ const (
 // DumpUITreeWithScreenshotOnError checks the given hasError function and dumps the whole UI tree data
 // into 'filePrefix'.txt and a screenshot into 'filePrefix'.png when the test fails. It does nothing when the test succeeds.
 func DumpUITreeWithScreenshotOnError(ctx context.Context, outDir string, hasError func() bool, cr *chrome.Chrome, filePrefix string) {
-	saveScreenshotToFileOnError(ctx, cr, outDir, hasError, filePrefix+".png")
+	SaveScreenshotToFileOnError(ctx, cr, outDir, hasError, filePrefix+".png")
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
