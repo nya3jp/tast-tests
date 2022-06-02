@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b31b5e3_ce4680ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-02T06:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51234394_9b2b33de",
+      "revId": "35d4bf54d34bd3df40c8f6ed66f86f5958aae826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "525a07bd_31abe947",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-01T17:47:32Z",
       "side": 1,
       "message": "micro-nit: leave a comment stating that ffprobe calls \"I\"\npictures both key-frames (VP8/9, AV1?) and I-frames (H.264 etc)?",
+      "range": {
+        "startLine": 1162,
+        "startChar": 31,
+        "endLine": 1162,
+        "endChar": 42
+      },
+      "revId": "35d4bf54d34bd3df40c8f6ed66f86f5958aae826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0515d9d9_70383974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-02T06:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "525a07bd_31abe947",
       "range": {
         "startLine": 1162,
         "startChar": 31,
