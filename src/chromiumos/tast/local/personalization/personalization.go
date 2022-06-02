@@ -74,6 +74,11 @@ func ToggleDarkMode(ui *uiauto.Context) uiauto.Action {
 	return toggleThemeButton(DarkModeName, ui)
 }
 
+// ToggleAutoMode returns an action to enable auto color mode.
+func ToggleAutoMode(ui *uiauto.Context) uiauto.Action {
+	return toggleThemeButton(AutoModeName, ui)
+}
+
 // toggleThemeButton returns an action to toggle a theme button.
 func toggleThemeButton(themeButton string, ui *uiauto.Context) uiauto.Action {
 	toggleThemeButton := nodewith.Role(role.ToggleButton).Name(themeButton)
