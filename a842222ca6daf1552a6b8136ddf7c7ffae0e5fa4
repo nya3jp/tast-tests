@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a111b3_8bd3f09d",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T23:55:22Z",
+      "side": 1,
+      "message": "nit: maybe print all options.",
+      "revId": "a842222ca6daf1552a6b8136ddf7c7ffae0e5fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "804d0484_971f5f03",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T23:55:22Z",
+      "side": 1,
+      "message": "same as line 100",
+      "revId": "a842222ca6daf1552a6b8136ddf7c7ffae0e5fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a80308c1_550db7b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T23:55:22Z",
+      "side": 1,
+      "message": "nit: this could be done in a future CL. Similar to iw and ip runner we have the main file in the dir: `src/platform/tast-tests/src/chromiumos/tast/common/network/` and the local_runner in dir: `src/platform/tast-tests/src/chromiumos/tast/local/network/` and remote_runner in dir:`src/platform/tast-tests/src/chromiumos/tast/remote/network/`, so we can just do the follwoing:\n\n```\nimport remotewpa \"chromiumos/tast/remote/network/wpa\"\n\nwpar :\u003d remotewpa.NewRemoteRunner(peer1.conn)\n```",
+      "revId": "a842222ca6daf1552a6b8136ddf7c7ffae0e5fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f194383d_e7deaccf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T23:55:22Z",
+      "side": 1,
+      "message": "nit: Add TODO comment to remove it after the test is stable.",
+      "revId": "a842222ca6daf1552a6b8136ddf7c7ffae0e5fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1396d825_9ef722a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T23:55:22Z",
+      "side": 1,
+      "message": "nit: Add TODO comment to remove it after the test is stable.",
+      "revId": "a842222ca6daf1552a6b8136ddf7c7ffae0e5fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -267,6 +267,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f411bab_1136612b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T23:55:22Z",
+      "side": 1,
+      "message": "I think if this design is going to be used in the next CL then this should be nit. I prefer having each CL as dependent as possible for other CLs in case a revert is needed. I think  this design can be easily added in the next CL.",
+      "parentUuid": "a27cac1b_30b06ad7",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c1822cb_6ff33177",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 4

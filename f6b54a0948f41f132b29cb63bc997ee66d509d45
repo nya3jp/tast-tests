@@ -267,6 +267,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c36a26c_cd67998e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T23:55:22Z",
+      "side": 1,
+      "message": "That make sense.\n\nnit: move this to line 114 next to where it\u0027s used for better readability.",
+      "parentUuid": "08194549_12da96aa",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beba4cb6_cdd79097",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 7
@@ -296,6 +314,24 @@
       "side": 1,
       "message": "This is for two reasons:\n1) this is obviously leftover from earlier implementations where I setup peer host manually, not through the fixture. However I decided to leave it, because:\n2) I\u0027m trying purposefully not to kill two birds with one stone, I start from testing the facility I will be using later for the main test. Too many times in the tast tests I\u0027ve managed to trigger unwanted errors in the tools I assume would work. Thus I want to make sure any issues I find later on in the main test will be really related to the main topic of the test. I could use CLI ping for that, but I\u0027m using scan instead.\n\nAs to the commands:\nSetup/Teardown is in the next patch.\nI could indeed test links status CLI command, but I think this is rather an internal tool, there\u0027s no associated network traffic. That would rather have no purpose for AVL (WDYT?)\nAnd I have yet to find devices with Channel Switch support declared by the driver. We don\u0027t have this in MVP, only in P2 (in unreviewed requirements).",
       "parentUuid": "beba4cb6_cdd79097",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b231cf00_a57645f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-02T23:55:22Z",
+      "side": 1,
+      "message": "I understand that new tests could be flaky for reasons not related to the feature itself. In this case a TODO() comment should be added so these can be removed when the test is stabilized.\n\nTbh, I added the other commands as example. I am not sure if they need to be tested at this phase.",
+      "parentUuid": "a7d1023e_1afe2bc5",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
