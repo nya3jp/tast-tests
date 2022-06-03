@@ -74,6 +74,27 @@ const (
 	cookie               = "MyCookie1234=abcd"                // Arbitrary cookie.
 )
 
+func waitForHistoryEntry(ctx context.Context, ui *uiauto.Context, br *browser.Browser, allowReload bool) error {
+	conn, err := br.NewConn(ctx, "chrome://history")
+	if err != nil {
+		return errors.Wrap(err, "failed to open history page")
+	}
+	defer conn.Close()
+	alphabetLink := nodewith.Name(titleOfAlphabetPage).Role(role.Link)
+	if allowReload {
+		err = ui.RetryUntil(br.ReloadActiveTab, ui.WithTimeout(7*time.Second).WaitUntilExists(alphabetLink))(ctx)
+	} else {
+		err = ui.WaitUntilExists(alphabetLink)(ctx)
+	}
+	if err != nil {
+		return errors.Wrap(err, "failed to find Alphabet history entry")
+	}
+	if err := conn.CloseTarget(ctx); err != nil {
+		return errors.Wrap(err, "failed to close target")
+	}
+	return nil
+}
+
 // prepareAshProfile resets profile migration, installs an extension, and
 // creates two tabs, browsing history, a bookmark, a download, a shortcut and a
 // cookie.
@@ -123,15 +144,15 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 		s.Fatal("Failed to install: ", err)
 	}
 
-	// Visit the Alphabet page, just for creating a history entry.
+	// Visit the Alphabet page, creating a history entry.
 	if err := conn.Navigate(ctx, "https://abc.xyz"); err != nil {
 		s.Fatal("Failed to open Alphabet page: ", err)
 	}
-	if err := conn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		s.Fatal("Failed to wait for Alphabet page: ", err)
+	if err := waitForHistoryEntry(ctx, ui, cr.Browser(), true); err != nil {
+		s.Fatal("Failed to find Alphabet history entry: ", err)
 	}
 
-	// Set cookie on Alphabet page.
+	// Set a cookie on that page.
 	if err := conn.Call(ctx, nil, `(cookie) => document.cookie = cookie`, cookie); err != nil {
 		s.Fatal("Failed to set cookie: ", err)
 	}
@@ -218,20 +239,9 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	}
 
 	// Check that the browsing history contains the Alphabet page.
-	func() {
-		conn, err := l.NewConn(ctx, "chrome://history")
-		if err != nil {
-			s.Fatal("Failed to open history page: ", err)
-		}
-		defer conn.Close()
-		alphabetLink := nodewith.Name(titleOfAlphabetPage).Role(role.Link)
-		if err := ui.WaitUntilExists(alphabetLink)(ctx); err != nil {
-			s.Fatal("Failed to find Alphabet history entry: ", err)
-		}
-		if err := kb.Accel(ctx, "Ctrl+w"); err != nil {
-			s.Fatal("Failed to close tab: ", err)
-		}
-	}()
+	if err := waitForHistoryEntry(ctx, ui, l.Browser(), false); err != nil {
+		s.Fatal("Failed to find Alphabet history entry: ", err)
+	}
 
 	// Check that there is another tab showing the downloads page.
 	if err := lacros.WaitForLacrosWindow(ctx, tconn, titleOfNewTabPage); err != nil {
