@@ -642,3 +642,14 @@ func (m *Manager) SetDNSProxyDOHProviders(ctx context.Context, url string, ns []
 		url: strings.Join(ns, ","),
 	}).Err
 }
+
+// EnablePortalDetection will enable portal detection for the default technologies.
+// This is useful for portal detection testing which uses the shillReset test fixture,
+// as a shill reset will remove the default profile which makes it so no technologies
+// are enabled for portal detection.
+func (m *Manager) EnablePortalDetection(ctx context.Context) error {
+	if err := m.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, shillconst.PortalDetectorDefaultCheckPortalList); err != nil {
+		return errors.Wrapf(err, "failed to enable portal detection on %q", shillconst.PortalDetectorDefaultCheckPortalList)
+	}
+	return nil
+}
