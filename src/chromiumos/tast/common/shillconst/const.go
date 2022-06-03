@@ -217,6 +217,11 @@ var ServiceConnectedStates = []interface{}{
 	ServiceStateReady,
 }
 
+// Portal Detector default values defined in portal_detector.h
+const (
+	PortalDetectorDefaultCheckPortalList = "ethernet,wifi,cellular"
+)
+
 // Security options defined in dbus-constants.h
 const (
 	SecurityWPA   = "wpa"
