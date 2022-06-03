@@ -100,7 +100,7 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 
 	if err := action.Combine("Navigate to firmware installation page and install firmware",
 		uiHelper.WriteProtectDisabledPageOperation,
-		uiHelper.BypassFirmwareInstallation,
+		uiHelper.WaitForFirmwareInstallation,
 	)(ctx); err != nil {
 		s.Fatal("Fail to navigate to firmware installation page and install firmware: ", err)
 	}
