@@ -34,6 +34,24 @@
       "parentUuid": "3ad900cc_75d8cdfe",
       "revId": "9413570dd639adbb0fe03bd5e1ecb626441ef02c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b0884ea_72fe6ef1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-06-03T03:56:12Z",
+      "side": 0,
+      "message": "Can you add this as a comment? I think it\u0027d be better to do after each allocation of which you don\u0027t need to dispose, so it would be easier to remember about it in the future.",
+      "parentUuid": "3dc9dae0_33e7ea48",
+      "revId": "9413570dd639adbb0fe03bd5e1ecb626441ef02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
