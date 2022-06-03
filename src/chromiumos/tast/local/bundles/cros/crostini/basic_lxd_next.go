@@ -19,7 +19,7 @@ func init() {
 		Func:         BasicLxdNext,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests Crostini starts up with LXD 4.0",
-		Contacts:     []string{"sidereal@google.com", "clumptini@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host", "dlc"},
 		Attr:         []string{"group:mainline"},
 		Fixture:      "crostiniBullseyeWithLxdNext",

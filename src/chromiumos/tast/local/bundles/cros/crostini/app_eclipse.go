@@ -26,7 +26,7 @@ func init() {
 		Func:         AppEclipse,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies Eclipse can be launched from terminal",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host", "amd64"},
 		Params: []testing.Param{

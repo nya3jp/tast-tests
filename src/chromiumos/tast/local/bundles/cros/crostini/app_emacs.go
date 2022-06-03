@@ -30,7 +30,7 @@ func init() {
 		Func:         AppEmacs,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Opens Emacs from terminal and does some edits via keyboard",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		Vars:         screenshot.ScreenDiffVars,
 		SoftwareDeps: []string{"chrome", "vm_host", "amd64"},

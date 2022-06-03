@@ -48,7 +48,7 @@ func init() {
 		Desc:         "Test gedit file sharing in Terminal window",
 		Contacts: []string{
 			"ashpakov@google.com", // until Oct 2022
-			"cros-containers-dev@google.com",
+			"clumptini+oncall@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
