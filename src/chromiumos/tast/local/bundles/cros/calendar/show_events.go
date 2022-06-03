@@ -114,11 +114,11 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	eventCloseButtonContentView := nodewith.ClassName("View").Ancestor(eventListView).Nth(0)
 	eventCloseButtonView := nodewith.ClassName("ImageButton").Ancestor(eventCloseButtonContentView).Nth(0)
 	for i := 0; i < findCellTimes; i++ {
-		s.Logf("Moving towards to the first Monday cell (iteration %d of %d)", i+1, findCellTimes)
+		s.Logf("Moving towards the first Monday cell (iteration %d of %d)", i+1, findCellTimes)
 		cellPositionY += 5
 		firstMondayDateCellPt := coords.NewPoint(firstMondayDateCellBounds.CenterX(), scrollViewBounds.Top+cellPositionY)
 		if err := mouse.Click(tconn, firstMondayDateCellPt, mouse.LeftButton)(ctx); err != nil {
-			s.Fatal("Failed to click the first Monay date cell: ", err)
+			s.Fatal("Failed to click the first Monday date cell: ", err)
 		}
 		if found, err := ui.IsNodeFound(ctx, eventCloseButtonView); err != nil {
 			s.Fatal("Failed to check event list view close button while finding the first Monday cell: ", err)
