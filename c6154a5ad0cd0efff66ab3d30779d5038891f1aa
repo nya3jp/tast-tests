@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8668439_95aee609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6178793_cf0b3634",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7378395b_083c6f80",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-02T02:17:50Z",
       "side": 1,
       "message": "Since there is only one test mode, lets remove this.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf058933_25790ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7378395b_083c6f80",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c29c14_b639f8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "440e7f39_6ee3d78f",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cf64756_6a44aa8c",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-06-02T02:17:50Z",
       "side": 1,
       "message": "Creating a GetEid method may be too verbose here.\neuicc.Call(ctx, hermesconst.EuiccMethodResetMemory) guarantees that the EID will be populated. \n\n\nCan we try something like this:\n```\neid :\u003d\"\"\nif err :\u003d euicc.dbusObject.Get(ctx, \"Eid\", \u0026eid); err !\u003d nil {\n  s.Fatal(\"Failed to read euicc EID\")\n}\n```\n\nIf the above code fails, you may need to declare eid to interface{} and then cast to string. See https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/hermes/hermes.go;drc\u003d1574d430e1a619ad2f5ed543aa6e3b26eae7009a;l\u003d44",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "776aeddb_cf6a895a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7cf64756_6a44aa8c",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3fc1c3_3d073f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d7ba3d_36aaa8dd",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec75958e_f8cf7efc",
@@ -163,6 +283,30 @@
       "writtenOn": "2022-06-02T02:17:50Z",
       "side": 1,
       "message": "Please replace with numProfiles",
+      "range": {
+        "startLine": 80,
+        "startChar": 27,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2690211_7636bc90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec75958e_f8cf7efc",
       "range": {
         "startLine": 80,
         "startChar": 27,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fc2312e_f141ad53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "178badee_c4064325",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 7
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d7772e8_65f72f6e",
@@ -213,6 +381,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c188dcd1_1377bdaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d7772e8_65f72f6e",
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cecc1e00_fd5699fa",
@@ -226,6 +412,30 @@
       "writtenOn": "2022-06-02T02:17:50Z",
       "side": 1,
       "message": "Let\u0027s remove this part of the test since there are other tests that cover it.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caac133f_0b0de414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cecc1e00_fd5699fa",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -261,6 +471,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf653791_2b34ae17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Is this function needed to move as it\u0027s used only in this test as of now.\n\nor do you mean to combine installAndEnableProfile(in hermes_test_ci) and this function and move to hermes.go ?",
+      "parentUuid": "a5abe41d_de17a123",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0926d91b_cf05c358",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
         "patchSetId": 1
@@ -272,6 +506,30 @@
       "writtenOn": "2022-06-02T02:17:50Z",
       "side": 1,
       "message": "Lets move this function to hermes.go and reuse it across tests.",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 30
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51127359_ad131a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_smds_ci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0926d91b_cf05c358",
       "range": {
         "startLine": 148,
         "startChar": 5,
@@ -305,6 +563,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2218a51_8022201a",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "8aa0bbd3_379c2941",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c58cd82_1d2d29d2",
@@ -318,6 +600,30 @@
       "writtenOn": "2022-06-02T02:17:50Z",
       "side": 1,
       "message": "Needs to be replaced with \n\n\t\nif err :\u003d e.Call(ctx, \"RefreshInstalledProfiles\", shouldNotSwitchSlot).Err; err !\u003d nil \n{\n\t\treturn nil, errors.Wrap(err, \"unable to request installed profiles\")\n\t}",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56304c49_111b0e19",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c58cd82_1d2d29d2",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -351,6 +657,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "405f0813_69b8247f",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb82f316_f9157567",
+      "range": {
+        "startLine": 89,
+        "startChar": 53,
+        "endLine": 89,
+        "endChar": 72
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "468cbdf4_b0ecb409",
@@ -374,6 +704,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf75800c_deee6e1e",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "468cbdf4_b0ecb409",
+      "range": {
+        "startLine": 90,
+        "startChar": 78,
+        "endLine": 90,
+        "endChar": 97
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07d27466_143bb859",
@@ -387,6 +741,30 @@
       "writtenOn": "2022-06-02T02:17:50Z",
       "side": 1,
       "message": "We should pass the EID all the way from the test to this function, and avoid having a global EID.",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 29
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a0c025_79662684",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07d27466_143bb859",
       "range": {
         "startLine": 91,
         "startChar": 5,
@@ -458,6 +836,30 @@
       "side": 1,
       "message": "Yes, it is ok in this case because eid is an essential parameter for Stork. As a general rule it\u0027s better to pass in all variables that the function uses. Let\u0027s say a test user sets the global eid, and then calls FetchStorkProfile without the EID, then the previous eid will be reused. This is unexpected behavior. Usually state variables can be global, but eid is not a state variable.",
       "parentUuid": "745c9164_f8c73560",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 22
+      },
+      "revId": "c6154a5ad0cd0efff66ab3d30779d5038891f1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96cd7be5_b7e0e877",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-03T23:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aadafaae_38538313",
       "range": {
         "startLine": 156,
         "startChar": 5,
