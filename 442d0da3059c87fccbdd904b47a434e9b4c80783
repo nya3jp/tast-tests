@@ -22,6 +22,46 @@
       },
       "revId": "442d0da3059c87fccbdd904b47a434e9b4c80783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "958f373c_1554a816",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-03T16:14:07Z",
+      "side": 1,
+      "message": "`Update` (capitalized)\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "442d0da3059c87fccbdd904b47a434e9b4c80783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "771cd25b_20465974",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-03T16:14:07Z",
+      "side": 1,
+      "message": "lgtm with capitalization in commit message",
+      "revId": "442d0da3059c87fccbdd904b47a434e9b4c80783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
