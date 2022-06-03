@@ -41,6 +41,7 @@ func init() {
 			"drivefs",
 		},
 		Attr: []string{
+			"group:drivefs-cq",
 			"group:mainline",
 			"informational",
 		},

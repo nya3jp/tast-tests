@@ -26,7 +26,7 @@ func init() {
 			"chrome_internal",
 			"drivefs",
 		},
-		Attr:    []string{"group:mainline"},
+		Attr:    []string{"group:drivefs-cq", "group:mainline"},
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 		Timeout: chrome.GAIALoginTimeout + time.Minute,
 	})
