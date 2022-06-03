@@ -326,6 +326,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a709585_2e86931a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-03T06:02:35Z",
+      "side": 1,
+      "message": "Like that: a command runner().\n\nLet\u0027s address a TDO: implement FUSE op Rename (so we can do a /bin/mv) in the fake file system.\n\nSent https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3686972 for that PTAL.",
+      "parentUuid": "229db737_983108b2",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73078415_332808e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
