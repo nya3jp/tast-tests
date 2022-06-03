@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb8087d_90c6876d",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-03T06:34:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2231c7f7_baee9c05",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "536ad300_727e137f",
@@ -191,6 +209,24 @@
       "side": 1,
       "message": "Wouldn\u0027t I still want to keep `surfaceName` around so that the tests can still run as normal",
       "parentUuid": "1a25cf29_d3ab0ac1",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09dd179d_9e037235",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-03T06:34:56Z",
+      "side": 1,
+      "message": "It\u0027s not standard to have a method named `get` have side effects (i.e. setting f.surfaceName), and not return a value. I\u0027d suggest either:\n\nMake it a true \u0027getter\u0027:\n1. rename this method to something like `identifiedSurfaceName()` (style guide regarding names: https://go.dev/doc/effective_go#Getters)\n2. change the return result to two values: `(identifiedSurfaceName string, err error)`\n3. Return the matched surface name\n4. Have the caller set the appropriate field based on the result (i.e. f.surfaceName :\u003d IdentifiedSurfaceName()...).\n\nThat lets the caller get a value, set the desired property, and. handle errors accordingly.\n\nIf you want to keep it as is then it should be obvious by the name that it is modifying the *SurfaceFlingerMetric. Maybe `detectAndSetupSurfaceName` ?",
+      "parentUuid": "5c3778ca_0facde95",
       "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
