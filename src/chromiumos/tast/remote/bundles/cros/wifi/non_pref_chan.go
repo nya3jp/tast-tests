@@ -21,8 +21,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
-	"chromiumos/tast/remote/network/cmd"
 	"chromiumos/tast/remote/network/ip"
+	remotewpacli "chromiumos/tast/remote/network/wpacli"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
@@ -113,7 +113,7 @@ func NonPrefChan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get MAC of WiFi interface: ", err)
 	}
 
-	wpa := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: s.DUT().Conn()})
+	wpa := remotewpacli.NewRemoteRunner(s.DUT().Conn())
 	nonPrefChans := []wpacli.NonPrefChan{{
 		OpClass: ieee80211.OpClass5GHz,
 		Channel: 0x30,
