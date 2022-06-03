@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3bdc555_43289c85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2022-06-03T03:50:26Z",
+      "side": 1,
+      "message": "Hi Jun, PTAL at this bump to Critical for a11y.LiveCaption which is currently stable.",
+      "revId": "7b48a3a4b614170c2c41bb2aa1a9e9acb87139a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
