@@ -22,6 +22,30 @@
       },
       "revId": "7b69d650fc896d79177c818e498c0bafdff85030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead04b8c_86823822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-06-03T11:45:43Z",
+      "side": 0,
+      "message": "I\u0027ve found the output to be not very useful in case of failures so I removed it to reduce noise in test output.",
+      "parentUuid": "a710247e_2bf250fc",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 52
+      },
+      "revId": "7b69d650fc896d79177c818e498c0bafdff85030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
