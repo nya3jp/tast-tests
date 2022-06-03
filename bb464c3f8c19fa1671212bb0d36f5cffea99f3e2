@@ -161,6 +161,78 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3ecdd60_d478582f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T09:01:54Z",
+      "side": 1,
+      "message": "you changed the code :-). The output is not stdout.\nRather than implementation details great to document \"what\" should be conceptually returned is important often. Could you document?",
+      "parentUuid": "fbbdc731_778c0d31",
+      "range": {
+        "startLine": 34,
+        "startChar": 70,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc65516_fc72fdb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T09:01:54Z",
+      "side": 1,
+      "message": "You can fail the test in caller.\nIt is also recommended in go/tast-writing not to take testing.State* in sub function in general (while it is mentioned in a different scope, though).\n\nIn general, it introduces unneeded dependencies, and makes it hard to maintain. Also for consistency, could you follow the guideline?",
+      "parentUuid": "069bc443_64e220f3",
+      "range": {
+        "startLine": 34,
+        "startChar": 32,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ff42df_62964a1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T09:01:54Z",
+      "side": 1,
+      "message": "no worries. Everyone is new at the first time!\n\nhttps://go.dev/ref/spec#Packages\n\nso go puts files under a directory into the same group, named package.\nSo, this is a \"chromiumos/tast/local/bundles/cros/platform\" package.\nScope is actually the scope of the variables/functions/methods etc. I meant, like as you can fine in many of other languages.\n\nI meant, \"create\" here is referred as chromiumos/tast/local/bundles/cros/platform.create. And this is visible from other files in the same directory. The name will be conflicting if other test is using the same name.\n\nCould you introduce some specific (probably new) package under the current one, and move utilities to there (i.e. create a new directory here, and move utilities under the directory)?\nBecause platform contains a lot of more variation of tests, naming create, read etc. looks too generic while these are designed to be focused on the use of this file only.\n\nNote that, go does not support file-scoped variables. (like file-scope static variables in C, or anonymous namespace in C++ etc.). We need to deal with them.\n\n\u003e  I read  create(file)  creates a file.\n\nWithout context like this case, i do not think it\u0027s trivial.\nWhy you think it is \"POSIX compatible\" create? Rather than create some mocks, create  a service, etc.? The name is just \"create\" and we don\u0027t have any other hints to udnerstand, unless we go deeper. My suggestion is to make it clearer by renaming or making another package focusing on your context.",
+      "parentUuid": "a3c11649_521e421a",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b9ba403_b202ed85",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
@@ -208,6 +280,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28d8eb55_a6a637e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T09:01:54Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m confused. File can be empty in theory. Why less than 6 is the condition to be fail here, for seeking?\nAlso, hard coding \"6\" to a \"seek\" function sounds weird to me. I believe you\u0027d agree that if lseek system call seeks at 6 byte position, it\u0027s very surprising, right?",
+      "parentUuid": "1b271611_97815889",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "556b2437_1fb897f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
@@ -243,6 +339,30 @@
       "side": 1,
       "message": "go code magic: a buffer of 5 bytes.  It seems to somehow tell f.Read(data) to try read 5 bytes, but again, I am a go novice.  \n\nTest immediately fails with s.Fatalf() if I got this wrong.",
       "parentUuid": "556b2437_1fb897f8",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29e8099_7f0a512f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T09:01:54Z",
+      "side": 1,
+      "message": "Sorry for miscommunication. I\u0027m asking likely a background why 5 is hard coded here?\nI know this code makes 5-bytes buffer, and tries to read byte bytes. My question is, why it is \"5 bytes\"?\n\nAlso, why you read 5 bytes here? As you did seeking at 6, so it reads the file [6:11] data. Though it\u0027s confusing to me why it is a part of \"seeking\" operation?",
+      "parentUuid": "0fe1405b_9ff377e4",
       "range": {
         "startLine": 79,
         "startChar": 22,
@@ -374,6 +494,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b17d80e_98b71e1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T09:01:54Z",
+      "side": 1,
+      "message": "Lessons we learnt from autotest is, using external command line makes it hard to maintain, and we\u0027re really giving it a try to minimize the external dependencies for maintenance perspective.\nCould you minimize the use of external commands?\n\nas fro rm-rf: https://pkg.go.dev/os#RemoveAll",
+      "parentUuid": "c73569ab_4cd471a5",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73078415_332808e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
@@ -409,6 +553,30 @@
       "side": 1,
       "message": "This case it noted in the change description, and in go/fusebox-tast-tests PTAL\n\nENOTSUP is a POSIX \"operation is not supported\" and the fake file system does not support this operation, per the change description.",
       "parentUuid": "73078415_332808e2",
+      "range": {
+        "startLine": 140,
+        "startChar": 29,
+        "endLine": 140,
+        "endChar": 36
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3449be_bc618dd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T09:01:54Z",
+      "side": 1,
+      "message": "Another sorry for miscommunication.\nWe cannot make sure failing mv command means caused by ENOTSUP. (This is another reason I recommend not to depend on command execution).\nYou can make sure errno by os.* function, I think.",
+      "parentUuid": "b06cfea3_c7f6e447",
       "range": {
         "startLine": 140,
         "startChar": 29,
@@ -492,6 +660,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "274d7ffc_471089ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T09:01:54Z",
+      "side": 1,
+      "message": "pls find a guideline at: Indent error flow section of go/go-style/decisions.\nNote that s.Fatal() effectively returns from the function.",
+      "parentUuid": "e42e9ca2_57706f33",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c485578d_1a0d9501",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
@@ -527,6 +719,30 @@
       "side": 1,
       "message": "This tast test is neither curious nor dependent on the output: the test either works (PASS) or it does not (FAIL).  No real need for a variable, imho.\n\nThis false was more for test debug.  At one point during development, I thought this test would use a golden file to compare test output expectations.  I later dropped that idea (not needed), but the leftover is this `if false` for debugging this test if it goes wrong.",
       "parentUuid": "c485578d_1a0d9501",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 9
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac6c3e3_8af49f40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T09:01:54Z",
+      "side": 1,
+      "message": "I understood the intention, but my recommendation is different point.\n\ncould you use \nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Runtime-variables\nto control the behavior, instead of hard coding \"false\" and let developers edit for debuggin? Helpful to investigate release cases.",
+      "parentUuid": "d77108f1_82039e60",
       "range": {
         "startLine": 216,
         "startChar": 4,
