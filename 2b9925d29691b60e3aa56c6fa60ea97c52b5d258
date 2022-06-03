@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba42708_5f9c69c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-03T22:31:59Z",
+      "side": 1,
+      "message": "Will this also work for lacros?",
+      "revId": "2b9925d29691b60e3aa56c6fa60ea97c52b5d258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
