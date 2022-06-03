@@ -46,6 +46,7 @@ func init() {
 func DrivefsSearch(ctx context.Context, s *testing.State) {
 	mountPath := s.FixtValue().(*drivefs.FixtureData).MountPath
 	tconn := s.FixtValue().(*drivefs.FixtureData).TestAPIConn
+	cr := s.FixtValue().(*drivefs.FixtureData).Chrome
 
 	// This test case is exercising the full-text search of DriveFS, keeping the name
 	// fairly unique to avoid having it match as content search (not just file name).
@@ -58,6 +59,7 @@ func DrivefsSearch(ctx context.Context, s *testing.State) {
 	// after the test for the deletion to be synced to Drive.
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer drivefs.SaveDriveLogsOnError(ctx, s.HasError, cr.NormalizedUser(), mountPath)
 
 	// Launch Files App
 	filesApp, err := filesapp.Launch(ctx, tconn)
