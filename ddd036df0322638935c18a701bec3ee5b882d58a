@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3521f3d_ebb23dd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bluetooth_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T08:18:53Z",
+      "side": 1,
+      "message": "Looks like the pattern we encourage to avoid, skip-on-runtime-condition.\nCould you instead introduce proper hardware/software dependencies?",
+      "revId": "ddd036df0322638935c18a701bec3ee5b882d58a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
