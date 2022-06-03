@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
+	"chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/radvd"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/subnet"
 	"chromiumos/tast/local/shill"
@@ -33,6 +34,8 @@ type EnvOptions struct {
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
+	// HTTPServer enables an Http Server in the Env.
+	HTTPServer bool
 }
 
 // CreateRouterEnv creates a virtualnet Env with the given options. On success,
@@ -84,12 +87,19 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		}
 	}
 
+	if opts.HTTPServer {
+		httpserver := httpserver.New("127.0.0.1", "8000")
+		if err := router.StartServer(ctx, "httpserver", httpserver); err != nil {
+			return nil, errors.Wrap(err, "failed to start http server")
+		}
+	}
+
 	svc, err := findEthernetServiceByIfName(ctx, m, router.VethOutName)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to find shill service for %s", router.VethOutName)
 	}
 
-	if err := svc.SetProperty(ctx, shillconst.ServicePropertyEphemeralPriority, opts.Priority); err != nil {
+	if err := svc.SetProperty(ctx, shillconst.ServicePropertyPriority, opts.Priority); err != nil {
 		return nil, errors.Wrap(err, "failed to configure priority on interface")
 	}
 
