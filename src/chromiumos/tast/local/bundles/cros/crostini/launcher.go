@@ -37,7 +37,7 @@ func init() {
 		Func:         Launcher,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Runs applications from the launcher in low/high-DPI mode",
-		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
