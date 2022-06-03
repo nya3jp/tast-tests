@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b230ae_eaacf6c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-06-03T03:46:31Z",
+      "side": 1,
+      "message": "just curious - this can click the button even the button is not visible (e.g. hiding behind other windows), am i correct?",
+      "range": {
+        "startLine": 987,
+        "startChar": 2,
+        "endLine": 987,
+        "endChar": 22
+      },
+      "revId": "134f5cf0fee0d9494df3c3e790e449ebdacb6f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
