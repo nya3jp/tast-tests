@@ -33,6 +33,23 @@
       "message": "This update generates three different json files (one for Ash Chrome, one for Lacros Chrome, one for sum of both).\n\nThis is an interesting approach, but I think we need more opinions here (+dashboard owners).\n\n\nThis is probably outside of the scope of this CL, but it would be nice if chrome.TestConn carried metrics source name (like Ash or Lacros) directly and we did not need to guess it.",
       "revId": "327dc9a075f0e62c3cfc88dd0b901ac7885adbd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "206d4eaa_c33c3198",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-03T10:47:11Z",
+      "side": 1,
+      "message": "Yichen will know better, this will likely require changes to the data collection pipeline to import the new files.",
+      "revId": "327dc9a075f0e62c3cfc88dd0b901ac7885adbd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
