@@ -22,6 +22,30 @@
       },
       "revId": "134f5cf0fee0d9494df3c3e790e449ebdacb6f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac296aa_63403639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-03T16:09:34Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "77b230ae_eaacf6c5",
+      "range": {
+        "startLine": 987,
+        "startChar": 2,
+        "endLine": 987,
+        "endChar": 22
+      },
+      "revId": "134f5cf0fee0d9494df3c3e790e449ebdacb6f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
