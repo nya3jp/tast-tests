@@ -46,6 +46,30 @@
       },
       "revId": "c9e164d27841f77dc7fe41febaad9141b7f43c20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87816347_faabdf78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-03T04:11:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88345a25_e1def851",
+      "range": {
+        "startLine": 83,
+        "startChar": 26,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "c9e164d27841f77dc7fe41febaad9141b7f43c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
