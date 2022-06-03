@@ -165,6 +165,10 @@ func ResetShelfPinState(ctx context.Context, tconn *chrome.TestConn) (func(ctx c
 			return err
 		}
 
+		if err := WaitUntilShelfIconAnimationFinishAction(tconn)(ctx); err != nil {
+			return err
+		}
+
 		return nil
 	}, nil
 }
