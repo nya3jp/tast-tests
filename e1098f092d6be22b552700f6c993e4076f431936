@@ -181,6 +181,30 @@
       },
       "revId": "e1098f092d6be22b552700f6c993e4076f431936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31a872e_cf210286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:00:05Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "ca08a977_f95bb50a",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "e1098f092d6be22b552700f6c993e4076f431936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

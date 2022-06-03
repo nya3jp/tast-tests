@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee82ca59_cd178a55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:00:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4838a0c7_848bb763",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f948293_92990769",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "197de7cc_d5ee6f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:00:05Z",
+      "side": 1,
+      "message": "It\u0027s not strictly needed, but it does group these nicely and seems to be a more common pattern in go (but I will defer to any golang readability reviewers here).",
+      "parentUuid": "2f948293_92990769",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 7
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38e2b516_c1a7a7ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 6
@@ -77,6 +125,30 @@
       "writtenOn": "2022-06-02T07:02:42Z",
       "side": 1,
       "message": "Can we guarantee that the Ethernet service is selected here?\nI assume this should only happen after the auto-connect is triggered?",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af9c6fb_1bcb0192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:00:05Z",
+      "side": 1,
+      "message": "If we have an Ethernet Device in Shill, a Service will be created. That said, I went ahead and restored this to WaitForSelectedService (but modified it to return the Service instead of the path, since that\u0027s pretty much always what we will want and there aren\u0027t any other callers of that function, except virtualnet.go in your CL which we can modify).",
+      "parentUuid": "38e2b516_c1a7a7ed",
       "range": {
         "startLine": 82,
         "startChar": 19,
@@ -140,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8996e061_86b3c3b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:00:05Z",
+      "side": 1,
+      "message": "The intention here is partly to document the veth behavior, which is that by default it remains in a configuration state. If we change that intentionally, we should update this test. If we make a change that unexpectedly changes that, it would be good to know about it.",
+      "parentUuid": "ea34daf9_cc125e18",
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3d97d3a4_3ade8411",
@@ -163,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cbfa30c_88d8707f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:00:05Z",
+      "side": 1,
+      "message": "Actually, since the veth network is not connected, it will not become prioritized over the physical Ethernet device, so the ethernet_any profile does not get loaded. (This was the cause of some of my confusion with the EphemeralPriority CL).",
+      "parentUuid": "3d97d3a4_3ade8411",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1db7762_87c1126f",
@@ -176,6 +290,30 @@
       "writtenOn": "2022-06-02T01:41:07Z",
       "side": 1,
       "message": "can we get the priority above and check it against that instead to avoid making assumptions about the default value?",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b422b4f2_37367f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:00:05Z",
+      "side": 1,
+      "message": "We could but... I\u0027d rather be able to make that assumption. It could be problematic down the line if we can\u0027t.",
+      "parentUuid": "f1db7762_87c1126f",
       "range": {
         "startLine": 127,
         "startChar": 16,
