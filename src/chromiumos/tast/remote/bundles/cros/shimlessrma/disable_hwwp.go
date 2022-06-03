@@ -37,7 +37,7 @@ func init() {
 			"yanghenry@google.com",
 			"chromeos-engprod-syd@google.com",
 		},
-		Attr: []string{"group:shimless_rma", "shimless_rma_experimental"},
+		Attr: []string{"group:shimless_rma"},
 		VarDeps: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 		},
@@ -47,12 +47,14 @@ func init() {
 		Fixture:      fixture.NormalMode,
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Name: "battery_disconnection",
+			ExtraAttr: []string{"shimless_rma_normal"},
+			Name:      "battery_disconnection",
 			Val: param{
 				wp: manual,
 			},
 		}, {
-			Name: "rsu",
+			ExtraAttr: []string{"shimless_rma_nodelocked"},
+			Name:      "rsu",
 			Val: param{
 				wp: rsu,
 			},
