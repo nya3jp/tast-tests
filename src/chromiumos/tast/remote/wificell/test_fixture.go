@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/common/network/arping"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
-	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
@@ -26,7 +25,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/hwsec"
 	remotearping "chromiumos/tast/remote/network/arping"
-	"chromiumos/tast/remote/network/cmd"
 	"chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/attenuator"
@@ -1207,9 +1205,9 @@ func (tf *TestFixture) VerifyConnection(ctx context.Context, ap *APIface) error 
 
 // ClearBSSIDIgnoreDUT clears the BSSID_IGNORE list on DUT.
 func (tf *TestFixture) ClearBSSIDIgnoreDUT(ctx context.Context) error {
-	wpa := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: tf.dut.Conn()})
+	wpar := wpacli.NewRemoteRunner(tf.dut.Conn())
 
-	err := wpa.ClearBSSIDIgnore(ctx)
+	err := wpar.ClearBSSIDIgnore(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to clear WPA BSSID_IGNORE")
 	}
