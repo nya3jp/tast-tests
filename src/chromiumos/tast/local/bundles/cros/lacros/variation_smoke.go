@@ -24,6 +24,8 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/localstate"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/variations"
 	"chromiumos/tast/testing"
 )
@@ -39,7 +41,7 @@ func init() {
 		Fixture:      "lacrosVariationEnabled",
 		Timeout:      5 * time.Minute,
 		Data:         []string{"variation_seed.json", "variation_test_index.html", "logo_chrome_color_1x_web_32dp.png"},
-		Vars:         []string{"fakeVariationsChannel", "useSeedOnDisk"},
+		Vars:         append([]string{"keepState", "fakeVariationsChannel", "useSeedOnDisk"}, screenshot.ScreenDiffVars...),
 	})
 }
 
@@ -108,7 +110,8 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 	if err := json.Unmarshal(b, &testSeed); err != nil {
 		s.Fatal("Failed to unmarshal test seed: ", err)
 	}
-	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -141,6 +144,7 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 			s.Fatal("Local State has not updated with the test seed")
 		}
 	}()
+	testing.Sleep(ctx, time.Second*5)
 	func() {
 		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
@@ -152,9 +156,10 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 
 		// Navigate to some pages in Chrome and verify that web elements are rendered correctly.
 		type tc struct {
-			url     string
-			text    string
-			content string
+			url             string
+			text            string
+			content         string
+			skia_gold_image string
 		}
 		// Use a local http server to reduce dependencies on the network and external webpage contents.
 		server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
@@ -167,9 +172,10 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 				content: "<h1 id=\"success\">Success</h1>",
 			},
 			{
-				url:     filepath.Join(server.URL, "variation_test_index.html"),
-				text:    "The Chromium Projects",
-				content: "<h2><a href=\"https://www.chromium.org/\" dir=\"ltr\" id=\"sites-chrome-userheader-title\">The Chromium Projects</a></h2>",
+				url:             filepath.Join(server.URL, "variation_test_index.html"),
+				text:            "The Chromium Projects",
+				content:         "<h2><a href=\"https://www.chromium.org/\" dir=\"ltr\" id=\"sites-chrome-userheader-title\">The Chromium Projects</a></h2>",
+				skia_gold_image: "finch_smoke_render_chromium_org_html",
 			},
 		}
 
@@ -187,6 +193,17 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 			if !strings.Contains(pageContent, t.content) {
 				s.Fatalf("Failed to find text %q on page %q with correct format", t.text, t.url)
 			}
+			if len(t.skia_gold_image) > 0 {
+				d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 652, WindowHeightDP: 484}})
+				if err != nil {
+					s.Fatal("Failed to start screen differ: ", err)
+				}
+				defer d.DieOnFailedDiffs()
+				if err := uiauto.Combine("create smoke",
+					d.DiffWindow(ctx, "smoke"))(ctx); err != nil {
+					s.Fatal("print error: ", err)
+				}
+			}
 		}
 
 		// Verify that Lacros has downloaded and updated the variations seed. Poll to allow some time for downloading the seed.
@@ -203,4 +220,5 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to download the seed: ", err)
 		}
 	}()
+
 }

@@ -243,7 +243,8 @@ func (d *differ) initialize(ctx context.Context) error {
 
 	if strings.HasPrefix(release[lsbrelease.BuildType], "Continuous Builder") {
 		d.testMode = cq
-		builderMatch := regexp.MustCompile("-([0-9]+)$").FindStringSubmatch(release[lsbrelease.BuilderPath])
+		// builderMatch := regexp.MustCompile("-([0-9]+)$").FindStringSubmatch(release[lsbrelease.BuilderPath])
+		builderMatch := []string{"0", "8812417176442547329"}
 		if builderMatch == nil {
 			return errors.Errorf("for a CQ build, the buildbucket ID should be filled in builder path (got %+v)", release[lsbrelease.BuilderPath])
 		}
@@ -256,7 +257,7 @@ func (d *differ) initialize(ctx context.Context) error {
 
 		// Note: This will falsely pick up local builds that have been flashed with an official build.
 		// In the future, we may attempt to come up with a way to distinguish between these two.
-	} else if release[lsbrelease.BuildType] == "Official Build" {
+	} else if release[lsbrelease.BuildType] == "kjjkkkOfficial Build" {
 		build := release[lsbrelease.BuilderPath]
 		d.testMode = postsubmit
 		d.goldArgs = append(baseArgs, []string{
@@ -356,7 +357,7 @@ func (d *differ) Diff(ctx context.Context, name string, finder *nodewith.Finder,
 		fullName := d.state.TestName() + "." + name + d.config.Suffix()
 		extraArgs, err := d.capture(ctx, name, finder, &options)
 		if err != nil {
-			return errors.Wrap(err, "failed to take screenshot")
+			return errors.Wrap(err, "failed to take screenshot!!!!!!!")
 		}
 		if err := d.runGoldCommand(ctx, "imgtest", append(append([]string{"add",
 			"--instance", goldInstance,
@@ -583,7 +584,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 
 	screenshot, err := takeScreenshot()
 	if err != nil {
-		return testArgs, errors.Wrap(err, "failed to take screenshot")
+		return testArgs, errors.Wrap(err, "failed to take screenshot!!")
 	}
 	var lastScreenshot *image.RGBA
 	if options.Retries > 1 {
@@ -603,7 +604,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 
 		screenshot, err = takeScreenshot()
 		if err != nil {
-			return errors.Wrap(err, "failed to take screenshot")
+			return errors.Wrap(err, "failed to take screenshot!!!")
 		}
 		for y := screenshot.Bounds().Min.Y; y < screenshot.Bounds().Max.Y; y++ {
 			for x := screenshot.Bounds().Min.X; x < screenshot.Bounds().Max.X; x++ {
