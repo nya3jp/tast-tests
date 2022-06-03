@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf046670_505a059f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-03T16:31:14Z",
+      "side": 1,
+      "message": "Alvin, please approve \n  src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go\n. I run out of ideas and this CL is pending for too long.\n\nHidehiko, please review\n  tast/local/chrome/*\nI added a missing `DisableFieldTrialConfig` Option (PS2-PS3).\n\nThanks.",
+      "revId": "582cb12b60e22bf9d9f4643218b5d813f89105c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
