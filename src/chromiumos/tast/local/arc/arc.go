@@ -154,6 +154,27 @@ func (a *ARC) Close(ctx context.Context) error {
 	return nil
 }
 
+// WaitForProvisioning waits for ARC to be provisioned.
+func (a *ARC) WaitForProvisioning(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if result, err := a.IsProvisioned(ctx); err != nil {
+			return testing.PollBreak(err)
+		} else if !result {
+			return errors.New("ARC not yet provisioned")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second})
+}
+
+// IsProvisioned returns true if the provisioning is complete.
+func (a *ARC) IsProvisioned(ctx context.Context) (bool, error) {
+	res, err := a.Command(ctx, "settings", "get", "global", "device_provisioned").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return false, err
+	}
+	return strings.TrimSpace(string(res)) == "1", nil
+}
+
 // ReadXMLFile reads XML file and converts from binary to plain-text if necessary.
 func (a *ARC) ReadXMLFile(ctx context.Context, filepath string) ([]byte, error) {
 	out, err := ioutil.ReadFile(filepath)
