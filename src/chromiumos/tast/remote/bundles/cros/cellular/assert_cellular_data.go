@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AssertCellularData,
-		Desc: "Asserts that cellular data works. The test establishes a connection to the appropriate CMW500 callbox. Then it asserts that the cellular data connection provided to it matches the data connection provided by ethernet. Any differences are considered an error. If the cellular data connection is not provided, the second curl will throw an exception.",
+		Func: AssertCellularData, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Asserts that cellular data works. The test establishes a connection to the appropriate CMW500 callbox. Then it asserts that the cellular data connection provided to it matches the data connection provided by ethernet. Any differences are considered an error. If the cellular data connection is not provided, the second curl will throw an exception",
 		Contacts: []string{
 			"latware@google.com",
 			"chromeos-cellular-team@google.com",
@@ -34,23 +33,23 @@ func AssertCellularData(ctx context.Context, s *testing.State) {
 	dutConn := s.DUT().Conn()
 	tf := s.FixtValue().(*manager.TestFixture)
 	tf.ConnectToCallbox(ctx, s, dutConn, &manager.ConfigureCallboxRequestBody{
-                Hardware:     "CMW",
-                CellularType: "LTE",
-                ParameterList: []string{
-                        "band", "2",
-                        "bw", "20",
-                        "mimo", "2x2",
-                        "tm", "1",
-                        "pul", "0",
-                        "pdl", "high",
-                },
-        }, cellularInterface)
+		Hardware:     "CMW",
+		CellularType: "LTE",
+		ParameterList: []string{
+			"band", "2",
+			"bw", "20",
+			"mimo", "2x2",
+			"tm", "1",
+			"pul", "0",
+			"pdl", "high",
+		},
+	}, cellularInterface)
 
-        // Assert cellular connection on DUT can connect to a URL like ethernet can
-        ethernetResult, err := dutConn.CommandContext(ctx, "curl", "--interface", "eth0", testURL).Output()
-        if err != nil {
-                s.Fatalf("Failed to curl %q on DUT using ethernet interface: %v", testURL, err)
-        }
+	// Assert cellular connection on DUT can connect to a URL like ethernet can
+	ethernetResult, err := dutConn.CommandContext(ctx, "curl", "--interface", "eth0", testURL).Output()
+	if err != nil {
+		s.Fatalf("Failed to curl %q on DUT using ethernet interface: %v", testURL, err)
+	}
 
 	cellularResult, err := dutConn.CommandContext(ctx, "curl", "--interface", cellularInterface, testURL).Output()
 	if err != nil {
