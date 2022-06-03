@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9acccb_16e22fe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-03T03:42:23Z",
+      "side": 1,
+      "message": "No worries.  I removed all `else if` and s.Log informational log after re-reading writing_tests.md#When-to-log ... test takes 170ms on my nami DUT, so s.Log is not needed per that link.\n\nNew patch uploaded with these changes. PTAL.",
+      "parentUuid": "e4474a2e_5c6cc17b",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "90462b19168ea597eec7da415374b7b94a82ec16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79dded45_0b6259e8",
