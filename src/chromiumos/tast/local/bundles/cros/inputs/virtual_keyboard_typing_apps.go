@@ -37,7 +37,7 @@ func init() {
 		SearchFlags: []*testing.StringPair{
 			{
 				Key:   "IME",
-				Value: ime.EnglishUS.Name,
+				Value: "English_US",
 			},
 		},
 		Timeout: 5 * time.Minute,
