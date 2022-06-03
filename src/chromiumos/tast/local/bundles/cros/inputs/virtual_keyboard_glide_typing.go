@@ -64,7 +64,7 @@ func init() {
 				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: false,
-					inputMethod: ime.Swedish,
+					inputMethod: ime.EnglishUS,
 				},
 			},
 			{
@@ -101,7 +101,7 @@ func init() {
 				Fixture: fixture.LacrosClamshellVK,
 				Val: glideTypingTestParam{
 					floatLayout: false,
-					inputMethod: ime.Swedish,
+					inputMethod: ime.EnglishUS,
 				},
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
