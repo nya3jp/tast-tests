@@ -16,6 +16,24 @@
       "message": "looks stable on tastboard?\nDo you need to disable this?",
       "revId": "61132b476c0ccbad5d008b0efb2f441bddc4d175",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f365a8_2b01abdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-06-03T18:23:18Z",
+      "side": 1,
+      "message": "multiple failures (flakiness) seen on buidlers\nhttps://ci.chromium.org/p/chromeos/builders/vmtest/betty-pi-arc-direct-tast-vm\nhttps://ci.chromium.org/p/chromeos/builders/vmtest/betty-arc-r-tast-gce",
+      "parentUuid": "4d86139d_4bef3213",
+      "revId": "61132b476c0ccbad5d008b0efb2f441bddc4d175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
