@@ -50,6 +50,23 @@
       "message": "Yichen will know better, this will likely require changes to the data collection pipeline to import the new files.",
       "revId": "327dc9a075f0e62c3cfc88dd0b901ac7885adbd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c877aa03_16f51fa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T13:53:08Z",
+      "side": 1,
+      "message": "before entering details, this looks conflicting with crrev.com/c/3686069.\n\nCould you resolve it?",
+      "revId": "327dc9a075f0e62c3cfc88dd0b901ac7885adbd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
