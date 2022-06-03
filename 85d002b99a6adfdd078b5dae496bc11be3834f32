@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f699c253_88b16f90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-03T11:23:12Z",
+      "side": 1,
+      "message": "Not main focus of this change, but why is this a map?\nThis is only referenced by string literal key without checking for existence in \nthe map and listing all the elements at line 159. So I think we can make it []string and defining names for each different regex string consts like\n\n  const (\n    connectorDP :\u003d `.*: connectors:\\n.\\s+\\[CONNECTOR:\\d+:[DP]+.*`\n    connectedDP :\u003d `\\[CONNECTOR:\\d+:DP.*status: connected`\n    fullHDMode :\u003d `modes:\\n.*\"1920x1080\":.60`\n    // and more\n  )\nand then the test definition would be like\n  displayInfoRE: []string{connectedHDMI, connectedStatus, fullHDMode}\n\nand lines aroud 159 will do regexp.MustCompile() when making an array of regexp.Regexp.",
+      "revId": "85d002b99a6adfdd078b5dae496bc11be3834f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
