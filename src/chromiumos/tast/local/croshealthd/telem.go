@@ -99,7 +99,7 @@ func RunAndParseTelem(ctx context.Context, params TelemParams, outDir string) ([
 
 	records, err := csv.NewReader(strings.NewReader(string(b))).ReadAll()
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to parse output")
+		return nil, errors.Wrapf(err, "failed to parse output [%q]", b)
 	}
 
 	return records, nil
