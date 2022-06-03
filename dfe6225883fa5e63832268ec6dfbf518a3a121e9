@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f56f042_ee594b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/shill.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-03T22:05:37Z",
+      "side": 1,
+      "message": "Sorry I just realized, this and the functions below look like they belong in manager.go. Can we move it there instead?",
+      "revId": "dfe6225883fa5e63832268ec6dfbf518a3a121e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
