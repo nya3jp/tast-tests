@@ -195,6 +195,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d51d96_ceaf10af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-06-03T09:11:15Z",
+      "side": 1,
+      "message": "It turns out it can run weekly: https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md.\n\nFor now though we should run it daily so we get a decent amount of test data quickly before switching to the new WP. I\u0027ve created crrev.com/c/3686677 to switch it over.",
+      "parentUuid": "2a676224_6d8bd541",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "39819bc597df4f86b5adce57b8793c3086e23521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86d67a57_74e920c0",
