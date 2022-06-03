@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f280f0_b13f89c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T07:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62116897_c0e35d89",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "ae26e4da80dea14ec4e10b724b234ddaa1dc326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f22adde1_9ab9c129",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c473dd91_08b49821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T07:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f22adde1_9ab9c129",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 2
+      },
+      "revId": "ae26e4da80dea14ec4e10b724b234ddaa1dc326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61975dd4_4b142959",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-30T09:12:37Z",
       "side": 1,
       "message": "Question: this error message is similar to other errors at 329 and 342, do you think there is a need to differentiate between them?",
+      "range": {
+        "startLine": 338,
+        "startChar": 27,
+        "endLine": 338,
+        "endChar": 57
+      },
+      "revId": "ae26e4da80dea14ec4e10b724b234ddaa1dc326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7322d14b_d68e3873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_audio_controls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T07:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61975dd4_4b142959",
       "range": {
         "startLine": 338,
         "startChar": 27,
