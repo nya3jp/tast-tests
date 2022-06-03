@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e066c2_8394c74f",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-03T22:07:13Z",
+      "side": 1,
+      "message": "Could we a) PopAllUserProfiles before RemoveProfile, and b) maybe randomize the profile name like in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3610631 so there\u0027s less chance of name collision causing problems?",
+      "revId": "f4021b5f557ab6cafef68bf0a6141bc8a981d19b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
