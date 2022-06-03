@@ -543,6 +543,17 @@ func (e *Env) ConfigureInterface(ctx context.Context, ifname string, addr net.IP
 	return nil
 }
 
+// RunCommandInNetNS runs |command| within the env netns
+func (e *Env) RunCommandInNetNS(ctx context.Context, command []string) ([]byte, error) {
+	var cmd = []string{"netns", "exec", e.NetNSName}
+	cmd = append(cmd, command...)
+	out, err := testexec.CommandContext(ctx, "ip", cmd...).Output()
+	if err != nil {
+		return nil, err
+	}
+	return out, err
+}
+
 // isLink returns whether path is a symbolic link.
 func isLink(path string) bool {
 	if !assureExists(path) {
