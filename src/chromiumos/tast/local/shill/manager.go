@@ -634,3 +634,20 @@ func (m *Manager) RemoveFakeUserProfile(ctx context.Context, name string) error 
 	}
 	return nil
 }
+
+// EnablePortalDetectionOnTechnology will enable portal detection for |technology|.
+// This is useful for portal detection testing that uses the shillReset test fixture,
+// as a shill reset will remove the default profile which makes it so no technologies
+// are enabled for portal detection.
+func (m *Manager) EnablePortalDetectionOnTechnology(ctx context.Context, technology string) (func(context.Context) error, error) {
+	if err := m.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, technology); err != nil {
+		return nil, errors.Wrapf(err, "failed to enable portal detection on %q", technology)
+	}
+
+	return func(ctx context.Context) error {
+		if err := m.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, ""); err != nil {
+			return errors.Wrapf(err, "failed to disable portal detection on %q", technology)
+		}
+		return nil
+	}, nil
+}

@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
+	"chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/radvd"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/subnet"
 	"chromiumos/tast/local/shill"
@@ -33,6 +34,13 @@ type EnvOptions struct {
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
+	// HTTPServer enables the IPv4 HTTP server in the Env.
+	HTTPServer bool
+	// AddressToForceGateway is the address to force an IPv4 or IPv6 address to
+	// the gateway. When paired with a dnsmasq server, the DNS is queried for this
+	// address, and dnsmasq will respond with the address to the gateway. For the
+	// captive portal case, dnsmasq will respond with the address of the HTTP server
+	AddressToForceGateway string
 }
 
 // CreateRouterEnv creates a virtualnet Env with the given options. On success,
@@ -63,7 +71,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
-		dnsmasq := dnsmasq.New(v4Subnet, []string{})
+		dnsmasq := dnsmasq.New(v4Subnet, []string{}, opts.AddressToForceGateway)
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
 		}
@@ -82,6 +90,13 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		radvd := radvd.New(v6Prefix, []string{googleIPv6DNSServer})
 		if err := router.StartServer(ctx, "radvd", radvd); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start radvd")
+		}
+	}
+
+	if opts.HTTPServer {
+		httpserver := httpserver.New("80")
+		if err := router.StartServer(ctx, "httpserver", httpserver); err != nil {
+			return nil, nil, errors.Wrap(err, "failed to start http server")
 		}
 	}
 
