@@ -104,6 +104,30 @@
       },
       "revId": "cc98fddce044d21d98e9f5eb7de97ec4ec60208d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f21d7e00_c0214896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T13:49:21Z",
+      "side": 1,
+      "message": "Oops, my bad. Sent to older PS.\n\nCould you fix all of the same patterns in this CL?",
+      "parentUuid": "08c7012d_7865ea17",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 9
+      },
+      "revId": "cc98fddce044d21d98e9f5eb7de97ec4ec60208d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

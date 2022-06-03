@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143c7489_e6d83ade",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T13:49:21Z",
+      "side": 1,
+      "message": "Marking LGTM to avoid cross-tz iteration.",
+      "revId": "dc2bf5b3959e99d59345e96b7b1ee406f90906ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
