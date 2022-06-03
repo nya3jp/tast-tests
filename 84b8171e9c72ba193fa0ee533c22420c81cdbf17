@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d8dc8e_9dd0fb30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-06-03T06:59:37Z",
+      "side": 1,
+      "message": "+seewai for the use of global runtime variables.\nSeewai, could you answer the question from Newman about global runtime variables?\nI think I\u0027m fine with this CL other than remaining comments, so may I hand over the review to you for +2? Thank you.",
+      "revId": "84b8171e9c72ba193fa0ee533c22420c81cdbf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acecf210_aff7844b",
