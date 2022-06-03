@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3629529c_66260c69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-03T22:09:18Z",
+      "side": 1,
+      "message": "You will need to wait for the chrome side change to land, for a successful uprev (uprevs have been failing for a week now), before landing this change. Alternatively, you can land this and it\u0027ll be red for a while and eventually become green on its own.",
+      "revId": "ea6e00454ecafb79170984733a6c82d6ca6aa3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
