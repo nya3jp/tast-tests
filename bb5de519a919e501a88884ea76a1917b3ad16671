@@ -164,6 +164,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bdd99d8_b06631bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-03T08:53:54Z",
+      "side": 1,
+      "message": "Instead of passing the expected value here, please add a bool return containing the PIN state, and compare it with the expectations in the caller function.",
+      "range": {
+        "startLine": 191,
+        "startChar": 63,
+        "endLine": 191,
+        "endChar": 76
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "806f3f66_52317466",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 3
