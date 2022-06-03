@@ -307,6 +307,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("move from the last slot to the middle slot",
 		mouse.Move(tconn, middleSlotCenter, 1*time.Second),
+		ash.WaitUntilShelfIconAnimationFinishAction(tconn),
 		uiauto.Sleep(time.Second))(ctx); err != nil {
 		s.Fatal("Failed to move the target app from the last slot to the middle slot: ", err)
 	}
@@ -349,6 +350,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("move from the first slot to the middle slot",
 		mouse.Move(tconn, middleSlotCenter, 1*time.Second),
+		ash.WaitUntilShelfIconAnimationFinishAction(tconn),
 		uiauto.Sleep(time.Second))(ctx); err != nil {
 		s.Fatal("Failed to move the target app from the first slot to the middle slot: ", err)
 	}
