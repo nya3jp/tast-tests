@@ -16,6 +16,23 @@
       "message": "James, if you don\u0027t have time to look at the taniks failures for this test right now, please consider landing this instead.",
       "revId": "8203541dce96e09d0817a3451cb4928a9e7dac1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b020dd_1b5bef10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-06-03T16:40:09Z",
+      "side": 1,
+      "message": "Thanks for the CL! Yes, let\u0027s go ahead and land this. I don\u0027t know why this test fails only on taniks. When I last looked at the failures, there were a wide variety of UI test failures that only affected taniks, so I presumed it wasn\u0027t a problem with this test. Apologies for breaking CQ.",
+      "revId": "8203541dce96e09d0817a3451cb4928a9e7dac1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
