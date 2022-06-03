@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	androidui "chromiumos/tast/common/android/ui"
@@ -62,6 +63,17 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 	// Optin to PlayStore and Close
 	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to optin to Play Store and Close: ", err)
+	}
+
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "VeriySettings.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
 	}
 
 	// Setup ARC.
