@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "011cdfbd_6667d8ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-03T23:10:49Z",
+      "side": 1,
+      "message": "this can also be a lacros window, is that right?",
+      "range": {
+        "startLine": 979,
+        "startChar": 65,
+        "endLine": 979,
+        "endChar": 76
+      },
+      "revId": "2f2809a573fac1c600b0b73c8459da536fca72e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
