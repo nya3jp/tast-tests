@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96783727_2a1f1bfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:34:19Z",
+      "side": 1,
+      "message": "Just some flyby comments while reading through the code.\n",
+      "revId": "34b79abd288485af060c74677658b386138d36f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ac6451_671d08d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:34:19Z",
+      "side": 1,
+      "message": "This seems complex enough, especially with the variables at the top of the file that it might be more clear in a separate chroot.go package?",
+      "revId": "34b79abd288485af060c74677658b386138d36f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391685f0_d065e7f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:34:19Z",
+      "side": 1,
+      "message": "Do we expect to add additional files here? If not, maybe just place this in virtualnet and rename New -\u003e NewRadvd?",
+      "revId": "34b79abd288485af060c74677658b386138d36f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc24e5af_b89d7d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/subnet/pool.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:34:19Z",
+      "side": 1,
+      "message": "I see that this was moved from virtualnet/pool.go -\u003e virtualnet/subnet/pool.go, but I think that a better solution is just to name the file virtualnet/subnetpool.go and name the type SubnetPool (or subnetPool if we don\u0027t expect to export it beyond virtualnet).",
+      "revId": "34b79abd288485af060c74677658b386138d36f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc9c56a_e8346aae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-03T20:34:19Z",
+      "side": 1,
+      "message": "I wonder whether these functions should be here (adding a Shill dependency) or if we should move these into the individual tests, maybe with an extra helper for shared code. i.e. including shill here seems to break the abstraction a bit.",
+      "revId": "34b79abd288485af060c74677658b386138d36f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
