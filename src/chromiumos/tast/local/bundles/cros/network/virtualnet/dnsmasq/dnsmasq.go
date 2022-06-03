@@ -26,6 +26,7 @@ interface={{.ifname}}
 dhcp-range={{.pool_start}},{{.pool_end}},{{.netmask}},12h
 dhcp-option=option:netmask,{{.netmask}}
 dhcp-option=option:router,{{.gateway}}
+address={{.address}}
 {{if .dns}}
 dhcp-option=option:dns-server,{{.dns}}
 {{end}}
@@ -40,17 +41,18 @@ const (
 )
 
 type dnsmasq struct {
-	env    *env.Env
-	subnet *net.IPNet
-	dns    []string
-	cmd    *testexec.Cmd
+	env     *env.Env
+	subnet  *net.IPNet
+	address string
+	dns     []string
+	cmd     *testexec.Cmd
 }
 
 // New creates a new dnsmasq object. Currently dnsmasq will only be used as a
 // DHCP server daemon. The returned object can be passed to Env.StartServer(),
 // its lifetime will be managed by the Env object.
-func New(subnet *net.IPNet, dns []string) *dnsmasq {
-	return &dnsmasq{subnet: subnet, dns: dns}
+func New(subnet *net.IPNet, dns []string, address string) *dnsmasq {
+	return &dnsmasq{subnet: subnet, dns: dns, address: address}
 }
 
 // Start starts the dnsmasq process.
@@ -79,6 +81,9 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 	}
 	if len(d.dns) > 0 {
 		confVals["dns"] = strings.Join(d.dns, ",")
+	}
+	if d.address != "" {
+		confVals["address"] = d.address
 	}
 	b := &bytes.Buffer{}
 	template.Must(template.New("").Parse(confTemplate)).Execute(b, confVals)
