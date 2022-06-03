@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763dbe2a_77b3382e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-03T22:39:15Z",
+      "side": 1,
+      "message": "nit: I think it is hard to run. How about this? \n\n```\nif err !\u003d nil {\n    s.Errorf(\"Could not match regex with %s: %v\", port.Name(), err)\n    continue\n}\nif !matched {\n    s.Logf(\"Skipping %s since it is not a port\", port.Name())\n    continue\n}\nif err :\u003d checkForPhysicalLocationDir(filepath.Join(typecPath, port.Name())); err !\u003d nil {\n...\n}\n```\n\nIf you don\u0027t like the suggestion, you can just leave it as it is. Thanks.",
+      "revId": "1a6e880cfe7587acb05d2ee4e5d54d736464f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7daaf0_d37b05b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-03T22:39:15Z",
+      "side": 1,
+      "message": "Do not need \"else\" here? The \"if clause\" returned.",
+      "revId": "1a6e880cfe7587acb05d2ee4e5d54d736464f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
