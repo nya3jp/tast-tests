@@ -16,6 +16,24 @@
       "message": "I think this is not the main focus of this change, but I think internal display would also exist in non-touchscreen clamshell devices.\nHow about using the \"form factor\" dependency?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d1331",
       "revId": "cc9a66be10a490c5583d9aa70921042d10c47404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1d47ee_a02c2041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-03T17:49:18Z",
+      "side": 1,
+      "message": "Thank you for your suggestion! So you are implying that a device with the internal display does not necessarily mean that it has a touch screen? If so, can I just use `hwdep.TouchScreen()` instead?",
+      "parentUuid": "cadfd98f_638b6d31",
+      "revId": "cc9a66be10a490c5583d9aa70921042d10c47404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
