@@ -29,7 +29,6 @@ func init() {
 		Params: []testing.Param{
 			{
 				Val:               standardizedtestutil.GetClamshellTest(runStandardizedMouseHoverTest),
-				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"android_p"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			}, {
