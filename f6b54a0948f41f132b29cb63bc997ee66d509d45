@@ -178,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33764f9a_2bac12c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-03T20:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0099ce78_4fc6dfe2",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60fa7c82_10e48006",
@@ -226,6 +244,24 @@
       "writtenOn": "2022-05-23T21:02:39Z",
       "side": 1,
       "message": "Same as line 57",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803cece2_104e2cb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-03T20:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17e2bd96_2cc0ae2b",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -283,6 +319,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd957668_00bc99ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-03T20:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c36a26c_cd67998e",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beba4cb6_cdd79097",
@@ -332,6 +386,24 @@
       "side": 1,
       "message": "I understand that new tests could be flaky for reasons not related to the feature itself. In this case a TODO() comment should be added so these can be removed when the test is stabilized.\n\nTbh, I added the other commands as example. I am not sure if they need to be tested at this phase.",
       "parentUuid": "a7d1023e_1afe2bc5",
+      "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30596512_ca799a77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-03T20:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b231cf00_a57645f1",
       "revId": "f6b54a0948f41f132b29cb63bc997ee66d509d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

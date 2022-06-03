@@ -283,6 +283,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f54457_932a9d77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-03T20:23:35Z",
+      "side": 1,
+      "message": "I\u0027d really prefer to keep this. As this is nit, I\u0027d mark it as resolved.",
+      "parentUuid": "4f411bab_1136612b",
+      "revId": "24a637bc3413d12891b6e606a655a29796d41aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c1822cb_6ff33177",
