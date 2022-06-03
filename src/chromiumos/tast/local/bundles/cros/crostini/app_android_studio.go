@@ -24,7 +24,7 @@ func init() {
 		Func:         AppAndroidStudio,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Opens Android Studio from terminal and performs UI interactions to create new project",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host", "amd64"},
 		Params: []testing.Param{
