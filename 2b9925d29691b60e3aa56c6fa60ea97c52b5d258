@@ -16,6 +16,24 @@
       "message": "Will this also work for lacros?",
       "revId": "2b9925d29691b60e3aa56c6fa60ea97c52b5d258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a3ec9f_3064c42b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-03T22:39:44Z",
+      "side": 1,
+      "message": "Now I have moved the first call to the window fetcher after about:blank is closed, so that this will work with Lacros. I have also added `TEST\u003dtast run \u003cDUT\u003e ui.MeetCUJ.lacros_16p` in the commit message.",
+      "parentUuid": "eba42708_5f9c69c9",
+      "revId": "2b9925d29691b60e3aa56c6fa60ea97c52b5d258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
