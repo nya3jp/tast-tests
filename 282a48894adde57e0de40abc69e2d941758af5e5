@@ -455,6 +455,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f2f69d1_805d7b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T08:34:45Z",
+      "side": 1,
+      "message": "I\u0027m _guessing_, what you\u0027d like to check is crastestclient.FirstRunningDevice() returns deviceName during the first 1hr, right?\n\nIf so,\nerr :\u003d tesitng.Poll(... {\n  devName, err :\u003d ...\n  if err !\u003d nil {\n    return testing.PollBreak(errors.Wrapf(...))\n  }\n  if devName !\u003d deviceName {\n    return testing.PollBreak(errors.Wrapf(...))\n  }\n  return errors.New(\"still checking\")\n}, testing.PollOptions{Timeout: time.Hour, Interval: 2*time.Minute});\nif /* err is not time out */ {\n  s.Fatal(...)\n}\n\nis what you need maybe? Or I may be still misunderstanding?",
+      "parentUuid": "a7e8446d_0198da13",
+      "range": {
+        "startLine": 170,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "282a48894adde57e0de40abc69e2d941758af5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adeed677_3702d24f",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
         "patchSetId": 2
