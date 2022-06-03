@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
+	"chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/radvd"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/subnet"
 	"chromiumos/tast/local/shill"
@@ -33,6 +34,21 @@ type EnvOptions struct {
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
+}
+
+// CaptivePortalOptions contains the options that can be used to set up captive
+// portal Env.
+type CaptivePortalOptions struct {
+	// Priority is the service priority in shill for the exposed interface. Please
+	// refer to the EphemeralPriority property in service-api.txt for details.
+	Priority int
+	// NameSuffix is used to differentiate different virtualnet Env. Its length
+	// cannot be longer than 3 due to IFNAMSIZ, and can be left empty if only one
+	// Env is used.
+	NameSuffix string
+	// AddressToForceIP is the address to force a specifice ip, which in the
+	// captive portal case will be the ip address of the http server.
+	AddressToForceIP string
 }
 
 // CreateRouterEnv creates a virtualnet Env with the given options. On success,
@@ -62,7 +78,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
-		dnsmasq := dnsmasq.New(v4Subnet, []string{})
+		dnsmasq := dnsmasq.New(v4Subnet, []string{}, "")
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
 			return nil, errors.Wrap(err, "failed to start dnsmasq")
 		}
@@ -143,6 +159,60 @@ func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.P
 
 	success = true
 	return router, server, nil
+}
+
+// CreateCaptivePortalEnv creates a captive portal Env with the given options. On success,
+// it's caller's responsibility to call Cleanup() on the returned Env object.
+func CreateCaptivePortalEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, opts CaptivePortalOptions) (*env.Env, error) {
+	portal, err := env.New("portal" + opts.NameSuffix)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create captive portal env")
+	}
+
+	if err := portal.SetUp(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to set up the captive portal env")
+	}
+
+	success := false
+	defer func() {
+		if success {
+			return
+		}
+		if err := portal.Cleanup(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to cleanup captive portal env: ", err)
+		}
+	}()
+
+	// Setup DNS subnet
+	v4Subnet, err := pool.AllocNextIPv4Subnet()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
+	}
+
+	// Start DNS server
+	dnsmasq := dnsmasq.New(v4Subnet, []string{}, opts.AddressToForceIP)
+	if err := portal.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
+		return nil, errors.Wrap(err, "failed to start dnsmasq")
+	}
+
+	// Start HTTP server
+	httpserver := httpserver.New("0.0.0.0", "80")
+	if err := portal.StartServer(ctx, "httpserver", httpserver); err != nil {
+		return nil, errors.Wrap(err, "failed to start http server")
+	}
+
+	svc, err := findEthernetServiceByIfName(ctx, m, portal.VethOutName)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find shill service for %s", portal.VethOutName)
+	}
+
+	if err := svc.SetProperty(ctx, shillconst.ServicePropertyEphemeralPriority, opts.Priority); err != nil {
+		return nil, errors.Wrap(err, "failed to configure priority on interface")
+	}
+
+	testing.ContextLogf(ctx, "virtualnet env %s started", portal.NetNSName)
+	success = true
+	return portal, nil
 }
 
 func findEthernetServiceByIfName(ctx context.Context, m *shill.Manager, ifName string) (*shill.Service, error) {
