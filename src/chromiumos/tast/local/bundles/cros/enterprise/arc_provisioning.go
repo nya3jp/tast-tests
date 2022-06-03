@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
@@ -84,9 +83,7 @@ func init() {
 func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
 		bootTimeout = 4 * time.Minute
-		// CloudDPC sign-in timeout set in code is 3 minutes.
-		timeoutWaitForPlayStore = 3 * time.Minute
-		maxAttempts             = 2
+		maxAttempts = 2
 	)
 
 	attempts := 1
@@ -160,17 +157,15 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 		defer sysLogReader.Close()
 
-		if err := optin.LaunchAndWaitForPlayStore(ctx, tconn, cr, timeoutWaitForPlayStore); err != nil {
-			if err := optin.DumpLogCat(ctx, strconv.Itoa(attempts)); err != nil {
-				s.Logf("WARNING: Failed to dump logcat: %s", err)
-			}
-			return retry("launch Play Store", err)
+		if err := waitForProvisioning(ctx, a, attempts); err != nil {
+			return retry("wait for provisioning", err)
 		}
 
 		cleanupCtx := ctx
 		ctx, cancel := ctxutil.Shorten(ctx, 60*time.Second)
 		defer cancel()
-		defer dumpBugReportOnError(cleanupCtx, s.HasError, a, filepath.Join(s.OutDir(), "bugreport.zip"))
+		bugReportPath := filepath.Join(s.OutDir(), fmt.Sprintf("bugreport_%d.zip", attempts))
+		defer dumpBugReportOnError(cleanupCtx, s.HasError, a, bugReportPath)
 
 		// Note: if the user policy for the user is changed, the packages listed in
 		// credentials files must be updated.
@@ -194,6 +189,20 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}, nil); err != nil {
 		s.Fatal("Provisioning flow failed: ", err)
 	}
+}
+
+func waitForProvisioning(ctx context.Context, a *arc.ARC, attempt int) error {
+	// CloudDPC sign-in timeout set in code is 3 minutes.
+	const provisioningTimeout = 3 * time.Minute
+
+	if err := a.WaitForProvisioning(ctx, provisioningTimeout); err != nil {
+		if err := optin.DumpLogCat(ctx, strconv.Itoa(attempt)); err != nil {
+			testing.ContextLogf(ctx, "WARNING: Failed to dump logcat: %s", err)
+		}
+		return err
+	}
+	return nil
+
 }
 
 func openSysLog(ctx context.Context) (*syslog.LineReader, error) {
@@ -237,7 +246,7 @@ func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.
 }
 
 // ensurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
-func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) error {
+func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, outDir string, runID int) (retErr error) {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
@@ -245,42 +254,35 @@ func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 		tryAgainButtonText = "Try again"
 	)
 
+	defer faillog.SaveScreenshotToFileOnError(ctx, cr, outDir, func() bool {
+		return retErr != nil
+	}, fmt.Sprintf("play_store_%d.png", runID))
+
+	if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
+		return err
+	}
+
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to initialize UI Automator")
 	}
 	defer d.Close(ctx)
 
-	attempts := 0
-	return testing.Poll(ctx, func(ctx context.Context) (retErr error) {
-		attempts++
-		defer faillog.SaveScreenshotToFileOnError(ctx, cr, outDir, func() bool {
-			return retErr != nil
-		}, fmt.Sprintf("play_store%d_%d.png", runID, attempts))
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+			return errors.New("Play Store is empty")
+		}
 
-		// TODO(b/231751280): View does not update when app is installed.
-		// When the bug is fixed and Play Store version is upreved on the
-		// system image, move this out of the loop.
-		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
+		if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
 			return testing.PollBreak(err)
 		}
 
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-				return errors.New("Play Store is empty")
-			}
+		if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
+			return errors.Wrap(err, "Play Store UI screen not shown")
+		}
 
-			if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
-				return testing.PollBreak(err)
-			}
-
-			if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
-				return errors.Wrap(err, "Play Store UI screen not shown")
-			}
-
-			return nil
-		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
-	}, nil)
+		return nil
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
 }
 
 // launchAssetBrowserActivity starts the activity that displays the available apps.
@@ -290,18 +292,12 @@ func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *
 		assetBrowserActivity = "com.android.vending.AssetBrowserActivity"
 	)
 
-	if err := optin.ClosePlayStore(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to close Play Store")
-	}
-
-	ash.WaitForHidden(ctx, tconn, playStorePackage)
-
 	testing.ContextLog(ctx, "Starting Asset Browser activity")
 	act, err := arc.NewActivity(a, playStorePackage, assetBrowserActivity)
 	if err != nil {
 		return errors.Wrap(err, "failed to create new activity")
 	}
-	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed starting Play Store")
 	}
 
