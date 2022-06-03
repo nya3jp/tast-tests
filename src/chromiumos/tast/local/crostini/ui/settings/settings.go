@@ -196,6 +196,7 @@ func OpenLinuxInstallerAndClickNext(ctx context.Context, tconn *chrome.TestConn,
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 	defer s.Close(cleanupCtx)
+	defer func(ctx context.Context) { faillog.DumpUITreeAndScreenshot(ctx, tconn, "crostini_installer", retErr) }(cleanupCtx)
 
 	if err := ui.WaitUntilExists(DevelopersButton)(ctx); err == nil {
 		// Linux has been installed already, uninstall it.
@@ -208,7 +209,6 @@ func OpenLinuxInstallerAndClickNext(ctx context.Context, tconn *chrome.TestConn,
 		}
 	}
 
-	defer func() { faillog.DumpUITreeAndScreenshot(cleanupCtx, tconn, "crostini_installer", retErr) }()
 	installButton := nodewith.Name("Install").Role(role.Button)
 	if err := uiauto.Combine("open Install and click button Next",
 		ui.LeftClickUntil(TurnOnButton, ui.WithTimeout(shortUITimeout).WaitUntilExists(nextButton)),
