@@ -52,6 +52,24 @@
       "parentUuid": "07b71809_b60259bf",
       "revId": "15672e25ed3aaccfb92ae2a2dc66c75a4a28d220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88aa0c2_2e7bd5e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts_rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-03T14:20:53Z",
+      "side": 1,
+      "message": "(Mostly I was wondering because it looks like it\u0027s fetching current stable from back when it was just about to branch.)",
+      "parentUuid": "76fa3cfc_75fd7bb2",
+      "revId": "15672e25ed3aaccfb92ae2a2dc66c75a4a28d220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
