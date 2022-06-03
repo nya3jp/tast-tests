@@ -36,7 +36,7 @@ func init() {
 		Fixture:      fixture.TabletVK,
 		SearchFlags: []*testing.StringPair{
 			{
-				Key:   "IME",
+				Key:   "ime",
 				Value: ime.EnglishUS.Name,
 			},
 		},
