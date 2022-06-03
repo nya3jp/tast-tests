@@ -16,6 +16,40 @@
       "message": "+edcourtney for OWNERS approval",
       "revId": "1ab1c0148285ed87057658da2b53d736c11ca298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800c4a43_fde7a0be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-03T07:24:02Z",
+      "side": 1,
+      "message": "Please use tast-owners@google.com next time I think\n\nlgtm modulo comment",
+      "revId": "1ab1c0148285ed87057658da2b53d736c11ca298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd31278d_384f4ad4",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-03T07:24:02Z",
+      "side": 1,
+      "message": "added space here for screensaver, is this intended? UI changed?",
+      "revId": "1ab1c0148285ed87057658da2b53d736c11ca298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
