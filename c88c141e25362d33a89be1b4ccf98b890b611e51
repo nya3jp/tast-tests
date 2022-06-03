@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14e2d094_381b203a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-03T21:54:08Z",
+      "side": 1,
+      "message": "\u003e not using const, only using var (which is unfortunate)\n\nAck\n\n\u003e \n\u003e If you are worried, you could keep it inside the init function to prevent outside access.\n\u003e \n\u003e (note that this is optional, missing +2 is due to there being unstable boards that are not in the list)\n\nYeah, got that. Given the reliance on servo, there seem to be sporadic failures, which are tough to pin down due to servo reliability limitations. I guess I\u0027ll observe the board for a bit to see if things clear up, otherwise start expanding the model blocklist :/",
+      "parentUuid": "8b461a20_e125d692",
+      "range": {
+        "startLine": 36,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "c88c141e25362d33a89be1b4ccf98b890b611e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54faf7ab_9dcbb507",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 5
