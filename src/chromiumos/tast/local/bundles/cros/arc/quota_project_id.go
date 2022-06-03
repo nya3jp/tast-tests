@@ -132,7 +132,7 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get the cryptohome user directory: ", err)
 	}
-	downloadsDirPath := filepath.Join(userPath, "MyFiles", "Downloads")
+	downloadsDirPath := filepath.Join(userPath, "MyFiles", "Downloads", "test.png")
 	projectID, err = getQuotaProjectID(ctx, downloadsDirPath)
 	if err != nil {
 		s.Fatal("Failed to get the project ID: ", err)
