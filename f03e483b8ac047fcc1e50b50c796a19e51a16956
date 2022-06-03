@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3182009_5287d7b4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1477,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-03T21:58:49Z",
+      "side": 1,
+      "message": "\u003e \"existsing\" is a possible misspelling of \"existing\".\n\nPlease fix.",
+      "parentUuid": "f2f50265_03a9e60c",
+      "range": {
+        "startLine": 1477,
+        "startChar": 27,
+        "endLine": 1477,
+        "endChar": 36
+      },
+      "revId": "f03e483b8ac047fcc1e50b50c796a19e51a16956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
