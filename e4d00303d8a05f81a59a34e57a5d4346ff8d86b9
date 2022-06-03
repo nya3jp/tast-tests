@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b985258_1379caf4",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-03T19:08:07Z",
+      "side": 1,
+      "message": "Oh thanks for finding the reference. I remember my reasoning now.\nThe help says:\n\n  // TryBatteryDischarge option requests setup to try battery discharge. If the\n  // ignoreErr flag is false, TryBatteryDischarge returns basicBatteryDischargeMode\n  // which forces the discharge and will cause power test setup to fail on error.\n  // Otherwise, the advancedBatteryDischargeMode is returned, with which the discharge\n  // error is omitted from the power test setup but can be obtained via Err() interface.\n \nHaving an |ignoreErr| \u003d\u003d true basically instructs setup.PowerTest()\nin l.453 to report the error in |err| there, whereas not ignoring \nthe error means it\u0027ll be provided via a different point (a callback).\nBut both cases would be the same from our perf.go perspective,\nIIUC, the only difference is the error reporting, which would be\nmore cumbersome with |ignoreErr| \u003d\u003d true.  IOW |ignoreErr| is a\nbad name for what it really does.\n\nFrom my readings of the existing code, a handful of devices don\u0027t \nsupport battery discharge, and in my runs also my hana had some \nsort of \"permission denied\" error. In either case we don\u0027t care\nmuch from the graphics perf.go perspective: it\u0027s an error, we cannot\ncollect system power consumption, and we don\u0027t want to interrupt\nthe test because of it. \n\nWDYT?",
+      "parentUuid": "441d5e56_d08ece77",
+      "range": {
+        "startLine": 451,
+        "startChar": 47,
+        "endLine": 451,
+        "endChar": 51
+      },
+      "revId": "e4d00303d8a05f81a59a34e57a5d4346ff8d86b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19a67976_b1837a97",
         "filename": "src/chromiumos/tast/local/graphics/perf.go",
         "patchSetId": 3
