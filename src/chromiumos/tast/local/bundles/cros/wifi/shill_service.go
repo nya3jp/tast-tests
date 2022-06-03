@@ -24,15 +24,14 @@ import (
 
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
-	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network"
-	"chromiumos/tast/local/network/cmd"
 	network_iface "chromiumos/tast/local/network/iface"
 	local_ping "chromiumos/tast/local/network/ping"
+	localwpacli "chromiumos/tast/local/network/wpacli"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -132,7 +131,7 @@ func (s *ShillService) reinitTestState(ctx context.Context, m *shill.Manager) er
 	}
 	// Clean up wpa_supplicant BSSID_IGNORE in case some BSSID cannot be scanned.
 	// See https://crrev.com/c/219844.
-	if err := wpacli.NewRunner(&cmd.LocalCmdRunner{}).ClearBSSIDIgnore(ctx); err != nil {
+	if err := localwpacli.NewLocalRunner().ClearBSSIDIgnore(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear wpa_supplicant BSSID_IGNORE")
 	}
 	if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, true); err != nil {
