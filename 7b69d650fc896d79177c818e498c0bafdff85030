@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a710247e_2bf250fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-03T08:46:58Z",
+      "side": 0,
+      "message": "Why did you remove the dump of the ui tree? It could give valuable information when the test is failing, so I\u0027d rather keep it. Or alternatively use DumpUITreeWithScreenshotOnError in line 257.",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 52
+      },
+      "revId": "7b69d650fc896d79177c818e498c0bafdff85030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
