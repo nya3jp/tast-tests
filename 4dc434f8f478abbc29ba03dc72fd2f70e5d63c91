@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e69c4624_a52ff7cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "We are planning to run it manually in IntelLabs and in OEM/ODM labs.. Kindly suggest if this test can be part of any existing suite.",
+      "parentUuid": "9867a4d1_a5e2d065",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50c67bb4_795d9388",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-09T04:23:29Z",
       "side": 1,
       "message": "The cleanup function may need to boot the DUT, in which case 30 seconds seems kind of short. I think you need to reserve \u003e2 minutes for cleanup (which will require increasing the tast timeout a bit).",
+      "range": {
+        "startLine": 43,
+        "startChar": 37,
+        "endLine": 43,
+        "endChar": 39
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0797ed_2297fb48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c67bb4_795d9388",
       "range": {
         "startLine": 43,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae3820b_28dff81f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "193234b4_9ba34366",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "359fcfc9_2e017b57",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-09T04:23:29Z",
       "side": 1,
       "message": "Is this actually necessary for the test? Logging in doesn\u0027t seem related to testing the battery.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f99290_4e1c1293",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "359fcfc9_2e017b57",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1842ffd6_d4d9a37b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "If the battery% \u003e 95, it takes nearly 5 mins to move to 96%. Hence we are keeping this max timeout as sleep.",
+      "parentUuid": "fa87b887_23d78f6a",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfad0ac4_8a239412",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
         "patchSetId": 1
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-09T04:23:29Z",
       "side": 1,
       "message": "This will fail if the battery was full before shutdown.",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5a3825_18932f1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfad0ac4_8a239412",
       "range": {
         "startLine": 122,
         "startChar": 4,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b87e7352_2474af72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bd8cb7_e5985738",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 22
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acc2a341_c3b0e1c1",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-05-09T04:23:29Z",
       "side": 1,
       "message": "This function looks very similar to wakeDUT[1], powerOnDut[2], and a lot of other code snippets in other tests in this directory. Is there somewhere where we could put this as a shared utility function?\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go#163\n[2] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/remote/bundles/cros/power/system_wake_on_powerbtn_press.go#118",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 21
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a790dc61_6d41c044",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc2a341_c3b0e1c1",
       "range": {
         "startLine": 150,
         "startChar": 5,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1384c948_220455b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52415e41_06d8e51d",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 3
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "439ec3cd_ad671ac9",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-05-09T04:23:29Z",
       "side": 1,
       "message": "nit: this also matches the display percentage line. How about this:\n\n ^\\s*percentage:\\s+([0-9.]+)",
+      "range": {
+        "startLine": 170,
+        "startChar": 21,
+        "endLine": 170,
+        "endChar": 66
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "435198b3_9316ec1a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-03T06:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "439ec3cd_ad671ac9",
       "range": {
         "startLine": 170,
         "startChar": 21,
