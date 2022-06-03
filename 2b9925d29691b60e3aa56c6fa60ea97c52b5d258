@@ -34,6 +34,24 @@
       "parentUuid": "eba42708_5f9c69c9",
       "revId": "2b9925d29691b60e3aa56c6fa60ea97c52b5d258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f87fc1c_27af52ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-03T22:56:51Z",
+      "side": 1,
+      "message": "On second thought, now I have simplified the code by using `fetchWindow` to get the about:blank window.",
+      "parentUuid": "25a3ec9f_3064c42b",
+      "revId": "2b9925d29691b60e3aa56c6fa60ea97c52b5d258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
