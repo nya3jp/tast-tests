@@ -52,6 +52,24 @@
       "parentUuid": "3dc9dae0_33e7ea48",
       "revId": "9413570dd639adbb0fe03bd5e1ecb626441ef02c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e4b473_29c786fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-06-03T06:29:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "9b0884ea_72fe6ef1",
+      "revId": "9413570dd639adbb0fe03bd5e1ecb626441ef02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
