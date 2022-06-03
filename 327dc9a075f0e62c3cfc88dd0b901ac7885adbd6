@@ -85,6 +85,42 @@
       "parentUuid": "c877aa03_16f51fa2",
       "revId": "327dc9a075f0e62c3cfc88dd0b901ac7885adbd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88bd968c_9a642764",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-03T17:44:40Z",
+      "side": 1,
+      "message": "As far as I know, the `recorder_histograms.json` is only used by SPERA in moblab, so the new files `recorder_histograms_ash-Chrome.json` and `recorder_histograms_ash-Lacros.json` don\u0027t need the collection pipeline change for TPS. \n\nThe `results-chart.json` file is used by TPS. It adds new metrics (the ones with _ash-Chrome and _lacros-Chrome appendix). The collection pipeline only needs to be changed if processing the new metrics are desired.",
+      "parentUuid": "206d4eaa_c33c3198",
+      "revId": "327dc9a075f0e62c3cfc88dd0b901ac7885adbd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c9ba638_c8e2b89a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-03T17:44:40Z",
+      "side": 1,
+      "message": "\u003e it would be nice if chrome.TestConn carried metrics source name (like Ash or Lacros) directly\n\nThat would be great! Thanks for considering this.",
+      "parentUuid": "93c33b3c_bb0ee46b",
+      "revId": "327dc9a075f0e62c3cfc88dd0b901ac7885adbd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
