@@ -80,6 +80,30 @@
       },
       "revId": "cc98fddce044d21d98e9f5eb7de97ec4ec60208d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c7012d_7865ea17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T13:48:21Z",
+      "side": 1,
+      "message": "+1 Ditto for below.",
+      "parentUuid": "7e6ad027_61273fbf",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 9
+      },
+      "revId": "cc98fddce044d21d98e9f5eb7de97ec4ec60208d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
