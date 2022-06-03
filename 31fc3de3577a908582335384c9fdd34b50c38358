@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b357e18_4901c23f",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-03T05:58:29Z",
+      "side": 1,
+      "message": "Name needs to be updated to \"Screen saver\". It\u0027s not included in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3681698. Do you want to update it here?\nThe role might change too once https://chromium-review.googlesource.com/c/chromium/src/+/3681856 is merged.",
+      "revId": "31fc3de3577a908582335384c9fdd34b50c38358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b7f4b8_c6cebba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_screensaver.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-03T05:58:29Z",
+      "side": 1,
+      "message": "It\u0027s funny to see the animation with this speed 😂",
+      "revId": "31fc3de3577a908582335384c9fdd34b50c38358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
