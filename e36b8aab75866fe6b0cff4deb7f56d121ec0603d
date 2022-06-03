@@ -16,6 +16,29 @@
       "message": "skipping shadow review since this CL is tiny",
       "revId": "e36b8aab75866fe6b0cff4deb7f56d121ec0603d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a523fc_e9a88d8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-03T16:46:13Z",
+      "side": 1,
+      "message": "Instead of discarding the `bool` return value with `_` here, you could check it, and if it is true then report an error like `Invalid credentials accepted as valid` instead of `Unexpected error: got %!q(\u003cnil\u003e); want *hwsec.CmdExitError`. It is a very weird result that you get when you format a nil `error` with `%q`. See: https://go.dev/play/p/HF3HAkJros_U",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "e36b8aab75866fe6b0cff4deb7f56d121ec0603d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
