@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -36,10 +35,6 @@ func AddTicket(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, u
 		keyboard.TypeAction(config.KerberosAccount),
 		ui.LeftClick(nodewith.Name("Password").Role(role.TextField)),
 		keyboard.TypeAction(password),
-		ui.LeftClick(nodewith.Name("Advanced").Role(role.Link)),
-		ui.LeftClick(nodewith.Role(role.TextField).State(state.Editable, true).State(state.Multiline, true)),
-		keyboard.TypeAction(config.RealmsConfig),
-		ui.LeftClick(nodewith.Name("Save").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Add").HasClass("action-button")),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to add Kerberos ticket")

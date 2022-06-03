@@ -33,7 +33,7 @@ func init() {
 			"chromeos-commercial-identity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
 		Fixture:      fixture.FakeDMS,
 	})
@@ -107,12 +107,7 @@ func ManualTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 		files.OpenPath("Files - "+config.Folder, config.Folder),
 		files.WaitForFile(config.File),
 		files.SelectFile(config.File),
-		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to interact with SMB mount: ", err)
-	}
-
-	if err := ui.WaitUntilExists(nodewith.Name("Chrome - " + config.File).Role(role.Window))(ctx); err != nil {
-		s.Fatal("File didn't open in time: ", err)
 	}
 }
