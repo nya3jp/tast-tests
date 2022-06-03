@@ -302,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "229db737_983108b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-06-03T05:22:33Z",
+      "side": 1,
+      "message": "If you\u0027re essentially running a bunch of basic POSIX commands (ls, mkdir, etc), you could just exec those commands instead of having a custom \"func cp\", \"func mkdir\", etc in Go).\n\nSomething like\nhttps://go.dev/play/p/T1bkCddNh-9",
+      "parentUuid": "21a4a370_f3f81992",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73078415_332808e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
@@ -384,6 +408,30 @@
       "side": 1,
       "message": "style?  For the record, I have have had three views in go code reviews re: else or else if needed or not, so far 😊.  Confusing.\n\nA go code presubmit would resolve it once and for all, save us all time etc, but there is no such presubmit at this time, sadly.\n\nGo presubmits did not complain, and so I assumed the presubmits were happy and ok with it.  I wrote this block of code the same way, in 3 patches, so I\u0027m kinda adverse to writing it differently in this CL.\n\nWhat would you recommend here?",
       "parentUuid": "e8ff03b0_bcc3cc05",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e42e9ca2_57706f33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-06-03T05:22:33Z",
+      "side": 1,
+      "message": "As somebody who has done over 1000 Go readability reviews and was on the Go team for some years, the \"else\" here is fine.",
+      "parentUuid": "e829cb8b_fa96c906",
       "range": {
         "startLine": 181,
         "startChar": 1,
