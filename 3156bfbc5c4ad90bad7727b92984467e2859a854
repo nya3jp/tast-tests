@@ -56,6 +56,30 @@
       },
       "revId": "3156bfbc5c4ad90bad7727b92984467e2859a854",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f460a70_569b54bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-03T01:09:30Z",
+      "side": 1,
+      "message": "Right, this was left a bit half done for a number of reasons:\n1 We want to have this (and the next CL sequence) run at least once\non every platform, because maybe some of them will decode this\nbitstream at least as good (or as bad) as the software reference\nimplementation.\n2 If there\u0027s no single correct run, we\u0027d rather move this to \nmanual testing (by commenting out the ExtraAttr entries) or \nperhaps to once-a-week. But having these seldom-run tests is\nstill good because vendors will run them manually during bring\nups, giving us a chance to make sure the test e.g. doesn\u0027t cause\na crash (which would be worse than failing).\n3 There\u0027s an effort to have per-test-vector expectation, that way\nwe\u0027ll track test cases that started passing when expected to fail.\n\nIf you feel strongly I can try and extend the comment to reflect\nthese data points, let me know.",
+      "parentUuid": "15e8970f_f4ea55d2",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "3156bfbc5c4ad90bad7727b92984467e2859a854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
