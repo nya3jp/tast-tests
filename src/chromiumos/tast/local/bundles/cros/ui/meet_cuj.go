@@ -512,6 +512,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	fetchWindow := getWindowFetcher()
+	if _, err := fetchWindow(ctx, tconn); err != nil {
+		s.Fatal("Failed to find the WebRTC Internals window: ", err)
+	}
+
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Expand the Create Dump section of chrome://webrtc-internals. We will not need it
@@ -532,13 +537,18 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer meetConn.Close()
 
+	meetWindow, err := fetchWindow(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to find the Meet window: ", err)
+	}
+
 	closedMeet := false
 	defer func() {
 		if closedMeet {
 			return
 		}
 		// Close the Meet window to finish meeting.
-		if err := meetConn.CloseTarget(closeCtx); err != nil {
+		if err := meetWindow.CloseWindow(closeCtx, tconn); err != nil {
 			s.Error("Failed to close the meeting: ", err)
 		}
 	}()
@@ -634,24 +644,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the window list: ", err)
-	}
-	var meetWindow, collaborationWindow *ash.Window
-	re := regexp.MustCompile(`\bMeet\b`)
-	for _, w := range ws {
-		if re.MatchString(w.Title) {
-			meetWindow = w
-		} else if w.Title != "WebRTC Internals" {
-			collaborationWindow = w
-		}
-	}
-	// There should always be a Meet window.
-	if meetWindow == nil {
-		s.Fatal("Failed to find Meet window")
-	}
 	if meet.split {
+		collaborationWindow, err := fetchWindow(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to find the collaboration window: ", err)
+		}
+
 		if err := ash.SetWindowStateAndWait(ctx, tconn, collaborationWindow.ID, ash.WindowStateLeftSnapped); err != nil {
 			s.Fatal("Failed to snap the collaboration window to the left: ", err)
 		}
@@ -889,7 +887,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if hists, err := metrics.Run(ctx, bTconn, func(ctx context.Context) error {
 		// The histograms are recorded when video streams are removed.
 		closedMeet = true
-		if err := meetConn.CloseTarget(closeCtx); err != nil {
+		if err := meetWindow.CloseWindow(closeCtx, tconn); err != nil {
 			return errors.Wrap(err, "failed to close the meeting")
 		}
 		if err := webRTCUI.WaitUntilGone(videoStream)(ctx); err != nil {
@@ -969,6 +967,29 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
+	}
+}
+
+// getWindowFetcher returns a "window fetcher" function that can be called to
+// get each window after it is created. Each call to the window fetcher
+// function returns the window that did not exist on the previous call.
+func getWindowFetcher() func(context.Context, *chrome.TestConn) (*ash.Window, error) {
+	type void struct{}
+	idSet := make(map[int]void)
+	var setMembership void
+
+	isNewWindow := func(w *ash.Window) bool {
+		_, ok := idSet[w.ID]
+		return !ok
+	}
+	return func(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, error) {
+		w, err := ash.FindOnlyWindow(ctx, tconn, isNewWindow)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to find new window")
+		}
+
+		idSet[w.ID] = setMembership
+		return w, nil
 	}
 }
 
