@@ -27,6 +27,7 @@ import (
 const timeInSecondToLoadPage = 30
 const timeinSecondToEnableButton = 5
 const longTimeInSecondToEnableButton = 60
+const firmwareInstallationTime = 120 * time.Second
 
 // WaitForRebootStart indicates the time to wait before reboot starting.
 const WaitForRebootStart = 10 * time.Second
@@ -128,6 +129,10 @@ func (uiHelper *UIHelper) WriteProtectEnabledPageOperation(ctx context.Context) 
 
 // FirmwareInstallationPageOperation handles all operations on Firmware Installation Page.
 func (uiHelper *UIHelper) FirmwareInstallationPageOperation(ctx context.Context) error {
+	if err := uiHelper.FirmwareHelper.Servo.SetUSBMuxState(ctx, servo.USBMuxHost); err != nil {
+		return err
+	}
+
 	return action.Combine("Firmware Installation page operation",
 		uiHelper.waitForPageToLoad("Install firmware image", timeInSecondToLoadPage),
 		uiHelper.waitAndClickButton("Next", longTimeInSecondToEnableButton),
@@ -227,6 +232,16 @@ func (uiHelper *UIHelper) BypassFirmwareInstallation(ctx context.Context) error 
 	}
 
 	return uiHelper.Dut.Reboot(ctx)
+}
+
+// WaitForFirmwareInstallation will trigger and wait for firmware installation.
+func (uiHelper *UIHelper) WaitForFirmwareInstallation(ctx context.Context) error {
+	if err := uiHelper.FirmwareHelper.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "Sleeping %s to wait for firmware installation", firmwareInstallationTime)
+	return testing.Sleep(ctx, firmwareInstallationTime)
 }
 
 // SetupInitStatus setup initial status for shimless testing.
