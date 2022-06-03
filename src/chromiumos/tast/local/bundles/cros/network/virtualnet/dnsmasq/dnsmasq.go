@@ -10,6 +10,7 @@ package dnsmasq
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"html/template"
 	"net"
 	"os"
@@ -21,11 +22,12 @@ import (
 )
 
 const confTemplate = `
-port=0 # disable dns
+port={{.port}}
 interface={{.ifname}}
 dhcp-range={{.pool_start}},{{.pool_end}},{{.netmask}},12h
 dhcp-option=option:netmask,{{.netmask}}
 dhcp-option=option:router,{{.gateway}}
+address={{.address}}
 {{if .dns}}
 dhcp-option=option:dns-server,{{.dns}}
 {{end}}
@@ -37,20 +39,22 @@ const (
 	confPath      = "/tmp/dnsmasq.conf"
 	logPath       = "/tmp/dnsmasq.log"
 	leaseFilePath = "/tmp/dnsmasq.leases"
+	dnsPort       = "53"
 )
 
 type dnsmasq struct {
-	env    *env.Env
-	subnet *net.IPNet
-	dns    []string
-	cmd    *testexec.Cmd
+	env                   *env.Env
+	subnet                *net.IPNet
+	forceAddressToGateway string
+	dns                   []string
+	cmd                   *testexec.Cmd
 }
 
 // New creates a new dnsmasq object. Currently dnsmasq will only be used as a
 // DHCP server daemon. The returned object can be passed to Env.StartServer(),
 // its lifetime will be managed by the Env object.
-func New(subnet *net.IPNet, dns []string) *dnsmasq {
-	return &dnsmasq{subnet: subnet, dns: dns}
+func New(subnet *net.IPNet, dns []string, forceAddressToGateway string) *dnsmasq {
+	return &dnsmasq{subnet: subnet, dns: dns, forceAddressToGateway: forceAddressToGateway}
 }
 
 // Start starts the dnsmasq process.
@@ -76,9 +80,14 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 		"pool_end":   poolEnd.String(),
 		"netmask":    mask.String(),
 		"gateway":    gateway.String(),
+		"port":       "0", // disable DNS
 	}
 	if len(d.dns) > 0 {
 		confVals["dns"] = strings.Join(d.dns, ",")
+	}
+	if d.forceAddressToGateway != "" {
+		confVals["address"] = fmt.Sprintf("/%v/%v", d.forceAddressToGateway, gateway.String())
+		confVals["port"] = dnsPort // enable DNS if needed for address forwarding
 	}
 	b := &bytes.Buffer{}
 	template.Must(template.New("").Parse(confTemplate)).Execute(b, confVals)
