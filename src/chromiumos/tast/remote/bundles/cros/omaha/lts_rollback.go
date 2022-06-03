@@ -24,9 +24,10 @@ func init() {
 			"vsavu@chromium.org", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:    []string{"group:omaha"},
-		Fixture: fixture.Omaha,
-		Timeout: 30 * time.Second,
+		Attr:         []string{"group:omaha"},
+		SoftwareDeps: []string{"auto_update_stable"},
+		Fixture:      fixture.Omaha,
+		Timeout:      30 * time.Second,
 	})
 }
 
