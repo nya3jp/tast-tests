@@ -36,8 +36,8 @@ func init() {
 		Fixture:      fixture.TabletVK,
 		SearchFlags: []*testing.StringPair{
 			{
-				Key:   "IME",
-				Value: ime.EnglishUS.Name,
+				Key:   "ime",
+				Value: "english_us",
 			},
 		},
 		Timeout: 5 * time.Minute,
