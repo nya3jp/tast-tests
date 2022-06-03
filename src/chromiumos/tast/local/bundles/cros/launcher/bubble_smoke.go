@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -30,6 +31,8 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
+		// TODO(b/232996538): reenable on taniks when it passes.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("taniks")),
 		Fixture:      "chromeLoggedInWith100FakeAppsProductivityLauncher",
 	})
 }
