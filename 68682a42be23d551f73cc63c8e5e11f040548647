@@ -231,6 +231,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f4afb89_e8df0673",
+        "filename": "src/chromiumos/tast/local/perf/surfaceflinger_metrics_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-03T21:46:00Z",
+      "side": 1,
+      "message": "I\u0027ll do the latter option and change the name to `detectAndSetupSurfaceName`",
+      "parentUuid": "09dd179d_9e037235",
+      "revId": "68682a42be23d551f73cc63c8e5e11f040548647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a165664_56b99b2c",
