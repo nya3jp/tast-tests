@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d86139d_4bef3213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-03T06:47:02Z",
+      "side": 1,
+      "message": "looks stable on tastboard?\nDo you need to disable this?",
+      "revId": "61132b476c0ccbad5d008b0efb2f441bddc4d175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
