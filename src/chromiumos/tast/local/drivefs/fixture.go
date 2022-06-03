@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"path"
 	"strings"
 	"time"
 
@@ -182,7 +181,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		cliArgs := fmt.Sprintf("--features=%s", strings.Join(options, ","))
 
 		// The command_line_args file must be placed at ~/GCache/v2/[persistableToken].
-		persistableToken := getPersistableToken(f.mountPath)
+		persistableToken := PersistableToken(f.mountPath)
 		if len(persistableToken) == 0 {
 			s.Fatal("Failed to obtain the drive persistable token: ", f.mountPath)
 		}
@@ -190,7 +189,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		if err != nil {
 			s.Fatal("Failed to obtain home dir path: ", err)
 		}
-		if err := ioutil.WriteFile(getDriveFsConfigPath(homeDir, persistableToken, driveFsCommandLineArgsFileName), []byte(cliArgs), 0644); err != nil {
+		if err := ioutil.WriteFile(ConfigPath(homeDir, persistableToken, driveFsCommandLineArgsFileName), []byte(cliArgs), 0644); err != nil {
 			s.Fatal("Failed to write command line args: ", err)
 		}
 
@@ -258,7 +257,7 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 	f.APIClient = nil
 
 	if len(f.drivefsOptions) > 0 {
-		persistableToken := getPersistableToken(f.mountPath)
+		persistableToken := PersistableToken(f.mountPath)
 		if len(persistableToken) == 0 {
 			s.Fatal("Failed to obtain the drive persistable token from mount path: ", f.mountPath)
 		}
@@ -266,7 +265,7 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 		if err != nil {
 			s.Fatal("Failed to obtain home dir path: ", err)
 		}
-		if err := os.Remove(getDriveFsConfigPath(homeDir, persistableToken, driveFsCommandLineArgsFileName)); err != nil {
+		if err := os.Remove(ConfigPath(homeDir, persistableToken, driveFsCommandLineArgsFileName)); err != nil {
 			s.Fatal("Failed to remove command line args file: ", err)
 		}
 	}
@@ -298,17 +297,4 @@ func getRefreshTokenForAccount(account, refreshTokens string) (string, error) {
 		}
 	}
 	return "", errors.Errorf("failed to retrieve account token for %q", account)
-}
-
-// getPersistableToken derives the token from the mount path. This is used
-// to identify the user account directory under ~/GCache/v2.
-func getPersistableToken(mountPath string) string {
-	return strings.TrimPrefix(mountPath, "/media/fuse/drivefs-")
-}
-
-// getDriveFsConfigPath returns the path to `elem...` in the DriveFS
-// configuration directory based on the provided `homeDir` and
-// `persistableToken`.
-func getDriveFsConfigPath(homeDir, persistableToken string, elem ...string) string {
-	return path.Join(append([]string{homeDir, "GCache/v2", persistableToken}, elem...)...)
 }

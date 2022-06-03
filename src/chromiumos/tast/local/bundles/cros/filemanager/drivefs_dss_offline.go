@@ -70,6 +70,7 @@ func DrivefsDssOffline(ctx context.Context, s *testing.State) {
 	APIClient := s.FixtValue().(*drivefs.FixtureData).APIClient
 	cr := s.FixtValue().(*drivefs.FixtureData).Chrome
 	tconn := s.FixtValue().(*drivefs.FixtureData).TestAPIConn
+	mountPath := s.FixtValue().(*drivefs.FixtureData).MountPath
 
 	testDocFileName := fmt.Sprintf("doc-drivefs-%d-%d", time.Now().UnixNano(), rand.Intn(10000))
 
@@ -84,6 +85,7 @@ func DrivefsDssOffline(ctx context.Context, s *testing.State) {
 	}
 	defer APIClient.RemoveFileByID(cleanupCtx, file.Id)
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer drivefs.SaveDriveLogsOnError(ctx, s.HasError, cr.NormalizedUser(), mountPath)
 
 	if err := installRequiredExtensions(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to install the required extensions: ", err)
