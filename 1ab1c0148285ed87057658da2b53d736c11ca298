@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f5cee2_c530f817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1139659
+      },
+      "writtenOn": "2022-06-03T18:05:58Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll remember that next time. Thanks.",
+      "parentUuid": "800c4a43_fde7a0be",
+      "revId": "1ab1c0148285ed87057658da2b53d736c11ca298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd31278d_384f4ad4",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-03T07:24:02Z",
       "side": 1,
       "message": "added space here for screensaver, is this intended? UI changed?",
+      "revId": "1ab1c0148285ed87057658da2b53d736c11ca298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6532c22_196bd5c4",
+        "filename": "src/chromiumos/tast/local/ambient/ambient.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1139659
+      },
+      "writtenOn": "2022-06-03T18:05:58Z",
+      "side": 1,
+      "message": "Yeah. It\u0027s a recent change we\u0027ve been doing throughout the UI. We decided last minute to just add this into this CL since it\u0027s small.",
+      "parentUuid": "cd31278d_384f4ad4",
       "revId": "1ab1c0148285ed87057658da2b53d736c11ca298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
