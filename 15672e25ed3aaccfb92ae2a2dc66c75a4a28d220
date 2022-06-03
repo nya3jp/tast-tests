@@ -16,6 +16,24 @@
       "message": "This is probably not the latest stable version, right?",
       "revId": "15672e25ed3aaccfb92ae2a2dc66c75a4a28d220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b71809_b60259bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts_rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-03T06:59:57Z",
+      "side": 1,
+      "message": "It should be. But for this test it does not really matter, we just need to be newer than the latest LTS which is 2 milestones behind at least.",
+      "parentUuid": "14c8d7a7_6d01d75c",
+      "revId": "15672e25ed3aaccfb92ae2a2dc66c75a4a28d220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
