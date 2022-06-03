@@ -350,6 +350,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c73569ab_4cd471a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-06-03T07:01:29Z",
+      "side": 1,
+      "message": "Or, if you don\u0027t like putting a \"type runner\" at the top level (in the package scope), you can use an anonymous closure:\n\nhttps://go.dev/play/p/HnvosBBTKiX",
+      "parentUuid": "1a709585_2e86931a",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73078415_332808e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
