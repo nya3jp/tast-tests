@@ -126,7 +126,6 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("Add SMB file share",
 		files.ClickMoreMenuItem("Services", "SMB file share"),
 		ui.WaitForLocation(fileShareURLTextBox),
-		ui.LeftClick(fileShareURLTextBox),
 		keyboard.TypeAction(config.RemoteFileSystemURI),
 		ui.LeftClick(nodewith.Name("Add").HasClass("action-button")),
 		ui.WaitUntilGone(fileShareURLTextBox),
@@ -138,12 +137,7 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 		files.OpenPath("Files - "+config.Folder, config.Folder),
 		files.WaitForFile(config.File),
 		files.SelectFile(config.File),
-		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to interact with SMB mount: ", err)
-	}
-
-	if err := ui.WaitUntilExists(nodewith.Name("Chrome - " + config.File).Role(role.Window))(ctx); err != nil {
-		s.Fatal("File didn't open in time: ", err)
 	}
 }
