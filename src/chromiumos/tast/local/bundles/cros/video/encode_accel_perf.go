@@ -36,6 +36,8 @@ func init() {
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		// TODO(b/228379235): Reenable on MT8192, but without parallel encoders.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("asurada", "hayato", "spherion")),
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 10 * time.Minute,
 		Params: []testing.Param{{
