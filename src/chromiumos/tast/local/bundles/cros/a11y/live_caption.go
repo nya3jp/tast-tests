@@ -36,7 +36,7 @@ func init() {
 		},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "ondevice_speech"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Data: []string{
 			"live_caption.html",
 			"voice_en_hello.wav",
