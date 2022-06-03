@@ -139,7 +139,7 @@ func (e *Env) Cleanup(ctx context.Context) error {
 	// Delete veth pair.
 	if e.vethPair != nil {
 		if err := e.vethPair.Delete(ctx); err != nil {
-			updateLastErrAndLog(errors.Wrap(err, "failed to delete remove veth pair"))
+			updateLastErrAndLog(errors.Wrap(err, "failed to delete veth pair"))
 		}
 	}
 

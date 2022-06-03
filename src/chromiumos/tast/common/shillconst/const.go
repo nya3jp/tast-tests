@@ -128,6 +128,7 @@ const (
 	ServicePropertyAutoConnect       = "AutoConnect"
 	ServicePropertyGUID              = "GUID"
 	ServicePropertyProvider          = "Provider"
+	ServicePropertyPriority          = "Priority"
 	ServicePropertyEphemeralPriority = "EphemeralPriority"
 
 	// Cellular service property names.
