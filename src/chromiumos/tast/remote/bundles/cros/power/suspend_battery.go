@@ -71,8 +71,10 @@ func init() {
 
 				// dedede
 				"boten",
+				"gallop",
 				"lantis",
 				"madoo",
+				"maglia",
 				"magolor",
 				"metaknight",
 				"sasuke",
@@ -111,10 +113,12 @@ func init() {
 				// octopus
 				"apel",
 				"blooglet",
+				"blooguard",
 				"casta",
 				"garg360",
 				"grabbiter",
 				"laser14",
+				"mimrock",
 				"orbatrix",
 
 				// scarlet
@@ -129,6 +133,7 @@ func init() {
 				"collis",
 				"eldrid",
 				"elemi",
+				"lillipup",
 				"voema",
 				"volta",
 
