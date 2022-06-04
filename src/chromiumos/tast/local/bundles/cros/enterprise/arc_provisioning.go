@@ -109,7 +109,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	login := chrome.GAIALoginPool(s.RequiredVar(loginPoolVar))
 	packages := strings.Split(s.RequiredVar(packagesVar), ",")
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) (retErr error) {
 		// Log-in to Chrome and allow to launch ARC if allowed by user policy.
 		cr, err := chrome.New(
 			ctx,
@@ -142,12 +142,12 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 		defer a.Close(ctx)
 
-		if err := a.EnableVerboseLogging(ctx, "clouddpc", "Finsky", "Volley", "PlayCommon"); err != nil {
+		if err := enableVerboseLogging(ctx, a); err != nil {
 			return exit("enable verbose logging", err)
 		}
 
 		// Increase the logcat buffer size to 10MB.
-		if err := a.Command(ctx, "logcat", "-G", "10M").Run(testexec.DumpLogOnError); err != nil {
+		if err := increaseLogcatBufferSize(ctx, a); err != nil {
 			return exit("increase logcat buffer size", err)
 		}
 
@@ -162,10 +162,12 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 
 		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 60*time.Second)
+		ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 		defer cancel()
-		bugReportPath := filepath.Join(s.OutDir(), fmt.Sprintf("bugreport_%d.zip", attempts))
-		defer dumpBugReportOnError(cleanupCtx, s.HasError, a, bugReportPath)
+
+		defer dumpBugReportOnError(cleanupCtx, func() bool {
+			return s.HasError() || retErr != nil
+		}, a, filepath.Join(s.OutDir(), fmt.Sprintf("bugreport_%d.zip", attempts)))
 
 		// Note: if the user policy for the user is changed, the packages listed in
 		// credentials files must be updated.
@@ -189,6 +191,15 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}, nil); err != nil {
 		s.Fatal("Provisioning flow failed: ", err)
 	}
+}
+
+func enableVerboseLogging(ctx context.Context, a *arc.ARC) error {
+	verboseTags := []string{"clouddpc", "Finsky", "Volley", "PlayCommon"}
+	return a.EnableVerboseLogging(ctx, verboseTags...)
+}
+
+func increaseLogcatBufferSize(ctx context.Context, a *arc.ARC) error {
+	return a.Command(ctx, "logcat", "-G", "10M").Run(testexec.DumpLogOnError)
 }
 
 func waitForProvisioning(ctx context.Context, a *arc.ARC, attempt int) error {
