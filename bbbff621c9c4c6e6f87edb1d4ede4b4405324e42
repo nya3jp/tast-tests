@@ -141,6 +141,30 @@
       },
       "revId": "bbbff621c9c4c6e6f87edb1d4ede4b4405324e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087c1dd9_40cb38b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2022-06-04T00:56:48Z",
+      "side": 1,
+      "message": "That feels like a reasonable option. I\u0027ll look at the test binaries used in drm.go and change the troublesome error logs to warnings.",
+      "parentUuid": "995f829c_7a78f7fb",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 2
+      },
+      "revId": "bbbff621c9c4c6e6f87edb1d4ede4b4405324e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
