@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96b524b_3a2974fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-05T16:22:21Z",
+      "side": 1,
+      "message": "This is not representative of what shill does when doing captive portal detection.\n\nIf the inside of the network namespace plays the role of the captive portal appliance, here you are simulating an http server listening only inside that appliance with a local process running on that appliance and connecting to the local http server.",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 128
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d31182a_8de19d1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-05T16:22:21Z",
+      "side": 1,
+      "message": "Need to be updated ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc6c827_85a0e032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-05T16:22:21Z",
+      "side": 1,
+      "message": "I am not sure this is the correct setup to achieve here.\n\nThe http server running inside the network namespace created by the test should be listening on the veth interface connected to the one managed by shill on the other side. It should not listen on the localhost of that network namespace.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36546a5_3ae5eccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-05T16:22:21Z",
+      "side": 1,
+      "message": "Unless you are pairing this with additional DNAT rules, the server inside the test network namespace has to listen on the veth interface. Or at least it should listen on inaddr_any.",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
