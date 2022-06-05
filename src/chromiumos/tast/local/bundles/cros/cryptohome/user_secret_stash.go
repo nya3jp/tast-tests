@@ -66,7 +66,7 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 
 	// Enable the UserSecretStash experiment for the duration of the test by
 	// creating a flag file that's checked by cryptohomed.
-	cleanupUSSExperiment, err := helper.EnableUserSecretStash()
+	cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
 	if err != nil {
 		s.Fatal("Failed to enable the UserSecretStash experiment: ", err)
 	}
