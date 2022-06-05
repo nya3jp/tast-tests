@@ -240,7 +240,8 @@ func UnmountAllSmbMounts(ctx context.Context, cr *chrome.Chrome) error {
 							return;
 						}
 						resolve();
-					}));`, "smb:"+smbfsUniqueID,
+					})
+				});`, "smb:"+smbfsUniqueID,
 			); err != nil {
 				testing.ContextLogf(ctx, "Failed to unmount smb mountpoint %q: %v", smbfsUniqueID, err)
 				continue
