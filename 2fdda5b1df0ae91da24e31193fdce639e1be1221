@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b303461_e85d2d95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-06-05T23:37:21Z",
+      "side": 1,
+      "message": "Have you actually tried running the test?\nI\u0027m trying with your patch, but I\u0027m still seeing the errors... What am I missing here?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "2fdda5b1df0ae91da24e31193fdce639e1be1221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
