@@ -32,13 +32,37 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{
+			{
+				Name:    "normal",
+				Val:     false,
+				Fixture: "chromeLoggedIn",
+			},
+			{
+				Name: "rtl",
+				Val:  true,
+			},
+		},
 	})
 }
 
 // VerifyShelfAlignment verifies that changing the shelf alignment works as expected.
 func VerifyShelfAlignment(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	var cr *chrome.Chrome
+
+	// If true, the system UI is adapted to right-to-left languages.
+	isUnderRTL := s.Param().(bool)
+
+	if isUnderRTL {
+		var err error
+		cr, err = chrome.New(ctx, []chrome.Option{chrome.ExtraArgs("--force-ui-direction=rtl")}...)
+		if err != nil {
+			s.Fatal("Failed to start chrome with rtl: ", err)
+		}
+	} else {
+		cr = s.FixtValue().(*chrome.Chrome)
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
@@ -120,16 +144,27 @@ func VerifyShelfAlignment(ctx context.Context, s *testing.State) {
 	dispBounds := dispInfo.Bounds
 	const gapUpperBound = 20
 
-	// Check the distance between the home button and the screen left side.
-	if homeButtonBounds.Left-dispBounds.Left > gapUpperBound {
+	timeView := nodewith.ClassName("TimeTrayItemView")
+	timeViewBounds, err := ui.Location(ctx, timeView)
+
+	// Check the distance between the home button and the screen left side when isUnderRTL is false.
+	if !isUnderRTL && homeButtonBounds.Left-dispBounds.Left > gapUpperBound {
 		s.Fatalf("Expected the distance between homeButtonBounds.Left and dispBounds.Left is not greater than %q when the shelf alignment is ShelfAlignmentBottom; the actual gap is %q", gapUpperBound, homeButtonBounds.Left-dispBounds.Left)
 	}
 
-	// Check the distance between the time view and the screen right side.
-	timeView := nodewith.ClassName("TimeTrayItemView")
-	timeViewBounds, err := ui.Location(ctx, timeView)
-	if dispBounds.Right()-timeViewBounds.Right() > gapUpperBound {
+	// Check the distance between the home button and the screen right side when isUnderRTL is true.
+	if isUnderRTL && dispBounds.Right()-homeButtonBounds.Right() > gapUpperBound {
+		s.Fatalf("Expected the distance between dispBounds.Right() and homeButtonBounds.Right() under RTL is not greater than %q when the shelf alignment is ShelfAlignmentBottom; the actual gap is %q", gapUpperBound, dispBounds.Right()-homeButtonBounds.Right())
+	}
+
+	// Check the distance between the time view and the screen right side when isUnderRTL is false.
+	if !isUnderRTL && dispBounds.Right()-timeViewBounds.Right() > gapUpperBound {
 		s.Fatalf("Expected the distance between dispBounds.Right() and timeViewBounds.Right() is not greater than %q when the shelf alignment is ShelfAlignmentBottom; the actual gap is %q", gapUpperBound, dispBounds.Right()-timeViewBounds.Right())
+	}
+
+	// Check the distance between the time view and the screen left side when isUnderRTL is true.
+	if isUnderRTL && timeViewBounds.Left-dispBounds.Left > gapUpperBound {
+		s.Fatalf("Expected the distance between timeViewBounds.Left and dispBounds.Left is not greater than %q when the shelf alignment is ShelfAlignmentBottom; the actual gap is %q", gapUpperBound, timeViewBounds.Left-dispBounds.Left)
 	}
 
 	if err := ash.VerifyShelfAppAlignment(ctx, tconn, ash.ShelfAlignmentBottom); err != nil {
