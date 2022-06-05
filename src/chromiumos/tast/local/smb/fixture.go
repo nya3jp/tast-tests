@@ -233,19 +233,18 @@ func UnmountAllSmbMounts(ctx context.Context, cr *chrome.Chrome) error {
 		if info[i].Fstype == "fuse.smbfs" {
 			smbfsUniqueID := filepath.Base(info[i].MountPath)
 			if err := conn.Call(ctx, nil,
-				`(mount) => new Promise((resolve, reject) => {
+				`(mount) => new Promise((resolve, reject) =>
 					chrome.fileManagerPrivate.removeMount(mount, () => {
 						if (chrome.runtime.lastError) {
 							reject(chrome.runtime.lastError.message);
-							return;
+						} else {
+							resolve();
 						}
-						resolve();
-					}));`, "smb:"+smbfsUniqueID,
+					}))`, "smb:"+smbfsUniqueID,
 			); err != nil {
-				testing.ContextLogf(ctx, "Failed to unmount smb mountpoint %q: %v", smbfsUniqueID, err)
-				continue
+				return errors.Wrapf(err, "failed to unmount SMB mountpoint %q", smbfsUniqueID)
 			}
-			testing.ContextLog(ctx, "Unmounted smb mountpoint ", smbfsUniqueID)
+			testing.ContextLog(ctx, "Unmounted SMB mountpoint ", smbfsUniqueID)
 		}
 	}
 	return nil
