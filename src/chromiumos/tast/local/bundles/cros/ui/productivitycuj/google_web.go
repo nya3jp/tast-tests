@@ -77,8 +77,8 @@ func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
 }
 
 // CreateSpreadsheet creates a new spreadsheet by copying from sample spreadsheet.
-func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context, sampleSheetURL string) (string, error) {
-	conn, err := app.br.NewConn(ctx, sampleSheetURL+"/copy")
+func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context, cr *chrome.Chrome, sampleSheetURL, outDir string) (string, error) {
+	conn, err := app.cr.NewConn(ctx, sampleSheetURL+"/copy")
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to open URL: %s", sampleSheetURL)
 	}

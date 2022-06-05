@@ -93,7 +93,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 	if tier == cuj.Premium {
 		productivityTimeout = 130 * time.Second
 	}
-	sheetName, err := app.CreateSpreadsheet(ctx, sampleSheetURL)
+	sheetName, err := app.CreateSpreadsheet(ctx, cr, sampleSheetURL, outDir)
 	if err != nil {
 		return err
 	}

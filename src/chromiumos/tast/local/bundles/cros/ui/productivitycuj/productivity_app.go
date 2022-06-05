@@ -54,7 +54,7 @@ const (
 type ProductivityApp interface {
 	CreateDocument(ctx context.Context) error
 	CreateSlides(ctx context.Context) error
-	CreateSpreadsheet(ctx context.Context, sampleSheetURL string) (string, error)
+	CreateSpreadsheet(ctx context.Context, cr *chrome.Chrome, sampleSheetURL, outDir string) (string, error)
 	OpenSpreadsheet(ctx context.Context, filename string) error
 	MoveDataFromDocToSheet(ctx context.Context) error
 	MoveDataFromSheetToDoc(ctx context.Context) error
