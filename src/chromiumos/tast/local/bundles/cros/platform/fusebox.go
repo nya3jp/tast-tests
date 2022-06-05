@@ -36,13 +36,13 @@ func Fusebox(ctx context.Context, s *testing.State) {
 
 	cd, err := crosdisks.New(ctx)
 	if err != nil {
-		s.Fatal("Failed connecting to CrosDisks D-Bus service: ", err)
+		s.Fatal("Failed to connect to CrosDisks service: ", err)
 	}
 	defer cd.Close()
 
 	w, err := cd.WatchMountCompleted(ctx)
 	if err != nil {
-		s.Fatal("Failed to get MountCompleted event watcher: ", err)
+		s.Fatal("Failed to create MountCompleted event watcher: ", err)
 	}
 	defer w.Close(cleanupCtx)
 
@@ -55,18 +55,11 @@ func Fusebox(ctx context.Context, s *testing.State) {
 
 	m, err := w.Wait(ctx)
 	if err != nil {
-		s.Fatal("Failed awaiting MountCompleted event: ", err)
-	} else if m.SourcePath != source {
-		s.Fatal("Failed invalid mount source: ", m.SourcePath)
-	} else if m.MountPath != "/media/fuse/fusebox-alive-test" {
-		s.Fatal("Failed invalid mount point: ", m.MountPath)
-	} else {
-		s.Log("CrosDisks mounted ", m.MountPath)
+		s.Fatal("CrosDisks MountCompleted event failed: ", err)
 	}
 
 	// Test FUSE request: stat(2) fake file entry "hello".
 	hello := filepath.Join(m.MountPath, "hello")
-	s.Log("Stating fusebox file entry ", hello)
 	if _, err := os.Stat(hello); err != nil {
 		s.Fatal("Failed stat(2): ", err)
 	}
@@ -79,16 +72,14 @@ func Fusebox(ctx context.Context, s *testing.State) {
 	)
 	_, dbusObj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {
-		s.Fatal("Failed to connect to fusebox D-Bus: ", err)
+		s.Fatal("Failed to connect to fusebox service: ", err)
 	}
 
 	// Test D-Bus request: call fusebox daemon D-Bus method.
-	const method = dbusInterface + "." + "TestIsAlive"
-	s.Logf("Calling %s method", method)
+	const method = dbusInterface + ".TestIsAlive"
 	var result bool = false
-	if err := dbusObj.CallWithContext(ctx, method, 0).Store(&result); err != nil {
-		s.Fatal("Failed to call D-Bus method: ", err)
-	} else if !result {
-		s.Fatal("Failed D-Bus method returned false")
+	err = dbusObj.CallWithContext(ctx, method, 0).Store(&result)
+	if err != nil || !result {
+		s.Fatalf("TestIsAlive failed: %v error %v", err, result)
 	}
 }
