@@ -36,6 +36,8 @@ import (
 )
 
 const (
+	shortUITimeout = 3 * time.Second
+
 	tabSwitchTimeout = 2 * time.Minute
 	clickLinkTimeout = 1 * time.Minute
 
@@ -602,6 +604,7 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 		return errors.Wrap(err, "failed to find the Chrome app")
 	}
 
+	ui := uiauto.New(tconn)
 	for idx, window := range windows {
 		testing.ContextLogf(ctx, "Switching to window #%d", idx+1)
 		if err := tsAction.SwitchToAppWindowByIndex(chromeApp.Name, idx)(ctx); err != nil {
@@ -612,10 +615,21 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 		for tabIdx := 0; tabIdx < tabTotalNum; tabIdx++ {
 			testing.ContextLogf(ctx, "Switching tab to window %d, tab %d", idx+1, tabIdx+1)
 
+			tab := window.tabs[tabIdx]
+			if tab.pageInfo.webName == reddit || tab.pageInfo.webName == youtube {
+				notificationsDialog := nodewith.NameContaining("Show notifications").ClassName("RootView").Role(role.AlertDialog)
+				allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(notificationsDialog)
+				if err := uiauto.IfSuccessThen(
+					ui.WithTimeout(shortUITimeout).WaitUntilExists(notificationsDialog),
+					tsAction.Click(allowButton),
+				)(ctx); err != nil {
+					return errors.Wrap(err, "failed to close alert dialog")
+				}
+			}
+
 			if err := tsAction.SwitchToChromeTabByIndex(tabIdx)(ctx); err != nil {
 				return errors.Wrap(err, "failed to switch tab")
 			}
-			tab := window.tabs[tabIdx]
 
 			// Test the tab connection and reconnect if necessary. This is necessary for
 			// discarded tabs due to OOM issue.
