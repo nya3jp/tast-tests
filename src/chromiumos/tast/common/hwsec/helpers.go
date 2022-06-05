@@ -12,7 +12,6 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
@@ -434,12 +433,18 @@ func (h *CmdTPMClearHelper) EnsureTPMAndSystemStateAreReset(ctx context.Context)
 
 // EnableUserSecretStash enables the UserSecretStash experiment by creating a
 // flag file that's checked by cryptohomed.
-func (h *CmdTPMClearHelper) EnableUserSecretStash() (func() error, error) {
-	if err := os.MkdirAll(path.Dir(ussFlagFile), 0755); err != nil {
+func (h *CmdTPMClearHelper) EnableUserSecretStash(ctx context.Context) (func() error, error) {
+	// Run tmpfiles to restore the removed folders and permissions.
+	if _, err := h.cmdRunner.RunWithCombinedOutput(ctx, "mkdir", "-p", path.Dir(ussFlagFile)); err != nil {
 		return nil, errors.Wrap(err, "failed to create the UserSecretStash flag file directory")
 	}
-	if err := ioutil.WriteFile(ussFlagFile, []byte{}, 0644); err != nil {
+	if _, err := h.cmdRunner.RunWithCombinedOutput(ctx, "touch", ussFlagFile); err != nil {
 		return nil, errors.Wrap(err, "failed to write the UserSecretStash flag file")
 	}
-	return (func() error { return os.Remove(ussFlagFile) }), nil
+	return (func() error {
+		if _, err := h.cmdRunner.Run(ctx, "rm", ussFlagFile); err != nil {
+			return errors.Wrap(err, "failed to remove the UserSecretStash flag file")
+		}
+		return nil
+	}), nil
 }
