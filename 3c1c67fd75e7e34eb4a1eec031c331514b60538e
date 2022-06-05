@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd01e78_25d37463",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-06-05T21:29:58Z",
+      "side": 1,
+      "message": "You \"should not\" call os and ioutil in this package.\nBecause this package would be used in both remote and local tests.",
+      "range": {
+        "startLine": 438,
+        "startChar": 1,
+        "endLine": 443,
+        "endChar": 2
+      },
+      "revId": "3c1c67fd75e7e34eb4a1eec031c331514b60538e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
