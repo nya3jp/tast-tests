@@ -16,6 +16,24 @@
       "message": "Please run tast unit tests: fast_build.sh -T\nThen add\nTEST\u003dtast unit tests passed \n\nin commit log.\n\nThanks.\n",
       "revId": "c95bc54965b8f90654717d740a3d163ce15bc1e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719aa403_32d3c048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530527
+      },
+      "writtenOn": "2022-06-05T04:41:02Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3e55defc_d5325471",
+      "revId": "c95bc54965b8f90654717d740a3d163ce15bc1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
