@@ -11,6 +11,8 @@ import (
 	"math"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -24,6 +26,7 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/devtools"
 	"chromiumos/tast/local/media/logging"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )
 
@@ -49,9 +52,20 @@ const (
 	// The time to wait after CPU is stable so as to measure solid metric values.
 	measurementDuration = 25 * time.Second
 
+	// TraceConfigFile is the perfetto config file to profile the scheduler events.
+	TraceConfigFile = "perfetto_tbm_traced_probes.pbtxt"
+	// GPUThreadSchedSQLFile is the sql script to count the number of context
+	// switches and its waiting duration from the perfetto output.
+	GPUThreadSchedSQLFile = "gpu_thread_sched.sql"
+
 	// Video Element in the page to play a video.
 	videoElement = "document.getElementsByTagName('video')[0]"
 )
+
+type contextSwitchStat struct {
+	count       uint64
+	avgDuration time.Duration
+}
 
 // RunTest measures a number of performance metrics while playing a video with
 // or without hardware acceleration as per decoderType.
@@ -68,14 +82,14 @@ func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrom
 	defer crastestclient.Unmute(ctx)
 
 	s.Log("Starting playback")
-	if err = measurePerformance(ctx, cs, cr, s.DataFileSystem(), videoName, decoderType, gridWidth, gridHeight, perfTracing, measureRoughness, s.OutDir()); err != nil {
+	if err = measurePerformance(ctx, s, cs, cr, s.DataFileSystem(), videoName, decoderType, gridWidth, gridHeight, perfTracing, measureRoughness, s.OutDir()); err != nil {
 		s.Fatal("Playback test failed: ", err)
 	}
 }
 
 // measurePerformance collects video playback performance playing a video with
 // either SW or HW decoder.
-func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrome, fileSystem http.FileSystem, videoName string,
+func measurePerformance(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrome.Chrome, fileSystem http.FileSystem, videoName string,
 	decoderType DecoderType, gridWidth, gridHeight int, perfTracing, measureRoughness bool, outDir string) error {
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
@@ -156,9 +170,9 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 		return errors.Wrap(err, "failed to get initial histogram")
 	}
 
-	// TODO(b/233861295): Trace system events if perfTracing is true.
 	var roughness float64
-	var gpuErr, cStateErr, cpuErr, fdErr, dramErr, batErr, roughnessErr error
+	var gpuCSStat, gpuDecCSStat contextSwitchStat
+	var gpuErr, cStateErr, cpuErr, fdErr, dramErr, batErr, roughnessErr, traceErr error
 	var wg sync.WaitGroup
 	wg.Add(6)
 	go func() {
@@ -195,6 +209,14 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 			roughness, roughnessErr = devtools.GetVideoPlaybackRoughness(ctx, observer, url)
 		}()
 	}
+	if perfTracing {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			gpuCSStat, gpuDecCSStat, traceErr = measureContextSwitch(ctx, s)
+		}()
+	}
+
 	wg.Wait()
 	if gpuErr != nil {
 		return errors.Wrap(gpuErr, "failed to measure GPU counters")
@@ -217,6 +239,9 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 	if roughnessErr != nil {
 		return errors.Wrap(roughnessErr, "failed to measure playback roughness")
 	}
+	if traceErr != nil {
+		return errors.Wrap(traceErr, "failed to measure CPU sched events")
+	}
 
 	if err := graphics.UpdatePerfMetricFromHistogram(ctx, tconn, decodeHistogram, initDecodeHistogram, p, "video_decode_delay"); err != nil {
 		return errors.Wrap(err, "failed to calculate Decode perf metric")
@@ -237,6 +262,29 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 		}, float64(roughness))
 	}
 
+	if perfTracing {
+		p.Set(perf.Metric{
+			Name:      "context_switches_in_gpu_process_cnt",
+			Unit:      "count",
+			Direction: perf.SmallerIsBetter,
+		}, float64(gpuCSStat.count))
+		p.Set(perf.Metric{
+			Name:      "context_switches_in_gpu_process_avg_duration",
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+		}, float64(gpuCSStat.avgDuration.Milliseconds()))
+
+		p.Set(perf.Metric{
+			Name:      "context_switches_in_gpu_process_per_decoder_thread_cnt",
+			Unit:      "count",
+			Direction: perf.SmallerIsBetter,
+		}, float64(gpuDecCSStat.count))
+		p.Set(perf.Metric{
+			Name:      "context_switches_in_gpu_process_per_decoder_thread_avg_duration",
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+		}, float64(gpuDecCSStat.avgDuration.Milliseconds()))
+	}
 	if err := conn.Eval(ctx, videoElement+".pause()", nil); err != nil {
 		return errors.Wrap(err, "failed to stop video")
 	}
@@ -277,4 +325,85 @@ func sampleDroppedFrames(ctx context.Context, conn *chrome.Conn, p *perf.Values)
 	testing.ContextLogf(ctx, "Dropped frames: %d (%f%%)", droppedFrameCount, droppedFramePercent)
 
 	return nil
+}
+
+// measureContextSwitch measure the number of context switches in GPU process and its average waiting duration.
+// gpu represents the values of all the threads in GPU process.
+// gpuDec represents the values of hardware decoder threads.
+func measureContextSwitch(ctx context.Context, s *testing.State) (gpu, gpuDec contextSwitchStat, err error) {
+	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
+		return gpu, gpuDec, err
+	}
+
+	testing.ContextLog(ctx, "Tracing scheduler events")
+	// Record system events for |measurementDuration|.
+	sess, err := tracing.StartSession(ctx, s.DataPath(TraceConfigFile))
+	if err != nil {
+		return gpu, gpuDec, errors.Wrap(err, "failed to start tracing")
+	}
+	// Stop tracing even if context deadline exceeds during sleep.
+	stopped := false
+	defer func() {
+		if !stopped {
+			sess.Stop()
+		}
+	}()
+
+	if err := testing.Sleep(ctx, measurementDuration); err != nil {
+		return gpu, gpuDec, errors.Wrap(err, "failed to sleep to wait for the tracing session")
+	}
+	stopped = true
+	if err := sess.Stop(); err != nil {
+		return gpu, gpuDec, errors.Wrap(err, "failed to stop tracing")
+	}
+	defer sess.RemoveTraceResultFile()
+	testing.ContextLog(ctx, "Completed tracing events")
+
+	results, err := sess.RunQuery(ctx, s.DataPath(tracing.TraceProcessor()), s.DataPath(GPUThreadSchedSQLFile))
+	if err != nil {
+		return gpu, gpuDec, errors.Wrap(err, "failed in querying")
+	}
+
+	var switches, runnableCnt, sumRunnableDur uint64 = 0, 0, 0
+	var decThreadsSwitches, decThreadsRunnableCnt, decThreadsSumRunnableDur uint64 = 0, 0, 0
+	for _, res := range results[1:] { // Skip, the first line, "ts","dur","state","tid","name".
+		const (
+			tsIdx = iota
+			durIdx
+			stateIdx
+			tidIdx
+			nameIdx
+		)
+
+		thName := res[nameIdx]
+		isDecoderThread := strings.Contains(thName, "VDecThread")
+		switch res[stateIdx] {
+		case "Running":
+			switches++
+			if isDecoderThread {
+				decThreadsSwitches++
+			}
+		case "R": // Runnable
+			dur, err := strconv.Atoi(res[durIdx])
+			if err != nil {
+				return gpu, gpuDec, errors.Wrapf(err, "failed to convert to integer, %s", res[durIdx])
+			}
+			if dur == -1 {
+				// dur is -1 if tracing terminates while a thread is in the Runnable state.
+				continue
+			}
+			runnableCnt++
+			sumRunnableDur += uint64(dur)
+			if isDecoderThread {
+				decThreadsRunnableCnt++
+				decThreadsSumRunnableDur += uint64(dur)
+			}
+		}
+	}
+
+	gpu.count = switches
+	gpu.avgDuration = time.Duration(sumRunnableDur/runnableCnt) * time.Microsecond
+	gpuDec.count = decThreadsSwitches
+	gpuDec.avgDuration = time.Duration(decThreadsSumRunnableDur/decThreadsRunnableCnt) * time.Microsecond
+	return gpu, gpuDec, nil
 }
