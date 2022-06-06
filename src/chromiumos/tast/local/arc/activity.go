@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -759,7 +760,11 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
-	displaySize := coords.NewSize(dispMode.WidthInNativePixels, dispMode.WidthInNativePixels)
+	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display info")
+	}
+	displaySize := coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, dispMode.DeviceScaleFactor)
 	dsf := dispMode.DeviceScaleFactor
 	// After updating src, clamp it to valid display bounds.
 	src.X = int(math.Max(0, math.Min(float64(displaySize.Width-1), float64(src.X))))
