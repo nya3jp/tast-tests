@@ -33,6 +33,24 @@
       "message": "Thanks Tiago for the change. I have a few questions:\n1. We haven\u0027t enable the full restore support for Lacros yet, so can the test pass for Lacros?\n2. When we enable the full restore for Lacros, only when the Lacros is primary, the full restore function is valid. In the test, is Lacros primary checked?\n3. Will the test still verify the ash browser? As we haven\u0027t launch Lacros for the stable release yet, right?",
       "revId": "29cceb222a04da2dc1ee9488693390c402afad27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af417ae3_cb49fd4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-06-06T22:45:51Z",
+      "side": 1,
+      "message": "\u003e 1. We haven\u0027t enable the full restore support for Lacros yet, so can the test pass for Lacros?\n\nAFAIU full restore seems to be supported now, correct? See https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1109050#c27\n\n\n\u003e 2. When we enable the full restore for Lacros, only when the Lacros is primary, the full restore function is valid. In the test, is Lacros primary checked?\n\nyes, this CL uses Lacros primary (which is the default when choosing `lacrosfixt.NewConfig()`)\n\n\n\u003e 3. Will the test still verify the ash browser? As we haven\u0027t launch Lacros for the stable release yet, right?\n\nyes, Ash chrome will still be the default option in this test (launched using `tast run device apps.FullRestoreAlwaysRestore`)",
+      "parentUuid": "a05c3a0e_6244b416",
+      "revId": "29cceb222a04da2dc1ee9488693390c402afad27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

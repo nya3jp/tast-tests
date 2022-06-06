@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59908ac8_9b0d3471",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-06-06T22:45:51Z",
+      "side": 1,
+      "message": "Hidehiko PTAL.\n\nMy main motivation for this chain is to actually get FullRestoreAlwaysRestore modified in a way that it could be run through a iteration loop, as described in the third CL here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3692047/\n\nAs described in that CL, this has been very useful for me to understand whether the restore feature actually is working in a given Ash Chrome and Lacros combination. That said, I\u0027m not entire sure whether it\u0027s your intention to have this functionality implemented within FullRestoreAlwaysRestore (or even inside Tast!).\n\nAnyhow. Let me know please if this is sensible enough or guide me otherwise please. \n\nThank you very much again!",
+      "revId": "39b66fafcca3fe666fa61eba7f4fd6f86284843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
