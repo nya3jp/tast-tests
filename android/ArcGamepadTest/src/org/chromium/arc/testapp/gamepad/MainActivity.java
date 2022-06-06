@@ -44,6 +44,7 @@ public class MainActivity extends Activity implements InputManager.InputDeviceLi
     private final String KEY_RESOLUTION = "resolution";
     private final String KEY_SOURCE = "source";
     private final String KEY_VENDOR_ID = "vendor_id";
+    private final String KEY_SUPPORTED_KEY_CODES = "supported_key_codes";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -164,6 +165,22 @@ public class MainActivity extends Activity implements InputManager.InputDeviceLi
                     rangesObj.put(MotionEvent.axisToString(motionRange.getAxis()), rangeObj);
                 }
                 deviceObj.put(KEY_MOTION_RANGES, rangesObj);
+
+                JSONObject supportedKeyCodesObj = new JSONObject();
+                int[] keyCodes = {
+                    KeyEvent.KEYCODE_BUTTON_A,
+                    KeyEvent.KEYCODE_BUTTON_B,
+                    KeyEvent.KEYCODE_BUTTON_START,
+                    KeyEvent.KEYCODE_BUTTON_SELECT,
+                    KeyEvent.KEYCODE_BUTTON_MODE,
+                    KeyEvent.KEYCODE_A,
+                    KeyEvent.KEYCODE_B
+                };
+                boolean[] supportedKeyCodes = device.hasKeys(keyCodes);
+                for (int i = 0; i < keyCodes.length; i++) {
+                    supportedKeyCodesObj.put(String.valueOf(keyCodes[i]), supportedKeyCodes[i]);
+                }
+                deviceObj.put(KEY_SUPPORTED_KEY_CODES, supportedKeyCodesObj);
 
                 result.put(deviceObj);
             }
