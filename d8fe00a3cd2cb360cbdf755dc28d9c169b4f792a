@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5aaaabe_fd7ede04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-06-06T22:10:25Z",
+      "side": 1,
+      "message": "LGTM%nit",
+      "revId": "d8fe00a3cd2cb360cbdf755dc28d9c169b4f792a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "455049ef_994837c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-06-06T22:10:25Z",
+      "side": 1,
+      "message": "could we move this to line 146? This would let us group the RTL non RTL tests.\n\n\ttimeView :\u003d nodewith.ClassName(\"TimeTrayItemView\")\n\ttimeViewBounds, err :\u003d ui.Location(ctx, timeView)\n\t\n\tif isUnderRTL {\n\t// Verify left right bounds when RTL is true.\n        } else {\n        // verify left right bounds when RTL is false.\n        }",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "d8fe00a3cd2cb360cbdf755dc28d9c169b4f792a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
