@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3633d248_a2606569",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-06T04:19:13Z",
+      "side": 1,
+      "message": "Remove ending period in the commit subject:\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "revId": "77837407294f926194872e8f5b20aa31b3194380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49d30af_1fb0242f",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-06T04:19:13Z",
+      "side": 1,
+      "message": "How about extracting the path from ussFlagFile const or having a ussFlagFileDir const?",
+      "range": {
+        "startLine": 437,
+        "startChar": 69,
+        "endLine": 437,
+        "endChar": 88
+      },
+      "revId": "77837407294f926194872e8f5b20aa31b3194380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
