@@ -16,6 +16,24 @@
       "message": "I am not sure if the previous flakes on betty board have been fixed (i.e., https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3673488), or if it is related. Just want to bring it up here.",
       "revId": "93cf2fe44e4e154c7975e3d09c03a174b6cae532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ed5b3f_cf2c6650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-06-06T23:50:10Z",
+      "side": 1,
+      "message": "Good point. To me that test failed for the specific issue (http://crbug.com/1327798) that has now been fixed. I don\u0027t feel this CL would be affected by that. I will keep my eye out after submitting until it gets stable in CQ. Ty!",
+      "parentUuid": "710f4cc1_be0f9619",
+      "revId": "93cf2fe44e4e154c7975e3d09c03a174b6cae532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
