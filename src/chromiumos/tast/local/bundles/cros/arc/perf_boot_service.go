@@ -90,5 +90,13 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 		return nil, errors.Wrap(err, "failed to collect memory metrics")
 	}
 
+	kills, err := arc.GetAppKills(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get app kills")
+	}
+	// We don't need to subtract a baseline kill count because the count is from
+	// boot, and we just rebooted.
+	kills.LogPerfMetrics(result, "")
+
 	return result.Proto(), nil
 }
