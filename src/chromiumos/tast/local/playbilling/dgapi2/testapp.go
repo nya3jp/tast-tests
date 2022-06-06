@@ -48,6 +48,7 @@ type skuDetails struct {
 	Price             price  `json:"price"`
 	IntroductoryPrice price  `json:"introductoryPrice"`
 	PurchaseType      string `json:"purchaseType"`
+	Status            string `json:"status"`
 }
 
 // NewTestAppDgapi2 returns a reference to a new DGAPI2 Test App.
@@ -208,7 +209,7 @@ func (ta *TestAppDgapi2) verifyLogs(ctx context.Context, verifyFn func(logs []st
 }
 
 func isItemValid(r skuDetails) bool {
-	return r.ItemID != "" && r.Title != "" && r.Price.Currency != "" && r.Price.Value != ""
+	return r.Status != "" || (r.ItemID != "" && r.Title != "" && r.Price.Currency != "" && r.Price.Value != "")
 }
 
 func all(vs []skuDetails, f func(skuDetails) bool) bool {
@@ -223,21 +224,28 @@ func all(vs []skuDetails, f func(skuDetails) bool) bool {
 // VerifyDetailsLogs verifies logs contain expected getDetails response.
 func (ta *TestAppDgapi2) VerifyDetailsLogs(ctx context.Context) error {
 	return ta.verifyLogs(ctx, func(logs []string) error {
-		foundEntry := ""
-		getDetailsPrefix := "getDetails returned "
+		foundStart := false
+		var skuEntries []string
+		getDetailsPrefix := "getDetails returned:"
 		for _, v := range logs {
-			if strings.HasPrefix(v, getDetailsPrefix) {
-				foundEntry = v
+			if !foundStart && strings.HasPrefix(v, getDetailsPrefix) {
+				foundStart = true
+				continue
+			}
+			if foundStart && !strings.HasPrefix(v, "{") {
 				break
+			}
+			if foundStart {
+				skuEntries = append(skuEntries, v)
 			}
 		}
 
-		if foundEntry == "" {
-			return errors.Errorf(`failed to find a log entry starting with %q, received: %q`, getDetailsPrefix, logs)
+		if len(skuEntries) == 0 {
+			return errors.Errorf(`failed to find a log entries starting with %q, received: %q`, getDetailsPrefix, logs)
 		}
 
 		var detailsResult []skuDetails
-		if err := json.Unmarshal([]byte(strings.Trim(foundEntry, getDetailsPrefix)), &detailsResult); err != nil {
+		if err := json.Unmarshal([]byte(fmt.Sprintf("[%s]", strings.Join(skuEntries, ","))), &detailsResult); err != nil {
 			return errors.Wrap(err, "unable to parse json")
 		}
 
