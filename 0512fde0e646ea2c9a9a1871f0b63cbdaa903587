@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d48b20_10f91696",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-06-06T23:53:09Z",
+      "side": 1,
+      "message": "I needed to come up with a reasonable attempt number :) .\nI guess, I can put it as \"2\" to make a one off retry. As this issue doesn\u0027t happen that often, even a single retry will make a big difference.",
+      "parentUuid": "0bc459cb_f50bb1f3",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "0512fde0e646ea2c9a9a1871f0b63cbdaa903587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92c240b2_ab398ec2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-06T23:35:10Z",
       "side": 1,
       "message": "nit: if err :\u003d ...; err!\u003dnil {}",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "0512fde0e646ea2c9a9a1871f0b63cbdaa903587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ac8087_cae19520",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-06-06T23:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92c240b2_ab398ec2",
       "range": {
         "startLine": 46,
         "startChar": 1,
