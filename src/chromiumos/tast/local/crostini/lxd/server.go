@@ -19,7 +19,9 @@ import (
 	"path"
 	"runtime"
 	"strings"
+	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -38,11 +40,17 @@ type Server struct {
 }
 
 // getIPAddress finds the externally visible IP address of localhost.
-func getIPAddress() (net.IP, error) {
-	// Note: we never actually send anything over this connection, the
-	// destination address is irrelevant as long as it is on the external network.
-	connection, err := net.Dial("udp", "8.8.8.8:80")
-	if err != nil {
+func getIPAddress(ctx context.Context) (net.IP, error) {
+	maxRetries := 2
+	var connection net.Conn
+
+	if err := action.Retry(maxRetries, func(context.Context) error {
+		// Note: we never actually send anything over this connection, the
+		// destination address is irrelevant as long as it is on the external network.
+		c, err := net.Dial("udp", "8.8.8.8:80")
+		connection = c
+		return err
+	}, time.Second)(ctx); err != nil {
 		return nil, err
 	}
 	defer connection.Close()
@@ -280,7 +288,7 @@ func (s *Server) ListenAndServe(ctx context.Context) (string, error) {
 
 	// We use the port that Cicerone opens between the vm and host for gRPC.  We may need more
 	// logic here if this stops working in the future.
-	ip, err := getIPAddress()
+	ip, err := getIPAddress(ctx)
 	if err != nil {
 		return "", err
 	}
