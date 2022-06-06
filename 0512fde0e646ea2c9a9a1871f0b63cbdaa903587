@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc459cb_f50bb1f3",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-06T23:35:10Z",
+      "side": 1,
+      "message": "why 4? you may need to comment the justification.",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "0512fde0e646ea2c9a9a1871f0b63cbdaa903587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c240b2_ab398ec2",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-06T23:35:10Z",
+      "side": 1,
+      "message": "nit: if err :\u003d ...; err!\u003dnil {}",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "0512fde0e646ea2c9a9a1871f0b63cbdaa903587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
