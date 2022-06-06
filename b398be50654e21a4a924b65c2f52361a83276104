@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62462a05_53f7241e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-06T02:31:47Z",
+      "side": 1,
+      "message": "If the http request is done with a localhost connection in the test namespace, there shouldn\u0027t be any dependency on the shill state back into the host namespace.\n\n\u003e The curl command fails if the sleep is not here\n\nWhat is the exact failure message / failure code ?\n\n\u003e My assumption is the curl command starts before the http server goes online.\n\t\nAgreed that a first glance this looks like a race condition within the context of the test setup itself. BVut as Jie suggested we would prefer to resolve that with some sort of notification, or we need to poll multiple times, because a single sleep statement might still be not enough some % of the time.",
+      "parentUuid": "31fa2b6d_c228ea88",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a96b524b_3a2974fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 3
