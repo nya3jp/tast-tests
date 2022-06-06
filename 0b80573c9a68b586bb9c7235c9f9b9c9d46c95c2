@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44951e4_7f8e1dde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-06-06T22:33:33Z",
+      "side": 1,
+      "message": "Resuming this work back again...\n\n\u003e I mean will full restore run on both Ash Chrome and Lacros? Or on Lacros only? Or on Ash Chrome only?\n\nYes, full restore will be run independently on either Ash chrome or Lacros after the first two CLs on this chain gets applied. One would be able to use, respectively, `tast run device apps.FullRestoreAlwaysRestore` or `tast run device apps.FullRestoreAlwaysRestore.lacros`.\n\nI just uploaded an updated version of the CL. PTAL and thanks for reviewing, Nancy!",
+      "parentUuid": "71740b7f_26c775df",
+      "revId": "0b80573c9a68b586bb9c7235c9f9b9c9d46c95c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad227838_0b16e93e",
