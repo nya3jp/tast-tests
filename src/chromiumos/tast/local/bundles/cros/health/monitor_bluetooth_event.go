@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -52,6 +53,16 @@ func MonitorBluetoothEvent(ctx context.Context, s *testing.State) {
 
 	if err := monitorCmd.Start(); err != nil {
 		s.Fatal("Failed to run healthd monitor command: ", err)
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		stdout := string(stdoutBuf.Bytes())
+		if !strings.Contains(stdout, "Subscribe to bluetooth events successfully") {
+			return errors.Errorf("failed to subscirbe Bluetooth event, stdout: %s", stdout)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 200 * time.Millisecond, Timeout: 1 * time.Second}); err != nil {
+		s.Fatal("Failed to subscirbe event in healthd: ", err)
 	}
 
 	// Trigger Bluetooth event.
