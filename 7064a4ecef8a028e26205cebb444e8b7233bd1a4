@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93216478_82ea8b2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-06T23:22:40Z",
+      "side": 1,
+      "message": "Never mind, there\u0027s no way to identify which marker color has focus. Here\u0027s what the UI tree looks like, while the actual UI looks like this [1]:\n\n1. node id\u003d1709 role\u003dbutton state\u003d{\"focusable\":true} parentID\u003d1730 childIds\u003d[] name\u003dMagenta className\u003dToggleImageButton\n2. node id\u003d1711 role\u003dbutton state\u003d{\"focusable\":true} parentID\u003d1730 childIds\u003d[] name\u003dBlue className\u003dToggleImageButton\n3. node id\u003d1713 role\u003dbutton state\u003d{\"focusable\":true} parentID\u003d1730 childIds\u003d[] name\u003dYellow className\u003dToggleImageButton\n4. node id\u003d1715 role\u003dbutton state\u003d{\"focusable\":true} parentID\u003d1730 childIds\u003d[] name\u003dRed className\u003dToggleImageButton\n\nNotice how the different color markers are indistinguishable from each other except by name. I assumed the blue marker would have the state\u003d{\"focused\":true} tag but I guess the blue marker isn\u0027t truly focused like a text box would be with the cursor flashing in it or a button if you tab onto it. Here\u0027s what the \"real\" focus ring looks like [2]. Therefore, it\u0027s impossible to determine which color is selected by default initially when you launch the annotator through Tast. I would recommend adding coverage for this test case through unit or browser tests instead.\n\n[1] https://screenshot.googleplex.com/5puQPpRtD4GYFcP.png\n[2] https://screenshot.googleplex.com/9wGeQ3DNFcgM79G.png",
+      "parentUuid": "b4b46eea_97e20780",
+      "revId": "7064a4ecef8a028e26205cebb444e8b7233bd1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "948747f1_de95260f",
