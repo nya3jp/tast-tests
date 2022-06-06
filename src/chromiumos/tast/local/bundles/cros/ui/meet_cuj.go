@@ -158,8 +158,8 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Even bigger meeting.
-			Name:    "49p",
-			Timeout: defaultTestTimeout,
+			Name:      "49p",
+			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
@@ -358,6 +358,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
+	var br *browser.Browser
 	switch meet.browserType {
 	case browser.TypeLacros:
 		// Launch lacros.
@@ -371,9 +372,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
 			s.Fatal("Failed to get lacros TestAPIConn: ", err)
 		}
+		br = l.Browser()
 	case browser.TypeAsh:
 		cs = cr
 		bTconn = tconn
+		br = cr.Browser()
 	}
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
@@ -467,7 +470,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(bTconn, configs...); err != nil {
+	if err := recorder.AddCollectedMetrics(br, configs...); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 

@@ -32,11 +32,17 @@ const (
 // Browser consists of just a Chrome session.
 type Browser struct {
 	sess *driver.Session
+	t    Type
+}
+
+// Type returns the browser type.
+func (b *Browser) Type() Type {
+	return b.t
 }
 
 // New creates a new Browser instance from an existing Chrome session.
-func New(sess *driver.Session) *Browser {
-	return &Browser{sess}
+func New(sess *driver.Session, t Type) *Browser {
+	return &Browser{sess, t}
 }
 
 // CreateTargetOption is cpdutil.CreateTargetOption.

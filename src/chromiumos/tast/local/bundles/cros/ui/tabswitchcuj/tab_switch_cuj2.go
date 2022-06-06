@@ -487,13 +487,8 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}
 	s.Log("Browser start ms: ", browserStartTime)
 	br := cr.Browser()
-	var bTconn *chrome.TestConn
 	if l != nil {
 		br = l.Browser()
-		bTconn, err = l.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to get lacros test API Conn: ", err)
-		}
 	}
 	defer func(ctx context.Context) {
 		// To make debug easier, if something goes wrong, take screenshot before tabs are closed.
@@ -537,7 +532,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 		s.Fatal("Failed to create a recorder, error: ", err)
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(cr.Browser(), br, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 

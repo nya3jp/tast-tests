@@ -103,17 +103,13 @@ func waitUntilAllTabsLoaded(ctx context.Context, tconn *chrome.TestConn, timeout
 func Run(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
+	var br *browser.Browser
 
 	param := s.Param().(TabSwitchParam)
 	if param.BrowserType == browser.TypeAsh {
 		cr = s.PreValue().(*chrome.Chrome)
 		cs = cr
-
-		var err error
-		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get TestAPIConn: ", err)
-		}
+		br = cr.Browser()
 	} else {
 		var l *lacros.Lacros
 		var err error
@@ -122,10 +118,7 @@ func Run(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to initialize test: ", err)
 		}
 		defer lacros.CloseLacros(ctx, l)
-
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get lacros TestAPIConn: ", err)
-		}
+		br = l.Browser()
 	}
 
 	// Shorten context a bit to allow for cleanup.
@@ -161,7 +154,7 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(bTconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(br, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 
