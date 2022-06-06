@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72fb40b8_3d64da04",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e45b1db_4ceb9368",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 17
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3db61b1d_4fb0151e",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-25T23:56:01Z",
       "side": 1,
       "message": "here as well",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 16
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e142a9a_0cb596a0",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3db61b1d_4fb0151e",
       "range": {
         "startLine": 339,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e07d2a_faf9ed52",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "530ef6dc_e7e611ae",
+      "range": {
+        "startLine": 849,
+        "startChar": 117,
+        "endLine": 849,
+        "endChar": 132
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "264e173e_25dffe4c",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-05-25T23:56:01Z",
       "side": 1,
       "message": "this is not needed for the challenge credential. --action-add_credentials without anything public_mount should be ok.",
+      "range": {
+        "startLine": 883,
+        "startChar": 125,
+        "endLine": 883,
+        "endChar": 141
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b91dc7_15c53bb9",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "264e173e_25dffe4c",
       "range": {
         "startLine": 883,
         "startChar": 125,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a954e95_f1440632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "549d307c_e5b912b6",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18256bfa_ef4152a5",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-05-25T23:56:01Z",
       "side": 1,
       "message": "please add comment /*parameter*/?",
+      "range": {
+        "startLine": 111,
+        "startChar": 82,
+        "endLine": 111,
+        "endChar": 87
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4117ea1_0503d3d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18256bfa_ef4152a5",
       "range": {
         "startLine": 111,
         "startChar": 82,
@@ -202,6 +346,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c77482_2b9401dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c693be_7a2a076c",
+      "range": {
+        "startLine": 114,
+        "startChar": 88,
+        "endLine": 114,
+        "endChar": 93
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "055f02e2_470305a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done - Removed, ctxForCleanUp artifact of old AuthSession test.",
+      "parentUuid": "8dc74538_edab1bea",
+      "range": {
+        "startLine": 114,
+        "startChar": 63,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06b1fc81_9120eee5",
@@ -215,6 +407,30 @@
       "writtenOn": "2022-05-25T23:56:01Z",
       "side": 1,
       "message": "PreparePersistantVault should go before AddCredentials (the order for the first user should be 1-start_auth_session, 2-create_persistant_vault 3-create_persistant_user(first user accepted as authenticate) 4-add_credentials )",
+      "range": {
+        "startLine": 123,
+        "startChar": 18,
+        "endLine": 123,
+        "endChar": 40
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "625be90c_ed689d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "I made most of the changes recommended, but through manual work and looking at existing test I\u0027m fairly sure the order is 1)start_auth_session 2)create_persistant_user 3)create_persistant_vault 4)add_credentials. Let me know if this is an issue",
+      "parentUuid": "06b1fc81_9120eee5",
       "range": {
         "startLine": 123,
         "startChar": 18,
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4e4debc_29719b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7652b681_c9a5900e",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7db6ec24_70bf0504",
@@ -261,6 +501,24 @@
       "writtenOn": "2022-05-26T06:59:36Z",
       "side": 1,
       "message": "nit: unused code, delete?",
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd783ba_06ac9a96",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db6ec24_70bf0504",
       "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -288,6 +546,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dddb1f85_7248bb17",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "I would like to keep this behavior general as this is intended to be used for future tast-tests, I think keeping it in the shared cryptohome go package would be fine. Feel free to chat offline if you have any questions.",
+      "parentUuid": "441dc8a2_c307470f",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 59
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a216c483_e95bef18",
@@ -301,6 +583,30 @@
       "writtenOn": "2022-05-25T23:56:01Z",
       "side": 1,
       "message": "dont forget to cleanup:\ndefer cryptohome.RemoveVault(ctxForCleanUp, userName)",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 2
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "620ff315_6f8a131e",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-06T17:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a216c483_e95bef18",
       "range": {
         "startLine": 467,
         "startChar": 0,
