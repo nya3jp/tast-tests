@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac4db88_92762f94",
+        "filename": "src/chromiumos/tast/local/arc/apputil/audio_player.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "edf67410_3a7e3381",
+      "range": {
+        "startLine": 14,
+        "startChar": 66,
+        "endLine": 14,
+        "endChar": 70
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74a6bf5a_3ef76786",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-02T23:07:47Z",
       "side": 1,
       "message": "Not",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e95987_1b09ecec",
+        "filename": "src/chromiumos/tast/local/arc/apputil/audio_player.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "74a6bf5a_3ef76786",
       "range": {
         "startLine": 30,
         "startChar": 3,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33091a3_92a10a06",
+        "filename": "src/chromiumos/tast/local/arc/apputil/audio_player.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ee022732_3be4ba6f",
+      "range": {
+        "startLine": 34,
+        "startChar": 20,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e4e064_c24ccd82",
+        "filename": "src/chromiumos/tast/local/arc/apputil/audio_player.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "3f52b224_6d8d864c",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1e441fb_379988a3",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-06-02T23:07:47Z",
       "side": 1,
       "message": "Artist",
+      "range": {
+        "startLine": 36,
+        "startChar": 20,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f179399_ba8e58a4",
+        "filename": "src/chromiumos/tast/local/arc/apputil/audio_player.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "b1e441fb_379988a3",
       "range": {
         "startLine": 36,
         "startChar": 20,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce6c4f8_f9b76032",
+        "filename": "src/chromiumos/tast/local/arc/apputil/spotify/spotify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "0e3d3219_520afeb6",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d792689e_609e4687",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-06-02T23:07:47Z",
       "side": 1,
       "message": "This wrapper looks weird. You can always use `\u0026apputil.Audio{Album: album, Artist: artist}` whenever you use `spotify.Song(album, artist)`.\n\nTogether with `youtubemusic.Song(query, subtitle)`, these two are very confusing and not clear from the following example that you are in fact using different fields:\n```\nsong \u003d youtubemusic.Song(\"Blank Space\", \"Taylor Swift • 3:51\")\nsong \u003d spotify.Song(\"Photograph\", \"Song • Ed Sheeran\")\n```\n\nOr, you can attach a `New` func to `apputil.Audio`, and use `apputil.Audio.New(\"\",\"\",album, artist)` for spotify and `apputil.Audio.New(query,subtitle,\"\", \"\")` fpr yt.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1acd7ddc_747a0f96",
+        "filename": "src/chromiumos/tast/local/arc/apputil/spotify/spotify.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Done.\n\nWe removed some fields in apputil.Audio, it should be less confusing now.",
+      "parentUuid": "d792689e_609e4687",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "894ff210_a1a0697f",
+        "filename": "src/chromiumos/tast/local/arc/apputil/youtubemusic/youtubemusic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58919b5b_3bc68991",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e60aaf2_ab739e45",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-06-02T23:07:47Z",
       "side": 1,
       "message": "this is used frequently, could you make is a field in `YouTubeMusic`? So you can simply use `yt.player`",
+      "range": {
+        "startLine": 105,
+        "startChar": 32,
+        "endLine": 105,
+        "endChar": 62
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861a96a9_55047bbf",
+        "filename": "src/chromiumos/tast/local/arc/apputil/youtubemusic/youtubemusic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e60aaf2_ab739e45",
       "range": {
         "startLine": 105,
         "startChar": 32,
@@ -233,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c93a1187_24e64f5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_apps_playing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Thanks, we are currently confirming this, will update ASAP.",
+      "parentUuid": "7e0dbc41_967054e6",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8951bb0_a88c5bb2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_apps_playing.go",
         "patchSetId": 3
@@ -244,6 +484,30 @@
       "writtenOn": "2022-06-02T23:07:47Z",
       "side": 1,
       "message": "this is already the end of the function, what is the point of using `defer`?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de3793c_a6bc7e0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_apps_playing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:09:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8951bb0_a88c5bb2",
       "range": {
         "startLine": 110,
         "startChar": 1,
