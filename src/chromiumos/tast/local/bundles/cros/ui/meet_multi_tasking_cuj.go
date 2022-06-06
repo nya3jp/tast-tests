@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -28,7 +29,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -39,7 +39,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the total performance of multi-tasking with video conferencing CUJ",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
-		Attr:         []string{"group:cuj"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      10 * time.Minute,
@@ -116,7 +116,10 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		defer lacros.CloseLacros(closeCtx, l)
 	case browser.TypeAsh:
 		cs = cr
-		bTconn = tconn
+		var err error
+		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get TestAPIConn: ", err)
+		}
 	default:
 		s.Fatal("Unrecognized browser type: ", bt)
 	}
@@ -192,15 +195,9 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 	// Add 30 seconds to the bot duration to make sure that bots do not leave
 	// slightly earlier than the test scenario.
-	if _, _, err := bc.AddBots(sctx, meetingCode, 1, meetTimeout+30*time.Second); err != nil {
-		s.Fatal("Failed to create 1 bot: ", err)
+	if _, err := bc.AddBots(sctx, meetingCode, 1, meetTimeout+30*time.Second); err != nil {
+		s.Fatal("Failed to create bots: ", err)
 	}
-	defer func(ctx context.Context) {
-		s.Log("Removing all bots from the call")
-		if _, _, err := bc.RemoveAllBots(ctx, meetingCode); err != nil {
-			s.Fatal("Failed to remove all bots: ", err)
-		}
-	}(closeCtx)
 
 	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, browser.WithNewWindow())
 	if err != nil {
@@ -212,8 +209,8 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 	// Lacros specific setup.
 	if bt == browser.TypeLacros {
-		if err := l.Browser().CloseWithURL(ctx, chrome.NewTabURL); err != nil {
-			s.Fatal("Failed to close blank tab: ", err)
+		if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
+			s.Fatal("Failed to close about:blank: ", err)
 		}
 	}
 
@@ -258,35 +255,35 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to grant permissions: ", err)
 	}
 
-	configs := []cujrecorder.MetricConfig{
+	configs := []cuj.MetricConfig{
 		// Ash metrics config, always collected from ash-chrome.
-		cujrecorder.NewCustomMetricConfig(
+		cuj.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
+			perf.SmallerIsBetter, []int64{50, 80}),
+		cuj.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter),
+			perf.SmallerIsBetter, []int64{0, 3}),
 		// Browser metrics config, collected from ash-chrome or lacros-chrome
 		// depending on the browser being used.
-		cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
+		cuj.NewCustomMetricConfigWithTestConn(
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
 			perf.SmallerIsBetter, []int64{5, 10}, bTconn),
 	}
 	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
-		configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
+		configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
 			[]int64{50, 80}, bTconn))
 	}
-	configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
+	configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
 		"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter,
 		[]int64{80000, 400000}, bTconn))
-	configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
+	configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
 		"Event.Latency.EndToEnd.Mouse", "microsecond", perf.SmallerIsBetter,
 		[]int64{80000, 400000}, bTconn))
-	configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
+	configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
 		"PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
 		perf.SmallerIsBetter, []int64{4000, 5000}, bTconn))
-	configs = append(configs, cujrecorder.DeprecatedNewCustomMetricConfigWithTestConn(
+	configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
 		"PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
 		perf.SmallerIsBetter, []int64{4000, 5000}, bTconn))
 
@@ -340,15 +337,10 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{}, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a new CUJ recorder: ", err)
 	}
-	defer func() {
-		if err := recorder.Close(closeCtx); err != nil {
-			s.Error("Failed to stop recorder: ", err)
-		}
-	}()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hide notifications so that they won't overlap with other UI components.
 		if err := ash.CloseNotifications(ctx, tconn); err != nil {
@@ -374,14 +366,6 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}
 		if err := meetConn.Eval(ctx, "hrTelemetryApi.setCameraMuted(false)", nil); err != nil {
 			return errors.Wrap(err, "failed to turn on camera")
-		}
-
-		var participantCount int
-		if err := meetConn.Eval(ctx, "hrTelemetryApi.getParticipantCount()", &participantCount); err != nil {
-			return errors.Wrap(err, "failed to get participant count")
-		}
-		if participantCount != 2 {
-			return errors.Errorf("got %d participants, expected 2", participantCount)
 		}
 
 		// Hide notifications so that they won't overlap with other UI components.
@@ -413,7 +397,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 		// Pop-up content regarding paperless mode might show up.
 		gotItButton := nodewith.Name("Got it!").Role(role.Button)
-		if err := uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(gotItButton), ui.LeftClick(gotItButton))(ctx); err != nil {
+		if err := ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(gotItButton), ui.LeftClick(gotItButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the Got it button")
 		}
 
@@ -434,7 +418,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Ensure the file gets scrolled.
-		if err := ensureElementGetsScrolled(docsConn, "document.getElementsByClassName('navigation-widget-content')[0]"); err != nil {
+		if err := ensureElementGetsScrolled(docsConn, "document.getElementsByClassName('kix-appview-editor')[0]"); err != nil {
 			return err
 		}
 
