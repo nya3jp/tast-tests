@@ -33,9 +33,10 @@ func init() {
 			Val:     browser.TypeAsh,
 			Fixture: "familyLinkUnicornLogin",
 		}, {
-			Name:    "lacros",
-			Val:     browser.TypeLacros,
-			Fixture: "familyLinkUnicornLoginWithLacros",
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+			Fixture:           "familyLinkUnicornLoginWithLacros",
 		}},
 	})
 }
@@ -50,7 +51,7 @@ func UnicornLogin(ctx context.Context, s *testing.State) {
 	if tconn == nil {
 		s.Fatal("Failed to create test API connection")
 	}
-	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, s.Param().(browser.Type), s.RequiredVar("family.unicornEmail")); err != nil {
+	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, s.Param().(browser.Type), s.RequiredVar("family.unicornEmail"), s.OutDir()); err != nil {
 		s.Fatal("Failed to verify user signed into browser: ", err)
 	}
 }
