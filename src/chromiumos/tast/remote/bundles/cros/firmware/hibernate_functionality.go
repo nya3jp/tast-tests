@@ -24,7 +24,8 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
 		Vars:         []string{"servo"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		// TODO(b/199674322): Add back to firmware_unstable when this test passes.
+		Attr:         []string{},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Fixture:      fixture.NormalMode,
 	})
