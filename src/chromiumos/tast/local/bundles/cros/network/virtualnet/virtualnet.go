@@ -36,15 +36,16 @@ type EnvOptions struct {
 }
 
 // CreateRouterEnv creates a virtualnet Env with the given options. On success,
-// it's caller's responsibility to call Cleanup() on the returned Env object.
-func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, opts EnvOptions) (*env.Env, error) {
+// returns the corresponding shill Service and Env object. It's caller's
+// responsibility to call Cleanup() on the returned Env object.
+func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, opts EnvOptions) (*shill.Service, *env.Env, error) {
 	router, err := env.New("router" + opts.NameSuffix)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create router env")
+		return nil, nil, errors.Wrap(err, "failed to create router env")
 	}
 
 	if err := router.SetUp(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to set up the router env")
+		return nil, nil, errors.Wrap(err, "failed to set up the router env")
 	}
 
 	success := false
@@ -60,18 +61,18 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 	if opts.EnableDHCP {
 		v4Subnet, err := pool.AllocNextIPv4Subnet()
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
+			return nil, nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
 		dnsmasq := dnsmasq.New(v4Subnet, []string{})
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
-			return nil, errors.Wrap(err, "failed to start dnsmasq")
+			return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
 		}
 	}
 
 	if opts.RAServer {
 		v6Prefix, err := pool.AllocNextIPv6Subnet()
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to allocate v4 prefix for DHCP")
+			return nil, nil, errors.Wrap(err, "failed to allocate v4 prefix for DHCP")
 		}
 
 		// Note that in the current implementation, shill requires an IPv6
@@ -80,22 +81,22 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		const googleIPv6DNSServer = "2001:4860:4860::8888"
 		radvd := radvd.New(v6Prefix, []string{googleIPv6DNSServer})
 		if err := router.StartServer(ctx, "radvd", radvd); err != nil {
-			return nil, errors.Wrap(err, "failed to start radvd")
+			return nil, nil, errors.Wrap(err, "failed to start radvd")
 		}
 	}
 
 	svc, err := findEthernetServiceByIfName(ctx, m, router.VethOutName)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to find shill service for %s", router.VethOutName)
+		return nil, nil, errors.Wrapf(err, "failed to find shill service for %s", router.VethOutName)
 	}
 
 	if err := svc.SetProperty(ctx, shillconst.ServicePropertyEphemeralPriority, opts.Priority); err != nil {
-		return nil, errors.Wrap(err, "failed to configure priority on interface")
+		return nil, nil, errors.Wrap(err, "failed to configure priority on interface")
 	}
 
 	testing.ContextLogf(ctx, "virtualnet env %s started", router.NetNSName)
 	success = true
-	return router, nil
+	return svc, router, nil
 }
 
 // CreateRouterServerEnv creates two virtualnet Envs with the given options.
@@ -104,12 +105,12 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 // the Internet. This setup is useful when we need to test something that cannot
 // be done in local subnet, e.g., to test the default routes. On success, it's
 // caller's responsibility to call Cleanup() on the returned Env objects.
-func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, opts EnvOptions) (routerEnv, serverEnv *env.Env, err error) {
+func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, opts EnvOptions) (svc *shill.Service, routerEnv, serverEnv *env.Env, err error) {
 	success := false
 
-	router, err := CreateRouterEnv(ctx, m, pool, opts)
+	svc, router, err := CreateRouterEnv(ctx, m, pool, opts)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to create router env")
+		return nil, nil, nil, errors.Wrap(err, "failed to create router env")
 	}
 	defer func() {
 		if success {
@@ -122,11 +123,11 @@ func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.P
 
 	server, err := env.New("server" + opts.NameSuffix)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to create server env")
+		return nil, nil, nil, errors.Wrap(err, "failed to create server env")
 	}
 
 	if err := server.SetUp(ctx); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to set up server env")
+		return nil, nil, nil, errors.Wrap(err, "failed to set up server env")
 	}
 	defer func() {
 		if success {
@@ -138,11 +139,11 @@ func CreateRouterServerEnv(ctx context.Context, m *shill.Manager, pool *subnet.P
 	}()
 
 	if err := server.ConnectToRouter(ctx, router, pool); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to connect server to router")
+		return nil, nil, nil, errors.Wrap(err, "failed to connect server to router")
 	}
 
 	success = true
-	return router, server, nil
+	return svc, router, server, nil
 }
 
 func findEthernetServiceByIfName(ctx context.Context, m *shill.Manager, ifName string) (*shill.Service, error) {
