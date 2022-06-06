@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -23,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FullRestoreAlwaysRestore,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test full restore always restore setting",
 		Contacts: []string{
 			"nancylingwang@google.com",
@@ -32,16 +34,29 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
 	func() {
-		bt := browser.TypeAsh
+		bt := s.Param().(browser.Type)
+
+		// TODO(crbug.com/1318180): at the moment for Lacros, we're not getting SetUpWithNewChrome
+		// close closure because when used it'd close all resources, including targets and wouldn't let
+		// the session to proper restore later. As a short term workaround we're closing Lacros
+		// resources using CloseResources fn instead, though ideally we want to use
+		// SetUpWithNewChrome close closure when it's properly implemented.
 		cr, br, _, err := browserfixt.SetUpWithNewChrome(ctx,
 			bt,
-			nil,
-			chrome.EnableFeatures("FullRestore"))
+			lacrosfixt.NewConfig())
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
@@ -76,17 +91,34 @@ func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
 		// Therefore, sleep 3 seconds here.
 		testing.Sleep(ctx, 3*time.Second)
 
+		if bt == browser.TypeLacros {
+			l, err := lacros.Connect(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to connect to lacros-chrome: ", err)
+			}
+			defer l.CloseResources(ctx)
+		}
 	}()
 
 	func() {
-		cr, err := chrome.New(ctx,
+		opts := []chrome.Option{
 			// Set not to clear the notification after restore.
 			// By default, On startup is set to ask every time after reboot
 			// and there is an alertdialog asking the user to select whether to restore or not.
 			chrome.RemoveNotification(false),
-			chrome.EnableFeatures("FullRestore"),
+			chrome.DisableFeatures("ChromeWhatsNewUI"),
 			chrome.EnableRestoreTabs(),
-			chrome.KeepState())
+			chrome.KeepState()}
+
+		bt := s.Param().(browser.Type)
+		if bt == browser.TypeLacros {
+			lacrosOpts, err := lacrosfixt.NewConfig(lacrosfixt.ChromeOptions()).Opts()
+			if err != nil {
+				s.Fatal("Failed to get lacros options: ", err)
+			}
+			opts = append(opts, lacrosOpts...)
+		}
+		cr, err := chrome.New(ctx, opts...)
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
@@ -100,8 +132,9 @@ func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
 		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 		// Confirm that the browser is restored.
-		if _, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == ash.WindowTypeBrowser }); err != nil {
-			s.Fatal("Failed to restore browser: ", err)
+		pollOptions := &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}
+		if err := ash.WaitForCondition(ctx, tconn, ash.BrowserTitleMatch(bt, "Alphabet"), pollOptions); err != nil {
+			s.Fatalf("Failed to wait for the window to be open, browser: %v, err: %v", bt, err)
 		}
 
 		// Confirm that the Settings app is restored.
