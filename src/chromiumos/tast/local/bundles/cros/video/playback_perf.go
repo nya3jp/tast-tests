@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -45,7 +46,9 @@ func init() {
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"video.html", "playback.js"},
+		Data: []string{"video.html", "playback.js",
+			tracing.TraceProcessorAmd64, tracing.TraceProcessorArm, tracing.TraceProcessorArm64,
+			playback.TraceConfigFile, playback.GPUThreadSchedSQLFile},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
 		Params: []testing.Param{
