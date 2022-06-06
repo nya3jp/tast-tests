@@ -92,6 +92,7 @@ var UnstableModels = []string{
 	"vorticon",
 	"vortininja",
 	// Platform reef
+	"basking",
 	"electro",
 	// Platform sarien
 	"arcada",
