@@ -128,6 +128,8 @@ func (e *Env) Cleanup(ctx context.Context) error {
 		testing.ContextLog(ctx, "Cleanup failed: ", lastErr)
 	}
 
+	testing.ContextLogf(ctx, "Start to clean up %s", e.NetNSName)
+
 	// Collect logs and clean up servers.
 	f, err := e.createLogFile(ctx)
 	if err != nil {
