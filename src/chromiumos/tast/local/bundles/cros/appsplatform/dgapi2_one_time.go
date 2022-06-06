@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Dgapi2OneTime,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verify the app has proper info",
+		Desc:         "Verify it is possible to go through a one-time purchase flow in the DGAPI2 test app",
 		Contacts: []string{
 			"jshikaram@chromium.org",
 			"ashpakov@google.com", // until Sept 2022
@@ -57,16 +57,4 @@ func Dgapi2OneTime(ctx context.Context, s *testing.State) {
 	if err := testApp.PurchaseOneTime(ctx); err != nil {
 		s.Fatal("Failed to purchase a onetime sku: ", err)
 	}
-
-	if err := testApp.VerifyLogsMatch(ctx, "Sku onetime.* was purchased"); err != nil {
-		s.Fatal("Failed to verify logs: ", err)
-	}
-
-	// TODO(b/225737831): attempt to buy onetime sku for the second time and observe an error.
-
-	if err := testApp.TryConsumeOneTime(ctx); err != nil {
-		s.Fatal("Failed to consume a onetime sku: ", err)
-	}
-
-	// TODO(b/225737831): attempt to buy onetime sku and consume it without errors
 }
