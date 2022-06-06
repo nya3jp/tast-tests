@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff347664_a67a0a49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-06-06T18:11:18Z",
+      "side": 1,
+      "message": "When grepping for `/tast/common/perf` inside `src/chromiumos/tast/local/bundles/cros/lacros` directory for example, there is MotionMark, PowerVideocall, StartupPerf and possibly other perf related tests. Do you think they need to be tweaked with that special option as well, Eliot? Sorry be a bit late reviewing this here.\n",
+      "revId": "96fc80b3ec987333cf191b7688c6f1f9c7a45539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
