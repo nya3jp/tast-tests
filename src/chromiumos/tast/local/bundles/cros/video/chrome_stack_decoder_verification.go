@@ -73,9 +73,10 @@ var h264FilesFromBugs = []string{
 	"test_vectors/h264/files_from_bugs/b_227047778_mtk_8195_artifacts.h264",
 }
 
-// These are invalid bistreams one way or another that are decoded correctly (no
-// artifacts) with a software decoder but not when using certain hardware decoder
-// implementations. These tests are expected to fail long-term.
+// These are invalid bistreams one way or another that are decoded correctly
+// (no artifacts) with a software decoder but not when using certain hardware
+// decoder implementations. These tests are expected to fail long-term, but it's
+// interesting to have them to verify that e.g. the driver doesn't crash.
 var h264InvalidBitstreams = []string{
 	"test_vectors/h264/files_from_bugs/b_234651916_big_buck_bunny_artifacts_rk3399.h264",
 	"test_vectors/h264/files_from_bugs/b_184041918_Webex_out_of_order_h264_frames.h264",
@@ -351,6 +352,8 @@ func appendJSONFiles(videoFiles []string) []string {
 type chromeStackDecoderVerificationTestParam struct {
 	videoFiles    []string               // The paths of video files to be tested.
 	validatorType decoding.ValidatorType // The frame validation type of video_decode_accelerator_tests.
+	// If set, verify that MD5SUM verification is not successful.
+	mustFail bool
 }
 
 func init() {
@@ -433,6 +436,7 @@ func init() {
 			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    h264InvalidBitstreams,
 				validatorType: decoding.MD5,
+				mustFail:      true,
 			},
 		}, {
 			Name:              "h264_baseline",
@@ -611,7 +615,7 @@ func ChromeStackDecoderVerification(ctx context.Context, s *testing.State) {
 		tv = append(tv, s.DataPath(file))
 	}
 
-	if err := decoding.RunAccelVideoTestWithTestVectors(ctx, s.OutDir(), tv, param.validatorType); err != nil {
+	if err := decoding.RunAccelVideoTestWithTestVectors(ctx, s.OutDir(), tv, param.validatorType, param.mustFail); err != nil {
 		s.Fatal("test failed: ", err)
 	}
 }

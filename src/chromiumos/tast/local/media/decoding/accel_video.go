@@ -153,9 +153,12 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, parameters 
 	return nil
 }
 
-// RunAccelVideoTestWithTestVectors runs video_decode_accelerator_tests --gtest_filter=VideoDecoderTest.FlushAtEndOfStream
-// --validator_type=validatorType with the specified video files using the direct VideoDecoder.
-func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVectors []string, validatorType ValidatorType) error {
+// RunAccelVideoTestWithTestVectors runs
+// video_decode_accelerator_tests --gtest_filter=VideoDecoderTest.FlushAtEndOfStream
+// --validator_type=validatorType with the specified video files using the
+// direct VideoDecoder. It expects such execution to succeed unless mustFail is
+// set.
+func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVectors []string, validatorType ValidatorType, mustFail bool) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
@@ -171,7 +174,7 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 	upstart.StopJob(shortCtx, "ui")
 	defer upstart.EnsureJobRunning(ctx, "ui")
 	const exec = "video_decode_accelerator_tests"
-	var failedFilenames []string
+	var filenamesToReport []string
 	for _, file := range testVectors {
 		args := generateCmdArgs(outDir, file, TestParams{DecoderType: VD, LinearOutput: false})
 		args = append(args, logging.ChromeVmoduleFlag())
@@ -181,17 +184,33 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 			args = append(args, "--validator_type=md5")
 		}
 		filename := filepath.Base(file)
+
+		hasFailed := false
 		if _, err = runAccelVideoTestCmd(shortCtx,
 			exec, "VideoDecoderTest.FlushAtEndOfStream",
 			filepath.Join(outDir, exec+"_"+filename+".log"), args); err != nil {
-			failedFilenames = append(failedFilenames, filename)
-			testing.ContextLog(ctx, "Test vector failed: ", filename)
+			hasFailed = true
+
+			if mustFail {
+				testing.ContextLog(ctx, "Test vector failed (expected): ", filename)
+			} else {
+				testing.ContextLog(ctx, "Test vector failed (unexpected): ", filename)
+			}
 		} else {
-			testing.ContextLog(ctx, "Test vector passed: ", filename)
+			if mustFail {
+				testing.ContextLog(ctx, "Test vector passed (unexpected): ", filename)
+			} else {
+				testing.ContextLog(ctx, "Test vector passed (expected): ", filename)
+			}
+		}
+
+		if hasFailed != mustFail {
+			filenamesToReport = append(filenamesToReport, filename)
 		}
 	}
-	if failedFilenames != nil {
-		return errors.Errorf("failed to validate the decoding of %v", failedFilenames)
+
+	if filenamesToReport != nil {
+		return errors.Errorf("failed to validate: %v", filenamesToReport)
 	}
 	return nil
 }
