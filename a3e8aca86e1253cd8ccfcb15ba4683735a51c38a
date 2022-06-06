@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6867fee_5710fca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T12:15:19Z",
+      "side": 1,
+      "message": "One addtional notes for the routings tests: I found that AutoConnect is not configurable on Ethernet services, so the original plan may need to be changed a little bit... This does not affect a lot",
+      "revId": "a3e8aca86e1253cd8ccfcb15ba4683735a51c38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
