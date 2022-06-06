@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ada272d_d9684fdb",
+        "filename": "src/chromiumos/tast/local/drivefs/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-06T23:59:36Z",
+      "side": 1,
+      "message": "Is using \"Get\" here appropriate? \n\ngo/go-style/decisions#getters",
+      "revId": "75bf586ac663823d4aad7a5410c10b7dbc5d655d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52d80d3_3419825f",
+        "filename": "src/chromiumos/tast/local/drivefs/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-06T23:59:36Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "75bf586ac663823d4aad7a5410c10b7dbc5d655d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
