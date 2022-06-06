@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17653df_8b944a8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-06T17:55:32Z",
+      "side": 1,
+      "message": "Thank you Jie and Hugo for your comments.\n\nI want to make it clear, as I did not previously, that this is a WIP patch. At the end of review I want to able to commit a http package that can be used as a captive portal. Given some of the discussion below, I feel like we could also end up creating a test that uses captive portal as long as the http package is listening on the veth interface. Please correct me if any of this seems like it does not make sense. Let me know what you think!",
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31fa2b6d_c228ea88",
@@ -73,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70c965c6_61045825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-06T17:55:32Z",
+      "side": 1,
+      "message": "Correct, I totally agree. My original intention with uploading this command was to show that the http web server was in fact running in the netns created. I am unsure if I will be uploading this test (unless others want it up or I make the changes necessary to connect to veth), which I should have made more clear.\n\nThe core focus I was trying to show was the http package and making sure it is in a usable state so later we can leverage it to play the role of the captive portal appliance.",
+      "parentUuid": "a96b524b_3a2974fa",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 128
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04517db7_f42b045d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
         "patchSetId": 3
@@ -84,6 +125,30 @@
       "writtenOn": "2022-06-06T02:25:35Z",
       "side": 1,
       "message": "Just curious, what\u0027s our attitude to use Python in tests?",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4844be7d_6b8d2dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-06T17:55:32Z",
+      "side": 1,
+      "message": "Originally I was planning on using go but was unsure on how we could run a go web server in another netns. Python seemed straightforward and easily usable, but I imagine switching between python and go could be confusing. Eventually we will want the web server to eventually respond to requests with different response codes, which is doable in either.\n\nFortunately you uploaded a patchset to allow this: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3691088/1\n\nI think the next step could be use that and run the go web server as a go routine. Let me know what you think about this.",
+      "parentUuid": "04517db7_f42b045d",
       "range": {
         "startLine": 21,
         "startChar": 30,
@@ -142,6 +207,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8191a030_d04acb91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-06T17:55:32Z",
+      "side": 1,
+      "message": "Thank you for pointing this out. Originally, I used this to show that the http package was up and running in the netns. Once I set up the http package to be listening to the veth interface, I can remove this line.",
+      "parentUuid": "3dc6c827_85a0e032",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a36546a5_3ae5eccf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
         "patchSetId": 3
@@ -177,6 +266,30 @@
       "side": 1,
       "message": "JFYI, if you need the ipv4 address on the in-interface, I added a |VethInStaticIPv4Addr| variable in https://crrev.com/c/3686429 which can be used. That patch may be changed later though.",
       "parentUuid": "a36546a5_3ae5eccf",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60750405_bf43f462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-06T17:55:32Z",
+      "side": 1,
+      "message": "Thank you Jie, that appears to be exactly what I am looking for. I can look at implementing that next here.",
+      "parentUuid": "64cf2891_5fa0bc45",
       "range": {
         "startLine": 91,
         "startChar": 32,
