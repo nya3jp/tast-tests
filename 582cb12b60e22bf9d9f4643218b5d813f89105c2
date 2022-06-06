@@ -69,6 +69,24 @@
       "parentUuid": "12b272db_0f435d86",
       "revId": "582cb12b60e22bf9d9f4643218b5d813f89105c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a55bf9_7f254a68",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-06T16:30:24Z",
+      "side": 1,
+      "message": "Correct but that is for users in the field where chrome would apply finch studies from a fetched seeds. \n\nFor tast, it is a little bit different. Tast does not apply finch studies like users in the field because we run test image on test-channel which has no finch studies. And tast uses a branded official chrome, it does not use finch test config either. As a result, we are testing the default-on `Features`, which are not the same behavior as users get in the field. It might be okay for most of the time but it means there are gaps in our tests and bad behavior could slip to the field without being detected.\n\nThe intention of the CL is to fill this gap and make tast use the active finch study behavior from the test config like all other tests (browser_tests, telemetry etc).",
+      "parentUuid": "3882d418_d61a7e3a",
+      "revId": "582cb12b60e22bf9d9f4643218b5d813f89105c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
