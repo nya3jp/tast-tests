@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c14d58f2_ef0f28d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-06T23:04:22Z",
+      "side": 1,
+      "message": "with nits",
+      "revId": "828018094cecda1455e37ee41f3a46a2400f8886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0bb46aa_ac765087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-06T23:04:22Z",
+      "side": 1,
+      "message": "nit:g",
+      "range": {
+        "startLine": 23,
+        "startChar": 40,
+        "endLine": 23,
+        "endChar": 41
+      },
+      "revId": "828018094cecda1455e37ee41f3a46a2400f8886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcaa5b23_02502477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-06T23:04:22Z",
+      "side": 1,
+      "message": "Does this exist or should this be google.com?",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "828018094cecda1455e37ee41f3a46a2400f8886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d05efd_315a685d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-06T23:04:22Z",
+      "side": 1,
+      "message": "nit: \"foobar\" creating an empty label keyset could be confusing. Lets make it empty string or \"label not needed\"",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 42
+      },
+      "revId": "828018094cecda1455e37ee41f3a46a2400f8886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae9bab2f_1a029a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-06T23:04:22Z",
+      "side": 1,
+      "message": "nit: /*create*/",
+      "range": {
+        "startLine": 66,
+        "startChar": 71,
+        "endLine": 66,
+        "endChar": 75
+      },
+      "revId": "828018094cecda1455e37ee41f3a46a2400f8886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
