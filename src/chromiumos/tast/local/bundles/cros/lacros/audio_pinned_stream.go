@@ -23,7 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests pinned stream on lacros",
 		Contacts:     []string{"yuhsuan@chromium.org", "lacros-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosAudio",
 		Data:         []string{"media_session_60sec_test.ogg", "audio_playback_test.html"},
@@ -31,8 +31,9 @@ func init() {
 			Name: "play",
 			Val:  audio.OutputStream,
 		}, {
-			Name: "record",
-			Val:  audio.InputStream,
+			Name:      "record",
+			Val:       audio.InputStream,
+			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
