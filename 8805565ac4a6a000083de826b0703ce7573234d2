@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c811748_66c9ee1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-06-06T21:51:46Z",
+      "side": 1,
+      "message": "Hi yuhsuan@, do you think it is worth promoting this stable test to CQ?",
+      "revId": "8805565ac4a6a000083de826b0703ce7573234d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
