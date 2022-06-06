@@ -22,6 +22,30 @@
       },
       "revId": "774138cf3cdef4a5ac8b839dd47468dcac6303cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc07b07_ba4f5f46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1535342
+      },
+      "writtenOn": "2022-06-06T01:06:33Z",
+      "side": 0,
+      "message": "clumptini is a team group for the Crostini team. The clumptini+oncall@ email will go to all clumptini@. team members.",
+      "parentUuid": "5febcbb4_9edd4670",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 81
+      },
+      "revId": "774138cf3cdef4a5ac8b839dd47468dcac6303cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
