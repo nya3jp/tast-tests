@@ -46,7 +46,6 @@ func init() {
 			Name:              "only",
 			Fixture:           "lacrosOnly",
 			ExtraSoftwareDeps: []string{"lacros_stable"},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "only_unstable",
 			Fixture:           "lacrosOnly",
