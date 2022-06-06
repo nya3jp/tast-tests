@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -49,6 +50,11 @@ func MonitorBluetoothEvent(ctx context.Context, s *testing.State) {
 	monitorCmd := testexec.CommandContext(ctx, "cros-health-tool", "event", "--category=bluetooth", "--length_seconds=3")
 	monitorCmd.Stdout = &stdoutBuf
 	monitorCmd.Stderr = &stderrBuf
+
+	// Make sure cross-health-tool has subscribed to bluetooth events by sleeping for 300 milliseconds.
+	if err := testing.Sleep(ctx, 300*time.Millisecond); err != nil {
+		s.Fatal("Failed to sleep : ", err)
+	}
 
 	if err := monitorCmd.Start(); err != nil {
 		s.Fatal("Failed to run healthd monitor command: ", err)
