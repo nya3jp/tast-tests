@@ -40,9 +40,10 @@ func Gamepad(ctx context.Context) (*GamepadEventWriter, error) {
 	gw := &GamepadEventWriter{}
 	const usbBus = 0x3 // BUS_USB from input.h
 	var err error
+	// Mocked from Wireless controller Sony PS4 Dualshock, USB-connected.
 	if gw.dev, gw.virt, err = createVirtual(
 		gw.DeviceName(),
-		devID{usbBus, gw.VendorID(), gw.ProductID(), 0x0111}, 0, 0x1b,
+		devID{usbBus, gw.VendorID(), gw.ProductID(), 0x8111}, 0, 0x1b,
 		map[EventType]*big.Int{
 			EV_KEY: makeBigInt([]uint64{0x3fff000000000000, 0, 0, 0, 0}),
 			EV_ABS: big.NewInt(0x26081000003003f),
