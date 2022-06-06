@@ -16,6 +16,160 @@
       "message": "Looks good to me, but Yichen will know better.",
       "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544adbf6_b064d372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:28:15Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9a601c_c12b1054",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:28:15Z",
+      "side": 1,
+      "message": "|config| should not be ignored, too.",
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d707730_58270a7a",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:28:15Z",
+      "side": 1,
+      "message": "what these do look same? Can these be consolidated by the conversion between histogram and record?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 0
+      },
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3754f6f5_a1622418",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:28:15Z",
+      "side": 1,
+      "message": "tconn is per chrome\u0027s variation (i.e. one for ash, and another for lacros). If you\u0027re trying to have to groups, could you use browser type instead? Same for names and mr. (maybe fixing names mr in another CL and rebase this on top of it to make the focuses of CLs clearer?).",
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7260fcec_28ed2750",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:28:15Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 540,
+        "startChar": 20,
+        "endLine": 540,
+        "endChar": 36
+      },
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578f307f_88207d68",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:28:15Z",
+      "side": 1,
+      "message": "const",
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aaa5d98_457dcd3d",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:28:15Z",
+      "side": 1,
+      "message": "coudl you use fmt.Sprintf() for concatenating three or more terms?",
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66efb65_62393bcc",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:28:15Z",
+      "side": 1,
+      "message": "could you not use tconn equality to identify if it is lacros or not?\nInstead, could you keep tracking what\u0027s lacros data and what\u0027s ash data?\n\nstyle: we do not use \"get\" as getter prefixes in most cases. If we would name this tconnName or something. (though again, I\u0027d recommend to get rid of this).\n\nAPI looks confusing, too. Taking two tconn so it\u0027s unclear \"name of which tconn\" is returned with a quick glance.",
+      "range": {
+        "startLine": 802,
+        "startChar": 0,
+        "endLine": 812,
+        "endChar": 1
+      },
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
