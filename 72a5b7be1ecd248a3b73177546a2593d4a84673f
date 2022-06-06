@@ -50,6 +50,24 @@
       "message": "The way it is written now, the test case will never have an error if `mustFail \u003d\u003d true`, even if all of the decodes succeed.\n\nOne way to fix this is to append to `failedFilenames` depending on the value of `mustFail`. I.e. when you are logging \"(unexpected)\". Then drop the change to line 203 where you added ` \u0026\u0026 !mustFail`",
       "revId": "72a5b7be1ecd248a3b73177546a2593d4a84673f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5c059d_bab76b18",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-06-06T23:31:43Z",
+      "side": 1,
+      "message": "Optional: If you do use the approach that I suggested, I\u0027m not sure if `failedFilenames` is the best name for the variable. I don\u0027t know what a better variable name would be though. `erroredFilenames` doesn\u0027t seem significantly better. WDYT?",
+      "parentUuid": "6d8db27d_db5026d4",
+      "revId": "72a5b7be1ecd248a3b73177546a2593d4a84673f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
