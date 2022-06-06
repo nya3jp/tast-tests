@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035d1da7_daf9d18b",
+        "filename": "src/chromiumos/tast/local/arc/apputil/spotify/spotify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-06T22:39:59Z",
+      "side": 1,
+      "message": "```\nif err:\u003d XXX.WaitForExists(...); err !\u003d nil {\n    if ui.IsTimeout(err) { // UI doesn\u0027t exist\n\t...\n    }\n    return errors.Wrap(err, \"failed to check is search tab exist\")\n}\n```",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 115
+      },
+      "revId": "a89c9f20272a10f6580e1903ced5a4781fdc5db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
