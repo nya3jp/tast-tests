@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -47,120 +48,135 @@ func init() {
 }
 
 func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
-	func() {
-		bt := s.Param().(browser.Type)
-		opts := chrome.EnableFeatures("FullRestore")
-		cr, br, _, err := browserfixt.SetUpWithNewChrome(ctx,
-			bt,
-			lacrosfixt.NewConfig(),
-			opts)
+	const iterationCount = 7
+	for i := 0; i < iterationCount; i++ {
+		testing.ContextLogf(ctx, "Running: iteration %d/%d", i+1, iterationCount)
+
+		openBrowser(ctx, s)
+		err := restoreBrowser(ctx, s)
 		if err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
+			s.Fatal("Failed to do full restore: ", err)
 		}
-		defer cr.Close(ctx)
+	}
+}
 
-		tconn, err := cr.TestAPIConn(ctx)
+func openBrowser(ctx context.Context, s *testing.State) error {
+	bt := s.Param().(browser.Type)
+	opts := chrome.EnableFeatures("FullRestore")
+	cr, br, _, err := browserfixt.SetUpWithNewChrome(ctx,
+		bt,
+		lacrosfixt.NewConfig(),
+		opts)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome")
+	}
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect Test API")
+	}
+
+	// Open browser.
+	// The opened browser is not closed before reboot so that it could be restored after reboot.
+	conn, err := br.NewConn(ctx, "https://abc.xyz")
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to the restore URL")
+	}
+	defer conn.Close()
+
+	// Open OS settings to set the 'Always restore' setting.
+	if _, err = ossettings.LaunchAtPage(ctx, tconn, nodewith.Name("Apps").Role(role.Link)); err != nil {
+		return errors.Wrap(err, "failed to launch Apps Settings")
+	}
+
+	if err := uiauto.Combine("set 'Always restore' Settings",
+		uiauto.New(tconn).LeftClick(nodewith.Name("Restore apps on startup").Role(role.PopUpButton)),
+		uiauto.New(tconn).LeftClick(nodewith.Name("Always restore").Role(role.ListBoxOption)))(ctx); err != nil {
+		return errors.Wrap(err, "failed to set 'Always restore' Settings")
+	}
+
+	// According to the PRD of Full Restore go/chrome-os-full-restore-dd,
+	// it uses a throttle of 2.5s to save the app launching and window statue information to the backend.
+	// Therefore, sleep 3 seconds here.
+	testing.Sleep(ctx, 3*time.Second)
+
+	if bt == browser.TypeLacros {
+		l, err := lacros.Connect(ctx, tconn)
 		if err != nil {
-			s.Fatal("Failed to connect Test API: ", err)
+			return errors.Wrap(err, "failed to connect to lacros-chrome")
 		}
+		defer l.CloseResources(ctx)
+	}
 
-		// Open browser.
-		// The opened browser is not closed before reboot so that it could be restored after reboot.
-		conn, err := br.NewConn(ctx, "https://abc.xyz")
+	return nil
+}
+
+func restoreBrowser(ctx context.Context, s *testing.State) error {
+	opts := []chrome.Option{
+		// Set not to clear the notification after restore.
+		// By default, On startup is set to ask every time after reboot
+		// and there is an alertdialog asking the user to select whether to restore or not.
+		chrome.RemoveNotification(false),
+		chrome.EnableFeatures("FullRestore"),
+		chrome.DisableFeatures("ChromeWhatsNewUI"),
+		chrome.EnableRestoreTabs(),
+		chrome.KeepState()}
+
+	bt := s.Param().(browser.Type)
+	if bt == browser.TypeLacros {
+		cfg := lacrosfixt.NewConfig()
+		defaultOpts, err := cfg.Opts()
 		if err != nil {
-			s.Fatalf("Failed to connect to the restore URL: %v ", err)
+			return errors.Wrap(err, "failed to get default options")
 		}
-		defer conn.Close()
+		opts = append(opts, defaultOpts...)
+	}
 
-		// Open OS settings to set the 'Always restore' setting.
-		if _, err = ossettings.LaunchAtPage(ctx, tconn, nodewith.Name("Apps").Role(role.Link)); err != nil {
-			s.Fatal("Failed to launch Apps Settings: ", err)
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome")
+	}
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect Test API")
+	}
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Confirm that the browser is restored.
+	var topWindowName string
+	switch bt {
+	case browser.TypeAsh:
+		topWindowName = "BrowserFrame"
+	case browser.TypeLacros:
+		topWindowName = "ExoShellSurface"
+	default:
+		return errors.Wrapf(err, "unrecognized browser type %s", string(bt))
+	}
+	const title string = "Alphabet"
+
+	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+		if !w.IsVisible {
+			return false
 		}
-
-		if err := uiauto.Combine("set 'Always restore' Settings",
-			uiauto.New(tconn).LeftClick(nodewith.Name("Restore apps on startup").Role(role.PopUpButton)),
-			uiauto.New(tconn).LeftClick(nodewith.Name("Always restore").Role(role.ListBoxOption)))(ctx); err != nil {
-			s.Fatal("Failed to set 'Always restore' Settings: ", err)
+		if !strings.HasPrefix(w.Name, topWindowName) {
+			return false
 		}
-
-		// According to the PRD of Full Restore go/chrome-os-full-restore-dd,
-		// it uses a throttle of 2.5s to save the app launching and window statue information to the backend.
-		// Therefore, sleep 3 seconds here.
-		testing.Sleep(ctx, 3*time.Second)
-
-		if bt == browser.TypeLacros {
-			l, err := lacros.Connect(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to connect to lacros-chrome: ", err)
-			}
-			defer l.CloseResources(ctx)
+		if len(title) > 0 {
+			return strings.Contains(w.Title, title)
 		}
-	}()
+		return true
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to restore %v browser, waiting for window to be visible (title: %v)", bt, title)
+	}
 
-	func() {
-		opts := []chrome.Option{
-			// Set not to clear the notification after restore.
-			// By default, On startup is set to ask every time after reboot
-			// and there is an alertdialog asking the user to select whether to restore or not.
-			chrome.RemoveNotification(false),
-			chrome.EnableFeatures("FullRestore"),
-			chrome.DisableFeatures("ChromeWhatsNewUI"),
-			chrome.EnableRestoreTabs(),
-			chrome.KeepState()}
+	// Confirm that the Settings app is restored.
+	if err := uiauto.New(tconn).WaitUntilExists(ossettings.SearchBoxFinder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to restore the Settings app")
+	}
 
-		bt := s.Param().(browser.Type)
-		if bt == browser.TypeLacros {
-			cfg := lacrosfixt.NewConfig()
-			defaultOpts, err := cfg.Opts()
-			if err != nil {
-				s.Fatal("Failed to get default options: ", err)
-			}
-			opts = append(opts, defaultOpts...)
-		}
-
-		cr, err := chrome.New(ctx, opts...)
-		if err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
-		}
-		defer cr.Close(ctx)
-
-		tconn, err := cr.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Failed to connect Test API: ", err)
-		}
-
-		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-		// Confirm that the browser is restored.
-		var topWindowName string
-		switch bt {
-		case browser.TypeAsh:
-			topWindowName = "BrowserFrame"
-		case browser.TypeLacros:
-			topWindowName = "ExoShellSurface"
-		default:
-			s.Fatalf("Unrecognized browser type %s: %v", string(bt), err)
-		}
-		const title string = "Alphabet"
-
-		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-			if !w.IsVisible {
-				return false
-			}
-			if !strings.HasPrefix(w.Name, topWindowName) {
-				return false
-			}
-			if len(title) > 0 {
-				return strings.Contains(w.Title, title)
-			}
-			return true
-		}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
-			s.Fatalf("Failed to restore %v browser, waiting for window to be visible (title: %v): %v", bt, title, err)
-		}
-
-		// Confirm that the Settings app is restored.
-		if err := uiauto.New(tconn).WaitUntilExists(ossettings.SearchBoxFinder)(ctx); err != nil {
-			s.Fatal("Failed to restore the Settings app: ", err)
-		}
-	}()
+	return nil
 }
