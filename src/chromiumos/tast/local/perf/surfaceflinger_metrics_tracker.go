@@ -43,11 +43,11 @@ type SurfaceFlingerMetrics struct {
 
 // NewSurfaceFlingerMetrics returns a new instance of SurfaceFlinger.
 // TODO(b/230500493): Remove this constructor after tests are fixed.
-func NewSurfaceFlingerMetrics(surfaceName string, a *arc.ARC) *SurfaceFlingerMetrics {
+func NewSurfaceFlingerMetrics(appPkgName string, a *arc.ARC) *SurfaceFlingerMetrics {
 	f := &SurfaceFlingerMetrics{
 		frames:        nil,
 		lastTimestamp: -1,
-		surfaceName:   surfaceName,
+		appPkgName:    appPkgName,
 		arc:           a,
 	}
 	return f
@@ -216,11 +216,6 @@ func (f *SurfaceFlingerMetrics) calculateMetrics() (fps, latency float64, err er
 }
 
 func (f *SurfaceFlingerMetrics) detectAndSetupSurfaceName(ctx context.Context) error {
-	// TODO(b/230500493): Addition to make sure tests still run normally; remove after tests fixed.
-	if f.surfaceName != "" {
-		return nil
-	}
-
 	// Execute SurfaceFlinger list command.
 	out, err := f.arc.Command(ctx, "dumpsys", "SurfaceFlinger", "--list").Output()
 	if err != nil {
