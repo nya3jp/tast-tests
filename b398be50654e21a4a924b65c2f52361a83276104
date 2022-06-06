@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9edc8c9d_a9985a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-06T21:33:34Z",
+      "side": 1,
+      "message": "In that case the name of the test should be changed if this patch is intended to be submitted.",
+      "parentUuid": "70c965c6_61045825",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 128
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04517db7_f42b045d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
         "patchSetId": 3
