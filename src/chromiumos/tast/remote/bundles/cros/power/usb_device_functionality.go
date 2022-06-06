@@ -11,9 +11,9 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/common/usbutils"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/bundles/cros/power/powerutils"
 	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/ui"
@@ -130,12 +130,12 @@ func USBDeviceFunctionality(ctx context.Context, s *testing.State) {
 	for i := 1; i <= iter; i++ {
 		testing.ContextLogf(ctx, "Iteration: %d/%d", i, iter)
 		// Check for USB device(s) detection before cold boot.
-		usbDevicesList, err := powerutils.ListDevicesInfo(ctx, dut)
+		usbDevicesList, err := usbutils.ListDevicesInfo(ctx, dut)
 		if err != nil {
 			s.Fatal("Failed to get USB devices list: ", err)
 		}
 
-		got := powerutils.NumberOfUSBDevicesConnected(usbDevicesList, testParam.usbDeviceClassName, testParam.usbSpeed)
+		got := usbutils.NumberOfUSBDevicesConnected(usbDevicesList, testParam.usbDeviceClassName, testParam.usbSpeed)
 		if want := testParam.noOfConnectedDevice; got != want {
 			s.Fatalf("Unexpected number of USB devices connected: got %d, want %d", got, want)
 		}
@@ -165,12 +165,12 @@ func USBDeviceFunctionality(ctx context.Context, s *testing.State) {
 		}
 
 		// Check for USB device(s) detection after cold boot.
-		usbDevicesList, err = powerutils.ListDevicesInfo(ctx, dut)
+		usbDevicesList, err = usbutils.ListDevicesInfo(ctx, dut)
 		if err != nil {
 			s.Fatal("Failed to get USB devices list: ", err)
 		}
 
-		got = powerutils.NumberOfUSBDevicesConnected(usbDevicesList, testParam.usbDeviceClassName, testParam.usbSpeed)
+		got = usbutils.NumberOfUSBDevicesConnected(usbDevicesList, testParam.usbDeviceClassName, testParam.usbSpeed)
 		if want := testParam.noOfConnectedDevice; got != want {
 			s.Fatalf("Unexpected number of USB devices connected after cold boot: got %d, want %d", got, want)
 		}
