@@ -93,6 +93,30 @@
       },
       "revId": "60f89e293a9c2f202a93f9ab75c135d8bd438056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee7e61f_21f2ba8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-06T17:00:21Z",
+      "side": 1,
+      "message": "Okay. I think that the use of `int()` could be justified because if someone wanted to advertise that AV1 achieves the same quality as VP9 with a 30% lower bitrate, then rounding towards zero would better support that claim. Our primary concern here should simply be consistency, so this is fine.",
+      "parentUuid": "af5566d6_3c634d07",
+      "range": {
+        "startLine": 1136,
+        "startChar": 4,
+        "endLine": 1136,
+        "endChar": 43
+      },
+      "revId": "60f89e293a9c2f202a93f9ab75c135d8bd438056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
