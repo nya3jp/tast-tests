@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e2a7ab_9758a427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-06T18:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17d40571_f5bea1f9",
+      "range": {
+        "startLine": 136,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "441d29e66124b2ea8e65fb319149e383448c905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fc91539_2ce1fa15",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-06T14:13:50Z",
       "side": 1,
       "message": "nit: Monday",
+      "range": {
+        "startLine": 140,
+        "startChar": 30,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "441d29e66124b2ea8e65fb319149e383448c905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b980ea5_de5ffc8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/calendar/oobe.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-06T18:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc91539_2ce1fa15",
       "range": {
         "startLine": 140,
         "startChar": 30,
