@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/remote/bundles/cros/power/powerutils"
+	"chromiumos/tast/common/usbutils"
 	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/ui"
@@ -84,12 +84,12 @@ func USBHIDDeviceSuspendResume(ctx context.Context, s *testing.State) {
 	defer screenLockService.CloseChrome(ctxForCleanUp, &empty.Empty{})
 
 	// Check for USB Keyboard and/or Mouse detection before suspend-resume.
-	usbDevicesList, err := powerutils.ListDevicesInfo(ctx, dut)
+	usbDevicesList, err := usbutils.ListDevicesInfo(ctx, dut)
 	if err != nil {
 		s.Fatal("Failed to get USB devices list: ", err)
 	}
 
-	got := powerutils.NumberOfUSBDevicesConnected(usbDevicesList, testParam.usbDeviceClassName, testParam.usbSpeed)
+	got := usbutils.NumberOfUSBDevicesConnected(usbDevicesList, testParam.usbDeviceClassName, testParam.usbSpeed)
 	if want := testParam.numberOfConnectedDevices; got != want {
 		s.Fatalf("Unexpected number of USB devices connected: got %d, want %d", got, want)
 	}
@@ -146,12 +146,12 @@ func USBHIDDeviceSuspendResume(ctx context.Context, s *testing.State) {
 	}
 
 	// Check for USB Keyboard and/or Mouse detection after suspend-resume.
-	usbDevicesList, err = powerutils.ListDevicesInfo(ctx, dut)
+	usbDevicesList, err = usbutils.ListDevicesInfo(ctx, dut)
 	if err != nil {
 		s.Fatal("Failed to get USB devices list: ", err)
 	}
 
-	got = powerutils.NumberOfUSBDevicesConnected(usbDevicesList, testParam.usbDeviceClassName, testParam.usbSpeed)
+	got = usbutils.NumberOfUSBDevicesConnected(usbDevicesList, testParam.usbDeviceClassName, testParam.usbSpeed)
 	if want := testParam.numberOfConnectedDevices; got != want {
 		s.Fatalf("Unexpected number of USB devices connected: got %d, want %d", got, want)
 	}
