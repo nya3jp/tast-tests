@@ -41,7 +41,7 @@ func GellerLogin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection")
 	}
 	// TODO(https://crbug.com/1313067) set browser type to be Ash or LaCrOS based on param.
-	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("family.gellerEmail")); err != nil {
+	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("family.gellerEmail"), s.OutDir()); err != nil {
 		s.Fatal("Failed to verify user signed into browser: ", err)
 	}
 }
