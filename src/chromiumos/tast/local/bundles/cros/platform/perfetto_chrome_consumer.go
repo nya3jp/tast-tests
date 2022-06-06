@@ -29,15 +29,22 @@ func init() {
 		Contacts:     []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{tracing.TraceConfigFile},
-		Attr:         []string{"group:mainline", "informational"}, // TODO(crbug/1194540) remove "informational" after the test is stable.
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
-			Val:     browser.TypeAsh,
-			Fixture: "chromeLoggedIn",
+			Val:       browser.TypeAsh,
+			Fixture:   "chromeLoggedIn",
+			ExtraAttr: []string{"informational"}, // TODO(crbug/1194540) remove "informational" after the test is stable.
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
-			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
+		}, {
+			Name:              "lacros_unstable",
+			Val:               browser.TypeLacros,
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
+			ExtraAttr:         []string{"informational"}, // TODO(crbug/1194540) remove "informational" after the test is stable.
 		}},
 	})
 }
