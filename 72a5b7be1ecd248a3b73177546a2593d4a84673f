@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70136ee4_e11e84ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-06T23:10:09Z",
+      "side": 1,
+      "message": "nhebert@, benreich@ (who reviewed the mentioned CL), PTAL\n\nOthers FYI",
+      "revId": "72a5b7be1ecd248a3b73177546a2593d4a84673f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
