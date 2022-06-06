@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db0b25d_4c93b120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-06T22:58:39Z",
+      "side": 1,
+      "message": "Please review! I wanted this CL to review my idea for how we can simulate mouse movements. Once I iron out the feedback on this CL, I can have further discussions on where else we want to add this function. A potential easy candidate would probably be ArcYoutubeCUJ, where we just passively sleep for a long time while we watch the video.",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
