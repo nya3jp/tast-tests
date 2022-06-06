@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4efb7a3a_aa61c546",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-06T15:48:09Z",
+      "side": 1,
+      "message": "Shuo-Peng and Avery, it looks like the \"crosint\" bundle also uses the setup.PowerTest() func which blocked the code merge. I cannot access and change that bundle. Do you have any suggestions how to proceed? Are you able to change the code of the \"crosint\" bundle?",
+      "revId": "d24c2912110ab0c64675ec50e83f341239a98280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
