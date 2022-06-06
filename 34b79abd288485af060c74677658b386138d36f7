@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c204c0_9459a55f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T12:12:53Z",
+      "side": 1,
+      "message": "Thanks for the comments!\nI don\u0027t have a strong opinion for any of the comments, but now that this patch has already been reviewed by tast-owners, let me submit it now and consider a follow-up patch if we have a conclusion on any of them.",
+      "parentUuid": "96783727_2a1f1bfa",
+      "revId": "34b79abd288485af060c74677658b386138d36f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75ac6451_671d08d4",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a21e739e_5e3a9d07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T12:12:53Z",
+      "side": 1,
+      "message": "\u003e Do we expect to add additional files here\nLikely no.\n\nI learned from another tast review that small and dedicated packages are fine in go.\nPersonally I don\u0027t have a strong opinion here. A weak argument could be moving it into the upper package may result in name confliction in it, e.g., confTemplate is very likely needed by several servers. We need to add a prefix or move it into function to avoid confliction.",
+      "parentUuid": "391685f0_d065e7f5",
+      "revId": "34b79abd288485af060c74677658b386138d36f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc24e5af_b89d7d95",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/subnet/pool.go",
         "patchSetId": 7
@@ -82,6 +118,24 @@
       "writtenOn": "2022-06-03T20:34:19Z",
       "side": 1,
       "message": "I wonder whether these functions should be here (adding a Shill dependency) or if we should move these into the individual tests, maybe with an extra helper for shared code. i.e. including shill here seems to break the abstraction a bit.",
+      "revId": "34b79abd288485af060c74677658b386138d36f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d480a88_ac5899c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T12:12:53Z",
+      "side": 1,
+      "message": "Thanks for the question! Priority is intended I think, since in most of the tests that use this function, we are very likely need to set this. And on the other side, when L3 configruation is involved, it\u0027s hard to exclude shill.",
+      "parentUuid": "3bc9c56a_e8346aae",
       "revId": "34b79abd288485af060c74677658b386138d36f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

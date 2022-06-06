@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39ef987_a0c28c63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T12:12:53Z",
+      "side": 1,
+      "message": "PS10 reverts to PS7 and fixes a typo.\nThanks everyone for the review and questions!",
+      "revId": "85c9a8310fb1117162188292fcac339f8dfd86cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
