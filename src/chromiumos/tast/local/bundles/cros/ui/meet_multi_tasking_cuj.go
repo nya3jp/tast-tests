@@ -434,7 +434,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Ensure the file gets scrolled.
-		if err := ensureElementGetsScrolled(docsConn, "document.getElementsByClassName('navigation-widget-content')[0]"); err != nil {
+		if err := ensureElementGetsScrolled(docsConn, "document.getElementsByClassName('kix-appview-editor')[0]"); err != nil {
 			return err
 		}
 
