@@ -315,7 +315,7 @@ func newWithSyslogReaderAndTimeout(ctx context.Context, outDir string, reader *s
 		return nil, err
 	}
 
-	if err := ensureARCEnabled(); err != nil {
+	if err := ensureARCEnabled(ctx); err != nil {
 		return nil, err
 	}
 
@@ -519,8 +519,8 @@ func VMEnabled() (bool, error) {
 }
 
 // ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
-func ensureARCEnabled() error {
-	args, err := chromeArgs()
+func ensureARCEnabled(ctx context.Context) error {
+	args, err := chromeArgsWithContext(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed getting Chrome args")
 	}
