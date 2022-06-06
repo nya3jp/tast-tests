@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package powerutils
+package usbutils
 
 import (
 	"bufio"
@@ -10,6 +10,7 @@ import (
 	"regexp"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 )
@@ -41,8 +42,26 @@ type USBDevice struct {
 var re = regexp.MustCompile(`Class=([a-zA-Z_\s]+), Driver=([a-zA-Z0-9_\-\/\s]+), ([a-zA-Z0-9_\/.]+)`)
 
 // ListDevicesInfo returns the class, driver and speed for all the USB devices.
+//
+// For local-side dut parameter must be nil.
+// Example:
+// usbDeviceInfo, err := usbutils.ListDevicesInfo(ctx, nil){
+// ...
+//
+// For remote-side dut parameter must be non-nil.
+// Example:
+// dut := s.DUT()
+// usbDeviceInfo, err := usbutils.ListDevicesInfo(ctx, dut){
+// ...
 func ListDevicesInfo(ctx context.Context, dut *dut.DUT) ([]USBDevice, error) {
-	out, err := dut.Conn().CommandContext(ctx, "lsusb", "-t").Output()
+	var out []byte
+	var err error
+	if dut != nil {
+		out, err = dut.Conn().CommandContext(ctx, "lsusb", "-t").Output()
+	} else {
+		out, err = testexec.CommandContext(ctx, "lsusb", "-t").Output()
+	}
+
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run lsusb command")
 	}

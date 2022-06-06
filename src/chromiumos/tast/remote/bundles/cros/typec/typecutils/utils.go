@@ -8,6 +8,7 @@ package typecutils
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -103,4 +104,51 @@ func CheckForDPAltMode(ctx context.Context, d *dut.DUT, s *testing.State, pinAss
 	}
 
 	return errors.Errorf("didn't find the right DP alternate mode registered for partner for pin assignment %s", pinAssign)
+}
+
+// IsDeviceEnumerated validates device enumeration in DUT.
+// device holds the device name of connected TBT/USB4 device.
+// port holds the TBT/USB4 port ID in DUT.
+func IsDeviceEnumerated(ctx context.Context, dut *dut.DUT, device, port string) (bool, error) {
+	deviceNameFile := fmt.Sprintf("/sys/bus/thunderbolt/devices/%s/device_name", port)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := linuxssh.ReadFile(ctx, dut.Conn(), deviceNameFile)
+		if err != nil {
+			return errors.Wrapf(err, "failed to read %q file", deviceNameFile)
+		}
+
+		if strings.TrimSpace(string(out)) != device {
+			return errors.New("device enumeration failed")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
+		return false, err
+	}
+	return true, nil
+}
+
+// CheckUSBPdMuxinfo verifies whether USB4=1 or not.
+func CheckUSBPdMuxinfo(ctx context.Context, dut *dut.DUT, deviceStr string) error {
+	out, err := dut.Conn().CommandContext(ctx, "ectool", "usbpdmuxinfo").Output()
+	if err != nil {
+		return errors.Wrap(err, "failed to execute ectool usbpdmuxinfo command")
+	}
+	if !strings.Contains(string(out), deviceStr) {
+		return errors.Wrapf(err, "failed to find %s in usbpdmuxinfo", deviceStr)
+	}
+	return nil
+}
+
+// CableConnectedPortNumber on success will returns Active/Passive cable connected port number.
+func CableConnectedPortNumber(ctx context.Context, dut *dut.DUT, connector string) (string, error) {
+	out, err := dut.Conn().CommandContext(ctx, "ectool", "usbpdmuxinfo").Output()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to execute ectool usbpdmuxinfo command")
+	}
+	portRe := regexp.MustCompile(fmt.Sprintf(`Port.([0-9]):.*(%s=1)`, connector))
+	portNum := portRe.FindStringSubmatch(string(out))
+	if len(portNum) == 0 {
+		return "", errors.New("failed to get port number from usbpdmuxinfo")
+	}
+	return portNum[1], nil
 }
