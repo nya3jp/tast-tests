@@ -51,6 +51,24 @@
       "parentUuid": "09cf5376_223215f8",
       "revId": "eb44cc17e92ef80fae4aecc7b108eae108ecf3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd2b402_030f5648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T14:11:45Z",
+      "side": 1,
+      "message": "good point. checked that they are failing on non-kernelnext boards, too, but they seem to be flakiness of ARC boot, thus not directly impacted by this (also, stabilizing ARC boot needs to be done in parallel, though).\n\nLGTM, but I\u0027d appreciate if you check the status after the promotion, and double check the trajectory will look good.",
+      "parentUuid": "5ff0490e_a04132c8",
+      "revId": "eb44cc17e92ef80fae4aecc7b108eae108ecf3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
