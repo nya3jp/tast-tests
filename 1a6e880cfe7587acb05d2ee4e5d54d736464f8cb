@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0bd2acc_103f3018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-06T17:04:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "763dbe2a_77b3382e",
+      "revId": "1a6e880cfe7587acb05d2ee4e5d54d736464f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f7daaf0_d37b05b5",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-03T22:39:15Z",
       "side": 1,
       "message": "Do not need \"else\" here? The \"if clause\" returned.",
+      "revId": "1a6e880cfe7587acb05d2ee4e5d54d736464f8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a5e60b_a5fd8bc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-06T17:04:19Z",
+      "side": 1,
+      "message": "removed `else`",
+      "parentUuid": "4f7daaf0_d37b05b5",
       "revId": "1a6e880cfe7587acb05d2ee4e5d54d736464f8cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
