@@ -158,8 +158,8 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Even bigger meeting.
-			Name:    "49p",
-			Timeout: defaultTestTimeout,
+			Name:      "49p",
+			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
@@ -811,10 +811,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		// Ensures that meet session is long enough. graphics.MeasureGPUCounters
 		// exits early without errors on ARM where there is no i915 counters.
-		if err := testing.Sleep(ctx, meetTimeout); err != nil {
-			return errors.Wrap(err, "failed to wait")
+		if err := cuj.SimulateMouseMovement(ctx, tconn, meetTimeout); err != nil {
+			return errors.Wrap(err, "failed to simulate mouse movement")
 		}
-
 		if err := <-errc; err != nil {
 			return errors.Wrap(err, "failed to collect GPU counters")
 		}
