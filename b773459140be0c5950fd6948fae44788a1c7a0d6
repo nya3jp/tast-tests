@@ -22,6 +22,30 @@
       },
       "revId": "b773459140be0c5950fd6948fae44788a1c7a0d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753a6ada_10e9c01b",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:04:19Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9dd13c5b_b6f66a3d",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "b773459140be0c5950fd6948fae44788a1c7a0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

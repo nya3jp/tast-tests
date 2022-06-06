@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab272c5f_20596e93",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:04:19Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "fed2f351_0d8be594",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "ff12d78b586217c62071ff4ceb2d9469386908e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d775aa_56da7276",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba17aa0_365beb50",
+        "filename": "src/chromiumos/tast/local/arc/apputil/apputil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:04:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d775aa_56da7276",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 40
+      },
+      "revId": "ff12d78b586217c62071ff4ceb2d9469386908e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "345fa322_62c36567",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-01T23:06:42Z",
       "side": 1,
       "message": "I am not sure why you need this method (see the other comment).",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "ff12d78b586217c62071ff4ceb2d9469386908e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb2501b_3d6e70ce",
+        "filename": "src/chromiumos/tast/local/arc/apputil/uiwrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-06T11:04:19Z",
+      "side": 1,
+      "message": "This is a wrapper that wraps and hides the error handling.\nThe extra boolean returned is more trivial for the caller than just one error returned.\n\nShould we add more comments to further explain it?",
+      "parentUuid": "345fa322_62c36567",
       "range": {
         "startLine": 53,
         "startChar": 5,
