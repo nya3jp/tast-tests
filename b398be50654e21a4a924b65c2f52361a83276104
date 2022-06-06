@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31fa2b6d_c228ea88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T02:25:35Z",
+      "side": 1,
+      "message": "There might be several other reasons:\n- The veth service is not Connected in shill, so we need to wait for the service state changes (WaitForConnectedOrError() in shill.Service can be used);\n- Even if the service is Connected, it can be triggered by IPv6 and thus IPv4 may be still not ready, so access the IPv4 address in the netns may fail.\n\nPossible solutions for the second point are:\na) Polling the server (curl in this case) until it works (for example, see the routing.ExpectPingSuccessWithTimeout() func in this WIP patch: https://crrev.com/c/3689373) (or perhaps add a function like \"WaitIPv4Ready()\" which use ping to check the IPv4 availability before curl)\nb) Checking the statuc of IPv4 IPConfig object on this service;\nc) Checking the IPv4 address on this interface directly.\n\nBut I don\u0027t have a clear idea on which is the best here (perhaps a)?) now.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a96b524b_3a2974fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 3
@@ -19,6 +42,29 @@
         "startChar": 13,
         "endLine": 72,
         "endChar": 128
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04517db7_f42b045d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T02:25:35Z",
+      "side": 1,
+      "message": "Just curious, what\u0027s our attitude to use Python in tests?",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 37
       },
       "revId": "b398be50654e21a4a924b65c2f52361a83276104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -83,6 +129,30 @@
       "writtenOn": "2022-06-05T16:22:21Z",
       "side": 1,
       "message": "Unless you are pairing this with additional DNAT rules, the server inside the test network namespace has to listen on the veth interface. Or at least it should listen on inaddr_any.",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64cf2891_5fa0bc45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T02:25:35Z",
+      "side": 1,
+      "message": "JFYI, if you need the ipv4 address on the in-interface, I added a |VethInStaticIPv4Addr| variable in https://crrev.com/c/3686429 which can be used. That patch may be changed later though.",
+      "parentUuid": "a36546a5_3ae5eccf",
       "range": {
         "startLine": 91,
         "startChar": 32,
