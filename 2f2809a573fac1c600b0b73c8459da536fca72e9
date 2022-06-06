@@ -46,6 +46,29 @@
       },
       "revId": "2f2809a573fac1c600b0b73c8459da536fca72e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9639aca_5a0a1a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-06-06T18:03:56Z",
+      "side": 1,
+      "message": "is window\u0027s id reusable? say i closed a window{id:3} and now create another window, would it be possible that the new window\u0027s id is 3?",
+      "range": {
+        "startLine": 994,
+        "startChar": 8,
+        "endLine": 994,
+        "endChar": 12
+      },
+      "revId": "2f2809a573fac1c600b0b73c8459da536fca72e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
