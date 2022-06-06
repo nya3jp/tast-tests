@@ -52,6 +52,24 @@
       "parentUuid": "ca1d47ee_a02c2041",
       "revId": "cc9a66be10a490c5583d9aa70921042d10c47404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d919e3c_d8e56709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-06T03:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3730f961_eed83fef",
+      "revId": "cc9a66be10a490c5583d9aa70921042d10c47404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
