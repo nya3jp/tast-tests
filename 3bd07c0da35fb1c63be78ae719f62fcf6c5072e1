@@ -80,6 +80,30 @@
       },
       "revId": "3bd07c0da35fb1c63be78ae719f62fcf6c5072e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8f9357_7b2721b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:53:12Z",
+      "side": 1,
+      "message": "In general I\u0027d recommend to minimize the scope of variables, and make each use clearer (though I know some existing code do not do so).\nI don\u0027t think it is necessary to split into three. I think you can fix the styles of them in one CL :-).",
+      "parentUuid": "5723b021_906fd813",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "3bd07c0da35fb1c63be78ae719f62fcf6c5072e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
