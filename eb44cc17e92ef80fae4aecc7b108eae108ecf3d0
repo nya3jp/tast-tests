@@ -33,6 +33,24 @@
       "message": "Looks continuously failing on tastboard?",
       "revId": "eb44cc17e92ef80fae4aecc7b108eae108ecf3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff0490e_a04132c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-06-06T09:54:34Z",
+      "side": 1,
+      "message": "All the failures of .clamshell and .clamshell.vm are on *kernel-next. Isn\u0027t this ignorable?",
+      "parentUuid": "09cf5376_223215f8",
+      "revId": "eb44cc17e92ef80fae4aecc7b108eae108ecf3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
