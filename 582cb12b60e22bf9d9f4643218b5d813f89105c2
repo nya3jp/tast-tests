@@ -51,6 +51,24 @@
       "parentUuid": "37d01916_681a0bfe",
       "revId": "582cb12b60e22bf9d9f4643218b5d813f89105c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3882d418_d61a7e3a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T15:59:58Z",
+      "side": 1,
+      "message": "Sorry for miscommunication.\nWhy does --enable-field-trial-config need to be enabled by default?\nThe flag is not set on Chrome brand build IIUC, so on production it\u0027s disabled, right?\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:components/variations/service/variations_field_trial_creator.cc;l\u003d164\n\nSo, I\u0027m thinking we should run Tast tests with disabling the flag following the production condition.\nI.e., I\u0027m ok to make it configurable, but should the --enable-field-trial-config be set to false by default?",
+      "parentUuid": "12b272db_0f435d86",
+      "revId": "582cb12b60e22bf9d9f4643218b5d813f89105c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
