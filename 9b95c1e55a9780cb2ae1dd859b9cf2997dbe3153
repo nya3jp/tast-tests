@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d926f9_6a9292f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-06T04:37:42Z",
+      "side": 1,
+      "message": "\u003e Patch Set 13: Code-Review+2 Commit-Queue+2\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1115919\u003e:\n\u003e * src/chromiumos/tast/local/bundles/cros/platform/fusebox_attach_storage.go\n\u003e \n\nBack-porting the cros-disk connection code we decided upon in this CL to the  platform.FuseBox test PTAL.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3690190\n",
+      "revId": "9b95c1e55a9780cb2ae1dd859b9cf2997dbe3153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
