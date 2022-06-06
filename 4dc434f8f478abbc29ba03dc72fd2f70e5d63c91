@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c8dc9a_e835cbc7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-06-06T01:14:23Z",
+      "side": 1,
+      "message": "If there are plans for it to be run as part of a manual test suite, that\u0027s fine.",
+      "parentUuid": "e69c4624_a52ff7cc",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50c67bb4_795d9388",
@@ -236,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac491f65_fdb83e41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-06-06T01:14:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1842ffd6_d4d9a37b",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfad0ac4_8a239412",
@@ -273,6 +321,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "dfad0ac4_8a239412",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "4dc434f8f478abbc29ba03dc72fd2f70e5d63c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8095866a_6704146b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_charge_during_shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-06-06T01:14:23Z",
+      "side": 1,
+      "message": "Would it be reasonable for the test to check if the battery was full at the start of the test and then drain the battery? As it is, this test is flaky in the sense that sometimes it doesn\u0027t test anything (i.e. if the battery is full before the test, the the test is effectively impossible to fail).",
+      "parentUuid": "fb5a3825_18932f1b",
       "range": {
         "startLine": 122,
         "startChar": 4,
