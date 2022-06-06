@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48ae76a5_8310a3a5",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-06T23:58:40Z",
+      "side": 1,
+      "message": "No matter what the number is, it is better to add what you mentioned to a comment. This helps the readers to understand :)",
+      "parentUuid": "09d48b20_10f91696",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "0512fde0e646ea2c9a9a1871f0b63cbdaa903587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92c240b2_ab398ec2",
         "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
         "patchSetId": 1
