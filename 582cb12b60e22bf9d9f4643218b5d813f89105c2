@@ -33,6 +33,24 @@
       "message": "This makes more gap from production situation, and I\u0027m wondering if we should do it by default.\nMaybe enable the configuration for only some specific case we are interested in?",
       "revId": "582cb12b60e22bf9d9f4643218b5d813f89105c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b272db_0f435d86",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-06T15:48:36Z",
+      "side": 1,
+      "message": "I understand the concerns of causing fragmentation. But I am not sure what needs to be done for this comment.\n\nThis `DisableFieldTrialConfig` defaults to false. I added it so that sheriff/gardener/test owner could use it to temporarily to turn off finch test config for investigations.\n\nI used it to for a few inputs.* test that I could not figure out why they fail. I filed bugs for further investigations from owners. Without this, I would have to mark these tests `informational` (about 17). Do you prefer that?",
+      "parentUuid": "37d01916_681a0bfe",
+      "revId": "582cb12b60e22bf9d9f4643218b5d813f89105c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
