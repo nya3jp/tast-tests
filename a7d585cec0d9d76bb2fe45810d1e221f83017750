@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c80811_fc88fd26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_bluetooth_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T16:05:03Z",
+      "side": 1,
+      "message": "This pattern, which is to sleep for some condition, is highly recommended to avoid.\nAlso, this does not work, as monitorCmd has not started yet here.\nInstead, could you wait for the right condition that cros-health-tool has subscribed to BT events?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "a7d585cec0d9d76bb2fe45810d1e221f83017750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
