@@ -16,6 +16,46 @@
       "message": "Hidehiko-san (or Ben if you are around).  PTAL",
       "revId": "3bd07c0da35fb1c63be78ae719f62fcf6c5072e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe379a6a_60a5cd79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:37:12Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "3bd07c0da35fb1c63be78ae719f62fcf6c5072e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47dfeda_abde5c31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-06T09:37:12Z",
+      "side": 1,
+      "message": "nit/style:\n\n if err :\u003d dbusObj.CallWithContext(...).Store(...); err !\u003d nil || !result {\n   ...\n }",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "3bd07c0da35fb1c63be78ae719f62fcf6c5072e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
