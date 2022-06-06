@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/kernelmeter"
@@ -90,6 +91,15 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 		if minimize, err := strconv.ParseBool(minimizeArcString); err == nil {
 			minimizeArc = minimize
 		}
+	}
+
+	tconn, err := pre.Chrome.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Could not get Chrome test API connection: ", err)
+	}
+	killsBefore, err := arc.GetAppKills(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to collect ARC app kill counts: ", err)
 	}
 
 	info, err := kernelmeter.MemInfo()
@@ -190,6 +200,12 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	if err := metrics.LogMemoryStats(ctx, basemem, preARC, p, s.OutDir(), ""); err != nil {
 		s.Error("Failed to collect memory metrics: ", err)
 	}
+
+	killsAfter, err := arc.GetAppKills(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to collect ARC app kill counts: ", err)
+	}
+	killsAfter.Subtract(killsBefore).LogPerfMetrics(p, "")
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save perf.Values: ", err)
 	}

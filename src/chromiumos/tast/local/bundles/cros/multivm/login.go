@@ -62,15 +62,15 @@ func Login(ctx context.Context, s *testing.State) {
 	if err := pre.Chrome.Responded(ctx); err != nil {
 		s.Fatal("Chrome did not respond: ", err)
 	}
-	arc := multivm.ARCFromPre(pre)
-	basemem, err := metrics.NewBaseMemoryStats(ctx, arc)
+	a := multivm.ARCFromPre(pre)
+	basemem, err := metrics.NewBaseMemoryStats(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to retrieve base memory stats: ", err)
 	}
 
-	if arc != nil {
+	if a != nil {
 		// Ensures package manager service is running by checking the existence of the "android" package.
-		pkgs, err := arc.InstalledPackages(ctx)
+		pkgs, err := a.InstalledPackages(ctx)
 		if err != nil {
 			s.Fatal("Getting installed packages failed: ", err)
 		}
@@ -88,7 +88,7 @@ func Login(ctx context.Context, s *testing.State) {
 	}
 
 	p := perf.NewValues()
-	if err := metrics.LogMemoryStats(ctx, basemem, arc, p, s.OutDir(), "_login"); err != nil {
+	if err := metrics.LogMemoryStats(ctx, basemem, a, p, s.OutDir(), "_login"); err != nil {
 		s.Error("Failed to collect memory metrics: ", err)
 	}
 
@@ -101,7 +101,7 @@ func Login(ctx context.Context, s *testing.State) {
 	// Let the system quiesce for a while and measure its memory consumption.
 	testing.Sleep(ctx, quietDuration)
 	s.Log("Will now collect idle perf values")
-	if err := metrics.LogMemoryStats(ctx, basemem, arc, p, s.OutDir(), "_quiesce"); err != nil {
+	if err := metrics.LogMemoryStats(ctx, basemem, a, p, s.OutDir(), "_quiesce"); err != nil {
 		s.Error("Failed to collect memory metrics: ", err)
 	}
 
