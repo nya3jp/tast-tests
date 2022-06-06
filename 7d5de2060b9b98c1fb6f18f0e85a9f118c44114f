@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b274c9_7ff71a5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_early.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-06T03:11:56Z",
+      "side": 1,
+      "message": "ni: incomplete sentence.  What is meant to happen in this case?",
+      "revId": "7d5de2060b9b98c1fb6f18f0e85a9f118c44114f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
