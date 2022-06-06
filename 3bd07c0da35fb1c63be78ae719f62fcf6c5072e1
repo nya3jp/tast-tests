@@ -56,6 +56,30 @@
       },
       "revId": "3bd07c0da35fb1c63be78ae719f62fcf6c5072e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5723b021_906fd813",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-06T09:41:28Z",
+      "side": 1,
+      "message": "Ah I wrote as we decided on CL:3678798 :).  Let me know if I should send 3 more patches to correct each test to use this style?",
+      "parentUuid": "c47dfeda_abde5c31",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "3bd07c0da35fb1c63be78ae719f62fcf6c5072e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
