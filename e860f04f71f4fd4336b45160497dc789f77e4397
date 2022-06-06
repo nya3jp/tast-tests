@@ -16,6 +16,24 @@
       "message": "One advice is to run this test against: servo 4 and servo 4.1 duts. \n",
       "revId": "e860f04f71f4fd4336b45160497dc789f77e4397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4752c7_5981e884",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-06T21:59:15Z",
+      "side": 1,
+      "message": "Hi Frank, thank you for the review. I am waiting to get the servos to test locally. I will share updates when I get the them.",
+      "parentUuid": "32c28287_a896f2ff",
+      "revId": "e860f04f71f4fd4336b45160497dc789f77e4397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

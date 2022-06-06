@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a53e93d_f290491e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-06T21:59:15Z",
+      "side": 1,
+      "message": "Synced offline that this test should be able to run on any main lab DUT",
+      "parentUuid": "ff8dfa69_c6593bd8",
+      "revId": "7e9ad2bf1a4d1a6be4bfc36e650c744c81a5458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41b7fc1e_ae949200",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "If a servo does not have a usb mux and setting a mux state does not work, I think no usb connection can be detected in line 64. What do you think about initially checking the usb device list when the mux is USBMuxDUT and USBMuxHost to determine if mux can be used to simulate usb connect/disconnect? Would this cover the cases of no mux in the servo?",
       "parentUuid": "41b7fc1e_ae949200",
+      "range": {
+        "startLine": 141,
+        "startChar": 32,
+        "endLine": 141,
+        "endChar": 41
+      },
+      "revId": "7e9ad2bf1a4d1a6be4bfc36e650c744c81a5458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36e8dad_9c210dd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/external_usb_stress.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-06T21:59:15Z",
+      "side": 1,
+      "message": "Synced offline to try testing on servo 4. I will find one to test locally and share updates.",
+      "parentUuid": "a338deea_a4eef326",
       "range": {
         "startLine": 141,
         "startChar": 32,
