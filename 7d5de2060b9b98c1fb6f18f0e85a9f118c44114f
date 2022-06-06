@@ -16,6 +16,24 @@
       "message": "ni: incomplete sentence.  What is meant to happen in this case?",
       "revId": "7d5de2060b9b98c1fb6f18f0e85a9f118c44114f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5fa57f_134720ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_early.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-06-06T15:56:30Z",
+      "side": 1,
+      "message": "Done, thanks for noticing!",
+      "parentUuid": "85b274c9_7ff71a5a",
+      "revId": "7d5de2060b9b98c1fb6f18f0e85a9f118c44114f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
