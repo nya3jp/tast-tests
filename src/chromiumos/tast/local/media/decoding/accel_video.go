@@ -153,9 +153,11 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, parameters 
 	return nil
 }
 
-// RunAccelVideoTestWithTestVectors runs video_decode_accelerator_tests --gtest_filter=VideoDecoderTest.FlushAtEndOfStream
-// --validator_type=validatorType with the specified video files using the direct VideoDecoder.
-func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVectors []string, validatorType ValidatorType) error {
+// RunAccelVideoTestWithTestVectors runs
+// video_decode_accelerator_tests --gtest_filter=VideoDecoderTest.FlushAtEndOfStream
+// --validator_type=validatorType with the specified video files using the
+// direct VideoDecoder. It expects the command to succeed unless mustFail is set.
+func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVectors []string, validatorType ValidatorType, mustFail bool) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
@@ -185,12 +187,20 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 			exec, "VideoDecoderTest.FlushAtEndOfStream",
 			filepath.Join(outDir, exec+"_"+filename+".log"), args); err != nil {
 			failedFilenames = append(failedFilenames, filename)
-			testing.ContextLog(ctx, "Test vector failed: ", filename)
+			if mustFail {
+				testing.ContextLog(ctx, "Test vector failed (expected): ", filename)
+			} else {
+				testing.ContextLog(ctx, "Test vector failed (unexpected): ", filename)
+			}
 		} else {
-			testing.ContextLog(ctx, "Test vector passed: ", filename)
+			if mustFail {
+				testing.ContextLog(ctx, "Test vector passed (unexpected): ", filename)
+			} else {
+				testing.ContextLog(ctx, "Test vector passed (expected): ", filename)
+			}
 		}
 	}
-	if failedFilenames != nil {
+	if failedFilenames != nil && !mustFail {
 		return errors.Errorf("failed to validate the decoding of %v", failedFilenames)
 	}
 	return nil
