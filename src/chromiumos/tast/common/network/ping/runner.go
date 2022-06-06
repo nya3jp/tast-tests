@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"strconv"
+	"time"
 
 	"chromiumos/tast/common/network/cmd"
 	"chromiumos/tast/errors"
@@ -40,6 +41,7 @@ type config struct {
 	sourceIface string
 	user        string
 	savePath    string
+	timeout     time.Duration
 }
 
 // Option is a function used to configure ping command.
@@ -162,6 +164,12 @@ func SaveOutput(filePath string) Option {
 	return func(c *config) { c.savePath = filePath }
 }
 
+// Timeout returns an Option that can be passed to Ping to set the timeout
+// value.
+func Timeout(timeout time.Duration) Option {
+	return func(c *config) { c.timeout = timeout }
+}
+
 // cmdArgs converts a config into a string of arguments for the ping command.
 func (cfg *config) cmdArgs(targetIP string) ([]string, error) {
 	var args []string
@@ -180,6 +188,9 @@ func (cfg *config) cmdArgs(targetIP string) ([]string, error) {
 	}
 	if cfg.qos != 0 {
 		args = append(args, "-Q", fmt.Sprintf("0x%x", cfg.qos))
+	}
+	if cfg.timeout != 0 {
+		args = append(args, "-W", fmt.Sprintf("%f", cfg.timeout.Seconds()))
 	}
 	args = append(args, targetIP)
 	return args, nil
