@@ -1002,5 +1002,5 @@ func PlaybackPerf(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
-	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, testOpt.decoderType, testOpt.gridSize, testOpt.gridSize, testOpt.measureRoughness)
+	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, testOpt.decoderType, testOpt.gridSize, testOpt.gridSize, testOpt.measureRoughness, false)
 }

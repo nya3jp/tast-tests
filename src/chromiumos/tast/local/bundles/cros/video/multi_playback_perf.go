@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )
 
@@ -35,7 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 		SoftwareDeps: []string{"chrome", "lacros_stable"},
-		Data:         []string{"video.html", "playback.js"},
+		Data:         []string{"video.html", "playback.js", tracing.TraceProcessor(), playback.TraceConfigFile, playback.ThreadStateSQLFile},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
 		Params: []testing.Param{{
@@ -388,5 +389,5 @@ func MultiPlaybackPerf(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
-	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, playback.Hardware, testOpt.gridWidth, testOpt.gridHeight, false)
+	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, playback.Hardware, testOpt.gridWidth, testOpt.gridHeight, false, true)
 }
