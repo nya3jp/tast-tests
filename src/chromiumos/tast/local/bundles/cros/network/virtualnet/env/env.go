@@ -14,6 +14,7 @@ import (
 	"runtime"
 	"strings"
 	"syscall"
+	"time"
 
 	"golang.org/x/sys/unix"
 
@@ -248,6 +249,31 @@ func (e *Env) GetVethInAddrs(ctx context.Context) (retAddrs *IfaceAddrs, retErr 
 		return nil, errors.Wrapf(err, "%s is neither a v4 addr nor a v6 addr", ip)
 	}
 	return &ret, nil
+}
+
+// WaitForVethInAddrs polls the IP addresses on the inside interface and returns
+// them until 1) there is IPv4 address if |ipv4| is true and 2) there is IPv6
+// address (which is not a link-local address) if |ipv6| is true.
+func (e *Env) WaitForVethInAddrs(ctx context.Context, ipv4, ipv6 bool) (*IfaceAddrs, error) {
+	var addrs *IfaceAddrs
+	if err := testing.Poll(ctx, func(c context.Context) error {
+		var err error
+		addrs, err = e.GetVethInAddrs(ctx)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get addrs of %s from env %s", e.VethInName, e.NetNSName)
+		}
+		if ipv4 && addrs.IPv4Addr == nil {
+			return errors.Errorf("expect IPv4 addr in %v but was not found", addrs)
+		}
+		// Note that the link-local address not included in |addrs|.
+		if ipv6 && len(addrs.IPv6Addrs) == 0 {
+			return errors.Errorf("expect IPv6 addr in %v but was not found", addrs)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return nil, errors.Wrapf(err, "failed to wait for addrs in env %s", e.NetNSName)
+	}
+	return addrs, nil
 }
 
 // EnterNetNS executes the current OS thread in the netns associated with this
