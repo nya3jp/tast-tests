@@ -12,6 +12,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"golang.org/x/sys/unix"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/veth"
@@ -164,6 +166,112 @@ func (e *Env) StartServer(ctx context.Context, name string, server server) error
 	e.servers[name] = server
 	if err := server.Start(ctx, e); err != nil {
 		return errors.Wrapf(err, "failed to start server %s", name)
+	}
+	return nil
+}
+
+// IfaceAddrs represents the IP addresses configured on an interface.
+type IfaceAddrs struct {
+	// IPv4Addr is the IPv4 address on the interface. There is only one IPv4
+	// address on an interface.
+	IPv4Addr net.IP
+	// IPv6Addrs is the list of IPv6 addresses (excluding link-local address) on
+	// the interface.
+	IPv6Addrs []net.IP
+}
+
+// All returns all addresses (excluding the IPv6 link-local address) on this
+// interface.
+func (addrs *IfaceAddrs) All() []net.IP {
+	var ret []net.IP
+	if addrs.IPv4Addr != nil {
+		ret = append(ret, addrs.IPv4Addr)
+	}
+	return append(ret, addrs.IPv6Addrs...)
+}
+
+// GetVethInAddrs returns the current IP addresses configured on the veth
+// interface inside this Env. Note that this function reads the addresses from
+// the kernel directly, which also includes syscalls to change the netns, and
+// thus it's better that the caller caches the results if possible. Note that if
+// an address is configured dynamically (e.g., the IPv6 SLAAC address), it may
+// not be ready immediately after the Env is ready (or the corresponding server
+// starts).
+func (e *Env) GetVethInAddrs(ctx context.Context) (*IfaceAddrs, error) {
+	cleanup, err := e.EnterNetNS(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to enter the associated netns")
+	}
+	defer func() {
+		if err := cleanup(); err != nil {
+			testing.ContextLog(ctx, "Failed to back to the original netns")
+		}
+	}()
+	iface, err := net.InterfaceByName(e.VethInName)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get interface object for the in interface")
+	}
+
+	addrs, err := iface.Addrs()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to list addrs on the in interface")
+	}
+
+	// Each object in |addrs| implements the net.Addr interface, which is not
+	// very easy to use. The following code convert it to a CIDR string and then a
+	// net.IP object.
+	var ret IfaceAddrs
+	for _, addr := range addrs {
+		ip, _, err := net.ParseCIDR(addr.String())
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse CIDR string %s", addr.String())
+		}
+		if ipv4Addr := ip.To4(); ipv4Addr != nil {
+			ret.IPv4Addr = ipv4Addr
+			continue
+		}
+		if ipv6Addr := ip.To16(); ipv6Addr != nil {
+			if !ipv6Addr.IsLinkLocalUnicast() {
+				ret.IPv6Addrs = append(ret.IPv6Addrs, ipv6Addr)
+			}
+			continue
+		}
+		return nil, errors.Wrapf(err, "%s is neither a v4 addr nor a v6 addr", ip.String())
+	}
+	return &ret, nil
+}
+
+// EnterNetNS makes the following execution of the current OS thread in the
+// netns associated with this Env, and returns the cleanup function which make
+// the thread going back to the root netns. Notes:
+// - This function calls runtime.LockOSThread() to bind the calling goroutine to
+// the current thread, since the netns only takes effect on a thread. The
+// cleanup function MUST be called on the same goroutine with this function.
+// - This function assumes the current thread is in the root netns.
+func (e *Env) EnterNetNS(ctx context.Context) (func() error, error) {
+	if err := setNetNS(ctx, "/run/netns/"+e.NetNSName); err != nil {
+		return nil, errors.Wrap(err, "failed to enter associated netns")
+	}
+	return func() error {
+		if err := setNetNS(ctx, "/proc/1/ns/net"); err != nil {
+			return errors.Wrap(err, "failed to enter associated netns")
+		}
+		return nil
+	}, nil
+}
+
+func setNetNS(ctx context.Context, path string) error {
+	fd, err := os.Open(path)
+	if err != nil {
+		return errors.Wrap(err, "failed to open netns fd")
+	}
+	defer func() {
+		if err := fd.Close(); err != nil {
+			testing.ContextLog(ctx, "Failed to close netns fd: ", err)
+		}
+	}()
+	if err := unix.Setns(int(fd.Fd()), unix.CLONE_NEWNET); err != nil {
+		return errors.Wrap(err, "failed to set netns")
 	}
 	return nil
 }
