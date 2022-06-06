@@ -158,8 +158,8 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Even bigger meeting.
-			Name:    "49p",
-			Timeout: defaultTestTimeout,
+			Name:      "49p",
+			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
@@ -533,13 +533,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer meetConn.Close()
 
+	meetRE := regexp.MustCompile(`\bMeet\b`)
+	meetWindow, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return meetRE.MatchString(w.Title) })
+	if err != nil {
+		s.Fatal("Failed to find the Meet window: ", err)
+	}
+
 	closedMeet := false
 	defer func() {
 		if closedMeet {
 			return
 		}
 		// Close the Meet window to finish meeting.
-		if err := meetConn.CloseTarget(closeCtx); err != nil {
+		if err := meetWindow.CloseWindow(closeCtx, tconn); err != nil {
 			s.Error("Failed to close the meeting: ", err)
 		}
 	}()
@@ -609,6 +615,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to grant permissions: ", err)
 	}
 
+	var collaborationRE *regexp.Regexp
 	if meet.docs {
 		docsURL := defaultDocsURL
 		if docsURLOverride, ok := s.Var("ui.MeetCUJ.doc"); ok {
@@ -622,6 +629,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer docsConn.Close()
 		s.Log("Creating a Google Docs window")
+		collaborationRE = regexp.MustCompile(`\bDocs\b`)
 	} else if meet.jamboard {
 		// Create another browser window and open a new Jamboard file.
 		jamboardConn, err := cs.NewConn(ctx, jamboardURL, browser.WithNewWindow())
@@ -633,26 +641,18 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := ui.LeftClick(nodewith.Name("New Jam").Role(role.Button))(ctx); err != nil {
 			s.Fatal("Failed to click the new jam button: ", err)
 		}
+		collaborationRE = regexp.MustCompile(`\bJamboard\b`)
 	}
 
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the window list: ", err)
-	}
-	var meetWindow, collaborationWindow *ash.Window
-	re := regexp.MustCompile(`\bMeet\b`)
-	for _, w := range ws {
-		if re.MatchString(w.Title) {
-			meetWindow = w
-		} else if w.Title != "WebRTC Internals" {
-			collaborationWindow = w
-		}
-	}
-	// There should always be a Meet window.
-	if meetWindow == nil {
-		s.Fatal("Failed to find Meet window")
-	}
 	if meet.split {
+		if collaborationRE == nil {
+			s.Fatal("Need a collaboration window for split view")
+		}
+		collaborationWindow, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return collaborationRE.MatchString(w.Title) })
+		if err != nil {
+			s.Fatal("Failed to find the collaboration window: ", err)
+		}
+
 		if err := ash.SetWindowStateAndWait(ctx, tconn, collaborationWindow.ID, ash.WindowStateLeftSnapped); err != nil {
 			s.Fatal("Failed to snap the collaboration window to the left: ", err)
 		}
@@ -897,7 +897,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if hists, err := metrics.Run(ctx, bTconn, func(ctx context.Context) error {
 		// The histograms are recorded when video streams are removed.
 		closedMeet = true
-		if err := meetConn.CloseTarget(closeCtx); err != nil {
+		if err := meetWindow.CloseWindow(closeCtx, tconn); err != nil {
 			return errors.Wrap(err, "failed to close the meeting")
 		}
 		if err := webRTCUI.WaitUntilGone(videoStream)(ctx); err != nil {
