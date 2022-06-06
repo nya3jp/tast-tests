@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -70,7 +71,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
+	var bBrowser *browser.Browser
 	if s.Param().(bool) { // Lacros Chrome
 		// Launch lacros.
 		l, err := lacros.Launch(ctx, tconn)
@@ -79,17 +80,10 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer l.Close(ctx)
 		cs = l
-
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get lacros TestAPIConn: ", err)
-		}
+		bBrowser = l.Browser()
 	} else { // Ash Chrome
 		cs = cr
-
-		var err error
-		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get TestAPIConn: ", err)
-		}
+		bBrowser = cr.Browser()
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
@@ -133,7 +127,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter),
 	}
-	if err := recorder.AddCollectedMetrics(tconn, ashConfigs...); err != nil {
+	if err := recorder.AddCollectedMetrics(cr.Browser(), ashConfigs...); err != nil {
 		s.Fatal("Failed to add Ash recorded metrics: ", err)
 	}
 
@@ -144,7 +138,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
 			perf.SmallerIsBetter),
 	}
-	if err := recorder.AddCollectedMetrics(bTconn, browserConfigs...); err != nil {
+	if err := recorder.AddCollectedMetrics(bBrowser, browserConfigs...); err != nil {
 		s.Fatal("Failed to add Browser recorded metrics: ", err)
 	}
 

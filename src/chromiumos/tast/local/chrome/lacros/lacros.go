@@ -31,7 +31,7 @@ type Lacros struct {
 
 // Browser returns a Browser instance.
 func (l *Lacros) Browser() *browser.Browser {
-	return browser.New(l.sess)
+	return browser.New(l.sess, browser.TypeLacros)
 }
 
 // StartTracing starts trace events collection for the selected categories. Android

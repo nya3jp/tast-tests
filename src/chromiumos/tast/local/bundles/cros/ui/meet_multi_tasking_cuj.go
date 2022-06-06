@@ -140,20 +140,18 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 	var l *lacros.Lacros
 	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
+	var bBrowser *browser.Browser
 	switch bt {
 	case browser.TypeLacros:
 		var err error
 		if cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros); err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get lacros TestAPIConn: ", err)
-		}
+		bBrowser = l.Browser()
 		defer lacros.CloseLacros(closeCtx, l)
 	case browser.TypeAsh:
 		cs = cr
-		bTconn = tconn
+		bBrowser = cr.Browser()
 	default:
 		s.Fatal("Unrecognized browser type: ", bt)
 	}
@@ -355,11 +353,11 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := recorder.AddCollectedMetrics(tconn, ashMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(cr.Browser(), ashMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add Ash recorded metrics: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(bTconn, browserMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(bBrowser, browserMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add Browser recorded metrics: ", err)
 	}
 	if err := recorder.Run(ctx, func(ctx context.Context) error {

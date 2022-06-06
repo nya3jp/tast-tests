@@ -130,7 +130,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		cujrecorder.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
 	}
 	configs = append(configs, cujrecorder.DeprecatedMetricConfigs()...)
-	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
+	if err := recorder.AddCollectedMetrics(cr.Browser(), configs...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}
 

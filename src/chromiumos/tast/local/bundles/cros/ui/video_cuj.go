@@ -218,7 +218,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
+	if err := recorder.AddCollectedMetrics(cr.Browser(), configs...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}
 	if testParam.tracing {
