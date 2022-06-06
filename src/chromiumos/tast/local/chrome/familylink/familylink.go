@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
@@ -247,7 +248,7 @@ func CreateUsageTimeLimitPolicy() *policy.UsageTimeLimit {
 }
 
 // VerifyUserSignedIntoBrowserAsChild creates and opens the browser, then checks that the provided email is signed in and recognized as a child user.
-func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, bt browser.Type, email string) error {
+func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, bt browser.Type, email, outDir string) (err error) {
 	testing.ContextLog(ctx, "Verifying user is signed in and recognized as a child in browser")
 
 	// Reserve ten seconds for cleanup.
@@ -255,22 +256,17 @@ func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, 
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Set up browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
+	// Set up browser, and open a new tab window.
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, chrome.NewTabURL)
 	if err != nil {
 		return errors.Wrap(err, "failed to set up browser")
 	}
 	defer closeBrowser(cleanupCtx)
-
-	// Open a new blank window.
-	conn, err := br.NewConn(ctx, "chrome://newtab", browser.WithNewWindow())
-	if err != nil {
-		return errors.Wrap(err, "failed to open new window")
-	}
 	defer conn.Close()
 
 	// Check for signed in user.
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return err != nil }, cr, "ui_tree")
 
 	if err := ui.WaitUntilExists(nodewith.NameContaining(strings.ToLower(email)).NameStartingWith("Google Account:"))(ctx); err != nil {
 		return errors.Wrapf(err, "user with email %s is not logged into browser", email)
