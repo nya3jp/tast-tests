@@ -187,6 +187,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6faf3ad6_0b1ae51a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-06T22:30:24Z",
+      "side": 1,
+      "message": "I agree that if the function returns the auth_locked state and caller does the comparison it\u0027d be more readable.",
+      "range": {
+        "startLine": 191,
+        "startChar": 63,
+        "endLine": 191,
+        "endChar": 76
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "806f3f66_52317466",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 3
