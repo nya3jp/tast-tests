@@ -240,7 +240,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanupRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(cr.Browser(), br, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 

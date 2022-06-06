@@ -192,7 +192,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 	defer recorder.Close(cleanupRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(cr.Browser(), nil, recorder); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 

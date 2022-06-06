@@ -184,7 +184,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(conns.BrowserTestConn, configs...); err != nil {
+	if err := recorder.AddCollectedMetrics(conns.Browser, configs...); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 

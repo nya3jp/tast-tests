@@ -6,12 +6,12 @@ package cuj
 
 import (
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/ui/cujrecorder"
 )
 
 // AddPerformanceCUJMetrics adds the metrics to the recorder for performance CUJ test.
-func AddPerformanceCUJMetrics(tconn, bTconn *chrome.TestConn, recorder *cujrecorder.Recorder) error {
+func AddPerformanceCUJMetrics(aBrowser, lBrowser *browser.Browser, recorder *cujrecorder.Recorder) error {
 	lacroshMetrics := cujrecorder.BrowserCommonMetricConfigs()
 	ashMetrics := cujrecorder.AshCommonMetricConfigs()
 	commonMetrics := cujrecorder.AnyChromeCommonMetricConfigs()
@@ -19,11 +19,11 @@ func AddPerformanceCUJMetrics(tconn, bTconn *chrome.TestConn, recorder *cujrecor
 	// Collect all metrics from all browsers to make it compatible with the CUJ scores generated
 	// from previouse releases, which collects all metrics for all system activities.
 	allMetrics := append(commonMetrics, append(lacroshMetrics, ashMetrics...)...)
-	if err := recorder.AddCollectedMetrics(tconn, allMetrics...); err != nil {
+	if err := recorder.AddCollectedMetrics(aBrowser, allMetrics...); err != nil {
 		errors.Wrap(err, "failed to add metrics for tconn")
 	}
-	if bTconn != nil {
-		if err := recorder.AddCollectedMetrics(bTconn, allMetrics...); err != nil {
+	if lBrowser != nil {
+		if err := recorder.AddCollectedMetrics(lBrowser, allMetrics...); err != nil {
 			errors.Wrap(err, "failed to add metrics for bTconn")
 		}
 	}

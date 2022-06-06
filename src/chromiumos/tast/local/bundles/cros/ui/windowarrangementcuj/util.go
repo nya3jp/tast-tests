@@ -63,6 +63,9 @@ type Connections struct {
 	// depending on the browser in use.
 	BrowserTestConn *chrome.TestConn
 
+	// Browser is the browser to lacros chrome, or ash chrome if Lacros is not enabled.
+	Browser *browser.Browser
+
 	// PipVideoTestURL is the URL of the PIP video test page.
 	PipVideoTestURL string
 
@@ -134,6 +137,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get TestAPIConn")
 		}
+		connection.Browser = connection.Chrome.Browser()
 	} else {
 		var err error
 		connection.Chrome, l, connection.Source, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).Chrome, browser.TypeLacros)
@@ -148,6 +152,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		if connection.BrowserTestConn, err = l.TestAPIConn(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
 		}
+		connection.Browser = l.Browser()
 
 		connection.ARC = s.FixtValue().(*arc.PreData).ARC
 	}

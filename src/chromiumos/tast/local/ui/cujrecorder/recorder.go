@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
 	perfSrc "chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power"
@@ -97,7 +98,7 @@ type Recorder struct {
 	tconn *chrome.TestConn
 
 	// Metrics names keyed by relevant chrome.TestConn pointer.
-	names map[*chrome.TestConn][]string
+	names map[*browser.Browser][]string
 
 	// Metric records keyed by metric name.
 	records map[string]*record
@@ -117,7 +118,7 @@ type Recorder struct {
 
 	// Running recorder has these metrics recorders initialized for each metric
 	// Defined only for the running recorder.
-	mr map[*chrome.TestConn]*metrics.Recorder
+	mr map[*browser.Browser]*metrics.Recorder
 
 	// A function to clean up started recording.
 	// Defined only for the running recorder.
@@ -169,11 +170,10 @@ func NewPerformanceCUJOptions() RecorderOptions {
 	}
 }
 
-// AddCollectedMetrics adds |configs| to the collected metrics using the |tconn|
-// as test connection.
-func (r *Recorder) AddCollectedMetrics(tconn *chrome.TestConn, configs ...MetricConfig) error {
-	if tconn == nil {
-		return errors.New("tconn must never be nil")
+// AddCollectedMetrics adds |configs| to the collected metrics for the browser |b|.
+func (r *Recorder) AddCollectedMetrics(b *browser.Browser, configs ...MetricConfig) error {
+	if b == nil {
+		return errors.New("browser must never be nil")
 	}
 	if !r.startedAtTm.IsZero() {
 		return errors.New("canont modify list of collected metrics after recodding was started")
@@ -182,7 +182,7 @@ func (r *Recorder) AddCollectedMetrics(tconn *chrome.TestConn, configs ...Metric
 		if config.histogramName == string(deprecatedGroupLatency) || config.histogramName == string(deprecatedGroupSmoothness) {
 			return errors.Errorf("invalid histogram name: %s", config.histogramName)
 		}
-		r.names[tconn] = append(r.names[tconn], config.histogramName)
+		r.names[b] = append(r.names[b], config.histogramName)
 		r.records[config.histogramName] = &record{config: config}
 	}
 	return nil
@@ -300,7 +300,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 
 	r.loginEventRecorder = perfSrc.NewLoginEventRecorder(tpsMetricPrefix)
 
-	r.names = make(map[*chrome.TestConn][]string)
+	r.names = make(map[*browser.Browser][]string)
 	r.records = make(map[string]*record)
 
 	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
@@ -458,13 +458,16 @@ func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, 
 		}
 	}
 
-	// Starts metrics record per browser test connection.
-	r.mr = make(map[*chrome.TestConn]*metrics.Recorder)
-	for tconn, names := range r.names {
-		var err error
-		r.mr[tconn], err = metrics.StartRecorder(ctx, tconn, names...)
+	// Starts metrics record per browser.
+	r.mr = make(map[*browser.Browser]*metrics.Recorder)
+	for b, names := range r.names {
+		tconn, err := b.TestAPIConn(ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to start metrics recorder")
+			return nil, errors.Wrapf(err, "failed to get test API conn for browser %v", b.Type())
+		}
+		r.mr[b], err = metrics.StartRecorder(ctx, tconn, names...)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to start metrics recorder for browser %v", b.Type())
 		}
 	}
 	r.cleanup = cancel
@@ -507,18 +510,17 @@ func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 
 	// Collects metrics per browser test connection.
 	var hists []*metrics.Histogram
-	for tconn, rr := range r.mr {
+	for b, rr := range r.mr {
+		tconn, err := b.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get test API conn for browser %v", b.Type())
+		}
 		h, err := rr.Histogram(runCtx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to collect metrics")
 		}
-		connName := "lacros-Chrome"
-		// Check if the tconn uses the same underlying session connection with r.tconn.
-		// We compare the value of the two pointers.
-		if *tconn == *r.tconn {
-			connName = "ash-Chrome"
-		}
-		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v", connName, histsWithSamples(h))
+		browserName := b.Type() + "-Chrome"
+		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v", browserName, histsWithSamples(h))
 		hists = append(hists, h...)
 	}
 	// Reset recorders and context.

@@ -68,20 +68,18 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 
 	var l *lacros.Lacros
 	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
+	var bBrowser *browser.Browser
 	switch bt {
 	case browser.TypeLacros:
 		var err error
 		if cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros); err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get lacros TestAPIConn: ", err)
-		}
+		bBrowser = l.Browser()
 		defer lacros.CloseLacros(closeCtx, l)
 	case browser.TypeAsh:
 		cs = cr
-		bTconn = tconn
+		bBrowser = cr.Browser()
 	default:
 		s.Fatal("Unrecognized browser type: ", bt)
 	}
@@ -92,7 +90,7 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	if err := recorder.AddCollectedMetrics(bTconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(bBrowser, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 
