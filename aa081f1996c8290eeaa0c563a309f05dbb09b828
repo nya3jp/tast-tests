@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee88865_bcd95105",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-06T21:15:49Z",
+      "side": 1,
+      "message": "What\u0027s the point of this? This doesn\u0027t look like it saves any code.",
+      "revId": "aa081f1996c8290eeaa0c563a309f05dbb09b828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
