@@ -771,7 +771,7 @@ func wmPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device
 // wmFreeformResize verifies that a window can be resized as defined in:
 // go/arc-wm-p "Clamshell: freeform resize" (slide #26)
 func wmFreeformResize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableLandscapeActivity)
+	act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
