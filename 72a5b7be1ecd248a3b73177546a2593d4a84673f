@@ -16,6 +16,40 @@
       "message": "nhebert@, benreich@ (who reviewed the mentioned CL), PTAL\n\nOthers FYI",
       "revId": "72a5b7be1ecd248a3b73177546a2593d4a84673f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78665f25_d9ff3ad1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-06-06T23:27:00Z",
+      "side": 1,
+      "message": "Thanks for the CL. There\u0027s a logic problem that I think you need to resolve, though. See my other comment!",
+      "revId": "72a5b7be1ecd248a3b73177546a2593d4a84673f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8db27d_db5026d4",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-06-06T23:27:00Z",
+      "side": 1,
+      "message": "The way it is written now, the test case will never have an error if `mustFail \u003d\u003d true`, even if all of the decodes succeed.\n\nOne way to fix this is to append to `failedFilenames` depending on the value of `mustFail`. I.e. when you are logging \"(unexpected)\". Then drop the change to line 203 where you added ` \u0026\u0026 !mustFail`",
+      "revId": "72a5b7be1ecd248a3b73177546a2593d4a84673f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
