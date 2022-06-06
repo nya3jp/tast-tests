@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684b16b9_db18e841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-06T10:13:21Z",
+      "side": 1,
+      "message": "Should probably move this to common code somewhere instead of specific to this test",
+      "revId": "1dd4b709453894744591556347e5f16a89109dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
