@@ -42,20 +42,7 @@ type SurfaceFlingerMetrics struct {
 }
 
 // NewSurfaceFlingerMetrics returns a new instance of SurfaceFlinger.
-// TODO(b/230500493): Remove this constructor after tests are fixed.
 func NewSurfaceFlingerMetrics(appPkgName string, a *arc.ARC) *SurfaceFlingerMetrics {
-	f := &SurfaceFlingerMetrics{
-		frames:        nil,
-		lastTimestamp: -1,
-		appPkgName:    appPkgName,
-		arc:           a,
-	}
-	return f
-}
-
-// NewDefault returns a new instance of SurfaceFlinger.
-// TODO(b/230500493): Rename this constructor after tests are fixed.
-func NewDefault(appPkgName string, a *arc.ARC) *SurfaceFlingerMetrics {
 	f := &SurfaceFlingerMetrics{
 		frames:        nil,
 		lastTimestamp: -1,
