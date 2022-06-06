@@ -47,6 +47,7 @@ type inputDevice struct {
 		Resolution float64 `json:"resolution"`
 		Source     int     `json:"source"`
 	} `json:"motion_ranges"`
+	SupportedKeyCodes map[string]bool `json:"supported_key_codes"`
 }
 
 // verifyGamepadDeviceInfo confirms the gamepad's InputDevice information is correct.
@@ -76,6 +77,16 @@ func verifyGamepadDeviceInfo(s *testing.State, gp *input.GamepadEventWriter, d *
 		input.ABS_HAT0Y: "AXIS_HAT_Y",
 		input.ABS_Z:     "AXIS_LTRIGGER",
 		input.ABS_RZ:    "AXIS_RTRIGGER",
+	}
+
+	supportedKeyCodeMapping := map[string]bool{
+		"96":  true,  // KEYCODE_BUTTON_A
+		"97":  true,  // KEYCODE_BUTTON_B
+		"108": true,  // KEYCODE_BUTTON_START
+		"109": true,  // KEYCODE_BUTTON_SELECT
+		"110": true,  // KEYCODE_BUTTON_MODE
+		"29":  false, // KEYCODE_A
+		"30":  false, // KEYCODE_B
 	}
 
 	almostEqual := func(a, b float64) bool {
@@ -112,6 +123,12 @@ func verifyGamepadDeviceInfo(s *testing.State, gp *input.GamepadEventWriter, d *
 		}
 		if !almostEqual(expectedFlat, motionRange.Flat) {
 			s.Errorf("flat does not match for %s: got %f; want %f", axisName, motionRange.Flat, expectedFlat)
+		}
+	}
+	for keyCode, isSupported := range d.SupportedKeyCodes {
+		expectSupport := supportedKeyCodeMapping[keyCode]
+		if isSupported != expectSupport {
+			s.Errorf("Keycode support does not match for %d: got %d; want %d", keyCode, isSupported, expectSupport)
 		}
 	}
 	return
@@ -269,10 +286,12 @@ func Gamepad(ctx context.Context, s *testing.State) {
 	verifyGamepadDeviceInfo(s, gp, &device)
 
 	s.Log("Pressing buttons")
-	if err := gp.TapButton(ctx, input.BTN_EAST); err != nil {
+	// Cross = Button A
+	if err := gp.TapButton(ctx, input.BTN_SOUTH); err != nil {
 		s.Fatal("Failed to press button: ", err)
 	}
-	if err := gp.TapButton(ctx, input.BTN_SOUTH); err != nil {
+	// Circle = Button B
+	if err := gp.TapButton(ctx, input.BTN_EAST); err != nil {
 		s.Fatal("Failed to press button: ", err)
 	}
 
@@ -280,15 +299,15 @@ func Gamepad(ctx context.Context, s *testing.State) {
 		ActionDown     = "ACTION_DOWN"
 		ActionUp       = "ACTION_UP"
 		KeycodeButtonA = "KEYCODE_BUTTON_A"
-		KeycodeButtonX = "KEYCODE_BUTTON_X"
+		KeycodeButtonB = "KEYCODE_BUTTON_B"
 		AxisX          = "AXIS_X"
 	)
 
 	expectedEvents := []gamepadKeyEvent{
 		{Action: ActionDown, KeyCode: KeycodeButtonA},
 		{Action: ActionUp, KeyCode: KeycodeButtonA},
-		{Action: ActionDown, KeyCode: KeycodeButtonX},
-		{Action: ActionUp, KeyCode: KeycodeButtonX}}
+		{Action: ActionDown, KeyCode: KeycodeButtonB},
+		{Action: ActionUp, KeyCode: KeycodeButtonB}}
 
 	s.Log("Checking the generated gamepad events")
 	if err := waitForKeyEvents(ctx, d, device.DeviceID, expectedEvents); err != nil {
@@ -314,14 +333,14 @@ func Gamepad(ctx context.Context, s *testing.State) {
 	s.Log("Pressing button and moving the analog stick together")
 	injectEvents := []input.GamepadEvent{
 		{Et: input.EV_ABS, Ec: input.ABS_X, Val: axis.Maximum},
-		{Et: input.EV_KEY, Ec: input.BTN_EAST, Val: 1}}
+		{Et: input.EV_KEY, Ec: input.BTN_SOUTH, Val: 1}}
 
 	if err := gp.PressButtonsAndAxes(ctx, injectEvents); err != nil {
 		s.Fatal("Failed to press button and move axis together: ", err)
 	}
 
 	// Release button.
-	if err := gp.ReleaseButton(ctx, input.BTN_EAST); err != nil {
+	if err := gp.ReleaseButton(ctx, input.BTN_SOUTH); err != nil {
 		s.Fatal("Failed to release button: ", err)
 	}
 
