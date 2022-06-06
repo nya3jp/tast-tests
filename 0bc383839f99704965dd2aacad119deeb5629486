@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7494f1_7aa082ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T03:12:16Z",
+      "side": 1,
+      "message": "Yes, sure, I can do the rebase if this patch goes in at first",
+      "parentUuid": "8af9c6fb_1bcb0192",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a0fa58_74d789a6",
@@ -244,6 +268,24 @@
       "side": 1,
       "message": "I guess my point was that if you wait long enough, DHCP will timeout and we\u0027ll end up in a fail/idle state, and since there aren\u0027t any guarantees here in terms of timing, asserting that we\u0027re in the configuration state is not technically correct (even though it may always be the case in practice). I don\u0027t really have a strong opinion here since I don\u0027t think there\u0027s a way to start watching the Service properties right after it\u0027s created to check for the transition to configuring, so if others are fine with this I am too.",
       "parentUuid": "8996e061_86b3c3b1",
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8794a31b_75e5cf00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T03:12:16Z",
+      "side": 1,
+      "message": "The current DHCP timeout value is 30 seconds which I think it\u0027s long enough and thus I\u0027m fine with this.",
+      "parentUuid": "66e0a48d_65e4bd0f",
       "revId": "0bc383839f99704965dd2aacad119deeb5629486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -356,6 +398,30 @@
       "side": 1,
       "message": "My concern here is that if some other test (or a user) sets the priority and forgets/fails to reset it for whatever reason, that breaks this test. Maybe we could remove the default profile at the beginning of the test?",
       "parentUuid": "b422b4f2_37367f00",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3efed59e_499b41e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-06T03:12:16Z",
+      "side": 1,
+      "message": "\u003e Maybe we could remove the default profile at the beginning of the test?\nSounds good to me, I would suggest using the shillReset fixture",
+      "parentUuid": "a1aa3a50_1f27aaa5",
       "range": {
         "startLine": 127,
         "startChar": 16,
