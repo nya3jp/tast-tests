@@ -165,7 +165,7 @@ func (c *Chrome) Chrome() *Chrome { return c }
 
 // Browser returns a Browser instance.
 func (c *Chrome) Browser() *browser.Browser {
-	return browser.New(c.sess)
+	return browser.New(c.sess, browser.TypeAsh)
 }
 
 // Creds returns credentials used to log into a session.

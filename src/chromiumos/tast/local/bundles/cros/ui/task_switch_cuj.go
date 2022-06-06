@@ -405,7 +405,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
-	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(cr.Browser(), cujrecorder.DeprecatedMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}
 	if testParam.tracing {

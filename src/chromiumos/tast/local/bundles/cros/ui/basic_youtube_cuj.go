@@ -106,7 +106,7 @@ func BasicYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(cleanupCtx)
 
-	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.NewSmoothnessMetricConfig(
+	if err := recorder.AddCollectedMetrics(cr.Browser(), cujrecorder.NewSmoothnessMetricConfig(
 		"Ash.WindowCycleView.AnimationSmoothness.Container")); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}

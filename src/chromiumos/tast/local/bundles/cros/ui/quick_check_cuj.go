@@ -104,7 +104,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter),
 	}
-	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
+	if err := recorder.AddCollectedMetrics(cr.Browser(), configs...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}
 

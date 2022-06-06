@@ -88,7 +88,7 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, tabletMode bool)
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanupCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(cr.Browser(), nil, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 
