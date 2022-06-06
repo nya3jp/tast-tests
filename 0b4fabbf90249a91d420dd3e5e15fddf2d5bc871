@@ -122,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66ca5c0_8aa5400c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-06-06T05:16:36Z",
+      "side": 1,
+      "message": "I made crrev.com/c/3685158",
+      "parentUuid": "c57623e3_a6b480b4",
+      "revId": "0b4fabbf90249a91d420dd3e5e15fddf2d5bc871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e0363ab_968f44f4",
