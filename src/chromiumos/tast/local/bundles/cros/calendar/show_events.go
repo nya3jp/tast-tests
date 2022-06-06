@@ -80,13 +80,6 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find year label after opening calendar view: ", err)
 	}
 
-	// TODO(https://crbug.com/1331160): Remove the use of |sleep| and wait for the event entries to show in the event list view.
-	// Wait for calendar view having finished fetching the events from Google Calendar api.
-	// The timeout for event fetching set in CalendarView is 10 seconds.
-	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait: ", err)
-	}
-
 	// Click on a Monday's cell to show the event list view.
 	scrollView := nodewith.ClassName("ScrollView").Ancestor(calendarView).Nth(0)
 	scrollViewport := nodewith.ClassName("ScrollView::Viewport").Ancestor(scrollView).Nth(0)
@@ -111,14 +104,13 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	const findCellTimes = 20
 	cellPositionY := 0
 	eventListView := nodewith.ClassName("CalendarEventListView").Ancestor(calendarView)
-	eventCloseButtonContentView := nodewith.ClassName("View").Ancestor(eventListView).Nth(0)
-	eventCloseButtonView := nodewith.ClassName("ImageButton").Ancestor(eventCloseButtonContentView).Nth(0)
+	eventCloseButtonView := nodewith.ClassName("View").Ancestor(eventListView).Nth(0)
 	for i := 0; i < findCellTimes; i++ {
-		s.Logf("Moving towards to the first Monday cell (iteration %d of %d)", i+1, findCellTimes)
+		s.Logf("Moving towards the first Monday cell (iteration %d of %d)", i+1, findCellTimes)
 		cellPositionY += 5
 		firstMondayDateCellPt := coords.NewPoint(firstMondayDateCellBounds.CenterX(), scrollViewBounds.Top+cellPositionY)
 		if err := mouse.Click(tconn, firstMondayDateCellPt, mouse.LeftButton)(ctx); err != nil {
-			s.Fatal("Failed to click the first Monay date cell: ", err)
+			s.Fatal("Failed to click the first Monday date cell: ", err)
 		}
 		if found, err := ui.IsNodeFound(ctx, eventCloseButtonView); err != nil {
 			s.Fatal("Failed to check event list view close button while finding the first Monday cell: ", err)
