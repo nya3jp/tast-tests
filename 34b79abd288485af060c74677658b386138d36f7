@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90bfc698_a344aa27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/radvd/radvd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-06T23:53:17Z",
+      "side": 1,
+      "message": "Good Go practice is to give good names and provide organization that makes it easy to maintain and discover and understand what a package does. Go also discourages  packages that are too broadly scoped and attempt to bucket too much under one umbrella. It looks like the way these smaller packages are organized, by specific technology, makes sense and follows best practices.",
+      "parentUuid": "a21e739e_5e3a9d07",
+      "revId": "34b79abd288485af060c74677658b386138d36f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc24e5af_b89d7d95",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/subnet/pool.go",
         "patchSetId": 7
