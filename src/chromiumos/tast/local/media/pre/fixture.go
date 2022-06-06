@@ -6,6 +6,7 @@ package pre
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"time"
 
@@ -501,6 +502,29 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	for _, numThreads := range []int{1, 4, 8, 16, 49} {
+		numThreadsStr := strconv.Itoa(numThreads)
+		fixtureStr := "chromeVideoWithDecoderThreads" + numThreadsStr
+
+		testing.AddFixture(&testing.Fixture{
+			Name: fixtureStr,
+			Desc: "Similar to crhomeVideo fixture but max decoder threads is set",
+			Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{
+					chrome.ExtraArgs(chromeVideoArgs...),
+					chrome.ExtraArgs("--disable-features=LimitConcurrentDecoderInstances"),
+					chrome.ExtraArgs("--max-chromeos-decoder-threads=" + numThreadsStr),
+				}, nil
+			}),
+			Parent:          "gpuWatchDog",
+			SetUpTimeout:    chrome.LoginTimeout,
+			ResetTimeout:    chrome.ResetTimeout,
+			TearDownTimeout: chrome.ResetTimeout,
+		})
+
+	}
+
 }
 
 var chromeVideoArgs = []string{
