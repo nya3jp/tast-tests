@@ -69,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0357d0a_8cd8c17a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-06-06T09:22:12Z",
+      "side": 1,
+      "message": "Hi Keigo,\n\nI just figure out it.\n\nI would do the update in next patchset\n\nThank you.",
+      "revId": "84b8171e9c72ba193fa0ee533c22420c81cdbf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acecf210_aff7844b",
