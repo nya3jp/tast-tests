@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d25a2e7_45c96f07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-06T17:19:30Z",
+      "side": 1,
+      "message": "nit: `an`",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "560ff446cb61da3e2dc847f93b64958e2aafbfed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75fe9758_fc4c25d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-06T17:19:30Z",
+      "side": 1,
+      "message": "nit: `tast run \u003cDUT\u003e arc.WindowManagerCUJ.vm`",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "560ff446cb61da3e2dc847f93b64958e2aafbfed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "25ebc0dd_32dc68fb",
@@ -48,6 +94,52 @@
       "writtenOn": "2022-06-06T12:19:02Z",
       "side": 1,
       "message": "Tast owners, PTAL.",
+      "revId": "560ff446cb61da3e2dc847f93b64958e2aafbfed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46aa837_3c3a2f01",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-06T17:19:30Z",
+      "side": 1,
+      "message": "I think it would be more readable/maintainable this way:\n\tdispInfo, err :\u003d display.GetPrimaryInfo(ctx, tconn)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to get display info\")\n\t}\n\tdispMode, err :\u003d dispInfo.GetSelectedMode()\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to get display mode\")\n\t}",
+      "range": {
+        "startLine": 759,
+        "startChar": 0,
+        "endLine": 766,
+        "endChar": 2
+      },
+      "revId": "560ff446cb61da3e2dc847f93b64958e2aafbfed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6607132f_19dbbda4",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-06T17:19:30Z",
+      "side": 1,
+      "message": "optional nit: because `dsf` is here anyway, maybe use it like so:\n\tdsf :\u003d dispMode.DeviceScaleFactor\n\tdisplaySize :\u003d coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, dsf)",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 768,
+        "endChar": 34
+      },
       "revId": "560ff446cb61da3e2dc847f93b64958e2aafbfed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
