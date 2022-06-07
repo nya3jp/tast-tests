@@ -138,3 +138,13 @@ func StillCaptureZSLTestConfig() TestConfig {
 		ConnectToCameraService: true,
 	}
 }
+
+// AUETestConfig returns test config for running HAL3AUE test.
+func AUETestConfig() TestConfig {
+	return TestConfig{
+		// For now AUE test is only covering Camera3Preview functionality.
+		// It can be expanded to cover other functionalities.
+		// To cover multiple tests, separate the filters with semicolon.
+		GtestFilter: "Camera3PreviewTest/*",
+	}
+}
