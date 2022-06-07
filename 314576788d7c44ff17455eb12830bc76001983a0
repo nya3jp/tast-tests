@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "790c19a7_5a2acbc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-06-07T05:19:55Z",
+      "side": 1,
+      "message": "Tried `arc.GamepadPerf.vm` test and it passed, I think it doesn\u0027t do any key validation, so even if EAST and SOUTH keys are flipper, it\u0027ll still work",
+      "parentUuid": "917206a0_8553dbf0",
+      "revId": "314576788d7c44ff17455eb12830bc76001983a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a303c5f1_b72b4fa3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33773eff_d1467381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-06-07T05:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6d8041_e47abd57",
+      "revId": "314576788d7c44ff17455eb12830bc76001983a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "105623a2_6b52c26f",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-06-06T10:12:51Z",
       "side": 1,
       "message": "if supportedKeyCodeMapping doesn\u0027t have keyCode as a key (for some unexpected reason), then expectSupport is a default value (false).\n\nHow about doing something like below:\n```\nexpectSupport, ok :\u003d supportedKeyCodeMapping[keyCode]\nif !ok {\n  s.Errorf(...)\n} else isSupported !\u003d expectSupport {\n  s.Errorf(...)\n}\n```",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "314576788d7c44ff17455eb12830bc76001983a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64c743c_0989714e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-06-07T05:19:55Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, done.",
+      "parentUuid": "105623a2_6b52c26f",
       "range": {
         "startLine": 129,
         "startChar": 2,
