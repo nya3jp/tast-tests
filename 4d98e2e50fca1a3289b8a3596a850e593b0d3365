@@ -16,6 +16,69 @@
       "message": "Made the entering ns code more robust and tested with the follow-up patches. PTAL, thanks!",
       "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbeba5bf_97b72e5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T13:40:41Z",
+      "side": 1,
+      "message": "This still appears correct to me, but we are getting to a level of nested defer funcs which might be a bit tricky for maintenance.",
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64a84a6_fc7fd302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T13:40:41Z",
+      "side": 1,
+      "message": "Couldn\u0027t we move this directly to the cleanup function ? Here we would always want to any other cleanup in this defer block regardless of the outcome of cleanup() right ? (probably before going back to the original NS even).",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 3
+      },
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c790e5dd_0f24dab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T13:40:41Z",
+      "side": 1,
+      "message": "go back",
+      "range": {
+        "startLine": 314,
+        "startChar": 38,
+        "endLine": 314,
+        "endChar": 42
+      },
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
