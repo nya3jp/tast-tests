@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdbfe7e_d5b38445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-07T22:25:25Z",
+      "side": 1,
+      "message": "lgtm % others",
+      "revId": "267b09edea718880dabe61e6efbc08ac491699f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "773a6c6d_a9c3f8e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-07T22:25:25Z",
+      "side": 1,
+      "message": "nit: 2 min is long and could be longer than `duration`. Maybe derive it from `duration` instead. e.g. we want to make 5 circles, and `singleSpiralDuration` would be `duration / 5`.",
+      "revId": "267b09edea718880dabe61e6efbc08ac491699f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac364d0_41e48bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-07T22:25:25Z",
+      "side": 1,
+      "message": "nit: Error check for Sleep and bail, for cases like the whole test suite times out.",
+      "revId": "267b09edea718880dabe61e6efbc08ac491699f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
