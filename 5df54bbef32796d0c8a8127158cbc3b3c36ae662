@@ -22,6 +22,30 @@
       },
       "revId": "5df54bbef32796d0c8a8127158cbc3b3c36ae662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0f960d_34051401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-07T07:37:37Z",
+      "side": 1,
+      "message": "Good point. \n\nMoved it after the resets. Thanks for pointing it out!",
+      "parentUuid": "7cd239dd_5bfbee86",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 100
+      },
+      "revId": "5df54bbef32796d0c8a8127158cbc3b3c36ae662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
