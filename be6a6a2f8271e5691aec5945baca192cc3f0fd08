@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9aacfe6_f470b6ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-07T22:20:04Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "a81c3420_d158baeb",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "be6a6a2f8271e5691aec5945baca192cc3f0fd08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf9d2b25_0c63f494",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Let\u0027s keep it this way. At least it\u0027s readable. We might want to adjust some of some timeouts without touching the other ones.",
       "parentUuid": "cf9d2b25_0c63f494",
+      "range": {
+        "startLine": 212,
+        "startChar": 28,
+        "endLine": 212,
+        "endChar": 43
+      },
+      "revId": "be6a6a2f8271e5691aec5945baca192cc3f0fd08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e81872_cd00e75b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-07T22:20:04Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "ee22f02a_2f49b658",
       "range": {
         "startLine": 212,
         "startChar": 28,
