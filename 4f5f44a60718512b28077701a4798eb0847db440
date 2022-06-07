@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32bdbdcb_873b31ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-07T02:48:37Z",
+      "side": 1,
+      "message": "This is overwritten in the test code. Do you also want to remove those explicit sets",
+      "range": {
+        "startLine": 548,
+        "startChar": 1,
+        "endLine": 548,
+        "endChar": 44
+      },
+      "revId": "4f5f44a60718512b28077701a4798eb0847db440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
