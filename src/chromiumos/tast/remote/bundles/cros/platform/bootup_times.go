@@ -6,6 +6,7 @@ package platform
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -32,6 +33,7 @@ const (
 	lidCloseOpen string = "lidCloseOpen"
 	powerButton  string = "powerButton"
 	bootFromS5   string = "bootFromS5"
+	refreshPower string = "refreshPower"
 )
 
 func init() {
@@ -65,13 +67,17 @@ func init() {
 			Val:               bootupTimes{bootType: bootFromS5},
 			Timeout:           5 * time.Minute,
 			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		}, {
+			Name:              "refresh_power",
+			Val:               bootupTimes{bootType: refreshPower},
+			Timeout:           5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		}},
 	})
 }
 
 func BootupTimes(ctx context.Context, s *testing.State) {
 	var (
-		cbmemPattern = regexp.MustCompile(`Total Time: (.*)`)
 		bootTime     = 8.4  // default bootup time in seconds
 		cbmemTimeout = 1.35 // default cbmem timeout in seconds
 	)
@@ -183,28 +189,12 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 
 	}()
 
-	// Wake up DUT.
-	pwrNormalPress := func() {
-		s.Log("Waking up DUT")
-		if !dut.Connected(ctx) {
-			s.Log("Power Normal Pressing")
-			waitCtx, cancel := context.WithTimeout(ctx, 1*time.Minute)
-			defer cancel()
-			if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-				s.Fatal("Failed to power normal press: ", err)
-			}
-			if err := dut.WaitConnect(waitCtx); err != nil {
-				s.Fatal("Failed to wait connect DUT: ", err)
-			}
-		} else {
-			s.Log("DUT is UP")
-		}
-	}
-
 	// Cleanup.
 	defer func(ctx context.Context) {
 		s.Log("Performing clean up")
-		pwrNormalPress()
+		if err := powerNormalPress(ctx, dut, pxy); err != nil {
+			s.Error("Failed to press power button: ", err)
+		}
 	}(ctx)
 
 	if btType.bootType == "reboot" {
@@ -233,7 +223,9 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to open lid: ", err)
 		}
 		if err := dut.WaitConnect(ctx); err != nil {
-			pwrNormalPress()
+			if err := powerNormalPress(ctx, dut, pxy); err != nil {
+				s.Fatal("Failed to press power button: ", err)
+			}
 		}
 	} else if btType.bootType == "powerButton" {
 		if err := dut.Conn().CommandContext(ctx, "sh", "-c", "rm -rf /var/log/metrics/*").Run(); err != nil {
@@ -246,26 +238,10 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 		if err := dut.WaitUnreachable(ctx); err != nil {
 			s.Fatal("Failed to shutdown: ", err)
 		}
-		pwrNormalPress()
-	} else if btType.bootType == bootFromS5 {
-		s.Log("Capturing EC log")
-		if err := pxy.Servo().SetOnOff(ctx, servo.ECUARTCapture, servo.On); err != nil {
-			s.Fatal("Failed to capture EC UART: ", err)
+		if err := powerNormalPress(ctx, dut, pxy); err != nil {
+			s.Fatal("Failed to press power button: ", err)
 		}
-		defer func() {
-			if err := pxy.Servo().SetOnOff(ctx, servo.ECUARTCapture, servo.Off); err != nil {
-				s.Fatal("Failed to disable capture EC UART: ", err)
-			}
-		}()
-		var leftoverLines string
-		readyForPowerOn := regexp.MustCompile(`power state 1 = S5`)
-		tooLateToPowerOn := regexp.MustCompile(`power state 0 = G3`)
-		powerOnFinished := regexp.MustCompile(`power state 3 = S0`)
-		powerButtonPressFinished := regexp.MustCompile(`PB task 0 = idle`)
-		didPowerOn := false
-		hitS5 := false
-		donePowerOff := false
-
+	} else if btType.bootType == bootFromS5 {
 		if err := dut.Conn().CommandContext(ctx, "sh", "-c", "rm -rf /var/log/metrics/*").Run(); err != nil {
 			s.Fatal("Failed to remove /var/log/metrics/* files: ", err)
 		}
@@ -273,55 +249,41 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 		if err := pxy.Servo().RunECCommand(ctx, "powerbtn 8500"); err != nil {
 			s.Fatal("Unable to power off: ", err)
 		}
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if lines, err := pxy.Servo().GetQuotedString(ctx, servo.ECUARTStream); err != nil {
-				s.Fatal("Failed to read UART: ", err)
-			} else if lines != "" {
-				// It is possible to read partial lines, so save the part after newline for later
-				lines = leftoverLines + lines
-				if crlfIdx := strings.LastIndex(lines, "\r\n"); crlfIdx < 0 {
-					leftoverLines = lines
-					lines = ""
-				} else {
-					leftoverLines = lines[crlfIdx+2:]
-					lines = lines[:crlfIdx+2]
-				}
-
-				for _, l := range strings.Split(lines, "\r\n") {
-					s.Logf("%q", l)
-					if match := readyForPowerOn.FindString(l); match != "" && !didPowerOn {
-						s.Logf("Found S5: %q", l)
-						hitS5 = true
-					}
-					if match := powerButtonPressFinished.FindString(l); match != "" && !didPowerOn {
-						s.Logf("Found power button release: %q", l)
-						donePowerOff = true
-					}
-					// If the long press above is done, and we've seen S5, then do a short press to power on.
-					if hitS5 && donePowerOff && !didPowerOn {
-						s.Log("Pressing power button")
-						if err := pxy.Servo().SetString(ctx, servo.ECUARTCmd, "powerbtn 200"); err != nil {
-							return testing.PollBreak(err)
-						}
-						didPowerOn = true
-					}
-
-					if match := tooLateToPowerOn.FindString(l); match != "" && !didPowerOn {
-						s.Logf("Found G3: %q", l)
-						s.Error("Power state reached G3, power button pressed too late")
-					}
-					if match := powerOnFinished.FindString(l); didPowerOn && match != "" {
-						s.Logf("Found S0: %q", l)
-						return nil
-					}
-				}
-			}
-			return errors.New("Not in S0 yet")
-		}, &testing.PollOptions{Interval: time.Millisecond * 200, Timeout: 60 * time.Second}); err != nil {
-			s.Error("EC output parsing failed: ", err)
+		if err := waitForS0State(ctx, pxy); err != nil {
+			s.Fatal("Failed to wait for S0 state: ", err)
 		}
 		waitCtx, cancel := context.WithTimeout(ctx, 1*time.Minute)
 		defer cancel()
+		if err := dut.WaitConnect(waitCtx); err != nil {
+			s.Fatal("Failed to wait connect DUT: ", err)
+		}
+	} else if btType.bootType == refreshPower {
+		waitCtx, cancel := context.WithTimeout(ctx, 1*time.Minute)
+		defer cancel()
+
+		s.Log("Pressing power btn to shutdown DUT")
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
+			s.Fatal("Failed to power off DUT: ", err)
+		}
+
+		if err := dut.WaitUnreachable(ctx); err != nil {
+			if err := powerNormalPress(ctx, dut, pxy); err != nil {
+				s.Fatal("Failed to press power button: ", err)
+			}
+		}
+
+		// expected time sleep 5 seconds to ensure dut switch to s5.
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
+
+		s.Log("Pressing refresh + power key to boot up DUT")
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.Refresh, servo.DurLongPress); err != nil {
+			s.Fatal("Failed to press refresh key: ", err)
+		}
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+			s.Fatal("Failed to power normal press: ", err)
+		}
 		if err := dut.WaitConnect(waitCtx); err != nil {
 			s.Fatal("Failed to wait connect DUT: ", err)
 		}
@@ -336,31 +298,39 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get previous sleep state: ", err)
 		}
 	}
-
-	// Validate seconds power on to login from platform bootperf values.
-	getBootPerf := func() {
-		cl, err := rpc.Dial(ctx, dut, s.RPCHint())
-		if err != nil {
-			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-		}
-		defer cl.Close(ctx)
-		bootPerfService := platform.NewBootPerfServiceClient(cl.Conn)
-		metrics, err := bootPerfService.GetBootPerfMetrics(ctx, &empty.Empty{})
-		if err != nil {
-			s.Fatal("Failed to get boot perf metrics: ", err)
-		}
-		if metrics.Metrics["seconds_power_on_to_login"] > bootTime {
-			s.Fatalf("Failed seconds_power_on_to_login is greater than expected, want %v; got %v", bootTime, metrics.Metrics["seconds_power_on_to_login"])
-		}
-
+	if err := getBootPerf(ctx, dut, s.RPCHint(), bootTime); err != nil {
+		s.Fatal("Failed to get boot perf values: ", err)
 	}
-	getBootPerf()
+	if err := verifyCBMem(ctx, dut, cbmemTimeout); err != nil {
+		s.Fatal("Failed to verify cbmem timeout: ", err)
+	}
+}
 
-	// Validating cbmem time.
+// validateSleepState from cbmem command output.
+func validateSleepState(ctx context.Context, dut *dut.DUT, sleepStateValue int) error {
+	// Command to check previous sleep state.
+	const cmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
+	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", cmd).Output()
+	if err != nil {
+		return errors.Wrapf(err, "failed to execute %q command", cmd)
+	}
+
+	got := strings.TrimSpace(string(out))
+	want := fmt.Sprintf("prev_sleep_state %d", sleepStateValue)
+
+	if !strings.Contains(got, want) {
+		return errors.Errorf("unexpected sleep state = got %q, want %q", got, want)
+	}
+	return nil
+}
+
+// verifyCBMem verifies cbmem timeout.
+func verifyCBMem(ctx context.Context, dut *dut.DUT, cbmemTimeout float64) error {
 	cbmemOutput, err := dut.Conn().CommandContext(ctx, "sh", "-c", "cbmem -t").Output()
 	if err != nil {
-		s.Fatal("Failed to execute cbmem command: ", err)
+		return errors.Wrap(err, "failed to execute cbmem command")
 	}
+	cbmemPattern := regexp.MustCompile(`Total Time: (.*)`)
 	match := cbmemPattern.FindStringSubmatch(string(cbmemOutput))
 	cbmemTotalTime := ""
 	if len(match) > 1 {
@@ -369,24 +339,114 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 	cbmemTime, _ := strconv.ParseFloat(cbmemTotalTime, 8)
 	cbmemTime = cbmemTime / 1000000
 	if cbmemTime > cbmemTimeout {
-		s.Fatalf("Failed to validate cbmem time, actual cbmem time is more than expected cbmem time, want %v; got %v", cbmemTimeout, cbmemTime)
+		return errors.Wrapf(err, "failed to validate cbmem time, actual cbmem time is more than expected cbmem time, want %v; got %v", cbmemTimeout, cbmemTime)
 	}
+	return nil
 }
 
-// validateSleepState from cbmem command output.
-func validateSleepState(ctx context.Context, dut *dut.DUT, sleepStateValue int) error {
-	// Command to check previous sleep state.
-	const prevSleepStateCmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
-	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", prevSleepStateCmd).Output()
+// getBootPerf validates seconds power on to login from platform bootperf values.
+func getBootPerf(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, btime float64) error {
+	cl, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
-	count, err := strconv.Atoi(strings.Split(strings.Replace(string(out), "\n", "", -1), " ")[1])
+	defer cl.Close(ctx)
+	bootPerfService := platform.NewBootPerfServiceClient(cl.Conn)
+	metrics, err := bootPerfService.GetBootPerfMetrics(ctx, &empty.Empty{})
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to get boot perf metrics")
 	}
-	if count != sleepStateValue {
-		return errors.Errorf("previous sleep state must be %d", sleepStateValue)
+	if metrics.Metrics["seconds_power_on_to_login"] > btime {
+		return errors.Wrapf(err, "failed seconds_power_on_to_login is greater than expected, want %v; got %v", btime, metrics.Metrics["seconds_power_on_to_login"])
+	}
+	return nil
+}
+
+// powerNormalPress wakes up DUT by normal pressing power button.
+func powerNormalPress(ctx context.Context, dut *dut.DUT, pxy *servo.Proxy) error {
+	testing.ContextLog(ctx, "Waking up DUT")
+	if !dut.Connected(ctx) {
+		testing.ContextLog(ctx, "Power Normal Pressing")
+		waitCtx, cancel := context.WithTimeout(ctx, 1*time.Minute)
+		defer cancel()
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+			return errors.Wrap(err, "failed to power normal press")
+		}
+		if err := dut.WaitConnect(waitCtx); err != nil {
+			return errors.Wrap(err, "failed to wait connect DUT")
+		}
+	} else {
+		testing.ContextLog(ctx, "DUT is UP")
+	}
+	return nil
+}
+
+// waitForS0State waits for S0 power state
+func waitForS0State(ctx context.Context, pxy *servo.Proxy) error {
+	var leftoverLines string
+	readyForPowerOn := regexp.MustCompile(`power state 1 = S5`)
+	tooLateToPowerOn := regexp.MustCompile(`power state 0 = G3`)
+	powerOnFinished := regexp.MustCompile(`power state 3 = S0`)
+	powerButtonPressFinished := regexp.MustCompile(`PB task 0 = idle`)
+	didPowerOn := false
+	hitS5 := false
+	donePowerOff := false
+	testing.ContextLog(ctx, "Capturing EC log")
+	if err := pxy.Servo().SetOnOff(ctx, servo.ECUARTCapture, servo.On); err != nil {
+		return errors.Wrap(err, "failed to capture EC UART")
+	}
+	defer func() error {
+		if err := pxy.Servo().SetOnOff(ctx, servo.ECUARTCapture, servo.Off); err != nil {
+			return errors.Wrap(err, "failed to disable capture EC UART")
+		}
+		return nil
+	}()
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if lines, err := pxy.Servo().GetQuotedString(ctx, servo.ECUARTStream); err != nil {
+			return errors.Wrap(err, "failed to read UART")
+		} else if lines != "" {
+			// It is possible to read partial lines, so save the part after newline for later
+			lines = leftoverLines + lines
+			if crlfIdx := strings.LastIndex(lines, "\r\n"); crlfIdx < 0 {
+				leftoverLines = lines
+				lines = ""
+			} else {
+				leftoverLines = lines[crlfIdx+2:]
+				lines = lines[:crlfIdx+2]
+			}
+
+			for _, l := range strings.Split(lines, "\r\n") {
+				testing.ContextLogf(ctx, "%q", l)
+				if match := readyForPowerOn.FindString(l); match != "" && !didPowerOn {
+					testing.ContextLogf(ctx, "Found S5: %q", l)
+					hitS5 = true
+				}
+				if match := powerButtonPressFinished.FindString(l); match != "" && !didPowerOn {
+					testing.ContextLogf(ctx, "Found power button release: %q", l)
+					donePowerOff = true
+				}
+				// If the long press above is done, and we've seen S5, then do a short press to power on.
+				if hitS5 && donePowerOff && !didPowerOn {
+					testing.ContextLog(ctx, "Pressing power button")
+					if err := pxy.Servo().SetString(ctx, servo.ECUARTCmd, "powerbtn 200"); err != nil {
+						return testing.PollBreak(err)
+					}
+					didPowerOn = true
+				}
+
+				if match := tooLateToPowerOn.FindString(l); match != "" && !didPowerOn {
+					testing.ContextLogf(ctx, "Found G3: %q", l)
+					return errors.New("power state reached G3, power button pressed too late")
+				}
+				if match := powerOnFinished.FindString(l); didPowerOn && match != "" {
+					testing.ContextLogf(ctx, "Found S0: %q", l)
+					return nil
+				}
+			}
+		}
+		return errors.New("Not in S0 yet")
+	}, &testing.PollOptions{Interval: time.Millisecond * 200, Timeout: 60 * time.Second}); err != nil {
+		return errors.Wrap(err, "EC output parsing failed")
 	}
 	return nil
 }
