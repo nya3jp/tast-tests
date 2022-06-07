@@ -16,6 +16,24 @@
       "message": "what do we need this label for ?",
       "revId": "af0ea17db2e4998f9b9916fb081cc39befc4f5de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92dbde07_a8ce5e3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T14:49:12Z",
+      "side": 1,
+      "message": "Done - it should\u0027ve been used instead of hardcoding |keyLabel1|. Thanks for spotting!",
+      "parentUuid": "ba243fd1_6a9d1447",
+      "revId": "af0ea17db2e4998f9b9916fb081cc39befc4f5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
