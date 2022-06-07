@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d8e115_791d4a74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ccc85d2_14ad022a",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13439965_0ea8a4a1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aa7efce_911cda36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13439965_0ea8a4a1",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aff61865_8e5d5aa6",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-03T08:32:04Z",
       "side": 1,
       "message": "nit: PINWeaver",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7126fb94_614c4463",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aff61865_8e5d5aa6",
       "range": {
         "startLine": 44,
         "startChar": 5,
@@ -106,6 +178,54 @@
       "writtenOn": "2022-06-03T08:32:04Z",
       "side": 1,
       "message": "It is preferred if helper functions are not using the testing state, but return with an error instead. Same as the above comment, it could be refoactored in a follo-up CL.",
+      "range": {
+        "startLine": 84,
+        "startChar": 121,
+        "endLine": 84,
+        "endChar": 137
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4522d7f9_f90b496e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Ack, will do, thanks.",
+      "parentUuid": "c7327271_e443eb3e",
+      "range": {
+        "startLine": 84,
+        "startChar": 35,
+        "endLine": 84,
+        "endChar": 50
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48c10bb_f87fe0c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Ack, will do, thanks.",
+      "parentUuid": "7cb50f83_64f4e71c",
       "range": {
         "startLine": 84,
         "startChar": 121,
@@ -208,6 +328,102 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8323846c_08f46273",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done (I think this makes the test much less readable, but I acknowledge that\u0027s the style used in tast)",
+      "parentUuid": "bc6277f2_4943d76e",
+      "range": {
+        "startLine": 191,
+        "startChar": 115,
+        "endLine": 191,
+        "endChar": 131
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8464364_ae890c00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bdd99d8_b06631bf",
+      "range": {
+        "startLine": 191,
+        "startChar": 63,
+        "endLine": 191,
+        "endChar": 76
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ce7542e_775dbff5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6faf3ad6_0b1ae51a",
+      "range": {
+        "startLine": 191,
+        "startChar": 63,
+        "endLine": 191,
+        "endChar": 76
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252734b3_f72c2435",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38d90ecf_18702a0a",
+      "range": {
+        "startLine": 191,
+        "startChar": 78,
+        "endLine": 191,
+        "endChar": 84
+      },
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "806f3f66_52317466",
@@ -225,6 +441,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79564dd_a4d4d9f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "806f3f66_52317466",
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11929d6d_cafc7657",
@@ -238,6 +472,24 @@
       "writtenOn": "2022-06-03T08:32:04Z",
       "side": 1,
       "message": "Same here.",
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "695a8d8a_78f2e2f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11929d6d_cafc7657",
       "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

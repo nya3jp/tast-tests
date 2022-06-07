@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0262479f_76a47745",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "903d887c_cb142975",
+      "revId": "4793b6308030a29431143bba78875c02555d7ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "556e9fb9_608b80d5",
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "The fix is crrev.com/c/3686709",
       "parentUuid": "556e9fb9_608b80d5",
+      "revId": "4793b6308030a29431143bba78875c02555d7ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77cc2d6e_b9530a94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T11:53:35Z",
+      "side": 1,
+      "message": "Resolving - thanks for the fix, now we can run this assertion.",
+      "parentUuid": "4542ad71_76e79c4b",
       "revId": "4793b6308030a29431143bba78875c02555d7ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
