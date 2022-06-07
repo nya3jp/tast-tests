@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "331e818e_c016a5b4",
+        "filename": "src/chromiumos/tast/local/arc/apputil/uiwrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-07T04:11:23Z",
+      "side": 1,
+      "message": "\u003e Like your previous use of `IsObjectExists` in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3676409/3..4/src/chromiumos/tast/local/arc/apputil/youtubemusic/youtubemusic.go#b87, it is even more complex than `WaitForExists`.\nSorry, this is a bad usage, the error of that `WaitForExists` can always be considered as a failure and it is not necessary to distinguish which error, we have fixed that part.\n\n-----\n\nThe thought is to hide the error detail: `ui.IsTimeout(err)`, just like [this wrapper](https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/chrome/uiauto/automation.go#449) hides the detail: `strings.Contains(err.Error(), nodewith.ErrNotFound)`.\n\nBoth of those wrappers provide a straightforward result, exist or not exist.\n\nWe either want to distinguish which error returned from `XXX.WaitForExists` ([#1](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3676409/4/src/chromiumos/tast/local/arc/apputil/youtubemusic/youtubemusic.go#121), [#2](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3676409/4/src/chromiumos/tast/local/arc/apputil/youtubemusic/youtubemusic.go#136) due to b:228259893) or we want a straightforward result ([#3](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3676409/4/src/chromiumos/tast/local/arc/apputil/spotify/spotify.go#111)) through this method.\n\nAnyhow, we could ignore the error details via this wrapper. Should we remove this method and handle error details widely among test cases?",
+      "parentUuid": "ba3e61db_bf754d8b",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "ff12d78b586217c62071ff4ceb2d9469386908e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b71f0460_9309de4c",
         "filename": "src/chromiumos/tast/local/arc/apputil/uiwrapper.go",
         "patchSetId": 2
