@@ -16,6 +16,23 @@
       "message": "PTAL. I\u0027m hoping that I\u0027m about reaching to the root cause.",
       "revId": "2db62efb0ee7ad1113a6ff63bd658ef0de2dd4a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b8142c_161240d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-07T06:15:24Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "2db62efb0ee7ad1113a6ff63bd658ef0de2dd4a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
