@@ -6,6 +6,7 @@ package platform
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -32,6 +33,7 @@ const (
 	lidCloseOpen string = "lidCloseOpen"
 	powerButton  string = "powerButton"
 	bootFromS5   string = "bootFromS5"
+	refreshPower string = "refreshPower"
 )
 
 func init() {
@@ -63,6 +65,11 @@ func init() {
 		}, {
 			Name:              "from_s5",
 			Val:               bootupTimes{bootType: bootFromS5},
+			Timeout:           5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		}, {
+			Name:              "refresh_power",
+			Val:               bootupTimes{bootType: refreshPower},
 			Timeout:           5 * time.Minute,
 			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		}},
@@ -325,6 +332,35 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 		if err := dut.WaitConnect(waitCtx); err != nil {
 			s.Fatal("Failed to wait connect DUT: ", err)
 		}
+	} else if btType.bootType == refreshPower {
+		waitCtx, cancel := context.WithTimeout(ctx, 1*time.Minute)
+		defer cancel()
+
+		s.Log("Pressing power btn to shutdown DUT")
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
+			s.Fatal("Failed to power off DUT: ", err)
+		}
+
+		if err := dut.WaitUnreachable(ctx); err != nil {
+			pwrNormalPress()
+		}
+
+		// expected time sleep 5 seconds to ensure dut switch to s5.
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
+
+		s.Log("Pressing refresh + power key to boot up DUT")
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.Refresh, servo.DurLongPress); err != nil {
+			s.Fatal("Failed to press refresh key: ", err)
+		}
+		if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+			s.Fatal("Failed to power normal press: ", err)
+		}
+		if err := dut.WaitConnect(waitCtx); err != nil {
+			s.Fatal("Failed to wait connect DUT: ", err)
+		}
+
 	}
 	// Validating prev sleep state for power modes.
 	if btType.bootType == "reboot" {
@@ -376,17 +412,17 @@ func BootupTimes(ctx context.Context, s *testing.State) {
 // validateSleepState from cbmem command output.
 func validateSleepState(ctx context.Context, dut *dut.DUT, sleepStateValue int) error {
 	// Command to check previous sleep state.
-	const prevSleepStateCmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
-	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", prevSleepStateCmd).Output()
+	const cmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
+	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", cmd).Output()
 	if err != nil {
-		return err
+		return errors.Wrapf(err, "failed to execute %q command", cmd)
 	}
-	count, err := strconv.Atoi(strings.Split(strings.Replace(string(out), "\n", "", -1), " ")[1])
-	if err != nil {
-		return err
-	}
-	if count != sleepStateValue {
-		return errors.Errorf("previous sleep state must be %d", sleepStateValue)
+
+	got := strings.TrimSpace(string(out))
+	want := fmt.Sprintf("prev_sleep_state %d", sleepStateValue)
+
+	if !strings.Contains(got, want) {
+		return errors.Errorf("unexpected sleep state = got %q, want %q", got, want)
 	}
 	return nil
 }
