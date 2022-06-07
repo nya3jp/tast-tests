@@ -112,7 +112,7 @@ func RestoreIptables(ctx context.Context, path string) []error {
 			errs = append(errs, errors.Wrap(err, "failed to get iptables save path"))
 			continue
 		}
-		if err := testexec.CommandContext(ctx, cmd, savePath).Run(testexec.DumpLogOnError); err != nil {
+		if err := testexec.CommandContext(ctx, cmd, savePath, "-w").Run(testexec.DumpLogOnError); err != nil {
 			errs = append(errs, errors.Wrapf(err, "failed to restore iptables rules: %s %s", cmd, path))
 			continue
 		}
