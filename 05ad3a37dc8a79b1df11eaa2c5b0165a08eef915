@@ -87,6 +87,30 @@
       },
       "revId": "05ad3a37dc8a79b1df11eaa2c5b0165a08eef915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c370665_964c662d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T23:10:40Z",
+      "side": 1,
+      "message": "I added a workaround by introducing \"5.10-v2\" key value in the map  `expectedWLANDriver`. I am not sure if this is the best way to do it.\n\nOther solutions, make the map return a list of paths instead of string or just check if the the chip is `Realtek8852APCIE` and kernel is  `5.10` then check the module name `rtw89_8852ae.ko`\n\nWDYT?",
+      "parentUuid": "540c6d9f_bc3af92a",
+      "range": {
+        "startLine": 139,
+        "startChar": 34,
+        "endLine": 139,
+        "endChar": 50
+      },
+      "revId": "05ad3a37dc8a79b1df11eaa2c5b0165a08eef915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
