@@ -179,6 +179,25 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkUnicornPolicyLoginWithLacros",
+		Desc:     "Supervised Family Link user login with Unicorn account and policy setup",
+		Contacts: []string{"galenemco@chromium.org", "tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixtureLacros("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true),
+		Vars: []string{
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.unicornEmail",
+			"family.unicornPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+		Parent:          fixture.PersistentFamilyLink,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "familyLinkUnicornArcPolicyLogin",
 		Desc:     "Supervised Family Link user login with Unicorn account and ARC support with fakeDMS setup",
 		Contacts: []string{"tobyhuang@chromium.org", "xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
