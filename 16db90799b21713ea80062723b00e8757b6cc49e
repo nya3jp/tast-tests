@@ -16,6 +16,23 @@
       "message": "One interesting log:\n\napp name is: ‏‪Web Store‬‏\nlen(app name) is: 21\n\nHowever, if I do not use --force-ui-direction\u003drtl, len(app_name) is nine, which is expected\n",
       "revId": "16db90799b21713ea80062723b00e8757b6cc49e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f03710c_252c31d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-07T21:03:18Z",
+      "side": 1,
+      "message": "I printed the app name on the Chrome side. The app name even changes in the Chrome side. Some non-English characters are added to the app names",
+      "revId": "16db90799b21713ea80062723b00e8757b6cc49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
