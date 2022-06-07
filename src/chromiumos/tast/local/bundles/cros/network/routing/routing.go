@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/network/ifaceaddrs"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/subnet"
@@ -133,6 +134,46 @@ func (e *testEnv) CreateNetworkEnvForTest(ctx context.Context, opts virtualnet.E
 // WaitForServiceOnline waits for a shill Service becoming Online.
 func (e *testEnv) WaitForServiceOnline(ctx context.Context, svc *shill.Service) error {
 	return svc.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 10*time.Second)
+}
+
+// WaitForServiceDualStackConnected waits for a shill Service becoming connected
+// for both IPv4 and IPv6. Note that the state a Service will become Connected
+// (or Online) as long as either family is connected, and thus this function is
+// helpful when we want layer 3 connectivity on both family. Currently this is
+// implemented by checking if the corresponding inteface has both v4 and v6
+// addresses. This implementation may not be reliable depends on how we define
+// "dual-stack connected", since several parts (e.g., ip rules, routes, iptables
+// rules) are involved in the layer 3 setup on DUT, it may be complicated and
+// tricky to check them all.
+func (e *testEnv) WaitForServiceDualStackConnected(ctx context.Context, svc *shill.Service) error {
+	device, err := svc.GetDevice(ctx)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get associated device on service %s", svc.String())
+	}
+
+	props, err := device.GetProperties(ctx)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get properties on device %s", device.String())
+	}
+	ifname, err := props.GetString(shillconst.DevicePropertyInterface)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get interface name on device %s", device.String())
+	}
+
+	if err := testing.Poll(ctx, func(context.Context) error {
+		addrs, err := ifaceaddrs.ReadFromInterface(ifname)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get addrs on %s", ifname)
+		}
+		if addrs.IPv4Addr == nil || len(addrs.IPv6Addrs) == 0 {
+			return errors.Errorf("no IPv4 addr or IPv6 addr on the interface, current addrs: %v", addrs)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to wait for IP addrs on interface %s", ifname)
+	}
+
+	return nil
 }
 
 // TearDown tears down the routing test environment.
