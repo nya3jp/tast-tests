@@ -39,6 +39,30 @@
       },
       "revId": "1c9760d16c6ee1f2b478a8cc143c3ae46a616c3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63099045_07bd8206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/Texts.crx.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-06-07T23:16:46Z",
+      "side": 1,
+      "message": "A CRX file is just a ZIP file in disguise.",
+      "parentUuid": "ee01cb34_1602054d",
+      "range": {
+        "startLine": 2,
+        "startChar": 82,
+        "endLine": 2,
+        "endChar": 85
+      },
+      "revId": "1c9760d16c6ee1f2b478a8cc143c3ae46a616c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
