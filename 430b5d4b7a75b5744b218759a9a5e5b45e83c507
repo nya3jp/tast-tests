@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33987f9_58ce94cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:41:33Z",
+      "side": 1,
+      "message": "LGTM modulo minor nits",
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee7a2c4_d60cf874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:41:33Z",
+      "side": 1,
+      "message": "If we start having multiple active Envs in a single test, we should really make sure we systematically print the netns name or the Env name in the error messages.",
+      "range": {
+        "startLine": 206,
+        "startChar": 31,
+        "endLine": 206,
+        "endChar": 69
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef191c1_4f520024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:41:33Z",
+      "side": 1,
+      "message": "Is there anyway we could enforce this by getting the current thread id and asserting it is the same id when the returned function runs later on ?",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 56
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c19e01_7de8c078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:41:33Z",
+      "side": 1,
+      "message": "nit: return to original netns ?",
+      "range": {
+        "startLine": 260,
+        "startChar": 38,
+        "endLine": 260,
+        "endChar": 60
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
