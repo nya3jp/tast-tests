@@ -751,6 +751,30 @@
       },
       "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a97ed44_529f7a32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-07T00:03:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ac6c3e3_8af49f40",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 9
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
