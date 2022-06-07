@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73283228_3ccf89d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-07T00:23:52Z",
+      "side": 1,
+      "message": "let me know when you want to re-review.",
+      "parentUuid": "14e2d094_381b203a",
+      "range": {
+        "startLine": 36,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "c88c141e25362d33a89be1b4ccf98b890b611e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54faf7ab_9dcbb507",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
         "patchSetId": 5
