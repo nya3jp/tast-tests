@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The ChromiumOS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -59,6 +59,22 @@ func ArcCameraUID() (int, error) {
 		return -1, errors.Wrap(err, "failed to get uid of arc-camera")
 	}
 	return int(uid), nil
+}
+
+// ArcCameraUIDAndGID returns the user id and group id used by camera service and camera test binary.
+func ArcCameraUIDAndGID() (uid, gid uint32, err error) {
+	username := "arc-camera"
+	uid, err = sysutil.GetUID(username)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to get uid of "+username)
+	}
+
+	gid, err = sysutil.GetGID(username)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to get gid of "+username)
+	}
+
+	return uid, gid, nil
 }
 
 // IsV1Legacy returns true if the built-in camera is not qualified for Android
