@@ -179,7 +179,10 @@ func ExpectPingSuccess(ctx context.Context, addr, user string) error {
 	}
 	testing.ContextLog(ctx, "Start to ping ", addr)
 	pr := localping.NewLocalRunner()
-	res, err := pr.Ping(ctx, addr, ping.Count(3), ping.User(user))
+	// Only ping once, continuous pings will be very likely to be affected by the
+	// connection pinging so it does not make sense. In the routing tests, all the
+	// ping targets are in the DUT, so use a small timeout value here.
+	res, err := pr.Ping(ctx, addr, ping.Count(1), ping.User(user), ping.Timeout(2*time.Second))
 	if err != nil {
 		return err
 	}
@@ -214,7 +217,10 @@ func ExpectPingFailure(ctx context.Context, addr, user string) error {
 	}
 	testing.ContextLog(ctx, "Start to ping ", addr)
 	pr := localping.NewLocalRunner()
-	res, err := pr.Ping(ctx, addr, ping.Count(1), ping.User(user))
+	// Only ping once, continuous pings will be very likely to be affected by the
+	// connection pinging so it does not make sense. In the routing tests, all the
+	// ping targets are in the DUT, so use a small timeout value here.
+	res, err := pr.Ping(ctx, addr, ping.Count(1), ping.User(user), ping.Timeout(2*time.Second))
 	if err != nil {
 		// An error definitely means a ping failure.
 		return nil
@@ -246,4 +252,24 @@ func deletePingEntriesInConntrack(ctx context.Context) error {
 		return errors.Wrap(err, "failed to delete IPv6 ICMPv6 entries in conntrack table")
 	}
 	return nil
+}
+
+// WaitDualStackIPsInEnv polls the IP addresses configured on the interface
+// inside |e|, until there are both v4 and v6 addresses.
+func WaitDualStackIPsInEnv(ctx context.Context, e *env.Env) (*env.IfaceAddrs, error) {
+	var addrs *env.IfaceAddrs
+	if err := testing.Poll(ctx, func(c context.Context) error {
+		var err error
+		addrs, err = e.GetVethInAddrs(ctx)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get addrs of from env %s", e.NetNSName)
+		}
+		if addrs.IPv4Addr == nil || len(addrs.IPv6Addrs) == 0 {
+			return errors.Errorf("the number of addrs is not expected %v", addrs)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return nil, errors.Wrapf(err, "failed to wait for addrs in env %s", e.NetNSName)
+	}
+	return addrs, nil
 }
