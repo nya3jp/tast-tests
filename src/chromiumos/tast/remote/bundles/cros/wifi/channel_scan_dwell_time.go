@@ -76,6 +76,8 @@ during the active scan. The purpose of this test is to verify that
 |minDwellTime| <= dwellTime (MaxChannelTime) <= |maxDwellTime|.
 */
 
+var testCount int
+
 func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	const (
 		knownTestPrefix        = "wifi_CSDT"
@@ -155,7 +157,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		var err error
 		var probeReqPackets []gopacket.Packet
 		var pcapPath string
-		for testCount := 1; testCount < maxRetries; testCount++ {
+		for testCount = 1; testCount < maxRetries; testCount++ {
 			ssidPrefix = knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
 
 			bssList, capturer, err = func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
@@ -263,7 +265,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			}
 			break
 		}
-
+		s.Log("probeReqPackets length: ", len(probeReqPackets))
 		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
 		s.Log("Probe Request Time: ", probeReqTimestamp)
 
@@ -401,6 +403,7 @@ func ssidIndex(ssid string) (int, error) {
 func pollScan(ctx context.Context, dut *dut.DUT, iface string, freqs []int, pollTimeout time.Duration) ([]*iw.BSSData, error) {
 	iwr := remoteiw.NewRemoteRunner(dut.Conn())
 	var scanResult *iw.TimedScanData
+	freqs = append(freqs, testCount)
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		scanResult, err = iwr.TimedScan(ctx, iface, freqs, nil)

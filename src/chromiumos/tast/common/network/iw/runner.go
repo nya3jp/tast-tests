@@ -320,11 +320,12 @@ func (r *Runner) PhyByID(ctx context.Context, id int) (*Phy, error) {
 func (r *Runner) TimedScan(ctx context.Context, iface string,
 	frequencies []int, ssids []string) (*TimedScanData, error) {
 	args := []string{"dev", iface, "scan"}
-	for _, freq := range frequencies {
-		args = append(args, "freq", strconv.Itoa(freq))
-	}
+	args = append(args, "freq", strconv.Itoa(frequencies[0]))
 	for _, ssid := range ssids {
 		args = append(args, "ssid", ssid)
+	}
+	if frequencies[1]%2 == 1 {
+		args = append(args, "passive")
 	}
 	startTime := time.Now()
 	out, err := r.cmd.Output(ctx, "iw", args...)
