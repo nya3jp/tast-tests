@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f111c3_9827bbdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-07T12:44:10Z",
+      "side": 1,
+      "message": "WaitLocationStable is better than IsShown here.\n\nBasically the sleep is used for VK stale(if it happens), and WaitLocationStable verifies VK is on the screen, even a flash happens.",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 2
+      },
+      "revId": "7fc32d127e7a67c7123209952490f7e579a607d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
