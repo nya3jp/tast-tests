@@ -49,6 +49,32 @@ func init() {
 	})
 }
 
+/*
+Definitions from 802.11 standards:
+ProbeDelay: Delay to be used prior to transmitting a Probe frame during active
+scanning.
+MinChannelTime: The minimum time to spend on each channel when scanning.
+MaxChannelTime: The maximum time to spend on each channel when scanning.
+These values are integers, and MinChannelTime<=MaxChannelTime. They are set in
+the driver, and different chips may have different values.
+
+In an active scan, the station waits for either an indication of an incoming
+frame or for the ProbeDelay timer to expire. Then it sends a probe request and
+waits for MinChannelTime to elapse.
+    a. If the medium is never busy, move to the next channel;
+    b. If the medium is busy during the MinChannelTime interval, wait until
+    MaxChannelTime and process any probe response.
+
+In this test, the DUT performs an active scan on each channel. dwellTime is
+the time the DUT spends on each channel collecting beacon frames. The AP sends
+beacon frames every |delayInterval|, |numBSS| beacon frames in total. Since the
+medium is busy, the DUT will stay on each channel until MaxChannelTime has
+elapsed. dwellTime is calculated based on the timestamps of the first test
+beacon frame after the probe request, and the last test beacon frame received
+during the active scan. The purpose of this test is to verify that
+|minDwellTime| <= dwellTime (MaxChannelTime) <= |maxDwellTime|.
+*/
+
 func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	const (
 		knownTestPrefix        = "wifi_CSDT"
@@ -59,7 +85,10 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		scanStartDelay         = 500 * time.Millisecond
 		scanRetryTimeout       = 10 * time.Second
 		missingBeaconThreshold = 2
+		maxRetries             = 2
 	)
+
+	ErrNoProbeRequest := errors.New("no probe requests in packet capture")
 
 	// TODO(b/182308669): Tighten up min/max bounds on various channel dwell times
 	testcases := []csdtTestcase{
@@ -120,7 +149,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get MAC of WiFi interface: ", err)
 	}
 
-	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) {
+	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) error {
 		ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
 
 		bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
@@ -212,7 +241,6 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		}
 
 		// Find the first probe request from the DUT.
-		// If there are no probe requests, fail.
 		probeReqFilter := []pcap.Filter{
 			pcap.TypeFilter(layers.LayerTypeDot11MgmtProbeReq, nil),
 			pcap.TransmitterAddress(dutMAC),
@@ -223,7 +251,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		}
 		s.Logf("Received %d probe requests", len(probeReqPackets))
 		if len(probeReqPackets) == 0 {
-			s.Fatal("No probe requests in packet capture")
+			return ErrNoProbeRequest
 		}
 		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
 		s.Log("Probe Request Time: ", probeReqTimestamp)
@@ -324,11 +352,30 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, dwellTime.Seconds())
+		return nil
 	}
 
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc)
+			// |beaconFirst| is defined as the first test beacon frame after
+			// the probe request, but the captures occasionally miss the probe
+			// requests either due to collision with the test beacon frames or
+			// the DUT failing to send the probe request, and this causes the
+			// test to fail. b/225073589 shows that the loss rate of the probe
+			// request is about 3%, rerunning the test gives << 1% failure
+			// rate, which is acceptable.
+			for testCount := 1; testCount <= maxRetries; testCount++ {
+				err := testOnce(ctx, s, tc)
+				if err == ErrNoProbeRequest {
+					if testCount < maxRetries {
+						s.Logf("%s, testCount %d < maxRetries %d, run the test again", ErrNoProbeRequest.Error(), testCount, maxRetries)
+						continue
+					} else {
+						s.Fatalf("%s and testCount reached maxRetries", ErrNoProbeRequest.Error())
+					}
+				}
+				break
+			}
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d (ch%d)", i, tc.apChannel), subtest) {
 			// Stop if one of the subtest's parameter set fails the test.
