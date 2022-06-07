@@ -155,7 +155,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 
 	shouldEnterOverflow := testType != nonOverflow
 	if shouldEnterOverflow {
-		if err := ash.EnterShelfOverflow(ctx, tconn); err != nil {
+		if err := ash.EnterShelfOverflow(ctx, tconn, false /* underRTL */); err != nil {
 			s.Fatal(err, "Failed to enter overflow shelf")
 		}
 	}
