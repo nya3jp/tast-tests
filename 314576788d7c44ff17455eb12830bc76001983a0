@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "621074c5_fb020879",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-06-07T05:20:22Z",
+      "side": 1,
+      "message": "typo: *flipped",
+      "parentUuid": "790c19a7_5a2acbc7",
+      "revId": "314576788d7c44ff17455eb12830bc76001983a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a303c5f1_b72b4fa3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
