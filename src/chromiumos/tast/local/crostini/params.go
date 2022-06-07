@@ -119,6 +119,12 @@ type Param struct {
 	// configuration.
 	MinimalSet bool
 
+	// Restart - if true, forces fixture restart after every test.
+	// Available only for fixtures.
+	// This could be useful for the tests, which pollute test
+	// environment and are unable to clean up properly.
+	Restart bool
+
 	// IsNotMainline indicates whether the test case is in
 	// group:mainline or not. This is important to get right
 	// because we can't add the "informational" attribute to
@@ -314,6 +320,8 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 					fixture = fmt.Sprintf("\"crostini%sLargeContainer\"", strings.Title(string(i.debianVersion)))
 				} else if testCase.UseGaiaLogin {
 					fixture = fmt.Sprintf("\"crostini%sGaia\"", strings.Title(string(i.debianVersion)))
+				} else if testCase.Restart {
+					fixture = fmt.Sprintf("\"crostini%sRestart\"", strings.Title(string(i.debianVersion)))
 				} else if bt == browser.TypeLacros {
 					fixture = fmt.Sprintf("\"crostini%sWithLacros\"", strings.Title(string(i.debianVersion)))
 				} else {
