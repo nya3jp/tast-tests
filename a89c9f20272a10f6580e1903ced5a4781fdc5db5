@@ -46,6 +46,30 @@
       },
       "revId": "a89c9f20272a10f6580e1903ced5a4781fdc5db5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43841785_2c9f7f86",
+        "filename": "src/chromiumos/tast/local/arc/apputil/spotify/spotify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-07T23:23:41Z",
+      "side": 1,
+      "message": "I am okay if you want to keep it.",
+      "parentUuid": "58c507d2_31a7ab45",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 115
+      },
+      "revId": "a89c9f20272a10f6580e1903ced5a4781fdc5db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
