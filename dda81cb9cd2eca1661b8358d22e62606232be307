@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eaff755_76bff7c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T18:49:16Z",
+      "side": 1,
+      "message": "`Add`\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "revId": "dda81cb9cd2eca1661b8358d22e62606232be307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9526fe_e011205b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T18:49:16Z",
+      "side": 1,
+      "message": "nit: no need to multiply by 1",
+      "range": {
+        "startLine": 336,
+        "startChar": 46,
+        "endLine": 336,
+        "endChar": 48
+      },
+      "revId": "dda81cb9cd2eca1661b8358d22e62606232be307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14b008ec_062ccd68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T18:49:16Z",
+      "side": 1,
+      "message": "So you expect that `dut.WaitUnreachable` will sometimes return an error, and the test should handle it gracefully without failing? Please add a code comment explaining.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 3
+      },
+      "revId": "dda81cb9cd2eca1661b8358d22e62606232be307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f24c6db_dec84263",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T18:49:16Z",
+      "side": 1,
+      "message": "Does this really press the two together? It looks like it presses and releases each one, in rapid succession. Maybe if you do that fast enough then it works, but it is not exactly what should be tested.",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 3
+      },
+      "revId": "dda81cb9cd2eca1661b8358d22e62606232be307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed5162f_4871baf3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T18:49:16Z",
+      "side": 1,
+      "message": "nit: remove this blank line",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 0
+      },
+      "revId": "dda81cb9cd2eca1661b8358d22e62606232be307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6887f0_05a5bd59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T18:49:16Z",
+      "side": 1,
+      "message": "nit: `state:` (with `:` instead of ` \u003d`)",
+      "range": {
+        "startLine": 425,
+        "startChar": 41,
+        "endLine": 425,
+        "endChar": 48
+      },
+      "revId": "dda81cb9cd2eca1661b8358d22e62606232be307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
