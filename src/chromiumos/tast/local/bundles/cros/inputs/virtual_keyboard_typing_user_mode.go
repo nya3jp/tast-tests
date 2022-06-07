@@ -58,7 +58,6 @@ func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(fixture.FixtData).Chrome
 	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 	uc := s.FixtValue().(fixture.FixtData).UserContext
-	uc.SetTestName(s.TestName())
 
 	its, err := testserver.LaunchInMode(ctx, cr, tconn, strings.Contains(s.TestName(), "incognito"))
 	if err != nil {
