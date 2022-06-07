@@ -715,6 +715,30 @@ func (ac *Context) RetryUntil(action, condition Action) Action {
 	}
 }
 
+// DoDefaultUntil returns a function that calls doDefault() JS method until the condition returns no error.
+// It will try to call doDefault() once before it checks the condition.
+// This is useful for situations where there is no indication of whether the node is ready to receive clicks.
+// It uses the polling options from the Context.
+func (ac *Context) DoDefaultUntil(finder *nodewith.Finder, condition func(context.Context) error) Action {
+	return func(ctx context.Context) error {
+		if err := ac.DoDefault(finder)(ctx); err != nil {
+			return errors.Wrap(err, "failed to initially click the node")
+		}
+		if err := testing.Sleep(ctx, ac.pollOpts.Interval); err != nil {
+			return err
+		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := condition(ctx); err != nil {
+				if err := IfSuccessThen(ac.Exists(finder), ac.DoDefault(finder))(ctx); err != nil {
+					return errors.Wrap(err, "failed to click the node")
+				}
+				return errors.Wrap(err, "click may not have been received yet")
+			}
+			return nil
+		}, &ac.pollOpts)
+	}
+}
+
 // FocusAndWait returns a function that calls the focus() JS method of the found node.
 // This can be used to scroll to nodes which aren't currently visible, enabling them to be clicked.
 // The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
