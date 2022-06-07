@@ -16,6 +16,46 @@
       "message": "Hidehiko PTAL.\n\nMy main motivation for this chain is to actually get FullRestoreAlwaysRestore modified in a way that it could be run through a iteration loop, as described in the third CL here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3692047/\n\nAs described in that CL, this has been very useful for me to understand whether the restore feature actually is working in a given Ash Chrome and Lacros combination. That said, I\u0027m not entire sure whether it\u0027s your intention to have this functionality implemented within FullRestoreAlwaysRestore (or even inside Tast!).\n\nAnyhow. Let me know please if this is sensible enough or guide me otherwise please. \n\nThank you very much again!",
       "revId": "39b66fafcca3fe666fa61eba7f4fd6f86284843d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "376a90d5_635e4bad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2022-06-07T01:32:25Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "39b66fafcca3fe666fa61eba7f4fd6f86284843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622160c4_9297bcc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2022-06-07T01:32:25Z",
+      "side": 1,
+      "message": "nit: We don\u0027t have this flag any more. I removed it. :-)\n\nWe only have a flag \"FullRestoreForLacros\" to enable full restore for Lacros, and that is enabled as default.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:components/app_restore/features.h;l\u003d20?q\u003dFullRestoreForLacros\u0026sq\u003d\u0026ss\u003dchromium",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "39b66fafcca3fe666fa61eba7f4fd6f86284843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
