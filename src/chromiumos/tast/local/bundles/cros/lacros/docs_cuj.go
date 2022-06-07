@@ -13,6 +13,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
@@ -26,19 +29,40 @@ func init() {
 		Contacts:     []string{"hidehiko@chromium.org", "tvignatti@igalia.com", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Timeout:      6 * time.Minute,
-		Fixture:      "lacrosPerf",
+		Timeout:      chrome.GAIALoginTimeout + 6*time.Minute,
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
 }
 
 const (
-	// Google Docs with 20+ pages of random text with 50 comments. The URL points to a comment and will skip
-	// down to the comment once the page is fully loaded.
-	docsURLToComment = "https://docs.google.com/document/d/1MW7lAk9RZ-6zxpObNwF0r80nu-N1sXo5f7ORG4usrJQ/edit?disco=AAAAP6EbSF8"
+	// Google Docs with 20+ pages of random text with 50 comments. The URL points to a comment and
+	// will skip down to the comment once the page is fully loaded.
+	// The access to this document is restricted to the default pool of GAIA accounts only in order
+	// to avoid the "Some tools might be unavailable due to heavy traffic in this file" flakiness.
+	docsURLToComment = "https://docs.google.com/document/d/1U6pghj7AaMLnhS7rqQHeecZ7f7fF6bLGaPVxP5xEPuQ/edit?disco=AAAAP6EbSF8"
 )
 
 func DocsCUJ(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	cleanupCtx := ctx
+	opts := []chrome.Option{
+		chrome.DisableFeatures("FirmwareUpdaterApp"),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+	}
+
+	cfg := lacrosfixt.NewConfig()
+	defaultOpts, err := cfg.Opts()
+	if err != nil {
+		s.Fatal("Failed to get default options: ", err)
+	}
+	opts = append(opts, defaultOpts...)
+
+	cr, _, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, browser.TypeAsh, cfg, opts...)
+	if err != nil {
+		s.Fatal("Failed to connect to the browser: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
