@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -47,7 +48,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-		chrome.EnableFeatures("DesksTemplates"),
+		chrome.EnableFeatures("DesksTemplates", "EnableSavedDesks"),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
@@ -86,7 +87,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Opens PlayStore, Chrome and Files.
+	// Open PlayStore, Chrome and Files.
 	for _, app := range []apps.App{apps.PlayStore, apps.Chrome, apps.Files} {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
@@ -100,51 +101,93 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for app launch events to be completed: ", err)
 	}
 
-	// Enters overview mode.
+	// Define keyboard to perform keyboard shortcuts.
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Cannot create keyboard: ", err)
+	}
+	defer ew.Close()
+
+	// Enter overview mode.
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
-	// Find the "save desk as a template" button.
-	saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
-	desksTemplatesGridView := nodewith.ClassName("DesksTemplatesGridView")
+	// Find the save desk buttons and the grid views.
+	saveDeskAsTemplateButton := nodewith.ClassName("SaveDeskTemplateButton").Nth(0)
+	savedTemplateGridView := nodewith.ClassName("SavedDeskGridView").Nth(0)
+	saveDeskForLaterButton := nodewith.ClassName("SaveDeskTemplateButton").Nth(1)
+	savedForLaterDeskGridView := nodewith.ClassName("SavedDeskGridView").Nth(1)
 
 	if err := uiauto.Combine(
 		"save a desk template",
-		ac.LeftClick(saveDeskButton),
-		// Wait for the desk templates grid shows up.
-		ac.WaitUntilExists(desksTemplatesGridView),
+		ac.LeftClick(saveDeskAsTemplateButton),
+		// Wait for the template grid to show up.
+		ac.WaitUntilExists(savedTemplateGridView),
 	)(ctx); err != nil {
 		s.Fatal("Failed to save a desk template: ", err)
 	}
 
-	// Exits overview mode.
+	// Type "Template 1" and press "Enter".
+	if err := ew.Type(ctx, "Template 1"); err != nil {
+		s.Fatal("Cannot type 'Template 1': ", err)
+	}
+	if err := ew.Accel(ctx, "Enter"); err != nil {
+		s.Fatal("Cannot press 'Enter': ", err)
+	}
+
+	// Exit overview mode.
 	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to exit overview mode: ", err)
 	}
 
-	// Re-enters overview mode, so we can save another desk template.
+	// Re-enter overview mode, so we can save a desk for later.
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
 
-	// Save another desk template.
+	// Save a desk for later.
 	if err := uiauto.Combine(
-		"save another desk template",
-		ac.LeftClick(saveDeskButton),
-		// Wait for the desk templates grid shows up.
-		ac.WaitUntilExists(desksTemplatesGridView),
+		"save a desk for later",
+		ac.LeftClick(saveDeskForLaterButton),
+		// Wait for the saved for later grid to show up.
+		ac.WaitUntilExists(savedForLaterDeskGridView),
 	)(ctx); err != nil {
-		s.Fatal("Failed to save a desk template: ", err)
+		s.Fatal("Failed to save a desk for later: ", err)
 	}
 
-	// Verifies that there are two saved desk templates.
-	deskTemplatesInfo, err := ash.FindDeskTemplates(ctx, ac)
-	if err != nil {
-		s.Fatal("Failed to find desk templates: ", err)
+	// Type "Saved Desk 1" and press "Enter".
+	if err := ew.Type(ctx, "Saved Desk 1"); err != nil {
+		s.Fatal("Cannot type 'Saved Desk 1': ", err)
 	}
-	if len(deskTemplatesInfo) != 2 {
-		s.Fatalf("Got %v desk template(s), want two desk templates", len(deskTemplatesInfo))
+	if err := ew.Accel(ctx, "Enter"); err != nil {
+		s.Fatal("Cannot press 'Enter': ", err)
+	}
+
+	// Verify that there are two saved desks.
+	savedDeskViewInfo, err := ash.FindDeskTemplates(ctx, ac)
+	if err != nil {
+		s.Fatal("Failed to find saved desks: ", err)
+	}
+	if len(savedDeskViewInfo) != 2 {
+		s.Fatalf("Got %v saved desk(s), want two saved desks", len(savedDeskViewInfo))
+	}
+
+	// Exit overview mode.
+	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to exit overview mode: ", err)
+	}
+
+	// Verify that the app windows are closed.
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to count windows: ", err)
+	}
+	if len(ws) != 0 {
+		for _, window := range ws {
+			s.Log("Found window ", window)
+		}
+		s.Fatalf("Unexpected number of windows: got %v, want 0", len(ws))
 	}
 }
