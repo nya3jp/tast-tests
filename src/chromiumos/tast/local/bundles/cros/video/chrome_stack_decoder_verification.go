@@ -13,6 +13,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+var av1FilesFromBugs = []string{
+	"test_vectors/av1/files_from_bugs/b_235138734_test-25fps-one-to-four-tiles.av1.ivf",
+}
+
 var av1CommonFiles = []string{
 	"test_vectors/av1/8-bit/00000527.ivf",
 	"test_vectors/av1/8-bit/00000535.ivf",
@@ -361,6 +365,15 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
+			Name:              "av1_files_from_bugs",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			ExtraData:         appendJSONFiles(av1FilesFromBugs),
+			Val: chromeStackDecoderVerificationTestParam{
+				videoFiles:    av1FilesFromBugs,
+				validatorType: decoding.MD5,
+			},
+		}, {
 			Name:              "av1_common",
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
