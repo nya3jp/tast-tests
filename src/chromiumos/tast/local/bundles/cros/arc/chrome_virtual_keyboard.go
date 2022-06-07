@@ -213,12 +213,13 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := d.Object(ui.ID(fieldID2), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Clicking the button didn't cause the focus move: ", err)
 	}
-	shown, err := vkbCtx.IsShown(ctx)
-	if err != nil {
-		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
+
+	// This sleep is necessary to avoid an immediate check before the current VK gets stale.
+	if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+		s.Fatal("Failed to sleep: ", err)
 	}
-	if !shown {
-		s.Fatal("The focus move makes the virtual keyboard to be hidden")
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
+		s.Fatal("The focus move makes the virtual keyboard to be hidden: ", err)
 	}
 
 	// Hide the virtual keyboard.
@@ -233,7 +234,11 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := d.Object(ui.ID(fieldID1), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Pressing the button didn't cause focusing on the field: ", err)
 	}
-	shown, err = vkbCtx.IsShown(ctx)
+	// This sleep is necessary in case VK trigger is delayed.
+	if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+		s.Fatal("Failed to sleep: ", err)
+	}
+	shown, err := vkbCtx.IsShown(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
 	}
