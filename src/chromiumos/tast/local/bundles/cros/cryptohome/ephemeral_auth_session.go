@@ -82,7 +82,7 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	defer client.UnmountAll(ctxForCleanUp)
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, authSessionID /*kiosk=*/, false); err != nil {
+	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, "fake_label", authSessionID /*kiosk=*/, false); err != nil {
 		s.Fatal("Failed to  add credentials with AuthSession: ", err)
 	}
 
@@ -98,7 +98,7 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	}
 
 	// Test credentials when the user's directory is mounted.
-	if err := testLockScreen(ctx, userName, userPassword, keyLabel, client); err != nil {
+	if err := testEphemeralLockScreen(ctx, userName, userPassword, keyLabel, client); err != nil {
 		s.Fatal("Lock-screen checks failed: ", err)
 	}
 
@@ -115,7 +115,7 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	defer client.UnmountAll(ctxForCleanUp)
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, authSessionID /*kiosk=*/, false); err != nil {
+	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, "fake_label", authSessionID /*kiosk=*/, false); err != nil {
 		s.Fatal("Failed to  add credentials with AuthSession: ", err)
 	}
 
@@ -130,7 +130,7 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	}
 }
 
-func testLockScreen(ctx context.Context, userName, userPassword, keyLabel string, client *hwsec.CryptohomeClient) error {
+func testEphemeralLockScreen(ctx context.Context, userName, userPassword, keyLabel string, client *hwsec.CryptohomeClient) error {
 	accepted, err := client.CheckVault(ctx, keyLabel, hwsec.NewPassAuthConfig(userName, userPassword))
 	if err != nil {
 		return errors.Wrap(err, "check failed with correct password")

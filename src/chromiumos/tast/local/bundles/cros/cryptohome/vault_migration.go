@@ -74,7 +74,7 @@ func VaultMigration(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	if err := cryptohome.CreateUserWithAuthSession(ctx, userName, userPassword, false); err != nil {
+	if err := cryptohome.CreateUserWithAuthSession(ctx, userName, userPassword, keyLabel, false); err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)

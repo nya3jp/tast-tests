@@ -327,7 +327,7 @@ func CheckDeps(ctx context.Context) error {
 }
 
 // AuthSessionMountFlow mounts a user with AuthSession.
-func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, password string, createUser bool) error {
+func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, password, keyLabel string, createUser bool) error {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
@@ -345,7 +345,7 @@ func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, passw
 	defer cancel()
 
 	if createUser {
-		if err := cryptohome.AddCredentialsWithAuthSession(ctx, username, password, authSessionID, isKioskUser); err != nil {
+		if err := cryptohome.AddCredentialsWithAuthSession(ctx, username, password, keyLabel, authSessionID, isKioskUser); err != nil {
 			return errors.Wrap(err, "failed to add credentials with AuthSession")
 		}
 
@@ -411,7 +411,7 @@ func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, passw
 }
 
 // CreateUserWithAuthSession creates a persistent user via auth session API.
-func CreateUserWithAuthSession(ctx context.Context, username, password string, isKioskUser bool) error {
+func CreateUserWithAuthSession(ctx context.Context, username, password, keyLabel string, isKioskUser bool) error {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
@@ -423,11 +423,11 @@ func CreateUserWithAuthSession(ctx context.Context, username, password string, i
 	// defer cryptohome.InvalidateAuthSession(ctx, auth_session_id)
 	testing.ContextLog(ctx, "Auth session ID: ", authSessionID)
 
-	if err := cryptohome.AddCredentialsWithAuthSession(ctx, username, password, authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.AddCredentialsWithAuthSession(ctx, username, password, keyLabel, authSessionID, isKioskUser); err != nil {
 		return errors.Wrap(err, "failed to add credentials with AuthSession")
 	}
 	testing.ContextLog(ctx, "Added credentials successfully")
-	if err := cryptohome.AuthenticateAuthSession(ctx, password, "fake_label", authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.AuthenticateAuthSession(ctx, password, keyLabel, authSessionID, isKioskUser); err != nil {
 		return errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 	testing.ContextLog(ctx, "User authenticated successfully")
@@ -441,7 +441,7 @@ func CreateUserWithAuthSession(ctx context.Context, username, password string, i
 }
 
 // CreateAndMountUserWithAuthSession creates a persistent user via auth session API.
-func CreateAndMountUserWithAuthSession(ctx context.Context, username, password string, isKioskUser bool) error {
+func CreateAndMountUserWithAuthSession(ctx context.Context, username, password, keyLabel string, isKioskUser bool) error {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
@@ -463,7 +463,7 @@ func CreateAndMountUserWithAuthSession(ctx context.Context, username, password s
 		return errors.Wrap(err, "failed to prepare persistent vault")
 	}
 
-	if err := cryptohome.AddCredentialsWithAuthSession(ctx, username, password, authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.AddCredentialsWithAuthSession(ctx, username, password, keyLabel, authSessionID, isKioskUser); err != nil {
 		return errors.Wrap(err, "failed to add credentials with AuthSession")
 	}
 
