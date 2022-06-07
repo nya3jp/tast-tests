@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db846b5c_5f39c0bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-07T21:29:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7eabe3b_27a1d53b",
+      "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cc3976a_7a89ed97",
