@@ -748,6 +748,43 @@ func WaitForHotseatAnimatingToIdealState(ctx context.Context, tconn *chrome.Test
 	return nil
 }
 
+// ScrollOverflowShelfToEnd scrolls the overflow shelf by clicking at the arrow button until the shelf is scrolled to the end.
+// left specifies which arrow button is clicked. No ops if the specified arrow button does not exist when this function is called.
+func ScrollOverflowShelfToEnd(ctx context.Context, tconn *chrome.TestConn, left bool) error {
+	iterCount := 0
+
+	for {
+		iterCount = iterCount + 1
+		if iterCount > 20 {
+			return errors.New("failed to scroll to the end within 20 iterations")
+		}
+
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
+		if err != nil {
+			return errors.Wrap(err, "failed to get the scrollable shelf info")
+		}
+
+		var arrowButtonBounds coords.Rect
+		if left {
+			arrowButtonBounds = info.LeftArrowBounds
+		} else {
+			arrowButtonBounds = info.RightArrowBounds
+		}
+
+		if arrowButtonBounds.Size().Empty() {
+			return nil
+		}
+
+		if err := mouse.Click(tconn, arrowButtonBounds.CenterPoint(), mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to mouse click the center of %v", arrowButtonBounds.CenterPoint())
+		}
+
+		if err := WaitForHotseatAnimationToFinish(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to wait for the scroll animation to complete")
+		}
+	}
+}
+
 // SwipeUpHotseatAndWaitForCompletion swipes the hotseat up, changing the hotseat state from hidden to extended. The function does not end until the hotseat animation completes.
 func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter) error {
 	if err := swipeHotseatAndWaitForCompletion(ctx, tconn, stw, tcc, true); err != nil {
