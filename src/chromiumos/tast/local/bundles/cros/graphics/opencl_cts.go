@@ -10734,8 +10734,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
 					args:         "integer_sub_sat",
-					expectedPass: false,
-					buganizer:    "b/227136800",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},

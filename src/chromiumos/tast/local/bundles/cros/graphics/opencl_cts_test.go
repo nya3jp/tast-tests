@@ -1203,7 +1203,7 @@ func TestOpenclCtsParamsAreGenerated(t *testing.T) {
 	addTest("integer_ops", "integer_orAssign", "", "pass", "", 1, nil)
 	addTest("integer_ops", "integer_rhadd", "", "pass", "", 1, nil)
 	addTest("integer_ops", "integer_rotate", "", "pass", "", 1, nil)
-	addTest("integer_ops", "integer_sub_sat", "", "fail", "b/227136800", 1, nil)
+	addTest("integer_ops", "integer_sub_sat", "", "pass", "", 1, nil)
 	addTest("integer_ops", "integer_subtractAssign", "", "pass", "", 1, nil)
 	addTest("integer_ops", "integer_upsample", "", "pass", "", 1, nil)
 	addTest("integer_ops", "int_logic", "", "pass", "b/229680737", 10, nil)
