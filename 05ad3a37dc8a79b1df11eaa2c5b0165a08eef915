@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c00b6d9_dbe73e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1364815
+      },
+      "writtenOn": "2022-06-07T06:06:01Z",
+      "side": 1,
+      "message": "As I know, we don\u0027t upload new CL that separates chipset specific module to kernel 5.4,\nso kernel 5.4 doesn\u0027t have rtw89_8852ae.ko.",
+      "range": {
+        "startLine": 139,
+        "startChar": 34,
+        "endLine": 139,
+        "endChar": 50
+      },
+      "revId": "05ad3a37dc8a79b1df11eaa2c5b0165a08eef915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
