@@ -129,7 +129,6 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 	// Use a shortened context for test operations to reserve time for cleanup.
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	inputMethod := s.Param().(glideTypingTestParam).inputMethod
 	shouldFloatLayout := s.Param().(glideTypingTestParam).floatLayout
@@ -155,15 +154,26 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 	}
 	keySeq := glideTypingWord.CharacterKeySeq
 
-	// Wrap a function to set float VK only once during the test.
-	var isFloatLayout bool
-	setFloatVK := func(ctx context.Context) error {
-		if !isFloatLayout && shouldFloatLayout {
-			isFloatLayout = true
-			return vkbCtx.SetFloatingMode(uc, true)(ctx)
+	if shouldFloatLayout {
+		if err := uiauto.Combine("set VK to floating mode",
+			vkbCtx.ShowVirtualKeyboard(),
+			vkbCtx.SetFloatingMode(uc, true),
+			vkbCtx.HideVirtualKeyboard(),
+		)(ctx); err != nil {
+			s.Fatal("Failed to set VK to floating mode: ", err)
 		}
-		return nil
+		defer func(ctx context.Context) {
+			if err := uiauto.Combine("reset VK to docked mode",
+				vkbCtx.ShowVirtualKeyboard(),
+				vkbCtx.SetFloatingMode(uc, false),
+				vkbCtx.HideVirtualKeyboard(),
+			)(ctx); err != nil {
+				s.Log("Failed to reset VK to docked mode: ", err)
+			}
+		}(cleanupCtx)
+
 	}
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// Define glide typing user action including validating the result.
 	glideTypingUserAction := func(testScenario string, inputField testserver.InputField, isGlideTypingEnabled bool) uiauto.Action {
@@ -207,7 +217,6 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 			vkbCtx.HideVirtualKeyboard(),
 			its.Clear(inputField),
 			its.ClickFieldUntilVKShown(inputField),
-			setFloatVK,
 			glideTypingUserAction(testScenario, inputField, isGlideTypingEnabled),
 		)
 	}
