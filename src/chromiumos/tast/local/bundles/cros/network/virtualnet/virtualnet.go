@@ -94,6 +94,20 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		return nil, nil, errors.Wrap(err, "failed to configure priority on interface")
 	}
 
+	// Do a reconnect to speed up the DHCP process, since when the veth device is
+	// created, DHCP server may not be ready, and thus the first DHCP DISCOVER
+	// packet will be lost, and result a long timeout to send the second one. Note
+	// that this speed-up is in a best effort way since it cannot be guaranteed
+	// that the DHCP server is ready this time.
+	if opts.EnableDHCP {
+		if err := svc.Disconnect(ctx); err != nil {
+			return nil, nil, errors.Wrap(err, "failed to reconnect veth service")
+		}
+		if err := svc.Connect(ctx); err != nil {
+			return nil, nil, errors.Wrap(err, "failed to reconnect veth service")
+		}
+	}
+
 	testing.ContextLogf(ctx, "virtualnet env %s started", router.NetNSName)
 	success = true
 	return svc, router, nil
