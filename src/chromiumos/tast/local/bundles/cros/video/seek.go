@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // seekTest is used to describe the config used to run each Seek test.
@@ -77,6 +78,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_hevc.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor", "strongbad")), // TODO(b/232255167): re-enable when HEVC decoding has been enabled on QC devices
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "vp8",
@@ -143,6 +145,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.hevc.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor", "strongbad")), // TODO(b/232255167): re-enable when HEVC decoding has been enabled on QC devices
 			Fixture:           "chromeVideo",
 		}, {
 			Name: "switch_vp8",
@@ -224,6 +227,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_hevc.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor", "strongbad")), // TODO(b/232255167): re-enable when HEVC decoding has been enabled on QC devices
 			Timeout:           20 * time.Minute,
 			Fixture:           "chromeVideo",
 		}, {
