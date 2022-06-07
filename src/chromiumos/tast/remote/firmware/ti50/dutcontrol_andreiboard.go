@@ -110,6 +110,11 @@ func (a *DUTControlAndreiboard) PlainCommand(ctx context.Context, cmd string, ar
 	return resp.Output, nil
 }
 
+// OpenTitanToolCommand runs an arbitrary OpenTitan tool command (without up-/downloading any files).
+func (a *DUTControlAndreiboard) OpenTitanToolCommand(ctx context.Context, cmd string, args ...string) (output []byte, err error) {
+	return a.PlainCommand(ctx, cmd, args...)
+}
+
 // Reset resets the board via spiflash, causing the image to reboot.
 func (a *DUTControlAndreiboard) Reset(ctx context.Context) error {
 	_, err := a.PlainCommand(ctx, "gpio", "write", "RESET", "false")

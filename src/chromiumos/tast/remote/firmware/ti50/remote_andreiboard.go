@@ -151,6 +151,11 @@ func (a *RemoteAndreiboard) FlashImage(ctx context.Context, image string) error 
 	return dutCmd.Run()
 }
 
+// OpenTitanToolCommand runs an arbitrary OpenTitan tool command (without up-/downloading any files).
+func (a *RemoteAndreiboard) OpenTitanToolCommand(ctx context.Context, cmd string, args ...string) (output []byte, err error) {
+	return nil, errors.New("Unimplemented RemoteAndreiboard.OttCommand")
+}
+
 // Reset resets the board via spiflash, causing the image to reboot.
 func (a *RemoteAndreiboard) Reset(ctx context.Context) error {
 	if a.GetSpiFlash() == "" {

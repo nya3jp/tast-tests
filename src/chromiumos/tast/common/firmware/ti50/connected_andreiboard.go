@@ -87,6 +87,11 @@ func (a *ConnectedAndreiboard) FlashImage(ctx context.Context, image string) err
 	return err
 }
 
+// OpenTitanToolCommand runs an arbitrary OpenTitan tool command (without up-/downloading any files).
+func (a *ConnectedAndreiboard) OpenTitanToolCommand(ctx context.Context, cmd string, args ...string) (output []byte, err error) {
+	return nil, errors.New("Unimplemented ConnectedAndreiboard.OpenTitanToolCommand")
+}
+
 // Reset causes the board FlashImage flashes an image to the board.
 func (a *ConnectedAndreiboard) Reset(ctx context.Context) error {
 	if a.GetSpiFlash() == "" {
