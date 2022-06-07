@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -36,6 +37,7 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 		ownerUser       = "owner@owner.owner"
 		userName        = "foo@bar.baz"
 		userPassword    = "secret"
+		keyLabel        = "fake_label"
 		testFile        = "file"
 		testFileContent = "content"
 	)
@@ -96,8 +98,8 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	}
 
 	// Test credentials when the user's directory is mounted.
-	if _, err := client.CheckVault(ctx, "fake_label", hwsec.NewPassAuthConfig(userName, userPassword)); err != nil {
-		s.Fatal("Should access the vault with the valid credentials while mounted: ", err)
+	if err := testLockScreen(ctx, userName, userPassword, keyLabel, client); err != nil {
+		s.Fatal("Lock-screen checks failed: ", err)
 	}
 
 	// Unmount and mount again.
@@ -126,4 +128,25 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	if _, err := client.CheckVault(ctx, "fake_label", hwsec.NewPassAuthConfig(userName, userPassword)); err != nil {
 		s.Fatal("Should access the vault with the valid credentials while mounted: ", err)
 	}
+}
+
+func testLockScreen(ctx context.Context, userName, userPassword, keyLabel string, client *hwsec.CryptohomeClient) error {
+	accepted, err := client.CheckVault(ctx, keyLabel, hwsec.NewPassAuthConfig(userName, userPassword))
+	if err != nil {
+		return errors.Wrap(err, "check failed with correct password")
+	}
+	if !accepted {
+		return errors.Wrap(err, "check returned false despite no error")
+	}
+
+	// Check again, now with wildcard label.
+	accepted, err = client.CheckVault(ctx, "" /*keyLabel*/, hwsec.NewPassAuthConfig(userName, userPassword))
+	if err != nil {
+		return errors.Wrap(err, "check failed with correct password and wildcard label")
+	}
+	if !accepted {
+		return errors.Wrap(err, "check with wildcard label returned false despite no error")
+	}
+
+	return nil
 }
