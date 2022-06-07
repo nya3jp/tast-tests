@@ -276,10 +276,6 @@ const (
 // PowerTestOptions describes how to set up a power test.
 type PowerTestOptions struct {
 	// The default value of the following options is not to perform any changes.
-	// Battery is deprecated.
-	// TODO(b/234429108): Remove this when all code has been updated to pass a
-	// *BatteryDischarge directly to PowerTest instead.
-	Battery    BatteryDischargeMode
 	Wifi       WifiInterfacesMode
 	NightLight NightLightMode
 
@@ -296,21 +292,7 @@ type PowerTestOptions struct {
 
 // PowerTest configures a DUT to run a power test by disabling features that add
 // noise, and consistently configuring components that change power draw.
-// If optionalBatteryDischarge is omitted, options.Battery is used. New code
-// should use optionalBatteryDischarge because options.Battery is deprecated.
-// TODO(b/234429108): Make optionalBatteryDischarge mandatory when all code has
-// been updated to use it.
-func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions, optionalBatteryDischarge ...*BatteryDischarge) (CleanupCallback, error) {
-	var batteryDischarge *BatteryDischarge
-	switch len(optionalBatteryDischarge) {
-	case 0:
-		batteryDischarge = NewBatteryDischargeFromMode(options.Battery)
-	case 1:
-		batteryDischarge = optionalBatteryDischarge[0]
-	default:
-		return nil, errors.New("multiple battery discharge configurations specified in a single call to setup.PowerTest")
-	}
-
+func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions, batteryDischarge *BatteryDischarge) (CleanupCallback, error) {
 	return Nested(ctx, "power test", func(s *Setup) error {
 		if options.Powerd == DisablePowerd {
 			s.Add(DisableService(ctx, "powerd"))
