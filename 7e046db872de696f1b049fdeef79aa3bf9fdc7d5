@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c94b1c6_c1567cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T23:19:33Z",
+      "side": 1,
+      "message": "The arguments will be mutated in the caller, so there is no need to return these. Try this to see what I mean:\nhttps://go.dev/play/p/-u9ZTQr0Orq",
+      "range": {
+        "startLine": 120,
+        "startChar": 147,
+        "endLine": 120,
+        "endChar": 208
+      },
+      "revId": "7e046db872de696f1b049fdeef79aa3bf9fdc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
