@@ -16,18 +16,19 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RoutingHighPriority,
-		Desc:         "Verify the routing semantics in the case that there is a dual-stack network and then another network with higher priority shows up",
+		Func:         RoutingLowPriority,
+		Desc:         "Verify the routing semantics in the case that there is a dual-stack network and then another network with lower priority shows up",
 		Contacts:     []string{"jiejiang@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		LacrosStatus: testing.LacrosVariantUnneeded,
 	})
 }
 
-// RoutingHighPriority verifies that, when a new network with higher priority
-// becomes Online, it should be the default network (primary network), but the
-// local peers on the secondary network should still be reachable.
-func RoutingHighPriority(ctx context.Context, s *testing.State) {
+// RoutingLowPriority verifies that, when a new network with lower priority
+// becomes Online, the default network should not change, and thus this new
+// network becomes the secondary network. Peers on the local subnet of the
+// secondary network should be reachable.
+func RoutingLowPriority(ctx context.Context, s *testing.State) {
 	testEnv := routing.NewTestEnv()
 	if err := testEnv.SetUp(ctx); err != nil {
 		s.Fatal("Failed to set up routing test env: ", err)
@@ -53,14 +54,14 @@ func RoutingHighPriority(ctx context.Context, s *testing.State) {
 	baseServerAddrs := getEnvAddrs(testEnv.BaseServer)
 	for _, user := range []string{"root", "chronos"} {
 		for _, ip := range baseServerAddrs.All() {
-			if err := routing.ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 10*time.Second); err != nil {
+			if err := routing.ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 30*time.Second); err != nil {
 				s.Fatalf("Non-local address %v on the primary network is not reachable as user %s: %v", ip, user, err)
 			}
 		}
 	}
 
 	testNetworkOpts := virtualnet.EnvOptions{
-		Priority:   routing.HighPriority,
+		Priority:   routing.LowPriority,
 		NameSuffix: routing.TestSuffix,
 		EnableDHCP: true,
 		RAServer:   true,
@@ -73,30 +74,31 @@ func RoutingHighPriority(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for service in test online: ", err)
 	}
 
+	testRouterAddrs := getEnvAddrs(testEnv.TestRouter)
 	testServerAddrs := getEnvAddrs(testEnv.TestServer)
-	baseRouterAddrs := getEnvAddrs(testEnv.BaseRouter)
 	for _, user := range []string{"root", "chronos"} {
-		// The secondary network should not be used (as default route) as long as the
-		// primary network is Online.
-		for _, ip := range baseServerAddrs.All() {
+		// Verify that local subnet is reachable on the secondary network. Run this
+		// part at first also to make sure that the routing for the test network has
+		// been configured properly before testing the following.
+		// TODO(b/235050937): IPv6 peer on local subnet of the secondary network is
+		// not reachable. Only check IPv4 now.
+		ip := testRouterAddrs.IPv4Addr
+		if err := routing.ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 30*time.Second); err != nil {
+			s.Errorf("Local address %v on the secondary network is not reachable as user %s: %v", ip, user, err)
+		}
+
+		// Verify that remote server is not reachable on the secondary network
+		for _, ip := range testServerAddrs.All() {
 			if err := routing.ExpectPingFailure(ctx, ip.String(), user); err != nil {
 				s.Errorf("Non-local address %v on the secondary network should not be reachable as user %s: %v", ip, user, err)
 			}
 		}
 
-		// Verify that default routes work for the primary network.
-		for _, ip := range testServerAddrs.All() {
-			if err := routing.ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 10*time.Second); err != nil {
+		// Verify that remote server is reachable on the primary network.
+		for _, ip := range baseServerAddrs.All() {
+			if err := routing.ExpectPingSuccess(ctx, ip.String(), user); err != nil {
 				s.Errorf("Non-local address %v on the primary network is not reachable as user %s: %v", ip, user, err)
 			}
-		}
-
-		// Local addresses on the secondary network should still be reachable.
-		// TODO(b/235050937): IPv6 peer on local subnet of the secondary network is
-		// not reachable. Only check IPv4 now.
-		ip := baseRouterAddrs.IPv4Addr
-		if err := routing.ExpectPingSuccess(ctx, ip.String(), user); err != nil {
-			s.Errorf("Local address %v on the secondary network is not reachable as user %s: %v", ip, user, err)
 		}
 	}
 }
