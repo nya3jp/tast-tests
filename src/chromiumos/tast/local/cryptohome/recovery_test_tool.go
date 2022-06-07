@@ -33,6 +33,7 @@ const (
 	customEpochResponseFile     = "custom_epoch_response"
 	epochResponseFile           = "epoch_response"
 	mediatorPubKeyFile          = "mediator_pub_key"
+	customMediatorPubKeyFile    = "custom_mediator_pub_key"
 )
 
 // RecoveryTestTool is a command line test tool for cryptohome recovery testing.
@@ -143,6 +144,28 @@ func (c *RecoveryTestTool) FetchRecoveryRequest() ([]byte, error) {
 		return nil, errors.Wrapf(err, "could not decode request hex (%s) to bytes", string(requestHex))
 	}
 	return request, nil
+}
+
+// CreateHsmPayloadWithMediatorKey calls "--action=recovery_crypto_create_hsm_payload" step with provided mediatorPubKeyHex.
+func (c *RecoveryTestTool) CreateHsmPayloadWithMediatorKey(ctx context.Context, mediatorPubKeyHex string) error {
+	if c.useFakeMediator {
+		return errors.New("cannot use custom mediator key with fake mediator")
+	}
+
+	if err := c.writeFile(customMediatorPubKeyFile, []byte(mediatorPubKeyHex)); err != nil {
+		return errors.Wrapf(err, "could not write the mediator public key file (%s)", customMediatorPubKeyFile)
+	}
+
+	return c.call(ctx,
+		"--action=recovery_crypto_create_hsm_payload",
+		c.getFileParam("mediator_pub_key_in_file", customMediatorPubKeyFile),
+		c.getFileParam("destination_share_out_file", destinationShareFile),
+		c.getFileParam("rsa_priv_key_out_file", rsaPrivKeyFile),
+		c.getFileParam("channel_pub_key_out_file", channelPubKeyFile),
+		c.getFileParam("channel_priv_key_out_file", channelPrivKeyFile),
+		c.getFileParam("serialized_hsm_payload_out_file", hsmPayloadFile),
+		c.getFileParam("recovery_secret_out_file", recoverySecretCreatedFile),
+	)
 }
 
 // CreateHsmPayload calls "--action=recovery_crypto_create_hsm_payload" step.
