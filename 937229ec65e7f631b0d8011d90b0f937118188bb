@@ -22,6 +22,30 @@
       },
       "revId": "937229ec65e7f631b0d8011d90b0f937118188bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b438fd5_ede08cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-07T23:10:34Z",
+      "side": 1,
+      "message": "This is a different case. It expects focus change not to show VK.",
+      "parentUuid": "4f6a3ab7_3b33d97a",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 2
+      },
+      "revId": "937229ec65e7f631b0d8011d90b0f937118188bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
