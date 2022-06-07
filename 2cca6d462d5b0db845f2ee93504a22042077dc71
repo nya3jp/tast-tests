@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d82bedca_49039172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-07T10:46:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5897620e_165222a5",
+      "revId": "2cca6d462d5b0db845f2ee93504a22042077dc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b23078d4_68b70662",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33bf884_856a8bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-07T10:46:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b23078d4_68b70662",
+      "range": {
+        "startLine": 312,
+        "startChar": 5,
+        "endLine": 312,
+        "endChar": 8
+      },
+      "revId": "2cca6d462d5b0db845f2ee93504a22042077dc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b52db893_e58db751",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-06-01T09:43:39Z",
       "side": 1,
       "message": "could you avoid using shell? Instead, could you write the go code to do what you need?\nDitto for all the code below.",
+      "revId": "2cca6d462d5b0db845f2ee93504a22042077dc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b1303d_3f3091ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-07T10:46:06Z",
+      "side": 1,
+      "message": "Originally I wanted to use regex to implement, but I found the regex of parsing |modetest -c| may be to a little complex, like `EDID:\\n.*\\n.*\\n\\n.*value:\\n *(( *[0-9a-f]*\\n){8})`\n\nCould we keep shell parsing here and use regex on parsing detailed edid info?\nMade it simpler and added some comment of sample output.",
+      "parentUuid": "b52db893_e58db751",
       "revId": "2cca6d462d5b0db845f2ee93504a22042077dc71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
