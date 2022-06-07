@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba62ea5_02ee57f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-07T07:49:29Z",
+      "side": 1,
+      "message": "LGTM. Sorry for a late review.",
+      "revId": "f8e3d069729ab43fb5ae1591d926ba2b811bba85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
