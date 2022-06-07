@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8c9b94f_e0640253",
+        "filename": "src/chromiumos/tast/local/arc/apputil/uiwrapper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-07T04:51:08Z",
+      "side": 1,
+      "message": "I am okay if you have multiple cases where it is convenient to hide the timeout error handling. \n\nI am leaving it to you to decide whether you want to keep it or not, after balancing the pros (i.e., clear error message) and cons (i.e., complexity and potentially bad usages). \n\nIf you want to keep it, you may need to rename it to `ObjectExists` or `CheckObjectExists`, as `IsObjectExists` is not grammerly correct.",
+      "parentUuid": "331e818e_c016a5b4",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "ff12d78b586217c62071ff4ceb2d9469386908e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b71f0460_9309de4c",
         "filename": "src/chromiumos/tast/local/arc/apputil/uiwrapper.go",
         "patchSetId": 2
