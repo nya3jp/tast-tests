@@ -71,6 +71,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06d5e54c_490209e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T17:05:16Z",
+      "side": 1,
+      "message": "I think there are several things you can do to make the mouse movement more predictable, consistent, and controllable, yielding more useful performance data. We may want to be able to look at performance data on a timeline and easily point out parts where we know the mouse is moving more slowly and parts where we know the mouse is moving faster.\n\n1. Do not assume that (for example) 100 calls to `mouse.Move`, each with duration 100 milliseconds, will take a total of 10 seconds. If there is any processing delay, it will add up. I would write code that keeps track of the expected total elapsed time and adjusts the `mouse.Move` duration to stay on schedule.\n2. Instead of checking when the destination point is outside the display bounds, I would end the spiral trajectory when the radius has reached half the small dimension of the display bounds. This is almost the same thing but will be more predictable.\n3. Instead of r \u003d theta, let\u0027s say the mouse takes one minute to traverse the spiral, and you just interpolate r and theta like\n\tmaxR :\u003d float64(min(info.Bounds.Width, info.Bounds.Height) / 2)\n\tconst revolutionsPerSpiral \u003d 100\n\tconst maxTheta \u003d revolutionsPerSpiral * 2 * math.Pi\n\n\ta :\u003d float64(timeSinceSpiralStart) / float64(time.Minute)\n\tr :\u003d a * maxR\n\ttheta :\u003d a * maxTheta\n\n\tpoint :\u003d coords.NewPoint(\n\t\tcenter.X+int(r*math.Cos(theta)),\n\t\tcenter.Y+int(r*math.Sin(theta)),\n\t)\nThis way, the display resolution will not affect how long it takes for the mouse to spiral out from the center of the display to the boundary. I think that is more realistic, because a real user workflow might involve moving the mouse (for example) one third of the way across the display regardless of resolution. More importantly, the trajectory will be described by intuitive parameters that are easy to read and adjust.",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb6e6c18_fb23dc29",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
         "patchSetId": 2
@@ -82,6 +99,144 @@
       "writtenOn": "2022-06-07T00:10:52Z",
       "side": 1,
       "message": "Interesting idea",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a69cf3_c307bc6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T17:05:16Z",
+      "side": 1,
+      "message": "`a spiral`",
+      "range": {
+        "startLine": 19,
+        "startChar": 44,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b343faa_67e99741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T17:05:16Z",
+      "side": 1,
+      "message": "`Bounds`",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c9b866_6919f794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T17:05:16Z",
+      "side": 1,
+      "message": "By itself, this code does nothing. It should be:\n\tif err :\u003d mouse.Move(tconn, center, 0)(ctx); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to move mouse\")\n\t}",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0567fd4a_2cd19103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T17:05:16Z",
+      "side": 1,
+      "message": "`\tfor endTime :\u003d time.Now().Add(duration); time.Now().Before(endTime); {`",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9169ec_ab2e382d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T17:05:16Z",
+      "side": 1,
+      "message": "`Bounds`",
+      "range": {
+        "startLine": 43,
+        "startChar": 20,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f170d53e_0e7a6482",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-07T17:05:16Z",
+      "side": 1,
+      "message": "This will cause the mouse to move to the center in `deltaTime`, but I think it would be more appropriate to move the mouse to the center instantaneously. To do that without code duplication, I suggest nested `for` loops, where the outer loop terminates after `duration`, and the inner loop terminates when the mouse reaches the boundary of the display. That way, you can put `mouse.Move(tconn, center, 0)(ctx)` inside the outer loop but outside the inner loop.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
       "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
