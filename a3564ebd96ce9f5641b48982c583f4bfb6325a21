@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b33cad_d06fc02f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T19:26:28Z",
+      "side": 1,
+      "message": "I don\u0027t think Chrome sets this policy when using PIN.\n\n(The only place I can find in Chrome that sets the low_entropy_credential policy is AddKey: https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/login/quick_unlock/pin_storage_cryptohome.cc;l\u003d214;drc\u003d9ebfcda30623f1126afb0d5afb9438e898beb0f7)\n\nDoes the test still work if we remove the flag here?",
+      "range": {
+        "startLine": 289,
+        "startChar": 44,
+        "endLine": 289,
+        "endChar": 59
+      },
+      "revId": "a3564ebd96ce9f5641b48982c583f4bfb6325a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
