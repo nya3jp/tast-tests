@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00800841_5719b86e",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaf364f9_8c2efc85",
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90bcf48f_37f2e224",
@@ -82,6 +100,24 @@
       "writtenOn": "2022-06-07T06:09:05Z",
       "side": 1,
       "message": "nit: no need to be global, put it inside `func TDLS()`?",
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b646cda5_7adfc4c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:05:23Z",
+      "side": 1,
+      "message": "Moving that outside of function was actually [asked by Arowa](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3560573/comments/1729c36e_44840d01)\n\nCould you both agree how the best it should be done? I\u0027m happy to change that, but I need a coherent opinion.",
+      "parentUuid": "90bcf48f_37f2e224",
       "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
