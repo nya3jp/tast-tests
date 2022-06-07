@@ -84,6 +84,24 @@
       "message": "Hmm, this is going to be a pretty constant activity throughout the test, right? So basically the mouse is moving in a straight line from one point to the next in a spiral?\n\nThis might be a lot of activity on the UI thread",
       "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beffc201_51de1aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T00:23:44Z",
+      "side": 1,
+      "message": "I can easily simplify it to just moving back and forth between two points, just wasn\u0027t sure if that was what we wanted with regards to getting meaningful latency data. Of course, I don\u0027t want to hurt all the test performance numbers -- I guess I didn\u0027t think moving the mouse was that performance changing.Another idea is to just increase the delta time, so we move the mouse much slower?",
+      "parentUuid": "269cfb22_3074fafa",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
