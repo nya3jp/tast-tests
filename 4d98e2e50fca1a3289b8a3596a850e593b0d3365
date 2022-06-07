@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "286ba4b6_f429669c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-07T11:22:50Z",
+      "side": 1,
+      "message": "Made the entering ns code more robust and tested with the follow-up patches. PTAL, thanks!",
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9750b8fc_b9c4721d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-07T11:22:50Z",
+      "side": 1,
+      "message": "Checked that LockOSThread can be called mutliple time on the same thread (but must be paired with the unlock method)\nI couldn\u0027t find a case that it\u0027s better to leave this to the caller, so moved it into EnterNetNS() (also to match the current comment, I forgot why I have that in comment but didn\u0027t implement it...).",
+      "parentUuid": "18d5824b_a44582d8",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 31
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bee7a2c4_d60cf874",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-07T05:41:33Z",
       "side": 1,
       "message": "If we start having multiple active Envs in a single test, we should really make sure we systematically print the netns name or the Env name in the error messages.",
+      "range": {
+        "startLine": 206,
+        "startChar": 31,
+        "endLine": 206,
+        "endChar": 69
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f807535_d10c46eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-07T11:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bee7a2c4_d60cf874",
       "range": {
         "startLine": 206,
         "startChar": 31,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a394fe86_b64f61a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-07T11:22:50Z",
+      "side": 1,
+      "message": "Done with checking the tid.",
+      "parentUuid": "fef191c1_4f520024",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 56
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6555dc82_d4d39892",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf63c3df_05d36140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-07T11:22:50Z",
+      "side": 1,
+      "message": "\u003e Is this assumption safe?\nNo. Thinking about this for a while, I guess this assumption may be a little tricky since all the callers of it need to propogate this assumption.\n\nChanged the logic to read and restore the netns to avoid this assumption. The code is much longer unfortunately.",
+      "parentUuid": "6555dc82_d4d39892",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 67
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26c19e01_7de8c078",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-06-07T05:41:33Z",
       "side": 1,
       "message": "nit: return to original netns ?",
+      "range": {
+        "startLine": 260,
+        "startChar": 38,
+        "endLine": 260,
+        "endChar": 60
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a867cdc_3dedd490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-07T11:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26c19e01_7de8c078",
       "range": {
         "startLine": 260,
         "startChar": 38,
