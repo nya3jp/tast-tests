@@ -35,6 +35,7 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 		userName        = "foo@bar.baz"
 		userPassword    = "secret"
 		updatedPassword = "updatedsecret"
+		keyLabel        = "fake_label"
 		testFile        = "file"
 		testFileContent = "content"
 	)
@@ -64,13 +65,13 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	if err := cryptohome.CreateUserWithAuthSession(ctx, userName, userPassword, false); err != nil {
+	if err := cryptohome.CreateUserWithAuthSession(ctx, userName, userPassword, keyLabel, false); err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
 
 	// Mount the vault for the first time.
-	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false, false)
+	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
@@ -109,7 +110,7 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
 	// Authenticate again with new credential.
-	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, updatedPassword, false, false)
+	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, updatedPassword, keyLabel, false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user with new credential: ", err)
 	}

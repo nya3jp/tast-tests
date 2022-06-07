@@ -80,7 +80,7 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	defer client.UnmountAll(ctxForCleanUp)
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, authSessionID /*kiosk=*/, false); err != nil {
+	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, "fake_label", authSessionID /*kiosk=*/, false); err != nil {
 		s.Fatal("Failed to  add credentials with AuthSession: ", err)
 	}
 
@@ -113,7 +113,7 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	defer client.UnmountAll(ctxForCleanUp)
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, authSessionID /*kiosk=*/, false); err != nil {
+	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, "fake_label", authSessionID /*kiosk=*/, false); err != nil {
 		s.Fatal("Failed to  add credentials with AuthSession: ", err)
 	}
 
