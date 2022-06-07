@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b2cbfc_962da13d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1332928
+      },
+      "writtenOn": "2022-06-07T16:41:41Z",
+      "side": 1,
+      "message": "Nit: maybe add a comment as to why the newScreencastButton is going to be gone. (Because the screencast app window will be minimized?).",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 71
+      },
+      "revId": "ee53f31aa28b04a2f20997e178146df161807458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
