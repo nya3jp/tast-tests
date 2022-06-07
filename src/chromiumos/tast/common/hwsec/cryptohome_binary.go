@@ -321,12 +321,12 @@ func (c *cryptohomeBinary) updateCredentialWithAuthSession(ctx context.Context, 
 
 // addCredentialsWithAuthSession calls "cryptohome --action=add_credentials".
 // password is ignored if publicMount is set to true.
-func (c *cryptohomeBinary) addCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) ([]byte, error) {
+func (c *cryptohomeBinary) addCredentialsWithAuthSession(ctx context.Context, user, password, keyLabel, authSessionID string, publicMount bool) ([]byte, error) {
 	args := []string{"--action=add_credentials", "--auth_session_id=" + authSessionID}
 	if publicMount {
 		args = append(args, "--public_mount", "--key_label=public_mount")
 	} else {
-		args = append(args, "--password="+password, "--key_label=fake_label")
+		args = append(args, "--password="+password, "--key_label="+keyLabel)
 	}
 	return c.call(ctx, args...)
 }

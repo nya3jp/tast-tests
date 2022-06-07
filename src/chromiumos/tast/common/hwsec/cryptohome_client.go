@@ -883,8 +883,8 @@ func (u *CryptohomeClient) AuthenticateRecoveryAuthFactor(ctx context.Context, a
 
 // AddCredentialsWithAuthSession creates the credentials for the user with given password.
 // password is ignored if publicMount is set to true.
-func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
-	_, err := u.binary.addCredentialsWithAuthSession(ctx, user, password, authSessionID, publicMount)
+func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, keyLabel, authSessionID string, publicMount bool) error {
+	_, err := u.binary.addCredentialsWithAuthSession(ctx, user, password, keyLabel, authSessionID, publicMount)
 	return err
 }
 
