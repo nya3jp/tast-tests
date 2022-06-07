@@ -50,6 +50,23 @@
       "message": "Sorry David for dragging you in, it must be my misunderstanding of how Gerrit is supposed to work, or a bug in the system. Shuhei\u0027s approval should be enough but for some reason it isn\u0027t. I\u0027ll remove you now and see if we could move this forward by e.g. Shuhei re-applying +2?",
       "revId": "75d3ca70036375accf8fc4b4f2a96f9f56e1e929",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d2f3305_2129345a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-07T00:53:38Z",
+      "side": 1,
+      "message": "Add Shuhei back to attention list. Hi Shuhei, would you please re-add +2 to this change. Looks like there is some issue with gerrit which says it needs owner approve. Thank you!",
+      "revId": "75d3ca70036375accf8fc4b4f2a96f9f56e1e929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
