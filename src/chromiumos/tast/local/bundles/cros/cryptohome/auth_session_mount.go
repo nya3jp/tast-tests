@@ -90,7 +90,7 @@ func AuthSessionMount(ctx context.Context, s *testing.State) {
 	}
 
 	// Run AuthSession Mount Flow for creating user.
-	if err := cryptohome.AuthSessionMountFlow(ctx, userParam.isKioskUser, userParam.testUser, userParam.testPass, userParam.createUser); err != nil {
+	if err := cryptohome.AuthSessionMountFlow(ctx, userParam.isKioskUser, userParam.testUser, userParam.testPass, "fake_label", userParam.createUser); err != nil {
 		s.Fatal("Failed to Mount with AuthSession -: ", err)
 	}
 
