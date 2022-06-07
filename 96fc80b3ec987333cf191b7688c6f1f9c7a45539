@@ -16,6 +16,24 @@
       "message": "When grepping for `/tast/common/perf` inside `src/chromiumos/tast/local/bundles/cros/lacros` directory for example, there is MotionMark, PowerVideocall, StartupPerf and possibly other perf related tests. Do you think they need to be tweaked with that special option as well, Eliot? Sorry be a bit late reviewing this here.\n",
       "revId": "96fc80b3ec987333cf191b7688c6f1f9c7a45539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e67a74f_c1fd1350",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-07T01:23:35Z",
+      "side": 1,
+      "message": "They only need to be tweaked if they use power.Setup code, which disables wifi / makes the backlight a set brightness etc. I think they don\u0027t use that, so they don\u0027t need this change. That said, they should be using the power.Setup code...",
+      "parentUuid": "ff347664_a67a0a49",
+      "revId": "96fc80b3ec987333cf191b7688c6f1f9c7a45539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
