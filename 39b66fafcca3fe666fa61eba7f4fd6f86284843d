@@ -56,6 +56,30 @@
       },
       "revId": "39b66fafcca3fe666fa61eba7f4fd6f86284843d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e35588_943f0d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-06-07T17:24:31Z",
+      "side": 1,
+      "message": "ah okay, I\u0027ve missed that. I\u0027ve fixed it in the latest patch set. Thanks again Nancy!",
+      "parentUuid": "622160c4_9297bcc5",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "39b66fafcca3fe666fa61eba7f4fd6f86284843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
