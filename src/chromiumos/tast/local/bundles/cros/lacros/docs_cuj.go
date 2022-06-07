@@ -111,7 +111,8 @@ func runDocsPageLoad(
 	testCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cujRecorder, err := cujrecorder.NewRecorder(testCtx, cr, nil, cujrecorder.RecorderOptions{})
+	options := cujrecorder.NewPerformanceCUJOptions()
+	cujRecorder, err := cujrecorder.NewRecorder(testCtx, cr, nil, options)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a CUJ recorder")
 	}
