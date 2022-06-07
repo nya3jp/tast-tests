@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "736fe518_27821216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-07T05:47:19Z",
+      "side": 1,
+      "message": "nit: these comments are no longer needed",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "ef1f66d94e1af258fdcc958fe62ab21071bf3ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b91514_2a5735b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-07T05:47:19Z",
+      "side": 1,
+      "message": "do you think if we can use https://pkg.go.dev/reflect#DeepEqual ?",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "ef1f66d94e1af258fdcc958fe62ab21071bf3ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
