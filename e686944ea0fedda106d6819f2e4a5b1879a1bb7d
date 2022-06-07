@@ -16,6 +16,46 @@
       "message": "mcasas@, tast-owners@ PTAL",
       "revId": "e686944ea0fedda106d6819f2e4a5b1879a1bb7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30743705_e72d4afe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-06-07T19:09:12Z",
+      "side": 1,
+      "message": "vLGTM!",
+      "revId": "e686944ea0fedda106d6819f2e4a5b1879a1bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f02a1beb_6306f955",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-06-07T19:09:12Z",
+      "side": 1,
+      "message": "TIL that `concat` does a muxer/container specific concat,\ni.e. the resulting file won\u0027t have an IVF header in the\nmiddle of the file.\n\nhttps://trac.ffmpeg.org/wiki/Concatenate#samecodec",
+      "range": {
+        "startLine": 90,
+        "startChar": 63,
+        "endLine": 90,
+        "endChar": 79
+      },
+      "revId": "e686944ea0fedda106d6819f2e4a5b1879a1bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
