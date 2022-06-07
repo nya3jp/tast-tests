@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18d5824b_a44582d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-06-07T05:45:33Z",
+      "side": 1,
+      "message": "Should these be part of EnterNetNS()?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 31
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bee7a2c4_d60cf874",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 2
@@ -59,6 +82,29 @@
         "startChar": 3,
         "endLine": 252,
         "endChar": 56
+      },
+      "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6555dc82_d4d39892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-06-07T05:45:33Z",
+      "side": 1,
+      "message": "Is this assumption safe? Should we check the original netns and return to that netns in cleanup?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 67
       },
       "revId": "430b5d4b7a75b5744b218759a9a5e5b45e83c507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
