@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec1dbdc_3b6148df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-06-07T04:30:40Z",
+      "side": 1,
+      "message": "I\u0027m no longer in Tast reviewers, Oleh could you approve?\n",
+      "revId": "2474c7215c333005bd461810d36a1fc681f5b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
