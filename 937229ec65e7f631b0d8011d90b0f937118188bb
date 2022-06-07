@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6a3ab7_3b33d97a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-07T22:54:39Z",
+      "side": 1,
+      "message": "Instead of sleeping, how about using WaitLocationStable as well? something like (you may use a shorter timeout):\n```\nif err :\u003d vkbCtx.WaitLocationStable()(ctx); err \u003d\u003d nil { // If there is no error.\n\ts.Fatal(\"The focus move makes the virtual keyboard to be hidden: \", err)\n} else if !strings.Contains(err.Error(), nodewith.ErrNotFound) { {\n        s.Fatal(\"Failed to get the virtual keyboard visibility: \", err)\n}\n```",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 2
+      },
+      "revId": "937229ec65e7f631b0d8011d90b0f937118188bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
