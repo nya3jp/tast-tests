@@ -51,6 +51,24 @@
       "parentUuid": "0cdcfc34_e80c70d4",
       "revId": "8b12db991f070268f47bb4d3dd94f3abb37de350",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88964865_b1544d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-07T20:46:45Z",
+      "side": 1,
+      "message": "Weird...not sure how crrev/c/3684989 was uploaded without gofmt catching this, assuming hooks were ran",
+      "parentUuid": "7bff29e7_a6ce9823",
+      "revId": "8b12db991f070268f47bb4d3dd94f3abb37de350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
