@@ -33,6 +33,57 @@
       "message": "An example of what this looks like: https://photos.app.goo.gl/szf7DzBHMwHLUwsG9",
       "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4482a34f_38fe9754",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-07T00:10:52Z",
+      "side": 1,
+      "message": "Xiyuan, PTAL if you think this is a good approach",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb6e6c18_fb23dc29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-07T00:10:52Z",
+      "side": 1,
+      "message": "Interesting idea",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269cfb22_3074fafa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-07T00:10:52Z",
+      "side": 1,
+      "message": "Hmm, this is going to be a pretty constant activity throughout the test, right? So basically the mouse is moving in a straight line from one point to the next in a spiral?\n\nThis might be a lot of activity on the UI thread",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
