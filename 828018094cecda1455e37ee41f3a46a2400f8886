@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "748cc5f9_7ef97872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T09:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0bb46aa_ac765087",
+      "range": {
+        "startLine": 23,
+        "startChar": 40,
+        "endLine": 23,
+        "endChar": 41
+      },
+      "revId": "828018094cecda1455e37ee41f3a46a2400f8886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcaa5b23_02502477",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-06T23:04:22Z",
       "side": 1,
       "message": "Does this exist or should this be google.com?",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "828018094cecda1455e37ee41f3a46a2400f8886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e650378_a38f79c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T09:28:04Z",
+      "side": 1,
+      "message": "Done - thanks for spotting this! Let me update other tests in a separate CL.",
+      "parentUuid": "fcaa5b23_02502477",
       "range": {
         "startLine": 24,
         "startChar": 20,
@@ -100,6 +148,54 @@
       "writtenOn": "2022-06-06T23:04:22Z",
       "side": 1,
       "message": "nit: /*create*/",
+      "range": {
+        "startLine": 66,
+        "startChar": 71,
+        "endLine": 66,
+        "endChar": 75
+      },
+      "revId": "828018094cecda1455e37ee41f3a46a2400f8886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ea5aca_8410812c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T09:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5d05efd_315a685d",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 42
+      },
+      "revId": "828018094cecda1455e37ee41f3a46a2400f8886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b63f22_c6a0499a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T09:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae9bab2f_1a029a6d",
       "range": {
         "startLine": 66,
         "startChar": 71,
