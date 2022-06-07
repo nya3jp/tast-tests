@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "569b7f17_31673ab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-07T00:32:04Z",
+      "side": 1,
+      "message": "Sorry Alexandar, I used an old patch of this CL when uploading my work. I then applied another patch (patch 7) and it should be the same with your last good one (patch 5). ",
+      "revId": "71a54e2bce4ef83302f57085b99b52f0137f6d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
