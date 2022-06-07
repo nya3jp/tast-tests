@@ -16,6 +16,24 @@
       "message": "Can we simplify this whole thing? We only need to run this twice so can we just do something like:\n\n```\nif testOnce(...) {\n  continue\n}\ns.Logf(...)\nif !testOnce(...) {\n  s.Fatalf(...)\n}\n```",
       "revId": "e77022c597c642d601e67b5d123faa7d910df37a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ddd1534_81b6b5c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-07T23:51:02Z",
+      "side": 1,
+      "message": "Is it possible that we allow repeating testOnce more than twice? Maybe we need to run testOnce 3 or 4 times until the probe request is captured.",
+      "parentUuid": "adabf2fb_e84ff2a9",
+      "revId": "e77022c597c642d601e67b5d123faa7d910df37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
