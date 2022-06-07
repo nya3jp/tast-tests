@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PrepareCrossVersionLoginData,
-		Desc: "Create snapshot of login-related data, which will be used in hwsec.CrossVersionLogin to mock the login data in older version (see go/cros-cross-version-login-testing)",
+		Func:         PrepareCrossVersionLoginData,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Create snapshot of login-related data, which will be used in hwsec.CrossVersionLogin to mock the login data in older version (see go/cros-cross-version-login-testing)",
 		Contacts: []string{
 			"chingkang@google.com",
 			"cros-hwsec@chromium.org",
@@ -97,7 +98,7 @@ func createPasswordData(ctx context.Context) (*util.CrossVersionLoginConfig, err
 }
 
 func PrepareCrossVersionLoginData(ctx context.Context, s *testing.State) {
-	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cmdRunner := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
