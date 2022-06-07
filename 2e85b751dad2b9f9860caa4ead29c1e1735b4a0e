@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4d7fea_5096eaf4",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/connected_andreiboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-06-07T17:37:58Z",
+      "side": 1,
+      "message": "I think to avoid confusion we should delete (in another CL) connected_andreiboard.go and remote_andreiboard.go since they were the pre-opentitantool solutions, so no longer needed.",
+      "revId": "2e85b751dad2b9f9860caa4ead29c1e1735b4a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1563880_5e4f391d",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/dev_board.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-06-07T17:37:58Z",
+      "side": 1,
+      "message": "For naming, I think I like \"OpenTitanToolCommand\" better than \"PlainCommand\".",
+      "revId": "2e85b751dad2b9f9860caa4ead29c1e1735b4a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
