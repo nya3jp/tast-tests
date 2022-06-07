@@ -248,7 +248,7 @@ func prepareFetchShelfScrollSmoothness(ctx context.Context, tconn *chrome.TestCo
 	}
 
 	// Hotseat in different states may have different bounds. So enter shelf overflow mode after tablet/clamshell switch and gesture swipe.
-	if err := ash.EnterShelfOverflow(ctx, tconn); err != nil {
+	if err := ash.EnterShelfOverflow(ctx, tconn, false); err != nil {
 		return cleanupAll, err
 	}
 

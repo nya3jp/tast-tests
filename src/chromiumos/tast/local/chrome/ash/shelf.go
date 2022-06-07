@@ -764,6 +764,44 @@ func SwipeDownHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.Tes
 	return nil
 }
 
+// ScrollOverflowShelfToEnd scrolls the overflow shelf by clicking at the arrow button until the shelf is scrolled to the end.
+// leftArrowButton is true if the left arrow button should be clicked to scroll. No ops if the specified arrow button
+// does not exist when this function is called.
+func ScrollOverflowShelfToEnd(ctx context.Context, tconn *chrome.TestConn, leftArrowButton bool) error {
+	iterCount := 0
+
+	for {
+		iterCount = iterCount + 1
+		if iterCount > 20 {
+			return errors.New("failed to scroll to the end within 20 iterations")
+		}
+
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
+		if err != nil {
+			return errors.Wrap(err, "failed to get the scrollable shelf info")
+		}
+
+		var arrowButtonBounds coords.Rect
+		if leftArrowButton {
+			arrowButtonBounds = info.LeftArrowBounds
+		} else {
+			arrowButtonBounds = info.RightArrowBounds
+		}
+
+		if arrowButtonBounds.Size().Empty() {
+			return nil
+		}
+
+		if err := mouse.Click(tconn, arrowButtonBounds.CenterPoint(), mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to mouse click the center of %v", arrowButtonBounds.CenterPoint())
+		}
+
+		if err := WaitForHotseatAnimationToFinish(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to wait for the scroll animation to complete")
+		}
+	}
+}
+
 // swipeHotseatAndWaitForCompletion swipes the hotseat and change the state between hidden to extended. The function does not end until the hotseat animation completes.
 func swipeHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter, swipeUp bool) error {
 	if err := WaitForHotseatAnimationToFinish(ctx, tconn); err != nil {
@@ -812,8 +850,9 @@ func swipeHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestCon
 	return nil
 }
 
-// EnterShelfOverflow pins enough shelf icons to enter overflow mode.
-func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
+// EnterShelfOverflow pins enough shelf icons to enter overflow mode. underRTL is true
+// if the UI adapts to right-to-left languages.
+func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn, underRTL bool) error {
 	// Number of pinned apps in each round of loop.
 	const batchNumber = 10
 
@@ -854,7 +893,15 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 			return errors.New("no icons found")
 		}
 		lastIconBounds := info.IconsBoundsInScreen[len(info.IconsBoundsInScreen)-1]
-		if lastIconBounds.Right() > displayInfo.Bounds.Right() &&
+
+		var boundsOutsideOfDisplay bool
+		if underRTL {
+			boundsOutsideOfDisplay = lastIconBounds.Left < displayInfo.Bounds.Left
+		} else {
+			boundsOutsideOfDisplay = lastIconBounds.Right() > displayInfo.Bounds.Right()
+		}
+
+		if boundsOutsideOfDisplay &&
 			(info.LeftArrowBounds.Size().Width > 0 || info.RightArrowBounds.Size().Width > 0) {
 			return nil
 		}
