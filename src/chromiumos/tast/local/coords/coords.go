@@ -63,6 +63,11 @@ func (s Size) String() string {
 	return fmt.Sprintf("(%d x %d)", s.Width, s.Height)
 }
 
+// Empty returns ...
+func (s Size) Empty() bool {
+	return s.Height == 0 || s.Width == 0
+}
+
 // Rect represents a rectangular region.
 type Rect struct {
 	Left   int `json:"left"`
