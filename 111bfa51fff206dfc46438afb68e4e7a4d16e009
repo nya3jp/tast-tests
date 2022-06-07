@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82cb0b09_7ad5490f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/test_jpeg.jpeg.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-07T07:30:27Z",
+      "side": 1,
+      "message": "I can rename the file for you. But before doing it, I need to confirm that this file is newly added by you and it is not used by anyone else.",
+      "parentUuid": "a084b764_651ac3ad",
+      "range": {
+        "startLine": 2,
+        "startChar": 67,
+        "endLine": 2,
+        "endChar": 85
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "833b0555_d05ed74f",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
         "patchSetId": 2
