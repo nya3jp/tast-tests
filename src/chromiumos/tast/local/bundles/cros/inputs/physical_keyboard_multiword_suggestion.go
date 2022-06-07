@@ -51,7 +51,6 @@ func PhysicalKeyboardMultiwordSuggestion(ctx context.Context, s *testing.State) 
 	cr := s.FixtValue().(fixture.FixtData).Chrome
 	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 	uc := s.FixtValue().(fixture.FixtData).UserContext
-	uc.SetTestName(s.TestName())
 
 	cleanupCtx := ctx
 	// Use a shortened context for test operations to reserve time for cleanup.
