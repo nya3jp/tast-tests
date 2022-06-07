@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7527c7d_4fdf6fd9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "I don\u0027t need to know Peer 1 IP, but Peer 2 I can convert.",
+      "parentUuid": "0a0ac624_ab3fd5de",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b389134_b90d4a00",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-07T00:24:54Z",
       "side": 1,
       "message": "I think this test should be moved to the main test before running the sub tests, since the traffic is going though the AP not the TDLS tunnel. WDYT?\n\nAlso, we can run it from both ends peer1-\u003epeer2 and peer2-\u003epeer1.",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2f096d_ad356529",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "Having it here, it checks if something was not messed up royally in other test cases (subtests). It already caught some irregularities.",
+      "parentUuid": "0b389134_b90d4a00",
       "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3965171_811a727b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "100% loss has a different meaning than 20% loss, this is what I learned from running this test (hence error on 0, warning under threshold). I\u0027d prefer to have separate checks here. I could use VerifyPingResults() in the next ping, though.",
+      "parentUuid": "fd9cc430_67759a76",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a03542ba_ad3aa0bd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 8
@@ -82,6 +136,24 @@
       "writtenOn": "2022-06-07T00:24:54Z",
       "side": 1,
       "message": "nit: move this function to line 128 and pass it as a function pointer to the `CollectPcapForAction` if possible.",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aeaa9d5_9a381d22",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a03542ba_ad3aa0bd",
       "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dafbc72_686ce407",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3706f0d_242fc5da",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6de9c1cc_18aac21e",
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9798e96d_aff69aff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de9c1cc_18aac21e",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adb07e1e_35882550",
@@ -133,6 +241,24 @@
       "writtenOn": "2022-06-07T00:24:54Z",
       "side": 1,
       "message": "Same as line 117",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "279e7e68_691eb1c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "Here it actually makes sense to use `VerifyPingResults()`.",
+      "parentUuid": "adb07e1e_35882550",
       "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +282,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba521287_15034ea1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "I\u0027m not sure. That would need forced logging in library func, which I tried to avoid. But if you insist, I can change that approach.",
+      "parentUuid": "54ef7438_d8489e56",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b78cbd43_0cf5ad8e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 8
@@ -167,6 +311,24 @@
       "writtenOn": "2022-06-07T00:24:54Z",
       "side": 1,
       "message": "nit: this message should be more specific explaining why they are invalid (Not through the TDLS tunnel)",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a37d91b_1a587bae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b78cbd43_0cf5ad8e",
       "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +350,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a475197_cc3324c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66ab8528_f1b98073",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c9ad54e_be6d9a69",
@@ -205,6 +385,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae4784b_c1fa8bc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c9ad54e_be6d9a69",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d97d142f_26ceb316",
@@ -218,6 +416,24 @@
       "writtenOn": "2022-06-07T00:24:54Z",
       "side": 1,
       "message": "I think you can remove this if statement.",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8da535_33d6b4d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-07T21:06:29Z",
+      "side": 1,
+      "message": "I know it\u0027s overzealous, but I\u0027d prefer to keep that in case the cell overhears some external traffic (and for other-than-ICMP traffic).",
+      "parentUuid": "d97d142f_26ceb316",
       "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
