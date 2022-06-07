@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "006688a9_2606c6a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-06-07T05:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a89349a8_a9e50f62",
+      "revId": "bf7d7bce91a8b5ab1b7261534a18c6b8ddd82367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "09bdbead_4ded4731",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -82,6 +100,30 @@
       "writtenOn": "2022-05-27T23:32:36Z",
       "side": 1,
       "message": "D3D traces under Proton.",
+      "range": {
+        "startLine": 25,
+        "startChar": 36,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "bf7d7bce91a8b5ab1b7261534a18c6b8ddd82367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18e719d_bb77a4e7",
+        "filename": "src/chromiumos/tast/local/graphics/trace/comm/comm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-06-07T05:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "040808c4_8492aaff",
       "range": {
         "startLine": 25,
         "startChar": 36,
