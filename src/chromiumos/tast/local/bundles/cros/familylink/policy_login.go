@@ -9,7 +9,13 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/familylink"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -17,13 +23,20 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PolicyLogin,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks if Unicorn login with policy setup is working",
 		Contacts:     []string{"xiqiruan@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "familyLinkUnicornPolicyLogin",
+		Params: []testing.Param{{
+			Val:     browser.TypeAsh,
+			Fixture: "familyLinkUnicornPolicyLogin",
+		}, {
+			Name:    "lacros",
+			Val:     browser.TypeLacros,
+			Fixture: "familyLinkUnicornPolicyLoginWithLacros",
+		}},
 	})
 }
 
@@ -31,11 +44,12 @@ func PolicyLogin(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*familylink.FixtData).FakeDMS
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	// The ForceGoogleSafeSearch policy is arbitrarily chosen just to illustrate
+	// The DeveloperToolsAvailability policy is arbitrarily chosen just to illustrate
 	// that setting policies works for Family Link users.
 	policies := []policy.Policy{
-		&policy.ForceGoogleSafeSearch{Val: true},
+		&policy.DeveloperToolsAvailability{Val: 1},
 	}
 
 	pb := policy.NewBlob()
@@ -50,4 +64,40 @@ func PolicyLogin(ctx context.Context, s *testing.State) {
 	if err := policyutil.Verify(ctx, tconn, policies); err != nil {
 		s.Fatal("Failed to verify policies: ", err)
 	}
+
+	s.Log("Verifying policies enforced by browser")
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// Ensure policy is enforced by browser.
+	ui := uiauto.New(tconn).WithTimeout(time.Minute)
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), "chrome://policy")
+	if err != nil {
+		s.Fatal("Failed to set up browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+	defer conn.Close()
+
+	policyRows := nodewith.ClassName("policy row")
+	// Wait for table contents to load
+	if err := ui.WaitUntilExists(nodewith.Ancestor(policyRows.First()).First())(ctx); err != nil {
+		s.Fatal("Failed to load policies in browser: ", err)
+	}
+
+	nodes, err := ui.NodesInfo(ctx, policyRows)
+	if err != nil {
+		s.Fatal("Failed to retrieve nodes info for policyRows: ", err)
+	}
+
+	for i := range nodes {
+		row := policyRows.Nth(i)
+		if err := ui.Exists(nodewith.Name("DeveloperToolsAvailability").Ancestor(row))(ctx); err == nil {
+			if valueErr := ui.Exists(nodewith.Name("true"))(ctx); valueErr != nil {
+				s.Fatal("browser incorrect value for DeveloperToolsAvailability", valueErr)
+			}
+		}
+	}
+
 }
