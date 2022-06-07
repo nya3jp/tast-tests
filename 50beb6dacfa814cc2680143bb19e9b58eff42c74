@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95686510_9aa37ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d4fd92_40d8f379",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5f5685e_f32fd351",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-10T15:57:09Z",
       "side": 1,
       "message": "an regex string for ...",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c24189_cec20536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5f5685e_f32fd351",
       "range": {
         "startLine": 45,
         "startChar": 15,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3958fbd7_c66b03fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f861b00_5c8f358b",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "929bc0bb_ec317129",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-10T15:57:09Z",
       "side": 1,
       "message": "You can define \n```\nconst GB \u003d 1024 * 1024 * 1024\n```\nso that the fileSize is self-explanatory (no further comment).",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db20a4e5_9d841f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929bc0bb_ec317129",
       "range": {
         "startLine": 65,
         "startChar": 16,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d8b68b_6052813a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84de76fd_8e4500c5",
+      "range": {
+        "startLine": 121,
+        "startChar": 16,
+        "endLine": 121,
+        "endChar": 64
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccfb0325_a5beeaed",
@@ -129,6 +249,24 @@
       "writtenOn": "2022-05-10T15:57:09Z",
       "side": 1,
       "message": "Hotplug - unplug iteration",
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56e7ab3_8948c912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccfb0325_a5beeaed",
       "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +288,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a9b590_2bbfd494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40f63db3_50781c36",
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "184d4507_329aed11",
@@ -167,6 +323,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c0288c_c8ae9664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "184d4507_329aed11",
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "879c3253_437ff2df",
@@ -180,6 +354,30 @@
       "writtenOn": "2022-05-10T15:57:09Z",
       "side": 1,
       "message": "What it does is just appending filenames of the given path. So \"filesInDir\" would be better.\n\nOtherwise, you may define `const mediaRemovable` in file scope and here you only ReadDir(mediaRemovable) without the input parameter.",
+      "range": {
+        "startLine": 377,
+        "startChar": 5,
+        "endLine": 377,
+        "endChar": 22
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8691f382_50b8c23f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "879c3253_437ff2df",
       "range": {
         "startLine": 377,
         "startChar": 5,
@@ -213,6 +411,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2e5c13_ab7dc3f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d9a760_eb77a7c6",
+      "range": {
+        "startLine": 389,
+        "startChar": 28,
+        "endLine": 389,
+        "endChar": 52
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a151742_02d2bcf3",
@@ -226,6 +448,30 @@
       "writtenOn": "2022-05-10T15:57:09Z",
       "side": 1,
       "message": "dirsBeforePlug",
+      "range": {
+        "startLine": 390,
+        "startChar": 33,
+        "endLine": 390,
+        "endChar": 47
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58747bbc_d59ae8a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a151742_02d2bcf3",
       "range": {
         "startLine": 390,
         "startChar": 33,
@@ -259,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "854e6182_3424b0cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c50ac3f6_207f1975",
+      "range": {
+        "startLine": 428,
+        "startChar": 3,
+        "endLine": 428,
+        "endChar": 48
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19582997_ecee7c83",
@@ -272,6 +542,30 @@
       "writtenOn": "2022-05-10T15:57:09Z",
       "side": 1,
       "message": "It didn\u0027t return connection status. It only returns error when it fails to find a HID device with expected USB speed.\n\nHow about:\n\nverifyUSBHIDDevice only returns error when it fails to find a HID device with expected USB speed. Otherwise, it returns nil.",
+      "range": {
+        "startLine": 450,
+        "startChar": 21,
+        "endLine": 450,
+        "endChar": 47
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a9ad93_d7a3ac79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-07T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19582997_ecee7c83",
       "range": {
         "startLine": 450,
         "startChar": 21,
