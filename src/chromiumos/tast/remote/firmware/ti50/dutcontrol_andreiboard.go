@@ -105,7 +105,7 @@ func (a *DUTControlAndreiboard) PlainCommand(ctx context.Context, cmd string, ar
 		return nil, errors.Wrapf(err, "request %s %s", cmd, strings.Join(args, " "))
 	}
 	if resp.Err != "" {
-		return resp.Output, errors.Errorf("operation %s %s: %s", cmd, strings.Join(args, " "), resp.Err)
+		return []byte(resp.Output), errors.Errorf("operation %s %s: %s", cmd, strings.Join(args, " "), resp.Err)
 	}
 	return resp.Output, nil
 }

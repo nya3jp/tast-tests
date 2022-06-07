@@ -21,6 +21,8 @@ type DevBoard interface {
 	FlushSerial(ctx context.Context) error
 	// FlashImage flashes image on DevBoard.
 	FlashImage(ctx context.Context, imagePath string) error
+	// Run an arbitrary OpenTitan tool command (without up-/downloading any files).
+	PlainCommand(ctx context.Context, cmd string, args ...string) (output []byte, err error)
 	// Reset the DevBoard.
 	Reset(ctx context.Context) error
 	// Close closes the console port.
