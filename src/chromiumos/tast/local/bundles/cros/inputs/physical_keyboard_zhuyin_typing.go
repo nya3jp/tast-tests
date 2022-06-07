@@ -163,6 +163,26 @@ func PhysicalKeyboardZhuyinTyping(ctx context.Context, s *testing.State) {
 				ui.WaitUntilExists(util.PKCandidatesFinder.First()),
 			),
 		},
+		{
+			// Press arrow keys and down arrow to select alternate candidates.
+			name:     "TypeSpaceShowsCandidates",
+			scenario: "Press arrow keys and down arrow to select alternate candidates",
+			action: uiauto.Combine("type something, press arrow keys, and down arrow to show candidates window",
+				its.ClearThenClickFieldAndWaitForActive(inputField),
+				kb.TypeAction("z06wu35j/ jp6"),
+				kb.AccelAction("Left"),
+				kb.AccelAction("Left"),
+				kb.AccelAction("Down"),
+				util.GetNthCandidateTextAndThen(tconn, 1, func(text string) uiauto.Action {
+					return uiauto.Combine("select another candidate and press enter to confirm it",
+						kb.AccelAction("Down"),
+						kb.AccelAction("Enter"),
+						ui.WaitUntilGone(util.PKCandidatesFinder),
+						util.WaitForFieldTextToBe(tconn, inputField.Finder(), "繁體鍾文"),
+					)
+				}),
+			),
+		},
 	}
 
 	for _, subtest := range subtests {
