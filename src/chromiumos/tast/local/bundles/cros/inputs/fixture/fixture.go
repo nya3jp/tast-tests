@@ -483,6 +483,7 @@ type inputsFixtureImpl struct {
 	fOpts       []chrome.Option // Options that are passed to chrome.New
 	tconn       *chrome.TestConn
 	recorder    *uiauto.ScreenRecorder
+	uc          *useractions.UserContext
 }
 
 func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -531,17 +532,21 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 		}
 	}
 
-	//TODO(b/229059789): Assign TestName to user context after migration to fixture.
 	uc, err := inputactions.NewInputsUserContextWithoutState(ctx, "", s.OutDir(), f.cr, f.tconn, nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to create new inputs user context")
 	}
+	f.uc = uc
 
 	chrome.Lock()
-	return FixtData{f.cr, f.tconn, uc, f.browserType}
+	return FixtData{f.cr, f.tconn, f.uc, f.browserType}
 }
 
 func (f *inputsFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// filepath.Base(s.OutDir()) returns the test name.
+	// TODO(b/235164130) use s.TestName once it is available.
+	f.uc.SetTestName(filepath.Base(s.OutDir()))
+
 	recorder, err := uiauto.NewScreenRecorder(ctx, f.tconn)
 	if err != nil {
 		s.Log("Failed to create screen recorder: ", err)
