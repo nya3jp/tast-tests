@@ -161,18 +161,17 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 	}
 
 	if _, err := cryptohome.CheckVault(ctx, keyLabel, &authConfig); err != nil {
-		return errors.Wrapf(err, "failed to check vault with auth type %d", authConfig.AuthType)
+		return errors.Wrap(err, "failed to check vault")
 	}
 	if _, err := cryptohome.ListVaultKeys(ctx, username); err != nil {
-		return errors.Wrapf(err, "failed to list vault keys with auth type %d", authConfig.AuthType)
+		return errors.Wrap(err, "failed to list vault keys")
 	}
-
 	if authConfig.AuthType == hwsec.PassAuth {
 		if err := cryptohome.AddVaultKey(ctx, username, password, config.KeyLabel, newPassword, newLabel, false); err != nil {
 			return errors.Wrap(err, "failed to add key")
 		}
 		if _, err := cryptohome.CheckVault(ctx, newLabel, hwsec.NewPassAuthConfig(username, newPassword)); err != nil {
-			return errors.Wrapf(err, "failed to check vault with auth type %d", authConfig.AuthType)
+			return errors.Wrap(err, "failed to check vault with new key")
 		}
 		if err := cryptohome.RemoveVaultKey(ctx, username, password, newLabel); err != nil {
 			return errors.Wrap(err, "failed to remove key")
@@ -182,7 +181,7 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 }
 
 func CrossVersionLogin(ctx context.Context, s *testing.State) {
-	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cmdRunner := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
@@ -251,7 +250,7 @@ func CrossVersionLogin(ctx context.Context, s *testing.State) {
 		}
 		for _, config := range configList {
 			if err := testConfig(ctx, s.Logf, cryptohome, &config); err != nil {
-				s.Errorf("Failed to test version %q: %v", prefix, err)
+				s.Errorf("Failed to test version %q with auth type %d: %v", prefix, config.AuthConfig.AuthType, err)
 			}
 		}
 	}
