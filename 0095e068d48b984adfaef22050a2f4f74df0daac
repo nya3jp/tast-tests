@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab11cc02_2f5e34c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-07T00:20:09Z",
+      "side": 1,
+      "message": "Can you guarantee that we\u0027ll get to the restart step before failing? Because you make it sound like we need something like:\n\ndefer func() {\n  if !restarted {\n    uihelper.DisposeResource(cleanupctx)\n  }\n}()",
+      "revId": "0095e068d48b984adfaef22050a2f4f74df0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d298f6a2_13552820",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-07T00:20:09Z",
+      "side": 1,
+      "message": "Some here",
+      "revId": "0095e068d48b984adfaef22050a2f4f74df0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392b621b_bd4184b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-07T00:20:09Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "0095e068d48b984adfaef22050a2f4f74df0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
