@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63101423_10c1bdfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hw_all_combinations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-07T20:04:07Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll keep this in mind for the future.",
+      "parentUuid": "ff468d38_2a7a1f70",
+      "revId": "859e9fcaf5cac70a5b5fe70ac019653286a83880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "262fb5b2_1b9d64ef",
