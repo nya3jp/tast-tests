@@ -16,6 +16,23 @@
       "message": "@Jintao, @Shuhei Please review.",
       "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdbb15b0_1423bc2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-06-07T04:30:09Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m no longer in Tast reviewers now. Let me re-add tast-owners@",
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
