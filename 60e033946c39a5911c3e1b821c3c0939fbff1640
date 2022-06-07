@@ -471,6 +471,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead519c7_bacf406a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_apps_playing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-07T08:38:31Z",
+      "side": 1,
+      "message": "Sorry for the mishandling, MTBF tests is not included in mainline for now, we correct the `Attr` for this test. \n\nWe also correct the `Attr` for tests: `arc.AudioRecordAndPlayback` and `arc.AudioFilesPlaying` in [this CL](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3676408).",
+      "parentUuid": "c93a1187_24e64f5d",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "60e033946c39a5911c3e1b821c3c0939fbff1640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8951bb0_a88c5bb2",
