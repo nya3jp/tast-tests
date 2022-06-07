@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "098186aa_116735a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "+1 to a more event-driven approach",
+      "parentUuid": "62462a05_53f7241e",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a96b524b_3a2974fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 3

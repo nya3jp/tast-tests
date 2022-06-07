@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80e66cf_83c21984",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "Thanks, Michael! It\u0027s good to see how the pieces come together.",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e6e29b_da7958f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "nit: We will need to update before submission. :)",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2644e81f_0f94a36e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "Thanks for the explanation! I definitely think there is value in submitting this test (although we\u0027ll need to change the name as per Hugo\u0027s suggestion below). I do think it might be more beneficial if we could submit it with the go code instead of python, but I have no strong opinion there.",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be83f741_ebb6e144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "s.Log(\"Connecting to the http server\")",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85c8fdd_0ddf0582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "nit: Let\u0027s call this \"redirect\" and add a comment above L24 indicating that these variables are HTTP response codes.",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f51d2d_8f3e31af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "\"Start starts the HTTP server in a separate process\"?",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35eb1ac7_8b2b0b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually start anything right? Also, it might make more sense to group this closer to where it\u0027s actually being used (L60).",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d192f62_e1911c70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "For the uninitiated (me), can you add a comment about why we need to bring up the interface? I wonder if we need to do this when we eventually switch to listening on the veth interface? It seems like that should be brought up while setting up the veth. Please correct me if I\u0027m wrong!",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01d80bc_b43f5d3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "\"Stop terminates the process running the HTTP server\"?",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51d11b5e_65fb7add",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "s/Http/HTTP and s/Server/server/",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f74e19f_a3b53f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T00:07:49Z",
+      "side": 1,
+      "message": "Is this intentional? If so, curious to know why its needed.",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
