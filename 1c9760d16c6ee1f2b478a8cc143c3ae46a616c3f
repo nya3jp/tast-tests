@@ -63,6 +63,30 @@
       },
       "revId": "1c9760d16c6ee1f2b478a8cc143c3ae46a616c3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9315beb_78526e57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/Texts.crx.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-07T23:30:07Z",
+      "side": 1,
+      "message": "Ah gotcha, good to know 👍 any reason why we don\u0027t name is `crx` to help folks coming across this having the same question? Totally non-blocking btw, just curious.",
+      "parentUuid": "63099045_07bd8206",
+      "range": {
+        "startLine": 2,
+        "startChar": 82,
+        "endLine": 2,
+        "endChar": 85
+      },
+      "revId": "1c9760d16c6ee1f2b478a8cc143c3ae46a616c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
