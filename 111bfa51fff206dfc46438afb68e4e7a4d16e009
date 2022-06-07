@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecac4534_5004085e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/data/test_jpeg.jpeg.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-07T07:54:46Z",
+      "side": 1,
+      "message": "Thank you so much!\n\nYes we uploaded the file in Nov. 2021 and no other tests use it so far.",
+      "parentUuid": "82cb0b09_7ad5490f",
+      "range": {
+        "startLine": 2,
+        "startChar": 67,
+        "endLine": 2,
+        "endChar": 85
+      },
+      "revId": "111bfa51fff206dfc46438afb68e4e7a4d16e009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "833b0555_d05ed74f",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/google_drive_files.go",
         "patchSetId": 2
