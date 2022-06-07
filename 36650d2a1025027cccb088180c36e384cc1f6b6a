@@ -105,6 +105,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d4f82b8_8ddf45b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T21:41:59Z",
+      "side": 1,
+      "message": "I could be wrong, but I ran the test with and without my changes, and only the one with the mouse simulation had values for \"Event.Latency.EndToEnd.Mouse.average\".\n\nDoes this alone tell us that we do track latency for mouse moves? The value was around 38 milliseconds which sounds pretty reasonable.",
+      "parentUuid": "81c82948_d2f327d8",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2179c6d5_273d3dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T21:41:59Z",
+      "side": 1,
+      "message": "I like the idea -- spiraling around in a fixed amount of time. However, I thought to keep the math formula \"r \u003d theta\", and vary `r` between 0 and `maxR`. This makes the math and code much simpler -- since `r` between 0 and `maxR`, then `theta` will also vary between 0 and `maxR`. Based on visual testing, I think the math is right?\n\nOverall, my code is very similar. to what you have above, just without the maxTheta variable since with r \u003d theta, maxTheta \u003d maxR.",
+      "parentUuid": "06d5e54c_490209e8",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb6e6c18_fb23dc29",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
         "patchSetId": 2
@@ -143,6 +179,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95368eac_58813ac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T21:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62a69cf3_c307bc6c",
+      "range": {
+        "startLine": 19,
+        "startChar": 44,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b343faa_67e99741",
@@ -166,6 +226,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "735937dd_c7ef545d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T21:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b343faa_67e99741",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06c9b866_6919f794",
@@ -179,6 +263,30 @@
       "writtenOn": "2022-06-07T17:05:16Z",
       "side": 1,
       "message": "By itself, this code does nothing. It should be:\n\tif err :\u003d mouse.Move(tconn, center, 0)(ctx); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to move mouse\")\n\t}",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5551fe8e_741e4a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T21:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06c9b866_6919f794",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -214,6 +322,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8124b5b3_33c33a3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T21:41:59Z",
+      "side": 1,
+      "message": "Maybe my Go knowledge is weak, but wouldn\u0027t this constantly update endTime to be \"now + duration\" away, causing an infinite loop? Since time.Now() will always be before time.Now() + duration?\n\nUnless, \"endTime :\u003d time.Now().Add(duration)\" is only run once because of the semi colon\n\nInstead, I did the following: \n```\nendTime :\u003d time.Now().Add(duration)\nfor time.Now().Before(endTime) { }\n```",
+      "parentUuid": "0567fd4a_2cd19103",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb9169ec_ab2e382d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
         "patchSetId": 2
@@ -225,6 +357,30 @@
       "writtenOn": "2022-06-07T17:05:16Z",
       "side": 1,
       "message": "`Bounds`",
+      "range": {
+        "startLine": 43,
+        "startChar": 20,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2011b8ee_b899baa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T21:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb9169ec_ab2e382d",
       "range": {
         "startLine": 43,
         "startChar": 20,
@@ -248,6 +404,30 @@
       "writtenOn": "2022-06-07T17:05:16Z",
       "side": 1,
       "message": "This will cause the mouse to move to the center in `deltaTime`, but I think it would be more appropriate to move the mouse to the center instantaneously. To do that without code duplication, I suggest nested `for` loops, where the outer loop terminates after `duration`, and the inner loop terminates when the mouse reaches the boundary of the display. That way, you can put `mouse.Move(tconn, center, 0)(ctx)` inside the outer loop but outside the inner loop.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1712e9da_5564552c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T21:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f170d53e_0e7a6482",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -325,6 +505,24 @@
       "side": 1,
       "message": "+1\n\nWe might need to add some sleep in the loop to throttle mouse event generation. `mouse.Move` is async. It schedules `steps` mouse events based on duration arg and `steps \u003d duration/16ms`. `deltaTime` is 100ms and each call would essentially add 6 task to UI thread. And without sleep in the loop, we could add too many pending tasks to be posed to UI thread.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;drc\u003df1049e6453ec207217f2edd728d0543ab590a31e;l\u003d4898",
       "parentUuid": "81327fb8_16be85f7",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72612ad2_14590783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-07T21:41:59Z",
+      "side": 1,
+      "message": "Got it, I added in sleep for throttling mouse event generation. I\u0027m not sure what is a good value for sleep -- right now I have 1 second sleep, between mouse movements, but I am open to increasing that value to what you think is best.",
+      "parentUuid": "d7cf4f51_b7a33e7b",
       "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
