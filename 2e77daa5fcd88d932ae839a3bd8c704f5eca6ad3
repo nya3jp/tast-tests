@@ -33,6 +33,57 @@
       "message": "Sorry, I\u0027m no longer in Tast reviewers now. Let me re-add tast-owners@",
       "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0585205_bd8187b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-07T06:09:05Z",
+      "side": 1,
+      "message": "LGTM, except some nits.",
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf364f9_8c2efc85",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-07T06:09:05Z",
+      "side": 1,
+      "message": "nit: it has become more general purposed. Please update the comments accordingly.",
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90bcf48f_37f2e224",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-07T06:09:05Z",
+      "side": 1,
+      "message": "nit: no need to be global, put it inside `func TDLS()`?",
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
