@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414ee072_d03f7487",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/consecutive_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-07T19:27:46Z",
+      "side": 1,
+      "message": "I don\u0027t think we need all these variants. Instead have the num iters always default to 10 and have a var that can override it for people who want to run more iterations.",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 43
+      },
+      "revId": "388f461190cc6078c2c6c434f741629fe69decf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0584c478_58c55377",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/consecutive_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-07T19:27:46Z",
+      "side": 1,
+      "message": "Move the boot mode check and bootid before the loop, since you also do them at the bottom of the loop.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "388f461190cc6078c2c6c434f741629fe69decf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
