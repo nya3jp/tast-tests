@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba243fd1_6a9d1447",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-07T14:45:01Z",
+      "side": 1,
+      "message": "what do we need this label for ?",
+      "revId": "af0ea17db2e4998f9b9916fb081cc39befc4f5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

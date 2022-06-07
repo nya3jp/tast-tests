@@ -238,6 +238,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b71acd11_74fcccd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-07T14:45:01Z",
+      "side": 1,
+      "message": "no need for the Log statement",
+      "revId": "bb5de519a919e501a88884ea76a1917b3ad16671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38d90ecf_18702a0a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver.go",
         "patchSetId": 3
