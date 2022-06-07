@@ -80,7 +80,7 @@ func getGBBFlagsInt(ctx context.Context, dut *dut.DUT) (uint32, error) {
 	if err != nil {
 		return 0, errors.Wrap(err, "get_gbb_flags.sh")
 	}
-	re, err := regexp.Compile(`Chrome OS GBB set flags: (0x[0-9a-fA-F]+)`)
+	re, err := regexp.Compile(`Chrome ?OS GBB set flags: (0x[0-9a-fA-F]+)`)
 	if err != nil {
 		return 0, errors.Wrap(err, "parse gbb regex")
 	}
