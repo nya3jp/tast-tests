@@ -86,15 +86,31 @@ func createChallengeResponseData(ctx context.Context, lf util.LogFunc, cryptohom
 	return util.NewChallengeAuthCrossVersionLoginConfig(authConfig, keyLabel, rsaKey), nil
 }
 
-func createPasswordData(ctx context.Context) (*util.CrossVersionLoginConfig, error) {
+func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient) (*util.CrossVersionLoginConfig, error) {
+	const (
+		keyLabel   = "legacy-0"
+		extraPass  = "extraPass"
+		extraLabel = "extraLabel"
+		pin        = "123456"
+		pinLabel   = "pinLabel"
+	)
 	// Add the new password login data
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to log in by Chrome")
 	}
 	cr.Close(ctx)
-	authConfig := hwsec.NewPassAuthConfig(cr.Creds().User, cr.Creds().Pass)
-	return util.NewPassAuthCrossVersionLoginConfig(authConfig, "legacy-0"), nil
+	username := cr.Creds().User
+	password := cr.Creds().Pass
+	authConfig := hwsec.NewPassAuthConfig(username, password)
+	config := util.NewPassAuthCrossVersionLoginConfig(authConfig, keyLabel)
+	if err := config.AddVaultKeyData(ctx, cryptohome, util.NewVaultKeyInfo(extraPass, extraLabel, false)); err != nil {
+		return nil, errors.Wrap(err, "failed to add vault key data of password")
+	}
+	if err := config.AddVaultKeyData(ctx, cryptohome, util.NewVaultKeyInfo(pin, pinLabel, true)); err != nil {
+		return nil, errors.Wrap(err, "failed to add vault key data of pin")
+	}
+	return config, nil
 }
 
 func PrepareCrossVersionLoginData(ctx context.Context, s *testing.State) {
@@ -122,7 +138,7 @@ func PrepareCrossVersionLoginData(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if config, err := createPasswordData(ctx); err != nil {
+	if config, err := createPasswordData(ctx, cryptohome); err != nil {
 		s.Fatal("Failed to create password data: ", err)
 	} else {
 		configList = append(configList, *config)

@@ -19,11 +19,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type VaultKeyInfo struct {
+	Password   string
+	KeyLabel   string
+	LowEntropy bool
+}
+
 // CrossVersionLoginConfig contains the information for cross-version login
 type CrossVersionLoginConfig struct {
-	AuthConfig hwsec.AuthConfig
-	RsaKey     *rsa.PrivateKey
-	KeyLabel   string
+	AuthConfig     hwsec.AuthConfig
+	RsaKey         *rsa.PrivateKey
+	KeyLabel       string
+	ExtraVaultKeys []VaultKeyInfo
 }
 
 // NewPassAuthCrossVersionLoginConfig creates cross version-login config from password auth config
@@ -33,6 +40,30 @@ func NewPassAuthCrossVersionLoginConfig(authConfig *hwsec.AuthConfig, keyLabel s
 		KeyLabel:   keyLabel,
 	}
 	return config
+}
+
+func NewVaultKeyInfo(password, label string, lowEntropy bool) *VaultKeyInfo {
+	info := &VaultKeyInfo{
+		Password:   password,
+		KeyLabel:   label,
+		LowEntropy: lowEntropy,
+	}
+	return info
+}
+
+func (config *CrossVersionLoginConfig) AddVaultKeyData(ctx context.Context, cryptohome *hwsec.CryptohomeClient, info *VaultKeyInfo) error {
+	authConfig := config.AuthConfig
+	username := authConfig.Username
+	password := authConfig.Password
+	keyLabel := config.KeyLabel
+	if err := cryptohome.AddVaultKey(ctx, username, password, keyLabel, info.Password, info.KeyLabel, info.LowEntropy); err != nil {
+		return errors.Wrap(err, "failed to add key")
+	}
+	if _, err := cryptohome.CheckVault(ctx, info.KeyLabel, hwsec.NewPassAuthConfig(username, info.Password)); err != nil {
+		return errors.Wrap(err, "failed to check vault with new key")
+	}
+	config.ExtraVaultKeys = append(config.ExtraVaultKeys, *info)
+	return nil
 }
 
 func decompressData(src string) error {
