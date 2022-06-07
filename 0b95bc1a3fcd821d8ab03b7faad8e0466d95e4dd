@@ -46,6 +46,30 @@
       },
       "revId": "0b95bc1a3fcd821d8ab03b7faad8e0466d95e4dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9492e11_f5609b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-06-07T22:59:05Z",
+      "side": 1,
+      "message": "It may depend on what you\u0027re trying to do in the loop? If you\u0027d like to diff and clean up in each iteration and exit the loop immediately on diff failure, I think it could be:\n```\nfunc() {\n  if len(t.skiaGoldImage) \u003e 0 {\n    d, err :\u003d screenshot.NewDifferFromChrome()\n    ...\n    defer d.DieOnFailedDiffs()\n    if err :\u003d uiauto.Combine(...) {\n      ...\n    }\n  }\n}()\n```\n\ntast-owner@ can help here?",
+      "parentUuid": "6d31a51b_aae17f10",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 4
+      },
+      "revId": "0b95bc1a3fcd821d8ab03b7faad8e0466d95e4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
