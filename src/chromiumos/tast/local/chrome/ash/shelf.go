@@ -44,6 +44,20 @@ const (
 	ShelfIconClassName = "ash/ShelfAppButton"
 )
 
+// ScrollArrowVisibility represents the visibility states of shelf scroll arrows.
+type ScrollArrowVisibility string
+
+const (
+	// LeftOnlyVisible indicates that only the left arrow is visible.
+	LeftOnlyVisible ScrollArrowVisibility = "OnlyLeftArrowVisible"
+	// RightOnlyVisible indicates that only the right arrow is visible.
+	RightOnlyVisible ScrollArrowVisibility = "OnlyRightArrowVisible"
+	// BothArrowHidden indicates that both arrows are invisible.
+	BothArrowHidden ScrollArrowVisibility = "BothArrowsHidden"
+	// BothArrowVisible indicates that both arrows are visible.
+	BothArrowVisible ScrollArrowVisibility = "BothArrowsVisible"
+)
+
 // uiPollingInterval is a default interval of time to poll UI events for tests that are not time-sensitive. Defaults to 300ms like uiauto default now. Heuristics may help to find optimal interval to avoid flake in polling when it becomes problematic.
 const uiPollingInterval = 300 * time.Millisecond
 
@@ -722,6 +736,99 @@ func VerifyShelfAppBounds(ctx context.Context, tconn *chrome.TestConn, ui *uiaut
 	return nil
 }
 
+// VerifyOverflowShelfScrollArrow verifies the overflow shelf scroll arrows' visibility and bounds.
+func VerifyOverflowShelfScrollArrow(ctx context.Context, tconn *chrome.TestConn, targetVisibility ScrollArrowVisibility, isRTL bool, alignment ShelfAlignment, primaryDisplayBounds coords.Rect) error {
+	shelfInfo, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
+	if err != nil {
+		return errors.Wrap(err, "failed to get the scrollable shelf info after entering overflow")
+	}
+
+	actualLeftArrowVisible := !shelfInfo.LeftArrowBounds.Size().Empty()
+	actualRightArrowVisible := !shelfInfo.RightArrowBounds.Size().Empty()
+
+	var targetLeftArrowVisible bool
+	var targetRightArrowVisible bool
+
+	switch targetVisibility {
+	case LeftOnlyVisible:
+		targetLeftArrowVisible = true
+		targetRightArrowVisible = false
+	case RightOnlyVisible:
+		targetLeftArrowVisible = false
+		targetRightArrowVisible = true
+	case BothArrowVisible:
+		targetLeftArrowVisible = true
+		targetRightArrowVisible = true
+	case BothArrowHidden:
+		targetLeftArrowVisible = false
+		targetRightArrowVisible = false
+	}
+
+	if actualLeftArrowVisible != targetLeftArrowVisible {
+		return errors.Wrapf(err, "failed to verify the visibility of the left arrow button: got %t; expected %t", actualLeftArrowVisible, targetLeftArrowVisible)
+	}
+
+	if actualRightArrowVisible != targetRightArrowVisible {
+		return errors.Wrapf(err, "failed to verify the visibility of the right arrow button: got %t; expected %t", actualRightArrowVisible, targetRightArrowVisible)
+	}
+
+	// Check the left arrow's bounds if it is visible.
+	if actualLeftArrowVisible {
+		switch alignment {
+		case ShelfAlignmentBottom:
+			fallthrough
+		case ShelfAlignmentBottomLocked:
+			dispHalfWidth := primaryDisplayBounds.Width / 2
+			if isRTL {
+				if primaryDisplayBounds.Right()-shelfInfo.LeftArrowBounds.Right() > dispHalfWidth {
+					return errors.Wrapf(err, "failed to verify under RTL that the left arrow is closer to the display right side than to the display left side: "+
+						"the actual left arrow bounds: %v; the actual primary display bounds: %v", shelfInfo.LeftArrowBounds, primaryDisplayBounds)
+				}
+			} else if shelfInfo.LeftArrowBounds.Left-primaryDisplayBounds.Left > dispHalfWidth {
+				return errors.Wrapf(err, "failed to verify that the left arrow is closer to the display left side than to the display right side: "+
+					"the actual left arrow bounds: %v; the actual primary display bounds: %v", shelfInfo.LeftArrowBounds, primaryDisplayBounds)
+			}
+		case ShelfAlignmentLeft:
+			fallthrough
+		case ShelfAlignmentRight:
+			dispHalfHeight := primaryDisplayBounds.Height / 2
+			if shelfInfo.LeftArrowBounds.Top-primaryDisplayBounds.Top > dispHalfHeight {
+				return errors.Wrapf(err, "failed to verify that the left arrow is closer to the display top side than to the display bottom side: "+
+					"the actual left arrow bounds: %v; the actual primary display bounds: %v", shelfInfo.LeftArrowBounds, primaryDisplayBounds)
+			}
+		}
+	}
+
+	// Check the right arrow's bounds if it is visible.
+	if actualRightArrowVisible {
+		switch alignment {
+		case ShelfAlignmentBottom:
+			fallthrough
+		case ShelfAlignmentBottomLocked:
+			dispHalfWidth := primaryDisplayBounds.Width / 2
+			if isRTL {
+				if shelfInfo.RightArrowBounds.Left-primaryDisplayBounds.Left > dispHalfWidth {
+					return errors.Wrapf(err, "failed to verify under RTL that the right arrow is closer to the display left side than to the display right side: "+
+						"the actual right arrow bounds: %v; the actual primary display bounds: %v", shelfInfo.RightArrowBounds, primaryDisplayBounds)
+				}
+			} else if primaryDisplayBounds.Right()-shelfInfo.RightArrowBounds.Right() > dispHalfWidth {
+				return errors.Wrapf(err, "failed to verify that the right arrow is closer to the display right side than to the display left side: "+
+					"the actual right arrow bounds: %v; the actual primary display bounds: %v", shelfInfo.RightArrowBounds, primaryDisplayBounds)
+			}
+		case ShelfAlignmentLeft:
+			fallthrough
+		case ShelfAlignmentRight:
+			dispHalfHeight := primaryDisplayBounds.Height / 2
+			if primaryDisplayBounds.Bottom()-shelfInfo.RightArrowBounds.Bottom() > dispHalfHeight {
+				return errors.Wrapf(err, "failed to verify that the right arrow is closer to the display bottom side than to the display top side: "+
+					"the actual right arrow bounds: %v; the actual primary display bounds: %v", shelfInfo.RightArrowBounds, primaryDisplayBounds)
+			}
+		}
+	}
+
+	return nil
+}
+
 // WaitForHotseatAnimatingToIdealState waits for the hotseat to reach the expected state after animation.
 func WaitForHotseatAnimatingToIdealState(ctx context.Context, tconn *chrome.TestConn, state HotseatStateType) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -762,6 +869,45 @@ func SwipeDownHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.Tes
 		return errors.Wrap(err, "failed to swipe down on hotseat to hide")
 	}
 	return nil
+}
+
+// ScrollOverflowShelfToEnd scrolls the overflow shelf by clicking at the arrow button until the shelf is scrolled to the end.
+// leftArrowButton is true if the left arrow button should be clicked to scroll. No ops if the specified arrow button
+// does not exist when this function is called.
+func ScrollOverflowShelfToEnd(ctx context.Context, tconn *chrome.TestConn, leftArrowButton bool) error {
+	iterCount := 0
+
+	for {
+		iterCount = iterCount + 1
+		if iterCount > 20 {
+			return errors.New("failed to scroll to the end within 20 iterations")
+		}
+
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
+		if err != nil {
+			return errors.Wrap(err, "failed to get the scrollable shelf info")
+		}
+
+		var arrowButtonBounds coords.Rect
+		if leftArrowButton {
+			arrowButtonBounds = info.LeftArrowBounds
+		} else {
+			arrowButtonBounds = info.RightArrowBounds
+		}
+
+		// Break the loop if the specified arrow button is invisible.
+		if arrowButtonBounds.Size().Empty() {
+			return nil
+		}
+
+		if err := mouse.Click(tconn, arrowButtonBounds.CenterPoint(), mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to mouse click the center of %v", arrowButtonBounds.CenterPoint())
+		}
+
+		if err := WaitForHotseatAnimationToFinish(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to wait for the scroll animation to complete")
+		}
+	}
 }
 
 // swipeHotseatAndWaitForCompletion swipes the hotseat and change the state between hidden to extended. The function does not end until the hotseat animation completes.
@@ -812,8 +958,9 @@ func swipeHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestCon
 	return nil
 }
 
-// EnterShelfOverflow pins enough shelf icons to enter overflow mode.
-func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
+// EnterShelfOverflow pins enough shelf icons to enter overflow mode. underRTL is true
+// if the UI adapts to right-to-left languages.
+func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn, underRTL bool) error {
 	// Number of pinned apps in each round of loop.
 	const batchNumber = 10
 
@@ -854,7 +1001,15 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 			return errors.New("no icons found")
 		}
 		lastIconBounds := info.IconsBoundsInScreen[len(info.IconsBoundsInScreen)-1]
-		if lastIconBounds.Right() > displayInfo.Bounds.Right() &&
+
+		var boundsOutsideOfDisplay bool
+		if underRTL {
+			boundsOutsideOfDisplay = lastIconBounds.Left < displayInfo.Bounds.Left
+		} else {
+			boundsOutsideOfDisplay = lastIconBounds.Right() > displayInfo.Bounds.Right()
+		}
+
+		if boundsOutsideOfDisplay &&
 			(info.LeftArrowBounds.Size().Width > 0 || info.RightArrowBounds.Size().Width > 0) {
 			return nil
 		}
