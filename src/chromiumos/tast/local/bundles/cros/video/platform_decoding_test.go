@@ -1188,6 +1188,22 @@ func TestPlatformDecodingParams(t *testing.T) {
 		}
 	}
 
+	// Generate ffmpeg VP8 tests.
+	for _, testGroup := range []string{"inter", "inter_multi_coeff", "inter_segment", "intra", "intra_multi_coeff", "intra_segment", "comprehensive"} {
+		files := vp8Files[testGroup]
+
+		params = append(params, paramData{
+			Name:         fmt.Sprintf("ffmpeg_vaapi_vp8_%s", testGroup),
+			Decoder:      ffmpegMD5Path,
+			CmdBuilder:   "ffmpegMD5VAAPIargs",
+			Files:        files,
+			Timeout:      defaultTimeout,
+			SoftwareDeps: []string{"vaapi", caps.HWDecodeVP8},
+			Metadata:     genExtraData(files),
+			Attr:         []string{"graphics_video_vp8"},
+		})
+	}
+
 	code := genparams.Template(t, `{{ range . }}{
 		Name: {{ .Name | fmt }},
 		Val:  platformDecodingParams{
