@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c83f62_759e00f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:30:10Z",
+      "side": 1,
+      "message": "LGTM % minor nits.",
+      "revId": "e565dfdb8edd45652206cd83d36e6aac01a95bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0f2ed7_0a1eaadd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:30:10Z",
+      "side": 1,
+      "message": "nit: Envs",
+      "range": {
+        "startLine": 340,
+        "startChar": 73,
+        "endLine": 340,
+        "endChar": 74
+      },
+      "revId": "e565dfdb8edd45652206cd83d36e6aac01a95bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1844ebf_5bdef183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:30:10Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 372,
+        "startChar": 49,
+        "endLine": 372,
+        "endChar": 51
+      },
+      "revId": "e565dfdb8edd45652206cd83d36e6aac01a95bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c4e7b8d_ad952ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:30:10Z",
+      "side": 1,
+      "message": "The name is a bit misleading here, I would call this ConfigureInterface",
+      "range": {
+        "startLine": 380,
+        "startChar": 14,
+        "endLine": 380,
+        "endChar": 31
+      },
+      "revId": "e565dfdb8edd45652206cd83d36e6aac01a95bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2811baf0_2d2659bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:30:10Z",
+      "side": 1,
+      "message": "Could we be more explicit here and specify |ifname| ?",
+      "range": {
+        "startLine": 382,
+        "startChar": 27,
+        "endLine": 382,
+        "endChar": 53
+      },
+      "revId": "e565dfdb8edd45652206cd83d36e6aac01a95bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f53104a9_98065a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:30:10Z",
+      "side": 1,
+      "message": "Same here, we should say which kind of route we were trying to set here.",
+      "range": {
+        "startLine": 385,
+        "startChar": 45,
+        "endLine": 385,
+        "endChar": 50
+      },
+      "revId": "e565dfdb8edd45652206cd83d36e6aac01a95bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fdd73e_99338401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:30:10Z",
+      "side": 1,
+      "message": "is there any constraint on the order of the Cleanup() calls on both Env objects ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 62,
+        "endLine": 106,
+        "endChar": 73
+      },
+      "revId": "e565dfdb8edd45652206cd83d36e6aac01a95bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f2490ec_542cef17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-07T05:30:10Z",
+      "side": 1,
+      "message": "nit: we should maybe join both with a \u0027-\u0027 or \u0027_\u0027.",
+      "range": {
+        "startLine": 123,
+        "startChar": 31,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "e565dfdb8edd45652206cd83d36e6aac01a95bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
