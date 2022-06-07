@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5011c663_176bea3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T19:32:02Z",
+      "side": 1,
+      "message": "nit: \"use UserSecretStash\" (so that folks can have background on what this abbreviation means)",
+      "range": {
+        "startLine": 25,
+        "startChar": 28,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ebfa20d_8e0d5a2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-07T19:32:02Z",
+      "side": 1,
+      "message": "Based on the feedback I got in CL:3684274, every such helper function should return an error, and none should use |s|.",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 17
+      },
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
