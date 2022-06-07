@@ -16,6 +16,210 @@
       "message": "Please review",
       "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0ac624_ab3fd5de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "nit: maybe change format to the following:\n\"Peer 1 MAC: %s, IP: %s\"\n\"Peer 2 MAC: %s, IP: %s\"",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b389134_b90d4a00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "I think this test should be moved to the main test before running the sub tests, since the traffic is going though the AP not the TDLS tunnel. WDYT?\n\nAlso, we can run it from both ends peer1-\u003epeer2 and peer2-\u003epeer1.",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9cc430_67759a76",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "nit: The function `PingFromDUT` checks for res.Loss and comapres it to the value `pingLossThreshold`. If that check is sufficent for this test then we can move the function `VerifyPingResults` to `PingFromSpecificDUT`. WDYT?",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a03542ba_ad3aa0bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "nit: move this function to line 128 and pass it as a function pointer to the `CollectPcapForAction` if possible.",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3706f0d_242fc5da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "Instead of sleeping here use the the pool option Interval\n\nExample:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go;rcl\u003d70c5a18246e1dbd5282443bd99ec020d4d6a4d66;l\u003d386",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de9c1cc_18aac21e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "nit: I think this could be more specific such as \"failed to get status connected for  the TDLS link\"",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb07e1e_35882550",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "Same as line 117",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ef7438_d8489e56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "nit: maybe the lines 182 to 189 can be combined in one function AssureTrafficThroughTDLSTunnel(). WDYT?",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78cbd43_0cf5ad8e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "nit: this message should be more specific explaining why they are invalid (Not through the TDLS tunnel)",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ab8528_f1b98073",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "I think if both True FromDS\u003dTrue and ToDS\u003dTrue then the DA\u003d address3.\n\nsource:\nhttps://www.oreilly.com/library/view/80211-wireless-networks/0596100523/ch04.html",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c9ad54e_be6d9a69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "I think if both True FromDS\u003dTrue and ToDS\u003dTrue then the SA\u003d address4.\n\nsource:\nhttps://www.oreilly.com/library/view/80211-wireless-networks/0596100523/ch04.html",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97d142f_26ceb316",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T00:24:54Z",
+      "side": 1,
+      "message": "I think you can remove this if statement.",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
