@@ -66,6 +66,7 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 	const (
 		userName        = "foo@bar.baz"
 		userPassword    = "secret"
+		keyLabel        = "fake_label"
 		testFile        = "file"
 		testFileContent = "content"
 	)
@@ -106,13 +107,13 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 		defer upstart.RestartJob(ctx, "cryptohomed")
 	}
 
-	if err := cryptohome.CreateUserWithAuthSession(ctx, userName, userPassword, false); err != nil {
+	if err := cryptohome.CreateUserWithAuthSession(ctx, userName, userPassword, keyLabel, false); err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
 
 	// Mount the vault for the first time.
-	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, "fake_label", false, false)
+	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
@@ -153,7 +154,7 @@ func PersistentAuthSession(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, "fake_label", false, false)
+	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}

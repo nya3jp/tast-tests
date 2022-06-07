@@ -290,7 +290,7 @@ func setupUserWithPIN(ctx, ctxForCleanUp context.Context, userName string, cmdRu
 	if userParam.useAuthFactor {
 		err = cryptohomeHelper.AddAuthFactor(ctx, authSessionID, passwordAuthFactorLabel, passwordAuthFactorSecret)
 	} else {
-		err = cryptohomeHelper.AddCredentialsWithAuthSession(ctx, passwordAuthFactorLabel, passwordAuthFactorSecret, authSessionID, false /*kiosk*/)
+		err = cryptohomeHelper.AddCredentialsWithAuthSession(ctx, userName, passwordAuthFactorSecret, passwordAuthFactorLabel, authSessionID, false /*kiosk*/)
 	}
 
 	if err != nil {
