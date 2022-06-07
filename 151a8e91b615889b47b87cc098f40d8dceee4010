@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7856a7a_5f5acc2d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-07T21:30:23Z",
+      "side": 1,
+      "message": "nit: spaces not tabs",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 1
+      },
+      "revId": "151a8e91b615889b47b87cc098f40d8dceee4010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae6523cb_fd13a76f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
         "patchSetId": 6
@@ -48,6 +71,23 @@
       "writtenOn": "2022-06-07T21:18:51Z",
       "side": 1,
       "message": "Am I missing something or is this loop expected to only run once?",
+      "revId": "151a8e91b615889b47b87cc098f40d8dceee4010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb52c73c_81cd66f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-07T21:30:23Z",
+      "side": 1,
+      "message": "Can we just change this to call testOnce twice instead?",
       "revId": "151a8e91b615889b47b87cc098f40d8dceee4010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
