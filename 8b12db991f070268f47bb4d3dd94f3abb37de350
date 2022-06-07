@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d42677b_94e4b19b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-07T19:53:40Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "8b12db991f070268f47bb4d3dd94f3abb37de350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cdcfc34_e80c70d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-07T19:53:40Z",
+      "side": 1,
+      "message": "nit: any reason for these spaces here?",
+      "revId": "8b12db991f070268f47bb4d3dd94f3abb37de350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
