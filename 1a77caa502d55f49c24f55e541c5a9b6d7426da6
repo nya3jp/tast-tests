@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "1a77caa502d55f49c24f55e541c5a9b6d7426da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "330f04a6_0c507dbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2022-06-07T23:24:42Z",
+      "side": 1,
+      "message": "SGTM. Thanks Tiago.",
+      "revId": "1a77caa502d55f49c24f55e541c5a9b6d7426da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
