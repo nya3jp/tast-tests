@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62aee0ca_b94771c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T23:16:41Z",
+      "side": 1,
+      "message": "That make sense.",
+      "parentUuid": "bc2f096d_ad356529",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd9cc430_67759a76",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "100% loss has a different meaning than 20% loss, this is what I learned from running this test (hence error on 0, warning under threshold). I\u0027d prefer to have separate checks here. I could use VerifyPingResults() in the next ping, though.",
       "parentUuid": "fd9cc430_67759a76",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9931c30_ded79d6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T23:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3965171_811a727b",
       "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -298,6 +334,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8752d586_a748b4e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T23:16:41Z",
+      "side": 1,
+      "message": "I am okay with this.",
+      "parentUuid": "ba521287_15034ea1",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b78cbd43_0cf5ad8e",
@@ -434,6 +488,24 @@
       "side": 1,
       "message": "I know it\u0027s overzealous, but I\u0027d prefer to keep that in case the cell overhears some external traffic (and for other-than-ICMP traffic).",
       "parentUuid": "d97d142f_26ceb316",
+      "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c0af3d_4fea9a51",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-07T23:16:41Z",
+      "side": 1,
+      "message": "Okay",
+      "parentUuid": "da8da535_33d6b4d1",
       "revId": "a403355ddeb391576b48bcd4bbc799f8e3944928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
