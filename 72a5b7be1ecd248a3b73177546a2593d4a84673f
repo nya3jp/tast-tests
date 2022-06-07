@@ -68,6 +68,24 @@
       "parentUuid": "6d8db27d_db5026d4",
       "revId": "72a5b7be1ecd248a3b73177546a2593d4a84673f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62025eb8_31912fc9",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-07T01:55:36Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right, in my tunnel vision to fix one set of cases\nI forgot about the other, oops. I added a new var (IMHO clearer)\nand used |filenamesToReport|. WDYT?",
+      "parentUuid": "4c5c059d_bab76b18",
+      "revId": "72a5b7be1ecd248a3b73177546a2593d4a84673f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
