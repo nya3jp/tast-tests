@@ -70,6 +70,30 @@
       },
       "revId": "937229ec65e7f631b0d8011d90b0f937118188bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbac180_d4e14eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-07T23:43:50Z",
+      "side": 1,
+      "message": "It sounds weird. Before this step, VK is already hidden and in normal cases it should not show up. vkbCtx.WaitLocationStable() also waits until VK show up, which takes 15s by default. I think a short sleep then immediate check is good enough. 100ms is not very long. Even it might not fail consistently since VK trigger can be delayed. In that case, tests will be flaky and catch test owner\u0027s attention.",
+      "parentUuid": "a7c61e46_a4499aff",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 2
+      },
+      "revId": "937229ec65e7f631b0d8011d90b0f937118188bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
