@@ -136,8 +136,8 @@ var expectedWLANDriver = map[wlan.DeviceID]map[string]string{
 		"5.15": "wireless/realtek/rtw88/rtw88_8822ce.ko",
 	},
 	wlan.Realtek8852APCIE: {
-		"5.4":  "wireless/realtek/rtw89/rtw89_pci.ko",
-		"5.10": "wireless/realtek/rtw89/rtw89_pci.ko",
+		"5.4":  "wireless/realtek/rtw89/rtw89_8852ae.ko",
+		"5.10": "wireless/realtek/rtw89/rtw89_8852ae.ko",
 	},
 	wlan.MediaTekMT7921PCIE: {
 		"5.4":  "wireless/mediatek/mt76/mt7921/mt7921e.ko",
