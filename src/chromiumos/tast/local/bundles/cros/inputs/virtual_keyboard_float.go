@@ -67,6 +67,11 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 	if err := vkbCtx.SetFloatingMode(uc, true)(ctx); err != nil {
 		s.Fatal("Failed to set VK to floating mode: ", err)
 	}
+	defer func(ctx context.Context) {
+		if err := vkbCtx.ResetToDocked()(ctx); err != nil {
+			s.Log("Failed to reset VK to docked mode: ", err)
+		}
+	}(cleanupCtx)
 
 	validateDragVKAction := func(ctx context.Context) error {
 		// Get current center point of drag button.
