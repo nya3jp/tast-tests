@@ -45,6 +45,30 @@
       },
       "revId": "ef1f66d94e1af258fdcc958fe62ab21071bf3ba1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ef2a04_c4779739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-07T05:52:39Z",
+      "side": 1,
+      "message": "Or https://pkg.go.dev/github.com/google/go-cmp/cmp#Diff",
+      "parentUuid": "60b91514_2a5735b8",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "ef1f66d94e1af258fdcc958fe62ab21071bf3ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
