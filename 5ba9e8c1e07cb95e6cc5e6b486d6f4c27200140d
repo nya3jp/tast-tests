@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5905ba22_b3f23388",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-06-07T21:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a707b720_ef0229af",
+      "range": {
+        "startLine": 74,
+        "startChar": 21,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "5ba9e8c1e07cb95e6cc5e6b486d6f4c27200140d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78a61909_36311b31",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-03T21:54:24Z",
       "side": 1,
       "message": "seems like this is unused",
+      "revId": "5ba9e8c1e07cb95e6cc5e6b486d6f4c27200140d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70283c9_b536f555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis_wifi_credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-06-07T21:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78a61909_36311b31",
       "revId": "5ba9e8c1e07cb95e6cc5e6b486d6f4c27200140d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b5f850_e5c34cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis_wifi_credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-06-07T21:09:28Z",
+      "side": 1,
+      "message": "Done, thanks for the heads up!",
+      "parentUuid": "ff833a1f_203403e7",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 24
+      },
+      "revId": "5ba9e8c1e07cb95e6cc5e6b486d6f4c27200140d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21c7f657_50da60c2",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5efbf4c4_2255f651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_in_contacts_wifi_credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-06-07T21:09:28Z",
+      "side": 1,
+      "message": "I agree. I\u0027ll remove the `phone_to_cros_in_contacts` tests for Wi-Fi credentials and reduce the high visibility tests to just `dataonline`.",
+      "parentUuid": "21c7f657_50da60c2",
+      "revId": "5ba9e8c1e07cb95e6cc5e6b486d6f4c27200140d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd53e03e_cdc16bb5",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-06-03T21:54:24Z",
       "side": 1,
       "message": "is this the same function as in the other test? I thought Go would disallow having two exported functions with the same name.",
+      "revId": "5ba9e8c1e07cb95e6cc5e6b486d6f4c27200140d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4177bdc_415f42b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_in_contacts_wifi_credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-06-07T21:09:28Z",
+      "side": 1,
+      "message": "Removed now due to `removing phone_to_cros_in_contacts`.",
+      "parentUuid": "fd53e03e_cdc16bb5",
       "revId": "5ba9e8c1e07cb95e6cc5e6b486d6f4c27200140d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
