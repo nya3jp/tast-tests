@@ -136,8 +136,13 @@ var expectedWLANDriver = map[wlan.DeviceID]map[string]string{
 		"5.15": "wireless/realtek/rtw88/rtw88_8822ce.ko",
 	},
 	wlan.Realtek8852APCIE: {
-		"5.4":  "wireless/realtek/rtw89/rtw89_pci.ko",
-		"5.10": "wireless/realtek/rtw89/rtw89_pci.ko",
+		"5.4": "wireless/realtek/rtw89/rtw89_pci.ko",
+		// TODO(arowa): Remove the old module name rtw89_pci once
+		// the driver update lands in all kernels. Also, remove the
+		// workaround 5.10-v2 and only keep "5.10" with the module
+		// new module name rtw89_8852ae.
+		"5.10":    "wireless/realtek/rtw89/rtw89_pci.ko",
+		"5.10-v2": "wireless/realtek/rtw89/rtw89_8852ae.ko",
 	},
 	wlan.MediaTekMT7921PCIE: {
 		"5.4":  "wireless/mediatek/mt76/mt7921/mt7921e.ko",
@@ -253,6 +258,14 @@ func Driver(ctx context.Context, s *testing.State) {
 	moduleName := filepath.Base(path)
 
 	if got, want := moduleName+".ko", filepath.Base(expectedPath); got != want {
-		s.Errorf("Module name is %s, want %s", got, want)
+		// TODO(arowa): Remove the extra chack with expectedPathV2 once
+		// the rtw89 driver update lands in all kernels.
+		expectedPathV2, ok := expectedWLANDriver[devInfo.ID][baseRevision+"-v2"]
+		if !ok {
+			s.Errorf("Module name is %s, want %s", got, want)
+		}
+		if got, want := moduleName+".ko", filepath.Base(expectedPathV2); got != want {
+			s.Errorf("Module name is %s, want %s", got, want)
+		}
 	}
 }
