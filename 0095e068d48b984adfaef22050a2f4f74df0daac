@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2757116a_0a619914",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-06-07T00:33:53Z",
+      "side": 1,
+      "message": "Yep. The restart will happen automatically.",
+      "parentUuid": "ab11cc02_2f5e34c6",
+      "revId": "0095e068d48b984adfaef22050a2f4f74df0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d298f6a2_13552820",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb050ea4_04240af4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-06-07T00:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d298f6a2_13552820",
+      "revId": "0095e068d48b984adfaef22050a2f4f74df0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "392b621b_bd4184b4",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-07T00:20:09Z",
       "side": 1,
       "message": "Same here",
+      "revId": "0095e068d48b984adfaef22050a2f4f74df0daac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a3bc10_5bf516f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-06-07T00:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "392b621b_bd4184b4",
       "revId": "0095e068d48b984adfaef22050a2f4f74df0daac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
