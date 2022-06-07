@@ -346,6 +346,7 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContex
 		uiauto.Combine("switch VK mode",
 			vkbCtx.ShowAccessPoints(),
 			switchMode,
+			vkbCtx.WaitLocationStable(),
 		),
 		uc,
 		&useractions.UserActionCfg{
