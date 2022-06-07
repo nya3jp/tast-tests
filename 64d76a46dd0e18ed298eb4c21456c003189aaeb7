@@ -16,6 +16,74 @@
       "message": "+tast-owners@ for tast review, thanks!",
       "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28996789_feab7e86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T22:38:48Z",
+      "side": 1,
+      "message": "s/connect/connects",
+      "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8b253d_62fc1c88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T22:38:48Z",
+      "side": 1,
+      "message": "nit: Do we want to mention it\u0027s the out interface? Or is that an implementation detail?",
+      "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c99e65_23d5e8e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T22:38:48Z",
+      "side": 1,
+      "message": "s/defualt/default",
+      "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd9670c_647a7641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-07T22:38:48Z",
+      "side": 1,
+      "message": "Is CreateRouterServerEnv preferable to CreateRouterAndServerEnv?",
+      "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
