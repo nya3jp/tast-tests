@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9d767d_176575bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-07T14:54:23Z",
+      "side": 1,
+      "message": "I don\u0027t like it either, the thing is we don\u0027t really know the number of interfaces we have to expect. Some of them might already be excluded from Shill management because Shill launch script specified `--device-blocked`. I wanted to avoid to write a fixture that depends on Shill startup configuration.\n\nI\u0027ll propose something that uses `Poll()` but we can\u0027t really guarantee it will be more reliable.",
+      "parentUuid": "cf8800dc_3e9c5837",
+      "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cc3976a_7a89ed97",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "784c0405_b1fb1ae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-07T14:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cc3976a_7a89ed97",
+      "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db574983_bac4a940",
@@ -82,6 +118,24 @@
       "writtenOn": "2022-06-07T10:34:34Z",
       "side": 1,
       "message": "nit: Handle errors before the main path\n\n```\nif len \u003e 1\n err\nif len \u003d\u003d 0\n err\n\nreturn ifaces[0], nil\n```",
+      "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a4291b_a2e8b02b",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-07T14:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db574983_bac4a940",
       "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
