@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7df09af_68b54e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-06-07T17:43:04Z",
+      "side": 1,
+      "message": "Suggestion: Save desk for later also closes windows. Maybe you could verify the window count to make sure the windows are closed. E.g. https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go;drc\u003d5f519e5684c0966b1ec0f4bf7d63b7afb6c7a761;l\u003d196",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 44
+      },
+      "revId": "1561339fc6d1fb9fc36128ad7f3bbd56d3164a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
