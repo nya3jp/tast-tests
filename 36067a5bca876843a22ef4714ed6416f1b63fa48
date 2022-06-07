@@ -16,6 +16,74 @@
       "message": "@vsavu can you please have another look ? +2 was removed after an update 😊\n\n",
       "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b80ccc_cc05aa33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-07T10:34:34Z",
+      "side": 1,
+      "message": "LGTM except for the sleep. ",
+      "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8800dc_3e9c5837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-07T10:34:34Z",
+      "side": 1,
+      "message": "Can you poll for something here? This looks like a source of flakiness and delays.\n\nMaybe use the next block to check shillIfaces?",
+      "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc3976a_7a89ed97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/hwsim/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-07T10:34:34Z",
+      "side": 1,
+      "message": "Clear this slice on error.\n\nAlternatively create a variable with the slice and only assign it to f.clamedIfaces on success.",
+      "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db574983_bac4a940",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-07T10:34:34Z",
+      "side": 1,
+      "message": "nit: Handle errors before the main path\n\n```\nif len \u003e 1\n err\nif len \u003d\u003d 0\n err\n\nreturn ifaces[0], nil\n```",
+      "revId": "36067a5bca876843a22ef4714ed6416f1b63fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
