@@ -86,6 +86,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c82948_d2f327d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-07T20:06:46Z",
+      "side": 1,
+      "message": "What do we want to get out of the added mouse events?\n\nInput latency is tricky. It is measured per compositor (i.e. per viz clients). Currently, we have input latency for blink (Event.* UMA) and some ash UI latency for certain interactions (e.g. window resize). IMHO, we need to be clear what latency we are targeting for since we don\u0027t have general input latency metrics.\n\nAlso IIRC, I don\u0027t think we track input latency for mouse moves [1]. So faking mouse move might not get us latency data.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:cc/metrics/event_metrics.h;drc\u003d1946212ac0100668f14eb9e2843bdd846e510a1e;bpv\u003d0;bpt\u003d1;l\u003d32",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb6e6c18_fb23dc29",
@@ -290,6 +307,24 @@
       "side": 1,
       "message": "My concern isn\u0027t about where it moves, but that mouse.Move might be generating too many UI events. Moving it slower wouldn\u0027t help with that either I think? How many mouse events are you seeing during the test?",
       "parentUuid": "beffc201_51de1aa5",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cf4f51_b7a33e7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-07T20:06:46Z",
+      "side": 1,
+      "message": "+1\n\nWe might need to add some sleep in the loop to throttle mouse event generation. `mouse.Move` is async. It schedules `steps` mouse events based on duration arg and `steps \u003d duration/16ms`. `deltaTime` is 100ms and each call would essentially add 6 task to UI thread. And without sleep in the loop, we could add too many pending tasks to be posed to UI thread.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;drc\u003df1049e6453ec207217f2edd728d0543ab590a31e;l\u003d4898",
+      "parentUuid": "81327fb8_16be85f7",
       "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
