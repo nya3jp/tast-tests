@@ -16,6 +16,115 @@
       "message": "Hi Ben, this CL is ready for review for Tast owners approval.",
       "revId": "46151546b99689949413326c04a51b74ebf36427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c884d4_c7f254fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-07T20:50:52Z",
+      "side": 1,
+      "message": "Just general comment: this might be useful as a page object style where these nodewith\u0027s are abstraction on the object. Similar to how `filesapp.go` [1] is an abstraction over the possible commands for the Files app.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go?q\u003dfilesapp.go\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F",
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9485beb_d8d84a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-07T20:50:52Z",
+      "side": 1,
+      "message": "Are there any implications here if this fails? Might be worth having a cleanup that runs prior to tests running ensuring there are no files in the users drive.",
+      "range": {
+        "startLine": 161,
+        "startChar": 27,
+        "endLine": 161,
+        "endChar": 73
+      },
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7186751_549ca872",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-07T20:50:52Z",
+      "side": 1,
+      "message": "nit: `chrome.EnableFeatures` takes `...string` so you can just have `chrome.EnableFeatures(\"Projector\", \"ProjectAppDebug\"...)` etc.",
+      "range": {
+        "startLine": 34,
+        "startChar": 32,
+        "endLine": 34,
+        "endChar": 208
+      },
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7760ca_d18f8a30",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-07T20:50:52Z",
+      "side": 1,
+      "message": "nit: this could be moved to return directly instead of before the `WaitForChromeAppInstalled`",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b5f4038_5f9d2a8a",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-07T20:50:52Z",
+      "side": 1,
+      "message": "The timeout for the `SetUp` section is 120s but this wait itself is 120s, might want to reserve a little more time in `SetUp` to ensure everything is given adequate time to finish.",
+      "range": {
+        "startLine": 77,
+        "startChar": 72,
+        "endLine": 77,
+        "endChar": 85
+      },
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

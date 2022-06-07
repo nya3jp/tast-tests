@@ -16,6 +16,29 @@
       "message": "Hi tast-owners, this CL is ready for review.",
       "revId": "80be53ee8a508d8a1ea4184e212a1490769fecb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "686b6a60_1a6e7ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-07T20:50:52Z",
+      "side": 1,
+      "message": "Is it possible the tutorial step might fail and due to the `s.Fatal` on line 128, you will never delete the screencasts?\n\nI wonder if this might better serve as a deferred function where you try to delete it and reserve some cleanup space. In our drivefs tests we noticed the cleanup would not always run, this led to an absolute ballooning of files in the users My Drive (something like 15k files).",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 44
+      },
+      "revId": "80be53ee8a508d8a1ea4184e212a1490769fecb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
