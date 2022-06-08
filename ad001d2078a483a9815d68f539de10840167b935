@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5227ca0_c996007d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-08T02:19:52Z",
+      "side": 1,
+      "message": "Huh, weird. Seems reasonable though.",
+      "parentUuid": "54c601a1_0902295d",
+      "revId": "ad001d2078a483a9815d68f539de10840167b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2742dea_02a2750d",
