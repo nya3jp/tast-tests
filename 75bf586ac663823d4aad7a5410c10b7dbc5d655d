@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a95ce33_af4b4699",
+        "filename": "src/chromiumos/tast/local/drivefs/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-08T16:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ada272d_d9684fdb",
+      "revId": "75bf586ac663823d4aad7a5410c10b7dbc5d655d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d52d80d3_3419825f",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-06T23:59:36Z",
       "side": 1,
       "message": "Same as above",
+      "revId": "75bf586ac663823d4aad7a5410c10b7dbc5d655d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b5b133_d9a08239",
+        "filename": "src/chromiumos/tast/local/drivefs/helpers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-08T16:29:04Z",
+      "side": 1,
+      "message": "Updated to just `ConfigPath` instead.",
+      "parentUuid": "d52d80d3_3419825f",
       "revId": "75bf586ac663823d4aad7a5410c10b7dbc5d655d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
