@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -51,6 +51,119 @@ type TabSwitchParam struct {
 	Validation  bool         // Whether to add extra cpu loads before collecting metrics.
 }
 
+// TabSwitchVariables hold all the necessary variables used by the test.
+type tabSwitchVariables struct {
+	param    TabSwitchParam // Test Parameters
+	WebPages []webPage      // List of sites to visit
+
+	cr              *chrome.Chrome
+	l               *lacros.Lacros
+	cs              ash.ConnSource
+	browserTestConn *chrome.TestConn
+	recorder        *cujrecorder.Recorder
+}
+
+// WebPage is the struct which holds the info used to visit new sites in the test.
+type webPage struct {
+	name       string // Display Name of the Website
+	startURL   string // Base URL to the Website
+	urlPattern string // RegExp Pattern to Open Relevant Links on the Website
+}
+
+// coreTestDurationInMins is the variable that ensures the core part of the test
+// runs for AT LEAST this number, in minutes.
+//
+// The actual test duration could be longer depending on the various setup that is
+// required for the test body.
+const coreTestDurationInMins = 10
+
+func runSetup(ctx context.Context, s *testing.State, param TabSwitchParam) (tabSwitchVariables, error) {
+	var cr *chrome.Chrome
+	var cs ash.ConnSource
+	var l *lacros.Lacros
+	var browserTestConn *chrome.TestConn
+	var err error
+
+	WebPages := getTestWebpages()
+
+	if param.BrowserType == browser.TypeAsh {
+		cr = s.PreValue().(*chrome.Chrome)
+		cs = cr
+
+		if browserTestConn, err = cr.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get TestAPIConn: ", err)
+		}
+	} else {
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), param.BrowserType)
+		if err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+
+		if browserTestConn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
+	}
+
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
+	if err != nil {
+		s.Fatal("Failed to create a recorder: ", err)
+	}
+
+	if err := recorder.AddCollectedMetrics(browserTestConn, cujrecorder.AshCommonMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add ash common metrics to recorder: ", err)
+	}
+
+	if err := recorder.AddCollectedMetrics(browserTestConn, cujrecorder.BrowserCommonMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add browser common metrics to recorder: ", err)
+	}
+
+	if err := recorder.AddCollectedMetrics(browserTestConn, cujrecorder.AnyChromeCommonMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add any chrome common metrics to recorder: ", err)
+	}
+
+	if param.Tracing {
+		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
+	}
+
+	return tabSwitchVariables{param, WebPages, cr, l, cs, browserTestConn, recorder}, nil
+}
+
+func getTestWebpages() []webPage {
+	CNN := webPage{
+		name:       "CNN",
+		startURL:   "https://cnn.com",
+		urlPattern: `^.*://www.cnn.com/\d{4}/\d{2}/\d{2}/`,
+	}
+
+	Reddit := webPage{
+		"Reddit",
+		"https://reddit.com",
+		`^.*://www.reddit.com/r/[^/]+/comments/[^/]+/`,
+	}
+
+	return []webPage{CNN, Reddit}
+}
+
+func muteDevice(ctx context.Context, s *testing.State) {
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to open the keyboard: ", err)
+	}
+	defer kw.Close()
+
+	// The custom variable for the developer to mute the device before the test,
+	// so it doesn't make any noise when some of the visited pages play video.
+	if _, ok := s.Var("mute"); ok {
+		topRow, err := input.KeyboardTopRowLayout(ctx, kw)
+		if err != nil {
+			s.Fatal("Failed to obtain the top-row layout: ", err)
+		}
+		if err = kw.Accel(ctx, topRow.VolumeMute); err != nil {
+			s.Fatal("Failed to mute: ", err)
+		}
+	}
+}
+
 // findAnchorURLs returns the unique URLs of the anchors, which matches the pattern.
 // If it finds more than limit, returns the first limit elements.
 func findAnchorURLs(ctx context.Context, c *chrome.Conn, pattern string, limit int) ([]string, error) {
@@ -97,80 +210,179 @@ func waitUntilAllTabsLoaded(ctx context.Context, tconn *chrome.TestConn, timeout
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
-// Run runs the TabSwitchCUJ test. It is invoked by TabSwitchCujRecorder to
-// record web contents via WPR and invoked by TabSwitchCUJ to exercise the tests
-// from the recorded contents.
-func Run(ctx context.Context, s *testing.State) {
-	var cr *chrome.Chrome
-	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
+func getEndTimeForTest(totalDurationInMins, numSubTests int) time.Time {
+	if numSubTests < 1 {
+		return time.Time{} // Return invalid end time
+	}
+	totalTestDurationInSeconds := totalDurationInMins * 60
+	subTestDurationInSeconds := int((totalTestDurationInSeconds / numSubTests) + 1)
+	subTestDuration := time.Duration(subTestDurationInSeconds) * time.Second
+	return time.Now().Add(subTestDuration)
+}
 
-	param := s.Param().(TabSwitchParam)
-	if param.BrowserType == browser.TypeAsh {
-		cr = s.PreValue().(*chrome.Chrome)
-		cs = cr
+func retrieveAllTabs(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) ([]map[string]interface{}, error) {
+	emptyQuery := map[string]interface{}{}
 
-		var err error
-		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get TestAPIConn: ", err)
+	// Get all tabs
+	var tabs []map[string]interface{}
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := tconn.Call(ctx, &tabs, `tast.promisify(chrome.tabs.query)`, emptyQuery); err != nil {
+			return testing.PollBreak(err)
 		}
-	} else {
-		var l *lacros.Lacros
-		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), param.BrowserType)
-		if err != nil {
-			s.Fatal("Failed to initialize test: ", err)
-		}
-		defer lacros.CloseLacros(ctx, l)
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
 
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+	if err != nil {
+		return nil, err
+	}
+
+	return tabs, nil
+}
+
+func focusTab(ctx context.Context, tconn *chrome.TestConn, tabs *[]map[string]interface{}, tabIndexWithinWindow int, timeout time.Duration) error {
+	// Define parameters for API calls
+	activateTabProperties := map[string]interface{}{
+		"active": true,
+	}
+
+	// Find id of tab with positional index.
+	tabID := int((*tabs)[tabIndexWithinWindow]["id"].(float64))
+
+	// Switch to this tab as the active window
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		var tab map[string]interface{}
+		if err := tconn.Call(ctx, &tab, `tast.promisify(chrome.tabs.update)`, tabID, activateTabProperties); err != nil {
+			return testing.PollBreak(err)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func closeConnections(ctx context.Context, s *testing.State, conns []*chrome.Conn) {
+	for _, c := range conns {
+		if err := c.CloseTarget(ctx); err != nil {
+			s.Error("Failed to close target: ", err)
+		}
+		if err := c.Close(); err != nil {
+			s.Error("Failed to close the connection: ", err)
 		}
 	}
+}
+
+func testBody(ctx context.Context, s *testing.State, test tabSwitchVariables) error {
+	// Lacros Specific Setup
+	var tabOffset int
+	if test.param.BrowserType == browser.TypeLacros {
+		tabOffset = 1
+	} else {
+		tabOffset = 0
+	}
+
+	for _, data := range test.WebPages {
+		const numPages = 7
+		const numExtraPages = numPages - 1
+		conns := make([]*chrome.Conn, 0, numPages)
+
+		// Create the homepage of the site.
+		firstPage, err := test.cs.NewConn(ctx, data.startURL)
+		if err != nil {
+			s.Fatalf("Failed to open %s: %v", data.startURL, err)
+		}
+		conns = append(conns, firstPage)
+
+		// Find extra urls to navigate to
+		urls, err := findAnchorURLs(ctx, firstPage, data.urlPattern, numExtraPages)
+		if err != nil {
+			s.Fatalf("Failed to get URLs for %s: %v", data.startURL, err)
+		}
+
+		// Open those found URLs as new tabs
+		for _, url := range urls {
+			newConnection, err := test.cs.NewConn(ctx, url)
+			if err != nil {
+				s.Fatalf("Failed to open the URL %s: %v", url, err)
+			}
+			conns = append(conns, newConnection)
+		}
+
+		// Ensure that all tabs are properly loaded before starting test.
+		err = waitUntilAllTabsLoaded(ctx, test.browserTestConn, time.Minute)
+		if err != nil {
+			s.Log("Some tabs are still in loading state, but proceed the test: ", err)
+		}
+
+		currentTab := 0
+		const tabSwitchTimeout = 20 * time.Second
+
+		// Repeat the test as many times as necessary to fulfill its time requirements.
+		// e.g. If there are two windows that need to be tested sequentially, and the
+		// total core test duration is 10 mins, each window will be tested for 5 mins.
+		//
+		// Note: Test runs for *approximately* CoreTestDurationInMins long.
+		endTime := getEndTimeForTest(coreTestDurationInMins, len(test.WebPages))
+		if endTime.IsZero() {
+			s.Fatalf("GetEndTimeForTest() received %d as numSubTests, which can't be less than 1. Test didn't run", len(test.WebPages))
+		}
+
+		// Get all tabs
+		tabs, err := retrieveAllTabs(ctx, test.browserTestConn, tabSwitchTimeout)
+		if err != nil {
+			s.Fatal("Failed to retrieve tabs from browser: ", err)
+		}
+
+		// Switch through tabs in a skip-order fashion.
+		// Note: when skipSize = N-1, then the skip-order is 1,1,1,1 ... N times
+		// Therefore i + skipSize + 1 % N holds when 0 <= skipSize < N-1
+		for time.Now().Before(endTime) {
+			for skipSize := 0; skipSize < len(conns); skipSize++ {
+				for i := 0; i < len(conns); i++ {
+					inBrowserTabIndex := currentTab + tabOffset
+					if err := focusTab(ctx, test.browserTestConn, &tabs, inBrowserTabIndex, tabSwitchTimeout); err != nil {
+						s.Fatalf("Failed to switch to tab index %d. Error: %s", currentTab, err)
+					}
+
+					if err := webutil.WaitForRender(ctx, conns[currentTab], tabSwitchTimeout); err != nil {
+						s.Fatal("Failed to wait for the tab to be visible: ", err)
+					}
+
+					currentTab = (currentTab + skipSize + 1) % len(conns)
+				}
+				currentTab = 0
+			}
+		}
+
+		// Close previously opened tabs/window.
+		closeConnections(ctx, s, conns)
+	}
+
+	return nil
+}
+
+// Run runs the setup, core part of the TabSwitchCUJ3 test, and cleanup.
+func Run(ctx context.Context, s *testing.State) {
+	// Perform initial test setup
+	setupVars, err := runSetup(ctx, s, s.Param().(TabSwitchParam))
+	if err != nil {
+		s.Fatalf("Failed to run setup: %s", err)
+	}
+	defer lacros.CloseLacros(ctx, setupVars.l)
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
+	defer setupVars.recorder.Close(closeCtx)
 
-	kw, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to open the keyboard: ", err)
-	}
-	defer kw.Close()
+	muteDevice(ctx, s)
 
-	// The custom variable for the developer to mute the device before the test,
-	// so it doesn't make any noise when some of the visited pages play video.
-	if _, ok := s.Var("mute"); ok {
-		topRow, err := input.KeyboardTopRowLayout(ctx, kw)
-		if err != nil {
-			s.Fatal("Failed to obtain the top-row layout: ", err)
-		}
-		if err = kw.Accel(ctx, topRow.VolumeMute); err != nil {
-			s.Fatal("Failed to mute: ", err)
-		}
-	}
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
-
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
-	if err != nil {
-		s.Fatal("Failed to create a recorder: ", err)
-	}
-
-	if err := recorder.AddCollectedMetrics(bTconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
-		s.Fatal("Failed to add metrics to recorder: ", err)
-	}
-
-	if param.Tracing {
-		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
-	}
-	defer recorder.Close(closeCtx)
-
-	if param.Validation {
+	// Validation Specific Setup
+	if setupVars.param.Validation {
 		validationHelper := cuj.NewTPSValidationHelper(closeCtx)
 		if err := validationHelper.Stress(); err != nil {
 			s.Fatal("Failed to stress: ", err)
@@ -182,79 +394,17 @@ func Run(ctx context.Context, s *testing.State) {
 		}()
 	}
 
-	for _, data := range []struct {
-		name       string
-		startURL   string
-		urlPattern string
-	}{
-		{
-			"CNN",
-			"https://cnn.com",
-			`^.*://www.cnn.com/\d{4}/\d{2}/\d{2}/`,
-		},
-		{
-			"Reddit",
-			"https://reddit.com",
-			`^.*://www.reddit.com/r/[^/]+/comments/[^/]+/`,
-		},
-	} {
-		s.Run(ctx, data.name, func(ctx context.Context, s *testing.State) {
-			const numPages = 6
-			conns := make([]*chrome.Conn, 0, numPages+1)
-			defer func() {
-				for _, c := range conns {
-					if err = c.CloseTarget(ctx); err != nil {
-						s.Error("Failed to close target: ", err)
-					}
-					if err = c.Close(); err != nil {
-						s.Error("Failed to close the connection: ", err)
-					}
-				}
-			}()
-			firstPage, err := cs.NewConn(ctx, data.startURL)
-			if err != nil {
-				s.Fatalf("Failed to open %s: %v", data.startURL, err)
-			}
-			conns = append(conns, firstPage)
-
-			urls, err := findAnchorURLs(ctx, firstPage, data.urlPattern, numPages)
-			if err != nil {
-				s.Fatalf("Failed to get URLs for %s: %v", data.startURL, err)
-			}
-
-			for _, u := range urls {
-				c, err := cs.NewConn(ctx, u)
-				if err != nil {
-					s.Fatalf("Failed to open the URL %s: %v", u, err)
-				}
-				conns = append(conns, c)
-			}
-
-			if err = waitUntilAllTabsLoaded(ctx, tconn, time.Minute); err != nil {
-				s.Log("Some tabs are still in loading state, but proceed the test: ", err)
-			}
-			currentTab := len(conns) - 1
-			const tabSwitchTimeout = 20 * time.Second
-
-			if err = recorder.Run(ctx, func(ctx context.Context) error {
-				for i := 0; i < (numPages+1)*3+1; i++ {
-					if err = kw.Accel(ctx, "Ctrl+Tab"); err != nil {
-						return errors.Wrap(err, "failed to hit ctrl-tab")
-					}
-					currentTab = (currentTab + 1) % len(conns)
-					if err := webutil.WaitForRender(ctx, conns[currentTab], tabSwitchTimeout); err != nil {
-						s.Log("Failed to wait for the tab to be visible: ", err)
-					}
-				}
-				return nil
-			}); err != nil {
-				s.Fatal("Failed to conduct the test scenario, or collect the histogram data: ", err)
-			}
-		})
+	// Execute Test
+	recorderErr := setupVars.recorder.Run(ctx, func(ctx context.Context) error {
+		return testBody(ctx, s, setupVars)
+	})
+	if recorderErr != nil {
+		s.Fatal("Failed to conduct the test scenario, or collect the histogram data: ", recorderErr)
 	}
 
+	// Write out values
 	pv := perf.NewValues()
-	if err = recorder.Record(ctx, pv); err != nil {
+	if err = setupVars.recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
 	if err = pv.Save(s.OutDir()); err != nil {
