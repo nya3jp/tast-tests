@@ -11,15 +11,16 @@ package crostini
 
 import (
 	"testing"
-	"time"
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui"
 )
 
 func TestCheckValidUsersParams(t *testing.T) {
 	params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-		Timeout:            20 * time.Minute,
+		// validUsersMap has 4 user categories. In the test we install Crostini for every category.
+		Timeout:            4 * ui.InstallationTimeout,
 		MinimalSet:         true,
 		SelfManagedInstall: true,
 	}})
