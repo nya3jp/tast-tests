@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ce45c4_86a52410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T01:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28996789_feab7e86",
+      "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b8b253d_62fc1c88",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-07T22:38:48Z",
       "side": 1,
       "message": "nit: Do we want to mention it\u0027s the out interface? Or is that an implementation detail?",
+      "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44051bbf_4fe28ec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T01:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b8b253d_62fc1c88",
       "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a86b05e_58eb1e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T01:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7c99e65_23d5e8e4",
+      "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bd9670c_647a7641",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-06-07T22:38:48Z",
       "side": 1,
       "message": "Is CreateRouterServerEnv preferable to CreateRouterAndServerEnv?",
+      "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "798f490c_82ffe851",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T01:57:32Z",
+      "side": 1,
+      "message": "It depends on the requirement, for example, in routing tests, we need to test if a remote address (not on the local subnet) to verify if the default routes work.\nCurrently I\u0027m only aware of this usage (verifying default routes), but since it\u0027s quite a common architecture so I\u0027ll list it here.\n\nAnother usage can be (need some modification here), some applications are NAT-awared (e.g., IPsec), they may do something different when the remote server or itself is behind a NAT or not, if we want to verify this behavior, we need to make this two Envs connected via NAT.",
+      "parentUuid": "3bd9670c_647a7641",
       "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
