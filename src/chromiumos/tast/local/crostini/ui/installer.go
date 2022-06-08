@@ -32,7 +32,16 @@ import (
 )
 
 const uiTimeout = 30 * time.Second
-const installationTimeout = 14 * time.Minute
+
+const (
+	// UninstallationTimeout is the upper limit of Install function duration.
+	UninstallationTimeout = 2 * time.Minute
+	// InstallationTimeout is the upper limit of Install function duration.
+	InstallationTimeout = 14 * time.Minute
+	// InstallCrostiniTimeout is the upper limit of InstallCrostini function duration.
+	// It consists of potential uninstallation, installation and UI interactions.
+	InstallCrostiniTimeout = UninstallationTimeout + InstallationTimeout + time.Minute
+)
 
 // InstallWindow is the finder for Crostini install window.
 var InstallWindow = nodewith.NameRegex(regexp.MustCompile(`^Set up Linux`)).Role(role.RootWebArea)
@@ -166,7 +175,7 @@ func (p *Installer) Install(ctx context.Context) error {
 	installButton := nodewith.Name("Install").Role(role.Button)
 	if err := uiauto.Combine("click install and wait it to finish",
 		ui.LeftClick(installButton),
-		ui.WithTimeout(installationTimeout).WaitUntilGone(InstallWindow))(ctx); err != nil {
+		ui.WithTimeout(InstallationTimeout).WaitUntilGone(InstallWindow))(ctx); err != nil {
 		// If the install fails, return any error message from the installer rather than a timeout error.
 		message, messageErr := p.checkErrorMessage(cleanupCtx)
 		if messageErr != nil {

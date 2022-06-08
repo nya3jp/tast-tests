@@ -25,10 +25,8 @@ import (
 )
 
 const (
-	installationTimeout   = 15 * time.Minute
 	checkContainerTimeout = time.Minute
 	postTestTimeout       = 30 * time.Second
-	uninstallationTimeout = 2 * time.Minute
 )
 
 func init() {
@@ -104,10 +102,10 @@ func init() {
 		Desc:            "Install Crostini with Buster",
 		Contacts:        []string{"clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBuster},
-		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		SetUpTimeout:    cui.InstallCrostiniTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: uninstallationTimeout,
+		TearDownTimeout: cui.UninstallationTimeout,
 		Parent:          "chromeLoggedInForCrostini",
 
 		// TODO (jinrongwu): switch to Global RunTime Variable when deprecating pre.go.
@@ -121,10 +119,10 @@ func init() {
 		Desc:            "Install Crostini with Bullseye",
 		Contacts:        []string{"clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
-		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		SetUpTimeout:    cui.InstallCrostiniTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: uninstallationTimeout,
+		TearDownTimeout: cui.UninstallationTimeout,
 		Parent:          "chromeLoggedInForCrostini",
 		Vars:            []string{"keepState"},
 		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
@@ -135,10 +133,10 @@ func init() {
 		Desc:            "Install Crostini with Buster in Chrome logged in with Gaia",
 		Contacts:        []string{"clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBuster},
-		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		SetUpTimeout:    cui.InstallCrostiniTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: uninstallationTimeout,
+		TearDownTimeout: cui.UninstallationTimeout,
 		Parent:          "chromeLoggedInWithGaiaForCrostini",
 		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
 		Data:            []string{GetContainerMetadataArtifact("buster", false), GetContainerRootfsArtifact("buster", false)},
@@ -149,10 +147,10 @@ func init() {
 		Desc:            "Install Crostini with Bullseye in Chrome logged in with Gaia",
 		Contacts:        []string{"clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
-		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		SetUpTimeout:    cui.InstallCrostiniTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: uninstallationTimeout,
+		TearDownTimeout: cui.UninstallationTimeout,
 		Parent:          "chromeLoggedInWithGaiaForCrostini",
 		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
 		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
@@ -163,10 +161,10 @@ func init() {
 		Desc:            "Install Crostini with Bullseye in large container with apps installed",
 		Contacts:        []string{"clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBusterLC},
-		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		SetUpTimeout:    cui.InstallCrostiniTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: uninstallationTimeout,
+		TearDownTimeout: cui.UninstallationTimeout,
 		Parent:          "chromeLoggedInForCrostini",
 		Vars:            []string{"keepState"},
 		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
@@ -177,10 +175,10 @@ func init() {
 		Desc:            "Install Crostini with Bullseye and enable Lacros",
 		Contacts:        []string{"clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
-		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		SetUpTimeout:    cui.InstallCrostiniTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: uninstallationTimeout,
+		TearDownTimeout: cui.UninstallationTimeout,
 		Parent:          "chromeLoggedInForCrostiniWithLacros",
 		Vars:            []string{"keepState"},
 		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
@@ -205,10 +203,10 @@ func init() {
 		Desc:            "Install Crostini with Bullseye and LXD 4.0",
 		Contacts:        []string{"clumptini+oncall@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
-		SetUpTimeout:    installationTimeout,
+		SetUpTimeout:    cui.InstallCrostiniTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: uninstallationTimeout,
+		TearDownTimeout: cui.UninstallationTimeout,
 		Parent:          "chromeLoggedInForCrostiniLxdNext",
 		Vars:            []string{"keepState"},
 		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
@@ -261,7 +259,7 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	f.cr = s.ParentValue().(chrome.HasChrome).Chrome()
 
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, uninstallationTimeout)
+	ctx, cancel := ctxutil.Shorten(ctx, cui.UninstallationTimeout)
 	defer cancel()
 
 	// If initialization fails, this defer is used to clean-up the partially-initialized pre
