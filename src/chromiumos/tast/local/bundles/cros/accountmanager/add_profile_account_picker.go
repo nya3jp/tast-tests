@@ -30,14 +30,17 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "loggedInToLacros",
-		VarDeps:      []string{"accountmanager.username1", "accountmanager.password1"},
-		Timeout:      6 * time.Minute,
+		VarDeps: []string{
+			"accountmanager.AddProfileAccountPicker.username",
+			"accountmanager.AddProfileAccountPicker.password",
+		},
+		Timeout: 6 * time.Minute,
 	})
 }
 
 func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("accountmanager.username1")
-	password := s.RequiredVar("accountmanager.password1")
+	username := s.RequiredVar("accountmanager.AddProfileAccountPicker.username")
+	password := s.RequiredVar("accountmanager.AddProfileAccountPicker.password")
 
 	// Reserve one minute for various cleanup.
 	cleanupCtx := ctx
