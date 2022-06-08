@@ -125,15 +125,15 @@ func SetScreensaver(ctx context.Context, s *testing.State) {
 }
 
 func prepareScreensaver(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, testParams ambient.TestParams) error {
-	themeContainer := nodewith.Role(role.ListBoxOption).Name(testParams.Theme)
+	themeContainer := nodewith.Role(role.RadioButton).Name(testParams.Theme)
 	if err := uiauto.Combine("Choose animation theme",
 		ui.FocusAndWait(themeContainer),
 		ui.LeftClick(themeContainer))(ctx); err != nil {
 		return errors.Wrapf(err, "failed to select %v", testParams.Theme)
 	}
 
-	topicSourceContainer := nodewith.Role(role.GenericContainer).NameContaining(testParams.TopicSource)
-	albumsFinder := nodewith.Role(role.GenericContainer).HasClass("album")
+	topicSourceContainer := nodewith.Role(role.RadioButton).NameContaining(testParams.TopicSource)
+	albumsFinder := nodewith.Role(role.ListBoxOption).HasClass("album")
 
 	if err := uiauto.Combine("Choose topic source",
 		ui.FocusAndWait(topicSourceContainer),
