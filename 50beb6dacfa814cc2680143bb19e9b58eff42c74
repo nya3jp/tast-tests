@@ -412,6 +412,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e3d4476_91eec3f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-08T05:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac7cc1b9_228bd5a9",
+      "range": {
+        "startLine": 377,
+        "startChar": 5,
+        "endLine": 377,
+        "endChar": 22
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53d9a760_eb77a7c6",
