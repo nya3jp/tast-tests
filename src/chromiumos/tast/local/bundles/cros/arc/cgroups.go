@@ -65,7 +65,7 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	path := s.Param().(string)
 
 	const pkgName = "com.android.settings"
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.RestrictARCCPU())
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

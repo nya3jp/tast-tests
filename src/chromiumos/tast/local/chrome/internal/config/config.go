@@ -210,8 +210,8 @@ func (c *Config) ARCMode() ARCMode { return c.m.ARCMode }
 // ARCUseHugePages returns the memory mode of the guest memory.
 func (c *Config) ARCUseHugePages() bool { return c.m.ARCUseHugePages }
 
-// RestrictARCCPU returns whether to restrict CPU usage of ARC in background.
-func (c *Config) RestrictARCCPU() bool { return c.m.RestrictARCCPU }
+// UnRestrictARCCPU returns whether to not restrict CPU usage of ARC in background.
+func (c *Config) UnRestrictARCCPU() bool { return c.m.UnRestrictARCCPU }
 
 // BreakpadTestMode returns whether to tell Chrome's breakpad to always write
 // dumps directly to a hard-coded directory.
@@ -313,7 +313,7 @@ type MutableConfig struct {
 	DisablePolicyKeyVerification    bool       `reuse_match:"true"`
 	ARCMode                         ARCMode    `reuse_match:"true"`
 	ARCUseHugePages                 bool       `reuse_match:"true"`
-	RestrictARCCPU                  bool       `reuse_match:"true"`
+	UnRestrictARCCPU                bool       `reuse_match:"true"`
 	BreakpadTestMode                bool       `reuse_match:"true"`
 	ExtraArgs                       []string   `reuse_match:"true"`
 	LacrosExtraArgs                 []string   `reuse_match:"true"`

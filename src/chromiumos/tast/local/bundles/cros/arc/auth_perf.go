@@ -143,7 +143,6 @@ func createChrome(ctx context.Context, gaia chrome.Option, param testParam) (*ch
 
 	cr, err := chrome.New(ctx,
 		chrome.ARCSupported(),
-		chrome.RestrictARCCPU(),
 		gaia,
 		chrome.ExtraArgs(args...))
 	if err != nil {

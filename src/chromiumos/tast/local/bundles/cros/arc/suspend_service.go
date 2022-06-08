@@ -50,7 +50,7 @@ const hostReadClocksPath = "/usr/local/libexec/tast/helpers/local/cros/arc.Suspe
 
 // Prepare restarts the ui service on DUT and deploys a binary into ARC to monitor the guest clocks.
 func (c *SuspendService) Prepare(ctx context.Context, req *empty.Empty) (*arcpb.SuspendServiceParams, error) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.RestrictARCCPU(),
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(),
 		chrome.KeepState(), chrome.ExtraArgs("--disable-arc-data-wipe", "--ignore-arcvm-dev-conf"))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")

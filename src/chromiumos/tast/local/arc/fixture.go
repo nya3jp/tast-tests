@@ -32,7 +32,7 @@ func init() {
 			"arcvm-eng-team@google.com",
 		},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ARCEnabled()}, nil
+			return []chrome.Option{chrome.ARCEnabled(), chrome.UnRestrictARCCPU()}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    ResetTimeout,
@@ -49,7 +49,7 @@ func init() {
 			"arcvm-eng-team@google.com",
 		},
 		Impl: NewArcBootedWithoutUIAutomatorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ARCEnabled()}, nil
+			return []chrome.Option{chrome.ARCEnabled(), chrome.UnRestrictARCCPU()}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
 		ResetTimeout:    ResetTimeout,
@@ -68,6 +68,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
 				chrome.ExtraArgs(DisableSyncFlags()...),
 			}, nil
 		}),
@@ -90,7 +91,6 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
-				chrome.RestrictARCCPU(),
 				chrome.ExtraArgs(DisableSyncFlags()...),
 				chrome.ExtraArgs("--disable-features=FirmwareUpdaterApp"),
 			}, nil
@@ -114,6 +114,7 @@ func init() {
 		Impl: NewArcBootedWithPlayStoreFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(DisableSyncFlags()...),
+				chrome.UnRestrictARCCPU(),
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 			}, nil
 		}),
@@ -134,6 +135,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
 				chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"),
 			}, nil
 		}),
@@ -154,6 +156,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
 				chrome.ExtraArgs("--force-tablet-mode=clamshell"),
 			}, nil
 		}),
@@ -172,7 +175,7 @@ func init() {
 			"arcvm-eng-team@google.com",
 		},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs(
+			return []chrome.Option{chrome.ARCEnabled(), chrome.UnRestrictARCCPU(), chrome.ExtraArgs(
 				"--vmodule=" + strings.Join([]string{
 					"*/media/gpu/chromeos/*=2",
 					"*/media/gpu/vaapi/*=2",
@@ -197,6 +200,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
 				chrome.ExtraArgs("--enable-features=OutOfProcessVideoDecoding"),
 			}, nil
 		}),
@@ -216,7 +220,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs(
+			return []chrome.Option{chrome.ARCEnabled(), chrome.UnRestrictARCCPU(), chrome.ExtraArgs(
 				"--enable-features=OutOfProcessVideoDecoding",
 				"--vmodule="+strings.Join([]string{
 					"*/media/gpu/chromeos/*=2",
@@ -239,7 +243,7 @@ func init() {
 			"arcvm-eng-team@google.com",
 		},
 		Impl: NewArcBootedWithConfigFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs(
+			return []chrome.Option{chrome.ARCEnabled(), chrome.UnRestrictARCCPU(), chrome.ExtraArgs(
 				"--vmodule=" + strings.Join([]string{
 					"*/media/gpu/chromeos/*=2",
 					"*/media/gpu/vaapi/*=2",
@@ -258,7 +262,7 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image with ARC booted",
 		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.ARCEnabled())).Opts()
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.ARCEnabled(), chrome.UnRestrictARCCPU())).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
 		ResetTimeout:    ResetTimeout,
@@ -277,6 +281,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
 				chrome.EnableFeatures("ArcRightClickLongPress"),
 				chrome.ExtraArgs("--force-tablet-mode=clamshell"),
 			}, nil
@@ -300,6 +305,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
 				chrome.EnableFeatures("ArcCompatSnapFeature"),
 				chrome.ExtraArgs("--force-tablet-mode=clamshell"),
 			}, nil
@@ -323,6 +329,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
 				chrome.EnableFeatures("NotificationsRefresh"),
 			}, nil
 		}),
@@ -344,6 +351,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
 				chrome.ExtraArgs("--enable-features=ArcInputOverlay"),
 			}, nil
 		}),
@@ -366,6 +374,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
+				chrome.UnRestrictARCCPU(),
 				chrome.EnableFeatures("ProductivityLauncher"),
 			}, nil
 		}),
