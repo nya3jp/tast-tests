@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -33,11 +34,13 @@ func init() {
 
 func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	const (
-		ownerUser       = "owner@owner.owner"
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		testFile        = "file"
-		testFileContent = "content"
+		ownerUser                             = "owner@owner.owner"
+		userName                              = "foo@bar.baz"
+		userPassword                          = "secret"
+		testFile                              = "file"
+		testFileContent                       = "content"
+		wrongPassword                         = "wrongPassword"
+		cryptohomeErrorAuthorizationKeyFailed = 3
 	)
 
 	ctxForCleanUp := ctx
@@ -93,6 +96,19 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	filePath := filepath.Join(userPath, testFile)
 	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
 		s.Fatal("Failed to write a file to the vault: ", err)
+	}
+
+	// Test invalid credentials when the user's directory is mounted.
+	success, err := client.CheckVault(ctx, "fake_label", hwsec.NewPassAuthConfig(userName, wrongPassword))
+	if success {
+		s.Fatal("Invalid credentials accepted as valid")
+	}
+	var exitErr *hwsec.CmdExitError
+	if !errors.As(err, &exitErr) {
+		s.Fatalf("Unexpected error: got %q; want *hwsec.CmdExitError", err)
+	}
+	if exitErr.ExitCode != cryptohomeErrorAuthorizationKeyFailed {
+		s.Fatalf("Unexpected exit code: got %d; want %d", exitErr.ExitCode, cryptohomeErrorAuthorizationKeyFailed)
 	}
 
 	// Test credentials when the user's directory is mounted.
