@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a93df4_4d91b97e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_crypto_with_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-06-08T07:32:18Z",
+      "side": 1,
+      "message": "This is still an ad-hoc key that is used in the Crypto4A HSM",
+      "parentUuid": "59b9d5d6_3aa5152b",
+      "revId": "7ff5ce4a3baaaa4a47ec3d4c66e365776bd53474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4717a19_20f94623",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-08T02:02:04Z",
       "side": 1,
       "message": "Should we instead pass the public key via the RecoveryTestTool struct? The new field seems conceptually very close to the existing |useFakeMediator| field. Also we won\u0027t need a separate function in that case.",
+      "range": {
+        "startLine": 150,
+        "startChar": 80,
+        "endLine": 150,
+        "endChar": 104
+      },
+      "revId": "7ff5ce4a3baaaa4a47ec3d4c66e365776bd53474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e3e0ae5_b9698862",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-06-08T07:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4717a19_20f94623",
       "range": {
         "startLine": 150,
         "startChar": 80,
