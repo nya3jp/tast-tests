@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffe63d2_33be1433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T03:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "561ccca1_0f587d8d",
+      "range": {
+        "startLine": 25,
+        "startChar": 31,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b7cbd8b_d2da3e0f",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "406544b7_0c920574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T03:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b7cbd8b_d2da3e0f",
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c31e5f_66374725",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-06-07T06:39:12Z",
       "side": 1,
       "message": "We should specify this is related to the shill EphemeralProperty and that this is used to control in the test which network shill picks for the default network.",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec1425e_af3e3eb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T03:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c31e5f_66374725",
       "range": {
         "startLine": 53,
         "startChar": 3,
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48f38421_c02efdf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T03:02:08Z",
+      "side": 1,
+      "message": "Unfortunately we only have 3 chars here... do you have any suggestion for the name?",
+      "parentUuid": "32bcfeab_cba953e2",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 17
+      },
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0467f18_7b09f202",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
         "patchSetId": 4
@@ -117,6 +207,30 @@
       "writtenOn": "2022-06-07T06:39:12Z",
       "side": 1,
       "message": "undone",
+      "range": {
+        "startLine": 91,
+        "startChar": 20,
+        "endLine": 91,
+        "endChar": 24
+      },
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8fc233a_803405d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T03:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0467f18_7b09f202",
       "range": {
         "startLine": 91,
         "startChar": 20,
@@ -152,6 +266,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a05f8a28_4ff6f444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T03:02:08Z",
+      "side": 1,
+      "message": "I think we\u0027ll want to completely remove this part of code when we support portal detection properly in the future, since this is only another test-only property in shill.\nSo I would prefer just leaving it here now instead of complicating the code.",
+      "parentUuid": "cc78f4d2_fd28fae1",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 111
+      },
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7ed97dd_af0b532d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
         "patchSetId": 4
@@ -163,6 +301,30 @@
       "writtenOn": "2022-06-07T06:39:12Z",
       "side": 1,
       "message": "I would suggest to put these 4 Envs into an array of *Env objects and looping over a it with one single Cleanup() call.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9153c4_7ad69a33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T03:02:08Z",
+      "side": 1,
+      "message": "Done. Much cleaner, thanks for the suggestion!",
+      "parentUuid": "d7ed97dd_af0b532d",
       "range": {
         "startLine": 146,
         "startChar": 0,
@@ -186,6 +348,30 @@
       "writtenOn": "2022-06-07T06:39:12Z",
       "side": 1,
       "message": "I would move this to the deletePingEntriesInConntrack function and explain a bit more why connection pinning is an issue here (basically we don\u0027t have any additional conntrack state cleaning in shill or patchpanel at the moment).",
+      "range": {
+        "startLine": 193,
+        "startChar": 37,
+        "endLine": 194,
+        "endChar": 70
+      },
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc552b4_7f093081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-08T03:02:08Z",
+      "side": 1,
+      "message": "Done. I actually forgot to update the comment after changing the code... Thanks for catching this!",
+      "parentUuid": "b327ab0d_1d770750",
       "range": {
         "startLine": 193,
         "startChar": 37,
