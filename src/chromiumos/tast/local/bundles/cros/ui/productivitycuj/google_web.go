@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -36,39 +37,48 @@ const (
 
 // GoogleDocs implements the ProductivityApp interface.
 type GoogleDocs struct {
-	br    *browser.Browser
-	cr    *chrome.Chrome
-	tconn *chrome.TestConn
-	ui    *uiauto.Context
-	kb    *input.KeyboardEventWriter
-	uiHdl cuj.UIActionHandler
+	br         *browser.Browser
+	tconn      *chrome.TestConn
+	ui         *uiauto.Context
+	kb         *input.KeyboardEventWriter
+	uiHdl      cuj.UIActionHandler
+	tabletMode bool
 }
 
 // CreateDocument creates a new document from GDocs.
 func (app *GoogleDocs) CreateDocument(ctx context.Context) error {
-	_, err := app.br.NewConn(ctx, cuj.GoogleDocsURL)
+	conn, err := app.br.NewConn(ctx, cuj.NewGoogleDocsURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleDocsURL)
 	}
-
-	return uiauto.Combine("open a new document",
-		app.openBlankDocument,
+	if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
+		return errors.Wrap(err, "failed to wait for page to finish loading")
+	}
+	if err := cuj.MaximizeBrowserWindow(ctx, app.tconn, app.tabletMode, docsTab); err != nil {
+		return errors.Wrap(err, "failed to maximize the Google Docs page")
+	}
+	docWebArea := nodewith.NameContaining(docsTab).Role(role.RootWebArea).First()
+	canvas := nodewith.Role(role.Canvas).Ancestor(docWebArea).First()
+	return uiauto.Combine("type word to document",
+		app.maybeCloseWelcomeDialog,
+		app.ui.WaitUntilExists(canvas),
 		app.kb.TypeAction(docText),
 	)(ctx)
 }
 
 // CreateSlides creates a new presentation from GDocs.
 func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
-	_, err := app.br.NewConn(ctx, cuj.GoogleSlidesURL)
+	conn, err := app.br.NewConn(ctx, cuj.NewGoogleSlidesURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleSlidesURL)
 	}
-
+	if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
+		return errors.Wrap(err, "failed to wait for page to finish loading")
+	}
 	slidesWebArea := nodewith.NameContaining("Google Slides").Role(role.RootWebArea)
 	title := nodewith.Name("title").Role(role.StaticText).Ancestor(slidesWebArea)
 	subtitle := nodewith.Name("subtitle").Role(role.StaticText).Ancestor(slidesWebArea)
 	return uiauto.Combine("open a new presentation",
-		app.openBlankDocument,
 		app.uiHdl.Click(title),
 		app.kb.TypeAction(titleText),
 		app.uiHdl.Click(subtitle),
@@ -78,15 +88,17 @@ func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
 
 // CreateSpreadsheet creates a new spreadsheet by copying from sample spreadsheet.
 func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context, cr *chrome.Chrome, sampleSheetURL, outDir string) (string, error) {
-	conn, err := app.cr.NewConn(ctx, sampleSheetURL+"/copy")
+	conn, err := app.br.NewConn(ctx, sampleSheetURL+"/copy")
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to open URL: %s", sampleSheetURL)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
-
+	if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
+		return "", errors.Wrap(err, "failed to wait for page to finish loading")
+	}
 	copyButton := nodewith.Name("Make a copy").Role(role.Button)
-	if err := app.uiHdl.Click(copyButton)(ctx); err != nil {
+	if err := app.ui.DoDefault(copyButton)(ctx); err != nil {
 		return "", errors.Wrap(err, "failed to open the copied data spreadsheet")
 	}
 
@@ -99,12 +111,13 @@ func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context, cr *chrome.Chrome,
 // OpenSpreadsheet creates a new document from GDocs.
 func (app *GoogleDocs) OpenSpreadsheet(ctx context.Context, filename string) error {
 	testing.ContextLog(ctx, "Opening an existing spreadsheet: ", filename)
-
-	_, err := app.br.NewConn(ctx, cuj.GoogleSheetsURL)
+	conn, err := app.br.NewConn(ctx, cuj.GoogleSheetsURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleSheetsURL)
 	}
-
+	if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
+		return errors.Wrap(err, "failed to wait for page to finish loading")
+	}
 	section := nodewith.NameRegex(regexp.MustCompile("^(Today|Yesterday|Previous (7|30) days|Earlier).*")).Role(role.ListBox).First()
 	fileOption := nodewith.NameContaining(sheetName).Role(role.ListBoxOption).Ancestor(section).First()
 	return uiauto.Combine("search file from recently opened",
@@ -116,17 +129,10 @@ func (app *GoogleDocs) OpenSpreadsheet(ctx context.Context, filename string) err
 // MoveDataFromDocToSheet moves data from document to spreadsheet.
 func (app *GoogleDocs) MoveDataFromDocToSheet(ctx context.Context) error {
 	testing.ContextLog(ctx, "Moving data from document to spreadsheet")
-
-	// tabIndexMap define the index of the corresponding service tab.
-	tabIndexMap := map[string]int{
-		docsTab:   0,
-		sheetsTab: 2,
-	}
-
 	content := nodewith.Name("Document content").Role(role.TextField).Editable()
 
 	if err := uiauto.Combine("cut selected text from the document",
-		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[docsTab]),
+		app.uiHdl.SwitchToChromeTabByName(docsTab),
 		app.uiHdl.Click(content),
 		app.kb.AccelAction("Ctrl+A"),
 		app.kb.AccelAction("Ctrl+X"),
@@ -135,7 +141,7 @@ func (app *GoogleDocs) MoveDataFromDocToSheet(ctx context.Context) error {
 	}
 
 	if err := uiauto.Combine("switch to Google Sheets and jump to the target cell",
-		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[sheetsTab]),
+		app.uiHdl.SwitchToChromeTabByName(sheetsTab),
 		app.maybeCloseEditHistoryDialog,
 		app.selectCell("H3"),
 	)(ctx); err != nil {
@@ -161,7 +167,7 @@ func (app *GoogleDocs) MoveDataFromSheetToDoc(ctx context.Context) error {
 
 	content := nodewith.Name("Document content").Role(role.TextField).Editable()
 	return uiauto.Combine("switch to Google Docs and paste the content",
-		app.uiHdl.SwitchToChromeTabByIndex(0),
+		app.uiHdl.SwitchToChromeTabByName(docsTab),
 		app.ui.WaitUntilExists(content),
 		app.kb.AccelAction("Ctrl+V"),
 	)(ctx)
@@ -170,13 +176,11 @@ func (app *GoogleDocs) MoveDataFromSheetToDoc(ctx context.Context) error {
 // ScrollPage scrolls the document and spreadsheet.
 func (app *GoogleDocs) ScrollPage(ctx context.Context) error {
 	testing.ContextLog(ctx, "Scrolling the document and spreadsheet")
-
-	for _, tabIdx := range []int{0, 2} {
-		if err := scrollTabPage(ctx, app.uiHdl, tabIdx); err != nil {
+	for _, tabName := range []string{docsTab, sheetsTab} {
+		if err := scrollTabPageByName(ctx, app.uiHdl, tabName); err != nil {
 			return err
 		}
 	}
-
 	return nil
 }
 
@@ -223,7 +227,7 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 			testing.ContextLog(ctx, "No action to grant microphone permission")
 			return nil
 		}
-		return app.uiHdl.ClickUntil(allowButton, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(alertDialog))(ctx)
+		return app.ui.DoDefaultUntil(allowButton, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(alertDialog))(ctx)
 	}
 
 	checkDictationResult := func(ctx context.Context) error {
@@ -261,12 +265,12 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 	// Click "Tools" and then "Voice typing". A microphone box appears.
 	// Click the microphone box when ready to speak.
 	if err := uiauto.Combine("turn on the voice typing",
-		app.uiHdl.SwitchToChromeTabByIndex(0), // Switch to Google Docs.
+		app.uiHdl.SwitchToChromeTabByName(docsTab),
 		app.closeDialogs,
-		app.uiHdl.ClickUntil(tools, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(toolsExpanded)),
+		app.ui.DoDefaultUntil(tools, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(toolsExpanded)),
 		app.ui.WaitUntilExists(voiceTypingItem), // Sometimes the "Voice typing" menu item can be found but UI has not showed up yet.
-		app.uiHdl.Click(voiceTypingItem),
-		app.uiHdl.ClickUntil(dictationButton, app.checkDictionButton),
+		app.ui.DoDefault(voiceTypingItem),
+		app.ui.DoDefaultUntil(dictationButton, app.checkDictionButton),
 		allowPermission,
 	)(ctx); err != nil {
 		return err
@@ -284,23 +288,14 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 // It removes the document and slide which we created in the test case and close all tabs after completing the test.
 // This function should be called as deferred function after the app is created.
 func (app *GoogleDocs) Cleanup(ctx context.Context, sheetName string) error {
-	// tabIndexMap define the index of the corresponding service tab.
-	tabIndexMap := map[string]int{
-		docsTab:   0,
-		slidesTab: 1,
-		sheetsTab: 2,
-	}
-
 	menuBar := nodewith.Name("Menu bar").Role(role.Banner)
 	file := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBar)
 	moveToTrash := nodewith.NameContaining("Move to trash t").Role(role.MenuItem)
 	dialog := nodewith.Name("File moved to trash").Role(role.Dialog)
 	homeScreen := nodewith.NameRegex(regexp.MustCompile("^Go to (Docs|Slides|Sheets) home screen")).Role(role.Button).Ancestor(dialog)
-
-	for k, v := range tabIndexMap {
-		testing.ContextLogf(ctx, "Switching to %q", k)
-		if err := uiauto.Combine("remove the file",
-			app.uiHdl.SwitchToChromeTabByIndex(v),
+	for _, tabName := range []string{docsTab, slidesTab, sheetsTab} {
+		if err := uiauto.NamedCombine("remove the "+tabName,
+			app.uiHdl.SwitchToChromeTabByName(tabName),
 			app.closeDialogs,
 			app.uiHdl.Click(file),
 			app.uiHdl.Click(moveToTrash),
@@ -334,30 +329,19 @@ func (app *GoogleDocs) validateEditMode(ctx context.Context) error {
 	return app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(shareButton)(ctx)
 }
 
-// openBlankDocument opens a blank document for the specified service.
-func (app *GoogleDocs) openBlankDocument(ctx context.Context) error {
-	blankOption := nodewith.NameContaining("Blank").Role(role.ListBoxOption)
-	return uiauto.Combine("open a blank document",
-		app.maybeCloseWelcomeDialog,
-		app.uiHdl.Click(blankOption),
-		app.validateEditMode,
-	)(ctx)
-}
-
 // selectCell selects the specified cell using the name box.
 func (app *GoogleDocs) selectCell(cell string) action.Action {
 	nameBox := nodewith.Name("Name box (Ctrl + J)").Role(role.GenericContainer)
 	nameField := nodewith.Role(role.TextField).FinalAncestor(nameBox)
 	nameFieldFocused := nameField.Focused()
-	return uiauto.NamedAction(fmt.Sprintf("to select cell %q", cell),
-		uiauto.Combine("click the name box and name a range",
-			app.uiHdl.ClickUntil(nameField, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameFieldFocused)),
-			app.kb.TypeAction(cell),
-			app.kb.AccelAction("Enter"),
-			// Given time to jump to the specific cell and select it.
-			// And because we cannot be sure whether the target cell is focused, we have to wait a short time.
-			uiauto.Sleep(500*time.Millisecond),
-		),
+	return uiauto.NamedCombine(fmt.Sprintf("to select cell %q", cell),
+		app.ui.DoDefaultUntil(nameField, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameFieldFocused)),
+		app.kb.AccelAction("Ctrl+A"),
+		app.kb.TypeAction(cell),
+		app.kb.AccelAction("Enter"),
+		// Given time to jump to the specific cell and select it.
+		// And because we cannot be sure whether the target cell is focused, we have to wait a short time.
+		uiauto.Sleep(500*time.Millisecond),
 	)
 }
 
@@ -432,9 +416,9 @@ func (app *GoogleDocs) renameFile(sheetName string) uiauto.Action {
 		app.validateEditMode,
 		app.ui.Retry(retryTimes, uiauto.Combine(`select "Rename" from the "File" menu`,
 			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileItem),
-				app.uiHdl.ClickUntil(fileItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileExpanded))),
+				app.ui.DoDefaultUntil(fileItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileExpanded))),
 			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameItem),
-				app.uiHdl.ClickUntil(renameItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameField))),
+				app.ui.DoDefaultUntil(renameItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameField))),
 		)),
 		uiauto.NamedAction("input the file name", inputFileName),
 		app.kb.AccelAction("Enter"),
@@ -503,13 +487,13 @@ func (app *GoogleDocs) checkDictionButton(ctx context.Context) error {
 }
 
 // NewGoogleDocs creates GoogleDocs instance which implements ProductivityApp interface.
-func NewGoogleDocs(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, uiHdl cuj.UIActionHandler) *GoogleDocs {
+func NewGoogleDocs(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, uiHdl cuj.UIActionHandler, tabletMode bool) *GoogleDocs {
 	return &GoogleDocs{
-		cr:    cr,
-		tconn: tconn,
-		ui:    uiauto.New(tconn),
-		kb:    kb,
-		uiHdl: uiHdl,
+		tconn:      tconn,
+		ui:         uiauto.New(tconn),
+		kb:         kb,
+		uiHdl:      uiHdl,
+		tabletMode: tabletMode,
 	}
 }
 

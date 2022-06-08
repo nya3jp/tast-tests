@@ -23,12 +23,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GoogleDocsWebCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of Google Docs web version CUJ",
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "jane.yang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
 			"ui.sampleGDocSheetURL", // Required. The URL of sample Google Sheet. It will be copied to create a new one to perform tests on.
 			"ui.cuj_mode",           // Optional. Expecting "tablet" or "clamshell".
@@ -36,20 +35,48 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 15 * time.Minute,
-				Val:     cuj.Basic,
+				Val: productivitycuj.ProductivityParam{
+					Tier: cuj.Basic,
+				},
+			},
+			{
+				Name:              "basic_lacros",
+				Fixture:           "loggedInAndKeepStateLacros",
+				Timeout:           15 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: productivitycuj.ProductivityParam{
+					Tier:     cuj.Basic,
+					IsLacros: true,
+				},
 			},
 			{
 				Name:      "premium",
+				Fixture:   "loggedInAndKeepState",
 				ExtraData: []string{"productivity_cuj_voice_to_text_en.wav"},
 				Timeout:   15 * time.Minute,
-				Val:       cuj.Premium,
+				Val: productivitycuj.ProductivityParam{
+					Tier: cuj.Premium,
+				},
+			},
+			{
+				Name:              "premium_lacros",
+				Fixture:           "loggedInAndKeepStateLacros",
+				ExtraData:         []string{"productivity_cuj_voice_to_text_en.wav"},
+				Timeout:           15 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: productivitycuj.ProductivityParam{
+					Tier:     cuj.Premium,
+					IsLacros: true,
+				},
 			},
 		},
 	})
 }
 
 func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
+	p := s.Param().(productivitycuj.ProductivityParam)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	sampleSheetURL, ok := s.Var("ui.sampleGDocSheetURL")
@@ -105,17 +132,18 @@ func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	tier := s.Param().(cuj.Tier)
-
-	office := productivitycuj.NewGoogleDocs(cr, tconn, kb, uiHdl)
+	office := productivitycuj.NewGoogleDocs(tconn, kb, uiHdl, tabletMode)
 
 	var expectedText, testFileLocation string
-	if tier == cuj.Premium {
+	if p.Tier == cuj.Premium {
 		expectedText = "Mary had a little lamb whose fleece was white as snow And everywhere that Mary went the lamb was sure to go"
 		testFileLocation = s.DataPath("productivity_cuj_voice_to_text_en.wav")
 	}
-
-	if err := productivitycuj.Run(ctx, cr, office, tier, tabletMode, browser.TypeAsh, s.OutDir(), sampleSheetURL, expectedText, testFileLocation); err != nil {
+	bt := browser.TypeAsh
+	if p.IsLacros {
+		bt = browser.TypeLacros
+	}
+	if err := productivitycuj.Run(ctx, cr, office, p.Tier, tabletMode, bt, s.OutDir(), sampleSheetURL, expectedText, testFileLocation); err != nil {
 		s.Fatal("Failed to run productivity cuj: ", err)
 	}
 }
