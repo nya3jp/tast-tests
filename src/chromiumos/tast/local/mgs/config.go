@@ -27,6 +27,8 @@ type MutableConfig struct {
 	MGSAccounts *policy.DeviceLocalAccounts
 	// ExtraPolicies holds extra policies that will be applied.
 	ExtraPolicies []policy.Policy
+	// ExternalPolicyBlob allows to specify a policy blob that is constructed externally.
+	ExternalPolicyBlob *policy.Blob
 	// PublicAccountPolicies holds public accounts' IDs with associated polices
 	// that will be applied to the them.
 	PublicAccountPolicies map[string][]policy.Policy
