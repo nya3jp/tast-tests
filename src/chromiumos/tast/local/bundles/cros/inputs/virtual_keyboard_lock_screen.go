@@ -43,6 +43,8 @@ func init() {
 			{
 				Name:    "clamshell",
 				Fixture: fixture.ClamshellVKRestart,
+				// Skip kodama in clamshell mode. See b/235292815 for more details.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("kodama")),
 			},
 		},
 	})
