@@ -66,14 +66,14 @@ func init() {
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Timeout:           20 * time.Minute,
+				Timeout:           56 * time.Minute,
 			}, {
 				Name:              "unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
-				Timeout:           20 * time.Minute,
+				Timeout:           56 * time.Minute,
 			},
 		},
 	})
@@ -150,13 +150,11 @@ func checkUsersAndInstall(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 			ui.CheckRestriction(installButton, restriction.None))(ctx); err != nil {
 			return errors.Wrapf(err, "failed to check user %s", userName)
 		}
-
 	}
 
 	// Install with the last user.
-	if err := uiauto.Combine("",
-		ui.LeftClick(installButton),
-		ui.WithTimeout(8*time.Minute).WaitUntilGone(cui.InstallWindow))(ctx); err != nil {
+	installer := cui.New(tconn)
+	if err := installer.Install(ctx); err != nil {
 		return errors.Wrapf(err, "failed to install Crostini with user %q", users[len(users)-1])
 	}
 
