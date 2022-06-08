@@ -59,7 +59,7 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, br *browser.Br
 	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(platformAuthenticatorButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to select platform authenticator from transport selection sheet")
 	}
-	if err = ui.LeftClick(platformAuthenticatorButton)(ctx); err != nil {
+	if err = ui.DoDefault(platformAuthenticatorButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click button for platform authenticator")
 	}
 
