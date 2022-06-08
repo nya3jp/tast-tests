@@ -22,6 +22,30 @@
       },
       "revId": "0a87996da5b9cff17d3d7063ffc876549b5416b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f1f12d_e48ead5d",
+        "filename": "android/ArcGamepadTest/src/org/chromium/arc/testapp/gamepad/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-06-08T14:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6fe743a_8e623a1d",
+      "range": {
+        "startLine": 171,
+        "startChar": 15,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "0a87996da5b9cff17d3d7063ffc876549b5416b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
