@@ -121,25 +121,31 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		testDuration = testParam.duration
 	}
 
-	var cr *chrome.Chrome
-	var cs ash.ConnSource
-
-	if testParam.bt == browser.TypeAsh {
-		cr = s.FixtValue().(chrome.HasChrome).Chrome()
-		cs = cr
-	} else {
-		var l *lacros.Lacros
-		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), testParam.bt)
-		if err != nil {
-			s.Fatal("Failed to initialize test: ", err)
-		}
-		defer lacros.CloseLacros(ctx, l)
-	}
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	var cs ash.ConnSource
+	var bTconn *chrome.TestConn
+	switch testParam.bt {
+	case browser.TypeLacros:
+		// Launch lacros.
+		l, err := lacros.Launch(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to launch lacros: ", err)
+		}
+		defer l.Close(ctx)
+		cs = l
+
+		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
+	case browser.TypeAsh:
+		cs = cr
+		bTconn = tconn
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
@@ -194,33 +200,15 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	ac := uiauto.New(tconn)
 
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter),
-	}
-	if tabletMode {
-		configs = append(configs,
-			cujrecorder.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
-			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.TabletMode"),
-			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit.TabletMode"),
-		)
-	} else {
-		configs = append(configs,
-			cujrecorder.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
-		)
-	}
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, configs...); err != nil {
-		s.Fatal("Failed to add recorded metrics: ", err)
+	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
+		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
+
 	if testParam.tracing {
 		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
