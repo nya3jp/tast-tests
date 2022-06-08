@@ -13,21 +13,6 @@ import (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "personalizationDefault",
-		Desc: "Login with Personalization Hub enabled",
-		Contacts: []string{
-			"thuongphan@google.com",
-			"chromeos-sw-engprod@google.com",
-			"assistive-eng@google.com",
-		},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.EnableFeatures("PersonalizationHub")}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
 		Name: "personalizationWithDarkLightMode",
 		Desc: "Login with Personalization Hub and Dark Light mode enabled",
 		Contacts: []string{
@@ -36,7 +21,7 @@ func init() {
 			"assistive-eng@google.com",
 		},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.EnableFeatures("PersonalizationHub", "DarkLightMode")}, nil
+			return []chrome.Option{chrome.EnableFeatures("DarkLightMode")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -56,7 +41,6 @@ func init() {
 					User: s.RequiredVar("ambient.username"),
 					Pass: s.RequiredVar("ambient.password"),
 				}),
-				chrome.EnableFeatures("PersonalizationHub"),
 			}, nil
 		}),
 		SetUpTimeout:    chrome.GAIALoginTimeout,
@@ -76,9 +60,35 @@ func init() {
 			"assistive-eng@google.com",
 		},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.EnableFeatures("PersonalizationHub", "RgbKeyboard")}, nil
+			return []chrome.Option{chrome.EnableFeatures("RgbKeyboard")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "personalizationWithGooglePhotosWallpaper",
+		Desc: "Login with Gaia account with Google Photos Wallpaper enabled",
+		Contacts: []string{
+			"thuongphan@google.com",
+			"chromeos-sw-engprod@google.com",
+			"assistive-eng@google.com",
+		},
+		// Setting Google Photos wallpapers requires that Chrome be logged in with
+		// a user from an account pool which has been preconditioned to have a
+		// Google Photos library with specific photos/albums present. Note that sync
+		// is disabled to prevent flakiness caused by wallpaper cross device sync.
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.GAIALoginPool(s.RequiredVar("wallpaper.googlePhotosAccountPool")),
+				chrome.EnableFeatures("WallpaperGooglePhotosIntegration"),
+				chrome.ExtraArgs("--disable-sync"),
+			}, nil
+		}),
+		Vars: []string{
+			"wallpaper.googlePhotosAccountPool",
+		},
+		SetUpTimeout:    chrome.GAIALoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})

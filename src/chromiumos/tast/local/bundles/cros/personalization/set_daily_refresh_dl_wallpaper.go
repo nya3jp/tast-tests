@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/local/wallpaper"
+	"chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
 
@@ -33,29 +34,25 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      3 * time.Minute,
+		Fixture:      "personalizationWithDarkLightMode",
 	})
 }
 
 func SetDailyRefreshDLWallpaper(ctx context.Context, s *testing.State) {
-	const dlCollection = "Element"
 	// Dark mode wallpaper title includes "Dark" word but light mode wallpaper title doesn't.
 	darkRegex := regexp.MustCompile(`Currently set Daily Refresh .*\sDark\s.*`)
 
-	clearUpCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
+	cr := s.FixtValue().(*chrome.Chrome)
 
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("PersonalizationHub", "DarkLightMode"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(clearUpCtx)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(clearUpCtx, s.OutDir(), s.HasError, tconn)
 
 	// Force Chrome to be in clamshell mode to make sure wallpaper preview is not
 	// enabled.
@@ -63,7 +60,9 @@ func SetDailyRefreshDLWallpaper(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
 	}
-	defer cleanup(clearUpCtx)
+	defer cleanup(cleanupCtx)
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// The test has a dependency of network speed, so we give uiauto.Context ample
 	// time to wait for nodes to load.
@@ -72,9 +71,10 @@ func SetDailyRefreshDLWallpaper(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("select Elements collection and enable daily refresh",
 		personalization.OpenPersonalizationHub(ui),
 		personalization.OpenWallpaperSubpage(ui),
-		wallpaper.SelectCollection(ui, dlCollection),
-		ui.LeftClick(nodewith.Name("Change wallpaper image daily").Role(role.ToggleButton)),
-		ui.WaitUntilExists(nodewith.Name("Refresh the current wallpaper image").Role(role.Button)))(ctx); err != nil {
+		wallpaper.SelectCollection(ui, constants.ElementCollection),
+		ui.LeftClick(constants.ChangeDailyButton),
+		ui.WaitUntilExists(constants.RefreshButton),
+	)(ctx); err != nil {
 		s.Fatal("Failed to enable daily refresh: ", err)
 	}
 
@@ -83,7 +83,8 @@ func SetDailyRefreshDLWallpaper(ctx context.Context, s *testing.State) {
 		personalization.NavigateHome(ui),
 		personalization.ToggleDarkMode(ui),
 		personalization.OpenWallpaperSubpage(ui),
-		ui.WaitUntilExists(darkWallpaper))(ctx); err != nil {
+		ui.WaitUntilExists(darkWallpaper),
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate daily refresh dark mode wallpaper: ", err)
 	}
 
@@ -92,7 +93,8 @@ func SetDailyRefreshDLWallpaper(ctx context.Context, s *testing.State) {
 		personalization.NavigateHome(ui),
 		personalization.ToggleLightMode(ui),
 		personalization.OpenWallpaperSubpage(ui),
-		ui.WaitUntilExists(dailyRefreshWallpaper))(ctx); err != nil {
+		ui.WaitUntilExists(dailyRefreshWallpaper),
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate daily refresh wallpaper: ", err)
 	}
 
