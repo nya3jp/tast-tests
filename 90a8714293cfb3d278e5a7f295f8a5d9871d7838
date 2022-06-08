@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83c5c652_70017e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-08T17:45:39Z",
+      "side": 1,
+      "message": "Updated. However, could you pls explain more how the error screenshot is different by putting `defer` here and after #82? Thanks a lot!",
+      "parentUuid": "c3d22eb2_380a8e7b",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 75
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8be7a929_b2b959c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
         "patchSetId": 5
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-08T07:38:53Z",
       "side": 1,
       "message": "I am confused about this action, are you trying to set to dark mode or auto mode?",
+      "range": {
+        "startLine": 88,
+        "startChar": 27,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "039b01dd_2c886235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-08T17:45:39Z",
+      "side": 1,
+      "message": "typo, updated to `auto mode`",
+      "parentUuid": "8be7a929_b2b959c8",
       "range": {
         "startLine": 88,
         "startChar": 27,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "662101cc_28261bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-08T17:45:39Z",
+      "side": 1,
+      "message": "oops I made it more complicated. Updated!",
+      "parentUuid": "c43b3dfd_8e51d775",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 13
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6531c6a_d0e2148d",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-06-08T07:38:53Z",
       "side": 1,
       "message": "Better to just use `CurrentWallpaper`.",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 26
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612a54a2_fe873569",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-08T17:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6531c6a_d0e2148d",
       "range": {
         "startLine": 178,
         "startChar": 5,
