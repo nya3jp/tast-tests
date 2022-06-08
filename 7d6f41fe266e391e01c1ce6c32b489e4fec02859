@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c09dd3e_8422a183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T20:59:43Z",
+      "side": 1,
+      "message": "When CheckVault is requested but with the wrong user on purpose.",
+      "parentUuid": "fd749b43_e37c6c8b",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1552fc7a_f814a486",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-08T19:47:02Z",
       "side": 1,
       "message": "Can you submit the lock screen test as another CL? This CL is already very big",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e32ea4_def53f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T20:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1552fc7a_f814a486",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "672726e8_00d469bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T20:59:43Z",
+      "side": 1,
+      "message": "Merge problem, forgot a line - basically utility :\u003d helper.CryptohomeClient()",
+      "parentUuid": "d35e7ac3_bc04edd1",
+      "range": {
+        "startLine": 139,
+        "startChar": 10,
+        "endLine": 139,
+        "endChar": 17
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a01c22_ae0b9248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T20:59:43Z",
+      "side": 1,
+      "message": "CreateUserAuthSessionWithChallengeCredentials() already invalidates the AuthSession on its own.",
+      "parentUuid": "b503b8da_738345a6",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 143
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdaa0f09_83a20649",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-06-08T19:47:02Z",
       "side": 1,
       "message": "is smartcard used with kiosk sessions?",
+      "range": {
+        "startLine": 444,
+        "startChar": 87,
+        "endLine": 444,
+        "endChar": 105
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea4b2e0c_d6937534",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T20:59:43Z",
+      "side": 1,
+      "message": "Yes, this calls --ensure_ephemeral during the AuthSession",
+      "parentUuid": "cdaa0f09_83a20649",
       "range": {
         "startLine": 444,
         "startChar": 87,
