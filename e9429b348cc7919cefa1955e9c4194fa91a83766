@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5106236_be4ebc0c",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-08T16:46:06Z",
+      "side": 1,
+      "message": "Thanks! I added comparison of config in the func and return error if config is not equal.",
+      "parentUuid": "3f9a601c_c12b1054",
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d707730_58270a7a",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-06-06T09:28:15Z",
       "side": 1,
       "message": "what these do look same? Can these be consolidated by the conversion between histogram and record?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 0
+      },
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2638700c_5911b47d",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-08T16:46:06Z",
+      "side": 1,
+      "message": "Converted histogram to record struct and use the combine() interface. Removed accumulate().",
+      "parentUuid": "6d707730_58270a7a",
       "range": {
         "startLine": 94,
         "startChar": 0,
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a2d8c1_64ebd656",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-08T16:46:06Z",
+      "side": 1,
+      "message": "Thanks for your review. I created a new CL https://crrev.com/c/3692360 to use browser.Browser to add recorder metrics.",
+      "parentUuid": "3754f6f5_a1622418",
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7260fcec_28ed2750",
@@ -105,6 +165,30 @@
       "writtenOn": "2022-06-06T09:28:15Z",
       "side": 1,
       "message": "same here.",
+      "range": {
+        "startLine": 540,
+        "startChar": 20,
+        "endLine": 540,
+        "endChar": 36
+      },
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47421bcb_04bf003a",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-08T16:46:06Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "7260fcec_28ed2750",
       "range": {
         "startLine": 540,
         "startChar": 20,
@@ -138,6 +222,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "853551cf_c7ddd423",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-08T16:46:06Z",
+      "side": 1,
+      "message": "Thanks for the review! I can confirm that TPS.* and \"psi_full_delta\" will not be changed. Only histograms collected from browsers will add the browser source suffix.\n\n\u003e I\u0027m wondering could we add these suffixes only for browser metrics? e.g. Ash.Window.AnimationSmoothness.Snap_ash-Chrome is a bit weird to me.\n\nThanks for the comment. The problem is we don\u0027t have a complete list indicating which UMAs are collected from Ash only and which are \"browser\" metrics. We found a few Ash.* UMAs, such as Ash.Window.AnimationSmoothness.Hide, can be collected from Lacros, too. I think we can keep this implementation for all UMAs at this time.",
+      "parentUuid": "d3b27cf3_c094e48a",
+      "range": {
+        "startLine": 689,
+        "startChar": 3,
+        "endLine": 689,
+        "endChar": 40
+      },
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "578f307f_88207d68",
@@ -151,6 +259,24 @@
       "writtenOn": "2022-06-06T09:28:15Z",
       "side": 1,
       "message": "const",
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a5f64a_49c9af7e",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-08T16:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "578f307f_88207d68",
       "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -172,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c72a0d_8e3045f1",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-08T16:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aaa5d98_457dcd3d",
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e66efb65_62393bcc",
@@ -185,6 +329,30 @@
       "writtenOn": "2022-06-06T09:28:15Z",
       "side": 1,
       "message": "could you not use tconn equality to identify if it is lacros or not?\nInstead, could you keep tracking what\u0027s lacros data and what\u0027s ash data?\n\nstyle: we do not use \"get\" as getter prefixes in most cases. If we would name this tconnName or something. (though again, I\u0027d recommend to get rid of this).\n\nAPI looks confusing, too. Taking two tconn so it\u0027s unclear \"name of which tconn\" is returned with a quick glance.",
+      "range": {
+        "startLine": 802,
+        "startChar": 0,
+        "endLine": 812,
+        "endChar": 1
+      },
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bb3080_b6ec9f7d",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-08T16:46:06Z",
+      "side": 1,
+      "message": "Removed this function. Added the browser type in browser.Browser struct so we can track the browser type.",
+      "parentUuid": "e66efb65_62393bcc",
       "range": {
         "startLine": 802,
         "startChar": 0,
