@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c434493_4614ea76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-08T23:11:24Z",
+      "side": 1,
+      "message": "\u003e \"inerface\" is a possible misspelling of \"interface\".\n\nPlease fix.",
+      "parentUuid": "9f2259b3_90552d51",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "3362910ea7bdf9e978bee04b0e4b94f167efc70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
