@@ -16,6 +16,24 @@
       "message": "We are thinking about running part of the ManaTEE runtime stack on non ManaTEE devices in the future for Keymint, so maybe we could test based on the manatee software dep, since it is intended to distinguish ManaTEE and non-ManaTEE devices:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/arc/arc.go;l\u003d443\n\nWe could make an `is_manatee(ctx context.Context)` function that checks for the manatee software dependency:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/security/manatee.go;l\u003d55",
       "revId": "d34ca46050d1fd5e35af21ba82730aca4e4a2112",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1199e19_75cfe39d",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-06-08T14:26:43Z",
+      "side": 1,
+      "message": "As I understand it, the tast SoftwareDeps are a property of the tests, not a property of the device. The tast infrastructure checks a test\u0027s SoftwareDeps against the device\u0027s use flags to make sure the test is running in the correct environment. However, as far as I know, there isn\u0027t a way for test code to query the device\u0027s use flags at runtime.\n\nThere is a function to get the SoftwareDeps from a context, but that was added to allow fixtures to ensure that their dependencies are available (i.e. ARC fixtures use it to check that tests properly declare an ARC SoftwareDep).",
+      "parentUuid": "0259be9a_81318477",
+      "revId": "d34ca46050d1fd5e35af21ba82730aca4e4a2112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
