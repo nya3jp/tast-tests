@@ -427,13 +427,6 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		repeatedSteps(testCase)
 	}
 
-	defer func() {
-		// To prevent leaving DUT in G3 at the end of test, perform a cold reset.
-		s.Log("Cold resetting DUT at the end of test")
-		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
-			s.Fatal("Failed to cold reset DUT at the end of test: ", err)
-		}
-	}()
 	s.Log("Setting power off")
 	if err := ms.PowerOff(ctx); err != nil {
 		s.Fatal("Failed to power off DUT: ", err)
