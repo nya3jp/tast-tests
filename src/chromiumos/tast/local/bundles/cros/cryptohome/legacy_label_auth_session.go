@@ -32,6 +32,7 @@ func LegacyLabelAuthSession(ctx context.Context, s *testing.State) {
 	const (
 		userName       = "foo@bar.baz"
 		userPassword   = "secret"
+		wrongPassword  = "wrong-password"
 		legacyKeyLabel = "legacy-0"
 		wrongKeyLabel  = "gaia"
 	)
@@ -104,4 +105,36 @@ func LegacyLabelAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 	defer client.UnmountAll(cleanupCtx)
+
+	// Verify lock-screen check passes with an explicit or wildcard label.
+	accepted, err := client.CheckVault(ctx, legacyKeyLabel, hwsec.NewPassAuthConfig(userName, userPassword))
+	if err != nil {
+		s.Fatal("Failed to check key with explicit label: ", err)
+	}
+	if !accepted {
+		s.Fatal("Key check with explicit label failed despite no error")
+	}
+	accepted, err = client.CheckVault(ctx /*keyLabel=*/, "", hwsec.NewPassAuthConfig(userName, userPassword))
+	if err != nil {
+		s.Fatal("Failed to check key with wildcard label: ", err)
+	}
+	if !accepted {
+		s.Fatal("Key check with wildcard label failed despite no error")
+	}
+
+	// Verify lock-screen check fails with wrong password or wrong label.
+	accepted, err = client.CheckVault(ctx, wrongKeyLabel, hwsec.NewPassAuthConfig(userName, userPassword))
+	if err == nil {
+		s.Fatal("Key check with wrong label succeeded when it shouldn't")
+	}
+	if accepted {
+		s.Fatal("Key check with wrong label succeeded despite an error")
+	}
+	accepted, err = client.CheckVault(ctx, legacyKeyLabel, hwsec.NewPassAuthConfig(userName, wrongPassword))
+	if err == nil {
+		s.Fatal("Key check with wrong password succeeded when it shouldn't")
+	}
+	if accepted {
+		s.Fatal("Key check with wrong password succeeded despite an error")
+	}
 }
