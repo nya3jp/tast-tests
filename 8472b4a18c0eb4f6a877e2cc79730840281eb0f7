@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8daf7a6b_b9ac20f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T19:08:05Z",
+      "side": 1,
+      "message": "To help with staying on a consistent schedule regardless of processing delay, I suggest:\n\tnow :\u003d time.Now()\n\tendTime :\u003d now.Add(duration)\n\tfor spiralStartTime :\u003d now;; spiralStartTime \u003d spiralStartTime.Add(singleSpiralDuration) {\nThen terminate the outer loop by writing `return nil` in the inner loop.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 71
+      },
+      "revId": "8472b4a18c0eb4f6a877e2cc79730840281eb0f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b6891d_527c0bc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T19:08:05Z",
+      "side": 1,
+      "message": "nit: The following code handles the whole spiral, so the word `Start` is not appropriate.",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "8472b4a18c0eb4f6a877e2cc79730840281eb0f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf9c313b_3acbab71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T19:08:05Z",
+      "side": 1,
+      "message": "Every iteration of the inner loop needs to compute the point where the mouse will belong after `deltaTime`, because when you use `mouse.Move(tconn, point, deltaTime)`, the mouse takes that long to get there. I suggest:\n\t\tfor {\n\t\t\ttargetTime :\u003d time.Now().Add(deltaTime)\n\t\t\tif !targetTime.Before(endTime) {\n\t\t\t\treturn nil\n\t\t\t}\n\t\t\ttimeSinceSpiralStart :\u003d targetTime.Sub(spiralStartTime)\n\t\t\tif timeSinceSpiralStart \u003e\u003d singleSpiralDuration {\n\t\t\t\tbreak\n\t\t\t}",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 58
+      },
+      "revId": "8472b4a18c0eb4f6a877e2cc79730840281eb0f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7594ac_91817f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T19:08:05Z",
+      "side": 1,
+      "message": "You can remove this because it will be unreachable when the loop only ends with `return nil`.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 11
+      },
+      "revId": "8472b4a18c0eb4f6a877e2cc79730840281eb0f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
