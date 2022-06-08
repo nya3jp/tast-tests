@@ -390,6 +390,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac7cc1b9_228bd5a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-08T03:12:43Z",
+      "side": 1,
+      "message": "I mean you either rename the function as: `func filesInDir(mountPath string)` or remove the `mountPath` param as this function is specific for listing removable devices. So in your patchset 3, the line should be:\n```\nfunc removableDirsList() ([]string, error) {\n```",
+      "parentUuid": "8691f382_50b8c23f",
+      "range": {
+        "startLine": 377,
+        "startChar": 5,
+        "endLine": 377,
+        "endChar": 22
+      },
+      "revId": "50beb6dacfa814cc2680143bb19e9b58eff42c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53d9a760_eb77a7c6",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_type_a_functionality_check.go",
         "patchSetId": 2
