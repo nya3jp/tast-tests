@@ -16,6 +16,74 @@
       "message": "(added one more mini-scenario - verifying that an wrong label never matches the labelless vault)",
       "revId": "ad001d2078a483a9815d68f539de10840167b935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b51d4b08_b66dd249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-08T00:48:34Z",
+      "side": 1,
+      "message": "Please add an explicit test timeout.",
+      "revId": "ad001d2078a483a9815d68f539de10840167b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ed788e_03c8b43d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-08T00:48:34Z",
+      "side": 1,
+      "message": "Nit: cleanupCtx is the standard name",
+      "revId": "ad001d2078a483a9815d68f539de10840167b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f74ed8_97cf57b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-08T00:48:34Z",
+      "side": 1,
+      "message": "Nit: Is there specific go recommendations on the style guide for parameter names? I looked but was unable to find any.\n\nIf not, then I think it\u0027d be better to follow the format for go/c-readability-advice#comment-argument-literals-with-their-parameter-names, as the flow makes it a lot more readable (eg. /*create\u003d*/true feels more readable than true /* create */).",
+      "revId": "ad001d2078a483a9815d68f539de10840167b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2742dea_02a2750d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-08T00:48:34Z",
+      "side": 1,
+      "message": "This looks like cleanup code to me? should it be deferred when you mount it?",
+      "revId": "ad001d2078a483a9815d68f539de10840167b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
