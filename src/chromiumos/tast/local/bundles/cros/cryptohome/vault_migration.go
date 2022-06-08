@@ -24,7 +24,7 @@ func init() {
 		Desc: "Test vault encryption migration from ecryptfs to fscrypt",
 		Contacts: []string{
 			"dlunev@chromium.org",
-			"cryptohome-core@chromium.org",
+			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{

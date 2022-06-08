@@ -24,7 +24,7 @@ func init() {
 		Desc: "Test if credentials are updated with AuthSession and that the user can mount post update",
 		Contacts: []string{
 			"hardikgoyal@chromium.org",
-			"cryptohome-core@chromium.org",
+			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline"},
 	})

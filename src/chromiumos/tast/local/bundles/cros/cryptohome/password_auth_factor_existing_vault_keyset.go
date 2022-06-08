@@ -25,7 +25,7 @@ func init() {
 		Desc: "Test AuthFactor API basic password flow when USS experiment is enabled but there is an existing VaultKeysets",
 		Contacts: []string{
 			"betuls@google.com",
-			"cryptohome-core@chromium.org",
+			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
 	})

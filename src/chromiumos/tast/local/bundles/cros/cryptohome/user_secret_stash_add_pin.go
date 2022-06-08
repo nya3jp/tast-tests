@@ -24,7 +24,7 @@ func init() {
 		Desc: "Test user secret stash basic add pin flow with password",
 		Contacts: []string{
 			"hardikgoyal@chromium.org",
-			"cryptohome-core@chromium.org",
+			"cryptohome-core@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"pinweaver", "reboot"},

@@ -24,7 +24,7 @@ func init() {
 		Desc: "Test addition and authentication of recovery auth factor with password",
 		Contacts: []string{
 			"anastasiian@chromium.org",
-			"cryptohome-core@chromium.org",
+			"cryptohome-core@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"tpm"},

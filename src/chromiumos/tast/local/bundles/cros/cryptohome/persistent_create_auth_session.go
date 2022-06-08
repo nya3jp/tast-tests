@@ -24,7 +24,7 @@ func init() {
 		Desc: "Test AuthSession with a new flow where we create before authenticate",
 		Contacts: []string{
 			"hardikgoyal@chromium.org",
-			"cryptohome-core@chromium.org",
+			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline"},
 	})

@@ -24,7 +24,7 @@ func init() {
 		Contacts: []string{
 			"dlunev@chromium.org",
 			"hardikgoyal@chromium.org",
-			"cryptohome-core@chromium.org",
+			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline"},
 		Data: []string{"testcert.p12"},
