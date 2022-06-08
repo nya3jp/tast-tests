@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -32,10 +33,12 @@ func init() {
 
 func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
 	const (
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		testFile        = "file"
-		testFileContent = "content"
+		userName                              = "foo@bar.baz"
+		userPassword                          = "secret"
+		testFile                              = "file"
+		testFileContent                       = "content"
+		wrongPassword                         = "wrongPassword"
+		cryptohomeErrorAuthorizationKeyFailed = 3
 	)
 
 	ctxForCleanUp := ctx
@@ -84,7 +87,18 @@ func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false, false)
+	// Authenticate with the wrong password.
+	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, wrongPassword, false, false)
+	var exitErr *hwsec.CmdExitError
+	if !errors.As(err, &exitErr) {
+		s.Fatalf("Unexpected error: got %q; want *hwsec.CmdExitError", err)
+	}
+	if exitErr.ExitCode != cryptohomeErrorAuthorizationKeyFailed {
+		s.Fatalf("Unexpected exit code: got %d; want %d", exitErr.ExitCode, cryptohomeErrorAuthorizationKeyFailed)
+	}
+
+	// Authenticate with the correct password.
+	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
