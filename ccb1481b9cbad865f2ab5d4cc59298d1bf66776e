@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "225d4f50_779ef350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T18:08:03Z",
+      "side": 1,
+      "message": "This has been changed to be a part of the general test functions, with lockScreenLogin() and persistentCreationAndRemount() seperated into their own tests.",
+      "parentUuid": "2aca5f36_5842c4fa",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 26
+      },
+      "revId": "ccb1481b9cbad865f2ab5d4cc59298d1bf66776e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05400a4c_56412dd0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-08T01:23:36Z",
       "side": 1,
       "message": "this shouldn\u0027t be needed. First creation always authenticates",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 200
+      },
+      "revId": "ccb1481b9cbad865f2ab5d4cc59298d1bf66776e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71f5e49_82871168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05400a4c_56412dd0",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c341109_a611b353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03d148d9_3a65a9d6",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "ccb1481b9cbad865f2ab5d4cc59298d1bf66776e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96be84e4_e38a8b28",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-08T01:23:36Z",
       "side": 1,
       "message": "Defer unmount",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "ccb1481b9cbad865f2ab5d4cc59298d1bf66776e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a4a6f54_95e4a44e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96be84e4_e38a8b28",
       "range": {
         "startLine": 129,
         "startChar": 0,

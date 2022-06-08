@@ -570,6 +570,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1192f626_e718c91a",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T18:08:03Z",
+      "side": 1,
+      "message": "IIUC, the function does this as of the latest patchset.",
+      "parentUuid": "abc849f9_98c4919c",
+      "range": {
+        "startLine": 456,
+        "startChar": 23,
+        "endLine": 456,
+        "endChar": 70
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccab320d_0b8c5647",
@@ -583,6 +607,30 @@
       "writtenOn": "2022-06-08T01:23:36Z",
       "side": 1,
       "message": "is this needed? On first creation it should be in authenticated status",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 2
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c40cb122_68a11c54",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccab320d_0b8c5647",
       "range": {
         "startLine": 460,
         "startChar": 0,
@@ -687,6 +735,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e42b41e_e3c867f8",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e3f4dff_1b80eea6",
+      "range": {
+        "startLine": 467,
+        "startChar": 22,
+        "endLine": 467,
+        "endChar": 42
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a216c483_e95bef18",
@@ -748,6 +820,30 @@
       "side": 1,
       "message": "seems like this is forgotton?",
       "parentUuid": "620ff315_6f8a131e",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 2
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "514b050a_d4db52c3",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-08T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8557a940_371b035d",
       "range": {
         "startLine": 467,
         "startChar": 0,
