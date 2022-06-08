@@ -7,7 +7,7 @@ package memory
 import (
 	"context"
 	"fmt"
-	"os/exec"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -70,10 +70,13 @@ func getGuestMemoryRssSizes(ctx context.Context, pid int) (map[uint64]uint64, er
 
 // ManaTEEMetrics generates metrics for ManaTEE hypervisor memory usage.
 func ManaTEEMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) error {
-	_, err := exec.LookPath("manatee")
-	if err != nil {
-		// If the manatee binary doesn't exist, then assume we're not running on manatee.
-		return nil
+	// Check whether or not we're running on ManaTEE by looking for the dugong
+	// upstart config. If it doesn't exist, skip the ManaTEE metrics.
+	if _, err := os.Stat("/etc/init/dugong.conf"); err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			return nil
+		}
+		return err
 	}
 
 	// The oldest crosvm process will be the main process of the CrOS guest.
