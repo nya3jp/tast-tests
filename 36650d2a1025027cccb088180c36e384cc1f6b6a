@@ -380,6 +380,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "974a102d_576e88e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-08T18:02:21Z",
+      "side": 1,
+      "message": "Oh. I see now, I fixed it.\n```\nfor \u003cinit\u003e; \u003ccondition\u003e; {\n\n}\n```",
+      "parentUuid": "8124b5b3_33c33a3f",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb9169ec_ab2e382d",
