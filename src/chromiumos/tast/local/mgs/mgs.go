@@ -66,10 +66,10 @@ func (m *MGS) Close(ctx context.Context) (retErr error) {
 		}
 	}(ctx)
 	// Apply empty policies.
-	if err := policyutil.ServeAndRefresh(ctx, m.fdms, m.cr, []policy.Policy{}); err != nil {
-		testing.ContextLog(ctx, "Could not serve and refresh empty policies. If mgs.AutoLaunch() option was used it may impact next test: ", err)
-		return errors.Wrap(err, "could not clear policies")
-	}
+	// if err := policyutil.ServeAndRefresh(ctx, m.fdms, m.cr, []policy.Policy{}); err != nil {
+	// testing.ContextLog(ctx, "Could not serve and refresh empty policies. If mgs.AutoLaunch() option was used it may impact next test: ", err)
+	// return errors.Wrap(err, "could not clear policies")
+	// }
 	return nil
 }
 
@@ -119,6 +119,9 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*MGS, *chr
 		}
 
 		pb := policy.NewBlob()
+		if cfg.m.ExternalPolicyBlob != nil {
+			pb = cfg.m.ExternalPolicyBlob
+		}
 		pb.AddPolicies(policies)
 		// Handle public account policies.
 		if cfg.m.PublicAccountPolicies != nil {
