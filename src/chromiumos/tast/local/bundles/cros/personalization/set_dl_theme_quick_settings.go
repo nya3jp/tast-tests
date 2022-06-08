@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/local/wallpaper"
+	"chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
 
@@ -41,12 +42,6 @@ func init() {
 }
 
 func SetDLThemeQuickSettings(ctx context.Context, s *testing.State) {
-	const (
-		dlCollection = "Element"
-		dImage       = "Wind Dark Digital Art by Rutger Paulusse"
-		lImage       = "Wind Light Digital Art by Rutger Paulusse"
-	)
-
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	cleanupCtx := ctx
@@ -73,30 +68,30 @@ func SetDLThemeQuickSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable light mode: ", err)
 	}
 
-	if err := uiauto.Combine(fmt.Sprintf("Change to light mode wallpaper %s %s", dlCollection, lImage),
+	if err := uiauto.Combine(fmt.Sprintf("Change to light mode wallpaper %s %s", constants.ElementCollection, constants.LightElementImage),
 		personalization.OpenWallpaperSubpage(ui),
-		wallpaper.SelectCollection(ui, dlCollection),
-		wallpaper.SelectImage(ui, lImage),
-		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", lImage)).Role(role.Heading)),
+		wallpaper.SelectCollection(ui, constants.ElementCollection),
+		wallpaper.SelectImage(ui, constants.LightElementImage),
+		ui.WaitUntilExists(wallpaper.CurrentWallpaperWithSpecificNameFinder(constants.LightElementImage)),
 		wallpaper.CloseWallpaperPicker(),
 	)(ctx); err != nil {
-		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", dlCollection, lImage, err)
+		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", constants.ElementCollection, constants.LightElementImage, err)
 	}
 
 	if err := toggleDarkThemeFromQuickSettings(ctx, tconn, ui); err != nil {
 		s.Fatal("Failed to turn on dark theme in Quick Settings: ", err)
 	}
 
-	if err := validateDLWallpaper(ctx, ui, dImage); err != nil {
-		s.Fatalf("Failed to change to dark mode wallpaper %v: %v", dImage, err)
+	if err := validateDLWallpaper(ctx, ui, constants.DarkElementImage); err != nil {
+		s.Fatalf("Failed to change to dark mode wallpaper %v: %v", constants.DarkElementImage, err)
 	}
 
 	if err := toggleDarkThemeFromQuickSettings(ctx, tconn, ui); err != nil {
 		s.Fatal("Failed to turn off dark theme in Quick Settings: ", err)
 	}
 
-	if err := validateDLWallpaper(ctx, ui, lImage); err != nil {
-		s.Fatalf("Failed to change to light mode wallpaper %v: %v", lImage, err)
+	if err := validateDLWallpaper(ctx, ui, constants.LightElementImage); err != nil {
+		s.Fatalf("Failed to change to light mode wallpaper %v: %v", constants.LightElementImage, err)
 	}
 }
 
@@ -154,7 +149,7 @@ func validateDLWallpaper(ctx context.Context, ui *uiauto.Context, image string) 
 		return errors.Wrap(err, "failed to open wallpaper picker")
 	}
 
-	currentWallpaper, err := currentlySetWallpaper(ctx, ui)
+	currentWallpaper, err := wallpaper.CurrentWallpaper(ctx, ui)
 	if err != nil {
 		return err
 	}
@@ -167,13 +162,4 @@ func validateDLWallpaper(ctx context.Context, ui *uiauto.Context, image string) 
 	}
 
 	return nil
-}
-
-func currentlySetWallpaper(ctx context.Context, ui *uiauto.Context) (string, error) {
-	currentlySetWallpaperFinder := nodewith.Role(role.Heading).NameStartingWith("Currently set")
-	currentlySetWallpaperNode, err := ui.Info(ctx, currentlySetWallpaperFinder)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to find currently set wallpaper")
-	}
-	return currentlySetWallpaperNode.Name, nil
 }

@@ -9,12 +9,12 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/media/imgcmp"
@@ -38,20 +38,22 @@ func init() {
 		Data:         []string{constants.LocalWallpaperFilename},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "personalizationDefault",
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
 func SetLocalWallpaper(ctx context.Context, s *testing.State) {
-	filePath := filepath.Join(filesapp.DownloadPath, constants.LocalWallpaperFilename)
-
 	cr := s.FixtValue().(*chrome.Chrome)
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Force Chrome to be in clamshell mode to make sure wallpaper view is clearly
 	// visible for us to compare it with the given rgba color.
@@ -59,7 +61,12 @@ func SetLocalWallpaper(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
+
+	filePath, err := wallpaper.LocalImageDownloadPath(ctx, cr.NormalizedUser(), constants.LocalWallpaperFilename)
+	if err != nil {
+		s.Fatalf("Failed to get path for file %v, %v: ", constants.LocalWallpaperFilename, err)
+	}
 
 	if err := fsutil.CopyFile(s.DataPath(constants.LocalWallpaperFilename), filePath); err != nil {
 		s.Fatalf("Could not copy %s to %s: %v", constants.LocalWallpaperFilename, filePath, err)

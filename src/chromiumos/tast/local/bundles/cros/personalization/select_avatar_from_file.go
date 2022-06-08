@@ -40,7 +40,8 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ambient.username", "ambient.password"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      chrome.GAIALoginTimeout + time.Minute,
+		Timeout:      3 * time.Minute,
+		Fixture:      "personalizationWithGaiaLogin",
 	})
 }
 
@@ -76,23 +77,11 @@ func selectProfileImage(ctx context.Context, ui *uiauto.Context) error {
 }
 
 func SelectAvatarFromFile(ctx context.Context, s *testing.State) {
-	// Reserve ten seconds for cleanup.
+	cr := s.FixtValue().(*chrome.Chrome)
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-
-	cr, err := chrome.New(
-		ctx,
-		chrome.EnableFeatures("PersonalizationHub"),
-		chrome.GAIALogin(chrome.Creds{
-			User: s.RequiredVar("ambient.username"),
-			Pass: s.RequiredVar("ambient.password"),
-		}),
-	)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"image"
 	"image/color"
+	"path/filepath"
 	"regexp"
 	"time"
 
@@ -19,16 +20,12 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
-)
-
-// Wallpaper human readable strings
-const (
-	Personalization = "Wallpaper & style"
 )
 
 // OpenWallpaperPicker returns an action to open the personalization hub and navigate to wallpaper subpage.
@@ -41,7 +38,7 @@ func OpenWallpaperPicker(ui *uiauto.Context) uiauto.Action {
 // SelectCollection returns an action to select the collection with the given collection name.
 func SelectCollection(ui *uiauto.Context, collection string) uiauto.Action {
 	// Collections that are fully loaded will have a name like "Name 10 Images".
-	loadedCollections := nodewith.Role(role.Button).HasClass("photo-inner-container").NameRegex(regexp.MustCompile(`.*\d+\s[iI]mages`))
+	loadedCollections := nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container").NameRegex(regexp.MustCompile(`.*\d+\s[iI]mages`))
 	desiredCollection := loadedCollections.NameStartingWith(collection)
 	return uiauto.Combine(fmt.Sprintf("select collection %q", collection),
 		// We should at least wait for a few collections to be loaded.
@@ -87,8 +84,7 @@ func BackToWallpaper(ui *uiauto.Context) uiauto.Action {
 
 // MinimizeWallpaperPicker returns an action to minimize the personalization hub.
 func MinimizeWallpaperPicker(ui *uiauto.Context) uiauto.Action {
-	windowNode := nodewith.NameContaining(Personalization).Role(role.Window).First()
-	minimizeBtn := nodewith.Name("Minimize").Role(role.Button).Ancestor(windowNode)
+	minimizeBtn := nodewith.Name("Minimize").Role(role.Button).Ancestor(personalization.PersonalizationHubWindow)
 	// Minimize window to get the view of wallpaper image.
 	return ui.LeftClickUntil(minimizeBtn, ui.Gone(minimizeBtn))
 }
@@ -108,15 +104,13 @@ func CloseWallpaperPicker() uiauto.Action {
 // WaitForWallpaperWithName checks that a text node exists inside the wallpaper app with the given name.
 // Requires the wallpaper app to be open.
 func WaitForWallpaperWithName(ui *uiauto.Context, name string) uiauto.Action {
-	windowNode := nodewith.NameContaining(Personalization).Role(role.Window).First()
-	wallpaperNameNode := nodewith.Name(fmt.Sprintf("Currently set %v", name)).Role(role.Heading).Ancestor(windowNode)
+	wallpaperNameNode := nodewith.Name(fmt.Sprintf("Currently set %v", name)).Role(role.Heading).Ancestor(personalization.PersonalizationHubWindow)
 	return ui.WaitUntilExists(wallpaperNameNode)
 }
 
 // ConfirmFullscreenPreview presses the "Set as wallpaper" button while in fullscreen preview mode.
 func ConfirmFullscreenPreview(ui *uiauto.Context) uiauto.Action {
-	windowNode := nodewith.NameContaining(Personalization).Role(role.Window).First()
-	selectButton := nodewith.Name("Set as wallpaper").Ancestor(windowNode).Role(role.Button)
+	selectButton := nodewith.Name("Set as wallpaper").Ancestor(personalization.PersonalizationHubWindow).Role(role.Button)
 	return uiauto.Combine("Confirm full screen preview",
 		ui.WaitUntilExists(selectButton),
 		ui.LeftClick(selectButton),
@@ -125,8 +119,7 @@ func ConfirmFullscreenPreview(ui *uiauto.Context) uiauto.Action {
 
 // CancelFullscreenPreview presses the "Exit wallpaper preview" button while in fullscreen preview mode.
 func CancelFullscreenPreview(ui *uiauto.Context) uiauto.Action {
-	windowNode := nodewith.NameContaining(Personalization).Role(role.Window).First()
-	cancelButton := nodewith.Name("Exit wallpaper preview").Ancestor(windowNode).Role(role.Button)
+	cancelButton := nodewith.Name("Exit wallpaper preview").Ancestor(personalization.PersonalizationHubWindow).Role(role.Button)
 	return uiauto.Combine("Cancel full screen preview",
 		ui.WaitUntilExists(cancelButton),
 		ui.LeftClick(cancelButton),
@@ -172,4 +165,33 @@ func ValidateDiff(img1, img2 image.Image, expectedPercent int) error {
 		return errors.Errorf("unexpected percentage: got %d%%; want at least %d%%", percentage, expectedPercent)
 	}
 	return nil
+}
+
+// CurrentWallpaperFinder finds currently set wallpaper node.
+func CurrentWallpaperFinder() *nodewith.Finder {
+	return nodewith.Role(role.Heading).NameStartingWith("Currently set")
+}
+
+// CurrentWallpaperWithSpecificNameFinder find currently set wallpaper with an exact match name.
+func CurrentWallpaperWithSpecificNameFinder(wallpaperName string) *nodewith.Finder {
+	return nodewith.Role(role.Heading).Name(fmt.Sprintf("Currently set %v", wallpaperName))
+}
+
+// CurrentWallpaper gets the name of the current wallpaper.
+func CurrentWallpaper(ctx context.Context, ui *uiauto.Context) (string, error) {
+	currentWallpaperNode, err := ui.Info(ctx, CurrentWallpaperFinder())
+	if err != nil {
+		return "", errors.Wrap(err, "failed to find currently set wallpaper")
+	}
+	return currentWallpaperNode.Name, nil
+}
+
+// LocalImageDownloadPath gets the path of a local image in Downloads folder.
+func LocalImageDownloadPath(ctx context.Context, user, image string) (string, error) {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, user)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get users Download path")
+	}
+	filePath := filepath.Join(downloadsPath, image)
+	return filePath, nil
 }

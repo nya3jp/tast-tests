@@ -196,24 +196,6 @@ func init() {
 		PostTestTimeout: resetTimeout,
 		Parent:          fixture.PersistentFamilyLinkARC,
 	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "familyLinkUnicornLoginWithPersonalizationHub",
-		Desc:     "Supervised Family Link user login with Unicorn account and Personalization Hub enabled",
-		Contacts: []string{"tobyhuang@chromium.org", "pzliu@google.com", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.unicornEmail", "family.unicornPassword", true, chrome.EnableFeatures("PersonalizationHub")),
-		Vars: []string{
-			"family.parentEmail",
-			"family.parentPassword",
-			"family.gellerEmail",
-			"family.gellerPassword",
-		},
-		SetUpTimeout:    chrome.GAIALoginChildTimeout,
-		ResetTimeout:    resetTimeout,
-		TearDownTimeout: resetTimeout,
-		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
-	})
 }
 
 type familyLinkFixture struct {

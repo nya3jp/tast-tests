@@ -13,8 +13,6 @@ import (
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"unicorn.wallpaperCategory", "unicorn.wallpaperName"},
-		Fixture:      "familyLinkUnicornLoginWithPersonalizationHub",
+		Fixture:      "familyLinkUnicornLogin",
 		Timeout:      5 * time.Minute,
 	})
 }
@@ -59,7 +57,8 @@ func SetOnlineWallpaperChild(ctx context.Context, s *testing.State) {
 		wallpaper.OpenWallpaperPicker(ui),
 		wallpaper.SelectCollection(ui, collection),
 		wallpaper.SelectImage(ui, image),
-		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", image)).Role(role.Heading)))(ctx); err != nil {
+		ui.WaitUntilExists(wallpaper.CurrentWallpaperWithSpecificNameFinder(image)),
+	)(ctx); err != nil {
 		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", collection, image, err)
 	}
 }
