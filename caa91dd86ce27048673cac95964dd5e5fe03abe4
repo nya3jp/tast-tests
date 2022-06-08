@@ -99,6 +99,30 @@
       },
       "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e6081c_0e9fffaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-08T23:18:22Z",
+      "side": 1,
+      "message": "\u003e This CL doesn\u0027t change the way of each test\u0027s UMA collection. It just changes the recorder.AddCollectedMetrics() API to use *Browser instead of *TestConn. The test originally collects metrics from Ash, so it keeps the Ash browser here.\n\n\nIt does not keep the original behavior. See line 77 in this file.\nI.e. lacros.Browser() will return lacros connection, won\u0027t it?",
+      "parentUuid": "00e4cb16_bb477e9b",
+      "range": {
+        "startLine": 107,
+        "startChar": 40,
+        "endLine": 107,
+        "endChar": 53
+      },
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
