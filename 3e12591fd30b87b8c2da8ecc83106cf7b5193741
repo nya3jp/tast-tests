@@ -39,6 +39,30 @@
       },
       "revId": "3e12591fd30b87b8c2da8ecc83106cf7b5193741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "473d3fef_663a96a0",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-08T19:44:12Z",
+      "side": 1,
+      "message": "Ideally we\u0027d like to run all the test vectors regardless whether\nthey pass or fail, and produce an overall result ORing all the\nfailures. If we were to return and err in e.g. l.197 or l.201,\nwe would possibly not run them all.",
+      "parentUuid": "e08d5f33_73337c31",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "3e12591fd30b87b8c2da8ecc83106cf7b5193741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
