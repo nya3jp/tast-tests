@@ -116,6 +116,24 @@
       "parentUuid": "b52db893_e58db751",
       "revId": "2cca6d462d5b0db845f2ee93504a22042077dc71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cfbc7e9_d42ad959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-08T16:41:55Z",
+      "side": 1,
+      "message": "Why do you need to do it by just one regex?\nYou can write a go code to process strings. You don\u0027t need shell here.",
+      "parentUuid": "d8b1303d_3f3091ed",
+      "revId": "2cca6d462d5b0db845f2ee93504a22042077dc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
