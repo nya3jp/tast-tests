@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98daabbc_845c3ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-08T15:35:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b130578f_951d4946",
+      "revId": "267b09edea718880dabe61e6efbc08ac491699f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ac364d0_41e48bd5",
