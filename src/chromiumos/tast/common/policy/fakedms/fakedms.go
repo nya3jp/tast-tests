@@ -60,6 +60,7 @@ var selectorSanitizeRE = regexp.MustCompile("[^A-Za-z0-9.@-]")
 
 // A FakeDMS struct contains information about a running policy_testserver instance.
 type FakeDMS struct {
+	ctx                context.Context
 	cmd                *testexec.Cmd // fakedms process
 	URL                string        // fakedms url; needs to be passed to Chrome; set in start()
 	done               chan struct{} // channel that is closed when Wait() completes
@@ -129,6 +130,7 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 	cmd.ExtraFiles = []*os.File{fw}
 
 	fdms := &FakeDMS{
+		ctx:                ctx,
 		cmd:                cmd,
 		done:               make(chan struct{}, 1),
 		policyPath:         policyPath,
@@ -240,6 +242,7 @@ func (fdms *FakeDMS) WriteExtensionPolicies(pb *policy.Blob) error {
 	if err := os.RemoveAll(fdms.extensionPolicyDir); err != nil {
 		return errors.Wrap(err, "failed to remove data dir")
 	}
+	testing.ContextLog(fdms.ctx, "!!! Writing extension policies ", pb.ExtensionPM)
 	if pb.ExtensionPM == nil || len(pb.ExtensionPM) == 0 {
 		return nil
 	}
@@ -254,6 +257,12 @@ func (fdms *FakeDMS) WriteExtensionPolicies(pb *policy.Blob) error {
 		path := filepath.Join(fdms.extensionPolicyDir, fmt.Sprintf("policy_%s.data", sanitizedSelector))
 		if err := ioutil.WriteFile(path, pJSON, 0644); err != nil {
 			return errors.Wrapf(err, "failed to write policy for extension %s", id)
+		}
+		testing.ContextLogf(fdms.ctx, "Wrote %s", path)
+		if entries, err := os.ReadDir(fdms.extensionPolicyDir + "/.."); err == nil {
+			for _, entry := range entries {
+				testing.ContextLogf(fdms.ctx, "entry %s", entry.Name())
+			}
 		}
 	}
 

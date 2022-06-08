@@ -143,9 +143,17 @@ func (f *fakeDMSFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 	// Add prefix for consistency with copied policy file.
 	src = filepath.Join(f.fdmsDir, fakedms.ExtensionPolicyDir)
 	dst = filepath.Join(s.OutDir(), "fakedms_"+fakedms.ExtensionPolicyDir)
+	testing.ContextLogf(ctx, "Copying dir %s if exist", src)
 	if stat, err := os.Stat(src); err == nil && stat.Mode()&os.ModeType == os.ModeDir {
 		if err := fsutil.CopyDir(src, dst); err != nil {
 			s.Error("Failed to copy external FakeDMS policies: ", err)
+		}
+	} else {
+		testing.ContextLogf(ctx, "Failed to copy dir %s: err = %v, stat = %v", src, err, stat)
+		if entries, err := os.ReadDir(f.fdmsDir); err == nil {
+			for _, entry := range entries {
+				testing.ContextLogf(ctx, "entry %s", entry.Name())
+			}
 		}
 	}
 }
