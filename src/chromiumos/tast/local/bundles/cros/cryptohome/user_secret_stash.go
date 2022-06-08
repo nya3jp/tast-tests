@@ -24,7 +24,7 @@ func init() {
 		Desc: "Test user secret stash basic password flow",
 		Contacts: []string{
 			"emaxx@chromium.org",
-			"cryptohome-core@chromium.org",
+			"cryptohome-core@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
 	})
