@@ -16,6 +16,24 @@
       "message": "Refer to my comment in https://crrev.com/c/3692569",
       "revId": "a7b9c68cf58832ab7dbe51b9061c445d09b60f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17967e13_02258129",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-06-08T01:38:18Z",
+      "side": 1,
+      "message": "Thank you for your suggestion.\nI updated DoDefaultUntil() to\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3694813/\nPlease review, thank you!",
+      "parentUuid": "59556f5b_31a7b691",
+      "revId": "a7b9c68cf58832ab7dbe51b9061c445d09b60f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
