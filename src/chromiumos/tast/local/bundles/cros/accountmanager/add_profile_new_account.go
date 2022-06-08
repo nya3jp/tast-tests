@@ -30,14 +30,16 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "loggedInToLacros",
-		VarDeps:      []string{"accountmanager.username1", "accountmanager.password1"},
-		Timeout:      6 * time.Minute,
+		VarDeps: []string{
+			"accountmanager.AddProfileNewAccount.username",
+			"accountmanager.AddProfileNewAccount.password"},
+		Timeout: 6 * time.Minute,
 	})
 }
 
 func AddProfileNewAccount(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("accountmanager.username1")
-	password := s.RequiredVar("accountmanager.password1")
+	username := s.RequiredVar("accountmanager.AddProfileNewAccount.username")
+	password := s.RequiredVar("accountmanager.AddProfileNewAccount.password")
 
 	// Reserve one minute for various cleanup.
 	cleanupCtx := ctx

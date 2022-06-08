@@ -37,20 +37,20 @@ func init() {
 			Fixture:           "loggedInToChromeAndArcWithLacros",
 		}},
 		VarDeps: []string{
-			"accountmanager.username1",
-			"accountmanager.password1",
-			"accountmanager.username2",
-			"accountmanager.password2",
+			"accountmanager.ARCAccountPickerNewAccount.username1",
+			"accountmanager.ARCAccountPickerNewAccount.password1",
+			"accountmanager.ARCAccountPickerNewAccount.username2",
+			"accountmanager.ARCAccountPickerNewAccount.password2",
 		},
 		Timeout: 6 * time.Minute,
 	})
 }
 
 func ARCAccountPickerNewAccount(ctx context.Context, s *testing.State) {
-	username1 := s.RequiredVar("accountmanager.username1")
-	password1 := s.RequiredVar("accountmanager.password1")
-	username2 := s.RequiredVar("accountmanager.username2")
-	password2 := s.RequiredVar("accountmanager.password2")
+	username1 := s.RequiredVar("accountmanager.ARCAccountPickerNewAccount.username1")
+	password1 := s.RequiredVar("accountmanager.ARCAccountPickerNewAccount.password1")
+	username2 := s.RequiredVar("accountmanager.ARCAccountPickerNewAccount.username2")
+	password2 := s.RequiredVar("accountmanager.ARCAccountPickerNewAccount.password2")
 
 	// Reserve one minute for various cleanup.
 	cleanupCtx := ctx
