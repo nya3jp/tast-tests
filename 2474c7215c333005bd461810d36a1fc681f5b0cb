@@ -16,6 +16,29 @@
       "message": "I\u0027m no longer in Tast reviewers, Oleh could you approve?\n",
       "revId": "2474c7215c333005bd461810d36a1fc681f5b0cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b61841c7_02dd31ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-08T10:34:47Z",
+      "side": 1,
+      "message": "nit: rename to cleanUp since you don\u0027t expose it outside of the package.",
+      "range": {
+        "startLine": 220,
+        "startChar": 5,
+        "endLine": 220,
+        "endChar": 12
+      },
+      "revId": "2474c7215c333005bd461810d36a1fc681f5b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
