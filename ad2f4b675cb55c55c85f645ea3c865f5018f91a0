@@ -441,6 +441,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6fced3_af392c42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T01:23:36Z",
+      "side": 1,
+      "message": "Yes thats the correct order. I mixed up 2 and 3. What I meant was that this should go into the session creation code which you already fixed.",
+      "parentUuid": "625be90c_ed689d64",
+      "range": {
+        "startLine": 123,
+        "startChar": 18,
+        "endLine": 123,
+        "endChar": 40
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7652b681_c9a5900e",
@@ -525,6 +549,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abc849f9_98c4919c",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T01:23:36Z",
+      "side": 1,
+      "message": "Add credentials should go after creating and preparing the vault",
+      "range": {
+        "startLine": 456,
+        "startChar": 23,
+        "endLine": 456,
+        "endChar": 70
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccab320d_0b8c5647",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T01:23:36Z",
+      "side": 1,
+      "message": "is this needed? On first creation it should be in authenticated status",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 2
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "441dc8a2_c307470f",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 3
@@ -570,6 +640,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5bb1ebf_3321d820",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T01:23:36Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "dddb1f85_7248bb17",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 59
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e3f4dff_1b80eea6",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T01:23:36Z",
+      "side": 1,
+      "message": "is PreparePersistentVault forgotton?",
+      "range": {
+        "startLine": 467,
+        "startChar": 22,
+        "endLine": 467,
+        "endChar": 42
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a216c483_e95bef18",
@@ -607,6 +724,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "a216c483_e95bef18",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 2
+      },
+      "revId": "ad2f4b675cb55c55c85f645ea3c865f5018f91a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8557a940_371b035d",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T01:23:36Z",
+      "side": 1,
+      "message": "seems like this is forgotton?",
+      "parentUuid": "620ff315_6f8a131e",
       "range": {
         "startLine": 467,
         "startChar": 0,
