@@ -22,6 +22,30 @@
       },
       "revId": "d1f5118d07005c52a86c3a72e4cfaed8f226f94e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e412249_23ed3a84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-06-08T01:37:09Z",
+      "side": 1,
+      "message": "Thank you for your suggestion.\nI updated DoDefaultUntil() to\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3694813/\nPlease review, thank you!",
+      "parentUuid": "33307925_1501bd4b",
+      "range": {
+        "startLine": 289,
+        "startChar": 15,
+        "endLine": 289,
+        "endChar": 20
+      },
+      "revId": "d1f5118d07005c52a86c3a72e4cfaed8f226f94e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
