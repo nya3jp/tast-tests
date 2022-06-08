@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "225abb95_b5403e5a",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-06-08T13:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "523f108d_8fc4585a",
+      "revId": "3743ba652210bc77bd9b2da2032b7249f7992fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c73ed1c7_544ad0f9",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1236fb2a_7a6f7b7e",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-06-08T13:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c73ed1c7_544ad0f9",
+      "revId": "3743ba652210bc77bd9b2da2032b7249f7992fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b7140e1_0775b7bc",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-08T12:38:06Z",
       "side": 1,
       "message": "minor nit: add a comment on why this is needed/why _ is used.",
+      "revId": "3743ba652210bc77bd9b2da2032b7249f7992fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d835f0ef_d5198276",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-06-08T13:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b7140e1_0775b7bc",
       "revId": "3743ba652210bc77bd9b2da2032b7249f7992fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
