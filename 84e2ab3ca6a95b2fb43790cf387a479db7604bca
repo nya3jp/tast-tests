@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721bfa92_ad381701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T05:06:19Z",
+      "side": 1,
+      "message": "you still need to check that this is equal to the expectedPath",
+      "range": {
+        "startLine": 257,
+        "startChar": 74,
+        "endLine": 257,
+        "endChar": 104
+      },
+      "revId": "84e2ab3ca6a95b2fb43790cf387a479db7604bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
