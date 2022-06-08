@@ -179,13 +179,8 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 		return errors.Wrap(err, "failed finding Developer Options")
 	}
 
-	backup := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)backup"), androidui.Enabled(true))
-	if err := backup.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed finding Backup")
-	}
-
-	if err := backup.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Backup")
+	if err := enterBackupSettings(ctx,arcDevice); err != nil {
+		return errors.Wrap(err, "failed entering backup settings")
 	}
 
 	if err := testBackupToggle(ctx, arcDevice); err != nil {
@@ -257,6 +252,19 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 	return nil
 }
 
+// enterBackupSettings checks and taps on Backup to launch the backup page.
+func enterBackupSettings(ctx context.Context, arcDevice *androidui.Device) error {
+
+	backup := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)backup"), androidui.Enabled(true))
+	if err := backup.WaitForExists(ctx, timeoutUI); err == nil {
+		testing.ContextLog(ctx, "Enter backup settings page")
+		if err := backup.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Backup")
+		}
+	}
+	return nil
+}
+
 // testBackupToggle verifes if backup button can be turned off and on.
 func testBackupToggle(ctx context.Context, arcDevice *androidui.Device) error {
 	const backupID = "android:id/switch_widget"
@@ -269,6 +277,11 @@ func testBackupToggle(ctx context.Context, arcDevice *androidui.Device) error {
 		testing.ContextLog(ctx, "Turn on button doesn't exist")
 	} else if err := backupToggleOn.Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click Turn on button")
+	}
+
+	// Sometimes backup page closes when gms core updates.Hence check and tap on backup if it is exists.
+	if err := enterBackupSettings(ctx,arcDevice); err != nil {
+		return errors.Wrap(err, "failed entering backup settings")
 	}
 
 	oldBackupUI := false
