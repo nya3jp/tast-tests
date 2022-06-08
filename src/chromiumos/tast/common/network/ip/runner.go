@@ -182,6 +182,33 @@ func (r *Runner) AddIP(ctx context.Context, iface string, ip net.IP, maskLen int
 	return nil
 }
 
+// DeleteIP deletes IPv4/IPv6 settings from the interface (iface).
+func (r *Runner) DeleteIP(ctx context.Context, iface string, ip net.IP, maskLen int) error {
+	args := []string{"addr", "del", fmt.Sprintf("%s/%d", ip.String(), maskLen), "dev", iface}
+	if err := r.cmd.Run(ctx, "ip", args...); err != nil {
+		return errors.Wrapf(err, "failed to delete IP address on %s", iface)
+	}
+	return nil
+}
+
+// RouteIP adds ip route to the interface (iface).
+func (r *Runner) RouteIP(ctx context.Context, iface string, ip net.IP) error {
+	args := []string{"route", "replace", "table", "255", ip.String(), "dev", iface}
+	if err := r.cmd.Run(ctx, "ip", args...); err != nil {
+		return errors.Wrapf(err, "failed to route IP address on %s", iface)
+	}
+	return nil
+}
+
+// DeleteIPRoute deletes ip route from the interface (iface).
+func (r *Runner) DeleteIPRoute(ctx context.Context, iface string, ip net.IP) error {
+	args := []string{"route", "del", "table", "255", ip.String(), "dev", iface}
+	if err := r.cmd.Run(ctx, "ip", args...); err != nil {
+		return errors.Wrapf(err, "failed to delete IP address route on %s", iface)
+	}
+	return nil
+}
+
 // FlushIP flushes IP setting on iface.
 func (r *Runner) FlushIP(ctx context.Context, iface string) error {
 	if err := r.cmd.Run(ctx, "ip", "addr", "flush", iface); err != nil {
