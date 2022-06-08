@@ -16,6 +16,24 @@
       "message": "split the change up please.",
       "revId": "f477f319a72464e424d3f1da260588a30b07d1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d003e7_983e6388",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-08T23:13:13Z",
+      "side": 1,
+      "message": "I splitted the change to multiple CLs. However, this change is still 474 lines. Please let me know If I need to split more.",
+      "parentUuid": "9041562f_12527e0c",
+      "revId": "f477f319a72464e424d3f1da260588a30b07d1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
