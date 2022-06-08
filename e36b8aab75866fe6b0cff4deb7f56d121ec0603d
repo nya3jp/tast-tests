@@ -56,6 +56,30 @@
       },
       "revId": "e36b8aab75866fe6b0cff4deb7f56d121ec0603d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36fc4f0e_f1924cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-06-08T07:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a523fc_e9a88d8d",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "e36b8aab75866fe6b0cff4deb7f56d121ec0603d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
