@@ -117,6 +117,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3b27cf3_c094e48a",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-06-08T07:27:36Z",
+      "side": 1,
+      "message": "I\u0027m fine with adding \"_lacros-Chrome\" and \"_ash-Chrome\" suffixes, but I\u0027m wondering could we add these suffixes only for browser metrics? e.g. Ash.Window.AnimationSmoothness.Snap_ash-Chrome is a bit weird to me. Wdty?\n\nAdding suffixes to metrics in `common_metrics.go` won\u0027t affect much of our data pipeline for now as we only use \"TPS.*\" and metrics from memInfoTracker (e.g. \"psi_full_delta_final\") to compute TPS scores. Could you confirm that \"TPS.*\" and \"psi_full_delta_final\"[1] won\u0027t be changed by this CL?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/memory/psi_stats.go;l\u003d202?q\u003dpsi_full_delta\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2F",
+      "range": {
+        "startLine": 689,
+        "startChar": 3,
+        "endLine": 689,
+        "endChar": 40
+      },
+      "revId": "e9429b348cc7919cefa1955e9c4194fa91a83766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "578f307f_88207d68",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 5
