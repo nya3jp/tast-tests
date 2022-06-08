@@ -131,6 +131,34 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBusterRestart",
+		Desc:            "Install Crostini with Buster, restart after test",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBuster, restart: true},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		ResetTimeout:    checkContainerTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
+		Vars:            []string{"keepState"},
+		Data:            []string{GetContainerMetadataArtifact("buster", false), GetContainerRootfsArtifact("buster", false)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseyeRestart",
+		Desc:            "Install Crostini with Bullseye, restart after test",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBullseye, restart: true},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		ResetTimeout:    checkContainerTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
+		Vars:            []string{"keepState"},
+		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBusterGaia",
 		Desc:            "Install Crostini with Buster in Chrome logged in with Gaia",
 		Contacts:        []string{"clumptini+oncall@google.com"},
@@ -230,6 +258,7 @@ type crostiniFixture struct {
 	kb       *input.KeyboardEventWriter
 	preData  *preTestData
 	postData *PostTestData
+	restart  bool
 }
 
 // FixtureData is the data returned by SetUp and passed to tests.
@@ -339,14 +368,19 @@ func (f *crostiniFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 }
 
 func (f *crostiniFixture) Reset(ctx context.Context) error {
+	// TODO(b/235294264): implement a more time-efficient way to reset crostini environment.
 	// Check container.
 	// It returns error in the following situations:
 	// 1. no container
 	// 2. container does not work
 	// 3. chrome is not responsive
 	// 4. fail to reset chrome.
+	// 5. a restart is explicitly required
 	// Note that 3 and 4 is already done by the parent fixture.
 	// Otherwise, return nil.
+	if f.restart {
+		return errors.New("Intended error to trigger fixture restart")
+	}
 	if f.cont == nil {
 		return errors.New("There is no container")
 	}
