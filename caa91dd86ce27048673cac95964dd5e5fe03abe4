@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a6094c_4c5935c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-08T23:36:09Z",
+      "side": 1,
+      "message": "Could you add more details about what was changed here?\nI think that the widest impact of this change is that it adds browser type attribute to the Browser object. (Browser object is used more often than the CUJ recorder.)\n\nAnd then we use Browser object with the new type attribute to store metrics per browser type in the CUJ recorder.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d0795f1d_0c64c5d3",
@@ -86,6 +109,29 @@
       "side": 1,
       "message": "Thanks Alexander! Actually after reading your comment, I realized I need to update https://crrev.com/c/3656132 to use browser Type as the map key, instead of *browser.Browser. I\u0027ll change that!",
       "parentUuid": "afc495ff_871d0513",
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3d3060_db794d7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-08T23:36:09Z",
+      "side": 1,
+      "message": "I feel that bBrowser is confusing.\nCould we maybe call it \"br\" as I see in some tests below?",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 13
+      },
       "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -180,6 +226,29 @@
         "startChar": 40,
         "endLine": 107,
         "endChar": 53
+      },
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc7bece_8d30ca7a",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-08T23:36:09Z",
+      "side": 1,
+      "message": "nit: recording",
+      "range": {
+        "startLine": 461,
+        "startChar": 19,
+        "endLine": 461,
+        "endChar": 25
       },
       "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
