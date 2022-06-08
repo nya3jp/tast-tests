@@ -163,7 +163,6 @@ func restoreDataRegularBoot(ctx context.Context, testDir string, creds *chrome.C
 
 	opts := []chrome.Option{
 		chrome.ARCSupported(),
-		chrome.RestrictARCCPU(),
 		chrome.GAIALogin(*creds),
 		chrome.KeepState(),
 	}

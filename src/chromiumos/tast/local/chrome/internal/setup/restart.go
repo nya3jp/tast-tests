@@ -164,7 +164,7 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 			"--arc-play-store-auto-update=off",
 			// Make 1 Android pixel always match 1 Chrome devicePixel.
 			"--force-remote-shell-scale=")
-		if !cfg.RestrictARCCPU() {
+		if cfg.UnRestrictARCCPU() {
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
 				"--disable-arc-cpu-restriction")

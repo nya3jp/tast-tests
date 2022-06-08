@@ -99,7 +99,8 @@ func NativeBridge(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(cfg.chromeExtraArgs...))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU(),
+		chrome.ExtraArgs(cfg.chromeExtraArgs...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

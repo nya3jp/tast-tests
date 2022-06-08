@@ -92,7 +92,8 @@ func init() {
 
 func ResizeLock(ctx context.Context, s *testing.State) {
 	// Ensure to enable the finch flag.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=ArcResizeLock"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU(),
+		chrome.ExtraArgs("--enable-features=ArcResizeLock"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

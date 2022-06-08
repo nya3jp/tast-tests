@@ -105,6 +105,7 @@ func EnterpriseLogin(ctx context.Context, s *testing.State) {
 		ctx,
 		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.ARCSupported(),
+		chrome.UnRestrictARCCPU(),
 		// TODO(b/154760453): switch to fake DMS once crbug.com/1099310 is resolved
 		chrome.ProdPolicy())
 	if err != nil {

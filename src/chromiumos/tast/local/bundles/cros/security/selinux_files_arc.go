@@ -51,7 +51,7 @@ type arcFileTestCase struct {
 func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 	// Side effect of other tests in the same arc.Booted() may cause this
 	// test more flaky.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU())
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}

@@ -175,7 +175,7 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, a *arc.ARC, tcon
 func PhysicalKeyboardAllkeys(ctx context.Context, s *testing.State) {
 	const apk = "ArcKeyboardTest.apk"
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU())
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

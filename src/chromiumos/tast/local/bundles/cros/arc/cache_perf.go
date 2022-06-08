@@ -225,7 +225,6 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 	// Setup Chrome.
 	cr, err := chrome.New(ctx,
 		chrome.ARCSupported(),
-		chrome.RestrictARCCPU(),
 		chrome.GAIALoginPool(s.RequiredVar("arc.perfAccountPool")),
 		chrome.ExtraArgs(args...))
 	if err != nil {

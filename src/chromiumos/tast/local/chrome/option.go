@@ -334,12 +334,12 @@ func ARCSupported() Option {
 	}
 }
 
-// RestrictARCCPU returns an Option that can be passed to New which controls whether
-// to let Chrome use CGroups to limit the CPU time of ARC when in the background.
-// Most ARC-related tests should not pass this option.
-func RestrictARCCPU() Option {
+// UnRestrictARCCPU returns an Option that can be passed to New which controls whether
+// to not let Chrome use CGroups to limit the CPU time of ARC when in the background.
+// Most ARC-related tests should pass this option.
+func UnRestrictARCCPU() Option {
 	return func(cfg *config.MutableConfig) error {
-		cfg.RestrictARCCPU = true
+		cfg.UnRestrictARCCPU = true
 		return nil
 	}
 }

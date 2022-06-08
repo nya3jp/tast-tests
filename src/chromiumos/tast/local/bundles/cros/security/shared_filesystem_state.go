@@ -110,6 +110,7 @@ func SharedFilesystemState(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.ARCEnabled(),
+		chrome.UnRestrictARCCPU(),
 	)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)

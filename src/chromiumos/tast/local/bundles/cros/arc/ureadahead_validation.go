@@ -126,7 +126,7 @@ func dumpGuestPack(ctx context.Context, logPath string) error {
 	// File path for ureadahead pack in the quest OS.
 	const ureadaheadDataDir = "/var/lib/ureadahead"
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU())
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to Chrome")
 	}

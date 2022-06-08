@@ -161,7 +161,6 @@ func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Cre
 
 	opts := []chrome.Option{
 		chrome.ARCSupported(),
-		chrome.RestrictARCCPU(),
 		chrome.GAIALogin(creds),
 		chrome.KeepState(),
 		chrome.ExtraArgs(append(arc.DisableSyncFlags(), chromeArgs...)...)}

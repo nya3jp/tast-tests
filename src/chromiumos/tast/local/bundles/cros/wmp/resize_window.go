@@ -61,7 +61,8 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 
 	var opts []chrome.Option
 	if isArc {
-		opts = append(opts, chrome.ARCEnabled(), chrome.FakeLogin(chrome.Creds{User: "testuser@gmail.com", Pass: "test1234"}))
+		opts = append(opts, chrome.ARCEnabled(), chrome.UnRestrictARCCPU(),
+			chrome.FakeLogin(chrome.Creds{User: "testuser@gmail.com", Pass: "test1234"}))
 	} else {
 		opts = append(opts, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
 	}

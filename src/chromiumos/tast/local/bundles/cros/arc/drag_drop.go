@@ -117,7 +117,8 @@ func DragDrop(ctx context.Context, s *testing.State) {
 	args := s.Param().(*dragDropTestArgs)
 
 	var extID string
-	chromeOpts := []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"), chrome.ExtraArgs("--disable-features=ArcResizeLock")}
+	chromeOpts := []chrome.Option{chrome.ARCEnabled(), chrome.UnRestrictARCCPU(),
+		chrome.ExtraArgs("--force-tablet-mode=clamshell"), chrome.ExtraArgs("--disable-features=ArcResizeLock")}
 	if args.extensionPrefix != "" {
 		s.Log("Copying extension to temp directory")
 		extDir, err := ioutil.TempDir("", "tast.arc.DragDropExtension")

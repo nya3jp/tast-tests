@@ -127,7 +127,6 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 	opts := []chrome.Option{
 		chrome.ARCSupported(), // This does not start ARC automatically
-		chrome.RestrictARCCPU(),
 		chrome.GAIALoginPool(request.Creds),
 		chrome.ExtraArgs(chromeArgs...)}
 
