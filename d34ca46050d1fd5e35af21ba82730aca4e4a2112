@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0259be9a_81318477",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-06-08T14:01:01Z",
+      "side": 1,
+      "message": "We are thinking about running part of the ManaTEE runtime stack on non ManaTEE devices in the future for Keymint, so maybe we could test based on the manatee software dep, since it is intended to distinguish ManaTEE and non-ManaTEE devices:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/arc/arc.go;l\u003d443\n\nWe could make an `is_manatee(ctx context.Context)` function that checks for the manatee software dependency:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/security/manatee.go;l\u003d55",
+      "revId": "d34ca46050d1fd5e35af21ba82730aca4e4a2112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
