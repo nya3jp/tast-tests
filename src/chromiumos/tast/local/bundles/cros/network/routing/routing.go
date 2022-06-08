@@ -65,6 +65,9 @@ const (
 	TestSuffix = "t"
 )
 
+// DHCPTimeout is the timeout value used in shill for DHCP lease acquisition.
+const DHCPTimeout = 30 * time.Second
+
 // NewTestEnv creates a new testEnv object for routing tests.
 func NewTestEnv() *testEnv {
 	return &testEnv{Pool: subnet.NewPool()}
