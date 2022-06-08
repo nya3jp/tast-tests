@@ -16,6 +16,29 @@
       "message": "Fixes applied. Please review.",
       "revId": "17f68899673422bc12c99bc9e5de2894ce569de3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4227cccf_0e782d23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T20:45:07Z",
+      "side": 1,
+      "message": "This looks like reserving time for `tf.Close`, but I do not think you call `tf.Close`.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "17f68899673422bc12c99bc9e5de2894ce569de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
