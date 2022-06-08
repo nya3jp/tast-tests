@@ -69,7 +69,7 @@ func init() {
 				Fixture:           fixture.TabletVK,
 				Val:               append(voiceTestIMEs, voiceTestIMEsNewData...),
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "lacros",
