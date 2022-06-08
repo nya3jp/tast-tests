@@ -22,6 +22,30 @@
       },
       "revId": "c991872d2b8108e9819db8aa83089f161220da77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a69a1ca_871c0676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/tts_cache_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-06-08T03:57:13Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "72bdc89a_06cf2d03",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "c991872d2b8108e9819db8aa83089f161220da77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
