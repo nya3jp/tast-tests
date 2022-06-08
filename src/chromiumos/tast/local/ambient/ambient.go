@@ -129,7 +129,8 @@ func OpenAmbientSubpage(ctx context.Context, ui *uiauto.Context) error {
 	if err := uiauto.Combine("open Ambient Subpage",
 		personalization.OpenPersonalizationHub(ui),
 		personalization.OpenScreensaverSubpage(ui),
-		ui.WaitUntilExists(nodewith.Role(role.Button).HasClass("breadcrumb").Name("Screen saver")))(ctx); err != nil {
+		ui.WaitUntilExists(personalization.BreadcrumbNodeFinder(personalization.ScreensaverSubpageName)),
+	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to open Ambient subpage")
 	}
 	return nil

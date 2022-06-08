@@ -31,7 +31,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "personalizationDefault",
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -58,20 +58,20 @@ func OpenPersonalizationHubFromSettings(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	if err := uiauto.Combine("open personalization hub from settings",
-		personalization.SearchForAppInLauncher("settings", "Settings, Installed App", kb, ui),
-		ui.LeftClick(nodewith.Role(role.Link).NameContaining("Personalization").HasClass("item")),
-		ui.LeftClick(nodewith.Role(role.Link).NameContaining("Set your wallpaper").First()),
-		ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining("Wallpaper & style").First()),
+		personalization.SearchForAppInLauncher(personalization.SettingsSearchTerm, personalization.SettingsAppName, kb, ui),
+		ui.LeftClick(nodewith.Role(role.Link).NameContaining(personalization.Personalization).HasClass("item")),
+		ui.LeftClick(nodewith.Role(role.Link).NameContaining(personalization.SettingsSetWallpaper).First()),
+		ui.WaitUntilExists(personalization.PersonalizationHubWindow),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open personalization hub from settings: ", err)
 	}
 
 	if err := uiauto.Combine("open personalization hub by searching in settings",
-		personalization.SearchForAppInLauncher("settings", "Settings, Installed App", kb, ui),
+		personalization.SearchForAppInLauncher(personalization.SettingsSearchTerm, personalization.SettingsAppName, kb, ui),
 		ui.WaitUntilExists(nodewith.Role(role.TextField).HasClass("Textfield")),
-		kb.TypeAction("personalization"),
+		kb.TypeAction(personalization.PersonalizationSearchTerm),
 		kb.AccelAction("Enter"),
-		ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining("Wallpaper & style").First()),
+		ui.WaitUntilExists(personalization.PersonalizationHubWindow),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open personalization hub by searching in settings: ", err)
 	}

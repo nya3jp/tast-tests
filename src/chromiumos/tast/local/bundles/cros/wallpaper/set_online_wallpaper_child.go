@@ -9,12 +9,11 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +29,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"unicorn.wallpaperCategory", "unicorn.wallpaperName"},
-		Fixture:      "familyLinkUnicornLoginWithPersonalizationHub",
+		Fixture:      "familyLinkUnicornLogin",
 		Timeout:      5 * time.Minute,
 	})
 }
@@ -41,8 +40,6 @@ func SetOnlineWallpaperChild(ctx context.Context, s *testing.State) {
 
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
 	// Force Chrome to be in clamshell mode to make sure wallpaper preview is not
 	// enabled.
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
@@ -51,15 +48,25 @@ func SetOnlineWallpaperChild(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
 	// The test has a dependency of network speed, so we give uiauto.Context ample
 	// time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
+
+	// Sleep for 10 seconds for family link notification to disappear.
+	// The notification will intefere with the test if we start the test at the same time.
+	// TODO: remove Sleep action if there is a better solution to handle this case.
+	if err := action.Sleep(10 * time.Second)(ctx); err != nil {
+		s.Fatal("Failed to sleep for 10 seconds: ", err)
+	}
 
 	if err := uiauto.Combine(fmt.Sprintf("Change the wallpaper to %s %s", collection, image),
 		wallpaper.OpenWallpaperPicker(ui),
 		wallpaper.SelectCollection(ui, collection),
 		wallpaper.SelectImage(ui, image),
-		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", image)).Role(role.Heading)))(ctx); err != nil {
+		ui.WaitUntilExists(wallpaper.CurrentWallpaperWithSpecificNameFinder(image)),
+	)(ctx); err != nil {
 		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", collection, image, err)
 	}
 }
