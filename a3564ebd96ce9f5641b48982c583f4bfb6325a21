@@ -46,6 +46,30 @@
       },
       "revId": "a3564ebd96ce9f5641b48982c583f4bfb6325a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2146493d_e685bf3b",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-08T22:59:04Z",
+      "side": 1,
+      "message": "I think the idea is that Chrome would not know if the credential is pinweaver backed either so we should not have key_policy",
+      "parentUuid": "42f1e9c3_f95baceb",
+      "range": {
+        "startLine": 289,
+        "startChar": 44,
+        "endLine": 289,
+        "endChar": 59
+      },
+      "revId": "a3564ebd96ce9f5641b48982c583f4bfb6325a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

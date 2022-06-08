@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50068d42_71915fed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-08T22:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8944c783_0db3d7b2",
+      "range": {
+        "startLine": 25,
+        "startChar": 28,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ebfa20d_8e0d5a2a",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da94014c_1b1ae6b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-08T22:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fbcd0cb_48ad2ac5",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 17
+      },
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9267e61a_5985b8fd",
@@ -125,6 +173,30 @@
       "writtenOn": "2022-06-08T19:39:08Z",
       "side": 1,
       "message": "nit: if you\u0027re going to label boolean/integer arguments like this, please put the comment in the same \"expression\" as the argument it is labeling",
+      "range": {
+        "startLine": 132,
+        "startChar": 80,
+        "endLine": 132,
+        "endChar": 103
+      },
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f676731_e03498e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-08T22:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9267e61a_5985b8fd",
       "range": {
         "startLine": 132,
         "startChar": 80,
@@ -152,6 +224,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d343ef72_f2354f18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-08T22:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3fee5b4_bb9ed103",
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2d01898_f2d1cc84",
@@ -165,6 +255,30 @@
       "writtenOn": "2022-06-08T19:39:08Z",
       "side": 1,
       "message": "might be easier to read if the `err` check is factored out to the bottom",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 3
+      },
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53fa236f_5ea24896",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-08T22:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d01898_f2d1cc84",
       "range": {
         "startLine": 224,
         "startChar": 0,
@@ -198,6 +312,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b974c9b0_8d7028fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-08T22:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26cbb578_2d574cda",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 3
+      },
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c3edb49_37141a50",
@@ -221,6 +359,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f66bc4a_b31c4a96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-08T22:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c3edb49_37141a50",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 3
+      },
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7abb298_851dbe8d",
@@ -234,6 +396,30 @@
       "writtenOn": "2022-06-08T19:39:08Z",
       "side": 1,
       "message": "why not just define `var err error` up front, set `err \u003d ...` in each branch and then check afterwards for whether or not it matches the expected value? Then you probably don\u0027t need the truth table explaining what this logic is encoding either.",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 2
+      },
+      "revId": "79338d930d4fe1514966356f825e14982a7e6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90cde77c_bbd0c5c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-08T22:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7abb298_851dbe8d",
       "range": {
         "startLine": 310,
         "startChar": 0,
