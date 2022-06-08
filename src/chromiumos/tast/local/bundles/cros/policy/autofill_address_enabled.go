@@ -210,7 +210,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				if err := uiauto.Combine("clicking the Email field and choosing the suggested address",
 					ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button).ClassName("test-target-button")),
 					ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Email")),
-					ui.WaitUntilExists(suggestionPopup),
+					ui.WithTimeout(45*time.Second).WaitUntilExists(suggestionPopup),
 					ui.LeftClick(suggestionPopup),
 					ui.WaitUntilExists(nodewith.Role(role.InlineTextBox).Name(addressValues[1].fieldValue)),
 				)(ctx); err != nil {
