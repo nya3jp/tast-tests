@@ -47,6 +47,15 @@ message NewRequest {
   // TryReuseSession controls whether to try reusing a current user session.
   bool try_reuse_session = 7;
 
+  // LacrosEnableFeatures extra Lacros features to enable.
+  repeated string lacros_enable_features = 8;
+
+  // LacrosDisableFetaures contains extra Lacros features to disable.
+  repeated string lacros_disable_features = 9;
+
+  // LacrosExtraArgs contains arguments to be passed through to Lacros.
+  repeated string lacros_extra_args = 10;
+
   message Credentials {
     // Username is the user name of a user account. It is typically an email
     // address (e.g. example@gmail.com).

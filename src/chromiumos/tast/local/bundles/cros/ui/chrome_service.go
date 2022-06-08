@@ -32,18 +32,12 @@ type ChromeService struct {
 	sharedObject *common.SharedObjectsForService
 }
 
-// defaultCreds is the default credentials used for fake logins.
-var defaultCreds = chrome.Creds{
-	User: "testuser@gmail.com",
-	Pass: "testpass",
-}
-
 // New logs into Chrome with the supplied chrome options.
 func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.Empty, error) {
 	svc.sharedObject.ChromeMutex.Lock()
 	defer svc.sharedObject.ChromeMutex.Unlock()
 
-	opts, err := toOptions(req)
+	opts, err := chrome.ToOptions(req)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to convert to chrome options")
 	}
@@ -80,58 +74,4 @@ func (svc *ChromeService) Close(ctx context.Context, req *empty.Empty) (*empty.E
 
 	svc.sharedObject.Chrome = nil
 	return &empty.Empty{}, err
-}
-
-func toOptions(req *pb.NewRequest) ([]chrome.Option, error) {
-	// TODO(jonfan): Find a creative way to unit test this function
-	// The underlying object Config and MutableConfig are private
-	// chrome.Option are callback functions that work on Config, and they cannot
-	// be compared easily without having access to Config or its Mock Interface.
-	var options []chrome.Option
-
-	if req.KeepState {
-		options = append(options, chrome.KeepState())
-	}
-
-	if req.TryReuseSession {
-		options = append(options, chrome.TryReuseSession())
-	}
-
-	switch req.GetLoginMode() {
-	case pb.LoginMode_LOGIN_MODE_NO_LOGIN:
-		options = append(options, chrome.NoLogin())
-	case pb.LoginMode_LOGIN_MODE_FAKE_LOGIN:
-		options = append(options, chrome.FakeLogin(toCreds(req.Credentials)))
-	case pb.LoginMode_LOGIN_MODE_GAIA_LOGIN:
-		options = append(options, chrome.GAIALogin(toCreds(req.Credentials)))
-	case pb.LoginMode_LOGIN_MODE_GUEST_LOGIN:
-		options = append(options, chrome.GuestLogin())
-	default:
-		options = append(options, chrome.FakeLogin(defaultCreds))
-	}
-
-	if len(req.ExtraArgs) > 0 {
-		options = append(options, chrome.ExtraArgs(req.ExtraArgs...))
-	}
-
-	if len(req.EnableFeatures) > 0 {
-		options = append(options, chrome.EnableFeatures(req.EnableFeatures...))
-	}
-
-	if len(req.DisableFeatures) > 0 {
-		options = append(options, chrome.DisableFeatures(req.DisableFeatures...))
-	}
-
-	return options, nil
-}
-
-func toCreds(c *pb.NewRequest_Credentials) chrome.Creds {
-	return chrome.Creds{
-		User:       c.Username,
-		Pass:       c.Password,
-		GAIAID:     c.GaiaId,
-		Contact:    c.Contact,
-		ParentUser: c.ParentUsername,
-		ParentPass: c.ParentPassword,
-	}
 }
